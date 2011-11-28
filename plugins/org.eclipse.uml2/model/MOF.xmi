@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20100901" xmlns:xmi="http://www.omg.org/spec/XMI/20100901" xmlns:mofext="http://www.omg.org/spec/MOF/20100901" xmlns:uml="http://www.omg.org/spec/UML/20100901">
+<xmi:XMI xmi:version="20110701" xmlns:mofext="http://www.omg.org/spec/MOF/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701">
   <uml:Package xmi:id="_MOF" name="MOF">
     <packagedElement xmi:type="uml:Package" name="Identifiers" xmi:id="_MOF-Identifiers">
       <packageImport xmi:type="uml:PackageImport" xmi:id="_MOF-Identifiers-PackageImport.0">
@@ -11,12 +11,12 @@
         </generalization>
         <ownedOperation xmi:type="uml:Operation" name="contextURI" visibility="public" isQuery="true" xmi:id="_MOF-Identifiers-URIExtent-contextURI">
           <ownedParameter xmi:type="uml:Parameter" name="result" visibility="public" direction="return" xmi:id="_MOF-Identifiers-URIExtent-contextURI-result">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" name="uri" visibility="public" isQuery="true" xmi:id="_MOF-Identifiers-URIExtent-uri">
           <ownedParameter xmi:type="uml:Parameter" name="result" visibility="public" direction="return" xmi:id="_MOF-Identifiers-URIExtent-uri-result">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="object" visibility="public" xmi:id="_MOF-Identifiers-URIExtent-uri-object">
             <type xmi:idref="_MOF-Reflection-Element"/>
@@ -27,7 +27,7 @@
             <type xmi:idref="_MOF-Reflection-Element"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="uri" visibility="public" xmi:id="_MOF-Identifiers-URIExtent-element-uri">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
@@ -37,7 +37,7 @@
         </generalization>
         <ownedOperation xmi:type="uml:Operation" name="useContainment" visibility="public" isQuery="true" xmi:id="_MOF-Identifiers-Extent-useContainment">
           <ownedParameter xmi:type="uml:Parameter" name="result" visibility="public" direction="return" xmi:id="_MOF-Identifiers-Extent-useContainment-result">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" name="elements" visibility="public" isQuery="true" xmi:id="_MOF-Identifiers-Extent-elements">
@@ -47,7 +47,7 @@
         </ownedOperation>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Package" name="EMOF" xmi:id="_MOF-EMOF" URI="http://www.omg.org/spec/MOF/20100901/emof.xmi">
+    <packagedElement xmi:type="uml:Package" name="EMOF" xmi:id="_MOF-EMOF" URI="http://www.omg.org/spec/MOF/20110701/emof.xmi">
       <packageMerge xmi:type="uml:PackageMerge" xmi:id="_MOF-EMOF-PackageMerge.0">
         <mergedPackage xmi:idref="_MOF-Common"/>
       </packageMerge>
@@ -67,12 +67,12 @@
       </packageMerge>
       <packagedElement xmi:type="uml:Class" name="Tag" xmi:id="_MOF-CMOFExtension-Tag">
         <generalization xmi:type="uml:Generalization" xmi:id="_MOF-CMOFExtension-Tag-Generalization.0">
-          <general xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-Element"/>
+          <general xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Element"/>
         </generalization>
         <ownedAttribute xmi:type="uml:Property" name="tagOwner" visibility="public" xmi:id="_MOF-CMOFExtension-Tag-tagOwner">
           <association xmi:idref="_MOF-CMOFExtension-A_ownedTag_tagOwner"/>
-          <type xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-Element"/>
-          <subsettedProperty href="Superstructure.xmi#Classes-Kernel-Element-owner"/>
+          <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Element"/>
+          <subsettedProperty href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Element-owner"/>
           <lowerValue xmi:type="uml:LiteralString" value="0" xmi:id="_MOF-CMOFExtension-Tag-tagOwner-LiteralString.3"/>
         </ownedAttribute>
       </packagedElement>
@@ -83,7 +83,7 @@
         <ownedEnd xmi:type="uml:Property" name="ownedTag" visibility="public" aggregation="composite" xmi:id="_MOF-CMOFExtension-A_ownedTag_tagOwner-ownedTag">
           <type xmi:idref="_MOF-CMOFExtension-Tag"/>
           <association xmi:idref="_MOF-CMOFExtension-A_ownedTag_tagOwner"/>
-          <subsettedProperty href="Superstructure.xmi#Classes-Kernel-Element-ownedElement"/>
+          <subsettedProperty href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Element-ownedElement"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*" xmi:id="_MOF-CMOFExtension-A_ownedTag_tagOwner-ownedTag-LiteralUnlimitedNatural.3"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MOF-CMOFExtension-A_ownedTag_tagOwner-ownedTag-LiteralInteger.4"/>
         </ownedEnd>
@@ -106,10 +106,10 @@
           <general xmi:idref="_MOF-Reflection-Element"/>
         </generalization>
         <ownedAttribute xmi:type="uml:Property" name="name" visibility="public" xmi:id="_MOF-Extension-Tag-name">
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
+          <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" name="value" visibility="public" xmi:id="_MOF-Extension-Tag-value">
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
+          <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" name="element" visibility="public" xmi:id="_MOF-Extension-Tag-element">
           <type xmi:idref="_MOF-Reflection-Element"/>
@@ -121,7 +121,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Package" name="Common" xmi:id="_MOF-Common">
       <packageImport xmi:type="uml:PackageImport" xmi:id="_MOF-Common-PackageImport.0">
-        <importedPackage href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#_0"/>
+        <importedPackage href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#_0"/>
       </packageImport>
       <packagedElement xmi:type="uml:Class" name="ReflectiveSequence" xmi:id="_MOF-Common-ReflectiveSequence">
         <generalization xmi:type="uml:Generalization" xmi:id="_MOF-Common-ReflectiveSequence-Generalization.0">
@@ -129,7 +129,7 @@
         </generalization>
         <ownedOperation xmi:type="uml:Operation" name="add" visibility="public" xmi:id="_MOF-Common-ReflectiveSequence-add">
           <ownedParameter xmi:type="uml:Parameter" name="index" visibility="public" xmi:id="_MOF-Common-ReflectiveSequence-add-index">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Integer"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="object" visibility="public" xmi:id="_MOF-Common-ReflectiveSequence-add-object">
             <type xmi:idref="_MOF-Reflection-Object"/>
@@ -140,7 +140,7 @@
             <type xmi:idref="_MOF-Reflection-Object"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="index" visibility="public" xmi:id="_MOF-Common-ReflectiveSequence-get-index">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Integer"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" name="remove" visibility="public" xmi:id="_MOF-Common-ReflectiveSequence-remove">
@@ -148,7 +148,7 @@
             <type xmi:idref="_MOF-Reflection-Object"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="index" visibility="public" xmi:id="_MOF-Common-ReflectiveSequence-remove-index">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Integer"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" name="set" visibility="public" xmi:id="_MOF-Common-ReflectiveSequence-set">
@@ -156,7 +156,7 @@
             <type xmi:idref="_MOF-Reflection-Object"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="index" visibility="public" xmi:id="_MOF-Common-ReflectiveSequence-set-index">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Integer"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="object" visibility="public" xmi:id="_MOF-Common-ReflectiveSequence-set-object">
             <type xmi:idref="_MOF-Reflection-Object"/>
@@ -169,7 +169,7 @@
         </generalization>
         <ownedOperation xmi:type="uml:Operation" name="add" visibility="public" xmi:id="_MOF-Common-ReflectiveCollection-add">
           <ownedParameter xmi:type="uml:Parameter" name="result" visibility="public" direction="return" xmi:id="_MOF-Common-ReflectiveCollection-add-result">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="object" visibility="public" xmi:id="_MOF-Common-ReflectiveCollection-add-object">
             <type xmi:idref="_MOF-Reflection-Object"/>
@@ -177,7 +177,7 @@
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" name="addAll" visibility="public" xmi:id="_MOF-Common-ReflectiveCollection-addAll">
           <ownedParameter xmi:type="uml:Parameter" name="result" visibility="public" direction="return" xmi:id="_MOF-Common-ReflectiveCollection-addAll-result">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="objects" visibility="public" xmi:id="_MOF-Common-ReflectiveCollection-addAll-objects">
             <type xmi:idref="_MOF-Common-ReflectiveCollection"/>
@@ -186,7 +186,7 @@
         <ownedOperation xmi:type="uml:Operation" name="clear" visibility="public" xmi:id="_MOF-Common-ReflectiveCollection-clear"/>
         <ownedOperation xmi:type="uml:Operation" name="remove" visibility="public" xmi:id="_MOF-Common-ReflectiveCollection-remove">
           <ownedParameter xmi:type="uml:Parameter" name="result" visibility="public" direction="return" xmi:id="_MOF-Common-ReflectiveCollection-remove-result">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="object" visibility="public" xmi:id="_MOF-Common-ReflectiveCollection-remove-object">
             <type xmi:idref="_MOF-Reflection-Object"/>
@@ -194,12 +194,12 @@
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" name="size" visibility="public" isQuery="true" xmi:id="_MOF-Common-ReflectiveCollection-size">
           <ownedParameter xmi:type="uml:Parameter" name="result" visibility="public" direction="return" xmi:id="_MOF-Common-ReflectiveCollection-size-result">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Integer"/>
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Package" name="CMOF" xmi:id="_MOF-CMOF" URI="http://www.omg.org/spec/MOF/20100901/cmof.xmi">
+    <packagedElement xmi:type="uml:Package" name="CMOF" xmi:id="_MOF-CMOF" URI="http://www.omg.org/spec/MOF/20110701/cmof.xmi">
       <packageMerge xmi:type="uml:PackageMerge" xmi:id="_MOF-CMOF-PackageMerge.0">
         <mergedPackage xmi:idref="_MOF-EMOF"/>
       </packageMerge>
@@ -220,7 +220,7 @@
             <type xmi:idref="_MOF-CMOFReflection-Element"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="class" visibility="public" xmi:id="_MOF-CMOFReflection-Factory-createElement-class">
-            <type xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-Class"/>
+            <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Class"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="arguments" visibility="public" xmi:id="_MOF-CMOFReflection-Factory-createElement-arguments">
             <type xmi:idref="_MOF-CMOFReflection-Argument"/>
@@ -233,7 +233,7 @@
             <type xmi:idref="_MOF-CMOFReflection-Link"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="association" visibility="public" xmi:id="_MOF-CMOFReflection-Factory-createLink-association">
-            <type xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-Association"/>
+            <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Association"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="firstElement" visibility="public" xmi:id="_MOF-CMOFReflection-Factory-createLink-firstElement">
             <type xmi:idref="_MOF-CMOFReflection-Element"/>
@@ -271,7 +271,7 @@
       </packagedElement>
       <packagedElement xmi:type="uml:Class" name="Argument" xmi:id="_MOF-CMOFReflection-Argument">
         <ownedAttribute xmi:type="uml:Property" name="name" visibility="public" xmi:id="_MOF-CMOFReflection-Argument-name">
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
+          <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" name="value" visibility="public" xmi:id="_MOF-CMOFReflection-Argument-value">
           <type xmi:idref="_MOF-Reflection-Object"/>
@@ -295,10 +295,10 @@
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MOF-CMOFReflection-Extent-elementsOfType-result-LiteralInteger.2"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="type" visibility="public" xmi:id="_MOF-CMOFReflection-Extent-elementsOfType-type">
-            <type xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-Class"/>
+            <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Class"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="includesSubtypes" visibility="public" xmi:id="_MOF-CMOFReflection-Extent-elementsOfType-includesSubtypes">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" name="linksOfType" visibility="public" isQuery="true" xmi:id="_MOF-CMOFReflection-Extent-linksOfType">
@@ -308,7 +308,7 @@
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MOF-CMOFReflection-Extent-linksOfType-result-LiteralInteger.2"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="type" visibility="public" xmi:id="_MOF-CMOFReflection-Extent-linksOfType-type">
-            <type xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-Association"/>
+            <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Association"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" name="linkedElements" visibility="public" isQuery="true" xmi:id="_MOF-CMOFReflection-Extent-linkedElements">
@@ -318,21 +318,21 @@
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MOF-CMOFReflection-Extent-linkedElements-result-LiteralInteger.2"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="association" visibility="public" xmi:id="_MOF-CMOFReflection-Extent-linkedElements-association">
-            <type xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-Association"/>
+            <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Association"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="endElement" visibility="public" xmi:id="_MOF-CMOFReflection-Extent-linkedElements-endElement">
             <type xmi:idref="_MOF-CMOFReflection-Element"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="end1ToEnd2Direction" visibility="public" xmi:id="_MOF-CMOFReflection-Extent-linkedElements-end1ToEnd2Direction">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" name="linkExists" visibility="public" isQuery="true" xmi:id="_MOF-CMOFReflection-Extent-linkExists">
           <ownedParameter xmi:type="uml:Parameter" name="result" visibility="public" direction="return" xmi:id="_MOF-CMOFReflection-Extent-linkExists-result">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="association" visibility="public" xmi:id="_MOF-CMOFReflection-Extent-linkExists-association">
-            <type xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-Association"/>
+            <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Association"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="firstElement" visibility="public" xmi:id="_MOF-CMOFReflection-Extent-linkExists-firstElement">
             <type xmi:idref="_MOF-CMOFReflection-Element"/>
@@ -356,11 +356,11 @@
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" name="association" visibility="public" xmi:id="_MOF-CMOFReflection-Link-association">
           <association xmi:idref="_MOF-CMOFReflection-A_association_link"/>
-          <type xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-Association"/>
+          <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Association"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" name="equals" visibility="public" isQuery="true" xmi:id="_MOF-CMOFReflection-Link-equals">
           <ownedParameter xmi:type="uml:Parameter" name="result" visibility="public" direction="return" xmi:id="_MOF-CMOFReflection-Link-equals-result">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="otherLink" visibility="public" xmi:id="_MOF-CMOFReflection-Link-equals-otherLink">
             <type xmi:idref="_MOF-CMOFReflection-Link"/>
@@ -376,7 +376,7 @@
           <type xmi:idref="_MOF-CMOFReflection-Element"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" name="description" visibility="public" xmi:id="_MOF-CMOFReflection-Exception-description">
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
+          <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
         </ownedAttribute>
       </packagedElement>
     </packagedElement>
@@ -385,7 +385,7 @@
         <importedPackage xmi:idref="_MOF-Common"/>
       </packageImport>
       <packageMerge xmi:type="uml:PackageMerge" xmi:id="_MOF-Reflection-PackageMerge.1">
-        <mergedPackage href="Superstructure.xmi#Classes-Kernel"/>
+        <mergedPackage href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel"/>
       </packageMerge>
       <packagedElement xmi:type="uml:Class" name="Factory" xmi:id="_MOF-Reflection-Factory">
         <generalization xmi:type="uml:Generalization" xmi:id="_MOF-Reflection-Factory-Generalization.0">
@@ -393,25 +393,25 @@
         </generalization>
         <ownedAttribute xmi:type="uml:Property" name="package" visibility="public" xmi:id="_MOF-Reflection-Factory-package">
           <association xmi:idref="_MOF-Reflection-A_package_factory"/>
-          <type xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-Package"/>
+          <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Package"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" name="createFromString" visibility="public" xmi:id="_MOF-Reflection-Factory-createFromString">
           <ownedParameter xmi:type="uml:Parameter" name="result" visibility="public" direction="return" xmi:id="_MOF-Reflection-Factory-createFromString-result">
             <type xmi:idref="_MOF-Reflection-Object"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="dataType" visibility="public" xmi:id="_MOF-Reflection-Factory-createFromString-dataType">
-            <type xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-DataType"/>
+            <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-DataType"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="string" visibility="public" xmi:id="_MOF-Reflection-Factory-createFromString-string">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" name="convertToString" visibility="public" xmi:id="_MOF-Reflection-Factory-convertToString">
           <ownedParameter xmi:type="uml:Parameter" name="result" visibility="public" direction="return" xmi:id="_MOF-Reflection-Factory-convertToString-result">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="dataType" visibility="public" xmi:id="_MOF-Reflection-Factory-convertToString-dataType">
-            <type xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-DataType"/>
+            <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-DataType"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="object" visibility="public" xmi:id="_MOF-Reflection-Factory-convertToString-object">
             <type xmi:idref="_MOF-Reflection-Object"/>
@@ -422,14 +422,14 @@
             <type xmi:idref="_MOF-Reflection-Element"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="metaClass" visibility="public" xmi:id="_MOF-Reflection-Factory-create-metaClass">
-            <type xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-Class"/>
+            <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Class"/>
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" name="Type" isAbstract="true" xmi:id="_MOF-Reflection-Type">
         <ownedOperation xmi:type="uml:Operation" name="isInstance" visibility="public" isQuery="true" xmi:id="_MOF-Reflection-Type-isInstance">
           <ownedParameter xmi:type="uml:Parameter" name="result" visibility="public" direction="return" xmi:id="_MOF-Reflection-Type-isInstance-result">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="object" visibility="public" xmi:id="_MOF-Reflection-Type-isInstance-object">
             <type xmi:idref="_MOF-Reflection-Object"/>
@@ -452,12 +452,12 @@
             <type xmi:idref="_MOF-Reflection-Object"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="property" visibility="public" xmi:id="_MOF-Reflection-Object-get-property">
-            <type xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-Property"/>
+            <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Property"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" name="equals" visibility="public" isQuery="true" xmi:id="_MOF-Reflection-Object-equals">
           <ownedParameter xmi:type="uml:Parameter" name="result" visibility="public" direction="return" xmi:id="_MOF-Reflection-Object-equals-result">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="element" visibility="public" xmi:id="_MOF-Reflection-Object-equals-element">
             <type xmi:idref="_MOF-Reflection-Object"/>
@@ -465,7 +465,7 @@
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" name="set" visibility="public" xmi:id="_MOF-Reflection-Object-set">
           <ownedParameter xmi:type="uml:Parameter" name="property" visibility="public" isStream="true" xmi:id="_MOF-Reflection-Object-set-property">
-            <type xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-Property"/>
+            <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Property"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="value" visibility="public" xmi:id="_MOF-Reflection-Object-set-value">
             <type xmi:idref="_MOF-Reflection-Object"/>
@@ -473,15 +473,15 @@
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" name="isSet" visibility="public" isQuery="true" xmi:id="_MOF-Reflection-Object-isSet">
           <ownedParameter xmi:type="uml:Parameter" name="result" visibility="public" direction="return" xmi:id="_MOF-Reflection-Object-isSet-result">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="property" visibility="public" xmi:id="_MOF-Reflection-Object-isSet-property">
-            <type xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-Property"/>
+            <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Property"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" name="unset" visibility="public" xmi:id="_MOF-Reflection-Object-unset">
           <ownedParameter xmi:type="uml:Parameter" name="property" visibility="public" xmi:id="_MOF-Reflection-Object-unset-property">
-            <type xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-Property"/>
+            <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Property"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" name="invoke" visibility="public" xmi:id="_MOF-Reflection-Object-invoke">
@@ -490,7 +490,7 @@
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MOF-Reflection-Object-invoke-result-LiteralInteger.1"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="op" visibility="public" xmi:id="_MOF-Reflection-Object-invoke-op">
-            <type xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-Operation"/>
+            <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Operation"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="arguments" visibility="public" xmi:id="_MOF-Reflection-Object-invoke-arguments">
             <type xmi:idref="_MOF-CMOFReflection-Argument"/>
@@ -515,11 +515,11 @@
         </generalization>
         <ownedAttribute xmi:type="uml:Property" name="metaclass" visibility="public" isDerived="true" xmi:id="_MOF-Reflection-Element-metaclass">
           <association xmi:idref="_MOF-Reflection-A_metaclass_element"/>
-          <type xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-Class"/>
+          <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Class"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" name="getMetaClass" visibility="public" isQuery="true" xmi:id="_MOF-Reflection-Element-getMetaClass">
           <ownedParameter xmi:type="uml:Parameter" name="result" visibility="public" direction="return" xmi:id="_MOF-Reflection-Element-getMetaClass-result">
-            <type xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-Class"/>
+            <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Class"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" name="container" visibility="public" isQuery="true" xmi:id="_MOF-Reflection-Element-container">
@@ -529,13 +529,13 @@
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" name="isInstanceOfType" visibility="public" isQuery="true" xmi:id="_MOF-Reflection-Element-isInstanceOfType">
           <ownedParameter xmi:type="uml:Parameter" name="result" visibility="public" direction="return" xmi:id="_MOF-Reflection-Element-isInstanceOfType-result">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="type" visibility="public" xmi:id="_MOF-Reflection-Element-isInstanceOfType-type">
-            <type xmi:type="uml:Class" href="Superstructure.xmi#Classes-Kernel-Class"/>
+            <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20110701/Superstructure.xmi#Classes-Kernel-Class"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" name="includesSubtypes" visibility="public" xmi:id="_MOF-Reflection-Element-isInstanceOfType-includesSubtypes">
-            <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
@@ -544,25 +544,25 @@
   <mofext:Tag xmi:type="mofext:Tag" xmi:id="_org.omg.xmi.nsPrefix" name="org.omg.xmi.nsPrefix" value="uml">
     <element xmi:idref="_MOF-EMOF"/>
   </mofext:Tag>
-  <mofext:Tag xmi:type="mofext:Tag" xmi:id="_org.omg.xmi.nsURI" name="org.omg.xmi.nsURI" value="http://www.omg.org/spec/UML/20100901">
+  <mofext:Tag xmi:type="mofext:Tag" xmi:id="_org.omg.xmi.nsURI" name="org.omg.xmi.nsURI" value="http://www.omg.org/spec/UML/20110701">
     <element xmi:idref="_MOF-EMOF"/>
   </mofext:Tag>
   <mofext:Tag xmi:type="mofext:Tag" xmi:id="_org.omg.xmi.nsPrefix::1" name="org.omg.xmi.nsPrefix" value="uml">
     <element xmi:idref="_MOF-CMOF"/>
   </mofext:Tag>
-  <mofext:Tag xmi:type="mofext:Tag" xmi:id="_org.omg.xmi.nsURI::1" name="org.omg.xmi.nsURI" value="http://www.omg.org/spec/UML/20100901">
+  <mofext:Tag xmi:type="mofext:Tag" xmi:id="_org.omg.xmi.nsURI::1" name="org.omg.xmi.nsURI" value="http://www.omg.org/spec/UML/20110701">
     <element xmi:idref="_MOF-CMOF"/>
   </mofext:Tag>
   <mofext:Tag xmi:type="mofext:Tag" xmi:id="_org.omg.xmi.nsPrefix::2" name="org.omg.xmi.nsPrefix" value="mofext">
     <element xmi:idref="_MOF-Extension"/>
   </mofext:Tag>
-  <mofext:Tag xmi:type="mofext:Tag" xmi:id="_org.omg.xmi.nsURI::2" name="org.omg.xmi.nsURI" value="http://www.omg.org/spec/MOF/20100901">
+  <mofext:Tag xmi:type="mofext:Tag" xmi:id="_org.omg.xmi.nsURI::2" name="org.omg.xmi.nsURI" value="http://www.omg.org/spec/MOF/20110701">
     <element xmi:idref="_MOF-Extension"/>
   </mofext:Tag>
   <mofext:Tag xmi:type="mofext:Tag" xmi:id="_org.omg.xmi.nsPrefix::3" name="org.omg.xmi.nsPrefix" value="mofext">
     <element xmi:idref="_MOF-CMOFExtension"/>
   </mofext:Tag>
-  <mofext:Tag xmi:type="mofext:Tag" xmi:id="_org.omg.xmi.nsURI::3" name="org.omg.xmi.nsURI" value="http://www.omg.org/spec/MOF/20100901">
+  <mofext:Tag xmi:type="mofext:Tag" xmi:id="_org.omg.xmi.nsURI::3" name="org.omg.xmi.nsURI" value="http://www.omg.org/spec/MOF/20110701">
     <element xmi:idref="_MOF-CMOFExtension"/>
   </mofext:Tag>
   <mofext:Tag xmi:type="mofext:Tag" xmi:id="_org.omg.xmi.contentType" name="org.omg.xmi.contentType" value="any">

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20100901" xmlns:uml="http://www.omg.org/spec/UML/20100901" xmlns:mofext="http://www.omg.org/spec/MOF/20100901">
-  <uml:Profile xmi:type="uml:Profile" xmi:id="_0" name="StandardProfileL3" metamodelReference="_packageImport.0" URI="http://www.omg.org/spec/UML/20100901/StandardProfileL3">
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:mofext="http://www.omg.org/spec/MOF/20110701">
+  <uml:Profile xmi:type="uml:Profile" xmi:id="_0" name="StandardProfileL3" metamodelReference="_packageImport.0" URI="http://www.omg.org/spec/UML/20110701/StandardProfileL3">
     <packageImport xmi:type="uml:PackageImport" xmi:id="_packageImport.0">
-      <importedPackage href="http://www.omg.org/spec/UML/20100901/UML.xmi#_0"/>
+      <importedPackage href="http://www.omg.org/spec/UML/20110701/UML.xmi#_0"/>
     </packageImport>
     <packagedElement xmi:type="uml:Extension" xmi:id="Component_BuildComponent" name="Component_BuildComponent" memberEnd="Component_BuildComponent-extension_BuildComponent BuildComponent-base_Component">
       <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Component_BuildComponent-extension_BuildComponent" name="extension_BuildComponent" visibility="public" type="BuildComponent" aggregation="composite" association="Component_BuildComponent">
@@ -20,18 +20,27 @@
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="BuildComponent" name="BuildComponent">
+      <ownedComment xmi:type="uml:Comment" xmi:id="BuildComponent-_ownedComment.0" annotatedElement="BuildComponent">
+        <body>A collection of elements defined for the purpose of system level decelopment activities, such as compilation and versioning.</body>
+      </ownedComment>
       <ownedAttribute xmi:type="uml:Property" xmi:id="BuildComponent-base_Component" name="base_Component" visibility="public" association="Component_BuildComponent">
-        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Component"/>
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Component"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Metamodel" name="Metamodel">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Metamodel-_ownedComment.0" annotatedElement="Metamodel">
+        <body>A model that specifies the modeling concepts of some modeling language (e.g., a MOF model). See &gt;.</body>
+      </ownedComment>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Metamodel-base_Model" name="base_Model" visibility="public" association="Model_Metamodel">
-        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Model"/>
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Model"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="SystemModel" name="SystemModel">
+      <ownedComment xmi:type="uml:Comment" xmi:id="SystemModel-_ownedComment.0" annotatedElement="SystemModel">
+        <body>A SystemModel is a stereotyped model that contains a collection of models of the same system. A systemModel also contains all relationships and constraints between model elements contained in different models.</body>
+      </ownedComment>
       <ownedAttribute xmi:type="uml:Property" xmi:id="SystemModel-base_Model" name="base_Model" visibility="public" association="Model_SystemModel">
-        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Model"/>
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Model"/>
       </ownedAttribute>
     </packagedElement>
   </uml:Profile>
