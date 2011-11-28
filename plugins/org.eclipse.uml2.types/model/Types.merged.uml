@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20100901" xmlns:xmi="http://www.omg.org/spec/XMI/20100901" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
   <uml:Model xmi:id="_ioJEwKzrEeCNdMZQmxuX_Q" name="Types">
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_QxrSIKzuEeC4yJrLbEUOVg" name="Boolean">
-      <ownedComment xmi:id="_36nLcMlIEeCA2KY6CawwCg" annotatedElement="_QxrSIKzuEeC4yJrLbEUOVg">
+      <ownedComment xmi:id="__YFpcAsOEeGTNJLAYqz1mw" annotatedElement="_QxrSIKzuEeC4yJrLbEUOVg">
         <body>A Boolean type is used for logical expression, consisting of the predefined values true and false.</body>
       </ownedComment>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_T5WNsKzuEeC4yJrLbEUOVg" name="Integer">
-      <ownedComment xmi:id="_37PdkMlIEeCA2KY6CawwCg" annotatedElement="_T5WNsKzuEeC4yJrLbEUOVg">
+      <ownedComment xmi:id="__YXWQAsOEeGTNJLAYqz1mw" annotatedElement="_T5WNsKzuEeC4yJrLbEUOVg">
         <body>An integer is a primitive type representing integer values.</body>
       </ownedComment>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Vu7PQKzuEeC4yJrLbEUOVg" name="Real">
-      <ownedComment xmi:id="_37TvAMlIEeCA2KY6CawwCg" annotatedElement="_Vu7PQKzuEeC4yJrLbEUOVg">
+      <ownedComment xmi:id="__YX9UAsOEeGTNJLAYqz1mw" annotatedElement="_Vu7PQKzuEeC4yJrLbEUOVg">
         <body>A real is a primitive type representing the mathematical concept of real.</body>
       </ownedComment>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_XSfTwKzuEeC4yJrLbEUOVg" name="String">
-      <ownedComment xmi:id="_37UWEMlIEeCA2KY6CawwCg" annotatedElement="_XSfTwKzuEeC4yJrLbEUOVg">
+      <ownedComment xmi:id="__YYkYAsOEeGTNJLAYqz1mw" annotatedElement="_XSfTwKzuEeC4yJrLbEUOVg">
         <body>A string is a sequence of characters in some suitable character set used to display information about the model. Character sets may include non-Roman alphabets and characters.</body>
       </ownedComment>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_ZX79UKzuEeC4yJrLbEUOVg" name="UnlimitedNatural">
-      <ownedComment xmi:id="_37U9IMlIEeCA2KY6CawwCg" annotatedElement="_ZX79UKzuEeC4yJrLbEUOVg">
+      <ownedComment xmi:id="__YZLcAsOEeGTNJLAYqz1mw" annotatedElement="_ZX79UKzuEeC4yJrLbEUOVg">
         <body>An unlimited natural is a primitive type representing unlimited natural values.</body>
       </ownedComment>
     </packagedElement>

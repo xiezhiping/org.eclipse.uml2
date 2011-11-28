@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:genmodel="http://www.eclipse.org/uml2/2.2.0/GenModel" modelDirectory="/org.eclipse.uml2.types/src"
-    editDirectory="" editorDirectory="" modelPluginID="org.eclipse.uml2.types" templateDirectory="/org.eclipse.uml2/templates"
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:genmodel="http://www.eclipse.org/uml2/2.2.0/GenModel" modelDirectory="/org.eclipse.uml2.types/src" editDirectory="" editorDirectory=""
+    modelPluginID="org.eclipse.uml2.types" templateDirectory="/org.eclipse.uml2/templates"
     runtimeJar="true" dynamicTemplates="true" modelName="Types" modelPluginClass="org.eclipse.uml2.types.TypesPlugin"
     nonNLSMarkers="true" codeFormatting="true" testsDirectory="" importerID="org.eclipse.uml2.uml.ecore.importer"
     complianceLevel="5.0" copyrightFields="false" invariantPrefix="validate">

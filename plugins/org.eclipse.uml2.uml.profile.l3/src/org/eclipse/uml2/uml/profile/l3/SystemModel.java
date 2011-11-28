@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 351774
  *
  */
 package org.eclipse.uml2.uml.profile.l3;
@@ -19,6 +20,10 @@ import org.eclipse.uml2.uml.Model;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>System Model</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A SystemModel is a stereotyped model that contains a collection of models of the same system. A systemModel also contains all relationships and constraints between model elements contained in different models.
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

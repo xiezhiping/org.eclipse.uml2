@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 351774
  *
  */
 package org.eclipse.uml2.uml.profile.l3;
@@ -19,6 +20,10 @@ import org.eclipse.uml2.uml.Model;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Metamodel</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A model that specifies the modeling concepts of some modeling language (e.g., a MOF model). See >.
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:

@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 351774
  *
  */
 package org.eclipse.uml2.uml.profile.l2.internal.operations;
@@ -38,7 +39,8 @@ import org.eclipse.uml2.uml.util.UMLUtil;
  *
  * @generated not
  */
-public class UtilityOperations extends UMLUtil {
+public class UtilityOperations
+		extends UMLUtil {
 
 	/**
 	 * <!-- begin-user-doc -->

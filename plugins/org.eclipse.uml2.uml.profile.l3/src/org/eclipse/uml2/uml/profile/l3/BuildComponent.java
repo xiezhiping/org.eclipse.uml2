@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 351774
  *
  */
 package org.eclipse.uml2.uml.profile.l3;
@@ -19,6 +20,10 @@ import org.eclipse.uml2.uml.Component;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Build Component</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A collection of elements defined for the purpose of system level decelopment activities, such as compilation and versioning.
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
