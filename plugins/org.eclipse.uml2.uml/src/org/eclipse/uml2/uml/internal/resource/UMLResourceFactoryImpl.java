@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -64,7 +64,7 @@ public class UMLResourceFactoryImpl
 	public Resource createResource(URI uri) {
 		UMLResource resource = (UMLResource) createResourceGen(uri);
 
-		resource.setXMIVersion("20100901"); //$NON-NLS-1$
+		resource.setXMIVersion("20110701"); //$NON-NLS-1$
 
 		Map<Object, Object> defaultLoadOptions = resource.getDefaultLoadOptions();
 

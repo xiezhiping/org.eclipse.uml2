@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2007, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   Kenn Hussey (IBM Corporation, Embarcadero Technologies) - initial API and implementation
+ *   Kenn Hussey (CEA) - 351774
  *
- * $Id: CMOF2UMLResourceFactoryImpl.java,v 1.1 2007/09/04 15:28:48 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -56,8 +56,12 @@ public class CMOF2UMLResourceFactoryImpl
 
 		EPackage.Registry ePackageRegistry = new EPackageRegistryImpl(
 			EPackage.Registry.INSTANCE);
+
 		ePackageRegistry.put(CMOF2UMLResource.CMOF_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
+		ePackageRegistry.put(CMOF2UMLResource.CMOF_2_4_METAMODEL_NS_URI,
+			UMLPackage.eINSTANCE);
+
 		ePackageRegistry
 			.put(
 				"platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore", UMLPackage.eINSTANCE); //$NON-NLS-1$
@@ -67,17 +71,26 @@ public class CMOF2UMLResourceFactoryImpl
 
 		Ecore2XMLRegistry ecore2xmlRegistry = new Ecore2XMLRegistryImpl(
 			Ecore2XMLRegistry.INSTANCE);
+
 		ecore2xmlRegistry
 			.put(
 				CMOF2UMLResource.CMOF_METAMODEL_NS_URI,
-				EcoreUtil
-					.getObjectByType(
-						resourceSet
-							.getResource(
-								URI
-									.createURI("platform:/plugin/org.eclipse.uml2.uml/model/CMOF_2_UML.ecore2xml"), //$NON-NLS-1$
-								true).getContents(),
-						Ecore2XMLPackage.Literals.XML_MAP));
+				EcoreUtil.getObjectByType(
+					resourceSet
+						.getResource(
+							URI.createURI("platform:/plugin/org.eclipse.uml2.uml/model/CMOF_2_UML.ecore2xml"), //$NON-NLS-1$
+							true).getContents(),
+					Ecore2XMLPackage.Literals.XML_MAP));
+
+		ecore2xmlRegistry
+			.put(
+				CMOF2UMLResource.CMOF_2_4_METAMODEL_NS_URI,
+				EcoreUtil.getObjectByType(
+					resourceSet
+						.getResource(
+							URI.createURI("platform:/plugin/org.eclipse.uml2.uml/model/CMOF24_2_UML.ecore2xml"), //$NON-NLS-1$
+							true).getContents(),
+					Ecore2XMLPackage.Literals.XML_MAP));
 
 		ExtendedMetaData extendedMetaData = new CMOF2UMLExtendedMetaData(
 			ePackageRegistry, ecore2xmlRegistry);

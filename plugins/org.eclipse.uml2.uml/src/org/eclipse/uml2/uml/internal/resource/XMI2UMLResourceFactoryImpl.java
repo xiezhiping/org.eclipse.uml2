@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 359983
+ *   Kenn Hussey (CEA) - 327039, 359983, 351774
  * 
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -48,7 +48,10 @@ public class XMI2UMLResourceFactoryImpl
 
 		EPackage.Registry ePackageRegistry = new EPackageRegistryImpl(
 			EPackage.Registry.INSTANCE);
+
 		ePackageRegistry.put(CMOF2UMLResource.CMOF_METAMODEL_NS_URI,
+			UMLPackage.eINSTANCE);
+		ePackageRegistry.put(CMOF2UMLResource.CMOF_2_4_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
 
 		ExtendedMetaData extendedMetaData = new XMI2UMLExtendedMetaData(

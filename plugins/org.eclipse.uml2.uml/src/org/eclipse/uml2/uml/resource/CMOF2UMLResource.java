@@ -8,7 +8,7 @@
  * Contributors:
  *   Kenn Hussey (IBM Corporation) - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 156879, 218388
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
  */
 package org.eclipse.uml2.uml.resource;
@@ -34,9 +34,13 @@ public interface CMOF2UMLResource
 
 	String CMOF_2_4_METAMODEL_NS_URI = "http://www.omg.org/spec/MOF/20100901"; //$NON-NLS-1$
 
-	String CMOF_METAMODEL_URI = CMOF_2_4_METAMODEL_URI;
+	String CMOF_2_4_1_METAMODEL_URI = "http://www.omg.org/spec/MOF/20110701/cmof.xmi"; //$NON-NLS-1$
 
-	String CMOF_METAMODEL_NS_URI = CMOF_2_4_METAMODEL_NS_URI;
+	String CMOF_2_4_1_METAMODEL_NS_URI = "http://www.omg.org/spec/MOF/20110701"; //$NON-NLS-1$
+
+	String CMOF_METAMODEL_URI = CMOF_2_4_1_METAMODEL_URI;
+
+	String CMOF_METAMODEL_NS_URI = CMOF_2_4_1_METAMODEL_NS_URI;
 
 	String CMOF_METAMODEL_NS_PREFIX = "cmof"; //$NON-NLS-1$
 
@@ -46,12 +50,16 @@ public interface CMOF2UMLResource
 
 	String CMOF_2_4_CONTENT_TYPE_IDENTIFIER = "org.omg.mof.cmof_2_4"; //$NON-NLS-1$
 
-	String CMOF_CONTENT_TYPE_IDENTIFIER = CMOF_2_4_CONTENT_TYPE_IDENTIFIER;
+	String CMOF_2_4_1_CONTENT_TYPE_IDENTIFIER = "org.omg.mof.cmof_2_4_1"; //$NON-NLS-1$
+
+	String CMOF_CONTENT_TYPE_IDENTIFIER = CMOF_2_4_1_CONTENT_TYPE_IDENTIFIER;
 
 	String UML_PRIMITIVE_TYPES_LIBRARY_2_0_URI = "http://schema.omg.org/spec/UML/2.0/uml.xml"; //$NON-NLS-1$
 
 	String UML_PRIMITIVE_TYPES_LIBRARY_2_4_URI = "http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi"; //$NON-NLS-1$
 
-	String UML_PRIMITIVE_TYPES_LIBRARY_URI = UML_PRIMITIVE_TYPES_LIBRARY_2_4_URI;
+	String UML_PRIMITIVE_TYPES_LIBRARY_2_4_1_URI = "http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi"; //$NON-NLS-1$
+
+	String UML_PRIMITIVE_TYPES_LIBRARY_URI = UML_PRIMITIVE_TYPES_LIBRARY_2_4_1_URI;
 
 }

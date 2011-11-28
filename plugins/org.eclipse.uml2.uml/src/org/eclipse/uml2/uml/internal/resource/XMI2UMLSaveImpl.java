@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.EMOFExtendedMetaData;
-import org.eclipse.emf.ecore.xmi.impl.XMISaveImpl;
 
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.NamedElement;
@@ -40,7 +39,7 @@ public class XMI2UMLSaveImpl
 		extends UMLSaveImpl {
 
 	protected static class Lookup
-			extends XMISaveImpl.Lookup {
+			extends UMLSaveImpl.Lookup {
 
 		public Lookup(XMLResource.XMLMap map, ExtendedMetaData extendedMetaData) {
 			super(map, extendedMetaData);

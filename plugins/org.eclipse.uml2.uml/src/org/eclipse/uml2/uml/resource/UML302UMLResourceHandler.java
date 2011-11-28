@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 351774
  *
  */
 package org.eclipse.uml2.uml.resource;
@@ -15,9 +16,13 @@ import java.io.InputStream;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityGroup;
+import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.CallEvent;
@@ -38,6 +43,7 @@ import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.SignalEvent;
 import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.util.UMLSwitch;
@@ -346,6 +352,55 @@ public class UML302UMLResourceHandler
 		final EList<EObject> resourceContents = resource.getContents();
 
 		UMLSwitch<Object> umlSwitch = new UMLSwitch<Object>() {
+
+			@Override
+			public Object caseActivity(Activity activity) {
+				EList<StructuredActivityNode> structuredNodes = activity
+					.getStructuredNodes();
+
+				EList<ActivityGroup> groups = activity.getGroups();
+
+				for (ListIterator<ActivityGroup> ownedGroups = activity
+					.getOwnedGroups().listIterator(); ownedGroups.hasNext();) {
+
+					ActivityGroup group = (ActivityGroup) ownedGroups.next();
+
+					if (group instanceof StructuredActivityNode) {
+						ownedGroups.remove();
+						structuredNodes.add((StructuredActivityNode) group);
+					}
+
+					groups.add(group);
+				}
+
+				EList<ActivityNode> nodes = activity.getNodes();
+
+				for (ListIterator<ActivityNode> ownedNodes = activity
+					.getOwnedNodes().listIterator(); ownedNodes.hasNext();) {
+
+					ActivityNode node = (ActivityNode) ownedNodes.next();
+
+					if (node instanceof StructuredActivityNode) {
+						ownedNodes.remove();
+						structuredNodes.add((StructuredActivityNode) node);
+					}
+
+					nodes.add(node);
+				}
+
+				for (StructuredActivityNode structuredNode : structuredNodes) {
+
+					if (!groups.contains(structuredNode)) {
+						groups.add(structuredNode);
+					}
+
+					if (!nodes.contains(structuredNode)) {
+						nodes.add(structuredNode);
+					}
+				}
+
+				return super.caseActivity(activity);
+			}
 
 			@Override
 			public Object caseBehavior(Behavior behavior) {

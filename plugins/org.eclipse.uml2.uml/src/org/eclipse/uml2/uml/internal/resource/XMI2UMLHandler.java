@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 204202
- *   Kenn Hussey (CEA) - 327039, 359964
+ *   Kenn Hussey (CEA) - 327039, 359964, 351774
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -70,27 +70,36 @@ public class XMI2UMLHandler
 	@Override
 	protected void handleProxy(InternalEObject proxy, String uriLiteral) {
 
-		if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_URI)) {
+		if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_URI)
+			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_4_URI)) {
 			int index = uriLiteral.indexOf('#');
 			uriLiteral = UMLResource.UML_METAMODEL_URI + (index == -1
 				? "#_0" //$NON-NLS-1$
 				: uriLiteral.substring(index));
 		} else if (uriLiteral
-			.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_URI) || uriLiteral
-			.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_2_2_URI)) {
+			.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_URI)
+			|| uriLiteral
+				.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_2_4_URI)
+			|| uriLiteral
+				.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_2_2_URI)) {
 			int index = uriLiteral.indexOf('#');
 			uriLiteral = UMLResource.STANDARD_L2_PROFILE_URI + (index == -1
 				? "#_0" //$NON-NLS-1$
 				: uriLiteral.substring(index));
 		} else if (uriLiteral
-			.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_URI)  || uriLiteral
-			.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_2_2_URI)) {
+			.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_URI)
+			|| uriLiteral
+				.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_2_4_URI)
+			|| uriLiteral
+				.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_2_2_URI)) {
 			int index = uriLiteral.indexOf('#');
 			uriLiteral = UMLResource.STANDARD_L3_PROFILE_URI + (index == -1
 				? "#_0" //$NON-NLS-1$
 				: uriLiteral.substring(index));
 		} else if (uriLiteral
-			.startsWith(XMI2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI)) {
+			.startsWith(XMI2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI)
+			|| uriLiteral
+				.startsWith(XMI2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_2_4_URI)) {
 			int index = uriLiteral.indexOf('#');
 			uriLiteral = UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI
 				+ (index == -1
@@ -105,7 +114,8 @@ public class XMI2UMLHandler
 	protected void processElement(String name, String prefix, String localName) {
 
 		if (EMOFExtendedMetaData.EXTENSION.equals(localName)
-			&& XMI2UMLResource.XMI_NS_URI.equals(helper.getURI(prefix))
+			&& (XMI2UMLResource.XMI_NS_URI.equals(helper.getURI(prefix)) || XMI2UMLResource.XMI_2_4_NS_URI
+				.equals(helper.getURI(prefix)))
 			&& attribs != null
 			&& EcorePackage.eNS_URI.equals(attribs
 				.getValue(EMOFExtendedMetaData.XMI_EXTENDER_ATTRIBUTE))) {
@@ -168,26 +178,32 @@ public class XMI2UMLHandler
 						String uriLiteral = attribs.getValue(i);
 
 						if (uriLiteral
-							.startsWith(XMI2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI)) {
+							.startsWith(XMI2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI)
+							|| uriLiteral
+								.startsWith(XMI2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_2_4_URI)) {
 
 							int index = uriLiteral.indexOf('#');
 
 							if (index != -1
 								&& TypesPackage.eINSTANCE
-									.getEClassifier(uriLiteral.substring(index + 1)) instanceof EDataType) {
+									.getEClassifier(uriLiteral
+										.substring(index + 1)) instanceof EDataType) {
 								factory = UMLFactory.eINSTANCE;
 								newObject = createObjectFromFactory(factory,
 									UMLPackage.Literals.PRIMITIVE_TYPE
 										.getName());
 							}
 						} else if (uriLiteral
-							.startsWith(XMI2UMLResource.UML_METAMODEL_URI)) {
+							.startsWith(XMI2UMLResource.UML_METAMODEL_URI)
+							|| uriLiteral
+								.startsWith(XMI2UMLResource.UML_METAMODEL_2_4_URI)) {
 
 							int index = uriLiteral.indexOf('#');
 
 							if (index != -1
 								&& UMLPackage.eINSTANCE
-									.getEClassifier(uriLiteral.substring(index + 1)) instanceof EClass) {
+									.getEClassifier(uriLiteral
+										.substring(index + 1)) instanceof EClass) {
 								factory = UMLFactory.eINSTANCE;
 								newObject = createObjectFromFactory(factory,
 									UMLPackage.Literals.CLASS.getName());

@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  * 
  */
 package org.eclipse.uml2.uml.resource;
@@ -51,6 +51,8 @@ import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.AcceptEventAction;
 import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityGroup;
+import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.BehavioredClassifier;
@@ -103,6 +105,7 @@ import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.TimeEvent;
@@ -503,8 +506,8 @@ public class UML22UMLResourceHandler
 						"body", true); //$NON-NLS-1$
 
 					if (value instanceof String) {
-						UMLUtil.setTaggedValue(activity, getUML2Stereotype(
-							activity, STEREOTYPE__ACTIVITY),
+						UMLUtil.setTaggedValue(activity,
+							getUML2Stereotype(activity, STEREOTYPE__ACTIVITY),
 							TAG_DEFINITION__BODY, value);
 					}
 
@@ -512,11 +515,55 @@ public class UML22UMLResourceHandler
 						"language", true); //$NON-NLS-1$
 
 					if (value instanceof String) {
-						UMLUtil.setTaggedValue(activity, getUML2Stereotype(
-							activity, STEREOTYPE__ACTIVITY),
+						UMLUtil.setTaggedValue(activity,
+							getUML2Stereotype(activity, STEREOTYPE__ACTIVITY),
 							TAG_DEFINITION__LANGUAGE, value);
 					}
 
+				}
+
+				EList<StructuredActivityNode> structuredNodes = activity
+					.getStructuredNodes();
+
+				EList<ActivityGroup> groups = activity.getGroups();
+
+				for (ListIterator<ActivityGroup> ownedGroups = activity
+					.getOwnedGroups().listIterator(); ownedGroups.hasNext();) {
+
+					ActivityGroup group = (ActivityGroup) ownedGroups.next();
+
+					if (group instanceof StructuredActivityNode) {
+						ownedGroups.remove();
+						structuredNodes.add((StructuredActivityNode) group);
+					}
+
+					groups.add(group);
+				}
+
+				EList<ActivityNode> nodes = activity.getNodes();
+
+				for (ListIterator<ActivityNode> ownedNodes = activity
+					.getOwnedNodes().listIterator(); ownedNodes.hasNext();) {
+
+					ActivityNode node = (ActivityNode) ownedNodes.next();
+
+					if (node instanceof StructuredActivityNode) {
+						ownedNodes.remove();
+						structuredNodes.add((StructuredActivityNode) node);
+					}
+
+					nodes.add(node);
+				}
+
+				for (StructuredActivityNode structuredNode : structuredNodes) {
+
+					if (!groups.contains(structuredNode)) {
+						groups.add(structuredNode);
+					}
+
+					if (!nodes.contains(structuredNode)) {
+						nodes.add(structuredNode);
+					}
 				}
 
 				return super.caseActivity(activity);

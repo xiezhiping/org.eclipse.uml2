@@ -8,7 +8,7 @@
  * Contributors:
  *   Kenn Hussey (IBM Corporation, Embarcadero Technologies) - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 218388
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -44,7 +44,8 @@ public class CMOF2UMLHandler
 	protected void processElement(String name, String prefix, String localName) {
 
 		if (EMOFExtendedMetaData.EXTENSION.equals(localName)
-			&& XMI2UMLResource.XMI_NS_URI.equals(helper.getURI(prefix))
+			&& (XMI2UMLResource.XMI_NS_URI.equals(helper.getURI(prefix)) || XMI2UMLResource.XMI_2_4_NS_URI
+				.equals(helper.getURI(prefix)))
 			&& attribs != null
 			&& UMLPackage.eNS_URI.equals(attribs
 				.getValue(EMOFExtendedMetaData.XMI_EXTENDER_ATTRIBUTE))) {
@@ -84,7 +85,8 @@ public class CMOF2UMLHandler
 	protected void handleProxy(InternalEObject proxy, String uriLiteral) {
 
 		if (uriLiteral
-			.startsWith(CMOF2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI)) {
+			.startsWith(CMOF2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI) || uriLiteral
+			.startsWith(CMOF2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_2_4_URI)) {
 
 			if (uriLiteral.endsWith(PRIMITIVE_TYPE_BOOLEAN)) {
 				uriLiteral = PRIMITIVE_TYPE_BOOLEAN_URI;
