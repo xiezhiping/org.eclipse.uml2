@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ExecutableNodeImpl.java,v 1.23 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -161,10 +160,6 @@ public abstract class ExecutableNodeImpl
 			case UMLPackage.EXECUTABLE_NODE__CLIENT_DEPENDENCY :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.EXECUTABLE_NODE__ACTIVITY :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetActivity((Activity) otherEnd, msgs);
 			case UMLPackage.EXECUTABLE_NODE__IN_PARTITION :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInPartitions())
 					.basicAdd(otherEnd, msgs);
@@ -209,8 +204,6 @@ public abstract class ExecutableNodeImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXECUTABLE_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.EXECUTABLE_NODE__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.EXECUTABLE_NODE__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -276,8 +269,6 @@ public abstract class ExecutableNodeImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.EXECUTABLE_NODE__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.EXECUTABLE_NODE__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE :
@@ -290,6 +281,8 @@ public abstract class ExecutableNodeImpl
 				return getOutgoings();
 			case UMLPackage.EXECUTABLE_NODE__INCOMING :
 				return getIncomings();
+			case UMLPackage.EXECUTABLE_NODE__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.EXECUTABLE_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.EXECUTABLE_NODE__HANDLER :
@@ -471,8 +464,6 @@ public abstract class ExecutableNodeImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.EXECUTABLE_NODE__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.EXECUTABLE_NODE__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.EXECUTABLE_NODE__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE :
@@ -484,6 +475,8 @@ public abstract class ExecutableNodeImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.EXECUTABLE_NODE__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.EXECUTABLE_NODE__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__HANDLER :

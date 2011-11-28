@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: MessageImpl.java,v 1.29 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1034,16 +1033,16 @@ public class MessageImpl
 				return allOwnedElements();
 			case UMLPackage.MESSAGE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.MESSAGE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MESSAGE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MESSAGE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.MESSAGE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MESSAGE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1071,6 +1070,18 @@ public class MessageImpl
 				return validateSendingReceivingMessageEvent(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.MESSAGE___VALIDATE_OCCURRENCE_SPECIFICATIONS__DIAGNOSTICCHAIN_MAP :
+				return validateOccurrenceSpecifications(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.MESSAGE___VALIDATE_SIGNATURE_IS_SIGNAL__DIAGNOSTICCHAIN_MAP :
+				return validateSignatureIsSignal(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.MESSAGE___VALIDATE_SIGNATURE_IS_OPERATION__DIAGNOSTICCHAIN_MAP :
+				return validateSignatureIsOperation(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MESSAGE___VALIDATE_ARGUMENTS__DIAGNOSTICCHAIN_MAP :
 				return validateArguments((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
@@ -1078,20 +1089,8 @@ public class MessageImpl
 				return validateCannotCrossBoundaries(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.MESSAGE___VALIDATE_SIGNATURE_IS_SIGNAL__DIAGNOSTICCHAIN_MAP :
-				return validateSignatureIsSignal(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.MESSAGE___VALIDATE_OCCURRENCE_SPECIFICATIONS__DIAGNOSTICCHAIN_MAP :
-				return validateOccurrenceSpecifications(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MESSAGE___VALIDATE_SIGNATURE_REFER_TO__DIAGNOSTICCHAIN_MAP :
 				return validateSignatureReferTo(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.MESSAGE___VALIDATE_SIGNATURE_IS_OPERATION__DIAGNOSTICCHAIN_MAP :
-				return validateSignatureIsOperation(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MESSAGE___GET_MESSAGE_KIND :

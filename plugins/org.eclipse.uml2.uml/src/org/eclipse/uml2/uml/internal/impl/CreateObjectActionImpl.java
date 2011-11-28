@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: CreateObjectActionImpl.java,v 1.28 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -350,8 +349,6 @@ public class CreateObjectActionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CREATE_OBJECT_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.CREATE_OBJECT_ACTION__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.CREATE_OBJECT_ACTION__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -425,8 +422,6 @@ public class CreateObjectActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.CREATE_OBJECT_ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.CREATE_OBJECT_ACTION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.CREATE_OBJECT_ACTION__IN_STRUCTURED_NODE :
@@ -439,6 +434,8 @@ public class CreateObjectActionImpl
 				return getOutgoings();
 			case UMLPackage.CREATE_OBJECT_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.CREATE_OBJECT_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.CREATE_OBJECT_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.CREATE_OBJECT_ACTION__HANDLER :
@@ -676,8 +673,6 @@ public class CreateObjectActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.CREATE_OBJECT_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.CREATE_OBJECT_ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.CREATE_OBJECT_ACTION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.CREATE_OBJECT_ACTION__IN_STRUCTURED_NODE :
@@ -689,6 +684,8 @@ public class CreateObjectActionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.CREATE_OBJECT_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.CREATE_OBJECT_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.CREATE_OBJECT_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.CREATE_OBJECT_ACTION__HANDLER :
@@ -807,16 +804,16 @@ public class CreateObjectActionImpl
 				return allOwnedElements();
 			case UMLPackage.CREATE_OBJECT_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.CREATE_OBJECT_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CREATE_OBJECT_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CREATE_OBJECT_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CREATE_OBJECT_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CREATE_OBJECT_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -866,19 +863,19 @@ public class CreateObjectActionImpl
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CREATE_OBJECT_ACTION___GET_CONTEXT :
 				return getContext();
-			case UMLPackage.CREATE_OBJECT_ACTION___VALIDATE_CLASSIFIER_NOT_ABSTRACT__DIAGNOSTICCHAIN_MAP :
-				return validateClassifierNotAbstract(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CREATE_OBJECT_ACTION___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicity((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CREATE_OBJECT_ACTION___VALIDATE_CLASSIFIER_NOT_ASSOCIATION_CLASS__DIAGNOSTICCHAIN_MAP :
 				return validateClassifierNotAssociationClass(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CREATE_OBJECT_ACTION___VALIDATE_CLASSIFIER_NOT_ABSTRACT__DIAGNOSTICCHAIN_MAP :
+				return validateClassifierNotAbstract(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CREATE_OBJECT_ACTION___VALIDATE_SAME_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateSameType((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CREATE_OBJECT_ACTION___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
+				return validateMultiplicity((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

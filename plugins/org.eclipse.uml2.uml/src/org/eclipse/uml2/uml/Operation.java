@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: Operation.java,v 1.21 2009/08/12 21:05:18 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -27,18 +26,18 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Operation specializes TemplateableElement in order to support specification of template operations and bound operations. Operation specializes ParameterableElement to specify that an operation can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.
- * An operation may invoke both the execution of method behaviors as well as other behavioral responses.
  * An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior.
+ * An operation may invoke both the execution of method behaviors as well as other behavioral responses.
+ * Operation specializes TemplateableElement in order to support specification of template operations and bound operations. Operation specializes ParameterableElement to specify that an operation can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#getInterface <em>Interface</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#getBodyCondition <em>Body Condition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#getDatatype <em>Datatype</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#getInterface <em>Interface</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#isQuery <em>Is Query</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#isUnique <em>Is Unique</em>}</li>
@@ -106,8 +105,8 @@ public interface Operation
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This information is derived from the return result for this Operation.
 	 * Specifies whether the return parameter is unique or not, if present.
+	 * This information is derived from the return result for this Operation.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Unique</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_IsUnique()
@@ -122,8 +121,8 @@ public interface Operation
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies the lower multiplicity of the return parameter, if present.
 	 * This information is derived from the return result for this Operation.
+	 * Specifies the lower multiplicity of the return parameter, if present.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Lower</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Lower()
@@ -138,8 +137,8 @@ public interface Operation
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies the upper multiplicity of the return parameter, if present.
 	 * This information is derived from the return result for this Operation.
+	 * Specifies the upper multiplicity of the return parameter, if present.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Upper</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Upper()
@@ -155,8 +154,8 @@ public interface Operation
 	 * This feature subsets the following features:
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}'</li>
-	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
@@ -381,8 +380,8 @@ public interface Operation
 	 * This feature subsets the following features:
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}'</li>
-	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
@@ -485,8 +484,8 @@ public interface Operation
 	 * This feature subsets the following features:
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}'</li>
-	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->

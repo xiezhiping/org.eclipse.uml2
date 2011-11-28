@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ActivityEdgeItemProvider.java,v 1.12 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -71,8 +70,8 @@ public class ActivityEdgeItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addActivityPropertyDescriptor(object);
 			addGuardPropertyDescriptor(object);
-			addInGroupPropertyDescriptor(object);
 			addInPartitionPropertyDescriptor(object);
 			addInStructuredNodePropertyDescriptor(object);
 			addInterruptsPropertyDescriptor(object);
@@ -80,7 +79,7 @@ public class ActivityEdgeItemProvider
 			addSourcePropertyDescriptor(object);
 			addTargetPropertyDescriptor(object);
 			addWeightPropertyDescriptor(object);
-			addActivityPropertyDescriptor(object);
+			addInGroupPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}

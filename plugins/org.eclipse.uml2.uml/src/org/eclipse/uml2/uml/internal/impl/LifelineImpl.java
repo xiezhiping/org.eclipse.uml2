@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: LifelineImpl.java,v 1.26 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -864,16 +863,16 @@ public class LifelineImpl
 				return allOwnedElements();
 			case UMLPackage.LIFELINE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.LIFELINE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LIFELINE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LIFELINE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LIFELINE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LIFELINE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -897,16 +896,16 @@ public class LifelineImpl
 				return getQualifiedName();
 			case UMLPackage.LIFELINE___SEPARATOR :
 				return separator();
-			case UMLPackage.LIFELINE___VALIDATE_SELECTOR_SPECIFIED__DIAGNOSTICCHAIN_MAP :
-				return validateSelectorSpecified(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LIFELINE___VALIDATE_INTERACTION_USES_SHARE_LIFELINE__DIAGNOSTICCHAIN_MAP :
 				return validateInteractionUsesShareLifeline(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LIFELINE___VALIDATE_SAME_CLASSIFIER__DIAGNOSTICCHAIN_MAP :
 				return validateSameClassifier(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LIFELINE___VALIDATE_SELECTOR_SPECIFIED__DIAGNOSTICCHAIN_MAP :
+				return validateSelectorSpecified(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

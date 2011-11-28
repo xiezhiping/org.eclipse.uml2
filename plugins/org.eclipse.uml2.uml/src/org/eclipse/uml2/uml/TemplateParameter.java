@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: TemplateParameter.java,v 1.12 2007/10/23 15:54:20 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -32,9 +31,9 @@ import org.eclipse.emf.ecore.EClass;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.TemplateParameter#getDefault <em>Default</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.TemplateParameter#getOwnedDefault <em>Owned Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.TemplateParameter#getOwnedParameteredElement <em>Owned Parametered Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.TemplateParameter#getParameteredElement <em>Parametered Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.TemplateParameter#getOwnedDefault <em>Owned Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.TemplateParameter#getSignature <em>Signature</em>}</li>
  * </ul>
  * </p>
@@ -85,8 +84,8 @@ public interface TemplateParameter
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.TemplateParameter#getParameteredElement() <em>Parametered Element</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->

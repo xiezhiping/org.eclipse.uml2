@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: Association.java,v 1.16 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -27,6 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
+ * An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link.A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.
  * An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link. A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.
  * <!-- end-model-doc -->
  *
@@ -250,8 +250,8 @@ public interface Association
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getFeatures() <em>Feature</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Association#getMemberEnds() <em>Member End</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getFeatures() <em>Feature</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
 	 * </ul>
 	 * </p>

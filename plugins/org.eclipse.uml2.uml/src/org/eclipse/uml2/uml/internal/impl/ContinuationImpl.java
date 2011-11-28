@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ContinuationImpl.java,v 1.19 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -448,16 +447,16 @@ public class ContinuationImpl
 				return allOwnedElements();
 			case UMLPackage.CONTINUATION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.CONTINUATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONTINUATION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONTINUATION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONTINUATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONTINUATION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -481,12 +480,12 @@ public class ContinuationImpl
 				return getQualifiedName();
 			case UMLPackage.CONTINUATION___SEPARATOR :
 				return separator();
+			case UMLPackage.CONTINUATION___VALIDATE_SAME_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateSameName((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONTINUATION___VALIDATE_FIRST_OR_LAST_INTERACTION_FRAGMENT__DIAGNOSTICCHAIN_MAP :
 				return validateFirstOrLastInteractionFragment(
 					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONTINUATION___VALIDATE_SAME_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateSameName((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONTINUATION___VALIDATE_GLOBAL__DIAGNOSTICCHAIN_MAP :
 				return validateGlobal((DiagnosticChain) arguments.get(0),

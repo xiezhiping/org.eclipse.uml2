@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: GeneralOrderingImpl.java,v 1.15 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -569,16 +568,16 @@ public class GeneralOrderingImpl
 				return allOwnedElements();
 			case UMLPackage.GENERAL_ORDERING___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.GENERAL_ORDERING___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.GENERAL_ORDERING___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.GENERAL_ORDERING___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.GENERAL_ORDERING___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.GENERAL_ORDERING___CREATE_DEPENDENCY__NAMEDELEMENT :

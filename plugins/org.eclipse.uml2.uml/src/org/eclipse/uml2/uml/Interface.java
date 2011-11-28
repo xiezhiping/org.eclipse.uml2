@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: Interface.java,v 1.14 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -27,9 +26,9 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
+ * Since an interface specifies conformance characteristics, it does not own detailed behavior specifications. Instead, interfaces may own a protocol state machine that specifies event sequences and pre/post conditions for the operations and receptions described by the interface.
  * Interfaces may include receptions (in addition to operations).
  * An interface is a kind of classifier that represents a declaration of a set of coherent public features and obligations. An interface specifies a contract; any instance of a classifier that realizes the interface must fulfill that contract. The obligations that may be associated with an interface are in the form of various kinds of constraints (such as pre- and post-conditions) or protocol specifications, which may impose ordering restrictions on interactions through the interface.
- * Since an interface specifies conformance characteristics, it does not own detailed behavior specifications. Instead, interfaces may own a protocol state machine that specifies event sequences and pre/post conditions for the operations and receptions described by the interface.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -37,10 +36,10 @@ import org.eclipse.emf.ecore.EClass;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Interface#getNestedClassifiers <em>Nested Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Interface#getOwnedAttributes <em>Owned Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Interface#getOwnedOperations <em>Owned Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Interface#getOwnedReceptions <em>Owned Reception</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Interface#getProtocol <em>Protocol</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Interface#getRedefinedInterfaces <em>Redefined Interface</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Interface#getOwnedOperations <em>Owned Operation</em>}</li>
  * </ul>
  * </p>
  *
@@ -58,8 +57,8 @@ public interface Interface
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getAttributes() <em>Attribute</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getAttributes() <em>Attribute</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->

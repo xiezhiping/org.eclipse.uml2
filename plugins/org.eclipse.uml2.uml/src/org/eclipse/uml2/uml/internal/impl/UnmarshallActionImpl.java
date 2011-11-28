@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: UnmarshallActionImpl.java,v 1.30 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -496,8 +495,6 @@ public class UnmarshallActionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.UNMARSHALL_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.UNMARSHALL_ACTION__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.UNMARSHALL_ACTION__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -574,8 +571,6 @@ public class UnmarshallActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.UNMARSHALL_ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.UNMARSHALL_ACTION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.UNMARSHALL_ACTION__IN_STRUCTURED_NODE :
@@ -588,6 +583,8 @@ public class UnmarshallActionImpl
 				return getOutgoings();
 			case UMLPackage.UNMARSHALL_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.UNMARSHALL_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.UNMARSHALL_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.UNMARSHALL_ACTION__HANDLER :
@@ -834,8 +831,6 @@ public class UnmarshallActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.UNMARSHALL_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.UNMARSHALL_ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.UNMARSHALL_ACTION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.UNMARSHALL_ACTION__IN_STRUCTURED_NODE :
@@ -847,6 +842,8 @@ public class UnmarshallActionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.UNMARSHALL_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.UNMARSHALL_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.UNMARSHALL_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.UNMARSHALL_ACTION__HANDLER :
@@ -967,16 +964,16 @@ public class UnmarshallActionImpl
 				return allOwnedElements();
 			case UMLPackage.UNMARSHALL_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.UNMARSHALL_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1026,32 +1023,32 @@ public class UnmarshallActionImpl
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.UNMARSHALL_ACTION___GET_CONTEXT :
 				return getContext();
+			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_SAME_TYPE__DIAGNOSTICCHAIN_MAP :
+				return validateSameType((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_STRUCTURAL_FEATURE__DIAGNOSTICCHAIN_MAP :
 				return validateStructuralFeature(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_NUMBER_OF_RESULT__DIAGNOSTICCHAIN_MAP :
-				return validateNumberOfResult(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_MULTIPLICITY_OF_RESULT__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicityOfResult(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_TYPE_AND_ORDERING__DIAGNOSTICCHAIN_MAP :
-				return validateTypeAndOrdering(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_UNMARSHALL_TYPE_IS_CLASSIFIER__DIAGNOSTICCHAIN_MAP :
-				return validateUnmarshallTypeIsClassifier(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_MULTIPLICITY_OF_OBJECT__DIAGNOSTICCHAIN_MAP :
 				return validateMultiplicityOfObject(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_SAME_TYPE__DIAGNOSTICCHAIN_MAP :
-				return validateSameType((DiagnosticChain) arguments.get(0),
+			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_TYPE_AND_ORDERING__DIAGNOSTICCHAIN_MAP :
+				return validateTypeAndOrdering(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_NUMBER_OF_RESULT__DIAGNOSTICCHAIN_MAP :
+				return validateNumberOfResult(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_UNMARSHALL_TYPE_IS_CLASSIFIER__DIAGNOSTICCHAIN_MAP :
+				return validateUnmarshallTypeIsClassifier(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_MULTIPLICITY_OF_RESULT__DIAGNOSTICCHAIN_MAP :
+				return validateMultiplicityOfResult(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

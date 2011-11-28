@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: DecisionNodeTest.java,v 1.4 2008/10/02 21:00:20 jbruck Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -25,14 +24,14 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateZeroInputParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Zero Input Parameters</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Edges</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateDecisionInputFlowIncoming(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Decision Input Flow Incoming</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateTwoInputParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Two Input Parameters</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateIncomingOutgoingEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Incoming Outgoing Edges</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateIncomingControlOneInputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Incoming Control One Input Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Parameters</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateIncomingObjectOneInputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Incoming Object One Input Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateIncomingOutgoingEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Incoming Outgoing Edges</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateIncomingControlOneInputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Incoming Control One Input Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateTwoInputParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Two Input Parameters</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateDecisionInputFlowIncoming(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Decision Input Flow Incoming</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateZeroInputParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Zero Input Parameters</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Edges</em>}</li>
  * </ul>
  * </p>
  * @generated

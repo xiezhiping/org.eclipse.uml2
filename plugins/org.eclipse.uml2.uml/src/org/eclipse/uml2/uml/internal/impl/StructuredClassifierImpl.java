@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: StructuredClassifierImpl.java,v 1.34 2010/09/28 21:02:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -81,8 +80,8 @@ import org.eclipse.uml2.uml.internal.operations.StructuredClassifierOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredClassifierImpl#getAttributes <em>Attribute</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredClassifierImpl#getRoles <em>Role</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredClassifierImpl#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredClassifierImpl#getRoles <em>Role</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredClassifierImpl#getFeatures <em>Feature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredClassifierImpl#getMembers <em>Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredClassifierImpl#getOwnedAttributes <em>Owned Attribute</em>}</li>
@@ -1110,16 +1109,16 @@ public abstract class StructuredClassifierImpl
 				return allOwnedElements();
 			case UMLPackage.STRUCTURED_CLASSIFIER___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.STRUCTURED_CLASSIFIER___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURED_CLASSIFIER___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURED_CLASSIFIER___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STRUCTURED_CLASSIFIER___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURED_CLASSIFIER___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1211,20 +1210,20 @@ public abstract class StructuredClassifierImpl
 				return isTemplate();
 			case UMLPackage.STRUCTURED_CLASSIFIER___PARAMETERABLE_ELEMENTS :
 				return parameterableElements();
-			case UMLPackage.STRUCTURED_CLASSIFIER___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
-				return validateSpecializeType(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.STRUCTURED_CLASSIFIER___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
-				return validateMapsToGeneralizationSet(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURED_CLASSIFIER___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
 				return validateNonFinalParents(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURED_CLASSIFIER___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
 				return validateNoCyclesInGeneralization(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STRUCTURED_CLASSIFIER___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
+				return validateSpecializeType(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STRUCTURED_CLASSIFIER___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
+				return validateMapsToGeneralizationSet(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURED_CLASSIFIER___GET_ALL_ATTRIBUTES :
@@ -1311,16 +1310,6 @@ public abstract class StructuredClassifierImpl
 	protected static final int[] ATTRIBUTE_ESUBSETS = new int[]{UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE};
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getRoles() <em>Role</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRoles()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] ROLE_ESUBSETS = new int[]{UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE};
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1363,6 +1352,16 @@ public abstract class StructuredClassifierImpl
 		UMLPackage.STRUCTURED_CLASSIFIER__OWNED_USE_CASE,
 		UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
 		UMLPackage.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRoles() <em>Role</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRoles()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] ROLE_ESUBSETS = new int[]{UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE};
 
 	/**
 	 * <!-- begin-user-doc -->

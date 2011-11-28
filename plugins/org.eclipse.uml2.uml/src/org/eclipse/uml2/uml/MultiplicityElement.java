@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: MultiplicityElement.java,v 1.19 2008/10/02 20:56:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -304,8 +303,8 @@ public interface MultiplicityElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isMultivalued() checks whether this multiplicity has an upper bound greater than one.
-	 * upperBound()->notEmpty()
 	 * result = upperBound() > 1
+	 * upperBound()->notEmpty()
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
@@ -330,8 +329,8 @@ public interface MultiplicityElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query includesMultiplicity() checks whether this multiplicity includes all the cardinalities allowed by the specified multiplicity.
-	 * self.upperBound()->notEmpty() and self.lowerBound()->notEmpty() and M.upperBound()->notEmpty() and M.lowerBound()->notEmpty()
 	 * result = (self.lowerBound() <= M.lowerBound()) and (self.upperBound() >= M.upperBound())
+	 * self.upperBound()->notEmpty() and self.lowerBound()->notEmpty() and M.upperBound()->notEmpty() and M.lowerBound()->notEmpty()
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" MRequired="true" MOrdered="false"
 	 * @generated

@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 351774
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -427,16 +428,16 @@ public class LiteralRealImpl
 				return allOwnedElements();
 			case UMLPackage.LITERAL_REAL___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.LITERAL_REAL___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LITERAL_REAL___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LITERAL_REAL___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LITERAL_REAL___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LITERAL_REAL___CREATE_DEPENDENCY__NAMEDELEMENT :

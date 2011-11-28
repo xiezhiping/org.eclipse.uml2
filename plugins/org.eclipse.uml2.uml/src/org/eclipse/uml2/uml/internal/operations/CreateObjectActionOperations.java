@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: CreateObjectActionOperations.java,v 1.6 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -31,10 +30,10 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.CreateObjectAction#validateClassifierNotAbstract(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Classifier Not Abstract</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.CreateObjectAction#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.CreateObjectAction#validateClassifierNotAssociationClass(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Classifier Not Association Class</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.CreateObjectAction#validateClassifierNotAbstract(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Classifier Not Abstract</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.CreateObjectAction#validateSameType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.CreateObjectAction#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
  * </ul>
  * </p>
  *

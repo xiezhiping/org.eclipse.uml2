@@ -7,26 +7,23 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: AssociationClassOperations.java,v 1.8 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Collections;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
-import org.eclipse.emf.common.util.ECollections;
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLPlugin;
 
-import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -37,8 +34,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.AssociationClass#validateCannotBeDefined(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Cannot Be Defined</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.AssociationClass#validateDisjointAttributesEnds(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Disjoint Attributes Ends</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.AssociationClass#validateCannotBeDefined(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Cannot Be Defined</em>}</li>
  * </ul>
  * </p>
  *
@@ -66,30 +63,37 @@ public class AssociationClassOperations
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateCannotBeDefined(
 			AssociationClass associationClass, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ASSOCIATION_CLASS__CANNOT_BE_DEFINED,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateCannotBeDefined", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(associationClass, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{associationClass}));
+		boolean result = true;
+
+		for (Type endType : associationClass.getEndTypes()) {
+
+			if (endType == associationClass
+				|| (endType instanceof Classifier && ((Classifier) endType)
+					.allParents().contains(associationClass))) {
+
+				result = false;
+				break;
 			}
-			return false;
 		}
-		return true;
+
+		if (!result && diagnostics != null) {
+			diagnostics
+				.add(new BasicDiagnostic(
+					Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.ASSOCIATION_CLASS__CANNOT_BE_DEFINED,
+					UMLPlugin.INSTANCE
+						.getString(
+							"_UI_AssociationClass_CannotBeDefined_diagnostic", getMessageSubstitutions(context, associationClass)), //$NON-NLS-1$
+					new Object[]{associationClass}));
+		}
+
+		return result;
 	}
 
 	/**
@@ -102,56 +106,28 @@ public class AssociationClassOperations
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateDisjointAttributesEnds(
 			AssociationClass associationClass, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ASSOCIATION_CLASS__DISJOINT_ATTRIBUTES_ENDS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateDisjointAttributesEnds", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(associationClass, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{associationClass}));
-			}
-			return false;
-		}
-		return true;
-	}
+		boolean result = Collections.disjoint(
+			associationClass.getOwnedAttributes(),
+			associationClass.getOwnedEnds());
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The operation allConnections results in the set of all AssociationEnds of the Association.
-	 * result = memberEnd->union ( self.parents ()->collect (p | p.allConnections () )
-	 * @param associationClass The receiving '<em><b>Association Class</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static EList<Property> allConnections(
-			AssociationClass associationClass) {
-		EList<Property> allConnections = new UniqueEList.FastCompare<Property>(
-			associationClass.getMemberEnds());
-
-		for (Classifier parent : associationClass.allParents()) {
-
-			if (parent instanceof AssociationClass) {
-				allConnections.addAll(((AssociationClass) parent)
-					.getMemberEnds());
-			}
+		if (!result && diagnostics != null) {
+			diagnostics
+				.add(new BasicDiagnostic(
+					Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.ASSOCIATION_CLASS__DISJOINT_ATTRIBUTES_ENDS,
+					UMLPlugin.INSTANCE
+						.getString(
+							"_UI_AssociationClass_DisjointAttributesEnds_diagnostic", getMessageSubstitutions(context, associationClass)), //$NON-NLS-1$
+					new Object[]{associationClass}));
 		}
 
-		return ECollections.unmodifiableEList(allConnections);
+		return result;
 	}
 
 } // AssociationClassOperations

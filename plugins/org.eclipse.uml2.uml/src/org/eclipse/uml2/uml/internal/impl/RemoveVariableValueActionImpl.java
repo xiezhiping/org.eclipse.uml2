@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: RemoveVariableValueActionImpl.java,v 1.30 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -327,8 +326,6 @@ public class RemoveVariableValueActionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -404,8 +401,6 @@ public class RemoveVariableValueActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__IN_STRUCTURED_NODE :
@@ -418,6 +413,8 @@ public class RemoveVariableValueActionImpl
 				return getOutgoings();
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__HANDLER :
@@ -673,8 +670,6 @@ public class RemoveVariableValueActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__IN_STRUCTURED_NODE :
@@ -686,6 +681,8 @@ public class RemoveVariableValueActionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__HANDLER :
@@ -808,16 +805,16 @@ public class RemoveVariableValueActionImpl
 				return allOwnedElements();
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -871,11 +868,11 @@ public class RemoveVariableValueActionImpl
 				return validateScopeOfVariable(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION___VALIDATE_SAME_TYPE__DIAGNOSTICCHAIN_MAP :
-				return validateSameType((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
 				return validateMultiplicity((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION___VALIDATE_SAME_TYPE__DIAGNOSTICCHAIN_MAP :
+				return validateSameType((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION___VALIDATE_UNLIMITED_NATURAL__DIAGNOSTICCHAIN_MAP :
 				return validateUnlimitedNatural(

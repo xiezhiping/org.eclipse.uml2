@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: InformationItemImpl.java,v 1.21 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -687,16 +686,16 @@ public class InformationItemImpl
 				return allOwnedElements();
 			case UMLPackage.INFORMATION_ITEM___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.INFORMATION_ITEM___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INFORMATION_ITEM___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INFORMATION_ITEM___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INFORMATION_ITEM___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INFORMATION_ITEM___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -788,20 +787,20 @@ public class InformationItemImpl
 				return isTemplate();
 			case UMLPackage.INFORMATION_ITEM___PARAMETERABLE_ELEMENTS :
 				return parameterableElements();
-			case UMLPackage.INFORMATION_ITEM___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
-				return validateSpecializeType(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INFORMATION_ITEM___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
-				return validateMapsToGeneralizationSet(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INFORMATION_ITEM___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
 				return validateNonFinalParents(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INFORMATION_ITEM___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
 				return validateNoCyclesInGeneralization(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INFORMATION_ITEM___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
+				return validateSpecializeType(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INFORMATION_ITEM___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
+				return validateMapsToGeneralizationSet(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INFORMATION_ITEM___GET_ALL_ATTRIBUTES :
@@ -842,15 +841,15 @@ public class InformationItemImpl
 				return maySpecializeType((Classifier) arguments.get(0));
 			case UMLPackage.INFORMATION_ITEM___PARENTS :
 				return parents();
-			case UMLPackage.INFORMATION_ITEM___VALIDATE_SOURCES_AND_TARGETS__DIAGNOSTICCHAIN_MAP :
-				return validateSourcesAndTargets(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INFORMATION_ITEM___VALIDATE_HAS_NO__DIAGNOSTICCHAIN_MAP :
 				return validateHasNo((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INFORMATION_ITEM___VALIDATE_NOT_INSTANTIABLE__DIAGNOSTICCHAIN_MAP :
 				return validateNotInstantiable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INFORMATION_ITEM___VALIDATE_SOURCES_AND_TARGETS__DIAGNOSTICCHAIN_MAP :
+				return validateSourcesAndTargets(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

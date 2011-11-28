@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: InvocationAction.java,v 1.11 2007/10/23 15:54:20 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -27,8 +26,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * In addition to targeting an object, invocation actions can also invoke behavioral features on ports from where the invocation requests are routed onwards on links deriving from attached connectors. Invocation actions may also be sent to a target via a given port, either on the sending object or on another object.
  * InvocationAction is an abstract class for the various actions that invoke behavior.
+ * In addition to targeting an object, invocation actions can also invoke behavioral features on ports from where the invocation requests are routed onwards on links deriving from attached connectors. Invocation actions may also be sent to a target via a given port, either on the sending object or on another object.
  * <!-- end-model-doc -->
  *
  * <p>

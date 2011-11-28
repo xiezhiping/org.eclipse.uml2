@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: Expression.java,v 1.10 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -23,8 +22,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications.
  * An expression is a structured tree of symbols that denotes a (possibly empty) set of values when evaluated in a context.
+ * An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications.
  * <!-- end-model-doc -->
  *
  * <p>

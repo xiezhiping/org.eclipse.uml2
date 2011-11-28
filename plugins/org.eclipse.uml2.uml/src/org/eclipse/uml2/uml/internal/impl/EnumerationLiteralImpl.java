@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: EnumerationLiteralImpl.java,v 1.19 2009/01/07 15:55:25 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -659,16 +658,16 @@ public class EnumerationLiteralImpl
 				return allOwnedElements();
 			case UMLPackage.ENUMERATION_LITERAL___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.ENUMERATION_LITERAL___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ENUMERATION_LITERAL___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ENUMERATION_LITERAL___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ENUMERATION_LITERAL___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ENUMERATION_LITERAL___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -698,10 +697,6 @@ public class EnumerationLiteralImpl
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.ENUMERATION_LITERAL___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
-			case UMLPackage.ENUMERATION_LITERAL___VALIDATE_DEPLOYMENT_ARTIFACT__DIAGNOSTICCHAIN_MAP :
-				return validateDeploymentArtifact(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ENUMERATION_LITERAL___VALIDATE_STRUCTURAL_FEATURE__DIAGNOSTICCHAIN_MAP :
 				return validateStructuralFeature(
 					(DiagnosticChain) arguments.get(0),
@@ -712,6 +707,10 @@ public class EnumerationLiteralImpl
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ENUMERATION_LITERAL___VALIDATE_DEPLOYMENT_TARGET__DIAGNOSTICCHAIN_MAP :
 				return validateDeploymentTarget(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ENUMERATION_LITERAL___VALIDATE_DEPLOYMENT_ARTIFACT__DIAGNOSTICCHAIN_MAP :
+				return validateDeploymentArtifact(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ENUMERATION_LITERAL___VALIDATE_CLASSIFIER_EQUALS_OWNING_ENUMERATION__DIAGNOSTICCHAIN_MAP :

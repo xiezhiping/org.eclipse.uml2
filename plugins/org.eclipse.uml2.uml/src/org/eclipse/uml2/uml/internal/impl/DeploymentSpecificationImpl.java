@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.25 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1135,16 +1134,16 @@ public class DeploymentSpecificationImpl
 				return allOwnedElements();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.DEPLOYMENT_SPECIFICATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.DEPLOYMENT_SPECIFICATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1236,20 +1235,20 @@ public class DeploymentSpecificationImpl
 				return isTemplate();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___PARAMETERABLE_ELEMENTS :
 				return parameterableElements();
-			case UMLPackage.DEPLOYMENT_SPECIFICATION___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
-				return validateSpecializeType(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.DEPLOYMENT_SPECIFICATION___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
-				return validateMapsToGeneralizationSet(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
 				return validateNonFinalParents(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
 				return validateNoCyclesInGeneralization(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.DEPLOYMENT_SPECIFICATION___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
+				return validateSpecializeType(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.DEPLOYMENT_SPECIFICATION___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
+				return validateMapsToGeneralizationSet(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___GET_ALL_ATTRIBUTES :
@@ -1298,12 +1297,12 @@ public class DeploymentSpecificationImpl
 				return createOwnedOperation((String) arguments.get(0),
 					(EList<String>) arguments.get(1),
 					(EList<Type>) arguments.get(2), (Type) arguments.get(3));
-			case UMLPackage.DEPLOYMENT_SPECIFICATION___VALIDATE_DEPLOYMENT_TARGET__DIAGNOSTICCHAIN_MAP :
-				return validateDeploymentTarget(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___VALIDATE_DEPLOYED_ELEMENTS__DIAGNOSTICCHAIN_MAP :
 				return validateDeployedElements(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.DEPLOYMENT_SPECIFICATION___VALIDATE_DEPLOYMENT_TARGET__DIAGNOSTICCHAIN_MAP :
+				return validateDeploymentTarget(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: LoopNodeOperations.java,v 1.7 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -31,10 +30,10 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateResultNoIncoming(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Result No Incoming</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateInputEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Edges</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateExecutableNodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Executable Nodes</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateBodyOutputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Body Output Pins</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateResultNoIncoming(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Result No Incoming</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateInputEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Edges</em>}</li>
  * </ul>
  * </p>
  *

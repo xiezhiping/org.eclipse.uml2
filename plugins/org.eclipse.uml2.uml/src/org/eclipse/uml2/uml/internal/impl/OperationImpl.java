@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: OperationImpl.java,v 1.39 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -93,14 +92,14 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getTemplateBindings <em>Template Binding</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedRules <em>Owned Rule</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getInterface <em>Interface</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getBodyCondition <em>Body Condition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getDatatype <em>Datatype</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getInterface <em>Interface</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#isQuery <em>Is Query</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#isUnique <em>Is Unique</em>}</li>
@@ -1527,6 +1526,10 @@ public class OperationImpl
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
 					.basicAdd(otherEnd, msgs);
+			case UMLPackage.OPERATION__INTERFACE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetInterface((Interface) otherEnd, msgs);
 			case UMLPackage.OPERATION__CLASS :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -1536,10 +1539,6 @@ public class OperationImpl
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetDatatype((DataType) otherEnd, msgs);
-			case UMLPackage.OPERATION__INTERFACE :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetInterface((Interface) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -1591,12 +1590,12 @@ public class OperationImpl
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
 				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.OPERATION__INTERFACE :
+				return basicSetInterface(null, msgs);
 			case UMLPackage.OPERATION__CLASS :
 				return basicSetClass_(null, msgs);
 			case UMLPackage.OPERATION__DATATYPE :
 				return basicSetDatatype(null, msgs);
-			case UMLPackage.OPERATION__INTERFACE :
-				return basicSetInterface(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1614,6 +1613,10 @@ public class OperationImpl
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 					TemplateParameter.class, msgs);
+			case UMLPackage.OPERATION__INTERFACE :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.INTERFACE__OWNED_OPERATION, Interface.class,
+					msgs);
 			case UMLPackage.OPERATION__CLASS :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.CLASS__OWNED_OPERATION,
@@ -1623,10 +1626,6 @@ public class OperationImpl
 					.eInverseRemove(this,
 						UMLPackage.DATA_TYPE__OWNED_OPERATION, DataType.class,
 						msgs);
-			case UMLPackage.OPERATION__INTERFACE :
-				return eInternalContainer().eInverseRemove(this,
-					UMLPackage.INTERFACE__OWNED_OPERATION, Interface.class,
-					msgs);
 		}
 		return eDynamicBasicRemoveFromContainer(msgs);
 	}
@@ -1713,6 +1712,10 @@ public class OperationImpl
 				return basicGetOwnedTemplateSignature();
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
 				return getTemplateBindings();
+			case UMLPackage.OPERATION__INTERFACE :
+				if (resolve)
+					return getInterface();
+				return basicGetInterface();
 			case UMLPackage.OPERATION__BODY_CONDITION :
 				if (resolve)
 					return getBodyCondition();
@@ -1725,10 +1728,6 @@ public class OperationImpl
 				if (resolve)
 					return getDatatype();
 				return basicGetDatatype();
-			case UMLPackage.OPERATION__INTERFACE :
-				if (resolve)
-					return getInterface();
-				return basicGetInterface();
 			case UMLPackage.OPERATION__IS_ORDERED :
 				return isOrdered();
 			case UMLPackage.OPERATION__IS_QUERY :
@@ -1846,6 +1845,9 @@ public class OperationImpl
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
 				return;
+			case UMLPackage.OPERATION__INTERFACE :
+				setInterface((Interface) newValue);
+				return;
 			case UMLPackage.OPERATION__BODY_CONDITION :
 				setBodyCondition((Constraint) newValue);
 				return;
@@ -1854,9 +1856,6 @@ public class OperationImpl
 				return;
 			case UMLPackage.OPERATION__DATATYPE :
 				setDatatype((DataType) newValue);
-				return;
-			case UMLPackage.OPERATION__INTERFACE :
-				setInterface((Interface) newValue);
 				return;
 			case UMLPackage.OPERATION__IS_QUERY :
 				setIsQuery((Boolean) newValue);
@@ -1951,6 +1950,9 @@ public class OperationImpl
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				return;
+			case UMLPackage.OPERATION__INTERFACE :
+				setInterface((Interface) null);
+				return;
 			case UMLPackage.OPERATION__BODY_CONDITION :
 				setBodyCondition((Constraint) null);
 				return;
@@ -1959,9 +1961,6 @@ public class OperationImpl
 				return;
 			case UMLPackage.OPERATION__DATATYPE :
 				setDatatype((DataType) null);
-				return;
-			case UMLPackage.OPERATION__INTERFACE :
-				setInterface((Interface) null);
 				return;
 			case UMLPackage.OPERATION__IS_QUERY :
 				setIsQuery(IS_QUERY_EDEFAULT);
@@ -2053,14 +2052,14 @@ public class OperationImpl
 				return ownedTemplateSignature != null;
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
 				return templateBindings != null && !templateBindings.isEmpty();
+			case UMLPackage.OPERATION__INTERFACE :
+				return basicGetInterface() != null;
 			case UMLPackage.OPERATION__BODY_CONDITION :
 				return bodyCondition != null;
 			case UMLPackage.OPERATION__CLASS :
 				return basicGetClass_() != null;
 			case UMLPackage.OPERATION__DATATYPE :
 				return basicGetDatatype() != null;
-			case UMLPackage.OPERATION__INTERFACE :
-				return basicGetInterface() != null;
 			case UMLPackage.OPERATION__IS_ORDERED :
 				return isOrdered() != IS_ORDERED_EDEFAULT;
 			case UMLPackage.OPERATION__IS_QUERY :
@@ -2266,16 +2265,16 @@ public class OperationImpl
 				return allOwnedElements();
 			case UMLPackage.OPERATION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.OPERATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPERATION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPERATION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPERATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPERATION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -2490,9 +2489,9 @@ public class OperationImpl
 	@Override
 	public boolean isSetRedefinitionContexts() {
 		return super.isSetRedefinitionContexts()
+			|| eIsSet(UMLPackage.OPERATION__INTERFACE)
 			|| eIsSet(UMLPackage.OPERATION__CLASS)
-			|| eIsSet(UMLPackage.OPERATION__DATATYPE)
-			|| eIsSet(UMLPackage.OPERATION__INTERFACE);
+			|| eIsSet(UMLPackage.OPERATION__DATATYPE);
 	}
 
 	/**
@@ -2502,6 +2501,10 @@ public class OperationImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
+		Interface interface_ = basicGetInterface();
+		if (interface_ != null) {
+			return interface_;
+		}
 		org.eclipse.uml2.uml.Class class_ = basicGetClass_();
 		if (class_ != null) {
 			return class_;
@@ -2509,10 +2512,6 @@ public class OperationImpl
 		DataType datatype = basicGetDatatype();
 		if (datatype != null) {
 			return datatype;
-		}
-		Interface interface_ = basicGetInterface();
-		if (interface_ != null) {
-			return interface_;
 		}
 		return super.basicGetNamespace();
 	}
@@ -2524,9 +2523,10 @@ public class OperationImpl
 	 */
 	@Override
 	public boolean isSetNamespace() {
-		return super.isSetNamespace() || eIsSet(UMLPackage.OPERATION__CLASS)
-			|| eIsSet(UMLPackage.OPERATION__DATATYPE)
-			|| eIsSet(UMLPackage.OPERATION__INTERFACE);
+		return super.isSetNamespace()
+			|| eIsSet(UMLPackage.OPERATION__INTERFACE)
+			|| eIsSet(UMLPackage.OPERATION__CLASS)
+			|| eIsSet(UMLPackage.OPERATION__DATATYPE);
 	}
 
 	/**
@@ -2538,8 +2538,8 @@ public class OperationImpl
 	 * @ordered
 	 */
 	protected static final int[] FEATURING_CLASSIFIER_ESUBSETS = new int[]{
-		UMLPackage.OPERATION__CLASS, UMLPackage.OPERATION__DATATYPE,
-		UMLPackage.OPERATION__INTERFACE};
+		UMLPackage.OPERATION__INTERFACE, UMLPackage.OPERATION__CLASS,
+		UMLPackage.OPERATION__DATATYPE};
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getRedefinitionContexts() <em>Redefinition Context</em>}' reference list.
@@ -2550,8 +2550,8 @@ public class OperationImpl
 	 * @ordered
 	 */
 	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{
-		UMLPackage.OPERATION__CLASS, UMLPackage.OPERATION__DATATYPE,
-		UMLPackage.OPERATION__INTERFACE};
+		UMLPackage.OPERATION__INTERFACE, UMLPackage.OPERATION__CLASS,
+		UMLPackage.OPERATION__DATATYPE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2561,9 +2561,9 @@ public class OperationImpl
 	@Override
 	public boolean isSetFeaturingClassifiers() {
 		return super.isSetFeaturingClassifiers()
+			|| eIsSet(UMLPackage.OPERATION__INTERFACE)
 			|| eIsSet(UMLPackage.OPERATION__CLASS)
-			|| eIsSet(UMLPackage.OPERATION__DATATYPE)
-			|| eIsSet(UMLPackage.OPERATION__INTERFACE);
+			|| eIsSet(UMLPackage.OPERATION__DATATYPE);
 	}
 
 	/**

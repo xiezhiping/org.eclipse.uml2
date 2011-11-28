@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: BehavioralFeature.java,v 1.16 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,8 +23,8 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A behavioral feature is a feature of a classifier that specifies an aspect of the behavior of its instances.
- * A behavioral feature owns zero or more parameter sets.
  * A behavioral feature is implemented (realized) by a behavior. A behavioral feature specifies that a classifier will respond to a designated request by invoking its implementing method.
+ * A behavioral feature owns zero or more parameter sets.
  * <!-- end-model-doc -->
  *
  * <p>

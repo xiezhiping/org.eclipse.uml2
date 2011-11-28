@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: QualifierValueTest.java,v 1.3 2007/02/14 20:06:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -25,9 +24,9 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.QualifierValue#validateQualifierAttribute(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Qualifier Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.QualifierValue#validateMultiplicityOfQualifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Qualifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.QualifierValue#validateTypeOfQualifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Qualifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.QualifierValue#validateQualifierAttribute(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Qualifier Attribute</em>}</li>
  * </ul>
  * </p>
  * @generated

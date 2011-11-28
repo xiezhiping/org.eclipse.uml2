@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: CreateLinkObjectActionTest.java,v 1.6 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -25,9 +24,9 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.CreateLinkObjectAction#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.CreateLinkObjectAction#validateTypeOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.CreateLinkObjectAction#validateAssociationClass(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Association Class</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.CreateLinkObjectAction#validateTypeOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Result</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.CreateLinkObjectAction#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
  * </ul>
  * </p>
  * @generated

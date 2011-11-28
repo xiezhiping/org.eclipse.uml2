@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ReduceActionImpl.java,v 1.25 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -529,8 +528,6 @@ public class ReduceActionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.REDUCE_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.REDUCE_ACTION__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.REDUCE_ACTION__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -606,8 +603,6 @@ public class ReduceActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.REDUCE_ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.REDUCE_ACTION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.REDUCE_ACTION__IN_STRUCTURED_NODE :
@@ -620,6 +615,8 @@ public class ReduceActionImpl
 				return getOutgoings();
 			case UMLPackage.REDUCE_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.REDUCE_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.REDUCE_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.REDUCE_ACTION__HANDLER :
@@ -875,8 +872,6 @@ public class ReduceActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.REDUCE_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.REDUCE_ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.REDUCE_ACTION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.REDUCE_ACTION__IN_STRUCTURED_NODE :
@@ -888,6 +883,8 @@ public class ReduceActionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.REDUCE_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.REDUCE_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.REDUCE_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.REDUCE_ACTION__HANDLER :
@@ -1010,16 +1007,16 @@ public class ReduceActionImpl
 				return allOwnedElements();
 			case UMLPackage.REDUCE_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.REDUCE_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REDUCE_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REDUCE_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.REDUCE_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REDUCE_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1069,16 +1066,16 @@ public class ReduceActionImpl
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REDUCE_ACTION___GET_CONTEXT :
 				return getContext();
+			case UMLPackage.REDUCE_ACTION___VALIDATE_OUTPUT_TYPES_ARE_COMPATIBLE__DIAGNOSTICCHAIN_MAP :
+				return validateOutputTypesAreCompatible(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REDUCE_ACTION___VALIDATE_REDUCER_INPUTS_OUTPUT__DIAGNOSTICCHAIN_MAP :
 				return validateReducerInputsOutput(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REDUCE_ACTION___VALIDATE_INPUT_TYPE_IS_COLLECTION__DIAGNOSTICCHAIN_MAP :
 				return validateInputTypeIsCollection(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.REDUCE_ACTION___VALIDATE_OUTPUT_TYPES_ARE_COMPATIBLE__DIAGNOSTICCHAIN_MAP :
-				return validateOutputTypesAreCompatible(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

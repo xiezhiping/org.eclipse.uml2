@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: VariableActionImpl.java,v 1.20 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -193,8 +192,6 @@ public abstract class VariableActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.VARIABLE_ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.VARIABLE_ACTION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.VARIABLE_ACTION__IN_STRUCTURED_NODE :
@@ -207,6 +204,8 @@ public abstract class VariableActionImpl
 				return getOutgoings();
 			case UMLPackage.VARIABLE_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.VARIABLE_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.VARIABLE_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.VARIABLE_ACTION__HANDLER :
@@ -434,8 +433,6 @@ public abstract class VariableActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.VARIABLE_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.VARIABLE_ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.VARIABLE_ACTION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.VARIABLE_ACTION__IN_STRUCTURED_NODE :
@@ -447,6 +444,8 @@ public abstract class VariableActionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.VARIABLE_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.VARIABLE_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.VARIABLE_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.VARIABLE_ACTION__HANDLER :
@@ -563,16 +562,16 @@ public abstract class VariableActionImpl
 				return allOwnedElements();
 			case UMLPackage.VARIABLE_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.VARIABLE_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VARIABLE_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VARIABLE_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.VARIABLE_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VARIABLE_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :

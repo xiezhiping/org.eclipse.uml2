@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: StructuralFeatureActionImpl.java,v 1.29 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -377,8 +376,6 @@ public abstract class StructuralFeatureActionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.STRUCTURAL_FEATURE_ACTION__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -452,8 +449,6 @@ public abstract class StructuralFeatureActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.STRUCTURAL_FEATURE_ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION__IN_STRUCTURED_NODE :
@@ -466,6 +461,8 @@ public abstract class StructuralFeatureActionImpl
 				return getOutgoings();
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.STRUCTURAL_FEATURE_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION__HANDLER :
@@ -703,8 +700,6 @@ public abstract class StructuralFeatureActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.STRUCTURAL_FEATURE_ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION__IN_STRUCTURED_NODE :
@@ -716,6 +711,8 @@ public abstract class StructuralFeatureActionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.STRUCTURAL_FEATURE_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION__HANDLER :
@@ -834,16 +831,16 @@ public abstract class StructuralFeatureActionImpl
 				return allOwnedElements();
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.STRUCTURAL_FEATURE_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STRUCTURAL_FEATURE_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -893,14 +890,11 @@ public abstract class StructuralFeatureActionImpl
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION___GET_CONTEXT :
 				return getContext();
-			case UMLPackage.STRUCTURAL_FEATURE_ACTION___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicity((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.STRUCTURAL_FEATURE_ACTION___VALIDATE_SAME_TYPE__DIAGNOSTICCHAIN_MAP :
-				return validateSameType((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION___VALIDATE_VISIBILITY__DIAGNOSTICCHAIN_MAP :
 				return validateVisibility((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STRUCTURAL_FEATURE_ACTION___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
+				return validateMultiplicity((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION___VALIDATE_NOT_STATIC__DIAGNOSTICCHAIN_MAP :
 				return validateNotStatic((DiagnosticChain) arguments.get(0),
@@ -908,6 +902,9 @@ public abstract class StructuralFeatureActionImpl
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION___VALIDATE_ONE_FEATURING_CLASSIFIER__DIAGNOSTICCHAIN_MAP :
 				return validateOneFeaturingClassifier(
 					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STRUCTURAL_FEATURE_ACTION___VALIDATE_SAME_TYPE__DIAGNOSTICCHAIN_MAP :
+				return validateSameType((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

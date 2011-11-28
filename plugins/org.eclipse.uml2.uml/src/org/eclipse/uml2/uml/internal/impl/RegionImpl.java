@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: RegionImpl.java,v 1.32 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1277,16 +1276,16 @@ public class RegionImpl
 				return allOwnedElements();
 			case UMLPackage.REGION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.REGION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REGION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REGION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.REGION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REGION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1357,20 +1356,20 @@ public class RegionImpl
 			case UMLPackage.REGION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.REGION___VALIDATE_DEEP_HISTORY_VERTEX__DIAGNOSTICCHAIN_MAP :
-				return validateDeepHistoryVertex(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REGION___VALIDATE_SHALLOW_HISTORY_VERTEX__DIAGNOSTICCHAIN_MAP :
 				return validateShallowHistoryVertex(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.REGION___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
-				return validateOwned((DiagnosticChain) arguments.get(0),
+			case UMLPackage.REGION___VALIDATE_DEEP_HISTORY_VERTEX__DIAGNOSTICCHAIN_MAP :
+				return validateDeepHistoryVertex(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REGION___VALIDATE_INITIAL_VERTEX__DIAGNOSTICCHAIN_MAP :
 				return validateInitialVertex(
 					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.REGION___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
+				return validateOwned((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REGION___BELONGS_TO_PSM :
 				return belongsToPSM();

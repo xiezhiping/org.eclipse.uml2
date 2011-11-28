@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ActivityGroupOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -31,9 +30,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ActivityGroup#validateNodesAndEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Nodes And Edges</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityGroup#validateGroupOwned(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Group Owned</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityGroup#validateNotContained(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Not Contained</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityGroup#validateNodesAndEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Nodes And Edges</em>}</li>
  * </ul>
  * </p>
  *

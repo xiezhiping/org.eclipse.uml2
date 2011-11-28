@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: CombinedFragmentImpl.java,v 1.26 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -728,16 +727,16 @@ public class CombinedFragmentImpl
 				return allOwnedElements();
 			case UMLPackage.COMBINED_FRAGMENT___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.COMBINED_FRAGMENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMBINED_FRAGMENT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMBINED_FRAGMENT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.COMBINED_FRAGMENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMBINED_FRAGMENT___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -761,19 +760,19 @@ public class CombinedFragmentImpl
 				return getQualifiedName();
 			case UMLPackage.COMBINED_FRAGMENT___SEPARATOR :
 				return separator();
-			case UMLPackage.COMBINED_FRAGMENT___VALIDATE_MININT_AND_MAXINT__DIAGNOSTICCHAIN_MAP :
-				return validateMinintAndMaxint(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMBINED_FRAGMENT___VALIDATE_BREAK__DIAGNOSTICCHAIN_MAP :
 				return validateBreak((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.COMBINED_FRAGMENT___VALIDATE_OPT_LOOP_BREAK_NEG__DIAGNOSTICCHAIN_MAP :
+				return validateOptLoopBreakNeg(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMBINED_FRAGMENT___VALIDATE_CONSIDER_AND_IGNORE__DIAGNOSTICCHAIN_MAP :
 				return validateConsiderAndIgnore(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.COMBINED_FRAGMENT___VALIDATE_OPT_LOOP_BREAK_NEG__DIAGNOSTICCHAIN_MAP :
-				return validateOptLoopBreakNeg(
+			case UMLPackage.COMBINED_FRAGMENT___VALIDATE_MININT_AND_MAXINT__DIAGNOSTICCHAIN_MAP :
+				return validateMinintAndMaxint(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

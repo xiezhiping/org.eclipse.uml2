@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: Artifact.java,v 1.14 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -23,8 +22,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An artifact is the specification of a physical piece of information that is used or produced by a software development process, or by deployment and operation of a system. Examples of artifacts include model files, source files, scripts, and binary executable files, a table in a database system, a development deliverable, or a word-processing document, a mail message.
  * An artifact is the source of a deployment to a node.
+ * An artifact is the specification of a physical piece of information that is used or produced by a software development process, or by deployment and operation of a system. Examples of artifacts include model files, source files, scripts, and binary executable files, a table in a database system, a development deliverable, or a word-processing document, a mail message.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -304,8 +303,8 @@ public interface Artifact
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getAttributes() <em>Attribute</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getAttributes() <em>Attribute</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->

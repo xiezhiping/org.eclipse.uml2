@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: AddVariableValueActionOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -20,6 +19,11 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.AddVariableValueAction;
+import org.eclipse.uml2.uml.InputPin;
+import org.eclipse.uml2.uml.PrimitiveType;
+import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLPlugin;
+import org.eclipse.uml2.uml.Variable;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -60,30 +64,26 @@ public class AddVariableValueActionOperations
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateRequiredValue(
 			AddVariableValueAction addVariableValueAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ADD_VARIABLE_VALUE_ACTION__REQUIRED_VALUE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateRequiredValue", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(addVariableValueAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{addVariableValueAction}));
-			}
-			return false;
+		boolean result = addVariableValueAction.getValue() != null;
+
+		if (!result && diagnostics != null) {
+			diagnostics
+				.add(new BasicDiagnostic(
+					Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.ADD_VARIABLE_VALUE_ACTION__REQUIRED_VALUE,
+					UMLPlugin.INSTANCE
+						.getString(
+							"_UI_AddVariableValueAction_RequiredValue_diagnostic", getMessageSubstitutions(context, addVariableValueAction)), //$NON-NLS-1$
+					new Object[]{addVariableValueAction}));
 		}
-		return true;
+
+		return result;
 	}
 
 	/**
@@ -104,30 +104,44 @@ public class AddVariableValueActionOperations
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateSingleInputPin(
 			AddVariableValueAction addVariableValueAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
+		boolean result = true;
+
+		Variable variable = addVariableValueAction.getVariable();
+
+		if (variable != null) {
+			InputPin insertAt = addVariableValueAction.getInsertAt();
+
+			if (variable.isOrdered()) {
+				Type insertAtType = insertAt == null
+					? null
+					: insertAt.getType();
+
+				result = insertAtType instanceof PrimitiveType
+					&& safeEquals("PrimitiveTypes::UnlimitedNatural", //$NON-NLS-1$
+						insertAtType.getQualifiedName()) && insertAt.is(1, 1);
+			} else {
+				result = insertAt == null;
+			}
+
+			if (!result && diagnostics != null) {
 				diagnostics
 					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
+						Diagnostic.WARNING,
 						UMLValidator.DIAGNOSTIC_SOURCE,
 						UMLValidator.ADD_VARIABLE_VALUE_ACTION__SINGLE_INPUT_PIN,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+						UMLPlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSingleInputPin", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(addVariableValueAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_AddVariableValueAction_SingleInputPin_diagnostic", getMessageSubstitutions(context, addVariableValueAction)), //$NON-NLS-1$
 						new Object[]{addVariableValueAction}));
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 } // AddVariableValueActionOperations

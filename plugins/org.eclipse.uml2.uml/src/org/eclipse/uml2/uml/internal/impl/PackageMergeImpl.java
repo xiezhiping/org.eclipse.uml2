@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: PackageMergeImpl.java,v 1.18 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -46,8 +45,8 @@ import org.eclipse.uml2.uml.UMLPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageMergeImpl#getTargets <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageMergeImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageMergeImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageMergeImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageMergeImpl#getMergedPackage <em>Merged Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageMergeImpl#getReceivingPackage <em>Receiving Package</em>}</li>
  * </ul>

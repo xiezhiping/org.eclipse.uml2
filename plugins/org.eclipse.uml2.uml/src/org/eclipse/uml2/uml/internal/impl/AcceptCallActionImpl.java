@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: AcceptCallActionImpl.java,v 1.24 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -297,8 +296,6 @@ public class AcceptCallActionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACCEPT_CALL_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.ACCEPT_CALL_ACTION__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.ACCEPT_CALL_ACTION__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -378,8 +375,6 @@ public class AcceptCallActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.ACCEPT_CALL_ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.ACCEPT_CALL_ACTION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.ACCEPT_CALL_ACTION__IN_STRUCTURED_NODE :
@@ -392,6 +387,8 @@ public class AcceptCallActionImpl
 				return getOutgoings();
 			case UMLPackage.ACCEPT_CALL_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.ACCEPT_CALL_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.ACCEPT_CALL_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.ACCEPT_CALL_ACTION__HANDLER :
@@ -645,8 +642,6 @@ public class AcceptCallActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.ACCEPT_CALL_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.ACCEPT_CALL_ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.ACCEPT_CALL_ACTION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.ACCEPT_CALL_ACTION__IN_STRUCTURED_NODE :
@@ -658,6 +653,8 @@ public class AcceptCallActionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.ACCEPT_CALL_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.ACCEPT_CALL_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.ACCEPT_CALL_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.ACCEPT_CALL_ACTION__HANDLER :
@@ -780,16 +777,16 @@ public class AcceptCallActionImpl
 				return allOwnedElements();
 			case UMLPackage.ACCEPT_CALL_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.ACCEPT_CALL_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACCEPT_CALL_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACCEPT_CALL_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACCEPT_CALL_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACCEPT_CALL_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -839,22 +836,19 @@ public class AcceptCallActionImpl
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACCEPT_CALL_ACTION___GET_CONTEXT :
 				return getContext();
-			case UMLPackage.ACCEPT_CALL_ACTION___VALIDATE_TRIGGER_EVENTS__DIAGNOSTICCHAIN_MAP :
-				return validateTriggerEvents(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACCEPT_CALL_ACTION___VALIDATE_NO_INPUT_PINS__DIAGNOSTICCHAIN_MAP :
 				return validateNoInputPins((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACCEPT_CALL_ACTION___VALIDATE_NO_OUTPUT_PINS__DIAGNOSTICCHAIN_MAP :
-				return validateNoOutputPins((DiagnosticChain) arguments.get(0),
+			case UMLPackage.ACCEPT_CALL_ACTION___VALIDATE_TRIGGER_EVENTS__DIAGNOSTICCHAIN_MAP :
+				return validateTriggerEvents(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACCEPT_CALL_ACTION___VALIDATE_UNMARSHALL_SIGNAL_EVENTS__DIAGNOSTICCHAIN_MAP :
 				return validateUnmarshallSignalEvents(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACCEPT_CALL_ACTION___VALIDATE_RESULT_PINS__DIAGNOSTICCHAIN_MAP :
-				return validateResultPins((DiagnosticChain) arguments.get(0),
+			case UMLPackage.ACCEPT_CALL_ACTION___VALIDATE_NO_OUTPUT_PINS__DIAGNOSTICCHAIN_MAP :
+				return validateNoOutputPins((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACCEPT_CALL_ACTION___VALIDATE_TRIGGER_CALL_EVENT__DIAGNOSTICCHAIN_MAP :
 				return validateTriggerCallEvent(
@@ -862,6 +856,9 @@ public class AcceptCallActionImpl
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACCEPT_CALL_ACTION___VALIDATE_UNMARSHALL__DIAGNOSTICCHAIN_MAP :
 				return validateUnmarshall((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACCEPT_CALL_ACTION___VALIDATE_RESULT_PINS__DIAGNOSTICCHAIN_MAP :
+				return validateResultPins((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

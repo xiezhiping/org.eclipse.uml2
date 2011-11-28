@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: LinkEndCreationDataImpl.java,v 1.15 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -429,29 +428,29 @@ public class LinkEndCreationDataImpl
 				return allOwnedElements();
 			case UMLPackage.LINK_END_CREATION_DATA___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.LINK_END_CREATION_DATA___VALIDATE_PROPERTY_IS_ASSOCIATION_END__DIAGNOSTICCHAIN_MAP :
+				return validatePropertyIsAssociationEnd(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LINK_END_CREATION_DATA___VALIDATE_END_OBJECT_INPUT_PIN__DIAGNOSTICCHAIN_MAP :
+				return validateEndObjectInputPin(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_CREATION_DATA___VALIDATE_SAME_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateSameType((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_CREATION_DATA___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
 				return validateMultiplicity((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LINK_END_CREATION_DATA___VALIDATE_END_OBJECT_INPUT_PIN__DIAGNOSTICCHAIN_MAP :
-				return validateEndObjectInputPin(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LINK_END_CREATION_DATA___VALIDATE_PROPERTY_IS_ASSOCIATION_END__DIAGNOSTICCHAIN_MAP :
-				return validatePropertyIsAssociationEnd(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_CREATION_DATA___VALIDATE_QUALIFIERS__DIAGNOSTICCHAIN_MAP :
 				return validateQualifiers((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LINK_END_CREATION_DATA___VALIDATE_SINGLE_INPUT_PIN__DIAGNOSTICCHAIN_MAP :
-				return validateSingleInputPin(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_CREATION_DATA___VALIDATE_CREATE_LINK_ACTION__DIAGNOSTICCHAIN_MAP :
 				return validateCreateLinkAction(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LINK_END_CREATION_DATA___VALIDATE_SINGLE_INPUT_PIN__DIAGNOSTICCHAIN_MAP :
+				return validateSingleInputPin(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

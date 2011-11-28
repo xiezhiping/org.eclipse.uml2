@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: OpaqueActionImpl.java,v 1.25 2009/01/07 15:55:30 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -413,8 +412,6 @@ public class OpaqueActionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OPAQUE_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.OPAQUE_ACTION__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.OPAQUE_ACTION__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -492,8 +489,6 @@ public class OpaqueActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.OPAQUE_ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.OPAQUE_ACTION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.OPAQUE_ACTION__IN_STRUCTURED_NODE :
@@ -506,6 +501,8 @@ public class OpaqueActionImpl
 				return getOutgoings();
 			case UMLPackage.OPAQUE_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.OPAQUE_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.OPAQUE_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.OPAQUE_ACTION__HANDLER :
@@ -761,8 +758,6 @@ public class OpaqueActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.OPAQUE_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.OPAQUE_ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.OPAQUE_ACTION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__IN_STRUCTURED_NODE :
@@ -774,6 +769,8 @@ public class OpaqueActionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.OPAQUE_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.OPAQUE_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__HANDLER :

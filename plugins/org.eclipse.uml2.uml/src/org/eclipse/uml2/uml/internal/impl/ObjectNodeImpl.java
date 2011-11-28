@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ObjectNodeImpl.java,v 1.29 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -571,8 +570,6 @@ public abstract class ObjectNodeImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.OBJECT_NODE__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.OBJECT_NODE__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -637,8 +634,6 @@ public abstract class ObjectNodeImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.OBJECT_NODE__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.OBJECT_NODE__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
@@ -651,6 +646,8 @@ public abstract class ObjectNodeImpl
 				return getOutgoings();
 			case UMLPackage.OBJECT_NODE__INCOMING :
 				return getIncomings();
+			case UMLPackage.OBJECT_NODE__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.OBJECT_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.OBJECT_NODE__TYPE :
@@ -877,8 +874,6 @@ public abstract class ObjectNodeImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.OBJECT_NODE__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.OBJECT_NODE__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.OBJECT_NODE__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
@@ -890,6 +885,8 @@ public abstract class ObjectNodeImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.OBJECT_NODE__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.OBJECT_NODE__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.OBJECT_NODE__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.OBJECT_NODE__TYPE :
@@ -1036,16 +1033,16 @@ public abstract class ObjectNodeImpl
 				return allOwnedElements();
 			case UMLPackage.OBJECT_NODE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.OBJECT_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_NODE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_NODE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OBJECT_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_NODE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1093,16 +1090,16 @@ public abstract class ObjectNodeImpl
 				return validateOwnedStructuredNode(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_NODE___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
-				return validateInputOutputParameter(
+			case UMLPackage.OBJECT_NODE___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateObjectFlowEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_NODE___VALIDATE_SELECTION_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
 				return validateSelectionBehavior(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_NODE___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateObjectFlowEdges(
+			case UMLPackage.OBJECT_NODE___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
+				return validateInputOutputParameter(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

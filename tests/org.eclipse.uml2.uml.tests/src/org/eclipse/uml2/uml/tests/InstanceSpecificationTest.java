@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: InstanceSpecificationTest.java,v 1.6 2007/02/14 20:06:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -27,10 +26,10 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ParameterableElement#isCompatibleWith(org.eclipse.uml2.uml.ParameterableElement) <em>Is Compatible With</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ParameterableElement#isTemplateParameter() <em>Is Template Parameter</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.InstanceSpecification#validateDeploymentArtifact(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Deployment Artifact</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InstanceSpecification#validateStructuralFeature(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Structural Feature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InstanceSpecification#validateDefiningFeature(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Defining Feature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InstanceSpecification#validateDeploymentTarget(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Deployment Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InstanceSpecification#validateDeploymentArtifact(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Deployment Artifact</em>}</li>
  * </ul>
  * </p>
  * @generated

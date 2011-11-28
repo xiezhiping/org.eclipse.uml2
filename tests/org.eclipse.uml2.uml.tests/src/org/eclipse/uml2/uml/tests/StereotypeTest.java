@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: StereotypeTest.java,v 1.3 2007/02/14 20:06:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -31,10 +30,10 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateAssociationEndOwnership(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Association End Ownership</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateNameNotClash(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Name Not Clash</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateBinaryAssociationsOnly(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Binary Associations Only</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateGeneralize(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Generalize</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateNameNotClash(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Name Not Clash</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateAssociationEndOwnership(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Association End Ownership</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#createExtension(org.eclipse.uml2.uml.Class, boolean) <em>Create Extension</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#createIcon(java.lang.String) <em>Create Icon</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#createIcon(java.lang.String, java.lang.String) <em>Create Icon</em>}</li>

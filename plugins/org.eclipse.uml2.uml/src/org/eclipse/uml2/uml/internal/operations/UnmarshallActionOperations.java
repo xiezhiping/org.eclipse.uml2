@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: UnmarshallActionOperations.java,v 1.7 2007/05/03 21:11:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -31,13 +30,13 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateStructuralFeature(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Structural Feature</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateNumberOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Number Of Result</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateMultiplicityOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Result</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateTypeAndOrdering(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type And Ordering</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateUnmarshallTypeIsClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Unmarshall Type Is Classifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateMultiplicityOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Object</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateSameType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateStructuralFeature(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Structural Feature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateMultiplicityOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Object</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateTypeAndOrdering(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type And Ordering</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateNumberOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Number Of Result</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateUnmarshallTypeIsClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Unmarshall Type Is Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateMultiplicityOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Result</em>}</li>
  * </ul>
  * </p>
  *

@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: DataTypeImpl.java,v 1.32 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -74,8 +73,8 @@ import org.eclipse.uml2.uml.internal.operations.DataTypeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.DataTypeImpl#getAttributes <em>Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DataTypeImpl#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DataTypeImpl#getAttributes <em>Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DataTypeImpl#getFeatures <em>Feature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DataTypeImpl#getOwnedAttributes <em>Owned Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DataTypeImpl#getOwnedOperations <em>Owned Operation</em>}</li>
@@ -1068,16 +1067,16 @@ public class DataTypeImpl
 				return allOwnedElements();
 			case UMLPackage.DATA_TYPE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.DATA_TYPE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DATA_TYPE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DATA_TYPE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.DATA_TYPE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DATA_TYPE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1169,20 +1168,20 @@ public class DataTypeImpl
 				return isTemplate();
 			case UMLPackage.DATA_TYPE___PARAMETERABLE_ELEMENTS :
 				return parameterableElements();
-			case UMLPackage.DATA_TYPE___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
-				return validateSpecializeType(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.DATA_TYPE___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
-				return validateMapsToGeneralizationSet(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DATA_TYPE___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
 				return validateNonFinalParents(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DATA_TYPE___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
 				return validateNoCyclesInGeneralization(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.DATA_TYPE___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
+				return validateSpecializeType(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.DATA_TYPE___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
+				return validateMapsToGeneralizationSet(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DATA_TYPE___GET_ALL_ATTRIBUTES :
@@ -1236,16 +1235,6 @@ public class DataTypeImpl
 	}
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getAttributes() <em>Attribute</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAttributes()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] ATTRIBUTE_ESUBSETS = new int[]{UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE};
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1268,6 +1257,16 @@ public class DataTypeImpl
 		UMLPackage.DATA_TYPE__OWNED_RULE, UMLPackage.DATA_TYPE__OWNED_USE_CASE,
 		UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE,
 		UMLPackage.DATA_TYPE__OWNED_OPERATION};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getAttributes() <em>Attribute</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAttributes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] ATTRIBUTE_ESUBSETS = new int[]{UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE};
 
 	/**
 	 * <!-- begin-user-doc -->

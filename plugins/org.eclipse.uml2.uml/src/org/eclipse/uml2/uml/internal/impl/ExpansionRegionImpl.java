@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ExpansionRegionImpl.java,v 1.24 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -309,10 +308,6 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__CLIENT_DEPENDENCY :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.EXPANSION_REGION__ACTIVITY :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetActivity((Activity) otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInPartitions())
 					.basicAdd(otherEnd, msgs);
@@ -342,10 +337,6 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__OWNED_RULE :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.EXPANSION_REGION__IN_ACTIVITY :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetInActivity((Activity) otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__NODE :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getNodes())
 					.basicAdd(otherEnd, msgs);
@@ -385,8 +376,6 @@ public class ExpansionRegionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.EXPANSION_REGION__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -419,8 +408,6 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__OWNED_RULE :
 				return ((InternalEList<?>) getOwnedRules()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.EXPANSION_REGION__IN_ACTIVITY :
-				return basicSetInActivity(null, msgs);
 			case UMLPackage.EXPANSION_REGION__NODE :
 				return ((InternalEList<?>) getNodes()).basicRemove(otherEnd,
 					msgs);
@@ -490,8 +477,6 @@ public class ExpansionRegionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.EXPANSION_REGION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE :
@@ -504,6 +489,8 @@ public class ExpansionRegionImpl
 				return getOutgoings();
 			case UMLPackage.EXPANSION_REGION__INCOMING :
 				return getIncomings();
+			case UMLPackage.EXPANSION_REGION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.EXPANSION_REGION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.EXPANSION_REGION__HANDLER :
@@ -534,6 +521,8 @@ public class ExpansionRegionImpl
 				return getImportedMembers();
 			case UMLPackage.EXPANSION_REGION__MEMBER :
 				return getMembers();
+			case UMLPackage.EXPANSION_REGION__CONTAINED_EDGE :
+				return getContainedEdges();
 			case UMLPackage.EXPANSION_REGION__CONTAINED_NODE :
 				return getContainedNodes();
 			case UMLPackage.EXPANSION_REGION__IN_ACTIVITY :
@@ -546,8 +535,6 @@ public class ExpansionRegionImpl
 				if (resolve)
 					return getSuperGroup();
 				return basicGetSuperGroup();
-			case UMLPackage.EXPANSION_REGION__CONTAINED_EDGE :
-				return getContainedEdges();
 			case UMLPackage.EXPANSION_REGION__MUST_ISOLATE :
 				return isMustIsolate();
 			case UMLPackage.EXPANSION_REGION__NODE :
@@ -863,8 +850,6 @@ public class ExpansionRegionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.EXPANSION_REGION__ACTIVITY :
 				return isSetActivity();
-			case UMLPackage.EXPANSION_REGION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE :
@@ -876,6 +861,8 @@ public class ExpansionRegionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.EXPANSION_REGION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.EXPANSION_REGION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.EXPANSION_REGION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.EXPANSION_REGION__HANDLER :
@@ -906,6 +893,8 @@ public class ExpansionRegionImpl
 				return !getImportedMembers().isEmpty();
 			case UMLPackage.EXPANSION_REGION__MEMBER :
 				return isSetMembers();
+			case UMLPackage.EXPANSION_REGION__CONTAINED_EDGE :
+				return isSetContainedEdges();
 			case UMLPackage.EXPANSION_REGION__CONTAINED_NODE :
 				return isSetContainedNodes();
 			case UMLPackage.EXPANSION_REGION__IN_ACTIVITY :
@@ -914,8 +903,6 @@ public class ExpansionRegionImpl
 				return isSetSubgroups();
 			case UMLPackage.EXPANSION_REGION__SUPER_GROUP :
 				return isSetSuperGroup();
-			case UMLPackage.EXPANSION_REGION__CONTAINED_EDGE :
-				return isSetContainedEdges();
 			case UMLPackage.EXPANSION_REGION__MUST_ISOLATE :
 				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UMLPackage.EXPANSION_REGION__NODE :
@@ -1032,16 +1019,16 @@ public class ExpansionRegionImpl
 				return allOwnedElements();
 			case UMLPackage.EXPANSION_REGION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.EXPANSION_REGION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXPANSION_REGION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXPANSION_REGION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.EXPANSION_REGION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXPANSION_REGION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1121,25 +1108,25 @@ public class ExpansionRegionImpl
 				return membersAreDistinguishable();
 			case UMLPackage.EXPANSION_REGION___GET_OWNED_MEMBERS :
 				return getOwnedMembers();
-			case UMLPackage.EXPANSION_REGION___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateNodesAndEdges(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXPANSION_REGION___VALIDATE_GROUP_OWNED__DIAGNOSTICCHAIN_MAP :
 				return validateGroupOwned((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXPANSION_REGION___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
 				return validateNotContained((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXPANSION_REGION___VALIDATE_OUTPUT_PIN_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateOutputPinEdges(
+			case UMLPackage.EXPANSION_REGION___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateNodesAndEdges(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.EXPANSION_REGION___VALIDATE_INPUT_PIN_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateInputPinEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXPANSION_REGION___VALIDATE_EDGES__DIAGNOSTICCHAIN_MAP :
 				return validateEdges((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXPANSION_REGION___VALIDATE_INPUT_PIN_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateInputPinEdges(
+			case UMLPackage.EXPANSION_REGION___VALIDATE_OUTPUT_PIN_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateOutputPinEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXPANSION_REGION___VALIDATE_EXPANSION_NODES__DIAGNOSTICCHAIN_MAP :

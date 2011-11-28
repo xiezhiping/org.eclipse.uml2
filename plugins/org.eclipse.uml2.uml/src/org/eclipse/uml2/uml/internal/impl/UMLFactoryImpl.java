@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: UMLFactoryImpl.java,v 1.20 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -289,6 +288,10 @@ public class UMLFactoryImpl
 				return createClass();
 			case UMLPackage.STRING_EXPRESSION :
 				return createStringExpression();
+			case UMLPackage.EXPRESSION :
+				return createExpression();
+			case UMLPackage.PACKAGE :
+				return createPackage();
 			case UMLPackage.TEMPLATE_SIGNATURE :
 				return createTemplateSignature();
 			case UMLPackage.TEMPLATE_PARAMETER :
@@ -297,10 +300,6 @@ public class UMLFactoryImpl
 				return createTemplateBinding();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION :
 				return createTemplateParameterSubstitution();
-			case UMLPackage.EXPRESSION :
-				return createExpression();
-			case UMLPackage.PACKAGE :
-				return createPackage();
 			case UMLPackage.PACKAGE_MERGE :
 				return createPackageMerge();
 			case UMLPackage.PROFILE_APPLICATION :
@@ -331,14 +330,10 @@ public class UMLFactoryImpl
 				return createManifestation();
 			case UMLPackage.OPERATION :
 				return createOperation();
-			case UMLPackage.PARAMETER :
-				return createParameter();
-			case UMLPackage.PARAMETER_SET :
-				return createParameterSet();
-			case UMLPackage.CONSTRAINT :
-				return createConstraint();
-			case UMLPackage.DATA_TYPE :
-				return createDataType();
+			case UMLPackage.INTERFACE_REALIZATION :
+				return createInterfaceRealization();
+			case UMLPackage.REALIZATION :
+				return createRealization();
 			case UMLPackage.INTERFACE :
 				return createInterface();
 			case UMLPackage.RECEPTION :
@@ -361,10 +356,18 @@ public class UMLFactoryImpl
 				return createTrigger();
 			case UMLPackage.PORT :
 				return createPort();
+			case UMLPackage.CONSTRAINT :
+				return createConstraint();
 			case UMLPackage.TRANSITION :
 				return createTransition();
 			case UMLPackage.PROTOCOL_CONFORMANCE :
 				return createProtocolConformance();
+			case UMLPackage.PARAMETER :
+				return createParameter();
+			case UMLPackage.PARAMETER_SET :
+				return createParameterSet();
+			case UMLPackage.DATA_TYPE :
+				return createDataType();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER :
 				return createOperationTemplateParameter();
 			case UMLPackage.EXTENSION_END :
@@ -387,8 +390,6 @@ public class UMLFactoryImpl
 				return createCollaborationUse();
 			case UMLPackage.COLLABORATION :
 				return createCollaboration();
-			case UMLPackage.CONNECTOR :
-				return createConnector();
 			case UMLPackage.GENERALIZATION :
 				return createGeneralization();
 			case UMLPackage.GENERALIZATION_SET :
@@ -405,12 +406,10 @@ public class UMLFactoryImpl
 				return createInclude();
 			case UMLPackage.SUBSTITUTION :
 				return createSubstitution();
-			case UMLPackage.REALIZATION :
-				return createRealization();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER :
 				return createClassifierTemplateParameter();
-			case UMLPackage.INTERFACE_REALIZATION :
-				return createInterfaceRealization();
+			case UMLPackage.CONNECTOR :
+				return createConnector();
 			case UMLPackage.IMAGE :
 				return createImage();
 			case UMLPackage.OPAQUE_EXPRESSION :
@@ -682,16 +681,16 @@ public class UMLFactoryImpl
 			case UMLPackage.CALL_CONCURRENCY_KIND :
 				return createCallConcurrencyKindFromString(eDataType,
 					initialValue);
+			case UMLPackage.TRANSITION_KIND :
+				return createTransitionKindFromString(eDataType, initialValue);
+			case UMLPackage.PSEUDOSTATE_KIND :
+				return createPseudostateKindFromString(eDataType, initialValue);
 			case UMLPackage.PARAMETER_DIRECTION_KIND :
 				return createParameterDirectionKindFromString(eDataType,
 					initialValue);
 			case UMLPackage.PARAMETER_EFFECT_KIND :
 				return createParameterEffectKindFromString(eDataType,
 					initialValue);
-			case UMLPackage.TRANSITION_KIND :
-				return createTransitionKindFromString(eDataType, initialValue);
-			case UMLPackage.PSEUDOSTATE_KIND :
-				return createPseudostateKindFromString(eDataType, initialValue);
 			case UMLPackage.AGGREGATION_KIND :
 				return createAggregationKindFromString(eDataType, initialValue);
 			case UMLPackage.CONNECTOR_KIND :
@@ -727,16 +726,16 @@ public class UMLFactoryImpl
 			case UMLPackage.CALL_CONCURRENCY_KIND :
 				return convertCallConcurrencyKindToString(eDataType,
 					instanceValue);
+			case UMLPackage.TRANSITION_KIND :
+				return convertTransitionKindToString(eDataType, instanceValue);
+			case UMLPackage.PSEUDOSTATE_KIND :
+				return convertPseudostateKindToString(eDataType, instanceValue);
 			case UMLPackage.PARAMETER_DIRECTION_KIND :
 				return convertParameterDirectionKindToString(eDataType,
 					instanceValue);
 			case UMLPackage.PARAMETER_EFFECT_KIND :
 				return convertParameterEffectKindToString(eDataType,
 					instanceValue);
-			case UMLPackage.TRANSITION_KIND :
-				return convertTransitionKindToString(eDataType, instanceValue);
-			case UMLPackage.PSEUDOSTATE_KIND :
-				return convertPseudostateKindToString(eDataType, instanceValue);
 			case UMLPackage.AGGREGATION_KIND :
 				return convertAggregationKindToString(eDataType, instanceValue);
 			case UMLPackage.CONNECTOR_KIND :

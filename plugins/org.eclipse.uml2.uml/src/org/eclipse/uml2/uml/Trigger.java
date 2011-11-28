@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 351774
  *
- * $Id: Trigger.java,v 1.6 2007/06/12 12:53:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -20,8 +20,8 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A trigger relates an event to a behavior that may affect an instance of the classifier.
  * A trigger specification may be qualified by the port on which the event occurred.
+ * A trigger relates an event to a behavior that may affect an instance of the classifier.
  * <!-- end-model-doc -->
  *
  * <p>

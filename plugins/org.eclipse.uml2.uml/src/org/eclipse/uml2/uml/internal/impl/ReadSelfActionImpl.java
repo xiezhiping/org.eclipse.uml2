@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ReadSelfActionImpl.java,v 1.28 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -294,8 +293,6 @@ public class ReadSelfActionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.READ_SELF_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.READ_SELF_ACTION__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.READ_SELF_ACTION__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -369,8 +366,6 @@ public class ReadSelfActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.READ_SELF_ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.READ_SELF_ACTION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.READ_SELF_ACTION__IN_STRUCTURED_NODE :
@@ -383,6 +378,8 @@ public class ReadSelfActionImpl
 				return getOutgoings();
 			case UMLPackage.READ_SELF_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.READ_SELF_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.READ_SELF_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.READ_SELF_ACTION__HANDLER :
@@ -610,8 +607,6 @@ public class ReadSelfActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.READ_SELF_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.READ_SELF_ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.READ_SELF_ACTION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.READ_SELF_ACTION__IN_STRUCTURED_NODE :
@@ -623,6 +618,8 @@ public class ReadSelfActionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.READ_SELF_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.READ_SELF_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.READ_SELF_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.READ_SELF_ACTION__HANDLER :
@@ -739,16 +736,16 @@ public class ReadSelfActionImpl
 				return allOwnedElements();
 			case UMLPackage.READ_SELF_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.READ_SELF_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.READ_SELF_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.READ_SELF_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.READ_SELF_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.READ_SELF_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -801,14 +798,14 @@ public class ReadSelfActionImpl
 			case UMLPackage.READ_SELF_ACTION___VALIDATE_CONTAINED__DIAGNOSTICCHAIN_MAP :
 				return validateContained((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.READ_SELF_ACTION___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicity((DiagnosticChain) arguments.get(0),
+			case UMLPackage.READ_SELF_ACTION___VALIDATE_TYPE__DIAGNOSTICCHAIN_MAP :
+				return validateType((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.READ_SELF_ACTION___VALIDATE_NOT_STATIC__DIAGNOSTICCHAIN_MAP :
 				return validateNotStatic((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.READ_SELF_ACTION___VALIDATE_TYPE__DIAGNOSTICCHAIN_MAP :
-				return validateType((DiagnosticChain) arguments.get(0),
+			case UMLPackage.READ_SELF_ACTION___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
+				return validateMultiplicity((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

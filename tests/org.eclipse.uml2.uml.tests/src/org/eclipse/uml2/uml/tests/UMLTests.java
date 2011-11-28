@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: UMLTests.java,v 1.6 2008/10/02 21:00:20 jbruck Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -50,12 +49,12 @@ public class UMLTests
 		suite.addTestSuite(StereotypeTest.class);
 		suite.addTestSuite(ClassTest.class);
 		suite.addTestSuite(StringExpressionTest.class);
+		suite.addTestSuite(ExpressionTest.class);
+		suite.addTestSuite(PackageTest.class);
 		suite.addTestSuite(TemplateSignatureTest.class);
 		suite.addTestSuite(TemplateParameterTest.class);
 		suite.addTestSuite(TemplateBindingTest.class);
 		suite.addTestSuite(TemplateParameterSubstitutionTest.class);
-		suite.addTestSuite(ExpressionTest.class);
-		suite.addTestSuite(PackageTest.class);
 		suite.addTestSuite(PackageMergeTest.class);
 		suite.addTestSuite(ProfileApplicationTest.class);
 		suite.addTestSuite(ProfileTest.class);
@@ -71,10 +70,8 @@ public class UMLTests
 		suite.addTestSuite(ArtifactTest.class);
 		suite.addTestSuite(ManifestationTest.class);
 		suite.addTestSuite(OperationTest.class);
-		suite.addTestSuite(ParameterTest.class);
-		suite.addTestSuite(ParameterSetTest.class);
-		suite.addTestSuite(ConstraintTest.class);
-		suite.addTestSuite(DataTypeTest.class);
+		suite.addTestSuite(InterfaceRealizationTest.class);
+		suite.addTestSuite(RealizationTest.class);
 		suite.addTestSuite(InterfaceTest.class);
 		suite.addTestSuite(ReceptionTest.class);
 		suite.addTestSuite(SignalTest.class);
@@ -86,8 +83,12 @@ public class UMLTests
 		suite.addTestSuite(ConnectionPointReferenceTest.class);
 		suite.addTestSuite(TriggerTest.class);
 		suite.addTestSuite(PortTest.class);
+		suite.addTestSuite(ConstraintTest.class);
 		suite.addTestSuite(TransitionTest.class);
 		suite.addTestSuite(ProtocolConformanceTest.class);
+		suite.addTestSuite(ParameterTest.class);
+		suite.addTestSuite(ParameterSetTest.class);
+		suite.addTestSuite(DataTypeTest.class);
 		suite.addTestSuite(OperationTemplateParameterTest.class);
 		suite.addTestSuite(ExtensionEndTest.class);
 		suite.addTestSuite(ModelTest.class);
@@ -99,7 +100,6 @@ public class UMLTests
 		suite.addTestSuite(UsageTest.class);
 		suite.addTestSuite(CollaborationUseTest.class);
 		suite.addTestSuite(CollaborationTest.class);
-		suite.addTestSuite(ConnectorTest.class);
 		suite.addTestSuite(GeneralizationTest.class);
 		suite.addTestSuite(GeneralizationSetTest.class);
 		suite.addTestSuite(RedefinableTemplateSignatureTest.class);
@@ -108,9 +108,8 @@ public class UMLTests
 		suite.addTestSuite(ExtensionPointTest.class);
 		suite.addTestSuite(IncludeTest.class);
 		suite.addTestSuite(SubstitutionTest.class);
-		suite.addTestSuite(RealizationTest.class);
 		suite.addTestSuite(ClassifierTemplateParameterTest.class);
-		suite.addTestSuite(InterfaceRealizationTest.class);
+		suite.addTestSuite(ConnectorTest.class);
 		suite.addTestSuite(ImageTest.class);
 		suite.addTestSuite(OpaqueExpressionTest.class);
 		suite.addTestSuite(AcceptCallActionTest.class);

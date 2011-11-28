@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 351774
  *
- * $Id: BroadcastSignalActionOperations.java,v 1.6 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -30,8 +30,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.BroadcastSignalAction#validateNumberAndOrder(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Number And Order</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.BroadcastSignalAction#validateTypeOrderingMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Ordering Multiplicity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.BroadcastSignalAction#validateNumberAndOrder(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Number And Order</em>}</li>
  * </ul>
  * </p>
  *

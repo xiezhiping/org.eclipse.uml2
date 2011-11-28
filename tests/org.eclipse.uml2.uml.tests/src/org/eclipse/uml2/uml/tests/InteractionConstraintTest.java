@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: InteractionConstraintTest.java,v 1.6 2007/02/14 20:06:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -25,12 +24,12 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateMaxintPositive(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maxint Positive</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateMinintMaxint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Minint Maxint</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateMinintNonNegative(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Minint Non Negative</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateMaxintPositive(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maxint Positive</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateDynamicVariables(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Dynamic Variables</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateGlobalData(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Global Data</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateMaxintGreaterEqualMinint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maxint Greater Equal Minint</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateDynamicVariables(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Dynamic Variables</em>}</li>
  * </ul>
  * </p>
  * @generated

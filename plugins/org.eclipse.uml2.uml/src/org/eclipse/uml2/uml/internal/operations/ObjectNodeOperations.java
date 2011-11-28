@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ObjectNodeOperations.java,v 1.6 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -31,9 +30,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ObjectNode#validateInputOutputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Output Parameter</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ObjectNode#validateSelectionBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Selection Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ObjectNode#validateObjectFlowEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Object Flow Edges</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ObjectNode#validateSelectionBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Selection Behavior</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ObjectNode#validateInputOutputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Output Parameter</em>}</li>
  * </ul>
  * </p>
  *

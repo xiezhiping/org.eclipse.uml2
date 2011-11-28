@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: Property.java,v 1.30 2009/08/12 21:05:18 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,17 +27,17 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * Property represents a declared state of one or more instances in terms of a named relationship to a value or values. When a property is an attribute of a classifier, the value or values are related to the instance of the classifier by being held in slots of the instance. When a property is an association end, the value or values are related to the instance or instances at the other end(s) of the association. The range of valid values represented by the property can be controlled by setting the property's type.
+ * A property is a structural feature of a classifier that characterizes instances of the classifier. A property related by ownedAttribute to a classifier (other than an association) represents an attribute and might also represent an association end. It relates an instance of the class to a value or set of values of the type of the attribute. A property related by memberEnd or its specializations to an association represents an end of the association. The type of the property is the type of the end of the association.
  * A property has the capability of being a deployment target in a deployment relationship. This enables modeling the deployment to hierarchical nodes that have properties functioning as internal parts.
  * Property specializes ParameterableElement to specify that a property can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.
  * A property represents a set of instances that are owned by a containing classifier instance.
- * A property is a structural feature of a classifier that characterizes instances of the classifier. A property related by ownedAttribute to a classifier (other than an association) represents an attribute and might also represent an association end. It relates an instance of the class to a value or set of values of the type of the attribute. A property related by memberEnd or its specializations to an association represents an end of the association. The type of the property is the type of the end of the association.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Property#getDatatype <em>Datatype</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getInterface <em>Interface</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#getDatatype <em>Datatype</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getAggregation <em>Aggregation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getAssociationEnd <em>Association End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getQualifiers <em>Qualifier</em>}</li>
@@ -140,8 +139,8 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies whether the Property is derived, i.e., whether its value or values can be computed from other information.
 	 * If isDerived is true, the value of the attribute is derived from information elsewhere.
+	 * Specifies whether the Property is derived, i.e., whether its value or values can be computed from other information.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Derived</em>' attribute.
 	 * @see #setIsDerived(boolean)
@@ -218,8 +217,8 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A String that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.
 	 * Specifies a String that represents a value to be used when no argument is supplied for the Property.
+	 * A String that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Default</em>' attribute.
 	 * @see #isSetDefault()
@@ -336,6 +335,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Class that owns the Property.
+	 * References the Class that owns the Property.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Class</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_Class()
@@ -399,9 +399,9 @@ public interface Property
 	 * This feature subsets the following features:
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Property#getAssociation() <em>Association</em>}'</li>
-	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->

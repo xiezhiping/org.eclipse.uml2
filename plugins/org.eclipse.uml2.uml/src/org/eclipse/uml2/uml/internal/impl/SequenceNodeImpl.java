@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: SequenceNodeImpl.java,v 1.24 2009/01/07 15:55:30 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -178,8 +177,6 @@ public class SequenceNodeImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.SEQUENCE_NODE__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.SEQUENCE_NODE__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -212,8 +209,6 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__OWNED_RULE :
 				return ((InternalEList<?>) getOwnedRules()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.SEQUENCE_NODE__IN_ACTIVITY :
-				return basicSetInActivity(null, msgs);
 			case UMLPackage.SEQUENCE_NODE__NODE :
 				return ((InternalEList<?>) getNodes()).basicRemove(otherEnd,
 					msgs);
@@ -280,8 +275,6 @@ public class SequenceNodeImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.SEQUENCE_NODE__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.SEQUENCE_NODE__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.SEQUENCE_NODE__IN_STRUCTURED_NODE :
@@ -294,6 +287,8 @@ public class SequenceNodeImpl
 				return getOutgoings();
 			case UMLPackage.SEQUENCE_NODE__INCOMING :
 				return getIncomings();
+			case UMLPackage.SEQUENCE_NODE__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.SEQUENCE_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.SEQUENCE_NODE__HANDLER :
@@ -324,6 +319,8 @@ public class SequenceNodeImpl
 				return getImportedMembers();
 			case UMLPackage.SEQUENCE_NODE__MEMBER :
 				return getMembers();
+			case UMLPackage.SEQUENCE_NODE__CONTAINED_EDGE :
+				return getContainedEdges();
 			case UMLPackage.SEQUENCE_NODE__CONTAINED_NODE :
 				return getContainedNodes();
 			case UMLPackage.SEQUENCE_NODE__IN_ACTIVITY :
@@ -336,8 +333,6 @@ public class SequenceNodeImpl
 				if (resolve)
 					return getSuperGroup();
 				return basicGetSuperGroup();
-			case UMLPackage.SEQUENCE_NODE__CONTAINED_EDGE :
-				return getContainedEdges();
 			case UMLPackage.SEQUENCE_NODE__MUST_ISOLATE :
 				return isMustIsolate();
 			case UMLPackage.SEQUENCE_NODE__NODE :
@@ -635,8 +630,6 @@ public class SequenceNodeImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.SEQUENCE_NODE__ACTIVITY :
 				return isSetActivity();
-			case UMLPackage.SEQUENCE_NODE__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.SEQUENCE_NODE__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__IN_STRUCTURED_NODE :
@@ -648,6 +641,8 @@ public class SequenceNodeImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.SEQUENCE_NODE__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.SEQUENCE_NODE__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__HANDLER :
@@ -678,6 +673,8 @@ public class SequenceNodeImpl
 				return !getImportedMembers().isEmpty();
 			case UMLPackage.SEQUENCE_NODE__MEMBER :
 				return isSetMembers();
+			case UMLPackage.SEQUENCE_NODE__CONTAINED_EDGE :
+				return isSetContainedEdges();
 			case UMLPackage.SEQUENCE_NODE__CONTAINED_NODE :
 				return isSetContainedNodes();
 			case UMLPackage.SEQUENCE_NODE__IN_ACTIVITY :
@@ -686,8 +683,6 @@ public class SequenceNodeImpl
 				return isSetSubgroups();
 			case UMLPackage.SEQUENCE_NODE__SUPER_GROUP :
 				return isSetSuperGroup();
-			case UMLPackage.SEQUENCE_NODE__CONTAINED_EDGE :
-				return isSetContainedEdges();
 			case UMLPackage.SEQUENCE_NODE__MUST_ISOLATE :
 				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UMLPackage.SEQUENCE_NODE__NODE :

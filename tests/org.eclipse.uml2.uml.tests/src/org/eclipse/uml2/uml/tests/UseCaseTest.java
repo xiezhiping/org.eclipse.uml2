@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: UseCaseTest.java,v 1.6 2007/02/14 20:06:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -25,10 +24,10 @@ import org.eclipse.uml2.uml.UseCase;
  * <p>
  * The following operations are tested:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.UseCase#validateMustHaveName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Must Have Name</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.UseCase#validateCannotIncludeSelf(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Cannot Include Self</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.UseCase#validateBinaryAssociations(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Binary Associations</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.UseCase#validateNoAssociationToUseCase(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Association To Use Case</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.UseCase#validateCannotIncludeSelf(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Cannot Include Self</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.UseCase#validateMustHaveName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Must Have Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.UseCase#allIncludedUseCases() <em>All Included Use Cases</em>}</li>
  * </ul>
  * </p>

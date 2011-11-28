@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: PseudostateImpl.java,v 1.24 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -764,16 +763,16 @@ public class PseudostateImpl
 				return allOwnedElements();
 			case UMLPackage.PSEUDOSTATE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.PSEUDOSTATE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PSEUDOSTATE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PSEUDOSTATE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PSEUDOSTATE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PSEUDOSTATE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -803,20 +802,6 @@ public class PseudostateImpl
 				return getIncomings();
 			case UMLPackage.PSEUDOSTATE___GET_OUTGOINGS :
 				return getOutgoings();
-			case UMLPackage.PSEUDOSTATE___VALIDATE_TRANSITIONS_OUTGOING__DIAGNOSTICCHAIN_MAP :
-				return validateTransitionsOutgoing(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PSEUDOSTATE___VALIDATE_CHOICE_VERTEX__DIAGNOSTICCHAIN_MAP :
-				return validateChoiceVertex((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PSEUDOSTATE___VALIDATE_OUTGOING_FROM_INITIAL__DIAGNOSTICCHAIN_MAP :
-				return validateOutgoingFromInitial(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PSEUDOSTATE___VALIDATE_JOIN_VERTEX__DIAGNOSTICCHAIN_MAP :
-				return validateJoinVertex((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PSEUDOSTATE___VALIDATE_JUNCTION_VERTEX__DIAGNOSTICCHAIN_MAP :
 				return validateJunctionVertex(
 					(DiagnosticChain) arguments.get(0),
@@ -825,12 +810,26 @@ public class PseudostateImpl
 				return validateHistoryVertices(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PSEUDOSTATE___VALIDATE_INITIAL_VERTEX__DIAGNOSTICCHAIN_MAP :
-				return validateInitialVertex(
+			case UMLPackage.PSEUDOSTATE___VALIDATE_TRANSITIONS_OUTGOING__DIAGNOSTICCHAIN_MAP :
+				return validateTransitionsOutgoing(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PSEUDOSTATE___VALIDATE_OUTGOING_FROM_INITIAL__DIAGNOSTICCHAIN_MAP :
+				return validateOutgoingFromInitial(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PSEUDOSTATE___VALIDATE_FORK_VERTEX__DIAGNOSTICCHAIN_MAP :
 				return validateForkVertex((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PSEUDOSTATE___VALIDATE_JOIN_VERTEX__DIAGNOSTICCHAIN_MAP :
+				return validateJoinVertex((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PSEUDOSTATE___VALIDATE_CHOICE_VERTEX__DIAGNOSTICCHAIN_MAP :
+				return validateChoiceVertex((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PSEUDOSTATE___VALIDATE_INITIAL_VERTEX__DIAGNOSTICCHAIN_MAP :
+				return validateInitialVertex(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PSEUDOSTATE___VALIDATE_TRANSITIONS_INCOMING__DIAGNOSTICCHAIN_MAP :
 				return validateTransitionsIncoming(

@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.25 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -328,6 +327,10 @@ public class ClassifierTemplateParameterImpl
 				if (resolve)
 					return getDefault();
 				return basicGetDefault();
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
+				if (resolve)
+					return getOwnedDefault();
+				return basicGetOwnedDefault();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				if (resolve)
 					return getOwnedParameteredElement();
@@ -336,10 +339,6 @@ public class ClassifierTemplateParameterImpl
 				if (resolve)
 					return getParameteredElement();
 				return basicGetParameteredElement();
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
-				if (resolve)
-					return getOwnedDefault();
-				return basicGetOwnedDefault();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
 				if (resolve)
 					return getSignature();
@@ -374,14 +373,14 @@ public class ClassifierTemplateParameterImpl
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT :
 				setDefault((ParameterableElement) newValue);
 				return;
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
+				setOwnedDefault((ParameterableElement) newValue);
+				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				setOwnedParameteredElement((ParameterableElement) newValue);
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				setParameteredElement((ParameterableElement) newValue);
-				return;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
-				setOwnedDefault((ParameterableElement) newValue);
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
 				setSignature((TemplateSignature) newValue);
@@ -415,14 +414,14 @@ public class ClassifierTemplateParameterImpl
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT :
 				setDefault((ParameterableElement) null);
 				return;
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
+				setOwnedDefault((ParameterableElement) null);
+				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				setOwnedParameteredElement((ParameterableElement) null);
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				setParameteredElement((ParameterableElement) null);
-				return;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
-				setOwnedDefault((ParameterableElement) null);
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
 				setSignature((TemplateSignature) null);
@@ -455,12 +454,12 @@ public class ClassifierTemplateParameterImpl
 				return isSetOwner();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT :
 				return default_ != null;
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
+				return ownedDefault != null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				return ownedParameteredElement != null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				return isSetParameteredElement();
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
-				return ownedDefault != null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
 				return basicGetSignature() != null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :

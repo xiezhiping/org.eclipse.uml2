@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: StartObjectBehaviorActionOperations.java,v 1.1 2008/10/02 20:56:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -31,11 +30,11 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateNumberOrderResults(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Number Order Results</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateMultiplicityOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Object</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateTypeOrderingMultiplicityMatch(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Ordering Multiplicity Match</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateNumberOrderArguments(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Number Order Arguments</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateTypeOrderingMultiplicityMatch(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Ordering Multiplicity Match</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateNumberOrderResults(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Number Order Results</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateTypeOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Object</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateMultiplicityOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Object</em>}</li>
  * </ul>
  * </p>
  *

@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: InputPinImpl.java,v 1.6 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -167,16 +166,16 @@ public class InputPinImpl
 				return allOwnedElements();
 			case UMLPackage.INPUT_PIN___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.INPUT_PIN___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INPUT_PIN___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INPUT_PIN___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INPUT_PIN___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INPUT_PIN___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -224,30 +223,30 @@ public class InputPinImpl
 				return validateOwnedStructuredNode(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INPUT_PIN___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
-				return validateInputOutputParameter(
+			case UMLPackage.INPUT_PIN___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateObjectFlowEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INPUT_PIN___VALIDATE_SELECTION_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
 				return validateSelectionBehavior(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INPUT_PIN___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateObjectFlowEdges(
+			case UMLPackage.INPUT_PIN___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
+				return validateInputOutputParameter(
 					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INPUT_PIN___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
-				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INPUT_PIN___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
 				return validateLowerGe0((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INPUT_PIN___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
-				return validateValueSpecificationNoSideEffects(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.INPUT_PIN___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
+				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INPUT_PIN___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
 				return validateValueSpecificationConstant(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INPUT_PIN___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
+				return validateValueSpecificationNoSideEffects(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INPUT_PIN___SET_LOWER__INT :

@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: Activity.java,v 1.18 2007/10/23 15:54:23 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -33,13 +32,15 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#getOwnedGroups <em>Owned Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getEdges <em>Edge</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Activity#getGroups <em>Group</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Activity#getStructuredNodes <em>Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getVariables <em>Variable</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#getGroups <em>Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#getOwnedNodes <em>Owned Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#isReadOnly <em>Is Read Only</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#isSingleExecution <em>Is Single Execution</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getPartitions <em>Partition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#getStructuredNodes <em>Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getNodes <em>Node</em>}</li>
  * </ul>
  * </p>
@@ -50,6 +51,67 @@ import org.eclipse.emf.ecore.EClass;
  */
 public interface Activity
 		extends Behavior {
+
+	/**
+	 * Returns the value of the '<em><b>Owned Group</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityGroup}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Activity#getGroups() <em>Group</em>}'</li>
+	 * </ul>
+	 * </p>
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Group</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Group</em>' containment reference list.
+	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_OwnedGroup()
+	 * @model containment="true" resolveProxies="true" ordered="false"
+	 *        extendedMetaData="name='group' kind='element'"
+	 * @generated
+	 */
+	EList<ActivityGroup> getOwnedGroups();
+
+	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.ActivityGroup}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Group</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ActivityGroup}, or <code>null</code>.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ActivityGroup} to create.
+	 * @return The new {@link org.eclipse.uml2.uml.ActivityGroup}.
+	 * @see #getOwnedGroups()
+	 * @generated
+	 */
+	ActivityGroup createOwnedGroup(String name, EClass eClass);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Group</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ActivityGroup} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedGroups()
+	 * @generated
+	 */
+	ActivityGroup getOwnedGroup(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Group</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ActivityGroup} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ActivityGroup} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.ActivityGroup} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedGroups()
+	 * @generated
+	 */
+	ActivityGroup getOwnedGroup(String name, boolean ignoreCase, EClass eClass,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Is Read Only</b></em>' attribute.
@@ -78,7 +140,7 @@ public interface Activity
 	void setIsReadOnly(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Group</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Group</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityGroup}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityGroup#getInActivity <em>In Activity</em>}'.
 	 * <p>
@@ -92,39 +154,17 @@ public interface Activity
 	 * <!-- begin-model-doc -->
 	 * Top-level groups in the activity.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Group</em>' containment reference list.
+	 * @return the value of the '<em>Group</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_Group()
 	 * @see org.eclipse.uml2.uml.ActivityGroup#getInActivity
-	 * @model opposite="inActivity" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="inActivity" transient="true" volatile="true" derived="true" ordered="false"
+	 *        extendedMetaData="kind='attribute'"
 	 * @generated
 	 */
 	EList<ActivityGroup> getGroups();
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.ActivityGroup} and appends it to the '<em><b>Group</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ActivityGroup} to create.
-	 * @return The new {@link org.eclipse.uml2.uml.ActivityGroup}.
-	 * @see #getGroups()
-	 * @generated NOT
-	 */
-	ActivityGroup createGroup(EClass eClass);
-
-	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.ActivityGroup}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Group</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ActivityGroup}, or <code>null</code>.
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ActivityGroup} to create.
-	 * @return The new {@link org.eclipse.uml2.uml.ActivityGroup}.
-	 * @see #getGroups()
-	 * @generated
-	 */
-	ActivityGroup createGroup(String name, EClass eClass);
-
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>' from the '<em><b>Group</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>' from the '<em><b>Group</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ActivityGroup} to retrieve, or <code>null</code>.
@@ -135,18 +175,77 @@ public interface Activity
 	ActivityGroup getGroup(String name);
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>' from the '<em><b>Group</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>' from the '<em><b>Group</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ActivityGroup} to retrieve, or <code>null</code>.
 	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ActivityGroup} to retrieve, or <code>null</code>.
-	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.ActivityGroup} on demand if not found.
 	 * @return The first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getGroups()
 	 * @generated
 	 */
-	ActivityGroup getGroup(String name, boolean ignoreCase, EClass eClass,
+	ActivityGroup getGroup(String name, boolean ignoreCase, EClass eClass);
+
+	/**
+	 * Returns the value of the '<em><b>Owned Node</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityNode}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Activity#getNodes() <em>Node</em>}'</li>
+	 * </ul>
+	 * </p>
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Node</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Node</em>' containment reference list.
+	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_OwnedNode()
+	 * @model containment="true" resolveProxies="true" ordered="false"
+	 *        extendedMetaData="name='node' kind='element'"
+	 * @generated
+	 */
+	EList<ActivityNode> getOwnedNodes();
+
+	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.ActivityNode}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Node</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ActivityNode}, or <code>null</code>.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ActivityNode} to create.
+	 * @return The new {@link org.eclipse.uml2.uml.ActivityNode}.
+	 * @see #getOwnedNodes()
+	 * @generated
+	 */
+	ActivityNode createOwnedNode(String name, EClass eClass);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Node</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ActivityNode} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedNodes()
+	 * @generated
+	 */
+	ActivityNode getOwnedNode(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Node</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ActivityNode} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ActivityNode} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.ActivityNode} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedNodes()
+	 * @generated
+	 */
+	ActivityNode getOwnedNode(String name, boolean ignoreCase, EClass eClass,
 			boolean createOnDemand);
 
 	/**
@@ -176,7 +275,7 @@ public interface Activity
 	void setIsSingleExecution(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Structured Node</b></em>' reference list.
+	 * Returns the value of the '<em><b>Structured Node</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.StructuredActivityNode}.
 	 * <p>
 	 * This feature subsets the following features:
@@ -190,15 +289,38 @@ public interface Activity
 	 * <!-- begin-model-doc -->
 	 * Top-level structured nodes in the activity.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Structured Node</em>' reference list.
+	 * @return the value of the '<em>Structured Node</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_StructuredNode()
-	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<StructuredActivityNode> getStructuredNodes();
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.StructuredActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Structured Node</b></em>' reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.StructuredActivityNode}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Structured Node</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.StructuredActivityNode}, or <code>null</code>.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.StructuredActivityNode} to create.
+	 * @return The new {@link org.eclipse.uml2.uml.StructuredActivityNode}.
+	 * @see #getStructuredNodes()
+	 * @generated
+	 */
+	StructuredActivityNode createStructuredNode(String name, EClass eClass);
+
+	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.StructuredActivityNode}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Structured Node</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.StructuredActivityNode}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.StructuredActivityNode}.
+	 * @see #getStructuredNodes()
+	 * @generated
+	 */
+	StructuredActivityNode createStructuredNode(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.StructuredActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Structured Node</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.StructuredActivityNode} to retrieve, or <code>null</code>.
@@ -209,6 +331,21 @@ public interface Activity
 	StructuredActivityNode getStructuredNode(String name);
 
 	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.StructuredActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Structured Node</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.StructuredActivityNode} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.StructuredActivityNode} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.StructuredActivityNode} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.StructuredActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getStructuredNodes()
+	 * @generated
+	 */
+	StructuredActivityNode getStructuredNode(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand);
+
+	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.StructuredActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Structured Node</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -217,7 +354,7 @@ public interface Activity
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.StructuredActivityNode} to retrieve, or <code>null</code>.
 	 * @return The first {@link org.eclipse.uml2.uml.StructuredActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getStructuredNodes()
-	 * @generated
+	 * @generated NOT
 	 */
 	StructuredActivityNode getStructuredNode(String name, boolean ignoreCase,
 			EClass eClass);
@@ -285,7 +422,7 @@ public interface Activity
 			boolean createOnDemand);
 
 	/**
-	 * Returns the value of the '<em><b>Node</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Node</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityNode}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityNode#getActivity <em>Activity</em>}'.
 	 * <p>
@@ -299,28 +436,17 @@ public interface Activity
 	 * <!-- begin-model-doc -->
 	 * Nodes coordinated by the activity.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Node</em>' containment reference list.
+	 * @return the value of the '<em>Node</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_Node()
 	 * @see org.eclipse.uml2.uml.ActivityNode#getActivity
-	 * @model opposite="activity" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="activity" transient="true" volatile="true" derived="true" ordered="false"
+	 *        extendedMetaData="kind='attribute'"
 	 * @generated
 	 */
 	EList<ActivityNode> getNodes();
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.ActivityNode}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Node</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ActivityNode}, or <code>null</code>.
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ActivityNode} to create.
-	 * @return The new {@link org.eclipse.uml2.uml.ActivityNode}.
-	 * @see #getNodes()
-	 * @generated
-	 */
-	ActivityNode createNode(String name, EClass eClass);
-
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Node</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Node</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ActivityNode} to retrieve, or <code>null</code>.
@@ -331,19 +457,17 @@ public interface Activity
 	ActivityNode getNode(String name);
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Node</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Node</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ActivityNode} to retrieve, or <code>null</code>.
 	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ActivityNode} to retrieve, or <code>null</code>.
-	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.ActivityNode} on demand if not found.
 	 * @return The first {@link org.eclipse.uml2.uml.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getNodes()
 	 * @generated
 	 */
-	ActivityNode getNode(String name, boolean ignoreCase, EClass eClass,
-			boolean createOnDemand);
+	ActivityNode getNode(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Edge</b></em>' containment reference list.
@@ -413,6 +537,7 @@ public interface Activity
 	 * This feature subsets the following features:
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Activity#getGroups() <em>Group</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Activity#getOwnedGroups() <em>Owned Group</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->

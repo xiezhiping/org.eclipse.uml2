@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: CallOperationActionImpl.java,v 1.29 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -363,8 +362,6 @@ public class CallOperationActionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CALL_OPERATION_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.CALL_OPERATION_ACTION__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.CALL_OPERATION_ACTION__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -444,8 +441,6 @@ public class CallOperationActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.CALL_OPERATION_ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.CALL_OPERATION_ACTION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.CALL_OPERATION_ACTION__IN_STRUCTURED_NODE :
@@ -458,6 +453,8 @@ public class CallOperationActionImpl
 				return getOutgoings();
 			case UMLPackage.CALL_OPERATION_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.CALL_OPERATION_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.CALL_OPERATION_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.CALL_OPERATION_ACTION__HANDLER :
@@ -732,8 +729,6 @@ public class CallOperationActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.CALL_OPERATION_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.CALL_OPERATION_ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.CALL_OPERATION_ACTION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.CALL_OPERATION_ACTION__IN_STRUCTURED_NODE :
@@ -745,6 +740,8 @@ public class CallOperationActionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.CALL_OPERATION_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.CALL_OPERATION_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.CALL_OPERATION_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.CALL_OPERATION_ACTION__HANDLER :
@@ -871,16 +868,16 @@ public class CallOperationActionImpl
 				return allOwnedElements();
 			case UMLPackage.CALL_OPERATION_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.CALL_OPERATION_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CALL_OPERATION_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CALL_OPERATION_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CALL_OPERATION_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CALL_OPERATION_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -934,20 +931,16 @@ public class CallOperationActionImpl
 				return validateOnPortReceiver(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CALL_OPERATION_ACTION___VALIDATE_TYPE_ORDERING_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
-				return validateTypeOrderingMultiplicity(
+			case UMLPackage.CALL_OPERATION_ACTION___VALIDATE_SYNCHRONOUS_CALL__DIAGNOSTICCHAIN_MAP :
+				return validateSynchronousCall(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CALL_OPERATION_ACTION___VALIDATE_NUMBER_AND_ORDER__DIAGNOSTICCHAIN_MAP :
 				return validateNumberAndOrder(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CALL_OPERATION_ACTION___VALIDATE_SYNCHRONOUS_CALL__DIAGNOSTICCHAIN_MAP :
-				return validateSynchronousCall(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CALL_OPERATION_ACTION___VALIDATE_TYPE_TARGET_PIN__DIAGNOSTICCHAIN_MAP :
-				return validateTypeTargetPin(
+			case UMLPackage.CALL_OPERATION_ACTION___VALIDATE_TYPE_ORDERING_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
+				return validateTypeOrderingMultiplicity(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CALL_OPERATION_ACTION___VALIDATE_ARGUMENT_PIN_EQUAL_PARAMETER__DIAGNOSTICCHAIN_MAP :
@@ -956,6 +949,10 @@ public class CallOperationActionImpl
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CALL_OPERATION_ACTION___VALIDATE_RESULT_PIN_EQUAL_PARAMETER__DIAGNOSTICCHAIN_MAP :
 				return validateResultPinEqualParameter(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CALL_OPERATION_ACTION___VALIDATE_TYPE_TARGET_PIN__DIAGNOSTICCHAIN_MAP :
+				return validateTypeTargetPin(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

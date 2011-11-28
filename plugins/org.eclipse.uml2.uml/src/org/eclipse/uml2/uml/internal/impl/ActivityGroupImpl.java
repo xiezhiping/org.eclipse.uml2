@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ActivityGroupImpl.java,v 1.23 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -62,12 +61,12 @@ import org.eclipse.uml2.uml.internal.operations.ActivityGroupOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getContainedEdges <em>Contained Edge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getContainedNodes <em>Contained Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getSubgroups <em>Subgroup</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getSuperGroup <em>Super Group</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getContainedEdges <em>Contained Edge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getInActivity <em>In Activity</em>}</li>
  * </ul>
  * </p>
@@ -297,42 +296,40 @@ public abstract class ActivityGroupImpl
 	 * @generated
 	 */
 	public Activity getInActivity() {
-		if (eContainerFeatureID() != UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY)
-			return null;
-		return (Activity) eContainer();
+		Activity inActivity = basicGetInActivity();
+		return inActivity != null && inActivity.eIsProxy()
+			? (Activity) eResolveProxy((InternalEObject) inActivity)
+			: inActivity;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Activity basicGetInActivity() {
-		if (eContainerFeatureID() != UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY)
-			return null;
-		return (Activity) eInternalContainer();
+		InternalEObject eInternalContainer = eInternalContainer();
+		return eInternalContainer instanceof Activity
+			? (Activity) eInternalContainer
+			: null;
+	}
+
+	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
+		InternalEObject eInternalContainer = eInternalContainer();
+		if (eInternalContainer instanceof Activity) {
+			return ((InternalEList<ActivityGroup>) ((Activity) eInternalContainer)
+				.getGroups()).basicRemove(this, msgs);
+		}
+		return super.eBasicRemoveFromContainer(msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetInActivity(Activity newInActivity,
-			NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newInActivity,
-			UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setInActivity(Activity newInActivity) {
-		if (newInActivity != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY && newInActivity != null)) {
+		if (newInActivity != eInternalContainer()) {
 			if (EcoreUtil.isAncestor(this, newInActivity))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -340,9 +337,11 @@ public abstract class ActivityGroupImpl
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newInActivity != null)
-				msgs = ((InternalEObject) newInActivity).eInverseAdd(this,
-					UMLPackage.ACTIVITY__GROUP, Activity.class, msgs);
-			msgs = basicSetInActivity(newInActivity, msgs);
+				msgs = ((InternalEList<ActivityGroup>) newInActivity
+					.getOwnedGroups()).basicAdd(this, msgs);
+			msgs = eBasicSetContainer((InternalEObject) newInActivity,
+				InternalEObject.EOPPOSITE_FEATURE_BASE
+					- UMLPackage.ACTIVITY__OWNED_GROUP, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -389,72 +388,6 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case UMLPackage.ACTIVITY_GROUP__EANNOTATIONS :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ACTIVITY_GROUP__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetInActivity((Activity) otherEnd, msgs);
-		}
-		return eDynamicInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case UMLPackage.ACTIVITY_GROUP__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.ACTIVITY_GROUP__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
-			case UMLPackage.ACTIVITY_GROUP__NAME_EXPRESSION :
-				return basicSetNameExpression(null, msgs);
-			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
-				return basicSetInActivity(null, msgs);
-		}
-		return eDynamicInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(
-			NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
-				return eInternalContainer().eInverseRemove(this,
-					UMLPackage.ACTIVITY__GROUP, Activity.class, msgs);
-		}
-		return eDynamicBasicRemoveFromContainer(msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -484,6 +417,8 @@ public abstract class ActivityGroupImpl
 				return getQualifiedName();
 			case UMLPackage.ACTIVITY_GROUP__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE :
+				return getContainedEdges();
 			case UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE :
 				return getContainedNodes();
 			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
@@ -496,8 +431,6 @@ public abstract class ActivityGroupImpl
 				if (resolve)
 					return getSuperGroup();
 				return basicGetSuperGroup();
-			case UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE :
-				return getContainedEdges();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -606,6 +539,8 @@ public abstract class ActivityGroupImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ACTIVITY_GROUP__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE :
+				return isSetContainedEdges();
 			case UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE :
 				return isSetContainedNodes();
 			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
@@ -614,8 +549,6 @@ public abstract class ActivityGroupImpl
 				return isSetSubgroups();
 			case UMLPackage.ACTIVITY_GROUP__SUPER_GROUP :
 				return isSetSuperGroup();
-			case UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE :
-				return isSetContainedEdges();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -712,16 +645,16 @@ public abstract class ActivityGroupImpl
 				return allOwnedElements();
 			case UMLPackage.ACTIVITY_GROUP___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.ACTIVITY_GROUP___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_GROUP___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_GROUP___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_GROUP___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_GROUP___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -745,15 +678,15 @@ public abstract class ActivityGroupImpl
 				return getQualifiedName();
 			case UMLPackage.ACTIVITY_GROUP___SEPARATOR :
 				return separator();
-			case UMLPackage.ACTIVITY_GROUP___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateNodesAndEdges(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_GROUP___VALIDATE_GROUP_OWNED__DIAGNOSTICCHAIN_MAP :
 				return validateGroupOwned((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_GROUP___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
 				return validateNotContained((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_GROUP___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateNodesAndEdges(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

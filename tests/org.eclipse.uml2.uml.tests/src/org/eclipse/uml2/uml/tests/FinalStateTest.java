@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: FinalStateTest.java,v 1.4 2007/02/14 20:06:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -25,12 +24,12 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoExitBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Exit Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoOutgoingTransitions(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Outgoing Transitions</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoRegions(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Regions</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.FinalState#validateCannotReferenceSubmachine(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Cannot Reference Submachine</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoExitBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Exit Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoEntryBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Entry Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoStateBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No State Behavior</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoRegions(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Regions</em>}</li>
  * </ul>
  * </p>
  * @generated

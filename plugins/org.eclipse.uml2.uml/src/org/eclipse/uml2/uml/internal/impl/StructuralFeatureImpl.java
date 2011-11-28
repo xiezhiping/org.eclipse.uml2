@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: StructuralFeatureImpl.java,v 1.32 2010/09/28 21:02:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1084,14 +1083,14 @@ public abstract class StructuralFeatureImpl
 		}
 		if (baseClass == MultiplicityElement.class) {
 			switch (baseOperationID) {
-				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
-					return UMLPackage.STRUCTURAL_FEATURE___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
 					return UMLPackage.STRUCTURAL_FEATURE___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP;
-				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
-					return UMLPackage.STRUCTURAL_FEATURE___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.STRUCTURAL_FEATURE___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
 					return UMLPackage.STRUCTURAL_FEATURE___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.STRUCTURAL_FEATURE___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___SET_LOWER__INT :
 					return UMLPackage.STRUCTURAL_FEATURE___SET_LOWER__INT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___SET_UPPER__INT :
@@ -1213,16 +1212,16 @@ public abstract class StructuralFeatureImpl
 				return allOwnedElements();
 			case UMLPackage.STRUCTURAL_FEATURE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1263,18 +1262,18 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
-				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
 				return validateLowerGe0((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
-				return validateValueSpecificationNoSideEffects(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
+				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
 				return validateValueSpecificationConstant(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
+				return validateValueSpecificationNoSideEffects(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE___SET_LOWER__INT :

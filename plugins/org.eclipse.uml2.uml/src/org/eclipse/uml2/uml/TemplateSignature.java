@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: TemplateSignature.java,v 1.14 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -101,8 +100,8 @@ public interface TemplateSignature
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.TemplateSignature#getParameters() <em>Parameter</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->

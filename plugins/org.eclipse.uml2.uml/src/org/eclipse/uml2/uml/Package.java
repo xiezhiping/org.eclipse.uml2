@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: Package.java,v 1.23 2009/08/12 21:05:18 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -693,10 +692,10 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query makesVisible() defines whether a Package makes an element visible outside itself. Elements with no visibility and elements with public visibility are made visible.
-	 * self.member->includes(el)
 	 * result = (ownedMember->includes(el)) or
 	 * (elementImport->select(ei|ei.importedElement = #public)->collect(ei|ei.importedElement)->includes(el)) or
 	 * (packageImport->select(pi|pi.visibility = #public)->collect(pi|pi.importedPackage.member->includes(el))->notEmpty())
+	 * self.member->includes(el)
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" elRequired="true" elOrdered="false"
 	 * @generated

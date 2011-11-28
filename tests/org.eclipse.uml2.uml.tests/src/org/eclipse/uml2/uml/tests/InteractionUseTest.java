@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: InteractionUseTest.java,v 1.6 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -25,12 +24,12 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.InteractionUse#validateGatesMatch(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Gates Match</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.InteractionUse#validateArgumentsAreConstants(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Arguments Are Constants</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InteractionUse#validateAllLifelines(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate All Lifelines</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionUse#validateReturnValueRecipientCoverage(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Return Value Recipient Coverage</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionUse#validateArgumentsCorrespondToParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Arguments Correspond To Parameters</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InteractionUse#validateGatesMatch(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Gates Match</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InteractionUse#validateArgumentsAreConstants(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Arguments Are Constants</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionUse#validateReturnValueTypeRecipientCorrespondence(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Return Value Type Recipient Correspondence</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.InteractionUse#validateAllLifelines(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate All Lifelines</em>}</li>
  * </ul>
  * </p>
  * @generated

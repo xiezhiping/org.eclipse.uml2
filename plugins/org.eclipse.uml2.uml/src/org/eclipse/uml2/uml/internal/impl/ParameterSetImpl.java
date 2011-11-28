@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ParameterSetImpl.java,v 1.24 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -585,16 +584,16 @@ public class ParameterSetImpl
 				return allOwnedElements();
 			case UMLPackage.PARAMETER_SET___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.PARAMETER_SET___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER_SET___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER_SET___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PARAMETER_SET___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER_SET___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -618,15 +617,15 @@ public class ParameterSetImpl
 				return getQualifiedName();
 			case UMLPackage.PARAMETER_SET___SEPARATOR :
 				return separator();
-			case UMLPackage.PARAMETER_SET___VALIDATE_SAME_PARAMETERIZED_ENTITY__DIAGNOSTICCHAIN_MAP :
-				return validateSameParameterizedEntity(
+			case UMLPackage.PARAMETER_SET___VALIDATE_TWO_PARAMETER_SETS__DIAGNOSTICCHAIN_MAP :
+				return validateTwoParameterSets(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER_SET___VALIDATE_INPUT__DIAGNOSTICCHAIN_MAP :
 				return validateInput((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PARAMETER_SET___VALIDATE_TWO_PARAMETER_SETS__DIAGNOSTICCHAIN_MAP :
-				return validateTwoParameterSets(
+			case UMLPackage.PARAMETER_SET___VALIDATE_SAME_PARAMETERIZED_ENTITY__DIAGNOSTICCHAIN_MAP :
+				return validateSameParameterizedEntity(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ActivityNode.java,v 1.16 2008/01/09 18:56:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -35,12 +34,12 @@ import org.eclipse.emf.ecore.EClass;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getActivity <em>Activity</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getInGroups <em>In Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getInPartitions <em>In Partition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getInStructuredNode <em>In Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getInInterruptibleRegions <em>In Interruptible Region</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getOutgoings <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getIncomings <em>Incoming</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getInGroups <em>In Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getRedefinedNodes <em>Redefined Node</em>}</li>
  * </ul>
  * </p>
@@ -187,8 +186,8 @@ public interface ActivityNode
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.ActivityNode#getInGroups() <em>In Group</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
@@ -216,7 +215,7 @@ public interface ActivityNode
 	void setInStructuredNode(StructuredActivityNode value);
 
 	/**
-	 * Returns the value of the '<em><b>Activity</b></em>' container reference.
+	 * Returns the value of the '<em><b>Activity</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Activity#getNodes <em>Node</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
@@ -229,20 +228,20 @@ public interface ActivityNode
 	 * <!-- begin-model-doc -->
 	 * Activity containing the node.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Activity</em>' container reference.
+	 * @return the value of the '<em>Activity</em>' reference.
 	 * @see #setActivity(Activity)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityNode_Activity()
 	 * @see org.eclipse.uml2.uml.Activity#getNodes
-	 * @model opposite="node" transient="false" ordered="false"
+	 * @model opposite="node" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	Activity getActivity();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.ActivityNode#getActivity <em>Activity</em>}' container reference.
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.ActivityNode#getActivity <em>Activity</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Activity</em>' container reference.
+	 * @param value the new value of the '<em>Activity</em>' reference.
 	 * @see #getActivity()
 	 * @generated
 	 */

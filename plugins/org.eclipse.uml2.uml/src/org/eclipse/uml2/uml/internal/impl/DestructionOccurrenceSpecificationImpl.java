@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 351774
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -163,16 +164,16 @@ public class DestructionOccurrenceSpecificationImpl
 				return allOwnedElements();
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___CREATE_DEPENDENCY__NAMEDELEMENT :

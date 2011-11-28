@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: Pin.java,v 1.6 2007/04/25 17:47:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -23,8 +22,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A pin is an object node for inputs and outputs to actions.
  * A pin is a typed element and multiplicity element that provides values to actions and accept result values from them.
+ * A pin is an object node for inputs and outputs to actions.
  * <!-- end-model-doc -->
  *
  * <p>

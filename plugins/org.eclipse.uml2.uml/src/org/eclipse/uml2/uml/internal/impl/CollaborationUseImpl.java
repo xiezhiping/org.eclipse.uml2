@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: CollaborationUseImpl.java,v 1.24 2010/09/28 21:02:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -560,16 +559,16 @@ public class CollaborationUseImpl
 				return allOwnedElements();
 			case UMLPackage.COLLABORATION_USE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.COLLABORATION_USE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COLLABORATION_USE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COLLABORATION_USE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.COLLABORATION_USE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COLLABORATION_USE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -593,15 +592,15 @@ public class CollaborationUseImpl
 				return getQualifiedName();
 			case UMLPackage.COLLABORATION_USE___SEPARATOR :
 				return separator();
-			case UMLPackage.COLLABORATION_USE___VALIDATE_CLIENT_ELEMENTS__DIAGNOSTICCHAIN_MAP :
-				return validateClientElements(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.COLLABORATION_USE___VALIDATE_CONNECTORS__DIAGNOSTICCHAIN_MAP :
+				return validateConnectors((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COLLABORATION_USE___VALIDATE_EVERY_ROLE__DIAGNOSTICCHAIN_MAP :
 				return validateEveryRole((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.COLLABORATION_USE___VALIDATE_CONNECTORS__DIAGNOSTICCHAIN_MAP :
-				return validateConnectors((DiagnosticChain) arguments.get(0),
+			case UMLPackage.COLLABORATION_USE___VALIDATE_CLIENT_ELEMENTS__DIAGNOSTICCHAIN_MAP :
+				return validateClientElements(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

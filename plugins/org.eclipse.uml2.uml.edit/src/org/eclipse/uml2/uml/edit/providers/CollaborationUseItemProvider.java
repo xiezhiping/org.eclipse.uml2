@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: CollaborationUseItemProvider.java,v 1.14 2010/09/28 21:00:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -233,19 +232,19 @@ public class CollaborationUseItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
-			UMLFactory.eINSTANCE.createUsage()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
 			UMLFactory.eINSTANCE.createRealization()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
-			UMLFactory.eINSTANCE.createSubstitution()));
+			UMLFactory.eINSTANCE.createInterfaceRealization()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
-			UMLFactory.eINSTANCE.createInterfaceRealization()));
+			UMLFactory.eINSTANCE.createUsage()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
+			UMLFactory.eINSTANCE.createSubstitution()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,

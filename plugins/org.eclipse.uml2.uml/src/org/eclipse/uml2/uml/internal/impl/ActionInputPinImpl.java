@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ActionInputPinImpl.java,v 1.33 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -292,8 +291,6 @@ public class ActionInputPinImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTION_INPUT_PIN__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.ACTION_INPUT_PIN__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.ACTION_INPUT_PIN__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -364,8 +361,6 @@ public class ActionInputPinImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.ACTION_INPUT_PIN__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.ACTION_INPUT_PIN__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.ACTION_INPUT_PIN__IN_STRUCTURED_NODE :
@@ -378,6 +373,8 @@ public class ActionInputPinImpl
 				return getOutgoings();
 			case UMLPackage.ACTION_INPUT_PIN__INCOMING :
 				return getIncomings();
+			case UMLPackage.ACTION_INPUT_PIN__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.ACTION_INPUT_PIN__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.ACTION_INPUT_PIN__TYPE :
@@ -674,8 +671,6 @@ public class ActionInputPinImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.ACTION_INPUT_PIN__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.ACTION_INPUT_PIN__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.ACTION_INPUT_PIN__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.ACTION_INPUT_PIN__IN_STRUCTURED_NODE :
@@ -687,6 +682,8 @@ public class ActionInputPinImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.ACTION_INPUT_PIN__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.ACTION_INPUT_PIN__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.ACTION_INPUT_PIN__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.ACTION_INPUT_PIN__TYPE :
@@ -813,16 +810,16 @@ public class ActionInputPinImpl
 				return allOwnedElements();
 			case UMLPackage.ACTION_INPUT_PIN___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.ACTION_INPUT_PIN___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTION_INPUT_PIN___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTION_INPUT_PIN___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTION_INPUT_PIN___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTION_INPUT_PIN___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -870,30 +867,30 @@ public class ActionInputPinImpl
 				return validateOwnedStructuredNode(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTION_INPUT_PIN___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
-				return validateInputOutputParameter(
+			case UMLPackage.ACTION_INPUT_PIN___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateObjectFlowEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTION_INPUT_PIN___VALIDATE_SELECTION_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
 				return validateSelectionBehavior(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTION_INPUT_PIN___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateObjectFlowEdges(
+			case UMLPackage.ACTION_INPUT_PIN___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
+				return validateInputOutputParameter(
 					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTION_INPUT_PIN___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
-				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTION_INPUT_PIN___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
 				return validateLowerGe0((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTION_INPUT_PIN___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
-				return validateValueSpecificationNoSideEffects(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.ACTION_INPUT_PIN___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
+				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTION_INPUT_PIN___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
 				return validateValueSpecificationConstant(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTION_INPUT_PIN___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
+				return validateValueSpecificationNoSideEffects(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTION_INPUT_PIN___SET_LOWER__INT :
@@ -932,12 +929,12 @@ public class ActionInputPinImpl
 			case UMLPackage.ACTION_INPUT_PIN___VALIDATE_INPUT_PIN__DIAGNOSTICCHAIN_MAP :
 				return validateInputPin((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTION_INPUT_PIN___VALIDATE_ONE_OUTPUT_PIN__DIAGNOSTICCHAIN_MAP :
-				return validateOneOutputPin((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTION_INPUT_PIN___VALIDATE_NO_CONTROL_OR_DATA_FLOW__DIAGNOSTICCHAIN_MAP :
 				return validateNoControlOrDataFlow(
 					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTION_INPUT_PIN___VALIDATE_ONE_OUTPUT_PIN__DIAGNOSTICCHAIN_MAP :
+				return validateOneOutputPin((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

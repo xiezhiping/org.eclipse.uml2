@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: CreateLinkObjectActionImpl.java,v 1.28 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -292,8 +291,6 @@ public class CreateLinkObjectActionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.CREATE_LINK_OBJECT_ACTION__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -373,8 +370,6 @@ public class CreateLinkObjectActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.CREATE_LINK_OBJECT_ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__IN_STRUCTURED_NODE :
@@ -387,6 +382,8 @@ public class CreateLinkObjectActionImpl
 				return getOutgoings();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.CREATE_LINK_OBJECT_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__HANDLER :
@@ -634,8 +631,6 @@ public class CreateLinkObjectActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.CREATE_LINK_OBJECT_ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__IN_STRUCTURED_NODE :
@@ -647,6 +642,8 @@ public class CreateLinkObjectActionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.CREATE_LINK_OBJECT_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__HANDLER :
@@ -767,16 +764,16 @@ public class CreateLinkObjectActionImpl
 				return allOwnedElements();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.CREATE_LINK_OBJECT_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CREATE_LINK_OBJECT_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -845,15 +842,15 @@ public class CreateLinkObjectActionImpl
 				return validateAssociationNotAbstract(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CREATE_LINK_OBJECT_ACTION___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicity((DiagnosticChain) arguments.get(0),
+			case UMLPackage.CREATE_LINK_OBJECT_ACTION___VALIDATE_ASSOCIATION_CLASS__DIAGNOSTICCHAIN_MAP :
+				return validateAssociationClass(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION___VALIDATE_TYPE_OF_RESULT__DIAGNOSTICCHAIN_MAP :
 				return validateTypeOfResult((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CREATE_LINK_OBJECT_ACTION___VALIDATE_ASSOCIATION_CLASS__DIAGNOSTICCHAIN_MAP :
-				return validateAssociationClass(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.CREATE_LINK_OBJECT_ACTION___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
+				return validateMultiplicity((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: Component.java,v 1.27 2009/08/12 21:05:18 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -25,8 +24,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A component represents a modular part of a system that encapsulates its contents and whose manifestation is replaceable within its environment.
  * In the namespace of a component, all model elements that are involved in or related to its definition are either owned or imported explicitly. This may include, for example, use cases and dependencies (e.g. mappings), packages, components, and artifacts.
+ * A component represents a modular part of a system that encapsulates its contents and whose manifestation is replaceable within its environment.
  * <!-- end-model-doc -->
  *
  * <p>

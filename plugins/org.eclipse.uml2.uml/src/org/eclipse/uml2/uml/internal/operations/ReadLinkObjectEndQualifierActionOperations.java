@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ReadLinkObjectEndQualifierActionOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -31,12 +30,12 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateMultiplicityOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Object</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateTypeOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Object</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateMultiplicityOfQualifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Qualifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateEndsOfAssociation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Ends Of Association</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateMultiplicityOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateSameType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateEndsOfAssociation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Ends Of Association</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateMultiplicityOfQualifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Qualifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateMultiplicityOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Object</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateAssociationOfAssociation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Association Of Association</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateQualifierAttribute(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Qualifier Attribute</em>}</li>
  * </ul>

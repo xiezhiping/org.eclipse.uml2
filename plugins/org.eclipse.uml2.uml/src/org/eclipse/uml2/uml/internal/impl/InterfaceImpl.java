@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: InterfaceImpl.java,v 1.32 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -89,10 +88,10 @@ import org.eclipse.uml2.uml.internal.operations.InterfaceOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getRedefinedClassifiers <em>Redefined Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getNestedClassifiers <em>Nested Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getOwnedAttributes <em>Owned Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getOwnedOperations <em>Owned Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getOwnedReceptions <em>Owned Reception</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getProtocol <em>Protocol</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getRedefinedInterfaces <em>Redefined Interface</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getOwnedOperations <em>Owned Operation</em>}</li>
  * </ul>
  * </p>
  *
@@ -123,6 +122,16 @@ public class InterfaceImpl
 	protected EList<Property> ownedAttributes;
 
 	/**
+	 * The cached value of the '{@link #getOwnedOperations() <em>Owned Operation</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedOperations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Operation> ownedOperations;
+
+	/**
 	 * The cached value of the '{@link #getOwnedReceptions() <em>Owned Reception</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -151,16 +160,6 @@ public class InterfaceImpl
 	 * @ordered
 	 */
 	protected EList<Interface> redefinedInterfaces;
-
-	/**
-	 * The cached value of the '{@link #getOwnedOperations() <em>Owned Operation</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedOperations()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Operation> ownedOperations;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -860,14 +859,14 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
 				return ((InternalEList<?>) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.INTERFACE__OWNED_OPERATION :
+				return ((InternalEList<?>) getOwnedOperations()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.INTERFACE__OWNED_RECEPTION :
 				return ((InternalEList<?>) getOwnedReceptions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INTERFACE__PROTOCOL :
 				return basicSetProtocol(null, msgs);
-			case UMLPackage.INTERFACE__OWNED_OPERATION :
-				return ((InternalEList<?>) getOwnedOperations()).basicRemove(
-					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -976,6 +975,8 @@ public class InterfaceImpl
 				return getNestedClassifiers();
 			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
+			case UMLPackage.INTERFACE__OWNED_OPERATION :
+				return getOwnedOperations();
 			case UMLPackage.INTERFACE__OWNED_RECEPTION :
 				return getOwnedReceptions();
 			case UMLPackage.INTERFACE__PROTOCOL :
@@ -984,8 +985,6 @@ public class InterfaceImpl
 				return basicGetProtocol();
 			case UMLPackage.INTERFACE__REDEFINED_INTERFACE :
 				return getRedefinedInterfaces();
-			case UMLPackage.INTERFACE__OWNED_OPERATION :
-				return getOwnedOperations();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -1116,6 +1115,11 @@ public class InterfaceImpl
 				getOwnedAttributes().addAll(
 					(Collection<? extends Property>) newValue);
 				return;
+			case UMLPackage.INTERFACE__OWNED_OPERATION :
+				getOwnedOperations().clear();
+				getOwnedOperations().addAll(
+					(Collection<? extends Operation>) newValue);
+				return;
 			case UMLPackage.INTERFACE__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				getOwnedReceptions().addAll(
@@ -1128,11 +1132,6 @@ public class InterfaceImpl
 				getRedefinedInterfaces().clear();
 				getRedefinedInterfaces().addAll(
 					(Collection<? extends Interface>) newValue);
-				return;
-			case UMLPackage.INTERFACE__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				getOwnedOperations().addAll(
-					(Collection<? extends Operation>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1230,6 +1229,9 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				return;
+			case UMLPackage.INTERFACE__OWNED_OPERATION :
+				getOwnedOperations().clear();
+				return;
 			case UMLPackage.INTERFACE__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				return;
@@ -1238,9 +1240,6 @@ public class InterfaceImpl
 				return;
 			case UMLPackage.INTERFACE__REDEFINED_INTERFACE :
 				getRedefinedInterfaces().clear();
-				return;
-			case UMLPackage.INTERFACE__OWNED_OPERATION :
-				getOwnedOperations().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -1340,6 +1339,8 @@ public class InterfaceImpl
 					&& !nestedClassifiers.isEmpty();
 			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
 				return ownedAttributes != null && !ownedAttributes.isEmpty();
+			case UMLPackage.INTERFACE__OWNED_OPERATION :
+				return ownedOperations != null && !ownedOperations.isEmpty();
 			case UMLPackage.INTERFACE__OWNED_RECEPTION :
 				return ownedReceptions != null && !ownedReceptions.isEmpty();
 			case UMLPackage.INTERFACE__PROTOCOL :
@@ -1347,8 +1348,6 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__REDEFINED_INTERFACE :
 				return redefinedInterfaces != null
 					&& !redefinedInterfaces.isEmpty();
-			case UMLPackage.INTERFACE__OWNED_OPERATION :
-				return ownedOperations != null && !ownedOperations.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1445,16 +1444,16 @@ public class InterfaceImpl
 				return allOwnedElements();
 			case UMLPackage.INTERFACE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.INTERFACE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERFACE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERFACE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INTERFACE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERFACE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1546,20 +1545,20 @@ public class InterfaceImpl
 				return isTemplate();
 			case UMLPackage.INTERFACE___PARAMETERABLE_ELEMENTS :
 				return parameterableElements();
-			case UMLPackage.INTERFACE___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
-				return validateSpecializeType(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INTERFACE___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
-				return validateMapsToGeneralizationSet(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERFACE___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
 				return validateNonFinalParents(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERFACE___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
 				return validateNoCyclesInGeneralization(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INTERFACE___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
+				return validateSpecializeType(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INTERFACE___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
+				return validateMapsToGeneralizationSet(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERFACE___GET_ALL_ATTRIBUTES :
@@ -1638,8 +1637,8 @@ public class InterfaceImpl
 		UMLPackage.INTERFACE__OWNED_RULE, UMLPackage.INTERFACE__OWNED_USE_CASE,
 		UMLPackage.INTERFACE__NESTED_CLASSIFIER,
 		UMLPackage.INTERFACE__OWNED_ATTRIBUTE,
-		UMLPackage.INTERFACE__OWNED_RECEPTION, UMLPackage.INTERFACE__PROTOCOL,
-		UMLPackage.INTERFACE__OWNED_OPERATION};
+		UMLPackage.INTERFACE__OWNED_OPERATION,
+		UMLPackage.INTERFACE__OWNED_RECEPTION, UMLPackage.INTERFACE__PROTOCOL};
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getAttributes() <em>Attribute</em>}' reference list.
@@ -1661,9 +1660,9 @@ public class InterfaceImpl
 		return super.isSetOwnedMembers()
 			|| eIsSet(UMLPackage.INTERFACE__NESTED_CLASSIFIER)
 			|| eIsSet(UMLPackage.INTERFACE__OWNED_ATTRIBUTE)
+			|| eIsSet(UMLPackage.INTERFACE__OWNED_OPERATION)
 			|| eIsSet(UMLPackage.INTERFACE__OWNED_RECEPTION)
-			|| eIsSet(UMLPackage.INTERFACE__PROTOCOL)
-			|| eIsSet(UMLPackage.INTERFACE__OWNED_OPERATION);
+			|| eIsSet(UMLPackage.INTERFACE__PROTOCOL);
 	}
 
 	/**
@@ -1675,8 +1674,8 @@ public class InterfaceImpl
 	 * @ordered
 	 */
 	protected static final int[] FEATURE_ESUBSETS = new int[]{
-		UMLPackage.INTERFACE__ATTRIBUTE, UMLPackage.INTERFACE__OWNED_RECEPTION,
-		UMLPackage.INTERFACE__OWNED_OPERATION};
+		UMLPackage.INTERFACE__ATTRIBUTE, UMLPackage.INTERFACE__OWNED_OPERATION,
+		UMLPackage.INTERFACE__OWNED_RECEPTION};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1747,8 +1746,8 @@ public class InterfaceImpl
 	@Override
 	public boolean isSetFeatures() {
 		return super.isSetFeatures()
-			|| eIsSet(UMLPackage.INTERFACE__OWNED_RECEPTION)
-			|| eIsSet(UMLPackage.INTERFACE__OWNED_OPERATION);
+			|| eIsSet(UMLPackage.INTERFACE__OWNED_OPERATION)
+			|| eIsSet(UMLPackage.INTERFACE__OWNED_RECEPTION);
 	}
 
 } //InterfaceImpl

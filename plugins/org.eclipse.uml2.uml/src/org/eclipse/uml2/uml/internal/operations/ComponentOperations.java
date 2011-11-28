@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ComponentOperations.java,v 1.15 2008/10/02 20:56:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -48,8 +47,8 @@ import org.eclipse.uml2.uml.Usage;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Component#validateNoNestedClassifiers(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Nested Classifiers</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Component#validateNoPackagedElements(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Packaged Elements</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Component#validateNoNestedClassifiers(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Nested Classifiers</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Component#createOwnedClass(java.lang.String, boolean) <em>Create Owned Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Component#createOwnedEnumeration(java.lang.String) <em>Create Owned Enumeration</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Component#createOwnedInterface(java.lang.String) <em>Create Owned Interface</em>}</li>

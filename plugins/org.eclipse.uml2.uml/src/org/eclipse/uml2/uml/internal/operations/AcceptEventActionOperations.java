@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: AcceptEventActionOperations.java,v 1.7 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -31,10 +30,10 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.AcceptEventAction#validateTriggerEvents(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Trigger Events</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.AcceptEventAction#validateNoInputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Input Pins</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.AcceptEventAction#validateNoOutputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Output Pins</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.AcceptEventAction#validateTriggerEvents(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Trigger Events</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.AcceptEventAction#validateUnmarshallSignalEvents(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Unmarshall Signal Events</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.AcceptEventAction#validateNoOutputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Output Pins</em>}</li>
  * </ul>
  * </p>
  *

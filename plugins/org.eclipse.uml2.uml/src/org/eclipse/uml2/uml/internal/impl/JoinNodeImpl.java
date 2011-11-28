@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: JoinNodeImpl.java,v 1.30 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -323,8 +322,6 @@ public class JoinNodeImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.JOIN_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.JOIN_NODE__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.JOIN_NODE__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -389,8 +386,6 @@ public class JoinNodeImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.JOIN_NODE__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.JOIN_NODE__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE :
@@ -403,6 +398,8 @@ public class JoinNodeImpl
 				return getOutgoings();
 			case UMLPackage.JOIN_NODE__INCOMING :
 				return getIncomings();
+			case UMLPackage.JOIN_NODE__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.JOIN_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.JOIN_NODE__IS_COMBINE_DUPLICATE :
@@ -592,8 +589,6 @@ public class JoinNodeImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.JOIN_NODE__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.JOIN_NODE__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.JOIN_NODE__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE :
@@ -605,6 +600,8 @@ public class JoinNodeImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.JOIN_NODE__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.JOIN_NODE__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.JOIN_NODE__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.JOIN_NODE__IS_COMBINE_DUPLICATE :
@@ -707,16 +704,16 @@ public class JoinNodeImpl
 				return allOwnedElements();
 			case UMLPackage.JOIN_NODE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.JOIN_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.JOIN_NODE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.JOIN_NODE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.JOIN_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.JOIN_NODE___CREATE_DEPENDENCY__NAMEDELEMENT :

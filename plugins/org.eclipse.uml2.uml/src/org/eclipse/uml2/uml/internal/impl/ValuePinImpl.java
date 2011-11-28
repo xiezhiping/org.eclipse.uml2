@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ValuePinImpl.java,v 1.30 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -289,8 +288,6 @@ public class ValuePinImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.VALUE_PIN__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.VALUE_PIN__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.VALUE_PIN__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -361,8 +358,6 @@ public class ValuePinImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.VALUE_PIN__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.VALUE_PIN__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.VALUE_PIN__IN_STRUCTURED_NODE :
@@ -375,6 +370,8 @@ public class ValuePinImpl
 				return getOutgoings();
 			case UMLPackage.VALUE_PIN__INCOMING :
 				return getIncomings();
+			case UMLPackage.VALUE_PIN__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.VALUE_PIN__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.VALUE_PIN__TYPE :
@@ -671,8 +668,6 @@ public class ValuePinImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.VALUE_PIN__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.VALUE_PIN__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.VALUE_PIN__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.VALUE_PIN__IN_STRUCTURED_NODE :
@@ -684,6 +679,8 @@ public class ValuePinImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.VALUE_PIN__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.VALUE_PIN__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.VALUE_PIN__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.VALUE_PIN__TYPE :
@@ -810,16 +807,16 @@ public class ValuePinImpl
 				return allOwnedElements();
 			case UMLPackage.VALUE_PIN___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.VALUE_PIN___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VALUE_PIN___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VALUE_PIN___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.VALUE_PIN___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VALUE_PIN___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -867,30 +864,30 @@ public class ValuePinImpl
 				return validateOwnedStructuredNode(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.VALUE_PIN___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
-				return validateInputOutputParameter(
+			case UMLPackage.VALUE_PIN___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateObjectFlowEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VALUE_PIN___VALIDATE_SELECTION_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
 				return validateSelectionBehavior(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.VALUE_PIN___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateObjectFlowEdges(
+			case UMLPackage.VALUE_PIN___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
+				return validateInputOutputParameter(
 					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.VALUE_PIN___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
-				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VALUE_PIN___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
 				return validateLowerGe0((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.VALUE_PIN___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
-				return validateValueSpecificationNoSideEffects(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.VALUE_PIN___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
+				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VALUE_PIN___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
 				return validateValueSpecificationConstant(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.VALUE_PIN___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
+				return validateValueSpecificationNoSideEffects(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VALUE_PIN___SET_LOWER__INT :
@@ -926,12 +923,12 @@ public class ValuePinImpl
 				return validateOutgoingEdgesStructuredOnly(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.VALUE_PIN___VALIDATE_NO_INCOMING_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateNoIncomingEdges(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VALUE_PIN___VALIDATE_COMPATIBLE_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateCompatibleType(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.VALUE_PIN___VALIDATE_NO_INCOMING_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateNoIncomingEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

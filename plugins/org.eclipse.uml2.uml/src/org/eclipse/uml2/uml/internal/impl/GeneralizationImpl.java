@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: GeneralizationImpl.java,v 1.23 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -58,8 +57,8 @@ import org.eclipse.uml2.uml.internal.operations.GeneralizationOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.GeneralizationImpl#getTargets <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.GeneralizationImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.GeneralizationImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.GeneralizationImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.GeneralizationImpl#getGeneral <em>General</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.GeneralizationImpl#getGeneralizationSets <em>Generalization Set</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.GeneralizationImpl#isSubstitutable <em>Is Substitutable</em>}</li>

@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ConnectionPointReferenceTest.java,v 1.5 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -25,8 +24,8 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ConnectionPointReference#validateExitPseudostates(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Exit Pseudostates</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ConnectionPointReference#validateEntryPseudostates(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Entry Pseudostates</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ConnectionPointReference#validateExitPseudostates(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Exit Pseudostates</em>}</li>
  * </ul>
  * </p>
  * @generated

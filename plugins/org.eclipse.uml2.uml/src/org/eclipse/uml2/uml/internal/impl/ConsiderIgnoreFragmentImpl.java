@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ConsiderIgnoreFragmentImpl.java,v 1.18 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -480,16 +479,16 @@ public class ConsiderIgnoreFragmentImpl
 				return allOwnedElements();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -513,27 +512,27 @@ public class ConsiderIgnoreFragmentImpl
 				return getQualifiedName();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___SEPARATOR :
 				return separator();
-			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_MININT_AND_MAXINT__DIAGNOSTICCHAIN_MAP :
-				return validateMinintAndMaxint(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_BREAK__DIAGNOSTICCHAIN_MAP :
 				return validateBreak((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_CONSIDER_AND_IGNORE__DIAGNOSTICCHAIN_MAP :
-				return validateConsiderAndIgnore(
-					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_OPT_LOOP_BREAK_NEG__DIAGNOSTICCHAIN_MAP :
 				return validateOptLoopBreakNeg(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_CONSIDER_OR_IGNORE__DIAGNOSTICCHAIN_MAP :
-				return validateConsiderOrIgnore(
+			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_CONSIDER_AND_IGNORE__DIAGNOSTICCHAIN_MAP :
+				return validateConsiderAndIgnore(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_MININT_AND_MAXINT__DIAGNOSTICCHAIN_MAP :
+				return validateMinintAndMaxint(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateType((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_CONSIDER_OR_IGNORE__DIAGNOSTICCHAIN_MAP :
+				return validateConsiderOrIgnore(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

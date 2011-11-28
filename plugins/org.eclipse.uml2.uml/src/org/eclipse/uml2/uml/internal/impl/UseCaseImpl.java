@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: UseCaseImpl.java,v 1.30 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1198,16 +1197,16 @@ public class UseCaseImpl
 				return allOwnedElements();
 			case UMLPackage.USE_CASE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.USE_CASE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.USE_CASE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.USE_CASE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.USE_CASE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.USE_CASE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1299,20 +1298,20 @@ public class UseCaseImpl
 				return isTemplate();
 			case UMLPackage.USE_CASE___PARAMETERABLE_ELEMENTS :
 				return parameterableElements();
-			case UMLPackage.USE_CASE___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
-				return validateSpecializeType(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.USE_CASE___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
-				return validateMapsToGeneralizationSet(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.USE_CASE___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
 				return validateNonFinalParents(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.USE_CASE___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
 				return validateNoCyclesInGeneralization(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.USE_CASE___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
+				return validateSpecializeType(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.USE_CASE___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
+				return validateMapsToGeneralizationSet(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.USE_CASE___GET_ALL_ATTRIBUTES :
@@ -1361,6 +1360,13 @@ public class UseCaseImpl
 				return getAllImplementedInterfaces();
 			case UMLPackage.USE_CASE___GET_IMPLEMENTED_INTERFACES :
 				return getImplementedInterfaces();
+			case UMLPackage.USE_CASE___VALIDATE_MUST_HAVE_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateMustHaveName((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.USE_CASE___VALIDATE_CANNOT_INCLUDE_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotIncludeSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.USE_CASE___VALIDATE_BINARY_ASSOCIATIONS__DIAGNOSTICCHAIN_MAP :
 				return validateBinaryAssociations(
 					(DiagnosticChain) arguments.get(0),
@@ -1368,13 +1374,6 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE___VALIDATE_NO_ASSOCIATION_TO_USE_CASE__DIAGNOSTICCHAIN_MAP :
 				return validateNoAssociationToUseCase(
 					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.USE_CASE___VALIDATE_CANNOT_INCLUDE_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateCannotIncludeSelf(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.USE_CASE___VALIDATE_MUST_HAVE_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateMustHaveName((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.USE_CASE___ALL_INCLUDED_USE_CASES :
 				return allIncludedUseCases();

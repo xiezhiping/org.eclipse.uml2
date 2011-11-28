@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: OpaqueExpressionOperations.java,v 1.14 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -36,9 +35,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#validateLanguageBodySize(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Language Body Size</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#validateOneReturnResultParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Return Result Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#validateOnlyReturnResultParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Only Return Result Parameters</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#validateOneReturnResultParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Return Result Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#validateLanguageBodySize(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Language Body Size</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#isIntegral() <em>Is Integral</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#isNonNegative() <em>Is Non Negative</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#isPositive() <em>Is Positive</em>}</li>

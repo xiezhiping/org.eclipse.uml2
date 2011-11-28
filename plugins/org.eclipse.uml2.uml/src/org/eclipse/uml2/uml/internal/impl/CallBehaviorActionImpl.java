@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: CallBehaviorActionImpl.java,v 1.21 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -220,8 +219,6 @@ public class CallBehaviorActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_STRUCTURED_NODE :
@@ -234,6 +231,8 @@ public class CallBehaviorActionImpl
 				return getOutgoings();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__HANDLER :
@@ -498,8 +497,6 @@ public class CallBehaviorActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_STRUCTURED_NODE :
@@ -511,6 +508,8 @@ public class CallBehaviorActionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__HANDLER :
@@ -635,16 +634,16 @@ public class CallBehaviorActionImpl
 				return allOwnedElements();
 			case UMLPackage.CALL_BEHAVIOR_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CALL_BEHAVIOR_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -698,16 +697,16 @@ public class CallBehaviorActionImpl
 				return validateOnPortReceiver(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_TYPE_ORDERING_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
-				return validateTypeOrderingMultiplicity(
+			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_SYNCHRONOUS_CALL__DIAGNOSTICCHAIN_MAP :
+				return validateSynchronousCall(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_NUMBER_AND_ORDER__DIAGNOSTICCHAIN_MAP :
 				return validateNumberAndOrder(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_SYNCHRONOUS_CALL__DIAGNOSTICCHAIN_MAP :
-				return validateSynchronousCall(
+			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_TYPE_ORDERING_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
+				return validateTypeOrderingMultiplicity(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_RESULT_PIN_EQUAL_PARAMETER__DIAGNOSTICCHAIN_MAP :

@@ -2,7 +2,7 @@
 <ecore2xml:XMLMap xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:ecore2xml="http://www.eclipse.org/emf/2005/Ecore2XML">
   <ecoreToXMLInfo>
     <key xsi:type="ecore:EPackage" href="UML.ecore#/"/>
-    <value name="cmof" targetNamespace="http://www.omg.org/spec/MOF/20100901/cmof.xmi"/>
+    <value name="cmof" targetNamespace="http://www.omg.org/spec/MOF/20110701/cmof.xmi"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
     <key xsi:type="ecore:EReference" href="UML.ecore#//Property/interface"/>

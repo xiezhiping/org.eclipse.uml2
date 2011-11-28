@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: TemplateParameterSubstitutionItemProvider.java,v 1.22 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -333,15 +332,11 @@ public class TemplateParameterSubstitutionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createParameter()));
+			UMLFactory.eINSTANCE.createRealization()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createConstraint()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createDataType()));
+			UMLFactory.eINSTANCE.createInterfaceRealization()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
@@ -362,6 +357,18 @@ public class TemplateParameterSubstitutionItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 			UMLFactory.eINSTANCE.createPort()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+			UMLFactory.eINSTANCE.createConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+			UMLFactory.eINSTANCE.createParameter()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+			UMLFactory.eINSTANCE.createDataType()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
@@ -405,15 +412,7 @@ public class TemplateParameterSubstitutionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createRealization()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 			UMLFactory.eINSTANCE.createSubstitution()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createInterfaceRealization()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,

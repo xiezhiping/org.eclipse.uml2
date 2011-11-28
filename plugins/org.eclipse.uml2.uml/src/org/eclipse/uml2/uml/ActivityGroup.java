@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ActivityGroup.java,v 1.17 2008/01/09 18:56:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -34,11 +33,11 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityGroup#getContainedEdges <em>Contained Edge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityGroup#getContainedNodes <em>Contained Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityGroup#getInActivity <em>In Activity</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityGroup#getSubgroups <em>Subgroup</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityGroup#getSuperGroup <em>Super Group</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityGroup#getContainedEdges <em>Contained Edge</em>}</li>
  * </ul>
  * </p>
  *
@@ -163,7 +162,7 @@ public interface ActivityGroup
 	ActivityNode getContainedNode(String name, boolean ignoreCase, EClass eClass);
 
 	/**
-	 * Returns the value of the '<em><b>In Activity</b></em>' container reference.
+	 * Returns the value of the '<em><b>In Activity</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Activity#getGroups <em>Group</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
@@ -176,20 +175,20 @@ public interface ActivityGroup
 	 * <!-- begin-model-doc -->
 	 * Activity containing the group.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>In Activity</em>' container reference.
+	 * @return the value of the '<em>In Activity</em>' reference.
 	 * @see #setInActivity(Activity)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityGroup_InActivity()
 	 * @see org.eclipse.uml2.uml.Activity#getGroups
-	 * @model opposite="group" transient="false" ordered="false"
+	 * @model opposite="group" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	Activity getInActivity();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.ActivityGroup#getInActivity <em>In Activity</em>}' container reference.
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.ActivityGroup#getInActivity <em>In Activity</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>In Activity</em>' container reference.
+	 * @param value the new value of the '<em>In Activity</em>' reference.
 	 * @see #getInActivity()
 	 * @generated
 	 */

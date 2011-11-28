@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: RaiseExceptionActionImpl.java,v 1.27 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -255,8 +254,6 @@ public class RaiseExceptionActionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.RAISE_EXCEPTION_ACTION__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -330,8 +327,6 @@ public class RaiseExceptionActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_STRUCTURED_NODE :
@@ -344,6 +339,8 @@ public class RaiseExceptionActionImpl
 				return getOutgoings();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__HANDLER :
@@ -571,8 +568,6 @@ public class RaiseExceptionActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_STRUCTURED_NODE :
@@ -584,6 +579,8 @@ public class RaiseExceptionActionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__HANDLER :

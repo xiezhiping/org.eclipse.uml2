@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ReclassifyObjectActionTest.java,v 1.6 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -26,8 +25,8 @@ import org.eclipse.uml2.uml.UMLFactory;
  * The following operations are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ReclassifyObjectAction#validateInputPin(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Pin</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ReclassifyObjectAction#validateClassifierNotAbstract(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Classifier Not Abstract</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReclassifyObjectAction#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReclassifyObjectAction#validateClassifierNotAbstract(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Classifier Not Abstract</em>}</li>
  * </ul>
  * </p>
  * @generated

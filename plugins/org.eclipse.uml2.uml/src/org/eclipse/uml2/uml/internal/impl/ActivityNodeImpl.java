@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ActivityNodeImpl.java,v 1.25 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -363,42 +362,40 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public Activity getActivity() {
-		if (eContainerFeatureID() != UMLPackage.ACTIVITY_NODE__ACTIVITY)
-			return null;
-		return (Activity) eContainer();
+		Activity activity = basicGetActivity();
+		return activity != null && activity.eIsProxy()
+			? (Activity) eResolveProxy((InternalEObject) activity)
+			: activity;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Activity basicGetActivity() {
-		if (eContainerFeatureID() != UMLPackage.ACTIVITY_NODE__ACTIVITY)
-			return null;
-		return (Activity) eInternalContainer();
+		InternalEObject eInternalContainer = eInternalContainer();
+		return eInternalContainer instanceof Activity
+			? (Activity) eInternalContainer
+			: null;
+	}
+
+	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
+		InternalEObject eInternalContainer = eInternalContainer();
+		if (eInternalContainer instanceof Activity) {
+			return ((InternalEList<ActivityNode>) ((Activity) eInternalContainer)
+				.getNodes()).basicRemove(this, msgs);
+		}
+		return super.eBasicRemoveFromContainer(msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetActivity(Activity newActivity,
-			NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newActivity,
-			UMLPackage.ACTIVITY_NODE__ACTIVITY, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setActivity(Activity newActivity) {
-		if (newActivity != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.ACTIVITY_NODE__ACTIVITY && newActivity != null)) {
+		if (newActivity != eInternalContainer()) {
 			if (EcoreUtil.isAncestor(this, newActivity))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -406,9 +403,11 @@ public abstract class ActivityNodeImpl
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newActivity != null)
-				msgs = ((InternalEObject) newActivity).eInverseAdd(this,
-					UMLPackage.ACTIVITY__NODE, Activity.class, msgs);
-			msgs = basicSetActivity(newActivity, msgs);
+				msgs = ((InternalEList<ActivityNode>) newActivity
+					.getOwnedNodes()).basicAdd(this, msgs);
+			msgs = eBasicSetContainer((InternalEObject) newActivity,
+				InternalEObject.EOPPOSITE_FEATURE_BASE
+					- UMLPackage.ACTIVITY__OWNED_NODE, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -578,10 +577,6 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE__CLIENT_DEPENDENCY :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetActivity((Activity) otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInPartitions())
 					.basicAdd(otherEnd, msgs);
@@ -623,8 +618,6 @@ public abstract class ActivityNodeImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -652,9 +645,6 @@ public abstract class ActivityNodeImpl
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
-				return eInternalContainer().eInverseRemove(this,
-					UMLPackage.ACTIVITY__NODE, Activity.class, msgs);
 			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE,
@@ -707,8 +697,6 @@ public abstract class ActivityNodeImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.ACTIVITY_NODE__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
@@ -721,6 +709,8 @@ public abstract class ActivityNodeImpl
 				return getOutgoings();
 			case UMLPackage.ACTIVITY_NODE__INCOMING :
 				return getIncomings();
+			case UMLPackage.ACTIVITY_NODE__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.ACTIVITY_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
 		}
@@ -892,8 +882,6 @@ public abstract class ActivityNodeImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.ACTIVITY_NODE__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
@@ -905,6 +893,8 @@ public abstract class ActivityNodeImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.ACTIVITY_NODE__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.ACTIVITY_NODE__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.ACTIVITY_NODE__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 		}
@@ -1003,16 +993,16 @@ public abstract class ActivityNodeImpl
 				return allOwnedElements();
 			case UMLPackage.ACTIVITY_NODE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.ACTIVITY_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_NODE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_NODE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_NODE___CREATE_DEPENDENCY__NAMEDELEMENT :

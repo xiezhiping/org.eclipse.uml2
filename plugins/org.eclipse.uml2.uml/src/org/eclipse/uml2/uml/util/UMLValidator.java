@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 204200
  *   Kenn Hussey - 286329, 320318, 323000, 323181, 354453
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: UMLValidator.java,v 1.31 2011/05/23 17:47:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -324,7 +323,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STEREOTYPE__BINARY_ASSOCIATIONS_ONLY = 3;
+	public static final int STEREOTYPE__BINARY_ASSOCIATIONS_ONLY = 5;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Has Owner' of 'Element'.
@@ -340,7 +339,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NAMED_ELEMENT__HAS_NO_QUALIFIED_NAME = 16;
+	public static final int NAMED_ELEMENT__HAS_NO_QUALIFIED_NAME = 15;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Has Qualified Name' of 'Named Element'.
@@ -348,7 +347,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NAMED_ELEMENT__HAS_QUALIFIED_NAME = 15;
+	public static final int NAMED_ELEMENT__HAS_QUALIFIED_NAME = 14;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Visibility Needs Ownership' of 'Named Element'.
@@ -356,7 +355,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NAMED_ELEMENT__VISIBILITY_NEEDS_OWNERSHIP = 14;
+	public static final int NAMED_ELEMENT__VISIBILITY_NEEDS_OWNERSHIP = 16;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Must Be Compatible' of 'Template Parameter'.
@@ -364,7 +363,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TEMPLATE_PARAMETER__MUST_BE_COMPATIBLE = 20;
+	public static final int TEMPLATE_PARAMETER__MUST_BE_COMPATIBLE = 21;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Own Elements' of 'Template Signature'.
@@ -372,7 +371,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TEMPLATE_SIGNATURE__OWN_ELEMENTS = 19;
+	public static final int TEMPLATE_SIGNATURE__OWN_ELEMENTS = 20;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Parameter Substitution Formal' of 'Template Binding'.
@@ -380,7 +379,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TEMPLATE_BINDING__PARAMETER_SUBSTITUTION_FORMAL = 21;
+	public static final int TEMPLATE_BINDING__PARAMETER_SUBSTITUTION_FORMAL = 22;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate One Parameter Substitution' of 'Template Binding'.
@@ -388,7 +387,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TEMPLATE_BINDING__ONE_PARAMETER_SUBSTITUTION = 22;
+	public static final int TEMPLATE_BINDING__ONE_PARAMETER_SUBSTITUTION = 23;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Must Be Compatible' of 'Template Parameter Substitution'.
@@ -396,7 +395,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TEMPLATE_PARAMETER_SUBSTITUTION__MUST_BE_COMPATIBLE = 23;
+	public static final int TEMPLATE_PARAMETER_SUBSTITUTION__MUST_BE_COMPATIBLE = 24;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Members Distinguishable' of 'Namespace'.
@@ -412,7 +411,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ELEMENT_IMPORT__VISIBILITY_PUBLIC_OR_PRIVATE = 28;
+	public static final int ELEMENT_IMPORT__VISIBILITY_PUBLIC_OR_PRIVATE = 27;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Imported Element Is Public' of 'Element Import'.
@@ -420,7 +419,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ELEMENT_IMPORT__IMPORTED_ELEMENT_IS_PUBLIC = 27;
+	public static final int ELEMENT_IMPORT__IMPORTED_ELEMENT_IS_PUBLIC = 28;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Public Or Private' of 'Package Import'.
@@ -436,7 +435,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE = 24;
+	public static final int PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE = 19;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Metaclass Reference Not Specialized' of 'Profile'.
@@ -460,7 +459,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STEREOTYPE__NAME_NOT_CLASH = 5;
+	public static final int STEREOTYPE__NAME_NOT_CLASH = 4;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Association End Ownership' of 'Stereotype'.
@@ -468,7 +467,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STEREOTYPE__ASSOCIATION_END_OWNERSHIP = 6;
+	public static final int STEREOTYPE__ASSOCIATION_END_OWNERSHIP = 3;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Generalize' of 'Stereotype'.
@@ -476,7 +475,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STEREOTYPE__GENERALIZE = 4;
+	public static final int STEREOTYPE__GENERALIZE = 6;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Passive Class' of 'Class'.
@@ -492,7 +491,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int BEHAVIORED_CLASSIFIER__CLASS_BEHAVIOR = 8;
+	public static final int BEHAVIORED_CLASSIFIER__CLASS_BEHAVIOR = 64;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Cycles In Generalization' of 'Classifier'.
@@ -500,7 +499,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLASSIFIER__NO_CYCLES_IN_GENERALIZATION = 12;
+	public static final int CLASSIFIER__NO_CYCLES_IN_GENERALIZATION = 10;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Specialize Type' of 'Classifier'.
@@ -508,7 +507,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLASSIFIER__SPECIALIZE_TYPE = 9;
+	public static final int CLASSIFIER__SPECIALIZE_TYPE = 11;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Maps To Generalization Set' of 'Classifier'.
@@ -516,7 +515,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLASSIFIER__MAPS_TO_GENERALIZATION_SET = 10;
+	public static final int CLASSIFIER__MAPS_TO_GENERALIZATION_SET = 12;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Non Final Parents' of 'Classifier'.
@@ -524,7 +523,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLASSIFIER__NON_FINAL_PARENTS = 11;
+	public static final int CLASSIFIER__NON_FINAL_PARENTS = 9;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Redefinition Context Valid' of 'Redefinable Element'.
@@ -532,7 +531,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT_VALID = 59;
+	public static final int REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT_VALID = 51;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Redefinition Consistent' of 'Redefinable Element'.
@@ -540,7 +539,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REDEFINABLE_ELEMENT__REDEFINITION_CONSISTENT = 57;
+	public static final int REDEFINABLE_ELEMENT__REDEFINITION_CONSISTENT = 49;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Non Leaf Redefinition' of 'Redefinable Element'.
@@ -548,7 +547,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REDEFINABLE_ELEMENT__NON_LEAF_REDEFINITION = 58;
+	public static final int REDEFINABLE_ELEMENT__NON_LEAF_REDEFINITION = 50;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Generalization Same Classifier' of 'Generalization'.
@@ -556,7 +555,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int GENERALIZATION__GENERALIZATION_SAME_CLASSIFIER = 135;
+	public static final int GENERALIZATION__GENERALIZATION_SAME_CLASSIFIER = 131;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Generalization Same Classifier' of 'Generalization Set'.
@@ -564,7 +563,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int GENERALIZATION_SET__GENERALIZATION_SAME_CLASSIFIER = 136;
+	public static final int GENERALIZATION_SET__GENERALIZATION_SAME_CLASSIFIER = 133;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Maps To Generalization Set' of 'Generalization Set'.
@@ -572,7 +571,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int GENERALIZATION_SET__MAPS_TO_GENERALIZATION_SET = 137;
+	public static final int GENERALIZATION_SET__MAPS_TO_GENERALIZATION_SET = 132;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Must Have Name' of 'Use Case'.
@@ -580,7 +579,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int USE_CASE__MUST_HAVE_NAME = 142;
+	public static final int USE_CASE__MUST_HAVE_NAME = 135;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Binary Associations' of 'Use Case'.
@@ -588,7 +587,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int USE_CASE__BINARY_ASSOCIATIONS = 139;
+	public static final int USE_CASE__BINARY_ASSOCIATIONS = 137;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Association To Use Case' of 'Use Case'.
@@ -596,7 +595,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int USE_CASE__NO_ASSOCIATION_TO_USE_CASE = 140;
+	public static final int USE_CASE__NO_ASSOCIATION_TO_USE_CASE = 138;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Cannot Include Self' of 'Use Case'.
@@ -604,7 +603,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int USE_CASE__CANNOT_INCLUDE_SELF = 141;
+	public static final int USE_CASE__CANNOT_INCLUDE_SELF = 136;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Extension Points' of 'Extend'.
@@ -612,7 +611,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXTEND__EXTENSION_POINTS = 143;
+	public static final int EXTEND__EXTENSION_POINTS = 139;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Not Apply To Self' of 'Constraint'.
@@ -620,7 +619,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONSTRAINT__NOT_APPLY_TO_SELF = 74;
+	public static final int CONSTRAINT__NOT_APPLY_TO_SELF = 99;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Value Specification Boolean' of 'Constraint'.
@@ -628,7 +627,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONSTRAINT__VALUE_SPECIFICATION_BOOLEAN = 75;
+	public static final int CONSTRAINT__VALUE_SPECIFICATION_BOOLEAN = 102;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Boolean Value' of 'Constraint'.
@@ -636,7 +635,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONSTRAINT__BOOLEAN_VALUE = 72;
+	public static final int CONSTRAINT__BOOLEAN_VALUE = 101;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Side Effects' of 'Constraint'.
@@ -644,7 +643,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONSTRAINT__NO_SIDE_EFFECTS = 73;
+	public static final int CONSTRAINT__NO_SIDE_EFFECTS = 100;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Must Have Name' of 'Extension Point'.
@@ -652,7 +651,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXTENSION_POINT__MUST_HAVE_NAME = 144;
+	public static final int EXTENSION_POINT__MUST_HAVE_NAME = 140;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Language Body Size' of 'Opaque Expression'.
@@ -660,7 +659,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OPAQUE_EXPRESSION__LANGUAGE_BODY_SIZE = 146;
+	public static final int OPAQUE_EXPRESSION__LANGUAGE_BODY_SIZE = 148;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Only Return Result Parameters' of 'Opaque Expression'.
@@ -668,7 +667,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OPAQUE_EXPRESSION__ONLY_RETURN_RESULT_PARAMETERS = 148;
+	public static final int OPAQUE_EXPRESSION__ONLY_RETURN_RESULT_PARAMETERS = 146;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate One Return Result Parameter' of 'Opaque Expression'.
@@ -684,7 +683,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PARAMETER__CONNECTOR_END = 66;
+	public static final int PARAMETER__CONNECTOR_END = 114;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Stream And Exception' of 'Parameter'.
@@ -692,7 +691,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PARAMETER__STREAM_AND_EXCEPTION = 68;
+	public static final int PARAMETER__STREAM_AND_EXCEPTION = 117;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Not Exception' of 'Parameter'.
@@ -700,7 +699,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PARAMETER__NOT_EXCEPTION = 65;
+	public static final int PARAMETER__NOT_EXCEPTION = 115;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Reentrant Behaviors' of 'Parameter'.
@@ -708,7 +707,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PARAMETER__REENTRANT_BEHAVIORS = 67;
+	public static final int PARAMETER__REENTRANT_BEHAVIORS = 113;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate In And Out' of 'Parameter'.
@@ -716,7 +715,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PARAMETER__IN_AND_OUT = 64;
+	public static final int PARAMETER__IN_AND_OUT = 116;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Lower Ge0' of 'Multiplicity Element'.
@@ -724,7 +723,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MULTIPLICITY_ELEMENT__LOWER_GE0 = 50;
+	public static final int MULTIPLICITY_ELEMENT__LOWER_GE0 = 45;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Upper Ge Lower' of 'Multiplicity Element'.
@@ -732,7 +731,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MULTIPLICITY_ELEMENT__UPPER_GE_LOWER = 49;
+	public static final int MULTIPLICITY_ELEMENT__UPPER_GE_LOWER = 46;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Value Specification No Side Effects' of 'Multiplicity Element'.
@@ -740,7 +739,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MULTIPLICITY_ELEMENT__VALUE_SPECIFICATION_NO_SIDE_EFFECTS = 51;
+	public static final int MULTIPLICITY_ELEMENT__VALUE_SPECIFICATION_NO_SIDE_EFFECTS = 48;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Value Specification Constant' of 'Multiplicity Element'.
@@ -748,7 +747,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MULTIPLICITY_ELEMENT__VALUE_SPECIFICATION_CONSTANT = 52;
+	public static final int MULTIPLICITY_ELEMENT__VALUE_SPECIFICATION_CONSTANT = 47;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Connector End'.
@@ -756,7 +755,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR_END__MULTIPLICITY = 47;
+	public static final int CONNECTOR_END__MULTIPLICITY = 54;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Part With Port Empty' of 'Connector End'.
@@ -764,7 +763,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR_END__PART_WITH_PORT_EMPTY = 46;
+	public static final int CONNECTOR_END__PART_WITH_PORT_EMPTY = 55;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Role And Part With Port' of 'Connector End'.
@@ -772,7 +771,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR_END__ROLE_AND_PART_WITH_PORT = 45;
+	public static final int CONNECTOR_END__ROLE_AND_PART_WITH_PORT = 52;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Self Part With Port' of 'Connector End'.
@@ -780,7 +779,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR_END__SELF_PART_WITH_PORT = 48;
+	public static final int CONNECTOR_END__SELF_PART_WITH_PORT = 53;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Composite' of 'Property'.
@@ -796,7 +795,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__SUBSETTING_CONTEXT_CONFORMS = 36;
+	public static final int PROPERTY__SUBSETTING_CONTEXT_CONFORMS = 41;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Redefined Property Inherited' of 'Property'.
@@ -804,7 +803,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__REDEFINED_PROPERTY_INHERITED = 39;
+	public static final int PROPERTY__REDEFINED_PROPERTY_INHERITED = 40;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Subsetting Rules' of 'Property'.
@@ -812,7 +811,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__SUBSETTING_RULES = 40;
+	public static final int PROPERTY__SUBSETTING_RULES = 37;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Derived Union Is Derived' of 'Property'.
@@ -820,7 +819,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__DERIVED_UNION_IS_DERIVED = 42;
+	public static final int PROPERTY__DERIVED_UNION_IS_DERIVED = 43;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Derived Union Is Read Only' of 'Property'.
@@ -828,7 +827,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__DERIVED_UNION_IS_READ_ONLY = 37;
+	public static final int PROPERTY__DERIVED_UNION_IS_READ_ONLY = 44;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Subsetted Property Names' of 'Property'.
@@ -836,7 +835,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__SUBSETTED_PROPERTY_NAMES = 44;
+	public static final int PROPERTY__SUBSETTED_PROPERTY_NAMES = 36;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Deployment Target' of 'Property'.
@@ -844,7 +843,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__DEPLOYMENT_TARGET = 43;
+	public static final int PROPERTY__DEPLOYMENT_TARGET = 42;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Binding To Attribute' of 'Property'.
@@ -852,7 +851,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__BINDING_TO_ATTRIBUTE = 41;
+	public static final int PROPERTY__BINDING_TO_ATTRIBUTE = 39;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Deployed Elements' of 'Deployment Specification'.
@@ -860,7 +859,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int DEPLOYMENT_SPECIFICATION__DEPLOYED_ELEMENTS = 54;
+	public static final int DEPLOYMENT_SPECIFICATION__DEPLOYED_ELEMENTS = 56;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Deployment Target' of 'Deployment Specification'.
@@ -868,7 +867,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int DEPLOYMENT_SPECIFICATION__DEPLOYMENT_TARGET = 53;
+	public static final int DEPLOYMENT_SPECIFICATION__DEPLOYMENT_TARGET = 57;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate At Most One Return' of 'Operation'.
@@ -876,7 +875,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OPERATION__AT_MOST_ONE_RETURN = 55;
+	public static final int OPERATION__AT_MOST_ONE_RETURN = 58;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Only Body For Query' of 'Operation'.
@@ -884,7 +883,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OPERATION__ONLY_BODY_FOR_QUERY = 56;
+	public static final int OPERATION__ONLY_BODY_FOR_QUERY = 59;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Parameters Match' of 'Behavior'.
@@ -892,7 +891,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int BEHAVIOR__PARAMETERS_MATCH = 62;
+	public static final int BEHAVIOR__PARAMETERS_MATCH = 60;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Feature Of Context Classifier' of 'Behavior'.
@@ -900,7 +899,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int BEHAVIOR__FEATURE_OF_CONTEXT_CLASSIFIER = 63;
+	public static final int BEHAVIOR__FEATURE_OF_CONTEXT_CLASSIFIER = 61;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Must Realize' of 'Behavior'.
@@ -908,7 +907,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int BEHAVIOR__MUST_REALIZE = 61;
+	public static final int BEHAVIOR__MUST_REALIZE = 62;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Most One Behaviour' of 'Behavior'.
@@ -916,7 +915,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int BEHAVIOR__MOST_ONE_BEHAVIOUR = 60;
+	public static final int BEHAVIOR__MOST_ONE_BEHAVIOUR = 63;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Parameterized Entity' of 'Parameter Set'.
@@ -924,7 +923,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PARAMETER_SET__SAME_PARAMETERIZED_ENTITY = 69;
+	public static final int PARAMETER_SET__SAME_PARAMETERIZED_ENTITY = 120;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Input' of 'Parameter Set'.
@@ -932,7 +931,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PARAMETER_SET__INPUT = 70;
+	public static final int PARAMETER_SET__INPUT = 119;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Two Parameter Sets' of 'Parameter Set'.
@@ -940,7 +939,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PARAMETER_SET__TWO_PARAMETER_SETS = 71;
+	public static final int PARAMETER_SET__TWO_PARAMETER_SETS = 118;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Visibility' of 'Interface'.
@@ -948,7 +947,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERFACE__VISIBILITY = 76;
+	public static final int INTERFACE__VISIBILITY = 65;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Not Query' of 'Reception'.
@@ -956,7 +955,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int RECEPTION__NOT_QUERY = 77;
+	public static final int RECEPTION__NOT_QUERY = 66;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Protocol Transitions' of 'Protocol State Machine'.
@@ -964,7 +963,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROTOCOL_STATE_MACHINE__PROTOCOL_TRANSITIONS = 81;
+	public static final int PROTOCOL_STATE_MACHINE__PROTOCOL_TRANSITIONS = 68;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Entry Exit Do' of 'Protocol State Machine'.
@@ -972,7 +971,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROTOCOL_STATE_MACHINE__ENTRY_EXIT_DO = 79;
+	public static final int PROTOCOL_STATE_MACHINE__ENTRY_EXIT_DO = 67;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Deep Or Shallow History' of 'Protocol State Machine'.
@@ -980,7 +979,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROTOCOL_STATE_MACHINE__DEEP_OR_SHALLOW_HISTORY = 78;
+	public static final int PROTOCOL_STATE_MACHINE__DEEP_OR_SHALLOW_HISTORY = 69;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Ports Connected' of 'Protocol State Machine'.
@@ -988,7 +987,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROTOCOL_STATE_MACHINE__PORTS_CONNECTED = 80;
+	public static final int PROTOCOL_STATE_MACHINE__PORTS_CONNECTED = 70;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Classifier Context' of 'Protocol State Machine'.
@@ -996,7 +995,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROTOCOL_STATE_MACHINE__CLASSIFIER_CONTEXT = 82;
+	public static final int PROTOCOL_STATE_MACHINE__CLASSIFIER_CONTEXT = 71;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Classifier Context' of 'State Machine'.
@@ -1004,7 +1003,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE_MACHINE__CLASSIFIER_CONTEXT = 84;
+	public static final int STATE_MACHINE__CLASSIFIER_CONTEXT = 73;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Context Classifier' of 'State Machine'.
@@ -1012,7 +1011,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE_MACHINE__CONTEXT_CLASSIFIER = 86;
+	public static final int STATE_MACHINE__CONTEXT_CLASSIFIER = 74;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Connection Points' of 'State Machine'.
@@ -1020,7 +1019,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE_MACHINE__CONNECTION_POINTS = 83;
+	public static final int STATE_MACHINE__CONNECTION_POINTS = 75;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Method' of 'State Machine'.
@@ -1028,7 +1027,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE_MACHINE__METHOD = 85;
+	public static final int STATE_MACHINE__METHOD = 72;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Initial Vertex' of 'Region'.
@@ -1036,7 +1035,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REGION__INITIAL_VERTEX = 99;
+	public static final int REGION__INITIAL_VERTEX = 87;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Deep History Vertex' of 'Region'.
@@ -1044,7 +1043,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REGION__DEEP_HISTORY_VERTEX = 96;
+	public static final int REGION__DEEP_HISTORY_VERTEX = 86;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Shallow History Vertex' of 'Region'.
@@ -1052,7 +1051,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REGION__SHALLOW_HISTORY_VERTEX = 97;
+	public static final int REGION__SHALLOW_HISTORY_VERTEX = 85;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Owned' of 'Region'.
@@ -1060,7 +1059,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REGION__OWNED = 98;
+	public static final int REGION__OWNED = 88;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Fork Segment Guards' of 'Transition'.
@@ -1068,7 +1067,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__FORK_SEGMENT_GUARDS = 119;
+	public static final int TRANSITION__FORK_SEGMENT_GUARDS = 104;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Join Segment Guards' of 'Transition'.
@@ -1076,7 +1075,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__JOIN_SEGMENT_GUARDS = 111;
+	public static final int TRANSITION__JOIN_SEGMENT_GUARDS = 110;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate State Is Internal' of 'Transition'.
@@ -1084,7 +1083,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__STATE_IS_INTERNAL = 112;
+	public static final int TRANSITION__STATE_IS_INTERNAL = 109;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Fork Segment State' of 'Transition'.
@@ -1092,7 +1091,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__FORK_SEGMENT_STATE = 115;
+	public static final int TRANSITION__FORK_SEGMENT_STATE = 111;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Join Segment State' of 'Transition'.
@@ -1100,7 +1099,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__JOIN_SEGMENT_STATE = 114;
+	public static final int TRANSITION__JOIN_SEGMENT_STATE = 105;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Outgoing Pseudostates' of 'Transition'.
@@ -1108,7 +1107,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__OUTGOING_PSEUDOSTATES = 113;
+	public static final int TRANSITION__OUTGOING_PSEUDOSTATES = 107;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Initial Transition' of 'Transition'.
@@ -1116,7 +1115,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__INITIAL_TRANSITION = 118;
+	public static final int TRANSITION__INITIAL_TRANSITION = 106;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Signatures Compatible' of 'Transition'.
@@ -1124,7 +1123,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__SIGNATURES_COMPATIBLE = 116;
+	public static final int TRANSITION__SIGNATURES_COMPATIBLE = 108;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate State Is Local' of 'Transition'.
@@ -1132,7 +1131,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__STATE_IS_LOCAL = 117;
+	public static final int TRANSITION__STATE_IS_LOCAL = 103;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Port Aggregation' of 'Port'.
@@ -1140,7 +1139,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PORT__PORT_AGGREGATION = 108;
+	public static final int PORT__PORT_AGGREGATION = 97;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Port Destroyed' of 'Port'.
@@ -1148,7 +1147,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PORT__PORT_DESTROYED = 107;
+	public static final int PORT__PORT_DESTROYED = 98;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Default Value' of 'Port'.
@@ -1156,7 +1155,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PORT__DEFAULT_VALUE = 109;
+	public static final int PORT__DEFAULT_VALUE = 96;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate State Is External' of 'Transition'.
@@ -1164,7 +1163,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__STATE_IS_EXTERNAL = 110;
+	public static final int TRANSITION__STATE_IS_EXTERNAL = 112;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Submachine States' of 'State'.
@@ -1172,7 +1171,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE__SUBMACHINE_STATES = 101;
+	public static final int STATE__SUBMACHINE_STATES = 93;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Destinations Or Sources Of Transitions' of 'State'.
@@ -1180,7 +1179,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE__DESTINATIONS_OR_SOURCES_OF_TRANSITIONS = 103;
+	public static final int STATE__DESTINATIONS_OR_SOURCES_OF_TRANSITIONS = 91;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Submachine Or Regions' of 'State'.
@@ -1188,7 +1187,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE__SUBMACHINE_OR_REGIONS = 104;
+	public static final int STATE__SUBMACHINE_OR_REGIONS = 92;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Composite States' of 'State'.
@@ -1196,7 +1195,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE__COMPOSITE_STATES = 102;
+	public static final int STATE__COMPOSITE_STATES = 90;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Entry Or Exit' of 'State'.
@@ -1204,7 +1203,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE__ENTRY_OR_EXIT = 100;
+	public static final int STATE__ENTRY_OR_EXIT = 89;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Entry Pseudostates' of 'Connection Point Reference'.
@@ -1212,7 +1211,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTION_POINT_REFERENCE__ENTRY_PSEUDOSTATES = 106;
+	public static final int CONNECTION_POINT_REFERENCE__ENTRY_PSEUDOSTATES = 94;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Exit Pseudostates' of 'Connection Point Reference'.
@@ -1220,7 +1219,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTION_POINT_REFERENCE__EXIT_PSEUDOSTATES = 105;
+	public static final int CONNECTION_POINT_REFERENCE__EXIT_PSEUDOSTATES = 95;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Initial Vertex' of 'Pseudostate'.
@@ -1228,7 +1227,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__INITIAL_VERTEX = 93;
+	public static final int PSEUDOSTATE__INITIAL_VERTEX = 83;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate History Vertices' of 'Pseudostate'.
@@ -1236,7 +1235,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__HISTORY_VERTICES = 92;
+	public static final int PSEUDOSTATE__HISTORY_VERTICES = 77;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Join Vertex' of 'Pseudostate'.
@@ -1244,7 +1243,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__JOIN_VERTEX = 90;
+	public static final int PSEUDOSTATE__JOIN_VERTEX = 81;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Transitions Incoming' of 'Pseudostate'.
@@ -1252,7 +1251,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__TRANSITIONS_INCOMING = 95;
+	public static final int PSEUDOSTATE__TRANSITIONS_INCOMING = 84;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Fork Vertex' of 'Pseudostate'.
@@ -1260,7 +1259,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__FORK_VERTEX = 94;
+	public static final int PSEUDOSTATE__FORK_VERTEX = 80;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Transitions Outgoing' of 'Pseudostate'.
@@ -1268,7 +1267,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__TRANSITIONS_OUTGOING = 87;
+	public static final int PSEUDOSTATE__TRANSITIONS_OUTGOING = 78;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Junction Vertex' of 'Pseudostate'.
@@ -1276,7 +1275,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__JUNCTION_VERTEX = 91;
+	public static final int PSEUDOSTATE__JUNCTION_VERTEX = 76;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Choice Vertex' of 'Pseudostate'.
@@ -1284,7 +1283,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__CHOICE_VERTEX = 88;
+	public static final int PSEUDOSTATE__CHOICE_VERTEX = 82;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Outgoing From Initial' of 'Pseudostate'.
@@ -1292,7 +1291,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__OUTGOING_FROM_INITIAL = 89;
+	public static final int PSEUDOSTATE__OUTGOING_FROM_INITIAL = 79;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Specialized End Number' of 'Association'.
@@ -1308,7 +1307,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ASSOCIATION__SPECIALIZED_END_TYPES = 33;
+	public static final int ASSOCIATION__SPECIALIZED_END_TYPES = 35;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Binary Associations' of 'Association'.
@@ -1324,7 +1323,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ASSOCIATION__ASSOCIATION_ENDS = 35;
+	public static final int ASSOCIATION__ASSOCIATION_ENDS = 33;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Client Elements' of 'Collaboration Use'.
@@ -1332,7 +1331,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COLLABORATION_USE__CLIENT_ELEMENTS = 127;
+	public static final int COLLABORATION_USE__CLIENT_ELEMENTS = 130;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Every Role' of 'Collaboration Use'.
@@ -1340,7 +1339,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COLLABORATION_USE__EVERY_ROLE = 128;
+	public static final int COLLABORATION_USE__EVERY_ROLE = 129;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Connectors' of 'Collaboration Use'.
@@ -1348,7 +1347,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COLLABORATION_USE__CONNECTORS = 129;
+	public static final int COLLABORATION_USE__CONNECTORS = 128;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicities' of 'Structured Classifier'.
@@ -1356,7 +1355,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STRUCTURED_CLASSIFIER__MULTIPLICITIES = 130;
+	public static final int STRUCTURED_CLASSIFIER__MULTIPLICITIES = 8;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Types' of 'Connector'.
@@ -1364,7 +1363,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR__TYPES = 131;
+	public static final int CONNECTOR__TYPES = 145;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Compatible' of 'Connector'.
@@ -1372,7 +1371,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR__COMPATIBLE = 134;
+	public static final int CONNECTOR__COMPATIBLE = 142;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Roles' of 'Connector'.
@@ -1380,7 +1379,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR__ROLES = 132;
+	public static final int CONNECTOR__ROLES = 143;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Between Interfaces Ports' of 'Connector'.
@@ -1388,7 +1387,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR__BETWEEN_INTERFACES_PORTS = 133;
+	public static final int CONNECTOR__BETWEEN_INTERFACES_PORTS = 144;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Inherited Parameters' of 'Redefinable Template Signature'.
@@ -1396,7 +1395,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETERS = 138;
+	public static final int REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETERS = 134;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Has Constraining Classifier' of 'Classifier Template Parameter'.
@@ -1404,7 +1403,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLASSIFIER_TEMPLATE_PARAMETER__HAS_CONSTRAINING_CLASSIFIER = 145;
+	public static final int CLASSIFIER_TEMPLATE_PARAMETER__HAS_CONSTRAINING_CLASSIFIER = 141;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Non Owned End' of 'Extension'.
@@ -1428,7 +1427,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXTENSION_END__MULTIPLICITY = 120;
+	public static final int EXTENSION_END__MULTIPLICITY = 121;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Aggregation' of 'Extension End'.
@@ -1436,7 +1435,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXTENSION_END__AGGREGATION = 121;
+	public static final int EXTENSION_END__AGGREGATION = 122;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Classifier Equals Owning Enumeration' of 'Enumeration Literal'.
@@ -1444,7 +1443,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ENUMERATION_LITERAL__CLASSIFIER_EQUALS_OWNING_ENUMERATION = 122;
+	public static final int ENUMERATION_LITERAL__CLASSIFIER_EQUALS_OWNING_ENUMERATION = 123;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Operands' of 'String Expression'.
@@ -1452,7 +1451,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STRING_EXPRESSION__OPERANDS = 17;
+	public static final int STRING_EXPRESSION__OPERANDS = 18;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Subexpressions' of 'String Expression'.
@@ -1460,7 +1459,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STRING_EXPRESSION__SUBEXPRESSIONS = 18;
+	public static final int STRING_EXPRESSION__SUBEXPRESSIONS = 17;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Defining Feature' of 'Instance Specification'.
@@ -1492,7 +1491,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INSTANCE_SPECIFICATION__DEPLOYMENT_ARTIFACT = 123;
+	public static final int INSTANCE_SPECIFICATION__DEPLOYMENT_ARTIFACT = 127;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate One Output Parameter' of 'Function Behavior'.
@@ -1532,7 +1531,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ADD_STRUCTURAL_FEATURE_VALUE_ACTION__REQUIRED_VALUE = 231;
+	public static final int ADD_STRUCTURAL_FEATURE_VALUE_ACTION__REQUIRED_VALUE = 232;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Sending Receiving Message Event' of 'Message'.
@@ -1548,7 +1547,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MESSAGE__SIGNATURE_REFER_TO = 207;
+	public static final int MESSAGE__SIGNATURE_REFER_TO = 208;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Signature Is Operation' of 'Message'.
@@ -1556,7 +1555,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MESSAGE__SIGNATURE_IS_OPERATION = 208;
+	public static final int MESSAGE__SIGNATURE_IS_OPERATION = 205;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Signature Is Signal' of 'Message'.
@@ -1564,7 +1563,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MESSAGE__SIGNATURE_IS_SIGNAL = 205;
+	public static final int MESSAGE__SIGNATURE_IS_SIGNAL = 204;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Arguments' of 'Message'.
@@ -1572,7 +1571,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MESSAGE__ARGUMENTS = 203;
+	public static final int MESSAGE__ARGUMENTS = 206;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Cannot Cross Boundaries' of 'Message'.
@@ -1580,7 +1579,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MESSAGE__CANNOT_CROSS_BOUNDARIES = 204;
+	public static final int MESSAGE__CANNOT_CROSS_BOUNDARIES = 207;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Occurrence Specifications' of 'Message'.
@@ -1588,7 +1587,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MESSAGE__OCCURRENCE_SPECIFICATIONS = 206;
+	public static final int MESSAGE__OCCURRENCE_SPECIFICATIONS = 203;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Interaction Uses Share Lifeline' of 'Lifeline'.
@@ -1596,7 +1595,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LIFELINE__INTERACTION_USES_SHARE_LIFELINE = 189;
+	public static final int LIFELINE__INTERACTION_USES_SHARE_LIFELINE = 188;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Selector Specified' of 'Lifeline'.
@@ -1604,7 +1603,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LIFELINE__SELECTOR_SPECIFIED = 188;
+	public static final int LIFELINE__SELECTOR_SPECIFIED = 190;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Classifier' of 'Lifeline'.
@@ -1612,7 +1611,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LIFELINE__SAME_CLASSIFIER = 190;
+	public static final int LIFELINE__SAME_CLASSIFIER = 189;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Parts Of Internal Structures' of 'Part Decomposition'.
@@ -1620,7 +1619,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PART_DECOMPOSITION__PARTS_OF_INTERNAL_STRUCTURES = 193;
+	public static final int PART_DECOMPOSITION__PARTS_OF_INTERNAL_STRUCTURES = 191;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Assume' of 'Part Decomposition'.
@@ -1636,7 +1635,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PART_DECOMPOSITION__COMMUTATIVITY_OF_DECOMPOSITION = 191;
+	public static final int PART_DECOMPOSITION__COMMUTATIVITY_OF_DECOMPOSITION = 193;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Gates Match' of 'Interaction Use'.
@@ -1644,7 +1643,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_USE__GATES_MATCH = 194;
+	public static final int INTERACTION_USE__GATES_MATCH = 197;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate All Lifelines' of 'Interaction Use'.
@@ -1652,7 +1651,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_USE__ALL_LIFELINES = 199;
+	public static final int INTERACTION_USE__ALL_LIFELINES = 194;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Arguments Correspond To Parameters' of 'Interaction Use'.
@@ -1660,7 +1659,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_USE__ARGUMENTS_CORRESPOND_TO_PARAMETERS = 197;
+	public static final int INTERACTION_USE__ARGUMENTS_CORRESPOND_TO_PARAMETERS = 196;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Return Value Type Recipient Correspondence' of 'Interaction Use'.
@@ -1668,7 +1667,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_USE__RETURN_VALUE_TYPE_RECIPIENT_CORRESPONDENCE = 198;
+	public static final int INTERACTION_USE__RETURN_VALUE_TYPE_RECIPIENT_CORRESPONDENCE = 199;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Arguments Are Constants' of 'Interaction Use'.
@@ -1676,7 +1675,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_USE__ARGUMENTS_ARE_CONSTANTS = 195;
+	public static final int INTERACTION_USE__ARGUMENTS_ARE_CONSTANTS = 198;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Return Value Recipient Coverage' of 'Interaction Use'.
@@ -1684,7 +1683,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_USE__RETURN_VALUE_RECIPIENT_COVERAGE = 196;
+	public static final int INTERACTION_USE__RETURN_VALUE_RECIPIENT_COVERAGE = 195;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Messages Actual Gate' of 'Gate'.
@@ -1724,7 +1723,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_EDGE__SOURCE_AND_TARGET = 162;
+	public static final int ACTIVITY_EDGE__SOURCE_AND_TARGET = 165;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Owned' of 'Activity Edge'.
@@ -1732,7 +1731,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_EDGE__OWNED = 161;
+	public static final int ACTIVITY_EDGE__OWNED = 164;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Structured Node' of 'Activity Edge'.
@@ -1740,7 +1739,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_EDGE__STRUCTURED_NODE = 163;
+	public static final int ACTIVITY_EDGE__STRUCTURED_NODE = 166;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Supergroups' of 'Activity'.
@@ -1748,7 +1747,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY__NO_SUPERGROUPS = 159;
+	public static final int ACTIVITY__NO_SUPERGROUPS = 160;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Activity Parameter Node' of 'Activity'.
@@ -1756,7 +1755,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY__ACTIVITY_PARAMETER_NODE = 160;
+	public static final int ACTIVITY__ACTIVITY_PARAMETER_NODE = 158;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Autonomous' of 'Activity'.
@@ -1764,7 +1763,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY__AUTONOMOUS = 158;
+	public static final int ACTIVITY__AUTONOMOUS = 159;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Dimension Not Contained' of 'Activity Partition'.
@@ -1780,7 +1779,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STRUCTURED_ACTIVITY_NODE__OUTPUT_PIN_EDGES = 171;
+	public static final int STRUCTURED_ACTIVITY_NODE__OUTPUT_PIN_EDGES = 173;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Represents Part' of 'Activity Partition'.
@@ -1788,7 +1787,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_PARTITION__REPRESENTS_PART = 169;
+	public static final int ACTIVITY_PARTITION__REPRESENTS_PART = 167;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Represents Classifier' of 'Activity Partition'.
@@ -1796,7 +1795,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_PARTITION__REPRESENTS_CLASSIFIER = 167;
+	public static final int ACTIVITY_PARTITION__REPRESENTS_CLASSIFIER = 168;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Represents Part And Is Contained' of 'Activity Partition'.
@@ -1804,7 +1803,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_PARTITION__REPRESENTS_PART_AND_IS_CONTAINED = 168;
+	public static final int ACTIVITY_PARTITION__REPRESENTS_PART_AND_IS_CONTAINED = 169;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Nodes And Edges' of 'Activity Group'.
@@ -1812,7 +1811,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_GROUP__NODES_AND_EDGES = 164;
+	public static final int ACTIVITY_GROUP__NODES_AND_EDGES = 163;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Not Contained' of 'Activity Group'.
@@ -1820,7 +1819,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_GROUP__NOT_CONTAINED = 166;
+	public static final int ACTIVITY_GROUP__NOT_CONTAINED = 162;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Group Owned' of 'Activity Group'.
@@ -1828,7 +1827,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_GROUP__GROUP_OWNED = 165;
+	public static final int ACTIVITY_GROUP__GROUP_OWNED = 161;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Edges' of 'Structured Activity Node'.
@@ -1844,7 +1843,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STRUCTURED_ACTIVITY_NODE__INPUT_PIN_EDGES = 173;
+	public static final int STRUCTURED_ACTIVITY_NODE__INPUT_PIN_EDGES = 171;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Owned' of 'Variable'.
@@ -1868,7 +1867,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXCEPTION_HANDLER__EXCEPTION_BODY = 182;
+	public static final int EXCEPTION_HANDLER__EXCEPTION_BODY = 185;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Result Pins' of 'Exception Handler'.
@@ -1876,7 +1875,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXCEPTION_HANDLER__RESULT_PINS = 183;
+	public static final int EXCEPTION_HANDLER__RESULT_PINS = 184;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate One Input' of 'Exception Handler'.
@@ -1884,7 +1883,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXCEPTION_HANDLER__ONE_INPUT = 184;
+	public static final int EXCEPTION_HANDLER__ONE_INPUT = 182;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Edge Source Target' of 'Exception Handler'.
@@ -1892,7 +1891,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXCEPTION_HANDLER__EDGE_SOURCE_TARGET = 185;
+	public static final int EXCEPTION_HANDLER__EDGE_SOURCE_TARGET = 183;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Object Flow Edges' of 'Object Node'.
@@ -1900,7 +1899,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_NODE__OBJECT_FLOW_EDGES = 178;
+	public static final int OBJECT_NODE__OBJECT_FLOW_EDGES = 176;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Selection Behavior' of 'Object Node'.
@@ -1916,7 +1915,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_NODE__INPUT_OUTPUT_PARAMETER = 176;
+	public static final int OBJECT_NODE__INPUT_OUTPUT_PARAMETER = 178;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Incoming Edges Structured Only' of 'Output Pin'.
@@ -1948,7 +1947,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_OPERAND__GUARD_DIRECTLY_PRIOR = 210;
+	public static final int INTERACTION_OPERAND__GUARD_DIRECTLY_PRIOR = 209;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Guard Contain References' of 'Interaction Operand'.
@@ -1956,7 +1955,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_OPERAND__GUARD_CONTAIN_REFERENCES = 209;
+	public static final int INTERACTION_OPERAND__GUARD_CONTAIN_REFERENCES = 210;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Dynamic Variables' of 'Interaction Constraint'.
@@ -1964,7 +1963,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_CONSTRAINT__DYNAMIC_VARIABLES = 214;
+	public static final int INTERACTION_CONSTRAINT__DYNAMIC_VARIABLES = 216;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Global Data' of 'Interaction Constraint'.
@@ -1972,7 +1971,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_CONSTRAINT__GLOBAL_DATA = 215;
+	public static final int INTERACTION_CONSTRAINT__GLOBAL_DATA = 214;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Minint Maxint' of 'Interaction Constraint'.
@@ -1980,7 +1979,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_CONSTRAINT__MININT_MAXINT = 211;
+	public static final int INTERACTION_CONSTRAINT__MININT_MAXINT = 212;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Minint Non Negative' of 'Interaction Constraint'.
@@ -1988,7 +1987,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_CONSTRAINT__MININT_NON_NEGATIVE = 212;
+	public static final int INTERACTION_CONSTRAINT__MININT_NON_NEGATIVE = 213;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Maxint Positive' of 'Interaction Constraint'.
@@ -1996,7 +1995,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_CONSTRAINT__MAXINT_POSITIVE = 213;
+	public static final int INTERACTION_CONSTRAINT__MAXINT_POSITIVE = 211;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Maxint Greater Equal Minint' of 'Interaction Constraint'.
@@ -2004,7 +2003,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_CONSTRAINT__MAXINT_GREATER_EQUAL_MININT = 216;
+	public static final int INTERACTION_CONSTRAINT__MAXINT_GREATER_EQUAL_MININT = 215;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Irreflexsive Transitive Closure' of 'General Ordering'.
@@ -2036,7 +2035,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COMBINED_FRAGMENT__OPT_LOOP_BREAK_NEG = 272;
+	public static final int COMBINED_FRAGMENT__OPT_LOOP_BREAK_NEG = 270;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Minint And Maxint' of 'Combined Fragment'.
@@ -2044,7 +2043,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COMBINED_FRAGMENT__MININT_AND_MAXINT = 269;
+	public static final int COMBINED_FRAGMENT__MININT_AND_MAXINT = 272;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Break' of 'Combined Fragment'.
@@ -2052,7 +2051,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COMBINED_FRAGMENT__BREAK = 270;
+	public static final int COMBINED_FRAGMENT__BREAK = 269;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Consider And Ignore' of 'Combined Fragment'.
@@ -2068,7 +2067,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONTINUATION__SAME_NAME = 285;
+	public static final int CONTINUATION__SAME_NAME = 284;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Global' of 'Continuation'.
@@ -2084,7 +2083,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONTINUATION__FIRST_OR_LAST_INTERACTION_FRAGMENT = 284;
+	public static final int CONTINUATION__FIRST_OR_LAST_INTERACTION_FRAGMENT = 285;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Consider Or Ignore' of 'Consider Ignore Fragment'.
@@ -2092,7 +2091,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONSIDER_IGNORE_FRAGMENT__CONSIDER_OR_IGNORE = 282;
+	public static final int CONSIDER_IGNORE_FRAGMENT__CONSIDER_OR_IGNORE = 283;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type' of 'Consider Ignore Fragment'.
@@ -2100,7 +2099,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONSIDER_IGNORE_FRAGMENT__TYPE = 283;
+	public static final int CONSIDER_IGNORE_FRAGMENT__TYPE = 282;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Classifier Not Abstract' of 'Create Object Action'.
@@ -2108,7 +2107,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CREATE_OBJECT_ACTION__CLASSIFIER_NOT_ABSTRACT = 306;
+	public static final int CREATE_OBJECT_ACTION__CLASSIFIER_NOT_ABSTRACT = 307;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Classifier Not Association Class' of 'Create Object Action'.
@@ -2116,7 +2115,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CREATE_OBJECT_ACTION__CLASSIFIER_NOT_ASSOCIATION_CLASS = 308;
+	public static final int CREATE_OBJECT_ACTION__CLASSIFIER_NOT_ASSOCIATION_CLASS = 306;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Type' of 'Create Object Action'.
@@ -2124,7 +2123,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CREATE_OBJECT_ACTION__SAME_TYPE = 309;
+	public static final int CREATE_OBJECT_ACTION__SAME_TYPE = 308;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Create Object Action'.
@@ -2132,7 +2131,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CREATE_OBJECT_ACTION__MULTIPLICITY = 307;
+	public static final int CREATE_OBJECT_ACTION__MULTIPLICITY = 309;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Destroy Object Action'.
@@ -2204,7 +2203,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_SELF_ACTION__TYPE = 394;
+	public static final int READ_SELF_ACTION__TYPE = 392;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Read Self Action'.
@@ -2212,7 +2211,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_SELF_ACTION__MULTIPLICITY = 392;
+	public static final int READ_SELF_ACTION__MULTIPLICITY = 394;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Not Static' of 'Structural Feature Action'.
@@ -2220,7 +2219,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STRUCTURAL_FEATURE_ACTION__NOT_STATIC = 240;
+	public static final int STRUCTURAL_FEATURE_ACTION__NOT_STATIC = 239;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Type' of 'Structural Feature Action'.
@@ -2228,7 +2227,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STRUCTURAL_FEATURE_ACTION__SAME_TYPE = 238;
+	public static final int STRUCTURAL_FEATURE_ACTION__SAME_TYPE = 241;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Structural Feature Action'.
@@ -2236,7 +2235,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STRUCTURAL_FEATURE_ACTION__MULTIPLICITY = 237;
+	public static final int STRUCTURAL_FEATURE_ACTION__MULTIPLICITY = 238;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Visibility' of 'Structural Feature Action'.
@@ -2244,7 +2243,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STRUCTURAL_FEATURE_ACTION__VISIBILITY = 239;
+	public static final int STRUCTURAL_FEATURE_ACTION__VISIBILITY = 237;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate One Featuring Classifier' of 'Structural Feature Action'.
@@ -2252,7 +2251,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STRUCTURAL_FEATURE_ACTION__ONE_FEATURING_CLASSIFIER = 241;
+	public static final int STRUCTURAL_FEATURE_ACTION__ONE_FEATURING_CLASSIFIER = 240;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Required Value' of 'Add Variable Value Action'.
@@ -2284,7 +2283,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int WRITE_STRUCTURAL_FEATURE_ACTION__INPUT_PIN = 234;
+	public static final int WRITE_STRUCTURAL_FEATURE_ACTION__INPUT_PIN = 233;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Of Result' of 'Write Structural Feature Action'.
@@ -2292,7 +2291,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int WRITE_STRUCTURAL_FEATURE_ACTION__TYPE_OF_RESULT = 235;
+	public static final int WRITE_STRUCTURAL_FEATURE_ACTION__TYPE_OF_RESULT = 234;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Result' of 'Write Structural Feature Action'.
@@ -2300,7 +2299,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int WRITE_STRUCTURAL_FEATURE_ACTION__MULTIPLICITY_OF_RESULT = 233;
+	public static final int WRITE_STRUCTURAL_FEATURE_ACTION__MULTIPLICITY_OF_RESULT = 235;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Write Structural Feature Action'.
@@ -2316,7 +2315,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLEAR_STRUCTURAL_FEATURE_ACTION__TYPE_OF_RESULT = 267;
+	public static final int CLEAR_STRUCTURAL_FEATURE_ACTION__TYPE_OF_RESULT = 268;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Result' of 'Clear Structural Feature Action'.
@@ -2324,7 +2323,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLEAR_STRUCTURAL_FEATURE_ACTION__MULTIPLICITY_OF_RESULT = 268;
+	public static final int CLEAR_STRUCTURAL_FEATURE_ACTION__MULTIPLICITY_OF_RESULT = 267;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Non Unique Removal' of 'Remove Structural Feature Value Action'.
@@ -2340,7 +2339,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ADD_STRUCTURAL_FEATURE_VALUE_ACTION__UNLIMITED_NATURAL_AND_MULTIPLICITY = 232;
+	public static final int ADD_STRUCTURAL_FEATURE_VALUE_ACTION__UNLIMITED_NATURAL_AND_MULTIPLICITY = 231;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Association' of 'Link Action'.
@@ -2372,7 +2371,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LINK_END_DATA__PROPERTY_IS_ASSOCIATION_END = 296;
+	public static final int LINK_END_DATA__PROPERTY_IS_ASSOCIATION_END = 293;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Type' of 'Link End Data'.
@@ -2380,7 +2379,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LINK_END_DATA__SAME_TYPE = 293;
+	public static final int LINK_END_DATA__SAME_TYPE = 295;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Link End Data'.
@@ -2388,7 +2387,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LINK_END_DATA__MULTIPLICITY = 294;
+	public static final int LINK_END_DATA__MULTIPLICITY = 296;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Qualifiers' of 'Link End Data'.
@@ -2404,7 +2403,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LINK_END_DATA__END_OBJECT_INPUT_PIN = 295;
+	public static final int LINK_END_DATA__END_OBJECT_INPUT_PIN = 294;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Qualifier Attribute' of 'Qualifier Value'.
@@ -2412,7 +2411,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int QUALIFIER_VALUE__QUALIFIER_ATTRIBUTE = 300;
+	public static final int QUALIFIER_VALUE__QUALIFIER_ATTRIBUTE = 298;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Of Qualifier' of 'Qualifier Value'.
@@ -2420,7 +2419,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int QUALIFIER_VALUE__TYPE_OF_QUALIFIER = 299;
+	public static final int QUALIFIER_VALUE__TYPE_OF_QUALIFIER = 300;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Qualifier' of 'Qualifier Value'.
@@ -2428,7 +2427,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int QUALIFIER_VALUE__MULTIPLICITY_OF_QUALIFIER = 298;
+	public static final int QUALIFIER_VALUE__MULTIPLICITY_OF_QUALIFIER = 299;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate One Open End' of 'Read Link Action'.
@@ -2436,7 +2435,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_ACTION__ONE_OPEN_END = 374;
+	public static final int READ_LINK_ACTION__ONE_OPEN_END = 372;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type And Ordering' of 'Read Link Action'.
@@ -2452,7 +2451,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_ACTION__COMPATIBLE_MULTIPLICITY = 372;
+	public static final int READ_LINK_ACTION__COMPATIBLE_MULTIPLICITY = 373;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Navigable Open End' of 'Read Link Action'.
@@ -2460,7 +2459,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_ACTION__NAVIGABLE_OPEN_END = 375;
+	public static final int READ_LINK_ACTION__NAVIGABLE_OPEN_END = 374;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Visibility' of 'Read Link Action'.
@@ -2468,7 +2467,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_ACTION__VISIBILITY = 373;
+	public static final int READ_LINK_ACTION__VISIBILITY = 375;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Create Link Action' of 'Link End Creation Data'.
@@ -2476,7 +2475,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LINK_END_CREATION_DATA__CREATE_LINK_ACTION = 302;
+	public static final int LINK_END_CREATION_DATA__CREATE_LINK_ACTION = 301;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Single Input Pin' of 'Link End Creation Data'.
@@ -2484,7 +2483,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LINK_END_CREATION_DATA__SINGLE_INPUT_PIN = 301;
+	public static final int LINK_END_CREATION_DATA__SINGLE_INPUT_PIN = 302;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Association Not Abstract' of 'Create Link Action'.
@@ -2508,7 +2507,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LINK_END_DESTRUCTION_DATA__DESTROY_LINK_ACTION = 327;
+	public static final int LINK_END_DESTRUCTION_DATA__DESTROY_LINK_ACTION = 326;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Unlimited Natural And Multiplicity' of 'Link End Destruction Data'.
@@ -2516,7 +2515,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LINK_END_DESTRUCTION_DATA__UNLIMITED_NATURAL_AND_MULTIPLICITY = 326;
+	public static final int LINK_END_DESTRUCTION_DATA__UNLIMITED_NATURAL_AND_MULTIPLICITY = 327;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Type' of 'Clear Association Action'.
@@ -2540,7 +2539,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int BROADCAST_SIGNAL_ACTION__NUMBER_AND_ORDER = 249;
+	public static final int BROADCAST_SIGNAL_ACTION__NUMBER_AND_ORDER = 250;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Ordering Multiplicity' of 'Broadcast Signal Action'.
@@ -2548,7 +2547,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int BROADCAST_SIGNAL_ACTION__TYPE_ORDERING_MULTIPLICITY = 250;
+	public static final int BROADCAST_SIGNAL_ACTION__TYPE_ORDERING_MULTIPLICITY = 249;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate On Port Receiver' of 'Invocation Action'.
@@ -2604,7 +2603,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int VALUE_PIN__COMPATIBLE_TYPE = 431;
+	public static final int VALUE_PIN__COMPATIBLE_TYPE = 430;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Incoming Edges' of 'Value Pin'.
@@ -2612,7 +2611,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int VALUE_PIN__NO_INCOMING_EDGES = 430;
+	public static final int VALUE_PIN__NO_INCOMING_EDGES = 431;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Synchronous Call' of 'Call Action'.
@@ -2620,7 +2619,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CALL_ACTION__SYNCHRONOUS_CALL = 254;
+	public static final int CALL_ACTION__SYNCHRONOUS_CALL = 252;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Number And Order' of 'Call Action'.
@@ -2636,7 +2635,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CALL_ACTION__TYPE_ORDERING_MULTIPLICITY = 252;
+	public static final int CALL_ACTION__TYPE_ORDERING_MULTIPLICITY = 254;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Number Order' of 'Send Signal Action'.
@@ -2660,7 +2659,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CALL_OPERATION_ACTION__ARGUMENT_PIN_EQUAL_PARAMETER = 259;
+	public static final int CALL_OPERATION_ACTION__ARGUMENT_PIN_EQUAL_PARAMETER = 258;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Result Pin Equal Parameter' of 'Call Operation Action'.
@@ -2668,7 +2667,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CALL_OPERATION_ACTION__RESULT_PIN_EQUAL_PARAMETER = 260;
+	public static final int CALL_OPERATION_ACTION__RESULT_PIN_EQUAL_PARAMETER = 259;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Target Pin' of 'Call Operation Action'.
@@ -2676,7 +2675,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CALL_OPERATION_ACTION__TYPE_TARGET_PIN = 258;
+	public static final int CALL_OPERATION_ACTION__TYPE_TARGET_PIN = 260;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Ordering Multiplicity' of 'Call Operation Action'.
@@ -2716,7 +2715,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INFORMATION_ITEM__SOURCES_AND_TARGETS = 349;
+	public static final int INFORMATION_ITEM__SOURCES_AND_TARGETS = 351;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Has No' of 'Information Item'.
@@ -2724,7 +2723,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INFORMATION_ITEM__HAS_NO = 350;
+	public static final int INFORMATION_ITEM__HAS_NO = 349;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Not Instantiable' of 'Information Item'.
@@ -2732,7 +2731,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INFORMATION_ITEM__NOT_INSTANTIABLE = 351;
+	public static final int INFORMATION_ITEM__NOT_INSTANTIABLE = 350;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Sources And Targets Kind' of 'Information Flow'.
@@ -2740,7 +2739,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INFORMATION_FLOW__SOURCES_AND_TARGETS_KIND = 347;
+	public static final int INFORMATION_FLOW__SOURCES_AND_TARGETS_KIND = 346;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Must Conform' of 'Information Flow'.
@@ -2748,7 +2747,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INFORMATION_FLOW__MUST_CONFORM = 346;
+	public static final int INFORMATION_FLOW__MUST_CONFORM = 347;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Convey Classifiers' of 'Information Flow'.
@@ -2788,7 +2787,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int WRITE_VARIABLE_ACTION__SAME_TYPE = 244;
+	public static final int WRITE_VARIABLE_ACTION__SAME_TYPE = 245;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Write Variable Action'.
@@ -2796,7 +2795,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int WRITE_VARIABLE_ACTION__MULTIPLICITY = 245;
+	public static final int WRITE_VARIABLE_ACTION__MULTIPLICITY = 244;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Single Input Pin' of 'Add Variable Value Action'.
@@ -2820,7 +2819,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTION_INPUT_PIN__ONE_OUTPUT_PIN = 219;
+	public static final int ACTION_INPUT_PIN__ONE_OUTPUT_PIN = 220;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Input Pin' of 'Action Input Pin'.
@@ -2836,7 +2835,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTION_INPUT_PIN__NO_CONTROL_OR_DATA_FLOW = 220;
+	public static final int ACTION_INPUT_PIN__NO_CONTROL_OR_DATA_FLOW = 219;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Is Classifier' of 'Read Extent Action'.
@@ -2860,7 +2859,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int RECLASSIFY_OBJECT_ACTION__CLASSIFIER_NOT_ABSTRACT = 400;
+	public static final int RECLASSIFY_OBJECT_ACTION__CLASSIFIER_NOT_ABSTRACT = 401;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Reclassify Object Action'.
@@ -2868,7 +2867,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int RECLASSIFY_OBJECT_ACTION__MULTIPLICITY = 401;
+	public static final int RECLASSIFY_OBJECT_ACTION__MULTIPLICITY = 400;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Input Pin' of 'Reclassify Object Action'.
@@ -2916,7 +2915,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int START_CLASSIFIER_BEHAVIOR_ACTION__MULTIPLICITY = 411;
+	public static final int START_CLASSIFIER_BEHAVIOR_ACTION__MULTIPLICITY = 412;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Has Classifier' of 'Start Classifier Behavior Action'.
@@ -2924,7 +2923,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int START_CLASSIFIER_BEHAVIOR_ACTION__TYPE_HAS_CLASSIFIER = 412;
+	public static final int START_CLASSIFIER_BEHAVIOR_ACTION__TYPE_HAS_CLASSIFIER = 411;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Property' of 'Read Link Object End Action'.
@@ -2932,7 +2931,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_ACTION__PROPERTY = 376;
+	public static final int READ_LINK_OBJECT_END_ACTION__PROPERTY = 380;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Association Of Association' of 'Read Link Object End Action'.
@@ -2940,7 +2939,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_ACTION__ASSOCIATION_OF_ASSOCIATION = 382;
+	public static final int READ_LINK_OBJECT_END_ACTION__ASSOCIATION_OF_ASSOCIATION = 376;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Ends Of Association' of 'Read Link Object End Action'.
@@ -2948,7 +2947,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_ACTION__ENDS_OF_ASSOCIATION = 378;
+	public static final int READ_LINK_OBJECT_END_ACTION__ENDS_OF_ASSOCIATION = 382;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Of Object' of 'Read Link Object End Action'.
@@ -2956,7 +2955,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_ACTION__TYPE_OF_OBJECT = 381;
+	public static final int READ_LINK_OBJECT_END_ACTION__TYPE_OF_OBJECT = 379;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Object' of 'Read Link Object End Action'.
@@ -2972,7 +2971,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_ACTION__TYPE_OF_RESULT = 379;
+	public static final int READ_LINK_OBJECT_END_ACTION__TYPE_OF_RESULT = 378;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Result' of 'Read Link Object End Action'.
@@ -2980,7 +2979,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_ACTION__MULTIPLICITY_OF_RESULT = 380;
+	public static final int READ_LINK_OBJECT_END_ACTION__MULTIPLICITY_OF_RESULT = 381;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Qualifier Attribute' of 'Read Link Object End Qualifier Action'.
@@ -3012,7 +3011,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__TYPE_OF_OBJECT = 384;
+	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__TYPE_OF_OBJECT = 383;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Qualifier' of 'Read Link Object End Qualifier Action'.
@@ -3020,7 +3019,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__MULTIPLICITY_OF_QUALIFIER = 385;
+	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__MULTIPLICITY_OF_QUALIFIER = 387;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Object' of 'Read Link Object End Qualifier Action'.
@@ -3028,7 +3027,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__MULTIPLICITY_OF_OBJECT = 383;
+	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__MULTIPLICITY_OF_OBJECT = 388;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Type' of 'Read Link Object End Qualifier Action'.
@@ -3036,7 +3035,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__SAME_TYPE = 388;
+	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__SAME_TYPE = 385;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Result' of 'Read Link Object End Qualifier Action'.
@@ -3044,7 +3043,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__MULTIPLICITY_OF_RESULT = 387;
+	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__MULTIPLICITY_OF_RESULT = 384;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Association Class' of 'Create Link Object Action'.
@@ -3052,7 +3051,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CREATE_LINK_OBJECT_ACTION__ASSOCIATION_CLASS = 305;
+	public static final int CREATE_LINK_OBJECT_ACTION__ASSOCIATION_CLASS = 303;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Of Result' of 'Create Link Object Action'.
@@ -3068,7 +3067,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CREATE_LINK_OBJECT_ACTION__MULTIPLICITY = 303;
+	public static final int CREATE_LINK_OBJECT_ACTION__MULTIPLICITY = 305;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Input Pins' of 'Accept Event Action'.
@@ -3076,7 +3075,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACCEPT_EVENT_ACTION__NO_INPUT_PINS = 153;
+	public static final int ACCEPT_EVENT_ACTION__NO_INPUT_PINS = 152;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Output Pins' of 'Accept Event Action'.
@@ -3084,7 +3083,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACCEPT_EVENT_ACTION__NO_OUTPUT_PINS = 154;
+	public static final int ACCEPT_EVENT_ACTION__NO_OUTPUT_PINS = 155;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Trigger Events' of 'Accept Event Action'.
@@ -3092,7 +3091,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACCEPT_EVENT_ACTION__TRIGGER_EVENTS = 152;
+	public static final int ACCEPT_EVENT_ACTION__TRIGGER_EVENTS = 153;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Unmarshall Signal Events' of 'Accept Event Action'.
@@ -3100,7 +3099,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACCEPT_EVENT_ACTION__UNMARSHALL_SIGNAL_EVENTS = 155;
+	public static final int ACCEPT_EVENT_ACTION__UNMARSHALL_SIGNAL_EVENTS = 154;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Result Pins' of 'Accept Call Action'.
@@ -3108,7 +3107,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACCEPT_CALL_ACTION__RESULT_PINS = 149;
+	public static final int ACCEPT_CALL_ACTION__RESULT_PINS = 151;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Trigger Call Event' of 'Accept Call Action'.
@@ -3116,7 +3115,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACCEPT_CALL_ACTION__TRIGGER_CALL_EVENT = 150;
+	public static final int ACCEPT_CALL_ACTION__TRIGGER_CALL_EVENT = 149;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Unmarshall' of 'Accept Call Action'.
@@ -3124,7 +3123,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACCEPT_CALL_ACTION__UNMARSHALL = 151;
+	public static final int ACCEPT_CALL_ACTION__UNMARSHALL = 150;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Pins Match Parameter' of 'Reply Action'.
@@ -3132,7 +3131,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REPLY_ACTION__PINS_MATCH_PARAMETER = 407;
+	public static final int REPLY_ACTION__PINS_MATCH_PARAMETER = 408;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Event On Reply To Call Trigger' of 'Reply Action'.
@@ -3140,7 +3139,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REPLY_ACTION__EVENT_ON_REPLY_TO_CALL_TRIGGER = 408;
+	public static final int REPLY_ACTION__EVENT_ON_REPLY_TO_CALL_TRIGGER = 407;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Type' of 'Unmarshall Action'.
@@ -3148,7 +3147,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int UNMARSHALL_ACTION__SAME_TYPE = 429;
+	public static final int UNMARSHALL_ACTION__SAME_TYPE = 423;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Object' of 'Unmarshall Action'.
@@ -3156,7 +3155,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int UNMARSHALL_ACTION__MULTIPLICITY_OF_OBJECT = 428;
+	public static final int UNMARSHALL_ACTION__MULTIPLICITY_OF_OBJECT = 425;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Number Of Result' of 'Unmarshall Action'.
@@ -3164,7 +3163,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int UNMARSHALL_ACTION__NUMBER_OF_RESULT = 424;
+	public static final int UNMARSHALL_ACTION__NUMBER_OF_RESULT = 427;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type And Ordering' of 'Unmarshall Action'.
@@ -3180,7 +3179,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int UNMARSHALL_ACTION__MULTIPLICITY_OF_RESULT = 425;
+	public static final int UNMARSHALL_ACTION__MULTIPLICITY_OF_RESULT = 429;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Structural Feature' of 'Unmarshall Action'.
@@ -3188,7 +3187,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int UNMARSHALL_ACTION__STRUCTURAL_FEATURE = 423;
+	public static final int UNMARSHALL_ACTION__STRUCTURAL_FEATURE = 424;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Unmarshall Type Is Classifier' of 'Unmarshall Action'.
@@ -3196,7 +3195,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int UNMARSHALL_ACTION__UNMARSHALL_TYPE_IS_CLASSIFIER = 427;
+	public static final int UNMARSHALL_ACTION__UNMARSHALL_TYPE_IS_CLASSIFIER = 428;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Input Type Is Collection' of 'Reduce Action'.
@@ -3204,7 +3203,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REDUCE_ACTION__INPUT_TYPE_IS_COLLECTION = 403;
+	public static final int REDUCE_ACTION__INPUT_TYPE_IS_COLLECTION = 404;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Output Types Are Compatible' of 'Reduce Action'.
@@ -3212,7 +3211,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REDUCE_ACTION__OUTPUT_TYPES_ARE_COMPATIBLE = 404;
+	public static final int REDUCE_ACTION__OUTPUT_TYPES_ARE_COMPATIBLE = 402;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Reducer Inputs Output' of 'Reduce Action'.
@@ -3220,7 +3219,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REDUCE_ACTION__REDUCER_INPUTS_OUTPUT = 402;
+	public static final int REDUCE_ACTION__REDUCER_INPUTS_OUTPUT = 403;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Of Object' of 'Start Object Behavior Action'.
@@ -3228,7 +3227,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int START_OBJECT_BEHAVIOR_ACTION__TYPE_OF_OBJECT = 417;
+	public static final int START_OBJECT_BEHAVIOR_ACTION__TYPE_OF_OBJECT = 416;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Object' of 'Start Object Behavior Action'.
@@ -3236,7 +3235,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int START_OBJECT_BEHAVIOR_ACTION__MULTIPLICITY_OF_OBJECT = 414;
+	public static final int START_OBJECT_BEHAVIOR_ACTION__MULTIPLICITY_OF_OBJECT = 417;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Number Order Arguments' of 'Start Object Behavior Action'.
@@ -3244,7 +3243,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int START_OBJECT_BEHAVIOR_ACTION__NUMBER_ORDER_ARGUMENTS = 416;
+	public static final int START_OBJECT_BEHAVIOR_ACTION__NUMBER_ORDER_ARGUMENTS = 413;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Number Order Results' of 'Start Object Behavior Action'.
@@ -3252,7 +3251,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int START_OBJECT_BEHAVIOR_ACTION__NUMBER_ORDER_RESULTS = 413;
+	public static final int START_OBJECT_BEHAVIOR_ACTION__NUMBER_ORDER_RESULTS = 415;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Ordering Multiplicity Match' of 'Start Object Behavior Action'.
@@ -3260,7 +3259,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int START_OBJECT_BEHAVIOR_ACTION__TYPE_ORDERING_MULTIPLICITY_MATCH = 415;
+	public static final int START_OBJECT_BEHAVIOR_ACTION__TYPE_ORDERING_MULTIPLICITY_MATCH = 414;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Object Nodes' of 'Control Flow'.
@@ -3292,7 +3291,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_PARAMETER_NODE__HAS_PARAMETERS = 224;
+	public static final int ACTIVITY_PARAMETER_NODE__HAS_PARAMETERS = 228;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Type' of 'Activity Parameter Node'.
@@ -3300,7 +3299,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_PARAMETER_NODE__SAME_TYPE = 225;
+	public static final int ACTIVITY_PARAMETER_NODE__SAME_TYPE = 227;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Edges' of 'Activity Parameter Node'.
@@ -3308,7 +3307,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_PARAMETER_NODE__NO_EDGES = 228;
+	public static final int ACTIVITY_PARAMETER_NODE__NO_EDGES = 224;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Incoming Edges' of 'Activity Parameter Node'.
@@ -3316,7 +3315,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_PARAMETER_NODE__NO_INCOMING_EDGES = 227;
+	public static final int ACTIVITY_PARAMETER_NODE__NO_INCOMING_EDGES = 225;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Outgoing Edges' of 'Activity Parameter Node'.
@@ -3324,7 +3323,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_PARAMETER_NODE__NO_OUTGOING_EDGES = 222;
+	public static final int ACTIVITY_PARAMETER_NODE__NO_OUTGOING_EDGES = 226;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Maximum One Parameter Node' of 'Activity Parameter Node'.
@@ -3332,7 +3331,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_PARAMETER_NODE__MAXIMUM_ONE_PARAMETER_NODE = 226;
+	public static final int ACTIVITY_PARAMETER_NODE__MAXIMUM_ONE_PARAMETER_NODE = 222;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Maximum Two Parameter Nodes' of 'Activity Parameter Node'.
@@ -3388,7 +3387,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int DECISION_NODE__INCOMING_OUTGOING_EDGES = 314;
+	public static final int DECISION_NODE__INCOMING_OUTGOING_EDGES = 312;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Edges' of 'Decision Node'.
@@ -3396,7 +3395,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int DECISION_NODE__EDGES = 311;
+	public static final int DECISION_NODE__EDGES = 317;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Decision Input Flow Incoming' of 'Decision Node'.
@@ -3404,7 +3403,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int DECISION_NODE__DECISION_INPUT_FLOW_INCOMING = 312;
+	public static final int DECISION_NODE__DECISION_INPUT_FLOW_INCOMING = 315;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Parameters' of 'Decision Node'.
@@ -3412,7 +3411,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int DECISION_NODE__PARAMETERS = 316;
+	public static final int DECISION_NODE__PARAMETERS = 310;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Zero Input Parameters' of 'Decision Node'.
@@ -3420,7 +3419,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int DECISION_NODE__ZERO_INPUT_PARAMETERS = 310;
+	public static final int DECISION_NODE__ZERO_INPUT_PARAMETERS = 316;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Incoming Object One Input Parameter' of 'Decision Node'.
@@ -3428,7 +3427,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int DECISION_NODE__INCOMING_OBJECT_ONE_INPUT_PARAMETER = 317;
+	public static final int DECISION_NODE__INCOMING_OBJECT_ONE_INPUT_PARAMETER = 311;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Incoming Control One Input Parameter' of 'Decision Node'.
@@ -3436,7 +3435,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int DECISION_NODE__INCOMING_CONTROL_ONE_INPUT_PARAMETER = 315;
+	public static final int DECISION_NODE__INCOMING_CONTROL_ONE_INPUT_PARAMETER = 313;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Two Input Parameters' of 'Decision Node'.
@@ -3444,7 +3443,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int DECISION_NODE__TWO_INPUT_PARAMETERS = 313;
+	public static final int DECISION_NODE__TWO_INPUT_PARAMETERS = 314;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate One Outgoing Edge' of 'Join Node'.
@@ -3468,7 +3467,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_FLOW__NO_ACTIONS = 319;
+	public static final int OBJECT_FLOW__NO_ACTIONS = 321;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Compatible Types' of 'Object Flow'.
@@ -3476,7 +3475,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_FLOW__COMPATIBLE_TYPES = 322;
+	public static final int OBJECT_FLOW__COMPATIBLE_TYPES = 320;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Upper Bounds' of 'Object Flow'.
@@ -3484,7 +3483,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_FLOW__SAME_UPPER_BOUNDS = 323;
+	public static final int OBJECT_FLOW__SAME_UPPER_BOUNDS = 325;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Target' of 'Object Flow'.
@@ -3500,7 +3499,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_FLOW__TRANSFORMATION_BEHAVIOUR = 320;
+	public static final int OBJECT_FLOW__TRANSFORMATION_BEHAVIOUR = 323;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Selection Behaviour' of 'Object Flow'.
@@ -3508,7 +3507,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_FLOW__SELECTION_BEHAVIOUR = 321;
+	public static final int OBJECT_FLOW__SELECTION_BEHAVIOUR = 319;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Input And Output Parameter' of 'Object Flow'.
@@ -3516,7 +3515,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_FLOW__INPUT_AND_OUTPUT_PARAMETER = 318;
+	public static final int OBJECT_FLOW__INPUT_AND_OUTPUT_PARAMETER = 322;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Is Multicast Or Is Multireceive' of 'Object Flow'.
@@ -3524,7 +3523,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_FLOW__IS_MULTICAST_OR_IS_MULTIRECEIVE = 325;
+	public static final int OBJECT_FLOW__IS_MULTICAST_OR_IS_MULTIRECEIVE = 318;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Result No Incoming' of 'Conditional Node'.
@@ -3532,7 +3531,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONDITIONAL_NODE__RESULT_NO_INCOMING = 276;
+	public static final int CONDITIONAL_NODE__RESULT_NO_INCOMING = 280;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Input Pins' of 'Conditional Node'.
@@ -3540,7 +3539,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONDITIONAL_NODE__NO_INPUT_PINS = 277;
+	public static final int CONDITIONAL_NODE__NO_INPUT_PINS = 281;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate One Clause With Executable Node' of 'Conditional Node'.
@@ -3548,7 +3547,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONDITIONAL_NODE__ONE_CLAUSE_WITH_EXECUTABLE_NODE = 278;
+	public static final int CONDITIONAL_NODE__ONE_CLAUSE_WITH_EXECUTABLE_NODE = 279;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Matching Output Pins' of 'Conditional Node'.
@@ -3556,7 +3555,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONDITIONAL_NODE__MATCHING_OUTPUT_PINS = 279;
+	public static final int CONDITIONAL_NODE__MATCHING_OUTPUT_PINS = 278;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Executable Nodes' of 'Conditional Node'.
@@ -3564,7 +3563,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONDITIONAL_NODE__EXECUTABLE_NODES = 280;
+	public static final int CONDITIONAL_NODE__EXECUTABLE_NODES = 276;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Clause No Predecessor' of 'Conditional Node'.
@@ -3572,7 +3571,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONDITIONAL_NODE__CLAUSE_NO_PREDECESSOR = 281;
+	public static final int CONDITIONAL_NODE__CLAUSE_NO_PREDECESSOR = 277;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Decider Output' of 'Clause'.
@@ -3580,7 +3579,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLAUSE__DECIDER_OUTPUT = 263;
+	public static final int CLAUSE__DECIDER_OUTPUT = 264;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Test And Body' of 'Clause'.
@@ -3588,7 +3587,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLAUSE__TEST_AND_BODY = 264;
+	public static final int CLAUSE__TEST_AND_BODY = 262;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Body Output Pins' of 'Clause'.
@@ -3596,7 +3595,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLAUSE__BODY_OUTPUT_PINS = 262;
+	public static final int CLAUSE__BODY_OUTPUT_PINS = 263;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Input Edges' of 'Loop Node'.
@@ -3604,7 +3603,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LOOP_NODE__INPUT_EDGES = 357;
+	public static final int LOOP_NODE__INPUT_EDGES = 359;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Executable Nodes' of 'Loop Node'.
@@ -3612,7 +3611,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LOOP_NODE__EXECUTABLE_NODES = 358;
+	public static final int LOOP_NODE__EXECUTABLE_NODES = 356;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Body Output Pins' of 'Loop Node'.
@@ -3620,7 +3619,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LOOP_NODE__BODY_OUTPUT_PINS = 359;
+	public static final int LOOP_NODE__BODY_OUTPUT_PINS = 357;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Result No Incoming' of 'Loop Node'.
@@ -3628,7 +3627,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LOOP_NODE__RESULT_NO_INCOMING = 356;
+	public static final int LOOP_NODE__RESULT_NO_INCOMING = 358;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Expansion Nodes' of 'Expansion Region'.
@@ -3660,7 +3659,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COMPONENT__NO_NESTED_CLASSIFIERS = 274;
+	public static final int COMPONENT__NO_NESTED_CLASSIFIERS = 275;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Packaged Elements' of 'Component'.
@@ -3668,7 +3667,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COMPONENT__NO_PACKAGED_ELEMENTS = 275;
+	public static final int COMPONENT__NO_PACKAGED_ELEMENTS = 274;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Outgoing Transitions' of 'Final State'.
@@ -3676,7 +3675,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int FINAL_STATE__NO_OUTGOING_TRANSITIONS = 337;
+	public static final int FINAL_STATE__NO_OUTGOING_TRANSITIONS = 336;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Regions' of 'Final State'.
@@ -3684,7 +3683,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int FINAL_STATE__NO_REGIONS = 338;
+	public static final int FINAL_STATE__NO_REGIONS = 341;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Cannot Reference Submachine' of 'Final State'.
@@ -3692,7 +3691,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int FINAL_STATE__CANNOT_REFERENCE_SUBMACHINE = 339;
+	public static final int FINAL_STATE__CANNOT_REFERENCE_SUBMACHINE = 337;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Entry Behavior' of 'Final State'.
@@ -3700,7 +3699,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int FINAL_STATE__NO_ENTRY_BEHAVIOR = 340;
+	public static final int FINAL_STATE__NO_ENTRY_BEHAVIOR = 339;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Exit Behavior' of 'Final State'.
@@ -3708,7 +3707,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int FINAL_STATE__NO_EXIT_BEHAVIOR = 336;
+	public static final int FINAL_STATE__NO_EXIT_BEHAVIOR = 338;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No State Behavior' of 'Final State'.
@@ -3716,7 +3715,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int FINAL_STATE__NO_STATE_BEHAVIOR = 341;
+	public static final int FINAL_STATE__NO_STATE_BEHAVIOR = 340;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate When Non Negative' of 'Time Event'.
@@ -3724,7 +3723,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TIME_EVENT__WHEN_NON_NEGATIVE = 421;
+	public static final int TIME_EVENT__WHEN_NON_NEGATIVE = 422;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Starting Time' of 'Time Event'.
@@ -3732,7 +3731,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TIME_EVENT__STARTING_TIME = 422;
+	public static final int TIME_EVENT__STARTING_TIME = 421;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Belongs To Psm' of 'Protocol Transition'.
@@ -3764,7 +3763,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ASSOCIATION_CLASS__CANNOT_BE_DEFINED = 247;
+	public static final int ASSOCIATION_CLASS__CANNOT_BE_DEFINED = 248;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Disjoint Attributes Ends' of 'Association Class'.
@@ -3772,7 +3771,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ASSOCIATION_CLASS__DISJOINT_ATTRIBUTES_ENDS = 248;
+	public static final int ASSOCIATION_CLASS__DISJOINT_ATTRIBUTES_ENDS = 247;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.
@@ -3827,12 +3826,12 @@ public class UMLValidator
 			case UMLPackage.DEPENDENCY :
 				return validateDependency((Dependency) value, diagnostics,
 					context);
-			case UMLPackage.DIRECTED_RELATIONSHIP :
-				return validateDirectedRelationship(
-					(DirectedRelationship) value, diagnostics, context);
-			case UMLPackage.RELATIONSHIP :
-				return validateRelationship((Relationship) value, diagnostics,
-					context);
+			case UMLPackage.PACKAGEABLE_ELEMENT :
+				return validatePackageableElement((PackageableElement) value,
+					diagnostics, context);
+			case UMLPackage.PARAMETERABLE_ELEMENT :
+				return validateParameterableElement(
+					(ParameterableElement) value, diagnostics, context);
 			case UMLPackage.ELEMENT :
 				return validateElement((Element) value, diagnostics, context);
 			case UMLPackage.COMMENT :
@@ -3843,9 +3842,12 @@ public class UMLValidator
 			case UMLPackage.CLASS :
 				return validateClass((org.eclipse.uml2.uml.Class) value,
 					diagnostics, context);
-			case UMLPackage.BEHAVIORED_CLASSIFIER :
-				return validateBehavioredClassifier(
-					(BehavioredClassifier) value, diagnostics, context);
+			case UMLPackage.ENCAPSULATED_CLASSIFIER :
+				return validateEncapsulatedClassifier(
+					(EncapsulatedClassifier) value, diagnostics, context);
+			case UMLPackage.STRUCTURED_CLASSIFIER :
+				return validateStructuredClassifier(
+					(StructuredClassifier) value, diagnostics, context);
 			case UMLPackage.CLASSIFIER :
 				return validateClassifier((Classifier) value, diagnostics,
 					context);
@@ -3858,24 +3860,6 @@ public class UMLValidator
 			case UMLPackage.STRING_EXPRESSION :
 				return validateStringExpression((StringExpression) value,
 					diagnostics, context);
-			case UMLPackage.TEMPLATEABLE_ELEMENT :
-				return validateTemplateableElement((TemplateableElement) value,
-					diagnostics, context);
-			case UMLPackage.TEMPLATE_SIGNATURE :
-				return validateTemplateSignature((TemplateSignature) value,
-					diagnostics, context);
-			case UMLPackage.TEMPLATE_PARAMETER :
-				return validateTemplateParameter((TemplateParameter) value,
-					diagnostics, context);
-			case UMLPackage.PARAMETERABLE_ELEMENT :
-				return validateParameterableElement(
-					(ParameterableElement) value, diagnostics, context);
-			case UMLPackage.TEMPLATE_BINDING :
-				return validateTemplateBinding((TemplateBinding) value,
-					diagnostics, context);
-			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION :
-				return validateTemplateParameterSubstitution(
-					(TemplateParameterSubstitution) value, diagnostics, context);
 			case UMLPackage.EXPRESSION :
 				return validateExpression((Expression) value, diagnostics,
 					context);
@@ -3887,12 +3871,30 @@ public class UMLValidator
 					context);
 			case UMLPackage.TYPE :
 				return validateType((Type) value, diagnostics, context);
-			case UMLPackage.PACKAGEABLE_ELEMENT :
-				return validatePackageableElement((PackageableElement) value,
-					diagnostics, context);
 			case UMLPackage.PACKAGE :
 				return validatePackage((org.eclipse.uml2.uml.Package) value,
 					diagnostics, context);
+			case UMLPackage.TEMPLATEABLE_ELEMENT :
+				return validateTemplateableElement((TemplateableElement) value,
+					diagnostics, context);
+			case UMLPackage.TEMPLATE_SIGNATURE :
+				return validateTemplateSignature((TemplateSignature) value,
+					diagnostics, context);
+			case UMLPackage.TEMPLATE_PARAMETER :
+				return validateTemplateParameter((TemplateParameter) value,
+					diagnostics, context);
+			case UMLPackage.TEMPLATE_BINDING :
+				return validateTemplateBinding((TemplateBinding) value,
+					diagnostics, context);
+			case UMLPackage.DIRECTED_RELATIONSHIP :
+				return validateDirectedRelationship(
+					(DirectedRelationship) value, diagnostics, context);
+			case UMLPackage.RELATIONSHIP :
+				return validateRelationship((Relationship) value, diagnostics,
+					context);
+			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION :
+				return validateTemplateParameterSubstitution(
+					(TemplateParameterSubstitution) value, diagnostics, context);
 			case UMLPackage.PACKAGE_MERGE :
 				return validatePackageMerge((PackageMerge) value, diagnostics,
 					context);
@@ -3915,15 +3917,23 @@ public class UMLValidator
 					context);
 			case UMLPackage.PROPERTY :
 				return validateProperty((Property) value, diagnostics, context);
+			case UMLPackage.STRUCTURAL_FEATURE :
+				return validateStructuralFeature((StructuralFeature) value,
+					diagnostics, context);
+			case UMLPackage.MULTIPLICITY_ELEMENT :
+				return validateMultiplicityElement((MultiplicityElement) value,
+					diagnostics, context);
+			case UMLPackage.FEATURE :
+				return validateFeature((Feature) value, diagnostics, context);
+			case UMLPackage.REDEFINABLE_ELEMENT :
+				return validateRedefinableElement((RedefinableElement) value,
+					diagnostics, context);
 			case UMLPackage.CONNECTABLE_ELEMENT :
 				return validateConnectableElement((ConnectableElement) value,
 					diagnostics, context);
 			case UMLPackage.CONNECTOR_END :
 				return validateConnectorEnd((ConnectorEnd) value, diagnostics,
 					context);
-			case UMLPackage.MULTIPLICITY_ELEMENT :
-				return validateMultiplicityElement((MultiplicityElement) value,
-					diagnostics, context);
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER :
 				return validateConnectableElementTemplateParameter(
 					(ConnectableElementTemplateParameter) value, diagnostics,
@@ -3951,24 +3961,17 @@ public class UMLValidator
 			case UMLPackage.BEHAVIORAL_FEATURE :
 				return validateBehavioralFeature((BehavioralFeature) value,
 					diagnostics, context);
-			case UMLPackage.FEATURE :
-				return validateFeature((Feature) value, diagnostics, context);
-			case UMLPackage.REDEFINABLE_ELEMENT :
-				return validateRedefinableElement((RedefinableElement) value,
-					diagnostics, context);
 			case UMLPackage.BEHAVIOR :
 				return validateBehavior((Behavior) value, diagnostics, context);
-			case UMLPackage.PARAMETER :
-				return validateParameter((Parameter) value, diagnostics,
+			case UMLPackage.BEHAVIORED_CLASSIFIER :
+				return validateBehavioredClassifier(
+					(BehavioredClassifier) value, diagnostics, context);
+			case UMLPackage.INTERFACE_REALIZATION :
+				return validateInterfaceRealization(
+					(InterfaceRealization) value, diagnostics, context);
+			case UMLPackage.REALIZATION :
+				return validateRealization((Realization) value, diagnostics,
 					context);
-			case UMLPackage.PARAMETER_SET :
-				return validateParameterSet((ParameterSet) value, diagnostics,
-					context);
-			case UMLPackage.CONSTRAINT :
-				return validateConstraint((Constraint) value, diagnostics,
-					context);
-			case UMLPackage.DATA_TYPE :
-				return validateDataType((DataType) value, diagnostics, context);
 			case UMLPackage.INTERFACE :
 				return validateInterface((Interface) value, diagnostics,
 					context);
@@ -4001,18 +4004,26 @@ public class UMLValidator
 				return validateEvent((Event) value, diagnostics, context);
 			case UMLPackage.PORT :
 				return validatePort((Port) value, diagnostics, context);
+			case UMLPackage.CONSTRAINT :
+				return validateConstraint((Constraint) value, diagnostics,
+					context);
 			case UMLPackage.TRANSITION :
 				return validateTransition((Transition) value, diagnostics,
 					context);
 			case UMLPackage.PROTOCOL_CONFORMANCE :
 				return validateProtocolConformance((ProtocolConformance) value,
 					diagnostics, context);
+			case UMLPackage.PARAMETER :
+				return validateParameter((Parameter) value, diagnostics,
+					context);
+			case UMLPackage.PARAMETER_SET :
+				return validateParameterSet((ParameterSet) value, diagnostics,
+					context);
+			case UMLPackage.DATA_TYPE :
+				return validateDataType((DataType) value, diagnostics, context);
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER :
 				return validateOperationTemplateParameter(
 					(OperationTemplateParameter) value, diagnostics, context);
-			case UMLPackage.STRUCTURAL_FEATURE :
-				return validateStructuralFeature((StructuralFeature) value,
-					diagnostics, context);
 			case UMLPackage.EXTENSION_END :
 				return validateExtensionEnd((ExtensionEnd) value, diagnostics,
 					context);
@@ -4040,12 +4051,6 @@ public class UMLValidator
 			case UMLPackage.COLLABORATION :
 				return validateCollaboration((Collaboration) value,
 					diagnostics, context);
-			case UMLPackage.STRUCTURED_CLASSIFIER :
-				return validateStructuredClassifier(
-					(StructuredClassifier) value, diagnostics, context);
-			case UMLPackage.CONNECTOR :
-				return validateConnector((Connector) value, diagnostics,
-					context);
 			case UMLPackage.GENERALIZATION :
 				return validateGeneralization((Generalization) value,
 					diagnostics, context);
@@ -4067,18 +4072,12 @@ public class UMLValidator
 			case UMLPackage.SUBSTITUTION :
 				return validateSubstitution((Substitution) value, diagnostics,
 					context);
-			case UMLPackage.REALIZATION :
-				return validateRealization((Realization) value, diagnostics,
-					context);
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER :
 				return validateClassifierTemplateParameter(
 					(ClassifierTemplateParameter) value, diagnostics, context);
-			case UMLPackage.INTERFACE_REALIZATION :
-				return validateInterfaceRealization(
-					(InterfaceRealization) value, diagnostics, context);
-			case UMLPackage.ENCAPSULATED_CLASSIFIER :
-				return validateEncapsulatedClassifier(
-					(EncapsulatedClassifier) value, diagnostics, context);
+			case UMLPackage.CONNECTOR :
+				return validateConnector((Connector) value, diagnostics,
+					context);
 			case UMLPackage.IMAGE :
 				return validateImage((Image) value, diagnostics, context);
 			case UMLPackage.OPAQUE_EXPRESSION :
@@ -4100,12 +4099,12 @@ public class UMLValidator
 					context);
 			case UMLPackage.ACTIVITY :
 				return validateActivity((Activity) value, diagnostics, context);
-			case UMLPackage.ACTIVITY_EDGE :
-				return validateActivityEdge((ActivityEdge) value, diagnostics,
-					context);
 			case UMLPackage.ACTIVITY_GROUP :
 				return validateActivityGroup((ActivityGroup) value,
 					diagnostics, context);
+			case UMLPackage.ACTIVITY_EDGE :
+				return validateActivityEdge((ActivityEdge) value, diagnostics,
+					context);
 			case UMLPackage.ACTIVITY_PARTITION :
 				return validateActivityPartition((ActivityPartition) value,
 					diagnostics, context);
@@ -4520,17 +4519,17 @@ public class UMLValidator
 			case UMLPackage.CALL_CONCURRENCY_KIND :
 				return validateCallConcurrencyKind((CallConcurrencyKind) value,
 					diagnostics, context);
-			case UMLPackage.PARAMETER_DIRECTION_KIND :
-				return validateParameterDirectionKind(
-					(ParameterDirectionKind) value, diagnostics, context);
-			case UMLPackage.PARAMETER_EFFECT_KIND :
-				return validateParameterEffectKind((ParameterEffectKind) value,
-					diagnostics, context);
 			case UMLPackage.TRANSITION_KIND :
 				return validateTransitionKind((TransitionKind) value,
 					diagnostics, context);
 			case UMLPackage.PSEUDOSTATE_KIND :
 				return validatePseudostateKind((PseudostateKind) value,
+					diagnostics, context);
+			case UMLPackage.PARAMETER_DIRECTION_KIND :
+				return validateParameterDirectionKind(
+					(ParameterDirectionKind) value, diagnostics, context);
+			case UMLPackage.PARAMETER_EFFECT_KIND :
+				return validateParameterEffectKind((ParameterEffectKind) value,
 					diagnostics, context);
 			case UMLPackage.AGGREGATION_KIND :
 				return validateAggregationKind((AggregationKind) value,
@@ -4803,13 +4802,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(literalSpecification,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				literalSpecification, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				literalSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				literalSpecification, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				literalSpecification, diagnostics, context);
 		return result;
 	}
@@ -4855,13 +4854,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(valueSpecification,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				valueSpecification, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				valueSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				valueSpecification, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				valueSpecification, diagnostics, context);
 		return result;
 	}
@@ -4904,13 +4903,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(typedElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				typedElement, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				typedElement, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				typedElement, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				typedElement, diagnostics, context);
 		return result;
 	}
@@ -4953,13 +4952,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(namedElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				namedElement, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				namedElement, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				namedElement, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				namedElement, diagnostics, context);
 		return result;
 	}
@@ -5038,13 +5037,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(dependency,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				dependency, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(dependency,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				dependency, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				dependency, diagnostics, context);
 		return result;
 	}
@@ -5090,13 +5089,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(packageableElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				packageableElement, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				packageableElement, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				packageableElement, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				packageableElement, diagnostics, context);
 		return result;
 	}
@@ -5470,13 +5469,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(namespace,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				namespace, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(namespace,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				namespace, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				namespace, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -5534,10 +5533,10 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(elementImport,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateElementImport_validateImportedElementIsPublic(
+			result &= validateElementImport_validateVisibilityPublicOrPrivate(
 				elementImport, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateElementImport_validateVisibilityPublicOrPrivate(
+			result &= validateElementImport_validateImportedElementIsPublic(
 				elementImport, diagnostics, context);
 		return result;
 	}
@@ -5660,14 +5659,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(package_, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				package_, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(package_,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(package_,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				package_, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
 				package_, diagnostics, context);
@@ -5764,14 +5763,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(type, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				type, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(type,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(type,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				type, diagnostics, context);
 		return result;
 	}
 
@@ -5854,14 +5853,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(profile, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				profile, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(profile,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(profile,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				profile, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(profile,
 				diagnostics, context);
@@ -5939,13 +5938,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(stereotype,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				stereotype, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(stereotype,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				stereotype, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				stereotype, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -5960,16 +5959,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				stereotype, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(stereotype,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				stereotype, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(stereotype,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				stereotype, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(stereotype,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				stereotype, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredClassifier_validateMultiplicities(
@@ -5981,17 +5980,17 @@ public class UMLValidator
 			result &= validateClass_validatePassiveClass(stereotype,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateStereotype_validateAssociationEndOwnership(
+				stereotype, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateStereotype_validateNameNotClash(stereotype,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateStereotype_validateBinaryAssociationsOnly(
 				stereotype, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStereotype_validateGeneralize(stereotype,
 				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStereotype_validateNameNotClash(stereotype,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStereotype_validateAssociationEndOwnership(
-				stereotype, diagnostics, context);
 		return result;
 	}
 
@@ -6077,14 +6076,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(class_, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				class_, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(class_,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(class_,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				class_, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(class_,
 				diagnostics, context);
@@ -6098,16 +6097,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				class_, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(class_,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				class_, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(class_,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				class_, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(class_,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				class_, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredClassifier_validateMultiplicities(
@@ -6174,13 +6173,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(behavioredClassifier,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				behavioredClassifier, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				behavioredClassifier, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				behavioredClassifier, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				behavioredClassifier, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -6195,16 +6194,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				behavioredClassifier, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(
-				behavioredClassifier, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				behavioredClassifier, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(
 				behavioredClassifier, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				behavioredClassifier, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(
+				behavioredClassifier, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				behavioredClassifier, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateBehavioredClassifier_validateClassBehavior(
@@ -6261,13 +6260,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(classifier,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				classifier, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(classifier,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				classifier, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				classifier, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -6282,16 +6281,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				classifier, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(classifier,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				classifier, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(classifier,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				classifier, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(classifier,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				classifier, diagnostics, context);
 		return result;
 	}
@@ -6386,13 +6385,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(redefinableElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				redefinableElement, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				redefinableElement, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				redefinableElement, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				redefinableElement, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -6542,19 +6541,19 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(generalizationSet,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				generalizationSet, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				generalizationSet, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				generalizationSet, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateGeneralizationSet_validateGeneralizationSameClassifier(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				generalizationSet, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateGeneralizationSet_validateMapsToGeneralizationSet(
+				generalizationSet, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateGeneralizationSet_validateGeneralizationSameClassifier(
 				generalizationSet, diagnostics, context);
 		return result;
 	}
@@ -6621,14 +6620,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(feature, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				feature, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(feature,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(feature,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				feature, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
 				feature, diagnostics, context);
@@ -6677,14 +6676,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(useCase, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				useCase, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(useCase,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(useCase,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				useCase, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(useCase,
 				diagnostics, context);
@@ -6698,31 +6697,31 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				useCase, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(useCase,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				useCase, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(useCase,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
 				useCase, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(useCase,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
+				useCase, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateBehavioredClassifier_validateClassBehavior(
 				useCase, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateUseCase_validateBinaryAssociations(useCase,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateUseCase_validateNoAssociationToUseCase(useCase,
+			result &= validateUseCase_validateMustHaveName(useCase,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateUseCase_validateCannotIncludeSelf(useCase,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateUseCase_validateMustHaveName(useCase,
+			result &= validateUseCase_validateBinaryAssociations(useCase,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateUseCase_validateNoAssociationToUseCase(useCase,
 				diagnostics, context);
 		return result;
 	}
@@ -6808,14 +6807,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(include, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				include, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(include,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(include,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				include, diagnostics, context);
 		return result;
 	}
 
@@ -6854,14 +6853,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(extend, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				extend, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(extend,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(extend,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				extend, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateExtend_validateExtensionPoints(extend,
 				diagnostics, context);
@@ -6916,22 +6915,22 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(constraint,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				constraint, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(constraint,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				constraint, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateConstraint_validateBooleanValue(constraint,
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				constraint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateConstraint_validateNotApplyToSelf(constraint,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateConstraint_validateNoSideEffects(constraint,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateConstraint_validateNotApplyToSelf(constraint,
+			result &= validateConstraint_validateBooleanValue(constraint,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateConstraint_validateValueSpecificationBoolean(
@@ -7027,13 +7026,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(extensionPoint,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				extensionPoint, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				extensionPoint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				extensionPoint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				extensionPoint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -7100,13 +7099,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(substitution,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				substitution, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				substitution, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				substitution, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				substitution, diagnostics, context);
 		return result;
 	}
@@ -7148,13 +7147,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(realization,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				realization, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				realization, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				realization, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				realization, diagnostics, context);
 		return result;
 	}
@@ -7196,13 +7195,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(abstraction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				abstraction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				abstraction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				abstraction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				abstraction, diagnostics, context);
 		return result;
 	}
@@ -7246,22 +7245,22 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(opaqueExpression,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				opaqueExpression, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				opaqueExpression, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				opaqueExpression, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateOpaqueExpression_validateLanguageBodySize(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				opaqueExpression, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateOpaqueExpression_validateOnlyReturnResultParameters(
 				opaqueExpression, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateOpaqueExpression_validateOneReturnResultParameter(
 				opaqueExpression, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateOpaqueExpression_validateOnlyReturnResultParameters(
+			result &= validateOpaqueExpression_validateLanguageBodySize(
 				opaqueExpression, diagnostics, context);
 		return result;
 	}
@@ -7341,37 +7340,37 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(parameter,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				parameter, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(parameter,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				parameter, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGeLower(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				parameter, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(parameter,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
+			result &= validateMultiplicityElement_validateUpperGeLower(
 				parameter, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateValueSpecificationConstant(
 				parameter, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateParameter_validateInAndOut(parameter,
-				diagnostics, context);
+			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
+				parameter, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateParameter_validateNotException(parameter,
+			result &= validateParameter_validateReentrantBehaviors(parameter,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateParameter_validateConnectorEnd(parameter,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateParameter_validateReentrantBehaviors(parameter,
+			result &= validateParameter_validateNotException(parameter,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateParameter_validateInAndOut(parameter,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateParameter_validateStreamAndException(parameter,
@@ -7477,16 +7476,16 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(multiplicityElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGeLower(
-				multiplicityElement, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(
 				multiplicityElement, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
+			result &= validateMultiplicityElement_validateUpperGeLower(
 				multiplicityElement, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateValueSpecificationConstant(
+				multiplicityElement, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
 				multiplicityElement, diagnostics, context);
 		return result;
 	}
@@ -7582,13 +7581,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(connectableElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				connectableElement, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				connectableElement, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				connectableElement, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				connectableElement, diagnostics, context);
 		return result;
 	}
@@ -7631,28 +7630,28 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(connectorEnd,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGeLower(
-				connectorEnd, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(
 				connectorEnd, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
+			result &= validateMultiplicityElement_validateUpperGeLower(
 				connectorEnd, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateValueSpecificationConstant(
 				connectorEnd, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
+				connectorEnd, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateConnectorEnd_validateRoleAndPartWithPort(
 				connectorEnd, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateConnectorEnd_validatePartWithPortEmpty(
+			result &= validateConnectorEnd_validateSelfPartWithPort(
 				connectorEnd, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateConnectorEnd_validateMultiplicity(connectorEnd,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateConnectorEnd_validateSelfPartWithPort(
+			result &= validateConnectorEnd_validatePartWithPortEmpty(
 				connectorEnd, diagnostics, context);
 		return result;
 	}
@@ -7742,14 +7741,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(property, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				property, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(property,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(property,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				property, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
 				property, diagnostics, context);
@@ -7760,43 +7759,43 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				property, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGeLower(
-				property, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(property,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
+			result &= validateMultiplicityElement_validateUpperGeLower(
 				property, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateValueSpecificationConstant(
 				property, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateProperty_validateSubsettingContextConforms(
+			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
 				property, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateProperty_validateDerivedUnionIsReadOnly(property,
+			result &= validateProperty_validateSubsettedPropertyNames(property,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateProperty_validateSubsettingRules(property,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateProperty_validateMultiplicityOfComposite(
 				property, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateProperty_validateBindingToAttribute(property,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateProperty_validateRedefinedPropertyInherited(
 				property, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateProperty_validateSubsettingRules(property,
-				diagnostics, context);
+			result &= validateProperty_validateSubsettingContextConforms(
+				property, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateProperty_validateBindingToAttribute(property,
+			result &= validateProperty_validateDeploymentTarget(property,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateProperty_validateDerivedUnionIsDerived(property,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateProperty_validateDeploymentTarget(property,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateProperty_validateSubsettedPropertyNames(property,
+			result &= validateProperty_validateDerivedUnionIsReadOnly(property,
 				diagnostics, context);
 		return result;
 	}
@@ -7947,13 +7946,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(deploymentTarget,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				deploymentTarget, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				deploymentTarget, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				deploymentTarget, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				deploymentTarget, diagnostics, context);
 		return result;
 	}
@@ -7995,13 +7994,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(deployment,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				deployment, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(deployment,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				deployment, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				deployment, diagnostics, context);
 		return result;
 	}
@@ -8045,13 +8044,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(deployedArtifact,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				deployedArtifact, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				deployedArtifact, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				deployedArtifact, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				deployedArtifact, diagnostics, context);
 		return result;
 	}
@@ -8097,13 +8096,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				deploymentSpecification, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				deploymentSpecification, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				deploymentSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				deploymentSpecification, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				deploymentSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -8118,22 +8117,22 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				deploymentSpecification, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(
-				deploymentSpecification, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				deploymentSpecification, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(
 				deploymentSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
 				deploymentSpecification, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateDeploymentSpecification_validateDeploymentTarget(
+			result &= validateClassifier_validateSpecializeType(
+				deploymentSpecification, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				deploymentSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateDeploymentSpecification_validateDeployedElements(
+				deploymentSpecification, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateDeploymentSpecification_validateDeploymentTarget(
 				deploymentSpecification, diagnostics, context);
 		return result;
 	}
@@ -8201,14 +8200,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(artifact, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				artifact, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(artifact,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(artifact,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				artifact, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
 				artifact, diagnostics, context);
@@ -8222,16 +8221,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				artifact, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(artifact,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				artifact, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(artifact,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				artifact, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(artifact,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				artifact, diagnostics, context);
 		return result;
 	}
@@ -8274,13 +8273,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(manifestation,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				manifestation, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				manifestation, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				manifestation, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				manifestation, diagnostics, context);
 		return result;
 	}
@@ -8322,13 +8321,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(operation,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				operation, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(operation,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				operation, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				operation, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -8415,13 +8414,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(behavioralFeature,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				behavioralFeature, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				behavioralFeature, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				behavioralFeature, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				behavioralFeature, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -8475,14 +8474,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(behavior, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				behavior, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(behavior,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(behavior,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				behavior, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
 				behavior, diagnostics, context);
@@ -8496,16 +8495,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				behavior, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(behavior,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				behavior, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(behavior,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				behavior, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(behavior,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				behavior, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredClassifier_validateMultiplicities(
@@ -8517,17 +8516,17 @@ public class UMLValidator
 			result &= validateClass_validatePassiveClass(behavior, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateBehavior_validateMostOneBehaviour(behavior,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateBehavior_validateMustRealize(behavior,
-				diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateBehavior_validateParametersMatch(behavior,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateBehavior_validateFeatureOfContextClassifier(
 				behavior, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateBehavior_validateMustRealize(behavior,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateBehavior_validateMostOneBehaviour(behavior,
+				diagnostics, context);
 		return result;
 	}
 
@@ -8615,22 +8614,22 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(parameterSet,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				parameterSet, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				parameterSet, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				parameterSet, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateParameterSet_validateSameParameterizedEntity(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				parameterSet, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateParameterSet_validateTwoParameterSets(
 				parameterSet, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateParameterSet_validateInput(parameterSet,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateParameterSet_validateTwoParameterSets(
+			result &= validateParameterSet_validateSameParameterizedEntity(
 				parameterSet, diagnostics, context);
 		return result;
 	}
@@ -8709,14 +8708,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(dataType, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				dataType, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(dataType,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(dataType,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				dataType, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
 				dataType, diagnostics, context);
@@ -8730,16 +8729,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				dataType, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(dataType,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				dataType, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(dataType,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				dataType, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(dataType,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				dataType, diagnostics, context);
 		return result;
 	}
@@ -8781,13 +8780,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(interface_,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				interface_, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(interface_,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				interface_, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				interface_, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -8802,16 +8801,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				interface_, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(interface_,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				interface_, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(interface_,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				interface_, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(interface_,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				interface_, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateInterface_validateVisibility(interface_,
@@ -8867,13 +8866,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(reception,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				reception, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(reception,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				reception, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				reception, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -8939,14 +8938,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(signal, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				signal, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(signal,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(signal,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				signal, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(signal,
 				diagnostics, context);
@@ -8960,16 +8959,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				signal, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(signal,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				signal, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(signal,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				signal, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(signal,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				signal, diagnostics, context);
 		return result;
 	}
@@ -9015,13 +9014,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(protocolStateMachine,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				protocolStateMachine, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				protocolStateMachine, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				protocolStateMachine, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				protocolStateMachine, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -9036,16 +9035,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				protocolStateMachine, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(
-				protocolStateMachine, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				protocolStateMachine, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(
 				protocolStateMachine, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				protocolStateMachine, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(
+				protocolStateMachine, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				protocolStateMachine, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredClassifier_validateMultiplicities(
@@ -9057,40 +9056,40 @@ public class UMLValidator
 			result &= validateClass_validatePassiveClass(protocolStateMachine,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateBehavior_validateMostOneBehaviour(
-				protocolStateMachine, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateBehavior_validateMustRealize(
-				protocolStateMachine, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateBehavior_validateParametersMatch(
 				protocolStateMachine, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateBehavior_validateFeatureOfContextClassifier(
 				protocolStateMachine, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateStateMachine_validateConnectionPoints(
+			result &= validateBehavior_validateMustRealize(
 				protocolStateMachine, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateProtocolStateMachine_validateClassifierContext(
+			result &= validateBehavior_validateMostOneBehaviour(
 				protocolStateMachine, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStateMachine_validateMethod(protocolStateMachine,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateProtocolStateMachine_validateClassifierContext(
+				protocolStateMachine, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateStateMachine_validateContextClassifier(
 				protocolStateMachine, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateProtocolStateMachine_validateDeepOrShallowHistory(
+			result &= validateStateMachine_validateConnectionPoints(
 				protocolStateMachine, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateProtocolStateMachine_validateEntryExitDo(
 				protocolStateMachine, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateProtocolStateMachine_validatePortsConnected(
+			result &= validateProtocolStateMachine_validateProtocolTransitions(
 				protocolStateMachine, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateProtocolStateMachine_validateProtocolTransitions(
+			result &= validateProtocolStateMachine_validateDeepOrShallowHistory(
+				protocolStateMachine, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateProtocolStateMachine_validatePortsConnected(
 				protocolStateMachine, diagnostics, context);
 		return result;
 	}
@@ -9197,13 +9196,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(stateMachine,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				stateMachine, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				stateMachine, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				stateMachine, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				stateMachine, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -9218,16 +9217,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				stateMachine, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(stateMachine,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				stateMachine, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(stateMachine,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				stateMachine, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(stateMachine,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				stateMachine, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredClassifier_validateMultiplicities(
@@ -9239,28 +9238,28 @@ public class UMLValidator
 			result &= validateClass_validatePassiveClass(stateMachine,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateBehavior_validateMostOneBehaviour(stateMachine,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateBehavior_validateMustRealize(stateMachine,
-				diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateBehavior_validateParametersMatch(stateMachine,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateBehavior_validateFeatureOfContextClassifier(
 				stateMachine, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateStateMachine_validateConnectionPoints(
-				stateMachine, diagnostics, context);
+			result &= validateBehavior_validateMustRealize(stateMachine,
+				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateStateMachine_validateClassifierContext(
-				stateMachine, diagnostics, context);
+			result &= validateBehavior_validateMostOneBehaviour(stateMachine,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStateMachine_validateMethod(stateMachine,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateStateMachine_validateClassifierContext(
+				stateMachine, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateStateMachine_validateContextClassifier(
+				stateMachine, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateStateMachine_validateConnectionPoints(
 				stateMachine, diagnostics, context);
 		return result;
 	}
@@ -9348,14 +9347,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(region, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				region, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(region,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(region,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				region, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(region,
 				diagnostics, context);
@@ -9369,16 +9368,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				region, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateRegion_validateDeepHistoryVertex(region,
-				diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateRegion_validateShallowHistoryVertex(region,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateRegion_validateOwned(region, diagnostics, context);
+			result &= validateRegion_validateDeepHistoryVertex(region,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRegion_validateInitialVertex(region, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validateRegion_validateOwned(region, diagnostics, context);
 		return result;
 	}
 
@@ -9461,14 +9460,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(vertex, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				vertex, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(vertex,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(vertex,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				vertex, diagnostics, context);
 		return result;
 	}
 
@@ -9509,13 +9508,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(transition,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				transition, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(transition,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				transition, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				transition, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -9530,34 +9529,34 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				transition, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateTransition_validateStateIsExternal(transition,
+			result &= validateTransition_validateStateIsLocal(transition,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateTransition_validateJoinSegmentGuards(transition,
+			result &= validateTransition_validateForkSegmentGuards(transition,
 				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateTransition_validateStateIsInternal(transition,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateTransition_validateOutgoingPseudostates(
-				transition, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateTransition_validateJoinSegmentState(transition,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateTransition_validateForkSegmentState(transition,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateTransition_validateSignaturesCompatible(
-				transition, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateTransition_validateStateIsLocal(transition,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateTransition_validateInitialTransition(transition,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateTransition_validateForkSegmentGuards(transition,
+			result &= validateTransition_validateOutgoingPseudostates(
+				transition, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTransition_validateSignaturesCompatible(
+				transition, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTransition_validateStateIsInternal(transition,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTransition_validateJoinSegmentGuards(transition,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTransition_validateForkSegmentState(transition,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTransition_validateStateIsExternal(transition,
 				diagnostics, context);
 		return result;
 	}
@@ -9718,14 +9717,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(trigger, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				trigger, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(trigger,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(trigger,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				trigger, diagnostics, context);
 		return result;
 	}
 
@@ -9764,14 +9763,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(event, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				event, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(event,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(event,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				event, diagnostics, context);
 		return result;
 	}
 
@@ -9810,14 +9809,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(port, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				port, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(port,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(port,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				port, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
 				port, diagnostics, context);
@@ -9828,52 +9827,52 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				port, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGeLower(port,
-				diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(port,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
-				port, diagnostics, context);
+			result &= validateMultiplicityElement_validateUpperGeLower(port,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateValueSpecificationConstant(
 				port, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateProperty_validateSubsettingContextConforms(port,
-				diagnostics, context);
+			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
+				port, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateProperty_validateDerivedUnionIsReadOnly(port,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateProperty_validateMultiplicityOfComposite(port,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateProperty_validateRedefinedPropertyInherited(port,
+			result &= validateProperty_validateSubsettedPropertyNames(port,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateProperty_validateSubsettingRules(port,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateProperty_validateMultiplicityOfComposite(port,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateProperty_validateBindingToAttribute(port,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateProperty_validateDerivedUnionIsDerived(port,
+			result &= validateProperty_validateRedefinedPropertyInherited(port,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateProperty_validateSubsettingContextConforms(port,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateProperty_validateDeploymentTarget(port,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateProperty_validateSubsettedPropertyNames(port,
+			result &= validateProperty_validateDerivedUnionIsDerived(port,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validatePort_validatePortDestroyed(port, diagnostics,
+			result &= validateProperty_validateDerivedUnionIsReadOnly(port,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validatePort_validateDefaultValue(port, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validatePort_validatePortAggregation(port, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validatePort_validateDefaultValue(port, diagnostics,
+			result &= validatePort_validatePortDestroyed(port, diagnostics,
 				context);
 		return result;
 	}
@@ -9946,14 +9945,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(state, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				state, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(state,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(state,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				state, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(state,
 				diagnostics, context);
@@ -9970,9 +9969,6 @@ public class UMLValidator
 			result &= validateState_validateEntryOrExit(state, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateState_validateSubmachineStates(state,
-				diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateState_validateCompositeStates(state, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -9980,6 +9976,9 @@ public class UMLValidator
 				state, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateState_validateSubmachineOrRegions(state,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateState_validateSubmachineStates(state,
 				diagnostics, context);
 		return result;
 	}
@@ -10082,19 +10081,19 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				connectionPointReference, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				connectionPointReference, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				connectionPointReference, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				connectionPointReference, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateConnectionPointReference_validateExitPseudostates(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				connectionPointReference, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateConnectionPointReference_validateEntryPseudostates(
+				connectionPointReference, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateConnectionPointReference_validateExitPseudostates(
 				connectionPointReference, diagnostics, context);
 		return result;
 	}
@@ -10162,26 +10161,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(pseudostate,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				pseudostate, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				pseudostate, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				pseudostate, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validatePseudostate_validateTransitionsOutgoing(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				pseudostate, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validatePseudostate_validateChoiceVertex(pseudostate,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validatePseudostate_validateOutgoingFromInitial(
-				pseudostate, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validatePseudostate_validateJoinVertex(pseudostate,
-				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validatePseudostate_validateJunctionVertex(pseudostate,
 				diagnostics, context);
@@ -10189,10 +10176,22 @@ public class UMLValidator
 			result &= validatePseudostate_validateHistoryVertices(pseudostate,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validatePseudostate_validateInitialVertex(pseudostate,
-				diagnostics, context);
+			result &= validatePseudostate_validateTransitionsOutgoing(
+				pseudostate, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validatePseudostate_validateOutgoingFromInitial(
+				pseudostate, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validatePseudostate_validateForkVertex(pseudostate,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validatePseudostate_validateJoinVertex(pseudostate,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validatePseudostate_validateChoiceVertex(pseudostate,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validatePseudostate_validateInitialVertex(pseudostate,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validatePseudostate_validateTransitionsIncoming(
@@ -10437,13 +10436,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(structuralFeature,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				structuralFeature, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				structuralFeature, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				structuralFeature, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				structuralFeature, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -10455,16 +10454,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				structuralFeature, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGeLower(
-				structuralFeature, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(
 				structuralFeature, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
+			result &= validateMultiplicityElement_validateUpperGeLower(
 				structuralFeature, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateValueSpecificationConstant(
+				structuralFeature, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
 				structuralFeature, diagnostics, context);
 		return result;
 	}
@@ -10506,13 +10505,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(association,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				association, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				association, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				association, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				association, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -10527,29 +10526,29 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				association, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(association,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				association, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(association,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
 				association, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(association,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
+				association, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateAssociation_validateSpecializedEndNumber(
-				association, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateAssociation_validateSpecializedEndTypes(
-				association, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateAssociation_validateBinaryAssociations(
 				association, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateAssociation_validateAssociationEnds(association,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateAssociation_validateBinaryAssociations(
+				association, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateAssociation_validateSpecializedEndTypes(
+				association, diagnostics, context);
 		return result;
 	}
 
@@ -10686,22 +10685,22 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(collaborationUse,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				collaborationUse, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				collaborationUse, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				collaborationUse, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateCollaborationUse_validateClientElements(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				collaborationUse, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateCollaborationUse_validateConnectors(
 				collaborationUse, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateCollaborationUse_validateEveryRole(
 				collaborationUse, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateCollaborationUse_validateConnectors(
+			result &= validateCollaborationUse_validateClientElements(
 				collaborationUse, diagnostics, context);
 		return result;
 	}
@@ -10780,13 +10779,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(collaboration,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				collaboration, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				collaboration, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				collaboration, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				collaboration, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -10801,16 +10800,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				collaboration, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(collaboration,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				collaboration, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(collaboration,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				collaboration, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(collaboration,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				collaboration, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredClassifier_validateMultiplicities(
@@ -10862,13 +10861,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(structuredClassifier,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				structuredClassifier, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				structuredClassifier, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				structuredClassifier, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				structuredClassifier, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -10883,16 +10882,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				structuredClassifier, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(
-				structuredClassifier, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				structuredClassifier, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(
 				structuredClassifier, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				structuredClassifier, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(
+				structuredClassifier, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				structuredClassifier, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredClassifier_validateMultiplicities(
@@ -10950,13 +10949,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(connector,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				connector, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(connector,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				connector, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				connector, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -10968,8 +10967,8 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				connector, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateConnector_validateTypes(connector, diagnostics,
-				context);
+			result &= validateConnector_validateCompatible(connector,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateConnector_validateRoles(connector, diagnostics,
 				context);
@@ -10977,8 +10976,8 @@ public class UMLValidator
 			result &= validateConnector_validateBetweenInterfacesPorts(
 				connector, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateConnector_validateCompatible(connector,
-				diagnostics, context);
+			result &= validateConnector_validateTypes(connector, diagnostics,
+				context);
 		return result;
 	}
 
@@ -11068,13 +11067,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				redefinableTemplateSignature, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				redefinableTemplateSignature, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				redefinableTemplateSignature, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				redefinableTemplateSignature, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				redefinableTemplateSignature, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -11210,13 +11209,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(interfaceRealization,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				interfaceRealization, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				interfaceRealization, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				interfaceRealization, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				interfaceRealization, diagnostics, context);
 		return result;
 	}
@@ -11262,13 +11261,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				encapsulatedClassifier, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				encapsulatedClassifier, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				encapsulatedClassifier, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				encapsulatedClassifier, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				encapsulatedClassifier, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -11283,16 +11282,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				encapsulatedClassifier, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(
-				encapsulatedClassifier, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				encapsulatedClassifier, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(
 				encapsulatedClassifier, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				encapsulatedClassifier, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(
+				encapsulatedClassifier, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				encapsulatedClassifier, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredClassifier_validateMultiplicities(
@@ -11337,13 +11336,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(extension,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				extension, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(extension,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				extension, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				extension, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -11358,29 +11357,29 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				extension, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(extension,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				extension, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(extension,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
 				extension, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(extension,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
+				extension, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateAssociation_validateSpecializedEndNumber(
 				extension, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateAssociation_validateSpecializedEndTypes(
-				extension, diagnostics, context);
+			result &= validateAssociation_validateAssociationEnds(extension,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateAssociation_validateBinaryAssociations(extension,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateAssociation_validateAssociationEnds(extension,
-				diagnostics, context);
+			result &= validateAssociation_validateSpecializedEndTypes(
+				extension, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateExtension_validateNonOwnedEnd(extension,
 				diagnostics, context);
@@ -11450,13 +11449,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(extensionEnd,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				extensionEnd, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				extensionEnd, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				extensionEnd, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				extensionEnd, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -11468,43 +11467,43 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				extensionEnd, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGeLower(
-				extensionEnd, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(
 				extensionEnd, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
+			result &= validateMultiplicityElement_validateUpperGeLower(
 				extensionEnd, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateValueSpecificationConstant(
 				extensionEnd, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateProperty_validateSubsettingContextConforms(
+			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
 				extensionEnd, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateProperty_validateDerivedUnionIsReadOnly(
-				extensionEnd, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateProperty_validateMultiplicityOfComposite(
-				extensionEnd, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateProperty_validateRedefinedPropertyInherited(
+			result &= validateProperty_validateSubsettedPropertyNames(
 				extensionEnd, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateProperty_validateSubsettingRules(extensionEnd,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateProperty_validateMultiplicityOfComposite(
+				extensionEnd, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateProperty_validateBindingToAttribute(extensionEnd,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateProperty_validateDerivedUnionIsDerived(
+			result &= validateProperty_validateRedefinedPropertyInherited(
+				extensionEnd, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateProperty_validateSubsettingContextConforms(
 				extensionEnd, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateProperty_validateDeploymentTarget(extensionEnd,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateProperty_validateSubsettedPropertyNames(
+			result &= validateProperty_validateDerivedUnionIsDerived(
+				extensionEnd, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateProperty_validateDerivedUnionIsReadOnly(
 				extensionEnd, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateExtensionEnd_validateMultiplicity(extensionEnd,
@@ -11615,19 +11614,19 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(stringExpression,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				stringExpression, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				stringExpression, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				stringExpression, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateStringExpression_validateOperands(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				stringExpression, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStringExpression_validateSubexpressions(
+				stringExpression, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateStringExpression_validateOperands(
 				stringExpression, diagnostics, context);
 		return result;
 	}
@@ -11693,13 +11692,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(expression,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				expression, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(expression,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				expression, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				expression, diagnostics, context);
 		return result;
 	}
@@ -11743,13 +11742,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(literalInteger,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				literalInteger, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				literalInteger, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				literalInteger, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				literalInteger, diagnostics, context);
 		return result;
 	}
@@ -11792,13 +11791,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(literalString,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				literalString, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				literalString, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				literalString, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				literalString, diagnostics, context);
 		return result;
 	}
@@ -11842,13 +11841,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(literalBoolean,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				literalBoolean, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				literalBoolean, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				literalBoolean, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				literalBoolean, diagnostics, context);
 		return result;
 	}
@@ -11890,13 +11889,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(literalNull,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				literalNull, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				literalNull, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				literalNull, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				literalNull, diagnostics, context);
 		return result;
 	}
@@ -11938,13 +11937,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(literalReal,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				literalReal, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				literalReal, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				literalReal, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				literalReal, diagnostics, context);
 		return result;
 	}
@@ -12027,16 +12026,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(instanceSpecification,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				instanceSpecification, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				instanceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				instanceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateInstanceSpecification_validateDeploymentArtifact(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				instanceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateInstanceSpecification_validateStructuralFeature(
@@ -12046,6 +12042,9 @@ public class UMLValidator
 				instanceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateInstanceSpecification_validateDeploymentTarget(
+				instanceSpecification, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateInstanceSpecification_validateDeploymentArtifact(
 				instanceSpecification, diagnostics, context);
 		return result;
 	}
@@ -12139,13 +12138,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(enumeration,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				enumeration, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				enumeration, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				enumeration, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				enumeration, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -12160,16 +12159,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				enumeration, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(enumeration,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				enumeration, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(enumeration,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				enumeration, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(enumeration,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				enumeration, diagnostics, context);
 		return result;
 	}
@@ -12215,16 +12214,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(enumerationLiteral,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				enumerationLiteral, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				enumerationLiteral, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				enumerationLiteral, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateInstanceSpecification_validateDeploymentArtifact(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				enumerationLiteral, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateInstanceSpecification_validateStructuralFeature(
@@ -12234,6 +12230,9 @@ public class UMLValidator
 				enumerationLiteral, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateInstanceSpecification_validateDeploymentTarget(
+				enumerationLiteral, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateInstanceSpecification_validateDeploymentArtifact(
 				enumerationLiteral, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateEnumerationLiteral_validateClassifierEqualsOwningEnumeration(
@@ -12292,13 +12291,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(primitiveType,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				primitiveType, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				primitiveType, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				primitiveType, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				primitiveType, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -12313,16 +12312,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				primitiveType, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(primitiveType,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				primitiveType, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(primitiveType,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				primitiveType, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(primitiveType,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				primitiveType, diagnostics, context);
 		return result;
 	}
@@ -12365,13 +12364,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(instanceValue,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				instanceValue, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				instanceValue, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				instanceValue, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				instanceValue, diagnostics, context);
 		return result;
 	}
@@ -12417,13 +12416,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				literalUnlimitedNatural, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				literalUnlimitedNatural, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				literalUnlimitedNatural, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				literalUnlimitedNatural, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				literalUnlimitedNatural, diagnostics, context);
 		return result;
 	}
@@ -12467,13 +12466,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(opaqueBehavior,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				opaqueBehavior, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				opaqueBehavior, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				opaqueBehavior, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				opaqueBehavior, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -12488,16 +12487,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				opaqueBehavior, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(opaqueBehavior,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				opaqueBehavior, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(
 				opaqueBehavior, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				opaqueBehavior, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(opaqueBehavior,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				opaqueBehavior, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredClassifier_validateMultiplicities(
@@ -12509,17 +12508,17 @@ public class UMLValidator
 			result &= validateClass_validatePassiveClass(opaqueBehavior,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateBehavior_validateMostOneBehaviour(opaqueBehavior,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateBehavior_validateMustRealize(opaqueBehavior,
-				diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateBehavior_validateParametersMatch(opaqueBehavior,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateBehavior_validateFeatureOfContextClassifier(
 				opaqueBehavior, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateBehavior_validateMustRealize(opaqueBehavior,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateBehavior_validateMostOneBehaviour(opaqueBehavior,
+				diagnostics, context);
 		return result;
 	}
 
@@ -12562,13 +12561,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(functionBehavior,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				functionBehavior, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				functionBehavior, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				functionBehavior, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				functionBehavior, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -12583,16 +12582,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				functionBehavior, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(
-				functionBehavior, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				functionBehavior, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(
 				functionBehavior, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				functionBehavior, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(
+				functionBehavior, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				functionBehavior, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredClassifier_validateMultiplicities(
@@ -12604,16 +12603,16 @@ public class UMLValidator
 			result &= validateClass_validatePassiveClass(functionBehavior,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateBehavior_validateMostOneBehaviour(
+			result &= validateBehavior_validateParametersMatch(
+				functionBehavior, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateBehavior_validateFeatureOfContextClassifier(
 				functionBehavior, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateBehavior_validateMustRealize(functionBehavior,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateBehavior_validateParametersMatch(
-				functionBehavior, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateBehavior_validateFeatureOfContextClassifier(
+			result &= validateBehavior_validateMostOneBehaviour(
 				functionBehavior, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateFunctionBehavior_validateOneOutputParameter(
@@ -12684,14 +12683,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(actor, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				actor, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(actor,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(actor,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				actor, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(actor,
 				diagnostics, context);
@@ -12705,17 +12704,17 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				actor, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(actor,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(actor,
-				diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(actor,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
 				actor, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(actor,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(actor,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateBehavioredClassifier_validateClassBehavior(actor,
 				diagnostics, context);
@@ -12785,14 +12784,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(usage, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				usage, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(usage,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(usage,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				usage, diagnostics, context);
 		return result;
 	}
 
@@ -12832,17 +12831,26 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(message, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				message, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(message,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(message,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				message, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateMessage_validateSendingReceivingMessageEvent(
 				message, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMessage_validateOccurrenceSpecifications(message,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMessage_validateSignatureIsSignal(message,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMessage_validateSignatureIsOperation(message,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMessage_validateArguments(message, diagnostics,
 				context);
@@ -12850,16 +12858,7 @@ public class UMLValidator
 			result &= validateMessage_validateCannotCrossBoundaries(message,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMessage_validateSignatureIsSignal(message,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateMessage_validateOccurrenceSpecifications(message,
-				diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateMessage_validateSignatureReferTo(message,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateMessage_validateSignatureIsOperation(message,
 				diagnostics, context);
 		return result;
 	}
@@ -12983,13 +12982,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(messageEnd,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				messageEnd, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(messageEnd,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				messageEnd, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				messageEnd, diagnostics, context);
 		return result;
 	}
@@ -13031,13 +13030,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(interaction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				interaction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				interaction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				interaction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				interaction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -13052,16 +13051,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				interaction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(interaction,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				interaction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(interaction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				interaction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(interaction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				interaction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredClassifier_validateMultiplicities(
@@ -13073,17 +13072,17 @@ public class UMLValidator
 			result &= validateClass_validatePassiveClass(interaction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateBehavior_validateMostOneBehaviour(interaction,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateBehavior_validateMustRealize(interaction,
-				diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateBehavior_validateParametersMatch(interaction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateBehavior_validateFeatureOfContextClassifier(
 				interaction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateBehavior_validateMustRealize(interaction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateBehavior_validateMostOneBehaviour(interaction,
+				diagnostics, context);
 		return result;
 	}
 
@@ -13128,13 +13127,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(interactionFragment,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				interactionFragment, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				interactionFragment, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				interactionFragment, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				interactionFragment, diagnostics, context);
 		return result;
 	}
@@ -13176,22 +13175,22 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(lifeline, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				lifeline, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(lifeline,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(lifeline,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateLifeline_validateSelectorSpecified(lifeline,
-				diagnostics, context);
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				lifeline, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateLifeline_validateInteractionUsesShareLifeline(
 				lifeline, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateLifeline_validateSameClassifier(lifeline,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateLifeline_validateSelectorSpecified(lifeline,
 				diagnostics, context);
 		return result;
 	}
@@ -13272,19 +13271,16 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(partDecomposition,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				partDecomposition, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				partDecomposition, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				partDecomposition, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateInteractionUse_validateGatesMatch(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				partDecomposition, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateInteractionUse_validateArgumentsAreConstants(
+			result &= validateInteractionUse_validateAllLifelines(
 				partDecomposition, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateInteractionUse_validateReturnValueRecipientCoverage(
@@ -13293,19 +13289,22 @@ public class UMLValidator
 			result &= validateInteractionUse_validateArgumentsCorrespondToParameters(
 				partDecomposition, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateInteractionUse_validateGatesMatch(
+				partDecomposition, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateInteractionUse_validateArgumentsAreConstants(
+				partDecomposition, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateInteractionUse_validateReturnValueTypeRecipientCorrespondence(
 				partDecomposition, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateInteractionUse_validateAllLifelines(
-				partDecomposition, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validatePartDecomposition_validateCommutativityOfDecomposition(
+			result &= validatePartDecomposition_validatePartsOfInternalStructures(
 				partDecomposition, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validatePartDecomposition_validateAssume(
 				partDecomposition, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validatePartDecomposition_validatePartsOfInternalStructures(
+			result &= validatePartDecomposition_validateCommutativityOfDecomposition(
 				partDecomposition, diagnostics, context);
 		return result;
 	}
@@ -13387,19 +13386,16 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(interactionUse,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				interactionUse, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				interactionUse, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				interactionUse, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateInteractionUse_validateGatesMatch(interactionUse,
-				diagnostics, context);
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				interactionUse, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateInteractionUse_validateArgumentsAreConstants(
+			result &= validateInteractionUse_validateAllLifelines(
 				interactionUse, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateInteractionUse_validateReturnValueRecipientCoverage(
@@ -13408,10 +13404,13 @@ public class UMLValidator
 			result &= validateInteractionUse_validateArgumentsCorrespondToParameters(
 				interactionUse, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateInteractionUse_validateReturnValueTypeRecipientCorrespondence(
+			result &= validateInteractionUse_validateGatesMatch(interactionUse,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateInteractionUse_validateArgumentsAreConstants(
 				interactionUse, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateInteractionUse_validateAllLifelines(
+			result &= validateInteractionUse_validateReturnValueTypeRecipientCorrespondence(
 				interactionUse, diagnostics, context);
 		return result;
 	}
@@ -13527,14 +13526,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(gate, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				gate, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(gate,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(gate,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				gate, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateGate_validateMessagesCombinedFragment(gate,
 				diagnostics, context);
@@ -13601,14 +13600,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(action, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				action, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(action,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(action,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				action, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
 				action, diagnostics, context);
@@ -13666,13 +13665,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(executableNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				executableNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				executableNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				executableNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				executableNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -13730,13 +13729,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(activityNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				activityNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				activityNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				activityNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				activityNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -13818,13 +13817,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(activityEdge,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				activityEdge, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				activityEdge, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				activityEdge, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				activityEdge, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -13920,14 +13919,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(activity, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				activity, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(activity,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(activity,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				activity, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
 				activity, diagnostics, context);
@@ -13941,16 +13940,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				activity, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(activity,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				activity, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(activity,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				activity, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(activity,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				activity, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredClassifier_validateMultiplicities(
@@ -13962,25 +13961,25 @@ public class UMLValidator
 			result &= validateClass_validatePassiveClass(activity, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateBehavior_validateMostOneBehaviour(activity,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateBehavior_validateMustRealize(activity,
-				diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateBehavior_validateParametersMatch(activity,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateBehavior_validateFeatureOfContextClassifier(
 				activity, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateBehavior_validateMustRealize(activity,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateBehavior_validateMostOneBehaviour(activity,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateActivity_validateActivityParameterNode(activity,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateActivity_validateAutonomous(activity,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateActivity_validateNoSupergroups(activity,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateActivity_validateActivityParameterNode(activity,
 				diagnostics, context);
 		return result;
 	}
@@ -14059,16 +14058,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(activityPartition,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				activityPartition, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				activityPartition, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				activityPartition, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateActivityGroup_validateNodesAndEdges(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				activityPartition, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateActivityGroup_validateGroupOwned(
@@ -14077,13 +14073,16 @@ public class UMLValidator
 			result &= validateActivityGroup_validateNotContained(
 				activityPartition, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateActivityGroup_validateNodesAndEdges(
+				activityPartition, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateActivityPartition_validateRepresentsPart(
+				activityPartition, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateActivityPartition_validateRepresentsClassifier(
 				activityPartition, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateActivityPartition_validateRepresentsPartAndIsContained(
-				activityPartition, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateActivityPartition_validateRepresentsPart(
 				activityPartition, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateActivityPartition_validateDimensionNotContained(
@@ -14180,16 +14179,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(activityGroup,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				activityGroup, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				activityGroup, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				activityGroup, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateActivityGroup_validateNodesAndEdges(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				activityGroup, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateActivityGroup_validateGroupOwned(activityGroup,
@@ -14197,6 +14193,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validateActivityGroup_validateNotContained(activityGroup,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateActivityGroup_validateNodesAndEdges(
+				activityGroup, diagnostics, context);
 		return result;
 	}
 
@@ -14277,13 +14276,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				structuredActivityNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				structuredActivityNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				structuredActivityNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				structuredActivityNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				structuredActivityNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -14304,22 +14303,22 @@ public class UMLValidator
 			result &= validateNamespace_validateMembersDistinguishable(
 				structuredActivityNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateActivityGroup_validateNodesAndEdges(
-				structuredActivityNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateActivityGroup_validateGroupOwned(
 				structuredActivityNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateActivityGroup_validateNotContained(
 				structuredActivityNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateStructuredActivityNode_validateOutputPinEdges(
+			result &= validateActivityGroup_validateNodesAndEdges(
+				structuredActivityNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateStructuredActivityNode_validateInputPinEdges(
 				structuredActivityNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredActivityNode_validateEdges(
 				structuredActivityNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateStructuredActivityNode_validateInputPinEdges(
+			result &= validateStructuredActivityNode_validateOutputPinEdges(
 				structuredActivityNode, diagnostics, context);
 		return result;
 	}
@@ -14399,25 +14398,25 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(variable, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				variable, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(variable,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(variable,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGeLower(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				variable, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(variable,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
+			result &= validateMultiplicityElement_validateUpperGeLower(
 				variable, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateValueSpecificationConstant(
+				variable, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
 				variable, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateVariable_validateOwned(variable, diagnostics,
@@ -14477,22 +14476,22 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				interruptibleActivityRegion, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				interruptibleActivityRegion, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				interruptibleActivityRegion, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				interruptibleActivityRegion, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateActivityGroup_validateNodesAndEdges(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				interruptibleActivityRegion, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateActivityGroup_validateGroupOwned(
 				interruptibleActivityRegion, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateActivityGroup_validateNotContained(
+				interruptibleActivityRegion, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateActivityGroup_validateNodesAndEdges(
 				interruptibleActivityRegion, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateInterruptibleActivityRegion_validateInterruptingEdges(
@@ -14552,16 +14551,16 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(exceptionHandler,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateExceptionHandler_validateExceptionBody(
+			result &= validateExceptionHandler_validateOneInput(
+				exceptionHandler, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateExceptionHandler_validateEdgeSourceTarget(
 				exceptionHandler, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateExceptionHandler_validateResultPins(
 				exceptionHandler, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateExceptionHandler_validateOneInput(
-				exceptionHandler, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateExceptionHandler_validateEdgeSourceTarget(
+			result &= validateExceptionHandler_validateExceptionBody(
 				exceptionHandler, diagnostics, context);
 		return result;
 	}
@@ -14651,13 +14650,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(objectNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				objectNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(objectNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				objectNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				objectNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -14675,14 +14674,14 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				objectNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectNode_validateInputOutputParameter(
-				objectNode, diagnostics, context);
+			result &= validateObjectNode_validateObjectFlowEdges(objectNode,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateObjectNode_validateSelectionBehavior(objectNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectNode_validateObjectFlowEdges(objectNode,
-				diagnostics, context);
+			result &= validateObjectNode_validateInputOutputParameter(
+				objectNode, diagnostics, context);
 		return result;
 	}
 
@@ -14759,13 +14758,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(outputPin,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				outputPin, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(outputPin,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				outputPin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				outputPin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -14783,25 +14782,25 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				outputPin, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectNode_validateInputOutputParameter(
-				outputPin, diagnostics, context);
+			result &= validateObjectNode_validateObjectFlowEdges(outputPin,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateObjectNode_validateSelectionBehavior(outputPin,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectNode_validateObjectFlowEdges(outputPin,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGeLower(
+			result &= validateObjectNode_validateInputOutputParameter(
 				outputPin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(outputPin,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
+			result &= validateMultiplicityElement_validateUpperGeLower(
 				outputPin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateValueSpecificationConstant(
+				outputPin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
 				outputPin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validatePin_validateControlPins(outputPin, diagnostics,
@@ -14859,14 +14858,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(pin, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				pin, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(pin,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(pin,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				pin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
 				pin, diagnostics, context);
@@ -14883,25 +14882,25 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(pin,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectNode_validateInputOutputParameter(pin,
+			result &= validateObjectNode_validateObjectFlowEdges(pin,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateObjectNode_validateSelectionBehavior(pin,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectNode_validateObjectFlowEdges(pin,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGeLower(pin,
+			result &= validateObjectNode_validateInputOutputParameter(pin,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(pin,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
-				pin, diagnostics, context);
+			result &= validateMultiplicityElement_validateUpperGeLower(pin,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateValueSpecificationConstant(
+				pin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
 				pin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validatePin_validateControlPins(pin, diagnostics, context);
@@ -14956,14 +14955,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(inputPin, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				inputPin, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(inputPin,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(inputPin,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				inputPin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
 				inputPin, diagnostics, context);
@@ -14980,25 +14979,25 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				inputPin, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectNode_validateInputOutputParameter(inputPin,
+			result &= validateObjectNode_validateObjectFlowEdges(inputPin,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateObjectNode_validateSelectionBehavior(inputPin,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectNode_validateObjectFlowEdges(inputPin,
+			result &= validateObjectNode_validateInputOutputParameter(inputPin,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateLowerGe0(inputPin,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateUpperGeLower(
 				inputPin, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateLowerGe0(inputPin,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
+			result &= validateMultiplicityElement_validateValueSpecificationConstant(
 				inputPin, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateValueSpecificationConstant(
+			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
 				inputPin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validatePin_validateControlPins(inputPin, diagnostics,
@@ -15061,13 +15060,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(generalOrdering,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				generalOrdering, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				generalOrdering, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				generalOrdering, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				generalOrdering, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateGeneralOrdering_validateIrreflexsiveTransitiveClosure(
@@ -15129,13 +15128,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				occurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				occurrenceSpecification, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				occurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				occurrenceSpecification, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				occurrenceSpecification, diagnostics, context);
 		return result;
 	}
@@ -15181,22 +15180,22 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(interactionOperand,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				interactionOperand, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				interactionOperand, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				interactionOperand, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				interactionOperand, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
 				interactionOperand, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateInteractionOperand_validateGuardContainReferences(
+			result &= validateInteractionOperand_validateGuardDirectlyPrior(
 				interactionOperand, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateInteractionOperand_validateGuardDirectlyPrior(
+			result &= validateInteractionOperand_validateGuardContainReferences(
 				interactionOperand, diagnostics, context);
 		return result;
 	}
@@ -15268,25 +15267,28 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(interactionConstraint,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				interactionConstraint, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				interactionConstraint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				interactionConstraint, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateConstraint_validateBooleanValue(
-				interactionConstraint, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateConstraint_validateNoSideEffects(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				interactionConstraint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateConstraint_validateNotApplyToSelf(
 				interactionConstraint, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateConstraint_validateNoSideEffects(
+				interactionConstraint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateConstraint_validateBooleanValue(
+				interactionConstraint, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateConstraint_validateValueSpecificationBoolean(
+				interactionConstraint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateInteractionConstraint_validateMaxintPositive(
 				interactionConstraint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateInteractionConstraint_validateMinintMaxint(
@@ -15295,16 +15297,13 @@ public class UMLValidator
 			result &= validateInteractionConstraint_validateMinintNonNegative(
 				interactionConstraint, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateInteractionConstraint_validateMaxintPositive(
-				interactionConstraint, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateInteractionConstraint_validateDynamicVariables(
-				interactionConstraint, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateInteractionConstraint_validateGlobalData(
 				interactionConstraint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateInteractionConstraint_validateMaxintGreaterEqualMinint(
+				interactionConstraint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateInteractionConstraint_validateDynamicVariables(
 				interactionConstraint, diagnostics, context);
 		return result;
 	}
@@ -15426,13 +15425,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				executionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				executionSpecification, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				executionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				executionSpecification, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				executionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateExecutionSpecification_validateSameLifeline(
@@ -15494,13 +15493,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				executionOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				executionOccurrenceSpecification, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				executionOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				executionOccurrenceSpecification, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				executionOccurrenceSpecification, diagnostics, context);
 		return result;
 	}
@@ -15544,13 +15543,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(stateInvariant,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				stateInvariant, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				stateInvariant, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				stateInvariant, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				stateInvariant, diagnostics, context);
 		return result;
 	}
@@ -15596,13 +15595,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				actionExecutionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				actionExecutionSpecification, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				actionExecutionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				actionExecutionSpecification, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				actionExecutionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateExecutionSpecification_validateSameLifeline(
@@ -15667,13 +15666,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				behaviorExecutionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				behaviorExecutionSpecification, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				behaviorExecutionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				behaviorExecutionSpecification, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				behaviorExecutionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateExecutionSpecification_validateSameLifeline(
@@ -15719,13 +15718,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(messageEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				messageEvent, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				messageEvent, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				messageEvent, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				messageEvent, diagnostics, context);
 		return result;
 	}
@@ -15771,13 +15770,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				messageOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				messageOccurrenceSpecification, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				messageOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				messageOccurrenceSpecification, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				messageOccurrenceSpecification, diagnostics, context);
 		return result;
 	}
@@ -15821,25 +15820,25 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(combinedFragment,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				combinedFragment, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				combinedFragment, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				combinedFragment, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateCombinedFragment_validateMinintAndMaxint(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				combinedFragment, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateCombinedFragment_validateBreak(combinedFragment,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateCombinedFragment_validateOptLoopBreakNeg(
+				combinedFragment, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateCombinedFragment_validateConsiderAndIgnore(
 				combinedFragment, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateCombinedFragment_validateOptLoopBreakNeg(
+			result &= validateCombinedFragment_validateMinintAndMaxint(
 				combinedFragment, diagnostics, context);
 		return result;
 	}
@@ -15930,20 +15929,20 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(continuation,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				continuation, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				continuation, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				continuation, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateContinuation_validateFirstOrLastInteractionFragment(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				continuation, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateContinuation_validateSameName(continuation,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateContinuation_validateFirstOrLastInteractionFragment(
+				continuation, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateContinuation_validateGlobal(continuation,
 				diagnostics, context);
@@ -16028,31 +16027,31 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				considerIgnoreFragment, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				considerIgnoreFragment, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				considerIgnoreFragment, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				considerIgnoreFragment, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateCombinedFragment_validateMinintAndMaxint(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				considerIgnoreFragment, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateCombinedFragment_validateBreak(
 				considerIgnoreFragment, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateCombinedFragment_validateConsiderAndIgnore(
-				considerIgnoreFragment, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateCombinedFragment_validateOptLoopBreakNeg(
 				considerIgnoreFragment, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateConsiderIgnoreFragment_validateConsiderOrIgnore(
+			result &= validateCombinedFragment_validateConsiderAndIgnore(
+				considerIgnoreFragment, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateCombinedFragment_validateMinintAndMaxint(
 				considerIgnoreFragment, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateConsiderIgnoreFragment_validateType(
+				considerIgnoreFragment, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateConsiderIgnoreFragment_validateConsiderOrIgnore(
 				considerIgnoreFragment, diagnostics, context);
 		return result;
 	}
@@ -16119,13 +16118,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(callEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				callEvent, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(callEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				callEvent, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				callEvent, diagnostics, context);
 		return result;
 	}
@@ -16167,13 +16166,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(changeEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				changeEvent, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				changeEvent, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				changeEvent, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				changeEvent, diagnostics, context);
 		return result;
 	}
@@ -16215,13 +16214,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(signalEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				signalEvent, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				signalEvent, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				signalEvent, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				signalEvent, diagnostics, context);
 		return result;
 	}
@@ -16265,13 +16264,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(anyReceiveEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				anyReceiveEvent, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				anyReceiveEvent, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				anyReceiveEvent, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				anyReceiveEvent, diagnostics, context);
 		return result;
 	}
@@ -16317,13 +16316,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(createObjectAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				createObjectAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				createObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				createObjectAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				createObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -16341,16 +16340,16 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				createObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateCreateObjectAction_validateClassifierNotAbstract(
-				createObjectAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateCreateObjectAction_validateMultiplicity(
-				createObjectAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateCreateObjectAction_validateClassifierNotAssociationClass(
 				createObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateCreateObjectAction_validateClassifierNotAbstract(
+				createObjectAction, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateCreateObjectAction_validateSameType(
+				createObjectAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateCreateObjectAction_validateMultiplicity(
 				createObjectAction, diagnostics, context);
 		return result;
 	}
@@ -16446,13 +16445,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(destroyObjectAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				destroyObjectAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				destroyObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				destroyObjectAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				destroyObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -16543,13 +16542,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				destructionOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				destructionOccurrenceSpecification, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				destructionOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				destructionOccurrenceSpecification, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				destructionOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateDestructionOccurrenceSpecification_validateNoOccurrenceSpecificationsBelow(
@@ -16611,13 +16610,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(testIdentityAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				testIdentityAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				testIdentityAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				testIdentityAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				testIdentityAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -16721,13 +16720,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(readSelfAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				readSelfAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				readSelfAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				readSelfAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				readSelfAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -16748,14 +16747,14 @@ public class UMLValidator
 			result &= validateReadSelfAction_validateContained(readSelfAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateReadSelfAction_validateMultiplicity(
-				readSelfAction, diagnostics, context);
+			result &= validateReadSelfAction_validateType(readSelfAction,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateReadSelfAction_validateNotStatic(readSelfAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateReadSelfAction_validateType(readSelfAction,
-				diagnostics, context);
+			result &= validateReadSelfAction_validateMultiplicity(
+				readSelfAction, diagnostics, context);
 		return result;
 	}
 
@@ -16848,13 +16847,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				structuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				structuralFeatureAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				structuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				structuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				structuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -16872,19 +16871,19 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				structuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateStructuralFeatureAction_validateMultiplicity(
-				structuralFeatureAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStructuralFeatureAction_validateSameType(
-				structuralFeatureAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateStructuralFeatureAction_validateVisibility(
+				structuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateStructuralFeatureAction_validateMultiplicity(
 				structuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuralFeatureAction_validateNotStatic(
 				structuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuralFeatureAction_validateOneFeaturingClassifier(
+				structuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateStructuralFeatureAction_validateSameType(
 				structuralFeatureAction, diagnostics, context);
 		return result;
 	}
@@ -16992,13 +16991,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				readStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				readStructuralFeatureAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				readStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				readStructuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				readStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -17016,19 +17015,19 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				readStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateReadStructuralFeatureAction_validateMultiplicity(
-				readStructuralFeatureAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStructuralFeatureAction_validateSameType(
-				readStructuralFeatureAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateStructuralFeatureAction_validateVisibility(
+				readStructuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateReadStructuralFeatureAction_validateMultiplicity(
 				readStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuralFeatureAction_validateNotStatic(
 				readStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuralFeatureAction_validateOneFeaturingClassifier(
+				readStructuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateStructuralFeatureAction_validateSameType(
 				readStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateReadStructuralFeatureAction_validateTypeAndOrdering(
@@ -17103,13 +17102,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				writeStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				writeStructuralFeatureAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				writeStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				writeStructuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				writeStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -17127,13 +17126,10 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				writeStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateWriteStructuralFeatureAction_validateMultiplicity(
-				writeStructuralFeatureAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStructuralFeatureAction_validateSameType(
-				writeStructuralFeatureAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateStructuralFeatureAction_validateVisibility(
+				writeStructuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateWriteStructuralFeatureAction_validateMultiplicity(
 				writeStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuralFeatureAction_validateNotStatic(
@@ -17142,13 +17138,16 @@ public class UMLValidator
 			result &= validateStructuralFeatureAction_validateOneFeaturingClassifier(
 				writeStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateWriteStructuralFeatureAction_validateMultiplicityOfResult(
+			result &= validateStructuralFeatureAction_validateSameType(
 				writeStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateWriteStructuralFeatureAction_validateInputPin(
 				writeStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateWriteStructuralFeatureAction_validateTypeOfResult(
+				writeStructuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateWriteStructuralFeatureAction_validateMultiplicityOfResult(
 				writeStructuralFeatureAction, diagnostics, context);
 		return result;
 	}
@@ -17246,13 +17245,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				clearStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				clearStructuralFeatureAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				clearStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				clearStructuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				clearStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -17270,13 +17269,10 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				clearStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateStructuralFeatureAction_validateMultiplicity(
-				clearStructuralFeatureAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStructuralFeatureAction_validateSameType(
-				clearStructuralFeatureAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateStructuralFeatureAction_validateVisibility(
+				clearStructuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateStructuralFeatureAction_validateMultiplicity(
 				clearStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuralFeatureAction_validateNotStatic(
@@ -17285,10 +17281,13 @@ public class UMLValidator
 			result &= validateStructuralFeatureAction_validateOneFeaturingClassifier(
 				clearStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClearStructuralFeatureAction_validateTypeOfResult(
+			result &= validateStructuralFeatureAction_validateSameType(
 				clearStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClearStructuralFeatureAction_validateMultiplicityOfResult(
+				clearStructuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClearStructuralFeatureAction_validateTypeOfResult(
 				clearStructuralFeatureAction, diagnostics, context);
 		return result;
 	}
@@ -17360,13 +17359,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				removeStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				removeStructuralFeatureValueAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				removeStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				removeStructuralFeatureValueAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				removeStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -17384,13 +17383,10 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				removeStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateWriteStructuralFeatureAction_validateMultiplicity(
-				removeStructuralFeatureValueAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStructuralFeatureAction_validateSameType(
-				removeStructuralFeatureValueAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateStructuralFeatureAction_validateVisibility(
+				removeStructuralFeatureValueAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateWriteStructuralFeatureAction_validateMultiplicity(
 				removeStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuralFeatureAction_validateNotStatic(
@@ -17399,13 +17395,16 @@ public class UMLValidator
 			result &= validateStructuralFeatureAction_validateOneFeaturingClassifier(
 				removeStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateWriteStructuralFeatureAction_validateMultiplicityOfResult(
+			result &= validateStructuralFeatureAction_validateSameType(
 				removeStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateWriteStructuralFeatureAction_validateInputPin(
 				removeStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateWriteStructuralFeatureAction_validateTypeOfResult(
+				removeStructuralFeatureValueAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateWriteStructuralFeatureAction_validateMultiplicityOfResult(
 				removeStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRemoveStructuralFeatureValueAction_validateNonUniqueRemoval(
@@ -17467,13 +17466,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				addStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				addStructuralFeatureValueAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				addStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				addStructuralFeatureValueAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				addStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -17491,13 +17490,10 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				addStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateWriteStructuralFeatureAction_validateMultiplicity(
-				addStructuralFeatureValueAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStructuralFeatureAction_validateSameType(
-				addStructuralFeatureValueAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateStructuralFeatureAction_validateVisibility(
+				addStructuralFeatureValueAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateWriteStructuralFeatureAction_validateMultiplicity(
 				addStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuralFeatureAction_validateNotStatic(
@@ -17506,7 +17502,7 @@ public class UMLValidator
 			result &= validateStructuralFeatureAction_validateOneFeaturingClassifier(
 				addStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateWriteStructuralFeatureAction_validateMultiplicityOfResult(
+			result &= validateStructuralFeatureAction_validateSameType(
 				addStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateWriteStructuralFeatureAction_validateInputPin(
@@ -17515,10 +17511,13 @@ public class UMLValidator
 			result &= validateWriteStructuralFeatureAction_validateTypeOfResult(
 				addStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateAddStructuralFeatureValueAction_validateRequiredValue(
+			result &= validateWriteStructuralFeatureAction_validateMultiplicityOfResult(
 				addStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateAddStructuralFeatureValueAction_validateUnlimitedNaturalAndMultiplicity(
+				addStructuralFeatureValueAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateAddStructuralFeatureValueAction_validateRequiredValue(
 				addStructuralFeatureValueAction, diagnostics, context);
 		return result;
 	}
@@ -17586,13 +17585,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(linkAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				linkAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(linkAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				linkAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				linkAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -17692,17 +17691,17 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(linkEndData,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateLinkEndData_validatePropertyIsAssociationEnd(
+				linkEndData, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateLinkEndData_validateEndObjectInputPin(
+				linkEndData, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateLinkEndData_validateSameType(linkEndData,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateLinkEndData_validateMultiplicity(linkEndData,
 				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateLinkEndData_validateEndObjectInputPin(
-				linkEndData, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateLinkEndData_validatePropertyIsAssociationEnd(
-				linkEndData, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateLinkEndData_validateQualifiers(linkEndData,
 				diagnostics, context);
@@ -17809,13 +17808,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(qualifierValue,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateQualifierValue_validateQualifierAttribute(
+				qualifierValue, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateQualifierValue_validateMultiplicityOfQualifier(
 				qualifierValue, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateQualifierValue_validateTypeOfQualifier(
-				qualifierValue, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateQualifierValue_validateQualifierAttribute(
 				qualifierValue, diagnostics, context);
 		return result;
 	}
@@ -17896,13 +17895,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(readLinkAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				readLinkAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				readLinkAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				readLinkAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				readLinkAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -17932,17 +17931,17 @@ public class UMLValidator
 			result &= validateReadLinkAction_validateTypeAndOrdering(
 				readLinkAction, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateReadLinkAction_validateOneOpenEnd(readLinkAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateReadLinkAction_validateCompatibleMultiplicity(
+				readLinkAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateReadLinkAction_validateNavigableOpenEnd(
 				readLinkAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateReadLinkAction_validateVisibility(readLinkAction,
 				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateReadLinkAction_validateOneOpenEnd(readLinkAction,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateReadLinkAction_validateNavigableOpenEnd(
-				readLinkAction, diagnostics, context);
 		return result;
 	}
 
@@ -18048,25 +18047,25 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(linkEndCreationData,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateLinkEndData_validatePropertyIsAssociationEnd(
+				linkEndCreationData, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateLinkEndData_validateEndObjectInputPin(
+				linkEndCreationData, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateLinkEndData_validateSameType(linkEndCreationData,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateLinkEndData_validateMultiplicity(
 				linkEndCreationData, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateLinkEndData_validateEndObjectInputPin(
-				linkEndCreationData, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateLinkEndData_validatePropertyIsAssociationEnd(
-				linkEndCreationData, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateLinkEndData_validateQualifiers(
 				linkEndCreationData, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateLinkEndCreationData_validateSingleInputPin(
+			result &= validateLinkEndCreationData_validateCreateLinkAction(
 				linkEndCreationData, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateLinkEndCreationData_validateCreateLinkAction(
+			result &= validateLinkEndCreationData_validateSingleInputPin(
 				linkEndCreationData, diagnostics, context);
 		return result;
 	}
@@ -18135,13 +18134,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(createLinkAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				createLinkAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				createLinkAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				createLinkAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				createLinkAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -18228,13 +18227,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(writeLinkAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				writeLinkAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				writeLinkAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				writeLinkAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				writeLinkAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -18318,13 +18317,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(destroyLinkAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				destroyLinkAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				destroyLinkAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				destroyLinkAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				destroyLinkAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -18397,25 +18396,25 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				linkEndDestructionData, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateLinkEndData_validatePropertyIsAssociationEnd(
+				linkEndDestructionData, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateLinkEndData_validateEndObjectInputPin(
+				linkEndDestructionData, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateLinkEndData_validateSameType(
 				linkEndDestructionData, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateLinkEndData_validateMultiplicity(
 				linkEndDestructionData, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateLinkEndData_validateEndObjectInputPin(
-				linkEndDestructionData, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateLinkEndData_validatePropertyIsAssociationEnd(
-				linkEndDestructionData, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateLinkEndData_validateQualifiers(
 				linkEndDestructionData, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateLinkEndDestructionData_validateUnlimitedNaturalAndMultiplicity(
+			result &= validateLinkEndDestructionData_validateDestroyLinkAction(
 				linkEndDestructionData, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateLinkEndDestructionData_validateDestroyLinkAction(
+			result &= validateLinkEndDestructionData_validateUnlimitedNaturalAndMultiplicity(
 				linkEndDestructionData, diagnostics, context);
 		return result;
 	}
@@ -18487,13 +18486,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				clearAssociationAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				clearAssociationAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				clearAssociationAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				clearAssociationAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				clearAssociationAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -18585,13 +18584,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(broadcastSignalAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				broadcastSignalAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				broadcastSignalAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				broadcastSignalAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				broadcastSignalAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -18612,10 +18611,10 @@ public class UMLValidator
 			result &= validateInvocationAction_validateOnPortReceiver(
 				broadcastSignalAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateBroadcastSignalAction_validateNumberAndOrder(
+			result &= validateBroadcastSignalAction_validateTypeOrderingMultiplicity(
 				broadcastSignalAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateBroadcastSignalAction_validateTypeOrderingMultiplicity(
+			result &= validateBroadcastSignalAction_validateNumberAndOrder(
 				broadcastSignalAction, diagnostics, context);
 		return result;
 	}
@@ -18685,13 +18684,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(invocationAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				invocationAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				invocationAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				invocationAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				invocationAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -18765,13 +18764,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(sendObjectAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				sendObjectAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				sendObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				sendObjectAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				sendObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -18835,13 +18834,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				valueSpecificationAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				valueSpecificationAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				valueSpecificationAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				valueSpecificationAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				valueSpecificationAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -18932,13 +18931,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(timeExpression,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				timeExpression, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				timeExpression, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				timeExpression, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				timeExpression, diagnostics, context);
 		return result;
 	}
@@ -18980,13 +18979,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(observation,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				observation, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				observation, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				observation, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				observation, diagnostics, context);
 		return result;
 	}
@@ -19028,14 +19027,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(duration, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				duration, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(duration,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(duration,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				duration, diagnostics, context);
 		return result;
 	}
 
@@ -19076,14 +19075,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(valuePin, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				valuePin, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(valuePin,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(valuePin,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				valuePin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
 				valuePin, diagnostics, context);
@@ -19100,25 +19099,25 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				valuePin, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectNode_validateInputOutputParameter(valuePin,
+			result &= validateObjectNode_validateObjectFlowEdges(valuePin,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateObjectNode_validateSelectionBehavior(valuePin,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectNode_validateObjectFlowEdges(valuePin,
+			result &= validateObjectNode_validateInputOutputParameter(valuePin,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateLowerGe0(valuePin,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateUpperGeLower(
 				valuePin, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateLowerGe0(valuePin,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
+			result &= validateMultiplicityElement_validateValueSpecificationConstant(
 				valuePin, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateValueSpecificationConstant(
+			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
 				valuePin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validatePin_validateControlPins(valuePin, diagnostics,
@@ -19127,10 +19126,10 @@ public class UMLValidator
 			result &= validateInputPin_validateOutgoingEdgesStructuredOnly(
 				valuePin, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateValuePin_validateNoIncomingEdges(valuePin,
+			result &= validateValuePin_validateCompatibleType(valuePin,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateValuePin_validateCompatibleType(valuePin,
+			result &= validateValuePin_validateNoIncomingEdges(valuePin,
 				diagnostics, context);
 		return result;
 	}
@@ -19196,13 +19195,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(durationInterval,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				durationInterval, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				durationInterval, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				durationInterval, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				durationInterval, diagnostics, context);
 		return result;
 	}
@@ -19244,14 +19243,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(interval, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				interval, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(interval,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(interval,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				interval, diagnostics, context);
 		return result;
 	}
 
@@ -19294,22 +19293,22 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(timeConstraint,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				timeConstraint, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				timeConstraint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				timeConstraint, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateConstraint_validateBooleanValue(timeConstraint,
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				timeConstraint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateConstraint_validateNotApplyToSelf(timeConstraint,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateConstraint_validateNoSideEffects(timeConstraint,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateConstraint_validateNotApplyToSelf(timeConstraint,
+			result &= validateConstraint_validateBooleanValue(timeConstraint,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateConstraint_validateValueSpecificationBoolean(
@@ -19358,22 +19357,22 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(intervalConstraint,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				intervalConstraint, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				intervalConstraint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				intervalConstraint, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateConstraint_validateBooleanValue(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				intervalConstraint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateConstraint_validateNotApplyToSelf(
 				intervalConstraint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateConstraint_validateNoSideEffects(
 				intervalConstraint, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateConstraint_validateNotApplyToSelf(
+			result &= validateConstraint_validateBooleanValue(
 				intervalConstraint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateConstraint_validateValueSpecificationBoolean(
@@ -19419,13 +19418,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(timeInterval,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				timeInterval, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				timeInterval, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				timeInterval, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				timeInterval, diagnostics, context);
 		return result;
 	}
@@ -19471,22 +19470,22 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(durationConstraint,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				durationConstraint, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				durationConstraint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				durationConstraint, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateConstraint_validateBooleanValue(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				durationConstraint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateConstraint_validateNotApplyToSelf(
 				durationConstraint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateConstraint_validateNoSideEffects(
 				durationConstraint, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateConstraint_validateNotApplyToSelf(
+			result &= validateConstraint_validateBooleanValue(
 				durationConstraint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateConstraint_validateValueSpecificationBoolean(
@@ -19549,13 +19548,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(timeObservation,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				timeObservation, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				timeObservation, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				timeObservation, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				timeObservation, diagnostics, context);
 		return result;
 	}
@@ -19601,13 +19600,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(durationObservation,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				durationObservation, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				durationObservation, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				durationObservation, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				durationObservation, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateDurationObservation_validateFirstEventMultiplicity(
@@ -19666,13 +19665,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(opaqueAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				opaqueAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				opaqueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				opaqueAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				opaqueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -19729,13 +19728,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(callAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				callAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(callAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				callAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				callAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -19756,14 +19755,14 @@ public class UMLValidator
 			result &= validateInvocationAction_validateOnPortReceiver(
 				callAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateCallAction_validateTypeOrderingMultiplicity(
-				callAction, diagnostics, context);
+			result &= validateCallAction_validateSynchronousCall(callAction,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateCallAction_validateNumberAndOrder(callAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateCallAction_validateSynchronousCall(callAction,
-				diagnostics, context);
+			result &= validateCallAction_validateTypeOrderingMultiplicity(
+				callAction, diagnostics, context);
 		return result;
 	}
 
@@ -19843,13 +19842,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(sendSignalAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				sendSignalAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				sendSignalAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				sendSignalAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				sendSignalAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -19944,13 +19943,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(callOperationAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				callOperationAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				callOperationAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				callOperationAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				callOperationAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -19971,22 +19970,22 @@ public class UMLValidator
 			result &= validateInvocationAction_validateOnPortReceiver(
 				callOperationAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateCallOperationAction_validateTypeOrderingMultiplicity(
+			result &= validateCallAction_validateSynchronousCall(
 				callOperationAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateCallAction_validateNumberAndOrder(
 				callOperationAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateCallAction_validateSynchronousCall(
-				callOperationAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateCallOperationAction_validateTypeTargetPin(
+			result &= validateCallOperationAction_validateTypeOrderingMultiplicity(
 				callOperationAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateCallOperationAction_validateArgumentPinEqualParameter(
 				callOperationAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateCallOperationAction_validateResultPinEqualParameter(
+				callOperationAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateCallOperationAction_validateTypeTargetPin(
 				callOperationAction, diagnostics, context);
 		return result;
 	}
@@ -20083,13 +20082,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(callBehaviorAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				callBehaviorAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				callBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				callBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				callBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -20110,13 +20109,13 @@ public class UMLValidator
 			result &= validateInvocationAction_validateOnPortReceiver(
 				callBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateCallBehaviorAction_validateTypeOrderingMultiplicity(
+			result &= validateCallAction_validateSynchronousCall(
 				callBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateCallAction_validateNumberAndOrder(
 				callBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateCallAction_validateSynchronousCall(
+			result &= validateCallBehaviorAction_validateTypeOrderingMultiplicity(
 				callBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateCallBehaviorAction_validateResultPinEqualParameter(
@@ -20205,13 +20204,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(informationItem,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				informationItem, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				informationItem, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				informationItem, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				informationItem, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -20226,25 +20225,25 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				informationItem, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(
-				informationItem, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				informationItem, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(
 				informationItem, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
 				informationItem, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateInformationItem_validateSourcesAndTargets(
+			result &= validateClassifier_validateSpecializeType(
+				informationItem, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				informationItem, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateInformationItem_validateHasNo(informationItem,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateInformationItem_validateNotInstantiable(
+				informationItem, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateInformationItem_validateSourcesAndTargets(
 				informationItem, diagnostics, context);
 		return result;
 	}
@@ -20324,19 +20323,19 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(informationFlow,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				informationFlow, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				informationFlow, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				informationFlow, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateInformationFlow_validateMustConform(
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				informationFlow, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateInformationFlow_validateSourcesAndTargetsKind(
+				informationFlow, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateInformationFlow_validateMustConform(
 				informationFlow, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateInformationFlow_validateConveyClassifiers(
@@ -20416,14 +20415,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(model, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				model, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(model,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(model,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				model, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(model,
 				diagnostics, context);
@@ -20472,13 +20471,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(variableAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				variableAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				variableAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				variableAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				variableAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -20554,13 +20553,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(readVariableAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				readVariableAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				readVariableAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				readVariableAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				readVariableAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -20655,13 +20654,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(writeVariableAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				writeVariableAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				writeVariableAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				writeVariableAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				writeVariableAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -20682,10 +20681,10 @@ public class UMLValidator
 			result &= validateVariableAction_validateScopeOfVariable(
 				writeVariableAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateWriteVariableAction_validateSameType(
+			result &= validateWriteVariableAction_validateMultiplicity(
 				writeVariableAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateWriteVariableAction_validateMultiplicity(
+			result &= validateWriteVariableAction_validateSameType(
 				writeVariableAction, diagnostics, context);
 		return result;
 	}
@@ -20755,13 +20754,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(clearVariableAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				clearVariableAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				clearVariableAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				clearVariableAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				clearVariableAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -20825,13 +20824,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				addVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				addVariableValueAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				addVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				addVariableValueAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				addVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -20852,10 +20851,10 @@ public class UMLValidator
 			result &= validateVariableAction_validateScopeOfVariable(
 				addVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateWriteVariableAction_validateSameType(
+			result &= validateWriteVariableAction_validateMultiplicity(
 				addVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateWriteVariableAction_validateMultiplicity(
+			result &= validateWriteVariableAction_validateSameType(
 				addVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateAddVariableValueAction_validateRequiredValue(
@@ -20933,13 +20932,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				removeVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				removeVariableValueAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				removeVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				removeVariableValueAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				removeVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -20960,10 +20959,10 @@ public class UMLValidator
 			result &= validateVariableAction_validateScopeOfVariable(
 				removeVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateWriteVariableAction_validateSameType(
+			result &= validateWriteVariableAction_validateMultiplicity(
 				removeVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateWriteVariableAction_validateMultiplicity(
+			result &= validateWriteVariableAction_validateSameType(
 				removeVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRemoveVariableValueAction_validateUnlimitedNatural(
@@ -21025,13 +21024,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(raiseExceptionAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				raiseExceptionAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				raiseExceptionAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				raiseExceptionAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				raiseExceptionAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -21090,13 +21089,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(actionInputPin,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				actionInputPin, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				actionInputPin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				actionInputPin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				actionInputPin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -21114,25 +21113,25 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				actionInputPin, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectNode_validateInputOutputParameter(
+			result &= validateObjectNode_validateObjectFlowEdges(
 				actionInputPin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateObjectNode_validateSelectionBehavior(
 				actionInputPin, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectNode_validateObjectFlowEdges(
-				actionInputPin, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGeLower(
+			result &= validateObjectNode_validateInputOutputParameter(
 				actionInputPin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(
 				actionInputPin, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
+			result &= validateMultiplicityElement_validateUpperGeLower(
 				actionInputPin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateValueSpecificationConstant(
+				actionInputPin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
 				actionInputPin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validatePin_validateControlPins(actionInputPin,
@@ -21144,10 +21143,10 @@ public class UMLValidator
 			result &= validateActionInputPin_validateInputPin(actionInputPin,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateActionInputPin_validateOneOutputPin(
+			result &= validateActionInputPin_validateNoControlOrDataFlow(
 				actionInputPin, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateActionInputPin_validateNoControlOrDataFlow(
+			result &= validateActionInputPin_validateOneOutputPin(
 				actionInputPin, diagnostics, context);
 		return result;
 	}
@@ -21227,13 +21226,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(readExtentAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				readExtentAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				readExtentAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				readExtentAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				readExtentAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -21325,13 +21324,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				reclassifyObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				reclassifyObjectAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				reclassifyObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				reclassifyObjectAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				reclassifyObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -21352,10 +21351,10 @@ public class UMLValidator
 			result &= validateReclassifyObjectAction_validateInputPin(
 				reclassifyObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateReclassifyObjectAction_validateClassifierNotAbstract(
+			result &= validateReclassifyObjectAction_validateMultiplicity(
 				reclassifyObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateReclassifyObjectAction_validateMultiplicity(
+			result &= validateReclassifyObjectAction_validateClassifierNotAbstract(
 				reclassifyObjectAction, diagnostics, context);
 		return result;
 	}
@@ -21439,13 +21438,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				readIsClassifiedObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				readIsClassifiedObjectAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				readIsClassifiedObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				readIsClassifiedObjectAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				readIsClassifiedObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -21570,13 +21569,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				startClassifierBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				startClassifierBehaviorAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				startClassifierBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				startClassifierBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				startClassifierBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -21594,10 +21593,10 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				startClassifierBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateStartClassifierBehaviorAction_validateMultiplicity(
+			result &= validateStartClassifierBehaviorAction_validateTypeHasClassifier(
 				startClassifierBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateStartClassifierBehaviorAction_validateTypeHasClassifier(
+			result &= validateStartClassifierBehaviorAction_validateMultiplicity(
 				startClassifierBehaviorAction, diagnostics, context);
 		return result;
 	}
@@ -21669,13 +21668,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				readLinkObjectEndAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				readLinkObjectEndAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				readLinkObjectEndAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				readLinkObjectEndAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				readLinkObjectEndAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -21693,25 +21692,25 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				readLinkObjectEndAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateReadLinkObjectEndAction_validateProperty(
+			result &= validateReadLinkObjectEndAction_validateAssociationOfAssociation(
 				readLinkObjectEndAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateReadLinkObjectEndAction_validateMultiplicityOfObject(
 				readLinkObjectEndAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateReadLinkObjectEndAction_validateEndsOfAssociation(
-				readLinkObjectEndAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateReadLinkObjectEndAction_validateTypeOfResult(
-				readLinkObjectEndAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateReadLinkObjectEndAction_validateMultiplicityOfResult(
 				readLinkObjectEndAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateReadLinkObjectEndAction_validateTypeOfObject(
 				readLinkObjectEndAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateReadLinkObjectEndAction_validateAssociationOfAssociation(
+			result &= validateReadLinkObjectEndAction_validateProperty(
+				readLinkObjectEndAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateReadLinkObjectEndAction_validateMultiplicityOfResult(
+				readLinkObjectEndAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateReadLinkObjectEndAction_validateEndsOfAssociation(
 				readLinkObjectEndAction, diagnostics, context);
 		return result;
 	}
@@ -21847,13 +21846,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				readLinkObjectEndQualifierAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				readLinkObjectEndQualifierAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				readLinkObjectEndQualifierAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				readLinkObjectEndQualifierAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				readLinkObjectEndQualifierAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -21871,22 +21870,22 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				readLinkObjectEndQualifierAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateReadLinkObjectEndQualifierAction_validateMultiplicityOfObject(
-				readLinkObjectEndQualifierAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateReadLinkObjectEndQualifierAction_validateTypeOfObject(
-				readLinkObjectEndQualifierAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateReadLinkObjectEndQualifierAction_validateMultiplicityOfQualifier(
-				readLinkObjectEndQualifierAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateReadLinkObjectEndQualifierAction_validateEndsOfAssociation(
 				readLinkObjectEndQualifierAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateReadLinkObjectEndQualifierAction_validateMultiplicityOfResult(
 				readLinkObjectEndQualifierAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateReadLinkObjectEndQualifierAction_validateSameType(
+				readLinkObjectEndQualifierAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateReadLinkObjectEndQualifierAction_validateEndsOfAssociation(
+				readLinkObjectEndQualifierAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateReadLinkObjectEndQualifierAction_validateMultiplicityOfQualifier(
+				readLinkObjectEndQualifierAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateReadLinkObjectEndQualifierAction_validateMultiplicityOfObject(
 				readLinkObjectEndQualifierAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateReadLinkObjectEndQualifierAction_validateAssociationOfAssociation(
@@ -22042,13 +22041,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				createLinkObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				createLinkObjectAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				createLinkObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				createLinkObjectAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				createLinkObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -22081,13 +22080,13 @@ public class UMLValidator
 			result &= validateCreateLinkAction_validateAssociationNotAbstract(
 				createLinkObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateCreateLinkObjectAction_validateMultiplicity(
+			result &= validateCreateLinkObjectAction_validateAssociationClass(
 				createLinkObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateCreateLinkObjectAction_validateTypeOfResult(
 				createLinkObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateCreateLinkObjectAction_validateAssociationClass(
+			result &= validateCreateLinkObjectAction_validateMultiplicity(
 				createLinkObjectAction, diagnostics, context);
 		return result;
 	}
@@ -22171,13 +22170,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(acceptEventAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				acceptEventAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				acceptEventAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				acceptEventAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				acceptEventAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -22195,16 +22194,16 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				acceptEventAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateAcceptEventAction_validateTriggerEvents(
-				acceptEventAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateAcceptEventAction_validateNoInputPins(
 				acceptEventAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateAcceptEventAction_validateNoOutputPins(
+			result &= validateAcceptEventAction_validateTriggerEvents(
 				acceptEventAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateAcceptEventAction_validateUnmarshallSignalEvents(
+				acceptEventAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateAcceptEventAction_validateNoOutputPins(
 				acceptEventAction, diagnostics, context);
 		return result;
 	}
@@ -22297,13 +22296,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(acceptCallAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				acceptCallAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				acceptCallAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				acceptCallAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				acceptCallAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -22321,25 +22320,25 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				acceptCallAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateAcceptEventAction_validateTriggerEvents(
-				acceptCallAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateAcceptEventAction_validateNoInputPins(
 				acceptCallAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateAcceptEventAction_validateNoOutputPins(
+			result &= validateAcceptEventAction_validateTriggerEvents(
 				acceptCallAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateAcceptEventAction_validateUnmarshallSignalEvents(
 				acceptCallAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateAcceptCallAction_validateResultPins(
+			result &= validateAcceptEventAction_validateNoOutputPins(
 				acceptCallAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateAcceptCallAction_validateTriggerCallEvent(
 				acceptCallAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateAcceptCallAction_validateUnmarshall(
+				acceptCallAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateAcceptCallAction_validateResultPins(
 				acceptCallAction, diagnostics, context);
 		return result;
 	}
@@ -22417,13 +22416,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(replyAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				replyAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				replyAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				replyAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				replyAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -22441,10 +22440,10 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				replyAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateReplyAction_validatePinsMatchParameter(
+			result &= validateReplyAction_validateEventOnReplyToCallTrigger(
 				replyAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateReplyAction_validateEventOnReplyToCallTrigger(
+			result &= validateReplyAction_validatePinsMatchParameter(
 				replyAction, diagnostics, context);
 		return result;
 	}
@@ -22513,13 +22512,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(unmarshallAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				unmarshallAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				unmarshallAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				unmarshallAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				unmarshallAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -22537,25 +22536,25 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				unmarshallAction, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateUnmarshallAction_validateSameType(
+				unmarshallAction, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateUnmarshallAction_validateStructuralFeature(
-				unmarshallAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateUnmarshallAction_validateNumberOfResult(
-				unmarshallAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateUnmarshallAction_validateMultiplicityOfResult(
-				unmarshallAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateUnmarshallAction_validateTypeAndOrdering(
-				unmarshallAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateUnmarshallAction_validateUnmarshallTypeIsClassifier(
 				unmarshallAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateUnmarshallAction_validateMultiplicityOfObject(
 				unmarshallAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateUnmarshallAction_validateSameType(
+			result &= validateUnmarshallAction_validateTypeAndOrdering(
+				unmarshallAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateUnmarshallAction_validateNumberOfResult(
+				unmarshallAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateUnmarshallAction_validateUnmarshallTypeIsClassifier(
+				unmarshallAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateUnmarshallAction_validateMultiplicityOfResult(
 				unmarshallAction, diagnostics, context);
 		return result;
 	}
@@ -22685,13 +22684,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(reduceAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				reduceAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				reduceAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				reduceAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				reduceAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -22709,13 +22708,13 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				reduceAction, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateReduceAction_validateOutputTypesAreCompatible(
+				reduceAction, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateReduceAction_validateReducerInputsOutput(
 				reduceAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateReduceAction_validateInputTypeIsCollection(
-				reduceAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateReduceAction_validateOutputTypesAreCompatible(
 				reduceAction, diagnostics, context);
 		return result;
 	}
@@ -22798,13 +22797,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(
 				startObjectBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				startObjectBehaviorAction, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				startObjectBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				startObjectBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -22825,28 +22824,28 @@ public class UMLValidator
 			result &= validateInvocationAction_validateOnPortReceiver(
 				startObjectBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateCallAction_validateTypeOrderingMultiplicity(
+			result &= validateCallAction_validateSynchronousCall(
 				startObjectBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateCallAction_validateNumberAndOrder(
 				startObjectBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateCallAction_validateSynchronousCall(
-				startObjectBehaviorAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStartObjectBehaviorAction_validateNumberOrderResults(
-				startObjectBehaviorAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStartObjectBehaviorAction_validateMultiplicityOfObject(
-				startObjectBehaviorAction, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStartObjectBehaviorAction_validateTypeOrderingMultiplicityMatch(
+			result &= validateCallAction_validateTypeOrderingMultiplicity(
 				startObjectBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStartObjectBehaviorAction_validateNumberOrderArguments(
 				startObjectBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateStartObjectBehaviorAction_validateTypeOrderingMultiplicityMatch(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateStartObjectBehaviorAction_validateNumberOrderResults(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateStartObjectBehaviorAction_validateTypeOfObject(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateStartObjectBehaviorAction_validateMultiplicityOfObject(
 				startObjectBehaviorAction, diagnostics, context);
 		return result;
 	}
@@ -22953,13 +22952,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(controlNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				controlNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				controlNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				controlNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				controlNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -23016,13 +23015,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(controlFlow,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				controlFlow, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				controlFlow, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				controlFlow, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				controlFlow, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -23097,13 +23096,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(initialNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				initialNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				initialNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				initialNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				initialNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -23194,13 +23193,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(activityParameterNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				activityParameterNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				activityParameterNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				activityParameterNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				activityParameterNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -23218,34 +23217,34 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				activityParameterNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectNode_validateInputOutputParameter(
+			result &= validateObjectNode_validateObjectFlowEdges(
 				activityParameterNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateObjectNode_validateSelectionBehavior(
 				activityParameterNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectNode_validateObjectFlowEdges(
-				activityParameterNode, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateActivityParameterNode_validateNoOutgoingEdges(
-				activityParameterNode, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateActivityParameterNode_validateMaximumTwoParameterNodes(
-				activityParameterNode, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateActivityParameterNode_validateHasParameters(
-				activityParameterNode, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateActivityParameterNode_validateSameType(
+			result &= validateObjectNode_validateInputOutputParameter(
 				activityParameterNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateActivityParameterNode_validateMaximumOneParameterNode(
 				activityParameterNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateActivityParameterNode_validateNoIncomingEdges(
+			result &= validateActivityParameterNode_validateMaximumTwoParameterNodes(
 				activityParameterNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateActivityParameterNode_validateNoEdges(
+				activityParameterNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateActivityParameterNode_validateNoIncomingEdges(
+				activityParameterNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateActivityParameterNode_validateNoOutgoingEdges(
+				activityParameterNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateActivityParameterNode_validateSameType(
+				activityParameterNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateActivityParameterNode_validateHasParameters(
 				activityParameterNode, diagnostics, context);
 		return result;
 	}
@@ -23376,14 +23375,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(forkNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				forkNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(forkNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(forkNode,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				forkNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
 				forkNode, diagnostics, context);
@@ -23468,13 +23467,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(flowFinalNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				flowFinalNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				flowFinalNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				flowFinalNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				flowFinalNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -23534,13 +23533,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(finalNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				finalNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(finalNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				finalNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				finalNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -23615,13 +23614,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(centralBufferNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				centralBufferNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				centralBufferNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				centralBufferNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				centralBufferNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -23639,13 +23638,13 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				centralBufferNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectNode_validateInputOutputParameter(
+			result &= validateObjectNode_validateObjectFlowEdges(
 				centralBufferNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateObjectNode_validateSelectionBehavior(
 				centralBufferNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectNode_validateObjectFlowEdges(
+			result &= validateObjectNode_validateInputOutputParameter(
 				centralBufferNode, diagnostics, context);
 		return result;
 	}
@@ -23687,13 +23686,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(mergeNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				mergeNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(mergeNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				mergeNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				mergeNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -23780,13 +23779,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(decisionNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				decisionNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				decisionNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				decisionNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				decisionNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -23804,16 +23803,10 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				decisionNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateDecisionNode_validateZeroInputParameters(
-				decisionNode, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateDecisionNode_validateEdges(decisionNode,
+			result &= validateDecisionNode_validateParameters(decisionNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateDecisionNode_validateDecisionInputFlowIncoming(
-				decisionNode, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateDecisionNode_validateTwoInputParameters(
+			result &= validateDecisionNode_validateIncomingObjectOneInputParameter(
 				decisionNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateDecisionNode_validateIncomingOutgoingEdges(
@@ -23822,11 +23815,17 @@ public class UMLValidator
 			result &= validateDecisionNode_validateIncomingControlOneInputParameter(
 				decisionNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateDecisionNode_validateParameters(decisionNode,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateDecisionNode_validateIncomingObjectOneInputParameter(
+			result &= validateDecisionNode_validateTwoInputParameters(
 				decisionNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateDecisionNode_validateDecisionInputFlowIncoming(
+				decisionNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateDecisionNode_validateZeroInputParameters(
+				decisionNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateDecisionNode_validateEdges(decisionNode,
+				diagnostics, context);
 		return result;
 	}
 
@@ -23969,13 +23968,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(activityFinalNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				activityFinalNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				activityFinalNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				activityFinalNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				activityFinalNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -24035,14 +24034,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(joinNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				joinNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(joinNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(joinNode,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				joinNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
 				joinNode, diagnostics, context);
@@ -24128,13 +24127,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(dataStoreNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				dataStoreNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				dataStoreNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				dataStoreNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				dataStoreNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -24152,14 +24151,14 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				dataStoreNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectNode_validateInputOutputParameter(
-				dataStoreNode, diagnostics, context);
+			result &= validateObjectNode_validateObjectFlowEdges(dataStoreNode,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateObjectNode_validateSelectionBehavior(
 				dataStoreNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectNode_validateObjectFlowEdges(dataStoreNode,
-				diagnostics, context);
+			result &= validateObjectNode_validateInputOutputParameter(
+				dataStoreNode, diagnostics, context);
 		return result;
 	}
 
@@ -24200,13 +24199,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(objectFlow,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				objectFlow, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(objectFlow,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				objectFlow, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				objectFlow, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -24227,13 +24226,7 @@ public class UMLValidator
 			result &= validateActivityEdge_validateStructuredNode(objectFlow,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectFlow_validateInputAndOutputParameter(
-				objectFlow, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateObjectFlow_validateNoActions(objectFlow,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateObjectFlow_validateTransformationBehaviour(
+			result &= validateObjectFlow_validateIsMulticastOrIsMultireceive(
 				objectFlow, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateObjectFlow_validateSelectionBehaviour(objectFlow,
@@ -24242,14 +24235,20 @@ public class UMLValidator
 			result &= validateObjectFlow_validateCompatibleTypes(objectFlow,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectFlow_validateSameUpperBounds(objectFlow,
+			result &= validateObjectFlow_validateNoActions(objectFlow,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateObjectFlow_validateInputAndOutputParameter(
+				objectFlow, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateObjectFlow_validateTransformationBehaviour(
+				objectFlow, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateObjectFlow_validateTarget(objectFlow,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectFlow_validateIsMulticastOrIsMultireceive(
-				objectFlow, diagnostics, context);
+			result &= validateObjectFlow_validateSameUpperBounds(objectFlow,
+				diagnostics, context);
 		return result;
 	}
 
@@ -24386,13 +24385,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(sequenceNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				sequenceNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				sequenceNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				sequenceNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				sequenceNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -24413,22 +24412,22 @@ public class UMLValidator
 			result &= validateNamespace_validateMembersDistinguishable(
 				sequenceNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateActivityGroup_validateNodesAndEdges(sequenceNode,
-				diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateActivityGroup_validateGroupOwned(sequenceNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateActivityGroup_validateNotContained(sequenceNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateStructuredActivityNode_validateOutputPinEdges(
+			result &= validateActivityGroup_validateNodesAndEdges(sequenceNode,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateStructuredActivityNode_validateInputPinEdges(
 				sequenceNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredActivityNode_validateEdges(
 				sequenceNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateStructuredActivityNode_validateInputPinEdges(
+			result &= validateStructuredActivityNode_validateOutputPinEdges(
 				sequenceNode, diagnostics, context);
 		return result;
 	}
@@ -24472,13 +24471,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(conditionalNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				conditionalNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				conditionalNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				conditionalNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				conditionalNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -24499,40 +24498,40 @@ public class UMLValidator
 			result &= validateNamespace_validateMembersDistinguishable(
 				conditionalNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateActivityGroup_validateNodesAndEdges(
-				conditionalNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateActivityGroup_validateGroupOwned(conditionalNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateActivityGroup_validateNotContained(
 				conditionalNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateStructuredActivityNode_validateOutputPinEdges(
-				conditionalNode, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStructuredActivityNode_validateEdges(
+			result &= validateActivityGroup_validateNodesAndEdges(
 				conditionalNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredActivityNode_validateInputPinEdges(
 				conditionalNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateConditionalNode_validateResultNoIncoming(
+			result &= validateStructuredActivityNode_validateEdges(
 				conditionalNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateConditionalNode_validateNoInputPins(
-				conditionalNode, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateConditionalNode_validateOneClauseWithExecutableNode(
-				conditionalNode, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateConditionalNode_validateMatchingOutputPins(
+			result &= validateStructuredActivityNode_validateOutputPinEdges(
 				conditionalNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateConditionalNode_validateExecutableNodes(
 				conditionalNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateConditionalNode_validateClauseNoPredecessor(
+				conditionalNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateConditionalNode_validateMatchingOutputPins(
+				conditionalNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateConditionalNode_validateOneClauseWithExecutableNode(
+				conditionalNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateConditionalNode_validateResultNoIncoming(
+				conditionalNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateConditionalNode_validateNoInputPins(
 				conditionalNode, diagnostics, context);
 		return result;
 	}
@@ -24646,13 +24645,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(clause, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validateClause_validateTestAndBody(clause, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateClause_validateBodyOutputPins(clause,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClause_validateDeciderOutput(clause, diagnostics,
-				context);
-		if (result || diagnostics != null)
-			result &= validateClause_validateTestAndBody(clause, diagnostics,
 				context);
 		return result;
 	}
@@ -24727,14 +24726,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(loopNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				loopNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(loopNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(loopNode,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				loopNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
 				loopNode, diagnostics, context);
@@ -24754,34 +24753,34 @@ public class UMLValidator
 			result &= validateNamespace_validateMembersDistinguishable(
 				loopNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateActivityGroup_validateNodesAndEdges(loopNode,
-				diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateActivityGroup_validateGroupOwned(loopNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateActivityGroup_validateNotContained(loopNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateStructuredActivityNode_validateOutputPinEdges(
-				loopNode, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateStructuredActivityNode_validateEdges(loopNode,
+			result &= validateActivityGroup_validateNodesAndEdges(loopNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredActivityNode_validateInputPinEdges(
 				loopNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateLoopNode_validateResultNoIncoming(loopNode,
+			result &= validateStructuredActivityNode_validateEdges(loopNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateLoopNode_validateInputEdges(loopNode,
-				diagnostics, context);
+			result &= validateStructuredActivityNode_validateOutputPinEdges(
+				loopNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateLoopNode_validateExecutableNodes(loopNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateLoopNode_validateBodyOutputPins(loopNode,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateLoopNode_validateResultNoIncoming(loopNode,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateLoopNode_validateInputEdges(loopNode,
 				diagnostics, context);
 		return result;
 	}
@@ -24868,13 +24867,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(expansionNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				expansionNode, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				expansionNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				expansionNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				expansionNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -24892,14 +24891,14 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwnedStructuredNode(
 				expansionNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectNode_validateInputOutputParameter(
-				expansionNode, diagnostics, context);
+			result &= validateObjectNode_validateObjectFlowEdges(expansionNode,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateObjectNode_validateSelectionBehavior(
 				expansionNode, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateObjectNode_validateObjectFlowEdges(expansionNode,
-				diagnostics, context);
+			result &= validateObjectNode_validateInputOutputParameter(
+				expansionNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateExpansionNode_validateRegionAsInputOrOutput(
 				expansionNode, diagnostics, context);
@@ -24958,13 +24957,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(expansionRegion,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				expansionRegion, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				expansionRegion, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				expansionRegion, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				expansionRegion, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
@@ -24985,22 +24984,22 @@ public class UMLValidator
 			result &= validateNamespace_validateMembersDistinguishable(
 				expansionRegion, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateActivityGroup_validateNodesAndEdges(
-				expansionRegion, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateActivityGroup_validateGroupOwned(expansionRegion,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateActivityGroup_validateNotContained(
 				expansionRegion, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateStructuredActivityNode_validateOutputPinEdges(
+			result &= validateActivityGroup_validateNodesAndEdges(
+				expansionRegion, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateStructuredActivityNode_validateInputPinEdges(
 				expansionRegion, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredActivityNode_validateEdges(
 				expansionRegion, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateStructuredActivityNode_validateInputPinEdges(
+			result &= validateStructuredActivityNode_validateOutputPinEdges(
 				expansionRegion, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateExpansionRegion_validateExpansionNodes(
@@ -25061,13 +25060,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(componentRealization,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				componentRealization, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				componentRealization, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				componentRealization, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				componentRealization, diagnostics, context);
 		return result;
 	}
@@ -25109,13 +25108,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(component,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				component, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(component,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				component, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				component, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -25130,16 +25129,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				component, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(component,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				component, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(component,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				component, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(component,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				component, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredClassifier_validateMultiplicities(
@@ -25151,10 +25150,10 @@ public class UMLValidator
 			result &= validateClass_validatePassiveClass(component,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateComponent_validateNoNestedClassifiers(component,
+			result &= validateComponent_validateNoPackagedElements(component,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateComponent_validateNoPackagedElements(component,
+			result &= validateComponent_validateNoNestedClassifiers(component,
 				diagnostics, context);
 		return result;
 	}
@@ -25218,14 +25217,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(node, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				node, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(node,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(node,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				node, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(node,
 				diagnostics, context);
@@ -25239,16 +25238,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				node, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(node,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(node,
-				diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(node,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(node,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(node,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(node,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredClassifier_validateMultiplicities(node,
@@ -25311,14 +25310,14 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(device, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				device, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(device,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(device,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				device, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(device,
 				diagnostics, context);
@@ -25332,16 +25331,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				device, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(device,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				device, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(device,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				device, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(device,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				device, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredClassifier_validateMultiplicities(
@@ -25399,13 +25398,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(executionEnvironment,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				executionEnvironment, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				executionEnvironment, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				executionEnvironment, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				executionEnvironment, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -25420,16 +25419,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				executionEnvironment, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(
-				executionEnvironment, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				executionEnvironment, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(
 				executionEnvironment, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				executionEnvironment, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(
+				executionEnvironment, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				executionEnvironment, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredClassifier_validateMultiplicities(
@@ -25486,13 +25485,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(communicationPath,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				communicationPath, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				communicationPath, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				communicationPath, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				communicationPath, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -25507,28 +25506,28 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				communicationPath, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(
-				communicationPath, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				communicationPath, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(
 				communicationPath, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
 				communicationPath, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(
+				communicationPath, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
+				communicationPath, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateAssociation_validateSpecializedEndNumber(
 				communicationPath, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateAssociation_validateSpecializedEndTypes(
+			result &= validateCommunicationPath_validateAssociationEnds(
 				communicationPath, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateAssociation_validateBinaryAssociations(
 				communicationPath, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateCommunicationPath_validateAssociationEnds(
+			result &= validateAssociation_validateSpecializedEndTypes(
 				communicationPath, diagnostics, context);
 		return result;
 	}
@@ -25582,13 +25581,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(finalState,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				finalState, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(finalState,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				finalState, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				finalState, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -25606,9 +25605,6 @@ public class UMLValidator
 			result &= validateState_validateEntryOrExit(finalState,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateState_validateSubmachineStates(finalState,
-				diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateState_validateCompositeStates(finalState,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -25618,22 +25614,25 @@ public class UMLValidator
 			result &= validateState_validateSubmachineOrRegions(finalState,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateFinalState_validateNoExitBehavior(finalState,
+			result &= validateState_validateSubmachineStates(finalState,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateFinalState_validateNoOutgoingTransitions(
 				finalState, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateFinalState_validateNoRegions(finalState,
-				diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateFinalState_validateCannotReferenceSubmachine(
 				finalState, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateFinalState_validateNoExitBehavior(finalState,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateFinalState_validateNoEntryBehavior(finalState,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateFinalState_validateNoStateBehavior(finalState,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateFinalState_validateNoRegions(finalState,
 				diagnostics, context);
 		return result;
 	}
@@ -25747,19 +25746,19 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(timeEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				timeEvent, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(timeEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
 				timeEvent, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateTimeEvent_validateWhenNonNegative(timeEvent,
-				diagnostics, context);
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				timeEvent, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateTimeEvent_validateStartingTime(timeEvent,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTimeEvent_validateWhenNonNegative(timeEvent,
 				diagnostics, context);
 		return result;
 	}
@@ -25828,13 +25827,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(protocolTransition,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				protocolTransition, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				protocolTransition, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				protocolTransition, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				protocolTransition, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -25849,34 +25848,34 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				protocolTransition, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateTransition_validateStateIsExternal(
+			result &= validateTransition_validateStateIsLocal(
 				protocolTransition, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateTransition_validateJoinSegmentGuards(
-				protocolTransition, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateTransition_validateStateIsInternal(
-				protocolTransition, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateTransition_validateOutgoingPseudostates(
+			result &= validateTransition_validateForkSegmentGuards(
 				protocolTransition, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateTransition_validateJoinSegmentState(
 				protocolTransition, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateTransition_validateForkSegmentState(
+			result &= validateTransition_validateInitialTransition(
+				protocolTransition, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTransition_validateOutgoingPseudostates(
 				protocolTransition, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateTransition_validateSignaturesCompatible(
 				protocolTransition, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateTransition_validateStateIsLocal(
+			result &= validateTransition_validateStateIsInternal(
 				protocolTransition, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateTransition_validateInitialTransition(
+			result &= validateTransition_validateJoinSegmentGuards(
 				protocolTransition, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateTransition_validateForkSegmentGuards(
+			result &= validateTransition_validateForkSegmentState(
+				protocolTransition, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTransition_validateStateIsExternal(
 				protocolTransition, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateProtocolTransition_validateRefersToOperation(
@@ -25967,13 +25966,13 @@ public class UMLValidator
 			result &= validateElement_validateNotOwnSelf(associationClass,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateNamedElement_validateVisibilityNeedsOwnership(
-				associationClass, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasQualifiedName(
 				associationClass, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamedElement_validateHasNoQualifiedName(
+				associationClass, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				associationClass, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateNamespace_validateMembersDistinguishable(
@@ -25988,16 +25987,16 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionContextValid(
 				associationClass, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateClassifier_validateSpecializeType(
-				associationClass, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateClassifier_validateMapsToGeneralizationSet(
-				associationClass, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateClassifier_validateNonFinalParents(
 				associationClass, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateClassifier_validateNoCyclesInGeneralization(
+				associationClass, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateSpecializeType(
+				associationClass, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClassifier_validateMapsToGeneralizationSet(
 				associationClass, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateStructuredClassifier_validateMultiplicities(
@@ -26012,19 +26011,19 @@ public class UMLValidator
 			result &= validateAssociation_validateSpecializedEndNumber(
 				associationClass, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateAssociation_validateSpecializedEndTypes(
+			result &= validateAssociation_validateAssociationEnds(
 				associationClass, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateAssociation_validateBinaryAssociations(
 				associationClass, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateAssociation_validateAssociationEnds(
-				associationClass, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateAssociationClass_validateCannotBeDefined(
+			result &= validateAssociation_validateSpecializedEndTypes(
 				associationClass, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateAssociationClass_validateDisjointAttributesEnds(
+				associationClass, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateAssociationClass_validateCannotBeDefined(
 				associationClass, diagnostics, context);
 		return result;
 	}

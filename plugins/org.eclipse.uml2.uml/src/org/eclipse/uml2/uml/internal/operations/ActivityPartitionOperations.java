@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ActivityPartitionOperations.java,v 1.8 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -31,9 +30,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#validateRepresentsPart(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Represents Part</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#validateRepresentsClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Represents Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#validateRepresentsPartAndIsContained(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Represents Part And Is Contained</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#validateRepresentsPart(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Represents Part</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#validateDimensionNotContained(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Dimension Not Contained</em>}</li>
  * </ul>
  * </p>

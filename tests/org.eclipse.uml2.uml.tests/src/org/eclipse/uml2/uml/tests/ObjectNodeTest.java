@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ObjectNodeTest.java,v 1.5 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -22,9 +21,9 @@ import org.eclipse.uml2.uml.ObjectNode;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ObjectNode#validateInputOutputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Output Parameter</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ObjectNode#validateSelectionBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Selection Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ObjectNode#validateObjectFlowEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Object Flow Edges</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ObjectNode#validateSelectionBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Selection Behavior</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ObjectNode#validateInputOutputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Output Parameter</em>}</li>
  * </ul>
  * </p>
  * @generated

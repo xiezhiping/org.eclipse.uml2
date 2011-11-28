@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ConstraintTest.java,v 1.6 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -25,9 +24,9 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Constraint#validateBooleanValue(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Boolean Value</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Constraint#validateNoSideEffects(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Side Effects</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Constraint#validateNotApplyToSelf(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Not Apply To Self</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Constraint#validateNoSideEffects(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Side Effects</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Constraint#validateBooleanValue(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Boolean Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Constraint#validateValueSpecificationBoolean(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Value Specification Boolean</em>}</li>
  * </ul>
  * </p>

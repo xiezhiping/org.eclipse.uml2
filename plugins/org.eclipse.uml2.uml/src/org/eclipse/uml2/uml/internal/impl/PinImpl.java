@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: PinImpl.java,v 1.34 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -683,8 +682,6 @@ public abstract class PinImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PIN__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.PIN__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.PIN__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -753,8 +750,6 @@ public abstract class PinImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.PIN__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.PIN__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.PIN__IN_STRUCTURED_NODE :
@@ -767,6 +762,8 @@ public abstract class PinImpl
 				return getOutgoings();
 			case UMLPackage.PIN__INCOMING :
 				return getIncomings();
+			case UMLPackage.PIN__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.PIN__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.PIN__TYPE :
@@ -1053,8 +1050,6 @@ public abstract class PinImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.PIN__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.PIN__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.PIN__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.PIN__IN_STRUCTURED_NODE :
@@ -1066,6 +1061,8 @@ public abstract class PinImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.PIN__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.PIN__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.PIN__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.PIN__TYPE :
@@ -1163,14 +1160,14 @@ public abstract class PinImpl
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
 		if (baseClass == MultiplicityElement.class) {
 			switch (baseOperationID) {
-				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
-					return UMLPackage.PIN___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
 					return UMLPackage.PIN___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP;
-				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
-					return UMLPackage.PIN___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.PIN___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
 					return UMLPackage.PIN___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.PIN___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___SET_LOWER__INT :
 					return UMLPackage.PIN___SET_LOWER__INT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___SET_UPPER__INT :
@@ -1292,16 +1289,16 @@ public abstract class PinImpl
 				return allOwnedElements();
 			case UMLPackage.PIN___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.PIN___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PIN___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1349,30 +1346,30 @@ public abstract class PinImpl
 				return validateOwnedStructuredNode(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PIN___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
-				return validateInputOutputParameter(
+			case UMLPackage.PIN___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateObjectFlowEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_SELECTION_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
 				return validateSelectionBehavior(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PIN___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateObjectFlowEdges(
+			case UMLPackage.PIN___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
+				return validateInputOutputParameter(
 					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PIN___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
-				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
 				return validateLowerGe0((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PIN___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
-				return validateValueSpecificationNoSideEffects(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.PIN___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
+				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
 				return validateValueSpecificationConstant(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PIN___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
+				return validateValueSpecificationNoSideEffects(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___SET_LOWER__INT :

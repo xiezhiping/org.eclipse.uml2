@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: MessageTest.java,v 1.6 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -32,12 +31,12 @@ import org.eclipse.uml2.uml.UMLFactory;
  * The following operations are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Message#validateSendingReceivingMessageEvent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Sending Receiving Message Event</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Message#validateOccurrenceSpecifications(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Occurrence Specifications</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Message#validateSignatureIsSignal(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Signature Is Signal</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Message#validateSignatureIsOperation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Signature Is Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Message#validateArguments(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Arguments</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Message#validateCannotCrossBoundaries(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Cannot Cross Boundaries</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Message#validateSignatureIsSignal(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Signature Is Signal</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Message#validateOccurrenceSpecifications(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Occurrence Specifications</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Message#validateSignatureReferTo(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Signature Refer To</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Message#validateSignatureIsOperation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Signature Is Operation</em>}</li>
  * </ul>
  * </p>
  * @generated

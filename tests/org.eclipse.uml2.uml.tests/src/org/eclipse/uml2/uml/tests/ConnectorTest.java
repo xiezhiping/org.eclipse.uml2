@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ConnectorTest.java,v 1.6 2007/02/14 20:06:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -31,10 +30,10 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Connector#validateTypes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Types</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Connector#validateCompatible(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Compatible</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Connector#validateRoles(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Roles</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Connector#validateBetweenInterfacesPorts(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Between Interfaces Ports</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Connector#validateCompatible(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Compatible</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Connector#validateTypes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Types</em>}</li>
  * </ul>
  * </p>
  * @generated

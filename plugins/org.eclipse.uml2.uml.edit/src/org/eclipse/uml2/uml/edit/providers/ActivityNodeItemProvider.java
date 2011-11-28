@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ActivityNodeItemProvider.java,v 1.10 2009/12/02 18:27:49 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -67,12 +66,12 @@ public class ActivityNodeItemProvider
 			super.getPropertyDescriptors(object);
 
 			addActivityPropertyDescriptor(object);
-			addInGroupPropertyDescriptor(object);
 			addInPartitionPropertyDescriptor(object);
 			addInStructuredNodePropertyDescriptor(object);
 			addInInterruptibleRegionPropertyDescriptor(object);
 			addOutgoingPropertyDescriptor(object);
 			addIncomingPropertyDescriptor(object);
+			addInGroupPropertyDescriptor(object);
 			addRedefinedNodePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;

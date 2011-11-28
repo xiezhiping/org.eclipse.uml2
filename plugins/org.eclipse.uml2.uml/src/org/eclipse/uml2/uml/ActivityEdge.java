@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ActivityEdge.java,v 1.20 2008/10/02 20:56:23 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,15 +27,15 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An activity edge is an abstract class for directed connections between two activity nodes.
  * Activity edges can be contained in interruptible regions.
+ * An activity edge is an abstract class for directed connections between two activity nodes.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getActivity <em>Activity</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getGuard <em>Guard</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInGroups <em>In Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInPartitions <em>In Partition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInStructuredNode <em>In Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInterrupts <em>Interrupts</em>}</li>
@@ -44,7 +43,7 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getSource <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getTarget <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getWeight <em>Weight</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getActivity <em>Activity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInGroups <em>In Group</em>}</li>
  * </ul>
  * </p>
  *

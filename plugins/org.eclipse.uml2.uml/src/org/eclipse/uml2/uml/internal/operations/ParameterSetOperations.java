@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 351774
  *
- * $Id: ParameterSetOperations.java,v 1.6 2007/05/03 21:11:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -30,9 +30,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ParameterSet#validateSameParameterizedEntity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Parameterized Entity</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ParameterSet#validateInput(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ParameterSet#validateTwoParameterSets(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Two Parameter Sets</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ParameterSet#validateInput(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ParameterSet#validateSameParameterizedEntity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Parameterized Entity</em>}</li>
  * </ul>
  * </p>
  *

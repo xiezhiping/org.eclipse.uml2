@@ -7,18 +7,25 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ActivityNodeTest.java,v 1.5 2007/02/14 20:06:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
+import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.UMLFactory;
 
 /**
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Activity Node</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getActivity() <em>Activity</em>}</li>
+ * </ul>
+ * </p>
  * <p>
  * The following operations are tested:
  * <ul>
@@ -50,6 +57,52 @@ public abstract class ActivityNodeTest
 	@Override
 	protected ActivityNode getFixture() {
 		return (ActivityNode) fixture;
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.ActivityNode#getActivity() <em>Activity</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.ActivityNode#getActivity()
+	 * @generated NOT
+	 */
+	public void testGetActivity() {
+		Activity activity = UMLFactory.eINSTANCE.createActivity();
+		activity.getOwnedNodes().add(getFixture());
+
+		assertEquals(activity, getFixture().getActivity());
+
+		activity.getNodes().remove(getFixture());
+
+		assertNull(getFixture().getActivity());
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.ActivityNode#setActivity(org.eclipse.uml2.uml.Activity) <em>Activity</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.ActivityNode#setActivity(org.eclipse.uml2.uml.Activity)
+	 * @generated NOT
+	 */
+	public void testSetActivity() {
+		Activity activity1 = UMLFactory.eINSTANCE.createActivity();
+		getFixture().setActivity(activity1);
+
+		assertTrue(activity1.getOwnedNodes().contains(getFixture()));
+		assertTrue(activity1.getNodes().contains(getFixture()));
+
+		Activity activity2 = UMLFactory.eINSTANCE.createActivity();
+		getFixture().setActivity(activity2);
+
+		assertFalse(activity1.getOwnedNodes().contains(getFixture()));
+		assertFalse(activity1.getNodes().contains(getFixture()));
+		assertTrue(activity2.getOwnedNodes().contains(getFixture()));
+		assertTrue(activity2.getNodes().contains(getFixture()));
+
+		getFixture().setActivity(null);
+
+		assertFalse(activity2.getOwnedNodes().contains(getFixture()));
+		assertFalse(activity2.getNodes().contains(getFixture()));
 	}
 
 	/**

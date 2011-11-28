@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: LoopNodeImpl.java,v 1.32 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -688,8 +687,6 @@ public class LoopNodeImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.LOOP_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.LOOP_NODE__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.LOOP_NODE__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -722,8 +719,6 @@ public class LoopNodeImpl
 			case UMLPackage.LOOP_NODE__OWNED_RULE :
 				return ((InternalEList<?>) getOwnedRules()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.LOOP_NODE__IN_ACTIVITY :
-				return basicSetInActivity(null, msgs);
 			case UMLPackage.LOOP_NODE__NODE :
 				return ((InternalEList<?>) getNodes()).basicRemove(otherEnd,
 					msgs);
@@ -793,8 +788,6 @@ public class LoopNodeImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.LOOP_NODE__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.LOOP_NODE__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.LOOP_NODE__IN_STRUCTURED_NODE :
@@ -807,6 +800,8 @@ public class LoopNodeImpl
 				return getOutgoings();
 			case UMLPackage.LOOP_NODE__INCOMING :
 				return getIncomings();
+			case UMLPackage.LOOP_NODE__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.LOOP_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.LOOP_NODE__HANDLER :
@@ -837,6 +832,8 @@ public class LoopNodeImpl
 				return getImportedMembers();
 			case UMLPackage.LOOP_NODE__MEMBER :
 				return getMembers();
+			case UMLPackage.LOOP_NODE__CONTAINED_EDGE :
+				return getContainedEdges();
 			case UMLPackage.LOOP_NODE__CONTAINED_NODE :
 				return getContainedNodes();
 			case UMLPackage.LOOP_NODE__IN_ACTIVITY :
@@ -849,8 +846,6 @@ public class LoopNodeImpl
 				if (resolve)
 					return getSuperGroup();
 				return basicGetSuperGroup();
-			case UMLPackage.LOOP_NODE__CONTAINED_EDGE :
-				return getContainedEdges();
 			case UMLPackage.LOOP_NODE__MUST_ISOLATE :
 				return isMustIsolate();
 			case UMLPackage.LOOP_NODE__NODE :
@@ -1225,8 +1220,6 @@ public class LoopNodeImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.LOOP_NODE__ACTIVITY :
 				return isSetActivity();
-			case UMLPackage.LOOP_NODE__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.LOOP_NODE__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.LOOP_NODE__IN_STRUCTURED_NODE :
@@ -1238,6 +1231,8 @@ public class LoopNodeImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.LOOP_NODE__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.LOOP_NODE__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.LOOP_NODE__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.LOOP_NODE__HANDLER :
@@ -1268,6 +1263,8 @@ public class LoopNodeImpl
 				return !getImportedMembers().isEmpty();
 			case UMLPackage.LOOP_NODE__MEMBER :
 				return isSetMembers();
+			case UMLPackage.LOOP_NODE__CONTAINED_EDGE :
+				return isSetContainedEdges();
 			case UMLPackage.LOOP_NODE__CONTAINED_NODE :
 				return isSetContainedNodes();
 			case UMLPackage.LOOP_NODE__IN_ACTIVITY :
@@ -1276,8 +1273,6 @@ public class LoopNodeImpl
 				return isSetSubgroups();
 			case UMLPackage.LOOP_NODE__SUPER_GROUP :
 				return isSetSuperGroup();
-			case UMLPackage.LOOP_NODE__CONTAINED_EDGE :
-				return isSetContainedEdges();
 			case UMLPackage.LOOP_NODE__MUST_ISOLATE :
 				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UMLPackage.LOOP_NODE__NODE :
@@ -1404,16 +1399,16 @@ public class LoopNodeImpl
 				return allOwnedElements();
 			case UMLPackage.LOOP_NODE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.LOOP_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LOOP_NODE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LOOP_NODE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LOOP_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LOOP_NODE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1493,33 +1488,26 @@ public class LoopNodeImpl
 				return membersAreDistinguishable();
 			case UMLPackage.LOOP_NODE___GET_OWNED_MEMBERS :
 				return getOwnedMembers();
-			case UMLPackage.LOOP_NODE___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateNodesAndEdges(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LOOP_NODE___VALIDATE_GROUP_OWNED__DIAGNOSTICCHAIN_MAP :
 				return validateGroupOwned((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LOOP_NODE___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
 				return validateNotContained((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LOOP_NODE___VALIDATE_OUTPUT_PIN_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateOutputPinEdges(
+			case UMLPackage.LOOP_NODE___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateNodesAndEdges(
 					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LOOP_NODE___VALIDATE_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateEdges((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LOOP_NODE___VALIDATE_INPUT_PIN_EDGES__DIAGNOSTICCHAIN_MAP :
 				return validateInputPinEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LOOP_NODE___VALIDATE_RESULT_NO_INCOMING__DIAGNOSTICCHAIN_MAP :
-				return validateResultNoIncoming(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.LOOP_NODE___VALIDATE_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateEdges((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LOOP_NODE___VALIDATE_INPUT_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateInputEdges((DiagnosticChain) arguments.get(0),
+			case UMLPackage.LOOP_NODE___VALIDATE_OUTPUT_PIN_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateOutputPinEdges(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LOOP_NODE___VALIDATE_EXECUTABLE_NODES__DIAGNOSTICCHAIN_MAP :
 				return validateExecutableNodes(
@@ -1528,6 +1516,13 @@ public class LoopNodeImpl
 			case UMLPackage.LOOP_NODE___VALIDATE_BODY_OUTPUT_PINS__DIAGNOSTICCHAIN_MAP :
 				return validateBodyOutputPins(
 					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LOOP_NODE___VALIDATE_RESULT_NO_INCOMING__DIAGNOSTICCHAIN_MAP :
+				return validateResultNoIncoming(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LOOP_NODE___VALIDATE_INPUT_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateInputEdges((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

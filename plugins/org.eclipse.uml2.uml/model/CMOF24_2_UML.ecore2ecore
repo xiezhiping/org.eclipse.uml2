@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore2ecore:Ecore2EcoreMappingRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore2ecore="http://www.eclipse.org/emf/2004/Ecore2Ecore" topToBottom="true">
+  <nested>
+    <outputs href="UML.ecore#//Property/interface"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Property/associationEnd"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Property/qualifier"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ConnectableElement/end"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ParameterableElement/owningTemplateParameter"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ParameterableElement/templateParameter"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//DeploymentTarget/deployedElement"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//DeploymentTarget/deployment"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//NamedElement/clientDependency"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//NamedElement/nameExpression"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Class/extension"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Class/isActive"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Class/ownedReception"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//StructuredClassifier/part"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//StructuredClassifier/role"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//BehavioredClassifier/classifierBehavior"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//BehavioredClassifier/interfaceRealization"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//BehavioredClassifier/ownedBehavior"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Classifier/collaborationUse"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Classifier/powertypeExtent"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Classifier/ownedUseCase"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Classifier/useCase"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Classifier/representation"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Classifier/substitution"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//TemplateableElement/ownedTemplateSignature"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//TemplateableElement/templateBinding"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Package/ownedStereotype"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Package/profileApplication"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Generalization/generalizationSet"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Operation/interface"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//BehavioralFeature/concurrency"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//BehavioralFeature/isAbstract"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//BehavioralFeature/method"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//BehavioralFeature/ownedParameterSet"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Parameter/effect"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Parameter/isException"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Parameter/isStream"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Parameter/parameterSet"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//OpaqueExpression/behavior"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//OpaqueExpression/result"/>
+  </nested>
+  <nested>
+    <inputs href="CMOF.ecore#//ReflectiveSequence"/>
+  </nested>
+  <nested>
+    <inputs href="CMOF.ecore#//ReflectiveCollection"/>
+  </nested>
+  <nested>
+    <inputs href="CMOF.ecore#//Object"/>
+  </nested>
+  <nested>
+    <inputs href="CMOF.ecore#//URIExtent"/>
+  </nested>
+  <nested>
+    <inputs href="CMOF.ecore#//Extent"/>
+  </nested>
+  <nested>
+    <inputs href="CMOF.ecore#//Link"/>
+  </nested>
+  <nested>
+    <inputs href="CMOF.ecore#//Factory"/>
+  </nested>
+  <nested>
+    <inputs href="CMOF.ecore#//Exception"/>
+  </nested>
+  <nested>
+    <inputs href="CMOF.ecore#//Tag"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Abstraction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Dependency"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Stereotype"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//StringExpression"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//TemplateSignature"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//TemplateParameter"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//TemplateBinding"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//TemplateParameterSubstitution"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ProfileApplication"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Profile"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Extension"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ConnectorEnd"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ConnectableElementTemplateParameter"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Deployment"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//DeploymentSpecification"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Artifact"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Manifestation"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//CallConcurrencyKind"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Behavior"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ParameterEffectKind"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ParameterSet"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Interface"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Reception"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Signal"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ProtocolStateMachine"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//StateMachine"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Pseudostate"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Vertex"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Region"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//State"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ConnectionPointReference"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Trigger"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Event"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Port"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Transition"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//TransitionKind"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//PseudostateKind"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ProtocolConformance"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//OperationTemplateParameter"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ExtensionEnd"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Model"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Usage"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//CollaborationUse"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Collaboration"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Connector"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ConnectorKind"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//GeneralizationSet"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//RedefinableTemplateSignature"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//UseCase"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Extend"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ExtensionPoint"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Include"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Substitution"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Realization"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ClassifierTemplateParameter"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//InterfaceRealization"/>
+  </nested>
+  <nested>
+    <nested>
+      <outputs href="UML.ecore#//EncapsulatedClassifier/ownedPort"/>
+    </nested>
+    <outputs href="UML.ecore#//EncapsulatedClassifier"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Image"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//AcceptCallAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//AcceptEventAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Action"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ExecutableNode"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ActivityNode"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Activity"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ActivityEdge"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ActivityGroup"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ActivityPartition"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//StructuredActivityNode"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//InputPin"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Pin"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ObjectNode"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ObjectNodeOrderingKind"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//OutputPin"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Variable"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//InterruptibleActivityRegion"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ExceptionHandler"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ActionExecutionSpecification"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ExecutionSpecification"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//InteractionFragment"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Lifeline"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//PartDecomposition"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//InteractionUse"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Gate"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//MessageEnd"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Message"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Interaction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//MessageKind"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//MessageSort"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//InteractionOperand"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//InteractionConstraint"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//GeneralOrdering"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//OccurrenceSpecification"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ActionInputPin"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ActivityFinalNode"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//FinalNode"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ControlNode"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ActivityParameterNode"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Actor"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//AddStructuralFeatureValueAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//WriteStructuralFeatureAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//StructuralFeatureAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//AddVariableValueAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//WriteVariableAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//VariableAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//AnyReceiveEvent"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//MessageEvent"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//AssociationClass"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//BehaviorExecutionSpecification"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//BroadcastSignalAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//InvocationAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//CallAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//CallBehaviorAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//CallEvent"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//CallOperationAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//CentralBufferNode"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ChangeEvent"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Clause"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ClearAssociationAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ClearStructuralFeatureAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ClearVariableAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//CombinedFragment"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//InteractionOperatorKind"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//CommunicationPath"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Component"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ComponentRealization"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ConditionalNode"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ConsiderIgnoreFragment"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Continuation"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ControlFlow"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//CreateLinkAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//WriteLinkAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//LinkAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//LinkEndData"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//QualifierValue"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//LinkEndCreationData"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//CreateLinkObjectAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//CreateObjectAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//DataStoreNode"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//DecisionNode"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ObjectFlow"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//DestroyLinkAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//LinkEndDestructionData"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//DestroyObjectAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//DestructionOccurrenceSpecification"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//MessageOccurrenceSpecification"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Device"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Node"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Duration"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Observation"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//DurationConstraint"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//IntervalConstraint"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Interval"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//DurationInterval"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//DurationObservation"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ExecutionEnvironment"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ExecutionOccurrenceSpecification"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ExpansionNode"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ExpansionRegion"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ExpansionKind"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//FinalState"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//FlowFinalNode"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ForkNode"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//FunctionBehavior"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//OpaqueBehavior"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//InformationFlow"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//InformationItem"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//InitialNode"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//InstanceValue"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//LoopNode"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//MergeNode"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//OpaqueAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ProtocolTransition"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//RaiseExceptionAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ReadExtentAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ReadIsClassifiedObjectAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ReadLinkAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ReadLinkObjectEndAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ReadLinkObjectEndQualifierAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ReadSelfAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ReadStructuralFeatureAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ReadVariableAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ReclassifyObjectAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ReduceAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//RemoveStructuralFeatureValueAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//RemoveVariableValueAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ReplyAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//SendObjectAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//SendSignalAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//SequenceNode"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//SignalEvent"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//StartClassifierBehaviorAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//StartObjectBehaviorAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//StateInvariant"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//TestIdentityAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//TimeConstraint"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//TimeInterval"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//TimeExpression"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//TimeEvent"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//TimeObservation"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//UnmarshallAction"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ValuePin"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ValueSpecificationAction"/>
+  </nested>
+  <inputs href="CMOF24.ecore#/"/>
+  <outputs href="UML.ecore#/"/>
+</ecore2ecore:Ecore2EcoreMappingRoot>

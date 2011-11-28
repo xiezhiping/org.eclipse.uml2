@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: OperationItemProvider.java,v 1.19 2010/09/28 21:00:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -92,10 +91,10 @@ public class OperationItemProvider
 			addTemplateParameterPropertyDescriptor(object);
 			addOwnedTemplateSignaturePropertyDescriptor(object);
 			addTemplateBindingPropertyDescriptor(object);
+			addInterfacePropertyDescriptor(object);
 			addBodyConditionPropertyDescriptor(object);
 			addClassPropertyDescriptor(object);
 			addDatatypePropertyDescriptor(object);
-			addInterfacePropertyDescriptor(object);
 			addIsOrderedPropertyDescriptor(object);
 			addIsQueryPropertyDescriptor(object);
 			addIsUniquePropertyDescriptor(object);

@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ActionImpl.java,v 1.30 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -477,8 +476,6 @@ public abstract class ActionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.ACTION__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.ACTION__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -550,8 +547,6 @@ public abstract class ActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.ACTION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.ACTION__IN_STRUCTURED_NODE :
@@ -564,6 +559,8 @@ public abstract class ActionImpl
 				return getOutgoings();
 			case UMLPackage.ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.ACTION__HANDLER :
@@ -781,8 +778,6 @@ public abstract class ActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.ACTION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.ACTION__IN_STRUCTURED_NODE :
@@ -794,6 +789,8 @@ public abstract class ActionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.ACTION__HANDLER :

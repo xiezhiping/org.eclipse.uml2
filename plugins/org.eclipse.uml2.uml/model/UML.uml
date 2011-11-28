@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20100901" xmlns:xmi="http://www.omg.org/spec/XMI/20100901" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
   <uml:Model xmi:id="_o8I_sGvaEdq4DLWZOhbdEA" name="UML">
     <packageImport xmi:id="__as3cGvaEdq4DLWZOhbdEA">
       <importedPackage xmi:type="uml:Model" href="Ecore.uml#_SeWiQMX_EduPJbEsMYXjUQ"/>
@@ -13,16 +13,29 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_81UZhvnhEdunWsS3se92JQ" value="*"/>
       </ownedEnd>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_DwV68AtCEeGcpbeCPJfCmw" name="A_group_inActivity" memberEnd="_PCvjoAs_EeGcpbeCPJfCmw _5V2SAAtBEeGcpbeCPJfCmw"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_EhL8MPnmEdunWsS3se92JQ" name="A_incoming_target_vertex" memberEnd="_EhVtMPnmEdunWsS3se92JQ _EhVtM_nmEdunWsS3se92JQ">
       <ownedEnd xmi:id="_EhVtM_nmEdunWsS3se92JQ" name="incoming" visibility="private" type="_ykKV8PnlEdunWsS3se92JQ" association="_EhL8MPnmEdunWsS3se92JQ">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EhVtNPnmEdunWsS3se92JQ"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EhVtNfnmEdunWsS3se92JQ" value="*"/>
       </ownedEnd>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_RFCrMAtCEeGcpbeCPJfCmw" name="A_node_activity" memberEnd="_RoJfoAs_EeGcpbeCPJfCmw _X0ZfIAtCEeGcpbeCPJfCmw"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_JPYJoPnmEdunWsS3se92JQ" name="A_outgoing_source_vertex" memberEnd="_JPYJofnmEdunWsS3se92JQ _JPh6oPnmEdunWsS3se92JQ">
       <ownedEnd xmi:id="_JPh6oPnmEdunWsS3se92JQ" name="outgoing" visibility="private" type="_ykKV8PnlEdunWsS3se92JQ" association="_JPYJoPnmEdunWsS3se92JQ">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JPh6ofnmEdunWsS3se92JQ"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JPh6ovnmEdunWsS3se92JQ" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_bU41QAtAEeGcpbeCPJfCmw" name="A_ownedElement_owner" isDerived="true" memberEnd="_GDD2YAtAEeGcpbeCPJfCmw _N3hRMAtAEeGcpbeCPJfCmw"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_3Ik3QAtDEeGcpbeCPJfCmw" name="A_partition_activity" memberEnd="_-_c7oAs9EeGcpbeCPJfCmw __DOZoAtDEeGcpbeCPJfCmw">
+      <ownedEnd xmi:id="__DOZoAtDEeGcpbeCPJfCmw" name="activity" type="_eGtFwLLREeCsYvaJqFFivQ" subsettedProperty="_5V2SAAtBEeGcpbeCPJfCmw" association="_3Ik3QAtDEeGcpbeCPJfCmw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_J7ZdEAtEEeGcpbeCPJfCmw"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_w4820AtEEeGcpbeCPJfCmw" name="A_structuredNode_activity" memberEnd="_EOSYAAs-EeGcpbeCPJfCmw _bQeSgAtEEeGcpbeCPJfCmw">
+      <ownedEnd xmi:id="_bQeSgAtEEeGcpbeCPJfCmw" name="activity" visibility="private" type="_eGtFwLLREeCsYvaJqFFivQ" association="_w4820AtEEeGcpbeCPJfCmw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cva8wAtEEeGcpbeCPJfCmw"/>
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_6WKakLLQEeCsYvaJqFFivQ" name="Action" isAbstract="true">
@@ -33,13 +46,42 @@
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_eGtFwLLREeCsYvaJqFFivQ" name="Activity">
-      <ownedOperation xmi:id="_gJvUgLLREeCsYvaJqFFivQ" name="structuredNode" visibility="protected">
-        <ownedParameter xmi:id="_ilEHcLLREeCsYvaJqFFivQ" name="result" type="_w1_2cLLREeCsYvaJqFFivQ" direction="return">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ilEHcbLREeCsYvaJqFFivQ"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_jPj18LLREeCsYvaJqFFivQ" value="*"/>
-        </ownedParameter>
-      </ownedOperation>
+      <ownedAttribute xmi:id="_PCvjoAs_EeGcpbeCPJfCmw" name="group" visibility="protected" type="_aZICgAs-EeGcpbeCPJfCmw" isDerived="true" subsettedProperty="_GDD2YAtAEeGcpbeCPJfCmw" association="_DwV68AtCEeGcpbeCPJfCmw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PCvjoQs_EeGcpbeCPJfCmw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PCvjogs_EeGcpbeCPJfCmw" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_RoJfoAs_EeGcpbeCPJfCmw" name="node" visibility="protected" type="_WpiyYAs-EeGcpbeCPJfCmw" isDerived="true" subsettedProperty="_GDD2YAtAEeGcpbeCPJfCmw" association="_RFCrMAtCEeGcpbeCPJfCmw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RoJfoQs_EeGcpbeCPJfCmw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RoJfogs_EeGcpbeCPJfCmw" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_zRopoAs9EeGcpbeCPJfCmw" name="ownedGroup" visibility="protected" type="_aZICgAs-EeGcpbeCPJfCmw" aggregation="composite" subsettedProperty="_PCvjoAs_EeGcpbeCPJfCmw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hecfYAs-EeGcpbeCPJfCmw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iNvOUAs-EeGcpbeCPJfCmw" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_5DNmsAs9EeGcpbeCPJfCmw" name="ownedNode" visibility="protected" type="_WpiyYAs-EeGcpbeCPJfCmw" aggregation="composite" subsettedProperty="_RoJfoAs_EeGcpbeCPJfCmw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_jIyhUAs-EeGcpbeCPJfCmw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_jsV6UAs-EeGcpbeCPJfCmw" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_-_c7oAs9EeGcpbeCPJfCmw" name="partition" visibility="protected" type="_MIhqsAs-EeGcpbeCPJfCmw" subsettedProperty="_zRopoAs9EeGcpbeCPJfCmw" association="_3Ik3QAtDEeGcpbeCPJfCmw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_kjlEUAs-EeGcpbeCPJfCmw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lA880As-EeGcpbeCPJfCmw" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_EOSYAAs-EeGcpbeCPJfCmw" name="structuredNode" visibility="protected" type="_w1_2cLLREeCsYvaJqFFivQ" aggregation="composite" subsettedProperty="_PCvjoAs_EeGcpbeCPJfCmw _RoJfoAs_EeGcpbeCPJfCmw" association="_w4820AtEEeGcpbeCPJfCmw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_l3gKUAs-EeGcpbeCPJfCmw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mZSowAs-EeGcpbeCPJfCmw" value="*"/>
+      </ownedAttribute>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_aZICgAs-EeGcpbeCPJfCmw" name="ActivityGroup" isAbstract="true">
+      <ownedAttribute xmi:id="_5V2SAAtBEeGcpbeCPJfCmw" name="inActivity" visibility="protected" type="_eGtFwLLREeCsYvaJqFFivQ" subsettedProperty="_N3hRMAtAEeGcpbeCPJfCmw" association="_DwV68AtCEeGcpbeCPJfCmw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7Ul2oAtBEeGcpbeCPJfCmw"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_WpiyYAs-EeGcpbeCPJfCmw" name="ActivityNode" isAbstract="true">
+      <ownedAttribute xmi:id="_X0ZfIAtCEeGcpbeCPJfCmw" name="activity" visibility="protected" type="_eGtFwLLREeCsYvaJqFFivQ" subsettedProperty="_N3hRMAtAEeGcpbeCPJfCmw" association="_RFCrMAtCEeGcpbeCPJfCmw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dnzBIAtCEeGcpbeCPJfCmw"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_MIhqsAs-EeGcpbeCPJfCmw" name="ActivityPartition"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_-lGRgHLzEdqziYxiZo0YtA" name="Artifact">
       <ownedAttribute xmi:id="_wvc1ILG2EeCDe8CO90iVKQ" name="fileName">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -573,6 +615,13 @@
       <generalization xmi:id="_rcp_MGvbEdq4DLWZOhbdEA">
         <general xmi:type="uml:Class" href="Ecore.uml#_SeWihMX_EduPJbEsMYXjUQ"/>
       </generalization>
+      <ownedAttribute xmi:id="_GDD2YAtAEeGcpbeCPJfCmw" name="ownedElement" aggregation="composite" isDerived="true" isDerivedUnion="true" association="_bU41QAtAEeGcpbeCPJfCmw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HleEUAtAEeGcpbeCPJfCmw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IXIx0AtAEeGcpbeCPJfCmw" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_N3hRMAtAEeGcpbeCPJfCmw" name="owner" isDerived="true" isDerivedUnion="true" association="_bU41QAtAEeGcpbeCPJfCmw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PC6GQAtAEeGcpbeCPJfCmw"/>
+      </ownedAttribute>
       <ownedOperation xmi:id="_jlv7EGvgEdq4DLWZOhbdEA" name="addKeyword">
         <ownedComment xmi:id="_2oMhsOwbEdqYHf-imTcTdw" annotatedElement="_jlv7EGvgEdq4DLWZOhbdEA">
           <body>Adds the specified keyword to this element.</body>
@@ -2357,7 +2406,11 @@
         <ownedParameter xmi:id="_nkVEsLL7EeCBifIhhuFqZA" name="result" type="__pew8GvzEdq7X4sGURiZYA" direction="return"/>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_w1_2cLLREeCsYvaJqFFivQ" name="StructuredActivityNode"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_w1_2cLLREeCsYvaJqFFivQ" name="StructuredActivityNode">
+      <ownedAttribute xmi:id="_gnnw0AtZEeGV4NAcunjVqQ" name="activity" visibility="protected" type="_eGtFwLLREeCsYvaJqFFivQ" isDerived="true" redefinedProperty="_5V2SAAtBEeGcpbeCPJfCmw _X0ZfIAtCEeGcpbeCPJfCmw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gnnw0QtZEeGV4NAcunjVqQ"/>
+      </ownedAttribute>
+    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_FQiVsGwYEdqHKKVoxc0dlA" name="StructuredClassifier" isAbstract="true">
       <ownedOperation xmi:id="_YorvMHL0EdqziYxiZo0YtA" name="createOwnedAttribute">
         <ownedComment xmi:id="_9BZT4OwlEdqYHf-imTcTdw" annotatedElement="_YorvMHL0EdqziYxiZo0YtA">
@@ -2587,7 +2640,6 @@
   <Ecore:EAttribute xmi:id="_FL4LILG5EeCDe8CO90iVKQ" isUnsettable="true" base_Property="__pbPNLG4EeCDe8CO90iVKQ"/>
   <Ecore:EOperation xmi:id="_glNIILKHEeCwDd6B2NQzWA" base_Operation="_CytvwLKHEeCwDd6B2NQzWA" operationName="getType" visibility="None"/>
   <Ecore:EOperation xmi:id="_Lsf0QLLREeCsYvaJqFFivQ" base_Operation="_CroQsLLREeCsYvaJqFFivQ" operationName="getContext" visibility="None"/>
-  <Ecore:EOperation xmi:id="_o19dwLLREeCsYvaJqFFivQ" base_Operation="_gJvUgLLREeCsYvaJqFFivQ" operationName="getStructuredNodes" visibility="None"/>
   <Ecore:EOperation xmi:id="_CRhSILLSEeCsYvaJqFFivQ" base_Operation="_6VRNQLLREeCsYvaJqFFivQ" operationName="getEndTypes" visibility="None"/>
   <Ecore:EOperation xmi:id="_q1_mYLLSEeCsYvaJqFFivQ" base_Operation="_hIWcYLLSEeCsYvaJqFFivQ" operationName="getSuperClasses" visibility="None"/>
   <Ecore:EOperation xmi:id="_52-SQLLSEeCsYvaJqFFivQ" base_Operation="_wKRjcLLSEeCsYvaJqFFivQ" operationName="getGenerals" visibility="None"/>
@@ -2617,4 +2669,8 @@
   <Ecore:EOperation xmi:id="_BI5ZMLL-EeCBifIhhuFqZA" base_Operation="_982T8LL9EeCBifIhhuFqZA" operationName="getOutgoings" visibility="None"/>
   <Ecore:EOperation xmi:id="_dy4cULNJEeCT16-4OmDs9g" base_Operation="_WlaJALNJEeCT16-4OmDs9g" visibility="None"/>
   <Ecore:EAttribute xmi:id="_dFQKQNwaEeCT5O2F6sGn5g" isUnsettable="true" base_Property="_Q1JqkNwaEeCT5O2F6sGn5g"/>
+  <Ecore:EReference xmi:id="_JWtREAtDEeGcpbeCPJfCmw" xmlName="group" xmlFeatureKind="Element" base_Property="_zRopoAs9EeGcpbeCPJfCmw"/>
+  <Ecore:EReference xmi:id="_N4I04AtDEeGcpbeCPJfCmw" xmlName="node" xmlFeatureKind="Element" base_Property="_5DNmsAs9EeGcpbeCPJfCmw"/>
+  <Ecore:EReference xmi:id="_1XKowBCNEeG9F6n8Twp9jA" xmlFeatureKind="Attribute" base_Property="_RoJfoAs_EeGcpbeCPJfCmw"/>
+  <Ecore:EReference xmi:id="_4FNjYBCNEeG9F6n8Twp9jA" xmlFeatureKind="Attribute" base_Property="_PCvjoAs_EeGcpbeCPJfCmw"/>
 </xmi:XMI>

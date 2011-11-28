@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: InteractionUseImpl.java,v 1.27 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -926,16 +925,16 @@ public class InteractionUseImpl
 				return allOwnedElements();
 			case UMLPackage.INTERACTION_USE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.INTERACTION_USE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERACTION_USE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERACTION_USE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INTERACTION_USE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERACTION_USE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -959,12 +958,8 @@ public class InteractionUseImpl
 				return getQualifiedName();
 			case UMLPackage.INTERACTION_USE___SEPARATOR :
 				return separator();
-			case UMLPackage.INTERACTION_USE___VALIDATE_GATES_MATCH__DIAGNOSTICCHAIN_MAP :
-				return validateGatesMatch((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INTERACTION_USE___VALIDATE_ARGUMENTS_ARE_CONSTANTS__DIAGNOSTICCHAIN_MAP :
-				return validateArgumentsAreConstants(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.INTERACTION_USE___VALIDATE_ALL_LIFELINES__DIAGNOSTICCHAIN_MAP :
+				return validateAllLifelines((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERACTION_USE___VALIDATE_RETURN_VALUE_RECIPIENT_COVERAGE__DIAGNOSTICCHAIN_MAP :
 				return validateReturnValueRecipientCoverage(
@@ -974,12 +969,16 @@ public class InteractionUseImpl
 				return validateArgumentsCorrespondToParameters(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INTERACTION_USE___VALIDATE_GATES_MATCH__DIAGNOSTICCHAIN_MAP :
+				return validateGatesMatch((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INTERACTION_USE___VALIDATE_ARGUMENTS_ARE_CONSTANTS__DIAGNOSTICCHAIN_MAP :
+				return validateArgumentsAreConstants(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERACTION_USE___VALIDATE_RETURN_VALUE_TYPE_RECIPIENT_CORRESPONDENCE__DIAGNOSTICCHAIN_MAP :
 				return validateReturnValueTypeRecipientCorrespondence(
 					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INTERACTION_USE___VALIDATE_ALL_LIFELINES__DIAGNOSTICCHAIN_MAP :
-				return validateAllLifelines((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

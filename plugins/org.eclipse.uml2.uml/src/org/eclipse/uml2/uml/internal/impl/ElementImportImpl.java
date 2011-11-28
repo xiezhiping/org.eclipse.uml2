@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ElementImportImpl.java,v 1.22 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -59,8 +58,8 @@ import org.eclipse.uml2.uml.internal.operations.ElementImportOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImportImpl#getTargets <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImportImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImportImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImportImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImportImpl#getAlias <em>Alias</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImportImpl#getImportedElement <em>Imported Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImportImpl#getImportingNamespace <em>Importing Namespace</em>}</li>
@@ -733,12 +732,12 @@ public class ElementImportImpl
 				return allOwnedElements();
 			case UMLPackage.ELEMENT_IMPORT___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.ELEMENT_IMPORT___VALIDATE_IMPORTED_ELEMENT_IS_PUBLIC__DIAGNOSTICCHAIN_MAP :
-				return validateImportedElementIsPublic(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ELEMENT_IMPORT___VALIDATE_VISIBILITY_PUBLIC_OR_PRIVATE__DIAGNOSTICCHAIN_MAP :
 				return validateVisibilityPublicOrPrivate(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ELEMENT_IMPORT___VALIDATE_IMPORTED_ELEMENT_IS_PUBLIC__DIAGNOSTICCHAIN_MAP :
+				return validateImportedElementIsPublic(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ELEMENT_IMPORT___GET_NAME :

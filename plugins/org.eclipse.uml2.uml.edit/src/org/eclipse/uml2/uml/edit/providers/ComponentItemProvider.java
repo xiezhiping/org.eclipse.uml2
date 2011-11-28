@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ComponentItemProvider.java,v 1.20 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -348,11 +347,11 @@ public class ComponentItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT,
-			UMLFactory.eINSTANCE.createConstraint()));
+			UMLFactory.eINSTANCE.createRealization()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT,
-			UMLFactory.eINSTANCE.createDataType()));
+			UMLFactory.eINSTANCE.createInterfaceRealization()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT,
@@ -369,6 +368,14 @@ public class ComponentItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT,
 			UMLFactory.eINSTANCE.createProtocolStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT,
+			UMLFactory.eINSTANCE.createConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT,
+			UMLFactory.eINSTANCE.createDataType()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT,
@@ -408,15 +415,7 @@ public class ComponentItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT,
-			UMLFactory.eINSTANCE.createRealization()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT,
 			UMLFactory.eINSTANCE.createSubstitution()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT,
-			UMLFactory.eINSTANCE.createInterfaceRealization()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT,

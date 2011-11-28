@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: StateImpl.java,v 1.39 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -2167,16 +2166,16 @@ public class StateImpl
 				return allOwnedElements();
 			case UMLPackage.STATE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.STATE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STATE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -2256,10 +2255,6 @@ public class StateImpl
 			case UMLPackage.STATE___VALIDATE_ENTRY_OR_EXIT__DIAGNOSTICCHAIN_MAP :
 				return validateEntryOrExit((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.STATE___VALIDATE_SUBMACHINE_STATES__DIAGNOSTICCHAIN_MAP :
-				return validateSubmachineStates(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE___VALIDATE_COMPOSITE_STATES__DIAGNOSTICCHAIN_MAP :
 				return validateCompositeStates(
 					(DiagnosticChain) arguments.get(0),
@@ -2270,6 +2265,10 @@ public class StateImpl
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE___VALIDATE_SUBMACHINE_OR_REGIONS__DIAGNOSTICCHAIN_MAP :
 				return validateSubmachineOrRegions(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STATE___VALIDATE_SUBMACHINE_STATES__DIAGNOSTICCHAIN_MAP :
+				return validateSubmachineStates(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE___IS_COMPOSITE :

@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: OpaqueExpression.java,v 1.14 2007/06/12 12:53:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -252,8 +251,8 @@ public interface OpaqueExpression
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isNonNegative() tells whether an integer expression has a non-negative value.
-	 * self.isIntegral()
 	 * result = false
+	 * self.isIntegral()
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated

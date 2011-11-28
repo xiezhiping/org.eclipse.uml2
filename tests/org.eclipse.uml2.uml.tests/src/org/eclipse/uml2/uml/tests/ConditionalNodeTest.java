@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ConditionalNodeTest.java,v 1.6 2007/02/14 20:06:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -25,12 +24,12 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ConditionalNode#validateResultNoIncoming(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Result No Incoming</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ConditionalNode#validateNoInputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Input Pins</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ConditionalNode#validateOneClauseWithExecutableNode(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Clause With Executable Node</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ConditionalNode#validateMatchingOutputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Matching Output Pins</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ConditionalNode#validateExecutableNodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Executable Nodes</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ConditionalNode#validateClauseNoPredecessor(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Clause No Predecessor</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ConditionalNode#validateMatchingOutputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Matching Output Pins</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ConditionalNode#validateOneClauseWithExecutableNode(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Clause With Executable Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ConditionalNode#validateResultNoIncoming(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Result No Incoming</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ConditionalNode#validateNoInputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Input Pins</em>}</li>
  * </ul>
  * </p>
  * @generated

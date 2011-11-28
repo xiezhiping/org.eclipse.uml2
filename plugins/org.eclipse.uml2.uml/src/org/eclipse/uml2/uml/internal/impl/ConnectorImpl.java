@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ConnectorImpl.java,v 1.23 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -747,16 +746,16 @@ public class ConnectorImpl
 				return allOwnedElements();
 			case UMLPackage.CONNECTOR___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.CONNECTOR___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTOR___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTOR___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONNECTOR___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTOR___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -797,8 +796,8 @@ public class ConnectorImpl
 			case UMLPackage.CONNECTOR___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.CONNECTOR___VALIDATE_TYPES__DIAGNOSTICCHAIN_MAP :
-				return validateTypes((DiagnosticChain) arguments.get(0),
+			case UMLPackage.CONNECTOR___VALIDATE_COMPATIBLE__DIAGNOSTICCHAIN_MAP :
+				return validateCompatible((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTOR___VALIDATE_ROLES__DIAGNOSTICCHAIN_MAP :
 				return validateRoles((DiagnosticChain) arguments.get(0),
@@ -807,8 +806,8 @@ public class ConnectorImpl
 				return validateBetweenInterfacesPorts(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONNECTOR___VALIDATE_COMPATIBLE__DIAGNOSTICCHAIN_MAP :
-				return validateCompatible((DiagnosticChain) arguments.get(0),
+			case UMLPackage.CONNECTOR___VALIDATE_TYPES__DIAGNOSTICCHAIN_MAP :
+				return validateTypes((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTOR___GET_KIND :
 				return getKind();

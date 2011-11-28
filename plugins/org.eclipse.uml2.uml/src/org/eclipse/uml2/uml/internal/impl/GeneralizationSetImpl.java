@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: GeneralizationSetImpl.java,v 1.21 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -702,16 +701,16 @@ public class GeneralizationSetImpl
 				return allOwnedElements();
 			case UMLPackage.GENERALIZATION_SET___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.GENERALIZATION_SET___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.GENERALIZATION_SET___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.GENERALIZATION_SET___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.GENERALIZATION_SET___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.GENERALIZATION_SET___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -739,12 +738,12 @@ public class GeneralizationSetImpl
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.GENERALIZATION_SET___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
-			case UMLPackage.GENERALIZATION_SET___VALIDATE_GENERALIZATION_SAME_CLASSIFIER__DIAGNOSTICCHAIN_MAP :
-				return validateGeneralizationSameClassifier(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.GENERALIZATION_SET___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
 				return validateMapsToGeneralizationSet(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.GENERALIZATION_SET___VALIDATE_GENERALIZATION_SAME_CLASSIFIER__DIAGNOSTICCHAIN_MAP :
+				return validateGeneralizationSameClassifier(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

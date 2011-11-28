@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ActivityParameterNodeTest.java,v 1.4 2008/10/02 21:00:20 jbruck Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -25,13 +24,13 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateNoOutgoingEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Outgoing Edges</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateMaximumTwoParameterNodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maximum Two Parameter Nodes</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateHasParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Has Parameters</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateSameType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateMaximumOneParameterNode(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maximum One Parameter Node</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateNoIncomingEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Incoming Edges</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateMaximumTwoParameterNodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maximum Two Parameter Nodes</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateNoEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Edges</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateNoIncomingEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Incoming Edges</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateNoOutgoingEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Outgoing Edges</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateSameType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateHasParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Has Parameters</em>}</li>
  * </ul>
  * </p>
  * @generated

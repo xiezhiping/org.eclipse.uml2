@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: InstanceSpecificationImpl.java,v 1.26 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1112,16 +1111,16 @@ public class InstanceSpecificationImpl
 				return allOwnedElements();
 			case UMLPackage.INSTANCE_SPECIFICATION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.INSTANCE_SPECIFICATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INSTANCE_SPECIFICATION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INSTANCE_SPECIFICATION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INSTANCE_SPECIFICATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INSTANCE_SPECIFICATION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1151,10 +1150,6 @@ public class InstanceSpecificationImpl
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.INSTANCE_SPECIFICATION___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
-			case UMLPackage.INSTANCE_SPECIFICATION___VALIDATE_DEPLOYMENT_ARTIFACT__DIAGNOSTICCHAIN_MAP :
-				return validateDeploymentArtifact(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INSTANCE_SPECIFICATION___VALIDATE_STRUCTURAL_FEATURE__DIAGNOSTICCHAIN_MAP :
 				return validateStructuralFeature(
 					(DiagnosticChain) arguments.get(0),
@@ -1165,6 +1160,10 @@ public class InstanceSpecificationImpl
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INSTANCE_SPECIFICATION___VALIDATE_DEPLOYMENT_TARGET__DIAGNOSTICCHAIN_MAP :
 				return validateDeploymentTarget(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INSTANCE_SPECIFICATION___VALIDATE_DEPLOYMENT_ARTIFACT__DIAGNOSTICCHAIN_MAP :
+				return validateDeploymentArtifact(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

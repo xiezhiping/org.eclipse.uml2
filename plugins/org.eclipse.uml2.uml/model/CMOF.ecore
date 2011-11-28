@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cmof"
-    nsURI="http://www.omg.org/spec/MOF/20100901/cmof.xmi" nsPrefix="cmof">
+    nsURI="http://www.omg.org/spec/MOF/20110701/cmof.xmi" nsPrefix="cmof">
   <eClassifiers xsi:type="ecore:EClass" name="ReflectiveSequence" eSuperTypes="#//ReflectiveCollection">
     <eOperations name="add" ordered="false" lowerBound="1">
       <eParameters name="index" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/4.0.0/Types#//Integer"/>

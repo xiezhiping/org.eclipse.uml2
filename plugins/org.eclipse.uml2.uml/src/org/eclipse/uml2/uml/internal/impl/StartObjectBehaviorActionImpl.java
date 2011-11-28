@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: StartObjectBehaviorActionImpl.java,v 1.4 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -335,8 +334,6 @@ public class StartObjectBehaviorActionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -416,8 +413,6 @@ public class StartObjectBehaviorActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IN_STRUCTURED_NODE :
@@ -430,6 +425,8 @@ public class StartObjectBehaviorActionImpl
 				return getOutgoings();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__HANDLER :
@@ -694,8 +691,6 @@ public class StartObjectBehaviorActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IN_STRUCTURED_NODE :
@@ -707,6 +702,8 @@ public class StartObjectBehaviorActionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__HANDLER :
@@ -831,16 +828,16 @@ public class StartObjectBehaviorActionImpl
 				return allOwnedElements();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -894,36 +891,36 @@ public class StartObjectBehaviorActionImpl
 				return validateOnPortReceiver(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_TYPE_ORDERING_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
-				return validateTypeOrderingMultiplicity(
+			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_SYNCHRONOUS_CALL__DIAGNOSTICCHAIN_MAP :
+				return validateSynchronousCall(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_NUMBER_AND_ORDER__DIAGNOSTICCHAIN_MAP :
 				return validateNumberAndOrder(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_SYNCHRONOUS_CALL__DIAGNOSTICCHAIN_MAP :
-				return validateSynchronousCall(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_NUMBER_ORDER_RESULTS__DIAGNOSTICCHAIN_MAP :
-				return validateNumberOrderResults(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_MULTIPLICITY_OF_OBJECT__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicityOfObject(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_TYPE_ORDERING_MULTIPLICITY_MATCH__DIAGNOSTICCHAIN_MAP :
-				return validateTypeOrderingMultiplicityMatch(
+			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_TYPE_ORDERING_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
+				return validateTypeOrderingMultiplicity(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_NUMBER_ORDER_ARGUMENTS__DIAGNOSTICCHAIN_MAP :
 				return validateNumberOrderArguments(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_TYPE_ORDERING_MULTIPLICITY_MATCH__DIAGNOSTICCHAIN_MAP :
+				return validateTypeOrderingMultiplicityMatch(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_NUMBER_ORDER_RESULTS__DIAGNOSTICCHAIN_MAP :
+				return validateNumberOrderResults(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_TYPE_OF_OBJECT__DIAGNOSTICCHAIN_MAP :
 				return validateTypeOfObject((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_MULTIPLICITY_OF_OBJECT__DIAGNOSTICCHAIN_MAP :
+				return validateMultiplicityOfObject(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

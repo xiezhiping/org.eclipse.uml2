@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ConnectionPointReferenceImpl.java,v 1.25 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -642,16 +641,16 @@ public class ConnectionPointReferenceImpl
 				return allOwnedElements();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTION_POINT_REFERENCE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -681,12 +680,12 @@ public class ConnectionPointReferenceImpl
 				return getIncomings();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_OUTGOINGS :
 				return getOutgoings();
-			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_EXIT_PSEUDOSTATES__DIAGNOSTICCHAIN_MAP :
-				return validateExitPseudostates(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_ENTRY_PSEUDOSTATES__DIAGNOSTICCHAIN_MAP :
 				return validateEntryPseudostates(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_EXIT_PSEUDOSTATES__DIAGNOSTICCHAIN_MAP :
+				return validateExitPseudostates(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

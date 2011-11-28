@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: StateMachineTest.java,v 1.6 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -25,10 +24,10 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.StateMachine#validateConnectionPoints(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Connection Points</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StateMachine#validateClassifierContext(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Classifier Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#validateMethod(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Method</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StateMachine#validateClassifierContext(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Classifier Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#validateContextClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Context Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StateMachine#validateConnectionPoints(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Connection Points</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#LCA(org.eclipse.uml2.uml.State, org.eclipse.uml2.uml.State) <em>LCA</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#ancestor(org.eclipse.uml2.uml.State, org.eclipse.uml2.uml.State) <em>Ancestor</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#isRedefinitionContextValid(org.eclipse.uml2.uml.StateMachine) <em>Is Redefinition Context Valid</em>}</li>

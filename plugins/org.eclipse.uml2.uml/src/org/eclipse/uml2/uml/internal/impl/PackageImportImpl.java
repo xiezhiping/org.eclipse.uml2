@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: PackageImportImpl.java,v 1.22 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -58,8 +57,8 @@ import org.eclipse.uml2.uml.internal.operations.PackageImportOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImportImpl#getTargets <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImportImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImportImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImportImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImportImpl#getImportedPackage <em>Imported Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImportImpl#getImportingNamespace <em>Importing Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImportImpl#getVisibility <em>Visibility</em>}</li>

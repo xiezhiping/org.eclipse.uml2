@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: Parameter.java,v 1.21 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -27,9 +26,9 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
+ * Parameters are allowed to be treated as connectable elements.
  * A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral feature.
  * Parameters have support for streaming, exceptions, and parameter sets.
- * Parameters are allowed to be treated as connectable elements.
  * <!-- end-model-doc -->
  *
  * <p>

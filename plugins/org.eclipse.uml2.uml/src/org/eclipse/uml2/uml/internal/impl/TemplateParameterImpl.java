@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: TemplateParameterImpl.java,v 1.23 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -60,8 +59,8 @@ import org.eclipse.uml2.uml.internal.operations.TemplateParameterOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getDefault <em>Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getParameteredElement <em>Parametered Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getOwnedParameteredElement <em>Owned Parametered Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getOwnedDefault <em>Owned Default</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getOwnedParameteredElement <em>Owned Parametered Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getSignature <em>Signature</em>}</li>
  * </ul>
  * </p>
@@ -93,16 +92,6 @@ public class TemplateParameterImpl
 	protected ParameterableElement parameteredElement;
 
 	/**
-	 * The cached value of the '{@link #getOwnedParameteredElement() <em>Owned Parametered Element</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedParameteredElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected ParameterableElement ownedParameteredElement;
-
-	/**
 	 * The cached value of the '{@link #getOwnedDefault() <em>Owned Default</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -111,6 +100,16 @@ public class TemplateParameterImpl
 	 * @ordered
 	 */
 	protected ParameterableElement ownedDefault;
+
+	/**
+	 * The cached value of the '{@link #getOwnedParameteredElement() <em>Owned Parametered Element</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedParameteredElement()
+	 * @generated
+	 * @ordered
+	 */
+	protected ParameterableElement ownedParameteredElement;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -655,12 +654,12 @@ public class TemplateParameterImpl
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
+				return basicSetOwnedDefault(null, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				return basicSetOwnedParameteredElement(null, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				return basicSetParameteredElement(null, msgs);
-			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
-				return basicSetOwnedDefault(null, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
 				return basicSetSignature(null, msgs);
 		}
@@ -706,6 +705,10 @@ public class TemplateParameterImpl
 				if (resolve)
 					return getDefault();
 				return basicGetDefault();
+			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
+				if (resolve)
+					return getOwnedDefault();
+				return basicGetOwnedDefault();
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				if (resolve)
 					return getOwnedParameteredElement();
@@ -714,10 +717,6 @@ public class TemplateParameterImpl
 				if (resolve)
 					return getParameteredElement();
 				return basicGetParameteredElement();
-			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
-				if (resolve)
-					return getOwnedDefault();
-				return basicGetOwnedDefault();
 			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
 				if (resolve)
 					return getSignature();
@@ -748,14 +747,14 @@ public class TemplateParameterImpl
 			case UMLPackage.TEMPLATE_PARAMETER__DEFAULT :
 				setDefault((ParameterableElement) newValue);
 				return;
+			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
+				setOwnedDefault((ParameterableElement) newValue);
+				return;
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				setOwnedParameteredElement((ParameterableElement) newValue);
 				return;
 			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				setParameteredElement((ParameterableElement) newValue);
-				return;
-			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
-				setOwnedDefault((ParameterableElement) newValue);
 				return;
 			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
 				setSignature((TemplateSignature) newValue);
@@ -781,14 +780,14 @@ public class TemplateParameterImpl
 			case UMLPackage.TEMPLATE_PARAMETER__DEFAULT :
 				setDefault((ParameterableElement) null);
 				return;
+			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
+				setOwnedDefault((ParameterableElement) null);
+				return;
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				setOwnedParameteredElement((ParameterableElement) null);
 				return;
 			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				setParameteredElement((ParameterableElement) null);
-				return;
-			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
-				setOwnedDefault((ParameterableElement) null);
 				return;
 			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
 				setSignature((TemplateSignature) null);
@@ -815,12 +814,12 @@ public class TemplateParameterImpl
 				return isSetOwner();
 			case UMLPackage.TEMPLATE_PARAMETER__DEFAULT :
 				return default_ != null;
+			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
+				return ownedDefault != null;
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				return ownedParameteredElement != null;
 			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				return parameteredElement != null;
-			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
-				return ownedDefault != null;
 			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
 				return basicGetSignature() != null;
 		}
@@ -962,8 +961,8 @@ public class TemplateParameterImpl
 	 */
 	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
 		UMLPackage.TEMPLATE_PARAMETER__OWNED_COMMENT,
-		UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-		UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT};
+		UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+		UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -973,8 +972,8 @@ public class TemplateParameterImpl
 	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT)
-			|| eIsSet(UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT);
+			|| eIsSet(UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT)
+			|| eIsSet(UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
 	}
 
 } //TemplateParameterImpl

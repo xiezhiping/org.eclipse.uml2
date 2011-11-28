@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ActivityGroupItemProvider.java,v 1.10 2009/12/02 18:27:49 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -66,11 +65,11 @@ public class ActivityGroupItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addContainedEdgePropertyDescriptor(object);
 			addContainedNodePropertyDescriptor(object);
 			addInActivityPropertyDescriptor(object);
 			addSubgroupPropertyDescriptor(object);
 			addSuperGroupPropertyDescriptor(object);
-			addContainedEdgePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}

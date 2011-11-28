@@ -7,15 +7,17 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ActivityTest.java,v 1.7 2007/02/14 20:06:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
 import junit.textui.TestRunner;
 
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityGroup;
+import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.UMLFactory;
 
@@ -26,15 +28,16 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Activity#getStructuredNodes() <em>Structured Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#getGroups() <em>Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#getNodes() <em>Node</em>}</li>
  * </ul>
  * </p>
  * <p>
  * The following operations are tested:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#validateActivityParameterNode(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Activity Parameter Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#validateAutonomous(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Autonomous</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#validateNoSupergroups(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Supergroups</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Activity#validateActivityParameterNode(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Activity Parameter Node</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -97,27 +100,78 @@ public class ActivityTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Activity#getStructuredNodes() <em>Structured Node</em>}' feature getter.
+	 * Tests the '{@link org.eclipse.uml2.uml.Activity#getGroups() <em>Group</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Activity#getStructuredNodes()
+	 * @see org.eclipse.uml2.uml.Activity#getGroups()
 	 * @generated NOT
 	 */
-	public void testGetStructuredNodes() {
-		StructuredActivityNode structuredNode1 = UMLFactory.eINSTANCE
-			.createStructuredActivityNode();
-		getFixture().getNodes().add(structuredNode1);
+	public void testGetGroups() {
+		ActivityGroup ownedGroup = UMLFactory.eINSTANCE.createInterruptibleActivityRegion();
+		getFixture().getOwnedGroups().add(ownedGroup);
+		
+		assertTrue(getFixture().getOwnedGroups().contains(ownedGroup));
+		assertTrue(getFixture().getGroups().contains(ownedGroup));
+		
+		getFixture().getGroups().remove(ownedGroup);
 
-		assertSame(getFixture(), structuredNode1.getActivity());
+		assertFalse(getFixture().getOwnedGroups().contains(ownedGroup));
+		assertFalse(getFixture().getGroups().contains(ownedGroup));
 
-		StructuredActivityNode structuredNode2 = UMLFactory.eINSTANCE
-			.createStructuredActivityNode();
-		getFixture().getGroups().add(structuredNode2);
+		ActivityPartition partition = UMLFactory.eINSTANCE.createActivityPartition();
+		getFixture().getPartitions().add(partition);
+		
+		assertTrue(getFixture().getPartitions().contains(partition));
+		assertTrue(getFixture().getOwnedGroups().contains(partition));
+		assertTrue(getFixture().getGroups().contains(partition));
+		
+		getFixture().getGroups().remove(partition);
 
-		assertSame(getFixture(), structuredNode2.getActivity());
+		assertFalse(getFixture().getPartitions().contains(partition));
+		assertFalse(getFixture().getOwnedGroups().contains(partition));
+		assertFalse(getFixture().getGroups().contains(partition));
 
-		assertTrue(getFixture().getStructuredNodes().contains(structuredNode1));
-		assertTrue(getFixture().getStructuredNodes().contains(structuredNode2));
+		StructuredActivityNode structuredNode = UMLFactory.eINSTANCE.createStructuredActivityNode();
+		getFixture().getStructuredNodes().add(structuredNode);
+		
+		assertTrue(getFixture().getStructuredNodes().contains(structuredNode));
+		assertTrue(getFixture().getGroups().contains(structuredNode));
+		
+		getFixture().getGroups().remove(structuredNode);
+		
+		assertFalse(getFixture().getStructuredNodes().contains(structuredNode));
+		assertFalse(getFixture().getGroups().contains(structuredNode));
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Activity#getNodes() <em>Node</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Activity#getNodes()
+	 * @generated NOT
+	 */
+	public void testGetNodes() {
+		ActivityNode ownedNode = UMLFactory.eINSTANCE.createCentralBufferNode();
+		getFixture().getOwnedNodes().add(ownedNode);
+		
+		assertTrue(getFixture().getOwnedNodes().contains(ownedNode));
+		assertTrue(getFixture().getNodes().contains(ownedNode));
+		
+		getFixture().getNodes().remove(ownedNode);
+
+		assertFalse(getFixture().getOwnedNodes().contains(ownedNode));
+		assertFalse(getFixture().getNodes().contains(ownedNode));
+
+		StructuredActivityNode structuredNode = UMLFactory.eINSTANCE.createStructuredActivityNode();
+		getFixture().getStructuredNodes().add(structuredNode);
+		
+		assertTrue(getFixture().getStructuredNodes().contains(structuredNode));
+		assertTrue(getFixture().getNodes().contains(structuredNode));
+		
+		getFixture().getNodes().remove(structuredNode);
+		
+		assertFalse(getFixture().getStructuredNodes().contains(structuredNode));
+		assertFalse(getFixture().getNodes().contains(structuredNode));
 	}
 
 	/**

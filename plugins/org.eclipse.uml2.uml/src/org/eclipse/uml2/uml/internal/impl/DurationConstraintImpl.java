@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: DurationConstraintImpl.java,v 1.25 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -560,16 +559,16 @@ public class DurationConstraintImpl
 				return allOwnedElements();
 			case UMLPackage.DURATION_CONSTRAINT___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DURATION_CONSTRAINT___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -597,16 +596,16 @@ public class DurationConstraintImpl
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.DURATION_CONSTRAINT___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
-			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_BOOLEAN_VALUE__DIAGNOSTICCHAIN_MAP :
-				return validateBooleanValue((DiagnosticChain) arguments.get(0),
+			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_NOT_APPLY_TO_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotApplyToSelf(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
 				return validateNoSideEffects(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_NOT_APPLY_TO_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotApplyToSelf(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_BOOLEAN_VALUE__DIAGNOSTICCHAIN_MAP :
+				return validateBooleanValue((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_VALUE_SPECIFICATION_BOOLEAN__DIAGNOSTICCHAIN_MAP :
 				return validateValueSpecificationBoolean(

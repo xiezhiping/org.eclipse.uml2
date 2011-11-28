@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: CombinedFragmentTest.java,v 1.6 2007/02/14 20:06:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -25,10 +24,10 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.CombinedFragment#validateMinintAndMaxint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Minint And Maxint</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.CombinedFragment#validateBreak(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Break</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.CombinedFragment#validateConsiderAndIgnore(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Consider And Ignore</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.CombinedFragment#validateOptLoopBreakNeg(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Opt Loop Break Neg</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.CombinedFragment#validateConsiderAndIgnore(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Consider And Ignore</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.CombinedFragment#validateMinintAndMaxint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Minint And Maxint</em>}</li>
  * </ul>
  * </p>
  * @generated

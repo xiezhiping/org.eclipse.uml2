@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ActivityImpl.java,v 1.38 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -34,13 +33,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
+//import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
-import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 
 import org.eclipse.uml2.uml.Activity;
@@ -97,14 +96,16 @@ import org.eclipse.uml2.uml.internal.operations.ActivityOperations;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getOwnedMembers <em>Owned Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getGroups <em>Group</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getNodes <em>Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getOwnedGroups <em>Owned Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getEdges <em>Edge</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getStructuredNodes <em>Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getVariables <em>Variable</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getGroups <em>Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getOwnedNodes <em>Owned Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#isReadOnly <em>Is Read Only</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#isSingleExecution <em>Is Single Execution</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getPartitions <em>Partition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getStructuredNodes <em>Structured Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getNodes <em>Node</em>}</li>
  * </ul>
  * </p>
  *
@@ -115,24 +116,24 @@ public class ActivityImpl
 		implements Activity {
 
 	/**
-	 * The cached value of the '{@link #getGroups() <em>Group</em>}' containment reference list.
+	 * The cached value of the '{@link #getGroups() <em>Group</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getGroups()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
 	protected EList<ActivityGroup> groups;
 
 	/**
-	 * The cached value of the '{@link #getNodes() <em>Node</em>}' containment reference list.
+	 * The cached value of the '{@link #getOwnedGroups() <em>Owned Group</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNodes()
+	 * @see #getOwnedGroups()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActivityNode> nodes;
+	protected EList<ActivityGroup> ownedGroups;
 
 	/**
 	 * The cached value of the '{@link #getEdges() <em>Edge</em>}' containment reference list.
@@ -153,6 +154,26 @@ public class ActivityImpl
 	 * @ordered
 	 */
 	protected EList<Variable> variables;
+
+	/**
+	 * The cached value of the '{@link #getNodes() <em>Node</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNodes()
+	 * @generated NOT
+	 * @ordered
+	 */
+	protected EList<ActivityNode> nodes;
+
+	/**
+	 * The cached value of the '{@link #getOwnedNodes() <em>Owned Node</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedNodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ActivityNode> ownedNodes;
 
 	/**
 	 * The default value of the '{@link #isReadOnly() <em>Is Read Only</em>}' attribute.
@@ -203,6 +224,16 @@ public class ActivityImpl
 	 * @ordered
 	 */
 	protected EList<ActivityPartition> partitions;
+
+	/**
+	 * The cached value of the '{@link #getStructuredNodes() <em>Structured Node</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStructuredNodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<StructuredActivityNode> structuredNodes;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -280,13 +311,13 @@ public class ActivityImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<ActivityGroup> getGroups() {
 		if (groups == null) {
-			groups = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<ActivityGroup>(
+			groups = new SubsetSupersetEObjectResolvingEList<ActivityGroup>(
 				ActivityGroup.class, this, UMLPackage.ACTIVITY__GROUP, null,
-				GROUP_ESUBSETS, UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY);
+				GROUP_ESUBSETS);
 		}
 		return groups;
 	}
@@ -294,13 +325,13 @@ public class ActivityImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<ActivityNode> getNodes() {
 		if (nodes == null) {
-			nodes = new EObjectContainmentWithInverseEList.Resolving<ActivityNode>(
-				ActivityNode.class, this, UMLPackage.ACTIVITY__NODE,
-				UMLPackage.ACTIVITY_NODE__ACTIVITY);
+			nodes = new SubsetSupersetEObjectResolvingEList<ActivityNode>(
+				ActivityNode.class, this, UMLPackage.ACTIVITY__NODE, null,
+				NODE_ESUBSETS);
 		}
 		return nodes;
 	}
@@ -310,30 +341,16 @@ public class ActivityImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActivityNode createNode(String name, EClass eClass) {
-		ActivityNode newNode = (ActivityNode) create(eClass);
-		getNodes().add(newNode);
-		if (name != null)
-			newNode.setName(name);
-		return newNode;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public ActivityNode getNode(String name) {
-		return getNode(name, false, null, false);
+		return getNode(name, false, null);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public ActivityNode getNode(String name, boolean ignoreCase, EClass eClass,
-			boolean createOnDemand) {
+	public ActivityNode getNode(String name, boolean ignoreCase, EClass eClass) {
 		nodeLoop : for (ActivityNode node : getNodes()) {
 			if (eClass != null && !eClass.isInstance(node))
 				continue nodeLoop;
@@ -343,9 +360,7 @@ public class ActivityImpl
 				continue nodeLoop;
 			return node;
 		}
-		return createOnDemand && eClass != null
-			? createNode(name, eClass)
-			: null;
+		return null;
 	}
 
 	/**
@@ -405,29 +420,37 @@ public class ActivityImpl
 	 * @generated NOT
 	 */
 	public EList<StructuredActivityNode> getStructuredNodes() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			Resource eResource = eResource();
-			@SuppressWarnings("unchecked")
-			EList<StructuredActivityNode> structuredNodes = (EList<StructuredActivityNode>) cache
-				.get(eResource, this,
-					UMLPackage.Literals.ACTIVITY__STRUCTURED_NODE);
-			if (structuredNodes == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.ACTIVITY__STRUCTURED_NODE,
-						structuredNodes = new DerivedEObjectEList<StructuredActivityNode>(
-							StructuredActivityNode.class, this,
-							UMLPackage.ACTIVITY__STRUCTURED_NODE,
-							STRUCTURED_NODE_ESUPERSETS));
-			}
-			return structuredNodes;
+		if (structuredNodes == null) {
+			structuredNodes = new SubsetSupersetEObjectContainmentEList.Resolving<StructuredActivityNode>(
+				StructuredActivityNode.class, this,
+				UMLPackage.ACTIVITY__STRUCTURED_NODE,
+				STRUCTURED_NODE_ESUPERSETS, null);
 		}
-		return new DerivedEObjectEList<StructuredActivityNode>(
-			StructuredActivityNode.class, this,
-			UMLPackage.ACTIVITY__STRUCTURED_NODE, STRUCTURED_NODE_ESUPERSETS);
+		return structuredNodes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StructuredActivityNode createStructuredNode(String name,
+			EClass eClass) {
+		StructuredActivityNode newStructuredNode = (StructuredActivityNode) create(eClass);
+		getStructuredNodes().add(newStructuredNode);
+		if (name != null)
+			newStructuredNode.setName(name);
+		return newStructuredNode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StructuredActivityNode createStructuredNode(String name) {
+		return createStructuredNode(name,
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE);
 	}
 
 	/**
@@ -669,14 +692,8 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__EDGE :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEdges())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ACTIVITY__GROUP :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getGroups())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY__VARIABLE :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getVariables())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ACTIVITY__NODE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getNodes())
 					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
@@ -767,18 +784,21 @@ public class ActivityImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY__SPECIFICATION :
 				return basicSetSpecification(null, msgs);
+			case UMLPackage.ACTIVITY__OWNED_GROUP :
+				return ((InternalEList<?>) getOwnedGroups()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.ACTIVITY__EDGE :
 				return ((InternalEList<?>) getEdges()).basicRemove(otherEnd,
-					msgs);
-			case UMLPackage.ACTIVITY__GROUP :
-				return ((InternalEList<?>) getGroups()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.ACTIVITY__VARIABLE :
 				return ((InternalEList<?>) getVariables()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ACTIVITY__NODE :
-				return ((InternalEList<?>) getNodes()).basicRemove(otherEnd,
-					msgs);
+			case UMLPackage.ACTIVITY__OWNED_NODE :
+				return ((InternalEList<?>) getOwnedNodes()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACTIVITY__STRUCTURED_NODE :
+				return ((InternalEList<?>) getStructuredNodes()).basicRemove(
+					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -933,20 +953,24 @@ public class ActivityImpl
 				if (resolve)
 					return getSpecification();
 				return basicGetSpecification();
+			case UMLPackage.ACTIVITY__OWNED_GROUP :
+				return getOwnedGroups();
 			case UMLPackage.ACTIVITY__EDGE :
 				return getEdges();
-			case UMLPackage.ACTIVITY__GROUP :
-				return getGroups();
-			case UMLPackage.ACTIVITY__STRUCTURED_NODE :
-				return getStructuredNodes();
 			case UMLPackage.ACTIVITY__VARIABLE :
 				return getVariables();
+			case UMLPackage.ACTIVITY__GROUP :
+				return getGroups();
+			case UMLPackage.ACTIVITY__OWNED_NODE :
+				return getOwnedNodes();
 			case UMLPackage.ACTIVITY__IS_READ_ONLY :
 				return isReadOnly();
 			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
 				return isSingleExecution();
 			case UMLPackage.ACTIVITY__PARTITION :
 				return getPartitions();
+			case UMLPackage.ACTIVITY__STRUCTURED_NODE :
+				return getStructuredNodes();
 			case UMLPackage.ACTIVITY__NODE :
 				return getNodes();
 		}
@@ -1147,20 +1171,30 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__SPECIFICATION :
 				setSpecification((BehavioralFeature) newValue);
 				return;
+			case UMLPackage.ACTIVITY__OWNED_GROUP :
+				getOwnedGroups().clear();
+				getOwnedGroups().addAll(
+					(Collection<? extends ActivityGroup>) newValue);
+				return;
 			case UMLPackage.ACTIVITY__EDGE :
 				getEdges().clear();
 				getEdges()
 					.addAll((Collection<? extends ActivityEdge>) newValue);
+				return;
+			case UMLPackage.ACTIVITY__VARIABLE :
+				getVariables().clear();
+				getVariables()
+					.addAll((Collection<? extends Variable>) newValue);
 				return;
 			case UMLPackage.ACTIVITY__GROUP :
 				getGroups().clear();
 				getGroups().addAll(
 					(Collection<? extends ActivityGroup>) newValue);
 				return;
-			case UMLPackage.ACTIVITY__VARIABLE :
-				getVariables().clear();
-				getVariables()
-					.addAll((Collection<? extends Variable>) newValue);
+			case UMLPackage.ACTIVITY__OWNED_NODE :
+				getOwnedNodes().clear();
+				getOwnedNodes().addAll(
+					(Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.ACTIVITY__IS_READ_ONLY :
 				setIsReadOnly((Boolean) newValue);
@@ -1172,6 +1206,11 @@ public class ActivityImpl
 				getPartitions().clear();
 				getPartitions().addAll(
 					(Collection<? extends ActivityPartition>) newValue);
+				return;
+			case UMLPackage.ACTIVITY__STRUCTURED_NODE :
+				getStructuredNodes().clear();
+				getStructuredNodes().addAll(
+					(Collection<? extends StructuredActivityNode>) newValue);
 				return;
 			case UMLPackage.ACTIVITY__NODE :
 				getNodes().clear();
@@ -1319,14 +1358,20 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__SPECIFICATION :
 				setSpecification((BehavioralFeature) null);
 				return;
+			case UMLPackage.ACTIVITY__OWNED_GROUP :
+				getOwnedGroups().clear();
+				return;
 			case UMLPackage.ACTIVITY__EDGE :
 				getEdges().clear();
+				return;
+			case UMLPackage.ACTIVITY__VARIABLE :
+				getVariables().clear();
 				return;
 			case UMLPackage.ACTIVITY__GROUP :
 				getGroups().clear();
 				return;
-			case UMLPackage.ACTIVITY__VARIABLE :
-				getVariables().clear();
+			case UMLPackage.ACTIVITY__OWNED_NODE :
+				getOwnedNodes().clear();
 				return;
 			case UMLPackage.ACTIVITY__IS_READ_ONLY :
 				setIsReadOnly(IS_READ_ONLY_EDEFAULT);
@@ -1336,6 +1381,9 @@ public class ActivityImpl
 				return;
 			case UMLPackage.ACTIVITY__PARTITION :
 				getPartitions().clear();
+				return;
+			case UMLPackage.ACTIVITY__STRUCTURED_NODE :
+				getStructuredNodes().clear();
 				return;
 			case UMLPackage.ACTIVITY__NODE :
 				getNodes().clear();
@@ -1481,22 +1529,26 @@ public class ActivityImpl
 					&& !redefinedBehaviors.isEmpty();
 			case UMLPackage.ACTIVITY__SPECIFICATION :
 				return specification != null;
+			case UMLPackage.ACTIVITY__OWNED_GROUP :
+				return ownedGroups != null && !ownedGroups.isEmpty();
 			case UMLPackage.ACTIVITY__EDGE :
 				return edges != null && !edges.isEmpty();
-			case UMLPackage.ACTIVITY__GROUP :
-				return groups != null && !groups.isEmpty();
-			case UMLPackage.ACTIVITY__STRUCTURED_NODE :
-				return !getStructuredNodes().isEmpty();
 			case UMLPackage.ACTIVITY__VARIABLE :
 				return variables != null && !variables.isEmpty();
+			case UMLPackage.ACTIVITY__GROUP :
+				return !getGroups().isEmpty();
+			case UMLPackage.ACTIVITY__OWNED_NODE :
+				return ownedNodes != null && !ownedNodes.isEmpty();
 			case UMLPackage.ACTIVITY__IS_READ_ONLY :
 				return ((eFlags & IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
 			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
 				return ((eFlags & IS_SINGLE_EXECUTION_EFLAG) != 0) != IS_SINGLE_EXECUTION_EDEFAULT;
 			case UMLPackage.ACTIVITY__PARTITION :
 				return partitions != null && !partitions.isEmpty();
+			case UMLPackage.ACTIVITY__STRUCTURED_NODE :
+				return structuredNodes != null && !structuredNodes.isEmpty();
 			case UMLPackage.ACTIVITY__NODE :
-				return nodes != null && !nodes.isEmpty();
+				return !getNodes().isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1593,16 +1645,16 @@ public class ActivityImpl
 				return allOwnedElements();
 			case UMLPackage.ACTIVITY___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.ACTIVITY___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1694,20 +1746,20 @@ public class ActivityImpl
 				return isTemplate();
 			case UMLPackage.ACTIVITY___PARAMETERABLE_ELEMENTS :
 				return parameterableElements();
-			case UMLPackage.ACTIVITY___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
-				return validateSpecializeType(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
-				return validateMapsToGeneralizationSet(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
 				return validateNonFinalParents(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
 				return validateNoCyclesInGeneralization(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
+				return validateSpecializeType(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
+				return validateMapsToGeneralizationSet(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY___GET_ALL_ATTRIBUTES :
@@ -1781,13 +1833,6 @@ public class ActivityImpl
 				return getExtensions();
 			case UMLPackage.ACTIVITY___GET_SUPER_CLASSES :
 				return getSuperClasses();
-			case UMLPackage.ACTIVITY___VALIDATE_MOST_ONE_BEHAVIOUR__DIAGNOSTICCHAIN_MAP :
-				return validateMostOneBehaviour(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY___VALIDATE_MUST_REALIZE__DIAGNOSTICCHAIN_MAP :
-				return validateMustRealize((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY___VALIDATE_PARAMETERS_MATCH__DIAGNOSTICCHAIN_MAP :
 				return validateParametersMatch(
 					(DiagnosticChain) arguments.get(0),
@@ -1796,8 +1841,19 @@ public class ActivityImpl
 				return validateFeatureOfContextClassifier(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY___VALIDATE_MUST_REALIZE__DIAGNOSTICCHAIN_MAP :
+				return validateMustRealize((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY___VALIDATE_MOST_ONE_BEHAVIOUR__DIAGNOSTICCHAIN_MAP :
+				return validateMostOneBehaviour(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY___GET_CONTEXT :
 				return getContext();
+			case UMLPackage.ACTIVITY___VALIDATE_ACTIVITY_PARAMETER_NODE__DIAGNOSTICCHAIN_MAP :
+				return validateActivityParameterNode(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY___VALIDATE_AUTONOMOUS__DIAGNOSTICCHAIN_MAP :
 				return validateAutonomous((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
@@ -1805,12 +1861,6 @@ public class ActivityImpl
 				return validateNoSupergroups(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY___VALIDATE_ACTIVITY_PARAMETER_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateActivityParameterNode(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY___GET_STRUCTURED_NODES :
-				return getStructuredNodes();
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}
@@ -1897,22 +1947,42 @@ public class ActivityImpl
 		UMLPackage.ACTIVITY__OWNED_PARAMETER_SET, UMLPackage.ACTIVITY__VARIABLE};
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getGroups() <em>Group</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGroups()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] GROUP_ESUBSETS = new int[]{UMLPackage.ACTIVITY__PARTITION};
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public ActivityGroup createGroup(EClass eClass) {
-		return createGroup(null, eClass);
+	public EList<ActivityGroup> getOwnedGroups() {
+		if (ownedGroups == null) {
+			ownedGroups = new SubsetSupersetEObjectContainmentEList.Resolving<ActivityGroup>(
+				ActivityGroup.class, this, UMLPackage.ACTIVITY__OWNED_GROUP,
+				OWNED_GROUP_ESUPERSETS, OWNED_GROUP_ESUBSETS);
+		}
+		return ownedGroups;
+	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedGroups() <em>Owned Group</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedGroups()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_GROUP_ESUBSETS = new int[]{UMLPackage.ACTIVITY__PARTITION};
+
+	protected static final int[] OWNED_GROUP_ESUPERSETS = new int[]{UMLPackage.ACTIVITY__GROUP};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityGroup createOwnedGroup(String name, EClass eClass) {
+		ActivityGroup newOwnedGroup = (ActivityGroup) create(eClass);
+		getOwnedGroups().add(newOwnedGroup);
+		if (name != null)
+			newOwnedGroup.setName(name);
+		return newOwnedGroup;
 	}
 
 	/**
@@ -1920,13 +1990,41 @@ public class ActivityImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActivityGroup createGroup(String name, EClass eClass) {
-		ActivityGroup newGroup = (ActivityGroup) create(eClass);
-		getGroups().add(newGroup);
-		if (name != null)
-			newGroup.setName(name);
-		return newGroup;
+	public ActivityGroup getOwnedGroup(String name) {
+		return getOwnedGroup(name, false, null, false);
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityGroup getOwnedGroup(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		ownedGroupLoop : for (ActivityGroup ownedGroup : getOwnedGroups()) {
+			if (eClass != null && !eClass.isInstance(ownedGroup))
+				continue ownedGroupLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedGroup.getName())
+				: name.equals(ownedGroup.getName())))
+				continue ownedGroupLoop;
+			return ownedGroup;
+		}
+		return createOnDemand && eClass != null
+			? createOwnedGroup(name, eClass)
+			: null;
+	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getGroups() <em>Group</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGroups()
+	 * @generated NOT
+	 * @ordered
+	 */
+	protected static final int[] GROUP_ESUBSETS = new int[]{
+		UMLPackage.ACTIVITY__OWNED_GROUP, UMLPackage.ACTIVITY__STRUCTURED_NODE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1934,16 +2032,15 @@ public class ActivityImpl
 	 * @generated
 	 */
 	public ActivityGroup getGroup(String name) {
-		return getGroup(name, false, null, false);
+		return getGroup(name, false, null);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public ActivityGroup getGroup(String name, boolean ignoreCase,
-			EClass eClass, boolean createOnDemand) {
+	public ActivityGroup getGroup(String name, boolean ignoreCase, EClass eClass) {
 		groupLoop : for (ActivityGroup group : getGroups()) {
 			if (eClass != null && !eClass.isInstance(group))
 				continue groupLoop;
@@ -1953,9 +2050,7 @@ public class ActivityImpl
 				continue groupLoop;
 			return group;
 		}
-		return createOnDemand && eClass != null
-			? createGroup(name, eClass)
-			: null;
+		return null;
 	}
 
 	/**
@@ -1963,7 +2058,7 @@ public class ActivityImpl
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getStructuredNodes()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
 	protected static final int[] STRUCTURED_NODE_ESUPERSETS = new int[]{
@@ -1972,10 +2067,79 @@ public class ActivityImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<ActivityNode> getOwnedNodes() {
+		if (ownedNodes == null) {
+			ownedNodes = new SubsetSupersetEObjectContainmentEList.Resolving<ActivityNode>(
+				ActivityNode.class, this, UMLPackage.ACTIVITY__OWNED_NODE,
+				OWNED_NODE_ESUPERSETS, null);
+		}
+		return ownedNodes;
+	}
+
+	protected static final int[] OWNED_NODE_ESUPERSETS = new int[]{UMLPackage.ACTIVITY__NODE};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityNode createOwnedNode(String name, EClass eClass) {
+		ActivityNode newOwnedNode = (ActivityNode) create(eClass);
+		getOwnedNodes().add(newOwnedNode);
+		if (name != null)
+			newOwnedNode.setName(name);
+		return newOwnedNode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityNode getOwnedNode(String name) {
+		return getOwnedNode(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityNode getOwnedNode(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		ownedNodeLoop : for (ActivityNode ownedNode : getOwnedNodes()) {
+			if (eClass != null && !eClass.isInstance(ownedNode))
+				continue ownedNodeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedNode.getName())
+				: name.equals(ownedNode.getName())))
+				continue ownedNodeLoop;
+			return ownedNode;
+		}
+		return createOnDemand && eClass != null
+			? createOwnedNode(name, eClass)
+			: null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public StructuredActivityNode getStructuredNode(String name) {
-		return getStructuredNode(name, false, null);
+		return getStructuredNode(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public StructuredActivityNode getStructuredNode(String name,
+			boolean ignoreCase, EClass eClass) {
+		return getStructuredNode(name, ignoreCase, eClass, false);
 	}
 
 	/**
@@ -1984,7 +2148,7 @@ public class ActivityImpl
 	 * @generated
 	 */
 	public StructuredActivityNode getStructuredNode(String name,
-			boolean ignoreCase, EClass eClass) {
+			boolean ignoreCase, EClass eClass, boolean createOnDemand) {
 		structuredNodeLoop : for (StructuredActivityNode structuredNode : getStructuredNodes()) {
 			if (eClass != null && !eClass.isInstance(structuredNode))
 				continue structuredNodeLoop;
@@ -1994,7 +2158,9 @@ public class ActivityImpl
 				continue structuredNodeLoop;
 			return structuredNode;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createStructuredNode(name, eClass)
+			: null;
 	}
 
 	/**
@@ -2005,7 +2171,18 @@ public class ActivityImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] PARTITION_ESUPERSETS = new int[]{UMLPackage.ACTIVITY__GROUP};
+	protected static final int[] PARTITION_ESUPERSETS = new int[]{UMLPackage.ACTIVITY__OWNED_GROUP};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getNodes() <em>Node</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] NODE_ESUBSETS = new int[]{
+		UMLPackage.ACTIVITY__OWNED_NODE, UMLPackage.ACTIVITY__STRUCTURED_NODE};
 
 	/**
 	 * <!-- begin-user-doc -->

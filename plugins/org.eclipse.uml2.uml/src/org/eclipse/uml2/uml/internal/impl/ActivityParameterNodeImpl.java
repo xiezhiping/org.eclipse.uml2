@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ActivityParameterNodeImpl.java,v 1.23 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -264,8 +263,6 @@ public class ActivityParameterNodeImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_STRUCTURED_NODE :
@@ -278,6 +275,8 @@ public class ActivityParameterNodeImpl
 				return getOutgoings();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__INCOMING :
 				return getIncomings();
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__TYPE :
@@ -514,8 +513,6 @@ public class ActivityParameterNodeImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_STRUCTURED_NODE :
@@ -527,6 +524,8 @@ public class ActivityParameterNodeImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__TYPE :
@@ -639,16 +638,16 @@ public class ActivityParameterNodeImpl
 				return allOwnedElements();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -696,43 +695,43 @@ public class ActivityParameterNodeImpl
 				return validateOwnedStructuredNode(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
-				return validateInputOutputParameter(
+			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateObjectFlowEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_SELECTION_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
 				return validateSelectionBehavior(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateObjectFlowEdges(
+			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
+				return validateInputOutputParameter(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_NO_OUTGOING_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateNoOutgoingEdges(
+			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_MAXIMUM_ONE_PARAMETER_NODE__DIAGNOSTICCHAIN_MAP :
+				return validateMaximumOneParameterNode(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_MAXIMUM_TWO_PARAMETER_NODES__DIAGNOSTICCHAIN_MAP :
 				return validateMaximumTwoParameterNodes(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_HAS_PARAMETERS__DIAGNOSTICCHAIN_MAP :
-				return validateHasParameters(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_SAME_TYPE__DIAGNOSTICCHAIN_MAP :
-				return validateSameType((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_MAXIMUM_ONE_PARAMETER_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateMaximumOneParameterNode(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_NO_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateNoEdges((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_NO_INCOMING_EDGES__DIAGNOSTICCHAIN_MAP :
 				return validateNoIncomingEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_NO_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateNoEdges((DiagnosticChain) arguments.get(0),
+			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_NO_OUTGOING_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateNoOutgoingEdges(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_SAME_TYPE__DIAGNOSTICCHAIN_MAP :
+				return validateSameType((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_HAS_PARAMETERS__DIAGNOSTICCHAIN_MAP :
+				return validateHasParameters(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

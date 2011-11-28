@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: StructuralFeature.java,v 1.4 2006/05/12 20:38:09 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -19,8 +18,8 @@ package org.eclipse.uml2.uml;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * By specializing multiplicity element, it supports a multiplicity that specifies valid cardinalities for the collection of values associated with an instantiation of the structural feature.
  * A structural feature is a typed feature of a classifier that specifies the structure of instances of the classifier.
+ * By specializing multiplicity element, it supports a multiplicity that specifies valid cardinalities for the collection of values associated with an instantiation of the structural feature.
  * <!-- end-model-doc -->
  *
  * <p>

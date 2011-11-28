@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: BehaviorOperations.java,v 1.13 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -39,10 +38,10 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Behavior#validateMostOneBehaviour(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Most One Behaviour</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Behavior#validateMustRealize(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Must Realize</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#validateParametersMatch(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Parameters Match</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#validateFeatureOfContextClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Feature Of Context Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Behavior#validateMustRealize(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Must Realize</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Behavior#validateMostOneBehaviour(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Most One Behaviour</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#getContext() <em>Get Context</em>}</li>
  * </ul>
  * </p>

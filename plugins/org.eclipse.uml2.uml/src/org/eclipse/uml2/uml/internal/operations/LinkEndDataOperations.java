@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: LinkEndDataOperations.java,v 1.4 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -31,10 +30,10 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.LinkEndData#validatePropertyIsAssociationEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Property Is Association End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LinkEndData#validateEndObjectInputPin(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate End Object Input Pin</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LinkEndData#validateSameType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LinkEndData#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.LinkEndData#validateEndObjectInputPin(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate End Object Input Pin</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.LinkEndData#validatePropertyIsAssociationEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Property Is Association End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LinkEndData#validateQualifiers(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Qualifiers</em>}</li>
  * </ul>
  * </p>

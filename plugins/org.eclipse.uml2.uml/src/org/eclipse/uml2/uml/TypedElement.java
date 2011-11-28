@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: TypedElement.java,v 1.4 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -19,8 +18,8 @@ package org.eclipse.uml2.uml;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A typed element has a type.
  * A typed element is a kind of named element that represents an element with a type.
+ * A typed element has a type.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -42,8 +41,8 @@ public interface TypedElement
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the TypedElement.
 	 * This information is derived from the return result for this Operation.
+	 * The type of the TypedElement.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' reference.
 	 * @see #setType(Type)

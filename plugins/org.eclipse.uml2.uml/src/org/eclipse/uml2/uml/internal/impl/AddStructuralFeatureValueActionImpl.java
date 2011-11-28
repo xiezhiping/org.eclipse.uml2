@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: AddStructuralFeatureValueActionImpl.java,v 1.31 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -351,8 +350,6 @@ public class AddStructuralFeatureValueActionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -432,8 +429,6 @@ public class AddStructuralFeatureValueActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IN_STRUCTURED_NODE :
@@ -446,6 +441,8 @@ public class AddStructuralFeatureValueActionImpl
 				return getOutgoings();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__HANDLER :
@@ -721,8 +718,6 @@ public class AddStructuralFeatureValueActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IN_STRUCTURED_NODE :
@@ -734,6 +729,8 @@ public class AddStructuralFeatureValueActionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__HANDLER :
@@ -860,16 +857,16 @@ public class AddStructuralFeatureValueActionImpl
 				return allOwnedElements();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -919,14 +916,11 @@ public class AddStructuralFeatureValueActionImpl
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___GET_CONTEXT :
 				return getContext();
-			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicity((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___VALIDATE_SAME_TYPE__DIAGNOSTICCHAIN_MAP :
-				return validateSameType((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___VALIDATE_VISIBILITY__DIAGNOSTICCHAIN_MAP :
 				return validateVisibility((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
+				return validateMultiplicity((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___VALIDATE_NOT_STATIC__DIAGNOSTICCHAIN_MAP :
 				return validateNotStatic((DiagnosticChain) arguments.get(0),
@@ -935,9 +929,8 @@ public class AddStructuralFeatureValueActionImpl
 				return validateOneFeaturingClassifier(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___VALIDATE_MULTIPLICITY_OF_RESULT__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicityOfResult(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___VALIDATE_SAME_TYPE__DIAGNOSTICCHAIN_MAP :
+				return validateSameType((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___VALIDATE_INPUT_PIN__DIAGNOSTICCHAIN_MAP :
 				return validateInputPin((DiagnosticChain) arguments.get(0),
@@ -945,12 +938,16 @@ public class AddStructuralFeatureValueActionImpl
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___VALIDATE_TYPE_OF_RESULT__DIAGNOSTICCHAIN_MAP :
 				return validateTypeOfResult((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___VALIDATE_REQUIRED_VALUE__DIAGNOSTICCHAIN_MAP :
-				return validateRequiredValue(
+			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___VALIDATE_MULTIPLICITY_OF_RESULT__DIAGNOSTICCHAIN_MAP :
+				return validateMultiplicityOfResult(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___VALIDATE_UNLIMITED_NATURAL_AND_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
 				return validateUnlimitedNaturalAndMultiplicity(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___VALIDATE_REQUIRED_VALUE__DIAGNOSTICCHAIN_MAP :
+				return validateRequiredValue(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ActivityEdgeImpl.java,v 1.29 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -70,10 +69,11 @@ import org.eclipse.uml2.uml.internal.operations.ActivityEdgeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInGroups <em>In Group</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getRedefinedElements <em>Redefined Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getActivity <em>Activity</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInPartitions <em>In Partition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInStructuredNode <em>In Structured Node</em>}</li>
@@ -82,7 +82,6 @@ import org.eclipse.uml2.uml.internal.operations.ActivityEdgeOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getWeight <em>Weight</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getActivity <em>Activity</em>}</li>
  * </ul>
  * </p>
  *
@@ -932,6 +931,10 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__CLIENT_DEPENDENCY :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
 					.basicAdd(otherEnd, msgs);
+			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetActivity((Activity) otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInPartitions())
 					.basicAdd(otherEnd, msgs);
@@ -961,10 +964,6 @@ public abstract class ActivityEdgeImpl
 						UMLPackage.ACTIVITY_NODE__INCOMING, ActivityNode.class,
 						msgs);
 				return basicSetTarget((ActivityNode) otherEnd, msgs);
-			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetActivity((Activity) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -989,6 +988,8 @@ public abstract class ActivityEdgeImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
+				return basicSetActivity(null, msgs);
 			case UMLPackage.ACTIVITY_EDGE__GUARD :
 				return basicSetGuard(null, msgs);
 			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
@@ -1004,8 +1005,6 @@ public abstract class ActivityEdgeImpl
 				return basicSetTarget(null, msgs);
 			case UMLPackage.ACTIVITY_EDGE__WEIGHT :
 				return basicSetWeight(null, msgs);
-			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
-				return basicSetActivity(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1019,13 +1018,13 @@ public abstract class ActivityEdgeImpl
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
+			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.ACTIVITY__EDGE, Activity.class, msgs);
 			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE,
 					StructuredActivityNode.class, msgs);
-			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
-				return eInternalContainer().eInverseRemove(this,
-					UMLPackage.ACTIVITY__EDGE, Activity.class, msgs);
 		}
 		return eDynamicBasicRemoveFromContainer(msgs);
 	}
@@ -1070,12 +1069,14 @@ public abstract class ActivityEdgeImpl
 				return getRedefinedElements();
 			case UMLPackage.ACTIVITY_EDGE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
+			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.ACTIVITY_EDGE__GUARD :
 				if (resolve)
 					return getGuard();
 				return basicGetGuard();
-			case UMLPackage.ACTIVITY_EDGE__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
@@ -1100,10 +1101,8 @@ public abstract class ActivityEdgeImpl
 				if (resolve)
 					return getWeight();
 				return basicGetWeight();
-			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
-				if (resolve)
-					return getActivity();
-				return basicGetActivity();
+			case UMLPackage.ACTIVITY_EDGE__IN_GROUP :
+				return getInGroups();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -1144,6 +1143,9 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
 				return;
+			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
+				setActivity((Activity) newValue);
+				return;
 			case UMLPackage.ACTIVITY_EDGE__GUARD :
 				setGuard((ValueSpecification) newValue);
 				return;
@@ -1171,9 +1173,6 @@ public abstract class ActivityEdgeImpl
 				return;
 			case UMLPackage.ACTIVITY_EDGE__WEIGHT :
 				setWeight((ValueSpecification) newValue);
-				return;
-			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
-				setActivity((Activity) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1208,6 +1207,9 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
+			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
+				setActivity((Activity) null);
+				return;
 			case UMLPackage.ACTIVITY_EDGE__GUARD :
 				setGuard((ValueSpecification) null);
 				return;
@@ -1231,9 +1233,6 @@ public abstract class ActivityEdgeImpl
 				return;
 			case UMLPackage.ACTIVITY_EDGE__WEIGHT :
 				setWeight((ValueSpecification) null);
-				return;
-			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
-				setActivity((Activity) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -1276,10 +1275,10 @@ public abstract class ActivityEdgeImpl
 				return isSetRedefinedElements();
 			case UMLPackage.ACTIVITY_EDGE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
+			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
+				return basicGetActivity() != null;
 			case UMLPackage.ACTIVITY_EDGE__GUARD :
 				return guard != null;
-			case UMLPackage.ACTIVITY_EDGE__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
@@ -1294,8 +1293,8 @@ public abstract class ActivityEdgeImpl
 				return target != null;
 			case UMLPackage.ACTIVITY_EDGE__WEIGHT :
 				return weight != null;
-			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
-				return basicGetActivity() != null;
+			case UMLPackage.ACTIVITY_EDGE__IN_GROUP :
+				return isSetInGroups();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1392,16 +1391,16 @@ public abstract class ActivityEdgeImpl
 				return allOwnedElements();
 			case UMLPackage.ACTIVITY_EDGE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.ACTIVITY_EDGE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_EDGE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_EDGE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_EDGE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_EDGE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1464,13 +1463,13 @@ public abstract class ActivityEdgeImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-		StructuredActivityNode inStructuredNode = basicGetInStructuredNode();
-		if (inStructuredNode != null) {
-			return inStructuredNode;
-		}
 		Activity activity = basicGetActivity();
 		if (activity != null) {
 			return activity;
+		}
+		StructuredActivityNode inStructuredNode = basicGetInStructuredNode();
+		if (inStructuredNode != null) {
+			return inStructuredNode;
 		}
 		return super.basicGetOwner();
 	}
@@ -1482,9 +1481,8 @@ public abstract class ActivityEdgeImpl
 	 */
 	@Override
 	public boolean isSetOwner() {
-		return super.isSetOwner()
-			|| eIsSet(UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE)
-			|| eIsSet(UMLPackage.ACTIVITY_EDGE__ACTIVITY);
+		return super.isSetOwner() || eIsSet(UMLPackage.ACTIVITY_EDGE__ACTIVITY)
+			|| eIsSet(UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE);
 	}
 
 	/**

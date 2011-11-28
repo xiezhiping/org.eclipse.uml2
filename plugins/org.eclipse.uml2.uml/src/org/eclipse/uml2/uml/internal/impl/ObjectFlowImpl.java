@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ObjectFlowImpl.java,v 1.21 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -412,12 +411,14 @@ public class ObjectFlowImpl
 				return getRedefinedElements();
 			case UMLPackage.OBJECT_FLOW__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
+			case UMLPackage.OBJECT_FLOW__ACTIVITY :
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.OBJECT_FLOW__GUARD :
 				if (resolve)
 					return getGuard();
 				return basicGetGuard();
-			case UMLPackage.OBJECT_FLOW__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.OBJECT_FLOW__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
@@ -442,10 +443,8 @@ public class ObjectFlowImpl
 				if (resolve)
 					return getWeight();
 				return basicGetWeight();
-			case UMLPackage.OBJECT_FLOW__ACTIVITY :
-				if (resolve)
-					return getActivity();
-				return basicGetActivity();
+			case UMLPackage.OBJECT_FLOW__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.OBJECT_FLOW__IS_MULTICAST :
 				return isMulticast();
 			case UMLPackage.OBJECT_FLOW__IS_MULTIRECEIVE :
@@ -498,6 +497,9 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
 				return;
+			case UMLPackage.OBJECT_FLOW__ACTIVITY :
+				setActivity((Activity) newValue);
+				return;
 			case UMLPackage.OBJECT_FLOW__GUARD :
 				setGuard((ValueSpecification) newValue);
 				return;
@@ -525,9 +527,6 @@ public class ObjectFlowImpl
 				return;
 			case UMLPackage.OBJECT_FLOW__WEIGHT :
 				setWeight((ValueSpecification) newValue);
-				return;
-			case UMLPackage.OBJECT_FLOW__ACTIVITY :
-				setActivity((Activity) newValue);
 				return;
 			case UMLPackage.OBJECT_FLOW__IS_MULTICAST :
 				setIsMulticast((Boolean) newValue);
@@ -574,6 +573,9 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
+			case UMLPackage.OBJECT_FLOW__ACTIVITY :
+				setActivity((Activity) null);
+				return;
 			case UMLPackage.OBJECT_FLOW__GUARD :
 				setGuard((ValueSpecification) null);
 				return;
@@ -597,9 +599,6 @@ public class ObjectFlowImpl
 				return;
 			case UMLPackage.OBJECT_FLOW__WEIGHT :
 				setWeight((ValueSpecification) null);
-				return;
-			case UMLPackage.OBJECT_FLOW__ACTIVITY :
-				setActivity((Activity) null);
 				return;
 			case UMLPackage.OBJECT_FLOW__IS_MULTICAST :
 				setIsMulticast(IS_MULTICAST_EDEFAULT);
@@ -654,10 +653,10 @@ public class ObjectFlowImpl
 				return isSetRedefinedElements();
 			case UMLPackage.OBJECT_FLOW__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
+			case UMLPackage.OBJECT_FLOW__ACTIVITY :
+				return basicGetActivity() != null;
 			case UMLPackage.OBJECT_FLOW__GUARD :
 				return guard != null;
-			case UMLPackage.OBJECT_FLOW__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.OBJECT_FLOW__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
@@ -672,8 +671,8 @@ public class ObjectFlowImpl
 				return target != null;
 			case UMLPackage.OBJECT_FLOW__WEIGHT :
 				return weight != null;
-			case UMLPackage.OBJECT_FLOW__ACTIVITY :
-				return basicGetActivity() != null;
+			case UMLPackage.OBJECT_FLOW__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.OBJECT_FLOW__IS_MULTICAST :
 				return ((eFlags & IS_MULTICAST_EFLAG) != 0) != IS_MULTICAST_EDEFAULT;
 			case UMLPackage.OBJECT_FLOW__IS_MULTIRECEIVE :
@@ -778,16 +777,16 @@ public class ObjectFlowImpl
 				return allOwnedElements();
 			case UMLPackage.OBJECT_FLOW___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.OBJECT_FLOW___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OBJECT_FLOW___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -839,15 +838,8 @@ public class ObjectFlowImpl
 				return validateStructuredNode(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_FLOW___VALIDATE_INPUT_AND_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
-				return validateInputAndOutputParameter(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_FLOW___VALIDATE_NO_ACTIONS__DIAGNOSTICCHAIN_MAP :
-				return validateNoActions((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_FLOW___VALIDATE_TRANSFORMATION_BEHAVIOUR__DIAGNOSTICCHAIN_MAP :
-				return validateTransformationBehaviour(
+			case UMLPackage.OBJECT_FLOW___VALIDATE_IS_MULTICAST_OR_IS_MULTIRECEIVE__DIAGNOSTICCHAIN_MAP :
+				return validateIsMulticastOrIsMultireceive(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_SELECTION_BEHAVIOUR__DIAGNOSTICCHAIN_MAP :
@@ -858,15 +850,22 @@ public class ObjectFlowImpl
 				return validateCompatibleTypes(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_FLOW___VALIDATE_SAME_UPPER_BOUNDS__DIAGNOSTICCHAIN_MAP :
-				return validateSameUpperBounds(
+			case UMLPackage.OBJECT_FLOW___VALIDATE_NO_ACTIONS__DIAGNOSTICCHAIN_MAP :
+				return validateNoActions((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OBJECT_FLOW___VALIDATE_INPUT_AND_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
+				return validateInputAndOutputParameter(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OBJECT_FLOW___VALIDATE_TRANSFORMATION_BEHAVIOUR__DIAGNOSTICCHAIN_MAP :
+				return validateTransformationBehaviour(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_TARGET__DIAGNOSTICCHAIN_MAP :
 				return validateTarget((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_FLOW___VALIDATE_IS_MULTICAST_OR_IS_MULTIRECEIVE__DIAGNOSTICCHAIN_MAP :
-				return validateIsMulticastOrIsMultireceive(
+			case UMLPackage.OBJECT_FLOW___VALIDATE_SAME_UPPER_BOUNDS__DIAGNOSTICCHAIN_MAP :
+				return validateSameUpperBounds(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

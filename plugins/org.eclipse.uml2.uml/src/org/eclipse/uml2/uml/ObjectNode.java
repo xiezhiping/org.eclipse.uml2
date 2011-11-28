@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ObjectNode.java,v 1.13 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -27,8 +26,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Object nodes have support for token selection, limitation on the number of tokens, specifying the state required for tokens, and carrying control values.
  * An object node is an abstract activity node that is part of defining object flow in an activity.
+ * Object nodes have support for token selection, limitation on the number of tokens, specifying the state required for tokens, and carrying control values.
  * <!-- end-model-doc -->
  *
  * <p>

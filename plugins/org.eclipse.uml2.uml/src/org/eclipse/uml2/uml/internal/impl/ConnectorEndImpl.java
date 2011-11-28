@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ConnectorEndImpl.java,v 1.22 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -514,18 +513,18 @@ public class ConnectorEndImpl
 				return allOwnedElements();
 			case UMLPackage.CONNECTOR_END___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.CONNECTOR_END___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
-				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTOR_END___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
 				return validateLowerGe0((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONNECTOR_END___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
-				return validateValueSpecificationNoSideEffects(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.CONNECTOR_END___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
+				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTOR_END___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
 				return validateValueSpecificationConstant(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONNECTOR_END___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
+				return validateValueSpecificationNoSideEffects(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTOR_END___SET_LOWER__INT :
@@ -558,15 +557,15 @@ public class ConnectorEndImpl
 				return validateRoleAndPartWithPort(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONNECTOR_END___VALIDATE_PART_WITH_PORT_EMPTY__DIAGNOSTICCHAIN_MAP :
-				return validatePartWithPortEmpty(
+			case UMLPackage.CONNECTOR_END___VALIDATE_SELF_PART_WITH_PORT__DIAGNOSTICCHAIN_MAP :
+				return validateSelfPartWithPort(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTOR_END___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
 				return validateMultiplicity((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONNECTOR_END___VALIDATE_SELF_PART_WITH_PORT__DIAGNOSTICCHAIN_MAP :
-				return validateSelfPartWithPort(
+			case UMLPackage.CONNECTOR_END___VALIDATE_PART_WITH_PORT_EMPTY__DIAGNOSTICCHAIN_MAP :
+				return validatePartWithPortEmpty(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTOR_END___GET_DEFINING_END :

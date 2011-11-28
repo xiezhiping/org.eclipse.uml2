@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: InterfaceItemProvider.java,v 1.18 2010/09/28 21:00:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -79,10 +78,10 @@ public class InterfaceItemProvider
 
 			addNestedClassifierPropertyDescriptor(object);
 			addOwnedAttributePropertyDescriptor(object);
+			addOwnedOperationPropertyDescriptor(object);
 			addOwnedReceptionPropertyDescriptor(object);
 			addProtocolPropertyDescriptor(object);
 			addRedefinedInterfacePropertyDescriptor(object);
-			addOwnedOperationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -229,10 +228,10 @@ public class InterfaceItemProvider
 			childrenFeatures
 				.add(UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE);
 			childrenFeatures
+				.add(UMLPackage.Literals.INTERFACE__OWNED_OPERATION);
+			childrenFeatures
 				.add(UMLPackage.Literals.INTERFACE__OWNED_RECEPTION);
 			childrenFeatures.add(UMLPackage.Literals.INTERFACE__PROTOCOL);
-			childrenFeatures
-				.add(UMLPackage.Literals.INTERFACE__OWNED_OPERATION);
 		}
 		return childrenFeatures;
 	}
@@ -299,9 +298,9 @@ public class InterfaceItemProvider
 		switch (notification.getFeatureID(Interface.class)) {
 			case UMLPackage.INTERFACE__NESTED_CLASSIFIER :
 			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
+			case UMLPackage.INTERFACE__OWNED_OPERATION :
 			case UMLPackage.INTERFACE__OWNED_RECEPTION :
 			case UMLPackage.INTERFACE__PROTOCOL :
-			case UMLPackage.INTERFACE__OWNED_OPERATION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -347,10 +346,6 @@ public class InterfaceItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createDataType()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
 			UMLFactory.eINSTANCE.createInterface()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -364,6 +359,10 @@ public class InterfaceItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
 			UMLFactory.eINSTANCE.createProtocolStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createDataType()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
@@ -442,16 +441,16 @@ public class InterfaceItemProvider
 			UMLFactory.eINSTANCE.createExtensionEnd()));
 
 		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__OWNED_OPERATION,
+			UMLFactory.eINSTANCE.createOperation()));
+
+		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERFACE__OWNED_RECEPTION,
 			UMLFactory.eINSTANCE.createReception()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERFACE__PROTOCOL,
 			UMLFactory.eINSTANCE.createProtocolStateMachine()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERFACE__OWNED_OPERATION,
-			UMLFactory.eINSTANCE.createOperation()));
 	}
 
 	/**

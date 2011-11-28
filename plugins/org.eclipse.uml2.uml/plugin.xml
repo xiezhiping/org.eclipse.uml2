@@ -11,7 +11,7 @@
  Contributors:
    IBM - initial API and implementation
    Kenn Hussey (Embarcadero Technologies) - 156879, 215488, 226397, 204200, 247980
-   Kenn Hussey (CEA) - 327039
+   Kenn Hussey (CEA) - 327039, 351774
 
 -->
 
@@ -171,7 +171,7 @@
               class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
            <parameter
                  name="namespacePattern"
-                 value="(http://schema\.omg\.org/spec/UML/(2\.1|2\.1\.1|2\.2)|http://www\.omg\.org/spec/UML/20100901)" />
+                 value="(http://schema\.omg\.org/spec/UML/(2\.1|2\.1\.1|2\.2)|http://www\.omg\.org/spec/UML/(20100901|20110701))" />
            <parameter
                  name="kind"
                  value="xmi" />
@@ -241,6 +241,22 @@
                  value="xmi" />
         </describer>
      </content-type>
+     <content-type
+           base-type="org.omg.uml"
+           file-extensions="xmi"
+           id="org.omg.uml_2_4_1"
+           name="%_UI_OMG_UML_2_4_1_content_type"
+           priority="normal">
+        <describer
+              class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
+           <parameter
+                 name="namespace"
+                 value="http://www.omg.org/spec/UML/20110701" />
+           <parameter
+                 name="kind"
+                 value="xmi" />
+        </describer>
+     </content-type>
 
      <content-type
            base-type="org.eclipse.emf.ecore.xmi"
@@ -252,7 +268,7 @@
               class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
            <parameter
                  name="namespacePattern"
-                 value="(http://schema\.omg\.org/spec/MOF/2\.0/cmof.xml|http://www\.omg\.org/spec/MOF/20100901/cmof.xmi)" />
+                 value="(http://schema\.omg\.org/spec/MOF/2\.0/cmof.xml|http://www\.omg\.org/spec/MOF/(20100901|20110701)/cmof.xmi)" />
            <parameter
                  name="kind"
                  value="xmi" />
@@ -285,6 +301,22 @@
            <parameter
                  name="namespace"
                  value="http://www.omg.org/spec/MOF/20100901/cmof.xmi" />
+           <parameter
+                 name="kind"
+                 value="xmi" />
+        </describer>
+     </content-type>
+     <content-type
+           base-type="org.omg.mof.cmof"
+           file-extensions="cmof,xmi"
+           id="org.omg.mof.cmof_2_4_1"
+           name="%_UI_OMG_CMOF_2_4_1_content_type"
+           priority="normal">
+        <describer
+              class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
+           <parameter
+                 name="namespace"
+                 value="http://www.omg.org/spec/MOF/20110701/cmof.xmi" />
            <parameter
                  name="kind"
                  value="xmi" />

@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208353, 205188, 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: PropertyItemProvider.java,v 1.23 2010/09/28 21:00:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -91,8 +90,8 @@ public class PropertyItemProvider
 			addEndPropertyDescriptor(object);
 			addDeployedElementPropertyDescriptor(object);
 			addDeploymentPropertyDescriptor(object);
-			addDatatypePropertyDescriptor(object);
 			addInterfacePropertyDescriptor(object);
+			addDatatypePropertyDescriptor(object);
 			addAggregationPropertyDescriptor(object);
 			addAssociationEndPropertyDescriptor(object);
 			addQualifierPropertyDescriptor(object);

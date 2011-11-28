@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ValueSpecificationActionImpl.java,v 1.29 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -397,8 +396,6 @@ public class ValueSpecificationActionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.VALUE_SPECIFICATION_ACTION__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -474,8 +471,6 @@ public class ValueSpecificationActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.VALUE_SPECIFICATION_ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__IN_STRUCTURED_NODE :
@@ -488,6 +483,8 @@ public class ValueSpecificationActionImpl
 				return getOutgoings();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.VALUE_SPECIFICATION_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__HANDLER :
@@ -725,8 +722,6 @@ public class ValueSpecificationActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.VALUE_SPECIFICATION_ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__IN_STRUCTURED_NODE :
@@ -738,6 +733,8 @@ public class ValueSpecificationActionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.VALUE_SPECIFICATION_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__HANDLER :
@@ -856,16 +853,16 @@ public class ValueSpecificationActionImpl
 				return allOwnedElements();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.VALUE_SPECIFICATION_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VALUE_SPECIFICATION_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VALUE_SPECIFICATION_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.VALUE_SPECIFICATION_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VALUE_SPECIFICATION_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :

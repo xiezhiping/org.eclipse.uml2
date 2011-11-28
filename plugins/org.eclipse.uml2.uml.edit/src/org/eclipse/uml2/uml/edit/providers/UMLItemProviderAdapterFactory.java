@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418, 204200, 247980
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: UMLItemProviderAdapterFactory.java,v 1.26 2008/12/16 15:52:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -4798,6 +4797,10 @@ public class UMLItemProviderAdapterFactory
 			classItemProvider.dispose();
 		if (stringExpressionItemProvider != null)
 			stringExpressionItemProvider.dispose();
+		if (expressionItemProvider != null)
+			expressionItemProvider.dispose();
+		if (packageItemProvider != null)
+			packageItemProvider.dispose();
 		if (templateSignatureItemProvider != null)
 			templateSignatureItemProvider.dispose();
 		if (templateParameterItemProvider != null)
@@ -4806,10 +4809,6 @@ public class UMLItemProviderAdapterFactory
 			templateBindingItemProvider.dispose();
 		if (templateParameterSubstitutionItemProvider != null)
 			templateParameterSubstitutionItemProvider.dispose();
-		if (expressionItemProvider != null)
-			expressionItemProvider.dispose();
-		if (packageItemProvider != null)
-			packageItemProvider.dispose();
 		if (packageMergeItemProvider != null)
 			packageMergeItemProvider.dispose();
 		if (profileApplicationItemProvider != null)
@@ -4840,14 +4839,10 @@ public class UMLItemProviderAdapterFactory
 			manifestationItemProvider.dispose();
 		if (operationItemProvider != null)
 			operationItemProvider.dispose();
-		if (parameterItemProvider != null)
-			parameterItemProvider.dispose();
-		if (parameterSetItemProvider != null)
-			parameterSetItemProvider.dispose();
-		if (constraintItemProvider != null)
-			constraintItemProvider.dispose();
-		if (dataTypeItemProvider != null)
-			dataTypeItemProvider.dispose();
+		if (interfaceRealizationItemProvider != null)
+			interfaceRealizationItemProvider.dispose();
+		if (realizationItemProvider != null)
+			realizationItemProvider.dispose();
 		if (interfaceItemProvider != null)
 			interfaceItemProvider.dispose();
 		if (receptionItemProvider != null)
@@ -4870,10 +4865,18 @@ public class UMLItemProviderAdapterFactory
 			triggerItemProvider.dispose();
 		if (portItemProvider != null)
 			portItemProvider.dispose();
+		if (constraintItemProvider != null)
+			constraintItemProvider.dispose();
 		if (transitionItemProvider != null)
 			transitionItemProvider.dispose();
 		if (protocolConformanceItemProvider != null)
 			protocolConformanceItemProvider.dispose();
+		if (parameterItemProvider != null)
+			parameterItemProvider.dispose();
+		if (parameterSetItemProvider != null)
+			parameterSetItemProvider.dispose();
+		if (dataTypeItemProvider != null)
+			dataTypeItemProvider.dispose();
 		if (operationTemplateParameterItemProvider != null)
 			operationTemplateParameterItemProvider.dispose();
 		if (extensionEndItemProvider != null)
@@ -4896,8 +4899,6 @@ public class UMLItemProviderAdapterFactory
 			collaborationUseItemProvider.dispose();
 		if (collaborationItemProvider != null)
 			collaborationItemProvider.dispose();
-		if (connectorItemProvider != null)
-			connectorItemProvider.dispose();
 		if (generalizationItemProvider != null)
 			generalizationItemProvider.dispose();
 		if (generalizationSetItemProvider != null)
@@ -4914,12 +4915,10 @@ public class UMLItemProviderAdapterFactory
 			includeItemProvider.dispose();
 		if (substitutionItemProvider != null)
 			substitutionItemProvider.dispose();
-		if (realizationItemProvider != null)
-			realizationItemProvider.dispose();
 		if (classifierTemplateParameterItemProvider != null)
 			classifierTemplateParameterItemProvider.dispose();
-		if (interfaceRealizationItemProvider != null)
-			interfaceRealizationItemProvider.dispose();
+		if (connectorItemProvider != null)
+			connectorItemProvider.dispose();
 		if (imageItemProvider != null)
 			imageItemProvider.dispose();
 		if (opaqueExpressionItemProvider != null)

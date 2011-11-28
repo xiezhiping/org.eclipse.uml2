@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 351774
  *
- * $Id: ExceptionHandlerTest.java,v 1.5 2007/02/14 20:06:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -24,10 +24,10 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ExceptionHandler#validateExceptionBody(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Exception Body</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ExceptionHandler#validateResultPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Result Pins</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ExceptionHandler#validateOneInput(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ExceptionHandler#validateEdgeSourceTarget(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Edge Source Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ExceptionHandler#validateResultPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Result Pins</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ExceptionHandler#validateExceptionBody(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Exception Body</em>}</li>
  * </ul>
  * </p>
  * @generated

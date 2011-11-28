@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ExceptionHandlerImpl.java,v 1.21 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -642,18 +641,18 @@ public class ExceptionHandlerImpl
 				return allOwnedElements();
 			case UMLPackage.EXCEPTION_HANDLER___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.EXCEPTION_HANDLER___VALIDATE_EXCEPTION_BODY__DIAGNOSTICCHAIN_MAP :
-				return validateExceptionBody(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXCEPTION_HANDLER___VALIDATE_RESULT_PINS__DIAGNOSTICCHAIN_MAP :
-				return validateResultPins((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXCEPTION_HANDLER___VALIDATE_ONE_INPUT__DIAGNOSTICCHAIN_MAP :
 				return validateOneInput((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXCEPTION_HANDLER___VALIDATE_EDGE_SOURCE_TARGET__DIAGNOSTICCHAIN_MAP :
 				return validateEdgeSourceTarget(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.EXCEPTION_HANDLER___VALIDATE_RESULT_PINS__DIAGNOSTICCHAIN_MAP :
+				return validateResultPins((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.EXCEPTION_HANDLER___VALIDATE_EXCEPTION_BODY__DIAGNOSTICCHAIN_MAP :
+				return validateExceptionBody(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

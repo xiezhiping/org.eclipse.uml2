@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208353, 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: PropertyImpl.java,v 1.49 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -97,8 +96,8 @@ import org.eclipse.uml2.uml.internal.operations.PropertyOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getAssociation <em>Association</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getDatatype <em>Datatype</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getInterface <em>Interface</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getDatatype <em>Datatype</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getAggregation <em>Aggregation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getAssociationEnd <em>Association End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getQualifiers <em>Qualifier</em>}</li>
@@ -1860,14 +1859,14 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__DEPLOYMENT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getDeployments())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.PROPERTY__DATATYPE :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetDatatype((DataType) otherEnd, msgs);
 			case UMLPackage.PROPERTY__INTERFACE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetInterface((Interface) otherEnd, msgs);
+			case UMLPackage.PROPERTY__DATATYPE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetDatatype((DataType) otherEnd, msgs);
 			case UMLPackage.PROPERTY__ASSOCIATION_END :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -1920,10 +1919,10 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__DEPLOYMENT :
 				return ((InternalEList<?>) getDeployments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.PROPERTY__DATATYPE :
-				return basicSetDatatype(null, msgs);
 			case UMLPackage.PROPERTY__INTERFACE :
 				return basicSetInterface(null, msgs);
+			case UMLPackage.PROPERTY__DATATYPE :
+				return basicSetDatatype(null, msgs);
 			case UMLPackage.PROPERTY__ASSOCIATION_END :
 				return basicSetAssociationEnd(null, msgs);
 			case UMLPackage.PROPERTY__QUALIFIER :
@@ -1952,15 +1951,15 @@ public class PropertyImpl
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 					TemplateParameter.class, msgs);
+			case UMLPackage.PROPERTY__INTERFACE :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.INTERFACE__OWNED_ATTRIBUTE, Interface.class,
+					msgs);
 			case UMLPackage.PROPERTY__DATATYPE :
 				return eInternalContainer()
 					.eInverseRemove(this,
 						UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE, DataType.class,
 						msgs);
-			case UMLPackage.PROPERTY__INTERFACE :
-				return eInternalContainer().eInverseRemove(this,
-					UMLPackage.INTERFACE__OWNED_ATTRIBUTE, Interface.class,
-					msgs);
 			case UMLPackage.PROPERTY__ASSOCIATION_END :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.PROPERTY__QUALIFIER, Property.class, msgs);
@@ -2051,14 +2050,14 @@ public class PropertyImpl
 				return getDeployedElements();
 			case UMLPackage.PROPERTY__DEPLOYMENT :
 				return getDeployments();
-			case UMLPackage.PROPERTY__DATATYPE :
-				if (resolve)
-					return getDatatype();
-				return basicGetDatatype();
 			case UMLPackage.PROPERTY__INTERFACE :
 				if (resolve)
 					return getInterface();
 				return basicGetInterface();
+			case UMLPackage.PROPERTY__DATATYPE :
+				if (resolve)
+					return getDatatype();
+				return basicGetDatatype();
 			case UMLPackage.PROPERTY__AGGREGATION :
 				return getAggregation();
 			case UMLPackage.PROPERTY__ASSOCIATION_END :
@@ -2179,11 +2178,11 @@ public class PropertyImpl
 				getDeployments().addAll(
 					(Collection<? extends Deployment>) newValue);
 				return;
-			case UMLPackage.PROPERTY__DATATYPE :
-				setDatatype((DataType) newValue);
-				return;
 			case UMLPackage.PROPERTY__INTERFACE :
 				setInterface((Interface) newValue);
+				return;
+			case UMLPackage.PROPERTY__DATATYPE :
+				setDatatype((DataType) newValue);
 				return;
 			case UMLPackage.PROPERTY__AGGREGATION :
 				setAggregation((AggregationKind) newValue);
@@ -2313,11 +2312,11 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__DEPLOYMENT :
 				getDeployments().clear();
 				return;
-			case UMLPackage.PROPERTY__DATATYPE :
-				setDatatype((DataType) null);
-				return;
 			case UMLPackage.PROPERTY__INTERFACE :
 				setInterface((Interface) null);
+				return;
+			case UMLPackage.PROPERTY__DATATYPE :
+				setDatatype((DataType) null);
 				return;
 			case UMLPackage.PROPERTY__AGGREGATION :
 				setAggregation(AGGREGATION_EDEFAULT);
@@ -2432,10 +2431,10 @@ public class PropertyImpl
 				return !getDeployedElements().isEmpty();
 			case UMLPackage.PROPERTY__DEPLOYMENT :
 				return deployments != null && !deployments.isEmpty();
-			case UMLPackage.PROPERTY__DATATYPE :
-				return basicGetDatatype() != null;
 			case UMLPackage.PROPERTY__INTERFACE :
 				return basicGetInterface() != null;
+			case UMLPackage.PROPERTY__DATATYPE :
+				return basicGetDatatype() != null;
 			case UMLPackage.PROPERTY__AGGREGATION :
 				return (eFlags & AGGREGATION_EFLAG) != AGGREGATION_EFLAG_DEFAULT;
 			case UMLPackage.PROPERTY__ASSOCIATION_END :
@@ -2676,16 +2675,16 @@ public class PropertyImpl
 				return allOwnedElements();
 			case UMLPackage.PROPERTY___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.PROPERTY___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROPERTY___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROPERTY___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROPERTY___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROPERTY___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -2726,18 +2725,18 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.PROPERTY___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
-				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROPERTY___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
 				return validateLowerGe0((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROPERTY___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
-				return validateValueSpecificationNoSideEffects(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.PROPERTY___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
+				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROPERTY___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
 				return validateValueSpecificationConstant(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROPERTY___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
+				return validateValueSpecificationNoSideEffects(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROPERTY___SET_LOWER__INT :
@@ -2774,40 +2773,40 @@ public class PropertyImpl
 				return getEnds();
 			case UMLPackage.PROPERTY___GET_DEPLOYED_ELEMENTS :
 				return getDeployedElements();
-			case UMLPackage.PROPERTY___VALIDATE_SUBSETTING_CONTEXT_CONFORMS__DIAGNOSTICCHAIN_MAP :
-				return validateSubsettingContextConforms(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROPERTY___VALIDATE_DERIVED_UNION_IS_READ_ONLY__DIAGNOSTICCHAIN_MAP :
-				return validateDerivedUnionIsReadOnly(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROPERTY___VALIDATE_MULTIPLICITY_OF_COMPOSITE__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicityOfComposite(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROPERTY___VALIDATE_REDEFINED_PROPERTY_INHERITED__DIAGNOSTICCHAIN_MAP :
-				return validateRedefinedPropertyInherited(
+			case UMLPackage.PROPERTY___VALIDATE_SUBSETTED_PROPERTY_NAMES__DIAGNOSTICCHAIN_MAP :
+				return validateSubsettedPropertyNames(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROPERTY___VALIDATE_SUBSETTING_RULES__DIAGNOSTICCHAIN_MAP :
 				return validateSubsettingRules(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROPERTY___VALIDATE_MULTIPLICITY_OF_COMPOSITE__DIAGNOSTICCHAIN_MAP :
+				return validateMultiplicityOfComposite(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROPERTY___VALIDATE_BINDING_TO_ATTRIBUTE__DIAGNOSTICCHAIN_MAP :
 				return validateBindingToAttribute(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROPERTY___VALIDATE_DERIVED_UNION_IS_DERIVED__DIAGNOSTICCHAIN_MAP :
-				return validateDerivedUnionIsDerived(
+			case UMLPackage.PROPERTY___VALIDATE_REDEFINED_PROPERTY_INHERITED__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinedPropertyInherited(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROPERTY___VALIDATE_SUBSETTING_CONTEXT_CONFORMS__DIAGNOSTICCHAIN_MAP :
+				return validateSubsettingContextConforms(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROPERTY___VALIDATE_DEPLOYMENT_TARGET__DIAGNOSTICCHAIN_MAP :
 				return validateDeploymentTarget(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROPERTY___VALIDATE_SUBSETTED_PROPERTY_NAMES__DIAGNOSTICCHAIN_MAP :
-				return validateSubsettedPropertyNames(
+			case UMLPackage.PROPERTY___VALIDATE_DERIVED_UNION_IS_DERIVED__DIAGNOSTICCHAIN_MAP :
+				return validateDerivedUnionIsDerived(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROPERTY___VALIDATE_DERIVED_UNION_IS_READ_ONLY__DIAGNOSTICCHAIN_MAP :
+				return validateDerivedUnionIsReadOnly(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROPERTY___GET_OTHER_END :
@@ -3012,13 +3011,13 @@ public class PropertyImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-		DataType datatype = basicGetDatatype();
-		if (datatype != null) {
-			return datatype;
-		}
 		Interface interface_ = basicGetInterface();
 		if (interface_ != null) {
 			return interface_;
+		}
+		DataType datatype = basicGetDatatype();
+		if (datatype != null) {
+			return datatype;
 		}
 		org.eclipse.uml2.uml.Class class_ = basicGetClass_();
 		if (class_ != null) {
@@ -3038,8 +3037,8 @@ public class PropertyImpl
 	 */
 	@Override
 	public boolean isSetNamespace() {
-		return super.isSetNamespace() || eIsSet(UMLPackage.PROPERTY__DATATYPE)
-			|| eIsSet(UMLPackage.PROPERTY__INTERFACE)
+		return super.isSetNamespace() || eIsSet(UMLPackage.PROPERTY__INTERFACE)
+			|| eIsSet(UMLPackage.PROPERTY__DATATYPE)
 			|| eIsSet(UMLPackage.PROPERTY__CLASS)
 			|| eIsSet(UMLPackage.PROPERTY__OWNING_ASSOCIATION);
 	}
@@ -3053,7 +3052,7 @@ public class PropertyImpl
 	 * @ordered
 	 */
 	protected static final int[] FEATURING_CLASSIFIER_ESUBSETS = new int[]{
-		UMLPackage.PROPERTY__DATATYPE, UMLPackage.PROPERTY__INTERFACE,
+		UMLPackage.PROPERTY__INTERFACE, UMLPackage.PROPERTY__DATATYPE,
 		UMLPackage.PROPERTY__CLASS, UMLPackage.PROPERTY__OWNING_ASSOCIATION};
 
 	/**
@@ -3099,7 +3098,7 @@ public class PropertyImpl
 	 * @ordered
 	 */
 	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{
-		UMLPackage.PROPERTY__DATATYPE, UMLPackage.PROPERTY__INTERFACE,
+		UMLPackage.PROPERTY__INTERFACE, UMLPackage.PROPERTY__DATATYPE,
 		UMLPackage.PROPERTY__CLASS, UMLPackage.PROPERTY__OWNING_ASSOCIATION};
 
 	/**
@@ -3110,8 +3109,8 @@ public class PropertyImpl
 	@Override
 	public boolean isSetFeaturingClassifiers() {
 		return super.isSetFeaturingClassifiers()
-			|| eIsSet(UMLPackage.PROPERTY__DATATYPE)
 			|| eIsSet(UMLPackage.PROPERTY__INTERFACE)
+			|| eIsSet(UMLPackage.PROPERTY__DATATYPE)
 			|| eIsSet(UMLPackage.PROPERTY__CLASS)
 			|| eIsSet(UMLPackage.PROPERTY__OWNING_ASSOCIATION);
 	}
@@ -3124,8 +3123,8 @@ public class PropertyImpl
 	@Override
 	public boolean isSetRedefinitionContexts() {
 		return super.isSetRedefinitionContexts()
-			|| eIsSet(UMLPackage.PROPERTY__DATATYPE)
 			|| eIsSet(UMLPackage.PROPERTY__INTERFACE)
+			|| eIsSet(UMLPackage.PROPERTY__DATATYPE)
 			|| eIsSet(UMLPackage.PROPERTY__CLASS)
 			|| eIsSet(UMLPackage.PROPERTY__OWNING_ASSOCIATION);
 	}

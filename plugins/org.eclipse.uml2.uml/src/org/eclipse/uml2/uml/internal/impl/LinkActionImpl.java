@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: LinkActionImpl.java,v 1.29 2010/09/28 21:02:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -353,8 +352,6 @@ public abstract class LinkActionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.LINK_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.LINK_ACTION__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.LINK_ACTION__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -432,8 +429,6 @@ public abstract class LinkActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.LINK_ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.LINK_ACTION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.LINK_ACTION__IN_STRUCTURED_NODE :
@@ -446,6 +441,8 @@ public abstract class LinkActionImpl
 				return getOutgoings();
 			case UMLPackage.LINK_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.LINK_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.LINK_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.LINK_ACTION__HANDLER :
@@ -683,8 +680,6 @@ public abstract class LinkActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.LINK_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.LINK_ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.LINK_ACTION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.LINK_ACTION__IN_STRUCTURED_NODE :
@@ -696,6 +691,8 @@ public abstract class LinkActionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.LINK_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.LINK_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.LINK_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.LINK_ACTION__HANDLER :
@@ -814,16 +811,16 @@ public abstract class LinkActionImpl
 				return allOwnedElements();
 			case UMLPackage.LINK_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.LINK_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LINK_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :

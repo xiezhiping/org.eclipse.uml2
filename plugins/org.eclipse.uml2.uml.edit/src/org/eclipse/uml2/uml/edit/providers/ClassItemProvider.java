@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ClassItemProvider.java,v 1.19 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -471,10 +470,6 @@ public class ClassItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createDataType()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
 			UMLFactory.eINSTANCE.createInterface()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -488,6 +483,10 @@ public class ClassItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
 			UMLFactory.eINSTANCE.createProtocolStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createDataType()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,

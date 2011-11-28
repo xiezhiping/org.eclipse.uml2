@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: WriteVariableActionImpl.java,v 1.29 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -285,8 +284,6 @@ public abstract class WriteVariableActionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.WRITE_VARIABLE_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.WRITE_VARIABLE_ACTION__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.WRITE_VARIABLE_ACTION__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -360,8 +357,6 @@ public abstract class WriteVariableActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.WRITE_VARIABLE_ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.WRITE_VARIABLE_ACTION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.WRITE_VARIABLE_ACTION__IN_STRUCTURED_NODE :
@@ -374,6 +369,8 @@ public abstract class WriteVariableActionImpl
 				return getOutgoings();
 			case UMLPackage.WRITE_VARIABLE_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.WRITE_VARIABLE_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.WRITE_VARIABLE_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.WRITE_VARIABLE_ACTION__HANDLER :
@@ -611,8 +608,6 @@ public abstract class WriteVariableActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.WRITE_VARIABLE_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.WRITE_VARIABLE_ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.WRITE_VARIABLE_ACTION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.WRITE_VARIABLE_ACTION__IN_STRUCTURED_NODE :
@@ -624,6 +619,8 @@ public abstract class WriteVariableActionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.WRITE_VARIABLE_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.WRITE_VARIABLE_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.WRITE_VARIABLE_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.WRITE_VARIABLE_ACTION__HANDLER :
@@ -742,16 +739,16 @@ public abstract class WriteVariableActionImpl
 				return allOwnedElements();
 			case UMLPackage.WRITE_VARIABLE_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.WRITE_VARIABLE_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.WRITE_VARIABLE_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.WRITE_VARIABLE_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.WRITE_VARIABLE_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.WRITE_VARIABLE_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -805,11 +802,11 @@ public abstract class WriteVariableActionImpl
 				return validateScopeOfVariable(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.WRITE_VARIABLE_ACTION___VALIDATE_SAME_TYPE__DIAGNOSTICCHAIN_MAP :
-				return validateSameType((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.WRITE_VARIABLE_ACTION___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
 				return validateMultiplicity((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.WRITE_VARIABLE_ACTION___VALIDATE_SAME_TYPE__DIAGNOSTICCHAIN_MAP :
+				return validateSameType((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

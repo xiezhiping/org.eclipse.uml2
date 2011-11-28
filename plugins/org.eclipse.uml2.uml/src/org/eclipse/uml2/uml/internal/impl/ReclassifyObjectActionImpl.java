@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ReclassifyObjectActionImpl.java,v 1.30 2010/09/28 21:02:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -455,8 +454,6 @@ public class ReclassifyObjectActionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.RECLASSIFY_OBJECT_ACTION__ACTIVITY :
-				return basicSetActivity(null, msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
@@ -530,8 +527,6 @@ public class ReclassifyObjectActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_STRUCTURED_NODE :
@@ -544,6 +539,8 @@ public class ReclassifyObjectActionImpl
 				return getOutgoings();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__HANDLER :
@@ -799,8 +796,6 @@ public class ReclassifyObjectActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_STRUCTURED_NODE :
@@ -812,6 +807,8 @@ public class ReclassifyObjectActionImpl
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
+			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__HANDLER :
@@ -934,16 +931,16 @@ public class ReclassifyObjectActionImpl
 				return allOwnedElements();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.RECLASSIFY_OBJECT_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.RECLASSIFY_OBJECT_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -996,12 +993,12 @@ public class ReclassifyObjectActionImpl
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION___VALIDATE_INPUT_PIN__DIAGNOSTICCHAIN_MAP :
 				return validateInputPin((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.RECLASSIFY_OBJECT_ACTION___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
+				return validateMultiplicity((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION___VALIDATE_CLASSIFIER_NOT_ABSTRACT__DIAGNOSTICCHAIN_MAP :
 				return validateClassifierNotAbstract(
 					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.RECLASSIFY_OBJECT_ACTION___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicity((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

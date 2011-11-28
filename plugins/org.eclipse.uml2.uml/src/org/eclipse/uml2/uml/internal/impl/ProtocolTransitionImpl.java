@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ProtocolTransitionImpl.java,v 1.42 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -979,16 +978,16 @@ public class ProtocolTransitionImpl
 				return allOwnedElements();
 			case UMLPackage.PROTOCOL_TRANSITION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_TRANSITION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1059,43 +1058,43 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_STATE_IS_EXTERNAL__DIAGNOSTICCHAIN_MAP :
-				return validateStateIsExternal(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_STATE_IS_LOCAL__DIAGNOSTICCHAIN_MAP :
+				return validateStateIsLocal((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_JOIN_SEGMENT_GUARDS__DIAGNOSTICCHAIN_MAP :
-				return validateJoinSegmentGuards(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_STATE_IS_INTERNAL__DIAGNOSTICCHAIN_MAP :
-				return validateStateIsInternal(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_OUTGOING_PSEUDOSTATES__DIAGNOSTICCHAIN_MAP :
-				return validateOutgoingPseudostates(
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_FORK_SEGMENT_GUARDS__DIAGNOSTICCHAIN_MAP :
+				return validateForkSegmentGuards(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_JOIN_SEGMENT_STATE__DIAGNOSTICCHAIN_MAP :
 				return validateJoinSegmentState(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_FORK_SEGMENT_STATE__DIAGNOSTICCHAIN_MAP :
-				return validateForkSegmentState(
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_INITIAL_TRANSITION__DIAGNOSTICCHAIN_MAP :
+				return validateInitialTransition(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_OUTGOING_PSEUDOSTATES__DIAGNOSTICCHAIN_MAP :
+				return validateOutgoingPseudostates(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_SIGNATURES_COMPATIBLE__DIAGNOSTICCHAIN_MAP :
 				return validateSignaturesCompatible(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_STATE_IS_LOCAL__DIAGNOSTICCHAIN_MAP :
-				return validateStateIsLocal((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_INITIAL_TRANSITION__DIAGNOSTICCHAIN_MAP :
-				return validateInitialTransition(
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_STATE_IS_INTERNAL__DIAGNOSTICCHAIN_MAP :
+				return validateStateIsInternal(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_FORK_SEGMENT_GUARDS__DIAGNOSTICCHAIN_MAP :
-				return validateForkSegmentGuards(
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_JOIN_SEGMENT_GUARDS__DIAGNOSTICCHAIN_MAP :
+				return validateJoinSegmentGuards(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_FORK_SEGMENT_STATE__DIAGNOSTICCHAIN_MAP :
+				return validateForkSegmentState(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_STATE_IS_EXTERNAL__DIAGNOSTICCHAIN_MAP :
+				return validateStateIsExternal(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_TRANSITION___CONTAINING_STATE_MACHINE :

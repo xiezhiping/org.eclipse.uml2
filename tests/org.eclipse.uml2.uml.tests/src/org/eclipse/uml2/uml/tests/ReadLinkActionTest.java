@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ReadLinkActionTest.java,v 1.6 2007/02/14 20:06:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -26,10 +25,10 @@ import org.eclipse.uml2.uml.UMLFactory;
  * The following operations are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateTypeAndOrdering(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type And Ordering</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateCompatibleMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Compatible Multiplicity</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateVisibility(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateOneOpenEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Open End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateCompatibleMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Compatible Multiplicity</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateNavigableOpenEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Navigable Open End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateVisibility(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility</em>}</li>
  * </ul>
  * </p>
  * @generated

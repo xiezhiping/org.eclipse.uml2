@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: StructuralFeatureActionTest.java,v 1.5 2007/02/14 20:06:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -22,11 +21,11 @@ import org.eclipse.uml2.uml.StructuralFeatureAction;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateSameType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateVisibility(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateNotStatic(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Not Static</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateOneFeaturingClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Featuring Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateSameType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Type</em>}</li>
  * </ul>
  * </p>
  * @generated

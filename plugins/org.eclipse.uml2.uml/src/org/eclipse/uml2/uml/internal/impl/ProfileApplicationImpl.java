@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: ProfileApplicationImpl.java,v 1.26 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -58,8 +57,8 @@ import org.eclipse.uml2.uml.internal.operations.ProfileApplicationOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#getTargets <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#getAppliedProfile <em>Applied Profile</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#isStrict <em>Is Strict</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#getApplyingPackage <em>Applying Package</em>}</li>

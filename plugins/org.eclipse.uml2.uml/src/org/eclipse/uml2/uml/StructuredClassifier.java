@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: StructuredClassifier.java,v 1.12 2008/01/09 18:56:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -55,8 +54,8 @@ public interface StructuredClassifier
 	 * This feature subsets the following features:
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getAttributes() <em>Attribute</em>}'</li>
-	 *   <li>'{@link org.eclipse.uml2.uml.StructuredClassifier#getRoles() <em>Role</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.StructuredClassifier#getRoles() <em>Role</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->

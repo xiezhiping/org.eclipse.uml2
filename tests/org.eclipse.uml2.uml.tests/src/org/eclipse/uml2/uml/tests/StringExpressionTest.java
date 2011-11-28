@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: StringExpressionTest.java,v 1.7 2007/02/14 20:06:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -27,8 +26,8 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.TemplateableElement#isTemplate() <em>Is Template</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.TemplateableElement#parameterableElements() <em>Parameterable Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StringExpression#validateOperands(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Operands</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StringExpression#validateSubexpressions(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Subexpressions</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StringExpression#validateOperands(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Operands</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StringExpression#stringValue() <em>String Value</em>}</li>
  * </ul>
  * </p>

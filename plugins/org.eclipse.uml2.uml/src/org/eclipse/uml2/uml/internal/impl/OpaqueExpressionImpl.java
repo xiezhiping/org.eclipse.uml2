@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
- * $Id: OpaqueExpressionImpl.java,v 1.24 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -634,16 +633,16 @@ public class OpaqueExpressionImpl
 				return allOwnedElements();
 			case UMLPackage.OPAQUE_EXPRESSION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPAQUE_EXPRESSION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -685,16 +684,16 @@ public class OpaqueExpressionImpl
 				return stringValue();
 			case UMLPackage.OPAQUE_EXPRESSION___UNLIMITED_VALUE :
 				return unlimitedValue();
-			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_LANGUAGE_BODY_SIZE__DIAGNOSTICCHAIN_MAP :
-				return validateLanguageBodySize(
+			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_ONLY_RETURN_RESULT_PARAMETERS__DIAGNOSTICCHAIN_MAP :
+				return validateOnlyReturnResultParameters(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_ONE_RETURN_RESULT_PARAMETER__DIAGNOSTICCHAIN_MAP :
 				return validateOneReturnResultParameter(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_ONLY_RETURN_RESULT_PARAMETERS__DIAGNOSTICCHAIN_MAP :
-				return validateOnlyReturnResultParameters(
+			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_LANGUAGE_BODY_SIZE__DIAGNOSTICCHAIN_MAP :
+				return validateLanguageBodySize(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPAQUE_EXPRESSION___IS_INTEGRAL :
