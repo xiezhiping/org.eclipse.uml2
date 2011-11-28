@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20100901" xmlns:xmi="http://www.omg.org/spec/XMI/20100901" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
-  <uml:Profile xmi:id="_0" name="StandardProfileL3" URI="http://www.omg.org/spec/UML/20100901/StandardProfileL3" metamodelReference="_packageImport.0">
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Profile xmi:id="_0" name="StandardProfileL3" URI="http://www.omg.org/spec/UML/20110701/StandardProfileL3" metamodelReference="_packageImport.0">
     <packageImport xmi:id="_packageImport.0">
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
     </packageImport>
@@ -20,16 +20,25 @@
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="BuildComponent" name="BuildComponent">
+      <ownedComment xmi:id="BuildComponent-_ownedComment.0" annotatedElement="BuildComponent">
+        <body>A collection of elements defined for the purpose of system level decelopment activities, such as compilation and versioning.</body>
+      </ownedComment>
       <ownedAttribute xmi:id="BuildComponent-base_Component" name="base_Component" visibility="public" association="Component_BuildComponent">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Metamodel" name="Metamodel">
+      <ownedComment xmi:id="Metamodel-_ownedComment.0" annotatedElement="Metamodel">
+        <body>A model that specifies the modeling concepts of some modeling language (e.g., a MOF model). See >.</body>
+      </ownedComment>
       <ownedAttribute xmi:id="Metamodel-base_Model" name="base_Model" visibility="public" association="Model_Metamodel">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Model"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="SystemModel" name="SystemModel">
+      <ownedComment xmi:id="SystemModel-_ownedComment.0" annotatedElement="SystemModel">
+        <body>A SystemModel is a stereotyped model that contains a collection of models of the same system. A systemModel also contains all relationships and constraints between model elements contained in different models.</body>
+      </ownedComment>
       <ownedAttribute xmi:id="SystemModel-base_Model" name="base_Model" visibility="public" association="Model_SystemModel">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Model"/>
       </ownedAttribute>
