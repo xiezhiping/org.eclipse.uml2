@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 156879, 220552, 226102
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
  */
 package org.eclipse.uml2.uml.ecore.importer;
@@ -340,6 +340,9 @@ public class UMLImporter
 			XMI2UMLResource.UML_CONTENT_TYPE_IDENTIFIER,
 			XMI2UMLResource.Factory.INSTANCE);
 		contentTypeToFactoryMap.put(
+			XMI2UMLResource.UML_2_4_CONTENT_TYPE_IDENTIFIER,
+			XMI2UMLResource.Factory.INSTANCE);
+		contentTypeToFactoryMap.put(
 			XMI222UMLResource.UML_2_2_CONTENT_TYPE_IDENTIFIER,
 			XMI222UMLResource.Factory.INSTANCE);
 		contentTypeToFactoryMap.put(
@@ -350,6 +353,9 @@ public class UMLImporter
 			XMI212UMLResource.Factory.INSTANCE);
 		contentTypeToFactoryMap.put(
 			CMOF2UMLResource.CMOF_CONTENT_TYPE_IDENTIFIER,
+			CMOF2UMLResource.Factory.INSTANCE);
+		contentTypeToFactoryMap.put(
+			CMOF2UMLResource.CMOF_2_4_CONTENT_TYPE_IDENTIFIER,
 			CMOF2UMLResource.Factory.INSTANCE);
 		contentTypeToFactoryMap.put(
 			CMOF202UMLResource.CMOF_CONTENT_TYPE_IDENTIFIER,

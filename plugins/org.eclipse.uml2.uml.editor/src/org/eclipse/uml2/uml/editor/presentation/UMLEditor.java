@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332, 247980
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351774
  *
  */
 package org.eclipse.uml2.uml.editor.presentation;
@@ -961,6 +961,9 @@ public class UMLEditor
 			XMI2UMLResource.UML_CONTENT_TYPE_IDENTIFIER,
 			XMI2UMLResource.Factory.INSTANCE);
 		contentTypeToFactoryMap.put(
+			XMI2UMLResource.UML_2_4_CONTENT_TYPE_IDENTIFIER,
+			XMI2UMLResource.Factory.INSTANCE);
+		contentTypeToFactoryMap.put(
 			XMI222UMLResource.UML_2_2_CONTENT_TYPE_IDENTIFIER,
 			XMI222UMLResource.Factory.INSTANCE);
 		contentTypeToFactoryMap.put(
@@ -971,6 +974,9 @@ public class UMLEditor
 			XMI212UMLResource.Factory.INSTANCE);
 		contentTypeToFactoryMap.put(
 			CMOF2UMLResource.CMOF_CONTENT_TYPE_IDENTIFIER,
+			CMOF2UMLResource.Factory.INSTANCE);
+		contentTypeToFactoryMap.put(
+			CMOF2UMLResource.CMOF_2_4_CONTENT_TYPE_IDENTIFIER,
 			CMOF2UMLResource.Factory.INSTANCE);
 		contentTypeToFactoryMap.put(
 			CMOF202UMLResource.CMOF_2_0_CONTENT_TYPE_IDENTIFIER,
