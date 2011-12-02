@@ -27,30 +27,32 @@
 <%if (!genClass.getExtendedGenFeatures().contains(genFeature) && UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) { List<GenFeature> keyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(genFeature);%>
   <%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>
     <%if (isInterface) {%>
+      <%if (!genFeature.isSuppressedGetVisibility()) {%>
 	/**
-      <%if (!keyGenFeatures.isEmpty()) {%>
-        <%if (genFeature.isListType()) {%>
+        <%if (!keyGenFeatures.isEmpty()) {%>
+          <%if (genFeature.isListType()) {%>
 	 * Creates a new {@link <%=genFeature.getQualifiedListItemType(genClass)%>}, with the specified <%=UML2GenModelUtil.getFormattedKeyFeatureNames(genFeature)%>, and appends it to the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
-        <%} else {%>
+          <%} else {%>
 	 * Creates a new {@link <%=genFeature.getType(genClass)%>}, with the specified <%=UML2GenModelUtil.getFormattedKeyFeatureNames(genFeature)%>, and sets the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
-        <%}%>
-      <%} else {%>
-        <%if (genFeature.isListType()) {%>
-	 * Creates a new {@link <%=genFeature.getQualifiedListItemType(genClass)%>} and appends it to the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+          <%}%>
         <%} else {%>
+          <%if (genFeature.isListType()) {%>
+	 * Creates a new {@link <%=genFeature.getQualifiedListItemType(genClass)%>} and appends it to the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+          <%} else {%>
 	 * Creates a new {@link <%=genFeature.getType(genClass)%>} and sets the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+          <%}%>
         <%}%>
-      <%}%>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-      <%for (int index = 0, size = keyGenFeatures.size(); index < size; index++) {%>
+        <%for (int index = 0, size = keyGenFeatures.size(); index < size; index++) {%>
 	 * @param <%=UML2GenModelUtil.getKeyFeatureParameter(genClass, genFeature, index, false)%> The <%=UML2GenModelUtil.getFormattedKeyFeatureName(genFeature, index)%> for the new {@link <%=genFeature.getQualifiedListItemType(genClass)%>}, or <code>null</code>.
-      <%}%>
+        <%}%>
 	 * @param eClass The Ecore class of the {@link <%=genFeature.getQualifiedListItemType(genClass)%>} to create.
 	 * @return The new {@link <%=genFeature.getQualifiedListItemType(genClass)%>}.
 	 * @see #<%=genFeature.getGetAccessor()%>()
 	 * @generated
 	 */
+      <%}%>
     <%} else {%>
 	/**
 	 * <!-- begin-user-doc -->
@@ -59,8 +61,10 @@
 	 */
     <%}%>
     <%if (!isImplementation) {%>
+      <%if (!genFeature.isSuppressedGetVisibility()) {%>
 	<%=genFeature.getListItemType(genClass)%> create<%=genFeature.getCapName()%>(<%if (!keyGenFeatures.isEmpty()) {%><%=UML2GenModelUtil.getKeyFeatureParameters(genClass, genFeature)%>, <%}%><%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass);
 
+      <%}%>
     <%} else { int index = 0;%>
       <%if (genModel.useClassOverrideAnnotation() && UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>
 	@Override
@@ -104,29 +108,31 @@
   <%}%>
   <%if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getTypeGenClass().isAbstract()) { GenClass childGenClass = genClass.getChildrenClasses(genFeature).get(0);%>
     <%if (isInterface) {%>
+      <%if (!genFeature.isSuppressedGetVisibility()) {%>
 	/**
-      <%if (!keyGenFeatures.isEmpty()) {%>
-        <%if (genFeature.isListType()) {%>
+        <%if (!keyGenFeatures.isEmpty()) {%>
+          <%if (genFeature.isListType()) {%>
 	 * Creates a new {@link <%=childGenClass.getQualifiedInterfaceName()%>}, with the specified <%=UML2GenModelUtil.getFormattedKeyFeatureNames(genFeature)%>, and appends it to the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
-        <%} else {%>
+          <%} else {%>
 	 * Creates a new {@link <%=childGenClass.getQualifiedInterfaceName()%>},with the specified <%=UML2GenModelUtil.getFormattedKeyFeatureNames(genFeature)%>, and sets the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
-        <%}%>
-      <%} else {%>
-        <%if (genFeature.isListType()) {%>
-	 * Creates a new {@link <%=childGenClass.getQualifiedInterfaceName()%>} and appends it to the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+          <%}%>
         <%} else {%>
+          <%if (genFeature.isListType()) {%>
+	 * Creates a new {@link <%=childGenClass.getQualifiedInterfaceName()%>} and appends it to the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+          <%} else {%>
 	 * Creates a new {@link <%=childGenClass.getQualifiedInterfaceName()%>} and sets the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+          <%}%>
         <%}%>
-      <%}%>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-      <%for (int index = 0, size = keyGenFeatures.size(); index < size; index++) {%>
+        <%for (int index = 0, size = keyGenFeatures.size(); index < size; index++) {%>
 	 * @param <%=UML2GenModelUtil.getKeyFeatureParameter(genClass, genFeature, index, false)%> The <%=UML2GenModelUtil.getFormattedKeyFeatureName(genFeature, index)%> for the new {@link <%=genFeature.getQualifiedListItemType(genClass)%>}, or <code>null</code>.
-      <%}%>
+        <%}%>
 	 * @return The new {@link <%=childGenClass.getQualifiedInterfaceName()%>}.
 	 * @see #<%=genFeature.getGetAccessor()%>()
 	 * @generated
 	 */
+      <%}%>
     <%} else {%>
 	/**
 	 * <!-- begin-user-doc -->
@@ -135,8 +141,10 @@
 	 */
     <%}%>
     <%if (!isImplementation) {%>
+      <%if (!genFeature.isSuppressedGetVisibility()) {%>
 	<%=genFeature.getListItemType(genClass)%> create<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genClass, genFeature)%>);
 
+      <%}%>
     <%} else { int index = 0;%>
       <%if (genModel.useClassOverrideAnnotation() && UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>
 	@Override
@@ -187,17 +195,19 @@
   <%if (!keyGenFeatures.isEmpty()) {%>
     <%if (UML2GenModelUtil.hasStringTypeKeyGenFeature(genFeature) || UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) {%>
       <%if (isInterface) {%>
+        <%if (!genFeature.isSuppressedGetVisibility()) {%>
 	/**
 	 * Retrieves the first {@link <%=genFeature.getQualifiedListItemType(genClass)%>} with the specified <%=UML2GenModelUtil.getFormattedKeyFeatureNames(genFeature)%> from the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-        <%for (int index = 0, size = keyGenFeatures.size(); index < size; index++) {%>
+          <%for (int index = 0, size = keyGenFeatures.size(); index < size; index++) {%>
 	 * @param <%=UML2GenModelUtil.getKeyFeatureParameter(genClass, genFeature, index, false)%> The <%=UML2GenModelUtil.getFormattedKeyFeatureName(genFeature, index)%> of the {@link <%=genFeature.getQualifiedListItemType(genClass)%>} to retrieve, or <code>null</code>.
-        <%}%>
+          <%}%>
 	 * @return The first {@link <%=genFeature.getQualifiedListItemType(genClass)%>} with the specified <%=UML2GenModelUtil.getFormattedKeyFeatureNames(genFeature)%>, or <code>null</code>.
 	 * @see #<%=genFeature.getGetAccessor()%>()
 	 * @generated
 	 */
+        <%}%>
       <%} else {%>
 	/**
 	 * <!-- begin-user-doc -->
@@ -206,8 +216,10 @@
 	 */
       <%}%>
       <%if (!isImplementation) {%>
+        <%if (!genFeature.isSuppressedGetVisibility()) {%>
 	<%=genFeature.getListItemType(genClass)%> get<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genClass, genFeature)%>);
 
+        <%}%>
       <%} else {%>
       <%if (genModel.useClassOverrideAnnotation() && UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>
 	@Override
@@ -220,6 +232,7 @@
       <%}%>
     <%}%>
     <%if (isInterface) {%>
+      <%if (!genFeature.isSuppressedGetVisibility()) {%>
 	/**
 	 * Retrieves the first {@link <%=genFeature.getQualifiedListItemType(genClass)%>} with the specified <%=UML2GenModelUtil.getFormattedKeyFeatureNames(genFeature)%> from the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
 	 * <!-- begin-user-doc -->
@@ -240,6 +253,7 @@
 	 * @see #<%=genFeature.getGetAccessor()%>()
 	 * @generated
 	 */
+      <%}%>
     <%} else {%>
 	/**
 	 * <!-- begin-user-doc -->
@@ -248,8 +262,10 @@
 	 */
     <%}%>
     <%if (!isImplementation) {%>
+      <%if (!genFeature.isSuppressedGetVisibility()) {%>
 	<%=genFeature.getListItemType(genClass)%> get<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genClass, genFeature)%><%if (UML2GenModelUtil.hasStringTypeKeyGenFeature(genFeature)) {%>, boolean ignoreCase<%}%><%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>, <%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass<%}%><%if (UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) {%>, boolean createOnDemand<%}%>);
 
+      <%}%>
     <%} else { int index = 0;%>
       <%if (genModel.useClassOverrideAnnotation() && UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>
 	@Override
