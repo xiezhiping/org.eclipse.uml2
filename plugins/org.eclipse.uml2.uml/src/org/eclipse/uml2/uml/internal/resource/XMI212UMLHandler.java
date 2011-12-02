@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 365027
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -24,6 +24,9 @@ import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.EMOFExtendedMetaData;
 import org.eclipse.emf.ecore.xml.type.AnyType;
+
+import org.eclipse.uml2.uml.EnumerationLiteral;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.UML212UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.resource.XMI2UMLResource;
@@ -183,6 +186,17 @@ public class XMI212UMLHandler
 		} else {
 			super.setAttribValue(object, name, value);
 		}
+	}
+
+	@Override
+	protected void setFeatureValue(EObject object, EStructuralFeature feature,
+			Object value, int position) {
+		
+		if (feature == UMLPackage.Literals.INSTANCE_SPECIFICATION__CLASSIFIER && object instanceof EnumerationLiteral) {
+			return;
+		}
+
+		super.setFeatureValue(object, feature, value, position);
 	}
 
 }
