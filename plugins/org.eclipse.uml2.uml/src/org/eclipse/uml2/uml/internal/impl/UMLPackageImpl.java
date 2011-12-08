@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 247980
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 366083
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 
+import org.eclipse.uml2.types.TypesPackage;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -1879,7 +1880,7 @@ public class UMLPackageImpl
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
-	 * @generated
+	 * @generated NOT
 	 */
 	public static UMLPackage init() {
 		if (isInited)
@@ -1896,6 +1897,7 @@ public class UMLPackageImpl
 
 		// Initialize simple dependencies
 		EcorePackage.eINSTANCE.eClass();
+		TypesPackage.eINSTANCE.eClass();
 
 		// Load packages
 		theUMLPackage.loadPackage();
