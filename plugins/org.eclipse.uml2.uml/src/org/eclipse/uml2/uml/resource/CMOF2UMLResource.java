@@ -8,7 +8,7 @@
  * Contributors:
  *   Kenn Hussey (IBM Corporation) - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 156879, 218388
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 366349
  *
  */
 package org.eclipse.uml2.uml.resource;
@@ -32,11 +32,11 @@ public interface CMOF2UMLResource
 
 	String CMOF_2_4_METAMODEL_URI = "http://www.omg.org/spec/MOF/20100901/cmof.xmi"; //$NON-NLS-1$
 
-	String CMOF_2_4_METAMODEL_NS_URI = "http://www.omg.org/spec/MOF/20100901"; //$NON-NLS-1$
+	String CMOF_2_4_METAMODEL_NS_URI = CMOF_2_4_METAMODEL_URI;
 
 	String CMOF_2_4_1_METAMODEL_URI = "http://www.omg.org/spec/MOF/20110701/cmof.xmi"; //$NON-NLS-1$
 
-	String CMOF_2_4_1_METAMODEL_NS_URI = "http://www.omg.org/spec/MOF/20110701"; //$NON-NLS-1$
+	String CMOF_2_4_1_METAMODEL_NS_URI = CMOF_2_4_1_METAMODEL_URI;
 
 	String CMOF_METAMODEL_URI = CMOF_2_4_1_METAMODEL_URI;
 

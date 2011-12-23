@@ -8,7 +8,7 @@
  * Contributors:
  *   Kenn Hussey (IBM Corporation, Embarcadero Technologies) - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 218388
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 366349
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.EMOFExtendedMetaData;
+
+import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
 import org.eclipse.uml2.uml.resource.UML212UMLResource;
 import org.eclipse.uml2.uml.resource.UML302UMLResource;
@@ -50,7 +52,7 @@ public class CMOF202UMLHandler
 			&& XMI2UMLResource.XMI_2_1_NS_URI.equals(helper.getURI(prefix))
 			&& attribs != null
 			&& (UML212UMLResource.UML_METAMODEL_NS_URI.equals(extender) || UML302UMLResource.UML_METAMODEL_NS_URI
-				.equals(extender))) {
+				.equals(extender)) || UMLPackage.eNS_URI.equals(extender)) {
 
 			types.push(UML_EXTENSION_TYPE);
 		} else {
