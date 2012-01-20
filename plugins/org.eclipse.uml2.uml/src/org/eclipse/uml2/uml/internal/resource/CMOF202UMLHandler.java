@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2007, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,8 @@
  * Contributors:
  *   Kenn Hussey (IBM Corporation, Embarcadero Technologies) - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 218388
- *   Kenn Hussey (CEA) - 327039, 366349
+ *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey - 366349, 369268
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -51,8 +52,9 @@ public class CMOF202UMLHandler
 		if (EMOFExtendedMetaData.EXTENSION.equals(localName)
 			&& XMI2UMLResource.XMI_2_1_NS_URI.equals(helper.getURI(prefix))
 			&& attribs != null
-			&& (UML212UMLResource.UML_METAMODEL_NS_URI.equals(extender) || UML302UMLResource.UML_METAMODEL_NS_URI
-				.equals(extender)) || UMLPackage.eNS_URI.equals(extender)) {
+			&& (UML212UMLResource.UML_METAMODEL_NS_URI.equals(extender)
+				|| UML302UMLResource.UML_METAMODEL_NS_URI.equals(extender) || UMLPackage.eNS_URI
+					.equals(extender))) {
 
 			types.push(UML_EXTENSION_TYPE);
 		} else {
