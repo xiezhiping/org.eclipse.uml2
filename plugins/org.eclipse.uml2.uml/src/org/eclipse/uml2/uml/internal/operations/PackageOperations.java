@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 271470
  *   Kenn Hussey - 323181, 348433
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 369492
  *
  * $Id: PackageOperations.java,v 1.41 2010/09/28 21:02:15 khussey Exp $
  */
@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.UniqueEList;
 
@@ -215,39 +216,50 @@ public class PackageOperations
 
 				if (targetEAttribute.isMany()) {
 					@SuppressWarnings("unchecked")
-					EList<EEnumLiteral> copyValues = (EList<EEnumLiteral>) copyEObject
+					EList<Enumerator> copyValues = (EList<Enumerator>) copyEObject
 						.eGet(targetEAttribute);
 
 					if (eAttribute.isMany()) {
 						@SuppressWarnings("unchecked")
-						EList<EEnumLiteral> values = (EList<EEnumLiteral>) eObject
+						EList<Enumerator> values = (EList<Enumerator>) eObject
 							.eGet(eAttribute);
 
 						for (int i = 0, size = values.size(); i < size; i++) {
-							EEnumLiteral value = targetEEnum
+							EEnumLiteral targetEEnumLiteral = targetEEnum
 								.getEEnumLiteral(values.get(i).getName());
 
-							if (value != null) {
-								copyValues.add(value);
+							if (targetEEnumLiteral != null) {
+								copyValues
+									.add(targetEEnumLiteral.getInstance());
 							}
 						}
 					} else {
-						EEnumLiteral value = targetEEnum
-							.getEEnumLiteral(((EEnumLiteral) eObject
-								.eGet(eAttribute)).getName());
+						Enumerator value = (Enumerator) eObject
+							.eGet(eAttribute);
 
 						if (value != null) {
-							copyValues.add(value);
+							EEnumLiteral targetEEnumLiteral = targetEEnum
+								.getEEnumLiteral(value.getName());
+
+							if (targetEEnumLiteral != null) {
+								copyValues
+									.add(targetEEnumLiteral.getInstance());
+							}
 						}
 					}
 				} else {
-					EEnumLiteral value = targetEEnum
-						.getEEnumLiteral(((EEnumLiteral) (eAttribute.isMany()
-							? ((EList<?>) eObject.eGet(eAttribute)).get(0)
-							: eObject.eGet(eAttribute))).getName());
+					Enumerator value = (Enumerator) (eAttribute.isMany()
+						? ((EList<?>) eObject.eGet(eAttribute)).get(0)
+						: eObject.eGet(eAttribute));
 
 					if (value != null) {
-						copyEObject.eSet(targetEAttribute, value);
+						EEnumLiteral targetEEnumLiteral = targetEEnum
+							.getEEnumLiteral(value.getName());
+
+						if (targetEEnumLiteral != null) {
+							copyEObject.eSet(targetEAttribute,
+								targetEEnumLiteral.getInstance());
+						}
 					}
 				}
 			}
