@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+
+<!--
+ Copyright (c) 2012 CEA and others.
+ All rights reserved.   This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+ Contributors:
+   Christian W. Damus (CEA) - initial API and implementation
+
+-->
+
+<plugin>
+   <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <category
+            id="org.eclipse.uml2.uml.tests"
+            name="UML Test Constraints">
+      </category>
+      <constraintProvider
+            cache="true"
+            class="org.eclipse.uml2.uml.validation.DelegatingConstraintProvider"
+            mode="Batch">
+         <package
+               namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML">
+         </package>
+         <category path="org.eclipse.uml2.uml.tests"/>
+      </constraintProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.validation.constraintBindings">
+      <clientContext
+            id="org.eclipse.uml2.uml.tests.clientContext">
+         <selector
+               class="org.eclipse.uml2.uml.validation.tests.TestClientContextSelector">
+         </selector>
+      </clientContext>
+      <binding
+            context="org.eclipse.uml2.uml.tests.clientContext"
+            category="org.eclipse.uml2.uml.tests">
+      </binding>
+   </extension>
+
+</plugin>

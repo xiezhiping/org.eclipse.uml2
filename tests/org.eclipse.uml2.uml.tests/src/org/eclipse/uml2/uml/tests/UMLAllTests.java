@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,10 +7,12 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Christian W. Damus (CEA) - Bug 373643
  *
- * $Id: UMLAllTests.java,v 1.1 2006/02/21 16:32:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
+
+import org.eclipse.uml2.uml.validation.tests.UMLValidationTests;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -38,11 +40,12 @@ public class UMLAllTests
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Test suite() {
 		TestSuite suite = new UMLAllTests("UML Tests"); //$NON-NLS-1$
 		suite.addTest(UMLTests.suite());
+		suite.addTest(UMLValidationTests.suite());
 		return suite;
 	}
 
