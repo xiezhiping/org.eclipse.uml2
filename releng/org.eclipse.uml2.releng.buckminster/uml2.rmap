@@ -3,6 +3,8 @@
 
 	<locator pattern="^org\.eclipse\.uml2(?:\.releng(?:\..+)|\.license|\.build)$" searchPathRef="releng" />
 	<locator pattern="^org\.eclipse\.uml2(?:\..+)?$" searchPathRef="uml2" />
+
+	<locator pattern="^org\.eclipse\.emf\.validation(?:\..+)?$" searchPathRef="emf.validation" />
 	<!--
 	<locator pattern="^org\.eclipse\.emf(?:\..+)?$" searchPathRef="emf.base" failOnError="false" />
 	-->
@@ -133,28 +135,29 @@
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
-	<!--
+	</searchPath>
+
+	<searchPath name="emf.validation">
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=N))">
-			<uri format="{0}/modeling/emf/emf/updates/2.7">
+			<uri format="{0}/modeling/emf/updates/interim">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(!(|(build.type=N)(build.type=S)(build.type=R))))">
-			<uri format="{0}/modeling/emf/emf/updates/2.7">
+			<uri format="{0}/modeling/emf/updates/interim">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=S))">
-			<uri format="{0}/modeling/emf/emf/updates/2.7">
+			<uri format="{0}/modeling/emf/updates/milestones">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=R))">
-			<uri format="{0}/modeling/emf/emf/updates/2.7">
+			<uri format="{0}/modeling/emf/updates/releases">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
-	-->
 	</searchPath>
 
 	<searchPath name="eclipse.test">
@@ -193,10 +196,10 @@
 		</provider>
 	</searchPath>
 
-	<property key="build.type" value="I" />
+	<property key="build.type" value="S" />
 	<property key="eclipse.download" value="http://download.eclipse.org" />
 	<property key="git.clones.root" value="${user.home}/git" />
 	<property key="uml2.clone.root" value="${git.clones.root}/org.eclipse.uml2" />
-	<property key="resolve.target.platform" value="false" />
+	<property key="resolve.target.platform" value="true" />
 	<property key="source.repository.location" value="git://git.eclipse.org/gitroot/uml2/org.eclipse.uml2.git" />
 </rmap>
