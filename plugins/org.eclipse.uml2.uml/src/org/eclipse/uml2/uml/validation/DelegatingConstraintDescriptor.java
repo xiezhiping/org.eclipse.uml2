@@ -48,7 +48,7 @@ class DelegatingConstraintDescriptor
 		this.namespace = namespace;
 		this.target = target;
 		this.name = UMLPlugin.INSTANCE.getString(
-			"_UI_Validation_constraintName_", //$NON-NLS-1$
+			"_UI_Validation_constraintName", //$NON-NLS-1$
 			new Object[]{target.getName(), name});
 
 		StringBuilder buf = new StringBuilder();
@@ -72,7 +72,7 @@ class DelegatingConstraintDescriptor
 	}
 
 	public String getDescription() {
-		return UMLPlugin.INSTANCE.getString("_UI_Validation_constraintDesc_", //$NON-NLS-1$
+		return UMLPlugin.INSTANCE.getString("_UI_Validation_constraintDesc", //$NON-NLS-1$
 			new Object[]{getName()});
 	}
 
@@ -101,7 +101,7 @@ class DelegatingConstraintDescriptor
 	}
 
 	public String getMessagePattern() {
-		return UMLPlugin.INSTANCE.getString("_UI_Validation_violation_", //$NON-NLS-1$
+		return UMLPlugin.INSTANCE.getString("_UI_Validation_violation", //$NON-NLS-1$
 			new Object[]{getName()});
 	}
 
