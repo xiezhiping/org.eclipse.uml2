@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184
- *   Kenn Hussey (CEA) - 327039, 358792
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419
  *   Yann Tanguy (CEA) - 350402
  *
  */
@@ -63,6 +63,7 @@ import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
@@ -124,7 +125,20 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
+import org.eclipse.uml2.uml.resource.CMOF202UMLResource;
+import org.eclipse.uml2.uml.resource.CMOF2UMLExtendedMetaData;
+import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
+import org.eclipse.uml2.uml.resource.UML212UMLExtendedMetaData;
+import org.eclipse.uml2.uml.resource.UML212UMLResource;
+import org.eclipse.uml2.uml.resource.UML22UMLExtendedMetaData;
+import org.eclipse.uml2.uml.resource.UML22UMLResource;
+import org.eclipse.uml2.uml.resource.UML302UMLExtendedMetaData;
+import org.eclipse.uml2.uml.resource.UML302UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
+import org.eclipse.uml2.uml.resource.XMI212UMLResource;
+import org.eclipse.uml2.uml.resource.XMI222UMLResource;
+import org.eclipse.uml2.uml.resource.XMI2UMLExtendedMetaData;
+import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 
 /**
  * Utilities for working with UML elements and resources.
@@ -10263,6 +10277,72 @@ public class UMLUtil
 			.convert(Collections.singleton(ePackage), options, diagnostics,
 				context);
 		return packages;
+	}
+
+	/**
+	 * Initializes the registries for the specified resource set (or the global
+	 * registries if <code>null</code>) with the content type and extended
+	 * metadata registrations needed to work with the various supported versions
+	 * of UML, XMI, and CMOF.
+	 * 
+	 * @param resourceSet
+	 *            The resource set whose registries to initialize, or
+	 *            <code>null</code>.
+	 * @return The resource set (or <code>null</code>).
+	 * 
+	 * @since 4.0
+	 */
+	public static ResourceSet init(ResourceSet resourceSet) {
+		Map<String, Object> contentTypeToFactoryMap = (resourceSet == null
+			? Resource.Factory.Registry.INSTANCE
+			: resourceSet.getResourceFactoryRegistry())
+			.getContentTypeToFactoryMap();
+
+		contentTypeToFactoryMap.put(
+			UML302UMLResource.UML_3_0_0_CONTENT_TYPE_IDENTIFIER,
+			UML302UMLResource.Factory.INSTANCE);
+		contentTypeToFactoryMap.put(
+			UML212UMLResource.UML_2_1_0_CONTENT_TYPE_IDENTIFIER,
+			UML212UMLResource.Factory.INSTANCE);
+		contentTypeToFactoryMap.put(
+			UML22UMLResource.UML2_CONTENT_TYPE_IDENTIFIER,
+			UML22UMLResource.Factory.INSTANCE);
+		contentTypeToFactoryMap.put(
+			XMI2UMLResource.UML_CONTENT_TYPE_IDENTIFIER,
+			XMI2UMLResource.Factory.INSTANCE);
+		contentTypeToFactoryMap.put(
+			XMI2UMLResource.UML_2_4_CONTENT_TYPE_IDENTIFIER,
+			XMI2UMLResource.Factory.INSTANCE);
+		contentTypeToFactoryMap.put(
+			XMI222UMLResource.UML_2_2_CONTENT_TYPE_IDENTIFIER,
+			XMI222UMLResource.Factory.INSTANCE);
+		contentTypeToFactoryMap.put(
+			XMI212UMLResource.UML_2_1_1_CONTENT_TYPE_IDENTIFIER,
+			XMI212UMLResource.Factory.INSTANCE);
+		contentTypeToFactoryMap.put(
+			XMI212UMLResource.UML_2_1_CONTENT_TYPE_IDENTIFIER,
+			XMI212UMLResource.Factory.INSTANCE);
+		contentTypeToFactoryMap.put(
+			CMOF2UMLResource.CMOF_CONTENT_TYPE_IDENTIFIER,
+			CMOF2UMLResource.Factory.INSTANCE);
+		contentTypeToFactoryMap.put(
+			CMOF2UMLResource.CMOF_2_4_CONTENT_TYPE_IDENTIFIER,
+			CMOF2UMLResource.Factory.INSTANCE);
+		contentTypeToFactoryMap.put(
+			CMOF202UMLResource.CMOF_2_0_CONTENT_TYPE_IDENTIFIER,
+			CMOF202UMLResource.Factory.INSTANCE);
+
+		Map<URI, URI> uriMap = resourceSet == null
+			? URIConverter.URI_MAP
+			: resourceSet.getURIConverter().getURIMap();
+
+		uriMap.putAll(UML302UMLExtendedMetaData.getURIMap());
+		uriMap.putAll(UML212UMLExtendedMetaData.getURIMap());
+		uriMap.putAll(UML22UMLExtendedMetaData.getURIMap());
+		uriMap.putAll(XMI2UMLExtendedMetaData.getURIMap());
+		uriMap.putAll(CMOF2UMLExtendedMetaData.getURIMap());
+		
+		return resourceSet;
 	}
 
 }
