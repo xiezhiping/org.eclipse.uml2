@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
@@ -40,13 +41,16 @@ class DelegatingModelConstraint
 
 	private final EValidator delegate;
 
+	private final EValidator.SubstitutionLabelProvider labelProvider;
+
 	private final Method constraintMethod;
 
 	/**
 	 * Initializes me.
 	 */
 	DelegatingModelConstraint(String namespace, EValidator delegate,
-			EClass target, Method constraintMethod) {
+			EValidator.SubstitutionLabelProvider labelProvider, EClass target,
+			Method constraintMethod) {
 		// strip the type-qualifying part off of the validator method name
 		String name = constraintMethod.getName();
 		String expectedPrefix = String.format("validate%s_validate", //$NON-NLS-1$
@@ -58,6 +62,7 @@ class DelegatingModelConstraint
 		this.descriptor = new DelegatingConstraintDescriptor(namespace, target,
 			name);
 		this.delegate = delegate;
+		this.labelProvider = labelProvider;
 		this.constraintMethod = constraintMethod;
 	}
 
@@ -73,6 +78,10 @@ class DelegatingModelConstraint
 		final Map<Object, Object> contextMap = ctxAdapter.getContextMap();
 
 		try {
+			// pass the label provider (if any) to the validator
+			contextMap.put(EValidator.SubstitutionLabelProvider.class,
+				labelProvider);
+
 			boolean isOK = (Boolean) constraintMethod.invoke(delegate,
 				ctx.getTarget(), diagnostics, contextMap);
 

@@ -93,10 +93,13 @@ public class DelegatingConstraintProvider
 							UMLPlugin.INSTANCE.getSymbolicName(),
 							"No generated validator available for package: " + next)); //$NON-NLS-1$
 				} else {
+					EValidator.SubstitutionLabelProvider labelProvider = validatorProvider
+						.getSubstitutionLabelProvider(epackage);
+
 					try {
 						Iterable<? extends IModelConstraint> constraints = createConstraints(
 							config.getNamespaceIdentifier(), epackage,
-							validator);
+							validator, labelProvider);
 
 						if (!categories.isEmpty()) {
 							Category[] cats = categories
@@ -164,7 +167,8 @@ public class DelegatingConstraintProvider
 
 	private Iterable<? extends IModelConstraint> createConstraints(
 			final String namespace, final EPackage epackage,
-			final EValidator validator)
+			final EValidator validator,
+			final EValidator.SubstitutionLabelProvider labelProvider)
 			throws ConstraintExistsException {
 
 		final List<IModelConstraint> result = new java.util.ArrayList<IModelConstraint>();
@@ -185,7 +189,7 @@ public class DelegatingConstraintProvider
 					// framework doesn't handle them
 					if (eclass != null) {
 						result.add(new DelegatingModelConstraint(namespace,
-							validator, eclass, next));
+							validator, labelProvider, eclass, next));
 					}
 				}
 			}
