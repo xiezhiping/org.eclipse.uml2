@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184
- *   Kenn Hussey (CEA) - 327039, 358792, 364419
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350
  *   Yann Tanguy (CEA) - 350402
  *
  */
@@ -3307,16 +3307,12 @@ public class UMLUtil
 
 					if (default_ != null) {
 
-						if (type instanceof PrimitiveType
-							&& safeEquals(
-								"PrimitiveTypes::UnlimitedNatural", type.getQualifiedName())) {//$NON-NLS-1$
-
-							default_ = TypesFactory.eINSTANCE
-								.createFromString(
-									TypesPackage.Literals.UNLIMITED_NATURAL,
-									default_).toString();
-
+						if (isUnlimitedNatural(type)) {
+							default_ = TypesFactory.eINSTANCE.createFromString(
+								TypesPackage.Literals.UNLIMITED_NATURAL,
+								default_).toString();
 						}
+
 						eAttribute.setDefaultValueLiteral(default_);
 					}
 					
@@ -6631,6 +6627,33 @@ public class UMLUtil
 				property.setIsID(eAttribute.isID());
 
 				caseETypedElement(eAttribute);
+
+				String defaultValueLiteral = eAttribute
+					.getDefaultValueLiteral();
+
+				if (defaultValueLiteral != null) {
+					Type type = property.getType();
+					EClass eClass = null;
+
+					if (type instanceof Enumeration) {
+						eClass = UMLPackage.Literals.INSTANCE_VALUE;
+					} else if (isBoolean(type)) {
+						eClass = UMLPackage.Literals.LITERAL_BOOLEAN;
+					} else if (isInteger(type)) {
+						eClass = UMLPackage.Literals.LITERAL_INTEGER;
+					} else if (isReal(type)) {
+						eClass = UMLPackage.Literals.LITERAL_REAL;
+					} else if (isString(type)) {
+						eClass = UMLPackage.Literals.LITERAL_STRING;
+					} else if (isUnlimitedNatural(type)) {
+						eClass = UMLPackage.Literals.LITERAL_UNLIMITED_NATURAL;
+					}
+
+					if (eClass != null) {
+						property.createDefaultValue(null, type, eClass);
+						property.setDefault(defaultValueLiteral);
+					}
+				}
 
 				defaultCase(eAttribute);
 
@@ -10343,6 +10366,134 @@ public class UMLUtil
 		uriMap.putAll(CMOF2UMLExtendedMetaData.getURIMap());
 		
 		return resourceSet;
+	}
+
+	/**
+	 * Determines whether the specified type is a primitive type that classifies
+	 * Boolean values.
+	 * 
+	 * @param type
+	 *            The type in question.
+	 * @return <code>true</code> if the type is a Boolean primitive type;
+	 *         <code>false</code> otherwise.
+	 * 
+	 * @since 4.0
+	 */
+	public static boolean isBoolean(Type type) {
+
+		if (type instanceof PrimitiveType) {
+			String qualifiedName = type.getQualifiedName();
+
+			return "JavaPrimitiveTypes::boolean".equals(qualifiedName) //$NON-NLS-1$
+				|| "EcorePrimitiveTypes::EBoolean".equals(qualifiedName) //$NON-NLS-1$
+				|| "EcorePrimitiveTypes::EBooleanObject".equals(qualifiedName) //$NON-NLS-1$
+				|| "PrimitiveTypes::Boolean".equals(qualifiedName) //$NON-NLS-1$
+				|| "XMLPrimitiveTypes::Boolean".equals(qualifiedName) //$NON-NLS-1$
+				|| "XMLPrimitiveTypes::BooleanObject".equals(qualifiedName); //$NON-NLS-1$
+		}
+
+		return false;
+	}
+
+	/**
+	 * Determines whether the specified type is a primitive type that classifies
+	 * integer values.
+	 * 
+	 * @param type
+	 *            The type in question.
+	 * @return <code>true</code> if the type is an integer primitive type;
+	 *         <code>false</code> otherwise.
+	 * 
+	 * @since 4.0
+	 */
+	public static boolean isInteger(Type type) {
+
+		if (type instanceof PrimitiveType) {
+			String qualifiedName = type.getQualifiedName();
+
+			return "JavaPrimitiveTypes::int".equals(qualifiedName) //$NON-NLS-1$
+				|| "EcorePrimitiveTypes::EInt".equals(qualifiedName) //$NON-NLS-1$
+				|| "EcorePrimitiveTypes::EIntegerObject".equals(qualifiedName) //$NON-NLS-1$
+				|| "PrimitiveTypes::Integer".equals(qualifiedName) //$NON-NLS-1$
+				|| "XMLPrimitiveTypes::Int".equals(qualifiedName) //$NON-NLS-1$
+				|| "XMLPrimitiveTypes::Integer".equals(qualifiedName) //$NON-NLS-1$
+				|| "XMLPrimitiveTypes::IntObject".equals(qualifiedName); //$NON-NLS-1$
+		}
+
+		return false;
+	}
+
+	/**
+	 * Determines whether the specified type is a primitive type that classifies
+	 * real values.
+	 * 
+	 * @param type
+	 *            The type in question.
+	 * @return <code>true</code> if the type is a real primitive type;
+	 *         <code>false</code> otherwise.
+	 * 
+	 * @since 4.0
+	 */
+	public static boolean isReal(Type type) {
+
+		if (type instanceof PrimitiveType) {
+			String qualifiedName = type.getQualifiedName();
+
+			return "JavaPrimitiveTypes::double".equals(qualifiedName) //$NON-NLS-1$
+				|| "EcorePrimitiveTypes::EDouble".equals(qualifiedName) //$NON-NLS-1$
+				|| "EcorePrimitiveTypes::EDoubleObject".equals(qualifiedName) //$NON-NLS-1$
+				|| "PrimitiveTypes::Real".equals(qualifiedName) //$NON-NLS-1$
+				|| "XMLPrimitiveTypes::Double".equals(qualifiedName) //$NON-NLS-1$
+				|| "XMLPrimitiveTypes::DoubleObject".equals(qualifiedName); //$NON-NLS-1$
+		}
+
+		return false;
+	}
+
+	/**
+	 * Determines whether the specified type is a primitive type that classifies
+	 * string values.
+	 * 
+	 * @param type
+	 *            The type in question.
+	 * @return <code>true</code> if the type is a string primitive type;
+	 *         <code>false</code> otherwise.
+	 * 
+	 * @since 4.0
+	 */
+	public static boolean isString(Type type) {
+
+		if (type instanceof PrimitiveType) {
+			String qualifiedName = type.getQualifiedName();
+
+			return "EcorePrimitiveTypes::EString".equals(qualifiedName) //$NON-NLS-1$
+				|| "PrimitiveTypes::String".equals(qualifiedName) //$NON-NLS-1$
+				|| "XMLPrimitiveTypes::String".equals(qualifiedName); //$NON-NLS-1$
+		}
+
+		return false;
+	}
+
+	/**
+	 * Determines whether the specified type is a primitive type that classifies
+	 * unlimited natural values.
+	 * 
+	 * @param type
+	 *            The type in question.
+	 * @return <code>true</code> if the type is an unlimited natural primitive
+	 *         type; <code>false</code> otherwise.
+	 * 
+	 * @since 4.0
+	 */
+	public static boolean isUnlimitedNatural(Type type) {
+
+		if (type instanceof PrimitiveType) {
+			String qualifiedName = type.getQualifiedName();
+
+			return "PrimitiveTypes::UnlimitedNatural".equals(qualifiedName); //$NON-NLS-1$
+		}
+
+		return false;
 	}
 
 }
