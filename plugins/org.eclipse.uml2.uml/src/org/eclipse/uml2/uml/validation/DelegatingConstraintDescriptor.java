@@ -13,8 +13,11 @@ package org.eclipse.uml2.uml.validation;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.validation.model.ConstraintSeverity;
 import org.eclipse.emf.validation.model.EvaluationMode;
+import org.eclipse.emf.validation.preferences.EMFModelValidationPreferences;
 import org.eclipse.emf.validation.service.AbstractConstraintDescriptor;
 import org.eclipse.uml2.uml.UMLPlugin;
 
@@ -57,6 +60,9 @@ class DelegatingConstraintDescriptor
 			.append(target.getName());
 		buf.append('.').append(name);
 		this.id = buf.toString();
+		
+		// this public method call is safe because it's final in my superclass
+		setEnabled(!EMFModelValidationPreferences.isConstraintDisabled(this.id));
 	}
 
 	public String getName() {
