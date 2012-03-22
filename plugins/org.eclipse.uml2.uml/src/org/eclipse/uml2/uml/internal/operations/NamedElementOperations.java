@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2012 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 374878
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -361,9 +361,16 @@ public class NamedElementOperations
 	public static Namespace getNamespace(NamedElement namedElement) {
 		InternalEObject eInternalContainer = ((InternalEObject) namedElement)
 			.eInternalContainer();
-		return eInternalContainer instanceof Namespace
-			? (Namespace) eInternalContainer
-			: null;
+
+		if (eInternalContainer instanceof Namespace) {
+			Namespace namespace = (Namespace) eInternalContainer;
+
+			if (namespace.getMembers().contains(namedElement)) {
+				return namespace;
+			}
+		}
+
+		return null;
 	}
 
 	/**
