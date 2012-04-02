@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 CEA and others.
+ * Copyright (c) 2011, 2012 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 375553
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -16,7 +17,7 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
-import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.common.util.ECollections;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -98,13 +99,7 @@ public class EnumerationLiteralOperations
 	 */
 	public static EList<Classifier> getClassifiers(
 			EnumerationLiteral enumerationLiteral) {
-		EList<Classifier> classifiers = new UniqueEList.FastCompare<Classifier>();
-
-		Enumeration classifier = enumerationLiteral.getClassifier();
-
-		if (classifier != null) {
-			classifiers.add(classifier);
-		}
+		EList<Classifier> classifiers = ECollections.emptyEList();
 
 		return new UnionEObjectEList<Classifier>(
 			(InternalEObject) enumerationLiteral,
