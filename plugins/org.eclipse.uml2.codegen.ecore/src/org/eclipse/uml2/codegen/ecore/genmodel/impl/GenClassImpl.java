@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,8 +10,8 @@
  *   Kenn Hussey (Embarcadero Technologies) - 206636, 204200
  *   Lutz Wrage - 241411
  *   Kenn Hussey - 286329, 323181, 344908, 346183
+ *   Kenn Hussey (CEA) - 351777
  *
- * $Id: GenClassImpl.java,v 1.50 2011/05/18 02:59:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -1480,7 +1480,8 @@ public class GenClassImpl
 		GenOperation redefinedGenOperation = genOperation;
 
 		while (UML2GenModelUtil.isDuplicate(redefinedGenOperation)) {
-			List<GenOperation> redefinedGenOperations = UML2GenModelUtil.getRedefinedGenOperations(redefinedGenOperation);
+			List<GenOperation> redefinedGenOperations = UML2GenModelUtil
+				.getRedefinedGenOperations(redefinedGenOperation);
 
 			if (redefinedGenOperations.size() > 0) {
 				redefinedGenOperation = redefinedGenOperations.get(0);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2012 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 351774
+ *   Kenn Hussey (CEA) - 351774, 351777
  *
  */
 package org.eclipse.uml2.uml;
@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * AnÂ executableÂ nodeÂ isÂ anÂ abstractÂ classÂ forÂ activityÂ nodesÂ thatÂ mayÂ beÂ executed.Â ItÂ isÂ usedÂ asÂ anÂ attachmentÂ pointÂ forÂ exceptionÂ handlers.
+ * AnÊexecutableÊnodeÊisÊanÊabstractÊclassÊforÊactivityÊnodesÊthatÊmayÊbeÊexecuted.ÊItÊisÊusedÊasÊanÊattachmentÊpointÊforÊexceptionÊhandlers.
  * An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.
  * <!-- end-model-doc -->
  *

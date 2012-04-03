@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 CEA and others.
+ * Copyright (c) 2011, 2012 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 351777
  *
  */
 package org.eclipse.uml2.uml.profile.l2;
@@ -17,7 +18,7 @@ package org.eclipse.uml2.uml.profile.l2;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A specific kind of file that is not an Â«ExecutableÂ», Â«LibraryÂ», Â«ScriptÂ» or Â«SourceÂ». Subclass of Â«FileÂ».
+ * A specific kind of file that is not an ÇExecutableÈ, ÇLibraryÈ, ÇScriptÈ or ÇSourceÈ. Subclass of ÇFileÈ.
  * <!-- end-model-doc -->
  *
  *

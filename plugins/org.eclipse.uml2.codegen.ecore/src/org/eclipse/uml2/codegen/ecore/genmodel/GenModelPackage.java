@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,8 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 208016, 247980
  *   Kenn Hussey - 286329
+ *   Kenn Hussey (CEA) - 351777
  *
- * $Id: GenModelPackage.java,v 1.39 2010/04/29 21:00:52 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -949,6 +949,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL__CODE_FORMATTING = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__CODE_FORMATTING;
+
+	/**
+	 * The feature id for the '<em><b>Comment Formatting</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__COMMENT_FORMATTING = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__COMMENT_FORMATTING;
 
 	/**
 	 * The feature id for the '<em><b>Tests Directory</b></em>' attribute.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2012 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 351777
  *
  */
 package org.eclipse.uml2.uml.tests;
@@ -107,38 +107,41 @@ public class ActivityTest
 	 * @generated NOT
 	 */
 	public void testGetGroups() {
-		ActivityGroup ownedGroup = UMLFactory.eINSTANCE.createInterruptibleActivityRegion();
+		ActivityGroup ownedGroup = UMLFactory.eINSTANCE
+			.createInterruptibleActivityRegion();
 		getFixture().getOwnedGroups().add(ownedGroup);
-		
+
 		assertTrue(getFixture().getOwnedGroups().contains(ownedGroup));
 		assertTrue(getFixture().getGroups().contains(ownedGroup));
-		
+
 		getFixture().getGroups().remove(ownedGroup);
 
 		assertFalse(getFixture().getOwnedGroups().contains(ownedGroup));
 		assertFalse(getFixture().getGroups().contains(ownedGroup));
 
-		ActivityPartition partition = UMLFactory.eINSTANCE.createActivityPartition();
+		ActivityPartition partition = UMLFactory.eINSTANCE
+			.createActivityPartition();
 		getFixture().getPartitions().add(partition);
-		
+
 		assertTrue(getFixture().getPartitions().contains(partition));
 		assertTrue(getFixture().getOwnedGroups().contains(partition));
 		assertTrue(getFixture().getGroups().contains(partition));
-		
+
 		getFixture().getGroups().remove(partition);
 
 		assertFalse(getFixture().getPartitions().contains(partition));
 		assertFalse(getFixture().getOwnedGroups().contains(partition));
 		assertFalse(getFixture().getGroups().contains(partition));
 
-		StructuredActivityNode structuredNode = UMLFactory.eINSTANCE.createStructuredActivityNode();
+		StructuredActivityNode structuredNode = UMLFactory.eINSTANCE
+			.createStructuredActivityNode();
 		getFixture().getStructuredNodes().add(structuredNode);
-		
+
 		assertTrue(getFixture().getStructuredNodes().contains(structuredNode));
 		assertTrue(getFixture().getGroups().contains(structuredNode));
-		
+
 		getFixture().getGroups().remove(structuredNode);
-		
+
 		assertFalse(getFixture().getStructuredNodes().contains(structuredNode));
 		assertFalse(getFixture().getGroups().contains(structuredNode));
 	}
@@ -153,23 +156,24 @@ public class ActivityTest
 	public void testGetNodes() {
 		ActivityNode ownedNode = UMLFactory.eINSTANCE.createCentralBufferNode();
 		getFixture().getOwnedNodes().add(ownedNode);
-		
+
 		assertTrue(getFixture().getOwnedNodes().contains(ownedNode));
 		assertTrue(getFixture().getNodes().contains(ownedNode));
-		
+
 		getFixture().getNodes().remove(ownedNode);
 
 		assertFalse(getFixture().getOwnedNodes().contains(ownedNode));
 		assertFalse(getFixture().getNodes().contains(ownedNode));
 
-		StructuredActivityNode structuredNode = UMLFactory.eINSTANCE.createStructuredActivityNode();
+		StructuredActivityNode structuredNode = UMLFactory.eINSTANCE
+			.createStructuredActivityNode();
 		getFixture().getStructuredNodes().add(structuredNode);
-		
+
 		assertTrue(getFixture().getStructuredNodes().contains(structuredNode));
 		assertTrue(getFixture().getNodes().contains(structuredNode));
-		
+
 		getFixture().getNodes().remove(structuredNode);
-		
+
 		assertFalse(getFixture().getStructuredNodes().contains(structuredNode));
 		assertFalse(getFixture().getNodes().contains(structuredNode));
 	}

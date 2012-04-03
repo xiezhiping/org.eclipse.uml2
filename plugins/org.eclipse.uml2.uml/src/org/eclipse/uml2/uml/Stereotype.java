@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2012 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 351777
  *
- * $Id: Stereotype.java,v 1.13 2009/08/12 21:05:19 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -95,7 +94,7 @@ public interface Stereotype
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Where a stereotypeâ€™s property is an association end for an association other than a kind of extension, and the other end is not a stereotype, the other end must be owned by the association itself.
+	 * Where a stereotypeÕs property is an association end for an association other than a kind of extension, and the other end is not a stereotype, the other end must be owned by the association itself.
 	 * ownedAttribute
 	 * ->select(association->notEmpty() and not association.oclIsKindOf(Extension) and not type.oclIsKindOf(Stereotype))
 	 * ->forAll(opposite.owner = association)

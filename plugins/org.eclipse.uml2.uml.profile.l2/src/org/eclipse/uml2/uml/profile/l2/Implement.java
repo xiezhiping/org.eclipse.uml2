@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 CEA and others.
+ * Copyright (c) 2011, 2012 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 351777
  *
  */
 package org.eclipse.uml2.uml.profile.l2;
@@ -24,7 +25,7 @@ import org.eclipse.uml2.uml.Component;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A component definition that is not intended to have a specification itself. Rather, it is an implementation for a separate Â«SpecificationÂ» to which it has a Dependency.
+ * A component definition that is not intended to have a specification itself. Rather, it is an implementation for a separate ÇSpecificationÈ to which it has a Dependency.
  * <!-- end-model-doc -->
  *
  * <p>

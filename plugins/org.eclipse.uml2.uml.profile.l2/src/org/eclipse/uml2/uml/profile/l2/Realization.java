@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 CEA and others.
+ * Copyright (c) 2011, 2012 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 351777
  *
  */
 package org.eclipse.uml2.uml.profile.l2;
@@ -24,7 +25,7 @@ import org.eclipse.uml2.uml.Classifier;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A classifier that specifies a domain of objects and that also defines the physical implementation of those objects. For example, a Component stereotyped by Â«realizationÂ» will only have realizing Classifiers that implement behavior specified by a separate Â«SpecificationÂ» Component. See Â«specificationÂ». This differs from Â«ImplementationClassÂ» because an Â«ImplementationClassÂ» is a realization of a Class that can have features such as attributes and methods that are useful to system designers.
+ * A classifier that specifies a domain of objects and that also defines the physical implementation of those objects. For example, a Component stereotyped by ÇrealizationÈ will only have realizing Classifiers that implement behavior specified by a separate ÇSpecificationÈ Component. See ÇspecificationÈ. This differs from ÇImplementationClassÈ because an ÇImplementationClassÈ is a realization of a Class that can have features such as attributes and methods that are useful to system designers.
  * <!-- end-model-doc -->
  *
  * <p>
