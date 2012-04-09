@@ -116,7 +116,7 @@
 
 	<searchPath name="emf">
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=N))">
-			<uri format="{0}/modeling/emf/emf/updates/2.8-I-builds">
+			<uri format="{0}/modeling/emf/emf/updates/nightly">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
