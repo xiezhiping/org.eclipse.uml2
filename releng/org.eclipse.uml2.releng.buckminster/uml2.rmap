@@ -13,7 +13,7 @@
 	<locator pattern="^org\.eclipse\.test$" searchPathRef="eclipse.test" />
 	<locator pattern="^org\.eclipse\.ant\.optional\.junit$" searchPathRef="eclipse.test" />
 
-	<locator searchPathRef="platform" />
+	<locator searchPathRef="platform35" />
 
 	<searchPath name="uml2">
 		<provider componentTypes="osgi.bundle" readerType="git" source="true">
@@ -173,7 +173,30 @@
 		</provider>
 	</searchPath>
 
-	<searchPath name="platform">
+	<searchPath name="platform35">
+		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=N))">
+			<uri format="{0}/eclipse/updates/3.5">
+				<bc:propertyRef key="eclipse.download" />
+			</uri>
+		</provider>
+		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(!(|(build.type=N)(build.type=S)(build.type=R))))">
+			<uri format="{0}/eclipse/updates/3.5">
+				<bc:propertyRef key="eclipse.download" />
+			</uri>
+		</provider>
+		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=S))">
+			<uri format="{0}/eclipse/updates/3.5">
+				<bc:propertyRef key="eclipse.download" />
+			</uri>
+		</provider>
+		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=R))">
+			<uri format="{0}/eclipse/updates/3.5">
+				<bc:propertyRef key="eclipse.download" />
+			</uri>
+		</provider>
+	</searchPath>
+
+	<searchPath name="platform38">
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=N))">
 			<uri format="{0}/eclipse/updates/3.8-I-builds">
 				<bc:propertyRef key="eclipse.download" />
