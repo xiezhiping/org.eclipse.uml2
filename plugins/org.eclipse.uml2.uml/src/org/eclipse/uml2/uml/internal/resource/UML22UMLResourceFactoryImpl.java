@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2012 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 364419
  * 
- * $Id: UML22UMLResourceFactoryImpl.java,v 1.7 2006/12/14 15:49:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.mapping.ecore2xml.Ecore2XMLPackage;
 import org.eclipse.emf.mapping.ecore2xml.Ecore2XMLRegistry;
 import org.eclipse.emf.mapping.ecore2xml.impl.Ecore2XMLRegistryImpl;
+import org.eclipse.emf.mapping.ecore2xml.util.Ecore2XMLResource;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.UML22UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.UML22UMLResource;
@@ -64,6 +65,12 @@ public class UML22UMLResourceFactoryImpl
 
 		ResourceSet resourceSet = new ResourceSetImpl();
 		resourceSet.setPackageRegistry(ePackageRegistry);
+
+		resourceSet
+			.getResourceFactoryRegistry()
+			.getExtensionToFactoryMap()
+			.put(Ecore2XMLResource.FILE_EXTENSION,
+				Ecore2XMLResource.Factory.INSTANCE);
 
 		Ecore2XMLRegistry ecore2xmlRegistry = new Ecore2XMLRegistryImpl(
 			Ecore2XMLRegistry.INSTANCE);
