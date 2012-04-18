@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMLContentHandlerImpl;
 import org.eclipse.uml2.types.TypesPackage;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
@@ -41,6 +42,84 @@ import org.eclipse.uml2.uml.util.UMLUtil;
  */
 public class ResourcesUtil
 		extends UMLUtil {
+
+	private static final ContentHandler XMI_CONTENT_HANDLER = new XMLContentHandlerImpl.XMI();
+
+	private static final ContentHandler UML2_1_0_0_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
+		UML22UMLResource.UML2_CONTENT_TYPE_IDENTIFIER,
+		new String[]{"uml2"}, //$NON-NLS-1$
+		RootXMLContentHandlerImpl.XMI_KIND,
+		UML22UMLResource.UML2_METAMODEL_NS_URI, null);
+
+	private static final ContentHandler UML2_2_0_0_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
+		UMLResource.UML_2_0_0_CONTENT_TYPE_IDENTIFIER,
+		new String[]{"uml"}, //$NON-NLS-1$
+		RootXMLContentHandlerImpl.XMI_KIND,
+		"http://www.eclipse.org/uml2/2.0.0/UML", null); //$NON-NLS-1$
+
+	private static final ContentHandler UML2_2_1_0_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
+		UMLResource.UML_2_1_0_CONTENT_TYPE_IDENTIFIER,
+		new String[]{"uml"}, //$NON-NLS-1$
+		RootXMLContentHandlerImpl.XMI_KIND,
+		UML212UMLResource.UML_METAMODEL_NS_URI, null);
+
+	private static final ContentHandler UML2_3_0_0_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
+		UMLResource.UML_3_0_0_CONTENT_TYPE_IDENTIFIER,
+		new String[]{"uml"}, //$NON-NLS-1$
+		RootXMLContentHandlerImpl.XMI_KIND,
+		UML302UMLResource.UML_METAMODEL_NS_URI, null);
+
+	private static final ContentHandler UML2_4_0_0_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
+		UMLResource.UML_4_0_0_CONTENT_TYPE_IDENTIFIER, new String[]{"uml"}, //$NON-NLS-1$
+		RootXMLContentHandlerImpl.XMI_KIND, UMLPackage.eNS_URI, null);
+
+	private static final ContentHandler OMG_2_1_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
+		XMI2UMLResource.UML_2_1_CONTENT_TYPE_IDENTIFIER,
+		new String[]{"xmi"}, //$NON-NLS-1$
+		RootXMLContentHandlerImpl.XMI_KIND,
+		XMI2UMLResource.UML_METAMODEL_2_1_NS_URI, null);
+
+	private static final ContentHandler OMG_2_1_1_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
+		XMI2UMLResource.UML_2_1_1_CONTENT_TYPE_IDENTIFIER,
+		new String[]{"xmi"}, //$NON-NLS-1$
+		RootXMLContentHandlerImpl.XMI_KIND,
+		XMI2UMLResource.UML_METAMODEL_2_1_1_NS_URI, null);
+
+	private static final ContentHandler OMG_2_2_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
+		XMI2UMLResource.UML_2_2_CONTENT_TYPE_IDENTIFIER,
+		new String[]{"xmi"}, //$NON-NLS-1$
+		RootXMLContentHandlerImpl.XMI_KIND,
+		XMI2UMLResource.UML_METAMODEL_2_2_NS_URI, null);
+
+	private static final ContentHandler OMG_2_4_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
+		XMI2UMLResource.UML_2_4_CONTENT_TYPE_IDENTIFIER,
+		new String[]{"xmi"}, //$NON-NLS-1$
+		RootXMLContentHandlerImpl.XMI_KIND,
+		XMI2UMLResource.UML_METAMODEL_2_4_NS_URI, null);
+
+	private static final ContentHandler OMG_2_4_1_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
+		XMI2UMLResource.UML_2_4_1_CONTENT_TYPE_IDENTIFIER,
+		new String[]{"xmi"}, //$NON-NLS-1$
+		RootXMLContentHandlerImpl.XMI_KIND,
+		XMI2UMLResource.UML_METAMODEL_2_4_1_NS_URI, null);
+
+	private static final ContentHandler CMOF_2_0_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
+		CMOF2UMLResource.CMOF_2_0_CONTENT_TYPE_IDENTIFIER,
+		new String[]{"cmof", "xmi"}, //$NON-NLS-1$ //$NON-NLS-2$
+		RootXMLContentHandlerImpl.XMI_KIND,
+		CMOF2UMLResource.CMOF_2_0_METAMODEL_NS_URI, null);
+
+	private static final ContentHandler CMOF_2_4_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
+		CMOF2UMLResource.CMOF_2_4_CONTENT_TYPE_IDENTIFIER,
+		new String[]{"cmof", "xmi"}, //$NON-NLS-1$ //$NON-NLS-2$
+		RootXMLContentHandlerImpl.XMI_KIND,
+		CMOF2UMLResource.CMOF_2_4_METAMODEL_NS_URI, null);
+
+	private static final ContentHandler CMOF_2_4_1_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
+		CMOF2UMLResource.CMOF_2_4_1_CONTENT_TYPE_IDENTIFIER,
+		new String[]{"cmof", "xmi"}, //$NON-NLS-1$ //$NON-NLS-2$
+		RootXMLContentHandlerImpl.XMI_KIND,
+		CMOF2UMLResource.CMOF_2_4_1_METAMODEL_NS_URI, null);
 
 	/**
 	 * Initializes the registries for the specified resource set (or the global
@@ -120,68 +199,61 @@ public class ResourcesUtil
 				.getContentHandlers();
 		}
 
-		String[] extensions = new String[]{"uml2"}; //$NON-NLS-1$
+		if (!contentHandlers.contains(XMI_CONTENT_HANDLER)) {
+			contentHandlers.add(XMI_CONTENT_HANDLER);
+		}
 
-		contentHandlers.add(new RootXMLContentHandlerImpl(
-			UML22UMLResource.UML2_CONTENT_TYPE_IDENTIFIER, extensions,
-			RootXMLContentHandlerImpl.XMI_KIND,
-			UML22UMLResource.UML2_METAMODEL_NS_URI, null));
+		if (!contentHandlers.contains(UML2_1_0_0_CONTENT_HANDLER)) {
+			contentHandlers.add(UML2_1_0_0_CONTENT_HANDLER);
+		}
 
-		extensions = new String[]{"uml"}; //$NON-NLS-1$
+		if (!contentHandlers.contains(UML2_2_0_0_CONTENT_HANDLER)) {
+			contentHandlers.add(UML2_2_0_0_CONTENT_HANDLER);
+		}
 
-		contentHandlers.add(new RootXMLContentHandlerImpl(
-			UMLResource.UML_2_0_0_CONTENT_TYPE_IDENTIFIER, extensions,
-			RootXMLContentHandlerImpl.XMI_KIND,
-			"http://www.eclipse.org/uml2/2.0.0/UML", null)); //$NON-NLS-1$
-		contentHandlers.add(new RootXMLContentHandlerImpl(
-			UMLResource.UML_2_1_0_CONTENT_TYPE_IDENTIFIER, extensions,
-			RootXMLContentHandlerImpl.XMI_KIND,
-			UML212UMLResource.UML_METAMODEL_NS_URI, null));
-		contentHandlers.add(new RootXMLContentHandlerImpl(
-			UMLResource.UML_3_0_0_CONTENT_TYPE_IDENTIFIER, extensions,
-			RootXMLContentHandlerImpl.XMI_KIND,
-			UML302UMLResource.UML_METAMODEL_NS_URI, null));
-		contentHandlers.add(new RootXMLContentHandlerImpl(
-			UMLResource.UML_4_0_0_CONTENT_TYPE_IDENTIFIER, extensions,
-			RootXMLContentHandlerImpl.XMI_KIND, UMLPackage.eNS_URI, null));
+		if (!contentHandlers.contains(UML2_2_1_0_CONTENT_HANDLER)) {
+			contentHandlers.add(UML2_2_1_0_CONTENT_HANDLER);
+		}
 
-		extensions = new String[]{"xmi"}; //$NON-NLS-1$
+		if (!contentHandlers.contains(UML2_3_0_0_CONTENT_HANDLER)) {
+			contentHandlers.add(UML2_3_0_0_CONTENT_HANDLER);
+		}
 
-		contentHandlers.add(new RootXMLContentHandlerImpl(
-			XMI2UMLResource.UML_2_1_CONTENT_TYPE_IDENTIFIER, extensions,
-			RootXMLContentHandlerImpl.XMI_KIND,
-			XMI2UMLResource.UML_METAMODEL_2_1_NS_URI, null));
-		contentHandlers.add(new RootXMLContentHandlerImpl(
-			XMI2UMLResource.UML_2_1_1_CONTENT_TYPE_IDENTIFIER, extensions,
-			RootXMLContentHandlerImpl.XMI_KIND,
-			XMI2UMLResource.UML_METAMODEL_2_1_1_NS_URI, null));
-		contentHandlers.add(new RootXMLContentHandlerImpl(
-			XMI2UMLResource.UML_2_2_CONTENT_TYPE_IDENTIFIER, extensions,
-			RootXMLContentHandlerImpl.XMI_KIND,
-			XMI2UMLResource.UML_METAMODEL_2_2_NS_URI, null));
-		contentHandlers.add(new RootXMLContentHandlerImpl(
-			XMI2UMLResource.UML_2_4_CONTENT_TYPE_IDENTIFIER, extensions,
-			RootXMLContentHandlerImpl.XMI_KIND,
-			XMI2UMLResource.UML_METAMODEL_2_4_NS_URI, null));
-		contentHandlers.add(new RootXMLContentHandlerImpl(
-			XMI2UMLResource.UML_2_4_1_CONTENT_TYPE_IDENTIFIER, extensions,
-			RootXMLContentHandlerImpl.XMI_KIND,
-			XMI2UMLResource.UML_METAMODEL_2_4_1_NS_URI, null));
+		if (!contentHandlers.contains(UML2_4_0_0_CONTENT_HANDLER)) {
+			contentHandlers.add(UML2_4_0_0_CONTENT_HANDLER);
+		}
 
-		extensions = new String[]{"cmof", "xmi"}; //$NON-NLS-1$
+		if (!contentHandlers.contains(OMG_2_1_CONTENT_HANDLER)) {
+			contentHandlers.add(OMG_2_1_CONTENT_HANDLER);
+		}
 
-		contentHandlers.add(new RootXMLContentHandlerImpl(
-			CMOF2UMLResource.CMOF_2_0_CONTENT_TYPE_IDENTIFIER, extensions,
-			RootXMLContentHandlerImpl.XMI_KIND,
-			CMOF2UMLResource.CMOF_2_0_METAMODEL_NS_URI, null));
-		contentHandlers.add(new RootXMLContentHandlerImpl(
-			CMOF2UMLResource.CMOF_2_4_CONTENT_TYPE_IDENTIFIER, extensions,
-			RootXMLContentHandlerImpl.XMI_KIND,
-			CMOF2UMLResource.CMOF_2_4_METAMODEL_NS_URI, null));
-		contentHandlers.add(new RootXMLContentHandlerImpl(
-			CMOF2UMLResource.CMOF_2_4_1_CONTENT_TYPE_IDENTIFIER, extensions,
-			RootXMLContentHandlerImpl.XMI_KIND,
-			CMOF2UMLResource.CMOF_2_4_1_METAMODEL_NS_URI, null));
+		if (!contentHandlers.contains(OMG_2_1_1_CONTENT_HANDLER)) {
+			contentHandlers.add(OMG_2_1_1_CONTENT_HANDLER);
+		}
+
+		if (!contentHandlers.contains(OMG_2_2_CONTENT_HANDLER)) {
+			contentHandlers.add(OMG_2_2_CONTENT_HANDLER);
+		}
+
+		if (!contentHandlers.contains(OMG_2_4_CONTENT_HANDLER)) {
+			contentHandlers.add(OMG_2_4_CONTENT_HANDLER);
+		}
+
+		if (!contentHandlers.contains(OMG_2_4_1_CONTENT_HANDLER)) {
+			contentHandlers.add(OMG_2_4_1_CONTENT_HANDLER);
+		}
+
+		if (!contentHandlers.contains(CMOF_2_0_CONTENT_HANDLER)) {
+			contentHandlers.add(CMOF_2_0_CONTENT_HANDLER);
+		}
+
+		if (!contentHandlers.contains(CMOF_2_4_CONTENT_HANDLER)) {
+			contentHandlers.add(CMOF_2_4_CONTENT_HANDLER);
+		}
+
+		if (!contentHandlers.contains(CMOF_2_4_1_CONTENT_HANDLER)) {
+			contentHandlers.add(CMOF_2_4_1_CONTENT_HANDLER);
+		}
 
 		(resourceSet == null
 			? Resource.Factory.Registry.INSTANCE
