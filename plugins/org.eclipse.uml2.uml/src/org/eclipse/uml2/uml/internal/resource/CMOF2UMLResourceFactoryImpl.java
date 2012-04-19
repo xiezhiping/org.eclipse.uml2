@@ -58,6 +58,8 @@ public class CMOF2UMLResourceFactoryImpl
 		EPackage.Registry ePackageRegistry = new EPackageRegistryImpl(
 			EPackage.Registry.INSTANCE);
 
+		ePackageRegistry.put(Ecore2XMLPackage.eNS_URI,
+			Ecore2XMLPackage.eINSTANCE);
 		ePackageRegistry.put(CMOF2UMLResource.CMOF_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
 		ePackageRegistry.put(CMOF2UMLResource.CMOF_2_4_METAMODEL_NS_URI,

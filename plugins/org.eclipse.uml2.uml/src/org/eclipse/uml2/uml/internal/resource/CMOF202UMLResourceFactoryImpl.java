@@ -58,8 +58,12 @@ public class CMOF202UMLResourceFactoryImpl
 
 		EPackage.Registry ePackageRegistry = new EPackageRegistryImpl(
 			EPackage.Registry.INSTANCE);
+
+		ePackageRegistry.put(Ecore2XMLPackage.eNS_URI,
+			Ecore2XMLPackage.eINSTANCE);
 		ePackageRegistry.put(CMOF2UMLResource.CMOF_2_0_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
+
 		ePackageRegistry
 			.put(
 				"platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore", UMLPackage.eINSTANCE); //$NON-NLS-1$

@@ -77,9 +77,10 @@ public class XMI212UMLResourceFactoryImpl
 		EPackage.Registry ePackageRegistry = new EPackageRegistryImpl(
 			EPackage.Registry.INSTANCE);
 
+		ePackageRegistry.put(Ecore2XMLPackage.eNS_URI,
+			Ecore2XMLPackage.eINSTANCE);
 		ePackageRegistry.put(XMI2UMLResource.UML_METAMODEL_2_1_NS_URI,
 			UMLPackage.eINSTANCE);
-
 		ePackageRegistry.put(XMI2UMLResource.UML_METAMODEL_2_1_1_NS_URI,
 			UMLPackage.eINSTANCE);
 

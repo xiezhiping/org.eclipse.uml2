@@ -65,6 +65,9 @@ public class UML302UMLResourceFactoryImpl
 
 		EPackage.Registry ePackageRegistry = new EPackageRegistryImpl(
 			EPackage.Registry.INSTANCE);
+
+		ePackageRegistry.put(Ecore2XMLPackage.eNS_URI,
+			Ecore2XMLPackage.eINSTANCE);
 		ePackageRegistry.put(UML302UMLResource.UML_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
 
