@@ -40,7 +40,7 @@ import org.eclipse.uml2.uml.util.UMLUtil;
 /**
  * @since 4.0
  */
-public class ResourcesUtil
+public class UMLResourcesUtil
 		extends UMLUtil {
 
 	private static final ContentHandler XMI_CONTENT_HANDLER = new XMLContentHandlerImpl.XMI();
