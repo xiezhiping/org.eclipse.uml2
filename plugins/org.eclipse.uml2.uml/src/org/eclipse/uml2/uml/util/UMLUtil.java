@@ -10316,6 +10316,12 @@ public class UMLUtil
 	 * @since 4.0
 	 */
 	public static ResourceSet init(ResourceSet resourceSet) {
+		(resourceSet == null
+			? Resource.Factory.Registry.INSTANCE
+			: resourceSet.getResourceFactoryRegistry())
+			.getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION,
+				UMLResource.Factory.INSTANCE);
+		
 		Map<String, Object> contentTypeToFactoryMap = (resourceSet == null
 			? Resource.Factory.Registry.INSTANCE
 			: resourceSet.getResourceFactoryRegistry())
