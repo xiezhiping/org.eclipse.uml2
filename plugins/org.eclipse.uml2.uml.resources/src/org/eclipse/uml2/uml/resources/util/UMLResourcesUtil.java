@@ -187,6 +187,16 @@ public class UMLResourcesUtil
 
 		if (resourceSet == null) {
 			contentHandlers = ContentHandler.Registry.INSTANCE
+				.get(ContentHandler.Registry.LOW_PRIORITY);
+
+			if (contentHandlers == null
+				|| !contentHandlers.contains(XMI_CONTENT_HANDLER)) {
+
+				ContentHandler.Registry.INSTANCE.put(
+					ContentHandler.Registry.LOW_PRIORITY, XMI_CONTENT_HANDLER);
+			}
+
+			contentHandlers = ContentHandler.Registry.INSTANCE
 				.get(ContentHandler.Registry.NORMAL_PRIORITY);
 
 			if (contentHandlers == null) {
@@ -197,10 +207,6 @@ public class UMLResourcesUtil
 		} else {
 			contentHandlers = resourceSet.getURIConverter()
 				.getContentHandlers();
-		}
-
-		if (!contentHandlers.contains(XMI_CONTENT_HANDLER)) {
-			contentHandlers.add(XMI_CONTENT_HANDLER);
 		}
 
 		if (!contentHandlers.contains(UML2_1_0_0_CONTENT_HANDLER)) {
@@ -253,6 +259,12 @@ public class UMLResourcesUtil
 
 		if (!contentHandlers.contains(CMOF_2_4_1_CONTENT_HANDLER)) {
 			contentHandlers.add(CMOF_2_4_1_CONTENT_HANDLER);
+		}
+
+		if (resourceSet != null
+			&& !contentHandlers.contains(XMI_CONTENT_HANDLER)) {
+
+			contentHandlers.add(XMI_CONTENT_HANDLER);
 		}
 
 		(resourceSet == null
