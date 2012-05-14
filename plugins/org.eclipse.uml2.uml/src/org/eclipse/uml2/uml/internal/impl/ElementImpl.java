@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2012 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,10 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey - 286329, 323181, 335125
  *   Kenn Hussey (CEA) - 327039
  *
- * $Id: ElementImpl.java,v 1.44 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -816,7 +815,7 @@ public abstract class ElementImpl
 	 * @generated NOT
 	 */
 	protected CacheAdapter getCacheAdapter() {
-		return CacheAdapter.INSTANCE;
+		return CacheAdapter.getInstance();
 	}
 
 	/**

@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
- *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184
+ *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
  *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350
  *   Yann Tanguy (CEA) - 350402
  *
@@ -212,7 +212,7 @@ public class UMLUtil
 		public EObject applyStereotype(Element element, EClass definition) {
 			EObject stereotypeApplication = EcoreUtil.create(definition);
 
-			CacheAdapter.INSTANCE.adapt(stereotypeApplication);
+			CacheAdapter.getInstance().adapt(stereotypeApplication);
 
 			EList<EObject> containmentList = getContainmentList(element,
 				definition);

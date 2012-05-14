@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2004, 2012 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 220065
+ *   Kenn Hussey - 335125
  *
- * $Id: CacheAdapter.java,v 1.26 2009/03/13 20:41:16 jbruck Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -116,7 +116,32 @@ public class CacheAdapter
 		}
 	}
 
+	/**
+	 * @deprecated
+	 * @see CacheAdapter#getInstance()
+	 */
 	public static final CacheAdapter INSTANCE = createCacheAdapter();
+
+	protected static final ThreadLocal<CacheAdapter> THREAD_LOCAL = System
+		.getProperty("org.eclipse.uml2.common.util.CacheAdapter.ThreadLocal") != null //$NON-NLS-1$
+		? new ThreadLocal<CacheAdapter>() {
+
+			@Override
+			protected CacheAdapter initialValue() {
+				return createCacheAdapter();
+			}
+
+		}
+		: null;
+
+	/**
+	 * @since 1.7
+	 */
+	public static CacheAdapter getInstance() {
+		return THREAD_LOCAL == null
+			? INSTANCE
+			: THREAD_LOCAL.get();
+	}
 
 	private static CacheAdapter createCacheAdapter() {
 		CacheAdapter cacheAdapter = UML2Util
