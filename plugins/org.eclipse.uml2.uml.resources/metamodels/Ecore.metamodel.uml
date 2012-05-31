@@ -193,7 +193,7 @@
         </ownedParameter>
       </ownedOperation>
       <nestedClassifier xmi:type="uml:Class" xmi:id="EClassifier-Wildcard" name="Wildcard"/>
-      <nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="EClassifier-EJavaClass_Wildcard" name="EJavaClass_Wildcard" visibility="private">
+      <nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="EClassifier-EJavaClass_Wildcard" name="EJavaClass_Wildcard">
         <templateBinding xmi:id="EClassifier-EJavaClass_Wildcard-_templateBinding.0" signature="EJavaClass-_ownedElement.0">
           <parameterSubstitution xmi:id="EClassifier-EJavaClass_Wildcard-_templateBinding.0-_parameterSubstitution.0" actual="EClassifier-Wildcard" formal="EJavaClass-_ownedElement.0-_ownedParameter.0"/>
         </templateBinding>
@@ -427,12 +427,12 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EObject-eUnset-feature-_lowerValue"/>
         </ownedParameter>
       </ownedOperation>
-      <nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="EObject-EEList_EObject" name="EEList_EObject" visibility="private">
+      <nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="EObject-EEList_EObject" name="EEList_EObject">
         <templateBinding xmi:id="EObject-EEList_EObject-_templateBinding.0" signature="EEList-_ownedElement.0">
           <parameterSubstitution xmi:id="EObject-EEList_EObject-_templateBinding.0-_parameterSubstitution.0" actual="EObject" formal="EEList-_ownedElement.0-_ownedParameter.0"/>
         </templateBinding>
       </nestedClassifier>
-      <nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="EObject-ETreeIterator_EObject" name="ETreeIterator_EObject" visibility="private">
+      <nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="EObject-ETreeIterator_EObject" name="ETreeIterator_EObject">
         <templateBinding xmi:id="EObject-ETreeIterator_EObject-_templateBinding.0" signature="ETreeIterator-_ownedElement.0">
           <parameterSubstitution xmi:id="EObject-ETreeIterator_EObject-_templateBinding.0-_parameterSubstitution.0" actual="EObject" formal="ETreeIterator-_ownedElement.0-_ownedParameter.0"/>
         </templateBinding>
@@ -577,7 +577,7 @@
         </ownedParameter>
       </ownedOperation>
       <nestedClassifier xmi:type="uml:Class" xmi:id="EStructuralFeature-Wildcard" name="Wildcard"/>
-      <nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="EStructuralFeature-EJavaClass_Wildcard" name="EJavaClass_Wildcard" visibility="private">
+      <nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="EStructuralFeature-EJavaClass_Wildcard" name="EJavaClass_Wildcard">
         <templateBinding xmi:id="EStructuralFeature-EJavaClass_Wildcard-_templateBinding.0" signature="EJavaClass-_ownedElement.0">
           <parameterSubstitution xmi:id="EStructuralFeature-EJavaClass_Wildcard-_templateBinding.0-_parameterSubstitution.0" actual="EStructuralFeature-Wildcard" formal="EJavaClass-_ownedElement.0-_ownedParameter.0"/>
         </templateBinding>
@@ -732,122 +732,122 @@
       <ownedEnd xmi:id="_packagedElement.58-_ownedEnd.0" type="EAttribute" association="_packagedElement.58"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.59" visibility="private" memberEnd="EEnum-eLiterals EEnumLiteral-eEnum"/>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EBigDecimal" name="EBigDecimal" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EBigDecimal" name="EBigDecimal">
       <eAnnotations xmi:id="EBigDecimal-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details xmi:id="EBigDecimal-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.0" key="baseType" value="http://www.w3.org/2001/XMLSchema#decimal"/>
       </eAnnotations>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EBigInteger" name="EBigInteger" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EBigInteger" name="EBigInteger">
       <eAnnotations xmi:id="EBigInteger-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details xmi:id="EBigInteger-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.0" key="baseType" value="http://www.w3.org/2001/XMLSchema#integer"/>
       </eAnnotations>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EBoolean" name="EBoolean" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EBoolean" name="EBoolean">
       <eAnnotations xmi:id="EBoolean-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details xmi:id="EBoolean-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.0" key="baseType" value="http://www.w3.org/2001/XMLSchema#boolean"/>
       </eAnnotations>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EBooleanObject" name="EBooleanObject" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EBooleanObject" name="EBooleanObject">
       <eAnnotations xmi:id="EBooleanObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details xmi:id="EBooleanObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.0" key="name" value="EBoolean:Object"/>
         <details xmi:id="EBooleanObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.1" key="baseType" value="EBoolean"/>
       </eAnnotations>
       <generalization xmi:id="EBooleanObject-_generalization.0" general="EBoolean"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EByte" name="EByte" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EByte" name="EByte">
       <eAnnotations xmi:id="EByte-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details xmi:id="EByte-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.0" key="baseType" value="http://www.w3.org/2001/XMLSchema#byte"/>
       </eAnnotations>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EByteArray" name="EByteArray" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EByteArray" name="EByteArray">
       <eAnnotations xmi:id="EByteArray-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details xmi:id="EByteArray-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.0" key="baseType" value="http://www.w3.org/2001/XMLSchema#hexBinary"/>
       </eAnnotations>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EByteObject" name="EByteObject" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EByteObject" name="EByteObject">
       <eAnnotations xmi:id="EByteObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details xmi:id="EByteObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.0" key="name" value="EByte:Object"/>
         <details xmi:id="EByteObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.1" key="baseType" value="EByte"/>
       </eAnnotations>
       <generalization xmi:id="EByteObject-_generalization.0" general="EByte"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EChar" name="EChar" visibility="private"/>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="ECharacterObject" name="ECharacterObject" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EChar" name="EChar"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="ECharacterObject" name="ECharacterObject">
       <eAnnotations xmi:id="ECharacterObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details xmi:id="ECharacterObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.0" key="name" value="EChar:Object"/>
         <details xmi:id="ECharacterObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.1" key="baseType" value="EChar"/>
       </eAnnotations>
       <generalization xmi:id="ECharacterObject-_generalization.0" general="EChar"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EDate" name="EDate" visibility="private"/>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EDiagnosticChain" name="EDiagnosticChain" visibility="private"/>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EDouble" name="EDouble" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EDate" name="EDate"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EDiagnosticChain" name="EDiagnosticChain"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EDouble" name="EDouble">
       <eAnnotations xmi:id="EDouble-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details xmi:id="EDouble-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.0" key="baseType" value="http://www.w3.org/2001/XMLSchema#double"/>
       </eAnnotations>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EDoubleObject" name="EDoubleObject" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EDoubleObject" name="EDoubleObject">
       <eAnnotations xmi:id="EDoubleObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details xmi:id="EDoubleObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.0" key="name" value="EDouble:Object"/>
         <details xmi:id="EDoubleObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.1" key="baseType" value="EDouble"/>
       </eAnnotations>
       <generalization xmi:id="EDoubleObject-_generalization.0" general="EDouble"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EEList" name="EEList" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EEList" name="EEList">
       <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="EEList-_ownedElement.0" parameter="EEList-_ownedElement.0-_ownedParameter.0">
         <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="EEList-_ownedElement.0-_ownedParameter.0" parameteredElement="EEList-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement">
           <ownedParameteredElement xmi:type="uml:Class" xmi:id="EEList-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement" name="E" templateParameter="EEList-_ownedElement.0-_ownedParameter.0"/>
         </ownedParameter>
       </ownedTemplateSignature>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EEnumerator" name="EEnumerator" visibility="private"/>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EFeatureMap" name="EFeatureMap" visibility="private"/>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EFeatureMapEntry" name="EFeatureMapEntry" visibility="private"/>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EFloat" name="EFloat" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EEnumerator" name="EEnumerator"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EFeatureMap" name="EFeatureMap"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EFeatureMapEntry" name="EFeatureMapEntry"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EFloat" name="EFloat">
       <eAnnotations xmi:id="EFloat-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details xmi:id="EFloat-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.0" key="baseType" value="http://www.w3.org/2001/XMLSchema#float"/>
       </eAnnotations>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EFloatObject" name="EFloatObject" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EFloatObject" name="EFloatObject">
       <eAnnotations xmi:id="EFloatObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details xmi:id="EFloatObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.0" key="name" value="EFloat:Object"/>
         <details xmi:id="EFloatObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.1" key="baseType" value="EFloat"/>
       </eAnnotations>
       <generalization xmi:id="EFloatObject-_generalization.0" general="EFloat"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EInt" name="EInt" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EInt" name="EInt">
       <eAnnotations xmi:id="EInt-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details xmi:id="EInt-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.0" key="baseType" value="http://www.w3.org/2001/XMLSchema#int"/>
       </eAnnotations>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EIntegerObject" name="EIntegerObject" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EIntegerObject" name="EIntegerObject">
       <eAnnotations xmi:id="EIntegerObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details xmi:id="EIntegerObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.0" key="name" value="EInt:Object"/>
         <details xmi:id="EIntegerObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.1" key="baseType" value="EInt"/>
       </eAnnotations>
       <generalization xmi:id="EIntegerObject-_generalization.0" general="EInt"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EJavaClass" name="EJavaClass" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EJavaClass" name="EJavaClass">
       <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="EJavaClass-_ownedElement.0" parameter="EJavaClass-_ownedElement.0-_ownedParameter.0">
         <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="EJavaClass-_ownedElement.0-_ownedParameter.0" parameteredElement="EJavaClass-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement">
           <ownedParameteredElement xmi:type="uml:Class" xmi:id="EJavaClass-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement" name="T" templateParameter="EJavaClass-_ownedElement.0-_ownedParameter.0"/>
         </ownedParameter>
       </ownedTemplateSignature>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EJavaObject" name="EJavaObject" visibility="private"/>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="ELong" name="ELong" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EJavaObject" name="EJavaObject"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="ELong" name="ELong">
       <eAnnotations xmi:id="ELong-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details xmi:id="ELong-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.0" key="baseType" value="http://www.w3.org/2001/XMLSchema#long"/>
       </eAnnotations>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="ELongObject" name="ELongObject" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="ELongObject" name="ELongObject">
       <eAnnotations xmi:id="ELongObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details xmi:id="ELongObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.0" key="name" value="ELong:Object"/>
         <details xmi:id="ELongObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.1" key="baseType" value="ELong"/>
       </eAnnotations>
       <generalization xmi:id="ELongObject-_generalization.0" general="ELong"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EMap" name="EMap" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EMap" name="EMap">
       <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="EMap-_ownedElement.0" parameter="EMap-_ownedElement.0-_ownedParameter.0 EMap-_ownedElement.0-_ownedParameter.1">
         <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="EMap-_ownedElement.0-_ownedParameter.0" parameteredElement="EMap-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement">
           <ownedParameteredElement xmi:type="uml:Class" xmi:id="EMap-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement" name="K" templateParameter="EMap-_ownedElement.0-_ownedParameter.0"/>
@@ -857,33 +857,33 @@
         </ownedParameter>
       </ownedTemplateSignature>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EResource" name="EResource" visibility="private"/>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EResourceSet" name="EResourceSet" visibility="private"/>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EShort" name="EShort" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EResource" name="EResource"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EResourceSet" name="EResourceSet"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EShort" name="EShort">
       <eAnnotations xmi:id="EShort-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details xmi:id="EShort-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.0" key="baseType" value="http://www.w3.org/2001/XMLSchema#short"/>
       </eAnnotations>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EShortObject" name="EShortObject" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EShortObject" name="EShortObject">
       <eAnnotations xmi:id="EShortObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details xmi:id="EShortObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.0" key="name" value="EShort:Object"/>
         <details xmi:id="EShortObject-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.1" key="baseType" value="EShort"/>
       </eAnnotations>
       <generalization xmi:id="EShortObject-_generalization.0" general="EShort"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EString" name="EString" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EString" name="EString">
       <eAnnotations xmi:id="EString-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details xmi:id="EString-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.0" key="baseType" value="http://www.w3.org/2001/XMLSchema#string"/>
       </eAnnotations>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="ETreeIterator" name="ETreeIterator" visibility="private">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="ETreeIterator" name="ETreeIterator">
       <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="ETreeIterator-_ownedElement.0" parameter="ETreeIterator-_ownedElement.0-_ownedParameter.0">
         <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="ETreeIterator-_ownedElement.0-_ownedParameter.0" parameteredElement="ETreeIterator-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement">
           <ownedParameteredElement xmi:type="uml:Class" xmi:id="ETreeIterator-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement" name="E" templateParameter="ETreeIterator-_ownedElement.0-_ownedParameter.0"/>
         </ownedParameter>
       </ownedTemplateSignature>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EInvocationTargetException" name="EInvocationTargetException" visibility="private"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EInvocationTargetException" name="EInvocationTargetException"/>
     <profileApplication xmi:id="_profileApplication.0">
       <eAnnotations xmi:id="_profileApplication.0-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
@@ -988,32 +988,32 @@
   <Ecore:EDataType xmi:id="_uvy4e8YcEduPJbEsMYXjUQ" instanceClassName="java.lang.String" base_PrimitiveType="EString"/>
   <Ecore:EDataType xmi:id="_uvy4fMYcEduPJbEsMYXjUQ" instanceClassName="org.eclipse.emf.common.util.TreeIterator" base_PrimitiveType="ETreeIterator"/>
   <Ecore:EDataType xmi:id="_usvVwN7TEd6R9YfsTdOlYA" instanceClassName="java.lang.reflect.InvocationTargetException" base_PrimitiveType="EInvocationTargetException"/>
-  <l3:Metamodel xmi:id="_08Hk4MMEEeCcwLvOz-Esrg" base_Model="_0"/>
-  <l2:Metaclass xmi:id="_08NEcMMEEeCcwLvOz-Esrg" base_Class="EAnnotation"/>
-  <l2:Metaclass xmi:id="_08NrgMMEEeCcwLvOz-Esrg" base_Class="EAttribute"/>
-  <l2:Metaclass xmi:id="_08OSkMMEEeCcwLvOz-Esrg" base_Class="EClass"/>
-  <l2:Metaclass xmi:id="_08QHwMMEEeCcwLvOz-Esrg" base_Class="EClassifier"/>
-  <l2:Metaclass xmi:id="_08Qu0MMEEeCcwLvOz-Esrg" base_Class="EClassifier-Wildcard"/>
-  <l2:Metaclass xmi:id="_08RV4MMEEeCcwLvOz-Esrg" base_Class="EDataType"/>
-  <l2:Metaclass xmi:id="_08RV4cMEEeCcwLvOz-Esrg" base_Class="EEnum"/>
-  <l2:Metaclass xmi:id="_08SkAMMEEeCcwLvOz-Esrg" base_Class="EEnumLiteral"/>
-  <l2:Metaclass xmi:id="_08SkAcMEEeCcwLvOz-Esrg" base_Class="EFactory"/>
-  <l2:Metaclass xmi:id="_08TLEMMEEeCcwLvOz-Esrg" base_Class="EGenericType"/>
-  <l2:Metaclass xmi:id="_08TyIMMEEeCcwLvOz-Esrg" base_Class="EModelElement"/>
-  <l2:Metaclass xmi:id="_08UZMMMEEeCcwLvOz-Esrg" base_Class="ENamedElement"/>
-  <l2:Metaclass xmi:id="_08VAQMMEEeCcwLvOz-Esrg" base_Class="EObject"/>
-  <l2:Metaclass xmi:id="_08W1cMMEEeCcwLvOz-Esrg" base_Class="EOperation"/>
-  <l2:Metaclass xmi:id="_08YDkMMEEeCcwLvOz-Esrg" base_Class="EPackage"/>
-  <l2:Metaclass xmi:id="_08YqoMMEEeCcwLvOz-Esrg" base_Class="EParameter"/>
-  <l2:Metaclass xmi:id="_08YqocMEEeCcwLvOz-Esrg" base_Class="EReference"/>
-  <l2:Metaclass xmi:id="_08ZRsMMEEeCcwLvOz-Esrg" base_Class="EStringToStringMapEntry"/>
-  <l2:Metaclass xmi:id="_08Z4wMMEEeCcwLvOz-Esrg" base_Class="EStructuralFeature"/>
-  <l2:Metaclass xmi:id="_08af0MMEEeCcwLvOz-Esrg" base_Class="EStructuralFeature-Wildcard"/>
-  <l2:Metaclass xmi:id="_08bG4MMEEeCcwLvOz-Esrg" base_Class="ETypedElement"/>
-  <l2:Metaclass xmi:id="_08bt8MMEEeCcwLvOz-Esrg" base_Class="ETypeParameter"/>
-  <l2:Metaclass xmi:id="_08fYUMMEEeCcwLvOz-Esrg" base_Class="EEList-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement"/>
-  <l2:Metaclass xmi:id="_08gmcMMEEeCcwLvOz-Esrg" base_Class="EJavaClass-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement"/>
-  <l2:Metaclass xmi:id="_08hNgMMEEeCcwLvOz-Esrg" base_Class="EMap-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement"/>
-  <l2:Metaclass xmi:id="_08h0kMMEEeCcwLvOz-Esrg" base_Class="EMap-_ownedElement.0-_ownedParameter.1-_ownedParameteredElement"/>
-  <l2:Metaclass xmi:id="_08iboMMEEeCcwLvOz-Esrg" base_Class="ETreeIterator-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement"/>
+  <l3:Metamodel xmi:id="_QzhTgKtKEeGF4uwJob34Mw" base_Model="_0"/>
+  <l2:Metaclass xmi:id="_QzoBMKtKEeGF4uwJob34Mw" base_Class="EAnnotation"/>
+  <l2:Metaclass xmi:id="_QzooQKtKEeGF4uwJob34Mw" base_Class="EAttribute"/>
+  <l2:Metaclass xmi:id="_QzpPUKtKEeGF4uwJob34Mw" base_Class="EClass"/>
+  <l2:Metaclass xmi:id="_QzrrkKtKEeGF4uwJob34Mw" base_Class="EClassifier"/>
+  <l2:Metaclass xmi:id="_Qzs5sKtKEeGF4uwJob34Mw" base_Class="EClassifier-Wildcard"/>
+  <l2:Metaclass xmi:id="_QztgwKtKEeGF4uwJob34Mw" base_Class="EDataType"/>
+  <l2:Metaclass xmi:id="_QztgwatKEeGF4uwJob34Mw" base_Class="EEnum"/>
+  <l2:Metaclass xmi:id="_QzuH0KtKEeGF4uwJob34Mw" base_Class="EEnumLiteral"/>
+  <l2:Metaclass xmi:id="_Qzuu4KtKEeGF4uwJob34Mw" base_Class="EFactory"/>
+  <l2:Metaclass xmi:id="_QzvV8KtKEeGF4uwJob34Mw" base_Class="EGenericType"/>
+  <l2:Metaclass xmi:id="_Qzv9AKtKEeGF4uwJob34Mw" base_Class="EModelElement"/>
+  <l2:Metaclass xmi:id="_QzwkEKtKEeGF4uwJob34Mw" base_Class="ENamedElement"/>
+  <l2:Metaclass xmi:id="_QzwkEatKEeGF4uwJob34Mw" base_Class="EObject"/>
+  <l2:Metaclass xmi:id="_QzzAUKtKEeGF4uwJob34Mw" base_Class="EOperation"/>
+  <l2:Metaclass xmi:id="_QzznYKtKEeGF4uwJob34Mw" base_Class="EPackage"/>
+  <l2:Metaclass xmi:id="_Qz0OcKtKEeGF4uwJob34Mw" base_Class="EParameter"/>
+  <l2:Metaclass xmi:id="_Qz01gKtKEeGF4uwJob34Mw" base_Class="EReference"/>
+  <l2:Metaclass xmi:id="_Qz1ckKtKEeGF4uwJob34Mw" base_Class="EStringToStringMapEntry"/>
+  <l2:Metaclass xmi:id="_Qz1ckatKEeGF4uwJob34Mw" base_Class="EStructuralFeature"/>
+  <l2:Metaclass xmi:id="_Qz2DoKtKEeGF4uwJob34Mw" base_Class="EStructuralFeature-Wildcard"/>
+  <l2:Metaclass xmi:id="_Qz2qsKtKEeGF4uwJob34Mw" base_Class="ETypedElement"/>
+  <l2:Metaclass xmi:id="_Qz340KtKEeGF4uwJob34Mw" base_Class="ETypeParameter"/>
+  <l2:Metaclass xmi:id="_Qz7jMKtKEeGF4uwJob34Mw" base_Class="EEList-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement"/>
+  <l2:Metaclass xmi:id="_Qz9_cKtKEeGF4uwJob34Mw" base_Class="EJavaClass-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement"/>
+  <l2:Metaclass xmi:id="_Qz_0oKtKEeGF4uwJob34Mw" base_Class="EMap-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement"/>
+  <l2:Metaclass xmi:id="_Q0AbsKtKEeGF4uwJob34Mw" base_Class="EMap-_ownedElement.0-_ownedParameter.1-_ownedParameteredElement"/>
+  <l2:Metaclass xmi:id="_Q0CQ4KtKEeGF4uwJob34Mw" base_Class="ETreeIterator-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement"/>
 </xmi:XMI>
