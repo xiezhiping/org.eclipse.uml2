@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
+ *   Kenn Hussey (CEA) - 173843
  *
- * $Id: UMLHandler.java,v 1.5 2007/10/04 19:36:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -43,7 +43,7 @@ public class UMLHandler
 	@Override
 	public void endElement(String uri, String localName, String name) {
 
-		if (objects.size() == 1 && objects.peek() instanceof Profile) {
+		if (objects.peek() instanceof Profile) {
 			handleForwardReferences();
 		}
 
