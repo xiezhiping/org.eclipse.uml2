@@ -93,22 +93,22 @@
 
 	<searchPath name="emf.base">
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(|(resolve.target.platform=true)(resolve.target.platform.base.sources=true))(build.type=N))">
-			<uri format="{0}/eclipse/updates/4.2-I-builds">
+			<uri format="{0}/eclipse/updates/4.3-I-builds">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(|(resolve.target.platform=true)(resolve.target.platform.base.sources=true))(!(|(build.type=N)(build.type=S)(build.type=R))))">
-			<uri format="{0}/eclipse/updates/4.2-I-builds">
+			<uri format="{0}/eclipse/updates/4.3-I-builds">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(|(resolve.target.platform=true)(resolve.target.platform.base.sources=true))(build.type=S))">
-			<uri format="{0}/eclipse/updates/4.2milestones">
+			<uri format="{0}/eclipse/updates/4.3milestones">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(|(resolve.target.platform=true)(resolve.target.platform.base.sources=true))(build.type=R))">
-			<uri format="{0}/eclipse/updates/4.2">
+			<uri format="{0}/eclipse/updates/4.3">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
@@ -121,17 +121,17 @@
 			</uri>
 		</provider>
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(!(|(build.type=N)(build.type=S)(build.type=R))))">
-			<uri format="{0}/modeling/emf/emf/updates/2.8-I-builds">
+			<uri format="{0}/modeling/emf/emf/updates/2.9-I-builds">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=S))">
-			<uri format="{0}/modeling/emf/emf/updates/2.8milestones">
+			<uri format="{0}/modeling/emf/emf/updates/2.9milestones">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=R))">
-			<uri format="{0}/modeling/emf/emf/updates/2.8milestones">
+			<uri format="{0}/modeling/emf/emf/updates/2.9milestones">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
@@ -154,7 +154,7 @@
 			</uri>
 		</provider>
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=R))">
-			<uri format="{0}/modeling/emf/updates/milestones">
+			<uri format="{0}/modeling/emf/updates/releases">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
@@ -196,24 +196,24 @@
 		</provider>
 	</searchPath>
 
-	<searchPath name="platform38">
+	<searchPath name="platform39">
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=N))">
-			<uri format="{0}/eclipse/updates/3.8-I-builds">
+			<uri format="{0}/eclipse/updates/3.9-I-builds">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(!(|(build.type=N)(build.type=S)(build.type=R))))">
-			<uri format="{0}/eclipse/updates/3.8-I-builds">
+			<uri format="{0}/eclipse/updates/3.9-I-builds">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=S))">
-			<uri format="{0}/eclipse/updates/3.8milestones">
+			<uri format="{0}/eclipse/updates/3.9milestones">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=R))">
-			<uri format="{0}/eclipse/updates/3.8">
+			<uri format="{0}/eclipse/updates/3.9">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
