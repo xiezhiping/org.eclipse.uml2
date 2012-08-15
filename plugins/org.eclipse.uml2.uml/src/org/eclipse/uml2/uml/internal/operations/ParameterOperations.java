@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2012 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 313298
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -291,7 +291,7 @@ public class ParameterOperations
 	public static void unsetDefault(Parameter parameter) {
 
 		if (parameter.isSetDefault()) {
-			parameter.eUnset(UMLPackage.Literals.PROPERTY__DEFAULT_VALUE);
+			parameter.eUnset(UMLPackage.Literals.PARAMETER__DEFAULT_VALUE);
 		}
 	}
 
