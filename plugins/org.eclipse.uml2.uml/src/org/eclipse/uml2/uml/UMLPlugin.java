@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215488
+ *   Kenn Hussey (CEA) - 279044
  *
- * $Id: UMLPlugin.java,v 1.5 2008/02/25 21:15:49 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -81,7 +81,7 @@ public final class UMLPlugin
 								profileLocation = URI.createPlatformPluginURI(
 									element.getDeclaringExtension()
 										.getContributor().getName()
-										+ '/' + location, true);
+										+ '/' + location, false);
 							}
 
 							ePackageNsURIToProfileLocationMap.put(uri,
