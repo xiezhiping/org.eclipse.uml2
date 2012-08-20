@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
- *   Kenn Hussey (CEA) - 351777
+ *   Kenn Hussey (CEA) - 351777, 382718
  *
  */
 package org.eclipse.uml2.uml.profile.l2;
@@ -25,7 +25,7 @@ import org.eclipse.uml2.uml.Classifier;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A class that specifies a domain of objects together with the operations applicable to the objects, without defining the physical implementation of those objects. However, it may have attributes and associations. Behavioral specifications for type operations may be expressed using, for example, activity diagrams. An object may have at most one implementation class, however it may conform to multiple different types. See also: ÇImplementationClassÈ.
+ * A class that specifies a domain of objects together with the operations applicable to the objects, without defining the physical implementation of those objects. However, it may have attributes and associations. Behavioral specifications for type operations may be expressed using, for example, activity diagrams. An object may have at most one implementation class, however it may conform to multiple different types. See also: Â«ImplementationClassÂ».
  * <!-- end-model-doc -->
  *
  * <p>

@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 351774, 351777
+ *   Kenn Hussey (CEA) - 351774, 351777, 382718
  *
  */
 package org.eclipse.uml2.uml;
@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * AnÊexecutableÊnodeÊisÊanÊabstractÊclassÊforÊactivityÊnodesÊthatÊmayÊbeÊexecuted.ÊItÊisÊusedÊasÊanÊattachmentÊpointÊforÊexceptionÊhandlers.
+ * AnÂ executableÂ nodeÂ isÂ anÂ abstractÂ classÂ forÂ activityÂ nodesÂ thatÂ mayÂ beÂ executed.Â ItÂ isÂ usedÂ asÂ anÂ attachmentÂ pointÂ forÂ exceptionÂ handlers.
  * An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.
  * <!-- end-model-doc -->
  *

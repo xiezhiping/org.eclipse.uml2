@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
- *   Kenn Hussey (CEA) - 351777
+ *   Kenn Hussey (CEA) - 351777, 382718
  *
  */
 package org.eclipse.uml2.uml.profile.l2;
@@ -21,7 +21,7 @@ import org.eclipse.uml2.uml.Component;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A unit of hierarchical decomposition for large systems. A subsystem is commonly instantiated indirectly. Definitions of subsystems vary widely among domains and methods, and it is expected that domain and method profiles will specialize this construct. A subsystem may be defined to have specification and realization elements. See also: ÇSpecificationÈ and ÇRealizationÈ.
+ * A unit of hierarchical decomposition for large systems. A subsystem is commonly instantiated indirectly. Definitions of subsystems vary widely among domains and methods, and it is expected that domain and method profiles will specialize this construct. A subsystem may be defined to have specification and realization elements. See also: Â«SpecificationÂ» and Â«RealizationÂ».
  * <!-- end-model-doc -->
  *
  * <p>

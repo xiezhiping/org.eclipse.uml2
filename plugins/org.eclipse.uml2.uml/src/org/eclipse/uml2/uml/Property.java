@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 351777
+ *   Kenn Hussey (CEA) - 327039, 351774, 351777, 382718
  *
  */
 package org.eclipse.uml2.uml;
@@ -334,7 +334,7 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * ReferencesÊtheÊClassÊthatÊownsÊtheÊProperty.
+	 * ReferencesÂ theÂ ClassÂ thatÂ ownsÂ theÂ Property.
 	 * References the Class that owns the Property.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Class</em>' reference.

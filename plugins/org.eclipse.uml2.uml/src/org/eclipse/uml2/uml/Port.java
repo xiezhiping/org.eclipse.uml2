@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 351777
+ *   Kenn Hussey (CEA) - 327039, 351774, 351777, 382718
  *
  */
 package org.eclipse.uml2.uml;
@@ -80,7 +80,7 @@ public interface Port
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies the way that the provided and required interfaces are derived from the PortÕs Type. The default value is false.
+	 * Specifies the way that the provided and required interfaces are derived from the Portâ€™s Type. The default value is false.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Conjugated</em>' attribute.
 	 * @see #setIsConjugated(boolean)

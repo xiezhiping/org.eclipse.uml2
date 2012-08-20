@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 351777
+ *   Kenn Hussey (CEA) - 327039, 351774, 351777, 382718
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -150,7 +150,7 @@ public class StereotypeOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Where a stereotypeÕs property is an association end for an association other than a kind of extension, and the other end is not a stereotype, the other end must be owned by the association itself.
+	 * Where a stereotypeâ€™s property is an association end for an association other than a kind of extension, and the other end is not a stereotype, the other end must be owned by the association itself.
 	 * ownedAttribute
 	 * ->select(association->notEmpty() and not association.oclIsKindOf(Extension) and not type.oclIsKindOf(Stereotype))
 	 * ->forAll(opposite.owner = association)

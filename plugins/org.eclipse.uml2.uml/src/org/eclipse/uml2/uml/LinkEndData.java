@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351777
+ *   Kenn Hussey (CEA) - 327039, 351777, 382718
  *
  */
 package org.eclipse.uml2.uml;
@@ -73,7 +73,7 @@ public interface LinkEndData
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * AssociationÊendÊforÊwhichÊthisÊlink-endÊdataÊspecifiesÊvalues.
+	 * AssociationÂ endÂ forÂ whichÂ thisÂ link-endÂ dataÂ specifiesÂ values.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End</em>' reference.
 	 * @see #setEnd(Property)

@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
- *   Kenn Hussey (CEA) - 351777
+ *   Kenn Hussey (CEA) - 351777, 382718
  *
  */
 package org.eclipse.uml2.uml.profile.l2;
@@ -18,7 +18,7 @@ package org.eclipse.uml2.uml.profile.l2;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A source file that can be compiled into an executable file. Subclass of ÇFileÈ.
+ * A source file that can be compiled into an executable file. Subclass of Â«FileÂ».
  * <!-- end-model-doc -->
  *
  *
