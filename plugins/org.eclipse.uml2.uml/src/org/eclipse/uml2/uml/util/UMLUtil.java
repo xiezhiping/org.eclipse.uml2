@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637
  *   Yann Tanguy (CEA) - 350402
  *
  */
@@ -2562,9 +2562,6 @@ public class UMLUtil
 						.startsWith("EcorePrimitiveTypes::")) { //$NON-NLS-1$
 
 						eType = EcorePackage.eINSTANCE.getEClassifier(type
-							.getName());
-					} else if (qualifiedName.startsWith("PrimitiveTypes::")) { //$NON-NLS-1$
-						eType = TypesPackage.eINSTANCE.getEClassifier(type
 							.getName());
 					} else if (qualifiedName.startsWith("XMLPrimitiveTypes::")) { //$NON-NLS-1$
 						eType = XMLTypePackage.eINSTANCE.getEClassifier(type
@@ -8958,24 +8955,30 @@ public class UMLUtil
 	protected static EClassifier getEClassifier(Type type) {
 		Resource eResource = type.eResource();
 
-		if (eResource == null
-			|| !UMLResource.UML_METAMODEL_URI.equals(String.valueOf(eResource
+		if (eResource != null) {
+
+			if (UMLResource.UML_METAMODEL_URI.equals(String.valueOf(eResource
 				.getURI()))) {
 
-			org.eclipse.uml2.uml.Package package_ = type.getNearestPackage();
+				return UMLPackage.eINSTANCE.getEClassifier(type.getName());
+			} else if (UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI
+				.equals(String.valueOf(eResource.getURI()))) {
 
-			if (package_ != null) {
-				EPackage ePackage = getEPackage(package_);
-
-				if (ePackage != null) {
-					return ePackage.getEClassifier(type.getName());
-				}
+				return TypesPackage.eINSTANCE.getEClassifier(type.getName());
 			}
-
-			return null;
-		} else {
-			return UMLPackage.eINSTANCE.getEClassifier(type.getName());
 		}
+
+		org.eclipse.uml2.uml.Package package_ = type.getNearestPackage();
+
+		if (package_ != null) {
+			EPackage ePackage = getEPackage(package_);
+
+			if (ePackage != null) {
+				return ePackage.getEClassifier(type.getName());
+			}
+		}
+
+		return null;
 	}
 
 	protected static EClassifier getEClassifier(

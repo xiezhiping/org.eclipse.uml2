@@ -5,7 +5,7 @@
     editorDirectory="" modelPluginID="org.eclipse.uml2.uml.profile.l2" templateDirectory="/org.eclipse.uml2/templates"
     runtimeJar="true" dynamicTemplates="true" modelName="L2" modelPluginClass="org.eclipse.uml2.uml.profile.l2.L2Plugin"
     nonNLSMarkers="true" codeFormatting="true" testsDirectory="" importerID="org.eclipse.uml2.uml.ecore.importer"
-    containmentProxies="true" complianceLevel="5.0" copyrightFields="false" usedGenPackages="platform:/plugin/org.eclipse.uml2.uml/model/UML.genmodel#//uml platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
+    containmentProxies="true" complianceLevel="5.0" copyrightFields="false" usedGenPackages="platform:/plugin/org.eclipse.uml2.uml/model/UML.genmodel#//uml platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore platform:/plugin/org.eclipse.uml2.types/model/Types.genmodel#//types"
     operationReflection="true" invariantPrefix="validate">
   <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/importer/org.eclipse.uml2.uml.ecore.importer">
     <details key="ECORE_TAGGED_VALUES" value="PROCESS"/>

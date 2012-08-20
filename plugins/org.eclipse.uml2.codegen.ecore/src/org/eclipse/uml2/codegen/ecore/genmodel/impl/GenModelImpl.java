@@ -9,12 +9,11 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016, 247980
  *   Kenn Hussey - 284809
- *   Kenn Hussey (CEA) - 358792, 351777
+ *   Kenn Hussey (CEA) - 358792, 351777, 382637
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
@@ -29,8 +28,6 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenParameter;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -40,7 +37,6 @@ import org.eclipse.uml2.codegen.ecore.genmodel.GenModelFactory;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
 
 import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
-import org.eclipse.uml2.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -613,38 +609,6 @@ public class GenModelImpl
 			packageNames.add(UML2GenModelUtil
 				.getOperationsPackageName(genPackage));
 		}
-	}
-
-	private GenPackage typesGenPackage = null;
-
-	@Override
-	public GenPackage findGenPackage(EPackage ePackage) {
-		GenPackage result = super.findGenPackage(ePackage);
-
-		if (result == null) {
-
-			if (!isMainGenModel() && ePackage == TypesPackage.eINSTANCE) {
-				result = getMainGenModel().findGenPackage(ePackage);
-			} else if (ePackage == TypesPackage.eINSTANCE) {
-
-				if (typesGenPackage == null) {
-					org.eclipse.emf.codegen.ecore.genmodel.GenModel typesGenModel = getGenModel()
-						.createGenModel();
-					typesGenModel.initialize(Collections
-						.singleton(TypesPackage.eINSTANCE));
-					typesGenModel.setMainGenModel(this);
-					typesGenModel.setImportManager(getImportManager());
-					typesGenModel.setLanguage("en");
-					typesGenPackage = typesGenModel.getGenPackages().get(0);
-					typesGenPackage.setPrefix("types");
-					typesGenPackage.setBasePackage("org.eclipse.uml2");
-				}
-
-				result = typesGenPackage;
-			}
-		}
-
-		return result;
 	}
 
 }
