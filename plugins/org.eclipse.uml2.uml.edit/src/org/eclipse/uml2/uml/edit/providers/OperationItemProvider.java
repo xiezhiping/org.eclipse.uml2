@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 383028
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -224,7 +224,7 @@ public class OperationItemProvider
 				getString("_UI_Operation_isOrdered_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_isOrdered_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPERATION__IS_ORDERED, true, false, false,
+				UMLPackage.Literals.OPERATION__IS_ORDERED, false, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -243,7 +243,7 @@ public class OperationItemProvider
 				getString("_UI_Operation_isUnique_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_isUnique_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPERATION__IS_UNIQUE, true, false, false,
+				UMLPackage.Literals.OPERATION__IS_UNIQUE, false, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -262,7 +262,7 @@ public class OperationItemProvider
 				getString("_UI_Operation_lower_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_lower_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPERATION__LOWER, true, false, false,
+				UMLPackage.Literals.OPERATION__LOWER, false, false, false,
 				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
@@ -281,7 +281,7 @@ public class OperationItemProvider
 				getString("_UI_Operation_upper_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_upper_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPERATION__UPPER, true, false, false,
+				UMLPackage.Literals.OPERATION__UPPER, false, false, false,
 				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
@@ -438,7 +438,7 @@ public class OperationItemProvider
 				getString("_UI_Operation_type_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_type_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPERATION__TYPE, true, false, true, null,
+				UMLPackage.Literals.OPERATION__TYPE, false, false, true, null,
 				null, null));
 	}
 

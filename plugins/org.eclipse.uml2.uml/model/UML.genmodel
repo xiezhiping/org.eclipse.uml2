@@ -1351,19 +1351,23 @@
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Operation/datatype">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Operation/isOrdered.1"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" createChild="false"
+          ecoreFeature="ecore:EAttribute UML.ecore#//Operation/isOrdered.1"/>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Operation/isQuery"/>
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Operation/isUnique.1"/>
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Operation/lower"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" createChild="false"
+          ecoreFeature="ecore:EAttribute UML.ecore#//Operation/isUnique.1"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" createChild="false"
+          ecoreFeature="ecore:EAttribute UML.ecore#//Operation/lower"/>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="true" propertySortChoices="true"
           ecoreFeature="ecore:EReference UML.ecore#//Operation/postcondition"/>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="true" propertySortChoices="true"
           ecoreFeature="ecore:EReference UML.ecore#//Operation/precondition"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Operation/redefinedOperation"/>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Operation/type"/>
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Operation/upper"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Operation/type"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" createChild="false"
+          ecoreFeature="ecore:EAttribute UML.ecore#//Operation/upper"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Operation/at_most_one_return">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Operation/at_most_one_return/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Operation/at_most_one_return/context"/>
