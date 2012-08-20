@@ -3886,7 +3886,7 @@ endif</body>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Classifier-getOperation-name-_lowerValue"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Classifier-getOperation-name-_upperValue" value="1"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Classifier-getOperation-parameterNames" name="parameterNames" effect="read">
+        <ownedParameter xmi:id="Classifier-getOperation-parameterNames" name="parameterNames" isOrdered="true" effect="read">
           <ownedComment xmi:id="Classifier-getOperation-parameterNames-_ownedComment.0" annotatedElement="Classifier-getOperation-parameterNames">
             <body>The parameter names of the operation to retrieve, or null.</body>
           </ownedComment>
@@ -3894,7 +3894,7 @@ endif</body>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Classifier-getOperation-parameterNames-_lowerValue"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Classifier-getOperation-parameterNames-_upperValue" value="*"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Classifier-getOperation-parameterTypes" name="parameterTypes" type="Type" effect="read">
+        <ownedParameter xmi:id="Classifier-getOperation-parameterTypes" name="parameterTypes" type="Type" isOrdered="true" isUnique="false" effect="read">
           <ownedComment xmi:id="Classifier-getOperation-parameterTypes-_ownedComment.0" annotatedElement="Classifier-getOperation-parameterTypes">
             <body>The parameter types of the operation to retrieve, or null.</body>
           </ownedComment>
@@ -3918,7 +3918,7 @@ endif</body>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Classifier-getOperation.1-name-_lowerValue"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Classifier-getOperation.1-name-_upperValue" value="1"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Classifier-getOperation.1-parameterNames" name="parameterNames" effect="read">
+        <ownedParameter xmi:id="Classifier-getOperation.1-parameterNames" name="parameterNames" isOrdered="true" effect="read">
           <ownedComment xmi:id="Classifier-getOperation.1-parameterNames-_ownedComment.0" annotatedElement="Classifier-getOperation.1-parameterNames">
             <body>The parameter names of the operation to retrieve, or null.</body>
           </ownedComment>
@@ -3926,7 +3926,7 @@ endif</body>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Classifier-getOperation.1-parameterNames-_lowerValue"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Classifier-getOperation.1-parameterNames-_upperValue" value="*"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Classifier-getOperation.1-parameterTypes" name="parameterTypes" type="Type" effect="read">
+        <ownedParameter xmi:id="Classifier-getOperation.1-parameterTypes" name="parameterTypes" type="Type" isOrdered="true" isUnique="false" effect="read">
           <ownedComment xmi:id="Classifier-getOperation.1-parameterTypes-_ownedComment.0" annotatedElement="Classifier-getOperation.1-parameterTypes">
             <body>The parameter types of the operation to retrieve, or null.</body>
           </ownedComment>

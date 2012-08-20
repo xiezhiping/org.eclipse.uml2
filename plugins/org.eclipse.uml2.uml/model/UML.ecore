@@ -1011,12 +1011,12 @@
           <details key="documentation" value="The name of the operation to retrieve, or null."/>
         </eAnnotations>
       </eParameters>
-      <eParameters name="parameterNames" ordered="false" upperBound="-1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String">
+      <eParameters name="parameterNames" upperBound="-1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The parameter names of the operation to retrieve, or null."/>
         </eAnnotations>
       </eParameters>
-      <eParameters name="parameterTypes" ordered="false" upperBound="-1" eType="#//Type">
+      <eParameters name="parameterTypes" unique="false" upperBound="-1" eType="#//Type">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The parameter types of the operation to retrieve, or null."/>
         </eAnnotations>
@@ -1031,12 +1031,12 @@
           <details key="documentation" value="The name of the operation to retrieve, or null."/>
         </eAnnotations>
       </eParameters>
-      <eParameters name="parameterNames" ordered="false" upperBound="-1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String">
+      <eParameters name="parameterNames" upperBound="-1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The parameter names of the operation to retrieve, or null."/>
         </eAnnotations>
       </eParameters>
-      <eParameters name="parameterTypes" ordered="false" upperBound="-1" eType="#//Type">
+      <eParameters name="parameterTypes" unique="false" upperBound="-1" eType="#//Type">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The parameter types of the operation to retrieve, or null."/>
         </eAnnotations>

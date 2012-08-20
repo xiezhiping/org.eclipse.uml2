@@ -394,13 +394,13 @@
     <eOperations name="getAllUsedInterfaces" ordered="false" upperBound="-1" eType="#//Interface"/>
     <eOperations name="getOperation" ordered="false" eType="#//Operation">
       <eParameters name="name" ordered="false" eType="ecore:EDataType http://www.eclipse.org/uml2/4.0.0/Types#//String"/>
-      <eParameters name="parameterNames" ordered="false" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/uml2/4.0.0/Types#//String"/>
-      <eParameters name="parameterTypes" ordered="false" upperBound="-1" eType="#//Type"/>
+      <eParameters name="parameterNames" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/uml2/4.0.0/Types#//String"/>
+      <eParameters name="parameterTypes" unique="false" upperBound="-1" eType="#//Type"/>
     </eOperations>
     <eOperations name="getOperation" ordered="false" eType="#//Operation">
       <eParameters name="name" ordered="false" eType="ecore:EDataType http://www.eclipse.org/uml2/4.0.0/Types#//String"/>
-      <eParameters name="parameterNames" ordered="false" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/uml2/4.0.0/Types#//String"/>
-      <eParameters name="parameterTypes" ordered="false" upperBound="-1" eType="#//Type"/>
+      <eParameters name="parameterNames" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/uml2/4.0.0/Types#//String"/>
+      <eParameters name="parameterTypes" unique="false" upperBound="-1" eType="#//Type"/>
       <eParameters name="ignoreCase" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/4.0.0/Types#//Boolean"/>
     </eOperations>
     <eOperations name="getOperations" ordered="false" upperBound="-1" eType="#//Operation"/>

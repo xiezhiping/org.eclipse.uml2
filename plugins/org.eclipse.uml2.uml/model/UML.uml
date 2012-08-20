@@ -335,7 +335,7 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UQSfgKOwEdqi_5gqUMOQtA"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UQSfgaOwEdqi_5gqUMOQtA" value="1"/>
         </ownedParameter>
-        <ownedParameter xmi:id="_LgAVoKOwEdqi_5gqUMOQtA" name="parameterNames" effect="read">
+        <ownedParameter xmi:id="_LgAVoKOwEdqi_5gqUMOQtA" name="parameterNames" isOrdered="true" effect="read">
           <ownedComment xmi:id="_VK9mkPH-EdulR8T2OJRyFQ" annotatedElement="_LgAVoKOwEdqi_5gqUMOQtA">
             <body>The parameter names of the operation to retrieve, or null.</body>
           </ownedComment>
@@ -343,7 +343,7 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Vz1V4KOwEdqi_5gqUMOQtA"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Vz1V4aOwEdqi_5gqUMOQtA" value="*"/>
         </ownedParameter>
-        <ownedParameter xmi:id="_s8hlMKOvEdqi_5gqUMOQtA" name="parameterTypes" type="_ynRtoGvtEdqG6fBIPwe-mw" effect="read">
+        <ownedParameter xmi:id="_s8hlMKOvEdqi_5gqUMOQtA" name="parameterTypes" type="_ynRtoGvtEdqG6fBIPwe-mw" isOrdered="true" isUnique="false" effect="read">
           <ownedComment xmi:id="_XUDaAPH-EdulR8T2OJRyFQ" annotatedElement="_s8hlMKOvEdqi_5gqUMOQtA">
             <body>The parameter types of the operation to retrieve, or null.</body>
           </ownedComment>
@@ -367,7 +367,7 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aGT3tqOwEdqi_5gqUMOQtA"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aGT3taOwEdqi_5gqUMOQtA" value="1"/>
         </ownedParameter>
-        <ownedParameter xmi:id="_aGT3t6OwEdqi_5gqUMOQtA" name="parameterNames" effect="read">
+        <ownedParameter xmi:id="_aGT3t6OwEdqi_5gqUMOQtA" name="parameterNames" isOrdered="true" effect="read">
           <ownedComment xmi:id="_6FotIPH_EdulR8T2OJRyFQ" annotatedElement="_aGT3t6OwEdqi_5gqUMOQtA">
             <body>The parameter names of the operation to retrieve, or null.</body>
           </ownedComment>
@@ -375,7 +375,7 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aGT3uaOwEdqi_5gqUMOQtA"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aGT3uKOwEdqi_5gqUMOQtA" value="*"/>
         </ownedParameter>
-        <ownedParameter xmi:id="_aGT3uqOwEdqi_5gqUMOQtA" name="parameterTypes" type="_ynRtoGvtEdqG6fBIPwe-mw" effect="read">
+        <ownedParameter xmi:id="_aGT3uqOwEdqi_5gqUMOQtA" name="parameterTypes" type="_ynRtoGvtEdqG6fBIPwe-mw" isOrdered="true" isUnique="false" effect="read">
           <ownedComment xmi:id="_-UGRoPH_EdulR8T2OJRyFQ" annotatedElement="_aGT3uqOwEdqi_5gqUMOQtA">
             <body>The parameter types of the operation to retrieve, or null.</body>
           </ownedComment>

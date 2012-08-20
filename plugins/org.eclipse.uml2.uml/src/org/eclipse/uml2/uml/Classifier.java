@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 384071
  *
  */
 package org.eclipse.uml2.uml;
@@ -800,7 +800,7 @@ public interface Classifier
 	 * @param parameterNames The parameter names of the operation to retrieve, or null.
 	 * @param parameterTypes The parameter types of the operation to retrieve, or null.
 	 * <!-- end-model-doc -->
-	 * @model ordered="false" nameDataType="org.eclipse.uml2.types.String" nameOrdered="false" parameterNamesDataType="org.eclipse.uml2.types.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesMany="true" parameterTypesOrdered="false"
+	 * @model ordered="false" nameDataType="org.eclipse.uml2.types.String" nameOrdered="false" parameterNamesDataType="org.eclipse.uml2.types.String" parameterNamesMany="true" parameterTypesUnique="false" parameterTypesMany="true"
 	 * @generated
 	 */
 	Operation getOperation(String name, EList<String> parameterNames,
@@ -816,7 +816,7 @@ public interface Classifier
 	 * @param parameterTypes The parameter types of the operation to retrieve, or null.
 	 * @param ignoreCase Whether to ignore case in String comparisons.
 	 * <!-- end-model-doc -->
-	 * @model ordered="false" nameDataType="org.eclipse.uml2.types.String" nameOrdered="false" parameterNamesDataType="org.eclipse.uml2.types.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesMany="true" parameterTypesOrdered="false" ignoreCaseDataType="org.eclipse.uml2.types.Boolean" ignoreCaseRequired="true" ignoreCaseOrdered="false"
+	 * @model ordered="false" nameDataType="org.eclipse.uml2.types.String" nameOrdered="false" parameterNamesDataType="org.eclipse.uml2.types.String" parameterNamesMany="true" parameterTypesUnique="false" parameterTypesMany="true" ignoreCaseDataType="org.eclipse.uml2.types.Boolean" ignoreCaseRequired="true" ignoreCaseOrdered="false"
 	 * @generated
 	 */
 	Operation getOperation(String name, EList<String> parameterNames,
