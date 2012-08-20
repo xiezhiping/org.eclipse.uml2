@@ -10254,6 +10254,11 @@ public class UMLUtil
 					return eDataType;
 				}
 
+				@Override
+				public Object caseEEnum(EEnum eEnum) {
+					return eEnum;
+				}
+
 			}.doSwitch(allContents.next());
 		}
 
