@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2006, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,16 +7,17 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 156879
+ *   Kenn Hussey (Embarcadero Technologies) - 156879, 273949
  *
- * $Id: UMLExporter.java,v 1.13 2008/02/25 15:48:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.exporter;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenAnnotation;
@@ -24,6 +25,7 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.DiagnosticException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
@@ -43,6 +45,9 @@ import org.eclipse.emf.exporter.ModelExporter;
 import org.eclipse.emf.exporter.util.ExporterUtil;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Profile;
+import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.resource.XMI2UMLResource;
@@ -88,7 +93,7 @@ public class UMLExporter
 			throws Exception {
 		Diagnostic diagnostic = Diagnostic.OK_INSTANCE;
 
-		ResourceSet resourceSet = new ResourceSetImpl();
+		final ResourceSet resourceSet = new ResourceSetImpl();
 
 		Map<String, Object> extensionToFactoryMap = resourceSet
 			.getResourceFactoryRegistry().getExtensionToFactoryMap();
@@ -98,7 +103,42 @@ public class UMLExporter
 		extensionToFactoryMap.put(CMOF2UMLResource.FILE_EXTENSION,
 			CMOF2UMLResource.Factory.INSTANCE);
 
-		UMLUtil.Ecore2UMLConverter ecore2umlConverter = new UMLUtil.Ecore2UMLConverter();
+		UMLUtil.Ecore2UMLConverter ecore2umlConverter = new UMLUtil.Ecore2UMLConverter() {
+
+			@Override
+			protected Profile getEcoreProfile(EObject eObject) {
+				return UMLUtil.load(resourceSet,
+					URI.createURI(UMLResource.ECORE_PROFILE_URI),
+					UMLPackage.Literals.PROFILE);
+			}
+
+			@Override
+			protected void processEcoreTaggedValues(Element element,
+					EPackage ePackage, Map<String, String> options,
+					DiagnosticChain diagnostics, Map<Object, Object> context) {
+				super.processEcoreTaggedValues(element, ePackage, options,
+					diagnostics, context);
+
+				GenPackage genPackage = getEPackageToGenPackageMap().get(
+					ePackage);
+
+				if (genPackage != null) {
+					Stereotype ePackageStereotype = getEcoreStereotype(
+						ePackage, UMLUtil.STEREOTYPE__E_PACKAGE);
+
+					if (ePackageStereotype != null) {
+						UMLUtil
+							.safeApplyStereotype(element, ePackageStereotype);
+
+						processEcoreTaggedValue(element, ePackageStereotype,
+							UMLUtil.TAG_DEFINITION__BASE_PACKAGE,
+							genPackage.getBasePackage(), options, diagnostics,
+							context);
+					}
+				}
+			}
+
+		};
 
 		BasicDiagnostic diagnostics = new BasicDiagnostic(ConverterPlugin.ID,
 			ConverterUtil.ACTION_DEFAULT, UMLExporterPlugin.INSTANCE
@@ -113,11 +153,15 @@ public class UMLExporter
 		monitor.beginTask(UML2Util.EMPTY_STRING,
 			exportData.genPackageToArtifactURI.size());
 
+		List<Resource> resourcesToSave = new ArrayList<Resource>();
+		
 		for (Map.Entry<GenPackage, URI> entry : exportData.genPackageToArtifactURI
 			.entrySet()) {
 
 			URI artifactURI = entry.getValue();
 			Resource resource = resourceSet.createResource(artifactURI);
+			resourcesToSave.add(resource);
+			
 			EPackage ePackage = entry.getKey().getEcorePackage();
 
 			monitor.subTask(UMLExporterPlugin.INSTANCE.getString(
@@ -147,7 +191,7 @@ public class UMLExporter
 			monitor.worked(1);
 		}
 
-		for (Resource resource : resourceSet.getResources()) {
+		for (Resource resource : resourcesToSave) {
 			resource.save(null);
 		}
 
