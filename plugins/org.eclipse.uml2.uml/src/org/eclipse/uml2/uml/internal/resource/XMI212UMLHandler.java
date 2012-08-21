@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2008, 2012 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 365027
+ *   Kenn Hussey (CEA) - 327039, 365027, 299527
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -16,6 +16,7 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -103,7 +104,6 @@ public class XMI212UMLHandler
 			}
 		}
 	}
-	
 
 	@Override
 	protected void handleProxy(InternalEObject proxy, String uriLiteral) {
@@ -131,18 +131,34 @@ public class XMI212UMLHandler
 				.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_2_1_URI)) {
 
 			int index = uriLiteral.indexOf('#');
-			uriLiteral = UMLResource.STANDARD_L2_PROFILE_URI + (index == -1
-				? "#_0" //$NON-NLS-1$
-				: uriLiteral.substring(index));
+			if (index == -1) {
+				uriLiteral = UMLResource.STANDARD_L2_PROFILE_URI + "#_0"; //$NON-NLS-1$
+			} else {
+				String fragment = uriLiteral.substring(index);
+
+				if ("#_yzU58YinEdqtvbnfB2L_5w".equals(fragment)) { //$NON-NLS-1$
+					uriLiteral = UMLResource.STANDARD_L2_PROFILE_NS_URI;
+				} else {
+					uriLiteral = UMLResource.STANDARD_L2_PROFILE_URI + fragment;
+				}
+			}
 		} else if (uriLiteral
 			.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_2_1_1_URI)
 			|| uriLiteral
 				.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_2_1_URI)) {
 
 			int index = uriLiteral.indexOf('#');
-			uriLiteral = UMLResource.STANDARD_L3_PROFILE_URI + (index == -1
-				? "#_0" //$NON-NLS-1$
-				: uriLiteral.substring(index));
+			if (index == -1) {
+				uriLiteral = UMLResource.STANDARD_L3_PROFILE_URI + "#_0"; //$NON-NLS-1$
+			} else {
+				String fragment = uriLiteral.substring(index);
+
+				if ("#_yzU58YinEdqtvbnfB2L_5w".equals(fragment)) { //$NON-NLS-1$
+					uriLiteral = UMLResource.STANDARD_L3_PROFILE_NS_URI;
+				} else {
+					uriLiteral = UMLResource.STANDARD_L3_PROFILE_URI + fragment;
+				}
+			}
 		}
 
 		super.handleProxy(proxy, uriLiteral);
@@ -197,6 +213,23 @@ public class XMI212UMLHandler
 		}
 
 		super.setFeatureValue(object, feature, value, position);
+	}
+
+	@Override
+	protected EPackage getPackageForURI(String uriString) {
+
+		if (XMI2UMLResource.STANDARD_L2_PROFILE_2_1_1_NS_URI.equals(uriString)
+			|| XMI2UMLResource.STANDARD_L2_PROFILE_2_1_NS_URI.equals(uriString)) {
+
+			uriString = UMLResource.STANDARD_L2_PROFILE_NS_URI;
+		} else if (XMI2UMLResource.STANDARD_L3_PROFILE_2_1_1_NS_URI
+			.equals(uriString)
+			|| XMI2UMLResource.STANDARD_L3_PROFILE_2_1_NS_URI.equals(uriString)) {
+
+			uriString = UMLResource.STANDARD_L3_PROFILE_NS_URI;
+		}
+
+		return super.getPackageForURI(uriString);
 	}
 
 }

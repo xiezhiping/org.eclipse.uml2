@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2006, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 204202
- *   Kenn Hussey (CEA) - 327039, 359964, 351774
+ *   Kenn Hussey (CEA) - 327039, 359964, 351774, 299527
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -72,6 +73,7 @@ public class XMI2UMLHandler
 
 		if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_URI)
 			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_4_URI)) {
+
 			int index = uriLiteral.indexOf('#');
 			uriLiteral = UMLResource.UML_METAMODEL_URI + (index == -1
 				? "#_0" //$NON-NLS-1$
@@ -79,27 +81,42 @@ public class XMI2UMLHandler
 		} else if (uriLiteral
 			.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_URI)
 			|| uriLiteral
-				.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_2_4_URI)
-			|| uriLiteral
-				.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_2_2_URI)) {
+				.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_2_4_URI)) {
+
 			int index = uriLiteral.indexOf('#');
-			uriLiteral = UMLResource.STANDARD_L2_PROFILE_URI + (index == -1
-				? "#_0" //$NON-NLS-1$
-				: uriLiteral.substring(index));
+			if (index == -1) {
+				uriLiteral = UMLResource.STANDARD_L2_PROFILE_URI + "#_0"; //$NON-NLS-1$
+			} else {
+				String fragment = uriLiteral.substring(index);
+
+				if ("#_yzU58YinEdqtvbnfB2L_5w".equals(fragment)) { //$NON-NLS-1$
+					uriLiteral = UMLResource.STANDARD_L2_PROFILE_NS_URI;
+				} else {
+					uriLiteral = UMLResource.STANDARD_L2_PROFILE_URI + fragment;
+				}
+			}
 		} else if (uriLiteral
 			.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_URI)
 			|| uriLiteral
-				.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_2_4_URI)
-			|| uriLiteral
-				.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_2_2_URI)) {
+				.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_2_4_URI)) {
+
 			int index = uriLiteral.indexOf('#');
-			uriLiteral = UMLResource.STANDARD_L3_PROFILE_URI + (index == -1
-				? "#_0" //$NON-NLS-1$
-				: uriLiteral.substring(index));
+			if (index == -1) {
+				uriLiteral = UMLResource.STANDARD_L3_PROFILE_URI + "#_0"; //$NON-NLS-1$
+			} else {
+				String fragment = uriLiteral.substring(index);
+
+				if ("#_yzU58YinEdqtvbnfB2L_5w".equals(fragment)) { //$NON-NLS-1$
+					uriLiteral = UMLResource.STANDARD_L3_PROFILE_NS_URI;
+				} else {
+					uriLiteral = UMLResource.STANDARD_L3_PROFILE_URI + fragment;
+				}
+			}
 		} else if (uriLiteral
 			.startsWith(XMI2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI)
 			|| uriLiteral
 				.startsWith(XMI2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_2_4_URI)) {
+
 			int index = uriLiteral.indexOf('#');
 			uriLiteral = UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI
 				+ (index == -1
@@ -218,6 +235,22 @@ public class XMI2UMLHandler
 
 		return super.validateCreateObjectFromFactory(factory, typeName,
 			newObject, feature);
+	}
+
+	@Override
+	protected EPackage getPackageForURI(String uriString) {
+
+		if (XMI2UMLResource.STANDARD_L2_PROFILE_NS_URI.equals(uriString)
+			|| XMI2UMLResource.STANDARD_L2_PROFILE_2_4_NS_URI.equals(uriString)) {
+
+			uriString = UMLResource.STANDARD_L2_PROFILE_NS_URI;
+		} else if (XMI2UMLResource.STANDARD_L3_PROFILE_NS_URI.equals(uriString)
+			|| XMI2UMLResource.STANDARD_L3_PROFILE_2_4_NS_URI.equals(uriString)) {
+
+			uriString = UMLResource.STANDARD_L3_PROFILE_NS_URI;
+		}
+
+		return super.getPackageForURI(uriString);
 	}
 
 }
