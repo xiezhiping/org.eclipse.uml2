@@ -7191,8 +7191,7 @@ public class UMLUtil
 		}
 
 		protected void processEcoreTaggedValue(Element element,
-				Stereotype stereotype, String propertyName,
-				Object value,
+				Stereotype stereotype, String propertyName, Object value,
 				Map<String, String> options, DiagnosticChain diagnostics,
 				Map<Object, Object> context) {
 
@@ -7212,7 +7211,9 @@ public class UMLUtil
 							UMLPlugin.INSTANCE
 								.getString(
 									"_UI_Ecore2UMLConverter_ProcessEcoreTaggedValue_diagnostic", //$NON-NLS-1$
-									getMessageSubstitutions(context, element,
+									getMessageSubstitutions(
+										context,
+										element,
 										getTagDefinition(stereotype,
 											propertyName), value)),
 							new Object[]{element}));
@@ -7220,8 +7221,7 @@ public class UMLUtil
 
 				setTaggedValue(element, stereotype, propertyName, value);
 			} else if (OPTION__REPORT.equals(options
-				.get(OPTION__ECORE_TAGGED_VALUES))
-				&& diagnostics != null) {
+				.get(OPTION__ECORE_TAGGED_VALUES)) && diagnostics != null) {
 
 				diagnostics
 					.add(new BasicDiagnostic(
@@ -7325,8 +7325,8 @@ public class UMLUtil
 							.getName((EStructuralFeature) eModelElement);
 					}
 
-					if (safeEquals(value, ((ENamedElement) eModelElement)
-						.getName())) {
+					if (safeEquals(value,
+						((ENamedElement) eModelElement).getName())) {
 
 						return;
 					}
@@ -7413,8 +7413,8 @@ public class UMLUtil
 								stringBuffer.append(escapeString(
 									entry.getKey(), " =")); //$NON-NLS-1$
 								stringBuffer.append("=\'"); //$NON-NLS-1$
-								stringBuffer.append(escapeString(entry
-									.getValue(), "")); //$NON-NLS-1$
+								stringBuffer.append(escapeString(
+									entry.getValue(), "")); //$NON-NLS-1$
 								stringBuffer.append('\'');
 							}
 
@@ -7440,7 +7440,8 @@ public class UMLUtil
 				}
 			}
 
-			processEcoreTaggedValue(element, stereotype, propertyName, value, options, diagnostics, context);
+			processEcoreTaggedValue(element, stereotype, propertyName, value,
+				options, diagnostics, context);
 		}
 
 		protected void processEcoreTaggedValues(Element element,

@@ -141,7 +141,8 @@ public class UMLExporter
 		};
 
 		BasicDiagnostic diagnostics = new BasicDiagnostic(ConverterPlugin.ID,
-			ConverterUtil.ACTION_DEFAULT, UMLExporterPlugin.INSTANCE
+			ConverterUtil.ACTION_DEFAULT,
+			UMLExporterPlugin.INSTANCE
 				.getString("_UI_ProblemsEncounteredProcessing_message"), //$NON-NLS-1$
 			null);
 
@@ -154,14 +155,14 @@ public class UMLExporter
 			exportData.genPackageToArtifactURI.size());
 
 		List<Resource> resourcesToSave = new ArrayList<Resource>();
-		
+
 		for (Map.Entry<GenPackage, URI> entry : exportData.genPackageToArtifactURI
 			.entrySet()) {
 
 			URI artifactURI = entry.getValue();
 			Resource resource = resourceSet.createResource(artifactURI);
 			resourcesToSave.add(resource);
-			
+
 			EPackage ePackage = entry.getKey().getEcorePackage();
 
 			monitor.subTask(UMLExporterPlugin.INSTANCE.getString(
