@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332, 247980
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 364419
+ *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633
  *
  */
 package org.eclipse.uml2.uml.editor.presentation;
@@ -668,13 +668,12 @@ public class UMLEditor
 	protected void initializeEditingDomain() {
 		// Create an adapter factory that yields item providers.
 		//
-		List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
-		factories.add(new UMLResourceItemProviderAdapterFactory());
-		factories.add(new UMLItemProviderAdapterFactory());
-		factories.add(new EcoreItemProviderAdapterFactory());
-		factories.add(new UMLReflectiveItemProviderAdapterFactory());
+		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
-		adapterFactory = new ComposedAdapterFactory(factories);
+		adapterFactory.addAdapterFactory(new UMLResourceItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new UMLItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new UMLReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.
 		//
