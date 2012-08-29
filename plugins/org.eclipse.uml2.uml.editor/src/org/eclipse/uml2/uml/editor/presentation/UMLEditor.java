@@ -10,6 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332, 247980
  *   Kenn Hussey - 286329, 323181
  *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633
+ *   Christian W. Damus - 355218
  *
  */
 package org.eclipse.uml2.uml.editor.presentation;
@@ -518,6 +519,35 @@ public class UMLEditor
 	};
 
 	/**
+	 * A listener to set the most recent command's affected objects to be the
+	 * selection of the viewer with focus.
+	 */
+	protected CommandStackListener commandStackListener = new CommandStackListener() {
+
+		public void commandStackChanged(final EventObject event) {
+			getContainer().getDisplay().asyncExec(new Runnable() {
+
+				public void run() {
+					firePropertyChange(IEditorPart.PROP_DIRTY);
+
+					// Try to select the affected objects.
+					//
+					Command mostRecentCommand = ((CommandStack) event
+						.getSource()).getMostRecentCommand();
+					if (mostRecentCommand != null) {
+						setSelectionToViewer(mostRecentCommand
+							.getAffectedObjects());
+					}
+					if (propertySheetPage != null
+						&& !propertySheetPage.getControl().isDisposed()) {
+						propertySheetPage.refresh();
+					}
+				}
+			});
+		}
+	};
+
+	/**
 	 * Handles activation of the editor or it's associated views.
 	 * @generated
 	 */
@@ -695,32 +725,9 @@ public class UMLEditor
 			}
 		};
 
-		// Add a listener to set the most recent command's affected objects to be the selection of the viewer with focus.
-		//
-		commandStack.addCommandStackListener(new CommandStackListener() {
-
-			public void commandStackChanged(final EventObject event) {
-				getContainer().getDisplay().asyncExec(new Runnable() {
-
-					public void run() {
-						firePropertyChange(IEditorPart.PROP_DIRTY);
-
-						// Try to select the affected objects.
-						//
-						Command mostRecentCommand = ((CommandStack) event
-							.getSource()).getMostRecentCommand();
-						if (mostRecentCommand != null) {
-							setSelectionToViewer(mostRecentCommand
-								.getAffectedObjects());
-						}
-						if (propertySheetPage != null
-							&& !propertySheetPage.getControl().isDisposed()) {
-							propertySheetPage.refresh();
-						}
-					}
-				});
-			}
-		});
+		if (commandStackListener != null) {
+			commandStack.addCommandStackListener(commandStackListener);
+		}
 
 		// Create the editing domain with a special command stack.
 		//
@@ -1771,6 +1778,12 @@ public class UMLEditor
 
 	@Override
 	public void dispose() {
+
+		if (commandStackListener != null && editingDomain != null) {
+			editingDomain.getCommandStack().removeCommandStackListener(
+				commandStackListener);
+		}
+
 		disposeGen();
 
 		for (Resource resource : editingDomain.getResourceSet().getResources()) {
