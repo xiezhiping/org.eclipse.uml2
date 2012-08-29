@@ -7,11 +7,14 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Christian W. Damus (CEA) - Bug 373643
+ *   Christian W. Damus (CEA) - 373643
+ *   Christian W. Damus - 388240
  *
  */
 package org.eclipse.uml2.uml.tests;
 
+import org.eclipse.uml2.uml.UMLPlugin;
+import org.eclipse.uml2.uml.resources.util.UMLResourcesUtil;
 import org.eclipse.uml2.uml.validation.tests.UMLValidationTests;
 
 import junit.framework.Test;
@@ -27,6 +30,13 @@ import junit.textui.TestRunner;
  */
 public class UMLAllTests
 		extends TestSuite {
+
+	static {
+		if (!UMLPlugin.IS_ECLIPSE_RUNNING) {
+			// ensure that EMF knows how to create UML resources
+			UMLResourcesUtil.init(null);
+		}
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
