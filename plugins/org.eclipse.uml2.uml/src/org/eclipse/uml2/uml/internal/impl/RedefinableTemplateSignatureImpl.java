@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2012 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 386760
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -26,6 +26,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -1140,6 +1142,20 @@ public class RedefinableTemplateSignatureImpl
 	@Override
 	public boolean isSetRedefinitionContexts() {
 		return super.isSetRedefinitionContexts() || isSetClassifier();
+	}
+
+	@Override
+	public EReference eContainmentFeature() {
+		return eContainerFeatureID() == UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER
+			? UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+			: super.eContainmentFeature();
+	}
+
+	@Override
+	public EStructuralFeature eContainingFeature() {
+		return eContainerFeatureID() == UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER
+			? UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+			: super.eContainingFeature();
 	}
 
 } //RedefinableTemplateSignatureImpl
