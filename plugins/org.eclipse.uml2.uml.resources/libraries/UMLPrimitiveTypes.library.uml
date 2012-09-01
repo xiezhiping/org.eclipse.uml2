@@ -41,4 +41,9 @@
   </uml:Model>
   <Ecore:EPackage xmi:id="_eHAUgKzuEeC4yJrLbEUOVg" base_Package="_0" packageName="types" nsPrefix="types" nsURI="http://www.eclipse.org/uml2/4.0.0/Types"/>
   <l2:ModelLibrary xmi:id="_kH3IwMk_EeC3qc59rLjnlw" base_Package="_0"/>
+  <Ecore:EDataType xmi:id="_pcKUcPRMEeGVueXDFdVLZg" instanceClassName="boolean" base_PrimitiveType="Boolean"/>
+  <Ecore:EDataType xmi:id="_q9BDMPRMEeGVueXDFdVLZg" instanceClassName="int" base_PrimitiveType="Integer"/>
+  <Ecore:EDataType xmi:id="_s8njcPRMEeGVueXDFdVLZg" instanceClassName="double" base_PrimitiveType="Real"/>
+  <Ecore:EDataType xmi:id="_uT5fcPRMEeGVueXDFdVLZg" instanceClassName="java.lang.String" base_PrimitiveType="String"/>
+  <Ecore:EDataType xmi:id="_vpq_kPRMEeGVueXDFdVLZg" instanceClassName="int" base_PrimitiveType="UnlimitedNatural"/>
 </xmi:XMI>
