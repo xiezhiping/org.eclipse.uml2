@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542
  *   Yann Tanguy (CEA) - 350402
  *
  */
@@ -10339,12 +10339,6 @@ public class UMLUtil
 	 * @since 4.0
 	 */
 	public static ResourceSet init(ResourceSet resourceSet) {
-		(resourceSet == null
-			? Resource.Factory.Registry.INSTANCE
-			: resourceSet.getResourceFactoryRegistry())
-			.getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION,
-				UMLResource.Factory.INSTANCE);
-		
 		Map<String, Object> contentTypeToFactoryMap = (resourceSet == null
 			? Resource.Factory.Registry.INSTANCE
 			: resourceSet.getResourceFactoryRegistry())
