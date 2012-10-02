@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 389542
  *
  */
 package org.eclipse.uml2.uml.resources.util;
@@ -209,56 +210,56 @@ public class UMLResourcesUtil
 				.getContentHandlers();
 		}
 
-		if (!contentHandlers.contains(UML2_1_0_0_CONTENT_HANDLER)) {
-			contentHandlers.add(UML2_1_0_0_CONTENT_HANDLER);
-		}
-
-		if (!contentHandlers.contains(UML2_2_0_0_CONTENT_HANDLER)) {
-			contentHandlers.add(UML2_2_0_0_CONTENT_HANDLER);
-		}
-
-		if (!contentHandlers.contains(UML2_2_1_0_CONTENT_HANDLER)) {
-			contentHandlers.add(UML2_2_1_0_CONTENT_HANDLER);
+		if (!contentHandlers.contains(UML2_4_0_0_CONTENT_HANDLER)) {
+			contentHandlers.add(UML2_4_0_0_CONTENT_HANDLER);
 		}
 
 		if (!contentHandlers.contains(UML2_3_0_0_CONTENT_HANDLER)) {
 			contentHandlers.add(UML2_3_0_0_CONTENT_HANDLER);
 		}
 
-		if (!contentHandlers.contains(UML2_4_0_0_CONTENT_HANDLER)) {
-			contentHandlers.add(UML2_4_0_0_CONTENT_HANDLER);
+		if (!contentHandlers.contains(UML2_2_1_0_CONTENT_HANDLER)) {
+			contentHandlers.add(UML2_2_1_0_CONTENT_HANDLER);
 		}
 
-		if (!contentHandlers.contains(OMG_2_1_CONTENT_HANDLER)) {
-			contentHandlers.add(OMG_2_1_CONTENT_HANDLER);
+		if (!contentHandlers.contains(UML2_2_0_0_CONTENT_HANDLER)) {
+			contentHandlers.add(UML2_2_0_0_CONTENT_HANDLER);
 		}
 
-		if (!contentHandlers.contains(OMG_2_1_1_CONTENT_HANDLER)) {
-			contentHandlers.add(OMG_2_1_1_CONTENT_HANDLER);
-		}
-
-		if (!contentHandlers.contains(OMG_2_2_CONTENT_HANDLER)) {
-			contentHandlers.add(OMG_2_2_CONTENT_HANDLER);
-		}
-
-		if (!contentHandlers.contains(OMG_2_4_CONTENT_HANDLER)) {
-			contentHandlers.add(OMG_2_4_CONTENT_HANDLER);
+		if (!contentHandlers.contains(UML2_1_0_0_CONTENT_HANDLER)) {
+			contentHandlers.add(UML2_1_0_0_CONTENT_HANDLER);
 		}
 
 		if (!contentHandlers.contains(OMG_2_4_1_CONTENT_HANDLER)) {
 			contentHandlers.add(OMG_2_4_1_CONTENT_HANDLER);
 		}
 
-		if (!contentHandlers.contains(CMOF_2_0_CONTENT_HANDLER)) {
-			contentHandlers.add(CMOF_2_0_CONTENT_HANDLER);
+		if (!contentHandlers.contains(OMG_2_4_CONTENT_HANDLER)) {
+			contentHandlers.add(OMG_2_4_CONTENT_HANDLER);
+		}
+
+		if (!contentHandlers.contains(OMG_2_2_CONTENT_HANDLER)) {
+			contentHandlers.add(OMG_2_2_CONTENT_HANDLER);
+		}
+
+		if (!contentHandlers.contains(OMG_2_1_1_CONTENT_HANDLER)) {
+			contentHandlers.add(OMG_2_1_1_CONTENT_HANDLER);
+		}
+
+		if (!contentHandlers.contains(OMG_2_1_CONTENT_HANDLER)) {
+			contentHandlers.add(OMG_2_1_CONTENT_HANDLER);
+		}
+
+		if (!contentHandlers.contains(CMOF_2_4_1_CONTENT_HANDLER)) {
+			contentHandlers.add(CMOF_2_4_1_CONTENT_HANDLER);
 		}
 
 		if (!contentHandlers.contains(CMOF_2_4_CONTENT_HANDLER)) {
 			contentHandlers.add(CMOF_2_4_CONTENT_HANDLER);
 		}
 
-		if (!contentHandlers.contains(CMOF_2_4_1_CONTENT_HANDLER)) {
-			contentHandlers.add(CMOF_2_4_1_CONTENT_HANDLER);
+		if (!contentHandlers.contains(CMOF_2_0_CONTENT_HANDLER)) {
+			contentHandlers.add(CMOF_2_0_CONTENT_HANDLER);
 		}
 
 		if (resourceSet != null
