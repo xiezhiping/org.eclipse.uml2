@@ -123,9 +123,9 @@ public class UMLResourcesUtil
 		CMOF2UMLResource.CMOF_2_4_1_METAMODEL_NS_URI, null);
 
 	/**
-	 * Initializes the registries for the specified resource set (or the global
-	 * registries if <code>null</code>) with the registrations needed to work
-	 * with UML2 resources in stand-alone mode (i.e., without Eclipse).
+	 * Initializes the registries for the specified resource set (and/or the
+	 * global registries) with the registrations needed to work with UML2
+	 * resources in stand-alone mode (i.e., without Eclipse).
 	 * 
 	 * @param resourceSet
 	 *            The resource set whose registries to initialize, or
@@ -135,9 +135,7 @@ public class UMLResourcesUtil
 	 * @since 4.0
 	 */
 	public static ResourceSet init(ResourceSet resourceSet) {
-		EPackage.Registry packageRegistry = resourceSet == null
-			? EPackage.Registry.INSTANCE
-			: resourceSet.getPackageRegistry();
+		EPackage.Registry packageRegistry = EPackage.Registry.INSTANCE;
 
 		packageRegistry.put(EcorePackage.eNS_URI, EcorePackage.eINSTANCE);
 
@@ -159,6 +157,9 @@ public class UMLResourcesUtil
 		packageRegistry.put(L2Package.eNS_URI, L2Package.eINSTANCE);
 		packageRegistry.put(L3Package.eNS_URI, L3Package.eINSTANCE);
 
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(
+			UMLResource.FILE_EXTENSION, UMLResource.Factory.INSTANCE);
+
 		Map<String, URI> ePackageNsURIToProfileLocationMap = UMLPlugin
 			.getEPackageNsURIToProfileLocationMap();
 
@@ -170,9 +171,7 @@ public class UMLResourcesUtil
 		ePackageNsURIToProfileLocationMap.put(UMLResource.ECORE_PROFILE_NS_URI,
 			URI.createURI("pathmap://UML_PROFILES/Ecore.profile.uml#_0")); //$NON-NLS-1$
 
-		Map<URI, URI> uriMap = resourceSet == null
-			? URIConverter.URI_MAP
-			: resourceSet.getURIConverter().getURIMap();
+		Map<URI, URI> uriMap = URIConverter.URI_MAP;
 
 		uriMap.put(URI.createURI(UMLResource.LIBRARIES_PATHMAP), URI
 			.createPlatformPluginURI(
@@ -184,30 +183,23 @@ public class UMLResourcesUtil
 			.createPlatformPluginURI(
 				"/org.eclipse.uml2.uml.resources/profiles/", true)); //$NON-NLS-1$
 
-		List<ContentHandler> contentHandlers;
+		List<ContentHandler> contentHandlers = ContentHandler.Registry.INSTANCE
+			.get(ContentHandler.Registry.LOW_PRIORITY);
 
-		if (resourceSet == null) {
-			contentHandlers = ContentHandler.Registry.INSTANCE
-				.get(ContentHandler.Registry.LOW_PRIORITY);
+		if (contentHandlers == null
+			|| !contentHandlers.contains(XMI_CONTENT_HANDLER)) {
 
-			if (contentHandlers == null
-				|| !contentHandlers.contains(XMI_CONTENT_HANDLER)) {
+			ContentHandler.Registry.INSTANCE.put(
+				ContentHandler.Registry.LOW_PRIORITY, XMI_CONTENT_HANDLER);
+		}
 
-				ContentHandler.Registry.INSTANCE.put(
-					ContentHandler.Registry.LOW_PRIORITY, XMI_CONTENT_HANDLER);
-			}
+		contentHandlers = ContentHandler.Registry.INSTANCE
+			.get(ContentHandler.Registry.NORMAL_PRIORITY);
 
-			contentHandlers = ContentHandler.Registry.INSTANCE
-				.get(ContentHandler.Registry.NORMAL_PRIORITY);
-
-			if (contentHandlers == null) {
-				ContentHandler.Registry.INSTANCE.put(
-					ContentHandler.Registry.NORMAL_PRIORITY,
-					contentHandlers = new ArrayList<ContentHandler>());
-			}
-		} else {
-			contentHandlers = resourceSet.getURIConverter()
-				.getContentHandlers();
+		if (contentHandlers == null) {
+			ContentHandler.Registry.INSTANCE.put(
+				ContentHandler.Registry.NORMAL_PRIORITY,
+				contentHandlers = new ArrayList<ContentHandler>());
 		}
 
 		if (!contentHandlers.contains(UML2_4_0_0_CONTENT_HANDLER)) {
@@ -262,22 +254,11 @@ public class UMLResourcesUtil
 			contentHandlers.add(CMOF_2_0_CONTENT_HANDLER);
 		}
 
-		if (resourceSet != null
-			&& !contentHandlers.contains(XMI_CONTENT_HANDLER)) {
+		Resource.Factory.Registry.INSTANCE.getContentTypeToFactoryMap().put(
+			UMLResource.UML_CONTENT_TYPE_IDENTIFIER,
+			UMLResource.Factory.INSTANCE);
 
-			contentHandlers.add(XMI_CONTENT_HANDLER);
-		}
-
-		(resourceSet == null
-			? Resource.Factory.Registry.INSTANCE
-			: resourceSet.getResourceFactoryRegistry())
-			.getContentTypeToFactoryMap().put(
-				UMLResource.UML_4_0_0_CONTENT_TYPE_IDENTIFIER,
-				UMLResource.Factory.INSTANCE);
-
-		UMLUtil.init(resourceSet);
-
-		return resourceSet;
+		return UMLUtil.init(resourceSet);
 	}
 
 }

@@ -63,7 +63,6 @@ import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
@@ -10326,68 +10325,65 @@ public class UMLUtil
 	}
 
 	/**
-	 * Initializes the registries for the specified resource set (or the global
-	 * registries if <code>null</code>) with the content type and extended
-	 * metadata registrations needed to work with the various supported versions
-	 * of UML, XMI, and CMOF.
+	 * Initializes the registries for the specified resource set with the
+	 * content type and extended metadata registrations needed to work with the
+	 * various supported versions of UML, XMI, and CMOF.
 	 * 
 	 * @param resourceSet
-	 *            The resource set whose registries to initialize, or
-	 *            <code>null</code>.
-	 * @return The resource set (or <code>null</code>).
+	 *            The resource set whose registries to initialize.
+	 * @return The resource set.
 	 * 
 	 * @since 4.0
 	 */
 	public static ResourceSet init(ResourceSet resourceSet) {
-		Map<String, Object> contentTypeToFactoryMap = (resourceSet == null
-			? Resource.Factory.Registry.INSTANCE
-			: resourceSet.getResourceFactoryRegistry())
-			.getContentTypeToFactoryMap();
 
-		contentTypeToFactoryMap.put(
-			UML302UMLResource.UML_3_0_0_CONTENT_TYPE_IDENTIFIER,
-			UML302UMLResource.Factory.INSTANCE);
-		contentTypeToFactoryMap.put(
-			UML212UMLResource.UML_2_1_0_CONTENT_TYPE_IDENTIFIER,
-			UML212UMLResource.Factory.INSTANCE);
-		contentTypeToFactoryMap.put(
-			UML22UMLResource.UML2_CONTENT_TYPE_IDENTIFIER,
-			UML22UMLResource.Factory.INSTANCE);
-		contentTypeToFactoryMap.put(
-			XMI2UMLResource.UML_CONTENT_TYPE_IDENTIFIER,
-			XMI2UMLResource.Factory.INSTANCE);
-		contentTypeToFactoryMap.put(
-			XMI2UMLResource.UML_2_4_CONTENT_TYPE_IDENTIFIER,
-			XMI2UMLResource.Factory.INSTANCE);
-		contentTypeToFactoryMap.put(
-			XMI222UMLResource.UML_2_2_CONTENT_TYPE_IDENTIFIER,
-			XMI222UMLResource.Factory.INSTANCE);
-		contentTypeToFactoryMap.put(
-			XMI212UMLResource.UML_2_1_1_CONTENT_TYPE_IDENTIFIER,
-			XMI212UMLResource.Factory.INSTANCE);
-		contentTypeToFactoryMap.put(
-			XMI212UMLResource.UML_2_1_CONTENT_TYPE_IDENTIFIER,
-			XMI212UMLResource.Factory.INSTANCE);
-		contentTypeToFactoryMap.put(
-			CMOF2UMLResource.CMOF_CONTENT_TYPE_IDENTIFIER,
-			CMOF2UMLResource.Factory.INSTANCE);
-		contentTypeToFactoryMap.put(
-			CMOF2UMLResource.CMOF_2_4_CONTENT_TYPE_IDENTIFIER,
-			CMOF2UMLResource.Factory.INSTANCE);
-		contentTypeToFactoryMap.put(
-			CMOF202UMLResource.CMOF_2_0_CONTENT_TYPE_IDENTIFIER,
-			CMOF202UMLResource.Factory.INSTANCE);
+		if (resourceSet != null) {
+			Map<String, Object> contentTypeToFactoryMap = resourceSet
+				.getResourceFactoryRegistry().getContentTypeToFactoryMap();
 
-		Map<URI, URI> uriMap = resourceSet == null
-			? URIConverter.URI_MAP
-			: resourceSet.getURIConverter().getURIMap();
+			contentTypeToFactoryMap.put(
+				UML302UMLResource.UML_3_0_0_CONTENT_TYPE_IDENTIFIER,
+				UML302UMLResource.Factory.INSTANCE);
+			contentTypeToFactoryMap.put(
+				UML212UMLResource.UML_2_1_0_CONTENT_TYPE_IDENTIFIER,
+				UML212UMLResource.Factory.INSTANCE);
+			contentTypeToFactoryMap.put(
+				UML22UMLResource.UML2_CONTENT_TYPE_IDENTIFIER,
+				UML22UMLResource.Factory.INSTANCE);
+			contentTypeToFactoryMap.put(
+				XMI2UMLResource.UML_CONTENT_TYPE_IDENTIFIER,
+				XMI2UMLResource.Factory.INSTANCE);
+			contentTypeToFactoryMap.put(
+				XMI2UMLResource.UML_2_4_CONTENT_TYPE_IDENTIFIER,
+				XMI2UMLResource.Factory.INSTANCE);
+			contentTypeToFactoryMap.put(
+				XMI222UMLResource.UML_2_2_CONTENT_TYPE_IDENTIFIER,
+				XMI222UMLResource.Factory.INSTANCE);
+			contentTypeToFactoryMap.put(
+				XMI212UMLResource.UML_2_1_1_CONTENT_TYPE_IDENTIFIER,
+				XMI212UMLResource.Factory.INSTANCE);
+			contentTypeToFactoryMap.put(
+				XMI212UMLResource.UML_2_1_CONTENT_TYPE_IDENTIFIER,
+				XMI212UMLResource.Factory.INSTANCE);
+			contentTypeToFactoryMap.put(
+				CMOF2UMLResource.CMOF_CONTENT_TYPE_IDENTIFIER,
+				CMOF2UMLResource.Factory.INSTANCE);
+			contentTypeToFactoryMap.put(
+				CMOF2UMLResource.CMOF_2_4_CONTENT_TYPE_IDENTIFIER,
+				CMOF2UMLResource.Factory.INSTANCE);
+			contentTypeToFactoryMap.put(
+				CMOF202UMLResource.CMOF_2_0_CONTENT_TYPE_IDENTIFIER,
+				CMOF202UMLResource.Factory.INSTANCE);
 
-		uriMap.putAll(UML302UMLExtendedMetaData.getURIMap());
-		uriMap.putAll(UML212UMLExtendedMetaData.getURIMap());
-		uriMap.putAll(UML22UMLExtendedMetaData.getURIMap());
-		uriMap.putAll(XMI2UMLExtendedMetaData.getURIMap());
-		uriMap.putAll(CMOF2UMLExtendedMetaData.getURIMap());
-		
+			Map<URI, URI> uriMap = resourceSet.getURIConverter().getURIMap();
+
+			uriMap.putAll(UML302UMLExtendedMetaData.getURIMap());
+			uriMap.putAll(UML212UMLExtendedMetaData.getURIMap());
+			uriMap.putAll(UML22UMLExtendedMetaData.getURIMap());
+			uriMap.putAll(XMI2UMLExtendedMetaData.getURIMap());
+			uriMap.putAll(CMOF2UMLExtendedMetaData.getURIMap());
+		}
+
 		return resourceSet;
 	}
 
