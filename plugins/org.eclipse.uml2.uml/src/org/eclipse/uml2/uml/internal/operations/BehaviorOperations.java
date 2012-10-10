@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2012 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 383550
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioralFeature;
@@ -232,8 +233,29 @@ public class BehaviorOperations
 	 * @generated NOT
 	 */
 	public static BehavioredClassifier getContext(Behavior behavior) {
-		return (BehavioredClassifier) getOwningElement(behavior,
-			UMLPackage.Literals.BEHAVIORED_CLASSIFIER, false);
+		BehavioredClassifier context = null;
+
+		EReference containmentFeature = behavior.eContainmentFeature();
+
+		if (containmentFeature != UMLPackage.Literals.CLASS__NESTED_CLASSIFIER
+			&& containmentFeature != UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER) {
+
+			BehavioredClassifier owningElement = (BehavioredClassifier) getOwningElement(
+				behavior, UMLPackage.Literals.BEHAVIORED_CLASSIFIER, false);
+
+			if (owningElement != null) {
+
+				if (owningElement instanceof Behavior) {
+					context = ((Behavior) owningElement).getContext();
+				}
+
+				if (context == null) {
+					context = owningElement;
+				}
+			}
+		}
+
+		return context;
 	}
 
 } // BehaviorOperations
