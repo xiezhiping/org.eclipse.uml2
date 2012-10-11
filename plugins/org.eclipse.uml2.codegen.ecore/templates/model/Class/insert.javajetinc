@@ -307,7 +307,7 @@
     <%if (isJDK50) { //genOperation.annotations.insert.javajetinc%>
 <%@ include file="genOperation.annotations.insert.javajetinc" fail="silent" %>
     <%}%>
-	public <%=genOperation.getTypeParameters(genClass)%><%=genOperation.getImportedType(genClass)%> <%=genOperation.getName()%>(<%=genOperation.getParameters(genClass)%>)<%=genOperation.getThrows(genClass)%>
+	public <%=genOperation.getTypeParameters(genClass)%><%=genOperation.getImportedType(genClass)%> <%=genOperation.getName()%>(<%=genOperation.getParameters(isImplementation, genClass)%>)<%=genOperation.getThrows(genClass)%>
 	{
     <%if (genOperation.isVoid()) {%>
 		<%=redefinitionGenOperation.getName()%>(<%=genOperation.getParameterNames(", ")%>);
