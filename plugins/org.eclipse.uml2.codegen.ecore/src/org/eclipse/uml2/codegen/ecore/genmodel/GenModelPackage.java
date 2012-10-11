@@ -1329,6 +1329,15 @@ public interface GenModelPackage
 	int GEN_MODEL__RUNTIME_PLATFORM = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__RUNTIME_PLATFORM;
 
 	/**
+	 * The feature id for the '<em><b>Import Organizing</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__IMPORT_ORGANIZING = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__IMPORT_ORGANIZING;
+
+	/**
 	 * The feature id for the '<em><b>Factory Methods</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
