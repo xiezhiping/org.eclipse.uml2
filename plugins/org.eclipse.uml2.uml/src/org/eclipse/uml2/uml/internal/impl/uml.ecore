@@ -1865,7 +1865,7 @@
       <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isReentrant" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/4.0.0/Types#//Boolean"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/4.0.0/Types#//Boolean"
         defaultValueLiteral="true" unsettable="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedParameter" upperBound="-1"
         eType="#//Parameter" containment="true">

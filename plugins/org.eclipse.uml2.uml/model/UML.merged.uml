@@ -3079,6 +3079,7 @@ endif
           <body>Tells whether the behavior can be invoked while it is still executing from a previous invocation.</body>
         </ownedComment>
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bT4g4BO2EeKHzP1wfcteDQ"/>
         <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_VWCloBE9EeGOffqMW1YiZA" value="true"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="_VWDMsBE9EeGOffqMW1YiZA" name="ownedParameter" visibility="public" type="_KyaPMGveEdq4DLWZOhbdEA" isOrdered="true" aggregation="composite" subsettedProperty="_Var1EBE9EeGOffqMW1YiZA" association="_VUCagxE9EeGOffqMW1YiZA">

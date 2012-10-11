@@ -3079,6 +3079,7 @@ endif
           <body>Tells whether the behavior can be invoked while it is still executing from a previous invocation.</body>
         </ownedComment>
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Behavior-isReentrant-_lowerValue"/>
         <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="Behavior-isReentrant-_defaultValue" value="true"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="Behavior-ownedParameter" name="ownedParameter" visibility="public" type="Parameter" isOrdered="true" aggregation="composite" subsettedProperty="Namespace-ownedMember" association="A_ownedParameter_behavior">

@@ -175,7 +175,8 @@
     <packagedElement xmi:type="uml:Class" xmi:id="_TUPtYGveEdq4DLWZOhbdEA" name="Behavior" isAbstract="true">
       <ownedAttribute xmi:id="_Q1JqkNwaEeCT5O2F6sGn5g" name="isReentrant">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
-        <defaultValue xmi:type="uml:LiteralString" xmi:id="_bZmgwNwaEeCT5O2F6sGn5g" value="true"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bT4g4BO2EeKHzP1wfcteDQ"/>
+        <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_bZmgwNwaEeCT5O2F6sGn5g" value="true"/>
       </ownedAttribute>
       <ownedOperation xmi:id="_Zp2iwFYgEdqB6vblk3tuMA" name="context" visibility="protected" isQuery="true">
         <ownedParameter xmi:id="_flYtEFYgEdqB6vblk3tuMA" name="result" type="_iY7sMGvsEdqG6fBIPwe-mw" direction="return">

@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 383550
+ *   Kenn Hussey (CEA) - 327039, 383550, 386251
  *
  */
 package org.eclipse.uml2.uml;
@@ -64,7 +64,7 @@ public interface Behavior
 	 * @see #unsetIsReentrant()
 	 * @see #setIsReentrant(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavior_IsReentrant()
-	 * @model default="true" unsettable="true" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
+	 * @model default="true" unsettable="true" dataType="org.eclipse.uml2.types.Boolean" ordered="false"
 	 * @generated
 	 */
 	boolean isReentrant();
