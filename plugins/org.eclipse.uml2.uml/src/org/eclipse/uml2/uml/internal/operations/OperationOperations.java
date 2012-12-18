@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2012 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 295864
  *
- * $Id: OperationOperations.java,v 1.14 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -82,29 +81,36 @@ public class OperationOperations
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateAtMostOneReturn(Operation operation,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.OPERATION__AT_MOST_ONE_RETURN,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateAtMostOneReturn", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(operation, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{operation}));
+		boolean result = true;
+
+		int count = 0;
+
+		for (Parameter ownedParameter : operation.getOwnedParameters()) {
+
+			if (ownedParameter.getDirection() == ParameterDirectionKind.RETURN_LITERAL) {
+				count++;
 			}
-			return false;
 		}
-		return true;
+
+		if (count > 1) {
+			result = false;
+
+			if (diagnostics != null) {
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.OPERATION__AT_MOST_ONE_RETURN,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_Operation_AtMostOneReturn_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, operation)),
+					new Object[]{operation}));
+			}
+		}
+
+		return result;
 	}
 
 	/**
