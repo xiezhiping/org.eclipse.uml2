@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 156879, 220552, 226102
- *   Kenn Hussey (CEA) - 327039, 351774, 364419
+ *   Kenn Hussey (CEA) - 327039, 351774, 364419, 366289
  *
  */
 package org.eclipse.uml2.uml.ecore.importer;
@@ -34,6 +34,7 @@ import org.eclipse.emf.converter.ConverterPlugin;
 import org.eclipse.emf.converter.util.ConverterUtil;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.importer.ModelImporter;
 import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
@@ -312,7 +313,14 @@ public class UMLImporter
 
 	@Override
 	public ResourceSet createResourceSet() {
-		return UMLUtil.init(super.createResourceSet());
+		ResourceSet resourceSet = super.createResourceSet();
+
+		if (resourceSet instanceof ResourceSetImpl) {
+			new ResourceSetImpl.MappedResourceLocator(
+				(ResourceSetImpl) resourceSet);
+		}
+
+		return UMLUtil.init(resourceSet);
 	}
 
 }
