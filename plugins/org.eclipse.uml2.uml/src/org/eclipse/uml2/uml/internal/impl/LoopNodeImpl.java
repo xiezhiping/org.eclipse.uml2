@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 397139
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -31,10 +31,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityNode;
@@ -1581,6 +1584,50 @@ public class LoopNodeImpl
 	 */
 	public boolean isSetStructuredNodeOutputs() {
 		return false;
+	}
+
+	protected static final int[] INPUT_ESUBSETS = new int[]{UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT};
+
+	@Override
+	public EList<InputPin> getInputs() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			@SuppressWarnings("unchecked")
+			EList<InputPin> inputs = (EList<InputPin>) cache.get(eResource,
+				this, UMLPackage.Literals.ACTION__INPUT);
+			if (inputs == null) {
+				cache.put(eResource, this, UMLPackage.Literals.ACTION__INPUT,
+					inputs = new DerivedUnionEObjectEList<InputPin>(
+						InputPin.class, this, UMLPackage.LOOP_NODE__INPUT,
+						INPUT_ESUBSETS));
+			}
+			return inputs;
+		}
+		return new DerivedUnionEObjectEList<InputPin>(InputPin.class, this,
+			UMLPackage.LOOP_NODE__INPUT, INPUT_ESUBSETS);
+	}
+
+	protected static final int[] OUTPUT_ESUBSETS = new int[]{UMLPackage.LOOP_NODE__RESULT};
+
+	@Override
+	public EList<OutputPin> getOutputs() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			@SuppressWarnings("unchecked")
+			EList<OutputPin> outputs = (EList<OutputPin>) cache.get(eResource,
+				this, UMLPackage.Literals.ACTION__OUTPUT);
+			if (outputs == null) {
+				cache.put(eResource, this, UMLPackage.Literals.ACTION__OUTPUT,
+					outputs = new DerivedUnionEObjectEList<OutputPin>(
+						OutputPin.class, this, UMLPackage.LOOP_NODE__OUTPUT,
+						OUTPUT_ESUBSETS));
+			}
+			return outputs;
+		}
+		return new DerivedUnionEObjectEList<OutputPin>(OutputPin.class, this,
+			UMLPackage.LOOP_NODE__OUTPUT, OUTPUT_ESUBSETS);
 	}
 
 } //LoopNodeImpl
