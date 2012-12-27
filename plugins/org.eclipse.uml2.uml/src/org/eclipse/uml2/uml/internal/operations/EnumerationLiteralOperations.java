@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
- *   Kenn Hussey (CEA) - 375553
+ *   Kenn Hussey (CEA) - 375553, 397140
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -17,7 +17,7 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
-import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -26,6 +26,7 @@ import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UMLPlugin;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -66,30 +67,34 @@ public class EnumerationLiteralOperations
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateClassifierEqualsOwningEnumeration(
 			EnumerationLiteral enumerationLiteral, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		boolean result = true;
+
+		if (enumerationLiteral.getClassifier() != enumerationLiteral
+			.getEnumeration()) {
+
+			result = false;
+
 			if (diagnostics != null) {
 				diagnostics
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
 						UMLValidator.ENUMERATION_LITERAL__CLASSIFIER_EQUALS_OWNING_ENUMERATION,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+						UMLPlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateClassifierEqualsOwningEnumeration", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(enumerationLiteral, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_EnumerationLiteral_ClassifierEqualsOwningEnumeration_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context,
+									enumerationLiteral)),
 						new Object[]{enumerationLiteral}));
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**
@@ -99,7 +104,13 @@ public class EnumerationLiteralOperations
 	 */
 	public static EList<Classifier> getClassifiers(
 			EnumerationLiteral enumerationLiteral) {
-		EList<Classifier> classifiers = ECollections.emptyEList();
+		EList<Classifier> classifiers = new UniqueEList.FastCompare<Classifier>();
+
+		Classifier classifier = enumerationLiteral.getClassifier();
+
+		if (classifier != null) {
+			classifiers.add(classifier);
+		}
 
 		return new UnionEObjectEList<Classifier>(
 			(InternalEObject) enumerationLiteral,
