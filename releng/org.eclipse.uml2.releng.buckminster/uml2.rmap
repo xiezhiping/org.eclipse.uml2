@@ -5,9 +5,6 @@
 	<locator pattern="^org\.eclipse\.uml2(?:\..+)?$" searchPathRef="uml2" />
 
 	<locator pattern="^org\.eclipse\.emf\.validation(?:\..+)?$" searchPathRef="emf.validation" />
-	<!--
-	<locator pattern="^org\.eclipse\.emf(?:\..+)?$" searchPathRef="emf.base" failOnError="false" />
-	-->
 	<locator pattern="^org\.eclipse\.emf(?:\..+)?$" searchPathRef="emf" />
 
 	<locator pattern="^org\.eclipse\.test$" searchPathRef="platform43" />
@@ -91,29 +88,6 @@
 		</provider>
 	</searchPath>
 
-	<searchPath name="emf.base">
-		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(|(resolve.target.platform=true)(resolve.target.platform.base.sources=true))(build.type=N))">
-			<uri format="{0}/eclipse/updates/4.3-I-builds">
-				<bc:propertyRef key="eclipse.download" />
-			</uri>
-		</provider>
-		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(|(resolve.target.platform=true)(resolve.target.platform.base.sources=true))(!(|(build.type=N)(build.type=S)(build.type=R))))">
-			<uri format="{0}/eclipse/updates/4.3-I-builds">
-				<bc:propertyRef key="eclipse.download" />
-			</uri>
-		</provider>
-		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(|(resolve.target.platform=true)(resolve.target.platform.base.sources=true))(build.type=S))">
-			<uri format="{0}/eclipse/updates/4.3milestones">
-				<bc:propertyRef key="eclipse.download" />
-			</uri>
-		</provider>
-		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(|(resolve.target.platform=true)(resolve.target.platform.base.sources=true))(build.type=R))">
-			<uri format="{0}/eclipse/updates/4.3">
-				<bc:propertyRef key="eclipse.download" />
-			</uri>
-		</provider>
-	</searchPath>
-
 	<searchPath name="emf">
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=N))">
 			<uri format="{0}/modeling/emf/emf/updates/nightly">
@@ -159,21 +133,6 @@
 			</uri>
 		</provider>
 	</searchPath>
-
-	<!--
-	<searchPath name="eclipse.test">
-		<provider componentTypes="osgi.bundle" readerType="cvs" source="true" mutable="false">
-			<uri format=":pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,{0}">
-				<bc:propertyRef key="buckminster.component" />
-			</uri>
-		</provider>
-		<provider componentTypes="eclipse.feature" readerType="cvs" source="true" mutable="false">
-			<uri format=":pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,{0}-feature">
-				<bc:propertyRef key="buckminster.component" />
-			</uri>
-		</provider>
-	</searchPath>
-	-->
 
 	<searchPath name="platform35">
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=N))">
