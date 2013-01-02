@@ -160,6 +160,7 @@
 		</provider>
 	</searchPath>
 
+	<!--
 	<searchPath name="eclipse.test">
 		<provider componentTypes="osgi.bundle" readerType="cvs" source="true" mutable="false">
 			<uri format=":pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,{0}">
@@ -172,6 +173,7 @@
 			</uri>
 		</provider>
 	</searchPath>
+	-->
 
 	<searchPath name="platform35">
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=N))">
