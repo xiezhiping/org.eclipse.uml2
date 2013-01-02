@@ -12,8 +12,8 @@
 
 	<!--
 	<locator pattern="^org\.eclipse\.test$" searchPathRef="eclipse.test" />
-	-->
 	<locator pattern="^org\.eclipse\.ant\.optional\.junit$" searchPathRef="eclipse.test" />
+	-->
 
 	<locator searchPathRef="platform35" />
 
