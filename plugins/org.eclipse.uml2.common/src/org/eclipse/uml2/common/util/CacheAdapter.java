@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2012 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2004, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 220065
  *   Kenn Hussey - 335125
+ *   Christian W. Damus (CEA) - 389632
  *
  */
 package org.eclipse.uml2.common.util;
@@ -368,12 +369,7 @@ public class CacheAdapter
 
 		Object notifier = msg.getNotifier();
 
-		if (notifier instanceof EObject) {
-			// clear at resource scope iff not touch
-			if (!msg.isTouch()) {
-				clear(((EObject) notifier).eResource());
-			}
-		} else if (notifier instanceof Resource) {
+		if (notifier instanceof Resource) {
 
 			switch (msg.getFeatureID(Resource.class)) {
 				case Resource.RESOURCE__CONTENTS : {
@@ -402,6 +398,11 @@ public class CacheAdapter
 
 					break;
 				}
+			}
+		} else if (notifier instanceof EObject) {
+			// clear at resource scope iff not touch
+			if (!msg.isTouch()) {
+				clear(((EObject) notifier).eResource());
 			}
 		}
 	}
