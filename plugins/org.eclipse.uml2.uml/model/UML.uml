@@ -2672,6 +2672,10 @@
   <Ecore:EAttribute xmi:id="_dFQKQNwaEeCT5O2F6sGn5g" isUnsettable="true" base_Property="_Q1JqkNwaEeCT5O2F6sGn5g"/>
   <Ecore:EReference xmi:id="_JWtREAtDEeGcpbeCPJfCmw" xmlName="group" xmlFeatureKind="Element" base_Property="_zRopoAs9EeGcpbeCPJfCmw"/>
   <Ecore:EReference xmi:id="_N4I04AtDEeGcpbeCPJfCmw" xmlName="node" xmlFeatureKind="Element" base_Property="_5DNmsAs9EeGcpbeCPJfCmw"/>
-  <Ecore:EReference xmi:id="_1XKowBCNEeG9F6n8Twp9jA" xmlFeatureKind="Attribute" base_Property="_RoJfoAs_EeGcpbeCPJfCmw"/>
-  <Ecore:EReference xmi:id="_4FNjYBCNEeG9F6n8Twp9jA" xmlFeatureKind="Attribute" base_Property="_PCvjoAs_EeGcpbeCPJfCmw"/>
+  <Ecore:EReference xmi:id="_1XKowBCNEeG9F6n8Twp9jA" xmlFeatureKind="Attribute" base_Property="_RoJfoAs_EeGcpbeCPJfCmw">
+    <annotation>http://www.eclipse.org/emf/CDO persistent='true' filter='ownedNode'</annotation>
+  </Ecore:EReference>
+  <Ecore:EReference xmi:id="_4FNjYBCNEeG9F6n8Twp9jA" xmlFeatureKind="Attribute" base_Property="_PCvjoAs_EeGcpbeCPJfCmw">
+    <annotation>http://www.eclipse.org/emf/CDO persistent='true' filter='ownedGroup'</annotation>
+  </Ecore:EReference>
 </xmi:XMI>

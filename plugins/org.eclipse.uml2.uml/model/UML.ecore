@@ -8356,6 +8356,10 @@
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="attribute"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/CDO">
+        <details key="persistent" value="true"/>
+        <details key="filter" value="ownedGroup"/>
+      </eAnnotations>
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedNode" ordered="false"
@@ -8401,6 +8405,10 @@
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="attribute"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/CDO">
+        <details key="persistent" value="true"/>
+        <details key="filter" value="ownedNode"/>
       </eAnnotations>
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>

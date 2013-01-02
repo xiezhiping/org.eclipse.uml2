@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039, 351774
+ *   Christian W. Damus (CEA) - 392957
  *
  */
 package org.eclipse.uml2.uml;
@@ -159,6 +160,7 @@ public interface Activity
 	 * @see org.eclipse.uml2.uml.ActivityGroup#getInActivity
 	 * @model opposite="inActivity" transient="true" volatile="true" derived="true" ordered="false"
 	 *        extendedMetaData="kind='attribute'"
+	 *        annotation="http://www.eclipse.org/emf/CDO persistent='true' filter='ownedGroup'"
 	 * @generated
 	 */
 	EList<ActivityGroup> getGroups();
@@ -441,6 +443,7 @@ public interface Activity
 	 * @see org.eclipse.uml2.uml.ActivityNode#getActivity
 	 * @model opposite="activity" transient="true" volatile="true" derived="true" ordered="false"
 	 *        extendedMetaData="kind='attribute'"
+	 *        annotation="http://www.eclipse.org/emf/CDO persistent='true' filter='ownedNode'"
 	 * @generated
 	 */
 	EList<ActivityNode> getNodes();

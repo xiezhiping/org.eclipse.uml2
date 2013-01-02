@@ -16498,8 +16498,12 @@ endif
   <Ecore:EAttribute xmi:id="_dFQKQNwaEeCT5O2F6sGn5g" isUnsettable="true" base_Property="Behavior-isReentrant"/>
   <Ecore:EReference xmi:id="_JWtREAtDEeGcpbeCPJfCmw" xmlName="group" xmlFeatureKind="Element" base_Property="Activity-ownedGroup"/>
   <Ecore:EReference xmi:id="_N4I04AtDEeGcpbeCPJfCmw" xmlName="node" xmlFeatureKind="Element" base_Property="Activity-ownedNode"/>
-  <Ecore:EReference xmi:id="_1XKowBCNEeG9F6n8Twp9jA" xmlFeatureKind="Attribute" base_Property="Activity-node"/>
-  <Ecore:EReference xmi:id="_4FNjYBCNEeG9F6n8Twp9jA" xmlFeatureKind="Attribute" base_Property="Activity-group"/>
+  <Ecore:EReference xmi:id="_1XKowBCNEeG9F6n8Twp9jA" xmlFeatureKind="Attribute" base_Property="Activity-node">
+    <annotation>http://www.eclipse.org/emf/CDO persistent='true' filter='ownedNode'</annotation>
+  </Ecore:EReference>
+  <Ecore:EReference xmi:id="_4FNjYBCNEeG9F6n8Twp9jA" xmlFeatureKind="Attribute" base_Property="Activity-group">
+    <annotation>http://www.eclipse.org/emf/CDO persistent='true' filter='ownedGroup'</annotation>
+  </Ecore:EReference>
   <l3:Metamodel xmi:id="_SgJNYKtKEeGF4uwJob34Mw" base_Model="_0"/>
   <l2:Metaclass xmi:id="_ShQnsKtKEeGF4uwJob34Mw" base_Class="Abstraction"/>
   <l2:Metaclass xmi:id="_ShROwKtKEeGF4uwJob34Mw" base_Class="AcceptCallAction"/>
