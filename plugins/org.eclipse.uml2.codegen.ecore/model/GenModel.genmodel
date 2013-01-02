@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.uml2.codegen.ecore/src"
-    creationCommands="false" editDirectory="/org.eclipse.uml2.codegen.ecore.ui/src"
-    editorDirectory="" modelPluginID="org.eclipse.uml2.codegen.ecore" modelName="GenModel"
-    modelPluginClass="org.eclipse.uml2.codegen.ecore.CodeGenEcorePlugin" editPluginClass="org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin"
-    editorPluginClass="" updateClasspath="false" nonNLSMarkers="true" codeFormatting="true"
-    testsDirectory="" testSuiteClass="" booleanFlagsField="eFlags" booleanFlagsReservedBits="8"
-    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
-    binaryCompatibleReflectiveMethods="true" packedEnums="true" usedGenPackages="platform:/plugin/org.eclipse.emf.codegen.ecore/model/GenModel.genmodel#//genmodel platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.uml2.codegen.ecore/src" creationCommands="false"
+    editDirectory="/org.eclipse.uml2.codegen.ecore.ui/src" editorDirectory="" modelPluginID="org.eclipse.uml2.codegen.ecore"
+    modelName="GenModel" modelPluginClass="org.eclipse.uml2.codegen.ecore.CodeGenEcorePlugin"
+    editPluginClass="org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin" editorPluginClass=""
+    updateClasspath="false" nonNLSMarkers="true" codeFormatting="true" testsDirectory=""
+    testSuiteClass="" booleanFlagsField="eFlags" booleanFlagsReservedBits="8" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" binaryCompatibleReflectiveMethods="true"
+    packedEnums="true" usedGenPackages="platform:/plugin/org.eclipse.emf.codegen.ecore/model/GenModel.genmodel#//genmodel platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
+    pluginKey="">
   <foreignModel>GenModel.ecore</foreignModel>
   <genPackages prefix="GenModel" basePackage="org.eclipse.uml2.codegen.ecore" disposableProviderFactory="true"
       contentTypeIdentifier="org.eclipse.uml2.genmodel" ecorePackage="GenModel.ecore#/">

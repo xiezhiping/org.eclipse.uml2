@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332, 247980
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633
+ *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324
  *   Christian W. Damus - 355218
  *
  */
@@ -116,6 +116,7 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 
+import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -133,6 +134,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 
 import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.dnd.FileTransfer;
 import org.eclipse.swt.dnd.Transfer;
 
 import org.eclipse.swt.events.ControlAdapter;
@@ -428,6 +430,15 @@ public class UMLEditor
 		@Override
 		protected void unsetTarget(Resource target) {
 			basicUnsetTarget(target);
+			resourceToDiagnosticMap.remove(target);
+			if (updateProblemIndication) {
+				getSite().getShell().getDisplay().asyncExec(new Runnable() {
+
+					public void run() {
+						updateProblemIndication();
+					}
+				});
+			}
 		}
 	};
 
@@ -469,6 +480,7 @@ public class UMLEditor
 									}
 								}
 							}
+							return false;
 						}
 
 						return true;
@@ -905,7 +917,8 @@ public class UMLEditor
 			new UnwrappingSelectionProvider(viewer));
 
 		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
-		Transfer[] transfers = new Transfer[]{LocalTransfer.getInstance()};
+		Transfer[] transfers = new Transfer[]{LocalTransfer.getInstance(),
+			LocalSelectionTransfer.getTransfer(), FileTransfer.getInstance()};
 		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(
 			viewer));
 		viewer.addDropSupport(dndOperations, transfers,

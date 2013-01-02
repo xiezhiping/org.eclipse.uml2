@@ -5,12 +5,12 @@
     creationSubmenus="true" modelPluginID="org.eclipse.uml2.uml" templateDirectory="/org.eclipse.uml2/templates"
     runtimeJar="true" dynamicTemplates="true" modelName="UML" modelPluginClass="org.eclipse.uml2.uml.UMLPlugin"
     editPluginClass="org.eclipse.uml2.uml.edit.UMLEditPlugin" editorPluginClass="org.eclipse.uml2.uml.editor.UMLEditorPlugin"
-    nonNLSMarkers="true" rootExtendsInterface="" codeFormatting="true" booleanFlagsField="eFlags"
-    booleanFlagsReservedBits="8" importerID="org.eclipse.uml2.uml.ecore.importer"
+    updateClasspath="false" nonNLSMarkers="true" rootExtendsInterface="" codeFormatting="true"
+    booleanFlagsField="eFlags" booleanFlagsReservedBits="8" importerID="org.eclipse.uml2.uml.ecore.importer"
     containmentProxies="true" minimalReflectiveMethods="false" complianceLevel="5.0"
     colorProviders="true" fontProviders="true" packedEnums="true" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore platform:/plugin/org.eclipse.uml2.types/model/Types.genmodel#//types"
-    operationReflection="true" factoryMethods="true" pluralizedGetters="true" cacheAdapterSupport="true"
-    invariantPrefix="validate">
+    operationReflection="true" pluginKey="" factoryMethods="true" pluralizedGetters="true"
+    cacheAdapterSupport="true" invariantPrefix="validate">
   <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/importer/org.eclipse.uml2.uml.ecore.importer">
     <details key="DUPLICATE_FEATURES" value="PROCESS"/>
     <details key="DUPLICATE_FEATURE_INHERITANCE" value="PROCESS"/>

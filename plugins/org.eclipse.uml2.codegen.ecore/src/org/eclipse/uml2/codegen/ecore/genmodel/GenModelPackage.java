@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 208016, 247980
  *   Kenn Hussey - 286329
- *   Kenn Hussey (CEA) - 351777
+ *   Kenn Hussey (CEA) - 351777, 397324
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
@@ -1336,6 +1336,24 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL__IMPORT_ORGANIZING = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__IMPORT_ORGANIZING;
+
+	/**
+	 * The feature id for the '<em><b>Plugin Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__PLUGIN_KEY = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__PLUGIN_KEY;
+
+	/**
+	 * The feature id for the '<em><b>Decoration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__DECORATION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__DECORATION;
 
 	/**
 	 * The feature id for the '<em><b>Factory Methods</b></em>' attribute.

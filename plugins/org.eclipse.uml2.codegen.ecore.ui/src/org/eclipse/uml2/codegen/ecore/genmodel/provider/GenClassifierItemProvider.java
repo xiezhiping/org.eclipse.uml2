@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,14 +7,13 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 397324
  *
- * $Id: GenClassifierItemProvider.java,v 1.6 2007/01/05 21:44:07 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
 import java.util.List;
 
-import org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage;
 import org.eclipse.emf.codegen.ecore.genmodel.provider.GenBaseItemProvider;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -32,7 +31,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.codegen.ecore.genmodel.GenClassifier;
 
-//import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
+import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
 
 import org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin;
 
