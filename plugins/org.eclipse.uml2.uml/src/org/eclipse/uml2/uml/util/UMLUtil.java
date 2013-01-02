@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495
  *   Yann Tanguy (CEA) - 350402
  *
  */
@@ -201,11 +201,27 @@ public class UMLUtil
 
 		protected EList<EObject> getContainmentList(Element element,
 				EClass definition) {
+			Resource eResource = element.eResource();
 
-			if (element.eResource() != null) {
-				return element.eResource().getContents();
+			if (eResource != null) {
+				return eResource.getContents();
 			}
+
 			return null;
+		}
+
+		public boolean addToContainmentList(Element element,
+				EObject stereotypeApplication) {
+			boolean result = false;
+
+			EList<EObject> containmentList = getContainmentList(element,
+				stereotypeApplication.eClass());
+
+			if (containmentList != null) {
+				result = containmentList.add(stereotypeApplication);
+			}
+
+			return result;
 		}
 
 		public EObject applyStereotype(Element element, EClass definition) {
@@ -213,11 +229,7 @@ public class UMLUtil
 
 			CacheAdapter.getInstance().adapt(stereotypeApplication);
 
-			EList<EObject> containmentList = getContainmentList(element,
-				definition);
-			if (containmentList != null) {
-				containmentList.add(stereotypeApplication);
-			}
+			addToContainmentList(element, stereotypeApplication);
 			setBaseElement(stereotypeApplication, element);
 
 			return stereotypeApplication;
