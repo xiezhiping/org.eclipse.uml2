@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165
  *   Yann Tanguy (CEA) - 350402
  *
  */
@@ -6156,6 +6156,13 @@ public class UMLUtil
 		 */
 		public static final String OPTION__DOCUMENTATION_ANNOTATIONS = "DOCUMENTATION_ANNOTATIONS"; //$NON-NLS-1$
 
+		/**
+		 * The option for assigning XMI identifiers based on URI fragment
+		 * segments of the containment hierarchy. Supported choices are
+		 * <code>OPTION__IGNORE</code> and <code>OPTION__PROCESS</code>.
+		 */
+		public static final String OPTION__XMI_IDENTIFIERS = "XMI_IDENTIFIERS"; //$NON-NLS-1$
+
 		private static final int DIAGNOSTIC_CODE_OFFSET = 3000;
 
 		/**
@@ -6198,6 +6205,11 @@ public class UMLUtil
 		 * encountered.
 		 */
 		public static final int DOCUMENTATION_ANNOTATION = DIAGNOSTIC_CODE_OFFSET + 7;
+
+		/**
+		 * The diagnostic code for cases where an XMI identifier is assigned.
+		 */
+		public static final int XMI_IDENTIFIER = DIAGNOSTIC_CODE_OFFSET + 8;
 
 		protected final Map<EModelElement, Element> eModelElementToElementMap = new LinkedHashMap<EModelElement, Element>();
 

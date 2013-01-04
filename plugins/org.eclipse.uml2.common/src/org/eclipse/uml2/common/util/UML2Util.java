@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,8 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 247980
  *   Keith Campbell (IBM) - 343783
+ *   Kenn Hussey (CEA) - 316165
  *
- * $Id: UML2Util.java,v 1.38 2011/05/02 21:20:47 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -587,7 +587,7 @@ public class UML2Util {
 		return qualifiedText;
 	}
 
-	protected static String getMessageSubstitution(Map<Object, Object> context,
+	public static String getMessageSubstitution(Map<Object, Object> context,
 			Object object) {
 
 		if (object instanceof EObject) {
@@ -638,20 +638,19 @@ public class UML2Util {
 		}
 	}
 
-	protected static Object[] getMessageSubstitutions(
-			Map<Object, Object> context, Object object0) {
+	public static Object[] getMessageSubstitutions(Map<Object, Object> context,
+			Object object0) {
 		return new Object[]{getMessageSubstitution(context, object0)};
 	}
 
-	protected static Object[] getMessageSubstitutions(
-			Map<Object, Object> context, Object object0, Object object1) {
+	public static Object[] getMessageSubstitutions(Map<Object, Object> context,
+			Object object0, Object object1) {
 		return new Object[]{getMessageSubstitution(context, object0),
 			getMessageSubstitution(context, object1)};
 	}
 
-	protected static Object[] getMessageSubstitutions(
-			Map<Object, Object> context, Object object0, Object object1,
-			Object object2) {
+	public static Object[] getMessageSubstitutions(Map<Object, Object> context,
+			Object object0, Object object1, Object object2) {
 		return new Object[]{getMessageSubstitution(context, object0),
 			getMessageSubstitution(context, object1),
 			getMessageSubstitution(context, object2)};

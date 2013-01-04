@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 316165
  *
- * $Id: ConvertToUMLModelAction.java,v 1.3 2007/01/04 18:47:13 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -31,10 +31,12 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.presentation.EcoreEditor;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
@@ -46,6 +48,7 @@ import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.examples.uml.ui.UMLExamplesUIPlugin;
 import org.eclipse.uml2.examples.uml.ui.dialogs.Ecore2UMLConverterOptionsDialog;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.editor.actions.DiagnosticAction;
 import org.eclipse.uml2.uml.editor.dialogs.OptionsDialog;
 import org.eclipse.uml2.uml.resource.UMLResource;
@@ -157,6 +160,43 @@ public class ConvertToUMLModelAction
 									if (eObject instanceof Element) {
 										contents.addAll(((Element) eObject)
 											.getStereotypeApplications());
+									}
+								}
+
+								if (UMLUtil.OPTION__PROCESS
+									.equals(options
+										.get(UMLUtil.Ecore2UMLConverter.OPTION__XMI_IDENTIFIERS))
+									&& resource instanceof XMIResource) {
+
+									XMIResource xmiResource = (XMIResource) resource;
+
+									for (TreeIterator<EObject> allContents = xmiResource
+										.getAllContents(); allContents
+										.hasNext();) {
+
+										EObject eObject = allContents.next();
+										String xmiIdentifier = UML2Util
+											.getXMIIdentifier((InternalEObject) eObject);
+
+										if (diagnostics != null) {
+											diagnostics
+												.add(new BasicDiagnostic(
+													Diagnostic.INFO,
+													UMLValidator.DIAGNOSTIC_SOURCE,
+													UMLUtil.Ecore2UMLConverter.XMI_IDENTIFIER,
+													UMLPlugin.INSTANCE
+														.getString(
+															"_UI_Ecore2UMLConverter_ProcessXMIIdentifier_diagnostic", //$NON-NLS-1$
+															UML2Util
+																.getMessageSubstitutions(
+																	context,
+																	eObject,
+																	xmiIdentifier)),
+													new Object[]{eObject}));
+										}
+
+										xmiResource.setID(eObject,
+											xmiIdentifier);
 									}
 								}
 							}

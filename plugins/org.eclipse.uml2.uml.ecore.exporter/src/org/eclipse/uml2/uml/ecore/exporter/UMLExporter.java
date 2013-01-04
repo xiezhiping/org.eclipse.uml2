@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2006, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 156879, 273949
+ *   Kenn Hussey (CEA) - 316165
  *
  */
 package org.eclipse.uml2.uml.ecore.exporter;
@@ -37,10 +38,12 @@ import org.eclipse.emf.converter.util.ConverterUtil;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.exporter.ModelExporter;
 import org.eclipse.emf.exporter.util.ExporterUtil;
 import org.eclipse.uml2.common.util.UML2Util;
@@ -48,10 +51,12 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 import org.eclipse.uml2.uml.util.UMLUtil;
+import org.eclipse.uml2.uml.util.UMLValidator;
 
 public class UMLExporter
 		extends ModelExporter {
@@ -186,6 +191,37 @@ public class UMLExporter
 				if (eObject instanceof Element) {
 					contents.addAll(((Element) eObject)
 						.getStereotypeApplications());
+				}
+			}
+
+			if (UMLUtil.OPTION__PROCESS.equals(options
+				.get(UMLUtil.Ecore2UMLConverter.OPTION__XMI_IDENTIFIERS))
+				&& resource instanceof XMIResource) {
+
+				XMIResource xmiResource = (XMIResource) resource;
+
+				for (TreeIterator<EObject> allContents = xmiResource
+					.getAllContents(); allContents.hasNext();) {
+
+					EObject eObject = allContents.next();
+					String xmiIdentifier = UML2Util
+						.getXMIIdentifier((InternalEObject) eObject);
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.INFO,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								UMLUtil.Ecore2UMLConverter.XMI_IDENTIFIER,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_Ecore2UMLConverter_ProcessXMIIdentifier_diagnostic", //$NON-NLS-1$
+										UML2Util.getMessageSubstitutions(
+											context, eObject, xmiIdentifier)),
+								new Object[]{eObject}));
+					}
+
+					xmiResource.setID(eObject, xmiIdentifier);
 				}
 			}
 
