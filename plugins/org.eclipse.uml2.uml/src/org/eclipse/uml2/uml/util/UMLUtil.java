@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833
  *   Yann Tanguy (CEA) - 350402
  *
  */
@@ -9074,6 +9074,82 @@ public class UMLUtil
 		return profile;
 	}
 
+	protected static String getEcoreName(NamedElement namedElement) {
+		String taggedValue = new UMLSwitch<String>() {
+
+			@Override
+			public String caseClassifier(Classifier classifier) {
+				return (String) getTaggedValue(classifier, PROFILE__ECORE
+					+ NamedElement.SEPARATOR + STEREOTYPE__E_CLASS,
+					TAG_DEFINITION__CLASS_NAME);
+			}
+
+			@Override
+			public String caseEnumeration(Enumeration enumeration) {
+				return (String) getTaggedValue(enumeration, PROFILE__ECORE
+					+ NamedElement.SEPARATOR + STEREOTYPE__E_ENUM,
+					TAG_DEFINITION__ENUM_NAME);
+			}
+
+			@Override
+			public String caseEnumerationLiteral(
+					EnumerationLiteral enumerationLiteral) {
+				String taggedValue = (String) getTaggedValue(
+					enumerationLiteral, PROFILE__ECORE + NamedElement.SEPARATOR
+						+ STEREOTYPE__E_ENUM_LITERAL,
+					TAG_DEFINITION__ENUM_LITERAL_NAME);
+				return isEmpty(taggedValue)
+					? enumerationLiteral.getName()
+					: taggedValue;
+			}
+
+			@Override
+			public String caseOperation(Operation operation) {
+				return (String) getTaggedValue(operation, PROFILE__ECORE
+					+ NamedElement.SEPARATOR + STEREOTYPE__E_OPERATION,
+					TAG_DEFINITION__OPERATION_NAME);
+			}
+
+			@Override
+			public String casePackage(org.eclipse.uml2.uml.Package package_) {
+				return (String) getTaggedValue(package_, PROFILE__ECORE
+					+ NamedElement.SEPARATOR + STEREOTYPE__E_PACKAGE,
+					TAG_DEFINITION__PACKAGE_NAME);
+			}
+
+			@Override
+			public String caseParameter(Parameter parameter) {
+				return (String) getTaggedValue(parameter, PROFILE__ECORE
+					+ NamedElement.SEPARATOR + STEREOTYPE__E_PARAMETER,
+					TAG_DEFINITION__PARAMETER_NAME);
+			}
+
+			@Override
+			public String casePrimitiveType(PrimitiveType primitiveType) {
+				return (String) getTaggedValue(primitiveType, PROFILE__ECORE
+					+ NamedElement.SEPARATOR + STEREOTYPE__E_DATA_TYPE,
+					TAG_DEFINITION__DATA_TYPE_NAME);
+			}
+
+			@Override
+			public String caseProperty(Property property) {
+				return (String) (UML2EcoreConverter
+					.isEDataType((Classifier) property.getType())
+					? getTaggedValue(property, PROFILE__ECORE
+						+ NamedElement.SEPARATOR + STEREOTYPE__E_ATTRIBUTE,
+						TAG_DEFINITION__ATTRIBUTE_NAME)
+					: getTaggedValue(property, PROFILE__ECORE
+						+ NamedElement.SEPARATOR + STEREOTYPE__E_REFERENCE,
+						TAG_DEFINITION__REFERENCE_NAME));
+			}
+
+		}.doSwitch(namedElement);
+
+		return isEmpty(taggedValue)
+			? getValidJavaIdentifier(namedElement.getName())
+			: taggedValue;
+	}
+	
 	protected static NamedElement getNamedElement(ENamedElement definition) {
 		return getNamedElement(definition, null);
 	}
@@ -9105,9 +9181,7 @@ public class UMLUtil
 
 				for (Type ownedType : package_.getOwnedTypes()) {
 
-					if (safeEquals(getValidJavaIdentifier(ownedType.getName()),
-						name)) {
-
+					if (safeEquals(getEcoreName(ownedType), name)) {
 						return ownedType;
 					}
 				}
@@ -9124,9 +9198,7 @@ public class UMLUtil
 
 				for (Property ownedAttribute : class_.getOwnedAttributes()) {
 
-					if (safeEquals(getValidJavaIdentifier(ownedAttribute
-						.getName()), name)) {
-
+					if (safeEquals(getEcoreName(ownedAttribute), name)) {
 						return ownedAttribute;
 					}
 				}
@@ -9136,9 +9208,20 @@ public class UMLUtil
 		} else if (definition instanceof EEnumLiteral) {
 			Enumeration enumeration = (Enumeration) getNamedElement(
 				((EEnumLiteral) definition).getEEnum(), context);
-			return enumeration == null
-				? null
-				: enumeration.getOwnedLiteral(definition.getName());
+
+			if (enumeration != null) {
+				String name = definition.getName();
+
+				for (EnumerationLiteral ownedLiteral : enumeration
+					.getOwnedLiterals()) {
+
+					if (safeEquals(getEcoreName(ownedLiteral), name)) {
+						return ownedLiteral;
+					}
+				}
+			}
+
+			return null;
 		} else if (definition instanceof EPackage) {
 			return getProfile((EPackage) definition, context);
 		} else {

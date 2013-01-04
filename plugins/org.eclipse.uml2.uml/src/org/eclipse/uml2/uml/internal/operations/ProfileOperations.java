@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181, 354452
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 392833
  *
- * $Id: ProfileOperations.java,v 1.37 2010/09/28 21:02:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -334,8 +333,7 @@ public class ProfileOperations
 					}
 				} else {
 					return ((EPackage) packageDefinition)
-						.getEClassifier(getValidJavaIdentifier(namedElement
-							.getName()));
+						.getEClassifier(getEcoreName(namedElement));
 				}
 			}
 
@@ -345,15 +343,14 @@ public class ProfileOperations
 				namedElement.getNamespace(), profileDefinition);
 			return namespaceDefinition instanceof EClass
 				? ((EClass) namespaceDefinition)
-					.getEStructuralFeature(getValidJavaIdentifier(namedElement
-						.getName()))
+					.getEStructuralFeature(getEcoreName(namedElement))
 				: null;
 		} else if (namedElement instanceof EnumerationLiteral) {
 			ENamedElement namespaceDefinition = getDefinition(profile,
 				namedElement.getNamespace(), profileDefinition);
 			return namespaceDefinition instanceof EEnum
-				? ((EEnum) namespaceDefinition).getEEnumLiteral(namedElement
-					.getName())
+				? ((EEnum) namespaceDefinition)
+					.getEEnumLiteral(getEcoreName(namedElement))
 				: null;
 		} else if (namedElement instanceof Profile) {
 			return namedElement == profile
@@ -382,7 +379,7 @@ public class ProfileOperations
 						}
 					}
 				} else {
-					String name = getValidJavaIdentifier(namedElement.getName());
+					String name = getEcoreName(namedElement);
 
 					for (EPackage eSubpackage : ((EPackage) packageDefinition)
 						.getESubpackages()) {
