@@ -9049,22 +9049,53 @@ public class UMLUtil
 		Profile profile = getProfile(definition);
 
 		if (profile == null && context != null) {
-			URI location = UMLPlugin.getEPackageNsURIToProfileLocationMap()
-				.get(definition.getNsURI());
+			Resource eResource = context.eResource();
 
-			if (location != null) {
-				Resource eResource = context.eResource();
+			if (eResource != null) {
+				ResourceSet resourceSet = eResource.getResourceSet();
 
-				if (eResource != null) {
-					ResourceSet resourceSet = eResource.getResourceSet();
+				if (resourceSet != null) {
+					String nsURI = definition.getNsURI();
+					URI location = UMLPlugin
+						.getEPackageNsURIToProfileLocationMap().get(nsURI);
 
-					if (resourceSet != null) {
+					if (location != null) {
 
 						try {
 							profile = (Profile) resourceSet.getEObject(
 								location, true);
 						} catch (Exception e) {
 							UMLPlugin.INSTANCE.log(e);
+						}
+					} else {
+
+						LOOP : for (TreeIterator<Object> allProperContents = EcoreUtil
+							.getAllProperContents(resourceSet, false); allProperContents
+							.hasNext();) {
+
+							Object object = allProperContents.next();
+
+							if (object instanceof Profile) {
+								EAnnotation eAnnotation = ((Profile) object)
+									.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
+
+								if (eAnnotation != null) {
+
+									for (EObject content : eAnnotation
+										.getContents()) {
+
+										if (content instanceof EPackage
+											&& safeEquals(nsURI,
+												((EPackage) content).getNsURI())) {
+
+											profile = (Profile) object;
+											break LOOP;
+										}
+									}
+								}
+
+								allProperContents.prune();
+							}
 						}
 					}
 				}
@@ -9167,7 +9198,7 @@ public class UMLUtil
 				if (!references.isEmpty()) {
 					EObject reference = references.get(0);
 
-					if (reference instanceof Classifier) {
+					if ((reference instanceof Classifier) && !reference.eIsProxy()) {
 						return (NamedElement) reference;
 					}
 				}
@@ -9228,7 +9259,7 @@ public class UMLUtil
 			return null;
 		}
 	}
-
+	
 	protected static Stereotype getStereotype(EClass definition) {
 		return getStereotype(definition, null);
 	}
