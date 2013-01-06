@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,19 +9,21 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 204200
  *   Kenn Hussey - 286329, 320318, 323000, 323181, 354453
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 297216
  *
  */
 package org.eclipse.uml2.uml.util;
 
 import java.util.Map;
 
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.ecore.util.EObjectValidator;
 
@@ -26197,6 +26199,47 @@ public class UMLValidator
 	@Override
 	public ResourceLocator getResourceLocator() {
 		return UMLPlugin.INSTANCE;
+	}
+
+	@Override
+	protected boolean isEcoreString(String key) {
+		return super.isEcoreString(key)
+			|| "_UI_FeatureHasTooManyValues_diagnostic".equals(key); //$NON-NLS-1$
+	}
+
+	@Override
+	protected boolean validate_MultiplicityConforms(EObject eObject,
+			EStructuralFeature eStructuralFeature, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		boolean result = super.validate_MultiplicityConforms(eObject,
+			eStructuralFeature, diagnostics, context);
+
+		if (eStructuralFeature == UMLPackage.Literals.INTERACTION_FRAGMENT__COVERED
+			&& eObject instanceof OccurrenceSpecification) {
+
+			int size = ((OccurrenceSpecification) eObject).getCovereds().size();
+			int upperBound = 1;
+
+			if (size > upperBound) {
+				result = false;
+
+				if (diagnostics != null) {
+					diagnostics
+						.add(createDiagnostic(
+							Diagnostic.ERROR,
+							DIAGNOSTIC_SOURCE,
+							EOBJECT__EVERY_MULTIPCITY_CONFORMS,
+							"_UI_FeatureHasTooManyValues_diagnostic", //$NON-NLS-1$
+							new Object[]{
+								getFeatureLabel(eStructuralFeature, context),
+								getObjectLabel(eObject, context), size,
+								upperBound}, new Object[]{eObject,
+								eStructuralFeature}, context));
+				}
+			}
+		}
+
+		return result;
 	}
 
 } //UMLValidator

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 297216
  *
- * $Id: OccurrenceSpecification.java,v 1.8 2007/06/12 12:53:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -78,6 +77,28 @@ public interface OccurrenceSpecification
 	 * @generated
 	 */
 	GeneralOrdering getToBefore(String name, boolean ignoreCase);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns the Lifeline on which the OccurrenceSpecification appears.
+	 * <!-- end-model-doc -->
+	 * @model kind="operation" ordered="false"
+	 * @generated
+	 */
+	Lifeline getCovered();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the Lifeline on which the OccurrenceSpecification appears.
+	 * <!-- end-model-doc -->
+	 * @model valueRequired="true" valueOrdered="false"
+	 * @generated
+	 */
+	void setCovered(Lifeline value);
 
 	/**
 	 * Returns the value of the '<em><b>To After</b></em>' reference list.

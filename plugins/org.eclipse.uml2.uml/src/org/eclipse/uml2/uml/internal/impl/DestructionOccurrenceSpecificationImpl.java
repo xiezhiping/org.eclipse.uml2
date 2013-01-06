@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 CEA and others.
+ * Copyright (c) 2011, 2013 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
- *   Kenn Hussey (CEA) - 351774
+ *   Kenn Hussey (CEA) - 351774, 297216
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.uml2.uml.DestructionOccurrenceSpecification;
+import org.eclipse.uml2.uml.Lifeline;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Stereotype;
@@ -197,6 +198,11 @@ public class DestructionOccurrenceSpecificationImpl
 				return getQualifiedName();
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___SEPARATOR :
 				return separator();
+			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___GET_COVERED :
+				return getCovered();
+			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___SET_COVERED__LIFELINE :
+				setCovered((Lifeline) arguments.get(0));
+				return null;
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___VALIDATE_NO_OCCURRENCE_SPECIFICATIONS_BELOW__DIAGNOSTICCHAIN_MAP :
 				return validateNoOccurrenceSpecificationsBelow(
 					(DiagnosticChain) arguments.get(0),

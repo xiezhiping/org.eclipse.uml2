@@ -3035,6 +3035,10 @@
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//OccurrenceSpecification/toAfter"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//OccurrenceSpecification/toBefore"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//OccurrenceSpecification/getCovered"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//OccurrenceSpecification/setCovered">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//OccurrenceSpecification/setCovered/value"/>
+      </genOperations>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//ActionInputPin">
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"

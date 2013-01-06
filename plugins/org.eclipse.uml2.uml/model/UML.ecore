@@ -10263,6 +10263,17 @@
         <eAnnotations source="redefines" references="#//InteractionFragment/covered"/>
       </contents>
     </eAnnotations>
+    <eOperations name="getCovered" ordered="false" eType="#//Lifeline">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns the Lifeline on which the OccurrenceSpecification appears."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="setCovered" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sets the Lifeline on which the OccurrenceSpecification appears."/>
+      </eAnnotations>
+      <eParameters name="value" ordered="false" lowerBound="1" eType="#//Lifeline"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="toAfter" ordered="false"
         upperBound="-1" eType="#//GeneralOrdering" eOpposite="#//GeneralOrdering/before">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

@@ -9926,6 +9926,20 @@ memb.isDistinguishableFrom(other, self)))</body>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="OccurrenceSpecification-toBefore-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="OccurrenceSpecification-toBefore-_upperValue" value="*"/>
       </ownedAttribute>
+      <ownedOperation xmi:id="OccurrenceSpecification-getCovered" name="getCovered">
+        <ownedComment xmi:id="OccurrenceSpecification-getCovered-_ownedComment.0" annotatedElement="OccurrenceSpecification-getCovered">
+          <body>Returns the Lifeline on which the OccurrenceSpecification appears.</body>
+        </ownedComment>
+        <ownedParameter xmi:id="OccurrenceSpecification-getCovered-_ownedParameter.0" type="Lifeline" direction="return">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="OccurrenceSpecification-getCovered-_ownedParameter.0-_lowerValue"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="OccurrenceSpecification-setCovered" name="setCovered">
+        <ownedComment xmi:id="OccurrenceSpecification-setCovered-_ownedComment.0" annotatedElement="OccurrenceSpecification-setCovered">
+          <body>Sets the Lifeline on which the OccurrenceSpecification appears.</body>
+        </ownedComment>
+        <ownedParameter xmi:id="OccurrenceSpecification-setCovered-value" name="value" type="Lifeline"/>
+      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="OpaqueAction" name="OpaqueAction">
       <ownedComment xmi:id="OpaqueAction-_ownedComment.0" annotatedElement="OpaqueAction">

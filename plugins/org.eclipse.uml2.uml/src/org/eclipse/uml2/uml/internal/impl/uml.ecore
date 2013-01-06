@@ -4544,6 +4544,10 @@
         <eAnnotations source="redefines" references="#//InteractionFragment/covered"/>
       </contents>
     </eAnnotations>
+    <eOperations name="getCovered" ordered="false" eType="#//Lifeline"/>
+    <eOperations name="setCovered" ordered="false" lowerBound="1">
+      <eParameters name="value" ordered="false" lowerBound="1" eType="#//Lifeline"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="toAfter" ordered="false"
         upperBound="-1" eType="#//GeneralOrdering" eOpposite="#//GeneralOrdering/before"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="toBefore" ordered="false"

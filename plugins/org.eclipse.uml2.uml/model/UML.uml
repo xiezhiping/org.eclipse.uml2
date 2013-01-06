@@ -1209,6 +1209,7 @@
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_l2mXcHLzEdqziYxiZo0YtA" name="InterfaceRealization"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_MwekcFU2EeKpypMay8ANnw" name="Lifeline"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_FFMNsGveEdq4DLWZOhbdEA" name="LiteralBoolean">
       <ownedOperation xmi:id="_aXS3gGWKEdq-f4093SZhVA" name="stringValue" visibility="protected" isQuery="true">
         <ownedParameter xmi:id="_cFthIGWKEdq-f4093SZhVA" direction="return">
@@ -1507,6 +1508,22 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8asd3aJ8EdywJr5C4uHLKw"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8asd3KJ8EdywJr5C4uHLKw" value="*"/>
         </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_4kmhAFU1EeKpypMay8ANnw" name="OccurrenceSpecification">
+      <ownedOperation xmi:id="_77OekFU1EeKpypMay8ANnw" name="getCovered">
+        <ownedComment xmi:id="_bya5oFU2EeKpypMay8ANnw" annotatedElement="_77OekFU1EeKpypMay8ANnw">
+          <body>Returns the Lifeline on which the OccurrenceSpecification appears.</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_BVxbsFU2EeKpypMay8ANnw" type="_MwekcFU2EeKpypMay8ANnw" direction="return">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WXN1MFU2EeKpypMay8ANnw"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_EXr4EFU3EeKpypMay8ANnw" name="setCovered">
+        <ownedComment xmi:id="_U-X9gFU3EeKpypMay8ANnw" annotatedElement="_EXr4EFU3EeKpypMay8ANnw">
+          <body>Sets the Lifeline on which the OccurrenceSpecification appears.</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_IGAj8FU3EeKpypMay8ANnw" name="value" type="_MwekcFU2EeKpypMay8ANnw"/>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="__pbPMLG4EeCDe8CO90iVKQ" name="OpaqueAction">
