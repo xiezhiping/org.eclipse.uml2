@@ -12,6 +12,7 @@
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
  *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833
  *   Yann Tanguy (CEA) - 350402
+ *   Christian W. Damus (CEA) - 392833
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -9068,33 +9069,37 @@ public class UMLUtil
 							UMLPlugin.INSTANCE.log(e);
 						}
 					} else {
+						LOOP : for (Resource resource : resourceSet
+							.getResources()) {
 
-						LOOP : for (TreeIterator<Object> allProperContents = EcoreUtil
-							.getAllProperContents(resourceSet, false); allProperContents
-							.hasNext();) {
+							for (TreeIterator<Object> allProperContents = EcoreUtil
+								.getAllProperContents(resource, false); allProperContents
+								.hasNext();) {
 
-							Object object = allProperContents.next();
+								Object object = allProperContents.next();
 
-							if (object instanceof Profile) {
-								EAnnotation eAnnotation = ((Profile) object)
-									.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
+								if (object instanceof Profile) {
+									EAnnotation eAnnotation = ((Profile) object)
+										.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
 
-								if (eAnnotation != null) {
+									if (eAnnotation != null) {
 
-									for (EObject content : eAnnotation
-										.getContents()) {
+										for (EObject content : eAnnotation
+											.getContents()) {
 
-										if (content instanceof EPackage
-											&& safeEquals(nsURI,
-												((EPackage) content).getNsURI())) {
+											if (content instanceof EPackage
+												&& safeEquals(nsURI,
+													((EPackage) content)
+														.getNsURI())) {
 
-											profile = (Profile) object;
-											break LOOP;
+												profile = (Profile) object;
+												break LOOP;
+											}
 										}
 									}
-								}
 
-								allProperContents.prune();
+									allProperContents.prune();
+								}
 							}
 						}
 					}
