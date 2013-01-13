@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 156879, 273949
- *   Kenn Hussey (CEA) - 316165
+ *   Kenn Hussey (CEA) - 316165, 273948
  *
  */
 package org.eclipse.uml2.uml.ecore.exporter;
@@ -47,7 +47,9 @@ import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.exporter.ModelExporter;
 import org.eclipse.emf.exporter.util.ExporterUtil;
 import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.types.TypesPackage;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -228,6 +230,39 @@ public class UMLExporter
 			monitor.worked(1);
 		}
 
+		for (Map.Entry<GenPackage, URI> entry : exportData.referencedGenPackagesToArtifactURI
+			.entrySet()) {
+
+			Resource referencedResource = resourceSet.getResource(
+				entry.getValue(), true);
+
+			if (referencedResource != null) {
+				org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) ecore2umlConverter
+					.doSwitch(getReferredEPackage(entry.getKey()));
+
+				for (TreeIterator<EObject> allContents = UML2Util
+					.getAllContents(package_, true, false); allContents
+					.hasNext();) {
+
+					EObject eObject = allContents.next();
+
+					if (eObject instanceof NamedElement) {
+						Collection<NamedElement> namedElements = UMLUtil
+							.findNamedElements(referencedResource,
+								((NamedElement) eObject).getQualifiedName(),
+								true);
+
+						if (namedElements.size() == 1) {
+							((InternalEObject) eObject).eSetProxyURI(EcoreUtil
+								.getURI(namedElements.iterator().next()));
+						}
+					}
+				}
+			}
+
+			monitor.worked(1);
+		}
+
 		for (Resource resource : resourcesToSave) {
 			resource.save(null);
 		}
@@ -270,12 +305,14 @@ public class UMLExporter
 			GenPackage genPackage = genPackages.next();
 
 			if (isValidEPackage(genPackage)) {
-				converter.convert(Collections.singleton(genPackage
-					.getEcorePackage()), getOptions(), null, null);
+				converter.convert(
+					Collections.singleton(genPackage.getEcorePackage()),
+					getOptions(), null, null);
 			}
 		}
 
 		Map<EPackage, GenPackage> ePackageToGenPackageMap = getEPackageToGenPackageMap();
+		List<EPackage> ePackages = getEPackages();
 
 		for (EPackage convertedEPackage : converter.getEcorePackages()) {
 			GenPackage convertedGenPackage = genModel
@@ -287,7 +324,22 @@ public class UMLExporter
 				ePackageToGenPackageMap.put(convertedEPackage,
 					convertedGenPackage);
 
-				getEPackages().add(convertedEPackage);
+				String nsURI = convertedEPackage.getNsURI();
+
+				for (int i = 0; i < ePackages.size(); i++) {
+					EPackage ePackage = ePackages.get(i);
+
+					if (ePackage != convertedEPackage
+						&& UML2Util.safeEquals(ePackage.getNsURI(), nsURI)) {
+
+						ePackages.remove(i);
+						ePackages.add(i, convertedEPackage);
+					}
+				}
+
+				if (!ePackages.contains(convertedEPackage)) {
+					ePackages.add(convertedEPackage);
+				}
 			}
 		}
 
@@ -297,8 +349,9 @@ public class UMLExporter
 
 		if (genModel != null) {
 			getOptions().putAll(
-				ExporterUtil.findOrCreateGenAnnotation(genModel,
-					getConverterGenAnnotationSource()).getDetails().map());
+				ExporterUtil
+					.findOrCreateGenAnnotation(genModel,
+						getConverterGenAnnotationSource()).getDetails().map());
 		}
 	}
 
@@ -313,9 +366,10 @@ public class UMLExporter
 		if (genAnnotation == null) {
 			changed = true;
 
-			ExporterUtil.findOrCreateGenAnnotation(genModel,
-				getConverterGenAnnotationSource()).getDetails().putAll(
-				getOptions());
+			ExporterUtil
+				.findOrCreateGenAnnotation(genModel,
+					getConverterGenAnnotationSource()).getDetails()
+				.putAll(getOptions());
 		} else {
 			EMap<String, String> details = genAnnotation.getDetails();
 
@@ -331,6 +385,39 @@ public class UMLExporter
 		}
 
 		return changed;
+	}
+
+	@Override
+	protected ReferencedGenPackageConvertInfo createGenPackageConvertInfo(
+			GenPackage genPackage) {
+		ReferencedGenPackageExportInfo genPackageInfo = (ReferencedGenPackageExportInfo) super
+			.createGenPackageConvertInfo(genPackage);
+
+		if (getExporterNestedGenAnnotations(genPackage).isEmpty()) {
+			String nsURI = genPackage.getEcorePackage().getNsURI();
+
+			if (EcorePackage.eNS_URI.equals(nsURI)) {
+				genPackageInfo.setArtifactURI(URI
+					.createURI(UMLResource.ECORE_METAMODEL_URI));
+			} else if (TypesPackage.eNS_URI.equals(nsURI)) {
+				genPackageInfo.setArtifactURI(URI
+					.createURI(UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI));
+			} else if (UMLPackage.eNS_URI.equals(nsURI)) {
+				genPackageInfo.setArtifactURI(URI
+					.createURI(UMLResource.UML_METAMODEL_URI));
+			} else if (UMLResource.STANDARD_L2_PROFILE_NS_URI.equals(nsURI)) {
+				genPackageInfo.setArtifactURI(URI
+					.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
+			} else if (UMLResource.STANDARD_L3_PROFILE_NS_URI.equals(nsURI)) {
+				genPackageInfo.setArtifactURI(URI
+					.createURI(UMLResource.STANDARD_L3_PROFILE_URI));
+			}
+
+			genPackageInfo
+				.setValidReference(genPackageInfo.getArtifactURI() != null);
+		}
+
+		return genPackageInfo;
 	}
 
 }

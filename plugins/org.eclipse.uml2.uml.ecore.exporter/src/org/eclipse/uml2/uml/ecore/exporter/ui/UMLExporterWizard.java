@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2007 IBM Corporation and others.
+ * Copyright (c) 2006, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 273948
  *
- * $Id: UMLExporterWizard.java,v 1.4 2007/05/30 04:20:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.exporter.ui;
 
@@ -46,6 +46,7 @@ public class UMLExporterWizard
 
 		packagePage.setTitle(UMLExporterPlugin.INSTANCE
 			.getString("_UI_UMLExport_title")); //$NON-NLS-1$
+	    packagePage.setShowReferencedGenModels(true);
 		addPage(packagePage);
 
 		UMLExporterOptionsPage optionsPage = new UMLExporterOptionsPage(
