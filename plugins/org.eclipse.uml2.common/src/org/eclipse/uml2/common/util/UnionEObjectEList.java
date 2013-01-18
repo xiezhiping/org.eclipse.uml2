@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,18 +7,19 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 286329
- *
- * $Id: UnionEObjectEList.java,v 1.7 2010/03/02 03:10:40 khussey Exp $
+ *   Kenn Hussey - 286329, 398462
+ *   Christian W. Damus (CEA) - 398462
  */
 package org.eclipse.uml2.common.util;
 
 import java.util.Iterator;
 import java.util.ListIterator;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreEList;
 
 /**
@@ -144,6 +145,26 @@ public class UnionEObjectEList<E>
 		}
 
 		return new EListIterator<E>(index);
+	}
+
+	protected boolean isLoading() {
+		Resource.Internal eInternalResource = owner.eInternalResource();
+		return eInternalResource != null && eInternalResource.isLoading();
+	}
+
+	@Override
+	public NotificationChain basicRemove(Object object,
+			NotificationChain notifications) {
+		return isLoading()
+			? notifications
+			: super.basicRemove(object, notifications);
+	}
+
+	@Override
+	public NotificationChain basicAdd(E object, NotificationChain notifications) {
+		return isLoading()
+			? notifications
+			: super.basicAdd(object, notifications);
 	}
 
 }
