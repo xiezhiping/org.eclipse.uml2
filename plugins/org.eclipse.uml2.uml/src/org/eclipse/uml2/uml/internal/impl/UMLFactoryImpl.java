@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 397324
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -248,7 +248,7 @@ public class UMLFactoryImpl
 	public static UMLFactory init() {
 		try {
 			UMLFactory theUMLFactory = (UMLFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://www.eclipse.org/uml2/4.0.0/UML"); //$NON-NLS-1$ 
+				.getEFactory(UMLPackage.eNS_URI);
 			if (theUMLFactory != null) {
 				return theUMLFactory;
 			}

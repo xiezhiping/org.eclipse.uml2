@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 208016
+ *   Kenn Hussey (Embarcadero Technologies) - 208016, 397324
  *
- * $Id: GenModelFactoryImpl.java,v 1.6 2008/03/21 00:17:59 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -44,7 +43,7 @@ public class GenModelFactoryImpl
 	public static GenModelFactory init() {
 		try {
 			GenModelFactory theGenModelFactory = (GenModelFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://www.eclipse.org/uml2/2.2.0/GenModel"); //$NON-NLS-1$ 
+				.getEFactory(GenModelPackage.eNS_URI);
 			if (theGenModelFactory != null) {
 				return theGenModelFactory;
 			}
