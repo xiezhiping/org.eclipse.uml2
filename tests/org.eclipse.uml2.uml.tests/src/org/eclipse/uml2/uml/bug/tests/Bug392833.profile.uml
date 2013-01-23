@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Profile xmi:id="_7XA_UB6wEeKf5s7PWuyytw" name="TestProfile392833" metaclassReference="_Jl3qsB6xEeKf5s7PWuyytw">
+    <elementImport xmi:id="_Jl3qsB6xEeKf5s7PWuyytw">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_LSrx0B6xEeKf5s7PWuyytw" name="Bean">
+      <ownedAttribute xmi:id="_jJen0h6xEeKf5s7PWuyytw" name="base_Class" association="_jJen0B6xEeKf5s7PWuyytw">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_UYYyEB6xEeKf5s7PWuyytw" name="kind" type="_Xyx1UB6xEeKf5s7PWuyytw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_Xyx1UB6xEeKf5s7PWuyytw" name="BeanKind">
+      <ownedLiteral xmi:id="_ZywJAB6xEeKf5s7PWuyytw" name="entity"/>
+      <ownedLiteral xmi:id="_cJaeYB6xEeKf5s7PWuyytw" name="session"/>
+      <ownedLiteral xmi:id="_dGmfYB6xEeKf5s7PWuyytw" name="messagedriven"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_jJen0B6xEeKf5s7PWuyytw" name="Class_Bean" memberEnd="_jJen0R6xEeKf5s7PWuyytw _jJen0h6xEeKf5s7PWuyytw">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_jJen0R6xEeKf5s7PWuyytw" name="extension_Bean" type="_LSrx0B6xEeKf5s7PWuyytw" aggregation="composite" association="_jJen0B6xEeKf5s7PWuyytw"/>
+    </packagedElement>
+    <profileApplication xmi:id="_o9o-0B6xEeKf5s7PWuyytw">
+      <eAnnotations xmi:id="_o9spMB6xEeKf5s7PWuyytw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Profile>
+  <Ecore:EClass xmi:id="_scsfoB6xEeKf5s7PWuyytw" xmlName="ejb" base_Class="_LSrx0B6xEeKf5s7PWuyytw" className="EJB"/>
+  <Ecore:EEnum xmi:id="_5KEKIB6xEeKf5s7PWuyytw" base_Enumeration="_Xyx1UB6xEeKf5s7PWuyytw" enumName="EJBKind"/>
+  <Ecore:EAttribute xmi:id="_CgaOcB6yEeKf5s7PWuyytw" base_Property="_UYYyEB6xEeKf5s7PWuyytw" attributeName="type"/>
+</xmi:XMI>

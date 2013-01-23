@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,13 +7,14 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Christian W. Damus (CEA) - 373643
+ *   Christian W. Damus (CEA) - 373643, 392833
  *   Christian W. Damus - 388240
  *
  */
 package org.eclipse.uml2.uml.tests;
 
 import org.eclipse.uml2.uml.UMLPlugin;
+import org.eclipse.uml2.uml.bug.tests.UMLBugTests;
 import org.eclipse.uml2.uml.resources.util.UMLResourcesUtil;
 import org.eclipse.uml2.uml.validation.tests.UMLValidationTests;
 
@@ -56,6 +57,7 @@ public class UMLAllTests
 		TestSuite suite = new UMLAllTests("UML Tests"); //$NON-NLS-1$
 		suite.addTest(UMLTests.suite());
 		suite.addTest(UMLValidationTests.suite());
+		suite.addTest(UMLBugTests.suite());
 		return suite;
 	}
 
