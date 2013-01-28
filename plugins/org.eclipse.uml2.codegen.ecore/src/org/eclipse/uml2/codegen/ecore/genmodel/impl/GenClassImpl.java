@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 206636, 204200
  *   Lutz Wrage - 241411
  *   Kenn Hussey - 286329, 323181, 344908, 346183
- *   Kenn Hussey (CEA) - 351777
+ *   Kenn Hussey (CEA) - 351777, 394623
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
@@ -1491,6 +1491,31 @@ public class GenClassImpl
 		}
 
 		return super.getUniqueName(redefinedGenOperation);
+	}
+
+	protected List<GenFeature> collectUnionGenFeatures(
+			List<org.eclipse.emf.codegen.ecore.genmodel.GenClass> genClasses,
+			List<GenFeature> genFeatures, GenFeatureFilter filter) {
+		List<GenFeature> result = new ArrayList<GenFeature>();
+
+		if (genClasses != null) {
+
+			for (org.eclipse.emf.codegen.ecore.genmodel.GenClass genClass : genClasses) {
+				result.addAll(collectGenFeatures(null,
+					UML2GenModelUtil.getUnionGenFeatures(genClass), filter));
+			}
+		}
+
+		if (genFeatures != null) {
+			result.addAll(collectGenFeatures(null, genFeatures, filter));
+		}
+
+		return result;
+	}
+
+	public List<GenFeature> getAllUnionGenFeatures() {
+		return collectUnionGenFeatures(getAllBaseGenClasses(),
+			getUnionGenFeatures(), null);
 	}
 
 }

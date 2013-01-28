@@ -1,0 +1,143 @@
+<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.model" imports="java.util.* org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="DerivedUnionAdapterClass" %>
+<%
+/**
+ * <copyright>
+ *
+ * Copyright (c) 2013 CEA and others.
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   Kenn Hussey (CEA) - initial API and implementation
+ *
+ * </copyright>
+ */
+%>
+<%GenPackage genPackage = (GenPackage)argument; GenModel genModel = genPackage.getGenModel();%>
+<%@ include file="../Header.javajetinc"%>
+package <%=genPackage.getUtilitiesPackageName()%>;
+
+<%genModel.markImportLocation(stringBuffer);%>
+
+/**
+ * <!-- begin-user-doc -->
+ * An adapter that propagates notifications for derived unions.
+ * <!-- end-user-doc -->
+ * @see <%=genPackage.getQualifiedPackageInterfaceName()%>
+ * @generated
+ */
+public class <%=UML2GenModelUtil.getDerivedUnionAdapterClassName(genPackage)%> extends <%=genModel.getImportedName("org.eclipse.emf.common.notify.impl.AdapterImpl")%>
+{
+<%if (genModel.hasCopyrightField()) {%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final <%=genModel.getImportedName("java.lang.String")%> copyright = <%=genModel.getCopyrightFieldLiteral()%>;<%=genModel.getNonNLS()%>
+
+<%}%>
+	/**
+	 * The cached model package.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static <%=genPackage.getImportedPackageInterfaceName()%> modelPackage;
+
+	/**
+	 * Creates an instance of the adapter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public <%=UML2GenModelUtil.getDerivedUnionAdapterClassName(genPackage)%>()
+	{
+		if (modelPackage == null)
+		{
+			modelPackage = <%=genPackage.getImportedPackageInterfaceName()%>.eINSTANCE;
+		}
+	}
+
+	/**
+	 * Calls <code>notifyChanged</code> with the appropriate model class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param notification a description of the change.
+	 * @generated
+	 */
+	public void notifyChanged(<%=genModel.getImportedName("org.eclipse.emf.common.notify.Notification")%> notification)
+	{
+		Object notifier = notification.getNotifier();
+		if (notifier instanceof <%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%>)
+		{
+			<%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%>)notifier).eClass();
+			if (eClass.eContainer() == modelPackage)
+			{
+				notifyChanged(notification, eClass);
+			}
+		}
+	}
+
+	/**
+	 * Calls <code>notifyXXXChanged</code> for the corresponding class of the model.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param notification a description of the change.
+	 * @param eClass the Ecore class of the notifier.
+	 * @generated
+	 */
+	protected void notifyChanged(<%=genModel.getImportedName("org.eclipse.emf.common.notify.Notification")%> notification, <%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass)
+	{
+		switch (eClass.getClassifierID())
+		{
+<%for (GenClass genClass : UML2GenModelUtil.getDerivedUnionAdapterGenClasses(genPackage)) {%>
+			case <%=genPackage.getImportedPackageInterfaceName()%>.<%=genPackage.getClassifierID(genClass)%>:
+				notify<%=genClass.getName()%>Changed(notification, eClass);
+				break;
+<%}%>
+		}
+	}
+
+	/**
+	 * Does nothing; clients may override so that it does something.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param notification a description of the change.
+	 * @param eClass the Ecore class of the notifier.
+	 * @param derivedUnion the derived union affected by the change.
+	 * @generated
+	 */
+	public void notifyChanged(<%=genModel.getImportedName("org.eclipse.emf.common.notify.Notification")%> notification, <%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass, <%=genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature")%> derivedUnion)
+	{
+		// Do nothing.
+	}
+
+<%for (GenClass genClass : UML2GenModelUtil.getDerivedUnionAdapterGenClasses(genPackage)) {%>
+	/**
+	 * Calls <code>notifyChanged</code> for each affected derived union.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param notification a description of the change.
+	 * @param eClass the Ecore class of the notifier.
+	 * @generated
+	 */
+	protected void notify<%=genClass.getName()%>Changed(<%=genModel.getImportedName("org.eclipse.emf.common.notify.Notification")%> notification, <%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass)
+	{
+		switch (notification.getFeatureID(<%=genClass.getRawImportedInterfaceName()%>.class))
+		{
+  <%for (GenFeature genFeature : genClass.getAllGenFeatures()) { List<GenFeature> allSubsettedUnionGenFeatures = UML2GenModelUtil.getAllSubsettedUnionGenFeatures(genFeature); if (!allSubsettedUnionGenFeatures.isEmpty()) {%>
+			case <%=genClass.getQualifiedFeatureID(genFeature)%>:
+    <%for (GenFeature subsettedUnionGenFeature : allSubsettedUnionGenFeatures) {%>
+				notifyChanged(notification, eClass, <%=subsettedUnionGenFeature.getQualifiedFeatureAccessor()%>);
+    <%}%>
+				break;
+  <%}}%>
+		}
+	}
+
+<%}%>
+} //<%=UML2GenModelUtil.getDerivedUnionAdapterClassName(genPackage)%>
+<%genModel.emitSortedImports();%>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016, 206636
+ *   Kenn Hussey (CEA) - 394623
  *
- * $Id: UML2GenModelUtil.java,v 1.24 2008/03/21 00:23:00 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -179,6 +179,27 @@ public class UML2GenModelUtil {
 		return genPackage instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenPackage
 			&& ((org.eclipse.uml2.codegen.ecore.genmodel.GenPackage) genPackage)
 				.isXMLResource();
+	}
+
+	/**
+	 * @since 1.9
+	 */
+	public static String getDerivedUnionAdapterClassName(GenPackage genPackage) {
+		return genPackage instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenPackage
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenPackage) genPackage)
+				.getDerivedUnionAdapterClassName()
+			: null;
+	}
+
+	/**
+	 * @since 1.9
+	 */
+	public static List<GenClass> getDerivedUnionAdapterGenClasses(
+			GenPackage genPackage) {
+		return genPackage instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenPackage
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenPackage) genPackage)
+				.getDerivedUnionAdapterGenClasses()
+			: Collections.<GenClass> emptyList();
 	}
 
 	// GenClass utilities
@@ -598,6 +619,16 @@ public class UML2GenModelUtil {
 			: false;
 	}
 
+	/**
+	 * @since 1.9
+	 */
+	public static List<GenFeature> getAllUnionGenFeatures(GenClass genClass) {
+		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
+				.getAllUnionGenFeatures()
+			: Collections.<GenFeature> emptyList();
+	}
+
 	// GenFeature utilities
 
 	public static boolean isCached(GenFeature genFeature) {
@@ -826,6 +857,17 @@ public class UML2GenModelUtil {
 		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
 			&& ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
 				.isPluralizationException();
+	}
+
+	/**
+	 * @since 1.9
+	 */
+	public static List<GenFeature> getAllSubsettedUnionGenFeatures(
+			GenFeature genFeature) {
+		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
+				.getAllSubsettedUnionGenFeatures()
+			: Collections.<GenFeature> emptyList();
 	}
 
 	// GenOperation utilities

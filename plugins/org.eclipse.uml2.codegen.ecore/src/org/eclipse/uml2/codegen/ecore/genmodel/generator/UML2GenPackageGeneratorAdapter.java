@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2007 IBM Corporation and others.
+ * Copyright (c) 2006, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 394623
  *
- * $Id: UML2GenPackageGeneratorAdapter.java,v 1.4 2007/04/25 21:49:08 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.generator;
 
@@ -27,10 +27,14 @@ public class UML2GenPackageGeneratorAdapter
 		extends UML2GenBaseGeneratorAdapter {
 
 	protected static final int RESOURCE_INTERFACE_ID = 0;
+	
+	protected static final int DERIVED_UNION_ADAPTER_CLASS_ID = 1;
 
-	private static final JETEmitterDescriptor[] JET_EMITTER_DESCRIPTORS = {new JETEmitterDescriptor(
-		"model/ResourceInterface.javajet", //$NON-NLS-1$
-		"org.eclipse.uml2.codegen.ecore.templates.model.ResourceInterface")}; //$NON-NLS-1$
+	private static final JETEmitterDescriptor[] JET_EMITTER_DESCRIPTORS = {
+		new JETEmitterDescriptor("model/ResourceInterface.javajet", //$NON-NLS-1$
+			"org.eclipse.uml2.codegen.ecore.templates.model.ResourceInterface"), //$NON-NLS-1$
+		new JETEmitterDescriptor("model/DerivedUnionAdapterClass.javajet", //$NON-NLS-1$
+			"org.eclipse.uml2.codegen.ecore.templates.model.DerivedUnionAdapterClass")}; //$NON-NLS-1$
 
 	public UML2GenPackageGeneratorAdapter(
 			GeneratorAdapterFactory generatorAdapterFactory) {
@@ -44,7 +48,7 @@ public class UML2GenPackageGeneratorAdapter
 	@Override
 	protected Diagnostic generateModel(Object object, Monitor monitor) {
 		GenPackage genPackage = (GenPackage) object;
-		monitor.beginTask("", 2); //$NON-NLS-1$
+		monitor.beginTask("", 3); //$NON-NLS-1$
 
 		message = CodeGenEcorePlugin.INSTANCE.getString(
 			"_UI_GeneratingPackage_message", new Object[]{genPackage //$NON-NLS-1$
@@ -57,6 +61,8 @@ public class UML2GenPackageGeneratorAdapter
 				monitor, 1));
 
 		generateResourceInterface(genPackage, monitor);
+
+		generateDerivedUnionAdapterClass(genPackage, monitor);
 
 		return Diagnostic.OK_INSTANCE;
 	}
@@ -75,6 +81,26 @@ public class UML2GenPackageGeneratorAdapter
 				genPackage.getUtilitiesPackageName(), genPackage
 					.getResourceInterfaceName(), getJETEmitter(
 					getJETEmitterDescriptors(), RESOURCE_INTERFACE_ID), null,
+				createMonitor(monitor, 1));
+		} else {
+			monitor.worked(1);
+		}
+	}
+
+	protected void generateDerivedUnionAdapterClass(GenPackage genPackage,
+			Monitor monitor) {
+
+		if (!genPackage.getDerivedUnionAdapterGenClasses().isEmpty()) {
+			message = CodeGenEcorePlugin.INSTANCE.getString(
+				"_UI_GeneratingJavaClass_message", new Object[]{genPackage
+					.getQualifiedDerivedUnionAdapterClassName()});
+			monitor.subTask(message);
+			generateJava(
+				genPackage.getGenModel().getModelDirectory(),
+				genPackage.getUtilitiesPackageName(),
+				genPackage.getDerivedUnionAdapterClassName(),
+				getJETEmitter(getJETEmitterDescriptors(),
+					DERIVED_UNION_ADAPTER_CLASS_ID), null,
 				createMonitor(monitor, 1));
 		} else {
 			monitor.worked(1);

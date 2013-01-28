@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016
+ *   Kenn Hussey (CEA) - 394623
  *
- * $Id: GenFeature.java,v 1.10 2008/03/21 00:17:16 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -207,5 +207,10 @@ public interface GenFeature
 	String getFormattedKeyFeatureName(int index);
 
 	String getFormattedKeyFeatureNames();
+
+	/**
+	 * @since 1.9
+	 */
+	List<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> getAllSubsettedUnionGenFeatures();
 
 } // GenFeature

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 247980
+ *   Kenn Hussey (CEA) - 394623
  *
- * $Id: GenPackageImpl.java,v 1.16 2009/01/07 13:32:57 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
+import java.util.List;
+
+import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
 import org.eclipse.emf.codegen.ecore.genmodel.GenResourceKind;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -363,6 +366,25 @@ public class GenPackageImpl
 			.getOperationsPackage(oldGenPackageVersion));
 		setResourceInterfaces(UML2GenModelUtil
 			.isResourceInterfaces(oldGenPackageVersion));
+	}
+
+	public String getDerivedUnionAdapterClassName() {
+		return getPrefixedName("DerivedUnionAdapter"); //$NON-NLS-1$
+	}
+
+	public String getQualifiedDerivedUnionAdapterClassName() {
+		return getUtilitiesPackageName() + "." + getDerivedUnionAdapterClassName(); //$NON-NLS-1$
+	}
+
+	public List<GenClass> getDerivedUnionAdapterGenClasses() {
+		return filterGenClasses(getGenClasses(), new GenClassFilter() {
+
+			public boolean accept(GenClass genClass) {
+				return !genClass.isAbstract()
+					&& !UML2GenModelUtil.getAllUnionGenFeatures(genClass)
+						.isEmpty();
+			}
+		});
 	}
 
 } // GenPackageImpl

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,8 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016, 247980
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 394623
  *
- * $Id: GenFeatureImpl.java,v 1.33 2010/09/28 21:19:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -844,6 +844,21 @@ public class GenFeatureImpl
 		} else {
 			return super.hasSettingDelegate();
 		}
+	}
+
+	public List<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> getAllSubsettedUnionGenFeatures() {
+		List<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> allSubsettedGenFeatures = new ArrayList<org.eclipse.emf.codegen.ecore.genmodel.GenFeature>();
+
+		for (EStructuralFeature subsettedEcoreFeature : Generator
+			.getSubsettedEcoreFeatures(getEcoreFeature(), true)) {
+
+			if (Generator.isUnion(subsettedEcoreFeature)) {
+				allSubsettedGenFeatures
+					.add(findGenFeature(subsettedEcoreFeature));
+			}
+		}
+
+		return allSubsettedGenFeatures;
 	}
 
 } // GenFeatureImpl
