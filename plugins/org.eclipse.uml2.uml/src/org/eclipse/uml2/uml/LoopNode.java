@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 397141
  *
- * $Id: LoopNode.java,v 1.15 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -281,22 +280,34 @@ public interface LoopNode
 			boolean createOnDemand);
 
 	/**
-	 * Returns the value of the '<em><b>Loop Variable</b></em>' reference list.
+	 * Returns the value of the '<em><b>Loop Variable</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.OutputPin}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Loop Variable</em>' reference list.
+	 * @return the value of the '<em>Loop Variable</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_LoopVariable()
-	 * @model
+	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<OutputPin> getLoopVariables();
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Loop Variable</b></em>' reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.OutputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Loop Variable</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.OutputPin}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.OutputPin}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.OutputPin}.
+	 * @see #getLoopVariables()
+	 * @generated
+	 */
+	OutputPin createLoopVariable(String name, Type type);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Loop Variable</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.OutputPin} to retrieve, or <code>null</code>.
@@ -316,9 +327,24 @@ public interface LoopNode
 	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
 	 * @return The first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
 	 * @see #getLoopVariables()
-	 * @generated
+	 * @generated NOT
 	 */
 	OutputPin getLoopVariable(String name, Type type, boolean ignoreCase);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Loop Variable</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.OutputPin} to retrieve, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.OutputPin} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.OutputPin} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
+	 * @see #getLoopVariables()
+	 * @generated
+	 */
+	OutputPin getLoopVariable(String name, Type type, boolean ignoreCase,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Body Output</b></em>' reference list.

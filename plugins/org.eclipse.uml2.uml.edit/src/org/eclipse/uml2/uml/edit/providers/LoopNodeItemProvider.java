@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 397139
+ *   Kenn Hussey (CEA) - 327039, 397139, 397141
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -217,7 +217,9 @@ public class LoopNodeItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LoopNode_loopVariable_feature", "_UI_LoopNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE, true, false,
-				true, null, null, null));
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
 	}
 
 	/**
@@ -280,6 +282,7 @@ public class LoopNodeItemProvider
 			childrenFeatures
 				.remove(UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_OUTPUT);
 
+			childrenFeatures.add(UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE);
 			childrenFeatures
 				.add(UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE_INPUT);
 			childrenFeatures.add(UMLPackage.Literals.LOOP_NODE__RESULT);
@@ -352,6 +355,7 @@ public class LoopNodeItemProvider
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
+			case UMLPackage.LOOP_NODE__LOOP_VARIABLE :
 			case UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT :
 			case UMLPackage.LOOP_NODE__RESULT :
 				fireNotifyChanged(new ViewerNotification(notification,
@@ -391,6 +395,10 @@ public class LoopNodeItemProvider
 		}
 
 		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE,
+			UMLFactory.eINSTANCE.createOutputPin()));
+
+		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE_INPUT,
 			UMLFactory.eINSTANCE.createInputPin()));
 
@@ -426,6 +434,7 @@ public class LoopNodeItemProvider
 			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_INPUT
 			|| childFeature == UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE_INPUT
 			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_OUTPUT
+			|| childFeature == UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE
 			|| childFeature == UMLPackage.Literals.LOOP_NODE__RESULT;
 
 		if (qualify) {

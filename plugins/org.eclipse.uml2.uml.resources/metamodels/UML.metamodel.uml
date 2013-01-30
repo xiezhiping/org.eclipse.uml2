@@ -8677,7 +8677,7 @@ endif
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
         <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="LoopNode-isTestedFirst-_defaultValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="LoopNode-loopVariable" name="loopVariable" visibility="public" type="OutputPin" isOrdered="true" association="A_loopVariable_loopNode">
+      <ownedAttribute xmi:id="LoopNode-loopVariable" name="loopVariable" visibility="public" type="OutputPin" isOrdered="true" aggregation="composite" association="A_loopVariable_loopNode">
         <ownedComment xmi:id="LoopNode-loopVariable-_ownedComment.0" annotatedElement="LoopNode-loopVariable">
           <body>A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.</body>
         </ownedComment>

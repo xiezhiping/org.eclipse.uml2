@@ -1254,6 +1254,12 @@
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Oc6u0GqEEeKQJv6i-sSgBw" name="LoopNode">
+      <ownedAttribute xmi:id="_bHinUGqEEeKQJv6i-sSgBw" name="loopVariable" type="_jvcRQGqEEeKQJv6i-sSgBw" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eNrR0GqEEeKQJv6i-sSgBw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fGS74GqEEeKQJv6i-sSgBw" value="*"/>
+      </ownedAttribute>
+    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_gfgNwGveEdq4DLWZOhbdEA" name="Message">
       <ownedOperation xmi:id="_8U6CAFYfEdqB6vblk3tuMA" name="messageKind" visibility="protected" isQuery="true">
         <ownedParameter xmi:id="_-_OTMFYfEdqB6vblk3tuMA" name="result" type="_Y_jskGvtEdqG6fBIPwe-mw" direction="return"/>
@@ -1620,6 +1626,7 @@
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_jvcRQGqEEeKQJv6i-sSgBw" name="OutputPin"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_-cvRAGvzEdq7X4sGURiZYA" name="Package">
       <ownedAttribute xmi:id="_XSjCgLbQEeCRxrN1JUGuxA" name="nestingPackage" type="_-cvRAGvzEdq7X4sGURiZYA" subsettedProperty="_1vzv0LbIEeCRxrN1JUGuxA">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bHZNILbQEeCRxrN1JUGuxA"/>

@@ -4013,8 +4013,10 @@
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//LoopNode/decider"/>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//LoopNode/isTestedFirst"/>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//LoopNode/loopVariable"/>
+      <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
+          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//LoopNode/loopVariable">
+        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
+      </genFeatures>
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//LoopNode/loopVariableInput">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>

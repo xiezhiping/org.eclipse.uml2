@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 397139
+ *   Kenn Hussey (CEA) - 327039, 351774, 397139, 397141
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -143,7 +143,7 @@ public class LoopNodeImpl
 	protected static final int IS_TESTED_FIRST_EFLAG = 1 << 15;
 
 	/**
-	 * The cached value of the '{@link #getLoopVariables() <em>Loop Variable</em>}' reference list.
+	 * The cached value of the '{@link #getLoopVariables() <em>Loop Variable</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getLoopVariables()
@@ -473,7 +473,7 @@ public class LoopNodeImpl
 	 */
 	public EList<OutputPin> getLoopVariables() {
 		if (loopVariables == null) {
-			loopVariables = new EObjectResolvingEList<OutputPin>(
+			loopVariables = new EObjectContainmentEList.Resolving<OutputPin>(
 				OutputPin.class, this, UMLPackage.LOOP_NODE__LOOP_VARIABLE);
 		}
 		return loopVariables;
@@ -484,8 +484,14 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputPin getLoopVariable(String name, Type type) {
-		return getLoopVariable(name, type, false);
+	public OutputPin createLoopVariable(String name, Type type) {
+		OutputPin newLoopVariable = (OutputPin) create(UMLPackage.Literals.OUTPUT_PIN);
+		getLoopVariables().add(newLoopVariable);
+		if (name != null)
+			newLoopVariable.setName(name);
+		if (type != null)
+			newLoopVariable.setType(type);
+		return newLoopVariable;
 	}
 
 	/**
@@ -493,7 +499,26 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public OutputPin getLoopVariable(String name, Type type) {
+		return getLoopVariable(name, type, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	public OutputPin getLoopVariable(String name, Type type, boolean ignoreCase) {
+		return getLoopVariable(name, type, ignoreCase, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin getLoopVariable(String name, Type type,
+			boolean ignoreCase, boolean createOnDemand) {
 		loopVariableLoop : for (OutputPin loopVariable : getLoopVariables()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(loopVariable.getName())
@@ -503,7 +528,9 @@ public class LoopNodeImpl
 				continue loopVariableLoop;
 			return loopVariable;
 		}
-		return null;
+		return createOnDemand
+			? createLoopVariable(name, type)
+			: null;
 	}
 
 	/**
@@ -737,6 +764,9 @@ public class LoopNodeImpl
 			case UMLPackage.LOOP_NODE__EDGE :
 				return ((InternalEList<?>) getEdges()).basicRemove(otherEnd,
 					msgs);
+			case UMLPackage.LOOP_NODE__LOOP_VARIABLE :
+				return ((InternalEList<?>) getLoopVariables()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT :
 				return ((InternalEList<?>) getLoopVariableInputs())
 					.basicRemove(otherEnd, msgs);
