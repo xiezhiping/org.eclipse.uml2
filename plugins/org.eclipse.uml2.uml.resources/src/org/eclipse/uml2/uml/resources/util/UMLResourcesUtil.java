@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012 CEA and others.
+ * Copyright (c) 2012, 2013 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
- *   Kenn Hussey (CEA) - 389542
+ *   Kenn Hussey (CEA) - 389542, 399544
  *
  */
 package org.eclipse.uml2.uml.resources.util;
@@ -48,77 +48,77 @@ public class UMLResourcesUtil
 
 	private static final ContentHandler UML2_1_0_0_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
 		UML22UMLResource.UML2_CONTENT_TYPE_IDENTIFIER,
-		new String[]{"uml2"}, //$NON-NLS-1$
+		new String[]{UML22UMLResource.FILE_EXTENSION},
 		RootXMLContentHandlerImpl.XMI_KIND,
 		UML22UMLResource.UML2_METAMODEL_NS_URI, null);
 
 	private static final ContentHandler UML2_2_0_0_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
 		UMLResource.UML_2_0_0_CONTENT_TYPE_IDENTIFIER,
-		new String[]{"uml"}, //$NON-NLS-1$
-		RootXMLContentHandlerImpl.XMI_KIND,
-		"http://www.eclipse.org/uml2/2.0.0/UML", null); //$NON-NLS-1$
+		new String[]{UMLResource.FILE_EXTENSION},
+		RootXMLContentHandlerImpl.XMI_KIND, UML2_UML_PACKAGE_2_0_NS_URI, null);
 
 	private static final ContentHandler UML2_2_1_0_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
 		UMLResource.UML_2_1_0_CONTENT_TYPE_IDENTIFIER,
-		new String[]{"uml"}, //$NON-NLS-1$
+		new String[]{UMLResource.FILE_EXTENSION},
 		RootXMLContentHandlerImpl.XMI_KIND,
 		UML212UMLResource.UML_METAMODEL_NS_URI, null);
 
 	private static final ContentHandler UML2_3_0_0_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
 		UMLResource.UML_3_0_0_CONTENT_TYPE_IDENTIFIER,
-		new String[]{"uml"}, //$NON-NLS-1$
+		new String[]{UMLResource.FILE_EXTENSION},
 		RootXMLContentHandlerImpl.XMI_KIND,
 		UML302UMLResource.UML_METAMODEL_NS_URI, null);
 
 	private static final ContentHandler UML2_4_0_0_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
-		UMLResource.UML_4_0_0_CONTENT_TYPE_IDENTIFIER, new String[]{"uml"}, //$NON-NLS-1$
+		UMLResource.UML_4_0_0_CONTENT_TYPE_IDENTIFIER,
+		new String[]{UMLResource.FILE_EXTENSION},
 		RootXMLContentHandlerImpl.XMI_KIND, UMLPackage.eNS_URI, null);
 
 	private static final ContentHandler OMG_2_1_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
 		XMI2UMLResource.UML_2_1_CONTENT_TYPE_IDENTIFIER,
-		new String[]{"xmi"}, //$NON-NLS-1$
+		new String[]{XMI2UMLResource.FILE_EXTENSION},
 		RootXMLContentHandlerImpl.XMI_KIND,
 		XMI2UMLResource.UML_METAMODEL_2_1_NS_URI, null);
 
 	private static final ContentHandler OMG_2_1_1_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
 		XMI2UMLResource.UML_2_1_1_CONTENT_TYPE_IDENTIFIER,
-		new String[]{"xmi"}, //$NON-NLS-1$
+		new String[]{XMI2UMLResource.FILE_EXTENSION},
 		RootXMLContentHandlerImpl.XMI_KIND,
 		XMI2UMLResource.UML_METAMODEL_2_1_1_NS_URI, null);
 
 	private static final ContentHandler OMG_2_2_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
 		XMI2UMLResource.UML_2_2_CONTENT_TYPE_IDENTIFIER,
-		new String[]{"xmi"}, //$NON-NLS-1$
+		new String[]{XMI2UMLResource.FILE_EXTENSION},
 		RootXMLContentHandlerImpl.XMI_KIND,
 		XMI2UMLResource.UML_METAMODEL_2_2_NS_URI, null);
 
 	private static final ContentHandler OMG_2_4_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
 		XMI2UMLResource.UML_2_4_CONTENT_TYPE_IDENTIFIER,
-		new String[]{"xmi"}, //$NON-NLS-1$
+		new String[]{XMI2UMLResource.FILE_EXTENSION},
 		RootXMLContentHandlerImpl.XMI_KIND,
 		XMI2UMLResource.UML_METAMODEL_2_4_NS_URI, null);
 
 	private static final ContentHandler OMG_2_4_1_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
 		XMI2UMLResource.UML_2_4_1_CONTENT_TYPE_IDENTIFIER,
-		new String[]{"xmi"}, //$NON-NLS-1$
+		new String[]{XMI2UMLResource.FILE_EXTENSION},
 		RootXMLContentHandlerImpl.XMI_KIND,
 		XMI2UMLResource.UML_METAMODEL_2_4_1_NS_URI, null);
 
 	private static final ContentHandler CMOF_2_0_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
-		CMOF2UMLResource.CMOF_2_0_CONTENT_TYPE_IDENTIFIER,
-		new String[]{"cmof", "xmi"}, //$NON-NLS-1$ //$NON-NLS-2$
+		CMOF2UMLResource.CMOF_2_0_CONTENT_TYPE_IDENTIFIER, new String[]{
+			CMOF2UMLResource.FILE_EXTENSION, XMI2UMLResource.FILE_EXTENSION},
 		RootXMLContentHandlerImpl.XMI_KIND,
 		CMOF2UMLResource.CMOF_2_0_METAMODEL_NS_URI, null);
 
 	private static final ContentHandler CMOF_2_4_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
-		CMOF2UMLResource.CMOF_2_4_CONTENT_TYPE_IDENTIFIER,
-		new String[]{"cmof", "xmi"}, //$NON-NLS-1$ //$NON-NLS-2$
+		CMOF2UMLResource.CMOF_2_4_CONTENT_TYPE_IDENTIFIER, new String[]{
+			CMOF2UMLResource.FILE_EXTENSION, XMI2UMLResource.FILE_EXTENSION},
 		RootXMLContentHandlerImpl.XMI_KIND,
 		CMOF2UMLResource.CMOF_2_4_METAMODEL_NS_URI, null);
 
 	private static final ContentHandler CMOF_2_4_1_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
-		CMOF2UMLResource.CMOF_2_4_1_CONTENT_TYPE_IDENTIFIER,
-		new String[]{"cmof", "xmi"}, //$NON-NLS-1$ //$NON-NLS-2$
+		CMOF2UMLResource.CMOF_2_4_1_CONTENT_TYPE_IDENTIFIER, new String[]{
+			CMOF2UMLResource.FILE_EXTENSION, XMI2UMLResource.FILE_EXTENSION},
 		RootXMLContentHandlerImpl.XMI_KIND,
 		CMOF2UMLResource.CMOF_2_4_1_METAMODEL_NS_URI, null);
 
@@ -141,8 +141,7 @@ public class UMLResourcesUtil
 
 		packageRegistry.put(TypesPackage.eNS_URI, TypesPackage.eINSTANCE);
 
-		packageRegistry.put(
-			"http://www.eclipse.org/uml2/2.0.0/UML", UMLPackage.eINSTANCE); //$NON-NLS-1$
+		packageRegistry.put(UML2_UML_PACKAGE_2_0_NS_URI, UMLPackage.eINSTANCE);
 
 		packageRegistry.put(UML212UMLResource.UML_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);

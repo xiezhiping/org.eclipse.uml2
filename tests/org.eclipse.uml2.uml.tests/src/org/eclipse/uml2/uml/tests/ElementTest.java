@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 399544
  *
- * $Id: ElementTest.java,v 1.10 2010/09/28 20:59:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -43,6 +42,7 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.UMLResource;
 
 import org.eclipse.uml2.uml.util.UMLSwitch;
+import org.eclipse.uml2.uml.util.UMLUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -93,8 +93,6 @@ import org.eclipse.uml2.uml.util.UMLSwitch;
  */
 public abstract class ElementTest
 		extends TestCase {
-
-	protected static final String UML2_UML_PACKAGE_2_0_NS_URI = "http://www.eclipse.org/uml2/2.0.0/UML"; //$NON-NLS-1$
 
 	/**
 	 * The fixture for this Element test case.
@@ -303,8 +301,10 @@ public abstract class ElementTest
 	public void testHasKeyword__String() {
 		assertFalse(getFixture().hasKeyword(getName()));
 
-		UML2Util.createEAnnotation(getFixture(), UML2_UML_PACKAGE_2_0_NS_URI)
-			.getDetails().put(getName(), null);
+		UML2Util
+			.createEAnnotation(getFixture(),
+				UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI).getDetails()
+			.put(getName(), null);
 
 		assertTrue(getFixture().hasKeyword(getName()));
 	}
@@ -319,8 +319,10 @@ public abstract class ElementTest
 	public void testGetKeywords() {
 		assertTrue(getFixture().getKeywords().isEmpty());
 
-		UML2Util.createEAnnotation(getFixture(), UML2_UML_PACKAGE_2_0_NS_URI)
-			.getDetails().put(getName(), null);
+		UML2Util
+			.createEAnnotation(getFixture(),
+				UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI).getDetails()
+			.put(getName(), null);
 
 		assertTrue(getFixture().getKeywords().contains(getName()));
 	}
@@ -333,12 +335,12 @@ public abstract class ElementTest
 	 * @generated NOT
 	 */
 	public void testAddKeyword__String() {
-		assertNull(getFixture().getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI));
+		assertNull(getFixture().getEAnnotation(UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI));
 
 		assertTrue(getFixture().addKeyword(getName()));
 
 		EAnnotation eAnnotation = getFixture().getEAnnotation(
-			UML2_UML_PACKAGE_2_0_NS_URI);
+			UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI);
 		assertNotNull(eAnnotation);
 		assertTrue(eAnnotation.getDetails().containsKey(getName()));
 
@@ -359,7 +361,7 @@ public abstract class ElementTest
 		assertFalse(getFixture().removeKeyword(getName()));
 
 		EAnnotation eAnnotation = UML2Util.createEAnnotation(getFixture(),
-			UML2_UML_PACKAGE_2_0_NS_URI);
+			UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI);
 		eAnnotation.getDetails().put(getName(), null);
 
 		assertTrue(getFixture().removeKeyword(getName()));

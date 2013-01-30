@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833
  *
@@ -8543,9 +8543,9 @@ public class UMLUtil
 
 	protected static final String LANGUAGE__OCL = "OCL"; //$NON-NLS-1$
 
-	protected static final String UML2_UML_PACKAGE_2_0_NS_URI = "http://www.eclipse.org/uml2/2.0.0/UML"; //$NON-NLS-1$
+	public static final String UML2_UML_PACKAGE_2_0_NS_URI = "http://www.eclipse.org/uml2/2.0.0/UML"; //$NON-NLS-1$
 
-	protected static final String UML2_UML_PACKAGE_4_0_NS_URI = "http://www.eclipse.org/uml2/4.0.0/UML"; //$NON-NLS-1$
+	public static final String UML2_UML_PACKAGE_4_0_NS_URI = "http://www.eclipse.org/uml2/4.0.0/UML"; //$NON-NLS-1$
 
 	/**
 	 * An annotation tag that can be used for backward compatibility.

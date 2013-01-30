@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 399544
  * 
  */
 package org.eclipse.uml2.uml.resource;
@@ -180,8 +180,6 @@ public class UML22UMLResourceHandler
 	protected static final String TAG_DEFINITION__ARGUMENT = "argument"; //$NON-NLS-1$
 
 	protected static final String TAG_DEFINITION__OWNED_TRIGGER = "ownedTrigger"; //$NON-NLS-1$
-
-	protected static final String UML2_UML_PACKAGE_2_0_NS_URI = "http://www.eclipse.org/uml2/2.0.0/UML"; //$NON-NLS-1$
 
 	protected boolean resolveProxies = true;
 	
@@ -780,7 +778,8 @@ public class UML22UMLResourceHandler
 					.getEAnnotation("keywords"); //$NON-NLS-1$
 
 				if (keywordsAnnotation != null) {
-					keywordsAnnotation.setSource(UML2_UML_PACKAGE_2_0_NS_URI);
+					keywordsAnnotation
+						.setSource(UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI);
 				}
 
 				EAnnotation appliedStereotypesAnnotation = element
@@ -1280,8 +1279,8 @@ public class UML22UMLResourceHandler
 						UML22UMLResource.PROFILES_PATHMAP)) {
 
 						String segment0 = eProxyURI.segment(0);
-						profileName = segment0.substring(0, segment0
-							.indexOf('.'));
+						profileName = segment0.substring(0,
+							segment0.indexOf('.'));
 					}
 				}
 
@@ -1291,7 +1290,8 @@ public class UML22UMLResourceHandler
 					.getEAnnotation("attributes"); //$NON-NLS-1$
 
 				if (attributesAnnotation != null) {
-					attributesAnnotation.setSource(UML2_UML_PACKAGE_2_0_NS_URI);
+					attributesAnnotation
+						.setSource(UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI);
 
 					EMap<String, String> details = attributesAnnotation
 						.getDetails();
@@ -1308,7 +1308,7 @@ public class UML22UMLResourceHandler
 							}
 
 							EAnnotation eAnnotation = appliedProfile
-								.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
+								.getEAnnotation(UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI);
 
 							if (eAnnotation != null) {
 								EList<EObject> contents = eAnnotation
@@ -1371,7 +1371,8 @@ public class UML22UMLResourceHandler
 					.getEAnnotation("ePackages"); //$NON-NLS-1$
 
 				if (ePackagesAnnotation != null) {
-					ePackagesAnnotation.setSource(UML2_UML_PACKAGE_2_0_NS_URI);
+					ePackagesAnnotation
+						.setSource(UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI);
 
 					new EcoreSwitch<Object>() {
 
@@ -1382,7 +1383,7 @@ public class UML22UMLResourceHandler
 
 							if (stereotypeAnnotation != null) {
 								stereotypeAnnotation
-									.setSource(UML2_UML_PACKAGE_2_0_NS_URI);
+									.setSource(UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI);
 
 								EList<EObject> references = stereotypeAnnotation
 									.getReferences();
@@ -1460,9 +1461,10 @@ public class UML22UMLResourceHandler
 										.add(enumerationLiteralAnnotation);
 
 									EList<EObject> eEnumReferences = UML2Util
-										.getEAnnotation(eEnum,
-											UML2_UML_PACKAGE_2_0_NS_URI, true)
-										.getReferences();
+										.getEAnnotation(
+											eEnum,
+											UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI,
+											true).getReferences();
 
 									if (eEnumReferences.isEmpty()) {
 										EList<EObject> eEnumLiteralReferences = enumerationLiteralAnnotation

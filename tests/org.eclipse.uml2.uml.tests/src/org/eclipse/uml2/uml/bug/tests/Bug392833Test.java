@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
+ *   Kenn Hussey (CEA) - 399544
  */
 package org.eclipse.uml2.uml.bug.tests;
 
@@ -60,8 +61,6 @@ import org.eclipse.uml2.uml.util.UMLUtil;
  */
 public class Bug392833Test
 		extends TestCase {
-
-	protected static final String UML2_UML_PACKAGE_2_0_NS_URI = "http://www.eclipse.org/uml2/2.0.0/UML"; //$NON-NLS-1$
 
 	private final UMLUtilAccess util = new UMLUtilAccess();
 
@@ -225,7 +224,7 @@ public class Bug392833Test
 	EPackage makeUMLReferencesUnresolvable(EPackage ecoreDefinition) {
 		for (EClassifier next : ecoreDefinition.getEClassifiers()) {
 			EAnnotation annotation = next
-				.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
+				.getEAnnotation(UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI);
 
 			assertNotNull("Missing annotation", annotation); //$NON-NLS-1$
 			assertEquals("Expected exactly one UML reference", 1, annotation //$NON-NLS-1$
