@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 271470
  *   Kenn Hussey - 323181, 348433
- *   Kenn Hussey (CEA) - 327039, 369492
+ *   Kenn Hussey (CEA) - 327039, 369492, 313951
  *
- * $Id: PackageOperations.java,v 1.41 2010/09/28 21:02:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -627,6 +626,7 @@ public class PackageOperations
 
 				for (EObject stereotypeApplication : element
 					.getStereotypeApplications()) {
+
 					Stereotype stereotype = getStereotype(stereotypeApplication);
 
 					if (stereotype != null
@@ -638,13 +638,6 @@ public class PackageOperations
 								.eResource();
 
 							if (eResource != null) {
-
-								if (eResource instanceof XMLResource) {
-									XMLResource xmlResource = (XMLResource) eResource;
-									xmlResource.setID(copy, xmlResource
-										.getID(stereotypeApplication));
-								}
-
 								EList<EObject> contents = eResource
 									.getContents();
 
@@ -672,6 +665,13 @@ public class PackageOperations
 
 		for (EObject key : copier.keySet()) {
 			EObject copy = copier.get(key);
+
+			Resource eResource = key.eResource();
+
+			if (eResource instanceof XMLResource) {
+				XMLResource xmlResource = (XMLResource) eResource;
+				xmlResource.setID(copy, xmlResource.getID(key));
+			}
 
 			for (Setting setting : new ArrayList<EStructuralFeature.Setting>(
 				getNonNavigableInverseReferences(key))) {
