@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2006, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 213218
+ *   Kenn Hussey (CEA) - 322715
  *
- * $Id: UMLImporterDetailPage.java,v 1.8 2008/02/27 14:54:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer.ui;
 
@@ -144,12 +144,14 @@ public class UMLImporterDetailPage
 			UMLUtil.UML2EcoreConverter.OPTION__ECORE_TAGGED_VALUES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, processChoiceLabel);
-		addOptionControl(optionsComposite,
+		addOptionControl(
+			optionsComposite,
 			UMLImporterPlugin.INSTANCE.getString("_UI_DerivedFeatures_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__DERIVED_FEATURES, new String[]{
 				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
 			processChoiceLabel);
-		addOptionControl(optionsComposite,
+		addOptionControl(
+			optionsComposite,
 			UMLImporterPlugin.INSTANCE
 				.getString("_UI_DuplicateFeatureInheritance_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE,
@@ -161,42 +163,49 @@ public class UMLImporterDetailPage
 			UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_FEATURES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				discardChoiceLabel, processChoiceLabel}, discardChoiceLabel);
-		addOptionControl(optionsComposite,
+		addOptionControl(
+			optionsComposite,
 			UMLImporterPlugin.INSTANCE
 				.getString("_UI_DuplicateOperationInheritance_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				discardChoiceLabel, processChoiceLabel}, discardChoiceLabel);
-		addOptionControl(optionsComposite,
+		addOptionControl(
+			optionsComposite,
 			UMLImporterPlugin.INSTANCE
 				.getString("_UI_DuplicateOperations_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_OPERATIONS,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				discardChoiceLabel, processChoiceLabel}, discardChoiceLabel);
-		addOptionControl(optionsComposite,
+		addOptionControl(
+			optionsComposite,
 			UMLImporterPlugin.INSTANCE
 				.getString("_UI_RedefiningOperations_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__REDEFINING_OPERATIONS,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, reportChoiceLabel);
-		addOptionControl(optionsComposite,
+		addOptionControl(
+			optionsComposite,
 			UMLImporterPlugin.INSTANCE
 				.getString("_UI_RedefiningProperties_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__REDEFINING_PROPERTIES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, reportChoiceLabel);
-		addOptionControl(optionsComposite,
+		addOptionControl(
+			optionsComposite,
 			UMLImporterPlugin.INSTANCE
 				.getString("_UI_SubsettingProperties_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__SUBSETTING_PROPERTIES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, reportChoiceLabel);
-		addOptionControl(optionsComposite,
+		addOptionControl(
+			optionsComposite,
 			UMLImporterPlugin.INSTANCE.getString("_UI_UnionProperties_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__UNION_PROPERTIES, new String[]{
 				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
 			reportChoiceLabel);
-		addOptionControl(optionsComposite,
+		addOptionControl(
+			optionsComposite,
 			UMLImporterPlugin.INSTANCE.getString("_UI_SuperClassOrder_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__SUPER_CLASS_ORDER, new String[]{
 				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
@@ -207,23 +216,41 @@ public class UMLImporterDetailPage
 			UMLUtil.UML2EcoreConverter.OPTION__ANNOTATION_DETAILS,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, processChoiceLabel);
-		addOptionControl(optionsComposite,
+		addOptionControl(
+			optionsComposite,
 			UMLImporterPlugin.INSTANCE
 				.getString("_UI_InvariantConstraints_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__INVARIANT_CONSTRAINTS,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, processChoiceLabel);
-		addOptionControl(optionsComposite,
+		addOptionControl(
+			optionsComposite,
+			UMLImporterPlugin.INSTANCE
+				.getString("_UI_ValidationDelegates_label"), //$NON-NLS-1$
+			UMLUtil.UML2EcoreConverter.OPTION__VALIDATION_DELEGATES,
+			new String[]{ignoreChoiceLabel, processChoiceLabel},
+			ignoreChoiceLabel);
+		addOptionControl(
+			optionsComposite,
 			UMLImporterPlugin.INSTANCE.getString("_UI_OperationBodies_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__OPERATION_BODIES, new String[]{
 				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
 			ignoreChoiceLabel);
-		addOptionControl(optionsComposite,
+		addOptionControl(
+			optionsComposite,
+			UMLImporterPlugin.INSTANCE
+				.getString("_UI_InvocationDelegates_label"), //$NON-NLS-1$
+			UMLUtil.UML2EcoreConverter.OPTION__INVOCATION_DELEGATES,
+			new String[]{ignoreChoiceLabel, processChoiceLabel},
+			ignoreChoiceLabel);
+		addOptionControl(
+			optionsComposite,
 			UMLImporterPlugin.INSTANCE.getString("_UI_Comments_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__COMMENTS, new String[]{
 				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
 			processChoiceLabel);
-		addOptionControl(optionsComposite,
+		addOptionControl(
+			optionsComposite,
 			UMLImporterPlugin.INSTANCE.getString("_UI_CamelCaseNames_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__CAMEL_CASE_NAMES, new String[]{
 				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},

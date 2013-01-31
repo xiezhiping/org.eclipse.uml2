@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833
  *
@@ -2324,6 +2324,20 @@ public class UMLUtil
 		 */
 		public static final String OPTION__CAMEL_CASE_NAMES = "CAMEL_CASE_NAMES"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where invocation delegates can be used
+		 * to define the behavior of operation bodies. Supported choices are
+		 * <code>OPTION__IGNORE</code> and <code>OPTION__PROCESS</code>.
+		 */
+		public static final String OPTION__INVOCATION_DELEGATES = "INVOCATION_DELEGATES"; //$NON-NLS-1$
+
+		/**
+		 * The option for handling cases where validation delegates can be used
+		 * to define the behavior of invariant constraints. Supported choices
+		 * are <code>OPTION__IGNORE</code> and <code>OPTION__PROCESS</code>.
+		 */
+		public static final String OPTION__VALIDATION_DELEGATES = "VALIDATION_DELEGATES"; //$NON-NLS-1$
+
 		private static final int DIAGNOSTIC_CODE_OFFSET = 2000;
 
 		/**
@@ -2422,6 +2436,8 @@ public class UMLUtil
 
 		protected static final Pattern ANNOTATION_DETAIL_PATTERN = Pattern
 			.compile("\\s+((?>\\\\.|\\S)+)\\s*+=\\s*((['\"])((?>\\\\.|.)*?)\\3)"); //$NON-NLS-1$
+
+		protected static final String OCL_DELEGATE_URI = "http://www.eclipse.org/emf/2002/Ecore/OCL"; //$NON-NLS-1$
 
 		protected final Map<Element, EModelElement> elementToEModelElementMap = new LinkedHashMap<Element, EModelElement>();
 
@@ -5559,14 +5575,25 @@ public class UMLUtil
 
 					}
 
-					EcoreUtil.setAnnotation(eOperation, LANGUAGE__JAVA
-						.equals(language)
-						? EMF_GEN_MODEL_PACKAGE_NS_URI
-						: UML2_GEN_MODEL_PACKAGE_1_1_NS_URI,
+					String source = UML2_GEN_MODEL_PACKAGE_1_1_NS_URI;
+
+					if (LANGUAGE__OCL.equals(language)
+						&& OPTION__PROCESS.equals(options
+							.get(OPTION__INVOCATION_DELEGATES))) {
+						addInvocationDelegate(
+							(EPackage) getContainingEObject(eOperation,
+								EcorePackage.Literals.EPACKAGE, true),
+							OCL_DELEGATE_URI);
+
+						source = OCL_DELEGATE_URI;
+					} else if (LANGUAGE__JAVA.equals(language)) {
+						source = EMF_GEN_MODEL_PACKAGE_NS_URI;
+					}
+
+					EcoreUtil.setAnnotation(eOperation, source,
 						ANNOTATION_DETAIL__BODY, bodies.get(i));
 				} else if (OPTION__REPORT.equals(options
-					.get(OPTION__OPERATION_BODIES))
-					&& diagnostics != null) {
+					.get(OPTION__OPERATION_BODIES)) && diagnostics != null) {
 
 					diagnostics
 						.add(new BasicDiagnostic(
@@ -5621,6 +5648,64 @@ public class UMLUtil
 								diagnostics, context);
 						}
 					}
+				}
+			}
+		}
+
+		protected void processInvariantBody(EOperation eOperation,
+				EList<String> languages, EList<String> bodies,
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
+			int languagesSize = languages.size();
+			int bodiesSize = bodies.size();
+
+			for (int i = 0; i < (languagesSize == bodiesSize
+				? bodiesSize
+				: (bodiesSize == 1
+					? 1
+					: 0)); i++) {
+
+				String language = i < languagesSize
+					? languages.get(i)
+					: LANGUAGE__OCL;
+
+				if (LANGUAGE__OCL.equals(language)) {
+					addValidationDelegate(
+						(EPackage) getContainingEObject(eOperation,
+							EcorePackage.Literals.EPACKAGE, true),
+						OCL_DELEGATE_URI);
+
+					EcoreUtil.setAnnotation(eOperation, OCL_DELEGATE_URI,
+						ANNOTATION_DETAIL__BODY, bodies.get(i));
+				}
+			}
+		}
+
+		protected void processConstraintBody(EClassifier eClassifier,
+				String name, EList<String> languages, EList<String> bodies,
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
+			int languagesSize = languages.size();
+			int bodiesSize = bodies.size();
+
+			for (int i = 0; i < (languagesSize == bodiesSize
+				? bodiesSize
+				: (bodiesSize == 1
+					? 1
+					: 0)); i++) {
+
+				String language = i < languagesSize
+					? languages.get(i)
+					: LANGUAGE__OCL;
+
+				if (LANGUAGE__OCL.equals(language)) {
+					addValidationDelegate(
+						(EPackage) getContainingEObject(eClassifier,
+							EcorePackage.Literals.EPACKAGE, true),
+						OCL_DELEGATE_URI);
+
+					EcoreUtil.setAnnotation(eClassifier, OCL_DELEGATE_URI,
+						name, bodies.get(i));
 				}
 			}
 		}
@@ -5703,20 +5788,41 @@ public class UMLUtil
 						if (specification instanceof OpaqueExpression) {
 							OpaqueExpression body = (OpaqueExpression) specification;
 
-							processOperationBody(eOperation, body
-								.getLanguages(), body.getBodies(), options,
-								diagnostics, context);
+							if (OPTION__PROCESS.equals(options
+								.get(OPTION__VALIDATION_DELEGATES))) {
+
+								processInvariantBody(eOperation,
+									body.getLanguages(), body.getBodies(),
+									options, diagnostics, context);
+							} else {
+								processOperationBody(eOperation,
+									body.getLanguages(), body.getBodies(),
+									options, diagnostics, context);
+							}
 						}
 
 						defaultCase(constraint);
 
 						return eOperation;
 					} else {
-						addConstraint(eClassifier, name);
+
+						if (addConstraint(eClassifier, name)
+							&& OPTION__PROCESS.equals(options
+								.get(OPTION__VALIDATION_DELEGATES))) {
+							ValueSpecification specification = constraint
+								.getSpecification();
+
+							if (specification instanceof OpaqueExpression) {
+								OpaqueExpression body = (OpaqueExpression) specification;
+
+								processConstraintBody(eClassifier, name,
+									body.getLanguages(), body.getBodies(),
+									options, diagnostics, context);
+							}
+						}
 					}
 				} else if (OPTION__REPORT.equals(options
-					.get(OPTION__INVARIANT_CONSTRAINTS))
-					&& diagnostics != null) {
+					.get(OPTION__INVARIANT_CONSTRAINTS)) && diagnostics != null) {
 
 					diagnostics
 						.add(new BasicDiagnostic(

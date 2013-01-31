@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 247980
  *   Keith Campbell (IBM) - 343783
- *   Kenn Hussey (CEA) - 316165
+ *   Kenn Hussey (CEA) - 316165, 322715
  *
  */
 package org.eclipse.uml2.common.util;
@@ -44,6 +44,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.ETypedElement;
@@ -979,19 +980,20 @@ public class UML2Util {
 
 	protected static boolean addConstraint(EModelElement eModelElement,
 			String constraint) {
+		boolean result = false;
 
-		if (isEmpty(constraint)) {
-			return false;
-		} else {
-			List<String> constraints = new ArrayList<String>(EcoreUtil
-				.getConstraints(eModelElement));
+		if (!isEmpty(constraint)) {
+			List<String> constraints = EcoreUtil.getConstraints(eModelElement);
 
-			boolean result = constraints.add(constraint);
+			if (!constraints.contains(constraint)) {
+				result = (constraints = new ArrayList<String>(constraints))
+					.add(constraint);
 
-			EcoreUtil.setConstraints(eModelElement, constraints);
-
-			return result;
+				EcoreUtil.setConstraints(eModelElement, constraints);
+			}
 		}
+
+		return result;
 	}
 
 	protected static void addDocumentation(EModelElement eModelElement,
@@ -1264,4 +1266,58 @@ public class UML2Util {
 
 		return null;
 	}
+
+	protected static EObject getContainingEObject(EObject eObject,
+			EClass eClass, boolean resolve) {
+		EObject containingEObject = null;
+
+		for (EObject container = eObject; (containingEObject = resolve
+			? container.eContainer()
+			: ((InternalEObject) container).eInternalContainer()) != null
+			&& !(eClass.isInstance(containingEObject));) {
+
+			container = container.eContainer();
+		}
+
+		return containingEObject;
+	}
+
+	protected static boolean addInvocationDelegate(EPackage ePackage,
+			String invocationDelegate) {
+		boolean result = false;
+
+		if (!isEmpty(invocationDelegate)) {
+			List<String> invocationDelegates = EcoreUtil
+				.getInvocationDelegates(ePackage);
+
+			if (!invocationDelegates.contains(invocationDelegate)) {
+				result = (invocationDelegates = new ArrayList<String>(
+					invocationDelegates)).add(invocationDelegate);
+
+				EcoreUtil.setInvocationDelegates(ePackage, invocationDelegates);
+			}
+		}
+
+		return result;
+	}
+
+	protected static boolean addValidationDelegate(EPackage ePackage,
+			String validationDelegate) {
+		boolean result = false;
+
+		if (!isEmpty(validationDelegate)) {
+			List<String> validationDelegates = EcoreUtil
+				.getValidationDelegates(ePackage);
+
+			if (!validationDelegates.contains(validationDelegate)) {
+				result = (validationDelegates = new ArrayList<String>(
+					validationDelegates)).add(validationDelegate);
+
+				EcoreUtil.setValidationDelegates(ePackage, validationDelegates);
+			}
+		}
+
+		return result;
+	}
+
 }
