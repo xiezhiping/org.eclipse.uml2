@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 206636, 204200
  *   Lutz Wrage - 241411
  *   Kenn Hussey - 286329, 323181, 344908, 346183
- *   Kenn Hussey (CEA) - 351777, 394623
+ *   Kenn Hussey (CEA) - 351777, 394623, 322715
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
@@ -321,7 +321,14 @@ public class GenClassImpl
 		}
 
 		return collectGenOperations(this, null, new ArrayList<GenOperation>(
-			declaredGenOperations.values()), new CollidingGenOperationFilter());
+			declaredGenOperations.values()), new CollidingGenOperationFilter() {
+
+			@Override
+			public boolean accept(GenOperation genOperation) {
+				return super.accept(genOperation)
+					&& !genOperation.isSuppressedVisibility();
+			}
+		});
 	}
 
 	protected List<GenOperation> getImplementedGenOperations(
@@ -1380,6 +1387,17 @@ public class GenClassImpl
 			super();
 
 			allGenFeatures = getAllDuplicateGenFeatures();
+		}
+
+		@Override
+		public boolean accept(GenOperation genOperation) {
+			boolean result = super.accept(genOperation);
+			
+			if (result && (genOperation.hasBody() || genOperation.hasInvocationDelegate())) {
+				return super.accept(genOperation);				
+			}
+			
+			return result;
 		}
 
 	}
