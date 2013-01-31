@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,8 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016, 204200
  *   Kenn Hussey - 286329
+ *   Kenn Hussey (CEA) - 322715
  *
- * $Id: GenOperationImpl.java,v 1.22 2009/11/16 21:11:01 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -462,6 +462,23 @@ public class GenOperationImpl
 		} else {
 			return super.hasInvocationDelegate();
 		}
+	}
+
+	@Override
+	public String getQualifiedOperationAccessor() {
+
+		if (isDuplicate()) {
+
+			for (org.eclipse.emf.codegen.ecore.genmodel.GenOperation redefinedGenOperation : getRedefinedGenOperations()) {
+
+				if (getName().equals(redefinedGenOperation.getName())) {
+					return redefinedGenOperation
+						.getQualifiedOperationAccessor();
+				}
+			}
+		}
+
+		return super.getQualifiedOperationAccessor();
 	}
 
 } // GenOperationImpl
