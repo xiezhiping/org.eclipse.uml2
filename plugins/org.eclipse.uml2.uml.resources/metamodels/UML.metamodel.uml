@@ -16491,7 +16491,7 @@ endif
   <Ecore:EOperation xmi:id="_rodBQLLWEeCsYvaJqFFivQ" base_Operation="Connector-kind.1" operationName="getKind" visibility="None"/>
   <Ecore:EOperation xmi:id="_9YlJELLYEeCsYvaJqFFivQ" base_Operation="DeploymentTarget-deployedElement.1" operationName="getDeployedElements" visibility="None"/>
   <Ecore:EOperation xmi:id="_WhXsQLL2EeCBifIhhuFqZA" base_Operation="EncapsulatedClassifier-ownedPort.1" operationName="getOwnedPorts" visibility="None"/>
-  <Ecore:EOperation xmi:id="_uIYZ0LL2EeCBifIhhuFqZA" base_Operation="EnumerationLiteral-classifier.1" operationName="getClassifier" visibility="None"/>
+  <Ecore:EOperation xmi:id="_uIYZ0LL2EeCBifIhhuFqZA" base_Operation="EnumerationLiteral-classifier.1" operationName="getClassifier"/>
   <Ecore:EOperation xmi:id="_GdT9ULL3EeCBifIhhuFqZA" base_Operation="Extension-metaclass.1" operationName="getMetaclass" visibility="None"/>
   <Ecore:EOperation xmi:id="_ezWUELL3EeCBifIhhuFqZA" base_Operation="MultiplicityElement-lower.1" operationName="getLower" visibility="None"/>
   <Ecore:EOperation xmi:id="_ig3HoLL3EeCBifIhhuFqZA" base_Operation="MultiplicityElement-upper.1" operationName="getUpper" visibility="None"/>

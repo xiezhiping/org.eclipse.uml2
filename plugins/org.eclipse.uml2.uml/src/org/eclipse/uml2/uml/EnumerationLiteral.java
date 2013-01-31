@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 322715
  *
- * $Id: EnumerationLiteral.java,v 1.7 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -94,7 +93,6 @@ public interface EnumerationLiteral
 	 * true
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel suppressedVisibility='true'"
 	 * @generated
 	 */
 	Enumeration getClassifier();

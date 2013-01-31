@@ -28,6 +28,8 @@
     <details key="INVARIANT_CONSTRAINTS" value="PROCESS"/>
     <details key="COMMENTS" value="PROCESS"/>
     <details key="CAMEL_CASE_NAMES" value="IGNORE"/>
+    <details key="VALIDATION_DELEGATES" value="IGNORE"/>
+    <details key="INVOCATION_DELEGATES" value="IGNORE"/>
   </genAnnotations>
   <foreignModel>UML.merged.uml</foreignModel>
   <genPackages xsi:type="genmodel:GenPackage" prefix="UML" basePackage="org.eclipse.uml2"

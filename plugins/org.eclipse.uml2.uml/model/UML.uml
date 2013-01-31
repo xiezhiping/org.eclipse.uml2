@@ -2675,7 +2675,7 @@
   <Ecore:EOperation xmi:id="_rodBQLLWEeCsYvaJqFFivQ" base_Operation="_lgjO4LLWEeCsYvaJqFFivQ" operationName="getKind" visibility="None"/>
   <Ecore:EOperation xmi:id="_9YlJELLYEeCsYvaJqFFivQ" base_Operation="_7EO9ULLXEeCsYvaJqFFivQ" operationName="getDeployedElements" visibility="None"/>
   <Ecore:EOperation xmi:id="_WhXsQLL2EeCBifIhhuFqZA" base_Operation="_O9x_ALL2EeCBifIhhuFqZA" operationName="getOwnedPorts" visibility="None"/>
-  <Ecore:EOperation xmi:id="_uIYZ0LL2EeCBifIhhuFqZA" base_Operation="_dgJcQLL2EeCBifIhhuFqZA" operationName="getClassifier" visibility="None"/>
+  <Ecore:EOperation xmi:id="_uIYZ0LL2EeCBifIhhuFqZA" base_Operation="_dgJcQLL2EeCBifIhhuFqZA" operationName="getClassifier"/>
   <Ecore:EOperation xmi:id="_GdT9ULL3EeCBifIhhuFqZA" base_Operation="__PcocLL2EeCBifIhhuFqZA" operationName="getMetaclass" visibility="None"/>
   <Ecore:EOperation xmi:id="_ezWUELL3EeCBifIhhuFqZA" base_Operation="_Y8IpELL3EeCBifIhhuFqZA" operationName="getLower" visibility="None"/>
   <Ecore:EOperation xmi:id="_ig3HoLL3EeCBifIhhuFqZA" base_Operation="_a_qnELL3EeCBifIhhuFqZA" operationName="getUpper" visibility="None"/>
