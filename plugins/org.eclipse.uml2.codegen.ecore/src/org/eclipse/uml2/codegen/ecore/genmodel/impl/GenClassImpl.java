@@ -1389,6 +1389,39 @@ public class GenClassImpl
 			allGenFeatures = getAllDuplicateGenFeatures();
 		}
 
+		@Override
+		public boolean accept(GenOperation genOperation) {
+			boolean hasBody = genOperation.hasBody()
+				|| genOperation.hasInvocationDelegate();
+
+			if (hasBody
+				&& (genOperation.getName().startsWith("get") || genOperation //$NON-NLS-1$
+					.getName().startsWith("is")) //$NON-NLS-1$
+				&& genOperation.getGenParameters().isEmpty()) {
+
+				String operationType = genOperation.getType(GenClassImpl.this);
+
+				for (GenFeature genFeature : allGenFeatures) {
+
+					if (genFeature.getGetAccessor().equals(
+						genOperation.getName())
+						&& (genFeature.getType(GenClassImpl.this).equals(
+							operationType) || !extendsGenClassFeatures
+							.contains(genFeature))
+						&& genFeature.isVolatile()
+						&& !genFeature.hasDelegateFeature()
+						&& !extendsGenClassFeatures.contains(genFeature)) {
+
+						return false;
+					}
+				}
+
+				return !genOperation.getGenClass().isEObject();
+			} else {
+				return super.accept(genOperation);
+			}
+		}
+
 	}
 
 	@Override
