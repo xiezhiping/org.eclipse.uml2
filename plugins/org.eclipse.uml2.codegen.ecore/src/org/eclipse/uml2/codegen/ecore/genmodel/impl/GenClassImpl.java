@@ -1389,17 +1389,6 @@ public class GenClassImpl
 			allGenFeatures = getAllDuplicateGenFeatures();
 		}
 
-		@Override
-		public boolean accept(GenOperation genOperation) {
-			boolean result = super.accept(genOperation);
-			
-			if (result && (genOperation.hasBody() || genOperation.hasInvocationDelegate())) {
-				return super.accept(genOperation);				
-			}
-			
-			return result;
-		}
-
 	}
 
 	@Override
