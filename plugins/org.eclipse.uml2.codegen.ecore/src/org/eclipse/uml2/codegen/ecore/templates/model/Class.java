@@ -8308,7 +8308,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     if (genOperation.hasBody()) {
     stringBuffer.append(TEXT_2089);
     stringBuffer.append(genOperation.getBody(genModel.getIndentation(stringBuffer)));
-    } else if (genOperation.isInvariant()) {GenClass opClass = genOperation.getGenClass(); String diagnostics = genOperation.getGenParameters().get(0).getName(); String context = genOperation.getGenParameters().get(1).getName();
+    } else if (genOperation.isInvariant() && (genOperation.hasInvariantExpression() || !genOperation.hasInvocationDelegate())) {GenClass opClass = genOperation.getGenClass(); String diagnostics = genOperation.getGenParameters().get(0).getName(); String context = genOperation.getGenParameters().get(1).getName();
     if (genModel.getRuntimeVersion().getValue() >= GenRuntimeVersion.EMF26_VALUE && genOperation.hasInvariantExpression()) {
     stringBuffer.append(TEXT_2090);
     stringBuffer.append(opClass.getGenPackage().getImportedValidatorClassName());
