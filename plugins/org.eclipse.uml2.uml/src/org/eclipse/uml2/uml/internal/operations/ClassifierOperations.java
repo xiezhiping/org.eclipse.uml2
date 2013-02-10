@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 394623
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -463,7 +463,7 @@ public class ClassifierOperations
 
 	}
 
-	protected static final int[] GENERAL_ESUPERSETS = new int[]{UMLPackage.CLASS__GENERALIZATION};
+	protected static final int[] GENERAL_ESUPERSETS = new int[]{UMLPackage.CLASSIFIER__GENERALIZATION};
 
 	/**
 	 * <!-- begin-user-doc -->
