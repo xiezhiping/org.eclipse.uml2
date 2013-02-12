@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 CEA and others.
+ * Copyright (c) 2011, 2013 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 400546
  *
  */
 package org.eclipse.uml2.uml.profile.l2;
@@ -54,7 +55,7 @@ public interface Create
 	 * @return the value of the '<em>Base Behavioral Feature</em>' reference.
 	 * @see #setBase_BehavioralFeature(BehavioralFeature)
 	 * @see org.eclipse.uml2.uml.profile.l2.L2Package#getCreate_Base_BehavioralFeature()
-	 * @model required="true" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	BehavioralFeature getBase_BehavioralFeature();
@@ -80,7 +81,7 @@ public interface Create
 	 * @return the value of the '<em>Base Usage</em>' reference.
 	 * @see #setBase_Usage(Usage)
 	 * @see org.eclipse.uml2.uml.profile.l2.L2Package#getCreate_Base_Usage()
-	 * @model required="true" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	Usage getBase_Usage();

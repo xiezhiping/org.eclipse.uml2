@@ -4,6 +4,16 @@
     <packageMerge xmi:id="_pUgPcL5MEeCUg9_01zj7Og">
       <mergedPackage xmi:type="uml:Profile" href="../../org.eclipse.uml2/model/StandardProfileL2.xmi#_0"/>
     </packageMerge>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_nSCTwHVEEeKiPqYCgcAI6g" name="Create">
+      <ownedAttribute xmi:id="_r7_hcHVEEeKiPqYCgcAI6g" name="base_BehavioralFeature">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#BehavioralFeature"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_tFtikHVEEeKiPqYCgcAI6g"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2BACkHVEEeKiPqYCgcAI6g" name="base_Usage">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Usage"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3lO1cHVEEeKiPqYCgcAI6g"/>
+      </ownedAttribute>
+    </packagedElement>
     <profileApplication xmi:id="_6ryEUL5MEeCUg9_01zj7Og">
       <eAnnotations xmi:id="_6ryrYL5MEeCUg9_01zj7Og" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>

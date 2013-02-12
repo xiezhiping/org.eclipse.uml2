@@ -59,9 +59,9 @@
       </eParameters>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="base_BehavioralFeature"
-        ordered="false" lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//BehavioralFeature"/>
+        ordered="false" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//BehavioralFeature"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="base_Usage" ordered="false"
-        lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Usage"/>
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Usage"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Derive">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

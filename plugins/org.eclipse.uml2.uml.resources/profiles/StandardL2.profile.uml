@@ -193,9 +193,11 @@
       </ownedRule>
       <ownedAttribute xmi:id="Create-base_BehavioralFeature" name="base_BehavioralFeature" visibility="public" association="BehavioralFeature_Create">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#BehavioralFeature"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Create-base_BehavioralFeature-_lowerValue"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="Create-base_Usage" name="base_Usage" visibility="public" association="Usage_Create">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Usage"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Create-base_Usage-_lowerValue"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Derive" name="Derive">
