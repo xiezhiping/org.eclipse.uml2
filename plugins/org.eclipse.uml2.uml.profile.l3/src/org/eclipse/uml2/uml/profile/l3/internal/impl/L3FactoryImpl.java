@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 CEA and others.
+ * Copyright (c) 2011, 2013 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 397324
  *
  */
 package org.eclipse.uml2.uml.profile.l3.internal.impl;
@@ -40,7 +41,7 @@ public class L3FactoryImpl
 	public static L3Factory init() {
 		try {
 			L3Factory theL3Factory = (L3Factory) EPackage.Registry.INSTANCE
-				.getEFactory("http://www.eclipse.org/uml2/4.0.0/UML/Profile/L3"); //$NON-NLS-1$ 
+				.getEFactory(L3Package.eNS_URI);
 			if (theL3Factory != null) {
 				return theL3Factory;
 			}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 CEA and others.
+ * Copyright (c) 2011, 2013 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 397324
  *
  */
 package org.eclipse.uml2.types.internal.impl;
@@ -38,7 +39,7 @@ public class TypesFactoryImpl
 	public static TypesFactory init() {
 		try {
 			TypesFactory theTypesFactory = (TypesFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://www.eclipse.org/uml2/4.0.0/Types"); //$NON-NLS-1$ 
+				.getEFactory(TypesPackage.eNS_URI);
 			if (theTypesFactory != null) {
 				return theTypesFactory;
 			}
