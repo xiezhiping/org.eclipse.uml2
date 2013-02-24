@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833
  *
@@ -6015,6 +6015,13 @@ public class UMLUtil
 	public static class Profile2EPackageConverter
 			extends UML2EcoreConverter {
 
+		/**
+		 * The option for handling cases where foreign profile definitions are
+		 * encountered. Supported choices are <code>OPTION__IGNORE</code> and
+		 * <code>OPTION__PROCESS</code>.
+		 */
+		public static final String OPTION__FOREIGN_DEFINITIONS = "FOREIGN_DEFINITIONS"; //$NON-NLS-1$
+
 		@Override
 		public Object casePackage(org.eclipse.uml2.uml.Package package_) {
 
@@ -6089,6 +6096,28 @@ public class UMLUtil
 		@Override
 		protected EClassifier getEType(Type type) {
 			EClassifier eType = getEClassifier(type);
+
+			if (eType == null
+				&& OPTION__PROCESS.equals(options
+					.get(OPTION__FOREIGN_DEFINITIONS))) {
+				Profile profile = (Profile) getOwningElement(type,
+					UMLPackage.Literals.PROFILE, true);
+
+				if (profile != null) {
+					eType = (EClassifier) profile.getDefinition(type);
+
+					if (eType != null) {
+						EList<EObject> references = getEAnnotation(
+							(EPackage) doSwitch(packages.iterator().next()),
+							UML2_UML_PACKAGE_4_1_NS_URI, true).getReferences();
+						EPackage definition = profile.getDefinition();
+
+						if (!references.contains(definition)) {
+							references.add(definition);
+						}
+					}
+				}
+			}
 
 			return eType == null
 				? super.getEType(type)
@@ -8652,6 +8681,8 @@ public class UMLUtil
 	public static final String UML2_UML_PACKAGE_2_0_NS_URI = "http://www.eclipse.org/uml2/2.0.0/UML"; //$NON-NLS-1$
 
 	public static final String UML2_UML_PACKAGE_4_0_NS_URI = "http://www.eclipse.org/uml2/4.0.0/UML"; //$NON-NLS-1$
+
+	public static final String UML2_UML_PACKAGE_4_1_NS_URI = "http://www.eclipse.org/uml2/4.1.0/UML"; //$NON-NLS-1$
 
 	/**
 	 * An annotation tag that can be used for backward compatibility.

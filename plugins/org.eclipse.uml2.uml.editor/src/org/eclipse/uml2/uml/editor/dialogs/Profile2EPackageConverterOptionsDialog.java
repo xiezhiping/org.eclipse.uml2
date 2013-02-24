@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 322715
+ *   Kenn Hussey (CEA) - 322715, 163556
  *
  */
 package org.eclipse.uml2.uml.editor.dialogs;
@@ -154,6 +154,13 @@ public class Profile2EPackageConverterOptionsDialog
 			UMLEditorPlugin.INSTANCE.getString("_UI_Comments_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__COMMENTS, new String[]{
 				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
+			ignoreChoiceLabel);
+
+		createOptionArea(
+			parent,
+			UMLEditorPlugin.INSTANCE.getString("_UI_ForeignDefinitions_label"), //$NON-NLS-1$
+			UMLUtil.Profile2EPackageConverter.OPTION__FOREIGN_DEFINITIONS,
+			new String[]{ignoreChoiceLabel, processChoiceLabel},
 			ignoreChoiceLabel);
 	}
 }

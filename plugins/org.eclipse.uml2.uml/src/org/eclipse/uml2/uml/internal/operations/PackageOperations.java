@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 271470
  *   Kenn Hussey - 323181, 348433
- *   Kenn Hussey (CEA) - 327039, 369492, 313951
+ *   Kenn Hussey (CEA) - 327039, 369492, 313951, 163556
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -129,15 +129,35 @@ public class PackageOperations
 
 		@Override
 		protected EClass getTarget(EClass eClass) {
-			return (EClass) profile.getDefinition(getNamedElement(eClass,
-				profile));
+			NamedElement namedElement = getNamedElement(eClass, profile);
+			EClass definition = (EClass) profile.getDefinition(namedElement);
+
+			if (definition != null) {
+				return definition;
+			} else {
+				throw new IllegalStateException("Definition for class '"
+					+ getQualifiedName(namedElement)
+					+ "' not found in profile '" + getQualifiedName(profile)
+					+ "'");
+			}
 		}
 
 		@Override
 		protected EStructuralFeature getTarget(
 				EStructuralFeature eStructuralFeature) {
-			return (EStructuralFeature) profile.getDefinition(getNamedElement(
-				eStructuralFeature, profile));
+			NamedElement namedElement = getNamedElement(eStructuralFeature,
+				profile);
+			EStructuralFeature definition = (EStructuralFeature) profile
+				.getDefinition(namedElement);
+
+			if (definition != null) {
+				return definition;
+			} else {
+				throw new IllegalStateException("Definition for property '"
+					+ getQualifiedName(namedElement)
+					+ "' not found in profile '" + getQualifiedName(profile)
+					+ "'");
+			}
 		}
 
 		@Override

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181, 354452
- *   Kenn Hussey (CEA) - 327039, 392833
+ *   Kenn Hussey (CEA) - 327039, 392833, 163556
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -353,9 +353,27 @@ public class ProfileOperations
 					.getEEnumLiteral(getEcoreName(namedElement))
 				: null;
 		} else if (namedElement instanceof Profile) {
-			return namedElement == profile
-				? profileDefinition
-				: null;
+
+			if (namedElement != profile) {
+				EAnnotation eAnnotation = profileDefinition
+					.getEAnnotation(UML2_UML_PACKAGE_4_1_NS_URI);
+
+				if (eAnnotation != null) {
+
+					for (EObject reference : eAnnotation.getReferences()) {
+
+						if (reference instanceof EPackage) {
+							EPackage ePackage = (EPackage) reference;
+
+							if (getProfile(ePackage, profile) == namedElement) {
+								return ePackage;
+							}
+						}
+					}
+				}
+			}
+
+			return profileDefinition;
 		} else if (namedElement instanceof org.eclipse.uml2.uml.Package) {
 			ENamedElement packageDefinition = getDefinition(profile,
 				((org.eclipse.uml2.uml.Package) namedElement)
