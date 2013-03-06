@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 247980
  *   Keith Campbell (IBM) - 343783
- *   Kenn Hussey (CEA) - 316165, 322715
+ *   Kenn Hussey (CEA) - 316165, 322715, 212765
  *
  */
 package org.eclipse.uml2.common.util;
@@ -33,6 +33,8 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.AbstractTreeIterator;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.UniqueEList;
@@ -1318,6 +1320,131 @@ public class UML2Util {
 		}
 
 		return result;
+	}
+
+	/**
+	 * Retrieves the resource set containing the specified object, or
+	 * <code>null</code>.
+	 * 
+	 * @param eObject
+	 *            The object whose resource set to retrieve.
+	 * @return The resource set or <code>null</code>.
+	 * 
+	 * @since 1.8
+	 */
+	public static ResourceSet getResourceSet(EObject eObject) {
+		Resource eResource = eObject.eResource();
+		return eResource == null
+			? null
+			: eResource.getResourceSet();
+	}
+
+	/**
+	 * Retrieves the qualified name for the specified named element, using the
+	 * specified separator.
+	 * 
+	 * @param eNamedElement
+	 *            The named element whose qualified name is to be retrieved.
+	 * @param separator
+	 *            The separator to use.
+	 * @return The qualified name.
+	 * 
+	 * @since 1.8
+	 */
+	public static String getQualifiedName(ENamedElement eNamedElement,
+			final String separator) {
+		return getQualifiedText(eNamedElement, new QualifiedTextProvider() {
+
+			@Override
+			public String getSeparator() {
+				return separator;
+			}
+		});
+	}
+
+	protected static <NE extends ENamedElement> Collection<NE> findENamedElements(
+			Collection<? extends EObject> eObjects, String qualifiedName,
+			String separator, boolean ignoreCase, EClass eClass,
+			Collection<NE> eNamedElements) {
+		int index = qualifiedName.indexOf(separator);
+
+		if (index == -1) {
+
+			for (NE eNamedElement : EcoreUtil.<NE> getObjectsByType(eObjects,
+				eClass)) {
+
+				if (ignoreCase
+					? qualifiedName.equalsIgnoreCase(eNamedElement.getName())
+					: qualifiedName.equals(eNamedElement.getName())) {
+
+					eNamedElements.add(eNamedElement);
+				}
+			}
+		} else {
+			String name = qualifiedName.substring(0, index);
+			qualifiedName = qualifiedName.substring(index + separator.length());
+
+			for (ENamedElement eNamedElement : EcoreUtil
+				.<ENamedElement> getObjectsByType(eObjects,
+					EcorePackage.Literals.ENAMED_ELEMENT)) {
+
+				if (ignoreCase
+					? name.equalsIgnoreCase(eNamedElement.getName())
+					: name.equals(eNamedElement.getName())) {
+
+					findENamedElements(eNamedElement.eContents(),
+						qualifiedName, separator, ignoreCase, eClass,
+						eNamedElements);
+				}
+			}
+		}
+
+		return eNamedElements;
+	}
+
+	/**
+	 * Retrieves the named element(s) of the specified type with the specified
+	 * qualified name from the specified resource set, optionally ignoring case
+	 * when doing name comparisons.
+	 * 
+	 * @param resourceSet
+	 *            The resource set in which to search.
+	 * @param qualifiedName
+	 *            The qualified name of the element(s) to be found.
+	 * @param separator
+	 *            The separator used in the qualified name.
+	 * @param ignoreCase
+	 *            Whether to ignore case when doing name comparisons.
+	 * @param eClass
+	 *            The type of the element(s) to be found.
+	 * @return The named element(s).
+	 * 
+	 * @since 1.8
+	 */
+	public static <NE extends ENamedElement> Collection<NE> findENamedElements(
+			ResourceSet resourceSet, String qualifiedName, String separator,
+			boolean ignoreCase, EClass eClass) {
+
+		if (!isEmpty(qualifiedName)
+			&& EcorePackage.Literals.ENAMED_ELEMENT.isSuperTypeOf(eClass)) {
+
+			EList<Resource> resources = resourceSet.getResources();
+			int size = resources.size();
+
+			if (size > 0) {
+				EList<NE> eNamedElements = new UniqueEList.FastCompare<NE>();
+
+				for (int i = 0; i < size; i++) {
+					findENamedElements(resources.get(i).getContents(),
+						qualifiedName, separator, ignoreCase, eClass,
+						eNamedElements);
+				}
+
+				return ECollections.unmodifiableEList(eNamedElements);
+			}
+		}
+
+		return ECollections.<NE> emptyEList();
 	}
 
 }
