@@ -20,6 +20,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="PackageableElement" abstract="true"
       eSuperTypes="#//NamedElement #//ParameterableElement">
     <eAnnotations source="duplicates">
+      <eAnnotations source="visibility">
+        <details key="lowerBound" value="1"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EAttribute" name="visibility" ordered="false" eType="#//VisibilityKind"
           defaultValueLiteral="public">
         <eAnnotations source="redefines" references="#//NamedElement/visibility"/>
@@ -340,6 +343,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Classifier" abstract="true" eSuperTypes="#//Namespace #//RedefinableElement #//Type #//TemplateableElement">
     <eAnnotations source="duplicates">
+      <eAnnotations source="ownedTemplateSignature">
+        <details key="eType" value="uml::RedefinableTemplateSignature"/>
+      </eAnnotations>
+      <eAnnotations source="templateParameter">
+        <details key="eType" value="uml::ClassifierTemplateParameter"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EOperation" name="isTemplate" ordered="false" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/uml2/4.0.0/Types#//Boolean">
         <eAnnotations source="redefines" references="#//TemplateableElement/isTemplate"/>
@@ -1080,6 +1089,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Extension" eSuperTypes="#//Association">
     <eAnnotations source="duplicates">
+      <eAnnotations source="ownedEnd">
+        <details key="lowerBound" value="1"/>
+        <details key="upperBound" value="1"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="ownedEnd" upperBound="-1" eType="#//ExtensionEnd"
           containment="true">
         <eAnnotations source="redefines" references="#//Association/ownedEnd"/>
@@ -1521,6 +1534,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="ConnectableElement" abstract="true"
       eSuperTypes="#//TypedElement #//ParameterableElement">
     <eAnnotations source="duplicates">
+      <eAnnotations source="templateParameter">
+        <details key="eType" value="uml::ConnectableElementTemplateParameter"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="templateParameter" ordered="false"
           eType="#//TemplateParameter" eOpposite="#//ConnectableElementTemplateParameter/%duplicates%/parameteredElement">
         <eAnnotations source="redefines" references="#//ParameterableElement/templateParameter"/>
@@ -1578,6 +1594,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="ConnectableElementTemplateParameter"
       eSuperTypes="#//TemplateParameter">
     <eAnnotations source="duplicates">
+      <eAnnotations source="parameteredElement">
+        <details key="eType" value="uml::ConnectableElement"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="parameteredElement" ordered="false"
           lowerBound="1" eType="#//ParameterableElement" eOpposite="#//ConnectableElement/%duplicates%/templateParameter">
         <eAnnotations source="redefines" references="#//TemplateParameter/parameteredElement"/>
@@ -1677,6 +1696,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Operation" eSuperTypes="#//BehavioralFeature #//ParameterableElement #//TemplateableElement">
     <eAnnotations source="duplicates">
+      <eAnnotations source="templateParameter">
+        <details key="eType" value="uml::OperationTemplateParameter"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EOperation" name="isConsistentWith" ordered="false"
           lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/4.0.0/Types#//Boolean">
         <eAnnotations source="redefines" references="#//RedefinableElement/isConsistentWith"/>
@@ -2236,6 +2258,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Region" eSuperTypes="#//Namespace #//RedefinableElement">
     <eAnnotations source="duplicates">
+      <eAnnotations source="redefinitionContext">
+        <details key="lowerBound" value="1"/>
+        <details key="upperBound" value="1"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EOperation" name="isConsistentWith" ordered="false"
           lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/4.0.0/Types#//Boolean">
         <eAnnotations source="redefines" references="#//RedefinableElement/isConsistentWith"/>
@@ -2314,6 +2340,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="State" eSuperTypes="#//Namespace #//RedefinableElement #//Vertex">
     <eAnnotations source="duplicates">
+      <eAnnotations source="redefinitionContext">
+        <details key="lowerBound" value="1"/>
+        <details key="upperBound" value="1"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EOperation" name="containingStateMachine" ordered="false"
           lowerBound="1" eType="#//StateMachine">
         <eAnnotations source="redefines" references="#//Vertex/containingStateMachine"/>
@@ -2576,6 +2606,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//Namespace #//RedefinableElement">
     <eAnnotations source="duplicates">
+      <eAnnotations source="redefinitionContext">
+        <details key="lowerBound" value="1"/>
+        <details key="upperBound" value="1"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EOperation" name="isConsistentWith" ordered="false"
           lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/4.0.0/Types#//Boolean">
         <eAnnotations source="redefines" references="#//RedefinableElement/isConsistentWith"/>
@@ -2903,6 +2937,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OperationTemplateParameter" eSuperTypes="#//TemplateParameter">
     <eAnnotations source="duplicates">
+      <eAnnotations source="parameteredElement">
+        <details key="eType" value="uml::Operation"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="parameteredElement" ordered="false"
           lowerBound="1" eType="#//ParameterableElement" eOpposite="#//Operation/%duplicates%/templateParameter">
         <eAnnotations source="redefines" references="#//TemplateParameter/parameteredElement"/>
@@ -2916,6 +2953,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExtensionEnd" eSuperTypes="#//Property">
     <eAnnotations source="duplicates">
+      <eAnnotations source="type">
+        <details key="lowerBound" value="1"/>
+        <details key="eType" value="uml::Stereotype"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EOperation" name="getLower" ordered="false" eType="ecore:EDataType http://www.eclipse.org/uml2/4.0.0/Types#//Integer">
         <eAnnotations source="redefines" references="#//MultiplicityElement/getLower"/>
       </contents>
@@ -2966,6 +3007,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EnumerationLiteral" eSuperTypes="#//InstanceSpecification">
     <eAnnotations source="duplicates">
+      <eAnnotations source="classifier">
+        <details key="lowerBound" value="1"/>
+        <details key="upperBound" value="1"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="classifier" ordered="false" upperBound="-1"
           eType="#//Enumeration" changeable="false" volatile="true" transient="true"
           derived="true">
@@ -3293,6 +3338,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ClassifierTemplateParameter" eSuperTypes="#//TemplateParameter">
     <eAnnotations source="duplicates">
+      <eAnnotations source="parameteredElement">
+        <details key="eType" value="uml::Classifier"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="parameteredElement" ordered="false"
           lowerBound="1" eType="#//ParameterableElement" eOpposite="#//Classifier/%duplicates%/templateParameter">
         <eAnnotations source="redefines" references="#//TemplateParameter/parameteredElement"/>
@@ -4539,6 +4587,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OccurrenceSpecification" eSuperTypes="#//InteractionFragment">
     <eAnnotations source="duplicates">
+      <eAnnotations source="covered">
+        <details key="lowerBound" value="1"/>
+        <details key="upperBound" value="1"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="covered" ordered="false" upperBound="-1"
           eType="#//Lifeline">
         <eAnnotations source="redefines" references="#//InteractionFragment/covered"/>
@@ -5987,6 +6039,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="Observation" abstract="true" eSuperTypes="#//PackageableElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="DurationConstraint" eSuperTypes="#//IntervalConstraint">
     <eAnnotations source="duplicates">
+      <eAnnotations source="specification">
+        <details key="eType" value="uml::DurationInterval"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="specification" ordered="false" lowerBound="1"
           eType="#//ValueSpecification" containment="true">
         <eAnnotations source="redefines" references="#//IntervalConstraint/%duplicates%/specification #//Constraint/specification"/>
@@ -6006,6 +6061,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntervalConstraint" eSuperTypes="#//Constraint">
     <eAnnotations source="duplicates">
+      <eAnnotations source="specification">
+        <details key="eType" value="uml::Interval"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="specification" ordered="false" lowerBound="1"
           eType="#//ValueSpecification" containment="true">
         <eAnnotations source="redefines" references="#//Constraint/specification"/>
@@ -6020,6 +6078,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DurationInterval" eSuperTypes="#//Interval">
     <eAnnotations source="duplicates">
+      <eAnnotations source="max">
+        <details key="eType" value="uml::Duration"/>
+      </eAnnotations>
+      <eAnnotations source="min">
+        <details key="eType" value="uml::Duration"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="max" ordered="false" lowerBound="1"
           eType="#//ValueSpecification">
         <eAnnotations source="redefines" references="#//Interval/max"/>
@@ -7228,6 +7292,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StateInvariant" eSuperTypes="#//InteractionFragment">
     <eAnnotations source="duplicates">
+      <eAnnotations source="covered">
+        <details key="lowerBound" value="1"/>
+        <details key="upperBound" value="1"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="covered" ordered="false" upperBound="-1"
           eType="#//Lifeline">
         <eAnnotations source="redefines" references="#//InteractionFragment/covered"/>
@@ -7281,6 +7349,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TimeConstraint" eSuperTypes="#//IntervalConstraint">
     <eAnnotations source="duplicates">
+      <eAnnotations source="specification">
+        <details key="eType" value="uml::TimeInterval"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="specification" ordered="false" lowerBound="1"
           eType="#//ValueSpecification" containment="true">
         <eAnnotations source="redefines" references="#//IntervalConstraint/%duplicates%/specification #//Constraint/specification"/>
@@ -7292,6 +7363,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TimeInterval" eSuperTypes="#//Interval">
     <eAnnotations source="duplicates">
+      <eAnnotations source="max">
+        <details key="eType" value="uml::TimeExpression"/>
+      </eAnnotations>
+      <eAnnotations source="min">
+        <details key="eType" value="uml::TimeExpression"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="max" ordered="false" lowerBound="1"
           eType="#//ValueSpecification">
         <eAnnotations source="redefines" references="#//Interval/max"/>

@@ -38,6 +38,9 @@
       <details key="documentation" value="Packageable elements are able to serve as a template parameter.&#xA;A packageable element indicates a named element that may be owned directly by a package."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <eAnnotations source="visibility">
+        <details key="lowerBound" value="1"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EAttribute" name="visibility" ordered="false" eType="#//VisibilityKind"
           defaultValueLiteral="public">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -889,6 +892,12 @@
       <details key="documentation" value="A classifier is a classification of instances - it describes a set of instances that have features in common. A classifier can specify a generalization hierarchy by referencing its general classifiers.&#xA;A classifier has the capability to own use cases. Although the owning classifier typically represents the subject to which the owned use cases apply, this is not necessarily the case. In principle, the same use case can be applied to multiple subjects, as identified by the subject association role of a use case.&#xA;Classifier is defined to be a kind of templateable element so that a classifier can be parameterized. It is also defined to be a kind of parameterable element so that a classifier can be a formal template parameter.&#xA;A classifier has the capability to own collaboration uses. These collaboration uses link a collaboration with the classifier to give a description of the workings of the classifier."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <eAnnotations source="ownedTemplateSignature">
+        <details key="eType" value="uml::RedefinableTemplateSignature"/>
+      </eAnnotations>
+      <eAnnotations source="templateParameter">
+        <details key="eType" value="uml::ClassifierTemplateParameter"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EOperation" name="isTemplate" ordered="false" lowerBound="1"
           eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -2683,6 +2692,10 @@
       <details key="documentation" value="An extension is used to indicate that the properties of a metaclass are extended through a stereotype, and gives the ability to flexibly add (and later remove) stereotypes to classes."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <eAnnotations source="ownedEnd">
+        <details key="lowerBound" value="1"/>
+        <details key="upperBound" value="1"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="ownedEnd" upperBound="-1" eType="#//ExtensionEnd"
           containment="true">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -3672,6 +3685,9 @@
       <details key="documentation" value="ConnectableElement is an abstract metaclass representing a set of instances that play roles of a classifier. Connectable elements may be joined by attached connectors and specify configurations of linked instances to be created within an instance of the containing classifier.&#xA;A connectable element may be exposed as a connectable element template parameter."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <eAnnotations source="templateParameter">
+        <details key="eType" value="uml::ConnectableElementTemplateParameter"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="templateParameter" ordered="false"
           eType="#//TemplateParameter" eOpposite="#//ConnectableElementTemplateParameter/%duplicates%/parameteredElement">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -3804,6 +3820,9 @@
       <details key="documentation" value="A connectable element template parameter exposes a connectable element as a formal parameter for a template."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <eAnnotations source="parameteredElement">
+        <details key="eType" value="uml::ConnectableElement"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="parameteredElement" ordered="false"
           lowerBound="1" eType="#//ParameterableElement" eOpposite="#//ConnectableElement/%duplicates%/templateParameter">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -4040,6 +4059,9 @@
       <details key="documentation" value="An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior.&#xA;An operation may invoke both the execution of method behaviors as well as other behavioral responses.&#xA;Operation specializes TemplateableElement in order to support specification of template operations and bound operations. Operation specializes ParameterableElement to specify that an operation can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <eAnnotations source="templateParameter">
+        <details key="eType" value="uml::OperationTemplateParameter"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EOperation" name="isConsistentWith" ordered="false"
           lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5247,6 +5269,10 @@
       <details key="documentation" value="A region is an orthogonal part of either a composite state or a state machine. It contains states and transitions."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <eAnnotations source="redefinitionContext">
+        <details key="lowerBound" value="1"/>
+        <details key="upperBound" value="1"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EOperation" name="isConsistentWith" ordered="false"
           lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5404,6 +5430,10 @@
       <details key="documentation" value="A state models a situation during which some (usually implicit) invariant condition holds.&#xA;The states of protocol state machines are exposed to the users of their context classifiers. A protocol state represents an exposed stable situation of its context classifier: when an instance of the classifier is not processing any operation, users of this instance can always know its state configuration."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <eAnnotations source="redefinitionContext">
+        <details key="lowerBound" value="1"/>
+        <details key="upperBound" value="1"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EOperation" name="containingStateMachine" ordered="false"
           lowerBound="1" eType="#//StateMachine">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5970,6 +6000,10 @@
       <details key="documentation" value="A transition is a directed relationship between a source vertex and a target vertex. It may be part of a compound transition, which takes the state machine from one state configuration to another, representing the complete response of the state machine to an occurrence of an event of a particular type."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <eAnnotations source="redefinitionContext">
+        <details key="lowerBound" value="1"/>
+        <details key="upperBound" value="1"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EOperation" name="isConsistentWith" ordered="false"
           lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -6774,6 +6808,9 @@
       <details key="documentation" value="An operation template parameter exposes an operation as a formal parameter for a template."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <eAnnotations source="parameteredElement">
+        <details key="eType" value="uml::Operation"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="parameteredElement" ordered="false"
           lowerBound="1" eType="#//ParameterableElement" eOpposite="#//Operation/%duplicates%/templateParameter">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -6808,6 +6845,10 @@
       <details key="documentation" value="An extension end is used to tie an extension to a stereotype when extending a metaclass.&#xA;The default multiplicity of an extension end is 0..1."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <eAnnotations source="type">
+        <details key="lowerBound" value="1"/>
+        <details key="eType" value="uml::Stereotype"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EOperation" name="getLower" ordered="false" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Integer">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="suppressedVisibility" value="true"/>
@@ -6911,6 +6952,10 @@
       <details key="documentation" value="An enumeration literal is a user-defined data value for an enumeration."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <eAnnotations source="classifier">
+        <details key="lowerBound" value="1"/>
+        <details key="upperBound" value="1"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="classifier" ordered="false" upperBound="-1"
           eType="#//Enumeration" changeable="false" volatile="true" transient="true"
           derived="true">
@@ -7601,6 +7646,9 @@
       <details key="documentation" value="A classifier template parameter exposes a classifier as a formal template parameter."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <eAnnotations source="parameteredElement">
+        <details key="eType" value="uml::Classifier"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="parameteredElement" ordered="false"
           lowerBound="1" eType="#//ParameterableElement" eOpposite="#//Classifier/%duplicates%/templateParameter">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -10254,6 +10302,10 @@
       <details key="documentation" value="An occurrence specification is the basic semantic unit of interactions. The sequences of occurrences specified by them are the meanings of interactions."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <eAnnotations source="covered">
+        <details key="lowerBound" value="1"/>
+        <details key="upperBound" value="1"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="covered" ordered="false" upperBound="-1"
           eType="#//Lifeline">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -13471,6 +13523,9 @@
       <details key="documentation" value="A duration constraint is a constraint that refers to a duration interval."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <eAnnotations source="specification">
+        <details key="eType" value="uml::DurationInterval"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="specification" ordered="false" lowerBound="1"
           eType="#//ValueSpecification" containment="true">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -13510,6 +13565,9 @@
       <details key="documentation" value="An interval constraint is a constraint that refers to an interval."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <eAnnotations source="specification">
+        <details key="eType" value="uml::Interval"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="specification" ordered="false" lowerBound="1"
           eType="#//ValueSpecification" containment="true">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -13541,6 +13599,12 @@
       <details key="documentation" value="A duration interval defines the range between two durations."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <eAnnotations source="max">
+        <details key="eType" value="uml::Duration"/>
+      </eAnnotations>
+      <eAnnotations source="min">
+        <details key="eType" value="uml::Duration"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="max" ordered="false" lowerBound="1"
           eType="#//ValueSpecification">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -16116,6 +16180,10 @@
       <details key="documentation" value="A state invariant is a runtime constraint on the participants of the interaction. It may be used to specify a variety of different kinds of constraints, such as values of attributes or variables, internal or external states, and so on. A state invariant is an interaction fragment and it is placed on a lifeline."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <eAnnotations source="covered">
+        <details key="lowerBound" value="1"/>
+        <details key="upperBound" value="1"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="covered" ordered="false" upperBound="-1"
           eType="#//Lifeline">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -16220,6 +16288,9 @@
       <details key="documentation" value="A time constraint is a constraint that refers to a time interval."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <eAnnotations source="specification">
+        <details key="eType" value="uml::TimeInterval"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="specification" ordered="false" lowerBound="1"
           eType="#//ValueSpecification" containment="true">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -16241,6 +16312,12 @@
       <details key="documentation" value="A time interval defines the range between two time expressions."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <eAnnotations source="max">
+        <details key="eType" value="uml::TimeExpression"/>
+      </eAnnotations>
+      <eAnnotations source="min">
+        <details key="eType" value="uml::TimeExpression"/>
+      </eAnnotations>
       <contents xsi:type="ecore:EReference" name="max" ordered="false" lowerBound="1"
           eType="#//ValueSpecification">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

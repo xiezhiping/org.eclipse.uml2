@@ -335,7 +335,8 @@ public abstract class ElementTest
 	 * @generated NOT
 	 */
 	public void testAddKeyword__String() {
-		assertNull(getFixture().getEAnnotation(UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI));
+		assertNull(getFixture().getEAnnotation(
+			UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI));
 
 		assertTrue(getFixture().addKeyword(getName()));
 

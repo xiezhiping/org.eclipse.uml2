@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833
  *
@@ -5153,6 +5153,13 @@ public class UMLUtil
 													otherEStructuralFeature}));
 									}
 
+									int lowerBound = eStructuralFeature
+										.getLowerBound();
+									int upperBound = eStructuralFeature
+										.getUpperBound();
+									EClassifier eType = eStructuralFeature
+										.getEType();
+
 									if (!featuresToDuplicate
 										.contains(eStructuralFeature)) {
 
@@ -5179,9 +5186,11 @@ public class UMLUtil
 											otherEStructuralFeature);
 									}
 
-									EList<EObject> redefinedFeatures = getEAnnotation(
+									EAnnotation redefinesAnnotation = getEAnnotation(
 										eStructuralFeature,
-										ANNOTATION__REDEFINES, true)
+										ANNOTATION__REDEFINES, true);
+
+									EList<EObject> redefinedFeatures = redefinesAnnotation
 										.getReferences();
 
 									if (!redefinedFeatures
@@ -5189,6 +5198,34 @@ public class UMLUtil
 
 										redefinedFeatures
 											.add(otherEStructuralFeature);
+									}
+
+									EMap<String, String> redefinitionDetails = redefinesAnnotation
+										.getDetails();
+
+									if (eStructuralFeature.getLowerBound() != lowerBound) {
+										redefinitionDetails
+											.put(
+												EcorePackage.Literals.ETYPED_ELEMENT__LOWER_BOUND
+													.getName(), String
+													.valueOf(lowerBound));
+									}
+
+									if (eStructuralFeature.getUpperBound() != upperBound) {
+										redefinitionDetails
+											.put(
+												EcorePackage.Literals.ETYPED_ELEMENT__UPPER_BOUND
+													.getName(), String
+													.valueOf(upperBound));
+									}
+
+									if (eStructuralFeature.getEType() != eType) {
+										redefinitionDetails
+											.put(
+												EcorePackage.Literals.ETYPED_ELEMENT__ETYPE
+													.getName(),
+												getQualifiedName(eType,
+													NamedElement.SEPARATOR));
 									}
 								} else if (OPTION__DISCARD.equals(options
 									.get(OPTION__DUPLICATE_FEATURES))) {
@@ -5245,9 +5282,25 @@ public class UMLUtil
 			}
 
 			for (EStructuralFeature.Internal eStructuralFeature : featuresToDuplicate) {
-				getEAnnotation(eStructuralFeature.getEContainingClass(),
-					ANNOTATION__DUPLICATES, true).getContents().add(
-					eStructuralFeature);
+				EAnnotation duplicatesAnnotation = getEAnnotation(
+					eStructuralFeature.getEContainingClass(),
+					ANNOTATION__DUPLICATES, true);
+				duplicatesAnnotation.getContents().add(eStructuralFeature);
+
+				EAnnotation redefinesAnnotation = eStructuralFeature
+					.getEAnnotation(ANNOTATION__REDEFINES);
+
+				if (redefinesAnnotation != null) {
+					EMap<String, String> redefinitionDetails = redefinesAnnotation
+						.getDetails();
+
+					if (!redefinitionDetails.isEmpty()) {
+						getEAnnotation(duplicatesAnnotation,
+							eStructuralFeature.getName(), true).getDetails()
+							.putAll(redefinitionDetails);
+						redefinitionDetails.clear();
+					}
+				}
 
 				EReference eOpposite = eStructuralFeature.getEOpposite();
 
