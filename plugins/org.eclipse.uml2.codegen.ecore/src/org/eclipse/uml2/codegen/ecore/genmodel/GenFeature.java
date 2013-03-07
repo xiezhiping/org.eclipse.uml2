@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016
- *   Kenn Hussey (CEA) - 394623
+ *   Kenn Hussey (CEA) - 394623, 212765
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
@@ -16,6 +16,7 @@ package org.eclipse.uml2.codegen.ecore.genmodel;
 import java.util.List;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
+import org.eclipse.emf.codegen.ecore.genmodel.GenClassifier;
 
 /**
  * <!-- begin-user-doc -->
@@ -212,5 +213,20 @@ public interface GenFeature
 	 * @since 1.9
 	 */
 	List<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> getAllSubsettedUnionGenFeatures();
+
+	/**
+	 * @since 1.9
+	 */
+	String getRedefinitionLowerBound();
+
+	/**
+	 * @since 1.9
+	 */
+	String getRedefinitionUpperBound();
+
+	/**
+	 * @since 1.9
+	 */
+	GenClassifier getRedefinitionTypeGenClassifier();
 
 } // GenFeature

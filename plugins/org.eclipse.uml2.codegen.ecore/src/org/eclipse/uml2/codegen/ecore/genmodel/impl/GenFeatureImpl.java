@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016, 247980
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 394623
+ *   Kenn Hussey (CEA) - 394623, 212765
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
@@ -19,6 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
+import org.eclipse.emf.codegen.ecore.genmodel.GenClassifier;
 import org.eclipse.emf.codegen.ecore.genmodel.GenJDKLevel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
 import org.eclipse.emf.codegen.ecore.genmodel.GenRuntimeVersion;
@@ -859,6 +860,21 @@ public class GenFeatureImpl
 		}
 
 		return allSubsettedGenFeatures;
+	}
+
+	public String getRedefinitionLowerBound() {
+		return String.valueOf(Generator
+			.getRedefinitionLowerBound(getEcoreFeature()));
+	}
+
+	public String getRedefinitionUpperBound() {
+		return String.valueOf(Generator
+			.getRedefinitionUpperBound(getEcoreFeature()));
+	}
+
+	public GenClassifier getRedefinitionTypeGenClassifier() {
+		return findGenClassifier(Generator
+			.getRedefinitionEType(getEcoreFeature()));
 	}
 
 } // GenFeatureImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 247980
- *   Kenn Hussey (CEA) - 394623
+ *   Kenn Hussey (CEA) - 394623, 212765
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
@@ -19,10 +19,14 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
 import org.eclipse.emf.codegen.ecore.genmodel.GenResourceKind;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EMap;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.uml2.codegen.ecore.Generator;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenBase;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenPackage;
@@ -385,6 +389,35 @@ public class GenPackageImpl
 						.isEmpty();
 			}
 		});
+	}
+
+	public boolean hasMultiplicityRedefinitions() {
+
+		for (GenClass genClass : getGenClasses()) {
+			EAnnotation duplicatesAnnotation = genClass.getEcoreClass()
+				.getEAnnotation(Generator.ANNOTATION_SOURCE__DUPLICATES);
+
+			if (duplicatesAnnotation != null) {
+
+				for (EAnnotation eAnnotation : duplicatesAnnotation
+					.getEAnnotations()) {
+
+					EMap<String, String> details = eAnnotation.getDetails();
+
+					if (details
+						.containsKey(EcorePackage.Literals.ETYPED_ELEMENT__LOWER_BOUND
+							.getName())
+						|| details
+							.containsKey(EcorePackage.Literals.ETYPED_ELEMENT__UPPER_BOUND
+								.getName())) {
+
+						return true;
+					}
+				}
+			}
+		}
+
+		return false;
 	}
 
 } // GenPackageImpl

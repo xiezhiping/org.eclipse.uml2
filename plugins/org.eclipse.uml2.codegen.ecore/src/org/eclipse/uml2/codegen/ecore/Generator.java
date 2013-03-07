@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,22 +7,27 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *
- * $Id: Generator.java,v 1.5 2006/12/20 19:54:15 khussey Exp $
+ *   Kenn Hussey (CEA) - 212765
  */
 package org.eclipse.uml2.codegen.ecore;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.uml2.common.util.UML2Util;
 
 /**
  * 
@@ -104,6 +109,76 @@ public class Generator
 		}
 
 		return redefinedEcoreOperations;
+	}
+
+	protected static EMap<String, String> getRedefinitionDetails(
+			EStructuralFeature eStructuralFeature) {
+		EObject eContainer = eStructuralFeature.eContainer();
+
+		if (eContainer instanceof EAnnotation) {
+			EAnnotation eAnnotation = (EAnnotation) eContainer;
+
+			if (ANNOTATION_SOURCE__DUPLICATES.equals(eAnnotation.getSource())) {
+				eAnnotation = eAnnotation.getEAnnotation(eStructuralFeature
+					.getName());
+
+				if (eAnnotation != null) {
+					return eAnnotation.getDetails();
+				}
+			}
+		}
+
+		return ECollections.emptyEMap();
+	}
+
+	public static int getRedefinitionLowerBound(
+			EStructuralFeature eStructuralFeature) {
+		String lowerBound = getRedefinitionDetails(eStructuralFeature).get(
+			EcorePackage.Literals.ETYPED_ELEMENT__LOWER_BOUND.getName());
+
+		try {
+			return Integer.parseInt(lowerBound);
+		} catch (Exception e) {
+			// do nothing
+		}
+
+		return eStructuralFeature.getLowerBound();
+	}
+
+	public static int getRedefinitionUpperBound(EStructuralFeature eStructuralFeature) {
+		String upperBound = getRedefinitionDetails(eStructuralFeature).get(
+			EcorePackage.Literals.ETYPED_ELEMENT__UPPER_BOUND.getName());
+
+		try {
+			return Integer.parseInt(upperBound);
+		} catch (Exception e) {
+			// do nothing
+		}
+
+		return eStructuralFeature.getUpperBound();
+	}
+
+	public static EClassifier getRedefinitionEType(
+			EStructuralFeature eStructuralFeature) {
+		final String eType = getRedefinitionDetails(eStructuralFeature).get(
+			EcorePackage.Literals.ETYPED_ELEMENT__ETYPE.getName());
+
+		if (eType != null) {
+			ResourceSet resourceSet = UML2Util
+				.getResourceSet(eStructuralFeature);
+
+			if (resourceSet != null) {
+				Collection<EClassifier> eClassifiers = UML2Util
+					.findENamedElements(resourceSet, eType, "::", false, //$NON-NLS-1$
+						EcorePackage.Literals.ECLASSIFIER);
+
+				if (eClassifiers.size() == 1) {
+					return eClassifiers.iterator().next();
+				}
+			}
+		}
+
+		return eStructuralFeature.getEType();
 	}
 
 	public static boolean isSubset(EStructuralFeature eStructuralFeature) {

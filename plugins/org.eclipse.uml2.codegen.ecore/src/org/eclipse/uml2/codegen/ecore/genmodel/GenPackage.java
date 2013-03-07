@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 394623
+ *   Kenn Hussey (CEA) - 394623, 212765
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
@@ -118,5 +118,10 @@ public interface GenPackage
 	 * @since 1.9
 	 */
 	List<org.eclipse.emf.codegen.ecore.genmodel.GenClass> getDerivedUnionAdapterGenClasses();
+
+	/**
+	 * @since 1.9
+	 */
+	boolean hasMultiplicityRedefinitions();
 
 } // GenPackage

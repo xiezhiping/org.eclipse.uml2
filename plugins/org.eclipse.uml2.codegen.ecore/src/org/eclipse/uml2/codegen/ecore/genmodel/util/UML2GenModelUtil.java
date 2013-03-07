@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016, 206636
- *   Kenn Hussey (CEA) - 394623
+ *   Kenn Hussey (CEA) - 394623, 212765
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
@@ -19,6 +19,7 @@ import java.util.List;
 import org.eclipse.emf.codegen.ecore.genmodel.GenAnnotation;
 import org.eclipse.emf.codegen.ecore.genmodel.GenBase;
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
+import org.eclipse.emf.codegen.ecore.genmodel.GenClassifier;
 import org.eclipse.emf.codegen.ecore.genmodel.GenFeature;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModelFactory;
@@ -200,6 +201,16 @@ public class UML2GenModelUtil {
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenPackage) genPackage)
 				.getDerivedUnionAdapterGenClasses()
 			: Collections.<GenClass> emptyList();
+	}
+
+	/**
+	 * @since 1.9
+	 */
+	public static boolean hasMultiplicityRedefinitions(GenPackage genPackage) {
+		return genPackage instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenPackage
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenPackage) genPackage)
+				.hasMultiplicityRedefinitions()
+			: false;
 	}
 
 	// GenClass utilities
@@ -868,6 +879,37 @@ public class UML2GenModelUtil {
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
 				.getAllSubsettedUnionGenFeatures()
 			: Collections.<GenFeature> emptyList();
+	}
+
+	/**
+	 * @since 1.9
+	 */
+	public static String getRedefinitionLowerBound(GenFeature genFeature) {
+		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
+				.getRedefinitionLowerBound()
+			: genFeature.getLowerBound();
+	}
+
+	/**
+	 * @since 1.9
+	 */
+	public static String getRedefinitionUpperBound(GenFeature genFeature) {
+		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
+				.getRedefinitionUpperBound()
+			: genFeature.getUpperBound();
+	}
+
+	/**
+	 * @since 1.9
+	 */
+	public static GenClassifier getRedefinitionTypeGenClassifier(
+			GenFeature genFeature) {
+		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
+				.getRedefinitionTypeGenClassifier()
+			: genFeature.getTypeGenClassifier();
 	}
 
 	// GenOperation utilities
