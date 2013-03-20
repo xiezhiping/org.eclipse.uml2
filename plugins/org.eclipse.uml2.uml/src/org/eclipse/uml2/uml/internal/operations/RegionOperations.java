@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 80307
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -23,11 +23,14 @@ import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.ProtocolStateMachine;
+import org.eclipse.uml2.uml.Pseudostate;
+import org.eclipse.uml2.uml.PseudostateKind;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Transition;
+import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.Vertex;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -78,28 +81,38 @@ public class RegionOperations
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateInitialVertex(Region region,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		int initialVertexCount = 0;
+
+		for (Vertex subvertex : region.getSubvertices()) {
+
+			if (subvertex instanceof Pseudostate
+				&& ((Pseudostate) subvertex).getKind() == PseudostateKind.INITIAL_LITERAL) {
+
+				initialVertexCount++;
+			}
+		}
+
+		if (initialVertexCount > 1) {
+
 			if (diagnostics != null) {
 				diagnostics
 					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
+						Diagnostic.WARNING,
 						UMLValidator.DIAGNOSTIC_SOURCE,
 						UMLValidator.REGION__INITIAL_VERTEX,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+						UMLPlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateInitialVertex", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(region, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_Region_InitialVertex_diagnostic", getMessageSubstitutions(context, region)), //$NON-NLS-1$
 						new Object[]{region}));
 			}
+
 			return false;
 		}
+
 		return true;
 	}
 
@@ -115,28 +128,38 @@ public class RegionOperations
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateDeepHistoryVertex(Region region,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		int deepHistoryVertexCount = 0;
+
+		for (Vertex subvertex : region.getSubvertices()) {
+
+			if (subvertex instanceof Pseudostate
+				&& ((Pseudostate) subvertex).getKind() == PseudostateKind.DEEP_HISTORY_LITERAL) {
+
+				deepHistoryVertexCount++;
+			}
+		}
+
+		if (deepHistoryVertexCount > 1) {
+
 			if (diagnostics != null) {
 				diagnostics
 					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
+						Diagnostic.WARNING,
 						UMLValidator.DIAGNOSTIC_SOURCE,
 						UMLValidator.REGION__DEEP_HISTORY_VERTEX,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+						UMLPlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateDeepHistoryVertex", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(region, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_Region_DeepHistoryVertex_diagnostic", getMessageSubstitutions(context, region)), //$NON-NLS-1$
 						new Object[]{region}));
 			}
+
 			return false;
 		}
+
 		return true;
 	}
 
@@ -152,28 +175,38 @@ public class RegionOperations
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateShallowHistoryVertex(Region region,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		int shallowHistoryVertexCount = 0;
+
+		for (Vertex subvertex : region.getSubvertices()) {
+
+			if (subvertex instanceof Pseudostate
+				&& ((Pseudostate) subvertex).getKind() == PseudostateKind.SHALLOW_HISTORY_LITERAL) {
+
+				shallowHistoryVertexCount++;
+			}
+		}
+
+		if (shallowHistoryVertexCount > 1) {
+
 			if (diagnostics != null) {
 				diagnostics
 					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
+						Diagnostic.WARNING,
 						UMLValidator.DIAGNOSTIC_SOURCE,
 						UMLValidator.REGION__SHALLOW_HISTORY_VERTEX,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+						UMLPlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateShallowHistoryVertex", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(region, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_Region_ShallowHistoryVertex_diagnostic", getMessageSubstitutions(context, region)), //$NON-NLS-1$
 						new Object[]{region}));
 			}
+
 			return false;
 		}
+
 		return true;
 	}
 
@@ -187,28 +220,28 @@ public class RegionOperations
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateOwned(Region region,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+
+		if (region.getStateMachine() != null && region.getState() != null) {
+
 			if (diagnostics != null) {
 				diagnostics
 					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
+						Diagnostic.WARNING,
 						UMLValidator.DIAGNOSTIC_SOURCE,
 						UMLValidator.REGION__OWNED,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+						UMLPlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOwned", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(region, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_Region_Owned_diagnostic", getMessageSubstitutions(context, region)), //$NON-NLS-1$
 						new Object[]{region}));
 			}
+
 			return false;
 		}
+
 		return true;
 	}
 
