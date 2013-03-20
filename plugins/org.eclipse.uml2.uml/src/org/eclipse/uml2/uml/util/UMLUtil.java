@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833
  *
@@ -27,7 +27,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -525,68 +524,6 @@ public class UMLUtil
 		protected Collection<org.eclipse.uml2.uml.Package> mergedPackages = null;
 
 		protected final Map<EObject, List<EObject>> resultingToMergedEObjectMap = new LinkedHashMap<EObject, List<EObject>>();
-
-		private final Map<EObject, EObject> copierMap = new LinkedHashMap<EObject, EObject>();
-
-		@Override
-		public void clear() {
-			copierMap.clear();
-		}
-
-		@Override
-		public boolean containsKey(Object key) {
-			return copierMap.containsKey(key);
-		}
-
-		@Override
-		public boolean containsValue(Object value) {
-			return copierMap.containsValue(value);
-		}
-
-		@Override
-		public Set<Map.Entry<EObject, EObject>> entrySet() {
-			return copierMap.entrySet();
-		}
-
-		@Override
-		public EObject get(Object key) {
-			return copierMap.get(key);
-		}
-
-		@Override
-		public boolean isEmpty() {
-			return copierMap.isEmpty();
-		}
-
-		@Override
-		public Set<EObject> keySet() {
-			return copierMap.keySet();
-		}
-
-		@Override
-		public EObject put(EObject key, EObject value) {
-			return copierMap.put(key, value);
-		}
-
-		@Override
-		public void putAll(Map<? extends EObject, ? extends EObject> t) {
-			copierMap.putAll(t);
-		}
-
-		@Override
-		public EObject remove(Object key) {
-			return copierMap.remove(key);
-		}
-
-		@Override
-		public int size() {
-			return copierMap.size();
-		}
-
-		@Override
-		public Collection<EObject> values() {
-			return copierMap.values();
-		}
 
 		protected <EO extends EObject> List<EO> getMatchCandidates(EO eObject) {
 			Element baseElement = getBaseElement(eObject);
