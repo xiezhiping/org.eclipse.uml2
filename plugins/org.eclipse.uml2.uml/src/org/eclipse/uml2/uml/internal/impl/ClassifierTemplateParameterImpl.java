@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -218,6 +218,11 @@ public class ClassifierTemplateParameterImpl
 	 */
 	public NotificationChain basicSetParameteredElementGen(
 			ParameterableElement newParameteredElement, NotificationChain msgs) {
+		if (newParameteredElement != null
+			&& !(newParameteredElement instanceof Classifier)) {
+			throw new IllegalArgumentException(
+				"newParameteredElement must be an instance of Classifier"); //$NON-NLS-1$
+		}
 		ParameterableElement oldParameteredElement = parameteredElement;
 		parameteredElement = newParameteredElement;
 		if (eNotificationRequired()) {
@@ -236,13 +241,6 @@ public class ClassifierTemplateParameterImpl
 	@Override
 	public NotificationChain basicSetParameteredElement(
 			ParameterableElement newParameteredElement, NotificationChain msgs) {
-
-		if (newParameteredElement != null
-			&& !(newParameteredElement instanceof Classifier)) {
-
-			throw new IllegalArgumentException(newParameteredElement.toString());
-		}
-
 		msgs = basicSetParameteredElementGen(newParameteredElement, msgs);
 
 		Resource.Internal eInternalResource = eInternalResource();
@@ -266,6 +264,11 @@ public class ClassifierTemplateParameterImpl
 	 */
 	@Override
 	public void setParameteredElement(ParameterableElement newParameteredElement) {
+		if (newParameteredElement != null
+			&& !(newParameteredElement instanceof Classifier)) {
+			throw new IllegalArgumentException(
+				"newParameteredElement must be an instance of Classifier"); //$NON-NLS-1$
+		}
 		if (newParameteredElement != parameteredElement) {
 			NotificationChain msgs = null;
 			if (parameteredElement != null)

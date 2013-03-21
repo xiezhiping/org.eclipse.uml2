@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 212765
  *
- * $Id: ConnectableElementTemplateParameterImpl.java,v 1.18 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -101,6 +101,11 @@ public class ConnectableElementTemplateParameterImpl
 	 */
 	public NotificationChain basicSetParameteredElementGen(
 			ParameterableElement newParameteredElement, NotificationChain msgs) {
+		if (newParameteredElement != null
+			&& !(newParameteredElement instanceof ConnectableElement)) {
+			throw new IllegalArgumentException(
+				"newParameteredElement must be an instance of ConnectableElement"); //$NON-NLS-1$
+		}
 		ParameterableElement oldParameteredElement = parameteredElement;
 		parameteredElement = newParameteredElement;
 		if (eNotificationRequired()) {
@@ -120,13 +125,6 @@ public class ConnectableElementTemplateParameterImpl
 	@Override
 	public NotificationChain basicSetParameteredElement(
 			ParameterableElement newParameteredElement, NotificationChain msgs) {
-
-		if (newParameteredElement != null
-			&& !(newParameteredElement instanceof ConnectableElement)) {
-
-			throw new IllegalArgumentException(newParameteredElement.toString());
-		}
-
 		msgs = basicSetParameteredElementGen(newParameteredElement, msgs);
 
 		Resource.Internal eInternalResource = eInternalResource();
@@ -150,6 +148,11 @@ public class ConnectableElementTemplateParameterImpl
 	 */
 	@Override
 	public void setParameteredElement(ParameterableElement newParameteredElement) {
+		if (newParameteredElement != null
+			&& !(newParameteredElement instanceof ConnectableElement)) {
+			throw new IllegalArgumentException(
+				"newParameteredElement must be an instance of ConnectableElement"); //$NON-NLS-1$
+		}
 		if (newParameteredElement != parameteredElement) {
 			NotificationChain msgs = null;
 			if (parameteredElement != null)

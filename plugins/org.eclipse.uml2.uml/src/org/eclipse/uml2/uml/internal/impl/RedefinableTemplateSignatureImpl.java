@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 386760
+ *   Kenn Hussey (CEA) - 327039, 351774, 386760, 212765
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -209,7 +209,8 @@ public class RedefinableTemplateSignatureImpl
 			NotificationChain msgs) {
 
 		if (newTemplate != null && !(newTemplate instanceof Classifier)) {
-			throw new IllegalArgumentException(newTemplate.toString());
+			throw new IllegalArgumentException(
+				"newTemplate must be an instance of Classifier"); //$NON-NLS-1$
 		}
 
 		return basicSetClassifier((Classifier) newTemplate, msgs);
@@ -230,7 +231,8 @@ public class RedefinableTemplateSignatureImpl
 	public void setTemplate(TemplateableElement newTemplate) {
 
 		if (newTemplate != null && !(newTemplate instanceof Classifier)) {
-			throw new IllegalArgumentException(newTemplate.toString());
+			throw new IllegalArgumentException(
+				"newTemplate must be an instance of Classifier"); //$NON-NLS-1$
 		}
 
 		if (newTemplate != eInternalContainer()

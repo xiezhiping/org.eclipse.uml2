@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 397324
+ *   Kenn Hussey (CEA) - 327039, 351774, 397324, 212765
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -159,8 +159,13 @@ public class DurationConstraintImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain basicSetSpecificationGen(
+	public NotificationChain basicSetSpecification(
 			ValueSpecification newSpecification, NotificationChain msgs) {
+		if (newSpecification != null
+			&& !(newSpecification instanceof DurationInterval)) {
+			throw new IllegalArgumentException(
+				"newSpecification must be an instance of DurationInterval"); //$NON-NLS-1$
+		}
 		ValueSpecification oldSpecification = specification;
 		specification = newSpecification;
 		if (eNotificationRequired()) {
@@ -176,19 +181,6 @@ public class DurationConstraintImpl
 		return msgs;
 	}
 
-	@Override
-	public NotificationChain basicSetSpecification(
-			ValueSpecification newSpecification, NotificationChain msgs) {
-
-		if (newSpecification != null
-			&& !(newSpecification instanceof DurationInterval)) {
-
-			throw new IllegalArgumentException(newSpecification.toString());
-		}
-
-		return basicSetSpecificationGen(newSpecification, msgs);
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -196,6 +188,11 @@ public class DurationConstraintImpl
 	 */
 	@Override
 	public void setSpecification(ValueSpecification newSpecification) {
+		if (newSpecification != null
+			&& !(newSpecification instanceof DurationInterval)) {
+			throw new IllegalArgumentException(
+				"newSpecification must be an instance of DurationInterval"); //$NON-NLS-1$
+		}
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)

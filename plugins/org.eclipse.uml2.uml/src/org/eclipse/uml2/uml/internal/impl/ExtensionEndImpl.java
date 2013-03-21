@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -112,6 +112,10 @@ public class ExtensionEndImpl
 	 */
 	@Override
 	public void setType(Type newType) {
+		if (newType != null && !(newType instanceof Stereotype)) {
+			throw new IllegalArgumentException(
+				"newType must be an instance of Stereotype"); //$NON-NLS-1$
+		}
 		Type oldType = type;
 		type = newType;
 		if (eNotificationRequired())

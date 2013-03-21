@@ -4,6 +4,3 @@
 			throw new IllegalArgumentException("new<%=genFeature.getCapName()%> must be an instance of <%=UML2GenModelUtil.getRedefinitionTypeGenClassifier(genFeature).getRawImportedInstanceClassName()%>");<%=genModel.getNonNLS()%>
 		}
 <%}%>
-<%if (genFeature.isStringType() && UML2GenModelUtil.isSafeStrings(genModel)) {%>
-		new<%=genFeature.getCapName()%> = new<%=genFeature.getCapName()%> == null ? <%=genFeature.getEDefault()%> : new<%=genFeature.getCapName()%>;
-<%}%>

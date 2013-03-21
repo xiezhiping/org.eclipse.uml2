@@ -258,7 +258,7 @@
         <%if (!genFeature.getType(genClass).equals(redefinitionGenFeature.getType(genClass))) {%>
 		if (new<%=genFeature.getCapName()%> != null && !(new<%=genFeature.getCapName()%> instanceof <%=redefinitionGenFeature.getImportedType(genClass)%>))
 		{
-			throw new IllegalArgumentException(String.valueOf(new<%=genFeature.getCapName()%>));
+			throw new IllegalArgumentException("new<%=genFeature.getCapName()%> must be an instance of <%=redefinitionGenFeature.getImportedType(genClass)%>");<%=genModel.getNonNLS()%>
 		}
         <%}%>
         <%if (redefinitionGenFeature.isBasicSet()) {%>
@@ -288,7 +288,7 @@
         <%if (!genFeature.getType(genClass).equals(redefinitionGenFeature.getType(genClass))) {%>
 		if (new<%=genFeature.getCapName()%> != null && !(new<%=genFeature.getCapName()%> instanceof <%=redefinitionGenFeature.getImportedType(genClass)%>))
 		{
-			throw new IllegalArgumentException(String.valueOf(new<%=genFeature.getCapName()%>));
+			throw new IllegalArgumentException("new<%=genFeature.getCapName()%> must be an instance of <%=redefinitionGenFeature.getImportedType(genClass)%>");<%=genModel.getNonNLS()%>
 		}
         <%}%>
 		set<%=redefinitionGenFeature.getAccessorName()%>(<%if (!genFeature.getType(genClass).equals(redefinitionGenFeature.getType(genClass))) {%>(<%=redefinitionGenFeature.getImportedType(genClass)%>) <%}%>new<%=genFeature.getCapName()%>);

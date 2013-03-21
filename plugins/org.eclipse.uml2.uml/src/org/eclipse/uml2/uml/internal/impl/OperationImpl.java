@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -317,6 +317,11 @@ public class OperationImpl
 	 */
 	public NotificationChain basicSetTemplateParameterGen(
 			TemplateParameter newTemplateParameter, NotificationChain msgs) {
+		if (newTemplateParameter != null
+			&& !(newTemplateParameter instanceof OperationTemplateParameter)) {
+			throw new IllegalArgumentException(
+				"newTemplateParameter must be an instance of OperationTemplateParameter"); //$NON-NLS-1$
+		}
 		TemplateParameter oldTemplateParameter = templateParameter;
 		templateParameter = newTemplateParameter;
 		if (eNotificationRequired()) {
@@ -333,13 +338,6 @@ public class OperationImpl
 
 	public NotificationChain basicSetTemplateParameter(
 			TemplateParameter newTemplateParameter, NotificationChain msgs) {
-
-		if (newTemplateParameter != null
-			&& !(newTemplateParameter instanceof OperationTemplateParameter)) {
-
-			throw new IllegalArgumentException(newTemplateParameter.toString());
-		}
-
 		msgs = basicSetTemplateParameterGen(newTemplateParameter, msgs);
 
 		Resource.Internal eInternalResource = eInternalResource();
@@ -363,6 +361,11 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
+		if (newTemplateParameter != null
+			&& !(newTemplateParameter instanceof OperationTemplateParameter)) {
+			throw new IllegalArgumentException(
+				"newTemplateParameter must be an instance of OperationTemplateParameter"); //$NON-NLS-1$
+		}
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)

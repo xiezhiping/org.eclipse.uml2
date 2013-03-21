@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -522,6 +522,11 @@ public abstract class ClassifierImpl
 	 */
 	public NotificationChain basicSetTemplateParameterGen(
 			TemplateParameter newTemplateParameter, NotificationChain msgs) {
+		if (newTemplateParameter != null
+			&& !(newTemplateParameter instanceof ClassifierTemplateParameter)) {
+			throw new IllegalArgumentException(
+				"newTemplateParameter must be an instance of ClassifierTemplateParameter"); //$NON-NLS-1$
+		}
 		TemplateParameter oldTemplateParameter = templateParameter;
 		templateParameter = newTemplateParameter;
 		if (eNotificationRequired()) {
@@ -538,13 +543,6 @@ public abstract class ClassifierImpl
 
 	public NotificationChain basicSetTemplateParameter(
 			TemplateParameter newTemplateParameter, NotificationChain msgs) {
-
-		if (newTemplateParameter != null
-			&& !(newTemplateParameter instanceof ClassifierTemplateParameter)) {
-
-			throw new IllegalArgumentException(newTemplateParameter.toString());
-		}
-
 		msgs = basicSetTemplateParameterGen(newTemplateParameter, msgs);
 
 		Resource.Internal eInternalResource = eInternalResource();
@@ -568,6 +566,11 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
+		if (newTemplateParameter != null
+			&& !(newTemplateParameter instanceof ClassifierTemplateParameter)) {
+			throw new IllegalArgumentException(
+				"newTemplateParameter must be an instance of ClassifierTemplateParameter"); //$NON-NLS-1$
+		}
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -909,8 +912,13 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetOwnedTemplateSignatureGen(
+	public NotificationChain basicSetOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature, NotificationChain msgs) {
+		if (newOwnedTemplateSignature != null
+			&& !(newOwnedTemplateSignature instanceof RedefinableTemplateSignature)) {
+			throw new IllegalArgumentException(
+				"newOwnedTemplateSignature must be an instance of RedefinableTemplateSignature"); //$NON-NLS-1$
+		}
 		TemplateSignature oldOwnedTemplateSignature = ownedTemplateSignature;
 		ownedTemplateSignature = newOwnedTemplateSignature;
 		if (eNotificationRequired()) {
@@ -926,20 +934,6 @@ public abstract class ClassifierImpl
 		return msgs;
 	}
 
-	public NotificationChain basicSetOwnedTemplateSignature(
-			TemplateSignature newOwnedTemplateSignature, NotificationChain msgs) {
-
-		if (newOwnedTemplateSignature != null
-			&& !(newOwnedTemplateSignature instanceof RedefinableTemplateSignature)) {
-
-			throw new IllegalArgumentException(
-				newOwnedTemplateSignature.toString());
-		}
-
-		return basicSetOwnedTemplateSignatureGen(newOwnedTemplateSignature,
-			msgs);
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -947,6 +941,11 @@ public abstract class ClassifierImpl
 	 */
 	public void setOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature) {
+		if (newOwnedTemplateSignature != null
+			&& !(newOwnedTemplateSignature instanceof RedefinableTemplateSignature)) {
+			throw new IllegalArgumentException(
+				"newOwnedTemplateSignature must be an instance of RedefinableTemplateSignature"); //$NON-NLS-1$
+		}
 		if (newOwnedTemplateSignature != ownedTemplateSignature) {
 			NotificationChain msgs = null;
 			if (ownedTemplateSignature != null)

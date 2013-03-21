@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 212765
  *
- * $Id: DurationIntervalImpl.java,v 1.16 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -96,22 +95,17 @@ public class DurationIntervalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMinGen(ValueSpecification newMin) {
+	@Override
+	public void setMin(ValueSpecification newMin) {
+		if (newMin != null && !(newMin instanceof Duration)) {
+			throw new IllegalArgumentException(
+				"newMin must be an instance of Duration"); //$NON-NLS-1$
+		}
 		ValueSpecification oldMin = min;
 		min = newMin;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.DURATION_INTERVAL__MIN, oldMin, min));
-	}
-
-	@Override
-	public void setMin(ValueSpecification newMin) {
-
-		if (newMin != null && !(newMin instanceof Duration)) {
-			throw new IllegalArgumentException(newMin.toString());
-		}
-
-		setMinGen(newMin);
 	}
 
 	/**
@@ -157,22 +151,17 @@ public class DurationIntervalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMaxGen(ValueSpecification newMax) {
+	@Override
+	public void setMax(ValueSpecification newMax) {
+		if (newMax != null && !(newMax instanceof Duration)) {
+			throw new IllegalArgumentException(
+				"newMax must be an instance of Duration"); //$NON-NLS-1$
+		}
 		ValueSpecification oldMax = max;
 		max = newMax;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.DURATION_INTERVAL__MAX, oldMax, max));
-	}
-
-	@Override
-	public void setMax(ValueSpecification newMax) {
-
-		if (newMax != null && !(newMax instanceof Duration)) {
-			throw new IllegalArgumentException(newMax.toString());
-		}
-
-		setMaxGen(newMax);
 	}
 
 	/**

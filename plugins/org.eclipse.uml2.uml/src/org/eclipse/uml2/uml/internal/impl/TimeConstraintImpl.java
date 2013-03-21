@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 212765
  *
- * $Id: TimeConstraintImpl.java,v 1.25 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -171,8 +170,13 @@ public class TimeConstraintImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain basicSetSpecificationGen(
+	public NotificationChain basicSetSpecification(
 			ValueSpecification newSpecification, NotificationChain msgs) {
+		if (newSpecification != null
+			&& !(newSpecification instanceof TimeInterval)) {
+			throw new IllegalArgumentException(
+				"newSpecification must be an instance of TimeInterval"); //$NON-NLS-1$
+		}
 		ValueSpecification oldSpecification = specification;
 		specification = newSpecification;
 		if (eNotificationRequired()) {
@@ -187,19 +191,6 @@ public class TimeConstraintImpl
 		return msgs;
 	}
 
-	@Override
-	public NotificationChain basicSetSpecification(
-			ValueSpecification newSpecification, NotificationChain msgs) {
-
-		if (newSpecification != null
-			&& !(newSpecification instanceof TimeInterval)) {
-
-			throw new IllegalArgumentException(newSpecification.toString());
-		}
-
-		return basicSetSpecificationGen(newSpecification, msgs);
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -207,6 +198,11 @@ public class TimeConstraintImpl
 	 */
 	@Override
 	public void setSpecification(ValueSpecification newSpecification) {
+		if (newSpecification != null
+			&& !(newSpecification instanceof TimeInterval)) {
+			throw new IllegalArgumentException(
+				"newSpecification must be an instance of TimeInterval"); //$NON-NLS-1$
+		}
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)
