@@ -377,7 +377,8 @@ public class GenPackageImpl
 	}
 
 	public String getQualifiedDerivedUnionAdapterClassName() {
-		return getUtilitiesPackageName() + "." + getDerivedUnionAdapterClassName(); //$NON-NLS-1$
+		return getUtilitiesPackageName()
+			+ "." + getDerivedUnionAdapterClassName(); //$NON-NLS-1$
 	}
 
 	public List<GenClass> getDerivedUnionAdapterGenClasses() {
@@ -418,6 +419,11 @@ public class GenPackageImpl
 		}
 
 		return false;
+	}
+
+	@Override
+	public boolean hasConstraints() {
+		return super.hasConstraints() || hasMultiplicityRedefinitions();
 	}
 
 } // GenPackageImpl

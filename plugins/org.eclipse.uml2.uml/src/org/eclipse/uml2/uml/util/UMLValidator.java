@@ -9,17 +9,22 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 204200
  *   Kenn Hussey - 286329, 320318, 323000, 323181, 354453
- *   Kenn Hussey (CEA) - 327039, 351774, 297216
+ *   Kenn Hussey (CEA) - 327039, 351774, 297216, 212765
  *
  */
 package org.eclipse.uml2.uml.util;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -27,6 +32,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.ecore.util.EObjectValidator;
 
+import org.eclipse.emf.ecore.util.ExtendedMetaData;
+import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.uml2.uml.Abstraction;
 import org.eclipse.uml2.uml.AcceptCallAction;
 import org.eclipse.uml2.uml.AcceptEventAction;
@@ -26201,44 +26208,180 @@ public class UMLValidator
 		return UMLPlugin.INSTANCE;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private String getRedefinitionDetail(EClass eClass, String featureName,
+			String key) {
+		List<EClass> eClasses = new ArrayList<EClass>();
+		eClasses.add(eClass);
+		eClasses.addAll(eClass.getEAllSuperTypes());
+		String redefinitionDetail = null;
+		for (Iterator<EClass> eClassesIterator = eClasses.iterator(); redefinitionDetail == null
+			&& eClassesIterator.hasNext();) {
+			EAnnotation eAnnotation = eClassesIterator.next().getEAnnotation(
+				"duplicates"); //$NON-NLS-1$
+			if (eAnnotation != null) {
+				eAnnotation = eAnnotation.getEAnnotation(featureName);
+				if (eAnnotation != null) {
+					redefinitionDetail = eAnnotation.getDetails().get(key);
+				}
+			}
+		}
+		return redefinitionDetail;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected int getLowerBoundGen(EObject eObject,
+			EStructuralFeature eStructuralFeature) {
+		try {
+			return Integer.parseInt(getRedefinitionDetail(eObject.eClass(),
+				eStructuralFeature.getName(), "lowerBound")); //$NON-NLS-1$
+		} catch (Exception e) {
+			return eStructuralFeature.getLowerBound();
+		}
+	}
+
+	protected int getLowerBound(EObject eObject,
+			EStructuralFeature eStructuralFeature) {
+		return eStructuralFeature == UMLPackage.Literals.NAMED_ELEMENT__VISIBILITY
+			? 0
+			: getLowerBoundGen(eObject, eStructuralFeature);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected int getUpperBound(EObject eObject,
+			EStructuralFeature eStructuralFeature) {
+		try {
+			return Integer.parseInt(getRedefinitionDetail(eObject.eClass(),
+				eStructuralFeature.getName(), "upperBound")); //$NON-NLS-1$
+		} catch (Exception e) {
+			return eStructuralFeature.getUpperBound();
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	protected boolean isEcoreString(String key) {
 		return super.isEcoreString(key)
-			|| "_UI_FeatureHasTooManyValues_diagnostic".equals(key); //$NON-NLS-1$
+			|| "_UI_FeatureHasTooFewValues_diagnostic".equals(key) //$NON-NLS-1$
+			|| "_UI_FeatureHasTooManyValues_diagnostic".equals(key) //$NON-NLS-1$
+			|| "_UI_RequiredFeatureMustBeSet_diagnostic".equals(key); //$NON-NLS-1$
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	protected boolean validate_MultiplicityConforms(EObject eObject,
 			EStructuralFeature eStructuralFeature, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		boolean result = super.validate_MultiplicityConforms(eObject,
-			eStructuralFeature, diagnostics, context);
-
-		if (eStructuralFeature == UMLPackage.Literals.INTERACTION_FRAGMENT__COVERED
-			&& eObject instanceof OccurrenceSpecification) {
-
-			int size = ((OccurrenceSpecification) eObject).getCovereds().size();
-			int upperBound = 1;
-
-			if (size > upperBound) {
+		boolean result = true;
+		if (eStructuralFeature.isMany()) {
+			if (FeatureMapUtil.isFeatureMap(eStructuralFeature)
+				&& ExtendedMetaData.INSTANCE.isDocumentRoot(eObject.eClass())) {
+				result = super.validate_MultiplicityConforms(eObject,
+					eStructuralFeature, diagnostics, context);
+			} else {
+				int lowerBound = getLowerBound(eObject, eStructuralFeature);
+				if (lowerBound > 0) {
+					int size = ((List<?>) eObject.eGet(eStructuralFeature))
+						.size();
+					if (size < lowerBound) {
+						result = false;
+						if (diagnostics != null) {
+							diagnostics
+								.add(createDiagnostic(
+									Diagnostic.ERROR,
+									EObjectValidator.DIAGNOSTIC_SOURCE,
+									EObjectValidator.EOBJECT__EVERY_MULTIPCITY_CONFORMS,
+									"_UI_FeatureHasTooFewValues_diagnostic", //$NON-NLS-1$
+									new Object[]{
+										getFeatureLabel(eStructuralFeature,
+											context),
+										getObjectLabel(eObject, context), size,
+										lowerBound}, new Object[]{eObject,
+										eStructuralFeature}, context));
+						}
+					}
+					int upperBound = getUpperBound(eObject, eStructuralFeature);
+					if (upperBound > 0 && size > upperBound) {
+						result = false;
+						if (diagnostics != null) {
+							diagnostics
+								.add(createDiagnostic(
+									Diagnostic.ERROR,
+									EObjectValidator.DIAGNOSTIC_SOURCE,
+									EObjectValidator.EOBJECT__EVERY_MULTIPCITY_CONFORMS,
+									"_UI_FeatureHasTooManyValues_diagnostic", //$NON-NLS-1$
+									new Object[]{
+										getFeatureLabel(eStructuralFeature,
+											context),
+										getObjectLabel(eObject, context), size,
+										upperBound}, new Object[]{eObject,
+										eStructuralFeature}, context));
+						}
+					}
+				} else {
+					int upperBound = getUpperBound(eObject, eStructuralFeature);
+					if (upperBound > 0) {
+						int size = ((List<?>) eObject.eGet(eStructuralFeature))
+							.size();
+						if (size > upperBound) {
+							result = false;
+							if (diagnostics != null) {
+								diagnostics
+									.add(createDiagnostic(
+										Diagnostic.ERROR,
+										EObjectValidator.DIAGNOSTIC_SOURCE,
+										EObjectValidator.EOBJECT__EVERY_MULTIPCITY_CONFORMS,
+										"_UI_FeatureHasTooManyValues_diagnostic", //$NON-NLS-1$
+										new Object[]{
+											getFeatureLabel(eStructuralFeature,
+												context),
+											getObjectLabel(eObject, context),
+											size, upperBound}, new Object[]{
+											eObject, eStructuralFeature},
+										context));
+							}
+						}
+					}
+				}
+			}
+		} else if (getLowerBound(eObject, eStructuralFeature) >= 1) {
+			if (eStructuralFeature.isUnsettable()
+				? !eObject.eIsSet(eStructuralFeature)
+				: eObject.eGet(eStructuralFeature, false) == null) {
 				result = false;
-
 				if (diagnostics != null) {
-					diagnostics
-						.add(createDiagnostic(
-							Diagnostic.ERROR,
-							DIAGNOSTIC_SOURCE,
-							EOBJECT__EVERY_MULTIPCITY_CONFORMS,
-							"_UI_FeatureHasTooManyValues_diagnostic", //$NON-NLS-1$
-							new Object[]{
-								getFeatureLabel(eStructuralFeature, context),
-								getObjectLabel(eObject, context), size,
-								upperBound}, new Object[]{eObject,
-								eStructuralFeature}, context));
+					diagnostics.add(createDiagnostic(
+						Diagnostic.ERROR,
+						EObjectValidator.DIAGNOSTIC_SOURCE,
+						EObjectValidator.EOBJECT__EVERY_MULTIPCITY_CONFORMS,
+						"_UI_RequiredFeatureMustBeSet_diagnostic", //$NON-NLS-1$
+						new Object[]{
+							getFeatureLabel(eStructuralFeature, context),
+							getObjectLabel(eObject, context)}, new Object[]{
+							eObject, eStructuralFeature}, context));
 				}
 			}
 		}
-
 		return result;
 	}
 

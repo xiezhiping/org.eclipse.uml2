@@ -1,0 +1,2 @@
+<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.model" imports="java.util.* org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.emf.codegen.util.CodeGenUtil org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="ValidatorClass"%>
+<%@ include file="ValidatorClass.javajet"%>

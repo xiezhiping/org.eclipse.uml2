@@ -1,0 +1,200 @@
+<%if (UML2GenModelUtil.hasMultiplicityRedefinitions(genPackage)) {%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private String getRedefinitionDetail(<%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass, String featureName, String key)
+	{
+		<%=genModel.getImportedName("java.util.List")%><%=genModel.useGenerics() ? "<EClass>" : ""%> eClasses = new <%=genModel.getImportedName("java.util.ArrayList")%><%=genModel.useGenerics() ? "<EClass>" : ""%>();
+		eClasses.add(eClass);
+		eClasses.addAll(eClass.getEAllSuperTypes());
+		String redefinitionDetail = null;
+		for (<%=genModel.getImportedName("java.util.Iterator")%><%=genModel.useGenerics() ? "<EClass>" : ""%> eClassesIterator = eClasses.iterator(); redefinitionDetail == null && eClassesIterator.hasNext(); )
+		{
+			<%=genModel.getImportedName("org.eclipse.emf.ecore.EAnnotation")%> eAnnotation = eClassesIterator.next().getEAnnotation("duplicates");<%=genModel.getNonNLS()%>
+			if (eAnnotation != null)
+			{
+				eAnnotation = eAnnotation.getEAnnotation(featureName);
+				if (eAnnotation != null)
+				{
+					redefinitionDetail = eAnnotation.getDetails().get(key);
+				}
+			}
+		}
+		return redefinitionDetail;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected int getLowerBound(<%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> eObject, <%=genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature")%> eStructuralFeature)
+	{
+		try
+		{
+			return Integer.parseInt(getRedefinitionDetail(eObject.eClass(), eStructuralFeature.getName(), "lowerBound"));<%=genModel.getNonNLS()%>
+		}
+		catch (Exception e)
+		{
+			return eStructuralFeature.getLowerBound();		
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected int getUpperBound(<%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> eObject, <%=genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature")%> eStructuralFeature)
+	{
+		try
+		{
+			return Integer.parseInt(getRedefinitionDetail(eObject.eClass(), eStructuralFeature.getName(), "upperBound"));<%=genModel.getNonNLS()%>
+		}
+		catch (Exception e)
+		{
+			return eStructuralFeature.getUpperBound();		
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+  <%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+  <%}%>
+	protected boolean isEcoreString(String key)
+	{
+		return super.isEcoreString(key)
+			|| "_UI_FeatureHasTooFewValues_diagnostic".equals(key)<%=genModel.getNonNLS()%>
+			|| "_UI_FeatureHasTooManyValues_diagnostic".equals(key)<%=genModel.getNonNLS()%>
+			|| "_UI_RequiredFeatureMustBeSet_diagnostic".equals(key);<%=genModel.getNonNLS()%>
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+  <%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+  <%}%>
+	protected boolean validate_MultiplicityConforms(<%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> eObject, <%=genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature")%> eStructuralFeature, <%=genModel.getImportedName("org.eclipse.emf.common.util.DiagnosticChain")%> diagnostics, <%=genModel.getImportedName("java.util.Map")%><%=genModel.useGenerics() ? "<Object, Object>" : ""%> context)
+	{
+		boolean result = true;
+		if (eStructuralFeature.isMany())
+		{
+			if (<%=genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMapUtil")%>.isFeatureMap(eStructuralFeature) && <%=genModel.getImportedName("org.eclipse.emf.ecore.util.ExtendedMetaData")%>.INSTANCE.isDocumentRoot(eObject.eClass()))
+			{
+				result = super.validate_MultiplicityConforms(eObject, eStructuralFeature, diagnostics, context);
+			}
+			else
+			{
+				int lowerBound = getLowerBound(eObject, eStructuralFeature);
+				if (lowerBound > 0)
+				{
+					int size = ((List<%=genModel.useGenerics() ? "<?>" : ""%>) eObject.eGet(eStructuralFeature)).size();
+					if (size < lowerBound)
+					{
+						result = false;
+						if (diagnostics != null)
+						{
+							diagnostics.add
+								(createDiagnostic
+									(<%=genModel.getImportedName("org.eclipse.emf.common.util.Diagnostic")%>.ERROR,
+									<%=genModel.getImportedName("org.eclipse.emf.ecore.util.EObjectValidator")%>.DIAGNOSTIC_SOURCE,
+									<%=genModel.getImportedName("org.eclipse.emf.ecore.util.EObjectValidator")%>.EOBJECT__EVERY_MULTIPCITY_CONFORMS,
+									"_UI_FeatureHasTooFewValues_diagnostic",<%=genModel.getNonNLS()%>
+									new Object []
+									{
+										getFeatureLabel(eStructuralFeature, context),
+										getObjectLabel(eObject, context),
+										size,
+										lowerBound
+									},
+									new Object [] { eObject, eStructuralFeature },
+									context));
+						}
+					}
+					int upperBound = getUpperBound(eObject, eStructuralFeature);
+					if (upperBound > 0 && size > upperBound)
+					{
+						result = false;
+						if (diagnostics != null)
+						{
+							diagnostics.add
+								(createDiagnostic
+									(<%=genModel.getImportedName("org.eclipse.emf.common.util.Diagnostic")%>.ERROR,
+									<%=genModel.getImportedName("org.eclipse.emf.ecore.util.EObjectValidator")%>.DIAGNOSTIC_SOURCE,
+									<%=genModel.getImportedName("org.eclipse.emf.ecore.util.EObjectValidator")%>.EOBJECT__EVERY_MULTIPCITY_CONFORMS,
+									"_UI_FeatureHasTooManyValues_diagnostic",<%=genModel.getNonNLS()%>
+									new Object []
+									{
+										getFeatureLabel(eStructuralFeature, context),
+										getObjectLabel(eObject, context),
+										size,
+										upperBound
+									},
+									new Object [] { eObject, eStructuralFeature },
+									context));
+						}
+					}
+				}
+				else
+				{
+					int upperBound = getUpperBound(eObject, eStructuralFeature);
+					if (upperBound > 0)
+					{
+						int size = ((List<%=genModel.useGenerics() ? "<?>" : ""%>) eObject.eGet(eStructuralFeature)).size();
+						if (size > upperBound)
+						{
+							result = false;
+							if (diagnostics != null)
+							{
+								diagnostics.add
+									(createDiagnostic
+										(<%=genModel.getImportedName("org.eclipse.emf.common.util.Diagnostic")%>.ERROR,
+										<%=genModel.getImportedName("org.eclipse.emf.ecore.util.EObjectValidator")%>.DIAGNOSTIC_SOURCE,
+										<%=genModel.getImportedName("org.eclipse.emf.ecore.util.EObjectValidator")%>.EOBJECT__EVERY_MULTIPCITY_CONFORMS,
+										"_UI_FeatureHasTooManyValues_diagnostic",<%=genModel.getNonNLS()%>
+										new Object []
+										{
+											getFeatureLabel(eStructuralFeature, context),
+											getObjectLabel(eObject, context),
+											size,
+											upperBound
+										},
+										new Object [] { eObject, eStructuralFeature },
+										context));
+							}
+						}
+					}
+				}
+			}
+		}
+		else if (getLowerBound(eObject, eStructuralFeature) >= 1)
+		{
+			if (eStructuralFeature.isUnsettable() ? !eObject.eIsSet(eStructuralFeature) : eObject.eGet(eStructuralFeature, false) == null)
+			{
+				result = false;
+				if (diagnostics != null)
+				{
+					diagnostics.add
+						(createDiagnostic
+							(<%=genModel.getImportedName("org.eclipse.emf.common.util.Diagnostic")%>.ERROR,
+							<%=genModel.getImportedName("org.eclipse.emf.ecore.util.EObjectValidator")%>.DIAGNOSTIC_SOURCE,
+							<%=genModel.getImportedName("org.eclipse.emf.ecore.util.EObjectValidator")%>.EOBJECT__EVERY_MULTIPCITY_CONFORMS,
+							"_UI_RequiredFeatureMustBeSet_diagnostic",<%=genModel.getNonNLS()%>
+							new Object [] { getFeatureLabel(eStructuralFeature, context), getObjectLabel(eObject, context) },
+							new Object [] { eObject, eStructuralFeature },
+							context));
+				}
+			}
+		}
+		return result;
+	}
+<%}%>
