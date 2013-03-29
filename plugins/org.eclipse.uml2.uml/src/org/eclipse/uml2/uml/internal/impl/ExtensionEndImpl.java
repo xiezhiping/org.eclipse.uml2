@@ -14,6 +14,7 @@
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -21,12 +22,20 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.uml2.uml.AggregationKind;
+import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.DataType;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.ExtensionEnd;
+import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -34,9 +43,13 @@ import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 
+import org.eclipse.uml2.uml.ValueSpecification;
+import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.internal.operations.ExtensionEndOperations;
 
 /**
@@ -191,6 +204,496 @@ public class ExtensionEndImpl
 	@Override
 	public int lowerBound() {
 		return ExtensionEndOperations.lowerBound(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case UMLPackage.EXTENSION_END__EANNOTATIONS :
+				return getEAnnotations();
+			case UMLPackage.EXTENSION_END__OWNED_COMMENT :
+				return getOwnedComments();
+			case UMLPackage.EXTENSION_END__OWNED_ELEMENT :
+				return getOwnedElements();
+			case UMLPackage.EXTENSION_END__OWNER :
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
+			case UMLPackage.EXTENSION_END__CLIENT_DEPENDENCY :
+				return getClientDependencies();
+			case UMLPackage.EXTENSION_END__NAME :
+				return getName();
+			case UMLPackage.EXTENSION_END__NAME_EXPRESSION :
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
+			case UMLPackage.EXTENSION_END__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.EXTENSION_END__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.EXTENSION_END__VISIBILITY :
+				return getVisibility();
+			case UMLPackage.EXTENSION_END__IS_LEAF :
+				return isLeaf();
+			case UMLPackage.EXTENSION_END__REDEFINED_ELEMENT :
+				return getRedefinedElements();
+			case UMLPackage.EXTENSION_END__REDEFINITION_CONTEXT :
+				return getRedefinitionContexts();
+			case UMLPackage.EXTENSION_END__FEATURING_CLASSIFIER :
+				return getFeaturingClassifiers();
+			case UMLPackage.EXTENSION_END__IS_STATIC :
+				return isStatic();
+			case UMLPackage.EXTENSION_END__TYPE :
+				if (resolve)
+					return getType();
+				return basicGetType();
+			case UMLPackage.EXTENSION_END__IS_ORDERED :
+				return isOrdered();
+			case UMLPackage.EXTENSION_END__IS_UNIQUE :
+				return isUnique();
+			case UMLPackage.EXTENSION_END__LOWER :
+				return getLower();
+			case UMLPackage.EXTENSION_END__LOWER_VALUE :
+				if (resolve)
+					return getLowerValue();
+				return basicGetLowerValue();
+			case UMLPackage.EXTENSION_END__UPPER :
+				return getUpper();
+			case UMLPackage.EXTENSION_END__UPPER_VALUE :
+				if (resolve)
+					return getUpperValue();
+				return basicGetUpperValue();
+			case UMLPackage.EXTENSION_END__IS_READ_ONLY :
+				return isReadOnly();
+			case UMLPackage.EXTENSION_END__OWNING_TEMPLATE_PARAMETER :
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
+			case UMLPackage.EXTENSION_END__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
+			case UMLPackage.EXTENSION_END__END :
+				return getEnds();
+			case UMLPackage.EXTENSION_END__DEPLOYED_ELEMENT :
+				return getDeployedElements();
+			case UMLPackage.EXTENSION_END__DEPLOYMENT :
+				return getDeployments();
+			case UMLPackage.EXTENSION_END__INTERFACE :
+				if (resolve)
+					return getInterface();
+				return basicGetInterface();
+			case UMLPackage.EXTENSION_END__DATATYPE :
+				if (resolve)
+					return getDatatype();
+				return basicGetDatatype();
+			case UMLPackage.EXTENSION_END__AGGREGATION :
+				return getAggregation();
+			case UMLPackage.EXTENSION_END__ASSOCIATION_END :
+				if (resolve)
+					return getAssociationEnd();
+				return basicGetAssociationEnd();
+			case UMLPackage.EXTENSION_END__QUALIFIER :
+				return getQualifiers();
+			case UMLPackage.EXTENSION_END__CLASS :
+				if (resolve)
+					return getClass_();
+				return basicGetClass_();
+			case UMLPackage.EXTENSION_END__DEFAULT :
+				return getDefault();
+			case UMLPackage.EXTENSION_END__DEFAULT_VALUE :
+				if (resolve)
+					return getDefaultValue();
+				return basicGetDefaultValue();
+			case UMLPackage.EXTENSION_END__IS_COMPOSITE :
+				return isComposite();
+			case UMLPackage.EXTENSION_END__IS_DERIVED :
+				return isDerived();
+			case UMLPackage.EXTENSION_END__IS_DERIVED_UNION :
+				return isDerivedUnion();
+			case UMLPackage.EXTENSION_END__IS_ID :
+				return isID();
+			case UMLPackage.EXTENSION_END__OPPOSITE :
+				if (resolve)
+					return getOpposite();
+				return basicGetOpposite();
+			case UMLPackage.EXTENSION_END__OWNING_ASSOCIATION :
+				if (resolve)
+					return getOwningAssociation();
+				return basicGetOwningAssociation();
+			case UMLPackage.EXTENSION_END__REDEFINED_PROPERTY :
+				return getRedefinedProperties();
+			case UMLPackage.EXTENSION_END__SUBSETTED_PROPERTY :
+				return getSubsettedProperties();
+			case UMLPackage.EXTENSION_END__ASSOCIATION :
+				if (resolve)
+					return getAssociation();
+				return basicGetAssociation();
+		}
+		return eDynamicGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case UMLPackage.EXTENSION_END__EANNOTATIONS :
+				getEAnnotations().clear();
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__OWNED_COMMENT :
+				getOwnedComments().clear();
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__CLIENT_DEPENDENCY :
+				getClientDependencies().clear();
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__NAME :
+				setName((String) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__NAME_EXPRESSION :
+				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__IS_LEAF :
+				setIsLeaf((Boolean) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__IS_STATIC :
+				setIsStatic((Boolean) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__TYPE :
+				setType((Type) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__IS_ORDERED :
+				setIsOrdered((Boolean) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__IS_UNIQUE :
+				setIsUnique((Boolean) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__LOWER :
+				setLower((Integer) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__LOWER_VALUE :
+				setLowerValue((ValueSpecification) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__UPPER :
+				setUpper((Integer) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__UPPER_VALUE :
+				setUpperValue((ValueSpecification) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__IS_READ_ONLY :
+				setIsReadOnly((Boolean) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__OWNING_TEMPLATE_PARAMETER :
+				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__DEPLOYMENT :
+				getDeployments().clear();
+				getDeployments().addAll(
+					(Collection<? extends Deployment>) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__INTERFACE :
+				setInterface((Interface) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__DATATYPE :
+				setDatatype((DataType) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__AGGREGATION :
+				setAggregation((AggregationKind) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__ASSOCIATION_END :
+				setAssociationEnd((Property) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__QUALIFIER :
+				getQualifiers().clear();
+				getQualifiers().addAll(
+					(Collection<? extends Property>) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__DEFAULT :
+				setDefault((String) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__DEFAULT_VALUE :
+				setDefaultValue((ValueSpecification) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__IS_COMPOSITE :
+				setIsComposite((Boolean) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__IS_DERIVED :
+				setIsDerived((Boolean) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__IS_DERIVED_UNION :
+				setIsDerivedUnion((Boolean) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__IS_ID :
+				setIsID((Boolean) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__OPPOSITE :
+				setOpposite((Property) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__OWNING_ASSOCIATION :
+				setOwningAssociation((Association) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__REDEFINED_PROPERTY :
+				getRedefinedProperties().clear();
+				getRedefinedProperties().addAll(
+					(Collection<? extends Property>) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__SUBSETTED_PROPERTY :
+				getSubsettedProperties().clear();
+				getSubsettedProperties().addAll(
+					(Collection<? extends Property>) newValue);
+				return;
+			case UMLPackage.EXTENSION_END__ASSOCIATION :
+				setAssociation((Association) newValue);
+				return;
+		}
+		eDynamicSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case UMLPackage.EXTENSION_END__EANNOTATIONS :
+				getEAnnotations().clear();
+				return;
+			case UMLPackage.EXTENSION_END__OWNED_COMMENT :
+				getOwnedComments().clear();
+				return;
+			case UMLPackage.EXTENSION_END__CLIENT_DEPENDENCY :
+				getClientDependencies().clear();
+				return;
+			case UMLPackage.EXTENSION_END__NAME :
+				unsetName();
+				return;
+			case UMLPackage.EXTENSION_END__NAME_EXPRESSION :
+				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.EXTENSION_END__VISIBILITY :
+				unsetVisibility();
+				return;
+			case UMLPackage.EXTENSION_END__IS_LEAF :
+				setIsLeaf(IS_LEAF_EDEFAULT);
+				return;
+			case UMLPackage.EXTENSION_END__IS_STATIC :
+				setIsStatic(IS_STATIC_EDEFAULT);
+				return;
+			case UMLPackage.EXTENSION_END__TYPE :
+				setType((Type) null);
+				return;
+			case UMLPackage.EXTENSION_END__IS_ORDERED :
+				setIsOrdered(IS_ORDERED_EDEFAULT);
+				return;
+			case UMLPackage.EXTENSION_END__IS_UNIQUE :
+				setIsUnique(IS_UNIQUE_EDEFAULT);
+				return;
+			case UMLPackage.EXTENSION_END__LOWER :
+				setLower(LOWER_EDEFAULT);
+				return;
+			case UMLPackage.EXTENSION_END__LOWER_VALUE :
+				setLowerValue((ValueSpecification) null);
+				return;
+			case UMLPackage.EXTENSION_END__UPPER :
+				setUpper(UPPER_EDEFAULT);
+				return;
+			case UMLPackage.EXTENSION_END__UPPER_VALUE :
+				setUpperValue((ValueSpecification) null);
+				return;
+			case UMLPackage.EXTENSION_END__IS_READ_ONLY :
+				setIsReadOnly(IS_READ_ONLY_EDEFAULT);
+				return;
+			case UMLPackage.EXTENSION_END__OWNING_TEMPLATE_PARAMETER :
+				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.EXTENSION_END__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.EXTENSION_END__DEPLOYMENT :
+				getDeployments().clear();
+				return;
+			case UMLPackage.EXTENSION_END__INTERFACE :
+				setInterface((Interface) null);
+				return;
+			case UMLPackage.EXTENSION_END__DATATYPE :
+				setDatatype((DataType) null);
+				return;
+			case UMLPackage.EXTENSION_END__AGGREGATION :
+				setAggregation(AGGREGATION_EDEFAULT);
+				return;
+			case UMLPackage.EXTENSION_END__ASSOCIATION_END :
+				setAssociationEnd((Property) null);
+				return;
+			case UMLPackage.EXTENSION_END__QUALIFIER :
+				getQualifiers().clear();
+				return;
+			case UMLPackage.EXTENSION_END__DEFAULT :
+				unsetDefault();
+				return;
+			case UMLPackage.EXTENSION_END__DEFAULT_VALUE :
+				setDefaultValue((ValueSpecification) null);
+				return;
+			case UMLPackage.EXTENSION_END__IS_COMPOSITE :
+				setIsComposite(IS_COMPOSITE_EDEFAULT);
+				return;
+			case UMLPackage.EXTENSION_END__IS_DERIVED :
+				setIsDerived(IS_DERIVED_EDEFAULT);
+				return;
+			case UMLPackage.EXTENSION_END__IS_DERIVED_UNION :
+				setIsDerivedUnion(IS_DERIVED_UNION_EDEFAULT);
+				return;
+			case UMLPackage.EXTENSION_END__IS_ID :
+				setIsID(IS_ID_EDEFAULT);
+				return;
+			case UMLPackage.EXTENSION_END__OPPOSITE :
+				setOpposite((Property) null);
+				return;
+			case UMLPackage.EXTENSION_END__OWNING_ASSOCIATION :
+				setOwningAssociation((Association) null);
+				return;
+			case UMLPackage.EXTENSION_END__REDEFINED_PROPERTY :
+				getRedefinedProperties().clear();
+				return;
+			case UMLPackage.EXTENSION_END__SUBSETTED_PROPERTY :
+				getSubsettedProperties().clear();
+				return;
+			case UMLPackage.EXTENSION_END__ASSOCIATION :
+				setAssociation((Association) null);
+				return;
+		}
+		eDynamicUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case UMLPackage.EXTENSION_END__EANNOTATIONS :
+				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.EXTENSION_END__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.EXTENSION_END__OWNED_ELEMENT :
+				return isSetOwnedElements();
+			case UMLPackage.EXTENSION_END__OWNER :
+				return isSetOwner();
+			case UMLPackage.EXTENSION_END__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
+			case UMLPackage.EXTENSION_END__NAME :
+				return isSetName();
+			case UMLPackage.EXTENSION_END__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.EXTENSION_END__NAMESPACE :
+				return isSetNamespace();
+			case UMLPackage.EXTENSION_END__QUALIFIED_NAME :
+				return QUALIFIED_NAME_EDEFAULT == null
+					? getQualifiedName() != null
+					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
+			case UMLPackage.EXTENSION_END__VISIBILITY :
+				return isSetVisibility();
+			case UMLPackage.EXTENSION_END__IS_LEAF :
+				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
+			case UMLPackage.EXTENSION_END__REDEFINED_ELEMENT :
+				return isSetRedefinedElements();
+			case UMLPackage.EXTENSION_END__REDEFINITION_CONTEXT :
+				return isSetRedefinitionContexts();
+			case UMLPackage.EXTENSION_END__FEATURING_CLASSIFIER :
+				return isSetFeaturingClassifiers();
+			case UMLPackage.EXTENSION_END__IS_STATIC :
+				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
+			case UMLPackage.EXTENSION_END__TYPE :
+				return isSetType();
+			case UMLPackage.EXTENSION_END__IS_ORDERED :
+				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
+			case UMLPackage.EXTENSION_END__IS_UNIQUE :
+				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
+			case UMLPackage.EXTENSION_END__LOWER :
+				return isSetLower();
+			case UMLPackage.EXTENSION_END__LOWER_VALUE :
+				return lowerValue != null;
+			case UMLPackage.EXTENSION_END__UPPER :
+				return getUpper() != UPPER_EDEFAULT;
+			case UMLPackage.EXTENSION_END__UPPER_VALUE :
+				return upperValue != null;
+			case UMLPackage.EXTENSION_END__IS_READ_ONLY :
+				return isSetIsReadOnly();
+			case UMLPackage.EXTENSION_END__OWNING_TEMPLATE_PARAMETER :
+				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.EXTENSION_END__TEMPLATE_PARAMETER :
+				return isSetTemplateParameter();
+			case UMLPackage.EXTENSION_END__END :
+				return !getEnds().isEmpty();
+			case UMLPackage.EXTENSION_END__DEPLOYED_ELEMENT :
+				return !getDeployedElements().isEmpty();
+			case UMLPackage.EXTENSION_END__DEPLOYMENT :
+				return deployments != null && !deployments.isEmpty();
+			case UMLPackage.EXTENSION_END__INTERFACE :
+				return basicGetInterface() != null;
+			case UMLPackage.EXTENSION_END__DATATYPE :
+				return basicGetDatatype() != null;
+			case UMLPackage.EXTENSION_END__AGGREGATION :
+				return (eFlags & AGGREGATION_EFLAG) != AGGREGATION_EFLAG_DEFAULT;
+			case UMLPackage.EXTENSION_END__ASSOCIATION_END :
+				return basicGetAssociationEnd() != null;
+			case UMLPackage.EXTENSION_END__QUALIFIER :
+				return qualifiers != null && !qualifiers.isEmpty();
+			case UMLPackage.EXTENSION_END__CLASS :
+				return basicGetClass_() != null;
+			case UMLPackage.EXTENSION_END__DEFAULT :
+				return isSetDefault();
+			case UMLPackage.EXTENSION_END__DEFAULT_VALUE :
+				return defaultValue != null;
+			case UMLPackage.EXTENSION_END__IS_COMPOSITE :
+				return isComposite() != IS_COMPOSITE_EDEFAULT;
+			case UMLPackage.EXTENSION_END__IS_DERIVED :
+				return ((eFlags & IS_DERIVED_EFLAG) != 0) != IS_DERIVED_EDEFAULT;
+			case UMLPackage.EXTENSION_END__IS_DERIVED_UNION :
+				return ((eFlags & IS_DERIVED_UNION_EFLAG) != 0) != IS_DERIVED_UNION_EDEFAULT;
+			case UMLPackage.EXTENSION_END__IS_ID :
+				return ((eFlags & IS_ID_EFLAG) != 0) != IS_ID_EDEFAULT;
+			case UMLPackage.EXTENSION_END__OPPOSITE :
+				return basicGetOpposite() != null;
+			case UMLPackage.EXTENSION_END__OWNING_ASSOCIATION :
+				return basicGetOwningAssociation() != null;
+			case UMLPackage.EXTENSION_END__REDEFINED_PROPERTY :
+				return redefinedProperties != null
+					&& !redefinedProperties.isEmpty();
+			case UMLPackage.EXTENSION_END__SUBSETTED_PROPERTY :
+				return subsettedProperties != null
+					&& !subsettedProperties.isEmpty();
+			case UMLPackage.EXTENSION_END__ASSOCIATION :
+				return association != null;
+		}
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

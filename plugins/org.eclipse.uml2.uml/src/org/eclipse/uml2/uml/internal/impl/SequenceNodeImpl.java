@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -155,6 +155,64 @@ public class SequenceNodeImpl
 	 */
 	public boolean isSetExecutableNodes() {
 		return executableNodes != null && !executableNodes.isEmpty();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.SEQUENCE_NODE__EANNOTATIONS :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__CLIENT_DEPENDENCY :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__IN_PARTITION :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInPartitions())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__IN_STRUCTURED_NODE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetInStructuredNode(
+					(StructuredActivityNode) otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__IN_INTERRUPTIBLE_REGION :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInInterruptibleRegions())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__OUTGOING :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutgoings())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__INCOMING :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomings())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__HANDLER :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getHandlers())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__ELEMENT_IMPORT :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__PACKAGE_IMPORT :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__OWNED_RULE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__NODE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getNodes())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__VARIABLE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getVariables())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.SEQUENCE_NODE__EDGE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEdges())
+					.basicAdd(otherEnd, msgs);
+		}
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

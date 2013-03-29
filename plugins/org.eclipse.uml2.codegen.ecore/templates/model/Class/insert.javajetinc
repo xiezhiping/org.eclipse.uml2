@@ -210,7 +210,13 @@
 		return <%=redefinitionGenFeature.getGetAccessor()%>();
           <%}%>
         <%} else {%>
-		return new <%=genModel.getImportedName("org.eclipse.emf.ecore.util.EcoreEList")%>.UnmodifiableEList<%if (genModel.useGenerics()) {%><%="<" + genFeature.getListItemType(genClass) + ">"%><%}%>(this, <%if (UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>null<%} else {%><%=genFeature.getQualifiedFeatureAccessor()%><%}%>, 0, <%=genModel.getImportedName("java.util.Collections")%>.EMPTY_LIST.toArray());
+		<%=genModel.getImportedName("org.eclipse.emf.common.util.EList")%><%if (genModel.useGenerics()) {%><%="<" + genFeature.getListItemType(genClass) + ">"%><%}%> <%=genFeature.getUncapName()%> = new <%=genModel.getImportedName("org.eclipse.emf.common.util.UniqueEList")%><%if (genModel.useGenerics()) {%><%="<" + genFeature.getListItemType(genClass) + ">"%><%}%>();
+		<%=redefinitionGenFeature.getImportedType(genClass)%> <%=redefinitionGenFeature.getUncapName()%> = <%=redefinitionGenFeature.getGetAccessor()%>();
+		if (<%=redefinitionGenFeature.getUncapName()%> != null)
+		{
+			<%=genFeature.getUncapName()%>.add(<%=redefinitionGenFeature.getUncapName()%>);
+		}
+		return new <%=genModel.getImportedName("org.eclipse.uml2.common.util.UnionEObjectEList")%><%if (genModel.useGenerics()) {%><%="<" + genFeature.getListItemType(genClass) + ">"%><%}%>(this, <%if (UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>null<%} else {%><%=genFeature.getQualifiedFeatureAccessor()%><%}%>, <%=genFeature.getUncapName()%>.size(), <%=genFeature.getUncapName()%>.toArray());
         <%}%>
       <%} else {%>
         <%if (redefinitionGenFeature.isListType()) {%>

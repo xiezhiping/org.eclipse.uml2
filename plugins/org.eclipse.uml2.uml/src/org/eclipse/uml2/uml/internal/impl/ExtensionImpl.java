@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,38 +8,56 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
 import java.util.Map;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.CollaborationUse;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.ExtensionEnd;
+import org.eclipse.uml2.uml.Generalization;
+import org.eclipse.uml2.uml.GeneralizationSet;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.Substitution;
+import org.eclipse.uml2.uml.TemplateBinding;
+import org.eclipse.uml2.uml.TemplateParameter;
+import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 
+import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.internal.operations.ExtensionOperations;
 
@@ -253,6 +271,143 @@ public class ExtensionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.EXTENSION__EANNOTATIONS :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.EXTENSION__CLIENT_DEPENDENCY :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.EXTENSION__ELEMENT_IMPORT :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.EXTENSION__PACKAGE_IMPORT :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.EXTENSION__OWNED_RULE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.EXTENSION__OWNING_TEMPLATE_PARAMETER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetOwningTemplateParameter(
+					(TemplateParameter) otherEnd, msgs);
+			case UMLPackage.EXTENSION__TEMPLATE_PARAMETER :
+				if (templateParameter != null)
+					msgs = ((InternalEObject) templateParameter)
+						.eInverseRemove(this,
+							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+							TemplateParameter.class, msgs);
+				return basicSetTemplateParameter((TemplateParameter) otherEnd,
+					msgs);
+			case UMLPackage.EXTENSION__OWNED_TEMPLATE_SIGNATURE :
+				if (ownedTemplateSignature != null)
+					msgs = ((InternalEObject) ownedTemplateSignature)
+						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+							- UMLPackage.EXTENSION__OWNED_TEMPLATE_SIGNATURE,
+							null, msgs);
+				return basicSetOwnedTemplateSignature(
+					(TemplateSignature) otherEnd, msgs);
+			case UMLPackage.EXTENSION__TEMPLATE_BINDING :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.EXTENSION__GENERALIZATION :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getGeneralizations())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.EXTENSION__POWERTYPE_EXTENT :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPowertypeExtents())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.EXTENSION__USE_CASE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getUseCases())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.EXTENSION__SUBSTITUTION :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubstitutions())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.EXTENSION__MEMBER_END :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getMemberEnds())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.EXTENSION__OWNED_END :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedEnds())
+					.basicAdd(otherEnd, msgs);
+		}
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.EXTENSION__EANNOTATIONS :
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.EXTENSION__OWNED_COMMENT :
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.EXTENSION__CLIENT_DEPENDENCY :
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.EXTENSION__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.EXTENSION__ELEMENT_IMPORT :
+				return ((InternalEList<?>) getElementImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.EXTENSION__PACKAGE_IMPORT :
+				return ((InternalEList<?>) getPackageImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.EXTENSION__OWNED_RULE :
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.EXTENSION__OWNING_TEMPLATE_PARAMETER :
+				return basicSetOwningTemplateParameter(null, msgs);
+			case UMLPackage.EXTENSION__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.EXTENSION__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UMLPackage.EXTENSION__TEMPLATE_BINDING :
+				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.EXTENSION__COLLABORATION_USE :
+				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.EXTENSION__GENERALIZATION :
+				return ((InternalEList<?>) getGeneralizations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.EXTENSION__POWERTYPE_EXTENT :
+				return ((InternalEList<?>) getPowertypeExtents()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.EXTENSION__OWNED_USE_CASE :
+				return ((InternalEList<?>) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.EXTENSION__USE_CASE :
+				return ((InternalEList<?>) getUseCases()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.EXTENSION__SUBSTITUTION :
+				return ((InternalEList<?>) getSubstitutions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.EXTENSION__MEMBER_END :
+				return ((InternalEList<?>) getMemberEnds()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.EXTENSION__OWNED_END :
+				return ((InternalEList<?>) getOwnedEnds()).basicRemove(
+					otherEnd, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -368,6 +523,246 @@ public class ExtensionImpl
 				return basicGetMetaclass();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case UMLPackage.EXTENSION__EANNOTATIONS :
+				getEAnnotations().clear();
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
+				return;
+			case UMLPackage.EXTENSION__OWNED_COMMENT :
+				getOwnedComments().clear();
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
+				return;
+			case UMLPackage.EXTENSION__CLIENT_DEPENDENCY :
+				getClientDependencies().clear();
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
+				return;
+			case UMLPackage.EXTENSION__NAME :
+				setName((String) newValue);
+				return;
+			case UMLPackage.EXTENSION__NAME_EXPRESSION :
+				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.EXTENSION__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.EXTENSION__ELEMENT_IMPORT :
+				getElementImports().clear();
+				getElementImports().addAll(
+					(Collection<? extends ElementImport>) newValue);
+				return;
+			case UMLPackage.EXTENSION__PACKAGE_IMPORT :
+				getPackageImports().clear();
+				getPackageImports().addAll(
+					(Collection<? extends PackageImport>) newValue);
+				return;
+			case UMLPackage.EXTENSION__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
+				return;
+			case UMLPackage.EXTENSION__IS_LEAF :
+				setIsLeaf((Boolean) newValue);
+				return;
+			case UMLPackage.EXTENSION__OWNING_TEMPLATE_PARAMETER :
+				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.EXTENSION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.EXTENSION__PACKAGE :
+				setPackage((org.eclipse.uml2.uml.Package) newValue);
+				return;
+			case UMLPackage.EXTENSION__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
+				return;
+			case UMLPackage.EXTENSION__TEMPLATE_BINDING :
+				getTemplateBindings().clear();
+				getTemplateBindings().addAll(
+					(Collection<? extends TemplateBinding>) newValue);
+				return;
+			case UMLPackage.EXTENSION__COLLABORATION_USE :
+				getCollaborationUses().clear();
+				getCollaborationUses().addAll(
+					(Collection<? extends CollaborationUse>) newValue);
+				return;
+			case UMLPackage.EXTENSION__GENERAL :
+				getGenerals().clear();
+				getGenerals().addAll(
+					(Collection<? extends Classifier>) newValue);
+				return;
+			case UMLPackage.EXTENSION__GENERALIZATION :
+				getGeneralizations().clear();
+				getGeneralizations().addAll(
+					(Collection<? extends Generalization>) newValue);
+				return;
+			case UMLPackage.EXTENSION__POWERTYPE_EXTENT :
+				getPowertypeExtents().clear();
+				getPowertypeExtents().addAll(
+					(Collection<? extends GeneralizationSet>) newValue);
+				return;
+			case UMLPackage.EXTENSION__IS_ABSTRACT :
+				setIsAbstract((Boolean) newValue);
+				return;
+			case UMLPackage.EXTENSION__IS_FINAL_SPECIALIZATION :
+				setIsFinalSpecialization((Boolean) newValue);
+				return;
+			case UMLPackage.EXTENSION__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				getOwnedUseCases().addAll(
+					(Collection<? extends UseCase>) newValue);
+				return;
+			case UMLPackage.EXTENSION__USE_CASE :
+				getUseCases().clear();
+				getUseCases().addAll((Collection<? extends UseCase>) newValue);
+				return;
+			case UMLPackage.EXTENSION__REDEFINED_CLASSIFIER :
+				getRedefinedClassifiers().clear();
+				getRedefinedClassifiers().addAll(
+					(Collection<? extends Classifier>) newValue);
+				return;
+			case UMLPackage.EXTENSION__REPRESENTATION :
+				setRepresentation((CollaborationUse) newValue);
+				return;
+			case UMLPackage.EXTENSION__SUBSTITUTION :
+				getSubstitutions().clear();
+				getSubstitutions().addAll(
+					(Collection<? extends Substitution>) newValue);
+				return;
+			case UMLPackage.EXTENSION__IS_DERIVED :
+				setIsDerived((Boolean) newValue);
+				return;
+			case UMLPackage.EXTENSION__MEMBER_END :
+				getMemberEnds().clear();
+				getMemberEnds().addAll(
+					(Collection<? extends Property>) newValue);
+				return;
+			case UMLPackage.EXTENSION__OWNED_END :
+				getOwnedEnds().clear();
+				getOwnedEnds()
+					.addAll((Collection<? extends Property>) newValue);
+				return;
+			case UMLPackage.EXTENSION__NAVIGABLE_OWNED_END :
+				getNavigableOwnedEnds().clear();
+				getNavigableOwnedEnds().addAll(
+					(Collection<? extends Property>) newValue);
+				return;
+		}
+		eDynamicSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case UMLPackage.EXTENSION__EANNOTATIONS :
+				getEAnnotations().clear();
+				return;
+			case UMLPackage.EXTENSION__OWNED_COMMENT :
+				getOwnedComments().clear();
+				return;
+			case UMLPackage.EXTENSION__CLIENT_DEPENDENCY :
+				getClientDependencies().clear();
+				return;
+			case UMLPackage.EXTENSION__NAME :
+				unsetName();
+				return;
+			case UMLPackage.EXTENSION__NAME_EXPRESSION :
+				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.EXTENSION__VISIBILITY :
+				unsetVisibility();
+				return;
+			case UMLPackage.EXTENSION__ELEMENT_IMPORT :
+				getElementImports().clear();
+				return;
+			case UMLPackage.EXTENSION__PACKAGE_IMPORT :
+				getPackageImports().clear();
+				return;
+			case UMLPackage.EXTENSION__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
+			case UMLPackage.EXTENSION__IS_LEAF :
+				setIsLeaf(IS_LEAF_EDEFAULT);
+				return;
+			case UMLPackage.EXTENSION__OWNING_TEMPLATE_PARAMETER :
+				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.EXTENSION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.EXTENSION__PACKAGE :
+				setPackage((org.eclipse.uml2.uml.Package) null);
+				return;
+			case UMLPackage.EXTENSION__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) null);
+				return;
+			case UMLPackage.EXTENSION__TEMPLATE_BINDING :
+				getTemplateBindings().clear();
+				return;
+			case UMLPackage.EXTENSION__COLLABORATION_USE :
+				getCollaborationUses().clear();
+				return;
+			case UMLPackage.EXTENSION__GENERAL :
+				getGenerals().clear();
+				return;
+			case UMLPackage.EXTENSION__GENERALIZATION :
+				getGeneralizations().clear();
+				return;
+			case UMLPackage.EXTENSION__POWERTYPE_EXTENT :
+				getPowertypeExtents().clear();
+				return;
+			case UMLPackage.EXTENSION__IS_ABSTRACT :
+				setIsAbstract(IS_ABSTRACT_EDEFAULT);
+				return;
+			case UMLPackage.EXTENSION__IS_FINAL_SPECIALIZATION :
+				setIsFinalSpecialization(IS_FINAL_SPECIALIZATION_EDEFAULT);
+				return;
+			case UMLPackage.EXTENSION__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				return;
+			case UMLPackage.EXTENSION__USE_CASE :
+				getUseCases().clear();
+				return;
+			case UMLPackage.EXTENSION__REDEFINED_CLASSIFIER :
+				getRedefinedClassifiers().clear();
+				return;
+			case UMLPackage.EXTENSION__REPRESENTATION :
+				setRepresentation((CollaborationUse) null);
+				return;
+			case UMLPackage.EXTENSION__SUBSTITUTION :
+				getSubstitutions().clear();
+				return;
+			case UMLPackage.EXTENSION__IS_DERIVED :
+				setIsDerived(IS_DERIVED_EDEFAULT);
+				return;
+			case UMLPackage.EXTENSION__MEMBER_END :
+				getMemberEnds().clear();
+				return;
+			case UMLPackage.EXTENSION__OWNED_END :
+				getOwnedEnds().clear();
+				return;
+			case UMLPackage.EXTENSION__NAVIGABLE_OWNED_END :
+				getNavigableOwnedEnds().clear();
+				return;
+		}
+		eDynamicUnset(featureID);
 	}
 
 	/**

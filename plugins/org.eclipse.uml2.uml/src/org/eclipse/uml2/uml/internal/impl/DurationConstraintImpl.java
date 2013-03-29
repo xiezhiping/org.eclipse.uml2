@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.DurationConstraint;
@@ -249,6 +250,38 @@ public class DurationConstraintImpl
 			Map<Object, Object> context) {
 		return DurationConstraintOperations.validateFirstEventMultiplicity(
 			this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.DURATION_CONSTRAINT__EANNOTATIONS :
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.DURATION_CONSTRAINT__OWNED_COMMENT :
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.DURATION_CONSTRAINT__CLIENT_DEPENDENCY :
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.DURATION_CONSTRAINT__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.DURATION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
+				return basicSetOwningTemplateParameter(null, msgs);
+			case UMLPackage.DURATION_CONSTRAINT__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.DURATION_CONSTRAINT__CONTEXT :
+				return basicSetContext(null, msgs);
+			case UMLPackage.DURATION_CONSTRAINT__SPECIFICATION :
+				return basicSetSpecification(null, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

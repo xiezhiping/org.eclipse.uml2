@@ -10,12 +10,13 @@
  *   Kenn Hussey (Embarcadero Technologies) - 206636, 204200
  *   Lutz Wrage - 241411
  *   Kenn Hussey - 286329, 323181, 344908, 346183
- *   Kenn Hussey (CEA) - 351777, 394623, 322715
+ *   Kenn Hussey (CEA) - 351777, 394623, 322715, 212765
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -1556,6 +1557,42 @@ public class GenClassImpl
 	public List<GenFeature> getAllUnionGenFeatures() {
 		return collectUnionGenFeatures(getAllBaseGenClasses(),
 			getUnionGenFeatures(), null);
+	}
+
+	@Override
+	public List<GenFeature> getEIsSetGenFeatures() {
+
+		if (getGenModel().isMinimalReflectiveMethods()) {
+			return getImplementedGenFeatures(null);
+		} else {
+			return super.getEIsSetGenFeatures();
+		}
+	}
+
+	@Override
+	public boolean implementsAny(Collection<GenFeature> genFeatures) {
+		List<GenFeature> implementedGenFeatures = getImplementedGenFeatures(null);
+
+		for (GenFeature genFeature : genFeatures) {
+			final EStructuralFeature ecoreFeature = genFeature
+				.getEcoreFeature();
+
+			if (implementedGenFeatures.contains(genFeature)
+				|| !collectGenFeatures(null, getDuplicateGenFeatures(),
+					new GenFeatureFilter() {
+
+						public boolean accept(GenFeature genFeature) {
+							return Generator.getRedefinedEcoreFeatures(
+								genFeature.getEcoreFeature()).contains(
+								ecoreFeature);
+						}
+					}).isEmpty()) {
+
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 }

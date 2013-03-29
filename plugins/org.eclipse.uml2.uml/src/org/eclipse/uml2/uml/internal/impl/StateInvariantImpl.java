@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 212765
  *
- * $Id: StateInvariantImpl.java,v 1.25 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -275,6 +274,39 @@ public class StateInvariantImpl
 	 */
 	public boolean isSetCovereds() {
 		return covereds != null && !covereds.isEmpty();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.STATE_INVARIANT__EANNOTATIONS :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.STATE_INVARIANT__CLIENT_DEPENDENCY :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.STATE_INVARIANT__COVERED :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getCovereds())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetEnclosingInteraction((Interaction) otherEnd,
+					msgs);
+			case UMLPackage.STATE_INVARIANT__ENCLOSING_OPERAND :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetEnclosingOperand((InteractionOperand) otherEnd,
+					msgs);
+		}
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,18 +7,18 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Collections;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -27,12 +27,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.common.util.UnionEObjectEList;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityNode;
@@ -799,9 +799,14 @@ public class SendObjectActionImpl
 	 */
 	@Override
 	public EList<InputPin> getArguments() {
-		return new EcoreEList.UnmodifiableEList<InputPin>(this,
-			UMLPackage.Literals.INVOCATION_ACTION__ARGUMENT, 0,
-			Collections.EMPTY_LIST.toArray());
+		EList<InputPin> argument = new UniqueEList<InputPin>();
+		InputPin request = getRequest();
+		if (request != null) {
+			argument.add(request);
+		}
+		return new UnionEObjectEList<InputPin>(this,
+			UMLPackage.Literals.INVOCATION_ACTION__ARGUMENT, argument.size(),
+			argument.toArray());
 	}
 
 	/**

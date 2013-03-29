@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
- *   Kenn Hussey (CEA) - 375553, 397140, 403365
+ *   Kenn Hussey (CEA) - 375553, 397140, 403365, 212765
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -115,21 +115,7 @@ public class EnumerationLiteralOperations
 		return new UnionEObjectEList<Classifier>(
 			(InternalEObject) enumerationLiteral,
 			UMLPackage.Literals.INSTANCE_SPECIFICATION__CLASSIFIER,
-			classifiers.size(), classifiers.toArray()) {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public boolean add(Classifier object) {
-				return false;
-			}
-
-			@Override
-			public void clear() {
-				// do nothing
-			}
-
-		};
+			classifiers.size(), classifiers.toArray());
 	}
 
 	/**

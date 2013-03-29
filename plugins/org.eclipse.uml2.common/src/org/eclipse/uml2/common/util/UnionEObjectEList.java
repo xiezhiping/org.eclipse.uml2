@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 398462
  *   Christian W. Damus (CEA) - 398462
+ *   Kenn Hussey (CEA) - 212765
  */
 package org.eclipse.uml2.common.util;
 
@@ -165,6 +166,16 @@ public class UnionEObjectEList<E>
 		return isLoading()
 			? notifications
 			: super.basicAdd(object, notifications);
+	}
+
+	@Override
+	public boolean add(E object) {
+		return false;
+	}
+
+	@Override
+	public void clear() {
+		// do nothing
 	}
 
 }

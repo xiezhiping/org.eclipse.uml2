@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
@@ -246,6 +247,38 @@ public class TimeConstraintImpl
 	@Override
 	public boolean isSetSpecification() {
 		return specification != null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.TIME_CONSTRAINT__EANNOTATIONS :
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.TIME_CONSTRAINT__OWNED_COMMENT :
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.TIME_CONSTRAINT__CLIENT_DEPENDENCY :
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.TIME_CONSTRAINT__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.TIME_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
+				return basicSetOwningTemplateParameter(null, msgs);
+			case UMLPackage.TIME_CONSTRAINT__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.TIME_CONSTRAINT__CONTEXT :
+				return basicSetContext(null, msgs);
+			case UMLPackage.TIME_CONSTRAINT__SPECIFICATION :
+				return basicSetSpecification(null, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

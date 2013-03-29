@@ -12,19 +12,29 @@
  */
 package org.eclipse.uml2.uml.internal.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interval;
 import org.eclipse.uml2.uml.IntervalConstraint;
+import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
+import org.eclipse.uml2.uml.VisibilityKind;
 
 /**
  * <!-- begin-user-doc -->
@@ -187,6 +197,239 @@ public class IntervalConstraintImpl
 	 */
 	public boolean isSetSpecification() {
 		return specification != null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.INTERVAL_CONSTRAINT__EANNOTATIONS :
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.INTERVAL_CONSTRAINT__OWNED_COMMENT :
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.INTERVAL_CONSTRAINT__CLIENT_DEPENDENCY :
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.INTERVAL_CONSTRAINT__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.INTERVAL_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
+				return basicSetOwningTemplateParameter(null, msgs);
+			case UMLPackage.INTERVAL_CONSTRAINT__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.INTERVAL_CONSTRAINT__CONTEXT :
+				return basicSetContext(null, msgs);
+			case UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION :
+				return basicSetSpecification(null, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case UMLPackage.INTERVAL_CONSTRAINT__EANNOTATIONS :
+				return getEAnnotations();
+			case UMLPackage.INTERVAL_CONSTRAINT__OWNED_COMMENT :
+				return getOwnedComments();
+			case UMLPackage.INTERVAL_CONSTRAINT__OWNED_ELEMENT :
+				return getOwnedElements();
+			case UMLPackage.INTERVAL_CONSTRAINT__OWNER :
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
+			case UMLPackage.INTERVAL_CONSTRAINT__CLIENT_DEPENDENCY :
+				return getClientDependencies();
+			case UMLPackage.INTERVAL_CONSTRAINT__NAME :
+				return getName();
+			case UMLPackage.INTERVAL_CONSTRAINT__NAME_EXPRESSION :
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
+			case UMLPackage.INTERVAL_CONSTRAINT__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.INTERVAL_CONSTRAINT__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.INTERVAL_CONSTRAINT__VISIBILITY :
+				return getVisibility();
+			case UMLPackage.INTERVAL_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
+			case UMLPackage.INTERVAL_CONSTRAINT__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
+			case UMLPackage.INTERVAL_CONSTRAINT__CONSTRAINED_ELEMENT :
+				return getConstrainedElements();
+			case UMLPackage.INTERVAL_CONSTRAINT__CONTEXT :
+				if (resolve)
+					return getContext();
+				return basicGetContext();
+			case UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION :
+				if (resolve)
+					return getSpecification();
+				return basicGetSpecification();
+		}
+		return eDynamicGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case UMLPackage.INTERVAL_CONSTRAINT__EANNOTATIONS :
+				getEAnnotations().clear();
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
+				return;
+			case UMLPackage.INTERVAL_CONSTRAINT__OWNED_COMMENT :
+				getOwnedComments().clear();
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
+				return;
+			case UMLPackage.INTERVAL_CONSTRAINT__CLIENT_DEPENDENCY :
+				getClientDependencies().clear();
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
+				return;
+			case UMLPackage.INTERVAL_CONSTRAINT__NAME :
+				setName((String) newValue);
+				return;
+			case UMLPackage.INTERVAL_CONSTRAINT__NAME_EXPRESSION :
+				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.INTERVAL_CONSTRAINT__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.INTERVAL_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
+				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.INTERVAL_CONSTRAINT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.INTERVAL_CONSTRAINT__CONSTRAINED_ELEMENT :
+				getConstrainedElements().clear();
+				getConstrainedElements().addAll(
+					(Collection<? extends Element>) newValue);
+				return;
+			case UMLPackage.INTERVAL_CONSTRAINT__CONTEXT :
+				setContext((Namespace) newValue);
+				return;
+			case UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION :
+				setSpecification((ValueSpecification) newValue);
+				return;
+		}
+		eDynamicSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case UMLPackage.INTERVAL_CONSTRAINT__EANNOTATIONS :
+				getEAnnotations().clear();
+				return;
+			case UMLPackage.INTERVAL_CONSTRAINT__OWNED_COMMENT :
+				getOwnedComments().clear();
+				return;
+			case UMLPackage.INTERVAL_CONSTRAINT__CLIENT_DEPENDENCY :
+				getClientDependencies().clear();
+				return;
+			case UMLPackage.INTERVAL_CONSTRAINT__NAME :
+				unsetName();
+				return;
+			case UMLPackage.INTERVAL_CONSTRAINT__NAME_EXPRESSION :
+				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.INTERVAL_CONSTRAINT__VISIBILITY :
+				unsetVisibility();
+				return;
+			case UMLPackage.INTERVAL_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
+				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.INTERVAL_CONSTRAINT__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.INTERVAL_CONSTRAINT__CONSTRAINED_ELEMENT :
+				getConstrainedElements().clear();
+				return;
+			case UMLPackage.INTERVAL_CONSTRAINT__CONTEXT :
+				setContext((Namespace) null);
+				return;
+			case UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION :
+				setSpecification((ValueSpecification) null);
+				return;
+		}
+		eDynamicUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case UMLPackage.INTERVAL_CONSTRAINT__EANNOTATIONS :
+				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.INTERVAL_CONSTRAINT__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.INTERVAL_CONSTRAINT__OWNED_ELEMENT :
+				return isSetOwnedElements();
+			case UMLPackage.INTERVAL_CONSTRAINT__OWNER :
+				return isSetOwner();
+			case UMLPackage.INTERVAL_CONSTRAINT__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
+			case UMLPackage.INTERVAL_CONSTRAINT__NAME :
+				return isSetName();
+			case UMLPackage.INTERVAL_CONSTRAINT__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.INTERVAL_CONSTRAINT__NAMESPACE :
+				return isSetNamespace();
+			case UMLPackage.INTERVAL_CONSTRAINT__QUALIFIED_NAME :
+				return QUALIFIED_NAME_EDEFAULT == null
+					? getQualifiedName() != null
+					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
+			case UMLPackage.INTERVAL_CONSTRAINT__VISIBILITY :
+				return isSetVisibility();
+			case UMLPackage.INTERVAL_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
+				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.INTERVAL_CONSTRAINT__TEMPLATE_PARAMETER :
+				return templateParameter != null;
+			case UMLPackage.INTERVAL_CONSTRAINT__CONSTRAINED_ELEMENT :
+				return constrainedElements != null
+					&& !constrainedElements.isEmpty();
+			case UMLPackage.INTERVAL_CONSTRAINT__CONTEXT :
+				return basicGetContext() != null;
+			case UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION :
+				return isSetSpecification();
+		}
+		return eDynamicIsSet(featureID);
 	}
 
 } //IntervalConstraintImpl

@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.uml2.uml.Classifier;
@@ -306,6 +307,73 @@ public class ClassifierTemplateParameterImpl
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return ClassifierTemplateParameterOperations
 			.validateHasConstrainingClassifier(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__EANNOTATIONS :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				if (ownedParameteredElement != null)
+					msgs = ((InternalEObject) ownedParameteredElement)
+						.eInverseRemove(
+							this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+							null, msgs);
+				return basicSetOwnedParameteredElement(
+					(ParameterableElement) otherEnd, msgs);
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				if (parameteredElement != null)
+					msgs = ((InternalEObject) parameteredElement)
+						.eInverseRemove(
+							this,
+							UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
+							ParameterableElement.class, msgs);
+				return basicSetParameteredElement(
+					(ParameterableElement) otherEnd, msgs);
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetSignature((TemplateSignature) otherEnd, msgs);
+		}
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__EANNOTATIONS :
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT :
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
+				return basicSetOwnedDefault(null, msgs);
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				return basicSetOwnedParameteredElement(null, msgs);
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				return basicSetParameteredElement(null, msgs);
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
+				return basicSetSignature(null, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016, 247980
  *   Kenn Hussey - 284809
- *   Kenn Hussey (CEA) - 358792, 351777, 382637
+ *   Kenn Hussey (CEA) - 358792, 351777, 382637, 212765
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
@@ -548,8 +548,10 @@ public class GenModelImpl
 
 				for (GenClass genClass : genPackage.getGenClasses()) {
 
-					if (!UML2GenModelUtil.getImplementedSubsetGenFeatures(
+					if (!UML2GenModelUtil.getImplementedRedefinedGenFeatures(
 						genClass).isEmpty()
+						|| !UML2GenModelUtil.getImplementedSubsetGenFeatures(
+							genClass).isEmpty()
 						|| !UML2GenModelUtil.getImplementedSupersetGenFeatures(
 							genClass).isEmpty()
 						|| !UML2GenModelUtil.getImplementedUnionGenFeatures(
