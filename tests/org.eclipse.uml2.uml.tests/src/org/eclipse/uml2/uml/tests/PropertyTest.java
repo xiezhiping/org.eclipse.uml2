@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765
  *
  */
 package org.eclipse.uml2.uml.tests;
@@ -676,13 +676,13 @@ public class PropertyTest
 
 		assertTrue(getFixture().isConsistentWith(redefinee));
 
-		Classifier type = UMLFactory.eINSTANCE.createDataType();
+		Classifier type = UMLFactory.eINSTANCE.createStereotype();
 
 		getFixture().setType(type);
 
 		assertFalse(getFixture().isConsistentWith(redefinee));
 
-		Classifier redefineeType = UMLFactory.eINSTANCE.createDataType();
+		Classifier redefineeType = UMLFactory.eINSTANCE.createStereotype();
 
 		redefinee.setType(redefineeType);
 
