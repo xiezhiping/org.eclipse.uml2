@@ -35,6 +35,7 @@ public class UMLBugTests
 		result = new UMLBugTests("UML Bug Regression Tests"); //$NON-NLS-1$
 
 		result.addTest(Bug392833Test.suite());
+		result.addTest(Bug403365Test.suite());
 
 		return result;
 	}
