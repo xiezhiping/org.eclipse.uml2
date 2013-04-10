@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 CEA and others.
+ * Copyright (c) 2011, 2013 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
- *   Kenn Hussey (CEA) - 351774
+ *   Kenn Hussey (CEA) - 351774, 405374
  *
  */
 package org.eclipse.uml2.uml.resource;
@@ -27,6 +27,7 @@ import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.CallEvent;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.ComponentRealization;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Dependency;
@@ -79,7 +80,7 @@ import org.eclipse.emf.ecore.xml.type.AnyType;
 public class UML302UMLResourceHandler
 		extends BasicResourceHandler {
 
-	protected static final boolean DEBUG = false;
+	protected static final boolean DEBUG = true;
 
 	protected static final String STEREOTYPE__BEHAVIORED_CLASSIFIER = "BehavioredClassifier"; //$NON-NLS-1$
 
@@ -434,11 +435,27 @@ public class UML302UMLResourceHandler
 			}
 
 			@Override
+			public Object caseComment(Comment comment) {
+				AnyType extension = getExtension(resource, comment);
+
+				if (extension != null) {
+					Object value = getValue(extension.getAnyAttribute(),
+						"body", true); //$NON-NLS-1$
+
+					if (value instanceof String) {
+						comment.setBody((String) value);
+					}
+				}
+
+				return super.caseComment(comment);
+			}
+
+			@Override
 			public Object caseConnector(Connector connector) {
 				AnyType extension = getExtension(resource, connector);
 
 				if (extension != null) {
-					getValue(extension.getAnyAttribute(), "kind", true);
+					getValue(extension.getAnyAttribute(), "kind", true); //$NON-NLS-1$
 				}	
 				
 				return super.caseConnector(connector);
@@ -450,7 +467,7 @@ public class UML302UMLResourceHandler
 
 				if (extension != null) {
 					Collection<EObject> clients = getEObjects(extension,
-						resource, "client", true);
+						resource, "client", true); //$NON-NLS-1$
 
 					InternalEList<NamedElement> dependencyClients = (InternalEList<NamedElement>) (dependency instanceof ComponentRealization
 						? dependency.getSuppliers()
@@ -466,7 +483,7 @@ public class UML302UMLResourceHandler
 					}
 
 					Collection<EObject> suppliers = getEObjects(extension,
-						resource, "supplier", true);
+						resource, "supplier", true); //$NON-NLS-1$
 
 					InternalEList<NamedElement> dependencySuppliers = (InternalEList<NamedElement>) (dependency instanceof ComponentRealization
 						? dependency.getClients()
@@ -494,7 +511,7 @@ public class UML302UMLResourceHandler
 
 				if (extension != null) {
 					Collection<EObject> classifiers = getEObjects(extension,
-						resource, "classifier", true);
+						resource, "classifier", true); //$NON-NLS-1$
 
 					if (!classifiers.isEmpty()
 						&& !(instanceSpecification instanceof EnumerationLiteral)) {
@@ -540,7 +557,7 @@ public class UML302UMLResourceHandler
 				AnyType extension = getExtension(resource, namedElement);
 
 				if (extension != null) {
-					getValue(extension.getAnyAttribute(), "clientDependency", true);
+					getValue(extension.getAnyAttribute(), "clientDependency", true); //$NON-NLS-1$
 				}	
 				
 				return super.caseNamedElement(namedElement);
@@ -609,7 +626,7 @@ public class UML302UMLResourceHandler
 				AnyType extension = getExtension(resource, package_);
 
 				if (extension != null) {
-					getEObjects(extension, resource, "packagedElement", true);
+					getEObjects(extension, resource, "packagedElement", true); //$NON-NLS-1$
 				}	
 
 				for (ProfileApplication profileApplication : package_

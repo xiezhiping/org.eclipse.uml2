@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2008, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 405374
  *
  */
 package org.eclipse.uml2.uml.resource;
@@ -47,6 +47,7 @@ import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.CallEvent;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.ClassifierTemplateParameter;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.EnumerationLiteral;
@@ -478,11 +479,27 @@ public class UML212UMLResourceHandler
 			}
 
 			@Override
+			public Object caseComment(Comment comment) {
+				AnyType extension = getExtension(resource, comment);
+
+				if (extension != null) {
+					Object value = getValue(extension.getAnyAttribute(),
+						"body", true); //$NON-NLS-1$
+
+					if (value instanceof String) {
+						comment.setBody((String) value);
+					}
+				}
+
+				return super.caseComment(comment);
+			}
+
+			@Override
 			public Object caseConnector(Connector connector) {
 				AnyType extension = getExtension(resource, connector);
 
 				if (extension != null) {
-					getValue(extension.getAnyAttribute(), "kind", true);
+					getValue(extension.getAnyAttribute(), "kind", true); //$NON-NLS-1$
 				}	
 				
 				return super.caseConnector(connector);
@@ -496,7 +513,7 @@ public class UML212UMLResourceHandler
 
 				if (extension != null) {
 					Collection<EObject> classifiers = getEObjects(extension,
-						resource, "classifier", true);
+						resource, "classifier", true); //$NON-NLS-1$
 
 					if (!classifiers.isEmpty()
 						&& !(instanceSpecification instanceof EnumerationLiteral)) {
@@ -542,7 +559,7 @@ public class UML212UMLResourceHandler
 				AnyType extension = getExtension(resource, namedElement);
 
 				if (extension != null) {
-					getValue(extension.getAnyAttribute(), "clientDependency", true);
+					getValue(extension.getAnyAttribute(), "clientDependency", true); //$NON-NLS-1$
 				}	
 				
 				return super.caseNamedElement(namedElement);
@@ -611,7 +628,7 @@ public class UML212UMLResourceHandler
 				AnyType extension = getExtension(resource, package_);
 
 				if (extension != null) {
-					getEObjects(extension, resource, "packagedElement", true);
+					getEObjects(extension, resource, "packagedElement", true); //$NON-NLS-1$
 				}	
 
 				for (ProfileApplication profileApplication : package_
