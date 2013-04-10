@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 281326
  *
- * $Id: UMLActionBarContributor.java,v 1.10 2010/09/28 20:59:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -25,14 +25,21 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.CommonPlugin;
+import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.Diagnostician;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
@@ -312,7 +319,141 @@ public class UMLActionBarContributor
 			}
 		};
 
-		controlAction = new ControlAction();
+		controlAction = new ControlAction() {
+
+			protected List<EObject> collectAllStereotypeApplications(
+					EObject eObject, List<EObject> allStereotypeApplications) {
+
+				if (eObject instanceof Element) {
+
+					for (EObject stereotypeApplication : ((Element) eObject)
+						.getStereotypeApplications()) {
+
+						allStereotypeApplications.add(stereotypeApplication);
+
+						collectAllStereotypeApplications(stereotypeApplication,
+							allStereotypeApplications);
+					}
+				}
+
+				for (TreeIterator<EObject> allProperContents = EcoreUtil
+					.getAllProperContents(eObject, true); allProperContents
+					.hasNext();) {
+
+					EObject content = allProperContents.next();
+
+					if (content instanceof Element) {
+
+						for (EObject stereotypeApplication : ((Element) content)
+							.getStereotypeApplications()) {
+
+							allStereotypeApplications
+								.add(stereotypeApplication);
+
+							collectAllStereotypeApplications(
+								stereotypeApplication,
+								allStereotypeApplications);
+						}
+					}
+				}
+
+				return allStereotypeApplications;
+			}
+
+			@Override
+			public boolean updateSelection(IStructuredSelection selection) {
+				this.selection = selection;
+
+				if (selection.size() != 1) {
+					return false;
+				}
+
+				Object object = AdapterFactoryEditingDomain.unwrap(selection
+					.getFirstElement());
+				boolean result = domain.isControllable(object);
+				eObject = result
+					? (EObject) object
+					: null;
+
+				if (!AdapterFactoryEditingDomain.isControlled(object)) {
+					setText(EMFEditUIPlugin.INSTANCE
+						.getString("_UI_Control_menu_item")); //$NON-NLS-1$
+					setDescription("_UI_Control_menu_item_description"); //$NON-NLS-1$
+
+					command = null;
+				} else {
+					setText(EMFEditUIPlugin.INSTANCE
+						.getString("_UI_Uncontrol_menu_item")); //$NON-NLS-1$
+					setDescription("_UI_Uncontrol_menu_item_description"); //$NON-NLS-1$
+
+					if (result) {
+						CompoundCommand compoundCommand = new CompoundCommand(
+							EMFEditUIPlugin.INSTANCE
+								.getString("_UI_UncontrolCommand_label")); //$NON-NLS-1$		        		
+
+						EList<EObject> eResourceContents = eObject.eResource()
+							.getContents();
+
+						compoundCommand.append(new RemoveCommand(domain,
+							eResourceContents, eObject));
+
+						List<EObject> allStereotypeApplications = collectAllStereotypeApplications(
+							eObject, new ArrayList<EObject>());
+
+						compoundCommand.append(new RemoveCommand(domain,
+							eResourceContents, allStereotypeApplications));
+						compoundCommand.append(new AddCommand(domain, eObject
+							.eContainer().eResource().getContents(),
+							allStereotypeApplications));
+
+						command = compoundCommand;
+
+						result = command.canExecute();
+					}
+				}
+
+				return result;
+			}
+
+			@Override
+			public void run() {
+
+				if (command == null) {
+
+					if (eObject == null) {
+						return;
+					}
+
+					Resource resource = getResource();
+
+					if (resource == null) {
+						return;
+					}
+
+					CompoundCommand compoundCommand = new CompoundCommand(
+						EMFEditUIPlugin.INSTANCE
+							.getString("_UI_ControlCommand_label")); //$NON-NLS-1$		        		
+
+					EList<EObject> resourceContents = resource.getContents();
+
+					compoundCommand.append(new AddCommand(domain,
+						resourceContents, eObject));
+
+					List<EObject> allStereotypeApplications = collectAllStereotypeApplications(
+						eObject, new ArrayList<EObject>());
+
+					compoundCommand.append(new RemoveCommand(domain, eObject
+						.eResource().getContents(), allStereotypeApplications));
+					compoundCommand.append(new AddCommand(domain,
+						resourceContents, allStereotypeApplications));
+
+					command = compoundCommand;
+				}
+
+				super.run();
+			}
+
+		};
 	}
 
 	/**
