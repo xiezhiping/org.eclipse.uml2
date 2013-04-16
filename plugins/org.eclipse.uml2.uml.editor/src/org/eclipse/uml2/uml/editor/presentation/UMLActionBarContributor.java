@@ -210,250 +210,11 @@ public class UMLActionBarContributor
 	 */
 	public UMLActionBarContributor() {
 		super(ADDITIONS_LAST_STYLE);
+
 		loadResourceAction = new LoadResourceAction();
-		validateAction = new ValidateAction() {
 
-			protected int count(EObject eObject) {
-				int count = 1;
-
-				if (eObject instanceof Element) {
-
-					for (EObject stereotypeApplication : ((Element) eObject)
-						.getStereotypeApplications()) {
-
-						count += count(stereotypeApplication);
-					}
-				}
-
-				for (EObject eContent : eObject.eContents()) {
-					count += count(eContent);
-				}
-
-				return count;
-			}
-
-			@Override
-			protected Diagnostic validate(final IProgressMonitor progressMonitor) {
-				EObject eObject = (EObject) selectedObjects.iterator().next();
-
-				progressMonitor.beginTask("", count(eObject)); //$NON-NLS-1$
-
-				final AdapterFactory adapterFactory = domain instanceof AdapterFactoryEditingDomain
-					? ((AdapterFactoryEditingDomain) domain)
-						.getAdapterFactory()
-					: null;
-
-				Diagnostician diagnostician = new Diagnostician() {
-
-					@Override
-					public String getObjectLabel(EObject eObject) {
-
-						if (adapterFactory != null && !eObject.eIsProxy()) {
-							IItemLabelProvider itemLabelProvider = (IItemLabelProvider) adapterFactory
-								.adapt(eObject, IItemLabelProvider.class);
-
-							if (itemLabelProvider != null) {
-								return itemLabelProvider.getText(eObject);
-							}
-						}
-
-						return super.getObjectLabel(eObject);
-					}
-
-					protected boolean doValidateStereotypeApplications(
-							EObject eObject, DiagnosticChain diagnostics,
-							Map<Object, Object> context) {
-						List<EObject> stereotypeApplications = eObject instanceof Element
-							? ((Element) eObject).getStereotypeApplications()
-							: Collections.<EObject> emptyList();
-
-						if (!stereotypeApplications.isEmpty()) {
-							Iterator<EObject> i = stereotypeApplications
-								.iterator();
-							boolean result = validate(i.next(), diagnostics,
-								context);
-
-							while (i.hasNext()
-								&& (result || diagnostics != null)) {
-
-								result &= validate(i.next(), diagnostics,
-									context);
-							}
-
-							return result;
-						} else {
-							return true;
-						}
-					}
-
-					@Override
-					protected boolean doValidateContents(EObject eObject,
-							DiagnosticChain diagnostics,
-							Map<Object, Object> context) {
-						boolean result = doValidateStereotypeApplications(
-							eObject, diagnostics, context);
-
-						if (result || diagnostics != null) {
-							result &= super.doValidateContents(eObject,
-								diagnostics, context);
-						}
-
-						return result;
-					}
-
-					@Override
-					public boolean validate(EClass eClass, EObject eObject,
-							DiagnosticChain diagnostics,
-							Map<Object, Object> context) {
-						progressMonitor.worked(1);
-						return super.validate(eClass, eObject, diagnostics,
-							context);
-					}
-				};
-
-				progressMonitor.setTaskName(EMFEditUIPlugin.INSTANCE.getString(
-					"_UI_Validating_message", new Object[]{diagnostician //$NON-NLS-1$
-						.getObjectLabel(eObject)}));
-
-				return diagnostician.validate(eObject);
-			}
-		};
-
-		controlAction = new ControlAction() {
-
-			protected List<EObject> collectAllStereotypeApplications(
-					EObject eObject, List<EObject> allStereotypeApplications) {
-
-				if (eObject instanceof Element) {
-
-					for (EObject stereotypeApplication : ((Element) eObject)
-						.getStereotypeApplications()) {
-
-						allStereotypeApplications.add(stereotypeApplication);
-
-						collectAllStereotypeApplications(stereotypeApplication,
-							allStereotypeApplications);
-					}
-				}
-
-				for (TreeIterator<EObject> allProperContents = EcoreUtil
-					.getAllProperContents(eObject, true); allProperContents
-					.hasNext();) {
-
-					EObject content = allProperContents.next();
-
-					if (content instanceof Element) {
-
-						for (EObject stereotypeApplication : ((Element) content)
-							.getStereotypeApplications()) {
-
-							allStereotypeApplications
-								.add(stereotypeApplication);
-
-							collectAllStereotypeApplications(
-								stereotypeApplication,
-								allStereotypeApplications);
-						}
-					}
-				}
-
-				return allStereotypeApplications;
-			}
-
-			@Override
-			public boolean updateSelection(IStructuredSelection selection) {
-				this.selection = selection;
-
-				if (selection.size() != 1) {
-					return false;
-				}
-
-				Object object = AdapterFactoryEditingDomain.unwrap(selection
-					.getFirstElement());
-				boolean result = domain.isControllable(object);
-				eObject = result
-					? (EObject) object
-					: null;
-
-				if (!AdapterFactoryEditingDomain.isControlled(object)) {
-					setText(EMFEditUIPlugin.INSTANCE
-						.getString("_UI_Control_menu_item")); //$NON-NLS-1$
-					setDescription("_UI_Control_menu_item_description"); //$NON-NLS-1$
-
-					command = null;
-				} else {
-					setText(EMFEditUIPlugin.INSTANCE
-						.getString("_UI_Uncontrol_menu_item")); //$NON-NLS-1$
-					setDescription("_UI_Uncontrol_menu_item_description"); //$NON-NLS-1$
-
-					if (result) {
-						CompoundCommand compoundCommand = new CompoundCommand(
-							EMFEditUIPlugin.INSTANCE
-								.getString("_UI_UncontrolCommand_label")); //$NON-NLS-1$		        		
-
-						EList<EObject> eResourceContents = eObject.eResource()
-							.getContents();
-
-						compoundCommand.append(new RemoveCommand(domain,
-							eResourceContents, eObject));
-
-						List<EObject> allStereotypeApplications = collectAllStereotypeApplications(
-							eObject, new ArrayList<EObject>());
-
-						compoundCommand.append(new RemoveCommand(domain,
-							eResourceContents, allStereotypeApplications));
-						compoundCommand.append(new AddCommand(domain, eObject
-							.eContainer().eResource().getContents(),
-							allStereotypeApplications));
-
-						command = compoundCommand;
-
-						result = command.canExecute();
-					}
-				}
-
-				return result;
-			}
-
-			@Override
-			public void run() {
-
-				if (command == null) {
-
-					if (eObject == null) {
-						return;
-					}
-
-					Resource resource = getResource();
-
-					if (resource == null) {
-						return;
-					}
-
-					CompoundCommand compoundCommand = new CompoundCommand(
-						EMFEditUIPlugin.INSTANCE
-							.getString("_UI_ControlCommand_label")); //$NON-NLS-1$		        		
-
-					EList<EObject> resourceContents = resource.getContents();
-
-					compoundCommand.append(new AddCommand(domain,
-						resourceContents, eObject));
-
-					List<EObject> allStereotypeApplications = collectAllStereotypeApplications(
-						eObject, new ArrayList<EObject>());
-
-					compoundCommand.append(new RemoveCommand(domain, eObject
-						.eResource().getContents(), allStereotypeApplications));
-					compoundCommand.append(new AddCommand(domain,
-						resourceContents, allStereotypeApplications));
-
-					command = compoundCommand;
-				}
-
-				super.run();
-			}
-
-		};
+		validateAction = new UMLValidateAction();
+		controlAction = new UMLControlAction();
 	}
 
 	/**
@@ -868,6 +629,243 @@ public class UMLActionBarContributor
 	@Override
 	protected boolean removeAllReferencesOnDelete() {
 		return true;
+	}
+
+	protected static class UMLControlAction
+			extends ControlAction {
+
+		protected List<EObject> collectAllStereotypeApplications(
+				EObject eObject, List<EObject> allStereotypeApplications) {
+
+			if (eObject instanceof Element) {
+
+				for (EObject stereotypeApplication : ((Element) eObject)
+					.getStereotypeApplications()) {
+
+					allStereotypeApplications.add(stereotypeApplication);
+
+					collectAllStereotypeApplications(stereotypeApplication,
+						allStereotypeApplications);
+				}
+			}
+
+			for (TreeIterator<EObject> allProperContents = EcoreUtil
+				.getAllProperContents(eObject, true); allProperContents
+				.hasNext();) {
+
+				EObject content = allProperContents.next();
+
+				if (content instanceof Element) {
+
+					for (EObject stereotypeApplication : ((Element) content)
+						.getStereotypeApplications()) {
+
+						allStereotypeApplications.add(stereotypeApplication);
+
+						collectAllStereotypeApplications(stereotypeApplication,
+							allStereotypeApplications);
+					}
+				}
+			}
+
+			return allStereotypeApplications;
+		}
+
+		@Override
+		public boolean updateSelection(IStructuredSelection selection) {
+			this.selection = selection;
+
+			if (selection.size() != 1) {
+				return false;
+			}
+
+			Object object = AdapterFactoryEditingDomain.unwrap(selection
+				.getFirstElement());
+			boolean result = domain.isControllable(object);
+			eObject = result
+				? (EObject) object
+				: null;
+
+			if (!AdapterFactoryEditingDomain.isControlled(object)) {
+				setText(EMFEditUIPlugin.INSTANCE
+					.getString("_UI_Control_menu_item")); //$NON-NLS-1$
+				setDescription("_UI_Control_menu_item_description"); //$NON-NLS-1$
+
+				command = null;
+			} else {
+				setText(EMFEditUIPlugin.INSTANCE
+					.getString("_UI_Uncontrol_menu_item")); //$NON-NLS-1$
+				setDescription("_UI_Uncontrol_menu_item_description"); //$NON-NLS-1$
+
+				if (result) {
+					CompoundCommand compoundCommand = new CompoundCommand(
+						EMFEditUIPlugin.INSTANCE
+							.getString("_UI_UncontrolCommand_label")); //$NON-NLS-1$		        		
+
+					EList<EObject> eResourceContents = eObject.eResource()
+						.getContents();
+
+					compoundCommand.append(new RemoveCommand(domain,
+						eResourceContents, eObject));
+
+					List<EObject> allStereotypeApplications = collectAllStereotypeApplications(
+						eObject, new ArrayList<EObject>());
+
+					compoundCommand.append(new RemoveCommand(domain,
+						eResourceContents, allStereotypeApplications));
+					compoundCommand.append(new AddCommand(domain, eObject
+						.eContainer().eResource().getContents(),
+						allStereotypeApplications));
+
+					command = compoundCommand;
+
+					result = command.canExecute();
+				}
+			}
+
+			return result;
+		}
+
+		@Override
+		public void run() {
+
+			if (command == null) {
+
+				if (eObject == null) {
+					return;
+				}
+
+				Resource resource = getResource();
+
+				if (resource == null) {
+					return;
+				}
+
+				CompoundCommand compoundCommand = new CompoundCommand(
+					EMFEditUIPlugin.INSTANCE
+						.getString("_UI_ControlCommand_label")); //$NON-NLS-1$		        		
+
+				EList<EObject> resourceContents = resource.getContents();
+
+				compoundCommand.append(new AddCommand(domain, resourceContents,
+					eObject));
+
+				List<EObject> allStereotypeApplications = collectAllStereotypeApplications(
+					eObject, new ArrayList<EObject>());
+
+				compoundCommand.append(new RemoveCommand(domain, eObject
+					.eResource().getContents(), allStereotypeApplications));
+				compoundCommand.append(new AddCommand(domain, resourceContents,
+					allStereotypeApplications));
+
+				command = compoundCommand;
+			}
+
+			super.run();
+		}
+
+	}
+
+	protected static class UMLValidateAction
+			extends ValidateAction {
+
+		protected int count(EObject eObject) {
+			int count = 1;
+
+			if (eObject instanceof Element) {
+
+				for (EObject stereotypeApplication : ((Element) eObject)
+					.getStereotypeApplications()) {
+
+					count += count(stereotypeApplication);
+				}
+			}
+
+			for (EObject eContent : eObject.eContents()) {
+				count += count(eContent);
+			}
+
+			return count;
+		}
+
+		@Override
+		protected Diagnostic validate(final IProgressMonitor progressMonitor) {
+			EObject eObject = (EObject) selectedObjects.iterator().next();
+
+			progressMonitor.beginTask("", count(eObject)); //$NON-NLS-1$
+
+			final AdapterFactory adapterFactory = domain instanceof AdapterFactoryEditingDomain
+				? ((AdapterFactoryEditingDomain) domain).getAdapterFactory()
+				: null;
+
+			Diagnostician diagnostician = new Diagnostician() {
+
+				@Override
+				public String getObjectLabel(EObject eObject) {
+
+					if (adapterFactory != null && !eObject.eIsProxy()) {
+						IItemLabelProvider itemLabelProvider = (IItemLabelProvider) adapterFactory
+							.adapt(eObject, IItemLabelProvider.class);
+
+						if (itemLabelProvider != null) {
+							return itemLabelProvider.getText(eObject);
+						}
+					}
+
+					return super.getObjectLabel(eObject);
+				}
+
+				protected boolean doValidateStereotypeApplications(
+						EObject eObject, DiagnosticChain diagnostics,
+						Map<Object, Object> context) {
+					List<EObject> stereotypeApplications = eObject instanceof Element
+						? ((Element) eObject).getStereotypeApplications()
+						: Collections.<EObject> emptyList();
+
+					if (!stereotypeApplications.isEmpty()) {
+						Iterator<EObject> i = stereotypeApplications.iterator();
+						boolean result = validate(i.next(), diagnostics,
+							context);
+
+						while (i.hasNext() && (result || diagnostics != null)) {
+							result &= validate(i.next(), diagnostics, context);
+						}
+
+						return result;
+					} else {
+						return true;
+					}
+				}
+
+				@Override
+				protected boolean doValidateContents(EObject eObject,
+						DiagnosticChain diagnostics, Map<Object, Object> context) {
+					boolean result = doValidateStereotypeApplications(eObject,
+						diagnostics, context);
+
+					if (result || diagnostics != null) {
+						result &= super.doValidateContents(eObject,
+							diagnostics, context);
+					}
+
+					return result;
+				}
+
+				@Override
+				public boolean validate(EClass eClass, EObject eObject,
+						DiagnosticChain diagnostics, Map<Object, Object> context) {
+					progressMonitor.worked(1);
+					return super
+						.validate(eClass, eObject, diagnostics, context);
+				}
+			};
+
+			progressMonitor.setTaskName(EMFEditUIPlugin.INSTANCE.getString(
+				"_UI_Validating_message", new Object[]{diagnostician //$NON-NLS-1$
+					.getObjectLabel(eObject)}));
+
+			return diagnostician.validate(eObject);
+		}
 	}
 
 }
