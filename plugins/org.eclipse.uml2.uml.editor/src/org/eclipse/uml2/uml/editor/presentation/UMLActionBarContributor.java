@@ -25,12 +25,13 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.CommonPlugin;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CommandWrapper;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 
 import org.eclipse.emf.ecore.EClass;
@@ -75,8 +76,10 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
 
+import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
+import org.eclipse.uml2.uml.util.UMLUtil;
 
 /**
  * This is the action bar contributor for the UML model editor.
@@ -702,20 +705,30 @@ public class UMLActionBarContributor
 						EMFEditUIPlugin.INSTANCE
 							.getString("_UI_UncontrolCommand_label")); //$NON-NLS-1$		        		
 
-					EList<EObject> eResourceContents = eObject.eResource()
-						.getContents();
+					compoundCommand.append(new RemoveCommand(domain, eObject
+						.eResource().getContents(), eObject));
 
-					compoundCommand.append(new RemoveCommand(domain,
-						eResourceContents, eObject));
-
-					List<EObject> allStereotypeApplications = collectAllStereotypeApplications(
+					final List<EObject> allStereotypeApplications = collectAllStereotypeApplications(
 						eObject, new ArrayList<EObject>());
 
-					compoundCommand.append(new RemoveCommand(domain,
-						eResourceContents, allStereotypeApplications));
-					compoundCommand.append(new AddCommand(domain, eObject
-						.eContainer().eResource().getContents(),
-						allStereotypeApplications));
+					compoundCommand.append(new CommandWrapper() {
+
+						@Override
+						protected Command createCommand() {
+							return new ChangeCommand(domain, new Runnable() {
+
+								public void run() {
+
+									for (EObject stereotypeApplication : allStereotypeApplications) {
+										UMLUtil.StereotypeApplicationHelper.INSTANCE.addToContainmentList(
+											UMLUtil
+												.getBaseElement(stereotypeApplication),
+											stereotypeApplication);
+									}
+								}
+							});
+						}
+					});
 
 					command = compoundCommand;
 
@@ -745,18 +758,30 @@ public class UMLActionBarContributor
 					EMFEditUIPlugin.INSTANCE
 						.getString("_UI_ControlCommand_label")); //$NON-NLS-1$		        		
 
-				EList<EObject> resourceContents = resource.getContents();
+				compoundCommand.append(new AddCommand(domain, resource
+					.getContents(), eObject));
 
-				compoundCommand.append(new AddCommand(domain, resourceContents,
-					eObject));
-
-				List<EObject> allStereotypeApplications = collectAllStereotypeApplications(
+				final List<EObject> allStereotypeApplications = collectAllStereotypeApplications(
 					eObject, new ArrayList<EObject>());
 
-				compoundCommand.append(new RemoveCommand(domain, eObject
-					.eResource().getContents(), allStereotypeApplications));
-				compoundCommand.append(new AddCommand(domain, resourceContents,
-					allStereotypeApplications));
+				compoundCommand.append(new CommandWrapper() {
+
+					@Override
+					protected Command createCommand() {
+						return new ChangeCommand(domain, new Runnable() {
+
+							public void run() {
+
+								for (EObject stereotypeApplication : allStereotypeApplications) {
+									UMLUtil.StereotypeApplicationHelper.INSTANCE.addToContainmentList(
+										UMLUtil
+											.getBaseElement(stereotypeApplication),
+										stereotypeApplication);
+								}
+							}
+						});
+					}
+				});
 
 				command = compoundCommand;
 			}
