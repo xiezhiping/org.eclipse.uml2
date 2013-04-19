@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332, 247980
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324
+ *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658
  *   Christian W. Damus - 355218
  *
  */
@@ -20,9 +20,14 @@ import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.command.CommandStackListener;
+import org.eclipse.emf.common.command.CommandWrapper;
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.common.command.IdentityCommand;
+import org.eclipse.emf.common.command.StrictCompoundCommand;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.TreeIterator;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 
@@ -35,6 +40,13 @@ import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.CommandParameter;
+import org.eclipse.emf.edit.command.CopyCommand;
+import org.eclipse.emf.edit.command.CopyToClipboardCommand;
+import org.eclipse.emf.edit.command.CutToClipboardCommand;
+import org.eclipse.emf.edit.command.PasteFromClipboardCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
@@ -69,6 +81,8 @@ import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EValidator;
 
@@ -173,9 +187,14 @@ import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
+import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.eclipse.uml2.common.edit.domain.UML2AdapterFactoryEditingDomain;
 import org.eclipse.uml2.common.edit.provider.IItemQualifiedTextProvider;
 import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.ProfileApplication;
+import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.edit.providers.ElementItemProvider;
 import org.eclipse.uml2.uml.edit.providers.UMLItemProviderAdapterFactory;
 import org.eclipse.uml2.uml.edit.providers.UMLReflectiveItemProviderAdapterFactory;
@@ -754,10 +773,34 @@ public class UMLEditor
 			commandStack.addCommandStackListener(commandStackListener);
 		}
 
-		// Create the editing domain with a special command stack.
+		// Create a specialized editing domain with the command stack.
 		//
 		editingDomain = new UML2AdapterFactoryEditingDomain(adapterFactory,
-			commandStack, new HashMap<Resource, Boolean>());
+			commandStack, new HashMap<Resource, Boolean>()) {
+
+			@Override
+			public Command createCommand(Class<? extends Command> commandClass,
+					CommandParameter commandParameter) {
+
+				if (commandClass == CopyToClipboardCommand.class) {
+					return new UMLCopyToClipboardCommand(this,
+						commandParameter.getCollection());
+				} else if (commandClass == CutToClipboardCommand.class) {
+					return new UMLCutToClipboardCommand(this,
+						RemoveCommand.create(this, commandParameter.getOwner(),
+							commandParameter.getFeature(),
+							commandParameter.getCollection()));
+				} else if (commandClass == PasteFromClipboardCommand.class) {
+					return new UMLPasteFromClipboardCommand(this,
+						commandParameter.getOwner(),
+						commandParameter.getFeature(),
+						commandParameter.getIndex(), getOptimizeCopy());
+				} else {
+					return super.createCommand(commandClass, commandParameter);
+				}
+			}
+
+		};
 	}
 
 	/**
@@ -1957,6 +2000,318 @@ public class UMLEditor
 				}
 			};
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	protected static <O> List<O> collectAllStereotypeApplications(
+			EObject eObject, List<O> allStereotypeApplications) {
+
+		if (eObject instanceof Element) {
+
+			for (EObject stereotypeApplication : ((Element) eObject)
+				.getStereotypeApplications()) {
+
+				allStereotypeApplications.add((O)stereotypeApplication);
+
+				collectAllStereotypeApplications(stereotypeApplication,
+					allStereotypeApplications);
+			}
+		}
+
+		for (TreeIterator<EObject> allContents = EcoreUtil.getAllContents(
+			eObject, true); allContents.hasNext();) {
+
+			EObject content = allContents.next();
+
+			if (content instanceof Element) {
+
+				for (EObject stereotypeApplication : ((Element) content)
+					.getStereotypeApplications()) {
+
+					allStereotypeApplications.add((O)stereotypeApplication);
+
+					collectAllStereotypeApplications(stereotypeApplication,
+						allStereotypeApplications);
+				}
+			}
+		}
+
+		return allStereotypeApplications;
+	}
+
+	protected static class UMLCopyToClipboardCommand
+			extends CopyToClipboardCommand {
+
+		protected UMLCopyToClipboardCommand(EditingDomain domain,
+				Collection<?> collection) {
+			super(domain, collection);
+		}
+
+		@Override
+		protected boolean prepare() {
+			List<Object> objectsToCopy = new ArrayList<Object>();
+
+			for (Object sourceObject : sourceObjects) {
+				objectsToCopy.add(sourceObject);
+
+				if (sourceObject instanceof EObject) {
+					collectAllStereotypeApplications((EObject) sourceObject,
+						objectsToCopy);
+				}
+			}
+
+			sourceObjects = objectsToCopy;
+
+			return super.prepare();
+		}
+	}
+
+	protected static class UMLCutToClipboardCommand
+			extends CutToClipboardCommand {
+
+		protected UMLCutToClipboardCommand(EditingDomain domain, Command command) {
+			super(domain, command);
+		}
+
+		@Override
+		protected boolean prepare() {
+			CompoundCommand compoundCommand = new CompoundCommand();
+
+			if (command instanceof RemoveCommand) {
+				RemoveCommand removeCommand = (RemoveCommand) command;
+
+				for (Object object : removeCommand.getCollection()) {
+
+					if (object instanceof EObject) {
+						final List<EObject> allStereotypeApplications = collectAllStereotypeApplications(
+							(EObject) object, new ArrayList<EObject>());
+
+						compoundCommand.append(new ChangeCommand(domain,
+							new Runnable() {
+
+								public void run() {
+
+									for (EObject stereotypeApplication : allStereotypeApplications) {
+										UMLUtil.StereotypeApplicationHelper.INSTANCE.removeFromContainmentList(
+											UMLUtil
+												.getBaseElement(stereotypeApplication),
+											stereotypeApplication);
+									}
+								}
+							}));
+
+						compoundCommand.append(new IdentityCommand(
+							allStereotypeApplications));
+					}
+				}
+			}
+
+			compoundCommand.append(command);
+
+			command = compoundCommand;
+
+			return super.prepare();
+		}
+
+	}
+
+	protected static class UMLPasteFromClipboardCommand
+			extends PasteFromClipboardCommand {
+
+		protected UMLPasteFromClipboardCommand(EditingDomain domain,
+				Object owner, Object feature, int index, boolean optimize) {
+			super(domain, owner, feature, index, optimize);
+		}
+
+		protected ENamedElement getAppliedDefinition(
+				org.eclipse.uml2.uml.Package nearestPackage,
+				Stereotype stereotype) {
+			ProfileApplication profileApplication = nearestPackage == null
+				? null
+				: nearestPackage.getProfileApplication(stereotype.getProfile(),
+					true);
+
+			return profileApplication == null
+				? null
+				: profileApplication.getAppliedDefinition(stereotype);
+		}
+
+		@Override
+		protected boolean prepare() {
+			command = new StrictCompoundCommand();
+
+			final Command copyCommand = CopyCommand.create(domain,
+				domain.getClipboard());
+			command.append(copyCommand);
+
+			command.append(new CommandWrapper() {
+
+				protected Collection<Object> original;
+
+				protected Collection<Object> copy;
+
+				@Override
+				protected Command createCommand() {
+					original = domain.getClipboard();
+					copy = new ArrayList<Object>(copyCommand.getResult());
+
+					if (original.size() == copy.size()) {
+
+						for (Iterator<Object> i = original.iterator(), j = copy
+							.iterator(); i.hasNext();) {
+
+							Object originalObject = i.next();
+							Object copyObject = j.next();
+
+							if (originalObject.getClass() != copyObject
+								.getClass()) {
+
+								original = null;
+								break;
+							}
+						}
+					}
+
+					CompoundCommand compoundCommand = new CompoundCommand();
+
+					List<Object> objectsToAdd = new ArrayList<Object>();
+					final List<EObject> stereotypeApplicationsToAdd = new ArrayList<EObject>();
+
+					org.eclipse.uml2.uml.Package ownerNearestPackage = owner instanceof Element
+						? ((Element) owner).getNearestPackage()
+						: UMLFactory.eINSTANCE.createPackage();
+
+					for (Object object : original == null
+						? copy
+						: original) {
+
+						if (object instanceof EObject) {
+							EObject stereotypeApplication = (EObject) object;
+							Stereotype stereotype = UMLUtil
+								.getStereotype(stereotypeApplication);
+
+							if (stereotype != null) {
+								Element baseElement = UMLUtil
+									.getBaseElement(stereotypeApplication);
+
+								if (baseElement != null) {
+									EClass definition = stereotypeApplication
+										.eClass();
+
+									if (getAppliedDefinition(
+										baseElement.getNearestPackage(),
+										stereotype) == definition
+										|| getAppliedDefinition(
+											ownerNearestPackage, stereotype) == definition) {
+
+										stereotypeApplicationsToAdd
+											.add(stereotypeApplication);
+									}
+								}
+
+								continue;
+							}
+						}
+
+						objectsToAdd.add(object);
+					}
+
+					compoundCommand.append(AddCommand.create(domain, owner,
+						feature, objectsToAdd, index));
+
+					if (stereotypeApplicationsToAdd.size() > 0) {
+						compoundCommand.append(new CommandWrapper() {
+
+							@Override
+							protected Command createCommand() {
+								return new ChangeCommand(domain,
+									new Runnable() {
+
+										public void run() {
+
+											for (EObject stereotypeApplication : stereotypeApplicationsToAdd) {
+												UMLUtil.StereotypeApplicationHelper.INSTANCE.addToContainmentList(
+													UMLUtil
+														.getBaseElement(stereotypeApplication),
+													stereotypeApplication);
+											}
+										}
+									});
+							}
+						});
+					}
+
+					return compoundCommand;
+				}
+
+				@Override
+				public void execute() {
+
+					if (original != null) {
+						domain.setClipboard(copy);
+					}
+
+					super.execute();
+				}
+
+				@Override
+				public void undo() {
+					super.undo();
+
+					if (original != null) {
+						domain.setClipboard(original);
+					}
+				}
+
+				@Override
+				public void redo() {
+
+					if (original != null) {
+						domain.setClipboard(copy);
+					}
+
+					super.redo();
+				}
+			});
+
+			boolean result;
+
+			if (optimize) {
+				result = optimizedCanExecute();
+			} else {
+				result = command.canExecute();
+			}
+
+			return result;
+		}
+
+		@Override
+		protected boolean optimizedCanExecute() {
+			List<Object> objectsToAdd = null;
+			Collection<Object> clipboard = domain.getClipboard();
+
+			if (clipboard != null) {
+				objectsToAdd = new ArrayList<Object>();
+
+				for (Object object : clipboard) {
+
+					if (object instanceof EObject
+						&& UMLUtil.getStereotype((EObject) object) != null) {
+
+						continue;
+					}
+
+					objectsToAdd.add(object);
+				}
+			}
+
+			Command addCommand = AddCommand.create(domain, owner, feature,
+				objectsToAdd);
+			boolean result = addCommand.canExecute();
+			addCommand.dispose();
+			return result;
+		}
+
 	}
 
 }
