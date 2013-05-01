@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 173565
  *
- * $Id: UMLCommandAction.java,v 1.5 2007/05/28 20:02:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -17,6 +17,8 @@ import java.util.Comparator;
 import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.action.CommandAction;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -99,9 +101,24 @@ public class UMLCommandAction
 					IItemQualifiedTextProvider itemQualifiedTextProvider = (IItemQualifiedTextProvider) adapterFactory
 						.adapt(object, IItemQualifiedTextProvider.class);
 
-					return itemQualifiedTextProvider != null
+					String columnText = itemQualifiedTextProvider != null
 						? itemQualifiedTextProvider.getQualifiedText(object)
 						: super.getColumnText(object, columnIndex);
+
+					if (object instanceof EObject) {
+						Resource eResource = ((EObject) object).eResource();
+
+						if (eResource != null) {
+							String lastSegment = eResource.getURI()
+								.lastSegment();
+
+							if (lastSegment != null) {
+								columnText += " - " + lastSegment; //$NON-NLS-1$
+							}
+						}
+					}
+
+					return columnText;
 				}
 
 				@Override
@@ -109,9 +126,24 @@ public class UMLCommandAction
 					IItemQualifiedTextProvider itemQualifiedTextProvider = (IItemQualifiedTextProvider) adapterFactory
 						.adapt(object, IItemQualifiedTextProvider.class);
 
-					return itemQualifiedTextProvider != null
+					String text = itemQualifiedTextProvider != null
 						? itemQualifiedTextProvider.getQualifiedText(object)
 						: super.getText(object);
+
+					if (object instanceof EObject) {
+						Resource eResource = ((EObject) object).eResource();
+
+						if (eResource != null) {
+							String lastSegment = eResource.getURI()
+								.lastSegment();
+
+							if (lastSegment != null) {
+								text += " - " + lastSegment; //$NON-NLS-1$
+							}
+						}
+					}
+
+					return text;
 				}
 			};
 	}

@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332, 247980
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658
+ *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658, 173565
  *   Christian W. Damus - 355218
  *
  */
@@ -53,6 +53,7 @@ import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 
 import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 
@@ -70,6 +71,7 @@ import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.emf.edit.ui.provider.PropertyDescriptor;
 import org.eclipse.emf.edit.ui.provider.PropertySource;
@@ -1981,22 +1983,38 @@ public class UMLEditor
 
 		@Override
 		protected ILabelProvider getEditLabelProvider() {
-			final ILabelProvider editLabelProvider = super
-				.getEditLabelProvider();
+			final IItemLabelProvider itemLabelProvider = itemPropertyDescriptor
+				.getLabelProvider(object);
 
 			return new LabelProvider() {
 
 				@Override
 				public String getText(Object object) {
-					return itemPropertyDescriptor instanceof IItemQualifiedTextProvider
-						? ((IItemQualifiedTextProvider) itemPropertyDescriptor)
+					String text = itemLabelProvider instanceof IItemQualifiedTextProvider
+						? ((IItemQualifiedTextProvider) itemLabelProvider)
 							.getQualifiedText(object)
-						: editLabelProvider.getText(object);
+						: itemLabelProvider.getText(object);
+
+					if (object instanceof EObject) {
+						Resource eResource = ((EObject) object).eResource();
+
+						if (eResource != null) {
+							String lastSegment = eResource.getURI()
+								.lastSegment();
+
+							if (lastSegment != null) {
+								text += " - " + lastSegment; //$NON-NLS-1$
+							}
+						}
+					}
+
+					return text;
 				}
 
 				@Override
 				public Image getImage(Object object) {
-					return editLabelProvider.getImage(object);
+					return ExtendedImageRegistry.getInstance().getImage(
+						itemLabelProvider.getImage(object));
 				}
 			};
 		}
