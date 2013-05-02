@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2007 IBM Corporation and others.
+ * Copyright (c) 2006, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 251038
  *
- * $Id: StereotypeApplicationItemProvider.java,v 1.7 2007/04/05 02:36:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -37,13 +37,17 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ReflectiveItemProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.uml2.common.edit.provider.IItemQualifiedTextProvider;
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Extension;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
 public class StereotypeApplicationItemProvider
-		extends ReflectiveItemProvider {
+		extends ReflectiveItemProvider
+		implements IItemQualifiedTextProvider {
 
 	public StereotypeApplicationItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
@@ -149,8 +153,9 @@ public class StereotypeApplicationItemProvider
 
 	@Override
 	public void notifyChanged(Notification notification) {
-		fireNotifyChanged(new ViewerNotification(notification, UMLUtil
-			.getBaseElement((EObject) notification.getNotifier()), true, false));
+		fireNotifyChanged(new ViewerNotification(notification,
+			UMLUtil.getBaseElement((EObject) notification.getNotifier()), true,
+			false));
 	}
 
 	@Override
@@ -169,6 +174,56 @@ public class StereotypeApplicationItemProvider
 		}
 
 		return text;
+	}
+
+	public String getQualifiedText(Object object) {
+		EObject eObject = (EObject) object;
+
+		String qualifiedText = UML2Util.getQualifiedText(eObject,
+			new UMLUtil.QualifiedTextProvider() {
+
+				@Override
+				public String getFeatureText(
+						EStructuralFeature eStructuralFeature) {
+					return StereotypeApplicationItemProvider.this
+						.getFeatureText(eStructuralFeature);
+				}
+
+				@Override
+				public String getClassText(EObject eObject) {
+					Stereotype stereotype = UMLUtil.getStereotype(eObject);
+
+					if (stereotype != null) {
+						IItemLabelProvider itemLabelProvider = (IItemLabelProvider) adapterFactory
+							.adapt(stereotype, IItemLabelProvider.class);
+
+						if (itemLabelProvider instanceof IItemQualifiedTextProvider) {
+							return ((IItemQualifiedTextProvider) itemLabelProvider)
+								.getQualifiedText(stereotype);
+						}
+					}
+
+					return UMLUtil.getQualifiedText(eObject.eClass());
+				}
+
+			});
+
+		Element baseElement = UMLUtil.getBaseElement(eObject);
+
+		if (baseElement != null) {
+			IItemLabelProvider itemLabelProvider = (IItemLabelProvider) adapterFactory
+				.adapt(baseElement, IItemLabelProvider.class);
+
+			if (itemLabelProvider != null) {
+				qualifiedText += " -> " //$NON-NLS-1$
+					+ (itemLabelProvider instanceof IItemQualifiedTextProvider
+						? ((IItemQualifiedTextProvider) itemLabelProvider)
+							.getQualifiedText(baseElement)
+						: itemLabelProvider.getText(baseElement));
+			}
+		}
+
+		return qualifiedText;
 	}
 
 	@Override
