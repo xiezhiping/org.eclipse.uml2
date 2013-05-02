@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 212765
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765, 407028
  *
  */
 package org.eclipse.uml2.uml.tests;
@@ -601,11 +601,19 @@ public class PropertyTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Property#isAttribute(org.eclipse.uml2.uml.Property)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testIsAttribute__Property() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertFalse(getFixture().isAttribute(getFixture()));
+
+		org.eclipse.uml2.uml.Class class_ = UMLFactory.eINSTANCE.createClass();
+		class_.getOwnedAttributes().add(getFixture());
+
+		assertTrue(getFixture().isAttribute(getFixture()));
+
+		class_.getOwnedAttributes().remove(getFixture());
+
+		assertFalse(getFixture().isAttribute(getFixture()));
 	}
 
 	/**

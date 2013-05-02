@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 407028
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -478,8 +478,8 @@ public class PropertyOperations
 	 */
 	public static boolean isAttribute(Property property, Property p) {
 
-		for (EStructuralFeature.Setting nonNavigableInverseReference : getNonNavigableInverseReferences(p)) {
-			EObject eObject = nonNavigableInverseReference.getEObject();
+		for (EStructuralFeature.Setting inverseReference : getInverseReferences(p)) {
+			EObject eObject = inverseReference.getEObject();
 
 			if (eObject instanceof Classifier
 				&& ((Classifier) eObject).getAttributes().contains(p)) {
