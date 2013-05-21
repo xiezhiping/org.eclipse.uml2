@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833
  *
@@ -9455,6 +9455,26 @@ public class UMLUtil
 		return null;
 	}
 
+	protected static Element getBaseElement(EClass definition,
+			EObject stereotypeApplication) {
+
+		for (EStructuralFeature eStructuralFeature : definition
+			.getEAllStructuralFeatures()) {
+
+			if (eStructuralFeature.getName().startsWith(
+				Extension.METACLASS_ROLE_PREFIX)) {
+
+				Object value = stereotypeApplication.eGet(eStructuralFeature);
+
+				if (value instanceof Element) {
+					return (Element) value;
+				}
+			}
+		}
+
+		return null;
+	}
+
 	/**
 	 * Retrieves the base element for the specified stereotype application, i.e.
 	 * the element to which the stereotype is applied.
@@ -9469,21 +9489,7 @@ public class UMLUtil
 			EClass eClass = stereotypeApplication.eClass();
 
 			if (getStereotype(eClass, stereotypeApplication) != null) {
-
-				for (EStructuralFeature eStructuralFeature : eClass
-					.getEAllStructuralFeatures()) {
-
-					if (eStructuralFeature.getName().startsWith(
-						Extension.METACLASS_ROLE_PREFIX)) {
-
-						Object value = stereotypeApplication
-							.eGet(eStructuralFeature);
-
-						if (value instanceof Element) {
-							return (Element) value;
-						}
-					}
-				}
+				return getBaseElement(eClass, stereotypeApplication);
 			}
 		}
 

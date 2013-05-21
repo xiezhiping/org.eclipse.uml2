@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332, 247980
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658, 173565
+ *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658, 173565, 408612
  *   Christian W. Damus - 355218
  *
  */
@@ -2136,6 +2136,26 @@ public class UMLEditor
 	protected static class UMLPasteFromClipboardCommand
 			extends PasteFromClipboardCommand {
 
+		private static class PrivateUMLUtil
+				extends UMLUtil {
+
+			private static Stereotype getStereotype(
+					EObject stereotypeApplication, Object context) {
+				return UMLUtil.getStereotype(stereotypeApplication.eClass(),
+					context instanceof EObject
+						? (EObject) context
+						: null);
+			}
+
+			private static Element getBaseElement(
+					EObject stereotypeApplication, Object context) {
+				return getStereotype(stereotypeApplication, context) != null
+					? getBaseElement(stereotypeApplication.eClass(),
+						stereotypeApplication)
+					: null;
+			}
+		}
+
 		protected UMLPasteFromClipboardCommand(EditingDomain domain,
 				Object owner, Object feature, int index, boolean optimize) {
 			super(domain, owner, feature, index, optimize);
@@ -2205,12 +2225,13 @@ public class UMLEditor
 
 						if (object instanceof EObject) {
 							EObject stereotypeApplication = (EObject) object;
-							Stereotype stereotype = UMLUtil
-								.getStereotype(stereotypeApplication);
+							Stereotype stereotype = PrivateUMLUtil
+								.getStereotype(stereotypeApplication, owner);
 
 							if (stereotype != null) {
-								Element baseElement = UMLUtil
-									.getBaseElement(stereotypeApplication);
+								Element baseElement = PrivateUMLUtil
+									.getBaseElement(stereotypeApplication,
+										owner);
 
 								if (baseElement != null) {
 									EClass definition = stereotypeApplication
@@ -2249,8 +2270,10 @@ public class UMLEditor
 
 											for (EObject stereotypeApplication : stereotypeApplicationsToAdd) {
 												UMLUtil.StereotypeApplicationHelper.INSTANCE.addToContainmentList(
-													UMLUtil
-														.getBaseElement(stereotypeApplication),
+													PrivateUMLUtil
+														.getBaseElement(
+															stereotypeApplication,
+															owner),
 													stereotypeApplication);
 											}
 										}
@@ -2314,7 +2337,8 @@ public class UMLEditor
 				for (Object object : clipboard) {
 
 					if (object instanceof EObject
-						&& UMLUtil.getStereotype((EObject) object) != null) {
+						&& PrivateUMLUtil
+							.getStereotype((EObject) object, owner) != null) {
 
 						continue;
 					}
