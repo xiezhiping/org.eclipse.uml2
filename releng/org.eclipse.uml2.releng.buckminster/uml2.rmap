@@ -8,7 +8,7 @@
 	<locator pattern="^org\.eclipse\.emf(?:\..+)?$" searchPathRef="emf" />
 
 	<locator pattern="^org\.eclipse\.test$" searchPathRef="platform35" />
-	<locator pattern="^org\.eclipse\.ant\.optional\.junit$" searchPathRef="platform43" />
+	<locator pattern="^org\.eclipse\.ant\.optional\.junit$" searchPathRef="platform35" />
 
 	<locator searchPathRef="platform35" />
 
