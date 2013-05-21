@@ -105,7 +105,7 @@ public class DurationConstraintImpl
 	 */
 	public EList<Boolean> getFirstEvents() {
 		if (firstEvents == null) {
-			firstEvents = new EDataTypeUniqueEList<Boolean>(boolean.class,
+			firstEvents = new EDataTypeUniqueEList<Boolean>(Boolean.class,
 				this, UMLPackage.DURATION_CONSTRAINT__FIRST_EVENT);
 		}
 		return firstEvents;

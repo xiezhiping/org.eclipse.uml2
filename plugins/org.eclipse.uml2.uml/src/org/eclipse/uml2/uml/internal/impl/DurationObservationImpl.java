@@ -145,7 +145,7 @@ public class DurationObservationImpl
 	 */
 	public EList<Boolean> getFirstEvents() {
 		if (firstEvents == null) {
-			firstEvents = new EDataTypeUniqueEList<Boolean>(boolean.class,
+			firstEvents = new EDataTypeUniqueEList<Boolean>(Boolean.class,
 				this, UMLPackage.DURATION_OBSERVATION__FIRST_EVENT);
 		}
 		return firstEvents;
