@@ -7,8 +7,8 @@
 	<locator pattern="^org\.eclipse\.emf\.validation(?:\..+)?$" searchPathRef="emf.validation" />
 	<locator pattern="^org\.eclipse\.emf(?:\..+)?$" searchPathRef="emf" />
 
-	<locator pattern="^org\.eclipse\.test$" searchPathRef="platform35" />
-	<locator pattern="^org\.eclipse\.ant\.optional\.junit$" searchPathRef="platform35" />
+	<locator pattern="^org\.eclipse\.test$" searchPathRef="platform42" />
+	<locator pattern="^org\.eclipse\.ant\.optional\.junit$" searchPathRef="platform42" />
 
 	<locator searchPathRef="platform35" />
 
@@ -157,24 +157,24 @@
 		</provider>
 	</searchPath>
 
-	<searchPath name="platform43">
+	<searchPath name="platform42">
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=N))">
-			<uri format="{0}/eclipse/updates/4.3-I-builds">
+			<uri format="{0}/eclipse/updates/4.2-I-builds">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(!(|(build.type=N)(build.type=S)(build.type=R))))">
-			<uri format="{0}/eclipse/updates/4.3-I-builds">
+			<uri format="{0}/eclipse/updates/4.2-I-builds">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=S))">
-			<uri format="{0}/eclipse/updates/4.3milestones">
+			<uri format="{0}/eclipse/updates/4.2milestones">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=R))">
-			<uri format="{0}/eclipse/updates/4.3">
+			<uri format="{0}/eclipse/updates/4.2">
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
