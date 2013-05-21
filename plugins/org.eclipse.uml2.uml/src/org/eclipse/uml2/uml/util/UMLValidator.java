@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 204200
  *   Kenn Hussey - 286329, 320318, 323000, 323181, 354453
- *   Kenn Hussey (CEA) - 327039, 351774, 297216, 212765
+ *   Kenn Hussey (CEA) - 327039, 351774, 297216, 212765, 408610
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -26224,9 +26224,15 @@ public class UMLValidator
 			EAnnotation eAnnotation = eClassesIterator.next().getEAnnotation(
 				"duplicates"); //$NON-NLS-1$
 			if (eAnnotation != null) {
-				eAnnotation = eAnnotation.getEAnnotation(featureName);
-				if (eAnnotation != null) {
-					redefinitionDetail = eAnnotation.getDetails().get(key);
+				for (EObject eContents : eAnnotation.eContents()) {
+					if (eContents instanceof EAnnotation) {
+						EAnnotation nestedEAnnotation = (EAnnotation) eContents;
+						if (featureName.equals(nestedEAnnotation.getSource())) {
+							redefinitionDetail = nestedEAnnotation.getDetails()
+								.get(key);
+							break;
+						}
+					}
 				}
 			}
 		}

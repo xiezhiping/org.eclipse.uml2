@@ -15,10 +15,17 @@
 			<%=genModel.getImportedName("org.eclipse.emf.ecore.EAnnotation")%> eAnnotation = eClassesIterator.next().getEAnnotation("duplicates");<%=genModel.getNonNLS()%>
 			if (eAnnotation != null)
 			{
-				eAnnotation = eAnnotation.getEAnnotation(featureName);
-				if (eAnnotation != null)
+				for (EObject eContents : eAnnotation.eContents())
 				{
-					redefinitionDetail = eAnnotation.getDetails().get(key);
+					if (eContents instanceof <%=genModel.getImportedName("org.eclipse.emf.ecore.EAnnotation")%>)
+					{
+						<%=genModel.getImportedName("org.eclipse.emf.ecore.EAnnotation")%> nestedEAnnotation = (<%=genModel.getImportedName("org.eclipse.emf.ecore.EAnnotation")%>) eContents;
+						if (featureName.equals(nestedEAnnotation.getSource()))
+						{
+							redefinitionDetail = nestedEAnnotation.getDetails().get(key);
+							break;
+						}
+					}
 				}
 			}
 		}
