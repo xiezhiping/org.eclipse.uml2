@@ -16,10 +16,10 @@ javadocExclusions="<exclude name=\"**/impl/**\"/> <exclude name=\"**/internal/**
 
 ##########################################################################
 
-debug=0; if [ $debug -gt 0 ]; then echo "[antJd] debug: "$debug; fi
+debug=1; if [ $debug -gt 0 ]; then echo "[antJd] debug: "$debug; fi
 
 if [ "x"$ANT_HOME = "x" ]; then export ANT_HOME=/opt/apache-ant-1.6; fi
-if [ "x"$JAVA_HOME = "x" ]; then export JAVA_HOME=/opt/ibm-java2-1.4; fi
+if [ "x"$JAVA_HOME = "x" ]; then export JAVA_HOME=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home; fi
 export PATH=${PATH}:${ANT_HOME}/bin
 
 # current directory - all but the name of this script, no trailing slash
@@ -42,7 +42,7 @@ if [ $debug -gt 0 ]; then echo "[antJd] destDir: "$destDir; fi
 hasToken=`grep -c "@plugin@" $antScript".template"`;
 
 # Finds plugins in the Workspace:
-pluginDirs=`find $pluginPath -name "${pluginName}*" -maxdepth 1 -type d -printf '%T@ %p\n' | sort -n | cut -f2 -d' '`; 
+pluginDirs=`find $pluginPath -name "${pluginName}*" -maxdepth 1 -type d -print | sort -n | cut -f2 -d' '`; 
 
 if [ $hasToken -gt 0  ]; then
 	for pluginDir in $pluginDirs; do
@@ -72,7 +72,7 @@ if [ $hasToken -gt 0  ]; then
 fi
 
 # Finds plugins in the Workspace:
-pluginDirs=`find $pluginPath -name "${pluginName}*" -maxdepth 1 -type d -printf '%T@ %p\n' | sort -n | cut -f2 -d' '`; 
+pluginDirs=`find $pluginPath -name "${pluginName}*" -maxdepth 1 -type d -print | sort -n | cut -f2 -d' '`; 
 if [ $debug -gt 0 ]; then 
 	echo "[antJd] pluginDirs:"; 
 	for pluginDir in $pluginDirs; do echo "[antJd]   "$pluginDir; done
@@ -81,7 +81,7 @@ fi
 ### TODO?: missing emf/sdo/xsd plugins in $eclipseDir - need to copy them over or reference source so that all classes/packages (and thus @links) can be resolved
 
 # All the jars in the plugins directory
-classpath="."`find $eclipseDir/plugins -name "*.jar" -printf ":%p"`; if [ $debug -gt 0 ]; then echo "[antJd] classpath: "$classpath; fi
+classpath="."`find $eclipseDir/plugins -name "*.jar" -print | sed -e 's/^/:/' -e 's/\n//g'`; if [ $debug -gt 0 ]; then echo "[antJd] classpath: "$classpath; fi
 
 # Calculates the packagesets and the calls to copyDocFiles
 packagesets="";
@@ -105,7 +105,7 @@ if [ $debug -gt 0 ]; then
 fi
 	
 # Finds the proper org.eclipse.platform.doc.isv jar
-docjar=`find $eclipseDir/plugins/ -name "org.eclipse.platform.doc.isv*.jar" -printf "%f"`; if [ $debug -gt 1 ]; then echo "[antJd] docjar: "$docjar; fi
+docjar=`find $eclipseDir/plugins/ -name "org.eclipse.platform.doc.isv*.jar" -print`; if [ $debug -gt 1 ]; then echo "[antJd] docjar: "$docjar; fi
 
 # do replacements in template
 if [ $debug -gt 1 ]; then echo "[antJd] Replace @packagesets@ in the template ..."; fi

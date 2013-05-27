@@ -1,0 +1,9 @@
+1. Download and unzip latest Eclipse SDK into, e.g., /Applications/Eclipse/UML2_Javadoc.
+2. Download and unzip EMF, XSD, and EMF Validation into, e.g., /Applications/Eclipse/UML2_Javadoc/eclipse/plugins.
+3. Copy org.eclipse.uml2.doc into, e.g., /Applications/Eclipse/UML2_Javadoc/eclipse/workspace.
+4. Copy UML2 plugins (org.eclipse.uml2/plugins/*) into, e.g., /Applications/Eclipse/UML2_Javadoc/eclipse/workspace.
+5. From a command prompt cd to, e.g., /Applications/Eclipse/UML2_Javadoc/eclipse/workspace/org.eclipse.uml2.doc/build.
+6. Run, e.g., sh antJavadoc.sh /Applications/Eclipse/UML2_Javadoc/eclipse > javadoc.out.
+7. Change directory to ../references.
+8. Run, e.g., tar -czf uml2_javadoc.tar.gz javadoc/.
+9. Run, e.g., scp uml2_javadoc.tar.gz khussey@build.eclipse.org:~khussey/uml2_javadoc.tar.gz.

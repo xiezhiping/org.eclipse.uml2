@@ -39,7 +39,7 @@
 			overview="${overview}"
 
 			windowtitle="${windowTitle}"
-			footer="Copyright 2003, 2007 IBM Corporation and others.&lt;br&gt; All Rights Reserved."
+			footer="Copyright 2003, 2013 IBM Corporation, CEA, and others.&lt;br&gt; All Rights Reserved."
 
 			access="protected" 
 			additionalparam="-breakiterator -tag model:X -tag generated:X -tag ordered:X"
@@ -56,9 +56,9 @@
 			splitindex="true" 
 			use="true" 
 			version="true"> 
-				<arg value="-J-Xmx180m"/>
+				<arg value="-J-Xmx512m"/>
 				
-				<link offline="true" href="http://java.sun.com/j2se/1.4/docs/api/" packagelistLoc="${javaHome}/docs/api/"/>
+				<link offline="true" href="http://docs.oracle.com/javase/1.5.0/docs/api/" packagelistLoc="${javaHome}/docs/api/"/>
 				<!-- TODO Enable link to platform documentation -->
 				<!-- <link offline="true" href="/help/topic/org.eclipse.platform.doc.isv/reference/api/" packagelistLoc="${javadoc.link.location}/platform/reference/api/"/> -->
 				
@@ -75,12 +75,18 @@
 				<group title="Ecore Code Generation"    packages="org.eclipse.uml2.codegen.ecore:org.eclipse.uml2.codegen.ecore.genmodel:org.eclipse.uml2.codegen.ecore.genmodel.generator:org.eclipse.uml2.codegen.ecore.genmodel.util"/>
 				<group title="Ecore Code Generation UI" packages="org.eclipse.uml2.codegen.ecore.genmodel.provider:org.eclipse.uml2.codegen.ecore.ui"/>
 
-				<group title="Common"                   packages="org.eclipse.uml2.common.util"/>
+				<group title="Common"                   packages="org.eclipse.uml2.common:org.eclipse.uml2.common.util"/>
 				<group title="Common Edit Support"      packages="org.eclipse.uml2.common.edit.command:org.eclipse.uml2.common.edit.domain:org.eclipse.uml2.common.edit.provider"/>
 
-				<group title="UML Model"                packages="org.eclipse.uml2.uml:org.eclipse.uml2.uml.resource:org.eclipse.uml2.uml.util"/>
+				<group title="Types"                    packages="org.eclipse.uml2.types"/>
+
+				<group title="UML Model"                packages="org.eclipse.uml2.uml:org.eclipse.uml2.uml.resource:org.eclipse.uml2.uml.util:org.eclipse.uml2.uml.validation"/>
+				<group title="UML Resources"            packages="org.eclipse.uml2.uml.resources:org.eclipse.uml2.uml.resources.util"/>
 				<group title="UML Edit Support"         packages="org.eclipse.uml2.uml.edit:org.eclipse.uml2.uml.edit.providers"/>
 				<group title="UML Editor"               packages="org.eclipse.uml2.uml.editor:org.eclipse.uml2.uml.editor.actions:org.eclipse.uml2.uml.editor.dialogs:org.eclipse.uml2.uml.editor.presentation"/>
+
+				<group title="UML Standard L2 Profile"  packages="org.eclipse.uml2.uml.profile.l2:org.eclipse.uml2.uml.profile.l2.util"/>
+				<group title="UML Standard L3 Profile"  packages="org.eclipse.uml2.uml.profile.l3:org.eclipse.uml2.uml.profile.l3.util"/>
 
 				<group title="UML Importer for EMF"     packages="org.eclipse.uml2.uml.ecore.importer:org.eclipse.uml2.uml.ecore.importer.ui"/>
 				<group title="UML Exporter for EMF"     packages="org.eclipse.uml2.uml.ecore.exporter:org.eclipse.uml2.uml.ecore.exporter.ui"/>
