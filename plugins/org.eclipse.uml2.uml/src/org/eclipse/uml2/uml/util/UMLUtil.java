@@ -9428,11 +9428,23 @@ public class UMLUtil
 	 * @return The stereotype.
 	 */
 	public static Stereotype getStereotype(EObject stereotypeApplication) {
-		return stereotypeApplication == null
-			|| stereotypeApplication instanceof Element
-			? null
-			: getStereotype(stereotypeApplication.eClass(),
-				stereotypeApplication);
+
+		if (stereotypeApplication != null) {
+			EClass eClass = stereotypeApplication.eClass();
+
+			for (EReference eReference : eClass.getEAllReferences()) {
+
+				if (eReference.getName().startsWith(
+					Extension.METACLASS_ROLE_PREFIX)
+					&& UMLPackage.Literals.ELEMENT.isSuperTypeOf(eReference
+						.getEReferenceType())) {
+
+					return getStereotype(eClass, stereotypeApplication);
+				}
+			}
+		}
+
+		return null;
 	}
 
 	/**
@@ -9486,13 +9498,14 @@ public class UMLUtil
 	 */
 	public static Element getBaseElement(EObject stereotypeApplication) {
 
-		if (stereotypeApplication != null
-			&& !(stereotypeApplication instanceof Element)) {
-
+		if (stereotypeApplication != null) {
 			EClass eClass = stereotypeApplication.eClass();
+			Element baseElement = getBaseElement(eClass, stereotypeApplication);
 
-			if (getStereotype(eClass, stereotypeApplication) != null) {
-				return getBaseElement(eClass, stereotypeApplication);
+			if (baseElement != null
+				&& getStereotype(eClass, stereotypeApplication) != null) {
+
+				return baseElement;
 			}
 		}
 
