@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,17 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
+ *   Kenn Hussey (CEA) - 414745
  *
- * $Id: DerivedEObjectEList.java,v 1.14 2007/10/22 13:27:56 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
 import java.util.RandomAccess;
+import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.NotificationImpl;
@@ -365,7 +367,7 @@ public class DerivedEObjectEList<E>
 	public int size() {
 
 		if (sourceFeatureIDs != null) {
-			EList<Object> values = new UniqueEList.FastCompare<Object>();
+			Set<Object> values = new HashSet<Object>();
 
 			for (int i = 0; i < sourceFeatureIDs.length; i++) {
 				int sourceFeatureID = sourceFeatureIDs[i];
