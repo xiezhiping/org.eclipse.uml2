@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 208016, 247980
  *   Kenn Hussey - 286329
- *   Kenn Hussey (CEA) - 351777, 397324
+ *   Kenn Hussey (CEA) - 351777, 397324, 414970
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
@@ -1354,6 +1354,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL__DECORATION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__DECORATION;
+
+	/**
+	 * The feature id for the '<em><b>Style Providers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__STYLE_PROVIDERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__STYLE_PROVIDERS;
 
 	/**
 	 * The feature id for the '<em><b>Factory Methods</b></em>' attribute.
