@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332, 247980
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658, 173565, 408612
+ *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658, 173565, 408612, 414970
  *   Christian W. Damus - 355218
  *
  */
@@ -2029,7 +2029,7 @@ public class UMLEditor
 			for (EObject stereotypeApplication : ((Element) eObject)
 				.getStereotypeApplications()) {
 
-				allStereotypeApplications.add((O)stereotypeApplication);
+				allStereotypeApplications.add((O) stereotypeApplication);
 
 				collectAllStereotypeApplications(stereotypeApplication,
 					allStereotypeApplications);
@@ -2046,7 +2046,7 @@ public class UMLEditor
 				for (EObject stereotypeApplication : ((Element) content)
 					.getStereotypeApplications()) {
 
-					allStereotypeApplications.add((O)stereotypeApplication);
+					allStereotypeApplications.add((O) stereotypeApplication);
 
 					collectAllStereotypeApplications(stereotypeApplication,
 						allStereotypeApplications);
