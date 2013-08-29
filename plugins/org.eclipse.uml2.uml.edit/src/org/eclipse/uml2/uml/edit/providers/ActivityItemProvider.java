@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 416121
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -264,6 +264,7 @@ public class ActivityItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(UMLPackage.Literals.ACTIVITY__OWNED_GROUP);
+			childrenFeatures.add(UMLPackage.Literals.ACTIVITY__EDGE);
 			childrenFeatures.add(UMLPackage.Literals.ACTIVITY__VARIABLE);
 			childrenFeatures.add(UMLPackage.Literals.ACTIVITY__OWNED_NODE);
 			childrenFeatures.add(UMLPackage.Literals.ACTIVITY__STRUCTURED_NODE);
@@ -331,7 +332,6 @@ public class ActivityItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Activity.class)) {
-			case UMLPackage.ACTIVITY__EDGE :
 			case UMLPackage.ACTIVITY__GROUP :
 			case UMLPackage.ACTIVITY__IS_READ_ONLY :
 			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
@@ -341,6 +341,7 @@ public class ActivityItemProvider
 					notification.getNotifier(), false, true));
 				return;
 			case UMLPackage.ACTIVITY__OWNED_GROUP :
+			case UMLPackage.ACTIVITY__EDGE :
 			case UMLPackage.ACTIVITY__VARIABLE :
 			case UMLPackage.ACTIVITY__OWNED_NODE :
 			case UMLPackage.ACTIVITY__STRUCTURED_NODE :

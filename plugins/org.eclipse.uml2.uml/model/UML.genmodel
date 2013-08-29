@@ -2482,8 +2482,8 @@
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Activity">
       <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
           createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Activity/ownedGroup"/>
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="true" propertySortChoices="true"
-          ecoreFeature="ecore:EReference UML.ecore#//Activity/edge">
+      <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
+          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Activity/edge">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
