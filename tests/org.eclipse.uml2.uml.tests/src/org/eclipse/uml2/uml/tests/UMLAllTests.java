@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Christian W. Damus (CEA) - 373643, 392833
+ *   Christian W. Damus (CEA) - 373643, 392833, 414572
  *   Christian W. Damus - 388240
  *
  */
@@ -20,7 +20,6 @@ import org.eclipse.uml2.uml.validation.tests.UMLValidationTests;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
-
 import junit.textui.TestRunner;
 
 /**
@@ -35,7 +34,7 @@ public class UMLAllTests
 	static {
 		if (!UMLPlugin.IS_ECLIPSE_RUNNING) {
 			// ensure that EMF knows how to create UML resources
-			UMLResourcesUtil.init(null);
+			UMLResourcesUtil.initStaticSingletons();
 		}
 	}
 

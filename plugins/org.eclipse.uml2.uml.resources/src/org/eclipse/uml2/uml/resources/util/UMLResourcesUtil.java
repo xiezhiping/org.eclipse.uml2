@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, 2013 CEA and others.
+ * Copyright (c) 2012, 2013 CEA, Obeo, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   CEA - initial API and implementation
  *   Kenn Hussey (CEA) - 389542, 399544
- *
+ *   Mikael Barbero (Obeo) - 414572
  */
 package org.eclipse.uml2.uml.resources.util;
 
@@ -122,6 +122,19 @@ public class UMLResourcesUtil
 		RootXMLContentHandlerImpl.XMI_KIND,
 		CMOF2UMLResource.CMOF_2_4_1_METAMODEL_NS_URI, null);
 
+	public static void initStaticSingletons() {
+		init(EPackage.Registry.INSTANCE);
+		initEPackageNsURIToProfileLocationMap(UMLPlugin.getEPackageNsURIToProfileLocationMap());
+		initURIConverterURIMap(URIConverter.URI_MAP);
+		init(ContentHandler.Registry.INSTANCE);
+		init(Resource.Factory.Registry.INSTANCE);
+	}
+
+	public static ResourceSet initResourceSetAndStaticSingletons(ResourceSet resourceSet) {
+		initStaticSingletons();
+		return UMLUtil.init(resourceSet);
+	}
+	
 	/**
 	 * Initializes the registries for the specified resource set (and/or the
 	 * global registries) with the registrations needed to work with UML2
@@ -133,70 +146,59 @@ public class UMLResourcesUtil
 	 * @return The resource set (or <code>null</code>).
 	 * 
 	 * @since 4.0
+	 * @deprecated 
+	 * @see #initResourceSetAndStaticSingletons()
 	 */
+	@Deprecated
 	public static ResourceSet init(ResourceSet resourceSet) {
-		EPackage.Registry packageRegistry = EPackage.Registry.INSTANCE;
+		return initResourceSetAndStaticSingletons(resourceSet);
+	}
 
+	public static void init(EPackage.Registry packageRegistry) {
 		packageRegistry.put(EcorePackage.eNS_URI, EcorePackage.eINSTANCE);
-
+	
 		packageRegistry.put(TypesPackage.eNS_URI, TypesPackage.eINSTANCE);
-
+	
 		packageRegistry.put(UML2_UML_PACKAGE_2_0_NS_URI, UMLPackage.eINSTANCE);
-
+	
 		packageRegistry.put(UML212UMLResource.UML_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
 		packageRegistry.put(UML302UMLResource.UML_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
-
+	
 		packageRegistry.put(UMLPackage.eNS_URI, UMLPackage.eINSTANCE);
-
+	
 		packageRegistry.put(UML302UMLResource.STANDARD_PROFILE_NS_URI,
 			L2Package.eINSTANCE);
-
+	
 		packageRegistry.put(L2Package.eNS_URI, L2Package.eINSTANCE);
 		packageRegistry.put(L3Package.eNS_URI, L3Package.eINSTANCE);
+	}
 
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(
-			UMLResource.FILE_EXTENSION, UMLResource.Factory.INSTANCE);
+	public static void init(Resource.Factory.Registry resourceFactoryRegistry) {
+		Map<String, Object> extensionToFactoryMap = resourceFactoryRegistry.getExtensionToFactoryMap();
+		extensionToFactoryMap.put(UMLResource.FILE_EXTENSION, UMLResource.Factory.INSTANCE);
+		
+		Map<String, Object> contentTypeToFactoryMap = resourceFactoryRegistry.getContentTypeToFactoryMap();
+		contentTypeToFactoryMap.put(UMLResource.UML_CONTENT_TYPE_IDENTIFIER, UMLResource.Factory.INSTANCE);
+	}
 
-		Map<String, URI> ePackageNsURIToProfileLocationMap = UMLPlugin
-			.getEPackageNsURIToProfileLocationMap();
-
-		ePackageNsURIToProfileLocationMap.put(L2Package.eNS_URI,
-			URI.createURI("pathmap://UML_PROFILES/StandardL2.profile.uml#_0")); //$NON-NLS-1$
-		ePackageNsURIToProfileLocationMap.put(L3Package.eNS_URI,
-			URI.createURI("pathmap://UML_PROFILES/StandardL3.profile.uml#_0")); //$NON-NLS-1$
-
-		ePackageNsURIToProfileLocationMap.put(UMLResource.ECORE_PROFILE_NS_URI,
-			URI.createURI("pathmap://UML_PROFILES/Ecore.profile.uml#_0")); //$NON-NLS-1$
-
-		Map<URI, URI> uriMap = URIConverter.URI_MAP;
-
-		uriMap.put(URI.createURI(UMLResource.LIBRARIES_PATHMAP), URI
-			.createPlatformPluginURI(
-				"/org.eclipse.uml2.uml.resources/libraries/", true)); //$NON-NLS-1$
-		uriMap.put(URI.createURI(UMLResource.METAMODELS_PATHMAP), URI
-			.createPlatformPluginURI(
-				"/org.eclipse.uml2.uml.resources/metamodels/", true)); //$NON-NLS-1$
-		uriMap.put(URI.createURI(UMLResource.PROFILES_PATHMAP), URI
-			.createPlatformPluginURI(
-				"/org.eclipse.uml2.uml.resources/profiles/", true)); //$NON-NLS-1$
-
-		List<ContentHandler> contentHandlers = ContentHandler.Registry.INSTANCE
+	public static void init(ContentHandler.Registry contentHandlerRegistry) {
+		List<ContentHandler> contentHandlers = contentHandlerRegistry
 			.get(ContentHandler.Registry.LOW_PRIORITY);
 
 		if (contentHandlers == null
 			|| !contentHandlers.contains(XMI_CONTENT_HANDLER)) {
 
-			ContentHandler.Registry.INSTANCE.put(
+			contentHandlerRegistry.put(
 				ContentHandler.Registry.LOW_PRIORITY, XMI_CONTENT_HANDLER);
 		}
 
-		contentHandlers = ContentHandler.Registry.INSTANCE
+		contentHandlers = contentHandlerRegistry
 			.get(ContentHandler.Registry.NORMAL_PRIORITY);
 
 		if (contentHandlers == null) {
-			ContentHandler.Registry.INSTANCE.put(
+			contentHandlerRegistry.put(
 				ContentHandler.Registry.NORMAL_PRIORITY,
 				contentHandlers = new ArrayList<ContentHandler>());
 		}
@@ -252,12 +254,28 @@ public class UMLResourcesUtil
 		if (!contentHandlers.contains(CMOF_2_0_CONTENT_HANDLER)) {
 			contentHandlers.add(CMOF_2_0_CONTENT_HANDLER);
 		}
-
-		Resource.Factory.Registry.INSTANCE.getContentTypeToFactoryMap().put(
-			UMLResource.UML_CONTENT_TYPE_IDENTIFIER,
-			UMLResource.Factory.INSTANCE);
-
-		return UMLUtil.init(resourceSet);
 	}
 
+	public static void initURIConverterURIMap(Map<URI, URI> uriMap) {
+		uriMap.put(URI.createURI(UMLResource.LIBRARIES_PATHMAP), URI
+			.createPlatformPluginURI(
+				"/org.eclipse.uml2.uml.resources/libraries/", true)); //$NON-NLS-1$
+		uriMap.put(URI.createURI(UMLResource.METAMODELS_PATHMAP), URI
+			.createPlatformPluginURI(
+				"/org.eclipse.uml2.uml.resources/metamodels/", true)); //$NON-NLS-1$
+		uriMap.put(URI.createURI(UMLResource.PROFILES_PATHMAP), URI
+			.createPlatformPluginURI(
+				"/org.eclipse.uml2.uml.resources/profiles/", true)); //$NON-NLS-1$
+	}
+
+	public static void initEPackageNsURIToProfileLocationMap(
+			Map<String, URI> ePackageNsURIToProfileLocationMap) {
+		ePackageNsURIToProfileLocationMap.put(L2Package.eNS_URI,
+			URI.createURI("pathmap://UML_PROFILES/StandardL2.profile.uml#_0")); //$NON-NLS-1$
+		ePackageNsURIToProfileLocationMap.put(L3Package.eNS_URI,
+			URI.createURI("pathmap://UML_PROFILES/StandardL3.profile.uml#_0")); //$NON-NLS-1$
+
+		ePackageNsURIToProfileLocationMap.put(UMLResource.ECORE_PROFILE_NS_URI,
+			URI.createURI("pathmap://UML_PROFILES/Ecore.profile.uml#_0")); //$NON-NLS-1$
+	}
 }
