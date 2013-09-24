@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
-  <uml:Model xmi:id="_SeWiQMX_EduPJbEsMYXjUQ" name="Ecore">
+  <uml:Model xmi:id="_SeWiQMX_EduPJbEsMYXjUQ" name="Ecore" URI="http://www.eclipse.org/emf/2002/Ecore">
     <packagedElement xmi:type="uml:Class" xmi:id="_SeWj6cX_EduPJbEsMYXjUQ" name="EAnnotation">
       <eAnnotations xmi:id="_SeWj6sX_EduPJbEsMYXjUQ" source="http://www.eclipse.org/emf/2002/Ecore">
         <details xmi:id="_SeWj68X_EduPJbEsMYXjUQ" key="constraints" value="WellFormedSourceURI"/>
@@ -891,7 +891,7 @@
       <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EPackage xmi:id="_uuJ5sMYcEduPJbEsMYXjUQ" base_Package="_SeWiQMX_EduPJbEsMYXjUQ" packageName="ecore" nsPrefix="ecore" nsURI="http://www.eclipse.org/emf/2002/Ecore"/>
+  <Ecore:EPackage xmi:id="_uuJ5sMYcEduPJbEsMYXjUQ" base_Package="_SeWiQMX_EduPJbEsMYXjUQ" packageName="ecore" nsPrefix="ecore"/>
   <Ecore:EAttribute xmi:id="_uuJ5tMYcEduPJbEsMYXjUQ" base_Property="_SeWiRcX_EduPJbEsMYXjUQ" attributeName="iD"/>
   <Ecore:EReference xmi:id="_uuJ5tcYcEduPJbEsMYXjUQ" isTransient="true" isVolatile="true" base_Property="_SeWiR8X_EduPJbEsMYXjUQ"/>
   <Ecore:EReference xmi:id="_uumlqsYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_SeWiSsX_EduPJbEsMYXjUQ" isResolveProxies="false"/>

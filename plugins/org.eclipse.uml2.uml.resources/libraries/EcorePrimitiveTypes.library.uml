@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:l2="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML">
-  <uml:Model xmi:id="_0" name="EcorePrimitiveTypes">
+  <uml:Model xmi:id="_0" name="EcorePrimitiveTypes" URI="http://www.eclipse.org/uml2/4.2.0/EcorePrimitiveTypes">
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EBigDecimal" name="EBigDecimal"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EBigInteger" name="EBigInteger"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EBoolean" name="EBoolean"/>
