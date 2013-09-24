@@ -13,9 +13,8 @@
  */
 package org.eclipse.uml2.uml.tests;
 
-import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.bug.tests.UMLBugTests;
-import org.eclipse.uml2.uml.resources.util.UMLResourcesUtil;
+import org.eclipse.uml2.uml.tests.util.StandaloneSupport;
 import org.eclipse.uml2.uml.validation.tests.UMLValidationTests;
 
 import junit.framework.Test;
@@ -32,9 +31,9 @@ public class UMLAllTests
 		extends TestSuite {
 
 	static {
-		if (!UMLPlugin.IS_ECLIPSE_RUNNING) {
+		if (StandaloneSupport.isStandalone()) {
 			// ensure that EMF knows how to create UML resources
-			UMLResourcesUtil.initStaticSingletons();
+			StandaloneSupport.initGlobals();
 		}
 	}
 
