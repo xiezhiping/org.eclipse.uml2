@@ -7,6 +7,7 @@
  *
  * Contributors:
  *     E.D.Willink (CEA LIST) - initial API and implementation
+ *     Christian W. Damus (CEA) - 397508
  */
 package org.eclipse.uml2.uml.validation;
 
@@ -23,15 +24,34 @@ import org.eclipse.uml2.uml.Element;
 /**
  * A UMLTraversalStrategy extends a standard recursive traversal to insert
  * stereotype applications following each each stereotyped element.
+ * 
+ * @since 4.2
  */
 public class UMLTraversalStrategy
 		implements ITraversalStrategy {
 
-	private final ITraversalStrategy delegate = new ITraversalStrategy.Recursive();
+	private final ITraversalStrategy delegate;
 
-	private Iterator<EObject> stereotypeApplications = null; // Non-null if
-																// stereotypeApplications
-																// maybe pending
+	// non-null if stereotypeApplications may be pending
+	private Iterator<EObject> stereotypeApplications = null;
+
+	/**
+	 * Initializes me with the default recursive strategy as delegate.
+	 */
+	public UMLTraversalStrategy() {
+		this(new ITraversalStrategy.Recursive());
+	}
+
+	/**
+	 * Initializes me with the specified traversal {@code delegate}. I insert
+	 * stereotype applications following each element that it produces.
+	 * 
+	 * @param delegate
+	 *            the traversal strategy to decorate
+	 */
+	public UMLTraversalStrategy(ITraversalStrategy delegate) {
+		this.delegate = delegate;
+	}
 
 	public void elementValidated(EObject element, IStatus status) {
 		delegate.elementValidated(element, status);

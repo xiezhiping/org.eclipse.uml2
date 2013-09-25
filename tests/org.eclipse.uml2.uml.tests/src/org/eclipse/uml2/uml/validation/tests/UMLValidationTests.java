@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012 CEA and others.
+ * Copyright (c) 2012, 2013 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,10 +7,12 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
+ *   Christian W. Damus (CEA) - 397508
  */
 package org.eclipse.uml2.uml.validation.tests;
 
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.uml2.uml.tests.util.StandaloneSupport;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -36,10 +38,10 @@ public class UMLValidationTests
 
 		// these tests require an Eclipse instance
 		try {
-			if (new EclipseHelper().isEclipseRunning()) {
-				result = new UMLValidationTests(
-					"UML Validation Constraint Provider Tests"); //$NON-NLS-1$
+			if (!StandaloneSupport.isStandalone()) {
+				result = new UMLValidationTests("UML Validation Tests"); //$NON-NLS-1$
 				result.addTest(DelegatingConstraintProviderTest.suite());
+				result.addTest(UMLTraversalStrategyTest.suite());
 			} else {
 				result = new TestSuite(
 					"<UML validation tests require Eclipse to be running>"); //$NON-NLS-1$
