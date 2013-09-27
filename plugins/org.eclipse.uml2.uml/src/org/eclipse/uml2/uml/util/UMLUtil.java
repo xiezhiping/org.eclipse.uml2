@@ -12,7 +12,7 @@
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
  *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731
  *   Yann Tanguy (CEA) - 350402
- *   Christian W. Damus (CEA) - 392833
+ *   Christian W. Damus (CEA) - 392833, 251963
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -5915,6 +5915,65 @@ public class UMLUtil
 			}
 		}
 
+		/**
+		 * Processes the capability trace information (if any) in the root
+		 * packages' UML annotations to generate merge trace statements in the
+		 * generator documentation comments of Ecore API elements.
+		 * 
+		 * @since 4.2
+		 */
+		protected void processAPITraces(Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
+
+			for (org.eclipse.uml2.uml.Package converted : packages) {
+				EAnnotation annotation = getEAnnotation(converted,
+					UML2_UML_PACKAGE_2_0_NS_URI, false);
+				if (annotation != null) {
+					for (EAnnotation subAnnotation : annotation
+						.getEAnnotations()) {
+
+						if (isCapabilityTraceAnnotation(subAnnotation)) {
+							String capName = subAnnotation.getSource();
+
+							for (EObject next : subAnnotation.getReferences()) {
+								// an API element is a classifier in the package
+								// (neither nested nor a parametered element) or
+								// a feature of a class
+								if (((next instanceof Classifier) && (next
+									.eContainer() instanceof org.eclipse.uml2.uml.Package))
+									|| ((next instanceof Operation || next instanceof Property) && (next
+										.eContainer() instanceof org.eclipse.uml2.uml.Class))) {
+
+									EModelElement ecore = elementToEModelElementMap
+										.get(next);
+									if (ecore != null) {
+										// add the trace comment
+										addDocumentation(ecore, String.format(
+											"<p>Merged from package %s.</p>", //$NON-NLS-1$
+											capName));
+									}
+								}
+							}
+						}
+					}
+				}
+
+			}
+		}
+
+		private boolean isCapabilityTraceAnnotation(EAnnotation annotation) {
+			EModelElement annotated = annotation.getEModelElement();
+			while (annotated instanceof EAnnotation) {
+				annotated = ((EAnnotation) annotated).getEModelElement();
+			}
+
+			return (annotated instanceof org.eclipse.uml2.uml.Package)
+				&& (annotated.eContainer() == null)
+				&& !annotation.getReferences().isEmpty()
+				&& (EcoreUtil.getRootContainer(annotation.getReferences()
+					.get(0)) == annotated);
+		}
+
 		protected void processOptions(Map<String, String> options,
 				DiagnosticChain diagnostics, Map<Object, Object> context) {
 
@@ -6005,6 +6064,8 @@ public class UMLUtil
 			if (options != null) {
 				processOptions(options, diagnostics, context);
 			}
+
+			processAPITraces(options, diagnostics, context);
 
 			return getRootContainers(EcoreUtil.<EObject> getObjectsByType(
 				elementToEModelElementMap.values(),
