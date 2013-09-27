@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *   Christian W. Damus (CEA) - Adapted FeatureEditorDialog from EMF for bug 326915
+ *                            - 268444
  *
  */
 package org.eclipse.uml2.uml.editor.dialogs;
@@ -49,6 +50,7 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -88,6 +90,10 @@ public class ChoicesDialog<T>
 
 	protected List<T> choiceOfValues;
 
+	protected TableViewer choiceTableViewer;
+
+	protected TableViewer valuesTableViewer;
+
 	protected EList<T> result;
 
 	protected final IChoicesDialogDelegate<T> delegate;
@@ -100,14 +106,18 @@ public class ChoicesDialog<T>
 		setShellStyle(getShellStyle() | SWT.RESIZE | SWT.MAX);
 		this.object = object;
 		this.displayName = displayName;
-		this.choiceOfValues = new java.util.ArrayList<T>(
-			delegate.getChoiceOfValues());
 		this.delegate = delegate;
+
+		if (delegate instanceof AbstractChoicesDialogDelegate<?>) {
+			((AbstractChoicesDialogDelegate<T>) delegate).setDialog(this);
+		}
 
 		AdapterFactory adapterFactory = new ComposedAdapterFactory(
 			Collections.<AdapterFactory> emptyList());
 		values = new ItemProvider(adapterFactory, Collections.EMPTY_LIST);
 		contentProvider = new AdapterFactoryContentProvider(adapterFactory);
+
+		updateChoiceOfValues();
 	}
 
 	@Override
@@ -120,6 +130,26 @@ public class ChoicesDialog<T>
 			new Object[]{displayName,
 				labelProvider.getText(object)}));
 		shell.setImage(labelProvider.getImage(object));
+	}
+
+	/**
+	 * Updates me to reflect a change in the choice of values provided by my
+	 * delegate.
+	 */
+	public void updateChoiceOfValues() {
+		choiceOfValues = new java.util.ArrayList<T>(
+			delegate.getChoiceOfValues());
+		if (values != null) {
+			// anything that's no longer a choice must be removed
+			values.getChildren().retainAll(choiceOfValues);
+		}
+
+		if (choiceTableViewer != null) {
+			choiceTableViewer.setInput(new ItemProvider(choiceOfValues));
+		}
+		if (valuesTableViewer != null) {
+			valuesTableViewer.refresh();
+		}
 	}
 
 	@Override
@@ -181,7 +211,7 @@ public class ChoicesDialog<T>
 		choiceTableGridData.grabExcessVerticalSpace = true;
 		choiceTable.setLayoutData(choiceTableGridData);
 
-		final TableViewer choiceTableViewer = new TableViewer(choiceTable);
+		choiceTableViewer = new TableViewer(choiceTable);
 		choiceTableViewer.setContentProvider(new AdapterFactoryContentProvider(
 			new AdapterFactoryImpl()));
 		configureLabelProvider(choiceTableViewer);
@@ -313,7 +343,7 @@ public class ChoicesDialog<T>
 		featureTableGridData.grabExcessVerticalSpace = true;
 		valuesTable.setLayoutData(featureTableGridData);
 
-		final TableViewer valuesTableViewer = new TableViewer(valuesTable);
+		valuesTableViewer = new TableViewer(valuesTable);
 		valuesTableViewer.setContentProvider(contentProvider);
 		configureLabelProvider(valuesTableViewer);
 		valuesTableViewer.setInput(values);
@@ -439,6 +469,14 @@ public class ChoicesDialog<T>
 						getChoices()));
 				}
 			});
+
+		if (delegate.hasAdditionalControls()) {
+			Composite additional = new Composite(contents, SWT.NONE);
+			additional.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, true,
+				false, 3, 1));
+			additional.setLayout(new FillLayout());
+			delegate.createAdditionalControls(additional);
+		}
 
 		return contents;
 	}

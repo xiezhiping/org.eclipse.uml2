@@ -12,12 +12,14 @@
  */
 package org.eclipse.uml2.uml.editor.dialogs;
 
+import java.lang.reflect.Method;
 import java.util.Collection;
 
 import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.widgets.Composite;
 
 /**
  * A partial implementation of the {@link IChoicesDialogDelegate} protocol,
@@ -30,12 +32,22 @@ public abstract class AbstractChoicesDialogDelegate<T>
 
 	private final Class<T> elementType;
 
+	private ChoicesDialog<T> dialog;
+
 	public AbstractChoicesDialogDelegate(Class<T> elementType) {
 		this.elementType = elementType;
 	}
 
-	public Class<T> getElementType() {
+	public final Class<T> getElementType() {
 		return elementType;
+	}
+
+	protected ChoicesDialog<T> getDialog() {
+		return dialog;
+	}
+
+	void setDialog(ChoicesDialog<T> dialog) {
+		this.dialog = dialog;
 	}
 
 	public String getChoicesLabelText() {
@@ -70,6 +82,23 @@ public abstract class AbstractChoicesDialogDelegate<T>
 
 	public boolean allowsReordering() {
 		return true;
+	}
+
+	public boolean hasAdditionalControls() {
+		Method createAdditionalControls = null;
+		try {
+			createAdditionalControls = getClass().getMethod(
+				"createAdditionalControls", Composite.class);
+		} catch (Exception e) {
+			// can't get the method? So, it doesn't exist
+		}
+
+		return (createAdditionalControls == null)
+			|| (createAdditionalControls.getDeclaringClass() != AbstractChoicesDialogDelegate.class);
+	}
+
+	public void createAdditionalControls(Composite parent) {
+		// pass
 	}
 
 	public boolean okPressed(Collection<T> values) {

@@ -11,6 +11,7 @@
  *   Kenn Hussey - 286329, 323181
  *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658, 173565, 408612, 414970
  *   Christian W. Damus - 355218
+ *   Christian W. Damus (CEA) - 286444
  *
  */
 package org.eclipse.uml2.uml.editor.presentation;
@@ -32,7 +33,8 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.notify.AdapterFactory;
 
 import org.eclipse.emf.common.notify.Notification;
-
+import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.ui.dialogs.DiagnosticDialog;
 import org.eclipse.emf.common.ui.editor.ProblemEditorPart;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
@@ -1056,6 +1058,87 @@ public class UMLEditor
 				: new NullProgressMonitor();
 			doSave(progressMonitor);
 		}
+
+		// listen for loading of new resources, to refresh in case they bring in
+		// new stereotype applications (and unloading to remove them)
+		resourceSet.eAdapters().add(new AdapterImpl() {
+
+			private volatile Runnable pendingRefresh;
+
+			@Override
+			public void notifyChanged(Notification msg) {
+				if (!msg.isTouch()) {
+					if (msg.getNotifier() instanceof Resource) {
+						if (msg.getFeatureID(Resource.class) == Resource.RESOURCE__IS_LOADED) {
+							refreshViewer();
+						}
+					} else if (msg.getNotifier() instanceof ResourceSet) {
+						if (msg.getFeatureID(ResourceSet.class) == ResourceSet.RESOURCE_SET__RESOURCES) {
+							switch (msg.getEventType()) {
+								case Notification.ADD :
+									handleResource((Resource) msg.getNewValue());
+									break;
+								case Notification.ADD_MANY :
+									for (Object next : (Iterable<?>) msg
+										.getNewValue()) {
+										handleResource((Resource) next);
+									}
+									break;
+								case Notification.SET :
+									if (msg.getNewValue() != null) {
+										handleResource((Resource) msg
+											.getNewValue());
+									}
+									break;
+							}
+						}
+					}
+				}
+			}
+
+			private void handleResource(Resource resource) {
+				if (!resource.eAdapters().contains(this)) {
+					resource.eAdapters().add(this);
+				}
+
+				if (resource.isLoaded()) {
+					// already loaded? Refresh now
+					refreshViewer();
+				}
+			}
+
+			private void refreshViewer() {
+				if ((pendingRefresh == null) && (currentViewer != null)
+					&& (currentViewer.getControl() != null)) {
+
+					Runnable refreshRunnable = new Runnable() {
+
+						public void run() {
+							pendingRefresh = null;
+							if (!currentViewer.getControl().isDisposed()) {
+								currentViewer.refresh();
+							}
+						}
+					};
+					currentViewer.getControl().getDisplay()
+						.asyncExec(refreshRunnable);
+					pendingRefresh = refreshRunnable;
+				}
+			}
+
+			@Override
+			public void setTarget(Notifier newTarget) {
+				super.setTarget(newTarget);
+
+				if (newTarget instanceof ResourceSet) {
+					// listen for resource unload/load
+					for (Resource next : ((ResourceSet) newTarget)
+						.getResources()) {
+						next.eAdapters().add(this);
+					}
+				}
+			}
+		});
 	}
 
 	/**

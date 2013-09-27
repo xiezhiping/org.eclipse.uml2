@@ -17,6 +17,7 @@ import java.util.Collection;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.widgets.Composite;
 
 /**
  * Protocol for a delegate that supplies application-specific information and
@@ -50,6 +51,10 @@ public interface IChoicesDialogDelegate<T> {
 	boolean canRemove(IStructuredSelection selection, Collection<T> choices);
 
 	boolean allowsReordering();
+
+	boolean hasAdditionalControls();
+
+	void createAdditionalControls(Composite parent);
 
 	boolean okPressed(Collection<T> values);
 }
