@@ -1954,11 +1954,19 @@ public class UMLUtil
 											mergedPackage}));
 							}
 
+							EAnnotation mergeAnnotation =
 							getEAnnotation(
 								getEAnnotation(resultingPackage,
 									UML2_UML_PACKAGE_2_0_NS_URI, true),
-								mergedPackage.getQualifiedName(), true)
-								.getReferences().add(resultingEObject);
+								mergedPackage.getQualifiedName(), true);
+
+							mergeAnnotation.getReferences().add(
+								resultingEObject);
+							if (!UML2Util.isEmpty(mergedPackage.getURI())) {
+								mergeAnnotation.getDetails().put(
+									ANNOTATION_DETAIL__URI,
+									mergedPackage.getURI());
+							}
 						} else if (OPTION__REPORT.equals(options
 							.get(OPTION__CAPABILITIES))
 							&& diagnostics != null) {
@@ -5934,6 +5942,8 @@ public class UMLUtil
 
 						if (isCapabilityTraceAnnotation(subAnnotation)) {
 							String capName = subAnnotation.getSource();
+							String capURI = subAnnotation.getDetails().get(
+								ANNOTATION_DETAIL__URI);
 
 							for (EObject next : subAnnotation.getReferences()) {
 								// an API element is a classifier in the package
@@ -5948,9 +5958,16 @@ public class UMLUtil
 										.get(next);
 									if (ecore != null) {
 										// add the trace comment
-										addDocumentation(ecore, String.format(
-											"<p>Merged from package %s.</p>", //$NON-NLS-1$
-											capName));
+										String doc = UML2Util.isEmpty(capURI)
+											? String
+												.format(
+													"<p>Merged from package %s.</p>", //$NON-NLS-1$
+													capName)
+											: String
+												.format(
+													"<p>Merged from package %s (URI {@literal %s}).</p>", //$NON-NLS-1$
+													capName, capURI);
+										addDocumentation(ecore, doc);
 									}
 								}
 							}
@@ -8696,6 +8713,8 @@ public class UMLUtil
 	protected static final String ANNOTATION__UNION = "union"; //$NON-NLS-1$
 
 	protected static final String ANNOTATION_DETAIL__BODY = "body"; //$NON-NLS-1$
+
+	protected static final String ANNOTATION_DETAIL__URI = "URI"; //$NON-NLS-1$
 
 	public static final String ENUMERATION_LITERAL__ATTRIBUTE = "Attribute"; //$NON-NLS-1$
 
