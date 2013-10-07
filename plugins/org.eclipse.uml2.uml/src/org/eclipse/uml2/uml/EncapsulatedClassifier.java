@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * A classifier has the ability to own ports as specific and type checked interaction points.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -51,6 +52,7 @@ public interface EncapsulatedClassifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References a set of ports that an encapsulated classifier owns.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Port</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getEncapsulatedClassifier_OwnedPort()

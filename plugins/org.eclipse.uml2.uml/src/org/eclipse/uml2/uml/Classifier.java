@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.EClass;
  * A classifier has the capability to own use cases. Although the owning classifier typically represents the subject to which the owned use cases apply, this is not necessarily the case. In principle, the same use case can be applied to multiple subjects, as identified by the subject association role of a use case.
  * Classifier is defined to be a kind of templateable element so that a classifier can be parameterized. It is also defined to be a kind of parameterable element so that a classifier can be a formal template parameter.
  * A classifier has the capability to own collaboration uses. These collaboration uses link a collaboration with the classifier to give a description of the workings of the classifier.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -67,6 +68,7 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Abstract</em>' attribute.
 	 * @see #setIsAbstract(boolean)
@@ -93,6 +95,7 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If true, the Classifier cannot be specialized by generalization. Note that this property is preserved through package merge operations; that is, the capability to specialize a Classifier (i.e., isFinalSpecialization =false) must be preserved in the resulting Classifier of a package merge operation where a Classifier with isFinalSpecialization =false is merged with a matching Classifier with isFinalSpecialization =true: the resulting Classifier will have isFinalSpecialization =false.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Final Specialization</em>' attribute.
 	 * @see #setIsFinalSpecialization(boolean)
@@ -126,6 +129,7 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Generalization</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_Generalization()
@@ -143,6 +147,7 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Designates the GeneralizationSet of which the associated Classifier is a power type.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Powertype Extent</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_PowertypeExtent()
@@ -191,6 +196,7 @@ public interface Classifier
 	 * <!-- begin-model-doc -->
 	 * Specifies each feature defined in the classifier.
 	 * Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Feature</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_Feature()
@@ -237,6 +243,7 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies all elements inherited by this classifier from the general classifiers.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Inherited Member</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_InheritedMember()
@@ -283,6 +290,7 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Classifiers that are redefined by this Classifier.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_RedefinedClassifier()
@@ -324,6 +332,7 @@ public interface Classifier
 	 * <!-- begin-model-doc -->
 	 * Specifies the general Classifiers for this Classifier.
 	 * References the general classifier in the Generalization relationship.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>General</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_General()
@@ -369,6 +378,7 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the use cases owned by this classifier.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Use Case</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_OwnedUseCase()
@@ -421,6 +431,7 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The set of use cases for which this Classifier is the subject.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Use Case</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_UseCase()
@@ -468,6 +479,7 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the substitutions that are owned by this Classifier.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Substitution</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_Substitution()
@@ -530,6 +542,7 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Attribute</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_Attribute()
@@ -577,6 +590,7 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References a collaboration use which indicates the collaboration that represents this classifier.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Representation</em>' reference.
 	 * @see #setRepresentation(CollaborationUse)
@@ -620,6 +634,7 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the collaboration uses owned by the classifier.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Collaboration Use</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_CollaborationUse()
@@ -850,6 +865,7 @@ public interface Classifier
 	 * <!-- begin-model-doc -->
 	 * The query maySpecializeType() determines whether this classifier may have a generalization relationship to classifiers of the specified type. By default a classifier may specialize classifiers of the same or a more general type. It is intended to be redefined by classifiers that have different specialization constraints.
 	 * result = self.oclIsKindOf(c.oclType)
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" cRequired="true" cOrdered="false"
 	 * @generated
@@ -862,6 +878,7 @@ public interface Classifier
 	 * <!-- begin-model-doc -->
 	 * The query allFeatures() gives all of the features in the namespace of the classifier. In general, through mechanisms such as inheritance, this will be a larger set than feature.
 	 * result = member->select(oclIsKindOf(Feature))
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false"
 	 * @generated
@@ -874,6 +891,7 @@ public interface Classifier
 	 * <!-- begin-model-doc -->
 	 * The query parents() gives all of the immediate ancestors of a generalized Classifier.
 	 * result = generalization.general
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false"
 	 * @generated
@@ -887,6 +905,7 @@ public interface Classifier
 	 * The query inheritableMembers() gives all of the members of a classifier that may be inherited in one of its descendants, subject to whatever visibility restrictions apply.
 	 * c.allParents()->includes(self)
 	 * result = member->select(m | c.hasVisibilityOf(m))
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false" cRequired="true" cOrdered="false"
 	 * @generated
@@ -900,6 +919,7 @@ public interface Classifier
 	 * The query hasVisibilityOf() determines whether a named element is visible in the classifier. By default all are visible. It is only called when the argument is something owned by a parent.
 	 * self.allParents()->including(self)->collect(c | c.member)->includes(n)
 	 * result = (n.visibility <> VisibilityKind::private)
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" nRequired="true" nOrdered="false"
 	 * @generated
@@ -918,6 +938,7 @@ public interface Classifier
 	 * <!-- begin-model-doc -->
 	 * The query conformsTo() gives true for a classifier that defines a type that conforms to another. This is used, for example, in the specification of signature conformance for operations.
 	 * result = (self=other) or (self.allParents()->includes(other))
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" otherRequired="true" otherOrdered="false"
 	 * @generated
@@ -931,6 +952,7 @@ public interface Classifier
 	 * The inherit operation is overridden to exclude redefined properties.
 	 * The query inherit() defines how to inherit a set of elements. Here the operation is defined to inherit them all. It is intended to be redefined in circumstances where inheritance is affected by redefinition.
 	 * result = inhs
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false" inhsMany="true" inhsOrdered="false"
 	 * @generated
@@ -943,6 +965,7 @@ public interface Classifier
 	 * <!-- begin-model-doc -->
 	 * The query allParents() gives all of the direct and indirect ancestors of a generalized Classifier.
 	 * result = self.parents()->union(self.parents()->collect(p | p.allParents())
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false"
 	 * @generated

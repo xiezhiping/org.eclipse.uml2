@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * <!-- begin-model-doc -->
  * A continuation is a syntactic way to define continuations of different branches of an alternative combined fragment. Continuations is intuitively similar to labels representing intermediate points in a flow of control.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -47,6 +48,7 @@ public interface Continuation
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Setting</em>' attribute.
 	 * @see #setSetting(boolean)

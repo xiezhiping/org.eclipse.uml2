@@ -19,6 +19,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * Observation is a superclass of TimeObservation and DurationObservation in order for TimeExpression and Duration to refer to either in a simple way.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  *

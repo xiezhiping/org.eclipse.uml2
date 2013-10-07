@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * <!-- begin-model-doc -->
  * A read link action is a link action that navigates across associations to retrieve objects on one end.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -52,6 +53,7 @@ public interface ReadLinkAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The pin on which are put the objects participating in the association at the end not specified by the inputs.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)

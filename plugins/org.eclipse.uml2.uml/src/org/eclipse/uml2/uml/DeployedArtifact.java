@@ -19,6 +19,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * A deployed artifact is an artifact or artifact instance that has been deployed to a deployment target.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  *

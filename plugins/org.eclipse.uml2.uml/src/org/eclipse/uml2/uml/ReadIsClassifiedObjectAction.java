@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A read is classified object action is an action that determines whether a runtime object is classified by a given classifier.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -52,6 +53,7 @@ public interface ReadIsClassifiedObjectAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Indicates whether the classifier must directly classify the input object.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Direct</em>' attribute.
 	 * @see #setIsDirect(boolean)
@@ -77,6 +79,7 @@ public interface ReadIsClassifiedObjectAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The classifier against which the classification of the input object is tested.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Classifier</em>' reference.
 	 * @see #setClassifier(Classifier)
@@ -108,6 +111,7 @@ public interface ReadIsClassifiedObjectAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * After termination of the action, will hold the result of the test.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)
@@ -151,6 +155,7 @@ public interface ReadIsClassifiedObjectAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Holds the object whose classification is to be tested.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)

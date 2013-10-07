@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * An unmarshall action is an action that breaks an object of a known type into outputs each of which is equal to a value from a structural feature of the object.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -59,6 +60,7 @@ public interface UnmarshallAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The values of the structural features of the input object.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getUnmarshallAction_Result()
@@ -125,6 +127,7 @@ public interface UnmarshallAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The type of the object to be unmarshalled.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Unmarshall Type</em>' reference.
 	 * @see #setUnmarshallType(Classifier)
@@ -156,6 +159,7 @@ public interface UnmarshallAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The object to be unmarshalled.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)

@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * ActivityNode is an abstract class for points in the flow of an activity connected by edges.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -59,6 +60,7 @@ public interface ActivityNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Edges that have the node as source.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Outgoing</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityNode_Outgoing()
@@ -101,6 +103,7 @@ public interface ActivityNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Groups containing the node.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>In Group</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityNode_InGroup()
@@ -148,6 +151,7 @@ public interface ActivityNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Partitions containing the node.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>In Partition</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityNode_InPartition()
@@ -194,6 +198,7 @@ public interface ActivityNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Structured activity node containing the node.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>In Structured Node</em>' container reference.
 	 * @see #setInStructuredNode(StructuredActivityNode)
@@ -227,6 +232,7 @@ public interface ActivityNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Activity containing the node.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Activity</em>' reference.
 	 * @see #setActivity(Activity)
@@ -255,6 +261,7 @@ public interface ActivityNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Edges that have the node as target.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Incoming</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityNode_Incoming()
@@ -302,6 +309,7 @@ public interface ActivityNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Interruptible regions containing the node.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>In Interruptible Region</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityNode_InInterruptibleRegion()
@@ -348,6 +356,7 @@ public interface ActivityNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Inherited nodes replaced by this node in a specialization of the activity.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Node</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityNode_RedefinedNode()

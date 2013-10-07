@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A feature declares a behavioral or structural characteristic of instances of classifiers.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -49,6 +50,7 @@ public interface Feature
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies whether this feature characterizes individual instances classified by the classifier (false) or the classifier itself (true).
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Static</em>' attribute.
 	 * @see #setIsStatic(boolean)
@@ -77,6 +79,7 @@ public interface Feature
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Classifiers that have this Feature as a feature.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Featuring Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getFeature_FeaturingClassifier()

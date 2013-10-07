@@ -19,6 +19,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * A control node is an abstract activity node that coordinates flows in an activity.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  *

@@ -19,6 +19,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * MessageEnd is an abstract specialization of NamedElement that represents what can occur at the end of a message.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -41,6 +42,7 @@ public interface MessageEnd
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References a Message.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Message</em>' reference.
 	 * @see #setMessage(Message)

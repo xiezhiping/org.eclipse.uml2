@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * <!-- begin-model-doc -->
  * An action execution specification is a kind of execution specification representing the execution of an action.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -45,6 +46,7 @@ public interface ActionExecutionSpecification
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Action whose execution is occurring.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Action</em>' reference.
 	 * @see #setAction(Action)

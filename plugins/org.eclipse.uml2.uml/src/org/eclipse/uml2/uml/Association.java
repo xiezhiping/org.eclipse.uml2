@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-model-doc -->
  * An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link.A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.
  * An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link. A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -55,6 +56,7 @@ public interface Association
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies whether the association is derived from other model elements such as other associations or constraints.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Derived</em>' attribute.
 	 * @see #setIsDerived(boolean)
@@ -87,6 +89,7 @@ public interface Association
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the classifiers that are used as types of the ends of the association.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End Type</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAssociation_EndType()
@@ -133,6 +136,7 @@ public interface Association
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Each end represents participation of instances of the classifier connected to the end in links of the association.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Member End</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAssociation_MemberEnd()
@@ -182,6 +186,7 @@ public interface Association
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The navigable ends that are owned by the association itself.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Navigable Owned End</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAssociation_NavigableOwnedEnd()
@@ -259,6 +264,7 @@ public interface Association
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The ends that are owned by the association itself.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned End</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAssociation_OwnedEnd()

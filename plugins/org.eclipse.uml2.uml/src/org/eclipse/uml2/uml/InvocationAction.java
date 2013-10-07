@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-model-doc -->
  * InvocationAction is an abstract class for the various actions that invoke behavior.
  * In addition to targeting an object, invocation actions can also invoke behavioral features on ports from where the invocation requests are routed onwards on links deriving from attached connectors. Invocation actions may also be sent to a target via a given port, either on the sending object or on another object.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -58,6 +59,7 @@ public interface InvocationAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specification of the ordered set of argument values that appears during execution.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Argument</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInvocationAction_Argument()
@@ -125,6 +127,7 @@ public interface InvocationAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A optional port of the receiver object on which the behavioral feature is invoked.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>On Port</em>' reference.
 	 * @see #setOnPort(Port)

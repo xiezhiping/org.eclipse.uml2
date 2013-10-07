@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A message defines a particular communication between lifelines of an interaction.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -59,6 +60,7 @@ public interface Message
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The derived kind of the Message (complete, lost, found or unknown)
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Message Kind</em>' attribute.
 	 * @see org.eclipse.uml2.uml.MessageKind
@@ -76,6 +78,7 @@ public interface Message
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The sort of communication reflected by the Message
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Message Sort</em>' attribute.
 	 * @see org.eclipse.uml2.uml.MessageSort
@@ -103,6 +106,7 @@ public interface Message
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Receiving of the Message
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Receive Event</em>' reference.
 	 * @see #setReceiveEvent(MessageEnd)
@@ -128,6 +132,7 @@ public interface Message
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Sending of the Message.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Send Event</em>' reference.
 	 * @see #setSendEvent(MessageEnd)
@@ -153,6 +158,7 @@ public interface Message
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Connector on which this Message is sent.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Connector</em>' reference.
 	 * @see #setConnector(Connector)
@@ -185,6 +191,7 @@ public interface Message
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The enclosing Interaction owning the Message
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Interaction</em>' container reference.
 	 * @see #setInteraction(Interaction)
@@ -218,6 +225,7 @@ public interface Message
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The arguments of the Message
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Argument</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMessage_Argument()
@@ -273,6 +281,7 @@ public interface Message
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The signature of the Message is the specification of its content. It refers either an Operation or a Signal.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Signature</em>' reference.
 	 * @see #setSignature(NamedElement)

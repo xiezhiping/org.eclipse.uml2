@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A value pin is an input pin that provides a value by evaluating a value specification.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -54,6 +55,7 @@ public interface ValuePin
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Value that the pin will provide.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Value</em>' containment reference.
 	 * @see #setValue(ValueSpecification)

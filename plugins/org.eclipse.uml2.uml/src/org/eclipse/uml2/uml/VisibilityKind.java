@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
  * VisibilityKind is an enumeration type that defines literals to determine the visibility of elements in a model.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getVisibilityKind()
  * @model

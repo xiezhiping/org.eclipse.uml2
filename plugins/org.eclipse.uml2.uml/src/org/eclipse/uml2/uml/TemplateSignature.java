@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A template signature bundles the set of formal template parameters for a templated element.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -52,6 +53,7 @@ public interface TemplateSignature
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The ordered set of all formal template parameters for this template signature.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Parameter</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTemplateSignature_Parameter()
@@ -73,6 +75,7 @@ public interface TemplateSignature
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The element that owns this template signature.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Template</em>' container reference.
 	 * @see #setTemplate(TemplateableElement)
@@ -108,6 +111,7 @@ public interface TemplateSignature
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The formal template parameters that are owned by this template signature.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Parameter</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTemplateSignature_OwnedParameter()

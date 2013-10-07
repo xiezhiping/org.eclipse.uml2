@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-model-doc -->
  * ConnectableElement is an abstract metaclass representing a set of instances that play roles of a classifier. Connectable elements may be joined by attached connectors and specify configurations of linked instances to be created within an instance of the containing classifier.
  * A connectable element may be exposed as a connectable element template parameter.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -46,6 +47,7 @@ public interface ConnectableElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Denotes a set of connector ends that attaches to this connectable element.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnectableElement_End()

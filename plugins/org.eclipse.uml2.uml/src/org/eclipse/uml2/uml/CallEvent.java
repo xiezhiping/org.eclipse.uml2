@@ -19,6 +19,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * A call event models the receipt by an object of a message invoking a call of an operation.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -41,6 +42,7 @@ public interface CallEvent
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Designates the operation whose invocation raised the call event.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Operation</em>' reference.
 	 * @see #setOperation(Operation)

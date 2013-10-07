@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * An interruptible activity region is an activity group that supports termination of tokens flowing in the portions of an activity.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -59,6 +60,7 @@ public interface InterruptibleActivityRegion
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Nodes immediately contained in the group.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Node</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterruptibleActivityRegion_Node()
@@ -100,6 +102,7 @@ public interface InterruptibleActivityRegion
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The edges leaving the region that will abort other tokens flowing in the region.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Interrupting Edge</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterruptibleActivityRegion_InterruptingEdge()

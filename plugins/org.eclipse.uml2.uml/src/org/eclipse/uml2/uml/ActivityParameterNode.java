@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * <!-- begin-model-doc -->
  * An activity parameter node is an object node for inputs and outputs to activities.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -46,6 +47,7 @@ public interface ActivityParameterNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The parameter the object node will be accepting or providing values for.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Parameter</em>' reference.
 	 * @see #setParameter(Parameter)

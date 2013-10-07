@@ -19,6 +19,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * A substitution is a relationship between two classifiers signifies that the substituting classifier complies with the contract specified by the contract classifier. This implies that instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -48,6 +49,7 @@ public interface Substitution
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The contract with which the substituting classifier complies.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Contract</em>' reference.
 	 * @see #setContract(Classifier)
@@ -81,6 +83,7 @@ public interface Substitution
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Substituting Classifier</em>' container reference.
 	 * @see #setSubstitutingClassifier(Classifier)

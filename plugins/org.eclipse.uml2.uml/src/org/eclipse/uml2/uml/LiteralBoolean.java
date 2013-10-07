@@ -20,6 +20,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * A literal Boolean is a specification of a Boolean value.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -43,6 +44,7 @@ public interface LiteralBoolean
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The specified Boolean value.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(boolean)

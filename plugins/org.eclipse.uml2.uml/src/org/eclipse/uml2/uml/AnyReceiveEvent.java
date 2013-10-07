@@ -20,6 +20,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * A trigger for an AnyReceiveEvent is triggered by the receipt of any message that is not explicitly handled by any related trigger.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  *

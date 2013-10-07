@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A clear association action is an action that destroys all links of an association in which a particular object participates.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -55,6 +56,7 @@ public interface ClearAssociationAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Gives the input pin from which is obtained the object whose participation in the association is to be cleared.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)
@@ -105,6 +107,7 @@ public interface ClearAssociationAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Association to be cleared.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Association</em>' reference.
 	 * @see #setAssociation(Association)

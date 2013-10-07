@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <!-- begin-model-doc -->
  * An element is a constituent of a model. As such, it has the capability of owning other elements.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -59,6 +60,7 @@ public interface Element
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Elements owned by this element.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Element</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getElement_OwnedElement()
@@ -76,6 +78,7 @@ public interface Element
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Element that owns this element.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owner</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getElement_Owner()
@@ -98,6 +101,7 @@ public interface Element
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Comments owned by this element.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Comment</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getElement_OwnedComment()
@@ -531,6 +535,7 @@ public interface Element
 	 * <!-- begin-model-doc -->
 	 * The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
 	 * result = ownedElement->union(ownedElement->collect(e | e.allOwnedElements()))
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false"
 	 * @generated
@@ -543,6 +548,7 @@ public interface Element
 	 * <!-- begin-model-doc -->
 	 * The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
 	 * result = true
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated

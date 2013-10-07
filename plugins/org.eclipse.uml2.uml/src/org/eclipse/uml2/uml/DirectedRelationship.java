@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -53,6 +54,7 @@ public interface DirectedRelationship
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the sources of the DirectedRelationship.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Source</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDirectedRelationship_Source()
@@ -75,6 +77,7 @@ public interface DirectedRelationship
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the targets of the DirectedRelationship.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Target</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDirectedRelationship_Target()

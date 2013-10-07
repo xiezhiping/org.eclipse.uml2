@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * An action with implementation-specific semantics.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -50,6 +51,7 @@ public interface OpaqueAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the action in one or more languages.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body</em>' attribute list.
 	 * @see #isSetBodies()
@@ -89,6 +91,7 @@ public interface OpaqueAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Languages the body strings use, in the same order as the body strings
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Language</em>' attribute list.
 	 * @see #isSetLanguages()
@@ -133,6 +136,7 @@ public interface OpaqueAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Provides input to the action.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Input Value</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueAction_InputValue()
@@ -222,6 +226,7 @@ public interface OpaqueAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Takes output from the action.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Output Value</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueAction_OutputValue()

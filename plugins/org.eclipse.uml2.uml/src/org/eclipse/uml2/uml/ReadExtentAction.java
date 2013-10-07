@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * <!-- begin-model-doc -->
  * A read extent action is an action that retrieves the current instances of a classifier.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -53,6 +54,7 @@ public interface ReadExtentAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The runtime instances of the classifier.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)
@@ -90,6 +92,7 @@ public interface ReadExtentAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The classifier whose instances are to be retrieved.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Classifier</em>' reference.
 	 * @see #setClassifier(Classifier)

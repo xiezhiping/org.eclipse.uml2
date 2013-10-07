@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-model-doc -->
  * An expression is a structured tree of symbols that denotes a (possibly empty) set of values when evaluated in a context.
  * An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -47,6 +48,7 @@ public interface Expression
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The symbol associated with the node in the expression tree.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Symbol</em>' attribute.
 	 * @see #isSetSymbol()
@@ -106,6 +108,7 @@ public interface Expression
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies a sequence of operands.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Operand</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExpression_Operand()

@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-model-doc -->
  * A delegation connector is a connector that links the external contract of a component (as specified by its ports) to the realization of that behavior. It represents the forwarding of events (operation requests and events): a signal that arrives at a port that has a delegation connector to one or more parts or ports on parts will be passed on to those targets for handling. An assembly connector is a connector between two or more parts or ports on parts that defines that one or more parts provide the services that other parts use.
  * Specifies a link that enables communication between two or more instances. This link may be an instance of an association, or it may represent the possibility of the instances being able to communicate because their identities are known by virtue of being passed in as parameters, held in variables or slots, or because the communicating instances are the same instance. The link may be realized by something as simple as a pointer or by something as complex as a network connection. In contrast to associations, which specify links between any instance of the associated classifiers, connectors specify links between instances playing the connected parts only.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -55,6 +56,7 @@ public interface Connector
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An optional association that specifies the link corresponding to this connector.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' reference.
 	 * @see #setType(Association)
@@ -87,6 +89,7 @@ public interface Connector
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Connector</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnector_RedefinedConnector()
@@ -131,6 +134,7 @@ public interface Connector
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A connector consists of at least two connector ends, each representing the participation of instances of the classifiers typing the connectable elements attached to this end. The set of connector ends is ordered.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnector_End()
@@ -156,6 +160,7 @@ public interface Connector
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Indicates the kind of connector. This is derived: a connector with one or more ends connected to a Port which is not on a Part and which is not a behavior port is a delegation; otherwise it is an assembly.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Kind</em>' attribute.
 	 * @see org.eclipse.uml2.uml.ConnectorKind
@@ -172,6 +177,7 @@ public interface Connector
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The set of Behaviors that specify the valid interaction patterns across the connector.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Contract</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnector_Contract()

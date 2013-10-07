@@ -25,6 +25,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
  * ExpansionKind is an enumeration type used to specify how multiple executions of an expansion region interact.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getExpansionKind()
  * @model

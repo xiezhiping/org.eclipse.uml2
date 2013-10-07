@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A change event models a change in the system configuration that makes a condition true.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -49,6 +50,7 @@ public interface ChangeEvent
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A Boolean-valued expression that will result in a change event whenever its value changes from false to true.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Change Expression</em>' containment reference.
 	 * @see #setChangeExpression(ValueSpecification)

@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * LinkAction is an abstract class for all link actions that identify their links by the objects at the ends of the links and by the qualifiers at ends of the links.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -58,6 +59,7 @@ public interface LinkAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Data identifying one end of a link by the objects on its ends and qualifiers.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End Data</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLinkAction_EndData()
@@ -100,6 +102,7 @@ public interface LinkAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Pins taking end objects and qualifier values as input.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Input Value</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLinkAction_InputValue()
@@ -217,6 +220,7 @@ public interface LinkAction
 	 * <!-- begin-model-doc -->
 	 * The association operates on LinkAction. It returns the association of the action.
 	 * result = self.endData->asSequence().first().end.association
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false"
 	 * @generated

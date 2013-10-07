@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * An interaction operand is contained in a combined fragment. An interaction operand represents one operand of the expression given by the enclosing combined fragment.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -56,6 +57,7 @@ public interface InteractionOperand
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Constraint of the operand.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Guard</em>' containment reference.
 	 * @see #setGuard(InteractionConstraint)
@@ -100,6 +102,7 @@ public interface InteractionOperand
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The fragments of the operand.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Fragment</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteractionOperand_Fragment()

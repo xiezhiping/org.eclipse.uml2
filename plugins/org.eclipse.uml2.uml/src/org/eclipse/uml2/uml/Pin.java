@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- begin-model-doc -->
  * A pin is a typed element and multiplicity element that provides values to actions and accept result values from them.
  * A pin is an object node for inputs and outputs to actions.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -47,6 +48,7 @@ public interface Pin
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Tells whether the pins provide data to the actions, or just controls when it executes it.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Control</em>' attribute.
 	 * @see #setIsControl(boolean)

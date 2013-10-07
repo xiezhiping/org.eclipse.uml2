@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * An interaction is a unit of behavior that focuses on the observable exchange of information between connectable elements.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -58,6 +59,7 @@ public interface Interaction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the participants in this Interaction.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Lifeline</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteraction_Lifeline()
@@ -116,6 +118,7 @@ public interface Interaction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The ordered set of fragments in the Interaction.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Fragment</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteraction_Fragment()
@@ -176,6 +179,7 @@ public interface Interaction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Actions owned by the Interaction.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Action</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteraction_Action()
@@ -235,6 +239,7 @@ public interface Interaction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the gates that form the message interface between this Interaction and any InteractionUses which reference it.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Formal Gate</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteraction_FormalGate()
@@ -292,6 +297,7 @@ public interface Interaction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Messages contained in this Interaction.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Message</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteraction_Message()

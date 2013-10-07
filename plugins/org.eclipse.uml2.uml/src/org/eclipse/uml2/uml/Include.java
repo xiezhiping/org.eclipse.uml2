@@ -19,6 +19,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * An include relationship defines that a use case contains the behavior defined in another use case.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -48,6 +49,7 @@ public interface Include
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the use case that is to be included.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Addition</em>' reference.
 	 * @see #setAddition(UseCase)
@@ -81,6 +83,7 @@ public interface Include
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the use case which will include the addition and owns the include relationship.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Including Case</em>' container reference.
 	 * @see #setIncludingCase(UseCase)

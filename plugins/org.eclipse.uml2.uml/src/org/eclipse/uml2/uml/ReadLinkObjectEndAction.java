@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A read link object end action is an action that retrieves an end object from a link object.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -56,6 +57,7 @@ public interface ReadLinkObjectEndAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Gives the input pin from which the link object is obtained.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)
@@ -106,6 +108,7 @@ public interface ReadLinkObjectEndAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Link end to be read.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End</em>' reference.
 	 * @see #setEnd(Property)
@@ -137,6 +140,7 @@ public interface ReadLinkObjectEndAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Pin where the result value is placed.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)

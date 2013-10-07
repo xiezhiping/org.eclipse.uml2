@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A clause is an element that represents a single branch of a conditional construct, including a test and a body section. The body section is executed only if (but not necessarily if) the test section evaluates true.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -56,6 +57,7 @@ public interface Clause
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A nested activity fragment with a designated output pin that specifies the result of the test.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Test</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClause_Test()
@@ -95,6 +97,7 @@ public interface Clause
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClause_Body()
@@ -135,6 +138,7 @@ public interface Clause
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A set of clauses whose tests must all evaluate false before the current clause can be tested.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Predecessor Clause</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClause_PredecessorClause()
@@ -152,6 +156,7 @@ public interface Clause
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A set of clauses which may not be tested unless the current clause tests false.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Successor Clause</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClause_SuccessorClause()
@@ -167,6 +172,7 @@ public interface Clause
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An output pin within the test fragment the value of which is examined after execution of the test to determine whether the body should be executed.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Decider</em>' reference.
 	 * @see #setDecider(OutputPin)
@@ -193,6 +199,7 @@ public interface Clause
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body Output</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClause_BodyOutput()

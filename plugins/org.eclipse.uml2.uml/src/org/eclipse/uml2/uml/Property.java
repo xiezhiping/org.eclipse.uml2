@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.EClass;
  * A property has the capability of being a deployment target in a deployment relationship. This enables modeling the deployment to hierarchical nodes that have properties functioning as internal parts.
  * Property specializes ParameterableElement to specify that a property can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.
  * A property represents a set of instances that are owned by a containing classifier instance.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -78,6 +79,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The DataType that owns this Property.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Datatype</em>' container reference.
 	 * @see #setDatatype(DataType)
@@ -113,6 +115,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Interface that owns the Property
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Interface</em>' container reference.
 	 * @see #setInterface(Interface)
@@ -141,6 +144,7 @@ public interface Property
 	 * <!-- begin-model-doc -->
 	 * If isDerived is true, the value of the attribute is derived from information elsewhere.
 	 * Specifies whether the Property is derived, i.e., whether its value or values can be computed from other information.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Derived</em>' attribute.
 	 * @see #setIsDerived(boolean)
@@ -167,6 +171,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies whether the property is derived as the union of all of the properties that are constrained to subset it.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Derived Union</em>' attribute.
 	 * @see #setIsDerivedUnion(boolean)
@@ -193,6 +198,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * True indicates this property can be used to uniquely identify an instance of the containing Class.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is ID</em>' attribute.
 	 * @see #setIsID(boolean)
@@ -219,6 +225,7 @@ public interface Property
 	 * <!-- begin-model-doc -->
 	 * Specifies a String that represents a value to be used when no argument is supplied for the Property.
 	 * A String that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Default</em>' attribute.
 	 * @see #isSetDefault()
@@ -273,6 +280,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the kind of aggregation that applies to the Property.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Aggregation</em>' attribute.
 	 * @see org.eclipse.uml2.uml.AggregationKind
@@ -302,6 +310,7 @@ public interface Property
 	 * <!-- begin-model-doc -->
 	 * If isComposite is true, the object containing the attribute is a container for the object or value contained in the attribute.
 	 * This is a derived value, indicating whether the aggregation of the Property is composite or not.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Composite</em>' attribute.
 	 * @see #setIsComposite(boolean)
@@ -336,6 +345,7 @@ public interface Property
 	 * <!-- begin-model-doc -->
 	 * References the Class that owns the Property.
 	 * References the Class that owns the Property.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Class</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_Class()
@@ -357,6 +367,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the properties that are redefined by this property.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Property</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_RedefinedProperty()
@@ -408,6 +419,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the owning association of this property, if any.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owning Association</em>' container reference.
 	 * @see #setOwningAssociation(Association)
@@ -435,6 +447,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the association of which this property is a member, if any.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Association</em>' reference.
 	 * @see #setAssociation(Association)
@@ -467,6 +480,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A ValueSpecification that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Default Value</em>' containment reference.
 	 * @see #setDefaultValue(ValueSpecification)
@@ -505,6 +519,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * In the case where the property is one navigable end of a binary association with both ends navigable, this gives the other end.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Opposite</em>' reference.
 	 * @see #setOpposite(Property)
@@ -531,6 +546,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the properties of which this property is constrained to be a subset.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Subsetted Property</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_SubsettedProperty()
@@ -580,6 +596,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An optional list of ordered qualifier attributes for the end. If the list is empty, then the Association is not qualified.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Qualifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_Qualifier()
@@ -655,6 +672,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Designates the optional association end that owns a qualifier attribute.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Association End</em>' container reference.
 	 * @see #setAssociationEnd(Property)
@@ -922,6 +940,7 @@ public interface Property
 	 * <!-- begin-model-doc -->
 	 * The query isAttribute() is true if the Property is defined as an attribute of some classifier.
 	 * result = Classifier.allInstances->exists(c | c.attribute->includes(p))
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" pRequired="true" pOrdered="false"
 	 * @generated
@@ -937,6 +956,7 @@ public interface Property
 	 * then association.endType-type
 	 * else if classifier->notEmpty() then Set{classifier} else Set{} endif
 	 * endif
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false"
 	 * @generated
@@ -949,6 +969,7 @@ public interface Property
 	 * <!-- begin-model-doc -->
 	 * The query isNavigable() indicates whether it is possible to navigate across the property.
 	 * result = not classifier->isEmpty() or association.owningAssociation.navigableOwnedEnd->includes(self)
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated

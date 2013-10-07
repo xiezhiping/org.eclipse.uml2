@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A deployment target is the location for a deployed artifact.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -56,6 +57,7 @@ public interface DeploymentTarget
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The set of Deployments for a DeploymentTarget.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Deployment</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDeploymentTarget_Deployment()
@@ -108,6 +110,7 @@ public interface DeploymentTarget
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Deployed Element</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDeploymentTarget_DeployedElement()

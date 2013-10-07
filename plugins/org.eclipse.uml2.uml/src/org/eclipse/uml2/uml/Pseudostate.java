@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * <!-- begin-model-doc -->
  * A pseudostate is an abstraction that encompasses different types of transient vertices in the state machine graph.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -50,6 +51,7 @@ public interface Pseudostate
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Determines the precise type of the Pseudostate and can be one of: entryPoint, exitPoint, initial, deepHistory, shallowHistory, join, fork, junction, terminate or choice.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Kind</em>' attribute.
 	 * @see org.eclipse.uml2.uml.PseudostateKind
@@ -84,6 +86,7 @@ public interface Pseudostate
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The StateMachine in which this Pseudostate is defined. This only applies to Pseudostates of the kind entryPoint or exitPoint.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>State Machine</em>' container reference.
 	 * @see #setStateMachine(StateMachine)
@@ -117,6 +120,7 @@ public interface Pseudostate
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The State that owns this pseudostate and in which it appears.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>State</em>' container reference.
 	 * @see #setState(State)

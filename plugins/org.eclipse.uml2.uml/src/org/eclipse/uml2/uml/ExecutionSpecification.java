@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * <!-- begin-model-doc -->
  * An execution specification is a specification of the execution of a unit of behavior or action within the lifeline. The duration of an execution specification is represented by two cccurrence specifications, the start occurrence specification and the finish occurrence specification.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -47,6 +48,7 @@ public interface ExecutionSpecification
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the OccurrenceSpecification that designates the start of the Action or Behavior
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Start</em>' reference.
 	 * @see #setStart(OccurrenceSpecification)
@@ -72,6 +74,7 @@ public interface ExecutionSpecification
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the OccurrenceSpecification that designates the finish of the Action or Behavior.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Finish</em>' reference.
 	 * @see #setFinish(OccurrenceSpecification)

@@ -25,6 +25,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
  * CallConcurrencyKind is an enumeration type.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getCallConcurrencyKind()
  * @model

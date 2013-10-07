@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * The realization concept is specialized to (optionally) define the classifiers that realize the contract offered by a component in terms of its provided and required interfaces. The component forms an abstraction from these various classifiers.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -54,6 +55,7 @@ public interface ComponentRealization
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Component that owns this ComponentRealization and which is implemented by its realizing classifiers.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Abstraction</em>' container reference.
 	 * @see #setAbstraction(Component)
@@ -87,6 +89,7 @@ public interface ComponentRealization
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The classifiers that are involved in the implementation of the Component that owns this Realization.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Realizing Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getComponentRealization_RealizingClassifier()

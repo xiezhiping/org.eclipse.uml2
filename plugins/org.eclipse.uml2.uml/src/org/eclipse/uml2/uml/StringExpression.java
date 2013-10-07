@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * An expression that specifies a string value that is derived by concatenating a set of sub string expressions, some of which might be template parameters.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -57,6 +58,7 @@ public interface StringExpression
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The StringExpressions that constitute this StringExpression.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Sub Expression</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStringExpression_SubExpression()
@@ -118,6 +120,7 @@ public interface StringExpression
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The string expression of which this expression is a substring.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owning Expression</em>' container reference.
 	 * @see #setOwningExpression(StringExpression)

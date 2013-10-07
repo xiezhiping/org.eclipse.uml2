@@ -19,6 +19,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * A manifestation is the concrete physical rendering of one or more model elements by an artifact.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -47,6 +48,7 @@ public interface Manifestation
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The model element that is utilized in the manifestation in an Artifact.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Utilized Element</em>' reference.
 	 * @see #setUtilizedElement(PackageableElement)

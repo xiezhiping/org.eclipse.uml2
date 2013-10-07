@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * A accept event action is an action that waits for the occurrence of an event meeting specified conditions.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -51,6 +52,7 @@ public interface AcceptEventAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Indicates whether there is a single output pin for the event, or multiple output pins for attributes of the event.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Unmarshall</em>' attribute.
 	 * @see #setIsUnmarshall(boolean)
@@ -83,6 +85,7 @@ public interface AcceptEventAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAcceptEventAction_Result()
@@ -156,6 +159,7 @@ public interface AcceptEventAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Trigger</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAcceptEventAction_Trigger()

@@ -19,6 +19,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * A behavior execution specification is a kind of execution specification representing the execution of a behavior.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -41,6 +42,7 @@ public interface BehaviorExecutionSpecification
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Behavior whose execution is occurring.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Behavior</em>' reference.
 	 * @see #setBehavior(Behavior)

@@ -19,6 +19,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * An execution occurrence specification represents moments in time at which actions or behaviors start or finish.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -41,6 +42,7 @@ public interface ExecutionOccurrenceSpecification
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the execution specification describing the execution that is started or finished at this execution event.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Execution</em>' reference.
 	 * @see #setExecution(ExecutionSpecification)

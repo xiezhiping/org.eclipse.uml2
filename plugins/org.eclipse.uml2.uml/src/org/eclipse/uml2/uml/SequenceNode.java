@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A sequence node is a structured activity node that executes its actions in order.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -53,6 +54,7 @@ public interface SequenceNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An ordered set of executable nodes.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Executable Node</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getSequenceNode_ExecutableNode()

@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A destroy object action is an action that destroys objects.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -51,6 +52,7 @@ public interface DestroyObjectAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies whether links in which the object participates are destroyed along with the object.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Destroy Links</em>' attribute.
 	 * @see #setIsDestroyLinks(boolean)
@@ -77,6 +79,7 @@ public interface DestroyObjectAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies whether objects owned by the object are destroyed along with the object.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Destroy Owned Objects</em>' attribute.
 	 * @see #setIsDestroyOwnedObjects(boolean)
@@ -108,6 +111,7 @@ public interface DestroyObjectAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The input pin providing the object to be destroyed.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Target</em>' containment reference.
 	 * @see #setTarget(InputPin)

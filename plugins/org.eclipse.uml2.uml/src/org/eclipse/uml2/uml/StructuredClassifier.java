@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A structured classifier is an abstract metaclass that represents any classifier whose behavior can be fully or partly described by the collaboration of owned or referenced instances.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -62,6 +63,7 @@ public interface StructuredClassifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the properties owned by the classifier.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredClassifier_OwnedAttribute()
@@ -130,6 +132,7 @@ public interface StructuredClassifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the properties specifying instances that the classifier owns by composition. This association is derived, selecting those owned properties where isComposite is true.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Part</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredClassifier_Part()
@@ -178,6 +181,7 @@ public interface StructuredClassifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the roles that instances may play in this classifier.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Role</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredClassifier_Role()
@@ -227,6 +231,7 @@ public interface StructuredClassifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the connectors owned by the classifier.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Connector</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredClassifier_OwnedConnector()

@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A start classifier behavior action is an action that starts the classifier behavior of the input.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -53,6 +54,7 @@ public interface StartClassifierBehaviorAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Holds the object on which to start the owned behavior.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)

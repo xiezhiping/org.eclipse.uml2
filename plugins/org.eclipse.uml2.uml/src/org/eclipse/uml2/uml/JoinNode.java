@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-model-doc -->
  * A join node is a control node that synchronizes multiple flows.
  * Join nodes have a Boolean value specification using the names of the incoming edges to specify the conditions under which the join will emit a token.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -51,6 +52,7 @@ public interface JoinNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Tells whether tokens having objects with the same identity are combined into one by the join.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Combine Duplicate</em>' attribute.
 	 * @see #setIsCombineDuplicate(boolean)
@@ -82,6 +84,7 @@ public interface JoinNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A specification giving the conditions under which the join with emit a token. Default is "and".
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Join Spec</em>' containment reference.
 	 * @see #setJoinSpec(ValueSpecification)

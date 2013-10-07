@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * An action input pin is a kind of pin that executes an action to determine the values to input to another.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -53,6 +54,7 @@ public interface ActionInputPin
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The action used to provide values.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>From Action</em>' containment reference.
 	 * @see #setFromAction(Action)

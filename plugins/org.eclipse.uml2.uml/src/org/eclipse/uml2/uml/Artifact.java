@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-model-doc -->
  * An artifact is the source of a deployment to a node.
  * An artifact is the specification of a physical piece of information that is used or produced by a software development process, or by deployment and operation of a system. Examples of artifacts include model files, source files, scripts, and binary executable files, a table in a database system, a development deliverable, or a word-processing document, a mail message.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -50,6 +51,7 @@ public interface Artifact
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A concrete name that is used to refer to the Artifact in a physical context. Example: file system name, universal resource locator.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>File Name</em>' attribute.
 	 * @see #isSetFileName()
@@ -109,6 +111,7 @@ public interface Artifact
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Artifacts that are defined (nested) within the Artifact. The association is a specialization of the ownedMember association from Namespace to NamedElement.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Nested Artifact</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getArtifact_NestedArtifact()
@@ -180,6 +183,7 @@ public interface Artifact
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The set of model elements that are manifested in the Artifact. That is, these model elements are utilized in the construction (or generation) of the artifact.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Manifestation</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getArtifact_Manifestation()
@@ -244,6 +248,7 @@ public interface Artifact
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Operations defined for the Artifact. The association is a specialization of the ownedMember association.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getArtifact_OwnedOperation()
@@ -311,6 +316,7 @@ public interface Artifact
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The attributes or association ends defined for the Artifact. The association is a specialization of the ownedMember association.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getArtifact_OwnedAttribute()

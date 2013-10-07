@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A collaboration use represents the application of the pattern described by a collaboration to a specific situation involving specific classes or instances playing the roles of the collaboration.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -53,6 +54,7 @@ public interface Collaboration
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References connectable elements (possibly owned by other classifiers) which represent roles that instances may play in this collaboration.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Collaboration Role</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getCollaboration_CollaborationRole()

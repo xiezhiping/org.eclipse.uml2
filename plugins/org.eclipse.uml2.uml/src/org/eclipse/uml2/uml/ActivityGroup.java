@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * ActivityGroup is an abstract class for defining sets of nodes and edges in an activity.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -63,6 +64,7 @@ public interface ActivityGroup
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Groups immediately contained in the group.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Subgroup</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityGroup_Subgroup()
@@ -110,6 +112,7 @@ public interface ActivityGroup
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Group immediately containing the group.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Super Group</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityGroup_SuperGroup()
@@ -128,6 +131,7 @@ public interface ActivityGroup
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Nodes immediately contained in the group.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Contained Node</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityGroup_ContainedNode()
@@ -174,6 +178,7 @@ public interface ActivityGroup
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Activity containing the group.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>In Activity</em>' reference.
 	 * @see #setInActivity(Activity)
@@ -203,6 +208,7 @@ public interface ActivityGroup
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Edges immediately contained in the group.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Contained Edge</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityGroup_ContainedEdge()

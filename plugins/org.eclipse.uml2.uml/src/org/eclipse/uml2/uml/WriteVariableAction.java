@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * WriteVariableAction is an abstract class for variable actions that change variable values.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -54,6 +55,7 @@ public interface WriteVariableAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Value to be added or removed from the variable.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Value</em>' containment reference.
 	 * @see #setValue(InputPin)

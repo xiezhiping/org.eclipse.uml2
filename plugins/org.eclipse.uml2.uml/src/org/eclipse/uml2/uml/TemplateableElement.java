@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A templateable element is an element that can optionally be defined as a template and bound to other templates.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -55,6 +56,7 @@ public interface TemplateableElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The optional bindings from this element to templates.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Template Binding</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTemplateableElement_TemplateBinding()
@@ -112,6 +114,7 @@ public interface TemplateableElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The optional template signature specifying the formal template parameters.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Template Signature</em>' containment reference.
 	 * @see #setOwnedTemplateSignature(TemplateSignature)
@@ -159,6 +162,7 @@ public interface TemplateableElement
 	 * <!-- begin-model-doc -->
 	 * The query parameterableElements() returns the set of elements that may be used as the parametered elements for a template parameter of this templateable element. By default, this set includes all the owned elements. Subclasses may override this operation if they choose to restrict the set of parameterable elements.
 	 * result = allOwnedElements->select(oclIsKindOf(ParameterableElement))
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false"
 	 * @generated
@@ -171,6 +175,7 @@ public interface TemplateableElement
 	 * <!-- begin-model-doc -->
 	 * The query isTemplate() returns whether this templateable element is actually a template.
 	 * result = ownedTemplateSignature->notEmpty()
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated

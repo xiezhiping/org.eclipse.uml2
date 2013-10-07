@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * A comment is a textual annotation that can be attached to a set of elements.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -45,6 +46,7 @@ public interface Comment
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies a string that is the comment.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body</em>' attribute.
 	 * @see #isSetBody()
@@ -99,6 +101,7 @@ public interface Comment
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Element(s) being commented.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Annotated Element</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getComment_AnnotatedElement()

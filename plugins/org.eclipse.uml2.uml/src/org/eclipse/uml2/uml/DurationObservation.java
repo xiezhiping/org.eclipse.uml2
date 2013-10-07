@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A duration observation is a reference to a duration during an execution. It points out the element(s) in the model to observe and whether the observations are when this model element is entered or when it is exited.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -51,6 +52,7 @@ public interface DurationObservation
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The observation is determined by the entering or exiting of the event element during execution.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Event</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDurationObservation_Event()
@@ -90,6 +92,7 @@ public interface DurationObservation
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The value of firstEvent[i] is related to event[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters event[i]. If firstEvent[i] is false, then the corresponding observation event is the time instant the execution exits event[i]. Default value is true applied when event[i] refers an element that represents only one time instant.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>First Event</em>' attribute list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDurationObservation_FirstEvent()

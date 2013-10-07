@@ -20,6 +20,7 @@ package org.eclipse.uml2.uml;
  * <!-- begin-model-doc -->
  * Packageable elements are able to serve as a template parameter.
  * A packageable element indicates a named element that may be owned directly by a package.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  *

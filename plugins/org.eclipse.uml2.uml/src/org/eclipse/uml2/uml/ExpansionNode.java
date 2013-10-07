@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * <!-- begin-model-doc -->
  * An expansion node is an object node used to indicate a flow across the boundary of an expansion region. A flow into a region contains a collection that is broken into its individual elements inside the region, which is executed once per element. A flow out of a region combines individual elements into a collection for use outside the region.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -47,6 +48,7 @@ public interface ExpansionNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The expansion region for which the node is an output.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Region As Output</em>' reference.
 	 * @see #setRegionAsOutput(ExpansionRegion)
@@ -89,6 +91,7 @@ public interface ExpansionNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The expansion region for which the node is an input.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Region As Input</em>' reference.
 	 * @see #setRegionAsInput(ExpansionRegion)

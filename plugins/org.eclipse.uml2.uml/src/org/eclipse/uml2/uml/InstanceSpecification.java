@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-model-doc -->
  * An instance specification has the capability of being a deployment target in a deployment relationship, in the case that it is an instance of a node. It is also has the capability of being a deployed artifact, if it is an instance of an artifact.
  * An instance specification is a model element that represents an instance in a modeled system.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -53,6 +54,7 @@ public interface InstanceSpecification
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInstanceSpecification_Classifier()
@@ -97,6 +99,7 @@ public interface InstanceSpecification
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A specification of how to compute, derive, or construct the instance.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Specification</em>' containment reference.
 	 * @see #setSpecification(ValueSpecification)
@@ -143,6 +146,7 @@ public interface InstanceSpecification
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Slot</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInstanceSpecification_Slot()

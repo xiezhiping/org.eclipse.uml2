@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A node is computational resource upon which artifacts may be deployed for execution. Nodes can be interconnected through communication paths to define network structures.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -58,6 +59,7 @@ public interface Node
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Nodes that are defined (nested) within the Node.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Nested Node</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNode_NestedNode()

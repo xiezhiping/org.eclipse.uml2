@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * Duration defines a value specification that specifies the temporal distance between two time instants.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -53,6 +54,7 @@ public interface Duration
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The value of the Duration.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Expr</em>' containment reference.
 	 * @see #setExpr(ValueSpecification)
@@ -92,6 +94,7 @@ public interface Duration
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Refers to the time and duration observations that are involved in expr.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Observation</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDuration_Observation()

@@ -20,6 +20,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * An interval defines the range between two value specifications.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -43,6 +44,7 @@ public interface Interval
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Refers to the ValueSpecification denoting the minimum value of the range.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Min</em>' reference.
 	 * @see #setMin(ValueSpecification)
@@ -68,6 +70,7 @@ public interface Interval
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Refers to the ValueSpecification denoting the maximum value of the range.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Max</em>' reference.
 	 * @see #setMax(ValueSpecification)

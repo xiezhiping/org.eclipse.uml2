@@ -25,6 +25,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
  * Parameter direction kind is an enumeration type that defines literals used to specify direction of parameters.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getParameterDirectionKind()
  * @model

@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-model-doc -->
  * A port has an associated protocol state machine.
  * A port is a property of a classifier that specifies a distinct interaction point between that classifier and its environment or between the (behavior of the) classifier and its internal parts. Ports are connected to properties of the classifier by connectors through which requests can be made to invoke the behavioral features of a classifier. A Port may specify the services a classifier provides (offers) to its environment as well as the services that a classifier expects (requires) of its environment.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -55,6 +56,7 @@ public interface Port
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies whether requests arriving at this port are sent to the classifier behavior of this classifier. Such ports are referred to as behavior port. Any invocation of a behavioral feature targeted at a behavior port will be handled by the instance of the owning classifier itself, rather than by any instances that this classifier may contain.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Behavior</em>' attribute.
 	 * @see #setIsBehavior(boolean)
@@ -81,6 +83,7 @@ public interface Port
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the way that the provided and required interfaces are derived from the Port’s Type. The default value is false.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Conjugated</em>' attribute.
 	 * @see #setIsConjugated(boolean)
@@ -107,6 +110,7 @@ public interface Port
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If true indicates that this port is used to provide the published functionality of a classifier; if false, this port is used to implement the classifier but is not part of the essential externally-visible functionality of the classifier and can, therefore, be altered or deleted along with the internal implementation of the classifier and other properties that are considered part of its implementation.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Service</em>' attribute.
 	 * @see #setIsService(boolean)
@@ -133,6 +137,7 @@ public interface Port
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the interfaces specifying the set of operations and receptions that the classifier expects its environment to handle via this port. This association is derived according to the value of isConjugated. If isConjugated is false, required is derived as the union of the sets of interfaces used by the type of the port and its supertypes. If isConjugated is true, it is derived as the union of the sets of interfaces realized by the type of the port and its supertypes, or directly from the type of the port if the port is typed by an interface.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Required</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPort_Required()
@@ -177,6 +182,7 @@ public interface Port
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A port may be redefined when its containing classifier is specialized. The redefining port may have additional interfaces to those that are associated with the redefined port or it may replace an interface by one of its subtypes.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Port</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPort_RedefinedPort()
@@ -217,6 +223,7 @@ public interface Port
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the interfaces specifying the set of operations and receptions that the classifier offers to its environment via this port, and which it will handle either directly or by forwarding it to a part of its internal structure. This association is derived according to the value of isConjugated. If isConjugated is false, provided is derived as the union of the sets of interfaces realized by the type of the port and its supertypes, or directly from the type of the port if the port is typed by an interface. If isConjugated is true, it is derived as the union of the sets of interfaces used by the type of the port and its supertypes.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Provided</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPort_Provided()
@@ -254,6 +261,7 @@ public interface Port
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References an optional protocol state machine which describes valid interactions at this interaction point.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Protocol</em>' reference.
 	 * @see #setProtocol(ProtocolStateMachine)

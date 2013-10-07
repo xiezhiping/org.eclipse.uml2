@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * An enumeration is a data type whose values are enumerated in the model as enumeration literals.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -52,6 +53,7 @@ public interface Enumeration
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The ordered set of literals for this Enumeration.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Literal</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getEnumeration_OwnedLiteral()

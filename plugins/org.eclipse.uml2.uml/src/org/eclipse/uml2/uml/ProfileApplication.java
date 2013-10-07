@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EPackage;
  *
  * <!-- begin-model-doc -->
  * A profile application is used to show which profiles have been applied to a package.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -52,6 +53,7 @@ public interface ProfileApplication
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Profiles that are applied to a Package through this ProfileApplication.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Applied Profile</em>' reference.
 	 * @see #setAppliedProfile(Profile)
@@ -78,6 +80,7 @@ public interface ProfileApplication
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Strict</em>' attribute.
 	 * @see #setIsStrict(boolean)
@@ -111,6 +114,7 @@ public interface ProfileApplication
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The package that owns the profile application.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Applying Package</em>' container reference.
 	 * @see #setApplyingPackage(org.eclipse.uml2.uml.Package)

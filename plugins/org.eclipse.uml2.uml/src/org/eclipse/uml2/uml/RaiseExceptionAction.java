@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A raise exception action is an action that causes an exception to occur. The input value becomes the exception object.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -49,6 +50,7 @@ public interface RaiseExceptionAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An input pin whose value becomes an exception object.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Exception</em>' containment reference.
 	 * @see #setException(InputPin)

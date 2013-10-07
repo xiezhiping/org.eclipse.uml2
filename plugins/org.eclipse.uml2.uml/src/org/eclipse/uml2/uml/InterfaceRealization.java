@@ -19,6 +19,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * An interface realization is a specialized realization relationship between a classifier and an interface. This relationship signifies that the realizing classifier conforms to the contract specified by the interface.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -48,6 +49,7 @@ public interface InterfaceRealization
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Interface specifying the conformance contract.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Contract</em>' reference.
 	 * @see #setContract(Interface)
@@ -81,6 +83,7 @@ public interface InterfaceRealization
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the BehavioredClassifier that owns this Interfacerealization (i.e., the classifier that realizes the Interface to which it points).
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Implementing Classifier</em>' container reference.
 	 * @see #setImplementingClassifier(BehavioredClassifier)

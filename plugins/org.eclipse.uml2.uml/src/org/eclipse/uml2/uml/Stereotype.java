@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A stereotype defines how an existing metaclass may be extended, and enables the use of platform or domain specific terminology or notation in place of, or in addition to, the ones used for the extended metaclass.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -57,6 +58,7 @@ public interface Stereotype
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Icon</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStereotype_Icon()
@@ -142,6 +144,7 @@ public interface Stereotype
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The profile that directly or indirectly contains this stereotype.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Profile</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStereotype_Profile()
@@ -194,6 +197,7 @@ public interface Stereotype
 	 * <!-- begin-model-doc -->
 	 * The query containingProfile returns the closest profile directly or indirectly containing this stereotype.
 	 * result = self.namespace.oclAsType(Package).containingProfile()
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false"
 	 * @generated

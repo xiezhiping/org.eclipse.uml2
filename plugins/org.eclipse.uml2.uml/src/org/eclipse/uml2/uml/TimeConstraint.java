@@ -20,6 +20,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * A time constraint is a constraint that refers to a time interval.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -43,6 +44,7 @@ public interface TimeConstraint
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The value of firstEvent is related to constrainedElement. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters constrainedElement. If firstEvent is false, then the corresponding observation event is the last time instant the execution is within constrainedElement.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>First Event</em>' attribute.
 	 * @see #setFirstEvent(boolean)

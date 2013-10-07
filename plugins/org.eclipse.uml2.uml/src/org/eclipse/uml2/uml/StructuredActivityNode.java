@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-model-doc -->
  * A structured activity node is an executable activity node that may have an expansion into subordinate nodes as an activity group. The subordinate nodes must belong to only one structured activity node, although they may be nested.
  * Because of the concurrent nature of the execution of actions within and across activities, it can be difficult to guarantee the consistent access and modification of object memory. In order to avoid race conditions or other concurrency-related problems, it is sometimes necessary to isolate the effects of a group of actions from the effects of actions outside the group. This may be indicated by setting the mustIsolate attribute to true on a structured activity node. If a structured activity node is "isolated," then any object used by an action within the node cannot be accessed by any action outside the node until the structured activity node as a whole completes. Any concurrent actions that would result in accessing such objects are required to have their execution deferred until the completion of the node.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -63,6 +64,7 @@ public interface StructuredActivityNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A variable defined in the scope of the structured activity node. It has no value and may not be accessed
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Variable</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredActivityNode_Variable()
@@ -126,6 +128,7 @@ public interface StructuredActivityNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Nodes immediately contained in the group.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Node</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredActivityNode_Node()
@@ -188,6 +191,9 @@ public interface StructuredActivityNode
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Structured Node Input</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredActivityNode_StructuredNodeInput()
 	 * @model containment="true" resolveProxies="true" ordered="false"
@@ -263,6 +269,9 @@ public interface StructuredActivityNode
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Structured Node Output</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredActivityNode_StructuredNodeOutput()
 	 * @model containment="true" resolveProxies="true" ordered="false"
@@ -316,6 +325,7 @@ public interface StructuredActivityNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If true, then the actions in the node execute in isolation from actions outside the node.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Must Isolate</em>' attribute.
 	 * @see #setMustIsolate(boolean)
@@ -350,6 +360,7 @@ public interface StructuredActivityNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Edges immediately contained in the structured node.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Edge</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredActivityNode_Edge()

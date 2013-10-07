@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * An exception handler is an element that specifies a body to execute in case the specified exception occurs during the execution of the protected node.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -53,6 +54,7 @@ public interface ExceptionHandler
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A node that is executed if the handler satisfies an uncaught exception.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Handler Body</em>' reference.
 	 * @see #setHandlerBody(ExecutableNode)
@@ -78,6 +80,7 @@ public interface ExceptionHandler
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An object node within the handler body. When the handler catches an exception, the exception token is placed in this node, causing the body to execute.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Exception Input</em>' reference.
 	 * @see #setExceptionInput(ObjectNode)
@@ -104,6 +107,7 @@ public interface ExceptionHandler
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Exception Type</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExceptionHandler_ExceptionType()
@@ -149,6 +153,7 @@ public interface ExceptionHandler
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The node protected by the handler. The handler is examined if an exception propagates to the outside of the node.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Protected Node</em>' container reference.
 	 * @see #setProtectedNode(ExecutableNode)

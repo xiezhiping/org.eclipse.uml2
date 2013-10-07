@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -53,6 +54,7 @@ public interface MultiplicityElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Ordered</em>' attribute.
 	 * @see #setIsOrdered(boolean)
@@ -79,6 +81,7 @@ public interface MultiplicityElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Unique</em>' attribute.
 	 * @see #setIsUnique(boolean)
@@ -105,6 +108,7 @@ public interface MultiplicityElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the upper bound of the multiplicity interval.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Upper</em>' attribute.
 	 * @see #setUpper(int)
@@ -131,6 +135,7 @@ public interface MultiplicityElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the lower bound of the multiplicity interval.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Lower</em>' attribute.
 	 * @see #setLower(int)
@@ -162,6 +167,7 @@ public interface MultiplicityElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The specification of the upper bound for this multiplicity.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Upper Value</em>' containment reference.
 	 * @see #setUpperValue(ValueSpecification)
@@ -206,6 +212,7 @@ public interface MultiplicityElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The specification of the lower bound for this multiplicity.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Lower Value</em>' containment reference.
 	 * @see #setLowerValue(ValueSpecification)
@@ -305,6 +312,7 @@ public interface MultiplicityElement
 	 * The query isMultivalued() checks whether this multiplicity has an upper bound greater than one.
 	 * result = upperBound() > 1
 	 * upperBound()->notEmpty()
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
@@ -318,6 +326,7 @@ public interface MultiplicityElement
 	 * The query includesCardinality() checks whether the specified cardinality is valid for this multiplicity.
 	 * upperBound()->notEmpty() and lowerBound()->notEmpty()
 	 * result = (lowerBound() <= C) and (upperBound() >= C)
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" CDataType="org.eclipse.uml2.types.Integer" CRequired="true" COrdered="false"
 	 * @generated
@@ -331,6 +340,7 @@ public interface MultiplicityElement
 	 * The query includesMultiplicity() checks whether this multiplicity includes all the cardinalities allowed by the specified multiplicity.
 	 * result = (self.lowerBound() <= M.lowerBound()) and (self.upperBound() >= M.upperBound())
 	 * self.upperBound()->notEmpty() and self.lowerBound()->notEmpty() and M.upperBound()->notEmpty() and M.lowerBound()->notEmpty()
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" MRequired="true" MOrdered="false"
 	 * @generated
@@ -343,6 +353,7 @@ public interface MultiplicityElement
 	 * <!-- begin-model-doc -->
 	 * The query lowerBound() returns the lower bound of the multiplicity as an integer.
 	 * result = if lowerValue->isEmpty() then 1 else lowerValue.integerValue() endif
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Integer" ordered="false"
 	 * @generated
@@ -355,6 +366,7 @@ public interface MultiplicityElement
 	 * <!-- begin-model-doc -->
 	 * The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.
 	 * result = if upperValue->isEmpty() then 1 else upperValue.unlimitedValue() endif
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.UnlimitedNatural" ordered="false"
 	 * @generated
@@ -367,6 +379,7 @@ public interface MultiplicityElement
 	 * <!-- begin-model-doc -->
 	 * The operation compatibleWith takes another multiplicity as input. It checks if one multiplicity is compatible with another.
 	 * result = Integer.allInstances()->forAll(i : Integer | self.includesCardinality(i) implies other.includesCardinality(i))
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" otherRequired="true" otherOrdered="false"
 	 * @generated
@@ -379,6 +392,7 @@ public interface MultiplicityElement
 	 * <!-- begin-model-doc -->
 	 * The operation is determines if the upper and lower bound of the ranges are the ones given.
 	 * result = (lowerbound = self.lowerbound and upperbound = self.upperbound)
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" lowerboundDataType="org.eclipse.uml2.types.Integer" lowerboundRequired="true" lowerboundOrdered="false" upperboundDataType="org.eclipse.uml2.types.Integer" upperboundRequired="true" upperboundOrdered="false"
 	 * @generated

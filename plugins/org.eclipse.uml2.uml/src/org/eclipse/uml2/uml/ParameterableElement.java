@@ -20,6 +20,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * A parameterable element is an element that can be exposed as a formal template parameter for a template, or specified as an actual parameter in a binding of a template.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -44,6 +45,7 @@ public interface ParameterableElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The template parameter that exposes this element as a formal parameter.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Template Parameter</em>' reference.
 	 * @see #setTemplateParameter(TemplateParameter)
@@ -78,6 +80,7 @@ public interface ParameterableElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The formal template parameter that owns this element.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owning Template Parameter</em>' container reference.
 	 * @see #setOwningTemplateParameter(TemplateParameter)
@@ -104,6 +107,7 @@ public interface ParameterableElement
 	 * <!-- begin-model-doc -->
 	 * The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. Subclasses should override this operation to specify different compatibility constraints.
 	 * result = p->oclIsKindOf(self.oclType)
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" pRequired="true" pOrdered="false"
 	 * @generated
@@ -116,6 +120,7 @@ public interface ParameterableElement
 	 * <!-- begin-model-doc -->
 	 * The query isTemplateParameter() determines if this parameterable element is exposed as a formal template parameter.
 	 * result = templateParameter->notEmpty()
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated

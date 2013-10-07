@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * <!-- begin-model-doc -->
  * A decision node is a control node that chooses between outgoing flows.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -46,6 +47,7 @@ public interface DecisionNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Provides input to guard specifications on edges outgoing from the decision node.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Decision Input</em>' reference.
 	 * @see #setDecisionInput(Behavior)
@@ -71,6 +73,7 @@ public interface DecisionNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An additional edge incoming to the decision node that provides a decision input value.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Decision Input Flow</em>' reference.
 	 * @see #setDecisionInputFlow(ObjectFlow)

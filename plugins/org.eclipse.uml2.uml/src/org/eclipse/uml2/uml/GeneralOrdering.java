@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * <!-- begin-model-doc -->
  * A general ordering represents a binary relation between two occurrence specifications, to describe that one occurrence specification must occur before the other in a valid trace. This mechanism provides the ability to define partial orders of occurrence cpecifications that may otherwise not have a specified order.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -47,6 +48,7 @@ public interface GeneralOrdering
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The OccurrenceSpecification referenced comes before the OccurrenceSpecification referenced by after.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Before</em>' reference.
 	 * @see #setBefore(OccurrenceSpecification)
@@ -89,6 +91,7 @@ public interface GeneralOrdering
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The OccurrenceSpecification referenced comes after the OccurrenceSpecification referenced by before.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>After</em>' reference.
 	 * @see #setAfter(OccurrenceSpecification)

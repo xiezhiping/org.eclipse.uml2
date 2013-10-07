@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * <!-- begin-model-doc -->
  * An enumeration literal is a user-defined data value for an enumeration.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -51,6 +52,7 @@ public interface EnumerationLiteral
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Enumeration that this EnumerationLiteral is a member of.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Enumeration</em>' container reference.
 	 * @see #setEnumeration(Enumeration)
@@ -91,6 +93,7 @@ public interface EnumerationLiteral
 	 * <!-- begin-model-doc -->
 	 * Missing derivation for EnumerationLiteral::/classifier : Enumeration
 	 * true
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" required="true" ordered="false"
 	 * @generated

@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * Relationship is an abstract concept that specifies some kind of relationship between elements.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -46,6 +47,7 @@ public interface Relationship
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the elements related by the Relationship.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Related Element</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRelationship_RelatedElement()

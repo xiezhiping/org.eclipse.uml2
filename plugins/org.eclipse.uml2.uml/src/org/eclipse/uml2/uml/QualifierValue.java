@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * <!-- begin-model-doc -->
  * A qualifier value is not an action. It is an element that identifies links. It gives a single qualifier within a link end data specification.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -46,6 +47,7 @@ public interface QualifierValue
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Attribute representing the qualifier for which the value is to be specified.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Qualifier</em>' reference.
 	 * @see #setQualifier(Property)
@@ -71,6 +73,7 @@ public interface QualifierValue
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Input pin from which the specified value for the qualifier is taken.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Value</em>' reference.
 	 * @see #setValue(InputPin)

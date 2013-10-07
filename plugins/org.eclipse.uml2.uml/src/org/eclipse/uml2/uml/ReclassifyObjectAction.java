@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A reclassify object action is an action that changes which classifiers classify an object.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -54,6 +55,7 @@ public interface ReclassifyObjectAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies whether existing classifiers should be removed before adding the new classifiers.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Replace All</em>' attribute.
 	 * @see #setIsReplaceAll(boolean)
@@ -80,6 +82,7 @@ public interface ReclassifyObjectAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A set of classifiers to be removed from the classifiers of the object.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Old Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getReclassifyObjectAction_OldClassifier()
@@ -119,6 +122,7 @@ public interface ReclassifyObjectAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A set of classifiers to be added to the classifiers of the object.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>New Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getReclassifyObjectAction_NewClassifier()
@@ -163,6 +167,7 @@ public interface ReclassifyObjectAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Holds the object to be reclassified.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)

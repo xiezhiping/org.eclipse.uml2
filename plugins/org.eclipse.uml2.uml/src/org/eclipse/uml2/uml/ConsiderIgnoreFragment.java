@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A consider ignore fragment is a kind of combined fragment that is used for the consider and ignore cases, which require lists of pertinent messages to be specified.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -50,6 +51,7 @@ public interface ConsiderIgnoreFragment
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The set of messages that apply to this fragment
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Message</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConsiderIgnoreFragment_Message()

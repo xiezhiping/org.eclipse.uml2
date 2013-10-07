@@ -20,6 +20,7 @@ package org.eclipse.uml2.uml;
  * <!-- begin-model-doc -->
  * A typed element is a kind of named element that represents an element with a type.
  * A typed element has a type.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -43,6 +44,7 @@ public interface TypedElement
 	 * <!-- begin-model-doc -->
 	 * This information is derived from the return result for this Operation.
 	 * The type of the TypedElement.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' reference.
 	 * @see #setType(Type)

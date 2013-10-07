@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * An activity partition is a kind of activity group for identifying actions that have some characteristic in common.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -57,6 +58,7 @@ public interface ActivityPartition
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Tells whether the partition groups other partitions along a dimension.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Dimension</em>' attribute.
 	 * @see #setIsDimension(boolean)
@@ -83,6 +85,7 @@ public interface ActivityPartition
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Tells whether the partition represents an entity to which the partitioning structure does not apply.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is External</em>' attribute.
 	 * @see #setIsExternal(boolean)
@@ -116,6 +119,7 @@ public interface ActivityPartition
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Edges immediately contained in the group.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Edge</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityPartition_Edge()
@@ -163,6 +167,7 @@ public interface ActivityPartition
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Nodes immediately contained in the group.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Node</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityPartition_Node()
@@ -210,6 +215,7 @@ public interface ActivityPartition
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Partitions immediately contained in the partition.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Subpartition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityPartition_Subpartition()
@@ -268,6 +274,7 @@ public interface ActivityPartition
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Partition immediately containing the partition.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Super Partition</em>' container reference.
 	 * @see #setSuperPartition(ActivityPartition)
@@ -294,6 +301,7 @@ public interface ActivityPartition
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An element constraining behaviors invoked by nodes in the partition.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Represents</em>' reference.
 	 * @see #setRepresents(Element)

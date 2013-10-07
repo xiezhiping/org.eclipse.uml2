@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * An information item is an abstraction of all kinds of information that can be exchanged between objects. It is a kind of classifier intended for representing information in a very abstract way, one which cannot be instantiated.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -50,6 +51,7 @@ public interface InformationItem
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Represented</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInformationItem_Represented()

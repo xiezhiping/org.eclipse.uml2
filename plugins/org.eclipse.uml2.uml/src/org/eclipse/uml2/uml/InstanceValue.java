@@ -19,6 +19,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * An instance value is a value specification that identifies an instance.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -41,6 +42,7 @@ public interface InstanceValue
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The instance that is the specified value.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Instance</em>' reference.
 	 * @see #setInstance(InstanceSpecification)

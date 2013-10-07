@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A data type is a type whose instances are identified only by their value. A data type may contain attributes to support the modeling of structured data types.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -55,6 +56,7 @@ public interface DataType
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Attributes owned by the DataType.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDataType_OwnedAttribute()
@@ -132,6 +134,7 @@ public interface DataType
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Operations owned by the DataType.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDataType_OwnedOperation()

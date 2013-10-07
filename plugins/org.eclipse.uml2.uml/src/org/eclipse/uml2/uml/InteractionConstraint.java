@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * An interaction constraint is a Boolean expression that guards an operand in a combined fragment.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -55,6 +56,7 @@ public interface InteractionConstraint
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The minimum number of iterations of a loop
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Minint</em>' containment reference.
 	 * @see #setMinint(ValueSpecification)
@@ -99,6 +101,7 @@ public interface InteractionConstraint
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The maximum number of iterations of a loop
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Maxint</em>' containment reference.
 	 * @see #setMaxint(ValueSpecification)

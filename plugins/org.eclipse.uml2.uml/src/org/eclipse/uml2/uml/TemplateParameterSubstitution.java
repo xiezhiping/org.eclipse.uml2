@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A template parameter substitution relates the actual parameter to a formal template parameter as part of a template binding.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -51,6 +52,7 @@ public interface TemplateParameterSubstitution
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The formal template parameter that is associated with this substitution.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Formal</em>' reference.
 	 * @see #setFormal(TemplateParameter)
@@ -76,6 +78,7 @@ public interface TemplateParameterSubstitution
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The element that is the actual parameter for this substitution.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Actual</em>' reference.
 	 * @see #setActual(ParameterableElement)
@@ -108,6 +111,7 @@ public interface TemplateParameterSubstitution
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The actual parameter that is owned by this substitution.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Actual</em>' containment reference.
 	 * @see #setOwnedActual(ParameterableElement)
@@ -151,6 +155,7 @@ public interface TemplateParameterSubstitution
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The optional bindings from this element to templates.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Template Binding</em>' container reference.
 	 * @see #setTemplateBinding(TemplateBinding)

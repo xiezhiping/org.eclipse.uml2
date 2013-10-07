@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * A redefinable template signature supports the addition of formal template parameters in a specialization of a template classifier.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -57,6 +58,7 @@ public interface RedefinableTemplateSignature
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The template signature that is extended by this template signature.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Extended Signature</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRedefinableTemplateSignature_ExtendedSignature()
@@ -102,6 +104,7 @@ public interface RedefinableTemplateSignature
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The formal template parameters of the extendedSignature.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Inherited Parameter</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRedefinableTemplateSignature_InheritedParameter()
@@ -128,6 +131,7 @@ public interface RedefinableTemplateSignature
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The classifier that owns this template signature.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Classifier</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRedefinableTemplateSignature_Classifier()

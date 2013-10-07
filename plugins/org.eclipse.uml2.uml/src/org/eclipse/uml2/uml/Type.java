@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-model-doc -->
  * A type is a named element that is used as the type for a typed element. A type can be contained in a package.
  * A type constrains the values represented by a typed element.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -52,6 +53,7 @@ public interface Type
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the owning package of this classifier, if any.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Package</em>' reference.
 	 * @see #setPackage(org.eclipse.uml2.uml.Package)
@@ -115,6 +117,7 @@ public interface Type
 	 * <!-- begin-model-doc -->
 	 * The query conformsTo() gives true for a type that conforms to another. By default, two types do not conform to each other. This query is intended to be redefined for specific conformance situations.
 	 * result = false
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" otherRequired="true" otherOrdered="false"
 	 * @generated

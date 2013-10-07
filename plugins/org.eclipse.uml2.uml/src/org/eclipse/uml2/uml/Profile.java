@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.EPackage;
  *
  * <!-- begin-model-doc -->
  * A profile defines limited extensions to a reference metamodel with the purpose of adapting the metamodel to a specific platform or domain.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -60,6 +61,7 @@ public interface Profile
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References a metaclass that may be extended.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Metaclass Reference</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProfile_MetaclassReference()
@@ -116,6 +118,7 @@ public interface Profile
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References a package containing (directly or indirectly) metaclasses that may be extended.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Metamodel Reference</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProfile_MetamodelReference()

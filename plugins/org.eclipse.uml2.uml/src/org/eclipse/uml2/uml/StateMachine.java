@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * State machines can be used to express the behavior of part of a system. Behavior is modeled as a traversal of a graph of state nodes interconnected by one or more joined transition arcs that are triggered by the dispatching of series of (event) occurrences. During this traversal, the state machine executes a series of activities associated with various elements of the state machine.
+ * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -61,6 +62,7 @@ public interface StateMachine
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The regions owned directly by the state machine.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Region</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStateMachine_Region()
@@ -113,6 +115,7 @@ public interface StateMachine
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the submachine(s) in case of a submachine state. Multiple machines are referenced in case of a concurrent state.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Submachine State</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStateMachine_SubmachineState()
@@ -160,6 +163,7 @@ public interface StateMachine
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The connection points defined for this state machine. They represent the interface of the state machine when used as part of submachine state.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Connection Point</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStateMachine_ConnectionPoint()
@@ -218,6 +222,7 @@ public interface StateMachine
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The state machines of which this is an extension.
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Extended State Machine</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStateMachine_ExtendedStateMachine()
@@ -317,6 +322,7 @@ public interface StateMachine
 	 * <!-- begin-model-doc -->
 	 * The operation LCA(s1,s2) returns an orthogonal state or region which is the least common ancestor of states s1 and s2, based on the statemachine containment hierarchy.
 	 * true
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" s1Required="true" s1Ordered="false" s2Required="true" s2Ordered="false"
 	 * @generated
@@ -339,6 +345,7 @@ public interface StateMachine
 	 * 	endif
 	 * endif 
 	 * 
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" s1Required="true" s1Ordered="false" s2Required="true" s2Ordered="false"
 	 * @generated
@@ -357,6 +364,7 @@ public interface StateMachine
 	 * <!-- begin-model-doc -->
 	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of a statemachine are properly related to the redefinition contexts of the specified statemachine to allow this element to redefine the other. The containing classifier of a redefining statemachine must redefine the containing classifier of the redefined statemachine.
 	 * result = true
+	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
 	 * @generated
