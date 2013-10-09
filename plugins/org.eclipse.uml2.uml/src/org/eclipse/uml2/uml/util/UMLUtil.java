@@ -5930,7 +5930,8 @@ public class UMLUtil
 		 * 
 		 * @since 4.2
 		 */
-		protected void processAPITraces(Map<String, String> options,
+		protected void processCapabilityAnnotations(
+				Map<String, String> options,
 				DiagnosticChain diagnostics, Map<Object, Object> context) {
 
 			for (org.eclipse.uml2.uml.Package converted : packages) {
@@ -5940,7 +5941,7 @@ public class UMLUtil
 					for (EAnnotation subAnnotation : annotation
 						.getEAnnotations()) {
 
-						if (isCapabilityTraceAnnotation(subAnnotation)) {
+						if (isCapabilityAnnotation(subAnnotation)) {
 							String capName = subAnnotation.getSource();
 							String capURI = subAnnotation.getDetails().get(
 								ANNOTATION_DETAIL__URI);
@@ -5961,11 +5962,11 @@ public class UMLUtil
 										String doc = UML2Util.isEmpty(capURI)
 											? String
 												.format(
-													"<p>Merged from package %s.</p>", //$NON-NLS-1$
+												"<p>From package %s.</p>", //$NON-NLS-1$
 													capName)
 											: String
 												.format(
-													"<p>Merged from package %s (URI {@literal %s}).</p>", //$NON-NLS-1$
+													"<p>From package %s (URI {@literal %s}).</p>", //$NON-NLS-1$
 													capName, capURI);
 										addDocumentation(ecore, doc);
 									}
@@ -5978,17 +5979,17 @@ public class UMLUtil
 			}
 		}
 
-		private boolean isCapabilityTraceAnnotation(EAnnotation annotation) {
-			EModelElement annotated = annotation.getEModelElement();
-			while (annotated instanceof EAnnotation) {
-				annotated = ((EAnnotation) annotated).getEModelElement();
-			}
+		/**
+		 * @precondition The {@code annotation} is a sub-annotation of the UML
+		 *               namespace annotation on a Package.
+		 */
+		private boolean isCapabilityAnnotation(EAnnotation annotation) {
+			EModelElement annotated = ((EAnnotation) annotation
+				.getEModelElement()).getEModelElement();
 
-			return (annotated instanceof org.eclipse.uml2.uml.Package)
-				&& (annotated.eContainer() == null)
-				&& !annotation.getReferences().isEmpty()
-				&& (EcoreUtil.getRootContainer(annotation.getReferences()
-					.get(0)) == annotated);
+			return !annotation.getReferences().isEmpty()
+				&& (EcoreUtil.isAncestor(annotated, annotation.getReferences()
+					.get(0)));
 		}
 
 		protected void processOptions(Map<String, String> options,
@@ -6082,7 +6083,7 @@ public class UMLUtil
 				processOptions(options, diagnostics, context);
 			}
 
-			processAPITraces(options, diagnostics, context);
+			processCapabilityAnnotations(options, diagnostics, context);
 
 			return getRootContainers(EcoreUtil.<EObject> getObjectsByType(
 				elementToEModelElementMap.values(),
