@@ -62,7 +62,19 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
 
-public class ChooserDialog<T>
+/**
+ * A two-pane dialog that lets the user user choose elements from the left-side
+ * list to add to the right-side list. The elements on the right-side list may
+ * optionally be ordered by moving them up and down.
+ * 
+ * The dialog delegates a variety of decisions to a
+ * {@linkplain IChoicesDialogDelegate delegate}.
+ * 
+ * @since 4.2
+ * 
+ * @see IChoicesDialogDelegate
+ */
+public class ChoicesDialog<T>
 		extends Dialog {
 
 	protected IContentProvider contentProvider;
@@ -77,10 +89,10 @@ public class ChooserDialog<T>
 
 	protected EList<T> result;
 
-	protected final IChooserDialogDelegate<T> delegate;
+	protected final IChoicesDialogDelegate<T> delegate;
 
-	public ChooserDialog(Shell parent, Object object, String displayName,
-			IChooserDialogDelegate<T> delegate) {
+	public ChoicesDialog(Shell parent, Object object, String displayName,
+			IChoicesDialogDelegate<T> delegate) {
 
 		super(parent);
 
@@ -102,8 +114,9 @@ public class ChooserDialog<T>
 		super.configureShell(shell);
 
 		ILabelProvider labelProvider = delegate.getLabelProvider();
-		shell.setText(EMFEditUIPlugin.INSTANCE.getString(
-			"_UI_FeatureEditorDialog_title", new Object[]{displayName,
+		shell.setText(UMLEditorPlugin.INSTANCE.getString(
+			"_UI_ChoicesDialog_title",
+			new Object[]{displayName,
 				labelProvider.getText(object)}));
 		shell.setImage(labelProvider.getImage(object));
 	}

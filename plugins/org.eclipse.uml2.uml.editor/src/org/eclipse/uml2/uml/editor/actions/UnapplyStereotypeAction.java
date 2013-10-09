@@ -22,7 +22,6 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.provider.DelegatingStyledCellLabelProvider;
 import org.eclipse.jface.action.IAction;
@@ -30,11 +29,12 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.window.Window;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
-import org.eclipse.uml2.uml.editor.dialogs.AbstractChooserDialogDelegate;
-import org.eclipse.uml2.uml.editor.dialogs.ChooserDialog;
+import org.eclipse.uml2.uml.editor.dialogs.AbstractChoicesDialogDelegate;
+import org.eclipse.uml2.uml.editor.dialogs.ChoicesDialog;
 
 public class UnapplyStereotypeAction
 		extends UMLCommandAction {
@@ -74,11 +74,11 @@ public class UnapplyStereotypeAction
 			String label = UMLEditorPlugin.INSTANCE
 				.getString("_UI_UnapplyStereotypeActionCommand_label"); //$NON-NLS-1$
 
-			final ChooserDialog<Stereotype> dialog = new ChooserDialog<Stereotype>(
+			final ChoicesDialog<Stereotype> dialog = new ChoicesDialog<Stereotype>(
 				workbenchPart.getSite().getShell(),
 				element,
 				label,
-				new AbstractChooserDialogDelegate<Stereotype>(Stereotype.class) {
+				new AbstractChoicesDialogDelegate<Stereotype>(Stereotype.class) {
 
 					@Override
 					public String getChoicesLabelText() {
@@ -159,7 +159,7 @@ public class UnapplyStereotypeAction
 				});
 			dialog.open();
 
-			if ((dialog.getReturnCode() == FeatureEditorDialog.OK)
+			if ((dialog.getReturnCode() == Window.OK)
 				&& !dialog.getResult().isEmpty()) {
 				editingDomain.getCommandStack().execute(
 					new RefreshingChangeCommand(editingDomain, new Runnable() {

@@ -22,13 +22,13 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.jface.window.Window;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
-import org.eclipse.uml2.uml.editor.dialogs.AbstractChooserDialogDelegate;
-import org.eclipse.uml2.uml.editor.dialogs.ChooserDialog;
+import org.eclipse.uml2.uml.editor.dialogs.AbstractChoicesDialogDelegate;
+import org.eclipse.uml2.uml.editor.dialogs.ChoicesDialog;
 
 public class UnapplyProfileAction
 		extends UMLCommandAction {
@@ -68,9 +68,9 @@ public class UnapplyProfileAction
 				"_UI_UnapplyProfileActionCommand_label", //$NON-NLS-1$
 				new Object[]{getLabelProvider().getText(package_)});
 
-			final ChooserDialog<Profile> dialog = new ChooserDialog<Profile>(
+			final ChoicesDialog<Profile> dialog = new ChoicesDialog<Profile>(
 				workbenchPart.getSite().getShell(), package_, label,
-				new AbstractChooserDialogDelegate<Profile>(Profile.class) {
+				new AbstractChoicesDialogDelegate<Profile>(Profile.class) {
 
 					@Override
 					public String getChoicesLabelText() {
@@ -111,7 +111,7 @@ public class UnapplyProfileAction
 				});
 			dialog.open();
 
-			if ((dialog.getReturnCode() == FeatureEditorDialog.OK)
+			if ((dialog.getReturnCode() == Window.OK)
 				&& !dialog.getResult().isEmpty()) {
 				editingDomain.getCommandStack().execute(
 					new RefreshingChangeCommand(editingDomain, new Runnable() {

@@ -19,14 +19,17 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 
 /**
- * This is the AbstractChooserDialogDelegate type. Enjoy.
+ * A partial implementation of the {@link IChoicesDialogDelegate} protocol,
+ * useful for subclassing.
+ * 
+ * @since 4.2
  */
-public abstract class AbstractChooserDialogDelegate<T>
-		implements IChooserDialogDelegate<T> {
+public abstract class AbstractChoicesDialogDelegate<T>
+		implements IChoicesDialogDelegate<T> {
 
 	private final Class<T> elementType;
 
-	public AbstractChooserDialogDelegate(Class<T> elementType) {
+	public AbstractChoicesDialogDelegate(Class<T> elementType) {
 		this.elementType = elementType;
 	}
 

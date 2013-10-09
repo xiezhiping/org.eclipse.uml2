@@ -28,15 +28,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.jface.window.Window;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
-import org.eclipse.uml2.uml.editor.dialogs.AbstractChooserDialogDelegate;
-import org.eclipse.uml2.uml.editor.dialogs.ChooserDialog;
+import org.eclipse.uml2.uml.editor.dialogs.AbstractChoicesDialogDelegate;
+import org.eclipse.uml2.uml.editor.dialogs.ChoicesDialog;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 
 public class ApplyProfileAction
@@ -115,9 +115,9 @@ public class ApplyProfileAction
 			String label = UMLEditorPlugin.INSTANCE
 				.getString("_UI_ApplyProfileActionCommand_label"); //$NON-NLS-1$
 
-			final ChooserDialog<Profile> dialog = new ChooserDialog<Profile>(
+			final ChoicesDialog<Profile> dialog = new ChoicesDialog<Profile>(
 				workbenchPart.getSite().getShell(), package_, label,
-				new AbstractChooserDialogDelegate<Profile>(Profile.class) {
+				new AbstractChoicesDialogDelegate<Profile>(Profile.class) {
 
 					@Override
 					public String getChoicesLabelText() {
@@ -153,7 +153,7 @@ public class ApplyProfileAction
 				});
 			dialog.open();
 
-			if ((dialog.getReturnCode() == FeatureEditorDialog.OK)
+			if ((dialog.getReturnCode() == Window.OK)
 				&& !dialog.getResult().isEmpty()) {
 				editingDomain.getCommandStack().execute(
 					new RefreshingChangeCommand(editingDomain, new Runnable() {

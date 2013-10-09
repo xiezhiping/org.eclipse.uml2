@@ -18,9 +18,15 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 
 /**
- * This is the IChooserDialogDelegate type.  Enjoy.
+ * Protocol for a delegate that supplies application-specific information and
+ * decisions to a {@link ChoicesDialog}.
+ * 
+ * @since 4.2
+ * 
+ * @see ChoicesDialog
+ * @see AbstractChoicesDialogDelegate
  */
-public interface IChooserDialogDelegate<T> {
+public interface IChoicesDialogDelegate<T> {
 
 	Class<T> getElementType();
 
