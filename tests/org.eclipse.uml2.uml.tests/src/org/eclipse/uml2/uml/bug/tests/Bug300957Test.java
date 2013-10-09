@@ -1,4 +1,4 @@
-/*****************************************************************************
+/*
  * Copyright (c) 2013 CEA and others.
  * 
  * All rights reserved. This program and the accompanying materials
@@ -8,7 +8,8 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - Initial API and implementation
- *****************************************************************************/
+ *
+ */
 package org.eclipse.uml2.uml.bug.tests;
 
 import junit.framework.Test;

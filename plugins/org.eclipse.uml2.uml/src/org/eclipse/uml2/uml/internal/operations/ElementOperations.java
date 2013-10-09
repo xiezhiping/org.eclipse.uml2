@@ -1214,76 +1214,69 @@ public class ElementOperations
 			Stereotype stereotype, boolean required) {
 
 		if (stereotype == null) {
-			if (required)
+			if (required) {
 				throw new IllegalArgumentException("null stereotype"); //$NON-NLS-1$
-			else
-				return null;
+			}
 		} else {
 			Profile profile = stereotype.getProfile();
 
 			if (profile == null) {
-				if (required)
+				if (required) {
 					throw new IllegalArgumentException(String.format(
 						"stereotype \"%s\" is not in a profile", //$NON-NLS-1$
 						stereotype.getQualifiedName()));
-				else
-					return null;
+				}
 			} else {
 				org.eclipse.uml2.uml.Package package_ = element
 					.getNearestPackage();
 
 				if (package_ == null) {
-					if (required)
+					if (required) {
 						throw new IllegalArgumentException(String.format(
 							"element \"%s\" is not in a package", //$NON-NLS-1$
 							UMLUtil.getQualifiedText(element)));
-					else
-						return null;
+					}
 				} else {
 					ProfileApplication profileApplication = package_
 						.getProfileApplication(profile, true);
 
 					if (profileApplication == null) {
-						if (required)
+						if (required) {
 							throw new IllegalArgumentException(String.format(
 								"profile \"%s\" is not applied", //$NON-NLS-1$
 								profile.getQualifiedName()));
-						else
-							return null;
+						}
 					} else {
 						ENamedElement appliedDefinition = profileApplication
 							.getAppliedDefinition(stereotype);
 
 						if (appliedDefinition == null) {
-							if (required)
+							if (required) {
 								throw new IllegalArgumentException(
 									String
 										.format(
 											"stereotype \"%s\" has no Ecore definition", //$NON-NLS-1$
 											stereotype.getQualifiedName()));
-							else
-								return null;
+							}
 						} else if (!(appliedDefinition instanceof EClass)) {
-							if (required)
+							if (required) {
 								throw new IllegalArgumentException(
 									String
 										.format(
 											"stereotype \"%s\" definition is not an EClass", //$NON-NLS-1$
 											stereotype.getQualifiedName()));
-							else
-								return null;
+							}
 						} else {
 							EClass eClass = (EClass) appliedDefinition;
 
 							if (eClass.isAbstract()) {
-								if (required)
+								if (required) {
 									throw new IllegalArgumentException(
 										String
 											.format(
 												"stereotype \"%s\" Ecore definition is abstract", //$NON-NLS-1$
 												stereotype.getQualifiedName()));
-								else
-									return null;
+								}
 							} else {
 								return eClass;
 							}
@@ -1292,6 +1285,8 @@ public class ElementOperations
 				}
 			}
 		}
+
+		return null;
 	}
 
 	/**
@@ -1563,6 +1558,7 @@ public class ElementOperations
 		if (stereotype == null) {
 			throw new IllegalArgumentException("null stereotype"); //$NON-NLS-1$
 		}
+
 		if (element.isStereotypeRequired(stereotype)) {
 			throw new IllegalArgumentException(String.format(
 				"stereotype \"%s\" is a required extension of %s", //$NON-NLS-1$
