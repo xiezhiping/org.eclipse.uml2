@@ -58,8 +58,7 @@ public class UnapplyProfileAction
 				.iterator().next();
 
 			final List<Profile> choiceOfValues = new ArrayList<Profile>(
-				package_
-				.getAppliedProfiles());
+				package_.getAppliedProfiles());
 
 			Collections.<Profile> sort(choiceOfValues,
 				new TextComparator<Profile>());
