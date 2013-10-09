@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, 2013 CEA and others.
+ * Copyright (c) 2012, 2013 CEA, Obeo, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,8 @@
  * Contributors:
  *   CEA - initial API and implementation
  *   Kenn Hussey (CEA) - 389542, 399544
- *
+ *   Mikael Barbero (Obeo) - 414572
+ *   Christian W. Damus (CEA) - 414572
  */
 package org.eclipse.uml2.uml.resources.util;
 
@@ -123,80 +124,168 @@ public class UMLResourcesUtil
 		CMOF2UMLResource.CMOF_2_4_1_METAMODEL_NS_URI, null);
 
 	/**
+	 * Adds registrations to EMF's and UML2's global registries that enable
+	 * working with UML models. To apply the same registrations only locally on
+	 * a resource set (e.g., for isolation from other EMF-based code in the same
+	 * class loader), use the {@link #initLocalRegistries(ResourceSet)} method,
+	 * instead.
+	 * 
+	 * @see #initLocalRegistries(ResourceSet)
+	 * 
+	 * @since 4.2
+	 */
+	public static void initGlobalRegistries() {
+		initPackageRegistry(EPackage.Registry.INSTANCE);
+		initEPackageNsURIToProfileLocationMap(UMLPlugin.getEPackageNsURIToProfileLocationMap());
+		initURIConverterURIMap(URIConverter.URI_MAP);
+		initContentHandlerRegistry(ContentHandler.Registry.INSTANCE);
+		initResourceFactoryRegistry(Resource.Factory.Registry.INSTANCE);
+	}
+
+	/**
+	 * Adds registrations to a resource set's local registries that enable
+	 * working with UML models in that resource set.
+	 * 
+	 * @see #initPackageRegistry(org.eclipse.emf.ecore.EPackage.Registry)
+	 * @see #initResourceFactoryRegistry(org.eclipse.emf.ecore.resource.Resource.Factory.Registry)
+	 * @see #initContentHandlerRegistry(org.eclipse.emf.ecore.resource.ContentHandler.Registry)
+	 * @see #initURIConverterURIMap(Map)
+	 * @see #initEPackageNsURIToProfileLocationMap(Map)
+	 * 
+	 * @since 4.2
+	 */
+	public static void initLocalRegistries(ResourceSet resourceSet) {
+		initPackageRegistry(resourceSet.getPackageRegistry());
+
+		// there is no local registry for this
+		initEPackageNsURIToProfileLocationMap(UMLPlugin
+			.getEPackageNsURIToProfileLocationMap());
+
+		initURIConverterURIMap(resourceSet.getURIConverter().getURIMap());
+
+		// there is no local registry for this
+		initContentHandlerRegistry(ContentHandler.Registry.INSTANCE);
+
+		initResourceFactoryRegistry(resourceSet.getResourceFactoryRegistry());
+	}
+
+	/**
+	 * <p>
 	 * Initializes the registries for the specified resource set (and/or the
 	 * global registries) with the registrations needed to work with UML2
 	 * resources in stand-alone mode (i.e., without Eclipse).
+	 * </p>
+	 * <p>
+	 * <string>Note</string> that as of the 4.2 release, clients now have more
+	 * fine-grained control of which registries (local or global) are
+	 * initialized. Clients are encouraged to use these new APIs to ensure
+	 * optimal behaviour and, where necessary, isolation from other code in the
+	 * same class loader using the global registries.
+	 * </p>
 	 * 
 	 * @param resourceSet
 	 *            The resource set whose registries to initialize, or
-	 *            <code>null</code>.
+	 *            <code>null</code> to perform only global registrations.
 	 * @return The resource set (or <code>null</code>).
 	 * 
 	 * @since 4.0
+	 * 
+	 * @see #initLocalRegistries(ResourceSet)
+	 * @see #initGlobalRegistries()
 	 */
 	public static ResourceSet init(ResourceSet resourceSet) {
-		EPackage.Registry packageRegistry = EPackage.Registry.INSTANCE;
+		initGlobalRegistries();
+		return UMLUtil.init(resourceSet);
+	}
 
+	/**
+	 * Adds packages required for working with UML models to the specified
+	 * registry.
+	 * 
+	 * @param packageRegistry
+	 *            a package registry, perhaps local to a resource set or perhaps
+	 *            the global registry
+	 * 
+	 * @return the same {@code packageRegistry}
+	 * 
+	 * @since 4.2
+	 */
+	public static EPackage.Registry initPackageRegistry(
+			EPackage.Registry packageRegistry) {
 		packageRegistry.put(EcorePackage.eNS_URI, EcorePackage.eINSTANCE);
-
+	
 		packageRegistry.put(TypesPackage.eNS_URI, TypesPackage.eINSTANCE);
-
+	
 		packageRegistry.put(UML2_UML_PACKAGE_2_0_NS_URI, UMLPackage.eINSTANCE);
-
+	
 		packageRegistry.put(UML212UMLResource.UML_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
 		packageRegistry.put(UML302UMLResource.UML_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
-
+	
 		packageRegistry.put(UMLPackage.eNS_URI, UMLPackage.eINSTANCE);
-
+	
 		packageRegistry.put(UML302UMLResource.STANDARD_PROFILE_NS_URI,
 			L2Package.eINSTANCE);
-
+	
 		packageRegistry.put(L2Package.eNS_URI, L2Package.eINSTANCE);
 		packageRegistry.put(L3Package.eNS_URI, L3Package.eINSTANCE);
 
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(
-			UMLResource.FILE_EXTENSION, UMLResource.Factory.INSTANCE);
+		return packageRegistry;
+	}
 
-		Map<String, URI> ePackageNsURIToProfileLocationMap = UMLPlugin
-			.getEPackageNsURIToProfileLocationMap();
+	/**
+	 * Adds resource factories required for working with UML models to the
+	 * specified registry.
+	 * 
+	 * @param resourceFactoryRegistry
+	 *            a resource-factory registry, perhaps local to a resource set
+	 *            or perhaps the global registry
+	 * 
+	 * @return the same {@code resourceFactoryRegistry}
+	 * 
+	 * @since 4.2
+	 */
+	public static Resource.Factory.Registry initResourceFactoryRegistry(
+			Resource.Factory.Registry resourceFactoryRegistry) {
+		Map<String, Object> extensionToFactoryMap = resourceFactoryRegistry.getExtensionToFactoryMap();
+		extensionToFactoryMap.put(UMLResource.FILE_EXTENSION, UMLResource.Factory.INSTANCE);
+		
+		Map<String, Object> contentTypeToFactoryMap = resourceFactoryRegistry.getContentTypeToFactoryMap();
+		contentTypeToFactoryMap.put(UMLResource.UML_CONTENT_TYPE_IDENTIFIER, UMLResource.Factory.INSTANCE);
 
-		ePackageNsURIToProfileLocationMap.put(L2Package.eNS_URI,
-			URI.createURI("pathmap://UML_PROFILES/StandardL2.profile.uml#_0")); //$NON-NLS-1$
-		ePackageNsURIToProfileLocationMap.put(L3Package.eNS_URI,
-			URI.createURI("pathmap://UML_PROFILES/StandardL3.profile.uml#_0")); //$NON-NLS-1$
+		return resourceFactoryRegistry;
+	}
 
-		ePackageNsURIToProfileLocationMap.put(UMLResource.ECORE_PROFILE_NS_URI,
-			URI.createURI("pathmap://UML_PROFILES/Ecore.profile.uml#_0")); //$NON-NLS-1$
-
-		Map<URI, URI> uriMap = URIConverter.URI_MAP;
-
-		uriMap.put(URI.createURI(UMLResource.LIBRARIES_PATHMAP), URI
-			.createPlatformPluginURI(
-				"/org.eclipse.uml2.uml.resources/libraries/", true)); //$NON-NLS-1$
-		uriMap.put(URI.createURI(UMLResource.METAMODELS_PATHMAP), URI
-			.createPlatformPluginURI(
-				"/org.eclipse.uml2.uml.resources/metamodels/", true)); //$NON-NLS-1$
-		uriMap.put(URI.createURI(UMLResource.PROFILES_PATHMAP), URI
-			.createPlatformPluginURI(
-				"/org.eclipse.uml2.uml.resources/profiles/", true)); //$NON-NLS-1$
-
-		List<ContentHandler> contentHandlers = ContentHandler.Registry.INSTANCE
+	/**
+	 * Adds content-type handlers required for working with UML models to the
+	 * specified registry.
+	 * 
+	 * @param contentHandlerRegistry
+	 *            a content-type handler registry, perhaps local to a resource
+	 *            set or perhaps the global registry
+	 * 
+	 * @return the same {@code contentHandlerRegistry}
+	 * 
+	 * @since 4.2
+	 */
+	public static ContentHandler.Registry initContentHandlerRegistry(
+			ContentHandler.Registry contentHandlerRegistry) {
+		List<ContentHandler> contentHandlers = contentHandlerRegistry
 			.get(ContentHandler.Registry.LOW_PRIORITY);
 
 		if (contentHandlers == null
 			|| !contentHandlers.contains(XMI_CONTENT_HANDLER)) {
 
-			ContentHandler.Registry.INSTANCE.put(
+			contentHandlerRegistry.put(
 				ContentHandler.Registry.LOW_PRIORITY, XMI_CONTENT_HANDLER);
 		}
 
-		contentHandlers = ContentHandler.Registry.INSTANCE
+		contentHandlers = contentHandlerRegistry
 			.get(ContentHandler.Registry.NORMAL_PRIORITY);
 
 		if (contentHandlers == null) {
-			ContentHandler.Registry.INSTANCE.put(
+			contentHandlerRegistry.put(
 				ContentHandler.Registry.NORMAL_PRIORITY,
 				contentHandlers = new ArrayList<ContentHandler>());
 		}
@@ -253,11 +342,59 @@ public class UMLResourcesUtil
 			contentHandlers.add(CMOF_2_0_CONTENT_HANDLER);
 		}
 
-		Resource.Factory.Registry.INSTANCE.getContentTypeToFactoryMap().put(
-			UMLResource.UML_CONTENT_TYPE_IDENTIFIER,
-			UMLResource.Factory.INSTANCE);
-
-		return UMLUtil.init(resourceSet);
+		return contentHandlerRegistry;
 	}
 
+	/**
+	 * Adds resource URI mappings required for working with UML models to the
+	 * specified map. These include at least mappings for the UML2-provided
+	 * model libraries, metamodels, and profiles.
+	 * 
+	 * @param uriMap
+	 *            a URI map, perhaps local to a resource set or perhaps the
+	 *            global URI map
+	 * 
+	 * @return the same {@code uriMap}
+	 * 
+	 * @since 4.2
+	 */
+	public static Map<URI, URI> initURIConverterURIMap(Map<URI, URI> uriMap) {
+		uriMap.put(URI.createURI(UMLResource.LIBRARIES_PATHMAP), URI
+			.createPlatformPluginURI(
+				"/org.eclipse.uml2.uml.resources/libraries/", true)); //$NON-NLS-1$
+		uriMap.put(URI.createURI(UMLResource.METAMODELS_PATHMAP), URI
+			.createPlatformPluginURI(
+				"/org.eclipse.uml2.uml.resources/metamodels/", true)); //$NON-NLS-1$
+		uriMap.put(URI.createURI(UMLResource.PROFILES_PATHMAP), URI
+			.createPlatformPluginURI(
+				"/org.eclipse.uml2.uml.resources/profiles/", true)); //$NON-NLS-1$
+
+		return uriMap;
+	}
+
+	/**
+	 * Adds profile namespace URI mappings required for working with UML models
+	 * to the specified map. These include at least mappings for the
+	 * UML2-provided profiles.
+	 * 
+	 * @param ePackageNsURIToProfileLocationMap
+	 *            a profile location map, perhaps local to a resource set or
+	 *            perhaps the global location map
+	 * 
+	 * @return the same {@code ePackageNsURIToProfileLocationMap}
+	 * 
+	 * @since 4.2
+	 */
+	public static Map<String, URI> initEPackageNsURIToProfileLocationMap(
+			Map<String, URI> ePackageNsURIToProfileLocationMap) {
+		ePackageNsURIToProfileLocationMap.put(L2Package.eNS_URI,
+			URI.createURI("pathmap://UML_PROFILES/StandardL2.profile.uml#_0")); //$NON-NLS-1$
+		ePackageNsURIToProfileLocationMap.put(L3Package.eNS_URI,
+			URI.createURI("pathmap://UML_PROFILES/StandardL3.profile.uml#_0")); //$NON-NLS-1$
+
+		ePackageNsURIToProfileLocationMap.put(UMLResource.ECORE_PROFILE_NS_URI,
+			URI.createURI("pathmap://UML_PROFILES/Ecore.profile.uml#_0")); //$NON-NLS-1$
+
+		return ePackageNsURIToProfileLocationMap;
+	}
 }
