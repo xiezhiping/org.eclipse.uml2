@@ -1234,7 +1234,7 @@ public class ElementOperations
 					if (required) {
 						throw new IllegalArgumentException(String.format(
 							"element \"%s\" is not in a package", //$NON-NLS-1$
-							UMLUtil.getQualifiedText(element)));
+							getQualifiedText(element)));
 					}
 				} else {
 					ProfileApplication profileApplication = package_
