@@ -16,6 +16,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -83,6 +84,9 @@ public class Bug300957Test
 			fail("Should not have applied the stereotype.");
 		} catch (IllegalArgumentException e) {
 			checkException(e);
+
+			// and test the non-required access
+			assertNull(PrivateElementOperations.getDefinition(fixture, stereo));
 		} finally {
 			// clean up the CacheAdapter
 			stereo.destroy();
@@ -97,6 +101,9 @@ public class Bug300957Test
 			fail("Should not have applied the stereotype.");
 		} catch (IllegalArgumentException e) {
 			checkException(e);
+
+			// and test the non-required access
+			assertNull(PrivateElementOperations.getDefinition(fixture, stereo));
 		}
 	}
 
@@ -110,6 +117,9 @@ public class Bug300957Test
 			fail("Should not have applied the stereotype.");
 		} catch (IllegalArgumentException e) {
 			checkException(e);
+
+			// and test the non-required access
+			assertNull(PrivateElementOperations.getDefinition(fixture, stereo));
 		}
 	}
 
@@ -122,6 +132,9 @@ public class Bug300957Test
 			fail("Should not have applied the stereotype.");
 		} catch (IllegalArgumentException e) {
 			checkException(e);
+
+			// and test the non-required access
+			assertNull(PrivateElementOperations.getDefinition(fixture, stereo));
 		}
 	}
 
@@ -330,5 +343,16 @@ public class Bug300957Test
 			message.equals(profile.getName()));
 		assertFalse("Message is just the profile string representation",
 			message.equals(String.valueOf(profile)));
+	}
+
+	@SuppressWarnings("restriction")
+	private static class PrivateElementOperations
+			extends org.eclipse.uml2.uml.internal.operations.ElementOperations {
+
+		protected static EClass getDefinition(Element element,
+				Stereotype stereotype) {
+			return org.eclipse.uml2.uml.internal.operations.ElementOperations
+				.getDefinition(element, stereotype);
+		}
 	}
 }

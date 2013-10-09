@@ -10,8 +10,6 @@
  *   Kenn Hussey (Embarcadero Technologie) - 247980
  *   Kenn Hussey - 323181
  *   Christian W. Damus (CEA) - 300957
- *
- * $Id: ElementOperations.java,v 1.54 2010/09/28 21:02:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -1188,35 +1186,7 @@ public class ElementOperations
 	}
 
 	protected static EClass getDefinition(Element element, Stereotype stereotype) {
-
-		if (stereotype != null) {
-			Profile profile = stereotype.getProfile();
-
-			if (profile != null) {
-				org.eclipse.uml2.uml.Package package_ = element
-					.getNearestPackage();
-
-				if (package_ != null) {
-					ProfileApplication profileApplication = package_
-						.getProfileApplication(profile, true);
-
-					if (profileApplication != null) {
-						ENamedElement appliedDefinition = profileApplication
-							.getAppliedDefinition(stereotype);
-
-						if (appliedDefinition instanceof EClass) {
-							EClass eClass = (EClass) appliedDefinition;
-
-							if (!eClass.isAbstract()) {
-								return eClass;
-							}
-						}
-					}
-				}
-			}
-		}
-
-		return null;
+		return getDefinition(element, stereotype, false);
 	}
 
 	/**
@@ -1243,64 +1213,79 @@ public class ElementOperations
 	protected static EClass getDefinition(Element element,
 			Stereotype stereotype, boolean required) {
 
-		if (!required) {
-			// delegate to the pre-existing API
-			return getDefinition(element, stereotype);
-		} else {
-
-			if (stereotype == null) {
+		if (stereotype == null) {
+			if (required)
 				throw new IllegalArgumentException("null stereotype"); //$NON-NLS-1$
-			} else {
-				Profile profile = stereotype.getProfile();
+			else
+				return null;
+		} else {
+			Profile profile = stereotype.getProfile();
 
-				if (profile == null) {
+			if (profile == null) {
+				if (required)
 					throw new IllegalArgumentException(String.format(
 						"stereotype \"%s\" is not in a profile", //$NON-NLS-1$
 						stereotype.getQualifiedName()));
-				} else {
-					org.eclipse.uml2.uml.Package package_ = element
-						.getNearestPackage();
+				else
+					return null;
+			} else {
+				org.eclipse.uml2.uml.Package package_ = element
+					.getNearestPackage();
 
-					if (package_ == null) {
+				if (package_ == null) {
+					if (required)
 						throw new IllegalArgumentException(String.format(
-							"profile \"%s\" is not applied", //$NON-NLS-1$
-							profile.getQualifiedName()));
-					} else {
-						ProfileApplication profileApplication = package_
-							.getProfileApplication(profile, true);
+							"element \"%s\" is not in a package", //$NON-NLS-1$
+							UMLUtil.getQualifiedText(element)));
+					else
+						return null;
+				} else {
+					ProfileApplication profileApplication = package_
+						.getProfileApplication(profile, true);
 
-						if (profileApplication == null) {
+					if (profileApplication == null) {
+						if (required)
 							throw new IllegalArgumentException(String.format(
 								"profile \"%s\" is not applied", //$NON-NLS-1$
 								profile.getQualifiedName()));
-						} else {
-							ENamedElement appliedDefinition = profileApplication
-								.getAppliedDefinition(stereotype);
+						else
+							return null;
+					} else {
+						ENamedElement appliedDefinition = profileApplication
+							.getAppliedDefinition(stereotype);
 
-							if (appliedDefinition == null) {
+						if (appliedDefinition == null) {
+							if (required)
 								throw new IllegalArgumentException(
 									String
 										.format(
 											"stereotype \"%s\" has no Ecore definition", //$NON-NLS-1$
 											stereotype.getQualifiedName()));
-							} else if (!(appliedDefinition instanceof EClass)) {
+							else
+								return null;
+						} else if (!(appliedDefinition instanceof EClass)) {
+							if (required)
 								throw new IllegalArgumentException(
 									String
-									.format(
+										.format(
 											"stereotype \"%s\" definition is not an EClass", //$NON-NLS-1$
 											stereotype.getQualifiedName()));
-							} else {
-								EClass eClass = (EClass) appliedDefinition;
+							else
+								return null;
+						} else {
+							EClass eClass = (EClass) appliedDefinition;
 
-								if (eClass.isAbstract()) {
+							if (eClass.isAbstract()) {
+								if (required)
 									throw new IllegalArgumentException(
 										String
-										.format(
+											.format(
 												"stereotype \"%s\" Ecore definition is abstract", //$NON-NLS-1$
 												stereotype.getQualifiedName()));
-								} else {
-									return eClass;
-								}
+								else
+									return null;
+							} else {
+								return eClass;
 							}
 						}
 					}
@@ -1500,13 +1485,13 @@ public class ElementOperations
 
 		if (getExtension(element, stereotype) == null) {
 			throw new IllegalArgumentException(String.format(
-				"Stereotype \"%s\" is not applicable to %s", //$NON-NLS-1$
+				"stereotype \"%s\" is not applicable to %s", //$NON-NLS-1$
 				stereotype.getQualifiedName(), element.eClass().getName()));
 		}
 
 		if (element.getStereotypeApplication(stereotype) != null) {
 			throw new IllegalArgumentException(String.format(
-				"Stereotype \"%s\" is already applied", //$NON-NLS-1$
+				"stereotype \"%s\" is already applied", //$NON-NLS-1$
 				stereotype.getQualifiedName()));
 		}
 
@@ -1580,7 +1565,7 @@ public class ElementOperations
 		}
 		if (element.isStereotypeRequired(stereotype)) {
 			throw new IllegalArgumentException(String.format(
-				"Stereotype \"%s\" is a required extension of %s", //$NON-NLS-1$
+				"stereotype \"%s\" is a required extension of %s", //$NON-NLS-1$
 				stereotype.getQualifiedName(), element.eClass().getName()));
 		}
 
@@ -1589,7 +1574,7 @@ public class ElementOperations
 
 		if (stereotypeApplication == null) {
 			throw new IllegalArgumentException(String.format(
-				"Stereotype \"%s\" is not applied", //$NON-NLS-1$
+				"stereotype \"%s\" is not applied", //$NON-NLS-1$
 				stereotype.getQualifiedName()));
 		}
 
