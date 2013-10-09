@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Christian W. Damus (CEA) - 251963
  *
- * $Id: DecisionNode.java,v 1.5 2008/10/02 20:56:23 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * <!-- begin-model-doc -->
  * A decision node is a control node that chooses between outgoing flows.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -46,6 +47,7 @@ public interface DecisionNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Provides input to guard specifications on edges outgoing from the decision node.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Decision Input</em>' reference.
 	 * @see #setDecisionInput(Behavior)
@@ -71,6 +73,7 @@ public interface DecisionNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An additional edge incoming to the decision node that provides a decision input value.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Decision Input Flow</em>' reference.
 	 * @see #setDecisionInputFlow(ObjectFlow)

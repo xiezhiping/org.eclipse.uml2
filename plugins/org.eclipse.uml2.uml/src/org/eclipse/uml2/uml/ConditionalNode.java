@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
+ *   Christian W. Damus (CEA) - 251963
  *
- * $Id: ConditionalNode.java,v 1.14 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * A conditional node is a structured activity node that represents an exclusive choice among some number of alternatives.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -52,6 +53,7 @@ public interface ConditionalNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If true, the modeler asserts that at most one test will succeed.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Determinate</em>' attribute.
 	 * @see #setIsDeterminate(boolean)
@@ -78,6 +80,7 @@ public interface ConditionalNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If true, the modeler asserts that at least one test will succeed.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Assured</em>' attribute.
 	 * @see #setIsAssured(boolean)
@@ -110,6 +113,7 @@ public interface ConditionalNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Set of clauses composing the conditional.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Clause</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConditionalNode_Clause()
@@ -141,6 +145,7 @@ public interface ConditionalNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A list of output pins that constitute the data flow outputs of the conditional.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConditionalNode_Result()

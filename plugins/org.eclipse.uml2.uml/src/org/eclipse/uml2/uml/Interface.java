@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039, 351774
+ *   Christian W. Damus (CEA) - 251963
  *
  */
 package org.eclipse.uml2.uml;
@@ -29,6 +30,7 @@ import org.eclipse.emf.ecore.EClass;
  * Since an interface specifies conformance characteristics, it does not own detailed behavior specifications. Instead, interfaces may own a protocol state machine that specifies event sequences and pre/post conditions for the operations and receptions described by the interface.
  * Interfaces may include receptions (in addition to operations).
  * An interface is a kind of classifier that represents a declaration of a set of coherent public features and obligations. An interface specifies a contract; any instance of a classifier that realizes the interface must fulfill that contract. The obligations that may be associated with an interface are in the form of various kinds of constraints (such as pre- and post-conditions) or protocol specifications, which may impose ordering restrictions on interactions through the interface.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -65,6 +67,7 @@ public interface Interface
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The attributes (i.e. the properties) owned by the class.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterface_OwnedAttribute()
@@ -140,6 +143,7 @@ public interface Interface
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References all the Classifiers that are defined (nested) within the Class.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Nested Classifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterface_NestedClassifier()
@@ -199,6 +203,7 @@ public interface Interface
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References all the Interfaces redefined by this Interface.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Interface</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterface_RedefinedInterface()
@@ -244,6 +249,7 @@ public interface Interface
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Receptions that objects providing this interface are willing to accept.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Reception</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterface_OwnedReception()
@@ -309,6 +315,7 @@ public interface Interface
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References a protocol state machine specifying the legal sequences of the invocation of the behavioral features described in the interface.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Protocol</em>' containment reference.
 	 * @see #setProtocol(ProtocolStateMachine)
@@ -354,6 +361,7 @@ public interface Interface
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The operations owned by the class.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterface_OwnedOperation()

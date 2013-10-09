@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *   Kenn Hussey (CEA) - 327039, 351774
+ *   Christian W. Damus (CEA) - 251963
  *
  */
 package org.eclipse.uml2.uml;
@@ -28,6 +29,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * ActivityGroup is an abstract class for defining sets of nodes and edges in an activity.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -63,6 +65,7 @@ public interface ActivityGroup
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Groups immediately contained in the group.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Subgroup</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityGroup_Subgroup()
@@ -110,6 +113,7 @@ public interface ActivityGroup
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Group immediately containing the group.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Super Group</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityGroup_SuperGroup()
@@ -128,6 +132,7 @@ public interface ActivityGroup
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Nodes immediately contained in the group.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Contained Node</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityGroup_ContainedNode()
@@ -174,6 +179,7 @@ public interface ActivityGroup
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Activity containing the group.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>In Activity</em>' reference.
 	 * @see #setInActivity(Activity)
@@ -203,6 +209,7 @@ public interface ActivityGroup
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Edges immediately contained in the group.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Contained Edge</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityGroup_ContainedEdge()

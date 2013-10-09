@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039, 322715
+ *   Christian W. Damus (CEA) - 251963
  *
  */
 package org.eclipse.uml2.uml;
@@ -22,6 +23,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * <!-- begin-model-doc -->
  * An enumeration literal is a user-defined data value for an enumeration.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -51,6 +53,7 @@ public interface EnumerationLiteral
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Enumeration that this EnumerationLiteral is a member of.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Enumeration</em>' container reference.
 	 * @see #setEnumeration(Enumeration)
@@ -91,6 +94,7 @@ public interface EnumerationLiteral
 	 * <!-- begin-model-doc -->
 	 * Missing derivation for EnumerationLiteral::/classifier : Enumeration
 	 * true
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" required="true" ordered="false"
 	 * @generated

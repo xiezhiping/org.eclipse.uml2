@@ -36,6 +36,7 @@ public class UMLBugTests
 
 		result.addTest(Bug392833Test.suite());
 		result.addTest(Bug403365Test.suite());
+		result.addTest(Bug300957Test.suite());
 
 		return result;
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
+ *   Christian W. Damus (CEA) - 251963
  *
- * $Id: Region.java,v 1.16 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A region is an orthogonal part of either a composite state or a state machine. It contains states and transitions.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -62,6 +63,7 @@ public interface Region
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The set of vertices that are owned by this region.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Subvertex</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRegion_Subvertex()
@@ -123,6 +125,7 @@ public interface Region
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The set of transitions owned by the region.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Transition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRegion_Transition()
@@ -194,6 +197,7 @@ public interface Region
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The State that owns the Region. If a Region is owned by a State, then it cannot also be owned by a StateMachine.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>State</em>' container reference.
 	 * @see #setState(State)
@@ -226,6 +230,7 @@ public interface Region
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The region of which this region is an extension.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Extended Region</em>' reference.
 	 * @see #setExtendedRegion(Region)
@@ -258,6 +263,7 @@ public interface Region
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The StateMachine that owns the Region. If a Region is owned by a StateMachine, then it cannot also be owned by a State.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>State Machine</em>' container reference.
 	 * @see #setStateMachine(StateMachine)
@@ -355,6 +361,7 @@ public interface Region
 	 * else
 	 * sm.context
 	 * endif
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false"
 	 * @generated
@@ -373,6 +380,7 @@ public interface Region
 	 * <!-- begin-model-doc -->
 	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of a region are properly related to the redefinition contexts of the specified region to allow this element to redefine the other. The containing statemachine/state of a redefining region must redefine the containing statemachine/state of the redefined region.
 	 * result = true
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
 	 * @generated
@@ -390,6 +398,7 @@ public interface Region
 	 * else
 	 * stateMachine
 	 * endif
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false"
 	 * @generated
@@ -406,6 +415,7 @@ public interface Region
 	 * else if not state->isEmpty() then
 	 * state.container.belongsToPSM ()
 	 * else false
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
+ *   Christian W. Damus (CEA) - 251963
  *
- * $Id: Lifeline.java,v 1.16 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A lifeline represents an individual participant in the interaction. While parts and structural features may have multiplicity greater than 1, lifelines represent only one interacting entity.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -54,6 +55,7 @@ public interface Lifeline
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the ConnectableElement within the classifier that contains the enclosing interaction.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Represents</em>' reference.
 	 * @see #setRepresents(ConnectableElement)
@@ -86,6 +88,7 @@ public interface Lifeline
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Interaction enclosing this Lifeline.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Interaction</em>' container reference.
 	 * @see #setInteraction(Interaction)
@@ -118,6 +121,7 @@ public interface Lifeline
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If the referenced ConnectableElement is multivalued, then this specifies the specific individual part within that set.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Selector</em>' containment reference.
 	 * @see #setSelector(ValueSpecification)
@@ -156,6 +160,7 @@ public interface Lifeline
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Interaction that represents the decomposition.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Decomposed As</em>' reference.
 	 * @see #setDecomposedAs(PartDecomposition)
@@ -183,6 +188,7 @@ public interface Lifeline
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the InteractionFragments in which this Lifeline takes part.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Covered By</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLifeline_CoveredBy()

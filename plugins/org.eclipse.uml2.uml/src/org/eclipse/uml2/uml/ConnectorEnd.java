@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
+ *   Christian W. Damus (CEA) - 251963
  *
- * $Id: ConnectorEnd.java,v 1.6 2008/10/02 20:56:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * <!-- begin-model-doc -->
  * A connector end is an endpoint of a connector, which attaches the connector to a connectable element. Each connector end is part of one connector.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -48,6 +49,7 @@ public interface ConnectorEnd
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Defining End</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnectorEnd_DefiningEnd()
@@ -62,6 +64,7 @@ public interface ConnectorEnd
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Indicates the role of the internal structure of a classifier with the port to which the connector end is attached.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Part With Port</em>' reference.
 	 * @see #setPartWithPort(Property)
@@ -87,6 +90,7 @@ public interface ConnectorEnd
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Role</em>' reference.
 	 * @see #setRole(ConnectableElement)
