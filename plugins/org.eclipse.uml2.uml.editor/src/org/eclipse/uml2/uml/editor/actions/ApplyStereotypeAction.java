@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329
+ *   Christian W. Damus (CEA) - 326915
  *
- * $Id: ApplyStereotypeAction.java,v 1.6 2010/03/02 03:10:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -22,12 +22,14 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.jface.window.Window;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Stereotype;
-import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
+import org.eclipse.uml2.uml.editor.dialogs.AbstractChoicesDialogDelegate;
+import org.eclipse.uml2.uml.editor.dialogs.ChoicesDialog;
 
 public class ApplyStereotypeAction
 		extends UMLCommandAction {
@@ -55,7 +57,7 @@ public class ApplyStereotypeAction
 		if (command != UnexecutableCommand.INSTANCE) {
 			final Element element = (Element) collection.iterator().next();
 
-			List<Stereotype> choiceOfValues = new ArrayList<Stereotype>();
+			final List<Stereotype> choiceOfValues = new ArrayList<Stereotype>();
 
 			for (Stereotype applicableStereotype : element
 				.getApplicableStereotypes()) {
@@ -71,20 +73,56 @@ public class ApplyStereotypeAction
 			String label = UMLEditorPlugin.INSTANCE
 				.getString("_UI_ApplyStereotypeActionCommand_label"); //$NON-NLS-1$
 
-			final FeatureEditorDialog dialog = new FeatureEditorDialog(
-				workbenchPart.getSite().getShell(), getLabelProvider(),
-				element, UMLPackage.Literals.ELEMENT, Collections.EMPTY_LIST,
-				label, choiceOfValues, false, false, true);
+			final ChoicesDialog<Stereotype> dialog = new ChoicesDialog<Stereotype>(
+				workbenchPart.getSite().getShell(),
+				element,
+				label,
+				new AbstractChoicesDialogDelegate<Stereotype>(Stereotype.class) {
+
+					@Override
+					public String getChoicesLabelText() {
+						return UMLEditorPlugin.INSTANCE
+							.getString("_UI_ApplicableStereotypes_label"); //$NON-NLS-1$
+					}
+
+					@Override
+					public String getValuesLabelText() {
+						return UMLEditorPlugin.INSTANCE
+							.getString("_UI_StereotypesToApply_label"); //$NON-NLS-1$
+					}
+
+					@Override
+					public String getAddButtonText() {
+						return UMLEditorPlugin.INSTANCE
+							.getString("_UI_Apply_label"); //$NON-NLS-1$
+					}
+
+					@Override
+					public String getRemoveButtonText() {
+						return UMLEditorPlugin.INSTANCE
+							.getString("_UI_Unapply_label"); //$NON-NLS-1$
+					}
+
+					public ILabelProvider getLabelProvider() {
+						return ApplyStereotypeAction.this.getLabelProvider();
+					}
+
+					public Collection<Stereotype> getChoiceOfValues() {
+						return choiceOfValues;
+					}
+				});
 			dialog.open();
 
-			if (dialog.getReturnCode() == FeatureEditorDialog.OK) {
+			if ((dialog.getReturnCode() == Window.OK)
+				&& !dialog.getResult().isEmpty()) {
+
 				editingDomain.getCommandStack().execute(
 					new RefreshingChangeCommand(editingDomain, new Runnable() {
 
 						public void run() {
 
-							for (Object result : dialog.getResult()) {
-								element.applyStereotype((Stereotype) result);
+							for (Stereotype result : dialog.getResult()) {
+								element.applyStereotype(result);
 							}
 						}
 					}, label));

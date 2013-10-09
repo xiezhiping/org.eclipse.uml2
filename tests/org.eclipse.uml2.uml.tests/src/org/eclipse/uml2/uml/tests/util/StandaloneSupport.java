@@ -7,12 +7,14 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
+ *   Christian W. Damus (CEA) - 414572
  *
  */
 package org.eclipse.uml2.uml.tests.util;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
@@ -37,21 +39,28 @@ public class StandaloneSupport {
 		return !EcorePlugin.IS_ECLIPSE_RUNNING;
 	}
 
+	public static void initGlobals() {
+		UMLResourcesUtil.initGlobalRegistries();
+		initUMLResourceMappings(URIConverter.INSTANCE.getURIMap());
+	}
+
 	public static ResourceSet init(ResourceSet rset) {
-		UMLResourcesUtil.init(rset);
-		mapUMLResourceURIs(rset, UMLResource.UML_METAMODEL_URI, "metamodels");
-		mapUMLResourceURIs(rset, UMLResource.ECORE_PROFILE_URI, "profiles");
-		mapUMLResourceURIs(rset, UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI,
-			"libraries");
+		UMLResourcesUtil.initLocalRegistries(rset);
+
+		initUMLResourceMappings(rset.getURIConverter().getURIMap());
 
 		return rset;
 	}
 
-	public static void mapUMLResourceURIs(ResourceSet rset, String uri,
+	private static void initUMLResourceMappings(Map<URI, URI> uriMap) {
+		mapUMLResourceURIs(uriMap, UMLResource.UML_METAMODEL_URI, "metamodels");
+		mapUMLResourceURIs(uriMap, UMLResource.ECORE_PROFILE_URI, "profiles");
+		mapUMLResourceURIs(uriMap, UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI,
+			"libraries");
+	}
+
+	public static void mapUMLResourceURIs(Map<URI, URI> uriMap, String uri,
 			String folder) {
-		URIConverter converter = (rset != null)
-			? rset.getURIConverter()
-			: URIConverter.INSTANCE;
 
 		URI uriToMap = URI.createURI(uri);
 		URI prefix = uriToMap.trimSegments(1).appendSegment(""); // ensure
@@ -81,19 +90,15 @@ public class StandaloneSupport {
 		if (resourceURL != null) {
 			URI resolved = URI.createURI(resourceURL.toExternalForm())
 				.trimSegments(1).appendSegment("");
-			converter.getURIMap().put(prefix, resolved);
+			uriMap.put(prefix, resolved);
 
 			// and platform URIs, too
-			converter
-				.getURIMap()
-				.put(
-					URI.createURI("platform:/plugin/org.eclipse.uml2.uml.resources/"
-						+ folder + "/"), resolved);
-			converter
-				.getURIMap()
-				.put(
-					URI.createURI("platform:/resource/org.eclipse.uml2.uml.resources/"
-						+ folder + "/"), resolved);
+			uriMap.put(URI
+				.createURI("platform:/plugin/org.eclipse.uml2.uml.resources/"
+					+ folder + "/"), resolved);
+			uriMap.put(URI
+				.createURI("platform:/resource/org.eclipse.uml2.uml.resources/"
+					+ folder + "/"), resolved);
 		}
 	}
 
