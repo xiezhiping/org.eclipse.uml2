@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039, 351774
+ *   Christian W. Damus (CEA) - 251963
  *
  */
 package org.eclipse.uml2.uml;
@@ -28,7 +29,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-model-doc -->
  * An object node is an abstract activity node that is part of defining object flow in an activity.
  * Object nodes have support for token selection, limitation on the number of tokens, specifying the state required for tokens, and carrying control values.
- * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -57,7 +58,7 @@ public interface ObjectNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Tells whether and how the tokens in the object node are ordered for selection to traverse edges outgoing from the object node.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Ordering</em>' attribute.
 	 * @see org.eclipse.uml2.uml.ObjectNodeOrderingKind
@@ -86,7 +87,7 @@ public interface ObjectNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Tells whether the type of the object node is to be treated as control.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Control Type</em>' attribute.
 	 * @see #setIsControlType(boolean)
@@ -118,7 +119,7 @@ public interface ObjectNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The maximum number of tokens allowed in the node. Objects cannot flow into the node if the upper bound is reached.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Upper Bound</em>' containment reference.
 	 * @see #setUpperBound(ValueSpecification)
@@ -158,7 +159,7 @@ public interface ObjectNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The required states of the object available at this point in the activity.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>In State</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getObjectNode_InState()
@@ -197,7 +198,7 @@ public interface ObjectNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Selects tokens for outgoing edges.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Selection</em>' reference.
 	 * @see #setSelection(Behavior)

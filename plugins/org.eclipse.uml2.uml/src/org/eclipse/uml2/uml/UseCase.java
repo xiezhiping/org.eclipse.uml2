@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
+ *   Christian W. Damus (CEA) - 251963
  *
- * $Id: UseCase.java,v 1.11 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A use case is the specification of a set of actions performed by a system, which yields an observable result that is, typically, of value for one or more actors or other stakeholders of the system.
- * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -62,7 +62,7 @@ public interface UseCase
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Include relationships owned by this use case.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Include</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getUseCase_Include()
@@ -125,7 +125,7 @@ public interface UseCase
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Extend relationships owned by this use case.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Extend</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getUseCase_Extend()
@@ -188,7 +188,7 @@ public interface UseCase
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the ExtensionPoints owned by the use case.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Extension Point</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getUseCase_ExtensionPoint()
@@ -242,7 +242,7 @@ public interface UseCase
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the subjects to which this use case applies. The subject or its parts realize all the use cases that apply to this subject. Use cases need not be attached to any specific subject, however. The subject may, but need not, own the use cases that apply to it.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Subject</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getUseCase_Subject()
@@ -342,7 +342,7 @@ public interface UseCase
 	 * <!-- begin-model-doc -->
 	 * The query allIncludedUseCases() returns the transitive closure of all use cases (directly or indirectly) included by this use case.
 	 * result = self.include->union(self.include->collect(in | in.allIncludedUseCases()))
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false"
 	 * @generated

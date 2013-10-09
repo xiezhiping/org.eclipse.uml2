@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039, 351774
+ *   Christian W. Damus (CEA) - 251963
  *
  */
 package org.eclipse.uml2.uml;
@@ -25,7 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A template parameter exposes a parameterable element as a formal template parameter of a template.
- * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -59,7 +60,7 @@ public interface TemplateParameter
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The template signature that owns this template parameter.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Signature</em>' container reference.
 	 * @see #setSignature(TemplateSignature)
@@ -94,7 +95,7 @@ public interface TemplateParameter
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The element that is owned by this template parameter.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Parametered Element</em>' containment reference.
 	 * @see #setOwnedParameteredElement(ParameterableElement)
@@ -132,7 +133,7 @@ public interface TemplateParameter
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The element that is the default for this formal template parameter.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Default</em>' reference.
 	 * @see #setDefault(ParameterableElement)
@@ -165,7 +166,7 @@ public interface TemplateParameter
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The element that is owned by this template parameter for the purpose of providing a default.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Default</em>' containment reference.
 	 * @see #setOwnedDefault(ParameterableElement)
@@ -203,7 +204,7 @@ public interface TemplateParameter
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The element exposed by this template parameter.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Parametered Element</em>' reference.
 	 * @see #setParameteredElement(ParameterableElement)

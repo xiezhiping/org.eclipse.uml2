@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039, 351774
+ *   Christian W. Damus (CEA) - 251963
  *
  */
 package org.eclipse.uml2.uml;
@@ -22,7 +23,7 @@ import org.eclipse.emf.ecore.EPackage;
  *
  * <!-- begin-model-doc -->
  * A profile application is used to show which profiles have been applied to a package.
- * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -53,7 +54,7 @@ public interface ProfileApplication
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Profiles that are applied to a Package through this ProfileApplication.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Applied Profile</em>' reference.
 	 * @see #setAppliedProfile(Profile)
@@ -80,7 +81,7 @@ public interface ProfileApplication
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Strict</em>' attribute.
 	 * @see #setIsStrict(boolean)
@@ -114,7 +115,7 @@ public interface ProfileApplication
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The package that owns the profile application.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Applying Package</em>' container reference.
 	 * @see #setApplyingPackage(org.eclipse.uml2.uml.Package)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
+ *   Christian W. Damus (CEA) - 251963
  *
- * $Id: ReplyAction.java,v 1.10 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A reply action is an action that accepts a set of return values and a value containing return information produced by a previous accept call action. The reply action returns the values to the caller of the previous call, completing execution of the call.
- * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -53,7 +53,7 @@ public interface ReplyAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The trigger specifying the operation whose call is being replied to.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Reply To Call</em>' reference.
 	 * @see #setReplyToCall(Trigger)
@@ -85,7 +85,7 @@ public interface ReplyAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A pin containing the return information value produced by an earlier AcceptCallAction.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Return Information</em>' containment reference.
 	 * @see #setReturnInformation(InputPin)
@@ -143,7 +143,7 @@ public interface ReplyAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A list of pins containing the reply values of the operation. These values are returned to the caller.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Reply Value</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getReplyAction_ReplyValue()

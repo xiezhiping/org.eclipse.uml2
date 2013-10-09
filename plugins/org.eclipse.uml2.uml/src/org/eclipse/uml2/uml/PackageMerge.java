@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 351774
+ *   Christian W. Damus (CEA) - 251963
  *
  */
 package org.eclipse.uml2.uml;
@@ -19,7 +20,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * A package merge defines how the contents of one package are extended by the contents of another package.
- * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -49,7 +50,7 @@ public interface PackageMerge
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Package that is to be merged with the receiving package of the PackageMerge.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Merged Package</em>' reference.
 	 * @see #setMergedPackage(org.eclipse.uml2.uml.Package)
@@ -83,7 +84,7 @@ public interface PackageMerge
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Package that is being extended with the contents of the merged package of the PackageMerge.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Receiving Package</em>' container reference.
 	 * @see #setReceivingPackage(org.eclipse.uml2.uml.Package)

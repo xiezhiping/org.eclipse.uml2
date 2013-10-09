@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039, 351774
- *   Christian W. Damus (CEA) - 392957
+ *   Christian W. Damus (CEA) - 392957, 251963
  *
  */
 package org.eclipse.uml2.uml;
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * An activity is the specification of parameterized behavior as the coordinated sequencing of subordinate units whose individual elements are actions.
- * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -122,7 +122,7 @@ public interface Activity
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If true, this activity must not make any changes to variables outside the activity or to objects. (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the action, then the model is ill-formed.) The default is false (an activity may make nonlocal changes).
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Read Only</em>' attribute.
 	 * @see #setIsReadOnly(boolean)
@@ -156,7 +156,7 @@ public interface Activity
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Top-level groups in the activity.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Group</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_Group()
@@ -260,7 +260,7 @@ public interface Activity
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If true, all invocations of the activity are handled by the same execution.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Single Execution</em>' attribute.
 	 * @see #setIsSingleExecution(boolean)
@@ -294,7 +294,7 @@ public interface Activity
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Top-level structured nodes in the activity.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Structured Node</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_StructuredNode()
@@ -380,7 +380,7 @@ public interface Activity
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Top-level variables in the activity.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Variable</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_Variable()
@@ -443,7 +443,7 @@ public interface Activity
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Nodes coordinated by the activity.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Node</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_Node()
@@ -493,7 +493,7 @@ public interface Activity
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Edges expressing flow between nodes of the activity.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Edge</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_Edge()
@@ -555,7 +555,7 @@ public interface Activity
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Top-level partitions in the activity.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Partition</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_Partition()

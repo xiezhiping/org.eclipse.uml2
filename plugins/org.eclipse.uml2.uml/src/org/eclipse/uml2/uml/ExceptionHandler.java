@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
+ *   Christian W. Damus (CEA) - 251963
  *
- * $Id: ExceptionHandler.java,v 1.10 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * An exception handler is an element that specifies a body to execute in case the specified exception occurs during the execution of the protected node.
- * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -54,7 +54,7 @@ public interface ExceptionHandler
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A node that is executed if the handler satisfies an uncaught exception.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Handler Body</em>' reference.
 	 * @see #setHandlerBody(ExecutableNode)
@@ -80,7 +80,7 @@ public interface ExceptionHandler
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An object node within the handler body. When the handler catches an exception, the exception token is placed in this node, causing the body to execute.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Exception Input</em>' reference.
 	 * @see #setExceptionInput(ObjectNode)
@@ -107,7 +107,7 @@ public interface ExceptionHandler
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Exception Type</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExceptionHandler_ExceptionType()
@@ -153,7 +153,7 @@ public interface ExceptionHandler
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The node protected by the handler. The handler is examined if an exception propagates to the outside of the node.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Protected Node</em>' container reference.
 	 * @see #setProtectedNode(ExecutableNode)

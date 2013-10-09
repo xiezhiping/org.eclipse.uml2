@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
+ *   Christian W. Damus (CEA) - 251963
  *
- * $Id: InformationFlow.java,v 1.9 2007/10/23 15:54:23 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * An information flow specifies that one or more information items circulates from its sources to its targets. Information flows require some kind of information channel for transmitting information items from the source to the destination. An information channel is represented in various ways depending on the nature of its sources and targets. It may be represented by connectors, links, associations, or even dependencies. For example, if the source and destination are parts in some composite structure such as a collaboration, then the information channel is likely to be represented by a connector between them. Or, if the source and target are objects (which are a kind of instance specification), they may be represented by a link that joins the two, and so on.
- * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -58,7 +58,7 @@ public interface InformationFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Determines which Relationship will realize the specified flow
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Realization</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInformationFlow_Realization()
@@ -74,7 +74,7 @@ public interface InformationFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the information items that may circulate on this information flow.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Conveyed</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInformationFlow_Conveyed()
@@ -120,7 +120,7 @@ public interface InformationFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Defines from which source the conveyed InformationItems are initiated.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Information Source</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInformationFlow_InformationSource()
@@ -167,7 +167,7 @@ public interface InformationFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Defines to which target the conveyed InformationItems are directed.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Information Target</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInformationFlow_InformationTarget()
@@ -208,7 +208,7 @@ public interface InformationFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Determines which ActivityEdges will realize the specified flow.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Realizing Activity Edge</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInformationFlow_RealizingActivityEdge()
@@ -249,7 +249,7 @@ public interface InformationFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Determines which Connectors will realize the specified flow.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Realizing Connector</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInformationFlow_RealizingConnector()
@@ -288,7 +288,7 @@ public interface InformationFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Determines which Messages will realize the specified flow.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Realizing Message</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInformationFlow_RealizingMessage()

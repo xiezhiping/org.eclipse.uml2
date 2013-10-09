@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
+ *   Christian W. Damus (CEA) - 251963
  *
- * $Id: InteractionFragment.java,v 1.12 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * InteractionFragment is an abstract notion of the most general interaction unit. An interaction fragment is a piece of an interaction. Each interaction fragment is conceptually like an interaction by itself.
- * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -50,7 +50,7 @@ public interface InteractionFragment
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Lifelines that the InteractionFragment involves.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Covered</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteractionFragment_Covered()
@@ -96,7 +96,7 @@ public interface InteractionFragment
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The general ordering relationships contained in this fragment.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>General Ordering</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteractionFragment_GeneralOrdering()
@@ -154,7 +154,7 @@ public interface InteractionFragment
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Interaction enclosing this InteractionFragment.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Enclosing Interaction</em>' container reference.
 	 * @see #setEnclosingInteraction(Interaction)
@@ -188,7 +188,7 @@ public interface InteractionFragment
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The operand enclosing this InteractionFragment (they may nest recursively)
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Enclosing Operand</em>' container reference.
 	 * @see #setEnclosingOperand(InteractionOperand)

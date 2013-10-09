@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 351774, 351777, 382718
+ *   Christian W. Damus (CEA) - 251963
  *
  */
 package org.eclipse.uml2.uml;
@@ -22,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-model-doc -->
  * An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.
  * An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.
- * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -53,7 +54,7 @@ public interface ExecutableNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Handler</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExecutableNode_Handler()

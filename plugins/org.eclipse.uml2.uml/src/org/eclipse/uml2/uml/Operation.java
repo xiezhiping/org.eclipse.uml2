@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039, 351774
+ *   Christian W. Damus (CEA) - 251963
  *
  */
 package org.eclipse.uml2.uml;
@@ -29,7 +30,7 @@ import org.eclipse.emf.ecore.EClass;
  * An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior.
  * An operation may invoke both the execution of method behaviors as well as other behavioral responses.
  * Operation specializes TemplateableElement in order to support specification of template operations and bound operations. Operation specializes ParameterableElement to specify that an operation can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.
- * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -65,7 +66,7 @@ public interface Operation
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies whether an execution of the BehavioralFeature leaves the state of the system unchanged (isQuery=true) or whether side effects may occur (isQuery=false).
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Query</em>' attribute.
 	 * @see #setIsQuery(boolean)
@@ -93,7 +94,7 @@ public interface Operation
 	 * <!-- begin-model-doc -->
 	 * This information is derived from the return result for this Operation.
 	 * Specifies whether the return parameter is ordered or not, if present.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Ordered</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_IsOrdered()
@@ -110,7 +111,7 @@ public interface Operation
 	 * <!-- begin-model-doc -->
 	 * Specifies whether the return parameter is unique or not, if present.
 	 * This information is derived from the return result for this Operation.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Unique</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_IsUnique()
@@ -127,7 +128,7 @@ public interface Operation
 	 * <!-- begin-model-doc -->
 	 * This information is derived from the return result for this Operation.
 	 * Specifies the lower multiplicity of the return parameter, if present.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Lower</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Lower()
@@ -144,7 +145,7 @@ public interface Operation
 	 * <!-- begin-model-doc -->
 	 * This information is derived from the return result for this Operation.
 	 * Specifies the upper multiplicity of the return parameter, if present.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Upper</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Upper()
@@ -168,7 +169,7 @@ public interface Operation
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The class that owns the operation.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Class</em>' container reference.
 	 * @see #setClass_(org.eclipse.uml2.uml.Class)
@@ -202,7 +203,7 @@ public interface Operation
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An optional set of Constraints on the state of the system when the Operation is invoked.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Precondition</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Precondition()
@@ -273,7 +274,7 @@ public interface Operation
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An optional set of Constraints specifying the state of the system when the Operation is completed.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Postcondition</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Postcondition()
@@ -344,7 +345,7 @@ public interface Operation
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Operations that are redefined by this Operation.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Operation</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_RedefinedOperation()
@@ -398,7 +399,7 @@ public interface Operation
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The DataType that owns this Operation.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Datatype</em>' container reference.
 	 * @see #setDatatype(DataType)
@@ -431,7 +432,7 @@ public interface Operation
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An optional Constraint on the result values of an invocation of this Operation.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body Condition</em>' reference.
 	 * @see #setBodyCondition(Constraint)
@@ -481,7 +482,7 @@ public interface Operation
 	 * <!-- begin-model-doc -->
 	 * This information is derived from the return result for this Operation.
 	 * Specifies the return result of the operation, if present.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Type()
@@ -505,7 +506,7 @@ public interface Operation
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Interface that owns this Operation.
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Interface</em>' container reference.
 	 * @see #setInterface(Interface)
@@ -613,7 +614,7 @@ public interface Operation
 	 * <!-- begin-model-doc -->
 	 * The query returnResult() returns the set containing the return parameter of the Operation if one exists, otherwise, it returns an empty set
 	 * result = ownedParameter->select (par | par.direction = #return)
-	 * <p>Merged from package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false"
 	 * @generated
