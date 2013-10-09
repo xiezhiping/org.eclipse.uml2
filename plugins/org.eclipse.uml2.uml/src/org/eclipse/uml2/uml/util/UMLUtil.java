@@ -1954,22 +1954,20 @@ public class UMLUtil
 											mergedPackage}));
 							}
 
-							EAnnotation mergeAnnotation =
-							getEAnnotation(
+							EAnnotation eAnnotation = getEAnnotation(
 								getEAnnotation(resultingPackage,
 									UML2_UML_PACKAGE_2_0_NS_URI, true),
 								mergedPackage.getQualifiedName(), true);
 
-							mergeAnnotation.getReferences().add(
-								resultingEObject);
+							eAnnotation.getReferences().add(resultingEObject);
+
 							if (!UML2Util.isEmpty(mergedPackage.getURI())) {
-								mergeAnnotation.getDetails().put(
+								eAnnotation.getDetails().put(
 									ANNOTATION_DETAIL__URI,
 									mergedPackage.getURI());
 							}
 						} else if (OPTION__REPORT.equals(options
-							.get(OPTION__CAPABILITIES))
-							&& diagnostics != null) {
+							.get(OPTION__CAPABILITIES)) && diagnostics != null) {
 
 							diagnostics
 								.add(new BasicDiagnostic(
@@ -5925,19 +5923,21 @@ public class UMLUtil
 
 		/**
 		 * Processes the capability trace information (if any) in the root
-		 * packages' UML annotations to generate merge trace statements in the
+		 * packages' UML annotations to generate trace statements in the
 		 * generator documentation comments of Ecore API elements.
 		 * 
 		 * @since 4.2
 		 */
 		protected void processCapabilityAnnotations(
-				Map<String, String> options,
-				DiagnosticChain diagnostics, Map<Object, Object> context) {
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
 
 			for (org.eclipse.uml2.uml.Package converted : packages) {
 				EAnnotation annotation = getEAnnotation(converted,
 					UML2_UML_PACKAGE_2_0_NS_URI, false);
+
 				if (annotation != null) {
+
 					for (EAnnotation subAnnotation : annotation
 						.getEAnnotations()) {
 
@@ -5957,13 +5957,13 @@ public class UMLUtil
 
 									EModelElement ecore = elementToEModelElementMap
 										.get(next);
+
 									if (ecore != null) {
 										// add the trace comment
 										String doc = UML2Util.isEmpty(capURI)
-											? String
-												.format(
+											? String.format(
 												"<p>From package %s.</p>", //$NON-NLS-1$
-													capName)
+												capName)
 											: String
 												.format(
 													"<p>From package %s (URI {@literal %s}).</p>", //$NON-NLS-1$
