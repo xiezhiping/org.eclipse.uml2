@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
+ *   Christian W. Damus (CEA) - 251963
  *
- * $Id: InteractionUse.java,v 1.12 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * An interaction use refers to an interaction. The interaction use is a shorthand for copying the contents of the referenced interaction where the interaction use is. To be accurate the copying must take into account substituting parameters with arguments and connect the formal gates with the actual ones.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -54,6 +55,7 @@ public interface InteractionUse
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Refers to the Interaction that defines its meaning
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Refers To</em>' reference.
 	 * @see #setRefersTo(Interaction)
@@ -85,6 +87,7 @@ public interface InteractionUse
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The value of the executed Interaction.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Return Value</em>' containment reference.
 	 * @see #setReturnValue(ValueSpecification)
@@ -123,6 +126,7 @@ public interface InteractionUse
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The recipient of the return value.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Return Value Recipient</em>' reference.
 	 * @see #setReturnValueRecipient(Property)
@@ -155,6 +159,7 @@ public interface InteractionUse
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The actual gates of the InteractionUse
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Actual Gate</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteractionUse_ActualGate()
@@ -211,6 +216,7 @@ public interface InteractionUse
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The actual arguments of the Interaction
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Argument</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteractionUse_Argument()

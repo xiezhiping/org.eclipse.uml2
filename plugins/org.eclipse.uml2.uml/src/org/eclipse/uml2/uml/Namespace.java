@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *   Kenn Hussey (CEA) - 327039, 351774
+ *   Christian W. Damus (CEA) - 251963
  *
  */
 package org.eclipse.uml2.uml;
@@ -28,6 +29,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A namespace is an element in a model that contains a set of named elements that can be identified by name.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -63,6 +65,7 @@ public interface Namespace
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the ElementImports owned by the Namespace.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Element Import</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_ElementImport()
@@ -121,6 +124,7 @@ public interface Namespace
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the PackageImports owned by the Namespace.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Package Import</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_PackageImport()
@@ -180,6 +184,7 @@ public interface Namespace
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies a set of Constraints owned by this Namespace.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Rule</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_OwnedRule()
@@ -246,6 +251,7 @@ public interface Namespace
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Member</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_Member()
@@ -291,6 +297,7 @@ public interface Namespace
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Imported Member</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_ImportedMember()
@@ -340,6 +347,7 @@ public interface Namespace
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A collection of NamedElements owned by the Namespace.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Member</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_OwnedMember()
@@ -452,6 +460,7 @@ public interface Namespace
 	 *   else self.packageImport->select(pi | pi.importedPackage.visibleMembers()->includes(element))-> collect(pi | pi.importedPackage.getNamesOfMember(element))
 	 *   endif
 	 * endif
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.String" ordered="false" elementRequired="true" elementOrdered="false"
 	 * @generated
@@ -466,6 +475,7 @@ public interface Namespace
 	 * result = self.member->forAll( memb |
 	 * self.member->excluding(memb)->forAll(other |
 	 * memb.isDistinguishableFrom(other, self)))
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
@@ -479,6 +489,7 @@ public interface Namespace
 	 * The query importMembers() defines which of a set of PackageableElements are actually imported into the namespace. This excludes hidden ones, i.e., those which have names that conflict with names of owned members, and also excludes elements which would have the same name when imported.
 	 * result = self.excludeCollisions(imps)->select(imp | self.ownedMember->forAll(mem |
 	 * mem.imp.isDistinguishableFrom(mem, self)))
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false" impsMany="true" impsOrdered="false"
 	 * @generated
@@ -491,6 +502,7 @@ public interface Namespace
 	 * <!-- begin-model-doc -->
 	 * The query excludeCollisions() excludes from a set of PackageableElements any that would not be distinguishable from each other in this namespace.
 	 * result = imps->reject(imp1 | imps.exists(imp2 | not imp1.isDistinguishableFrom(imp2, self)))
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false" impsMany="true" impsOrdered="false"
 	 * @generated

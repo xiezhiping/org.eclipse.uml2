@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
+ *   Christian W. Damus (CEA) - 251963
  *
- * $Id: ProtocolTransition.java,v 1.19 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A protocol transition specifies a legal transition for an operation. Transitions of protocol state machines have the following information: a pre condition (guard), on trigger, and a post condition. Every protocol transition is associated to zero or one operation (referred BehavioralFeature) that belongs to the context classifier of the protocol state machine.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -58,6 +59,7 @@ public interface ProtocolTransition
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the post condition of the transition which is the condition that should be obtained once the transition is triggered. This post condition is part of the post condition of the operation connected to the transition.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Post Condition</em>' reference.
 	 * @see #setPostCondition(Constraint)
@@ -107,6 +109,7 @@ public interface ProtocolTransition
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * This association refers to the associated operation. It is derived from the operation of the call trigger when applicable.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Referred</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProtocolTransition_Referred()
@@ -156,6 +159,7 @@ public interface ProtocolTransition
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the precondition of the transition. It specifies the condition that should be verified before triggering the transition. This guard condition added to the source state will be evaluated as part of the precondition of the operation referred by the transition if any.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Pre Condition</em>' reference.
 	 * @see #setPreCondition(Constraint)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039, 351774
+ *   Christian W. Damus (CEA) - 251963
  *
  */
 package org.eclipse.uml2.uml;
@@ -29,6 +30,7 @@ import org.eclipse.emf.ecore.EClass;
  * Parameters are allowed to be treated as connectable elements.
  * A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral feature.
  * Parameters have support for streaming, exceptions, and parameter sets.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -60,6 +62,7 @@ public interface Parameter
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The parameter sets containing the parameter. See ParameterSet.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Parameter Set</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getParameter_ParameterSet()
@@ -104,6 +107,7 @@ public interface Parameter
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Operation owning this parameter.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Operation</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getParameter_Operation()
@@ -120,6 +124,7 @@ public interface Parameter
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Indicates whether a parameter is being sent into or out of a behavioral element.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Direction</em>' attribute.
 	 * @see org.eclipse.uml2.uml.ParameterDirectionKind
@@ -147,6 +152,7 @@ public interface Parameter
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies a String that represents a value to be used when no argument is supplied for the Parameter.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Default</em>' attribute.
 	 * @see #isSetDefault()
@@ -205,6 +211,7 @@ public interface Parameter
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Default Value</em>' containment reference.
 	 * @see #setDefaultValue(ValueSpecification)
@@ -244,6 +251,7 @@ public interface Parameter
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Tells whether an output parameter may emit a value to the exclusion of the other outputs.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Exception</em>' attribute.
 	 * @see #setIsException(boolean)
@@ -270,6 +278,7 @@ public interface Parameter
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Tells whether an input parameter may accept values while its behavior is executing, or whether an output parameter post values while the behavior is executing.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Stream</em>' attribute.
 	 * @see #setIsStream(boolean)
@@ -296,6 +305,7 @@ public interface Parameter
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the effect that the owner of the parameter has on values passed in or out of the parameter.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Effect</em>' attribute.
 	 * @see org.eclipse.uml2.uml.ParameterEffectKind

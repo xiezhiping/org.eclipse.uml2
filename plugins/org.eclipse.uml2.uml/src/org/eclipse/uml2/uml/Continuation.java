@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
+ *   Christian W. Damus (CEA) - 251963
  *
- * $Id: Continuation.java,v 1.6 2007/04/25 17:47:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * <!-- begin-model-doc -->
  * A continuation is a syntactic way to define continuations of different branches of an alternative combined fragment. Continuations is intuitively similar to labels representing intermediate points in a flow of control.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -47,6 +48,7 @@ public interface Continuation
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Setting</em>' attribute.
 	 * @see #setSetting(boolean)

@@ -12,7 +12,7 @@
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
  *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731
  *   Yann Tanguy (CEA) - 350402
- *   Christian W. Damus (CEA) - 392833
+ *   Christian W. Damus (CEA) - 392833, 251963
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -1954,14 +1954,20 @@ public class UMLUtil
 											mergedPackage}));
 							}
 
-							getEAnnotation(
+							EAnnotation eAnnotation = getEAnnotation(
 								getEAnnotation(resultingPackage,
 									UML2_UML_PACKAGE_2_0_NS_URI, true),
-								mergedPackage.getQualifiedName(), true)
-								.getReferences().add(resultingEObject);
+								mergedPackage.getQualifiedName(), true);
+
+							eAnnotation.getReferences().add(resultingEObject);
+
+							if (!UML2Util.isEmpty(mergedPackage.getURI())) {
+								eAnnotation.getDetails().put(
+									ANNOTATION_DETAIL__URI,
+									mergedPackage.getURI());
+							}
 						} else if (OPTION__REPORT.equals(options
-							.get(OPTION__CAPABILITIES))
-							&& diagnostics != null) {
+							.get(OPTION__CAPABILITIES)) && diagnostics != null) {
 
 							diagnostics
 								.add(new BasicDiagnostic(
@@ -5915,6 +5921,77 @@ public class UMLUtil
 			}
 		}
 
+		/**
+		 * Processes the capability trace information (if any) in the root
+		 * packages' UML annotations to generate trace statements in the
+		 * generator documentation comments of Ecore API elements.
+		 * 
+		 * @since 4.2
+		 */
+		protected void processCapabilityAnnotations(
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
+
+			for (org.eclipse.uml2.uml.Package converted : packages) {
+				EAnnotation annotation = getEAnnotation(converted,
+					UML2_UML_PACKAGE_2_0_NS_URI, false);
+
+				if (annotation != null) {
+
+					for (EAnnotation subAnnotation : annotation
+						.getEAnnotations()) {
+
+						if (isCapabilityAnnotation(subAnnotation)) {
+							String capName = subAnnotation.getSource();
+							String capURI = subAnnotation.getDetails().get(
+								ANNOTATION_DETAIL__URI);
+
+							for (EObject next : subAnnotation.getReferences()) {
+								// an API element is a classifier in the package
+								// (neither nested nor a parametered element) or
+								// a feature of a class
+								if (((next instanceof Classifier) && (next
+									.eContainer() instanceof org.eclipse.uml2.uml.Package))
+									|| ((next instanceof Operation || next instanceof Property) && (next
+										.eContainer() instanceof org.eclipse.uml2.uml.Class))) {
+
+									EModelElement ecore = elementToEModelElementMap
+										.get(next);
+
+									if (ecore != null) {
+										// add the trace comment
+										String doc = UML2Util.isEmpty(capURI)
+											? String.format(
+												"<p>From package %s.</p>", //$NON-NLS-1$
+												capName)
+											: String
+												.format(
+													"<p>From package %s (URI {@literal %s}).</p>", //$NON-NLS-1$
+													capName, capURI);
+										addDocumentation(ecore, doc);
+									}
+								}
+							}
+						}
+					}
+				}
+
+			}
+		}
+
+		/**
+		 * @precondition The {@code annotation} is a sub-annotation of the UML
+		 *               namespace annotation on a Package.
+		 */
+		private boolean isCapabilityAnnotation(EAnnotation annotation) {
+			EModelElement annotated = ((EAnnotation) annotation
+				.getEModelElement()).getEModelElement();
+
+			return !annotation.getReferences().isEmpty()
+				&& (EcoreUtil.isAncestor(annotated, annotation.getReferences()
+					.get(0)));
+		}
+
 		protected void processOptions(Map<String, String> options,
 				DiagnosticChain diagnostics, Map<Object, Object> context) {
 
@@ -6005,6 +6082,8 @@ public class UMLUtil
 			if (options != null) {
 				processOptions(options, diagnostics, context);
 			}
+
+			processCapabilityAnnotations(options, diagnostics, context);
 
 			return getRootContainers(EcoreUtil.<EObject> getObjectsByType(
 				elementToEModelElementMap.values(),
@@ -8635,6 +8714,8 @@ public class UMLUtil
 	protected static final String ANNOTATION__UNION = "union"; //$NON-NLS-1$
 
 	protected static final String ANNOTATION_DETAIL__BODY = "body"; //$NON-NLS-1$
+
+	protected static final String ANNOTATION_DETAIL__URI = "URI"; //$NON-NLS-1$
 
 	public static final String ENUMERATION_LITERAL__ATTRIBUTE = "Attribute"; //$NON-NLS-1$
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,8 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215488
  *   Kenn Hussey - 286329
+ *   Christian W. Damus (CEA) - 326915
  *
- * $Id: ApplyProfileAction.java,v 1.9 2010/03/02 03:10:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -28,13 +28,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.jface.window.Window;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
-import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
+import org.eclipse.uml2.uml.editor.dialogs.AbstractChoicesDialogDelegate;
+import org.eclipse.uml2.uml.editor.dialogs.ChoicesDialog;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 
 public class ApplyProfileAction
@@ -113,20 +115,53 @@ public class ApplyProfileAction
 			String label = UMLEditorPlugin.INSTANCE
 				.getString("_UI_ApplyProfileActionCommand_label"); //$NON-NLS-1$
 
-			final FeatureEditorDialog dialog = new FeatureEditorDialog(
-				workbenchPart.getSite().getShell(), getLabelProvider(),
-				package_, UMLPackage.Literals.PROFILE, Collections.EMPTY_LIST,
-				label, choiceOfValues, false, false, true);
+			final ChoicesDialog<Profile> dialog = new ChoicesDialog<Profile>(
+				workbenchPart.getSite().getShell(), package_, label,
+				new AbstractChoicesDialogDelegate<Profile>(Profile.class) {
+
+					@Override
+					public String getChoicesLabelText() {
+						return UMLEditorPlugin.INSTANCE
+							.getString("_UI_AvailableProfiles_label"); //$NON-NLS-1$
+					}
+
+					@Override
+					public String getValuesLabelText() {
+						return UMLEditorPlugin.INSTANCE
+							.getString("_UI_ProfilesToApply_label"); //$NON-NLS-1$
+					}
+
+					@Override
+					public String getAddButtonText() {
+						return UMLEditorPlugin.INSTANCE
+							.getString("_UI_Apply_label"); //$NON-NLS-1$
+					}
+
+					@Override
+					public String getRemoveButtonText() {
+						return UMLEditorPlugin.INSTANCE
+							.getString("_UI_Unapply_label"); //$NON-NLS-1$
+					}
+
+					public ILabelProvider getLabelProvider() {
+						return ApplyProfileAction.this.getLabelProvider();
+					}
+
+					public Collection<Profile> getChoiceOfValues() {
+						return choiceOfValues;
+					}
+				});
 			dialog.open();
 
-			if (dialog.getReturnCode() == FeatureEditorDialog.OK) {
+			if ((dialog.getReturnCode() == Window.OK)
+				&& !dialog.getResult().isEmpty()) {
 				editingDomain.getCommandStack().execute(
 					new RefreshingChangeCommand(editingDomain, new Runnable() {
 
 						public void run() {
 
-							for (Object result : dialog.getResult()) {
-								package_.applyProfile((Profile) result);
+							for (Profile result : dialog.getResult()) {
+								package_.applyProfile(result);
 							}
 						}
 					}, label));

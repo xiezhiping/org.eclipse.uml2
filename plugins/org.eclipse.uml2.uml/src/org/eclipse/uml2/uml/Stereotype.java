@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039, 351777, 382718
+ *   Christian W. Damus (CEA) - 251963
  *
  */
 package org.eclipse.uml2.uml;
@@ -27,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A stereotype defines how an existing metaclass may be extended, and enables the use of platform or domain specific terminology or notation in place of, or in addition to, the ones used for the extended metaclass.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -57,6 +59,7 @@ public interface Stereotype
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Icon</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStereotype_Icon()
@@ -142,6 +145,7 @@ public interface Stereotype
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The profile that directly or indirectly contains this stereotype.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Profile</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStereotype_Profile()
@@ -194,6 +198,7 @@ public interface Stereotype
 	 * <!-- begin-model-doc -->
 	 * The query containingProfile returns the closest profile directly or indirectly containing this stereotype.
 	 * result = self.namespace.oclAsType(Package).containingProfile()
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false"
 	 * @generated

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
+ *   Christian W. Damus (CEA) - 251963
  *
- * $Id: RemoveStructuralFeatureValueAction.java,v 1.11 2007/10/23 15:54:23 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A remove structural feature value action is a write structural feature action that removes values from structural features.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -50,6 +51,7 @@ public interface RemoveStructuralFeatureValueAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies whether to remove duplicates of the value in nonunique structural features.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Remove Duplicates</em>' attribute.
 	 * @see #setIsRemoveDuplicates(boolean)
@@ -81,6 +83,7 @@ public interface RemoveStructuralFeatureValueAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the position of an existing value to remove in ordered nonunique structural features. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Remove At</em>' containment reference.
 	 * @see #setRemoveAt(InputPin)

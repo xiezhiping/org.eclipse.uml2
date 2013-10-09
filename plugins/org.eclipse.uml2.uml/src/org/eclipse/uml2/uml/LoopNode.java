@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039, 397141
+ *   Christian W. Damus (CEA) - 251963
  *
  */
 package org.eclipse.uml2.uml;
@@ -27,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A loop node is a structured activity node that represents a loop with setup, test, and body sections.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -58,6 +60,7 @@ public interface LoopNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If true, the test is performed before the first execution of the body. If false, the body is executed once before the test is performed.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Tested First</em>' attribute.
 	 * @see #setIsTestedFirst(boolean)
@@ -84,6 +87,7 @@ public interface LoopNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The set of nodes and edges that perform the repetitive computations of the loop. The body section is executed as long as the test section produces a true value.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body Part</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_BodyPart()
@@ -123,6 +127,7 @@ public interface LoopNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The set of nodes and edges that initialize values or perform other setup computations for the loop.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Setup Part</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_SetupPart()
@@ -161,6 +166,7 @@ public interface LoopNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An output pin within the test fragment the value of which is examined after execution of the test to determine whether to execute the loop body.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Decider</em>' reference.
 	 * @see #setDecider(OutputPin)
@@ -187,6 +193,7 @@ public interface LoopNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The set of nodes, edges, and designated value that compute a Boolean value to determine if another execution of the body will be performed.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Test</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_Test()
@@ -232,6 +239,7 @@ public interface LoopNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A list of output pins that constitute the data flow output of the entire loop.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_Result()
@@ -286,6 +294,7 @@ public interface LoopNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Loop Variable</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_LoopVariable()
@@ -353,6 +362,7 @@ public interface LoopNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A list of output pins within the body fragment the values of which are moved to the loop variable pins after completion of execution of the body, before the next iteration of the loop begins or before the loop exits.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body Output</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_BodyOutput()
@@ -399,6 +409,7 @@ public interface LoopNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A list of values that are moved into the loop variable pins before the first iteration of the loop.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Loop Variable Input</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_LoopVariableInput()

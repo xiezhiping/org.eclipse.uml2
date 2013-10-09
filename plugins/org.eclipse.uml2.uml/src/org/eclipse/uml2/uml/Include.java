@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039, 351774
+ *   Christian W. Damus (CEA) - 251963
  *
  */
 package org.eclipse.uml2.uml;
@@ -19,6 +20,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * An include relationship defines that a use case contains the behavior defined in another use case.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -48,6 +50,7 @@ public interface Include
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the use case that is to be included.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Addition</em>' reference.
 	 * @see #setAddition(UseCase)
@@ -81,6 +84,7 @@ public interface Include
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the use case which will include the addition and owns the include relationship.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Including Case</em>' container reference.
 	 * @see #setIncludingCase(UseCase)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
+ *   Christian W. Damus (CEA) - 251963
  *
- * $Id: ObjectFlow.java,v 1.7 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- begin-model-doc -->
  * An object flow is an activity edge that can have objects or data passing along it.
  * Object flows have support for multicast/receive, token selection from object nodes, and transformation of tokens.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -51,6 +52,7 @@ public interface ObjectFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Tells whether the objects in the flow are passed by multicasting.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Multicast</em>' attribute.
 	 * @see #setIsMulticast(boolean)
@@ -77,6 +79,7 @@ public interface ObjectFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Tells whether the objects in the flow are gathered from respondents to multicasting.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Multireceive</em>' attribute.
 	 * @see #setIsMultireceive(boolean)
@@ -102,6 +105,7 @@ public interface ObjectFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Changes or replaces data tokens flowing along edge.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Transformation</em>' reference.
 	 * @see #setTransformation(Behavior)
@@ -127,6 +131,7 @@ public interface ObjectFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Selects tokens from a source object node.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Selection</em>' reference.
 	 * @see #setSelection(Behavior)

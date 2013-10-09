@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Christian W. Damus (CEA) - 251963
  *
- * $Id: ChangeEvent.java,v 1.7 2007/10/23 16:12:32 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A change event models a change in the system configuration that makes a condition true.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -49,6 +50,7 @@ public interface ChangeEvent
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A Boolean-valued expression that will result in a change event whenever its value changes from false to true.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Change Expression</em>' containment reference.
 	 * @see #setChangeExpression(ValueSpecification)

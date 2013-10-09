@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Christian W. Damus (CEA) - 251963
  *
- * $Id: ConnectionPointReference.java,v 1.11 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * A connection point reference represents a usage (as part of a submachine state) of an entry/exit point defined in the statemachine reference by the submachine state.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -50,6 +51,7 @@ public interface ConnectionPointReference
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The entryPoint kind pseudo states corresponding to this connection point.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Entry</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnectionPointReference_Entry()
@@ -88,6 +90,7 @@ public interface ConnectionPointReference
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The exitPoints kind pseudo states corresponding to this connection point.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Exit</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnectionPointReference_Exit()
@@ -132,6 +135,7 @@ public interface ConnectionPointReference
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The State in which the connection point refreshens are defined.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>State</em>' container reference.
 	 * @see #setState(State)

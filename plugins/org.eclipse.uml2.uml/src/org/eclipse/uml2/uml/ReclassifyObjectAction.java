@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
+ *   Christian W. Damus (CEA) - 251963
  *
- * $Id: ReclassifyObjectAction.java,v 1.12 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A reclassify object action is an action that changes which classifiers classify an object.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -54,6 +55,7 @@ public interface ReclassifyObjectAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies whether existing classifiers should be removed before adding the new classifiers.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Replace All</em>' attribute.
 	 * @see #setIsReplaceAll(boolean)
@@ -80,6 +82,7 @@ public interface ReclassifyObjectAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A set of classifiers to be removed from the classifiers of the object.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Old Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getReclassifyObjectAction_OldClassifier()
@@ -119,6 +122,7 @@ public interface ReclassifyObjectAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A set of classifiers to be added to the classifiers of the object.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>New Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getReclassifyObjectAction_NewClassifier()
@@ -163,6 +167,7 @@ public interface ReclassifyObjectAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Holds the object to be reclassified.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)

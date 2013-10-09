@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *   Kenn Hussey (CEA) - 327039, 351774
+ *   Christian W. Damus (CEA) - 251963
  *
  */
 package org.eclipse.uml2.uml;
@@ -26,6 +27,7 @@ import org.eclipse.emf.ecore.EClass;
  * An action has pre- and post-conditions.
  * An action represents a single step within an activity, that is, one that is not further decomposed within the activity.
  * An action is a named element that is the fundamental unit of executable functionality. The execution of an action represents some transformation or processing in the modeled system, be it a computer system or otherwise.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -61,6 +63,7 @@ public interface Action
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The ordered set of output pins connected to the Action. The action places its results onto pins in this set.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Output</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAction_Output()
@@ -108,6 +111,7 @@ public interface Action
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The ordered set of input pins connected to the Action. These are among the total set of inputs.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Input</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAction_Input()
@@ -149,6 +153,7 @@ public interface Action
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If true, the action can begin a new, concurrent execution, even if there is already another execution of the action ongoing. If false, the action cannot begin a new execution until any previous execution has completed.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Locally Reentrant</em>' attribute.
 	 * @see #setIsLocallyReentrant(boolean)
@@ -174,6 +179,7 @@ public interface Action
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The classifier that owns the behavior of which this action is a part.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Context</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAction_Context()
@@ -195,6 +201,7 @@ public interface Action
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Constraint that must be satisfied when execution is started.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Local Precondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAction_LocalPrecondition()
@@ -265,6 +272,7 @@ public interface Action
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Constraint that must be satisfied when executed is completed.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Local Postcondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAction_LocalPostcondition()

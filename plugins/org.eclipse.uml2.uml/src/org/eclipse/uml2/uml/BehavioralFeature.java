@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039, 351774
+ *   Christian W. Damus (CEA) - 251963
  *
  */
 package org.eclipse.uml2.uml;
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  * A behavioral feature is a feature of a classifier that specifies an aspect of the behavior of its instances.
  * A behavioral feature is implemented (realized) by a behavior. A behavioral feature specifies that a classifier will respond to a designated request by invoking its implementing method.
  * A behavioral feature owns zero or more parameter sets.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -59,6 +61,7 @@ public interface BehavioralFeature
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the ordered set of formal parameters of this BehavioralFeature.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Parameter</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioralFeature_OwnedParameter()
@@ -113,6 +116,7 @@ public interface BehavioralFeature
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If true, then the behavioral feature does not have an implementation, and one must be supplied by a more specific element. If false, the behavioral feature must have an implementation in the classifier or one must be inherited from a more general element.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Abstract</em>' attribute.
 	 * @see #setIsAbstract(boolean)
@@ -140,6 +144,7 @@ public interface BehavioralFeature
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A behavioral description that implements the behavioral feature. There may be at most one behavior for a particular pairing of a classifier (as owner of the behavior) and a behavioral feature (as specification of the behavior).
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Method</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioralFeature_Method()
@@ -181,6 +186,7 @@ public interface BehavioralFeature
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the semantics of concurrent calls to the same passive instance (i.e., an instance originating from a class with isActive being false). Active instances control access to their own behavioral features.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Concurrency</em>' attribute.
 	 * @see org.eclipse.uml2.uml.CallConcurrencyKind
@@ -209,6 +215,7 @@ public interface BehavioralFeature
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Types representing exceptions that may be raised during an invocation of this feature.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Raised Exception</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioralFeature_RaisedException()
@@ -254,6 +261,7 @@ public interface BehavioralFeature
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The ParameterSets owned by this BehavioralFeature.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Parameter Set</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioralFeature_OwnedParameterSet()

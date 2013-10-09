@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Christian W. Damus (CEA) - 251963
  *
- * $Id: InstanceValue.java,v 1.2 2006/05/12 20:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -19,6 +19,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * An instance value is a value specification that identifies an instance.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -41,6 +42,7 @@ public interface InstanceValue
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The instance that is the specified value.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Instance</em>' reference.
 	 * @see #setInstance(InstanceSpecification)

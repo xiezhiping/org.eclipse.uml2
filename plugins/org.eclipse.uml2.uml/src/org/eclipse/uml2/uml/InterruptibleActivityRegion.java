@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
+ *   Christian W. Damus (CEA) - 251963
  *
- * $Id: InterruptibleActivityRegion.java,v 1.9 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * An interruptible activity region is an activity group that supports termination of tokens flowing in the portions of an activity.
+ * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -59,6 +60,7 @@ public interface InterruptibleActivityRegion
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Nodes immediately contained in the group.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Node</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterruptibleActivityRegion_Node()
@@ -100,6 +102,7 @@ public interface InterruptibleActivityRegion
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The edges leaving the region that will abort other tokens flowing in the region.
+	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Interrupting Edge</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterruptibleActivityRegion_InterruptingEdge()
