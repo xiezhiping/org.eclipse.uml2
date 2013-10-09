@@ -10,6 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 271470
  *   Kenn Hussey - 323181, 348433
  *   Kenn Hussey (CEA) - 327039, 369492, 313951, 163556
+ *   Christian W. Damus (CEA) - 300957
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -599,13 +600,15 @@ public class PackageOperations
 			org.eclipse.uml2.uml.Package package_, Profile profile) {
 
 		if (profile == null) {
-			throw new IllegalArgumentException(String.valueOf(profile));
+			throw new IllegalArgumentException("null profile"); //$NON-NLS-1$
 		}
 
 		EPackage profileDefinition = profile.getDefinition();
 
 		if (profileDefinition == null) {
-			throw new IllegalArgumentException(String.valueOf(profile));
+			throw new IllegalArgumentException(String.format(
+				"profile \"%s\" has no Ecore definition", //$NON-NLS-1$
+				profile.getQualifiedName()));
 		}
 
 		if (package_.getProfileApplication(profile) == null) {
@@ -736,8 +739,13 @@ public class PackageOperations
 	public static EList<EObject> unapplyProfile(
 			org.eclipse.uml2.uml.Package package_, Profile profile) {
 
-		if (profile == null || package_.getProfileApplication(profile) == null) {
-			throw new IllegalArgumentException(String.valueOf(profile));
+		if (profile == null) {
+			throw new IllegalArgumentException("null profile"); //$NON-NLS-1$
+		}
+
+		if (package_.getProfileApplication(profile) == null) {
+			throw new IllegalArgumentException(String.format(
+				"profile \"%s\" is not applied", profile.getQualifiedName())); //$NON-NLS-1$
 		}
 
 		EList<ProfileApplication> profileApplications = new UniqueEList.FastCompare<ProfileApplication>();

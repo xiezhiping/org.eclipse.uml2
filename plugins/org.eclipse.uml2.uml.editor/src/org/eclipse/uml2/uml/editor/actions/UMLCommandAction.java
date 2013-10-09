@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 173565
+ *   Christian W. Damus (CEA) - 326915
  *
  */
 package org.eclipse.uml2.uml.editor.actions;
@@ -91,6 +92,11 @@ public class UMLCommandAction
 	@Override
 	public void setActiveEditor(IAction action, IEditorPart editorPart) {
 		super.setActiveEditor(action, editorPart);
+
+		if (labelProvider != null) {
+			// clean up the current label provider
+			labelProvider.dispose();
+		}
 
 		labelProvider = editorPart == null
 			? null
