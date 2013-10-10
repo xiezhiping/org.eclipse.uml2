@@ -30,6 +30,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.TreeIterator;
 
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -592,6 +593,95 @@ public class UMLEditor
 		}
 	};
 
+	// an adapter that reacts to load/unload of resources that may contain
+	// stereotype applications to update the elements that they extend
+	private Adapter stereotypeApplicationsResourceAdapter = new AdapterImpl() {
+
+		private volatile Runnable pendingRefresh;
+
+		@Override
+		public void notifyChanged(Notification msg) {
+			if (!msg.isTouch() && (getViewer() != null)
+				&& !getViewer().getControl().isDisposed()) {
+				if (msg.getNotifier() instanceof Resource) {
+					if (msg.getFeatureID(Resource.class) == Resource.RESOURCE__IS_LOADED) {
+						refreshViewer();
+					}
+				} else if (msg.getNotifier() instanceof ResourceSet) {
+					if (msg.getFeatureID(ResourceSet.class) == ResourceSet.RESOURCE_SET__RESOURCES) {
+						switch (msg.getEventType()) {
+							case Notification.ADD :
+								handleResource((Resource) msg.getNewValue());
+								break;
+							case Notification.ADD_MANY :
+								for (Object next : (Iterable<?>) msg
+									.getNewValue()) {
+									handleResource((Resource) next);
+								}
+								break;
+							case Notification.SET :
+								if (msg.getNewValue() != null) {
+									handleResource((Resource) msg.getNewValue());
+								}
+								break;
+						}
+					}
+				}
+			}
+		}
+
+		private void handleResource(Resource resource) {
+			if (!resource.eAdapters().contains(this)) {
+				resource.eAdapters().add(this);
+			}
+
+			if (resource.isLoaded()) {
+				// already loaded? Refresh now
+				refreshViewer();
+			}
+		}
+
+		private void refreshViewer() {
+			if ((pendingRefresh == null) && (currentViewer != null)
+				&& (currentViewer.getControl() != null)) {
+
+				Runnable refreshRunnable = new Runnable() {
+
+					public void run() {
+						pendingRefresh = null;
+						if (!currentViewer.getControl().isDisposed()) {
+							currentViewer.refresh();
+						}
+					}
+				};
+				currentViewer.getControl().getDisplay()
+					.asyncExec(refreshRunnable);
+				pendingRefresh = refreshRunnable;
+			}
+		}
+
+		@Override
+		public void setTarget(Notifier newTarget) {
+			super.setTarget(newTarget);
+
+			if (newTarget instanceof ResourceSet) {
+				// listen for resource unload/load
+				for (Resource next : ((ResourceSet) newTarget).getResources()) {
+					next.eAdapters().add(this);
+				}
+			}
+		}
+
+		@Override
+		public void unsetTarget(Notifier oldTarget) {
+			if (oldTarget instanceof ResourceSet) {
+				for (Resource next : ((ResourceSet) oldTarget).getResources()) {
+					next.eAdapters().remove(this);
+				}
+			}
+		}
+	};
+
 	/**
 	 * Handles activation of the editor or it's associated views.
 	 * @generated
@@ -1061,84 +1151,7 @@ public class UMLEditor
 
 		// listen for loading of new resources, to refresh in case they bring in
 		// new stereotype applications (and unloading to remove them)
-		resourceSet.eAdapters().add(new AdapterImpl() {
-
-			private volatile Runnable pendingRefresh;
-
-			@Override
-			public void notifyChanged(Notification msg) {
-				if (!msg.isTouch()) {
-					if (msg.getNotifier() instanceof Resource) {
-						if (msg.getFeatureID(Resource.class) == Resource.RESOURCE__IS_LOADED) {
-							refreshViewer();
-						}
-					} else if (msg.getNotifier() instanceof ResourceSet) {
-						if (msg.getFeatureID(ResourceSet.class) == ResourceSet.RESOURCE_SET__RESOURCES) {
-							switch (msg.getEventType()) {
-								case Notification.ADD :
-									handleResource((Resource) msg.getNewValue());
-									break;
-								case Notification.ADD_MANY :
-									for (Object next : (Iterable<?>) msg
-										.getNewValue()) {
-										handleResource((Resource) next);
-									}
-									break;
-								case Notification.SET :
-									if (msg.getNewValue() != null) {
-										handleResource((Resource) msg
-											.getNewValue());
-									}
-									break;
-							}
-						}
-					}
-				}
-			}
-
-			private void handleResource(Resource resource) {
-				if (!resource.eAdapters().contains(this)) {
-					resource.eAdapters().add(this);
-				}
-
-				if (resource.isLoaded()) {
-					// already loaded? Refresh now
-					refreshViewer();
-				}
-			}
-
-			private void refreshViewer() {
-				if ((pendingRefresh == null) && (currentViewer != null)
-					&& (currentViewer.getControl() != null)) {
-
-					Runnable refreshRunnable = new Runnable() {
-
-						public void run() {
-							pendingRefresh = null;
-							if (!currentViewer.getControl().isDisposed()) {
-								currentViewer.refresh();
-							}
-						}
-					};
-					currentViewer.getControl().getDisplay()
-						.asyncExec(refreshRunnable);
-					pendingRefresh = refreshRunnable;
-				}
-			}
-
-			@Override
-			public void setTarget(Notifier newTarget) {
-				super.setTarget(newTarget);
-
-				if (newTarget instanceof ResourceSet) {
-					// listen for resource unload/load
-					for (Resource next : ((ResourceSet) newTarget)
-						.getResources()) {
-						next.eAdapters().add(this);
-					}
-				}
-			}
-		});
+		resourceSet.eAdapters().add(stereotypeApplicationsResourceAdapter);
 	}
 
 	/**
@@ -1933,6 +1946,13 @@ public class UMLEditor
 
 	@Override
 	public void dispose() {
+
+		if (stereotypeApplicationsResourceAdapter != null
+			&& editingDomain != null) {
+
+			editingDomain.getResourceSet().eAdapters()
+				.remove(stereotypeApplicationsResourceAdapter);
+		}
 
 		if (commandStackListener != null && editingDomain != null) {
 			editingDomain.getCommandStack().removeCommandStackListener(

@@ -410,6 +410,12 @@ public class ApplyStereotypeAction
 										.createResource(
 											selectedURI,
 											ContentHandler.UNSPECIFIED_CONTENT_TYPE);
+									if (resource != null) {
+										// poke the new resource to mark it as
+										// loaded so that we won't attempt to
+										// load it from non-existent storage
+										resource.getContents().clear();
+									}
 								}
 							} catch (Exception e) {
 								MessageDialog
