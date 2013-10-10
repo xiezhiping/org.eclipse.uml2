@@ -27,10 +27,14 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ContentHandler;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
+import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -40,9 +44,11 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
@@ -205,10 +211,13 @@ public class ApplyStereotypeAction
 		public void createAdditionalControls(Composite parent) {
 			Composite contents = new Composite(parent, SWT.NONE);
 			contents.setLayout(new GridLayout(2, false));
-			new Label(contents, SWT.NONE)
-				.setText("Create stereotype applications in:");
+
+			new Label(contents, SWT.NONE).setText(UMLEditorPlugin.INSTANCE
+				.getString("_UI_StereotypesResource_label")); //$NON-NLS-1$
 			resourceCombo = new ComboViewer(contents, SWT.DROP_DOWN
 				| SWT.READ_ONLY);
+			resourceCombo.getControl().setLayoutData(
+				new GridData(GridData.FILL_HORIZONTAL));
 			resourceCombo.setLabelProvider(getLabelProvider());
 			resourceCombo.setContentProvider(new ArrayContentProvider());
 
@@ -222,7 +231,11 @@ public class ApplyStereotypeAction
 				}
 			}
 			resourcesList.move(0, defaultResource);
-			resourcesList.add("Other...");
+
+			// add actions for loading an existing or creating a new resource
+			resourcesList.add(createLoadExistingResourceAction());
+			resourcesList.add(createCreateNewResourceAction());
+
 			resourceCombo.setInput(resourcesList);
 			resourceCombo
 				.setSelection(new StructuredSelection(defaultResource));
@@ -240,58 +253,8 @@ public class ApplyStereotypeAction
 							if (selected instanceof Resource) {
 								selectedResource = (Resource) selected;
 							} else {
-								// clicked on "Other..."
-								URI contextURI = null;
-								if ((selectedResource != null)
-									&& selectedResource.getURI()
-										.isPlatformResource()) {
-
-									contextURI = selectedResource.getURI();
-								}
-
-								ResourceDialog dlg = new ResourceDialog(
-									resourceCombo.getControl().getShell(),
-									"Load Other Resource", SWT.OPEN
-										| SWT.SINGLE, contextURI);
-
-								Resource newResource = null;
-
-								if ((dlg.open() == Window.OK)
-									&& !dlg.getURIs().isEmpty()) {
-									URI newURI = dlg.getURIs().get(0);
-
-									newResource = rset.getResource(newURI,
-										false);
-									if (newResource == null) {
-										// try to load it, then
-										newResource = rset.getResource(newURI,
-											true);
-										if (newResource != null) {
-											// add it after the
-											// default
-											resourcesList.add(1, newResource);
-											resourceCombo.refresh();
-										}
-									}
-								}
-
-								if (newResource == null) {
-									// revert to the current
-									// selection, then
-									newResource = selectedResource;
-								}
-
-								// select the new resource
-								resourceCombo
-									.setSelection(new StructuredSelection(
-										newResource));
-								selectedResource = newResource;
-
-								// the loading of a new resource may have
-								// brought in new stereotype applications
-								applicableStereotypes.removeAll(element
-									.getAppliedStereotypes());
-								getDialog().updateChoiceOfValues();
+								// clicked on "Existing..." or "Create new..."
+								((IAction) selected).run();
 							}
 						}
 					}
@@ -321,6 +284,226 @@ public class ApplyStereotypeAction
 			}
 
 			return result;
+		}
+
+		private IAction createLoadExistingResourceAction() {
+			return new LoadOtherResourceAction(
+				UMLEditorPlugin.INSTANCE
+					.getString("_UI_StereotypesResource_existing_label")) { //$NON-NLS-1$
+
+				@Override
+				protected Resource openDialog(Shell parentShell,
+						final ResourceSet rset, URI contextURI) {
+
+					ResourceDialog dlg = new ResourceDialog(
+						resourceCombo.getControl().getShell(),
+						UMLEditorPlugin.INSTANCE
+							.getString("_UI_StereotypesResource_existingDialog_label"), //$NON-NLS-1$
+						SWT.OPEN | SWT.SINGLE, contextURI) {
+
+						@Override
+						protected boolean processResources() {
+							Resource resource = null;
+
+							try {
+								if (getURIs().isEmpty()) {
+									return true; // just let it go
+								}
+
+								URI selectedURI = getURIs().get(0);
+								if (!rset.getURIConverter().exists(selectedURI,
+									null)) {
+
+									MessageDialog
+										.openError(
+											getShell(),
+											EMFEditUIPlugin.INSTANCE
+												.getString("_UI_InvalidURI_label"), //$NON-NLS-1$
+											UMLEditorPlugin.INSTANCE
+												.getString("_UI_StereotypesResource_notExists_message")); //$NON-NLS-1$
+									return false;
+								}
+								resource = rset.getResource(selectedURI, true);
+							} catch (Exception e) {
+								MessageDialog
+									.openError(
+										getShell(),
+										EMFEditUIPlugin.INSTANCE
+											.getString("_UI_InvalidURI_label"), //$NON-NLS-1$
+										UMLEditorPlugin.INSTANCE
+											.getString("_UI_StereotypesResource_loadFailed_message")); //$NON-NLS-1$
+								UMLEditorPlugin.INSTANCE.log(e);
+								return false;
+							}
+
+							if (editingDomain.isReadOnly(resource)) {
+								MessageDialog.openError(getShell(),
+									EMFEditUIPlugin.INSTANCE
+										.getString("_UI_InvalidURI_label"), //$NON-NLS-1$
+									EMFEditUIPlugin.INSTANCE
+										.getString("_WARN_ReadOnlyResource")); //$NON-NLS-1$
+								return false;
+							}
+
+							return resource != null;
+						}
+					};
+
+					Resource result = null;
+
+					if ((dlg.open() == Window.OK) && !dlg.getURIs().isEmpty()) {
+						URI newURI = dlg.getURIs().get(0);
+
+						result = rset.getResource(newURI, true);
+					}
+
+					return result;
+				}
+
+				// the label provider will use this to get a label
+				@Override
+				public String toString() {
+					return getText();
+				}
+			};
+		}
+
+		private IAction createCreateNewResourceAction() {
+			return new LoadOtherResourceAction(
+				UMLEditorPlugin.INSTANCE
+					.getString("_UI_StereotypesResource_new_label")) { //$NON-NLS-1$
+
+				@Override
+				protected Resource openDialog(Shell parentShell,
+						final ResourceSet rset, URI contextURI) {
+
+					ResourceDialog dlg = new ResourceDialog(
+						resourceCombo.getControl().getShell(),
+						UMLEditorPlugin.INSTANCE
+							.getString("_UI_StereotypesResource_newDialog_label"), //$NON-NLS-1$
+						SWT.SAVE | SWT.SINGLE, contextURI) {
+
+						@Override
+						protected boolean processResources() {
+							Resource resource = null;
+
+							try {
+								if (getURIs().isEmpty()) {
+									return true; // just let it go
+								}
+
+								URI selectedURI = getURIs().get(0);
+
+								if (rset.getURIConverter().exists(selectedURI,
+									null)) {
+
+									MessageDialog
+										.openError(
+											getShell(),
+											EMFEditUIPlugin.INSTANCE
+												.getString("_UI_InvalidURI_label"), //$NON-NLS-1$
+											UMLEditorPlugin.INSTANCE
+												.getString("_UI_StereotypesResource_exists_message")); //$NON-NLS-1$
+									return false;
+								} else {
+									resource = rset
+										.createResource(
+											selectedURI,
+											ContentHandler.UNSPECIFIED_CONTENT_TYPE);
+								}
+							} catch (Exception e) {
+								MessageDialog
+									.openError(
+										getShell(),
+										EMFEditUIPlugin.INSTANCE
+											.getString("_UI_InvalidURI_label"), //$NON-NLS-1$
+										UMLEditorPlugin.INSTANCE
+											.getString("_UI_StereotypesResource_createFailed_message")); //$NON-NLS-1$
+								UMLEditorPlugin.INSTANCE.log(e);
+								return false;
+							}
+
+							return resource != null;
+						}
+					};
+
+					Resource result = null;
+
+					if ((dlg.open() == Window.OK) && !dlg.getURIs().isEmpty()) {
+						URI newURI = dlg.getURIs().get(0);
+
+						result = rset.getResource(newURI, true);
+					}
+
+					return result;
+				}
+
+				// the label provider will use this to get a label
+				@Override
+				public String toString() {
+					return getText();
+				}
+			};
+		}
+
+		private abstract class LoadOtherResourceAction
+				extends Action {
+
+			LoadOtherResourceAction(String label) {
+				super(label);
+			}
+
+			@Override
+			public void run() {
+				// if we've gotten this far, we know this element is in a
+				// resource set
+				final ResourceSet rset = element.eResource().getResourceSet();
+
+				URI contextURI = null;
+				if ((selectedResource != null)
+					&& selectedResource.getURI().isPlatformResource()) {
+
+					contextURI = selectedResource.getURI();
+				}
+
+				Resource newResource = null;
+
+				try {
+					newResource = openDialog(resourceCombo.getControl()
+						.getShell(), rset, contextURI);
+				} catch (Exception e) {
+					UMLEditorPlugin.INSTANCE.log(e);
+				}
+
+				if (newResource != null) {
+					// add it after the default
+					resourcesList.add(1, newResource);
+					resourceCombo.refresh();
+				} else {
+					// revert to the current selection, then
+					newResource = selectedResource;
+				}
+
+				// select the new resource
+				resourceCombo
+					.setSelection(new StructuredSelection(newResource));
+				selectedResource = newResource;
+
+				// the loading of a new resource may have
+				// brought in new stereotype applications
+				applicableStereotypes
+					.removeAll(element.getAppliedStereotypes());
+				getDialog().updateChoiceOfValues();
+			}
+
+			protected abstract Resource openDialog(Shell parentShell,
+					ResourceSet rset, URI contextURI);
+
+			// the label provider will use this to get a label
+			@Override
+			public String toString() {
+				return getText();
+			}
 		}
 	}
 }

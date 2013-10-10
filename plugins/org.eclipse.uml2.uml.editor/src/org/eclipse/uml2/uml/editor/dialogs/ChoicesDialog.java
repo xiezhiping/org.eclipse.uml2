@@ -472,7 +472,7 @@ public class ChoicesDialog<T>
 
 		if (delegate.hasAdditionalControls()) {
 			Composite additional = new Composite(contents, SWT.NONE);
-			additional.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, true,
+			additional.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true,
 				false, 3, 1));
 			additional.setLayout(new FillLayout());
 			delegate.createAdditionalControls(additional);
