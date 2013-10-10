@@ -7,8 +7,7 @@
  *
  * Contributors:
  *   IBM - Initial API and implementation
- *   Christian W. Damus (CEA) - Adapted FeatureEditorDialog from EMF for bug 326915
- *                            - 268444
+ *   Christian W. Damus (CEA) - 326915, 268444
  *
  */
 package org.eclipse.uml2.uml.editor.dialogs;
@@ -66,9 +65,10 @@ import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
 
 /**
- * A two-pane dialog that lets the user user choose elements from the left-side
- * list to add to the right-side list. The elements on the right-side list may
- * optionally be ordered by moving them up and down.
+ * A two-pane dialog, adapted from FeatureEditorDialog in EMF, that lets the
+ * user choose elements from the left-side list to add to the right-side list.
+ * The elements on the right-side list may optionally be ordered by moving them
+ * up and down.
  * 
  * The dialog delegates a variety of decisions to a
  * {@linkplain IChoicesDialogDelegate delegate}.
@@ -127,8 +127,7 @@ public class ChoicesDialog<T>
 		ILabelProvider labelProvider = delegate.getLabelProvider();
 		shell.setText(UMLEditorPlugin.INSTANCE.getString(
 			"_UI_ChoicesDialog_title",
-			new Object[]{displayName,
-				labelProvider.getText(object)}));
+			new Object[]{displayName, labelProvider.getText(object)}));
 		shell.setImage(labelProvider.getImage(object));
 	}
 

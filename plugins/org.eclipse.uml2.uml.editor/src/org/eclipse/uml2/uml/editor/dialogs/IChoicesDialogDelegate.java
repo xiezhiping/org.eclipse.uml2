@@ -8,6 +8,7 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - Initial API and implementation
+ *   Christian W. Damus (CEA) - 286444
  *
  */
 package org.eclipse.uml2.uml.editor.dialogs;
