@@ -12,7 +12,7 @@
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
  *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731
  *   Yann Tanguy (CEA) - 350402
- *   Christian W. Damus (CEA) - 392833, 251963
+ *   Christian W. Damus (CEA) - 392833, 251963, 409396
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -2295,6 +2295,15 @@ public class UMLUtil
 		 */
 		public static final String OPTION__VALIDATION_DELEGATES = "VALIDATION_DELEGATES"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling untyped properties. Supported choices are
+		 * {@code OPTION__IGNORE}, {@code OPTION__REPORT},
+		 * {@code OPTION__DISCARD}, and {@code OPTION__PROCESS}.
+		 * 
+		 * @since 4.2
+		 */
+		public static final String OPTION__UNTYPED_PROPERTIES = "UNTYPED_PROPERTIES"; //$NON-NLS-1$
+
 		private static final int DIAGNOSTIC_CODE_OFFSET = 2000;
 
 		/**
@@ -2387,6 +2396,13 @@ public class UMLUtil
 		 * The diagnostic code for cases where names are not camel case.
 		 */
 		public static final int CAMEL_CASE_NAME = DIAGNOSTIC_CODE_OFFSET + 16;
+
+		/**
+		 * The diagnostic code for untyped properties.
+		 * 
+		 * @since 4.2
+		 */
+		public static final int UNTYPED_PROPERTY = DIAGNOSTIC_CODE_OFFSET + 17;
 
 		protected static final Pattern ANNOTATION_PATTERN = Pattern
 			.compile("\\G\\s*((?>\\\\.|\\S)+)((?:\\s+(?>\\\\.|\\S)+\\s*+=\\s*(['\"])((?>\\\\.|.)*?)\\3)*)"); //$NON-NLS-1$
@@ -3273,7 +3289,17 @@ public class UMLUtil
 				EStructuralFeature eStructuralFeature = null;
 				Classifier type = (Classifier) property.getType();
 
-				if (isEClass(type)) {
+				if ((type == null)
+					&& OPTION__PROCESS.equals(options
+						.get(OPTION__UNTYPED_PROPERTIES))) {
+
+					EReference eReference = (EReference) (eStructuralFeature = EcoreFactory.eINSTANCE
+						.createEReference());
+					elementToEModelElementMap.put(property, eReference);
+
+					eReference.setContainment(property.isComposite());
+					eReference.setEType(EcorePackage.Literals.EOBJECT);
+				} else if (isEClass(type)) {
 					EReference eReference = (EReference) (eStructuralFeature = EcoreFactory.eINSTANCE
 						.createEReference());
 					elementToEModelElementMap.put(property, eReference);
@@ -3331,7 +3357,10 @@ public class UMLUtil
 					}
 				}
 
-				caseTypedElement(property);
+				if (type != null) {
+					caseTypedElement(property);
+				}
+
 				caseMultiplicityElement(property);
 
 				defaultCase(property);
@@ -5992,6 +6021,83 @@ public class UMLUtil
 					.get(0)));
 		}
 
+		/**
+		 * Applies the conversion option to untyped properties in the source UML
+		 * model.
+		 * 
+		 * @param options
+		 *            the current conversion options
+		 * @param diagnostics
+		 *            collector of problem reports
+		 * @param context
+		 *            validation context for problem reporting
+		 * 
+		 * @since 4.2
+		 */
+		protected void processUntypedProperties(
+				final Map<String, String> options,
+				final DiagnosticChain diagnostics,
+				final Map<Object, Object> context) {
+
+			for (final Map.Entry<Element, EModelElement> entry : elementToEModelElementMap
+				.entrySet()) {
+
+				Element element = entry.getKey();
+
+				if ((element instanceof Property)
+					&& (((Property) element).getType() == null)) {
+					final String option = options
+						.get(OPTION__UNTYPED_PROPERTIES);
+					EModelElement eModelElement = entry.getValue();
+
+					if (OPTION__PROCESS.equals(option) && (diagnostics != null)) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.INFO,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								UNTYPED_PROPERTY,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_UML2EcoreConverter_ProcessUntypedProperty_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											eModelElement,
+											((EStructuralFeature) eModelElement)
+												.getEType())),
+								new Object[]{eModelElement}));
+					} else if (OPTION__REPORT.equals(option)
+						&& (diagnostics != null)) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.ERROR,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								UNTYPED_PROPERTY,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_UML2EcoreConverter_ReportUntypedProperty_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											eModelElement)),
+								new Object[]{eModelElement}));
+					} else if (OPTION__DISCARD.equals(option)) {
+						if (diagnostics != null) {
+							diagnostics
+								.add(new BasicDiagnostic(
+									Diagnostic.WARNING,
+									UMLValidator.DIAGNOSTIC_SOURCE,
+									UNTYPED_PROPERTY,
+									UMLPlugin.INSTANCE
+										.getString(
+											"_UI_UML2EcoreConverter_DiscardUntypedProperty_diagnostic", //$NON-NLS-1$
+											getMessageSubstitutions(context,
+												eModelElement)),
+									new Object[]{eModelElement}));
+						}
+
+						EcoreUtil.delete(eModelElement, true);
+					}
+				}
+			}
+		}
+
 		protected void processOptions(Map<String, String> options,
 				DiagnosticChain diagnostics, Map<Object, Object> context) {
 
@@ -6061,6 +6167,10 @@ public class UMLUtil
 
 			if (!OPTION__IGNORE.equals(options.get(OPTION__OPERATION_BODIES))) {
 				processOperationBodies(options, diagnostics, context);
+			}
+
+			if (!OPTION__IGNORE.equals(options.get(OPTION__UNTYPED_PROPERTIES))) {
+				processUntypedProperties(options, diagnostics, context);
 			}
 		}
 
@@ -10253,6 +10363,11 @@ public class UMLUtil
 			options.put(UML2EcoreConverter.OPTION__COMMENTS, OPTION__IGNORE);
 		}
 
+		if (!options.containsKey(UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES)) {
+			options.put(UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES,
+				OPTION__IGNORE);
+		}
+
 		return convertToEcore(package_, options, null, null);
 	}
 
@@ -10370,6 +10485,11 @@ public class UMLUtil
 
 		if (!options.containsKey(UML2EcoreConverter.OPTION__COMMENTS)) {
 			options.put(UML2EcoreConverter.OPTION__COMMENTS, OPTION__REPORT);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES)) {
+			options.put(UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES,
+				OPTION__REPORT);
 		}
 
 		@SuppressWarnings("unchecked")

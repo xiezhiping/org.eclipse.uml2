@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_1Hu4oDZtEeOM1OjLQfqdjA" name="foo" URI="http://www.eclipse.org/uml2/foo" viewpoint="">
+  <packagedElement xmi:type="uml:Class" xmi:id="_6nK80DZtEeOM1OjLQfqdjA" name="MyClass">
+    <ownedAttribute xmi:id="_-bY1UDZtEeOM1OjLQfqdjA" name="untyped">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_As8BMDZuEeOM1OjLQfqdjA"/>
+    </ownedAttribute>
+  </packagedElement>
+</uml:Model>

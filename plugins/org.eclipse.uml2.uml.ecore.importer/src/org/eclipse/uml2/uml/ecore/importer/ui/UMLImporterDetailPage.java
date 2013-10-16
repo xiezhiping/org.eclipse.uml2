@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 213218
  *   Kenn Hussey (CEA) - 322715
+ *   Christian W. Damus (CEA) - 409396
  *
  */
 package org.eclipse.uml2.uml.ecore.importer.ui;
@@ -255,6 +256,12 @@ public class UMLImporterDetailPage
 			UMLUtil.UML2EcoreConverter.OPTION__CAMEL_CASE_NAMES, new String[]{
 				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
 			ignoreChoiceLabel);
+		addOptionControl(
+			optionsComposite,
+			UMLImporterPlugin.INSTANCE.getString("_UI_UntypedProperties_label"), //$NON-NLS-1$
+			UMLUtil.UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES,
+			new String[]{ignoreChoiceLabel, reportChoiceLabel,
+				discardChoiceLabel, processChoiceLabel}, reportChoiceLabel);
 
 		scrolledComposite.setContent(optionsComposite);
 		scrolledComposite.setExpandHorizontal(true);
