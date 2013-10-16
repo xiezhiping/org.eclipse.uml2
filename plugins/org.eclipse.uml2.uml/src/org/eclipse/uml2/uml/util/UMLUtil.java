@@ -10610,6 +10610,11 @@ public class UMLUtil
 			options.put(UML2EcoreConverter.OPTION__COMMENTS, OPTION__IGNORE);
 		}
 
+		if (!options.containsKey(UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES)) {
+			options.put(UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES,
+				OPTION__IGNORE);
+		}
+
 		return convertToEcore(profile, options, null, null);
 	}
 
@@ -10727,6 +10732,11 @@ public class UMLUtil
 
 		if (!options.containsKey(UML2EcoreConverter.OPTION__COMMENTS)) {
 			options.put(UML2EcoreConverter.OPTION__COMMENTS, OPTION__REPORT);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES)) {
+			options.put(UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES,
+				OPTION__REPORT);
 		}
 
 		@SuppressWarnings("unchecked")
