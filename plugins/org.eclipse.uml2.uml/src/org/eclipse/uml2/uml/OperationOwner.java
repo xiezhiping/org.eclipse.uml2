@@ -24,9 +24,9 @@ import org.eclipse.emf.common.util.EList;
 public interface OperationOwner {
 
 	/**
-	 * Obtains the attributes owned by this classifier.
+	 * Obtains the operations owned by this classifier.
 	 * 
-	 * @return my owned attributes
+	 * @return my owned operations
 	 */
 	EList<Operation> getOwnedOperations();
 
@@ -36,11 +36,11 @@ public interface OperationOwner {
 	 * 
 	 * @param name
 	 *            the name of the new operation (may be {@code null})
-	 * @param ownedParameterNames
+	 * @param parameterNames
 	 *            the names of the operation's {@link ParameterDirectionKind#IN
 	 *            IN} parameters (may be {@code null} if no parameters are
 	 *            needed)
-	 * @param ownedParameterTypes
+	 * @param parameterTypes
 	 *            the types of the operation's {@link ParameterDirectionKind#IN
 	 *            IN} parameters (may be {@code null} if no parameters are
 	 *            needed)
@@ -51,18 +51,19 @@ public interface OperationOwner {
 	 * @see #getOwnedOperation(String, EList, EList)
 	 */
 	Operation createOwnedOperation(String name,
-			EList<String> ownedParameterNames, EList<Type> ownedParameterTypes);
+ EList<String> parameterNames,
+			EList<Type> parameterTypes);
 
 	/**
 	 * Creates a new {@link Operation} as an owned operation of this classifier.
 	 * 
 	 * @param name
 	 *            the name of the new operation (may be {@code null})
-	 * @param ownedParameterNames
+	 * @param parameterNames
 	 *            the names of the operation's {@link ParameterDirectionKind#IN
 	 *            IN} parameters (may be {@code null} if no parameters are
 	 *            needed)
-	 * @param ownedParameterTypes
+	 * @param parameterTypes
 	 *            the types of the operation's {@link ParameterDirectionKind#IN
 	 *            IN} parameters (may be {@code null} if no parameters are
 	 *            needed)
@@ -96,7 +97,7 @@ public interface OperationOwner {
 	 * 
 	 * @see #getOwnedOperation(String, EList, EList, boolean, boolean)
 	 */
-	Operation getOwnedOperation(String name, EList<String> pParameterNames,
+	Operation getOwnedOperation(String name, EList<String> parameterNames,
 			EList<Type> parameterTypes);
 
 	/**
