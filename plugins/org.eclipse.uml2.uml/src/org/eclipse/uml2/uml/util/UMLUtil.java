@@ -12,7 +12,7 @@
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
  *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731
  *   Yann Tanguy (CEA) - 350402
- *   Christian W. Damus (CEA) - 392833, 251963
+ *   Christian W. Damus (CEA) - 392833, 251963, 176998
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -539,6 +539,14 @@ public class UMLUtil
 
 		protected final Map<EObject, List<EObject>> resultingToMergedEObjectMap = new LinkedHashMap<EObject, List<EObject>>();
 
+		/**
+		 * Mapping of merged objects to the merge results; this is the inverse
+		 * of the {@link #resultingToMergedEObjectMap}.
+		 * 
+		 * @since 4.2
+		 */
+		protected final Map<EObject, EObject> mergedToResultingEObjectMap = new HashMap<EObject, EObject>();
+
 		protected <EO extends EObject> List<EO> getMatchCandidates(EO eObject) {
 			Element baseElement = getBaseElement(eObject);
 
@@ -574,6 +582,25 @@ public class UMLUtil
 			return mergedEObjects == null
 				? Collections.<EO> singletonList(resultingEObject)
 				: (List<EO>) mergedEObjects;
+		}
+
+		/**
+		 * Gets the object in the merge result that the specified object from a
+		 * merged package was merged into.
+		 * 
+		 * @param mergedEObject
+		 *            an object within one of the merged packages
+		 * 
+		 * @return the object in the merge result that the {@code mergedEObject}
+		 *         generated, or {@code null} if the {@code mergedEObject} is
+		 *         not, in fact, from a merged package
+		 * 
+		 * @since 4.2
+		 */
+		protected <EO extends EObject> EO getMergeResult(EO mergedEObject) {
+			@SuppressWarnings("unchecked")
+			EO result = (EO) mergedToResultingEObjectMap.get(mergedEObject);
+			return result;
 		}
 
 		protected <EO extends EObject> EO getPreviouslyMergedEObject(
@@ -1161,7 +1188,11 @@ public class UMLUtil
 								1));
 				}
 
+				// the forward mapping
 				mergedEObjects.add(eObject);
+
+				// the reverse mapping
+				mergedToResultingEObjectMap.put(eObject, copyEObject);
 			}
 
 			if (DEBUG) {
@@ -1231,6 +1262,56 @@ public class UMLUtil
 			}
 
 			return allMergedPackages;
+		}
+
+		/**
+		 * Updates the merge results to replace references to elements in merged
+		 * packages by references to their counterparts in the merge result.
+		 * This accounts for any references that the receiving package had to
+		 * elements in the merged packages before the merge.
+		 * 
+		 * @since 4.2
+		 */
+		protected void updateReferencesFromReceivingPackage() {
+			for (Iterator<EObject> iter = EcoreUtil.getAllContents(Collections
+				.singleton(receivingPackage)); iter.hasNext();) {
+
+				EObject next = iter.next();
+
+				// UML does not use feature maps, so this is simpler than it
+				// might have been
+				for (EReference reference : next.eClass().getEAllReferences()) {
+					if (!reference.isContainment() && !reference.isContainer()
+						&& reference.isChangeable() && !reference.isDerived()) {
+
+						if (!reference.isMany()) {
+							// get the object, if any, that the next referenced
+							// element was merged into
+							EObject mergeResult = getMergeResult((EObject) next
+								.eGet(reference));
+							if (mergeResult != null) {
+								// replace the reference with the merge result
+								next.eSet(reference, mergeResult);
+							}
+						} else {
+							@SuppressWarnings("unchecked")
+							ListIterator<EObject> xrefs = ((EList<EObject>) next
+								.eGet(reference)).listIterator();
+							while (xrefs.hasNext()) {
+								// get the object, if any, that the next
+								// referenced element was merged into
+								EObject mergeResult = getMergeResult(xrefs
+									.next());
+								if (mergeResult != null) {
+									// replace the reference with the merge
+									// result
+									xrefs.set(mergeResult);
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 
 		protected void processDifferentPropertyStaticity(
@@ -2079,6 +2160,7 @@ public class UMLUtil
 
 			copyAll(mergedPackages);
 			copyReferences();
+			updateReferencesFromReceivingPackage();
 
 			for (Iterator<PackageMerge> packageMerges = receivingPackage
 				.getPackageMerges().iterator(); packageMerges.hasNext();) {

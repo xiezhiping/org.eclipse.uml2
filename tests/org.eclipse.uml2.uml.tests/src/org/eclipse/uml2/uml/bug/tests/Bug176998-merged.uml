@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_k2250DcrEeOgtOW7IBE-6Q" name="merged" URI="http://www.eclipse.org/uml2/tests/merged">
+  <packagedElement xmi:type="uml:Package" xmi:id="_yzeksDc2EeOCoISQoaIOQA" name="merged" URI="http://www.eclipse.org/uml2/tests/merged/merged">
+    <packagedElement xmi:type="uml:Class" xmi:id="_pT1bcDcrEeOgtOW7IBE-6Q" name="B">
+      <ownedAttribute xmi:id="_3jKrIDcvEeOCoISQoaIOQA" name="otherB" type="_pT1bcDcrEeOgtOW7IBE-6Q">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CoFxIDcwEeOCoISQoaIOQA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_6lDu0DcvEeOCoISQoaIOQA" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_-oeg8DcvEeOCoISQoaIOQA" name="a" type="_fSC0IDcwEeOCoISQoaIOQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ArMmoDcwEeOCoISQoaIOQA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BK2-IDcwEeOCoISQoaIOQA" value="*"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_fSC0IDcwEeOCoISQoaIOQA" name="A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_3QdGUDc2EeOCoISQoaIOQA" name="not-merged" URI="http://www.eclipse.org/uml2/tests/merged/not-merged">
+    <packagedElement xmi:type="uml:Class" xmi:id="_7FVGIDc2EeOCoISQoaIOQA" name="C"/>
+  </packagedElement>
+</uml:Package>

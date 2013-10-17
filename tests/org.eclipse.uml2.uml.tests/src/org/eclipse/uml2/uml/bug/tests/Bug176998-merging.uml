@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_V2f5ADcrEeOgtOW7IBE-6Q" name="merging" URI="http://www.eclipse.org/uml2/tests/merging">
+  <packageMerge xmi:id="_yNJlgDcrEeOgtOW7IBE-6Q">
+    <mergedPackage href="Bug176998-merged.uml#_yzeksDc2EeOCoISQoaIOQA"/>
+  </packageMerge>
+  <packagedElement xmi:type="uml:Class" xmi:id="_de5NwDcrEeOgtOW7IBE-6Q" clientDependency="_FlLeQDc5EeOCoISQoaIOQA" name="A">
+    <ownedAttribute xmi:id="_f4ZbwDcrEeOgtOW7IBE-6Q" name="b">
+      <type xmi:type="uml:Class" href="Bug176998-merged.uml#_pT1bcDcrEeOgtOW7IBE-6Q"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hOivUDcrEeOgtOW7IBE-6Q"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_CD9sMDc3EeOCoISQoaIOQA" name="c">
+      <type xmi:type="uml:Class" href="Bug176998-merged.uml#_7FVGIDc2EeOCoISQoaIOQA"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CD9sMTc3EeOCoISQoaIOQA"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_FlLeQDc5EeOCoISQoaIOQA" name="dependency" client="_de5NwDcrEeOgtOW7IBE-6Q">
+    <supplier xmi:type="uml:Class" href="Bug176998-merged.uml#_fSC0IDcwEeOCoISQoaIOQA"/>
+    <supplier xmi:type="uml:Class" href="Bug176998-merged.uml#_pT1bcDcrEeOgtOW7IBE-6Q"/>
+    <supplier xmi:type="uml:Class" href="Bug176998-merged.uml#_7FVGIDc2EeOCoISQoaIOQA"/>
+  </packagedElement>
+</uml:Package>

@@ -7,6 +7,8 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
+ *   Christian W. Damus (CEA) - 176998
+ *   
  */
 package org.eclipse.uml2.uml.bug.tests;
 
@@ -37,6 +39,7 @@ public class UMLBugTests
 		result.addTest(Bug392833Test.suite());
 		result.addTest(Bug403365Test.suite());
 		result.addTest(Bug300957Test.suite());
+		result.addTest(Bug176998Test.suite());
 
 		return result;
 	}
