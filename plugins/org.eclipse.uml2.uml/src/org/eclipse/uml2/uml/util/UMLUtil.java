@@ -2394,6 +2394,8 @@ public class UMLUtil
 		protected static final Pattern ANNOTATION_DETAIL_PATTERN = Pattern
 			.compile("\\s+((?>\\\\.|\\S)+)\\s*+=\\s*((['\"])((?>\\\\.|.)*?)\\3)"); //$NON-NLS-1$
 
+		protected static final String ANNOTATION_DETAIL__ORIGINAL_NAME = "originalName"; //$NON-NLS-1$
+
 		protected static final String OCL_DELEGATE_URI = "http://www.eclipse.org/emf/2002/Ecore/OCL"; //$NON-NLS-1$
 
 		protected final Map<Element, EModelElement> elementToEModelElementMap = new LinkedHashMap<Element, EModelElement>();
@@ -2544,6 +2546,40 @@ public class UMLUtil
 						.getName()));
 				}
 			}
+		}
+
+		/**
+		 * Queries the original name (as defined in the source UML model) of the
+		 * given Ecore named element, in the case that the original name was not a
+		 * valid Ecore/Java name and was transformed either via the
+		 * {@link UML2EcoreConverter#OPTION__CAMEL_CASE_NAMES} option or simply
+		 * validating the name.
+		 * 
+		 * @param eNamedElement
+		 *            an Ecore named element
+		 * 
+		 * @return its original name in the UML model in which it was defined, or
+		 *         just its Ecore name if the original name is not recorded or is
+		 *         not different
+		 * 
+		 * @since 4.2
+		 * 
+		 * @see UML2EcoreConverter#setName(ENamedElement, String, boolean)
+		 */
+		public static String getOriginalName(ENamedElement eNamedElement) {
+			String result = eNamedElement.getName();
+
+			EAnnotation annotation = eNamedElement
+				.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
+			if (annotation != null) {
+				String originalName = annotation.getDetails().get(
+					ANNOTATION_DETAIL__ORIGINAL_NAME);
+				if (originalName != null) {
+					result = originalName;
+				}
+			}
+
+			return result;
 		}
 
 		protected EClassifier getEType(Type type) {
@@ -8744,8 +8780,6 @@ public class UMLUtil
 
 	protected static final String ANNOTATION_DETAIL__URI = "URI"; //$NON-NLS-1$
 
-	protected static final String ANNOTATION_DETAIL__ORIGINAL_NAME = "originalName"; //$NON-NLS-1$
-
 	public static final String ENUMERATION_LITERAL__ATTRIBUTE = "Attribute"; //$NON-NLS-1$
 
 	protected static final String ENUMERATION_LITERAL__ATTRIBUTE_WILDCARD = "AttributeWilcard"; //$NON-NLS-1$
@@ -10929,39 +10963,5 @@ public class UMLUtil
 		}
 
 		return false;
-	}
-
-	/**
-	 * Queries the original name (as defined in the source UML model) of the
-	 * given Ecore named element, in the case that the original name was not a
-	 * valid Ecore/Java name and was transformed either via the
-	 * {@link UML2EcoreConverter#OPTION__CAMEL_CASE_NAMES} option or simply
-	 * validating the name.
-	 * 
-	 * @param eNamedElement
-	 *            an Ecore named element
-	 * 
-	 * @return its original name in the UML model in which it was defined, or
-	 *         just its Ecore name if the original name is not recorded or is
-	 *         not different
-	 * 
-	 * @since 4.2
-	 * 
-	 * @see UML2EcoreConverter#setName(ENamedElement, String, boolean)
-	 */
-	public static String getOriginalName(ENamedElement eNamedElement) {
-		String result = eNamedElement.getName();
-
-		EAnnotation annotation = eNamedElement
-			.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
-		if (annotation != null) {
-			String originalName = annotation.getDetails().get(
-				ANNOTATION_DETAIL__ORIGINAL_NAME);
-			if (originalName != null) {
-				result = originalName;
-			}
-		}
-
-		return result;
 	}
 }
