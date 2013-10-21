@@ -538,14 +538,6 @@ public class UMLUtil
 
 		protected final Map<EObject, List<EObject>> resultingToMergedEObjectMap = new LinkedHashMap<EObject, List<EObject>>();
 
-		/**
-		 * Mapping of merged objects to the merge results; this is the inverse
-		 * of the {@link #resultingToMergedEObjectMap}.
-		 * 
-		 * @since 4.2
-		 */
-		protected final Map<EObject, EObject> mergedToResultingEObjectMap = new HashMap<EObject, EObject>();
-
 		protected <EO extends EObject> List<EO> getMatchCandidates(EO eObject) {
 			Element baseElement = getBaseElement(eObject);
 
@@ -581,25 +573,6 @@ public class UMLUtil
 			return mergedEObjects == null
 				? Collections.<EO> singletonList(resultingEObject)
 				: (List<EO>) mergedEObjects;
-		}
-
-		/**
-		 * Gets the object in the merge result that the specified object from a
-		 * merged package was merged into.
-		 * 
-		 * @param mergedEObject
-		 *            an object within one of the merged packages
-		 * 
-		 * @return the object in the merge result that the {@code mergedEObject}
-		 *         generated, or {@code null} if the {@code mergedEObject} is
-		 *         not, in fact, from a merged package
-		 * 
-		 * @since 4.2
-		 */
-		protected <EO extends EObject> EO getMergeResult(EO mergedEObject) {
-			@SuppressWarnings("unchecked")
-			EO result = (EO) mergedToResultingEObjectMap.get(mergedEObject);
-			return result;
 		}
 
 		protected <EO extends EObject> EO getPreviouslyMergedEObject(
@@ -1189,9 +1162,6 @@ public class UMLUtil
 
 				// the forward mapping
 				mergedEObjects.add(eObject);
-
-				// the reverse mapping
-				mergedToResultingEObjectMap.put(eObject, copyEObject);
 			}
 
 			if (DEBUG) {
@@ -1286,7 +1256,7 @@ public class UMLUtil
 						if (!reference.isMany()) {
 							// get the object, if any, that the next referenced
 							// element was merged into
-							EObject mergeResult = getMergeResult((EObject) next
+							EObject mergeResult = get((EObject) next
 								.eGet(reference));
 							if (mergeResult != null) {
 								// replace the reference with the merge result
@@ -1299,8 +1269,7 @@ public class UMLUtil
 							while (xrefs.hasNext()) {
 								// get the object, if any, that the next
 								// referenced element was merged into
-								EObject mergeResult = getMergeResult(xrefs
-									.next());
+								EObject mergeResult = get(xrefs.next());
 								if (mergeResult != null) {
 									// replace the reference with the merge
 									// result
