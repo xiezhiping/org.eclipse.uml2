@@ -138,7 +138,8 @@ public class UMLResourcesUtil
 	 */
 	public static void initGlobalRegistries() {
 		initPackageRegistry(EPackage.Registry.INSTANCE);
-		initEPackageNsURIToProfileLocationMap(UMLPlugin.getEPackageNsURIToProfileLocationMap());
+		initEPackageNsURIToProfileLocationMap(UMLPlugin
+			.getEPackageNsURIToProfileLocationMap());
 		initURIConverterURIMap(URIConverter.URI_MAP);
 		initContentHandlerRegistry(ContentHandler.Registry.INSTANCE);
 		initResourceFactoryRegistry(Resource.Factory.Registry.INSTANCE);
@@ -215,21 +216,21 @@ public class UMLResourcesUtil
 	public static EPackage.Registry initPackageRegistry(
 			EPackage.Registry packageRegistry) {
 		packageRegistry.put(EcorePackage.eNS_URI, EcorePackage.eINSTANCE);
-	
+
 		packageRegistry.put(TypesPackage.eNS_URI, TypesPackage.eINSTANCE);
-	
+
 		packageRegistry.put(UML2_UML_PACKAGE_2_0_NS_URI, UMLPackage.eINSTANCE);
-	
+
 		packageRegistry.put(UML212UMLResource.UML_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
 		packageRegistry.put(UML302UMLResource.UML_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
-	
+
 		packageRegistry.put(UMLPackage.eNS_URI, UMLPackage.eINSTANCE);
-	
+
 		packageRegistry.put(UML302UMLResource.STANDARD_PROFILE_NS_URI,
 			L2Package.eINSTANCE);
-	
+
 		packageRegistry.put(L2Package.eNS_URI, L2Package.eINSTANCE);
 		packageRegistry.put(L3Package.eNS_URI, L3Package.eINSTANCE);
 
@@ -250,11 +251,15 @@ public class UMLResourcesUtil
 	 */
 	public static Resource.Factory.Registry initResourceFactoryRegistry(
 			Resource.Factory.Registry resourceFactoryRegistry) {
-		Map<String, Object> extensionToFactoryMap = resourceFactoryRegistry.getExtensionToFactoryMap();
-		extensionToFactoryMap.put(UMLResource.FILE_EXTENSION, UMLResource.Factory.INSTANCE);
-		
-		Map<String, Object> contentTypeToFactoryMap = resourceFactoryRegistry.getContentTypeToFactoryMap();
-		contentTypeToFactoryMap.put(UMLResource.UML_CONTENT_TYPE_IDENTIFIER, UMLResource.Factory.INSTANCE);
+		Map<String, Object> extensionToFactoryMap = resourceFactoryRegistry
+			.getExtensionToFactoryMap();
+		extensionToFactoryMap.put(UMLResource.FILE_EXTENSION,
+			UMLResource.Factory.INSTANCE);
+
+		Map<String, Object> contentTypeToFactoryMap = resourceFactoryRegistry
+			.getContentTypeToFactoryMap();
+		contentTypeToFactoryMap.put(UMLResource.UML_CONTENT_TYPE_IDENTIFIER,
+			UMLResource.Factory.INSTANCE);
 
 		return resourceFactoryRegistry;
 	}
@@ -279,16 +284,15 @@ public class UMLResourcesUtil
 		if (contentHandlers == null
 			|| !contentHandlers.contains(XMI_CONTENT_HANDLER)) {
 
-			contentHandlerRegistry.put(
-				ContentHandler.Registry.LOW_PRIORITY, XMI_CONTENT_HANDLER);
+			contentHandlerRegistry.put(ContentHandler.Registry.LOW_PRIORITY,
+				XMI_CONTENT_HANDLER);
 		}
 
 		contentHandlers = contentHandlerRegistry
 			.get(ContentHandler.Registry.NORMAL_PRIORITY);
 
 		if (contentHandlers == null) {
-			contentHandlerRegistry.put(
-				ContentHandler.Registry.NORMAL_PRIORITY,
+			contentHandlerRegistry.put(ContentHandler.Registry.NORMAL_PRIORITY,
 				contentHandlers = new ArrayList<ContentHandler>());
 		}
 

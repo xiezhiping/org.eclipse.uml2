@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *   Kenn Hussey (CEA) - 327039, 351774
- *   Christian W. Damus (CEA) - 251963
+ *   Christian W. Damus (CEA) - 251963, 269598
  *
  */
 package org.eclipse.uml2.uml;
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EClass;
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Structured Classifier</b></em>'.
+ * @extends AttributeOwner
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
@@ -47,7 +48,7 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public interface StructuredClassifier
-		extends Classifier {
+		extends Classifier, AttributeOwner {
 
 	/**
 	 * Returns the value of the '<em><b>Owned Attribute</b></em>' containment reference list.
