@@ -98,7 +98,7 @@ public class Bug405061Test
 		assertNull("Original name should not have been recorded.",
 			EcoreUtil.getAnnotation(property,
 				UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI,
-				PrivateUMLUtil.ANNOTATION_DETAIL__ORIGINAL_NAME));
+				PrivateUML2EcoreConverter.ANNOTATION_DETAIL__ORIGINAL_NAME));
 	}
 
 	public void testValidateButNoCamelCaseOption() {
@@ -174,7 +174,8 @@ public class Bug405061Test
 	}
 
 	void assertOriginalName(String expectedName, ENamedElement element) {
-		assertEquals(expectedName, UMLUtil.getOriginalName(element));
+		assertEquals(expectedName,
+			UMLUtil.UML2EcoreConverter.getOriginalName(element));
 	}
 
 	void assertNotAnnotated(Element umlElement) {
@@ -196,9 +197,9 @@ public class Bug405061Test
 			URI.createURI(url.toExternalForm()), UMLPackage.Literals.PACKAGE);
 	}
 
-	protected static class PrivateUMLUtil
-			extends UMLUtil {
+	protected static class PrivateUML2EcoreConverter
+			extends UMLUtil.UML2EcoreConverter {
 
-		static final String ANNOTATION_DETAIL__ORIGINAL_NAME = UMLUtil.ANNOTATION_DETAIL__ORIGINAL_NAME;
+		static final String ANNOTATION_DETAIL__ORIGINAL_NAME = UMLUtil.UML2EcoreConverter.ANNOTATION_DETAIL__ORIGINAL_NAME;
 	}
 }
