@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 373643, 392833, 414572
- *   Christian W. Damus - 388240
+ *   Christian W. Damus - 388240, 419979
  *
  */
 package org.eclipse.uml2.uml.tests;
@@ -52,7 +52,11 @@ public class UMLAllTests
 	 * @generated NOT
 	 */
 	public static Test suite() {
-		TestSuite suite = new UMLAllTests("UML Tests"); //$NON-NLS-1$
+		String suiteName = String.format("UML Tests %s", //$NON-NLS-1$
+			StandaloneSupport.isStandalone()
+				? "stand-alone" //$NON-NLS-1$
+				: "in Eclipse"); //$NON-NLS-1$
+		TestSuite suite = new UMLAllTests(suiteName);
 		suite.addTest(UMLTests.suite());
 		suite.addTest(UMLValidationTests.suite());
 		suite.addTest(UMLBugTests.suite());
