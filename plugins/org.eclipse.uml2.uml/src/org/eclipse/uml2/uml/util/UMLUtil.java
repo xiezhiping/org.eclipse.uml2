@@ -3471,7 +3471,7 @@ public class UMLUtil
 				}
 
 				if (type != null) {
-				caseTypedElement(property);
+					caseTypedElement(property);
 				}
 
 				caseMultiplicityElement(property);
@@ -6284,7 +6284,7 @@ public class UMLUtil
 
 			if (!OPTION__IGNORE.equals(options.get(OPTION__UNTYPED_PROPERTIES))) {
 				processUntypedProperties(options, diagnostics, context);
-		}
+			}
 		}
 
 		public Collection<? extends EObject> convert(
@@ -9977,7 +9977,7 @@ public class UMLUtil
 		return type instanceof OperationOwner
 			? ((OperationOwner) type).getOwnedOperations()
 			: null;
-			}
+	}
 
 	protected static EList<ETypeParameter> getETypeParameters(EObject eObject) {
 		return new EcoreSwitch<EList<ETypeParameter>>() {
