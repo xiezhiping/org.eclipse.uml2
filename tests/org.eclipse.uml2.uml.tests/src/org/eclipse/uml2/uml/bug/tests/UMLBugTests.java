@@ -7,13 +7,12 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
-<<<<<<< HEAD
- *   Christian W. Damus (CEA) - 409396
-=======
- *   Christian W. Damus (CEA) - 403365, 300957, 405061, 401682
->>>>>>> refs/heads/master
+ *   Christian W. Damus (CEA) - 409396, 403365, 300957, 405061, 401682
+ *   
  */
 package org.eclipse.uml2.uml.bug.tests;
+
+import org.eclipse.uml2.uml.tests.util.StandaloneSupport;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -43,7 +42,8 @@ public class UMLBugTests
 		result.addTest(Bug403365Test.suite());
 		result.addTest(Bug300957Test.suite());
 		result.addTest(Bug405061Test.suite());
-		result.addTest(Bug401682Test.suite());
+		result.addTest(StandaloneSupport.standaloneTestSuite(
+			"Bug 401682 tests", Bug401682Test.class)); //$NON-NLS-1$
 		result.addTest(Bug409396Test.suite());
 
 		return result;

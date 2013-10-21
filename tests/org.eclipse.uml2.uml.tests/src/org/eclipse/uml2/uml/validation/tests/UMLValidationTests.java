@@ -7,11 +7,10 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
- *   Christian W. Damus (CEA) - 397508
+ *   Christian W. Damus (CEA) - 397508, 401682
  */
 package org.eclipse.uml2.uml.validation.tests;
 
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.uml2.uml.tests.util.StandaloneSupport;
 
 import junit.framework.Test;
@@ -34,35 +33,10 @@ public class UMLValidationTests
 	}
 
 	public static Test suite() {
-		TestSuite result;
-
 		// these tests require an Eclipse instance
-		try {
-			if (!StandaloneSupport.isStandalone()) {
-				result = new UMLValidationTests("UML Validation Tests"); //$NON-NLS-1$
-				result.addTest(DelegatingConstraintProviderTest.suite());
-				result.addTest(UMLTraversalStrategyTest.suite());
-			} else {
-				result = new TestSuite(
-					"<UML validation tests require Eclipse to be running>"); //$NON-NLS-1$
-			}
-		} catch (LinkageError e) {
-			// no (or incomplete) Eclipse environment on the classpath
-			result = new TestSuite(
-				"<UML validation tests require an Eclipse instance>"); //$NON-NLS-1$
-		}
-
-		return result;
-	}
-
-	//
-	// Nested types
-	//
-
-	private static class EclipseHelper {
-
-		boolean isEclipseRunning() {
-			return Platform.isRunning();
-		}
+		return StandaloneSupport.eclipseTestSuite(
+			"UML Validation Tests", //$NON-NLS-1$
+			DelegatingConstraintProviderTest.class,
+			UMLTraversalStrategyTest.class);
 	}
 }
