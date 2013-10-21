@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833, 251963, 405061
  *
@@ -73,8 +73,8 @@ import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.types.TypesFactory;
 import org.eclipse.uml2.types.TypesPackage;
 import org.eclipse.uml2.uml.AggregationKind;
-import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.AttributeOwner;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
@@ -100,6 +100,7 @@ import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.OpaqueBehavior;
 import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.OperationOwner;
 import org.eclipse.uml2.uml.PackageMerge;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
@@ -108,10 +109,8 @@ import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.RedefinableElement;
-import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StructuralFeature;
-import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateParameterSubstitution;
@@ -9808,73 +9807,15 @@ public class UMLUtil
 	}
 
 	protected static EList<Property> getOwnedAttributes(Type type) {
-		return new UMLSwitch<EList<Property>>() {
-
-			@Override
-			public EList<Property> caseArtifact(Artifact artifact) {
-				return artifact.getOwnedAttributes();
-			}
-
-			@Override
-			public EList<Property> caseDataType(DataType dataType) {
-				return dataType.getOwnedAttributes();
-			}
-
-			@Override
-			public EList<Property> caseInterface(Interface interface_) {
-				return interface_.getOwnedAttributes();
-			}
-
-			@Override
-			public EList<Property> caseSignal(Signal signal) {
-				return signal.getOwnedAttributes();
-			}
-
-			@Override
-			public EList<Property> caseStructuredClassifier(
-					StructuredClassifier structuredClassifier) {
-				return structuredClassifier.getOwnedAttributes();
-			}
-
-			@Override
-			public EList<Property> doSwitch(EObject eObject) {
-				return eObject == null
-					? null
-					: super.doSwitch(eObject);
-			}
-		}.doSwitch(type);
+		return type instanceof AttributeOwner
+			? ((AttributeOwner) type).getOwnedAttributes()
+			: null;
 	}
 
 	protected static EList<Operation> getOwnedOperations(Type type) {
-		return new UMLSwitch<EList<Operation>>() {
-
-			@Override
-			public EList<Operation> caseArtifact(Artifact artifact) {
-				return artifact.getOwnedOperations();
-			}
-
-			@Override
-			public EList<Operation> caseClass(org.eclipse.uml2.uml.Class class_) {
-				return class_.getOwnedOperations();
-			}
-
-			@Override
-			public EList<Operation> caseDataType(DataType dataType) {
-				return dataType.getOwnedOperations();
-			}
-
-			@Override
-			public EList<Operation> caseInterface(Interface interface_) {
-				return interface_.getOwnedOperations();
-			}
-
-			@Override
-			public EList<Operation> doSwitch(EObject eObject) {
-				return eObject == null
-					? null
-					: super.doSwitch(eObject);
-			}
-		}.doSwitch(type);
+		return type instanceof OperationOwner
+			? ((OperationOwner) type).getOwnedOperations()
+			: null;
 	}
 
 	protected static EList<ETypeParameter> getETypeParameters(EObject eObject) {

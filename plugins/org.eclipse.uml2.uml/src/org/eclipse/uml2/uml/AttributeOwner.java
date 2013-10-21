@@ -15,7 +15,6 @@ package org.eclipse.uml2.uml;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
-
 /**
  * Common protocol for {@linkplain Classifier classifiers} that own
  * {@linkplain Classifier#getAttributes() attributes}.

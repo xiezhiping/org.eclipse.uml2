@@ -14,7 +14,6 @@ package org.eclipse.uml2.uml;
 
 import org.eclipse.emf.common.util.EList;
 
-
 /**
  * Common protocol for {@linkplain Classifier classifiers} that own
  * {@linkplain Classifier#getOperations() operations}.
@@ -50,8 +49,7 @@ public interface OperationOwner {
 	 * @see #createOwnedOperation(String, EList, EList, Type)
 	 * @see #getOwnedOperation(String, EList, EList)
 	 */
-	Operation createOwnedOperation(String name,
- EList<String> parameterNames,
+	Operation createOwnedOperation(String name, EList<String> parameterNames,
 			EList<Type> parameterTypes);
 
 	/**
