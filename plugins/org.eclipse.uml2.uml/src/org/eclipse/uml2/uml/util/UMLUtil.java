@@ -10,9 +10,9 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598
  *   Yann Tanguy (CEA) - 350402
- *   Christian W. Damus (CEA) - 392833, 251963, 176998
+ *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -73,8 +73,8 @@ import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.types.TypesFactory;
 import org.eclipse.uml2.types.TypesPackage;
 import org.eclipse.uml2.uml.AggregationKind;
-import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.AttributeOwner;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
@@ -100,6 +100,7 @@ import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.OpaqueBehavior;
 import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.OperationOwner;
 import org.eclipse.uml2.uml.PackageMerge;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
@@ -108,10 +109,8 @@ import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.RedefinableElement;
-import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StructuralFeature;
-import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateParameterSubstitution;
@@ -2377,6 +2376,15 @@ public class UMLUtil
 		 */
 		public static final String OPTION__VALIDATION_DELEGATES = "VALIDATION_DELEGATES"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling untyped properties. Supported choices are
+		 * {@code OPTION__IGNORE}, {@code OPTION__REPORT},
+		 * {@code OPTION__DISCARD}, and {@code OPTION__PROCESS}.
+		 * 
+		 * @since 4.2
+		 */
+		public static final String OPTION__UNTYPED_PROPERTIES = "UNTYPED_PROPERTIES"; //$NON-NLS-1$
+
 		private static final int DIAGNOSTIC_CODE_OFFSET = 2000;
 
 		/**
@@ -2470,11 +2478,20 @@ public class UMLUtil
 		 */
 		public static final int CAMEL_CASE_NAME = DIAGNOSTIC_CODE_OFFSET + 16;
 
+		/**
+		 * The diagnostic code for untyped properties.
+		 * 
+		 * @since 4.2
+		 */
+		public static final int UNTYPED_PROPERTY = DIAGNOSTIC_CODE_OFFSET + 17;
+
 		protected static final Pattern ANNOTATION_PATTERN = Pattern
 			.compile("\\G\\s*((?>\\\\.|\\S)+)((?:\\s+(?>\\\\.|\\S)+\\s*+=\\s*(['\"])((?>\\\\.|.)*?)\\3)*)"); //$NON-NLS-1$
 
 		protected static final Pattern ANNOTATION_DETAIL_PATTERN = Pattern
 			.compile("\\s+((?>\\\\.|\\S)+)\\s*+=\\s*((['\"])((?>\\\\.|.)*?)\\3)"); //$NON-NLS-1$
+
+		protected static final String ANNOTATION_DETAIL__ORIGINAL_NAME = "originalName"; //$NON-NLS-1$
 
 		protected static final String OCL_DELEGATE_URI = "http://www.eclipse.org/emf/2002/Ecore/OCL"; //$NON-NLS-1$
 
@@ -2488,8 +2505,29 @@ public class UMLUtil
 
 		protected Map<Object, Object> context = null;
 
-		protected void setName(ENamedElement eNamedElement, String name,
+		/**
+		 * Sets the {@code name} of a converted element.
+		 * <p>
+		 * As of the 4.2 API version, if the Ecore name differs for any reason
+		 * from the original UML name, it is recorded for
+		 * {@linkplain UMLUtil#getOriginalName(ENamedElement) later retrieval}.
+		 * </p>
+		 * 
+		 * @param eNamedElement
+		 *            the converted Ecore element in which to set a name
+		 * @param name
+		 *            the name to set
+		 * @param validate
+		 *            whether to ensure that the name is a valid Java
+		 *            identifier, munging it if necessary
+		 * 
+		 * @see UMLUtil#getOriginalName(ENamedElement)
+		 * @see UML2Util#getValidJavaIdentifier(String)
+		 */
+		protected void setName(ENamedElement eNamedElement, final String name,
 				boolean validate) {
+
+			String ecoreName = name;
 
 			if (!isEmpty(name)
 				&& options != null
@@ -2532,19 +2570,13 @@ public class UMLUtil
 				if (OPTION__PROCESS.equals(options
 					.get(OPTION__CAMEL_CASE_NAMES))) {
 
-					eNamedElement.setName(validate
-						? getValidJavaIdentifier(camelCaseName)
-						: camelCaseName);
-				} else {
-					eNamedElement.setName(validate
-						? getValidJavaIdentifier(name)
-						: name);
+					ecoreName = camelCaseName;
 				}
 
 				if (!camelCaseName.equals(name)) {
 
 					if (DEBUG) {
-						System.out.println(name + " -> " + camelCaseNameBuffer); //$NON-NLS-1$
+						System.out.println(name + " -> " + camelCaseName); //$NON-NLS-1$
 					}
 
 					if (OPTION__PROCESS.equals(options
@@ -2580,11 +2612,23 @@ public class UMLUtil
 								new Object[]{eNamedElement}));
 					}
 				}
-			} else {
-				eNamedElement.setName(validate
-					? getValidJavaIdentifier(name)
-					: name);
 			}
+
+			if (validate) {
+				ecoreName = getValidJavaIdentifier(ecoreName);
+			}
+
+			if (!safeEquals(ecoreName, name)) {
+				// record the original name, regardless whether it was converted
+				// by the camel-case names option or by munging to get a valid
+				// Java identifier, because clients such as OCL will require the
+				// traceability
+				EcoreUtil.setAnnotation(eNamedElement,
+					UML2_UML_PACKAGE_2_0_NS_URI,
+					ANNOTATION_DETAIL__ORIGINAL_NAME, name);
+			}
+
+			eNamedElement.setName(ecoreName);
 		}
 
 		protected void setName(ENamedElement eNamedElement,
@@ -2599,6 +2643,40 @@ public class UMLUtil
 						.getName()));
 				}
 			}
+		}
+
+		/**
+		 * Queries the original name (as defined in the source UML model) of the
+		 * given Ecore named element, in the case that the original name was not a
+		 * valid Ecore/Java name and was transformed either via the
+		 * {@link UML2EcoreConverter#OPTION__CAMEL_CASE_NAMES} option or simply
+		 * validating the name.
+		 * 
+		 * @param eNamedElement
+		 *            an Ecore named element
+		 * 
+		 * @return its original name in the UML model in which it was defined, or
+		 *         just its Ecore name if the original name is not recorded or is
+		 *         not different
+		 * 
+		 * @since 4.2
+		 * 
+		 * @see UML2EcoreConverter#setName(ENamedElement, String, boolean)
+		 */
+		public static String getOriginalName(ENamedElement eNamedElement) {
+			String result = eNamedElement.getName();
+
+			EAnnotation annotation = eNamedElement
+				.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
+			if (annotation != null) {
+				String originalName = annotation.getDetails().get(
+					ANNOTATION_DETAIL__ORIGINAL_NAME);
+				if (originalName != null) {
+					result = originalName;
+				}
+			}
+
+			return result;
 		}
 
 		protected EClassifier getEType(Type type) {
@@ -3355,7 +3433,17 @@ public class UMLUtil
 				EStructuralFeature eStructuralFeature = null;
 				Classifier type = (Classifier) property.getType();
 
-				if (isEClass(type)) {
+				if ((type == null)
+					&& OPTION__PROCESS.equals(options
+						.get(OPTION__UNTYPED_PROPERTIES))) {
+
+					EReference eReference = (EReference) (eStructuralFeature = EcoreFactory.eINSTANCE
+						.createEReference());
+					elementToEModelElementMap.put(property, eReference);
+
+					eReference.setContainment(property.isComposite());
+					eReference.setEType(EcorePackage.Literals.EOBJECT);
+				} else if (isEClass(type)) {
 					EReference eReference = (EReference) (eStructuralFeature = EcoreFactory.eINSTANCE
 						.createEReference());
 					elementToEModelElementMap.put(property, eReference);
@@ -3413,7 +3501,10 @@ public class UMLUtil
 					}
 				}
 
+				if (type != null) {
 				caseTypedElement(property);
+				}
+
 				caseMultiplicityElement(property);
 
 				defaultCase(property);
@@ -6074,6 +6165,83 @@ public class UMLUtil
 					.get(0)));
 		}
 
+		/**
+		 * Applies the conversion option to untyped properties in the source UML
+		 * model.
+		 * 
+		 * @param options
+		 *            the current conversion options
+		 * @param diagnostics
+		 *            collector of problem reports
+		 * @param context
+		 *            validation context for problem reporting
+		 * 
+		 * @since 4.2
+		 */
+		protected void processUntypedProperties(
+				final Map<String, String> options,
+				final DiagnosticChain diagnostics,
+				final Map<Object, Object> context) {
+
+			for (final Map.Entry<Element, EModelElement> entry : elementToEModelElementMap
+				.entrySet()) {
+
+				Element element = entry.getKey();
+
+				if ((element instanceof Property)
+					&& (((Property) element).getType() == null)) {
+					final String option = options
+						.get(OPTION__UNTYPED_PROPERTIES);
+					EModelElement eModelElement = entry.getValue();
+
+					if (OPTION__PROCESS.equals(option) && (diagnostics != null)) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.INFO,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								UNTYPED_PROPERTY,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_UML2EcoreConverter_ProcessUntypedProperty_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											eModelElement,
+											((EStructuralFeature) eModelElement)
+												.getEType())),
+								new Object[]{eModelElement}));
+					} else if (OPTION__REPORT.equals(option)
+						&& (diagnostics != null)) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.ERROR,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								UNTYPED_PROPERTY,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_UML2EcoreConverter_ReportUntypedProperty_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											eModelElement)),
+								new Object[]{eModelElement}));
+					} else if (OPTION__DISCARD.equals(option)) {
+						if (diagnostics != null) {
+							diagnostics
+								.add(new BasicDiagnostic(
+									Diagnostic.WARNING,
+									UMLValidator.DIAGNOSTIC_SOURCE,
+									UNTYPED_PROPERTY,
+									UMLPlugin.INSTANCE
+										.getString(
+											"_UI_UML2EcoreConverter_DiscardUntypedProperty_diagnostic", //$NON-NLS-1$
+											getMessageSubstitutions(context,
+												eModelElement)),
+									new Object[]{eModelElement}));
+						}
+
+						EcoreUtil.delete(eModelElement, true);
+					}
+				}
+			}
+		}
+
 		protected void processOptions(Map<String, String> options,
 				DiagnosticChain diagnostics, Map<Object, Object> context) {
 
@@ -6144,6 +6312,10 @@ public class UMLUtil
 			if (!OPTION__IGNORE.equals(options.get(OPTION__OPERATION_BODIES))) {
 				processOperationBodies(options, diagnostics, context);
 			}
+
+			if (!OPTION__IGNORE.equals(options.get(OPTION__UNTYPED_PROPERTIES))) {
+				processUntypedProperties(options, diagnostics, context);
+		}
 		}
 
 		public Collection<? extends EObject> convert(
@@ -9827,74 +9999,16 @@ public class UMLUtil
 	}
 
 	protected static EList<Property> getOwnedAttributes(Type type) {
-		return new UMLSwitch<EList<Property>>() {
-
-			@Override
-			public EList<Property> caseArtifact(Artifact artifact) {
-				return artifact.getOwnedAttributes();
-			}
-
-			@Override
-			public EList<Property> caseDataType(DataType dataType) {
-				return dataType.getOwnedAttributes();
-			}
-
-			@Override
-			public EList<Property> caseInterface(Interface interface_) {
-				return interface_.getOwnedAttributes();
-			}
-
-			@Override
-			public EList<Property> caseSignal(Signal signal) {
-				return signal.getOwnedAttributes();
-			}
-
-			@Override
-			public EList<Property> caseStructuredClassifier(
-					StructuredClassifier structuredClassifier) {
-				return structuredClassifier.getOwnedAttributes();
-			}
-
-			@Override
-			public EList<Property> doSwitch(EObject eObject) {
-				return eObject == null
-					? null
-					: super.doSwitch(eObject);
-			}
-		}.doSwitch(type);
+		return type instanceof AttributeOwner
+			? ((AttributeOwner) type).getOwnedAttributes()
+			: null;
 	}
 
 	protected static EList<Operation> getOwnedOperations(Type type) {
-		return new UMLSwitch<EList<Operation>>() {
-
-			@Override
-			public EList<Operation> caseArtifact(Artifact artifact) {
-				return artifact.getOwnedOperations();
+		return type instanceof OperationOwner
+			? ((OperationOwner) type).getOwnedOperations()
+			: null;
 			}
-
-			@Override
-			public EList<Operation> caseClass(org.eclipse.uml2.uml.Class class_) {
-				return class_.getOwnedOperations();
-			}
-
-			@Override
-			public EList<Operation> caseDataType(DataType dataType) {
-				return dataType.getOwnedOperations();
-			}
-
-			@Override
-			public EList<Operation> caseInterface(Interface interface_) {
-				return interface_.getOwnedOperations();
-			}
-
-			@Override
-			public EList<Operation> doSwitch(EObject eObject) {
-				return eObject == null
-					? null
-					: super.doSwitch(eObject);
-			}
-		}.doSwitch(type);
-	}
 
 	protected static EList<ETypeParameter> getETypeParameters(EObject eObject) {
 		return new EcoreSwitch<EList<ETypeParameter>>() {
@@ -10335,6 +10449,11 @@ public class UMLUtil
 			options.put(UML2EcoreConverter.OPTION__COMMENTS, OPTION__IGNORE);
 		}
 
+		if (!options.containsKey(UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES)) {
+			options.put(UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES,
+				OPTION__IGNORE);
+		}
+
 		return convertToEcore(package_, options, null, null);
 	}
 
@@ -10452,6 +10571,11 @@ public class UMLUtil
 
 		if (!options.containsKey(UML2EcoreConverter.OPTION__COMMENTS)) {
 			options.put(UML2EcoreConverter.OPTION__COMMENTS, OPTION__REPORT);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES)) {
+			options.put(UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES,
+				OPTION__REPORT);
 		}
 
 		@SuppressWarnings("unchecked")
@@ -10572,6 +10696,11 @@ public class UMLUtil
 			options.put(UML2EcoreConverter.OPTION__COMMENTS, OPTION__IGNORE);
 		}
 
+		if (!options.containsKey(UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES)) {
+			options.put(UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES,
+				OPTION__IGNORE);
+		}
+
 		return convertToEcore(profile, options, null, null);
 	}
 
@@ -10689,6 +10818,11 @@ public class UMLUtil
 
 		if (!options.containsKey(UML2EcoreConverter.OPTION__COMMENTS)) {
 			options.put(UML2EcoreConverter.OPTION__COMMENTS, OPTION__REPORT);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES)) {
+			options.put(UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES,
+				OPTION__REPORT);
 		}
 
 		@SuppressWarnings("unchecked")
@@ -10983,5 +11117,4 @@ public class UMLUtil
 
 		return false;
 	}
-
 }
