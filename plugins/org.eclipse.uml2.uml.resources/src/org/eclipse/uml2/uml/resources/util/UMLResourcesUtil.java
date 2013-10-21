@@ -9,10 +9,11 @@
  *   CEA - initial API and implementation
  *   Kenn Hussey (CEA) - 389542, 399544
  *   Mikael Barbero (Obeo) - 414572
- *   Christian W. Damus (CEA) - 414572
+ *   Christian W. Damus (CEA) - 414572, 401682
  */
 package org.eclipse.uml2.uml.resources.util;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +38,7 @@ import org.eclipse.uml2.uml.resource.UML22UMLResource;
 import org.eclipse.uml2.uml.resource.UML302UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.resource.XMI2UMLResource;
+import org.eclipse.uml2.uml.resources.ResourcesPlugin;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
 /**
@@ -136,7 +138,8 @@ public class UMLResourcesUtil
 	 */
 	public static void initGlobalRegistries() {
 		initPackageRegistry(EPackage.Registry.INSTANCE);
-		initEPackageNsURIToProfileLocationMap(UMLPlugin.getEPackageNsURIToProfileLocationMap());
+		initEPackageNsURIToProfileLocationMap(UMLPlugin
+			.getEPackageNsURIToProfileLocationMap());
 		initURIConverterURIMap(URIConverter.URI_MAP);
 		initContentHandlerRegistry(ContentHandler.Registry.INSTANCE);
 		initResourceFactoryRegistry(Resource.Factory.Registry.INSTANCE);
@@ -213,21 +216,21 @@ public class UMLResourcesUtil
 	public static EPackage.Registry initPackageRegistry(
 			EPackage.Registry packageRegistry) {
 		packageRegistry.put(EcorePackage.eNS_URI, EcorePackage.eINSTANCE);
-	
+
 		packageRegistry.put(TypesPackage.eNS_URI, TypesPackage.eINSTANCE);
-	
+
 		packageRegistry.put(UML2_UML_PACKAGE_2_0_NS_URI, UMLPackage.eINSTANCE);
-	
+
 		packageRegistry.put(UML212UMLResource.UML_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
 		packageRegistry.put(UML302UMLResource.UML_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
-	
+
 		packageRegistry.put(UMLPackage.eNS_URI, UMLPackage.eINSTANCE);
-	
+
 		packageRegistry.put(UML302UMLResource.STANDARD_PROFILE_NS_URI,
 			L2Package.eINSTANCE);
-	
+
 		packageRegistry.put(L2Package.eNS_URI, L2Package.eINSTANCE);
 		packageRegistry.put(L3Package.eNS_URI, L3Package.eINSTANCE);
 
@@ -248,11 +251,15 @@ public class UMLResourcesUtil
 	 */
 	public static Resource.Factory.Registry initResourceFactoryRegistry(
 			Resource.Factory.Registry resourceFactoryRegistry) {
-		Map<String, Object> extensionToFactoryMap = resourceFactoryRegistry.getExtensionToFactoryMap();
-		extensionToFactoryMap.put(UMLResource.FILE_EXTENSION, UMLResource.Factory.INSTANCE);
-		
-		Map<String, Object> contentTypeToFactoryMap = resourceFactoryRegistry.getContentTypeToFactoryMap();
-		contentTypeToFactoryMap.put(UMLResource.UML_CONTENT_TYPE_IDENTIFIER, UMLResource.Factory.INSTANCE);
+		Map<String, Object> extensionToFactoryMap = resourceFactoryRegistry
+			.getExtensionToFactoryMap();
+		extensionToFactoryMap.put(UMLResource.FILE_EXTENSION,
+			UMLResource.Factory.INSTANCE);
+
+		Map<String, Object> contentTypeToFactoryMap = resourceFactoryRegistry
+			.getContentTypeToFactoryMap();
+		contentTypeToFactoryMap.put(UMLResource.UML_CONTENT_TYPE_IDENTIFIER,
+			UMLResource.Factory.INSTANCE);
 
 		return resourceFactoryRegistry;
 	}
@@ -277,16 +284,15 @@ public class UMLResourcesUtil
 		if (contentHandlers == null
 			|| !contentHandlers.contains(XMI_CONTENT_HANDLER)) {
 
-			contentHandlerRegistry.put(
-				ContentHandler.Registry.LOW_PRIORITY, XMI_CONTENT_HANDLER);
+			contentHandlerRegistry.put(ContentHandler.Registry.LOW_PRIORITY,
+				XMI_CONTENT_HANDLER);
 		}
 
 		contentHandlers = contentHandlerRegistry
 			.get(ContentHandler.Registry.NORMAL_PRIORITY);
 
 		if (contentHandlers == null) {
-			contentHandlerRegistry.put(
-				ContentHandler.Registry.NORMAL_PRIORITY,
+			contentHandlerRegistry.put(ContentHandler.Registry.NORMAL_PRIORITY,
 				contentHandlers = new ArrayList<ContentHandler>());
 		}
 
@@ -359,15 +365,13 @@ public class UMLResourcesUtil
 	 * @since 4.2
 	 */
 	public static Map<URI, URI> initURIConverterURIMap(Map<URI, URI> uriMap) {
-		uriMap.put(URI.createURI(UMLResource.LIBRARIES_PATHMAP), URI
-			.createPlatformPluginURI(
-				"/org.eclipse.uml2.uml.resources/libraries/", true)); //$NON-NLS-1$
-		uriMap.put(URI.createURI(UMLResource.METAMODELS_PATHMAP), URI
-			.createPlatformPluginURI(
-				"/org.eclipse.uml2.uml.resources/metamodels/", true)); //$NON-NLS-1$
-		uriMap.put(URI.createURI(UMLResource.PROFILES_PATHMAP), URI
-			.createPlatformPluginURI(
-				"/org.eclipse.uml2.uml.resources/profiles/", true)); //$NON-NLS-1$
+		URI baseURI = getBaseUMLResourceURI();
+		mapUMLResourceURIs(uriMap, UMLResource.METAMODELS_PATHMAP,
+			baseURI.appendSegment("metamodels")); //$NON-NLS-1$
+		mapUMLResourceURIs(uriMap, UMLResource.PROFILES_PATHMAP,
+			baseURI.appendSegment("profiles")); //$NON-NLS-1$
+		mapUMLResourceURIs(uriMap, UMLResource.LIBRARIES_PATHMAP,
+			baseURI.appendSegment("libraries")); //$NON-NLS-1$
 
 		return uriMap;
 	}
@@ -396,5 +400,56 @@ public class UMLResourcesUtil
 			URI.createURI("pathmap://UML_PROFILES/Ecore.profile.uml#_0")); //$NON-NLS-1$
 
 		return ePackageNsURIToProfileLocationMap;
+	}
+
+	private static URI getBaseUMLResourceURI() {
+		URI umlMetamodel = URI.createURI(UMLResource.UML_METAMODEL_URI);
+		URL resultURL = UMLResourcesUtil.class.getClassLoader().getResource(
+			String.format("metamodels/%s", umlMetamodel.lastSegment())); //$NON-NLS-1$
+
+		URI result;
+
+		if (resultURL != null) {
+			// remove the /metamodel/UML.metamodel.uml segments of the resource
+			// we found
+			result = URI.createURI(resultURL.toExternalForm(), true)
+				.trimSegments(2);
+		} else {
+			// probably, we're not running with JARs, so assume the source
+			// project folder layout
+			resultURL = UMLResourcesUtil.class
+				.getResource("UMLResourcesUtil.class"); //$NON-NLS-1$
+
+			String baseURL = resultURL.toExternalForm();
+			baseURL = baseURL.substring(0, baseURL.lastIndexOf("/bin/")); //$NON-NLS-1$
+			result = URI.createURI(baseURL, true);
+		}
+
+		return result;
+	}
+
+	private static void mapUMLResourceURIs(Map<URI, URI> uriMap, String uri,
+			URI location) {
+
+		URI prefix = URI.createURI(uri);
+
+		// ensure trailing separator (make it a "URI prefix")
+		if (!prefix.hasTrailingPathSeparator()) {
+			prefix = prefix.appendSegment(""); //$NON-NLS-1$
+		}
+
+		// same with the location
+		if (!location.hasTrailingPathSeparator()) {
+			location = location.appendSegment(""); //$NON-NLS-1$
+		}
+
+		uriMap.put(prefix, location);
+
+		// and platform URIs, too
+		String folder = location.segment(location.segmentCount() - 2);
+		String platformURI = String.format("%s/%s/", //$NON-NLS-1$
+			ResourcesPlugin.PLUGIN_ID, folder);
+		uriMap.put(URI.createPlatformPluginURI(platformURI, true), location);
+		uriMap.put(URI.createPlatformResourceURI(platformURI, true), location);
 	}
 }
