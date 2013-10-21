@@ -12,8 +12,6 @@
  */
 package org.eclipse.uml2.uml.tests.util;
 
-import static org.junit.Assert.assertTrue;
-
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
@@ -41,12 +39,18 @@ public class StandaloneSupport {
 	}
 
 	public static void initGlobals() {
-		assertTrue("Not running stand-alone.", isStandalone()); //$NON-NLS-1$
+		if (!isStandalone()) {
+			throw new IllegalStateException("not running stand-alone"); //$NON-NLS-1$
+		}
+
 		UMLResourcesUtil.initGlobalRegistries();
 	}
 
 	public static ResourceSet init(ResourceSet rset) {
-		assertTrue("Not running stand-alone.", isStandalone()); //$NON-NLS-1$
+		if (!isStandalone()) {
+			throw new IllegalStateException("not running stand-alone"); //$NON-NLS-1$
+		}
+
 		UMLResourcesUtil.initLocalRegistries(rset);
 		return rset;
 	}
