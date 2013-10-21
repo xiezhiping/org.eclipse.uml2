@@ -12,7 +12,7 @@
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
  *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731
  *   Yann Tanguy (CEA) - 350402
- *   Christian W. Damus (CEA) - 392833, 251963
+ *   Christian W. Damus (CEA) - 392833, 251963, 405061
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -2394,6 +2394,8 @@ public class UMLUtil
 		protected static final Pattern ANNOTATION_DETAIL_PATTERN = Pattern
 			.compile("\\s+((?>\\\\.|\\S)+)\\s*+=\\s*((['\"])((?>\\\\.|.)*?)\\3)"); //$NON-NLS-1$
 
+		protected static final String ANNOTATION_DETAIL__ORIGINAL_NAME = "originalName"; //$NON-NLS-1$
+
 		protected static final String OCL_DELEGATE_URI = "http://www.eclipse.org/emf/2002/Ecore/OCL"; //$NON-NLS-1$
 
 		protected final Map<Element, EModelElement> elementToEModelElementMap = new LinkedHashMap<Element, EModelElement>();
@@ -2406,8 +2408,29 @@ public class UMLUtil
 
 		protected Map<Object, Object> context = null;
 
-		protected void setName(ENamedElement eNamedElement, String name,
+		/**
+		 * Sets the {@code name} of a converted element.
+		 * <p>
+		 * As of the 4.2 API version, if the Ecore name differs for any reason
+		 * from the original UML name, it is recorded for
+		 * {@linkplain UMLUtil#getOriginalName(ENamedElement) later retrieval}.
+		 * </p>
+		 * 
+		 * @param eNamedElement
+		 *            the converted Ecore element in which to set a name
+		 * @param name
+		 *            the name to set
+		 * @param validate
+		 *            whether to ensure that the name is a valid Java
+		 *            identifier, munging it if necessary
+		 * 
+		 * @see UMLUtil#getOriginalName(ENamedElement)
+		 * @see UML2Util#getValidJavaIdentifier(String)
+		 */
+		protected void setName(ENamedElement eNamedElement, final String name,
 				boolean validate) {
+
+			String ecoreName = name;
 
 			if (!isEmpty(name)
 				&& options != null
@@ -2450,19 +2473,13 @@ public class UMLUtil
 				if (OPTION__PROCESS.equals(options
 					.get(OPTION__CAMEL_CASE_NAMES))) {
 
-					eNamedElement.setName(validate
-						? getValidJavaIdentifier(camelCaseName)
-						: camelCaseName);
-				} else {
-					eNamedElement.setName(validate
-						? getValidJavaIdentifier(name)
-						: name);
+					ecoreName = camelCaseName;
 				}
 
 				if (!camelCaseName.equals(name)) {
 
 					if (DEBUG) {
-						System.out.println(name + " -> " + camelCaseNameBuffer); //$NON-NLS-1$
+						System.out.println(name + " -> " + camelCaseName); //$NON-NLS-1$
 					}
 
 					if (OPTION__PROCESS.equals(options
@@ -2498,11 +2515,23 @@ public class UMLUtil
 								new Object[]{eNamedElement}));
 					}
 				}
-			} else {
-				eNamedElement.setName(validate
-					? getValidJavaIdentifier(name)
-					: name);
 			}
+
+			if (validate) {
+				ecoreName = getValidJavaIdentifier(ecoreName);
+			}
+
+			if (!safeEquals(ecoreName, name)) {
+				// record the original name, regardless whether it was converted
+				// by the camel-case names option or by munging to get a valid
+				// Java identifier, because clients such as OCL will require the
+				// traceability
+				EcoreUtil.setAnnotation(eNamedElement,
+					UML2_UML_PACKAGE_2_0_NS_URI,
+					ANNOTATION_DETAIL__ORIGINAL_NAME, name);
+			}
+
+			eNamedElement.setName(ecoreName);
 		}
 
 		protected void setName(ENamedElement eNamedElement,
@@ -2517,6 +2546,40 @@ public class UMLUtil
 						.getName()));
 				}
 			}
+		}
+
+		/**
+		 * Queries the original name (as defined in the source UML model) of the
+		 * given Ecore named element, in the case that the original name was not a
+		 * valid Ecore/Java name and was transformed either via the
+		 * {@link UML2EcoreConverter#OPTION__CAMEL_CASE_NAMES} option or simply
+		 * validating the name.
+		 * 
+		 * @param eNamedElement
+		 *            an Ecore named element
+		 * 
+		 * @return its original name in the UML model in which it was defined, or
+		 *         just its Ecore name if the original name is not recorded or is
+		 *         not different
+		 * 
+		 * @since 4.2
+		 * 
+		 * @see UML2EcoreConverter#setName(ENamedElement, String, boolean)
+		 */
+		public static String getOriginalName(ENamedElement eNamedElement) {
+			String result = eNamedElement.getName();
+
+			EAnnotation annotation = eNamedElement
+				.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
+			if (annotation != null) {
+				String originalName = annotation.getDetails().get(
+					ANNOTATION_DETAIL__ORIGINAL_NAME);
+				if (originalName != null) {
+					result = originalName;
+				}
+			}
+
+			return result;
 		}
 
 		protected EClassifier getEType(Type type) {
@@ -10901,5 +10964,4 @@ public class UMLUtil
 
 		return false;
 	}
-
 }
