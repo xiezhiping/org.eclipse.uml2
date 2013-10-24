@@ -1241,7 +1241,8 @@ public class UMLUtil
 		 * 
 		 * @since 4.2
 		 */
-		protected void updateReferencesFromReceivingPackage() {
+		protected void updateReferences() {
+
 			for (Iterator<EObject> iter = EcoreUtil.getAllContents(Collections
 				.singleton(receivingPackage)); iter.hasNext();) {
 
@@ -1250,6 +1251,7 @@ public class UMLUtil
 				// UML does not use feature maps, so this is simpler than it
 				// might have been
 				for (EReference reference : next.eClass().getEAllReferences()) {
+
 					if (!reference.isContainment() && !reference.isContainer()
 						&& reference.isChangeable() && !reference.isDerived()) {
 
@@ -1258,6 +1260,7 @@ public class UMLUtil
 							// element was merged into
 							EObject mergeResult = get((EObject) next
 								.eGet(reference));
+
 							if (mergeResult != null) {
 								// replace the reference with the merge result
 								next.eSet(reference, mergeResult);
@@ -1266,10 +1269,12 @@ public class UMLUtil
 							@SuppressWarnings("unchecked")
 							ListIterator<EObject> xrefs = ((EList<EObject>) next
 								.eGet(reference)).listIterator();
+
 							while (xrefs.hasNext()) {
 								// get the object, if any, that the next
 								// referenced element was merged into
 								EObject mergeResult = get(xrefs.next());
+
 								if (mergeResult != null) {
 									// replace the reference with the merge
 									// result
@@ -2128,7 +2133,8 @@ public class UMLUtil
 
 			copyAll(mergedPackages);
 			copyReferences();
-			updateReferencesFromReceivingPackage();
+
+			updateReferences();
 
 			for (Iterator<PackageMerge> packageMerges = receivingPackage
 				.getPackageMerges().iterator(); packageMerges.hasNext();) {
