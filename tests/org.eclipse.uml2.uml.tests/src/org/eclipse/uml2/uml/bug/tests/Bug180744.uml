@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bug180744profile="http://www.eclipse.org/uml2/tests/bug180744profile" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/tests/bug180744profile Bug180744.profile.uml#_zzE9YT3BEeOmXIxoEtuCrA">
+  <uml:Package xmi:id="_uacM4DvhEeOFiu2NN-JcQw" name="templates" URI="http://www.eclipse.org/uml2/tests/bug180744">
+    <elementImport xmi:id="_4cDhUDwZEeO4Rq2NI2kHpA">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </elementImport>
+    <elementImport xmi:id="_4cDhUTwZEeO4Rq2NI2kHpA">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_nDaPwDvzEeO8DKN9IOhj1A" name="CollectionKind">
+      <ownedLiteral xmi:id="_xaUZMDvzEeO8DKN9IOhj1A" name="orderedset"/>
+      <ownedLiteral xmi:id="_0OtzcDvzEeO8DKN9IOhj1A" name="set"/>
+      <ownedLiteral xmi:id="_0e49cDvzEeO8DKN9IOhj1A" name="sequence"/>
+      <ownedLiteral xmi:id="_0kw78DvzEeO8DKN9IOhj1A" name="bag"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_zyIDQDvhEeOFiu2NN-JcQw" name="Collection">
+      <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="_9OTCwDvhEeOFiu2NN-JcQw" parameter="_CfvuQDviEeOFiu2NN-JcQw _JtPxkDv0EeO8DKN9IOhj1A">
+        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_CfvuQDviEeOFiu2NN-JcQw" parameteredElement="_FkjjEDviEeOFiu2NN-JcQw">
+          <ownedParameteredElement xmi:type="uml:Class" xmi:id="_FkjjEDviEeOFiu2NN-JcQw" name="E" templateParameter="_CfvuQDviEeOFiu2NN-JcQw"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_JtPxkDv0EeO8DKN9IOhj1A" default="_0kw78DvzEeO8DKN9IOhj1A" parameteredElement="_rL9HkDv1EeO8DKN9IOhj1A">
+          <ownedParameteredElement xmi:type="uml:EnumerationLiteral" xmi:id="_rL9HkDv1EeO8DKN9IOhj1A" name="K" templateParameter="_JtPxkDv0EeO8DKN9IOhj1A"/>
+        </ownedParameter>
+      </ownedTemplateSignature>
+      <ownedAttribute xmi:id="_8I-7UDvzEeO8DKN9IOhj1A" name="kind" isStatic="true" type="_nDaPwDvzEeO8DKN9IOhj1A">
+        <defaultValue xmi:type="uml:InstanceValue" xmi:id="_HhkkMDv0EeO8DKN9IOhj1A" type="_nDaPwDvzEeO8DKN9IOhj1A" instance="_rL9HkDv1EeO8DKN9IOhj1A"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_j7_bkDviEeOFiu2NN-JcQw" name="add">
+        <ownedParameter xmi:id="_vV220DviEeOFiu2NN-JcQw" name="element" type="_FkjjEDviEeOFiu2NN-JcQw"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_ygql8DviEeOFiu2NN-JcQw" name="remove">
+        <ownedParameter xmi:id="_ygql8TviEeOFiu2NN-JcQw" name="element" type="_FkjjEDviEeOFiu2NN-JcQw"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_ytVI8DviEeOFiu2NN-JcQw" name="contains">
+        <ownedParameter xmi:id="_ytVI8TviEeOFiu2NN-JcQw" name="element" type="_FkjjEDviEeOFiu2NN-JcQw"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_HrrLIDvjEeOFiu2NN-JcQw" name="Foo"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_tT2nYDwlEeOUNYI2YyBb_w" name="Bar"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_J-_RkDvjEeOFiu2NN-JcQw" name="BagOfFoos">
+      <ownedComment xmi:id="_nqAgQDv0EeO8DKN9IOhj1A">
+        <body>The collection kind template parameter defaults to 'bag'.</body>
+      </ownedComment>
+      <templateBinding xmi:id="_MCWQcDvjEeOFiu2NN-JcQw" signature="_9OTCwDvhEeOFiu2NN-JcQw">
+        <parameterSubstitution xmi:id="_NmT9kDvjEeOFiu2NN-JcQw" actual="_HrrLIDvjEeOFiu2NN-JcQw" formal="_CfvuQDviEeOFiu2NN-JcQw"/>
+      </templateBinding>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_s7UB0Dv0EeO8DKN9IOhj1A" name="ListOfBars">
+      <ownedComment xmi:id="_s7UB0Tv0EeO8DKN9IOhj1A">
+        <body>The collection kind template parameter is set explicitly to 'sequence'.</body>
+      </ownedComment>
+      <templateBinding xmi:id="_s7UB0jv0EeO8DKN9IOhj1A" signature="_9OTCwDvhEeOFiu2NN-JcQw">
+        <parameterSubstitution xmi:id="_s7UB0zv0EeO8DKN9IOhj1A" actual="_tT2nYDwlEeOUNYI2YyBb_w" formal="_CfvuQDviEeOFiu2NN-JcQw"/>
+        <parameterSubstitution xmi:id="_10bXkDv0EeO8DKN9IOhj1A" actual="_0e49cDvzEeO8DKN9IOhj1A" formal="_JtPxkDv0EeO8DKN9IOhj1A"/>
+      </templateBinding>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_plTSADwlEeOUNYI2YyBb_w" name="BagListOfFooBars">
+      <ownedComment xmi:id="_plTSATwlEeOUNYI2YyBb_w">
+        <body>No, it makes no sense to have a class that is both a BagOfFoos and a ListOfBars.</body>
+      </ownedComment>
+      <templateBinding xmi:id="_plTSAjwlEeOUNYI2YyBb_w" signature="_9OTCwDvhEeOFiu2NN-JcQw">
+        <parameterSubstitution xmi:id="_plTSAzwlEeOUNYI2YyBb_w" actual="_tT2nYDwlEeOUNYI2YyBb_w" formal="_CfvuQDviEeOFiu2NN-JcQw"/>
+        <parameterSubstitution xmi:id="_plTSBDwlEeOUNYI2YyBb_w" actual="_0e49cDvzEeO8DKN9IOhj1A" formal="_JtPxkDv0EeO8DKN9IOhj1A"/>
+      </templateBinding>
+      <templateBinding xmi:id="_CBLLADwmEeOUNYI2YyBb_w" signature="_9OTCwDvhEeOFiu2NN-JcQw">
+        <parameterSubstitution xmi:id="_CBLLATwmEeOUNYI2YyBb_w" actual="_HrrLIDvjEeOFiu2NN-JcQw" formal="_CfvuQDviEeOFiu2NN-JcQw"/>
+      </templateBinding>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="__u0QMDwMEeO4Rq2NI2kHpA" name="system">
+      <ownedTemplateSignature xmi:id="_EabNQDwZEeO4Rq2NI2kHpA" parameter="_GcWowDwZEeO4Rq2NI2kHpA _LI3bMDwZEeO4Rq2NI2kHpA _BJFoMDzxEeOkQ_NYnvAgYw _VqNi4DzxEeOkQ_NYnvAgYw">
+        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_GcWowDwZEeO4Rq2NI2kHpA" parameteredElement="_Fnn2oDwNEeO4Rq2NI2kHpA"/>
+        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_LI3bMDwZEeO4Rq2NI2kHpA" parameteredElement="_8jN14DwXEeO4Rq2NI2kHpA"/>
+        <ownedParameter xmi:id="_BJFoMDzxEeOkQ_NYnvAgYw" default="_JVm9sDzxEeOkQ_NYnvAgYw" parameteredElement="_ychGEDzwEeOkQ_NYnvAgYw">
+          <ownedDefault xmi:type="uml:LiteralString" xmi:id="_JVm9sDzxEeOkQ_NYnvAgYw" value=""/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_VqNi4DzxEeOkQ_NYnvAgYw" default="_VqNi4TzxEeOkQ_NYnvAgYw" parameteredElement="_ShSDETzxEeOkQ_NYnvAgYw">
+          <ownedDefault xmi:type="uml:LiteralString" xmi:id="_VqNi4TzxEeOkQ_NYnvAgYw" value=""/>
+        </ownedParameter>
+      </ownedTemplateSignature>
+      <packagedElement xmi:type="uml:Class" xmi:id="_Fnn2oDwNEeO4Rq2NI2kHpA" name="Resource" templateParameter="_GcWowDwZEeO4Rq2NI2kHpA">
+        <ownedAttribute xmi:id="_L-f4IDwYEeO4Rq2NI2kHpA" name="kind" type="_8jN14DwXEeO4Rq2NI2kHpA" association="_Jv1BIDwYEeO4Rq2NI2kHpA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_8jN14DwXEeO4Rq2NI2kHpA" name="ResourceKind" templateParameter="_LI3bMDwZEeO4Rq2NI2kHpA">
+        <ownedAttribute xmi:id="_Qhm28DwYEeO4Rq2NI2kHpA" name="resource" type="_Fnn2oDwNEeO4Rq2NI2kHpA" association="_Jv1BIDwYEeO4Rq2NI2kHpA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SsxuADwYEeO4Rq2NI2kHpA"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TKEuADwYEeO4Rq2NI2kHpA" value="*"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_LxCE4DwNEeO4Rq2NI2kHpA" name="Allocation">
+        <nameExpression xmi:id="_mx4D4DzwEeOkQ_NYnvAgYw" symbol="">
+          <operand xmi:type="uml:LiteralString" xmi:id="_ychGEDzwEeOkQ_NYnvAgYw" templateParameter="_BJFoMDzxEeOkQ_NYnvAgYw" value="${ResourceKind}"/>
+          <operand xmi:type="uml:LiteralString" xmi:id="_6UyC0DzwEeOkQ_NYnvAgYw" value="Allocation"/>
+        </nameExpression>
+        <ownedAttribute xmi:id="_w4sTADwYEeO4Rq2NI2kHpA" name="resource" type="_Fnn2oDwNEeO4Rq2NI2kHpA" association="_zkSWkDwYEeO4Rq2NI2kHpA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_BPWN0DwYEeO4Rq2NI2kHpA" name="Request">
+        <nameExpression xmi:id="_ShSDEDzxEeOkQ_NYnvAgYw" symbol="">
+          <operand xmi:type="uml:LiteralString" xmi:id="_ShSDETzxEeOkQ_NYnvAgYw" templateParameter="_VqNi4DzxEeOkQ_NYnvAgYw" value="${ResourceKind}"/>
+          <operand xmi:type="uml:LiteralString" xmi:id="_ShSDEjzxEeOkQ_NYnvAgYw" value="Request"/>
+        </nameExpression>
+        <ownedAttribute xmi:id="_dTd_4DwYEeO4Rq2NI2kHpA" name="kind" type="_8jN14DwXEeO4Rq2NI2kHpA" association="_fllMcDwYEeO4Rq2NI2kHpA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_Jv1BIDwYEeO4Rq2NI2kHpA" memberEnd="_L-f4IDwYEeO4Rq2NI2kHpA _Qhm28DwYEeO4Rq2NI2kHpA"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_fllMcDwYEeO4Rq2NI2kHpA" memberEnd="_jMVQsDwYEeO4Rq2NI2kHpA _dTd_4DwYEeO4Rq2NI2kHpA">
+        <ownedEnd xmi:id="_jMVQsDwYEeO4Rq2NI2kHpA" type="_BPWN0DwYEeO4Rq2NI2kHpA" association="_fllMcDwYEeO4Rq2NI2kHpA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_kGqyADwYEeO4Rq2NI2kHpA"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_kwZrgDwYEeO4Rq2NI2kHpA" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_zkSWkDwYEeO4Rq2NI2kHpA" memberEnd="_1Osp8DwYEeO4Rq2NI2kHpA _w4sTADwYEeO4Rq2NI2kHpA">
+        <ownedEnd xmi:id="_1Osp8DwYEeO4Rq2NI2kHpA" type="_LxCE4DwNEeO4Rq2NI2kHpA" association="_zkSWkDwYEeO4Rq2NI2kHpA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2e01EDwYEeO4Rq2NI2kHpA"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3F41EDwYEeO4Rq2NI2kHpA" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_UzK9UDwZEeO4Rq2NI2kHpA" name="rental system">
+      <ownedComment xmi:id="_KvW7sDztEeOo3uNUxreuKg">
+        <body>Package template binding with owned classes in the bound package substituting
+for owned classes in the template.
+The parametered name-expression components are left at defaults.</body>
+      </ownedComment>
+      <templateBinding xmi:id="_pZBnADwZEeO4Rq2NI2kHpA" signature="_EabNQDwZEeO4Rq2NI2kHpA">
+        <parameterSubstitution xmi:id="_tbf98DwZEeO4Rq2NI2kHpA" actual="_ay8HYDwZEeO4Rq2NI2kHpA" formal="_GcWowDwZEeO4Rq2NI2kHpA"/>
+        <parameterSubstitution xmi:id="_xEon0DwZEeO4Rq2NI2kHpA" actual="_kxFykDwZEeO4Rq2NI2kHpA" formal="_LI3bMDwZEeO4Rq2NI2kHpA"/>
+      </templateBinding>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ay8HYDwZEeO4Rq2NI2kHpA" name="Car">
+        <ownedAttribute xmi:id="_hAq08DwZEeO4Rq2NI2kHpA" name="mileage">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_kxFykDwZEeO4Rq2NI2kHpA" name="CarSpec">
+        <ownedAttribute xmi:id="_kxFykTwZEeO4Rq2NI2kHpA" name="make">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_m6H7oDwZEeO4Rq2NI2kHpA" name="model">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_vaUdMDzsEeOo3uNUxreuKg" name="deployment system">
+      <ownedComment xmi:id="_Q4FNcDztEeOo3uNUxreuKg">
+        <body>Package with multiple bindings to the same template.</body>
+      </ownedComment>
+      <templateBinding xmi:id="_vaUdMTzsEeOo3uNUxreuKg" signature="_EabNQDwZEeO4Rq2NI2kHpA">
+        <parameterSubstitution xmi:id="_vaUdMjzsEeOo3uNUxreuKg" actual="_vaUdNDzsEeOo3uNUxreuKg" formal="_GcWowDwZEeO4Rq2NI2kHpA"/>
+        <parameterSubstitution xmi:id="_vaUdMzzsEeOo3uNUxreuKg" actual="_vaUdNjzsEeOo3uNUxreuKg" formal="_LI3bMDwZEeO4Rq2NI2kHpA"/>
+        <parameterSubstitution xmi:id="_0PwI0DzxEeOkQ_NYnvAgYw" actual="_5-8gQDzxEeOkQ_NYnvAgYw" formal="_BJFoMDzxEeOkQ_NYnvAgYw">
+          <ownedActual xmi:type="uml:LiteralString" xmi:id="_5-8gQDzxEeOkQ_NYnvAgYw" value="Software"/>
+        </parameterSubstitution>
+        <parameterSubstitution xmi:id="_7hGPgDzxEeOkQ_NYnvAgYw" actual="_7hGPgTzxEeOkQ_NYnvAgYw" formal="_VqNi4DzxEeOkQ_NYnvAgYw">
+          <ownedActual xmi:type="uml:LiteralString" xmi:id="_7hGPgTzxEeOkQ_NYnvAgYw" value="Software"/>
+        </parameterSubstitution>
+      </templateBinding>
+      <templateBinding xmi:id="_C7iaEDztEeOo3uNUxreuKg" signature="_EabNQDwZEeO4Rq2NI2kHpA">
+        <parameterSubstitution xmi:id="_C7iaETztEeOo3uNUxreuKg" actual="_9OMcwDzsEeOo3uNUxreuKg" formal="_GcWowDwZEeO4Rq2NI2kHpA"/>
+        <parameterSubstitution xmi:id="_C7iaEjztEeOo3uNUxreuKg" actual="_9OMcwjzsEeOo3uNUxreuKg" formal="_LI3bMDwZEeO4Rq2NI2kHpA"/>
+        <parameterSubstitution xmi:id="_Ezb9kDzyEeOkQ_NYnvAgYw" actual="_Ezb9kTzyEeOkQ_NYnvAgYw" formal="_BJFoMDzxEeOkQ_NYnvAgYw">
+          <ownedActual xmi:type="uml:LiteralString" xmi:id="_Ezb9kTzyEeOkQ_NYnvAgYw" value="Hardware"/>
+        </parameterSubstitution>
+        <parameterSubstitution xmi:id="_Ezb9kjzyEeOkQ_NYnvAgYw" actual="_Ezb9kzzyEeOkQ_NYnvAgYw" formal="_VqNi4DzxEeOkQ_NYnvAgYw">
+          <ownedActual xmi:type="uml:LiteralString" xmi:id="_Ezb9kzzyEeOkQ_NYnvAgYw" value="Hardware"/>
+        </parameterSubstitution>
+      </templateBinding>
+      <packagedElement xmi:type="uml:Class" xmi:id="_vaUdNDzsEeOo3uNUxreuKg" name="SoftwarePackage">
+        <ownedAttribute xmi:id="_vaUdNTzsEeOo3uNUxreuKg" name="id">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_vaUdNjzsEeOo3uNUxreuKg" name="SoftwareSpec">
+        <ownedAttribute xmi:id="_vaUdNzzsEeOo3uNUxreuKg" name="name">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_vaUdODzsEeOo3uNUxreuKg" name="version">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_9OMcwDzsEeOo3uNUxreuKg" name="HardwareComponent">
+        <ownedAttribute xmi:id="_9OMcwTzsEeOo3uNUxreuKg" name="id">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_9OMcwjzsEeOo3uNUxreuKg" name="HardwareSpec">
+        <ownedAttribute xmi:id="_9OMcwzzsEeOo3uNUxreuKg" name="deviceName">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_9OMcxDzsEeOo3uNUxreuKg" name="vendorName">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_1-baoD3BEeOmXIxoEtuCrA">
+      <eAnnotations xmi:id="_1-cowD3BEeOmXIxoEtuCrA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="Bug180744.profile.uml#_zzE9YT3BEeOmXIxoEtuCrA"/>
+      </eAnnotations>
+      <appliedProfile href="Bug180744.profile.uml#_SZzrkD3BEeOmXIxoEtuCrA"/>
+    </profileApplication>
+  </uml:Package>
+  <bug180744profile:Limited xmi:id="_5RV84D3BEeOmXIxoEtuCrA" base_Classifier="_Fnn2oDwNEeO4Rq2NI2kHpA"/>
+</xmi:XMI>

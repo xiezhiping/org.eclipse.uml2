@@ -12,7 +12,7 @@
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
  *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598
  *   Yann Tanguy (CEA) - 350402
- *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998
+ *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -92,6 +92,7 @@ import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.LiteralInteger;
+import org.eclipse.uml2.uml.LiteralString;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.MultiplicityElement;
@@ -110,6 +111,7 @@ import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuralFeature;
 import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameter;
@@ -298,6 +300,65 @@ public class UMLUtil
 
 			protected NameMatcher(NamedElement namedElement) {
 				super(namedElement, UMLPackage.Literals.NAMED_ELEMENT__NAME);
+			}
+		}
+
+		protected class ImplicitAssociationNameMatcher
+				extends EClassMatcher {
+
+			private final String name;
+
+			ImplicitAssociationNameMatcher(Association association) {
+				super(association);
+
+				name = getName(association);
+			}
+
+			@Override
+			public boolean matches(EObject otherEObject) {
+				boolean result = super.matches(otherEObject);
+
+				if (result) {
+					Association other = (Association) otherEObject;
+					result = safeEquals(name, getName(other));
+				}
+
+				return result;
+			}
+
+			protected String getName(Association association) {
+				String result = association.getName();
+
+				if (result == null) {
+					StringBuilder buf = new StringBuilder();
+
+					buf.append('A');
+					for (Property end : association.getMemberEnds()) {
+						buf.append('_');
+						buf.append(getName(end));
+					}
+
+					result = buf.toString();
+				}
+
+				return result;
+			}
+
+			protected String getName(Property end) {
+				String result = end.getName();
+
+				if ((result == null) && (end.getType() != null)) {
+					result = end.getType().getName();
+
+					if (!UML2Util.isEmpty(result)) {
+						result = String.format(
+							"%s%s", //$NON-NLS-1$
+							Character.toLowerCase(result.charAt(0)),
+							result.substring(1));
+					}
+				}
+
+				return result;
 			}
 		}
 
@@ -532,8 +593,20 @@ public class UMLUtil
 		 */
 		public static final int INDISTINGUISHABLE_CLASSIFIER = DIAGNOSTIC_CODE_OFFSET + 11;
 
-		protected org.eclipse.uml2.uml.Package receivingPackage = null;
+		protected TemplateableElement receivingElement = null;
 
+		protected Collection<? extends TemplateableElement> mergedElements = null;
+
+		/**
+		 * @deprecated Use the {@link #receivingElement}, instead.
+		 */
+		@Deprecated
+		protected org.eclipse.uml2.uml.Package receivingPackage = null;
+		
+		/**
+		 * @deprecated Use the {@link #mergedElements}, instead
+		 */
+		@Deprecated
 		protected Collection<org.eclipse.uml2.uml.Package> mergedPackages = null;
 
 		protected final Map<EObject, List<EObject>> resultingToMergedEObjectMap = new LinkedHashMap<EObject, List<EObject>>();
@@ -590,8 +663,8 @@ public class UMLUtil
 
 		private StringBuffer appendResultingQName(StringBuffer resultingQName,
 				EObject eObject, QualifiedTextProvider qualifiedTextProvider) {
-			eObject = mergedPackages.contains(eObject)
-				? receivingPackage
+			eObject = mergedElements.contains(eObject)
+				? receivingElement
 				: eObject;
 
 			EObject eContainer = eObject.eContainer();
@@ -709,7 +782,7 @@ public class UMLUtil
 
 			if (eObject != copyEObject) {
 
-				if (copyEObject == receivingPackage) {
+				if (copyEObject == receivingElement) {
 					return;
 				} else if (resultingToMergedEObjectMap.containsKey(copyEObject)) {
 
@@ -894,6 +967,10 @@ public class UMLUtil
 			}
 		}
 
+		protected EObjectMatcher getAssociationMatcher(Association association) {
+			return new NameMatcher(association);
+		}
+
 		@Override
 		protected EObject createCopy(EObject eObject) {
 			return new UMLSwitch<EObject>() {
@@ -901,8 +978,8 @@ public class UMLUtil
 				@Override
 				public EObject caseAssociation(Association association) {
 					Association matchingAssociation = (Association) findEObject(
-						getMatchCandidates(association), new NameMatcher(
-							association));
+						getMatchCandidates(association),
+						getAssociationMatcher(association));
 
 					return matchingAssociation == null
 						? super.caseAssociation(association)
@@ -954,7 +1031,7 @@ public class UMLUtil
 				public EObject caseDirectedRelationship(
 						DirectedRelationship directedRelationship) {
 
-					if (mergedPackages.containsAll(directedRelationship
+					if (mergedElements.containsAll(directedRelationship
 						.getTargets())) {
 
 						return directedRelationship;
@@ -1061,8 +1138,8 @@ public class UMLUtil
 				public EObject casePackage(org.eclipse.uml2.uml.Package package_) {
 					org.eclipse.uml2.uml.Package matchingPackage = null;
 
-					if (mergedPackages.contains(package_)) {
-						matchingPackage = receivingPackage;
+					if (mergedElements.contains(package_)) {
+						matchingPackage = (org.eclipse.uml2.uml.Package) receivingElement;
 					} else {
 						matchingPackage = (org.eclipse.uml2.uml.Package) findEObject(
 							getMatchCandidates(package_), new NameMatcher(
@@ -1244,7 +1321,7 @@ public class UMLUtil
 		protected void updateReferences() {
 
 			for (Iterator<EObject> iter = EcoreUtil.getAllContents(Collections
-				.singleton(receivingPackage)); iter.hasNext();) {
+				.singleton(receivingElement)); iter.hasNext();) {
 
 				EObject next = iter.next();
 
@@ -1818,8 +1895,14 @@ public class UMLUtil
 				.get(OPTION__EMPTY_QUALIFIED_NAMES)) && diagnostics != null) {
 
 				EList<org.eclipse.uml2.uml.Package> packages = new UniqueEList<org.eclipse.uml2.uml.Package>();
-				packages.add(receivingPackage);
-				packages.addAll(mergedPackages);
+
+				if (receivingElement instanceof org.eclipse.uml2.uml.Package) {
+					packages
+						.add((org.eclipse.uml2.uml.Package) receivingElement);
+					packages.addAll(EcoreUtil
+						.<org.eclipse.uml2.uml.Package> getObjectsByType(
+							mergedElements, UMLPackage.Literals.PACKAGE));
+				}
 
 				for (org.eclipse.uml2.uml.Package package_ : packages) {
 
@@ -1853,8 +1936,14 @@ public class UMLUtil
 				&& diagnostics != null) {
 
 				EList<org.eclipse.uml2.uml.Package> packages = new UniqueEList<org.eclipse.uml2.uml.Package>();
-				packages.add(receivingPackage);
-				packages.addAll(mergedPackages);
+
+				if (receivingElement instanceof org.eclipse.uml2.uml.Package) {
+					packages
+						.add((org.eclipse.uml2.uml.Package) receivingElement);
+					packages.addAll(EcoreUtil
+						.<org.eclipse.uml2.uml.Package> getObjectsByType(
+							mergedElements, UMLPackage.Literals.PACKAGE));
+				}
 
 				for (org.eclipse.uml2.uml.Package package_ : packages) {
 					EList<Type> ownedTypes = package_.getOwnedTypes();
@@ -2127,28 +2216,646 @@ public class UMLUtil
 				org.eclipse.uml2.uml.Package package_,
 				Map<String, String> options, DiagnosticChain diagnostics,
 				Map<Object, Object> context) {
-			receivingPackage = package_;
 
-			mergedPackages = getAllMergedPackages(package_);
+			receivingPackage = package_; // for compatibility
+			mergedPackages = getAllMergedPackages(package_); // compatibility
 
-			copyAll(mergedPackages);
+			return merge(receivingPackage, mergedPackages, options,
+				diagnostics, context);
+		}
+
+		/**
+		 * Queries whether the current operation is a package merge, or some
+		 * derivative.
+		 * 
+		 * @return whether I am a package merge operation ({@code true}) or
+		 *         something else ({@false})
+		 * 
+		 * @since 4.2
+		 */
+		protected boolean isPackageMerge() {
+			// N.B.: Don't test whether receivingElement is a package, because
+			// that will be true in the case of expanding a package template!
+			return receivingPackage != null;
+		}
+
+		/**
+		 * Cleans up (removing or otherwise trimming as necessary) the
+		 * relationships on the {@link #receivingElement} that define the merges
+		 * that were performed.
+		 * 
+		 * @since 4.2
+		 */
+		protected void cleanupMergeRelationships() {
+			if (isPackageMerge()) {
+				// we ran a package merge. Destroy the merge relationships
+				for (Iterator<PackageMerge> packageMerges = receivingPackage
+					.getPackageMerges().iterator(); packageMerges.hasNext();) {
+
+					PackageMerge packageMerge = packageMerges.next();
+					packageMerges.remove();
+					packageMerge.destroy();
+				}
+			}
+		}
+
+		/**
+		 * Merges the contents of (all of) the elements merged by the specified
+		 * package using the specified options, reporting problems to the
+		 * specified diagnostics, within the specified context.
+		 * 
+		 * @param package_
+		 *            The receiving package.
+		 * @param options
+		 *            The options to use.
+		 * @param diagnostics
+		 *            The chain of diagnostics to which problems are to be
+		 *            appended.
+		 * @param context
+		 *            The cache of context-specific information.
+		 * 
+		 * @return A traceability map from resulting elements to merged
+		 *         elements.
+		 * 
+		 * @since 4.2
+		 */
+		protected Map<EObject, List<EObject>> merge(
+				TemplateableElement receivingElement,
+				Collection<? extends TemplateableElement> mergedElements,
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
+
+			this.receivingElement = receivingElement;
+			this.mergedElements = mergedElements;
+
+			copyAll(mergedElements);
 			copyReferences();
 
 			updateReferences();
 
-			for (Iterator<PackageMerge> packageMerges = receivingPackage
-				.getPackageMerges().iterator(); packageMerges.hasNext();) {
-
-				PackageMerge packageMerge = packageMerges.next();
-				packageMerges.remove();
-				packageMerge.destroy();
-			}
+			cleanupMergeRelationships();
 
 			if (options != null) {
 				processOptions(options, diagnostics, context);
 			}
 
 			return resultingToMergedEObjectMap;
+		}
+	}
+
+	/**
+	 * A specialized copier that "expands" the {@linkplain TemplateBinding
+	 * bindings} of templates modeled by {@link TemplateableElement}s to apply
+	 * the bindings' {@linkplain TemplateBinding#getParameterSubstitutions()
+	 * parameter substitutions} within a bound element. The template bindings
+	 * are then destroyed as it is effectively replaced by a realization of the
+	 * template; this is in many ways similar to the way that the
+	 * {@link PackageMerger} works to effect a
+	 * {@link org.eclipse.uml2.uml.Package}'s {@link PackageMerge}s.
+	 * 
+	 * @since 4.2
+	 */
+	public static class TemplateExpander
+			extends PackageMerger {
+
+		private static final long serialVersionUID = 1L;
+
+		/**
+		 * The option for handling cases where a template binding does not have
+		 * a substitution for some parameter and that parameter does not have a
+		 * default substitution. Supported choices are {@code OPTION__IGNORE}
+		 * and {@code OPTION__REPORT}.
+		 */
+		public static final String OPTION__MISSING_PARAMETER_SUBSTITUTIONS = "MISSING_PARAMETER_SUBSTITUTIONS"; //$NON-NLS-1$
+
+		private static final int DIAGNOSTIC_CODE_OFFSET = 4000;
+
+		/**
+		 * The diagnostic code for cases where parameter substitutions are
+		 * missing.
+		 */
+		public static final int MISSING_PARAMETER_SUBSTITUTION = DIAGNOSTIC_CODE_OFFSET + 1;
+
+		protected TemplateBinding binding;
+
+		protected Map<ParameterableElement, ParameterableElement> substitutionMap = new java.util.HashMap<ParameterableElement, ParameterableElement>();
+
+		protected TemplateParameterSubstitution findSubstitution(
+				TemplateParameter templateParameter) {
+
+			TemplateParameterSubstitution result = null;
+
+			for (TemplateParameterSubstitution substitution : binding
+				.getParameterSubstitutions()) {
+
+				if (substitution.getFormal() == templateParameter) {
+					result = substitution;
+					break;
+				}
+			}
+
+			return result;
+		}
+
+		protected ParameterableElement getSubstitution(
+				ParameterableElement parameterableElement) {
+
+			ParameterableElement result = substitutionMap
+				.get(parameterableElement);
+
+			if (result == null) {
+				TemplateParameter parameter = parameterableElement
+					.getTemplateParameter();
+
+				if (parameter != null) {
+					// it's exposed as a template parameter. Substitute it
+					TemplateParameterSubstitution substitution = findSubstitution(parameter);
+					if (substitution != null) {
+						result = substitution.getActual();
+						substitutionMap.put(parameterableElement, result);
+					} else {
+						// look for a default
+						result = parameter.getDefault();
+						if (result != null) {
+							substitutionMap.put(parameterableElement, result);
+						}
+					}
+				}
+			}
+
+			return result;
+		}
+
+		protected void mergeNamedElement_Name(
+				NamedElement receivingNamedElement,
+				NamedElement mergedNamedElement) {
+
+			// only merge names if the substituting element doesn't have a name
+			// (this covers cases where the actual parameter is an object owned
+			// by the bound element and the formal parameter is likewise owned
+			// by the template, as in the UML Spec's package template example)
+			if (!receivingNamedElement.isSetName()
+				&& mergedNamedElement.isSetName()) {
+
+				receivingNamedElement.setName(mergedNamedElement.getName());
+			}
+		}
+
+		protected void mergeLiteralString_Value(
+				LiteralString receivingLiteralString,
+				LiteralString mergedLiteralString) {
+
+			// only merge string values (which may be elements of name
+			// expressions)
+			// if the substituting string doesn't have a value
+			if (!receivingLiteralString.isSetValue()
+				&& mergedLiteralString.isSetValue()) {
+
+				receivingLiteralString.setValue(mergedLiteralString.getValue());
+			}
+		}
+
+		@Override
+		protected void copyAttribute(EAttribute eAttribute, EObject eObject,
+				EObject copyEObject) {
+
+			if (eObject != copyEObject) {
+				if (copyEObject == receivingElement) {
+					return;
+				} else if (eAttribute == UMLPackage.Literals.NAMED_ELEMENT__NAME) {
+					// don't just blindly overwrite the names of objects matched
+					// in the containment-copy phase because elements owned by
+					// the template (not by its parameters) may be exposed by
+					// parameters
+					mergeNamedElement_Name((NamedElement) copyEObject,
+						(NamedElement) eObject);
+				} else if (eAttribute == UMLPackage.Literals.LITERAL_STRING__VALUE) {
+					// don't just blindly overwrite the values of strings
+					// matched
+					// in the containment-copy phase to allow substitution of
+					// string components in name expressions
+					mergeLiteralString_Value((LiteralString) copyEObject,
+						(LiteralString) eObject);
+				} else {
+					super.copyAttribute(eAttribute, eObject, copyEObject);
+				}
+			}
+		}
+
+		@Override
+		protected void copyContainment(EReference eReference, EObject eObject,
+				EObject copyEObject) {
+
+			// don't copy the template signatures that we're expanding, nor
+			// recursive bindings
+			if ((eObject != copyEObject)
+				&& (eReference != UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE)
+				&& (eReference != UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING)) {
+
+				if (eReference.isMany()) {
+					@SuppressWarnings("unchecked")
+					List<EObject> sourceList = (List<EObject>) eObject
+						.eGet(eReference);
+					@SuppressWarnings("unchecked")
+					InternalEList<EObject> targetList = (InternalEList<EObject>) copyEObject
+						.eGet(getTarget(eReference));
+
+					for (EObject childEObject : sourceList) {
+						EObject copyChildEObject = copy(childEObject);
+
+						if (childEObject != copyChildEObject) {
+							targetList.addUnique(copyChildEObject);
+						}
+					}
+				} else {
+					EObject childEObject = (EObject) eObject.eGet(eReference);
+					EObject copyChildEObject = childEObject == null
+						? null
+						: copy(childEObject);
+
+					if (childEObject != copyChildEObject) {
+						copyEObject.eSet(getTarget(eReference),
+							copyChildEObject);
+					}
+				}
+			}
+		}
+
+		@Override
+		protected EObjectMatcher getAssociationMatcher(Association association) {
+			return new ImplicitAssociationNameMatcher(association);
+		}
+		
+		@Override
+		protected EObject createCopy(EObject eObject) {
+			return new UMLSwitch<EObject>() {
+
+				@Override
+				public EObject caseParameterableElement(
+						ParameterableElement object) {
+					EObject result;
+
+					ParameterableElement substitution = getSubstitution(object);
+					if (substitution != null) {
+						// it's exposed as a template parameter. Substitute it
+						result = substitution;
+					} else {
+						result = super.caseParameterableElement(object);
+					}
+
+					return result;
+				}
+
+				@Override
+				public EObject caseTemplateableElement(
+						TemplateableElement object) {
+					EObject result = null;
+
+					if (mergedElements.contains(object)) {
+						result = receivingElement;
+					}
+
+					if (result == null) {
+						result = super.caseTemplateableElement(object);
+					}
+
+					return result;
+				}
+
+				protected EObject basicCreateCopy(EObject element) {
+					EObject result = null;
+
+					if (element instanceof ParameterableElement) {
+						ParameterableElement parameterable = (ParameterableElement) element;
+						ParameterableElement sub = getSubstitution(parameterable);
+
+						if (sub != null) {
+							result = sub;
+						}
+					}
+
+					if (result == null) {
+						result = TemplateExpander.super
+							.createCopy((EObject) element);
+					}
+
+					return result;
+				}
+
+				@Override
+				public EObject defaultCase(EObject eObject) {
+					Element baseElement = getBaseElement(eObject);
+
+					return baseElement == null
+						? basicCreateCopy(eObject)
+						: applyStereotype((Element) get(baseElement),
+							getTarget(eObject.eClass()));
+				}
+			}.doSwitch(eObject);
+		}
+
+		@Override
+		public void copyReferences() {
+			// before we copy references, now that the content trees have been
+			// merged, we can find and establish the default parameter
+			// substitution mappings that will be needed to correctly map
+			// references
+			initializeDefaultParameterSubstitutionMappings();
+
+			super.copyReferences();
+		}
+
+		private void initializeDefaultParameterSubstitutionMappings() {
+			for (TemplateableElement template : mergedElements) {
+				for (TemplateParameter parameter : template
+					.getOwnedTemplateSignature().getParameters()) {
+
+					ParameterableElement element = parameter
+						.getParameteredElement();
+
+					if ((element != null) && (parameter.getDefault() != null)) {
+						ParameterableElement sub = getSubstitution(element);
+						if (sub == null) {
+							ParameterableElement default_ = parameter
+								.getDefault();
+							EObject copy = get(default_);
+							if (copy != null) {
+								// map the parametered element to the copy of
+								// the default to effect the substitution
+								put(element, copy);
+							} else {
+								// map the parametered element to the (uncopied)
+								// default to effect the substitution
+								put(element, default_);
+							}
+						}
+					}
+				}
+			}
+		}
+
+		protected void processMissingParameterSubstitutions(
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
+
+			for (TemplateableElement template : mergedElements) {
+				for (TemplateParameter parameter : template
+					.getOwnedTemplateSignature().getParameters()) {
+
+					ParameterableElement element = parameter
+						.getParameteredElement();
+
+					if ((element != null) && (parameter.getDefault() == null)) {
+						ParameterableElement sub = getSubstitution(element);
+						if (sub == null) {
+							if (OPTION__REPORT.equals(options
+								.get(OPTION__MISSING_PARAMETER_SUBSTITUTIONS))
+								&& diagnostics != null) {
+
+								diagnostics
+									.add(new BasicDiagnostic(
+										Diagnostic.WARNING,
+										UMLValidator.DIAGNOSTIC_SOURCE,
+										MISSING_PARAMETER_SUBSTITUTION,
+										UMLPlugin.INSTANCE
+											.getString(
+												"_UI_TemplateExpander_ReportMissingParameterSubstitution_diagnostic", //$NON-NLS-1$
+												getMessageSubstitutions(
+													context, element, template)),
+										new Object[]{template, element}));
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/**
+		 * Replace named element names with (template-expanded) name expressions
+		 * where appropriate.
+		 */
+		protected void processNameExpressions() {
+			for (Iterator<?> iter = EcoreUtil.getAllContents(Collections
+				.singleton(receivingElement)); iter.hasNext();) {
+
+				Object next = iter.next();
+				if (next instanceof NamedElement) {
+					NamedElement namedElement = (NamedElement) next;
+					StringExpression sexp = namedElement.getNameExpression();
+					if (sexp != null) {
+						namedElement.setName(sexp.stringValue());
+						sexp.destroy();
+					}
+				}
+			}
+		}
+
+		@Override
+		protected void processOptions(Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
+
+			// this is not optional
+			processNameExpressions();
+
+			if (!OPTION__IGNORE.equals(options
+				.get(OPTION__MISSING_PARAMETER_SUBSTITUTIONS))) {
+
+				processMissingParameterSubstitutions(options, diagnostics,
+					context);
+			}
+
+			super.processOptions(options, diagnostics, context);
+		}
+
+		@Override
+		protected void cleanupMergeRelationships() {
+			super.cleanupMergeRelationships();
+
+			binding.destroy();
+		}
+
+		private void initializeParameteredElementMappings() {
+			TemplateSignature signature = binding.getSignature();
+
+			if (signature != null) {
+				for (TemplateParameter parameter : signature.getParameters()) {
+
+					ParameterableElement element = parameter
+						.getParameteredElement();
+
+					if (element != null) {
+						ParameterableElement sub = getSubstitution(element);
+						if (sub != null) {
+							put(element, sub);
+						} // defaults handled before copy-references step
+					}
+				}
+			}
+		}
+
+		protected Map<EObject, List<EObject>> expand(TemplateBinding binding,
+				TemplateableElement receivingElement,
+				final Map<String, String> options,
+				final DiagnosticChain diagnostics,
+				final Map<Object, Object> context) {
+
+			this.binding = binding;
+
+			// initialize some mappings for the parameter substitutions
+			initializeParameteredElementMappings();
+
+			TemplateableElement template = binding.getSignature().getTemplate();
+			return merge(receivingElement, Collections.singleton(template),
+				options, diagnostics, context);
+		}
+
+		public Map<EObject, List<EObject>> expand(
+				TemplateableElement boundElement,
+				final Map<String, String> options,
+				final DiagnosticChain diagnostics,
+				final Map<Object, Object> context) {
+
+			if (boundElement.getTemplateBindings().size() == 1) {
+				// the nice case: only binding one template
+				TemplateBinding binding = boundElement.getTemplateBindings()
+					.get(0);
+				return expand(binding, binding.getBoundElement(), options,
+					diagnostics, context);
+			} else {
+				// apply the UML rules for multiple template bindings
+
+				// copy the bindings because we destroy them as we go
+				final List<TemplateBinding> bindings = new java.util.ArrayList<TemplateBinding>(
+					boundElement.getTemplateBindings());
+
+				return new UMLSwitch<Map<EObject, List<EObject>>>() {
+
+					private Map<EObject, List<EObject>> merge(
+							Map<EObject, List<EObject>> result,
+							Map<EObject, List<EObject>> map) {
+						for (Map.Entry<EObject, List<EObject>> next : map
+							.entrySet()) {
+							List<EObject> list = result.get(next.getKey());
+							if (list == null) {
+								result.put(
+									next.getKey(),
+									new java.util.ArrayList<EObject>(next
+										.getValue()));
+							} else {
+								list.addAll(next.getValue());
+							}
+						}
+
+						return result;
+					}
+
+					@Override
+					public Map<EObject, List<EObject>> caseTemplateableElement(
+							TemplateableElement object) {
+
+						// TODO: UML does not specify how to handle multiple
+						// bindings of StringExpressions and Operations, so
+						// just process the first binding for now
+						return expand(bindings.get(0), object, options,
+							diagnostics, context);
+					}
+
+					@Override
+					public Map<EObject, List<EObject>> caseClassifier(
+							Classifier object) {
+						// UML specifies that we create intermediate expansions
+						// and specialize each
+						for (TemplateBinding binding : bindings) {
+							Classifier intermediate = (Classifier) EcoreUtil
+								.create(object.eClass());
+
+							// have to use a distinct template-expander for each
+							// because multiple bindings to the same template
+							// are allowed and an EcoreUtil.Copier can only copy
+							// an element once
+							merge(resultingToMergedEObjectMap,
+								new TemplateExpander()
+									.expand(binding, intermediate, options,
+										diagnostics, context));
+
+							// add the intermediate result to the model
+							addAnonymousGeneral(intermediate, object);
+						}
+
+						return resultingToMergedEObjectMap;
+					}
+
+					private void addAnonymousGeneral(final Classifier general,
+							Classifier special) {
+						Classifier added = new UMLSwitch<Classifier>() {
+
+							@Override
+							public Classifier caseClassifier(Classifier object) {
+								// cop out
+								object.getNearestPackage()
+									.getPackagedElements().add(general);
+								return general;
+							}
+
+							@Override
+							public Classifier caseClass(
+									org.eclipse.uml2.uml.Class object) {
+								object.getNestedClassifiers().add(general);
+								return general;
+							}
+
+							@Override
+							public Classifier caseInterface(Interface object) {
+								object.getNestedClassifiers().add(general);
+								return general;
+							}
+						}.doSwitch(special);
+						added.unsetName(); // make sure it's anonymous
+						special.createGeneralization(general); // specialize it
+					}
+
+					@Override
+					public Map<EObject, List<EObject>> casePackage(
+							org.eclipse.uml2.uml.Package object) {
+						// UML specifies that we create intermediate expansions
+						// and merge each. But because we are a package merger,
+						// we can optimize out the intermediate packages
+
+						for (TemplateBinding binding : bindings) {
+							org.eclipse.uml2.uml.Package intermediate = (org.eclipse.uml2.uml.Package) EcoreUtil
+								.create(object.eClass());
+
+							// have to use a distinct template-expander for each
+							// because multiple bindings to the same template
+							// are allowed and an EcoreUtil.Copier can only copy
+							// an element once
+							merge(resultingToMergedEObjectMap,
+								new TemplateExpander()
+									.expand(binding, intermediate, options,
+										diagnostics, context));
+
+							// merge the intermediate result
+							object.createPackageMerge(intermediate);
+						}
+
+						// merge the intermediate results (this is a *real*
+						// package merge)
+						merge(resultingToMergedEObjectMap, new PackageMerger() {
+
+							private static final long serialVersionUID = 1L;
+
+							@Override
+							protected EObjectMatcher getAssociationMatcher(
+									Association association) {
+								return new ImplicitAssociationNameMatcher(
+									association);
+							}
+						}.merge(object, options, diagnostics, context));
+
+						return resultingToMergedEObjectMap;
+					}
+				}.doSwitch(boundElement);
+			}
 		}
 	}
 
@@ -2219,7 +2926,8 @@ public class UMLUtil
 			}
 		}
 
-		private static final boolean DEBUG = false;
+		private static final boolean DEBUG = Boolean
+			.getBoolean(UML2EcoreConverter.class.getName() + ".DEBUG"); //$NON-NLS-1$
 
 		/**
 		 * The option for handling cases where an Ecore tagged value is
@@ -10179,6 +10887,14 @@ public class UMLUtil
 			org.eclipse.uml2.uml.Package package_,
 			Map<String, String> options) {
 
+		options = defaultPackageMergeOptions(options, OPTION__IGNORE);
+
+		return merge(package_, options, null, null);
+	}
+
+	private static Map<String, String> defaultPackageMergeOptions(
+			Map<String, String> options, String defaultValue) {
+
 		if (options == null) {
 			options = new HashMap<String, String>();
 		}
@@ -10187,53 +10903,53 @@ public class UMLUtil
 			.containsKey(PackageMerger.OPTION__DIFFERENT_PROPERTY_STATICITY)) {
 
 			options.put(PackageMerger.OPTION__DIFFERENT_PROPERTY_STATICITY,
-				OPTION__IGNORE);
+				defaultValue);
 		}
 
 		if (!options
 			.containsKey(PackageMerger.OPTION__DIFFERENT_PROPERTY_UNIQUENESS)) {
 
 			options.put(PackageMerger.OPTION__DIFFERENT_PROPERTY_UNIQUENESS,
-				OPTION__IGNORE);
+				defaultValue);
 		}
 
 		if (!options
 			.containsKey(PackageMerger.OPTION__REDUNDANT_GENERALIZATIONS)) {
 
 			options.put(PackageMerger.OPTION__REDUNDANT_GENERALIZATIONS,
-				OPTION__IGNORE);
+				defaultValue);
 		}
 
 		if (!options.containsKey(PackageMerger.OPTION__IMPLICIT_REDEFINITIONS)) {
 			options.put(PackageMerger.OPTION__IMPLICIT_REDEFINITIONS,
-				OPTION__IGNORE);
+				defaultValue);
 		}
 
 		if (!options.containsKey(PackageMerger.OPTION__INVALID_REDEFINITIONS)) {
 			options.put(PackageMerger.OPTION__INVALID_REDEFINITIONS,
-				OPTION__IGNORE);
+				defaultValue);
 		}
 
 		if (!options.containsKey(PackageMerger.OPTION__INVALID_SUBSETS)) {
-			options.put(PackageMerger.OPTION__INVALID_SUBSETS, OPTION__IGNORE);
+			options.put(PackageMerger.OPTION__INVALID_SUBSETS, defaultValue);
 		}
 
 		if (!options.containsKey(PackageMerger.OPTION__EMPTY_UNIONS)) {
-			options.put(PackageMerger.OPTION__EMPTY_UNIONS, OPTION__IGNORE);
+			options.put(PackageMerger.OPTION__EMPTY_UNIONS, defaultValue);
 		}
 
 		if (!options
 			.containsKey(PackageMerger.OPTION__ASSOCIATION_SPECIALIZATIONS)) {
 
 			options.put(PackageMerger.OPTION__ASSOCIATION_SPECIALIZATIONS,
-				OPTION__IGNORE);
+				defaultValue);
 		}
 
 		if (!options.containsKey(PackageMerger.OPTION__CAPABILITIES)) {
-			options.put(PackageMerger.OPTION__CAPABILITIES, OPTION__IGNORE);
+			options.put(PackageMerger.OPTION__CAPABILITIES, defaultValue);
 		}
 
-		return merge(package_, options, null, null);
+		return options;
 	}
 
 	/**
@@ -10257,61 +10973,81 @@ public class UMLUtil
 			Map<String, String> options, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 
-		if (options == null) {
-			options = new HashMap<String, String>();
-		}
-
-		if (!options
-			.containsKey(PackageMerger.OPTION__DIFFERENT_PROPERTY_STATICITY)) {
-
-			options.put(PackageMerger.OPTION__DIFFERENT_PROPERTY_STATICITY,
-				OPTION__REPORT);
-		}
-
-		if (!options
-			.containsKey(PackageMerger.OPTION__DIFFERENT_PROPERTY_UNIQUENESS)) {
-
-			options.put(PackageMerger.OPTION__DIFFERENT_PROPERTY_UNIQUENESS,
-				OPTION__REPORT);
-		}
-
-		if (!options
-			.containsKey(PackageMerger.OPTION__REDUNDANT_GENERALIZATIONS)) {
-
-			options.put(PackageMerger.OPTION__REDUNDANT_GENERALIZATIONS,
-				OPTION__REPORT);
-		}
-
-		if (!options.containsKey(PackageMerger.OPTION__IMPLICIT_REDEFINITIONS)) {
-			options.put(PackageMerger.OPTION__IMPLICIT_REDEFINITIONS,
-				OPTION__REPORT);
-		}
-
-		if (!options.containsKey(PackageMerger.OPTION__INVALID_REDEFINITIONS)) {
-			options.put(PackageMerger.OPTION__INVALID_REDEFINITIONS,
-				OPTION__REPORT);
-		}
-
-		if (!options.containsKey(PackageMerger.OPTION__INVALID_SUBSETS)) {
-			options.put(PackageMerger.OPTION__INVALID_SUBSETS, OPTION__REPORT);
-		}
-
-		if (!options.containsKey(PackageMerger.OPTION__EMPTY_UNIONS)) {
-			options.put(PackageMerger.OPTION__EMPTY_UNIONS, OPTION__REPORT);
-		}
-
-		if (!options
-			.containsKey(PackageMerger.OPTION__ASSOCIATION_SPECIALIZATIONS)) {
-
-			options.put(PackageMerger.OPTION__ASSOCIATION_SPECIALIZATIONS,
-				OPTION__REPORT);
-		}
-
-		if (!options.containsKey(PackageMerger.OPTION__CAPABILITIES)) {
-			options.put(PackageMerger.OPTION__CAPABILITIES, OPTION__REPORT);
-		}
+		options = defaultPackageMergeOptions(options, OPTION__REPORT);
 
 		return new PackageMerger().merge(package_, options, diagnostics, context);
+	}
+
+	/**
+	 * Applies all of the {@linkplain TemplateableElement#getTemplateBindings()
+	 * template bindings} of an element, copying the structure of the templates
+	 * that it binds to and applying parameter substitutions. If a supported
+	 * option is not specified, it will be defaulted to
+	 * <code>OPTION__IGNORE</code>.
+	 * 
+	 * @param templateableElement
+	 *            The templateable element to expand by applying its bound
+	 *            templates
+	 * @param options
+	 *            The options to use.
+	 * @return A traceability map from resulting elements to template elements.
+	 * 
+	 * @since 4.2
+	 */
+	public static Map<EObject, List<EObject>> expand(
+			TemplateableElement templateableElement, Map<String, String> options) {
+
+		options = defaultPackageMergeOptions(options, OPTION__IGNORE);
+
+		if (!options
+			.containsKey(TemplateExpander.OPTION__MISSING_PARAMETER_SUBSTITUTIONS)) {
+			options.put(
+				TemplateExpander.OPTION__MISSING_PARAMETER_SUBSTITUTIONS,
+				OPTION__IGNORE);
+		}
+
+		return expand(templateableElement, options, null, null);
+	}
+
+	/**
+	 * Applies all of the {@linkplain TemplateableElement#getTemplateBindings()
+	 * template bindings} of an element, copying the structure of the templates
+	 * that it binds to and applying parameter substitutions. If a supported
+	 * option is not specified, it will be defaulted to
+	 * <code>OPTION__REPORT</code>.
+	 * 
+	 * @param boundElement
+	 *            The bound element to expand by applying its templates
+	 * @param options
+	 *            The options to use.
+	 * @param diagnostics
+	 *            The chain of diagnostics to which problems are to be appended.
+	 * @param context
+	 *            The cache of context-specific information.
+	 * @return A traceability map from resulting elements to template elements.
+	 * 
+	 * @since 4.2
+	 */
+	public static Map<EObject, List<EObject>> expand(
+			TemplateableElement boundElement,
+			Map<String, String> options, final DiagnosticChain diagnostics,
+			final Map<Object, Object> context) {
+
+		options = defaultPackageMergeOptions(options, OPTION__REPORT);
+
+		if (!options
+			.containsKey(TemplateExpander.OPTION__MISSING_PARAMETER_SUBSTITUTIONS)) {
+			options.put(
+				TemplateExpander.OPTION__MISSING_PARAMETER_SUBSTITUTIONS,
+				OPTION__REPORT);
+		}
+
+		// we're not really doing a package merge, so forget processing the
+		// "capabilities"
+		options.put(PackageMerger.OPTION__CAPABILITIES, OPTION__IGNORE);
+
+		return new TemplateExpander().expand(boundElement, options,
+			diagnostics, context);
 	}
 
 	/**

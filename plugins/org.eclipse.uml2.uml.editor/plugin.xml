@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 
 <!--
- Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, CEA, and others.
  All rights reserved.   This program and the accompanying materials
  are made available under the terms of the Eclipse Public License v1.0
  which accompanies this distribution, and is available at
@@ -11,8 +11,8 @@
  Contributors:
    IBM - initial API and implementation
    Kenn Hussey (Embarcadero Technologies) - 156879, 204200
+   Christian W. Damus (CEA) - 180744
 
- $Id: plugin.xml,v 1.13 2008/04/21 13:27:42 khussey Exp $
 -->
 
 <plugin>
@@ -175,6 +175,18 @@
          id="org.eclipse.uml2.uml.editor.ElementMenuID">
         <separator name="additions"/>
       </menu>
+      <action
+         label="%_UI_ExpandTemplatesAction_label"
+         class="org.eclipse.uml2.uml.editor.actions.ExpandTemplatesAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.uml.editor.ElementMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.uml.editor.ExpandTemplatesActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.TemplateableElement">
+          </objectClass>
+        </enablement>
+      </action>
       <action
          label="%_UI_UnapplyStereotypeAction_label"
          class="org.eclipse.uml2.uml.editor.actions.UnapplyStereotypeAction"
