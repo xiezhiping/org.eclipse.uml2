@@ -25,6 +25,7 @@
     <details key="SUPER_CLASS_ORDER" value="PROCESS"/>
     <details key="VALIDATION_DELEGATES" value="IGNORE"/>
     <details key="INVOCATION_DELEGATES" value="IGNORE"/>
+    <details key="UNTYPED_PROPERTIES" value="REPORT"/>
   </genAnnotations>
   <foreignModel>Types.merged.uml</foreignModel>
   <genPackages xsi:type="genmodel:GenPackage" prefix="Types" basePackage="org.eclipse.uml2"

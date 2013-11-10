@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
- *   Kenn Hussey - (CEA) - 400546
+ *   Kenn Hussey - (CEA) - 400546, 414970
  *
  */
 package org.eclipse.uml2.uml.profile.l2.internal.impl;
@@ -1534,7 +1534,7 @@ public class L2PackageImpl
 	 * @generated
 	 */
 	protected void createDuplicatesAnnotations() {
-		String source = "duplicates"; //$NON-NLS-1$															
+		String source = "duplicates"; //$NON-NLS-1$	
 		addAnnotation(documentEClass, source, new String[]{});
 		addAnnotation(executableEClass, source, new String[]{});
 		addAnnotation(libraryEClass, source, new String[]{});
