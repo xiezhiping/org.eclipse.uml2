@@ -9,10 +9,11 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 398462
  *   Christian W. Damus (CEA) - 398462
- *   Kenn Hussey (CEA) - 212765, 403365
+ *   Kenn Hussey (CEA) - 212765, 403365, 420938
  */
 package org.eclipse.uml2.common.util;
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.ListIterator;
 
@@ -191,6 +192,16 @@ public class UnionEObjectEList<E>
 	@Override
 	public void addUnique(int index, E object) {
 		// do nothing
+	}
+
+	@Override
+	public boolean addAllUnique(int index, Collection<? extends E> collection) {
+		return false;
+	}
+
+	@Override
+	public E move(int targetIndex, int sourceIndex) {
+		return null;
 	}
 
 }
