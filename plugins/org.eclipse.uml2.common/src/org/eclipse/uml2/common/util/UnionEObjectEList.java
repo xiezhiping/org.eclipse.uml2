@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 398462
  *   Christian W. Damus (CEA) - 398462
- *   Kenn Hussey (CEA) - 212765, 403365, 420938
+ *   Kenn Hussey (CEA) - 212765, 403365, 420938, 421756
  */
 package org.eclipse.uml2.common.util;
 
@@ -201,6 +201,11 @@ public class UnionEObjectEList<E>
 
 	@Override
 	public E move(int targetIndex, int sourceIndex) {
+		return null;
+	}
+
+	@Override
+	public E remove(int index) {
 		return null;
 	}
 
