@@ -209,4 +209,9 @@ public class UnionEObjectEList<E>
 		return null;
 	}
 
+	@Override
+	public boolean addAllUnique(Collection<? extends E> collection) {
+		return false;
+	}
+
 }
