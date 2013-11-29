@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744
  *
@@ -61,6 +61,7 @@ import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreSwitch;
@@ -10486,6 +10487,21 @@ public class UMLUtil
 		return null;
 	}
 
+	protected static Element getNearestBaseElement(EObject eObject,
+			boolean resolve) {
+		Element baseElement = null;
+
+		for (EObject container = eObject; container != null
+			&& (baseElement = getBaseElement(container)) == null;) {
+
+			container = resolve
+				? container.eContainer()
+				: ((InternalEObject) container).eInternalContainer();
+		}
+
+		return baseElement;
+	}
+
 	protected static Element getBaseElement(EClass definition,
 			EObject stereotypeApplication) {
 
@@ -10669,13 +10685,17 @@ public class UMLUtil
 			boolean resolve) {
 		Element owningElement = null;
 
-		for (Element owner = element; ((owningElement = (Element) owner.eGet(
-			UMLPackage.Literals.ELEMENT__OWNER, resolve)) == null
-			? owner = owningElement = getBaseElement(owner.eContainer())
-			: owningElement) != null
-			&& !(eClass.isInstance(owningElement));) {
+		for (Element owner = element; !eClass.isInstance(owningElement)
+			&& owner != null;) {
 
-			owner = owner.getOwner();
+			owningElement = (Element) owner.eGet(
+				UMLPackage.Literals.ELEMENT__OWNER, resolve);
+
+			owner = owningElement == null
+				? getNearestBaseElement(resolve
+					? owner.eContainer()
+					: ((InternalEObject) owner).eInternalContainer(), resolve)
+				: owningElement;
 		}
 
 		return owningElement;

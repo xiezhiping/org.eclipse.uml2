@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 CEA and others.
+ * Copyright (c) 2011, 2013 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 414970
  *
  */
 package org.eclipse.uml2.uml.profile.l2.internal.impl;
@@ -111,6 +112,20 @@ public class DocumentImpl
 	 */
 	public boolean isSetBase_Artifact() {
 		return base_Artifact != null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case L2Package.DOCUMENT__BASE_ARTIFACT :
+				return isSetBase_Artifact();
+		}
+		return super.eIsSet(featureID);
 	}
 
 } //DocumentImpl

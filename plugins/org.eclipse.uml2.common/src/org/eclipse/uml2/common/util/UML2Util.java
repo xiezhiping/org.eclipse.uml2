@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 247980
  *   Keith Campbell (IBM) - 343783
- *   Kenn Hussey (CEA) - 316165, 322715, 212765
+ *   Kenn Hussey (CEA) - 316165, 322715, 212765, 421756
  *
  */
 package org.eclipse.uml2.common.util;
@@ -1146,17 +1146,16 @@ public class UML2Util {
 				&& eObject.eIsSet(eReference)) {
 
 				if (eReference.isMany()) {
+					List<?> values = (List<?>) eObject.eGet(eReference);
 
-					for (Iterator<?> values = ((List<?>) eObject
-						.eGet(eReference)).iterator(); values.hasNext();) {
-
-						Object value = values.next();
+					for (int i = 0; i < values.size(); i++) {
+						Object value = values.get(i);
 
 						if (ancestorEObject == null
 							|| !EcoreUtil.isAncestor(ancestorEObject,
 								(EObject) value)) {
 
-							values.remove();
+							values.remove(i);
 						}
 					}
 				} else {
