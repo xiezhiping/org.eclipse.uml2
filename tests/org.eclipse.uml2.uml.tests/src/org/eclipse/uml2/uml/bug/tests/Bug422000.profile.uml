@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML">
+  <uml:Profile xmi:id="_7XA_UB6wEeKf5s7PWuyytw" name="TestProfile421819" metaclassReference="_G4S1cFBzEeOu1oMbyTJd6Q">
+    <elementImport xmi:id="_G4S1cFBzEeOu1oMbyTJd6Q">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_LSrx0B6xEeKf5s7PWuyytw" name="SomeStereotype">
+      <ownedAttribute xmi:id="_jJen0h6xEeKf5s7PWuyytw" name="base_Class" association="_jJen0B6xEeKf5s7PWuyytw">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_I71pIE-EEeOcSoDn2gBHuQ" name="stereotypeToMetaClass" type="_gNaHoE-DEeOcSoDn2gBHuQ" aggregation="composite" association="_I70bAE-EEeOcSoDn2gBHuQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_I74scE-EEeOcSoDn2gBHuQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_I74scU-EEeOcSoDn2gBHuQ" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_jJen0B6xEeKf5s7PWuyytw" name="Class_SomeStereotype" memberEnd="_jJen0R6xEeKf5s7PWuyytw _jJen0h6xEeKf5s7PWuyytw">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_jJen0R6xEeKf5s7PWuyytw" name="extension_SomeStereotype" type="_LSrx0B6xEeKf5s7PWuyytw" aggregation="composite" association="_jJen0B6xEeKf5s7PWuyytw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_gNaHoE-DEeOcSoDn2gBHuQ" name="SomeMetaClass">
+      <ownedAttribute xmi:id="_IUd4gFBzEeOu1oMbyTJd6Q" name="metaClassToUMLClass" aggregation="composite" association="_IUcDUFBzEeOu1oMbyTJd6Q">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IUefkFBzEeOu1oMbyTJd6Q"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IUefkVBzEeOu1oMbyTJd6Q" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_I70bAE-EEeOcSoDn2gBHuQ" name="" memberEnd="_I71CEE-EEeOcSoDn2gBHuQ _I71pIE-EEeOcSoDn2gBHuQ">
+      <ownedEnd xmi:id="_I71CEE-EEeOcSoDn2gBHuQ" name="someStereotype" type="_LSrx0B6xEeKf5s7PWuyytw" association="_I70bAE-EEeOcSoDn2gBHuQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_I71CEU-EEeOcSoDn2gBHuQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_I71CEk-EEeOcSoDn2gBHuQ" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_IUcDUFBzEeOu1oMbyTJd6Q" name="" memberEnd="_IUcqYFBzEeOu1oMbyTJd6Q _IUd4gFBzEeOu1oMbyTJd6Q" navigableOwnedEnd="_IUcqYFBzEeOu1oMbyTJd6Q">
+      <ownedEnd xmi:id="_IUcqYFBzEeOu1oMbyTJd6Q" name="someMetaClass" type="_gNaHoE-DEeOcSoDn2gBHuQ" association="_IUcDUFBzEeOu1oMbyTJd6Q">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IUcqYVBzEeOu1oMbyTJd6Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IUcqYlBzEeOu1oMbyTJd6Q" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+  </uml:Profile>
+</xmi:XMI>
