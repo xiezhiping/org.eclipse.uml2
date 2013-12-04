@@ -13,22 +13,33 @@
 package org.eclipse.uml2.uml.bug.tests;
 
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.InstanceValue;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.OperationOwner;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.TemplateableElement;
@@ -36,6 +47,9 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.tests.util.StandaloneSupport;
 import org.eclipse.uml2.uml.util.UMLUtil;
+import org.eclipse.uml2.uml.util.UMLValidator;
+import org.eclipse.uml2.uml.util.UMLUtil.PackageMerger;
+import org.eclipse.uml2.uml.util.UMLUtil.TemplateExpander;
 
 /**
  * Tests the template expander utility.
@@ -224,6 +238,48 @@ public class Bug180744Test
 		assertEquals("Limited", car.getAppliedStereotypes().get(0).getName());
 	}
 
+	public void testMissingParameterSubstitutions() {
+		BasicDiagnostic diagnostic = new BasicDiagnostic();
+
+		Class badCollection = expand(getClass("BadCollection"), diagnostic);
+
+		// default enum literal substitution
+		assertCollectionKind(badCollection, "bag");
+
+		// contents are copied, but with the unsubstituted template parameter
+		Class template = getClass("Collection");
+		Classifier parameterE = (Classifier) template
+			.getOwnedTemplateSignature().getParameters().get(0)
+			.getOwnedParameteredElement();
+		assertOperation(badCollection, "remove", "element", parameterE);
+
+		// but there was no substitution for E
+		assertDiagnostic(diagnostic,
+			TemplateExpander.MISSING_PARAMETER_SUBSTITUTION);
+	}
+
+	public void testUsualMergeCapabilityTracesPackage() {
+		Package rentalSystem = expand(getPackage("rental system"));
+
+		Package system = getPackage("system");
+
+		// a parametered element
+		Class car = getClass(rentalSystem, "Car");
+		assertCapabilityTrace(rentalSystem, system, car);
+
+		// not a parametered element
+		Class request = getClass(rentalSystem, "Request");
+		assertCapabilityTrace(rentalSystem, system, request);
+	}
+
+	public void testUsualMergeCapabilityTracesClassifier() {
+		Class listOfBars = expand(getClass("ListOfBars"));
+		Class collection = getClass("Collection");
+
+		Operation remove = getOperation(listOfBars, "remove");
+		assertCapabilityTrace(listOfBars, collection, remove);
+	}
+
 	//
 	// Test framework
 	//
@@ -274,10 +330,35 @@ public class Bug180744Test
 			URI.createURI(url.toExternalForm()), UMLPackage.Literals.PACKAGE);
 	}
 
+	Operation getOperation(OperationOwner owner, String name) {
+		return owner.getOwnedOperation(name, null, null);
+	}
+
 	<T extends TemplateableElement> T expand(T boundElement) {
 		assertFalse(boundElement.getTemplateBindings().isEmpty());
 
-		UMLUtil.expand(boundElement, null);
+		Map<String, String> options = new HashMap<String, String>();
+		options
+			.put(PackageMerger.OPTION__CAPABILITIES, UMLUtil.OPTION__PROCESS);
+
+		UMLUtil.expand(boundElement, options);
+
+		assertExpanded(boundElement);
+
+		return boundElement;
+	}
+
+	<T extends TemplateableElement> T expand(T boundElement,
+			DiagnosticChain diagnostics) {
+		assertFalse(boundElement.getTemplateBindings().isEmpty());
+
+		Map<String, String> options = new HashMap<String, String>();
+		options
+			.put(PackageMerger.OPTION__CAPABILITIES, UMLUtil.OPTION__PROCESS);
+		options.put(TemplateExpander.OPTION__MISSING_PARAMETER_SUBSTITUTIONS,
+			UMLUtil.OPTION__REPORT);
+
+		UMLUtil.expand(boundElement, options, diagnostics, null);
 
 		assertExpanded(boundElement);
 
@@ -340,5 +421,33 @@ public class Bug180744Test
 		}
 
 		assertNotNull(found);
+	}
+
+	void assertCapabilityTrace(Element receivingElement,
+			NamedElement capability,
+			Element capabilityElement) {
+
+		EAnnotation annotation = receivingElement
+			.getEAnnotation(UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI);
+		assertNotNull(annotation);
+
+		annotation = annotation.getEAnnotation(capability.getQualifiedName());
+		assertNotNull(annotation);
+
+		if (capabilityElement == null) {
+			assertTrue(annotation.getReferences().contains(capabilityElement));
+		}
+	}
+
+	void assertDiagnostic(Diagnostic diagnostics, int code) {
+		for (Diagnostic child : diagnostics.getChildren()) {
+			if (UMLValidator.DIAGNOSTIC_SOURCE.equals(child.getSource())
+				&& (child.getCode() == code)) {
+				// found it
+				return;
+			}
+		}
+
+		fail("Did not find diagnostic with code " + code);
 	}
 }

@@ -66,6 +66,12 @@
         <parameterSubstitution xmi:id="_CBLLATwmEeOUNYI2YyBb_w" actual="_HrrLIDvjEeOFiu2NN-JcQw" formal="_CfvuQDviEeOFiu2NN-JcQw"/>
       </templateBinding>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_FqpWIF0iEeObf6rVMEHl7g" name="BadCollection">
+      <ownedComment xmi:id="_FqpWIV0iEeObf6rVMEHl7g">
+        <body>The non-defaulted E parameter is unbound</body>
+      </ownedComment>
+      <templateBinding xmi:id="_FqpWIl0iEeObf6rVMEHl7g" signature="_9OTCwDvhEeOFiu2NN-JcQw"/>
+    </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="__u0QMDwMEeO4Rq2NI2kHpA" name="system">
       <ownedTemplateSignature xmi:id="_EabNQDwZEeO4Rq2NI2kHpA" parameter="_GcWowDwZEeO4Rq2NI2kHpA _LI3bMDwZEeO4Rq2NI2kHpA _BJFoMDzxEeOkQ_NYnvAgYw _VqNi4DzxEeOkQ_NYnvAgYw">
         <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_GcWowDwZEeO4Rq2NI2kHpA" parameteredElement="_Fnn2oDwNEeO4Rq2NI2kHpA"/>

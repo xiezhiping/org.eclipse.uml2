@@ -2071,13 +2071,10 @@ public class UMLUtil
 				.entrySet()) {
 				EObject resultingEObject = entry.getKey();
 
-				if (resultingEObject instanceof RedefinableElement) {
-					org.eclipse.uml2.uml.Package resultingPackage = ((RedefinableElement) resultingEObject)
-						.getNearestPackage();
-
+				NamedElement receivingElement = getReceivingElement(resultingEObject);
+				if (receivingElement != null) {
 					for (EObject mergedEObject : entry.getValue()) {
-						org.eclipse.uml2.uml.Package mergedPackage = ((Element) mergedEObject)
-							.getNearestPackage();
+						NamedElement capabilityElement = getCapability((Element) mergedEObject);
 
 						if (OPTION__PROCESS.equals(options
 							.get(OPTION__CAPABILITIES))) {
@@ -2093,22 +2090,25 @@ public class UMLUtil
 												"_UI_PackageMerger_ProcessCapability_diagnostic", //$NON-NLS-1$
 												getMessageSubstitutions(
 													context, resultingEObject,
-													mergedPackage)),
+													capabilityElement)),
 										new Object[]{resultingEObject,
-											mergedPackage}));
+											capabilityElement}));
 							}
 
 							EAnnotation eAnnotation = getEAnnotation(
-								getEAnnotation(resultingPackage,
+								getEAnnotation(receivingElement,
 									UML2_UML_PACKAGE_2_0_NS_URI, true),
-								mergedPackage.getQualifiedName(), true);
+								capabilityElement.getQualifiedName(), true);
 
 							eAnnotation.getReferences().add(resultingEObject);
 
-							if (!UML2Util.isEmpty(mergedPackage.getURI())) {
-								eAnnotation.getDetails().put(
-									ANNOTATION_DETAIL__URI,
-									mergedPackage.getURI());
+							if (capabilityElement instanceof org.eclipse.uml2.uml.Package) {
+								org.eclipse.uml2.uml.Package mergedPackage = (org.eclipse.uml2.uml.Package) capabilityElement;
+								if (!UML2Util.isEmpty(mergedPackage.getURI())) {
+									eAnnotation.getDetails().put(
+										ANNOTATION_DETAIL__URI,
+										mergedPackage.getURI());
+								}
 							}
 						} else if (OPTION__REPORT.equals(options
 							.get(OPTION__CAPABILITIES)) && diagnostics != null) {
@@ -2122,13 +2122,46 @@ public class UMLUtil
 										.getString(
 											"_UI_PackageMerger_ReportCapability_diagnostic", //$NON-NLS-1$
 											getMessageSubstitutions(context,
-												resultingEObject, mergedPackage)),
+												resultingEObject,
+												capabilityElement)),
 									new Object[]{resultingEObject,
-										mergedPackage}));
+										capabilityElement}));
 						}
 					}
 				}
 			}
+		}
+
+		/**
+		 * Obtains the element receiving a capability from a package merge.
+		 * 
+		 * @param resultingEObject
+		 *            an object resulting from the copy step of a package merge
+		 * 
+		 * @return the receiving element, or {@code null} if there is no merge
+		 *         receiver distinguished for this element
+		 * 
+		 * @since 4.2
+		 */
+		protected NamedElement getReceivingElement(EObject resultingEObject) {
+			return (resultingEObject instanceof RedefinableElement)
+				? ((RedefinableElement) resultingEObject).getNearestPackage()
+				: null;
+		}
+
+		/**
+		 * Obtains the element representing the capability that contributes a
+		 * merged object.
+		 * 
+		 * @param mergedEObject
+		 *            an source object from the copy step of a package merge
+		 * 
+		 * @return the capability element (never {@code null})
+		 * 
+		 * @since 4.2
+		 */
+		protected NamedElement getCapability(EObject mergedEObject) {
+			return ((Element) mergedEObject).getNearestPackage();
 		}
 
 		protected void processOptions(Map<String, String> options,
@@ -2294,11 +2327,11 @@ public class UMLUtil
 
 			updateReferences();
 
-			cleanupMergeRelationships();
-
 			if (options != null) {
 				processOptions(options, diagnostics, context);
 			}
+
+			cleanupMergeRelationships();
 
 			return resultingToMergedEObjectMap;
 		}
@@ -2649,6 +2682,68 @@ public class UMLUtil
 					}
 				}
 			}
+		}
+
+		/**
+		 * Queries the template in our scope that is or contains (recursively)
+		 * the given object. A template is one that has a signature bound by a
+		 * template binding that we are expanding.
+		 * 
+		 * @param eObject
+		 *            an object
+		 * 
+		 * @return its nearest containing template, which may be itself
+		 * 
+		 * @since 4.2
+		 */
+		@Override
+		protected NamedElement getCapability(EObject mergedEObject) {
+			for (EObject e = mergedEObject; e != null; e = e.eContainer()) {
+				if ((e instanceof TemplateableElement)
+					&& (e instanceof NamedElement)) {
+
+					TemplateableElement template = (TemplateableElement) e;
+					TemplateSignature signature = template
+						.getOwnedTemplateSignature();
+
+					if ((signature != null)
+						&& (binding.getSignature() == signature)) {
+
+						return (NamedElement) template;
+					}
+				}
+			}
+
+			return null;
+		}
+
+		/**
+		 * Queries the bound template in our scope that is or contains
+		 * (recursively) the given object. A bound template is one that has a
+		 * template binding that we are expanding.
+		 * 
+		 * @param eObject
+		 *            an object
+		 * 
+		 * @return its nearest containing bound template, which may be itself
+		 * 
+		 * @since 4.2
+		 */
+		@Override
+		protected NamedElement getReceivingElement(EObject resultingEObject) {
+			for (EObject e = resultingEObject; e != null; e = e.eContainer()) {
+				if ((e instanceof TemplateableElement)
+					&& (e instanceof NamedElement)) {
+
+					TemplateableElement template = (TemplateableElement) e;
+
+					if (template.getTemplateBindings().contains(binding)) {
+						return (NamedElement) template;
+					}
+				}
+			}
+
+			return null;
 		}
 
 		@Override
@@ -11061,10 +11156,6 @@ public class UMLUtil
 				TemplateExpander.OPTION__MISSING_PARAMETER_SUBSTITUTIONS,
 				OPTION__REPORT);
 		}
-
-		// we're not really doing a package merge, so forget processing the
-		// "capabilities"
-		options.put(PackageMerger.OPTION__CAPABILITIES, OPTION__IGNORE);
 
 		return new TemplateExpander().expand(boundElement, options,
 			diagnostics, context);
