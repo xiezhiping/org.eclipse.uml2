@@ -2070,8 +2070,8 @@ public class UMLUtil
 			for (Map.Entry<EObject, List<EObject>> entry : resultingToMergedEObjectMap
 				.entrySet()) {
 				EObject resultingEObject = entry.getKey();
-
 				NamedElement receivingElement = getReceivingElement(resultingEObject);
+
 				if (receivingElement != null) {
 					for (EObject mergedEObject : entry.getValue()) {
 						NamedElement capabilityElement = getCapability((Element) mergedEObject);
@@ -2104,6 +2104,7 @@ public class UMLUtil
 
 							if (capabilityElement instanceof org.eclipse.uml2.uml.Package) {
 								org.eclipse.uml2.uml.Package mergedPackage = (org.eclipse.uml2.uml.Package) capabilityElement;
+
 								if (!UML2Util.isEmpty(mergedPackage.getURI())) {
 									eAnnotation.getDetails().put(
 										ANNOTATION_DETAIL__URI,
@@ -2281,6 +2282,7 @@ public class UMLUtil
 		 * @since 4.2
 		 */
 		protected void cleanupMergeRelationships() {
+
 			if (isPackageMerge()) {
 				// we ran a package merge. Destroy the merge relationships
 				for (Iterator<PackageMerge> packageMerges = receivingPackage
@@ -2519,7 +2521,7 @@ public class UMLUtil
 		protected EObjectMatcher getAssociationMatcher(Association association) {
 			return new ImplicitAssociationNameMatcher(association);
 		}
-		
+
 		@Override
 		protected EObject createCopy(EObject eObject) {
 			return new UMLSwitch<EObject>() {
@@ -2528,8 +2530,8 @@ public class UMLUtil
 				public EObject caseParameterableElement(
 						ParameterableElement object) {
 					EObject result;
-
 					ParameterableElement substitution = getSubstitution(object);
+
 					if (substitution != null) {
 						// it's exposed as a template parameter. Substitute it
 						result = substitution;
@@ -2609,10 +2611,12 @@ public class UMLUtil
 
 					if ((element != null) && (parameter.getDefault() != null)) {
 						ParameterableElement sub = getSubstitution(element);
+
 						if (sub == null) {
 							ParameterableElement default_ = parameter
 								.getDefault();
 							EObject copy = get(default_);
+
 							if (copy != null) {
 								// map the parametered element to the copy of
 								// the default to effect the substitution
@@ -2633,6 +2637,7 @@ public class UMLUtil
 				Map<Object, Object> context) {
 
 			for (TemplateableElement template : mergedElements) {
+
 				for (TemplateParameter parameter : template
 					.getOwnedTemplateSignature().getParameters()) {
 
@@ -2641,7 +2646,9 @@ public class UMLUtil
 
 					if ((element != null) && (parameter.getDefault() == null)) {
 						ParameterableElement sub = getSubstitution(element);
+
 						if (sub == null) {
+
 							if (OPTION__REPORT.equals(options
 								.get(OPTION__MISSING_PARAMETER_SUBSTITUTIONS))
 								&& diagnostics != null) {
@@ -2669,13 +2676,16 @@ public class UMLUtil
 		 * where appropriate.
 		 */
 		protected void processNameExpressions() {
+
 			for (Iterator<?> iter = EcoreUtil.getAllContents(Collections
 				.singleton(receivingElement)); iter.hasNext();) {
 
 				Object next = iter.next();
+
 				if (next instanceof NamedElement) {
 					NamedElement namedElement = (NamedElement) next;
 					StringExpression sexp = namedElement.getNameExpression();
+
 					if (sexp != null) {
 						namedElement.setName(sexp.stringValue());
 						sexp.destroy();
@@ -2698,7 +2708,9 @@ public class UMLUtil
 		 */
 		@Override
 		protected NamedElement getCapability(EObject mergedEObject) {
+
 			for (EObject e = mergedEObject; e != null; e = e.eContainer()) {
+
 				if ((e instanceof TemplateableElement)
 					&& (e instanceof NamedElement)) {
 
@@ -2731,7 +2743,9 @@ public class UMLUtil
 		 */
 		@Override
 		protected NamedElement getReceivingElement(EObject resultingEObject) {
+
 			for (EObject e = resultingEObject; e != null; e = e.eContainer()) {
+
 				if ((e instanceof TemplateableElement)
 					&& (e instanceof NamedElement)) {
 
@@ -2774,6 +2788,7 @@ public class UMLUtil
 			TemplateSignature signature = binding.getSignature();
 
 			if (signature != null) {
+
 				for (TemplateParameter parameter : signature.getParameters()) {
 
 					ParameterableElement element = parameter
@@ -2781,6 +2796,7 @@ public class UMLUtil
 
 					if (element != null) {
 						ParameterableElement sub = getSubstitution(element);
+
 						if (sub != null) {
 							put(element, sub);
 						} // defaults handled before copy-references step
@@ -2829,9 +2845,12 @@ public class UMLUtil
 					private Map<EObject, List<EObject>> merge(
 							Map<EObject, List<EObject>> result,
 							Map<EObject, List<EObject>> map) {
+
 						for (Map.Entry<EObject, List<EObject>> next : map
 							.entrySet()) {
+
 							List<EObject> list = result.get(next.getKey());
+
 							if (list == null) {
 								result.put(
 									next.getKey(),
@@ -2906,6 +2925,7 @@ public class UMLUtil
 								return general;
 							}
 						}.doSwitch(special);
+
 						added.unsetName(); // make sure it's anonymous
 						special.createGeneralization(general); // specialize it
 					}
@@ -11152,6 +11172,7 @@ public class UMLUtil
 
 		if (!options
 			.containsKey(TemplateExpander.OPTION__MISSING_PARAMETER_SUBSTITUTIONS)) {
+
 			options.put(
 				TemplateExpander.OPTION__MISSING_PARAMETER_SUBSTITUTIONS,
 				OPTION__REPORT);
