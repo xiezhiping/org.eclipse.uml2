@@ -29,6 +29,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.LiteralReal;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -115,14 +116,21 @@ public class LiteralRealItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((LiteralReal) object).getName();
-		return label == null || label.length() == 0
-			? getString("_UI_LiteralReal_type") : //$NON-NLS-1$
-			getString("_UI_LiteralReal_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(
+			appendKeywords(new StringBuffer(), object), "_UI_LiteralReal_type"); //$NON-NLS-1$
+
+		LiteralReal literalReal = (LiteralReal) object;
+		String label = literalReal.getLabel(shouldTranslate());
+
+		appendString(text, !UML2Util.isEmpty(label)
+			? label
+			: literalReal.stringValue());
+
+		return text.toString();
 	}
 
 	/**

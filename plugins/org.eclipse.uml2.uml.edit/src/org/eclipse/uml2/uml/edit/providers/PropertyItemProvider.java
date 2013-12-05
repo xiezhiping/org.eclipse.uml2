@@ -337,11 +337,11 @@ public class PropertyItemProvider
 	 * This adds a property descriptor for the Default feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addDefaultPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
+			.add(new PropertyDefaultPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory)
 					.getRootAdapterFactory(),
 				getResourceLocator(),
