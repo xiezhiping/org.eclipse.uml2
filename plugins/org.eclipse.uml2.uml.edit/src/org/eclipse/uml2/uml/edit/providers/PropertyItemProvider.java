@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 208353, 205188, 215418, 204200
  *   Kenn Hussey - 323181
  *   Kenn Hussey (CEA) - 327039, 351774
+ *   Christian W. Damus (CEA) - 412912
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -341,7 +342,7 @@ public class PropertyItemProvider
 	 */
 	protected void addDefaultPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add(new PropertyDefaultPropertyDescriptor(
+			.add(new TypedElementDefaultPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory)
 					.getRootAdapterFactory(),
 				getResourceLocator(),

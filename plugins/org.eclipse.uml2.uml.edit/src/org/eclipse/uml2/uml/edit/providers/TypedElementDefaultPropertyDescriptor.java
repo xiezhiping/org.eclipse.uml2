@@ -21,7 +21,9 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -31,24 +33,28 @@ import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
+import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
 /**
- * A custom property descriptor for the <tt>Property::default</tt> attribute,
- * which creates the most appropriate value specification in
- * <tt>Property::defaultValue</tt> according to the property's current type.
+ * A custom property descriptor for the <tt>Property::default</tt> or
+ * <tt>Parameter::default</tt> attribute, which creates the most appropriate
+ * value specification in <tt>Property::defaultValue</tt> according to the
+ * property's current type.
  * 
  * @since 4.2
  */
-public class PropertyDefaultPropertyDescriptor
+public class TypedElementDefaultPropertyDescriptor
 		extends UMLItemPropertyDescriptor {
 
-	public PropertyDefaultPropertyDescriptor(AdapterFactory adapterFactory,
+	public TypedElementDefaultPropertyDescriptor(AdapterFactory adapterFactory,
 			ResourceLocator resourceLocator, String displayName,
 			String description, EStructuralFeature feature, boolean isSettable,
 			boolean multiLine, boolean sortChoices, Object staticImage,
@@ -61,15 +67,15 @@ public class PropertyDefaultPropertyDescriptor
 
 	@Override
 	public Collection<?> getChoiceOfValues(Object object) {
-		if (object instanceof Property) {
-			Property property = (Property) object;
+		if (isDefaultableTypedElement(object)) {
+			TypedElement element = (TypedElement) object;
 
-			switch (getPropertyType(property)) {
+			switch (getDefaultType(element)) {
 				case BOOLEAN :
 					return Arrays.asList(Boolean.toString(false),
 						Boolean.toString(true));
 				case ENUMERATION :
-					return getLiteralNames((Enumeration) property.getType());
+					return getLiteralNames((Enumeration) element.getType());
 				default :
 					return super.getChoiceOfValues(object);
 			}
@@ -110,26 +116,26 @@ public class PropertyDefaultPropertyDescriptor
 
 	@Override
 	public void setPropertyValue(Object object, Object value) {
-		if (object instanceof Property) {
-			Property property = (Property) object;
+		if (isDefaultableTypedElement(object)) {
+			TypedElement element = (TypedElement) object;
 			EditingDomain editingDomain = getEditingDomain(object);
 
 			if (value == null) {
 				resetPropertyValue(object);
 			} else {
-				switch (getPropertyType(property)) {
+				switch (getDefaultType(element)) {
 					case BOOLEAN :
 						if (editingDomain == null) {
-							property.setBooleanDefaultValue(Boolean
-								.parseBoolean((String) value));
+							setBooleanDefaultValue(element,
+								Boolean.parseBoolean((String) value));
 						} else {
 							editingDomain
 								.getCommandStack()
 								.execute(
 									createOperationCommand(
 										editingDomain,
-										property,
-										UMLPackage.Literals.PROPERTY___SET_BOOLEAN_DEFAULT_VALUE__BOOLEAN,
+										element,
+										getSetBooleanDefaultValueOperation(element),
 										Boolean.valueOf((String) value)));
 						}
 						break;
@@ -138,15 +144,15 @@ public class PropertyDefaultPropertyDescriptor
 							int intValue = Integer.parseInt((String) value);
 
 							if (editingDomain == null) {
-								property.setIntegerDefaultValue(intValue);
+								setIntegerDefaultValue(element, intValue);
 							} else {
 								editingDomain
 									.getCommandStack()
 									.execute(
 										createOperationCommand(
 											editingDomain,
-											property,
-											UMLPackage.Literals.PROPERTY___SET_INTEGER_DEFAULT_VALUE__INT,
+											element,
+											getSetIntegerDefaultValueOperation(element),
 											intValue));
 							}
 						} catch (NumberFormatException e) {
@@ -159,15 +165,15 @@ public class PropertyDefaultPropertyDescriptor
 								.parseDouble((String) value);
 
 							if (editingDomain == null) {
-								property.setRealDefaultValue(doubleValue);
+								setRealDefaultValue(element, doubleValue);
 							} else {
 								editingDomain
 									.getCommandStack()
 									.execute(
 										createOperationCommand(
 											editingDomain,
-											property,
-											UMLPackage.Literals.PROPERTY___SET_REAL_DEFAULT_VALUE__DOUBLE,
+											element,
+											getSetRealDefaultValueOperation(element),
 											doubleValue));
 							}
 						} catch (NumberFormatException e) {
@@ -181,16 +187,16 @@ public class PropertyDefaultPropertyDescriptor
 								: Integer.parseInt((String) value);
 
 							if (editingDomain == null) {
-								property
-									.setUnlimitedNaturalDefaultValue(naturalValue);
+								setUnlimitedNaturalDefaultValue(element,
+									naturalValue);
 							} else {
 								editingDomain
 									.getCommandStack()
 									.execute(
 										createOperationCommand(
 											editingDomain,
-											property,
-											UMLPackage.Literals.PROPERTY___SET_UNLIMITED_NATURAL_DEFAULT_VALUE__INT,
+											element,
+											getSetUnlimitedNaturalDefaultValueOperation(element),
 											naturalValue));
 							}
 						} catch (NumberFormatException e) {
@@ -200,7 +206,7 @@ public class PropertyDefaultPropertyDescriptor
 					case ENUMERATION :
 						// search for the enumeration literal
 						EnumerationLiteral literal = getLiteral(
-							(Enumeration) property.getType(), (String) value);
+							(Enumeration) element.getType(), (String) value);
 						if (literal == null) {
 							super.setPropertyValue(object, value);
 						} else {
@@ -208,17 +214,12 @@ public class PropertyDefaultPropertyDescriptor
 								.createInstanceValue();
 							instance.setInstance(literal);
 							if (editingDomain == null) {
-								property.setDefaultValue(instance);
+								setDefaultValue(element, instance);
 							} else {
-								editingDomain
-									.getCommandStack()
-									.execute(
-										SetCommand
-											.create(
-												editingDomain,
-												property,
-												UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
-												instance));
+								editingDomain.getCommandStack().execute(
+									SetCommand.create(editingDomain, element,
+										getDefaultValueFeature(element),
+										instance));
 							}
 						}
 						break;
@@ -233,13 +234,13 @@ public class PropertyDefaultPropertyDescriptor
 	}
 
 	protected Command createOperationCommand(EditingDomain editingDomain,
-			final Property property, final EOperation operation,
+			final EObject object, final EOperation operation,
 			final Object... argument) {
 		Runnable op = new Runnable() {
 
 			public void run() {
 				try {
-					property.eInvoke(operation,
+					object.eInvoke(operation,
 						new BasicEList.UnmodifiableEList<Object>(
 							argument.length, argument));
 				} catch (Exception e) {
@@ -253,8 +254,85 @@ public class PropertyDefaultPropertyDescriptor
 			UMLEditPlugin.INSTANCE.getString("_UI_SetCommand_description")); //$NON-NLS-1$
 	}
 
-	protected PropertyType getPropertyType(Property property) {
-		final Type type = property.getType();
+	protected boolean isDefaultableTypedElement(Object object) {
+		return (object instanceof Property) || (object instanceof Parameter);
+	}
+
+	protected void setBooleanDefaultValue(TypedElement element, boolean value) {
+		if (element instanceof Parameter) {
+			((Parameter) element).setBooleanDefaultValue(value);
+		} else {
+			((Property) element).setBooleanDefaultValue(value);
+		}
+	}
+
+	protected EOperation getSetBooleanDefaultValueOperation(TypedElement element) {
+		return (element instanceof Parameter)
+			? UMLPackage.Literals.PARAMETER___SET_BOOLEAN_DEFAULT_VALUE__BOOLEAN
+			: UMLPackage.Literals.PROPERTY___SET_BOOLEAN_DEFAULT_VALUE__BOOLEAN;
+	}
+
+	protected void setIntegerDefaultValue(TypedElement element, int value) {
+		if (element instanceof Parameter) {
+			((Parameter) element).setIntegerDefaultValue(value);
+		} else {
+			((Property) element).setIntegerDefaultValue(value);
+		}
+	}
+
+	protected EOperation getSetIntegerDefaultValueOperation(TypedElement element) {
+		return (element instanceof Parameter)
+			? UMLPackage.Literals.PARAMETER___SET_INTEGER_DEFAULT_VALUE__INT
+			: UMLPackage.Literals.PROPERTY___SET_INTEGER_DEFAULT_VALUE__INT;
+	}
+
+	protected void setRealDefaultValue(TypedElement element, double value) {
+		if (element instanceof Parameter) {
+			((Parameter) element).setRealDefaultValue(value);
+		} else {
+			((Property) element).setRealDefaultValue(value);
+		}
+	}
+
+	protected EOperation getSetRealDefaultValueOperation(TypedElement element) {
+		return (element instanceof Parameter)
+			? UMLPackage.Literals.PARAMETER___SET_REAL_DEFAULT_VALUE__DOUBLE
+			: UMLPackage.Literals.PROPERTY___SET_REAL_DEFAULT_VALUE__DOUBLE;
+	}
+
+	protected void setUnlimitedNaturalDefaultValue(TypedElement element,
+			int value) {
+		if (element instanceof Parameter) {
+			((Parameter) element).setUnlimitedNaturalDefaultValue(value);
+		} else {
+			((Property) element).setUnlimitedNaturalDefaultValue(value);
+		}
+	}
+
+	protected EOperation getSetUnlimitedNaturalDefaultValueOperation(
+			TypedElement element) {
+		return (element instanceof Parameter)
+			? UMLPackage.Literals.PARAMETER___SET_UNLIMITED_NATURAL_DEFAULT_VALUE__INT
+			: UMLPackage.Literals.PROPERTY___SET_UNLIMITED_NATURAL_DEFAULT_VALUE__INT;
+	}
+
+	protected void setDefaultValue(TypedElement element,
+			ValueSpecification value) {
+		if (element instanceof Parameter) {
+			((Parameter) element).setDefaultValue(value);
+		} else {
+			((Property) element).setDefaultValue(value);
+		}
+	}
+
+	protected EReference getDefaultValueFeature(TypedElement element) {
+		return (element instanceof Parameter)
+			? UMLPackage.Literals.PARAMETER__DEFAULT_VALUE
+			: UMLPackage.Literals.PROPERTY__DEFAULT_VALUE;
+	}
+
+	protected PropertyType getDefaultType(TypedElement element) {
+		final Type type = element.getType();
 
 		if (type instanceof Enumeration) {
 			return PropertyType.ENUMERATION;
