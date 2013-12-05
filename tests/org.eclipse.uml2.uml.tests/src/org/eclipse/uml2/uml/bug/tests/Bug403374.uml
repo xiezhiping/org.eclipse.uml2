@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Package xmi:id="_MwQpcF6MEeOEo_5TUHelpQ" name="employee" URI="http://www.eclipse.org/uml2/test/2013/employee">
+    <packagedElement xmi:type="uml:Class" xmi:id="_VUy2UF6MEeOEo_5TUHelpQ" name="Employee">
+      <ownedRule xmi:id="_cpR7IF6NEeOEo_5TUHelpQ" name="emp_id">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_cpR7IV6NEeOEo_5TUHelpQ">
+          <language>OCL</language>
+          <body>self.id > 0</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:id="_NTNJAF6NEeOEo_5TUHelpQ" name="id" isID="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_UVVH8F6NEeOEo_5TUHelpQ" name="name">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_YKVqoF6NEeOEo_5TUHelpQ" name="ssn" type="_0D-gcF6MEeOEo_5TUHelpQ"/>
+      <ownedAttribute xmi:id="_mGYHsF6NEeOEo_5TUHelpQ" name="directReports" type="_VUy2UF6MEeOEo_5TUHelpQ" association="_jWxt4F6NEeOEo_5TUHelpQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nXIk8F6NEeOEo_5TUHelpQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n408wF6NEeOEo_5TUHelpQ" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_sQA_cF6NEeOEo_5TUHelpQ" name="manager" type="_VUy2UF6MEeOEo_5TUHelpQ" association="_jWxt4F6NEeOEo_5TUHelpQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sQA_cV6NEeOEo_5TUHelpQ"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_x3_UkF6NEeOEo_5TUHelpQ" name="isManager" isDerived="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_9Z5RgF6NEeOEo_5TUHelpQ" name="allReports" bodyCondition="_LtQpcF6OEeOEo_5TUHelpQ">
+        <ownedRule xmi:id="_LtQpcF6OEeOEo_5TUHelpQ" name="body">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_OPFtAF6OEeOEo_5TUHelpQ">
+            <language>OCL</language>
+            <body>self.directReports->closure(directReports)</body>
+          </specification>
+        </ownedRule>
+        <ownedParameter xmi:id="_BcwqAF6OEeOEo_5TUHelpQ" name="" type="_VUy2UF6MEeOEo_5TUHelpQ" direction="return">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FkPcwF6OEeOEo_5TUHelpQ"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FFfEMF6OEeOEo_5TUHelpQ" value="*"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_0D-gcF6MEeOEo_5TUHelpQ" name="SSN">
+      <ownedRule xmi:id="_5L0kAF6MEeOEo_5TUHelpQ" name="ssn_syntax">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_799UcF6MEeOEo_5TUHelpQ">
+          <language>OCL</language>
+          <body>self.toString().matches('\d{3}-\d{3}-\d{3}')</body>
+        </specification>
+      </ownedRule>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_jWxt4F6NEeOEo_5TUHelpQ" memberEnd="_mGYHsF6NEeOEo_5TUHelpQ _sQA_cF6NEeOEo_5TUHelpQ"/>
+    <profileApplication xmi:id="_qU9dcF6MEeOEo_5TUHelpQ">
+      <eAnnotations xmi:id="_qVAgwF6MEeOEo_5TUHelpQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Package>
+  <Ecore:EDataType xmi:id="_2F4t0F6MEeOEo_5TUHelpQ" instanceClassName="java.lang.String" base_PrimitiveType="_0D-gcF6MEeOEo_5TUHelpQ"/>
+</xmi:XMI>

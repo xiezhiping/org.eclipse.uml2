@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 213218
  *   Kenn Hussey (CEA) - 322715
+ *   Christian W. Damus (CEA) - 403374
  *
  */
 package org.eclipse.uml2.uml.ecore.importer;
@@ -186,6 +187,8 @@ public class UMLImporterApplication
 			|| UMLUtil.UML2EcoreConverter.OPTION__INVARIANT_CONSTRAINTS
 				.equalsIgnoreCase(strippedKey)
 			|| UMLUtil.UML2EcoreConverter.OPTION__VALIDATION_DELEGATES
+				.equalsIgnoreCase(strippedKey)
+			|| UMLUtil.UML2EcoreConverter.OPTION__NON_API_INVARIANTS
 				.equalsIgnoreCase(strippedKey)
 			|| UMLUtil.UML2EcoreConverter.OPTION__OPERATION_BODIES
 				.equalsIgnoreCase(strippedKey)

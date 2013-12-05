@@ -12,7 +12,7 @@
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
  *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000
  *   Yann Tanguy (CEA) - 350402
- *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744
+ *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -3183,6 +3183,13 @@ public class UMLUtil
 		 * are <code>OPTION__IGNORE</code> and <code>OPTION__PROCESS</code>.
 		 */
 		public static final String OPTION__VALIDATION_DELEGATES = "VALIDATION_DELEGATES"; //$NON-NLS-1$
+
+		/**
+		 * The option for generating invariant constraints in the non-API style
+		 * in EClasses, rather than as API operations. Supported choices are
+		 * <code>OPTION__IGNORE</code> and <code>OPTION__PROCESS</code>.
+		 */
+		public static final String OPTION__NON_API_INVARIANTS = "NON_API_INVARIANTS"; //$NON-NLS-1$
 
 		/**
 		 * The option for handling untyped properties. Supported choices are
@@ -6726,7 +6733,10 @@ public class UMLUtil
 								new Object[]{eClassifier}));
 					}
 
-					if (eClassifier instanceof EClass) {
+					if ((eClassifier instanceof EClass)
+						&& !OPTION__PROCESS.equals(options
+							.get(OPTION__NON_API_INVARIANTS))) {
+
 						EOperation eOperation = EcoreFactory.eINSTANCE
 							.createEOperation();
 						elementToEModelElementMap.put(constraint, eOperation);
