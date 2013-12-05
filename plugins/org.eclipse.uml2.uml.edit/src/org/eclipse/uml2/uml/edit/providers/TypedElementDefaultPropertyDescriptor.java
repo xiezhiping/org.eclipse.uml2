@@ -210,16 +210,39 @@ public class TypedElementDefaultPropertyDescriptor
 						if (literal == null) {
 							super.setPropertyValue(object, value);
 						} else {
-							InstanceValue instance = UMLFactory.eINSTANCE
-								.createInstanceValue();
-							instance.setInstance(literal);
-							if (editingDomain == null) {
-								setDefaultValue(element, instance);
+							EStructuralFeature defaultValueFeature = getDefaultValueFeature(element);
+							ValueSpecification existing = (ValueSpecification) element
+								.eGet(defaultValueFeature);
+
+							if (existing instanceof InstanceValue) {
+								InstanceValue instance = (InstanceValue) existing;
+
+								if (editingDomain == null) {
+									instance.setInstance(literal);
+								} else {
+									editingDomain
+										.getCommandStack()
+										.execute(
+											SetCommand
+												.create(
+													editingDomain,
+													instance,
+													UMLPackage.Literals.INSTANCE_VALUE__INSTANCE,
+													literal));
+								}
 							} else {
-								editingDomain.getCommandStack().execute(
-									SetCommand.create(editingDomain, element,
-										getDefaultValueFeature(element),
-										instance));
+								InstanceValue instance = UMLFactory.eINSTANCE
+									.createInstanceValue();
+								instance.setInstance(literal);
+
+								if (editingDomain == null) {
+									setDefaultValue(element, instance);
+								} else {
+									editingDomain.getCommandStack().execute(
+										SetCommand.create(editingDomain,
+											element, defaultValueFeature,
+											instance));
+								}
 							}
 						}
 						break;

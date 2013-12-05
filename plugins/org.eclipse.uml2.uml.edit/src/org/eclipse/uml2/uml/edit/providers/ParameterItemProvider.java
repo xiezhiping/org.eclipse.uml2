@@ -277,7 +277,7 @@ public class ParameterItemProvider
 	 * This adds a property descriptor for the Default feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addDefaultPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
