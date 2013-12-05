@@ -2884,6 +2884,9 @@ public class UMLUtil
 							Classifier intermediate = (Classifier) EcoreUtil
 								.create(object.eClass());
 
+							// add the intermediate result to the model
+							addAnonymousGeneral(intermediate, object);
+
 							// have to use a distinct template-expander for each
 							// because multiple bindings to the same template
 							// are allowed and an EcoreUtil.Copier can only copy
@@ -2892,9 +2895,6 @@ public class UMLUtil
 								new TemplateExpander()
 									.expand(binding, intermediate, options,
 										diagnostics, context));
-
-							// add the intermediate result to the model
-							addAnonymousGeneral(intermediate, object);
 						}
 
 						return resultingToMergedEObjectMap;

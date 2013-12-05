@@ -44,6 +44,21 @@ public class TemplateExpanderOptionsDialog
 			UMLUtil.TemplateExpander.OPTION__MISSING_PARAMETER_SUBSTITUTIONS,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel},
 			reportChoiceLabel);
+
+		createOptionArea(
+			parent,
+			UMLEditorPlugin.INSTANCE
+				.getString("_UI_RedundantGeneralizations_label"), //$NON-NLS-1$
+			UMLUtil.PackageMerger.OPTION__REDUNDANT_GENERALIZATIONS,
+			new String[]{ignoreChoiceLabel, reportChoiceLabel,
+				discardChoiceLabel}, discardChoiceLabel);
+
+		createOptionArea(
+			parent,
+			UMLEditorPlugin.INSTANCE.getString("_UI_Capabilities_label"), //$NON-NLS-1$
+			UMLUtil.PackageMerger.OPTION__CAPABILITIES, new String[]{
+				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
+			processChoiceLabel);
 	}
 
 }

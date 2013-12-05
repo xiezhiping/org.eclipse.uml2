@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.AttributeOwner;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Element;
@@ -280,6 +281,20 @@ public class Bug180744Test
 		assertCapabilityTrace(listOfBars, collection, remove);
 	}
 
+	public void testMergeCapabilityTracesClassifierMultipleBindings() {
+		Class bagListOfFooBars = expand(getClass("BagListOfFooBars"));
+		Class general1 = (Class) bagListOfFooBars.getNestedClassifiers().get(0);
+		Class general2 = (Class) bagListOfFooBars.getNestedClassifiers().get(1);
+		Class collection = getClass("Collection");
+
+		// the traces are in the expanded template that owns the nested
+		// anonymous superclasses
+		Operation remove = getOperation(general1, "remove");
+		assertCapabilityTrace(bagListOfFooBars, collection, remove);
+		Property kind = getProperty(general2, "kind");
+		assertCapabilityTrace(bagListOfFooBars, collection, kind);
+	}
+
 	//
 	// Test framework
 	//
@@ -328,6 +343,10 @@ public class Bug180744Test
 		URL url = getClass().getResource("Bug180744.uml"); //$NON-NLS-1$
 		return (Package) UML2Util.load(rset,
 			URI.createURI(url.toExternalForm()), UMLPackage.Literals.PACKAGE);
+	}
+
+	Property getProperty(AttributeOwner owner, String name) {
+		return owner.getOwnedAttribute(name, null);
 	}
 
 	Operation getOperation(OperationOwner owner, String name) {
