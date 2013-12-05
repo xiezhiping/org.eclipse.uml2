@@ -2941,6 +2941,15 @@ public class UMLUtil
 							org.eclipse.uml2.uml.Package intermediate = (org.eclipse.uml2.uml.Package) EcoreUtil
 								.create(object.eClass());
 
+							// ensure that the capabilities processing algorithm
+							// can get the qualified name of the original
+							// package template by way of this intermediate
+							// result
+							String name = ((NamedElement) binding
+								.getSignature().getTemplate())
+								.getQualifiedName();
+							intermediate.setName(name);
+
 							// have to use a distinct template-expander for each
 							// because multiple bindings to the same template
 							// are allowed and an EcoreUtil.Copier can only copy

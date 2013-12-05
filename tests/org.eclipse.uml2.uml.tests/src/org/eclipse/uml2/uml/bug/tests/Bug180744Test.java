@@ -295,6 +295,24 @@ public class Bug180744Test
 		assertCapabilityTrace(bagListOfFooBars, collection, kind);
 	}
 
+	public void testMergeCapabilityTracesPackageMultipleBindings() {
+		Package deploymentSystem = expand(getPackage("deployment system"));
+		Package system = getPackage("system");
+
+		// a class defined in the bound template that substitutes for a
+		// parameter in the template
+		Class softwareSpec = (Class) deploymentSystem
+			.getOwnedType("SoftwareSpec");
+
+		// a class defined solely in the template and merged into the bound
+		// template
+		Class hardwareRequest = (Class) deploymentSystem
+			.getOwnedType("HardwareRequest");
+
+		assertCapabilityTrace(deploymentSystem, system, softwareSpec);
+		assertCapabilityTrace(deploymentSystem, system, hardwareRequest);
+	}
+
 	//
 	// Test framework
 	//
