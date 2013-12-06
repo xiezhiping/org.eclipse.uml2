@@ -12,7 +12,7 @@
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
  *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833
  *   Yann Tanguy (CEA) - 350402
- *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744
+ *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 416833
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -534,7 +534,7 @@ public class UMLUtil
 		 * <code>OPTION__IGNORE</code>, <code>OPTION__REPORT</code>, and
 		 * <code>OPTION__PROCESS</code>.
 		 */
-		public static final String OPTION__ATTRIBUTE_TRANFORMATIONS = "ATTRIBUTE_TRANFORMATIONS"; //$NON-NLS-1$
+		public static final String OPTION__ATTRIBUTE_TRANSFORMATIONS = "ATTRIBUTE_TRANSFORMATIONS"; //$NON-NLS-1$
 
 		private static final int DIAGNOSTIC_CODE_OFFSET = 1000;
 
@@ -713,7 +713,7 @@ public class UMLUtil
 
 				if (options != null
 					&& OPTION__REPORT.equals(options
-						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+						.get(OPTION__ATTRIBUTE_TRANSFORMATIONS))) {
 
 					if (diagnostics != null) {
 						diagnostics
@@ -766,7 +766,7 @@ public class UMLUtil
 
 				if (options != null
 					&& OPTION__REPORT.equals(options
-						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+						.get(OPTION__ATTRIBUTE_TRANSFORMATIONS))) {
 
 					if (diagnostics != null) {
 						diagnostics
@@ -819,7 +819,7 @@ public class UMLUtil
 
 				if (options != null
 					&& OPTION__REPORT.equals(options
-						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+						.get(OPTION__ATTRIBUTE_TRANSFORMATIONS))) {
 
 					if (diagnostics != null) {
 						diagnostics
@@ -862,6 +862,12 @@ public class UMLUtil
 			}
 		}
 
+		/**
+		 * @deprecated 4.2 these values are only merged in the context of
+		 *             MultiplicityElement lower-bounds, which is done by the
+		 *             {@link #mergeMultiplicityElement_Lower(MultiplicityElement, MultiplicityElement)}
+		 *             method
+		 */
 		@Deprecated
 		protected void mergeLiteralInteger_Value(
 				LiteralInteger receivingLiteralInteger,
@@ -871,6 +877,12 @@ public class UMLUtil
 				mergedLiteralInteger.getValue()));
 		}
 
+		/**
+		 * @deprecated 4.2 these values are only merged in the context of
+		 *             MultiplicityElement upper-bounds, which is done by the
+		 *             {@link #mergeMultiplicityElement_Upper(MultiplicityElement, MultiplicityElement)}
+		 *             method
+		 */
 		@Deprecated
 		protected void mergeLiteralUnlimitedNatural_Value(
 				LiteralUnlimitedNatural receivingLiteralUnlimitedNatural,
@@ -892,7 +904,7 @@ public class UMLUtil
 
 				if (options != null
 					&& OPTION__REPORT.equals(options
-						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+						.get(OPTION__ATTRIBUTE_TRANSFORMATIONS))) {
 
 					if (diagnostics != null) {
 						diagnostics
@@ -946,7 +958,7 @@ public class UMLUtil
 
 				if (options != null
 					&& OPTION__REPORT.equals(options
-						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+						.get(OPTION__ATTRIBUTE_TRANSFORMATIONS))) {
 
 					if (diagnostics != null) {
 						diagnostics
@@ -999,7 +1011,7 @@ public class UMLUtil
 
 				if (options != null
 					&& OPTION__REPORT.equals(options
-						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+						.get(OPTION__ATTRIBUTE_TRANSFORMATIONS))) {
 
 					if (diagnostics != null) {
 						diagnostics
@@ -1052,7 +1064,7 @@ public class UMLUtil
 
 				if (options != null
 					&& OPTION__REPORT.equals(options
-						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+						.get(OPTION__ATTRIBUTE_TRANSFORMATIONS))) {
 
 					if (diagnostics != null) {
 						diagnostics
@@ -1108,7 +1120,7 @@ public class UMLUtil
 
 				if (options != null
 					&& OPTION__REPORT.equals(options
-						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+						.get(OPTION__ATTRIBUTE_TRANSFORMATIONS))) {
 
 					if (diagnostics != null) {
 						diagnostics
@@ -1160,7 +1172,7 @@ public class UMLUtil
 
 				if (options != null
 					&& OPTION__REPORT.equals(options
-						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+						.get(OPTION__ATTRIBUTE_TRANSFORMATIONS))) {
 
 					if (diagnostics != null) {
 						diagnostics
@@ -1211,7 +1223,7 @@ public class UMLUtil
 
 				if (options != null
 					&& OPTION__REPORT.equals(options
-						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+						.get(OPTION__ATTRIBUTE_TRANSFORMATIONS))) {
 
 					if (diagnostics != null) {
 						diagnostics
@@ -1263,7 +1275,7 @@ public class UMLUtil
 
 				if (options != null
 					&& OPTION__REPORT.equals(options
-						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+						.get(OPTION__ATTRIBUTE_TRANSFORMATIONS))) {
 
 					if (diagnostics != null) {
 						diagnostics
@@ -1317,7 +1329,7 @@ public class UMLUtil
 
 				if (options != null
 					&& OPTION__REPORT.equals(options
-						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+						.get(OPTION__ATTRIBUTE_TRANSFORMATIONS))) {
 
 					if (diagnostics != null) {
 						diagnostics
@@ -1371,7 +1383,7 @@ public class UMLUtil
 				} else if (EcoreUtil.isAncestor(receivingElement, copyEObject)
 					&& options != null
 					&& !OPTION__IGNORE.equals(options
-						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+						.get(OPTION__ATTRIBUTE_TRANSFORMATIONS))) {
 
 					if (eAttribute == UMLPackage.Literals.ASSOCIATION__IS_DERIVED) {
 						mergeAssociation_IsDerived((Association) copyEObject,
@@ -1424,7 +1436,7 @@ public class UMLUtil
 				&& EcoreUtil.isAncestor(receivingElement, copyEObject)
 				&& options != null
 				&& !OPTION__IGNORE.equals(options
-					.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+					.get(OPTION__ATTRIBUTE_TRANSFORMATIONS))) {
 
 				return;
 			}
@@ -1809,7 +1821,7 @@ public class UMLUtil
 				&& EcoreUtil.isAncestor(receivingElement, copyEObject)
 				&& options != null
 				&& !OPTION__IGNORE.equals(options
-					.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+					.get(OPTION__ATTRIBUTE_TRANSFORMATIONS))) {
 
 				MultiplicityElement receivingMultiplicityElement = (MultiplicityElement) copyEObject;
 				MultiplicityElement mergedMultiplicityElement = (MultiplicityElement) eObject;
@@ -11715,9 +11727,9 @@ public class UMLUtil
 		}
 
 		if (!options
-			.containsKey(PackageMerger.OPTION__ATTRIBUTE_TRANFORMATIONS)) {
+			.containsKey(PackageMerger.OPTION__ATTRIBUTE_TRANSFORMATIONS)) {
 
-			options.put(PackageMerger.OPTION__ATTRIBUTE_TRANFORMATIONS,
+			options.put(PackageMerger.OPTION__ATTRIBUTE_TRANSFORMATIONS,
 				defaultValue);
 		}
 
