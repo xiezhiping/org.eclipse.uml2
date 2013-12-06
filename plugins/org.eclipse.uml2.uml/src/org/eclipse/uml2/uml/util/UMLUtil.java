@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744
  *
@@ -528,6 +528,14 @@ public class UMLUtil
 		 */
 		public static final String OPTION__INDISTINGUISHABLE_CLASSIFIERS = "INDISTINGUISHABLE_CLASSIFIERS"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where an attribute transformation
+		 * should be performed. Supported choices are
+		 * <code>OPTION__IGNORE</code>, <code>OPTION__REPORT</code>, and
+		 * <code>OPTION__PROCESS</code>.
+		 */
+		public static final String OPTION__ATTRIBUTE_TRANFORMATIONS = "ATTRIBUTE_TRANFORMATIONS"; //$NON-NLS-1$
+
 		private static final int DIAGNOSTIC_CODE_OFFSET = 1000;
 
 		/**
@@ -594,6 +602,12 @@ public class UMLUtil
 		 */
 		public static final int INDISTINGUISHABLE_CLASSIFIER = DIAGNOSTIC_CODE_OFFSET + 11;
 
+		/**
+		 * The diagnostic code for cases where an attribute transformation
+		 * should be performed.
+		 */
+		public static final int ATTRIBUTE_TRANSFORMATION = DIAGNOSTIC_CODE_OFFSET + 12;
+
 		protected TemplateableElement receivingElement = null;
 
 		protected Collection<? extends TemplateableElement> mergedElements = null;
@@ -611,6 +625,12 @@ public class UMLUtil
 		protected Collection<org.eclipse.uml2.uml.Package> mergedPackages = null;
 
 		protected final Map<EObject, List<EObject>> resultingToMergedEObjectMap = new LinkedHashMap<EObject, List<EObject>>();
+
+		protected Map<String, String> options = null;
+
+		protected DiagnosticChain diagnostics = null;
+
+		protected Map<Object, Object> context = null;
 
 		protected <EO extends EObject> List<EO> getMatchCandidates(EO eObject) {
 			Element baseElement = getBaseElement(eObject);
@@ -685,31 +705,173 @@ public class UMLUtil
 
 		protected void mergeAssociation_IsDerived(
 				Association receivingAssociation, Association mergedAssociation) {
-			receivingAssociation.setIsDerived(receivingAssociation.isDerived()
-				|| mergedAssociation.isDerived());
+			boolean receivingIsDerived = receivingAssociation.isDerived();
+			boolean resultingIsDerived = receivingIsDerived
+				|| mergedAssociation.isDerived();
+
+			if (receivingIsDerived != resultingIsDerived) {
+
+				if (options != null
+					&& OPTION__REPORT.equals(options
+						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ReportAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.ASSOCIATION__IS_DERIVED,
+											receivingAssociation,
+											mergedAssociation)),
+								new Object[]{receivingAssociation}));
+					}
+				} else {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.INFO,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ProcessAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.ASSOCIATION__IS_DERIVED,
+											receivingAssociation,
+											mergedAssociation)),
+								new Object[]{receivingAssociation}));
+					}
+
+					receivingAssociation.setIsDerived(resultingIsDerived);
+				}
+
+			}
 		}
 
 		protected void mergeClassifier_IsAbstract(
 				Classifier receivingClassifier, Classifier mergedClassifier) {
-			receivingClassifier.setIsAbstract(receivingClassifier.isAbstract()
-				&& mergedClassifier.isAbstract());
+			boolean receivingIsAbstract = receivingClassifier.isAbstract();
+			boolean resultingIsAbstract = receivingIsAbstract
+				&& mergedClassifier.isAbstract();
+
+			if (receivingIsAbstract != resultingIsAbstract) {
+
+				if (options != null
+					&& OPTION__REPORT.equals(options
+						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ReportAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.CLASSIFIER__IS_ABSTRACT,
+											receivingClassifier,
+											mergedClassifier)),
+								new Object[]{receivingClassifier}));
+					}
+				} else {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.INFO,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ProcessAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.CLASSIFIER__IS_ABSTRACT,
+											receivingClassifier,
+											mergedClassifier)),
+								new Object[]{receivingClassifier}));
+					}
+
+					receivingClassifier.setIsAbstract(resultingIsAbstract);
+				}
+			}
 		}
 
 		protected void mergeClassifier_IsFinalSpecialization(
 				Classifier receivingClassifier, Classifier mergedClassifier) {
-			receivingClassifier.setIsFinalSpecialization(receivingClassifier
-				.isFinalSpecialization()
-				&& mergedClassifier.isFinalSpecialization());
+			boolean receivingIsFinalSpecialization = receivingClassifier
+				.isFinalSpecialization();
+			boolean resultingIsFinalSpecification = receivingIsFinalSpecialization
+				&& mergedClassifier.isFinalSpecialization();
+
+			if (receivingIsFinalSpecialization != resultingIsFinalSpecification) {
+
+				if (options != null
+					&& OPTION__REPORT.equals(options
+						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ReportAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.CLASSIFIER__IS_FINAL_SPECIALIZATION,
+											receivingClassifier,
+											mergedClassifier)),
+								new Object[]{receivingClassifier}));
+					}
+				} else {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.INFO,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ProcessAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.CLASSIFIER__IS_FINAL_SPECIALIZATION,
+											receivingClassifier,
+											mergedClassifier)),
+								new Object[]{receivingClassifier}));
+					}
+
+					receivingClassifier
+						.setIsFinalSpecialization(resultingIsFinalSpecification);
+				}
+			}
 		}
 
+		@Deprecated
 		protected void mergeLiteralInteger_Value(
 				LiteralInteger receivingLiteralInteger,
 				LiteralInteger mergedLiteralInteger) {
 			receivingLiteralInteger.setValue(getLesserLowerBound(
-				receivingLiteralInteger.getValue(), mergedLiteralInteger
-					.getValue()));
+				receivingLiteralInteger.getValue(),
+				mergedLiteralInteger.getValue()));
 		}
 
+		@Deprecated
 		protected void mergeLiteralUnlimitedNatural_Value(
 				LiteralUnlimitedNatural receivingLiteralUnlimitedNatural,
 				LiteralUnlimitedNatural mergedLiteralUnlimitedNatural) {
@@ -721,60 +883,481 @@ public class UMLUtil
 		protected void mergeMultiplicityElement_IsOrdered(
 				MultiplicityElement receivingMultiplicityElement,
 				MultiplicityElement mergedMultiplicityElement) {
-			receivingMultiplicityElement
-				.setIsOrdered(receivingMultiplicityElement.isOrdered()
-					|| mergedMultiplicityElement.isOrdered());
+			boolean receivingIsOrdered = receivingMultiplicityElement
+				.isOrdered();
+			boolean resultingIsOrdered = receivingIsOrdered
+				|| mergedMultiplicityElement.isOrdered();
+
+			if (receivingIsOrdered != resultingIsOrdered) {
+
+				if (options != null
+					&& OPTION__REPORT.equals(options
+						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ReportAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_ORDERED,
+											receivingMultiplicityElement,
+											mergedMultiplicityElement)),
+								new Object[]{receivingMultiplicityElement}));
+					}
+				} else {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.INFO,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ProcessAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_ORDERED,
+											receivingMultiplicityElement,
+											mergedMultiplicityElement)),
+								new Object[]{receivingMultiplicityElement}));
+					}
+
+					receivingMultiplicityElement
+						.setIsOrdered(resultingIsOrdered);
+				}
+			}
 		}
 
 		protected void mergeMultiplicityElement_IsUnique(
 				MultiplicityElement receivingMultiplicityElement,
 				MultiplicityElement mergedMultiplicityElement) {
-			receivingMultiplicityElement
-				.setIsUnique(receivingMultiplicityElement.isUnique()
-					&& mergedMultiplicityElement.isUnique());
+			boolean receivingIsUnique = receivingMultiplicityElement.isUnique();
+			boolean resultingIsUnique = receivingIsUnique
+				&& mergedMultiplicityElement.isUnique();
+
+			if (receivingIsUnique != resultingIsUnique) {
+
+				if (options != null
+					&& OPTION__REPORT.equals(options
+						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ReportAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_UNIQUE,
+											receivingMultiplicityElement,
+											mergedMultiplicityElement)),
+								new Object[]{receivingMultiplicityElement}));
+					}
+				} else {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.INFO,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ProcessAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_UNIQUE,
+											receivingMultiplicityElement,
+											mergedMultiplicityElement)),
+								new Object[]{receivingMultiplicityElement}));
+					}
+
+					receivingMultiplicityElement.setIsUnique(resultingIsUnique);
+				}
+			}
+		}
+
+		protected void mergeMultiplicityElement_Lower(
+				MultiplicityElement receivingMultiplicityElement,
+				MultiplicityElement mergedMultiplicityElement) {
+			int receivingLower = receivingMultiplicityElement.getLower();
+			int resultingLower = getLesserLowerBound(receivingLower,
+				mergedMultiplicityElement.getLower());
+
+			if (receivingLower != resultingLower) {
+
+				if (options != null
+					&& OPTION__REPORT.equals(options
+						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ReportAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER,
+											receivingMultiplicityElement,
+											mergedMultiplicityElement)),
+								new Object[]{receivingMultiplicityElement}));
+					}
+				} else {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.INFO,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ProcessAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER,
+											receivingMultiplicityElement,
+											mergedMultiplicityElement)),
+								new Object[]{receivingMultiplicityElement}));
+					}
+
+					receivingMultiplicityElement.setLower(resultingLower);
+				}
+			}
+		}
+
+		protected void mergeMultiplicityElement_Upper(
+				MultiplicityElement receivingMultiplicityElement,
+				MultiplicityElement mergedMultiplicityElement) {
+			int receivingUpper = receivingMultiplicityElement.getUpper();
+			int resultingUpper = getGreaterUpperBound(receivingUpper,
+				mergedMultiplicityElement.getUpper());
+
+			if (receivingUpper != resultingUpper) {
+
+				if (options != null
+					&& OPTION__REPORT.equals(options
+						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ReportAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER,
+											receivingMultiplicityElement,
+											mergedMultiplicityElement)),
+								new Object[]{receivingMultiplicityElement}));
+					}
+				} else {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.INFO,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ProcessAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER,
+											receivingMultiplicityElement,
+											mergedMultiplicityElement)),
+								new Object[]{receivingMultiplicityElement}));
+					}
+
+					receivingMultiplicityElement.setUpper(resultingUpper);
+				}
+			}
 		}
 
 		protected void mergeNamedElement_Visibility(
 				NamedElement receivingNamedElement,
 				NamedElement mergedNamedElement) {
+			VisibilityKind receivingVisibility = receivingNamedElement
+				.getVisibility();
+			VisibilityKind resultingVisibility = receivingVisibility == VisibilityKind.PRIVATE_LITERAL
+				&& mergedNamedElement.getVisibility() == VisibilityKind.PRIVATE_LITERAL
+				? VisibilityKind.PRIVATE_LITERAL
+				: VisibilityKind.PUBLIC_LITERAL;
 
-			if (receivingNamedElement.getVisibility() == VisibilityKind.PRIVATE_LITERAL
-				&& mergedNamedElement.getVisibility() == VisibilityKind.PRIVATE_LITERAL) {
+			if (receivingVisibility != resultingVisibility) {
 
-				receivingNamedElement
-					.setVisibility(VisibilityKind.PRIVATE_LITERAL);
-			} else if (receivingNamedElement.isSetVisibility()) {
-				receivingNamedElement
-					.setVisibility(VisibilityKind.PUBLIC_LITERAL);
+				if (options != null
+					&& OPTION__REPORT.equals(options
+						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ReportAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.NAMED_ELEMENT__VISIBILITY,
+											receivingNamedElement,
+											mergedNamedElement)),
+								new Object[]{receivingNamedElement}));
+					}
+				} else {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.INFO,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ProcessAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.NAMED_ELEMENT__VISIBILITY,
+											receivingNamedElement,
+											mergedNamedElement)),
+								new Object[]{receivingNamedElement}));
+					}
+
+					receivingNamedElement.setVisibility(resultingVisibility);
+				}
 			}
 		}
 
 		protected void mergeProperty_IsDerived(Property receivingProperty,
 				Property mergedProperty) {
-			receivingProperty.setIsDerived(receivingProperty.isDerived()
-				|| mergedProperty.isDerived());
+			boolean receivingIsDerived = receivingProperty.isDerived();
+			boolean resultingIsDerived = receivingIsDerived
+				|| mergedProperty.isDerived();
+
+			if (receivingIsDerived != resultingIsDerived) {
+
+				if (options != null
+					&& OPTION__REPORT.equals(options
+						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ReportAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.PROPERTY__IS_DERIVED,
+											receivingProperty, mergedProperty)),
+								new Object[]{receivingProperty}));
+					}
+				} else {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.INFO,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ProcessAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.PROPERTY__IS_DERIVED,
+											receivingProperty, mergedProperty)),
+								new Object[]{receivingProperty}));
+					}
+
+					receivingProperty.setIsDerived(resultingIsDerived);
+				}
+			}
 		}
 
 		protected void mergeProperty_IsDerivedUnion(Property receivingProperty,
 				Property mergedProperty) {
-			receivingProperty.setIsDerivedUnion(receivingProperty
-				.isDerivedUnion()
-				|| mergedProperty.isDerivedUnion());
+			boolean receivingIsDerivedUnion = receivingProperty
+				.isDerivedUnion();
+			boolean resultingIsDerivedUnion = receivingIsDerivedUnion
+				|| mergedProperty.isDerivedUnion();
+
+			if (receivingIsDerivedUnion != resultingIsDerivedUnion) {
+
+				if (options != null
+					&& OPTION__REPORT.equals(options
+						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ReportAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.PROPERTY__IS_DERIVED_UNION,
+											receivingProperty, mergedProperty)),
+								new Object[]{receivingProperty}));
+					}
+				} else {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.INFO,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ProcessAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.PROPERTY__IS_DERIVED_UNION,
+											receivingProperty, mergedProperty)),
+								new Object[]{receivingProperty}));
+					}
+
+					receivingProperty
+						.setIsDerivedUnion(resultingIsDerivedUnion);
+				}
+			}
 		}
 
 		protected void mergeRedefinableElement_IsLeaf(
 				RedefinableElement receivingRedefinableElement,
 				RedefinableElement mergedRedefinableElement) {
-			receivingRedefinableElement.setIsLeaf(receivingRedefinableElement
-				.isLeaf() && mergedRedefinableElement.isLeaf());
+			boolean receivingIsLeaf = receivingRedefinableElement.isLeaf();
+			boolean resultingIsLeaf = receivingIsLeaf
+				&& mergedRedefinableElement.isLeaf();
+
+			if (receivingIsLeaf != resultingIsLeaf) {
+
+				if (options != null
+					&& OPTION__REPORT.equals(options
+						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ReportAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.REDEFINABLE_ELEMENT__IS_LEAF,
+											receivingRedefinableElement,
+											mergedRedefinableElement)),
+								new Object[]{receivingRedefinableElement}));
+					}
+				} else {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.INFO,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ProcessAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.REDEFINABLE_ELEMENT__IS_LEAF,
+											receivingRedefinableElement,
+											mergedRedefinableElement)),
+								new Object[]{receivingRedefinableElement}));
+					}
+
+					receivingRedefinableElement.setIsLeaf(resultingIsLeaf);
+				}
+			}
 		}
 
 		protected void mergeStructuralFeature_IsReadOnly(
 				StructuralFeature receivingStructuralFeature,
 				StructuralFeature mergedStructuralFeature) {
-			receivingStructuralFeature.setIsReadOnly(receivingStructuralFeature
-				.isReadOnly()
-				&& mergedStructuralFeature.isReadOnly());
+			boolean receivingIsReadOnly = receivingStructuralFeature
+				.isReadOnly();
+			boolean resultingIsReadOnly = receivingIsReadOnly
+				&& mergedStructuralFeature.isReadOnly();
+
+			if (receivingIsReadOnly != resultingIsReadOnly) {
+
+				if (options != null
+					&& OPTION__REPORT.equals(options
+						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ReportAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.STRUCTURAL_FEATURE__IS_READ_ONLY,
+											receivingStructuralFeature,
+											mergedStructuralFeature)),
+								new Object[]{receivingStructuralFeature}));
+					}
+				} else {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.INFO,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ATTRIBUTE_TRANSFORMATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_PackageMerger_ProcessAttributeTransformation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(
+											context,
+											UMLPackage.Literals.STRUCTURAL_FEATURE__IS_READ_ONLY,
+											receivingStructuralFeature,
+											mergedStructuralFeature)),
+								new Object[]{receivingStructuralFeature}));
+					}
+
+					receivingStructuralFeature
+						.setIsReadOnly(resultingIsReadOnly);
+				}
+			}
 		}
 
 		@Override
@@ -785,7 +1368,10 @@ public class UMLUtil
 
 				if (copyEObject == receivingElement) {
 					return;
-				} else if (resultingToMergedEObjectMap.containsKey(copyEObject)) {
+				} else if (EcoreUtil.isAncestor(receivingElement, copyEObject)
+					&& options != null
+					&& !OPTION__IGNORE.equals(options
+						.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
 
 					if (eAttribute == UMLPackage.Literals.ASSOCIATION__IS_DERIVED) {
 						mergeAssociation_IsDerived((Association) copyEObject,
@@ -796,17 +1382,6 @@ public class UMLUtil
 					} else if (eAttribute == UMLPackage.Literals.CLASSIFIER__IS_FINAL_SPECIALIZATION) {
 						mergeClassifier_IsFinalSpecialization(
 							(Classifier) copyEObject, (Classifier) eObject);
-					} else if (eAttribute == UMLPackage.Literals.LITERAL_INTEGER__VALUE
-						&& copyEObject.eContainingFeature() == UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE) {
-
-						mergeLiteralInteger_Value((LiteralInteger) copyEObject,
-							(LiteralInteger) eObject);
-					} else if (eAttribute == UMLPackage.Literals.LITERAL_UNLIMITED_NATURAL__VALUE
-						&& copyEObject.eContainingFeature() == UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE) {
-
-						mergeLiteralUnlimitedNatural_Value(
-							(LiteralUnlimitedNatural) copyEObject,
-							(LiteralUnlimitedNatural) eObject);
 					} else if (eAttribute == UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_ORDERED) {
 						mergeMultiplicityElement_IsOrdered(
 							(MultiplicityElement) copyEObject,
@@ -844,6 +1419,15 @@ public class UMLUtil
 		@Override
 		protected void copyContainment(EReference eReference, EObject eObject,
 				EObject copyEObject) {
+
+			if ((eReference == UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE || eReference == UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE)
+				&& EcoreUtil.isAncestor(receivingElement, copyEObject)
+				&& options != null
+				&& !OPTION__IGNORE.equals(options
+					.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+
+				return;
+			}
 
 			if (eObject != copyEObject) {
 
@@ -974,7 +1558,7 @@ public class UMLUtil
 
 		@Override
 		protected EObject createCopy(EObject eObject) {
-			return new UMLSwitch<EObject>() {
+			EObject copyEObject = new UMLSwitch<EObject>() {
 
 				@Override
 				public EObject caseAssociation(Association association) {
@@ -1220,6 +1804,23 @@ public class UMLUtil
 					return super.doSwitch(theEClass, theEObject);
 				}
 			}.doSwitch(eObject);
+
+			if (copyEObject instanceof MultiplicityElement
+				&& EcoreUtil.isAncestor(receivingElement, copyEObject)
+				&& options != null
+				&& !OPTION__IGNORE.equals(options
+					.get(OPTION__ATTRIBUTE_TRANFORMATIONS))) {
+
+				MultiplicityElement receivingMultiplicityElement = (MultiplicityElement) copyEObject;
+				MultiplicityElement mergedMultiplicityElement = (MultiplicityElement) eObject;
+
+				mergeMultiplicityElement_Lower(receivingMultiplicityElement,
+					mergedMultiplicityElement);
+				mergeMultiplicityElement_Upper(receivingMultiplicityElement,
+					mergedMultiplicityElement);
+			}
+
+			return copyEObject;
 		}
 
 		@Override
@@ -2252,7 +2853,7 @@ public class UMLUtil
 				Map<String, String> options, DiagnosticChain diagnostics,
 				Map<Object, Object> context) {
 
-			receivingPackage = package_; // for compatibility
+			receivingPackage = package_; // compatibility
 			mergedPackages = getAllMergedPackages(package_); // compatibility
 
 			return merge(receivingPackage, mergedPackages, options,
@@ -2323,6 +2924,10 @@ public class UMLUtil
 
 			this.receivingElement = receivingElement;
 			this.mergedElements = mergedElements;
+
+			this.options = options;
+			this.diagnostics = diagnostics;
+			this.context = context;
 
 			copyAll(mergedElements);
 			copyReferences();
@@ -2812,6 +3417,10 @@ public class UMLUtil
 				final Map<Object, Object> context) {
 
 			this.binding = binding;
+
+			this.options = options;
+			this.diagnostics = diagnostics;
+			this.context = context;
 
 			// initialize some mappings for the parameter substitutions
 			initializeParameteredElementMappings();
@@ -11091,6 +11700,25 @@ public class UMLUtil
 
 		if (!options.containsKey(PackageMerger.OPTION__CAPABILITIES)) {
 			options.put(PackageMerger.OPTION__CAPABILITIES, defaultValue);
+		}
+
+		if (!options.containsKey(PackageMerger.OPTION__EMPTY_QUALIFIED_NAMES)) {
+			options.put(PackageMerger.OPTION__EMPTY_QUALIFIED_NAMES,
+				defaultValue);
+		}
+
+		if (!options
+			.containsKey(PackageMerger.OPTION__INDISTINGUISHABLE_CLASSIFIERS)) {
+
+			options.put(PackageMerger.OPTION__INDISTINGUISHABLE_CLASSIFIERS,
+				defaultValue);
+		}
+
+		if (!options
+			.containsKey(PackageMerger.OPTION__ATTRIBUTE_TRANFORMATIONS)) {
+
+			options.put(PackageMerger.OPTION__ATTRIBUTE_TRANFORMATIONS,
+				defaultValue);
 		}
 
 		return options;

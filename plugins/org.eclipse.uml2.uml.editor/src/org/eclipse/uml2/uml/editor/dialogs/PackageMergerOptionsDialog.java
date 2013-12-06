@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 416833
  *
- * $Id: PackageMergerOptionsDialog.java,v 1.2 2007/01/05 21:48:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.dialogs;
 
@@ -106,6 +105,12 @@ public class PackageMergerOptionsDialog
 			UMLUtil.PackageMerger.OPTION__CAPABILITIES, new String[]{
 				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
 			processChoiceLabel);
-	}
+
+		createOptionArea(parent,
+			UMLEditorPlugin.INSTANCE.getString("_UI_AttributeTransformations_label"), //$NON-NLS-1$
+			UMLUtil.PackageMerger.OPTION__ATTRIBUTE_TRANFORMATIONS, new String[]{
+				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
+			processChoiceLabel);
+}
 
 }
