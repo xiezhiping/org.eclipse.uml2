@@ -3973,8 +3973,8 @@
       </genOperations>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//InstanceValue">
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//InstanceValue/instance"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertySortChoices="true"
+          ecoreFeature="ecore:EReference UML.ecore#//InstanceValue/instance"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//JoinNode">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//JoinNode/isCombineDuplicate"/>

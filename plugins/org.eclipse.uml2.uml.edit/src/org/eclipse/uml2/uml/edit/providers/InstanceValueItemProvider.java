@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,8 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Christian W. Damus (CEA) - 412912
  *
- * $Id: InstanceValueItemProvider.java,v 1.13 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -30,6 +30,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
+import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -145,6 +146,13 @@ public class InstanceValueItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(InstanceValue.class)) {
+			case UMLPackage.INSTANCE_VALUE__INSTANCE :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 
