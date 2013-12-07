@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 416833
+ *   Christian W. Damus (CEA) - 416833
  *
- * $Id: PackageMergerOptionsDialog.java,v 1.2 2007/01/05 21:48:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.dialogs;
 
@@ -62,50 +62,64 @@ public class PackageMergerOptionsDialog
 			new String[]{ignoreChoiceLabel, reportChoiceLabel},
 			reportChoiceLabel);
 
-		createOptionArea(parent,
+		createOptionArea(
+			parent,
 			UMLEditorPlugin.INSTANCE.getString("_UI_EmptyUnions_label"), //$NON-NLS-1$
 			UMLUtil.PackageMerger.OPTION__EMPTY_UNIONS, new String[]{
 				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
 			processChoiceLabel);
 
-		createOptionArea(parent,
+		createOptionArea(
+			parent,
 			UMLEditorPlugin.INSTANCE
 				.getString("_UI_ImplicitRedefinitions_label"), //$NON-NLS-1$
 			UMLUtil.PackageMerger.OPTION__IMPLICIT_REDEFINITIONS, new String[]{
 				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
 			processChoiceLabel);
 
-		createOptionArea(parent, UMLEditorPlugin.INSTANCE
-			.getString("_UI_InvalidRedefinitions_label"), //$NON-NLS-1$
+		createOptionArea(parent,
+			UMLEditorPlugin.INSTANCE
+				.getString("_UI_InvalidRedefinitions_label"), //$NON-NLS-1$
 			UMLUtil.PackageMerger.OPTION__INVALID_REDEFINITIONS, new String[]{
 				ignoreChoiceLabel, reportChoiceLabel, discardChoiceLabel,
 				processChoiceLabel}, processChoiceLabel);
 
-		createOptionArea(parent, UMLEditorPlugin.INSTANCE
-			.getString("_UI_InvalidSubsets_label"), //$NON-NLS-1$
+		createOptionArea(parent,
+			UMLEditorPlugin.INSTANCE.getString("_UI_InvalidSubsets_label"), //$NON-NLS-1$
 			UMLUtil.PackageMerger.OPTION__INVALID_SUBSETS, new String[]{
 				ignoreChoiceLabel, reportChoiceLabel, discardChoiceLabel,
 				processChoiceLabel}, processChoiceLabel);
 
-		createOptionArea(parent,
+		createOptionArea(
+			parent,
 			UMLEditorPlugin.INSTANCE
 				.getString("_UI_AssociationSpecializations_label"), //$NON-NLS-1$
 			UMLUtil.PackageMerger.OPTION__ASSOCIATION_SPECIALIZATIONS,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, processChoiceLabel);
 
-		createOptionArea(parent,
+		createOptionArea(
+			parent,
 			UMLEditorPlugin.INSTANCE
 				.getString("_UI_RedundantGeneralizations_label"), //$NON-NLS-1$
 			UMLUtil.PackageMerger.OPTION__REDUNDANT_GENERALIZATIONS,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				discardChoiceLabel}, discardChoiceLabel);
 
-		createOptionArea(parent,
+		createOptionArea(
+			parent,
 			UMLEditorPlugin.INSTANCE.getString("_UI_Capabilities_label"), //$NON-NLS-1$
 			UMLUtil.PackageMerger.OPTION__CAPABILITIES, new String[]{
 				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
 			processChoiceLabel);
+
+		createOptionArea(
+			parent,
+			UMLEditorPlugin.INSTANCE
+				.getString("_UI_AttributeTransformations_label"), //$NON-NLS-1$
+			UMLUtil.PackageMerger.OPTION__ATTRIBUTE_TRANSFORMATIONS,
+			new String[]{ignoreChoiceLabel, reportChoiceLabel,
+				processChoiceLabel}, processChoiceLabel);
 	}
 
 }

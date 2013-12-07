@@ -51,6 +51,7 @@ public class UMLBugTests
 		result.addTest(Bug422000Test.suite());
 		result.addTest(Bug180744Test.suite());
 		result.addTest(Bug403374Test.suite());
+		// result.addTest(Bug416833Test.suite());
 
 		return result;
 	}
