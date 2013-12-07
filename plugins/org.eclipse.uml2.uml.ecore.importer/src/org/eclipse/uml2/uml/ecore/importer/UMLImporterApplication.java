@@ -102,8 +102,9 @@ public class UMLImporterApplication
 		appendLine(result,"                               -SUBSETTING_PROPERTIES | -UNION_PROPERTIES | -DERIVED_FEATURES |" ); //$NON-NLS-1$
 		appendLine(result,"                               -DUPLICATE_OPERATIONS | -DUPLICATE_OPERATION_INHERITANCE |" ); //$NON-NLS-1$
 		appendLine(result,"                               -DUPLICATE_FEATURES | -DUPLICATE_FEATURE_INHERITANCE |" ); //$NON-NLS-1$
+		appendLine(result,"                               -UNTYPED_PROPERTIES |"); //$NON-NLS-1$
 		appendLine(result,"                               -SUPER_CLASS_ORDER | -ANNOTATION_DETAILS |" ); //$NON-NLS-1$
-		appendLine(result,"                               -INVARIANT_CONSTRAINTS | -VALIDATION_DELEGATES | NON_API_INVARIANTS |" ); //$NON-NLS-1$
+		appendLine(result,"                               -INVARIANT_CONSTRAINTS | -VALIDATION_DELEGATES | -NON_API_INVARIANTS |" ); //$NON-NLS-1$
 		appendLine(result,"                               -OPERATION_BODIES | -INVOCATION_DELEGATES |" ); //$NON-NLS-1$
 		appendLine(result,"                               -COMMENTS | -CAMEL_CASE_NAMES >" ); //$NON-NLS-1$
 		appendLine(result,"                             < PROCESS | IGNORE | REPORT | DISCARD >"); //$NON-NLS-1$
@@ -179,6 +180,8 @@ public class UMLImporterApplication
 			|| UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_FEATURES
 				.equalsIgnoreCase(strippedKey)
 			|| UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE
+				.equalsIgnoreCase(strippedKey)
+			|| UMLUtil.UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES
 				.equalsIgnoreCase(strippedKey)
 			|| UMLUtil.UML2EcoreConverter.OPTION__SUPER_CLASS_ORDER
 				.equalsIgnoreCase(strippedKey)
