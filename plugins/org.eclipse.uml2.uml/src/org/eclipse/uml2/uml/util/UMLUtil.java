@@ -7361,8 +7361,8 @@ public class UMLUtil
 					}
 
 					if ((eClassifier instanceof EClass)
-						&& (options == null || !OPTION__PROCESS.equals(options
-							.get(OPTION__NON_API_INVARIANTS)))) {
+						&& !OPTION__PROCESS.equals(options
+							.get(OPTION__NON_API_INVARIANTS))) {
 
 						EOperation eOperation = EcoreFactory.eINSTANCE
 							.createEOperation();
