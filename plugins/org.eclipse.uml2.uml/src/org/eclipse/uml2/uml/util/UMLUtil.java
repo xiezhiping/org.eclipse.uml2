@@ -374,8 +374,8 @@ public class UMLUtil
 			@Override
 			public boolean matches(EObject otherEObject) {
 				return super.matches(otherEObject)
-					&& safeEquals(((BasicEMap.Entry<String, String>) eObject)
-						.getKey(),
+					&& safeEquals(
+						((BasicEMap.Entry<String, String>) eObject).getKey(),
 						((BasicEMap.Entry<String, String>) otherEObject)
 							.getKey());
 			}
@@ -617,7 +617,7 @@ public class UMLUtil
 		 */
 		@Deprecated
 		protected org.eclipse.uml2.uml.Package receivingPackage = null;
-		
+
 		/**
 		 * @deprecated Use the {@link #mergedElements}, instead
 		 */
@@ -854,7 +854,7 @@ public class UMLUtil
 											receivingClassifier,
 											mergedClassifier)),
 								new Object[]{receivingClassifier}));
-		}
+					}
 
 					receivingClassifier
 						.setIsFinalSpecialization(resultingIsFinalSpecification);
@@ -941,7 +941,7 @@ public class UMLUtil
 								new Object[]{receivingMultiplicityElement}));
 					}
 
-			receivingMultiplicityElement
+					receivingMultiplicityElement
 						.setIsOrdered(resultingIsOrdered);
 				}
 			}
@@ -2285,48 +2285,51 @@ public class UMLUtil
 											subsettedProperty}));
 							}
 
-						if (OPTION__PROCESS.equals(options
-							.get(OPTION__INVALID_SUBSETS))) {
+							if (OPTION__PROCESS.equals(options
+								.get(OPTION__INVALID_SUBSETS))) {
 
-							Collection<Property> validSubsets = findValidSubsets(
-								subsettingProperty, subsettedProperty.getName());
+								Collection<Property> validSubsets = findValidSubsets(
+									subsettingProperty,
+									subsettedProperty.getName());
 
-							if (!validSubsets.isEmpty()) {
+								if (!validSubsets.isEmpty()) {
 
-								for (Property validSubset : validSubsets) {
+									for (Property validSubset : validSubsets) {
 
-									if (!subsettedProperties
-										.contains(validSubset)) {
+										if (!subsettedProperties
+											.contains(validSubset)) {
 
-										if (diagnostics != null) {
-											diagnostics
-												.add(new BasicDiagnostic(
-													Diagnostic.INFO,
-													UMLValidator.DIAGNOSTIC_SOURCE,
-													INVALID_SUBSET,
-													UMLPlugin.INSTANCE
-														.getString(
-															"_UI_PackageMerger_ProcessInvalidSubset_diagnostic", //$NON-NLS-1$
-															getMessageSubstitutions(
-																context,
-																subsettingProperty,
-																subsettedProperty,
-																validSubset)),
-													new Object[]{
-														subsettingProperty,
-														validSubset}));
+											if (diagnostics != null) {
+												diagnostics
+													.add(new BasicDiagnostic(
+														Diagnostic.INFO,
+														UMLValidator.DIAGNOSTIC_SOURCE,
+														INVALID_SUBSET,
+														UMLPlugin.INSTANCE
+															.getString(
+																"_UI_PackageMerger_ProcessInvalidSubset_diagnostic", //$NON-NLS-1$
+																getMessageSubstitutions(
+																	context,
+																	subsettingProperty,
+																	subsettedProperty,
+																	validSubset)),
+														new Object[]{
+															subsettingProperty,
+															validSubset}));
+											}
+
+											subsettedProperties
+												.add(validSubset);
 										}
+									}
 
-										subsettedProperties.add(validSubset);
+									if (!validSubsets
+										.contains(subsettedProperty)) {
+										subsettedProperties
+											.remove(subsettedProperty);
 									}
 								}
-
-								if (!validSubsets.contains(subsettedProperty)) {
-									subsettedProperties
-										.remove(subsettedProperty);
-								}
 							}
-						}
 						}
 					}
 				}
@@ -2395,8 +2398,7 @@ public class UMLUtil
 
 						unionProperty.setIsDerivedUnion(false);
 					} else if (OPTION__REPORT.equals(options
-						.get(OPTION__EMPTY_UNIONS))
-						&& diagnostics != null) {
+						.get(OPTION__EMPTY_UNIONS)) && diagnostics != null) {
 
 						diagnostics
 							.add(new BasicDiagnostic(
@@ -2790,7 +2792,8 @@ public class UMLUtil
 			if (!OPTION__IGNORE.equals(options
 				.get(OPTION__INDISTINGUISHABLE_CLASSIFIERS))) {
 
-				processIndistinguishableClassifiers(options, diagnostics, context);
+				processIndistinguishableClassifiers(options, diagnostics,
+					context);
 			}
 
 			if (!OPTION__IGNORE.equals(options
@@ -2858,7 +2861,8 @@ public class UMLUtil
 		 * @param context
 		 *            The cache of context-specific information.
 		 * 
-		 * @return A traceability map from resulting elements to merged elements.
+		 * @return A traceability map from resulting elements to merged
+		 *         elements.
 		 */
 		public Map<EObject, List<EObject>> merge(
 				org.eclipse.uml2.uml.Package package_,
@@ -7357,8 +7361,8 @@ public class UMLUtil
 					}
 
 					if ((eClassifier instanceof EClass)
-						&& !OPTION__PROCESS.equals(options
-							.get(OPTION__NON_API_INVARIANTS))) {
+						&& (options == null || !OPTION__PROCESS.equals(options
+							.get(OPTION__NON_API_INVARIANTS)))) {
 
 						EOperation eOperation = EcoreFactory.eINSTANCE
 							.createEOperation();
