@@ -3188,6 +3188,8 @@ public class UMLUtil
 		 * The option for generating invariant constraints in the non-API style
 		 * in EClasses, rather than as API operations. Supported choices are
 		 * <code>OPTION__IGNORE</code> and <code>OPTION__PROCESS</code>.
+		 * 
+		 * @since 4.2
 		 */
 		public static final String OPTION__NON_API_INVARIANTS = "NON_API_INVARIANTS"; //$NON-NLS-1$
 
@@ -11302,8 +11304,25 @@ public class UMLUtil
 				OPTION__IGNORE);
 		}
 
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__VALIDATION_DELEGATES)) {
+			options.put(UML2EcoreConverter.OPTION__VALIDATION_DELEGATES,
+				OPTION__IGNORE);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__NON_API_INVARIANTS)) {
+			options.put(UML2EcoreConverter.OPTION__NON_API_INVARIANTS,
+				OPTION__IGNORE);
+		}
+
 		if (!options.containsKey(UML2EcoreConverter.OPTION__OPERATION_BODIES)) {
 			options.put(UML2EcoreConverter.OPTION__OPERATION_BODIES,
+				OPTION__IGNORE);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__INVOCATION_DELEGATES)) {
+			options.put(UML2EcoreConverter.OPTION__INVOCATION_DELEGATES,
 				OPTION__IGNORE);
 		}
 
@@ -11426,9 +11445,26 @@ public class UMLUtil
 				OPTION__REPORT);
 		}
 
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__VALIDATION_DELEGATES)) {
+			options.put(UML2EcoreConverter.OPTION__VALIDATION_DELEGATES,
+				OPTION__IGNORE); // 'report' is not valid for this option
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__NON_API_INVARIANTS)) {
+			options.put(UML2EcoreConverter.OPTION__NON_API_INVARIANTS,
+				OPTION__IGNORE); // 'report' is not valid for this option
+		}
+
 		if (!options.containsKey(UML2EcoreConverter.OPTION__OPERATION_BODIES)) {
 			options.put(UML2EcoreConverter.OPTION__OPERATION_BODIES,
 				OPTION__REPORT);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__INVOCATION_DELEGATES)) {
+			options.put(UML2EcoreConverter.OPTION__INVOCATION_DELEGATES,
+				OPTION__IGNORE); // 'report' is not valid for this option
 		}
 
 		if (!options.containsKey(UML2EcoreConverter.OPTION__COMMENTS)) {

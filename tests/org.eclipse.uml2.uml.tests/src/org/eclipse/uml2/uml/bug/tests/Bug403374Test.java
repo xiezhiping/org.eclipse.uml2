@@ -12,8 +12,6 @@
  */
 package org.eclipse.uml2.uml.bug.tests;
 
-import static org.junit.Assert.assertNotEquals;
-
 import java.net.URL;
 import java.util.Collection;
 import java.util.HashMap;
@@ -182,7 +180,10 @@ public class Bug403374Test
 		EPackage result = ecores.iterator().next();
 		assertEquals("employee", result.getName());
 
-		assertEcoreAnnotation(result, "validationDelegates", OCL_ANNOTATION_URI);
+		if (nonAPIInvariants) {
+			assertEcoreAnnotation(result, "validationDelegates",
+				OCL_ANNOTATION_URI);
+		}
 		assertEcoreAnnotation(result, "invocationDelegates", OCL_ANNOTATION_URI);
 
 		return result;
@@ -253,7 +254,7 @@ public class Bug403374Test
 	void assertNoValidationOperations(EClass eclass) {
 		for (EOperation operation : eclass.getEOperations()) {
 			for (EParameter parameter : operation.getEParameters()) {
-				assertNotEquals(EcorePackage.Literals.EDIAGNOSTIC_CHAIN,
+				assertNotSame(EcorePackage.Literals.EDIAGNOSTIC_CHAIN,
 					parameter.getEType());
 			}
 		}
