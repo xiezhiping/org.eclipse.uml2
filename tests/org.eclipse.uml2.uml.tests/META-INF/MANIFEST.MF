@@ -11,6 +11,7 @@ Export-Package: org.eclipse.uml2.uml.tests
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.uml2.uml;visibility:=reexport,
  org.eclipse.uml2.uml.resources;visibility:=reexport,
+ org.eclipse.uml2.uml.validation;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.junit;visibility:=reexport
 Eclipse-LazyStart: true
