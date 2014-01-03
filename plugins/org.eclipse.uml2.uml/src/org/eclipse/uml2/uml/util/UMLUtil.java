@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
  *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833
+ *   E.D.Willink - 420338
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -68,6 +69,7 @@ import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.xmi.impl.EMOFExtendedMetaData;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.UML2Util;
@@ -4940,6 +4942,23 @@ public class UMLUtil
 
 						((EReference) eStructuralFeature)
 							.setEOpposite(eOpposite);
+					}
+				} else if (eStructuralFeature instanceof EReference) {
+					Property otherEnd = property.getOtherEnd();
+					if (otherEnd != null) {
+						String explicitRoleName = otherEnd.getName();
+						String implicitRoleName = namespace.getName();
+						if (!safeEquals(implicitRoleName, explicitRoleName)) {
+							EAnnotation eAnnotation = EcoreFactory.eINSTANCE
+								.createEAnnotation();
+							eAnnotation
+								.setSource(EMOFExtendedMetaData.EMOF_PROPERTY_OPPOSITE_ROLE_NAME_ANNOTATION_SOURCE);
+							eAnnotation.getDetails().put(
+								EMOFExtendedMetaData.EMOF_COMMENT_BODY,
+								explicitRoleName);
+							eStructuralFeature.getEAnnotations().add(
+								eAnnotation);
+						}
 					}
 				}
 
