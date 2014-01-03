@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_3rGvcHSWEeOCP45ZAzv7Qw" name="bug420338" URI="http://www.eclipse.org/uml2/tests/bugs/420338">
+  <packagedElement xmi:type="uml:Class" xmi:id="_3wDEYHSXEeOy8Nli9HVgSQ" name="A">
+    <ownedAttribute xmi:id="_79euIHSXEeOy8Nli9HVgSQ" name="b" type="_4yTLkHSXEeOy8Nli9HVgSQ" association="_-fafYHSXEeOy8Nli9HVgSQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_4yTLkHSXEeOy8Nli9HVgSQ" name="B"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_-fafYHSXEeOy8Nli9HVgSQ" memberEnd="_79euIHSXEeOy8Nli9HVgSQ _CZu_4HSYEeOy8Nli9HVgSQ">
+    <ownedEnd xmi:id="_CZu_4HSYEeOy8Nli9HVgSQ" name="theA" type="_3wDEYHSXEeOy8Nli9HVgSQ" association="_-fafYHSXEeOy8Nli9HVgSQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Gvh7cHSYEeOy8Nli9HVgSQ" name="M">
+    <ownedAttribute xmi:id="_Gvh7cXSYEeOy8Nli9HVgSQ" name="n" type="_Gvh7cnSYEeOy8Nli9HVgSQ" association="_Gvh7c3SYEeOy8Nli9HVgSQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Gvh7cnSYEeOy8Nli9HVgSQ" name="N"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Gvh7c3SYEeOy8Nli9HVgSQ" memberEnd="_Gvh7cXSYEeOy8Nli9HVgSQ _Gvh7dHSYEeOy8Nli9HVgSQ">
+    <ownedEnd xmi:id="_Gvh7dHSYEeOy8Nli9HVgSQ" type="_Gvh7cHSYEeOy8Nli9HVgSQ" association="_Gvh7c3SYEeOy8Nli9HVgSQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_lCli4HSbEeO7FvYuyvhJVg" name="S">
+    <ownedAttribute xmi:id="_lCli4XSbEeO7FvYuyvhJVg" name="t" type="_lCli4nSbEeO7FvYuyvhJVg" association="_lCli43SbEeO7FvYuyvhJVg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_lCli4nSbEeO7FvYuyvhJVg" name="T">
+    <ownedAttribute xmi:id="_lCli5HSbEeO7FvYuyvhJVg" name="s" type="_lCli4HSbEeO7FvYuyvhJVg" association="_lCli43SbEeO7FvYuyvhJVg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_lCli43SbEeO7FvYuyvhJVg" memberEnd="_lCli4XSbEeO7FvYuyvhJVg _lCli5HSbEeO7FvYuyvhJVg"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_S6xwUHSYEeOy8Nli9HVgSQ" name="X">
+    <ownedAttribute xmi:id="_S6xwUXSYEeOy8Nli9HVgSQ" name="y" type="_S6xwUnSYEeOy8Nli9HVgSQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_S6xwUnSYEeOy8Nli9HVgSQ" name="Y"/>
+</uml:Package>

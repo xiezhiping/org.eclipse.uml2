@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 CEA and others.
+ * Copyright (c) 2013, 2014 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
- *   Christian W. Damus (CEA) - 414572, 401682
+ *   Christian W. Damus (CEA) - 414572, 401682, 420338
  *
  */
 package org.eclipse.uml2.uml.tests.util;
@@ -20,6 +20,7 @@ import junit.framework.TestSuite;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.uml2.uml.resources.util.UMLResourcesUtil;
 
 /**
@@ -52,6 +53,12 @@ public class StandaloneSupport {
 		}
 
 		UMLResourcesUtil.initLocalRegistries(rset);
+
+		if (rset != null) {
+			rset.getResourceFactoryRegistry().getExtensionToFactoryMap()
+				.put("ecore", new EcoreResourceFactoryImpl()); //$NON-NLS-1$
+		}
+
 		return rset;
 	}
 
