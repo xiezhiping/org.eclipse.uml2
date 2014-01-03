@@ -12,7 +12,7 @@
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
  *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833
  *   Yann Tanguy (CEA) - 350402
- *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833
+ *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833, 420338
  *   E.D.Willink - 420338
  *
  */
@@ -3829,6 +3829,14 @@ public class UMLUtil
 		 */
 		public static final String OPTION__UNTYPED_PROPERTIES = "UNTYPED_PROPERTIES"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling opposite role names. Supported choices are
+		 * {@code OPTION__IGNORE} and {@code OPTION__PROCESS}.
+		 * 
+		 * @since 4.2
+		 */
+		public static final String OPTION__OPPOSITE_ROLE_NAMES = "OPPOSITE_ROLE_NAMES"; //$NON-NLS-1$
+
 		private static final int DIAGNOSTIC_CODE_OFFSET = 2000;
 
 		/**
@@ -3928,6 +3936,14 @@ public class UMLUtil
 		 * @since 4.2
 		 */
 		public static final int UNTYPED_PROPERTY = DIAGNOSTIC_CODE_OFFSET + 17;
+
+		/**
+		 * The diagnostic code for notification of opposite role name
+		 * annotations.
+		 * 
+		 * @since 4.2
+		 */
+		public static final int OPPOSITE_ROLE_NAME = DIAGNOSTIC_CODE_OFFSET + 18;
 
 		protected static final Pattern ANNOTATION_PATTERN = Pattern
 			.compile("\\G\\s*((?>\\\\.|\\S)+)((?:\\s+(?>\\\\.|\\S)+\\s*+=\\s*(['\"])((?>\\\\.|.)*?)\\3)*)"); //$NON-NLS-1$
@@ -4943,21 +4959,39 @@ public class UMLUtil
 						((EReference) eStructuralFeature)
 							.setEOpposite(eOpposite);
 					}
-				} else if (eStructuralFeature instanceof EReference) {
+				} else if ((eStructuralFeature instanceof EReference)
+					&& OPTION__PROCESS.equals(options
+						.get(OPTION__OPPOSITE_ROLE_NAMES))) {
+
 					Property otherEnd = property.getOtherEnd();
 					if (otherEnd != null) {
 						String explicitRoleName = otherEnd.getName();
 						String implicitRoleName = namespace.getName();
-						if (!safeEquals(implicitRoleName, explicitRoleName)) {
-							EAnnotation eAnnotation = EcoreFactory.eINSTANCE
-								.createEAnnotation();
-							eAnnotation
-								.setSource(EMOFExtendedMetaData.EMOF_PROPERTY_OPPOSITE_ROLE_NAME_ANNOTATION_SOURCE);
-							eAnnotation.getDetails().put(
-								EMOFExtendedMetaData.EMOF_COMMENT_BODY,
-								explicitRoleName);
-							eStructuralFeature.getEAnnotations().add(
-								eAnnotation);
+						if (!isEmpty(explicitRoleName)
+							&& !explicitRoleName.equals(implicitRoleName)) {
+
+							EcoreUtil
+								.setAnnotation(
+									eStructuralFeature,
+									EMOFExtendedMetaData.EMOF_PROPERTY_OPPOSITE_ROLE_NAME_ANNOTATION_SOURCE,
+									EMOFExtendedMetaData.EMOF_COMMENT_BODY,
+									explicitRoleName);
+
+							if (diagnostics != null) {
+								diagnostics
+									.add(new BasicDiagnostic(
+										Diagnostic.INFO,
+										UMLValidator.DIAGNOSTIC_SOURCE,
+										OPPOSITE_ROLE_NAME,
+										UMLPlugin.INSTANCE
+											.getString(
+												"_UI_UML2EcoreConverter_ProcessOppositeRoleName_diagnostic", //$NON-NLS-1$
+												getMessageSubstitutions(
+													context,
+													eStructuralFeature,
+													explicitRoleName)),
+										new Object[]{eStructuralFeature}));
+							}
 						}
 					}
 				}
@@ -8100,6 +8134,14 @@ public class UMLUtil
 		 */
 		public static final String OPTION__XMI_IDENTIFIERS = "XMI_IDENTIFIERS"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling opposite role name annotations. Supported
+		 * choices are {@code OPTION__IGNORE} and {@code OPTION__PROCESS}.
+		 * 
+		 * @since 4.2
+		 */
+		public static final String OPTION__OPPOSITE_ROLE_NAMES = "OPPOSITE_ROLE_NAMES"; //$NON-NLS-1$
+
 		private static final int DIAGNOSTIC_CODE_OFFSET = 3000;
 
 		/**
@@ -8147,6 +8189,14 @@ public class UMLUtil
 		 * The diagnostic code for cases where an XMI identifier is assigned.
 		 */
 		public static final int XMI_IDENTIFIER = DIAGNOSTIC_CODE_OFFSET + 8;
+
+		/**
+		 * The diagnostic code for cases where an opposite role name annotation
+		 * is encountered.
+		 * 
+		 * @since 4.2
+		 */
+		public static final int OPPOSITE_ROLE_NAME = DIAGNOSTIC_CODE_OFFSET + 9;
 
 		protected final Map<EModelElement, Element> eModelElementToElementMap = new LinkedHashMap<EModelElement, Element>();
 
@@ -8892,7 +8942,34 @@ public class UMLUtil
 
 					property.setAssociation(association);
 
-					association.createOwnedEnd(null, classifier);
+					Property opposite = association.createOwnedEnd(null,
+						classifier);
+					if (OPTION__PROCESS.equals(options
+						.get(OPTION__OPPOSITE_ROLE_NAMES))) {
+						String oppositeRoleName = EcoreUtil
+							.getAnnotation(
+								eReference,
+								EMOFExtendedMetaData.EMOF_PROPERTY_OPPOSITE_ROLE_NAME_ANNOTATION_SOURCE,
+								EMOFExtendedMetaData.EMOF_COMMENT_BODY);
+						if (oppositeRoleName != null) {
+							opposite.setName(oppositeRoleName);
+
+							if (diagnostics != null) {
+								diagnostics
+									.add(new BasicDiagnostic(
+										Diagnostic.INFO,
+										UMLValidator.DIAGNOSTIC_SOURCE,
+										OPPOSITE_ROLE_NAME,
+										UMLPlugin.INSTANCE
+											.getString(
+												"_UI_Ecore2UMLConverter_ProcessOppositeRoleName_diagnostic", //$NON-NLS-1$
+												getMessageSubstitutions(
+													context, property,
+													oppositeRoleName)),
+										new Object[]{property, opposite}));
+							}
+						}
+					}
 				} else {
 					Property opposite = (Property) doSwitch(eOpposite);
 
@@ -9356,6 +9433,8 @@ public class UMLUtil
 						if (source != null
 							&& !source.equals(EcorePackage.eNS_URI)
 							&& !source.equals(ExtendedMetaData.ANNOTATION_URI)
+							&& !source
+								.equals(EMOFExtendedMetaData.EMOF_PROPERTY_OPPOSITE_ROLE_NAME_ANNOTATION_SOURCE)
 							&& !source.equals(EMF_GEN_MODEL_PACKAGE_NS_URI)
 							&& !source.equals(UML2_UML_PACKAGE_2_0_NS_URI)
 							&& !source.equals(ANNOTATION__DUPLICATES)
@@ -10282,6 +10361,8 @@ public class UMLUtil
 						if (source != null
 							&& !source.equals(EcorePackage.eNS_URI)
 							&& !source.equals(ExtendedMetaData.ANNOTATION_URI)
+							&& !source
+								.equals(EMOFExtendedMetaData.EMOF_PROPERTY_OPPOSITE_ROLE_NAME_ANNOTATION_SOURCE)
 							&& !source.equals(EMF_GEN_MODEL_PACKAGE_NS_URI)
 							&& !source.equals(UML2_UML_PACKAGE_2_0_NS_URI)
 							&& !source.equals(ANNOTATION__DUPLICATES)
@@ -11998,6 +12079,13 @@ public class UMLUtil
 				OPTION__IGNORE);
 		}
 
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__OPPOSITE_ROLE_NAMES)) {
+
+			options.put(UML2EcoreConverter.OPTION__OPPOSITE_ROLE_NAMES,
+				OPTION__IGNORE);
+		}
+
 		return convertToEcore(package_, options, null, null);
 	}
 
@@ -12259,6 +12347,13 @@ public class UMLUtil
 
 		if (!options.containsKey(UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES)) {
 			options.put(UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES,
+				OPTION__IGNORE);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__OPPOSITE_ROLE_NAMES)) {
+
+			options.put(UML2EcoreConverter.OPTION__OPPOSITE_ROLE_NAMES,
 				OPTION__IGNORE);
 		}
 

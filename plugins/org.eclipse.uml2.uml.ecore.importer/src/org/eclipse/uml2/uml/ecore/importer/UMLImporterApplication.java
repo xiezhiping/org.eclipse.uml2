@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2007, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 213218
  *   Kenn Hussey (CEA) - 322715
- *   Christian W. Damus (CEA) - 403374
+ *   Christian W. Damus (CEA) - 403374, 420338
  *
  */
 package org.eclipse.uml2.uml.ecore.importer;
@@ -102,7 +102,7 @@ public class UMLImporterApplication
 		appendLine(result,"                               -SUBSETTING_PROPERTIES | -UNION_PROPERTIES | -DERIVED_FEATURES |" ); //$NON-NLS-1$
 		appendLine(result,"                               -DUPLICATE_OPERATIONS | -DUPLICATE_OPERATION_INHERITANCE |" ); //$NON-NLS-1$
 		appendLine(result,"                               -DUPLICATE_FEATURES | -DUPLICATE_FEATURE_INHERITANCE |" ); //$NON-NLS-1$
-		appendLine(result,"                               -UNTYPED_PROPERTIES |"); //$NON-NLS-1$
+		appendLine(result,"                               -UNTYPED_PROPERTIES | -OPPOSITE_ROLE_NAMES |"); //$NON-NLS-1$
 		appendLine(result,"                               -SUPER_CLASS_ORDER | -ANNOTATION_DETAILS |" ); //$NON-NLS-1$
 		appendLine(result,"                               -INVARIANT_CONSTRAINTS | -VALIDATION_DELEGATES | -NON_API_INVARIANTS |" ); //$NON-NLS-1$
 		appendLine(result,"                               -OPERATION_BODIES | -INVOCATION_DELEGATES |" ); //$NON-NLS-1$
@@ -200,6 +200,8 @@ public class UMLImporterApplication
 			|| UMLUtil.UML2EcoreConverter.OPTION__COMMENTS
 				.equalsIgnoreCase(strippedKey)
 			|| UMLUtil.UML2EcoreConverter.OPTION__CAMEL_CASE_NAMES
+				.equalsIgnoreCase(strippedKey)
+			|| UMLUtil.UML2EcoreConverter.OPTION__OPPOSITE_ROLE_NAMES
 				.equalsIgnoreCase(strippedKey);
 	}
 
