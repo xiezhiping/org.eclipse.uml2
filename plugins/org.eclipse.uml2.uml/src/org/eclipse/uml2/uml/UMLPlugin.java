@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215488
  *   Kenn Hussey (CEA) - 279044
+ *   Christian W. Damus (CEA) - 401804
  *
  */
 package org.eclipse.uml2.uml;
@@ -24,7 +25,7 @@ import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.common.util.URI;
-
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.plugin.RegistryReader;
 import org.osgi.framework.BundleContext;
 
@@ -104,13 +105,13 @@ public final class UMLPlugin
 			extends PackageRegistryReader {
 
 		protected GeneratedPackageRegistryReader() {
-			super(Platform.getExtensionRegistry(), getPlugin().getBundle()
+			super(Platform.getExtensionRegistry(), UMLPlugin.INSTANCE
 				.getSymbolicName(), GENERATED_PACKAGE_PPID);
 		}
 
 		protected GeneratedPackageRegistryReader(
 				Map<String, URI> ePackageNsURIToProfileLocationMap) {
-			super(Platform.getExtensionRegistry(), getPlugin().getBundle()
+			super(Platform.getExtensionRegistry(), UMLPlugin.INSTANCE
 				.getSymbolicName(), GENERATED_PACKAGE_PPID,
 				ePackageNsURIToProfileLocationMap);
 		}
@@ -120,13 +121,13 @@ public final class UMLPlugin
 			extends PackageRegistryReader {
 
 		protected DynamicPackageRegistryReader() {
-			super(Platform.getExtensionRegistry(), getPlugin().getBundle()
+			super(Platform.getExtensionRegistry(), UMLPlugin.INSTANCE
 				.getSymbolicName(), DYNAMIC_PACKAGE_PPID);
 		}
 
 		protected DynamicPackageRegistryReader(
 				Map<String, URI> ePackageNsURIToProfileLocationMap) {
-			super(Platform.getExtensionRegistry(), getPlugin().getBundle()
+			super(Platform.getExtensionRegistry(), UMLPlugin.INSTANCE
 				.getSymbolicName(), DYNAMIC_PACKAGE_PPID,
 				ePackageNsURIToProfileLocationMap);
 		}
@@ -224,6 +225,52 @@ public final class UMLPlugin
 				throws Exception {
 			super.start(context);
 
+			ExtensionProcessor.internalProcessExtensions();
+		}
+
+	}
+
+	/**
+	 * A utility for loading of <tt>plugin.xml</tt> extensions in a non-Eclipse
+	 * application.
+	 * 
+	 * @see ExtensionProcessor#process(ClassLoader)
+	 * @since 4.2
+	 */
+	public static class ExtensionProcessor {
+
+		/**
+		 * Populate all Ecore and UML2 extensions points from
+		 * <tt>plugin.xml</tt> files on the classpath (or in the development
+		 * workspace, as appropriate). This method has no effect when the
+		 * Eclipse platform is running, as in that context bundle activation
+		 * takes care of these extensions points.
+		 * 
+		 * @param classLoader
+		 *            an optional class-loader used to scan for
+		 *            <tt>plugin.xml</tt> files. If {@code null}, the current
+		 *            {@linkplain Thread#getContextClassLoader() context
+		 *            class-loader} will be used
+		 * 
+		 * @since 4.2
+		 */
+		public static synchronized void process(ClassLoader classLoader) {
+			// Initialize the Ecore extensions that we rely on, which operation
+			// actually populates the Eclipse registry that we need to read
+			EcorePlugin.ExtensionProcessor.process(classLoader);
+
+			// Ensure that we only do this once, and then only in an
+			// Eclipse-free context
+			if ((ePackageNsURIToProfileLocationMap == null)
+				&& !EMFPlugin.IS_ECLIPSE_RUNNING) {
+
+				ePackageNsURIToProfileLocationMap = new HashMap<String, URI>();
+
+				internalProcessExtensions();
+			}
+		}
+
+		private static void internalProcessExtensions() {
 			new GeneratedPackageRegistryReader(
 				getEPackageNsURIToProfileLocationMap()).readRegistry();
 			new DynamicPackageRegistryReader(

@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 
 <!--
- Copyright (c) 2012 CEA and others.
+ Copyright (c) 2012, 2014 CEA and others.
  All rights reserved.   This program and the accompanying materials
  are made available under the terms of the Eclipse Public License v1.0
  which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
 
  Contributors:
    Christian W. Damus (CEA) - initial API and implementation
-
+   Christian W. Damus (CEA) - 401804
 -->
 
 <plugin>
@@ -42,6 +42,30 @@
             context="org.eclipse.uml2.uml.tests.clientContext"
             category="org.eclipse.uml2.uml.tests">
       </binding>
+   </extension>
+   
+   <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://UML_TEST_MODELS/"
+            target="platform:/plugin/org.eclipse.uml2.uml.tests/models/">
+      </mapping>
+   </extension>
+   
+   <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://UML_TEST_PROFILES/"
+            target="platform:/plugin/org.eclipse.uml2.uml.tests/profiles/">
+      </mapping>
+   </extension>
+   
+   <extension
+         point="org.eclipse.uml2.uml.dynamic_package">
+      <profile
+            uri="http://www.eclipse.org/uml2/schemas/tests/profiles/bugs/401804"
+            location="pathmap://UML_TEST_PROFILES/Bug401804.profile.uml#_V2BR0HerEeOXG-Ysr10KOA">
+      </profile>
    </extension>
 
 </plugin>
