@@ -56,6 +56,8 @@ public class Bug401804 {
 
 		Type sessionManagerBean = model.getOwnedType("SessionManager");
 
+		// This stereotype is dynamically defined, which does not require any
+		// UML-specific extension point to resolve (only Ecore extension points)
 		Stereotype bean = sessionManagerBean
 			.getAppliedStereotype("bug401804::Bean");
 		System.out.printf("SessionManager is a <<bean>>: %s%n", bean != null);
@@ -66,6 +68,13 @@ public class Bug401804 {
 					((EnumerationLiteral) sessionManagerBean.getValue(bean,
 						"kind")).getLabel());
 		}
+
+		// This stereotype is statically generated, which requires a
+		// UML-specific extension point to resolve
+		Stereotype specification = sessionManagerBean
+			.getAppliedStereotype("StandardProfileL2::Specification");
+		System.out.printf("SessionManager is a <<specification>>: %s%n",
+			specification != null);
 	}
 
 }

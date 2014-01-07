@@ -16,6 +16,7 @@ package org.eclipse.uml2.uml;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
@@ -27,6 +28,8 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.plugin.RegistryReader;
+import org.eclipse.emf.ecore.resource.URIConverter;
+import org.eclipse.uml2.uml.resource.UMLResource;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -267,6 +270,7 @@ public final class UMLPlugin
 				ePackageNsURIToProfileLocationMap = new HashMap<String, URI>();
 
 				internalProcessExtensions();
+				mapPlatformPluginURIs();
 			}
 		}
 
@@ -277,6 +281,17 @@ public final class UMLPlugin
 				getEPackageNsURIToProfileLocationMap()).readRegistry();
 		}
 
+		private static void mapPlatformPluginURIs() {
+			// The resources plug-in doesn't register any genmodels, so EMF will
+			// not automatically map its platform:/plugin location. Let's force
+			// the issue
+			Set<URI> umlResourceURIs = new java.util.HashSet<URI>();
+			umlResourceURIs.add(URIConverter.INSTANCE.normalize(URI
+				.createURI(UMLResource.LIBRARIES_PATHMAP)));
+
+			URIConverter.URI_MAP.putAll(EcorePlugin
+				.computePlatformResourceToPlatformPluginMap(umlResourceURIs));
+		}
 	}
 
 }
