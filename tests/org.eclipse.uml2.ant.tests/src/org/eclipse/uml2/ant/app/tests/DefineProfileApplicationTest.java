@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 CEA and others.
+ * Copyright (c) 2013, 2014 CEA and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -8,9 +8,10 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - Initial API and implementation
+ *   Christian W. Damus (CEA) - 286404
  *
  */
-package org.eclipse.uml2.uml.bug.tests;
+package org.eclipse.uml2.ant.app.tests;
 
 import static org.eclipse.uml2.uml.util.UMLUtil.UML2EcoreConverter.*;
 import static org.eclipse.uml2.uml.util.UMLUtil.*;
@@ -51,11 +52,11 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.uml2.ant.app.DefineProfileApplication;
+import org.eclipse.uml2.ant.app.IDiagnosticReporter;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.uml2.uml.internal.app.DefineProfileApplication;
-import org.eclipse.uml2.uml.internal.app.IDiagnosticReporter;
 import org.eclipse.uml2.uml.tests.util.StandaloneSupport;
 
 /**
@@ -63,7 +64,7 @@ import org.eclipse.uml2.uml.tests.util.StandaloneSupport;
  * 
  * @see https://bugs.eclipse.org/bugs/show_bug.cgi?id=286404
  */
-public class Bug286404Test
+public class DefineProfileApplicationTest
 		extends TestCase {
 
 	private static final String ECORE_ANNOTATION_URI = "http://www.eclipse.org/emf/2002/Ecore";
@@ -75,16 +76,17 @@ public class Bug286404Test
 
 	private ResourceSet rset;
 
-	public Bug286404Test() {
+	public DefineProfileApplicationTest() {
 		super();
 	}
 
-	public Bug286404Test(String name) {
+	public DefineProfileApplicationTest(String name) {
 		super(name);
 	}
 
 	public static Test suite() {
-		return new TestSuite(Bug286404Test.class, "Bug 286404 tests"); //$NON-NLS-1$
+		return new TestSuite(DefineProfileApplicationTest.class,
+			"DefineProfileApplication tests"); //$NON-NLS-1$
 	}
 
 	public void testApplicationDefaultOptions() {
@@ -220,8 +222,10 @@ public class Bug286404Test
 	}
 
 	URI copyTestProfile() {
-		URL url = getClass().getResource("Bug286404.profile.uml");
-		File result = new File(tempDir, "Bug286404.profile.uml");
+		URL url = getClass().getResource(
+			"DefineProfileApplicationTest.profile.uml");
+		File result = new File(tempDir,
+			"DefineProfileApplicationTest.profile.uml");
 		InputStream input = null;
 		OutputStream output = null;
 		ReadableByteChannel inChan = null;

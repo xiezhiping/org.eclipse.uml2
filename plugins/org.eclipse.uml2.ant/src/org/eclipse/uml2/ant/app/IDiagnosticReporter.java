@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 CEA and others.
+ * Copyright (c) 2013, 2014 CEA and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -8,9 +8,10 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - Initial API and implementation
+ *   Christian W. Damus (CEA) - 286404
  *
  */
-package org.eclipse.uml2.uml.internal.app;
+package org.eclipse.uml2.ant.app;
 
 import java.io.PrintStream;
 

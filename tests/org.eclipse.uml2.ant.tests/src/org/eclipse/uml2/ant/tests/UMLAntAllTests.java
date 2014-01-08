@@ -12,6 +12,8 @@
  */
 package org.eclipse.uml2.ant.tests;
 
+import org.eclipse.uml2.ant.app.tests.DefineProfileApplicationTest;
+
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
@@ -30,6 +32,7 @@ public class UMLAntAllTests
 
 	public static Test suite() {
 		TestSuite suite = new UMLAntAllTests("UML Ant Tasks Tests"); //$NON-NLS-1$
+		suite.addTestSuite(DefineProfileApplicationTest.class);
 		suite.addTestSuite(UMLDefineProfileTaskTest.class);
 		return suite;
 	}

@@ -12,6 +12,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ant,
  org.apache.ant
 Export-Package: org.eclipse.uml2.ant,
+ org.eclipse.uml2.ant.app,
  org.eclipse.uml2.ant.taskdefs,
  org.eclipse.uml2.ant.util
 Bundle-ActivationPolicy: lazy

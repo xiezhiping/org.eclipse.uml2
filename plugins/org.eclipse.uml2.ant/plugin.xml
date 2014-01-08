@@ -23,4 +23,10 @@
     <antTask library="ant_tasks/uml2.ant.tasks.jar" name="uml2.defineProfile" headless="true" class="org.eclipse.uml2.ant.taskdefs.UMLDefineProfileTask"/>
   </extension>
 
+  <extension id="defineProfile" point="org.eclipse.core.runtime.applications">
+    <application>
+      <run class="org.eclipse.uml2.ant.app.DefineProfileApplication"/>
+    </application>
+  </extension>
+
 </plugin>

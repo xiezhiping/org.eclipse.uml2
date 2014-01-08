@@ -17,7 +17,7 @@ import org.apache.tools.ant.Project;
 import org.apache.tools.ant.Target;
 import org.apache.tools.ant.Task;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.uml2.uml.internal.app.IDiagnosticReporter;
+import org.eclipse.uml2.ant.app.IDiagnosticReporter;
 
 
 /**

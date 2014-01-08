@@ -13,3 +13,5 @@ Require-Bundle: org.junit,
  org.eclipse.uml2.uml.tests,
  org.eclipse.ant.core,
  org.apache.ant
+Export-Package: org.eclipse.uml2.ant.app.tests,
+ org.eclipse.uml2.ant.tests
