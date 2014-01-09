@@ -8,7 +8,7 @@
 			</fileset>
 		</jar>
 	</target>
-	<target name="clean.ant.tasks">
+	<target name="clean">
 		<delete file="ant_tasks/${jar.name}.jar" failonerror="false"/>
 	</target>
 </project>

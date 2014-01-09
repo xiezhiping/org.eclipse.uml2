@@ -20,15 +20,31 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
-		<buildCommand>
-			<name>org.eclipse.ui.externaltools.ExternalToolBuilder</name>
-			<arguments>
-				<dictionary>
-					<key>LaunchConfigHandle</key>
-					<value>&lt;project&gt;/.externalToolBuilders/Build Ant Tasks JARs.launch</value>
-				</dictionary>
-			</arguments>
-		</buildCommand>
+        <buildCommand>
+            <name>org.eclipse.buckminster.ant.AntBuilder</name>
+            <arguments>
+                <dictionary>
+                    <key>given.name</key>
+                    <value>Create Ant tasks JAR</value>
+                </dictionary>
+                <dictionary>
+                    <key>script.file</key>
+                    <value>build_ant_tasks.xml</value>
+                </dictionary>
+                <dictionary>
+                    <key>derived.resource</key>
+                    <value>ant_tasks</value>
+                </dictionary>
+                <dictionary>
+                    <key>refresh.resource</key>
+                    <value>ant_tasks</value>
+                </dictionary>
+                <dictionary>
+                    <key>delta.resource</key>
+                    <value>tasks</value>
+                </dictionary>
+            </arguments>
+        </buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.pde.PluginNature</nature>
