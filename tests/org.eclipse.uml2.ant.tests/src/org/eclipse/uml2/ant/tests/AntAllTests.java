@@ -18,22 +18,22 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 
 /**
- * The master test suite for the UML Ant Tasks tests.
+ * The master test suite for the UML2 Ant Tasks tests.
  */
-public class UMLAntAllTests
+public class AntAllTests
 		extends TestSuite {
 
 	/**
 	 * Initializes me with my name.
 	 */
-	public UMLAntAllTests(String name) {
+	public AntAllTests(String name) {
 		super(name);
 	}
 
 	public static Test suite() {
-		TestSuite suite = new UMLAntAllTests("UML Ant Tasks Tests"); //$NON-NLS-1$
+		TestSuite suite = new AntAllTests("Ant Tasks Tests"); //$NON-NLS-1$
 		suite.addTestSuite(DefineProfileApplicationTest.class);
-		suite.addTestSuite(UMLDefineProfileTaskTest.class);
+		suite.addTestSuite(DefineProfileTaskTest.class);
 		return suite;
 	}
 

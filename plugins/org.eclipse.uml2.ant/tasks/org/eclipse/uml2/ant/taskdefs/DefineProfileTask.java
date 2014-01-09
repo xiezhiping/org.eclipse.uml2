@@ -74,7 +74,7 @@ import org.eclipse.uml2.ant.util.AntDiagnosticReporter;
  * </pre>
  * 
  */
-public class UMLDefineProfileTask
+public class DefineProfileTask
 		extends EMFTask {
 		
 	private Commandline commandline = new Commandline();

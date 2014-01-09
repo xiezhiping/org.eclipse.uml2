@@ -63,7 +63,7 @@ import org.eclipse.uml2.uml.tests.util.StandaloneSupport;
  * 
  * @see https://bugs.eclipse.org/bugs/show_bug.cgi?id=286404
  */
-public class UMLDefineProfileTaskTest
+public class DefineProfileTaskTest
 		extends TestCase {
 
 	private static final String ECORE_ANNOTATION_URI = "http://www.eclipse.org/emf/2002/Ecore";
@@ -75,16 +75,16 @@ public class UMLDefineProfileTaskTest
 
 	private ResourceSet rset;
 
-	public UMLDefineProfileTaskTest() {
+	public DefineProfileTaskTest() {
 		super();
 	}
 
-	public UMLDefineProfileTaskTest(String name) {
+	public DefineProfileTaskTest(String name) {
 		super(name);
 	}
 
 	public static Test suite() {
-		return new TestSuite(UMLDefineProfileTaskTest.class,
+		return new TestSuite(DefineProfileTaskTest.class,
 			"UML Profile Definition Ant Task tests"); //$NON-NLS-1$
 	}
 

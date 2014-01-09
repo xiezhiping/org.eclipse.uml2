@@ -18,21 +18,21 @@ import org.osgi.framework.BundleContext;
 
 
 /**
- * The plug-in activator/lifecycle class for the UML Ant plug-in..
+ * The plug-in activator/lifecycle class for the UML2 Ant plug-in.
  */
-public class UMLAntPlugin
+public class AntPlugin
 		extends Plugin {
 
-	private static UMLAntPlugin instance;
+	private static AntPlugin instance;
 
-	public UMLAntPlugin() {
+	public AntPlugin() {
 		super();
 	}
 
 	/**
 	 * Obtains the shared instance of the plug-in activator.
 	 */
-	public static UMLAntPlugin getInstance() {
+	public static AntPlugin getInstance() {
 		return instance;
 	}
 

@@ -20,7 +20,7 @@
   </extension>
 
   <extension point="org.eclipse.ant.core.antTasks">
-    <antTask library="ant_tasks/uml2.ant.tasks.jar" name="uml2.defineProfile" headless="true" class="org.eclipse.uml2.ant.taskdefs.UMLDefineProfileTask"/>
+    <antTask library="ant_tasks/uml2.ant.tasks.jar" name="uml2.defineProfile" headless="true" class="org.eclipse.uml2.ant.taskdefs.DefineProfileTask"/>
   </extension>
 
   <extension id="defineProfile" point="org.eclipse.core.runtime.applications">
