@@ -2,15 +2,19 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.uml2.uml.tests;singleton:=true
-Bundle-Version: 4.2.0.qualifier
+Bundle-Version: 5.0.0.qualifier
 Bundle-ClassPath: uml2.uml.tests.jar
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.uml2.uml.tests
+Export-Package: org.eclipse.uml2.uml.bug.tests,
+ org.eclipse.uml2.uml.tests,
+ org.eclipse.uml2.uml.tests.util,
+ org.eclipse.uml2.uml.validation.tests
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.uml2.uml;visibility:=reexport,
  org.eclipse.uml2.uml.resources;visibility:=reexport,
+ org.eclipse.uml2.uml.validation;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.junit;visibility:=reexport
 Eclipse-LazyStart: true

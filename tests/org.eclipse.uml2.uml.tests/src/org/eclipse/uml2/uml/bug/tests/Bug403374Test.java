@@ -229,7 +229,7 @@ public class Bug403374Test
 		assertNotNull("Annotation key not found", annotation);
 		assertTrue(Pattern
 			.compile(
-				String.format("(?:^|\\w)%s(?:$|\\w)", Pattern.quote(value)))
+				String.format("(?:^|\\s)%s(?:$|\\s)", Pattern.quote(value)))
 			.matcher(annotation).find());
 	}
 
