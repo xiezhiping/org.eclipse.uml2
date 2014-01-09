@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="org.eclipse.uml2.ant.tasks" default="jar.ant.tasks" basedir=".">
+	<property name="jar.name" value="uml2.ant.tasks"/>
+	<target name="jar.ant.tasks">
+		<jar destfile="ant_tasks/${jar.name}.jar">
+			<fileset dir="bin.tasks">
+				<include name="**/*.class"/>
+			</fileset>
+		</jar>
+	</target>
+	<target name="clean">
+		<delete file="ant_tasks/${jar.name}.jar" failonerror="false"/>
+	</target>
+</project>
