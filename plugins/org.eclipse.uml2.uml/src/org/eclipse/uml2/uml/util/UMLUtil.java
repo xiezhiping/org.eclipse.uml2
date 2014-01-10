@@ -4927,7 +4927,7 @@ public class UMLUtil
 
 						eAttribute.setDefaultValueLiteral(default_);
 					}
-					
+
 					eAttribute.setID(property.isID());
 				}
 
@@ -4964,9 +4964,11 @@ public class UMLUtil
 						.get(OPTION__OPPOSITE_ROLE_NAMES))) {
 
 					Property otherEnd = property.getOtherEnd();
+
 					if (otherEnd != null) {
 						String explicitRoleName = otherEnd.getName();
 						String implicitRoleName = namespace.getName();
+
 						if (!isEmpty(explicitRoleName)
 							&& !explicitRoleName.equals(implicitRoleName)) {
 
@@ -8944,13 +8946,16 @@ public class UMLUtil
 
 					Property opposite = association.createOwnedEnd(null,
 						classifier);
+
 					if (OPTION__PROCESS.equals(options
 						.get(OPTION__OPPOSITE_ROLE_NAMES))) {
+
 						String oppositeRoleName = EcoreUtil
 							.getAnnotation(
 								eReference,
 								EMOFExtendedMetaData.EMOF_PROPERTY_OPPOSITE_ROLE_NAME_ANNOTATION_SOURCE,
 								EMOFExtendedMetaData.EMOF_COMMENT_BODY);
+
 						if (oppositeRoleName != null) {
 							opposite.setName(oppositeRoleName);
 
