@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 CEA and others.
+ * Copyright (c) 2013, 2014 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
- *   Christian W. Damus (CEA) - 409396, 403365, 300957, 405061, 401682, 176998, 180744, 403374
+ *   Christian W. Damus (CEA) - 409396, 403365, 300957, 405061, 401682, 176998, 180744, 403374, 420338
  *   Manuel Bork <bork@yatta.de> (Yatta Solutions GmbH) - 421756, 422000
  *   
  */
@@ -52,6 +52,7 @@ public class UMLBugTests
 		result.addTest(Bug180744Test.suite());
 		result.addTest(Bug403374Test.suite());
 		result.addTest(Bug416833Test.suite());
+		result.addTest(Bug420338Test.suite());
 
 		return result;
 	}

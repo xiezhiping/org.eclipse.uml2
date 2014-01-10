@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 213218
  *   Kenn Hussey (CEA) - 322715
- *   Christian W. Damus (CEA) - 409396, 403374
+ *   Christian W. Damus (CEA) - 409396, 403374, 420338
  *
  */
 package org.eclipse.uml2.examples.uml.ui.dialogs;
@@ -187,6 +187,14 @@ public class UML2EcoreConverterOptionsDialog
 			UMLUtil.UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				discardChoiceLabel, processChoiceLabel}, reportChoiceLabel);
+
+		createOptionArea(
+			parent,
+			UMLExamplesUIPlugin.INSTANCE
+				.getString("_UI_OppositeRoleNames_label"), //$NON-NLS-1$
+			UMLUtil.UML2EcoreConverter.OPTION__OPPOSITE_ROLE_NAMES,
+			new String[]{ignoreChoiceLabel, processChoiceLabel},
+			ignoreChoiceLabel);
 	}
 
 }

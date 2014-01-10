@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2007, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 322715, 163556
- *   Christian W. Damus (CEA) - 409396, 403374
+ *   Christian W. Damus (CEA) - 409396, 403374, 420338
  *
  */
 package org.eclipse.uml2.uml.editor.dialogs;
@@ -177,5 +177,12 @@ public class Profile2EPackageConverterOptionsDialog
 			UMLUtil.Profile2EPackageConverter.OPTION__UNTYPED_PROPERTIES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				discardChoiceLabel, processChoiceLabel}, reportChoiceLabel);
+
+		createOptionArea(
+			parent,
+			UMLEditorPlugin.INSTANCE.getString("_UI_OppositeRoleNames_label"), //$NON-NLS-1$
+			UMLUtil.UML2EcoreConverter.OPTION__OPPOSITE_ROLE_NAMES,
+			new String[]{ignoreChoiceLabel, processChoiceLabel},
+			ignoreChoiceLabel);
 	}
 }

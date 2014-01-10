@@ -32,6 +32,7 @@
     <details key="INVOCATION_DELEGATES" value="IGNORE"/>
     <details key="UNTYPED_PROPERTIES" value="REPORT"/>
     <details key="NON_API_INVARIANTS" value="IGNORE"/>
+    <details key="OPPOSITE_ROLE_NAMES" value="IGNORE"/>
   </genAnnotations>
   <foreignModel>UML.merged.uml</foreignModel>
   <genPackages xsi:type="genmodel:GenPackage" prefix="UML" basePackage="org.eclipse.uml2"
