@@ -15,6 +15,7 @@
 package org.eclipse.uml2.uml;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -283,9 +284,10 @@ public final class UMLPlugin
 
 		private static void mapPlatformPluginURIs() {
 			// The resources plug-in doesn't register any genmodels, so EMF will
-			// not automatically map its platform:/plugin location. Let's force
-			// the issue
-			Set<URI> umlResourceURIs = new java.util.HashSet<URI>();
+			// not automatically map its platform:/plugin/... URI to a location
+			// URI. Let's force the issue by asking EMF to map some
+			// representative URI that maps to the resources plug-in
+			Set<URI> umlResourceURIs = new HashSet<URI>();
 			umlResourceURIs.add(URIConverter.INSTANCE.normalize(URI
 				.createURI(UMLResource.LIBRARIES_PATHMAP)));
 
