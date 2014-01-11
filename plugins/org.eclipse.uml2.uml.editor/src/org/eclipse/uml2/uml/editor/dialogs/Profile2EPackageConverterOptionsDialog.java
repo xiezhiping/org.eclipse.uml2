@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 322715, 163556
- *   Christian W. Damus (CEA) - 409396, 403374, 420338
+ *   Christian W. Damus (CEA) - 409396, 403374, 420338, 405065
  *
  */
 package org.eclipse.uml2.uml.editor.dialogs;
@@ -156,6 +156,14 @@ public class Profile2EPackageConverterOptionsDialog
 			UMLUtil.UML2EcoreConverter.OPTION__INVOCATION_DELEGATES,
 			new String[]{ignoreChoiceLabel, processChoiceLabel},
 			ignoreChoiceLabel);
+
+		createOptionArea(
+			parent,
+			UMLEditorPlugin.INSTANCE
+				.getString("_UI_PropertyDefaultExpressions_label"), //$NON-NLS-1$
+			UMLUtil.UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS,
+			new String[]{ignoreChoiceLabel, reportChoiceLabel,
+				processChoiceLabel}, ignoreChoiceLabel);
 
 		createOptionArea(
 			parent,

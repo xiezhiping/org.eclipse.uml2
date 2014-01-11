@@ -12,7 +12,7 @@
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
  *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833
  *   Yann Tanguy (CEA) - 350402
- *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833, 420338
+ *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833, 420338, 405065
  *   E.D.Willink - 420338
  *
  */
@@ -3837,6 +3837,17 @@ public class UMLUtil
 		 */
 		public static final String OPTION__OPPOSITE_ROLE_NAMES = "OPPOSITE_ROLE_NAMES"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where property default value
+		 * expressions are encountered. These generate invocation delegate
+		 * annotations in the Ecore model. Supported choices are
+		 * <code>OPTION__IGNORE</code>, <code>OPTION__REPORT</code>, and
+		 * <code>OPTION__PROCESS</code>.
+		 * 
+		 * @since 5.0
+		 */
+		public static final String OPTION__PROPERTY_DEFAULT_EXPRESSIONS = "PROPERTY_DEFAULT_EXPRESSIONS"; //$NON-NLS-1$
+
 		private static final int DIAGNOSTIC_CODE_OFFSET = 2000;
 
 		/**
@@ -3944,6 +3955,14 @@ public class UMLUtil
 		 * @since 4.2
 		 */
 		public static final int OPPOSITE_ROLE_NAME = DIAGNOSTIC_CODE_OFFSET + 18;
+
+		/**
+		 * The diagnostic code for cases where property default expression
+		 * details are encountered.
+		 * 
+		 * @since 5.0
+		 */
+		public static final int PROPERTY_DEFAULT_EXPRESSION = DIAGNOSTIC_CODE_OFFSET + 19;
 
 		protected static final Pattern ANNOTATION_PATTERN = Pattern
 			.compile("\\G\\s*((?>\\\\.|\\S)+)((?:\\s+(?>\\\\.|\\S)+\\s*+=\\s*(['\"])((?>\\\\.|.)*?)\\3)*)"); //$NON-NLS-1$
@@ -4915,17 +4934,25 @@ public class UMLUtil
 						.createEAttribute());
 					elementToEModelElementMap.put(property, eAttribute);
 
-					String default_ = property.getDefault();
+					// only set the default literal if the default value is
+					// not an expression when we are using setting delegates
+					if (!((property.getDefaultValue() instanceof OpaqueExpression) && OPTION__PROCESS
+						.equals(options
+							.get(OPTION__PROPERTY_DEFAULT_EXPRESSIONS)))) {
 
-					if (default_ != null) {
+						String default_ = property.getDefault();
 
-						if (isUnlimitedNatural(type)) {
-							default_ = TypesFactory.eINSTANCE.createFromString(
-								TypesPackage.Literals.UNLIMITED_NATURAL,
-								default_).toString();
+						if (default_ != null) {
+
+							if (isUnlimitedNatural(type)) {
+								default_ = TypesFactory.eINSTANCE
+									.createFromString(
+										TypesPackage.Literals.UNLIMITED_NATURAL,
+										default_).toString();
+							}
+
+							eAttribute.setDefaultValueLiteral(default_);
 						}
-
-						eAttribute.setDefaultValueLiteral(default_);
 					}
 
 					eAttribute.setID(property.isID());
@@ -7524,6 +7551,118 @@ public class UMLUtil
 			return eClassifier;
 		}
 
+		/**
+		 * Reports or processes (as requested) default-value opaque expressions
+		 * of properties to generate Ecore setting delegate annotations (or
+		 * report that they should be generated).
+		 * 
+		 * @since 5.0
+		 */
+		protected void processPropertyDefaultExpressions(Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
+
+			for (Map.Entry<Element, EModelElement> entry : elementToEModelElementMap
+				.entrySet()) {
+
+				Element key = entry.getKey();
+				EModelElement value = entry.getValue();
+
+				if (key instanceof Property && value instanceof EStructuralFeature) {
+					Property property = (Property) key;
+					EStructuralFeature eFeature = (EStructuralFeature) value;
+
+					ValueSpecification specification = property.getDefaultValue();
+					if (specification instanceof OpaqueExpression) {
+						OpaqueExpression expr = (OpaqueExpression) specification;
+
+						processPropertyExpression(eFeature, expr
+							.getLanguages(), expr.getBodies(), options,
+							diagnostics, context);
+					}
+				}
+			}
+		}
+
+		/**
+		 * Reports or processes (as requested) the default-value opaque
+		 * expression of a property to generate Ecore setting delegate
+		 * annotations (or report that they should be generated).
+		 * 
+		 * @since 5.0
+		 */
+		protected void processPropertyExpression(EStructuralFeature eFeature,
+				EList<String> languages, EList<String> bodies,
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
+			
+			int languagesSize = languages.size();
+			int bodiesSize = bodies.size();
+
+			for (int i = 0; i < (languagesSize == bodiesSize
+				? bodiesSize
+				: (bodiesSize == 1
+					? 1
+					: 0)); i++) {
+
+				String language = i < languagesSize
+					? languages.get(i)
+					: LANGUAGE__OCL;
+
+				if (OPTION__PROCESS.equals(options
+					.get(OPTION__PROPERTY_DEFAULT_EXPRESSIONS))) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.INFO,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								PROPERTY_DEFAULT_EXPRESSION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_UML2EcoreConverter_ProcessPropertyDefaultExpression_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											eFeature, language)),
+								new Object[]{eFeature}));
+
+					}
+
+					String source = UML2_GEN_MODEL_PACKAGE_1_1_NS_URI;
+					String detailKey = ANNOTATION_DETAIL__DERIVATION;
+
+					if (LANGUAGE__OCL.equals(language)) {
+						addSettingDelegate(
+							(EPackage) getContainingEObject(eFeature,
+								EcorePackage.Literals.EPACKAGE, true),
+							OCL_DELEGATE_URI);
+
+						source = OCL_DELEGATE_URI;
+					}
+
+					if (eFeature.isChangeable() || !eFeature.isDerived()) {
+						// it's an initial-value specification, not a derivation
+						detailKey = ANNOTATION_DETAIL__INITIAL;
+					}
+					
+					EcoreUtil.setAnnotation(eFeature, source,
+						detailKey, bodies.get(i));
+				} else if (OPTION__REPORT.equals(options
+					.get(OPTION__PROPERTY_DEFAULT_EXPRESSIONS)) && diagnostics != null) {
+
+					diagnostics
+						.add(new BasicDiagnostic(
+							Diagnostic.WARNING,
+							UMLValidator.DIAGNOSTIC_SOURCE,
+							PROPERTY_DEFAULT_EXPRESSION,
+							UMLPlugin.INSTANCE
+								.getString(
+									"_UI_UML2EcoreConverter_ReportPropertyDefaultExpression_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context,
+										eFeature, language)),
+							new Object[]{eFeature}));
+				}
+			}
+		}
+
 		protected void processAnnotationDetails(
 				final Map<String, String> options,
 				final DiagnosticChain diagnostics,
@@ -7811,6 +7950,11 @@ public class UMLUtil
 
 			if (!OPTION__IGNORE.equals(options.get(OPTION__OPERATION_BODIES))) {
 				processOperationBodies(options, diagnostics, context);
+			}
+
+			if (!OPTION__IGNORE.equals(options
+				.get(OPTION__PROPERTY_DEFAULT_EXPRESSIONS))) {
+				processPropertyDefaultExpressions(options, diagnostics, context);
 			}
 
 			if (!OPTION__IGNORE.equals(options.get(OPTION__UNTYPED_PROPERTIES))) {
@@ -10519,6 +10663,10 @@ public class UMLUtil
 
 	protected static final String ANNOTATION_DETAIL__BODY = "body"; //$NON-NLS-1$
 
+	protected static final String ANNOTATION_DETAIL__DERIVATION = "derivation"; //$NON-NLS-1$
+
+	protected static final String ANNOTATION_DETAIL__INITIAL = "initial"; //$NON-NLS-1$
+
 	protected static final String ANNOTATION_DETAIL__URI = "URI"; //$NON-NLS-1$
 
 	public static final String ENUMERATION_LITERAL__ATTRIBUTE = "Attribute"; //$NON-NLS-1$
@@ -12091,6 +12239,13 @@ public class UMLUtil
 				OPTION__IGNORE);
 		}
 
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS)) {
+			options.put(
+				UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS,
+				OPTION__IGNORE);
+		}
+
 		return convertToEcore(package_, options, null, null);
 	}
 
@@ -12232,6 +12387,13 @@ public class UMLUtil
 				OPTION__REPORT);
 		}
 
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS)) {
+			options.put(
+				UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS,
+				OPTION__REPORT);
+		}
+
 		@SuppressWarnings("unchecked")
 		Collection<EPackage> ePackages = (Collection<EPackage>) new UML2EcoreConverter()
 			.convert(Collections.singletonList(package_), options, diagnostics,
@@ -12362,6 +12524,13 @@ public class UMLUtil
 				OPTION__IGNORE);
 		}
 
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS)) {
+			options.put(
+				UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS,
+				OPTION__IGNORE);
+		}
+
 		return convertToEcore(profile, options, null, null);
 	}
 
@@ -12483,6 +12652,13 @@ public class UMLUtil
 
 		if (!options.containsKey(UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES)) {
 			options.put(UML2EcoreConverter.OPTION__UNTYPED_PROPERTIES,
+				OPTION__REPORT);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS)) {
+			options.put(
+				UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS,
 				OPTION__REPORT);
 		}
 

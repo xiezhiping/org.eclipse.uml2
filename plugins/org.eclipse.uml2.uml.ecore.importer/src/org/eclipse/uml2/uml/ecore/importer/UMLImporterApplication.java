@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 213218
  *   Kenn Hussey (CEA) - 322715
- *   Christian W. Damus (CEA) - 403374, 420338
+ *   Christian W. Damus (CEA) - 403374, 420338, 405065
  *
  */
 package org.eclipse.uml2.uml.ecore.importer;
@@ -106,6 +106,8 @@ public class UMLImporterApplication
 		appendLine(result,"                               -SUPER_CLASS_ORDER | -ANNOTATION_DETAILS |" ); //$NON-NLS-1$
 		appendLine(result,"                               -INVARIANT_CONSTRAINTS | -VALIDATION_DELEGATES | -NON_API_INVARIANTS |" ); //$NON-NLS-1$
 		appendLine(result,"                               -OPERATION_BODIES | -INVOCATION_DELEGATES |" ); //$NON-NLS-1$
+		appendLine(result,
+			"                               -PROPERTY_DEFAULT_EXPRESSIONS |"); //$NON-NLS-1$
 		appendLine(result,"                               -COMMENTS | -CAMEL_CASE_NAMES >" ); //$NON-NLS-1$
 		appendLine(result,"                             < PROCESS | IGNORE | REPORT | DISCARD >"); //$NON-NLS-1$
 		appendLine(result, "<CACHE-ADAPTER-SUPPORT> ::= -cacheAdapterSupport"); //$NON-NLS-1$
@@ -196,6 +198,8 @@ public class UMLImporterApplication
 			|| UMLUtil.UML2EcoreConverter.OPTION__OPERATION_BODIES
 				.equalsIgnoreCase(strippedKey)
 			|| UMLUtil.UML2EcoreConverter.OPTION__INVOCATION_DELEGATES
+				.equalsIgnoreCase(strippedKey)
+			|| UMLUtil.UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS
 				.equalsIgnoreCase(strippedKey)
 			|| UMLUtil.UML2EcoreConverter.OPTION__COMMENTS
 				.equalsIgnoreCase(strippedKey)

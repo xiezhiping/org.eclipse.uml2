@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 247980
  *   Keith Campbell (IBM) - 343783
  *   Kenn Hussey (CEA) - 316165, 322715, 212765, 421756
+ *   Christian W. Damus (CEA) - 405065
  *
  */
 package org.eclipse.uml2.common.util;
@@ -1296,6 +1297,41 @@ public class UML2Util {
 					invocationDelegates)).add(invocationDelegate);
 
 				EcoreUtil.setInvocationDelegates(ePackage, invocationDelegates);
+			}
+		}
+
+		return result;
+	}
+
+	/**
+	 * Adds the specified setting delegate to a package, if it is not already
+	 * present.
+	 * 
+	 * @param ePackage
+	 *            a package
+	 * @param settingDelegate
+	 *            a setting delegate to ensure is recorded for this package
+	 * 
+	 * @return {@code false} if the {@code settingDelegate} is {@code null} or
+	 *         empty, or was already present; {@code true} if the setting
+	 *         delegate was added to the package
+	 * 
+	 * @since 5.0
+	 */
+	protected static boolean addSettingDelegate(EPackage ePackage,
+			String settingDelegate) {
+
+		boolean result = false;
+
+		if (!isEmpty(settingDelegate)) {
+			List<String> settingDelegates = EcoreUtil
+				.getSettingDelegates(ePackage);
+
+			if (!settingDelegates.contains(settingDelegate)) {
+				result = (settingDelegates = new ArrayList<String>(
+					settingDelegates)).add(settingDelegate);
+
+				EcoreUtil.setSettingDelegates(ePackage, settingDelegates);
 			}
 		}
 

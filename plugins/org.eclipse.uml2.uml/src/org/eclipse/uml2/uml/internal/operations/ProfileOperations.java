@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181, 354452
  *   Kenn Hussey (CEA) - 327039, 392833, 163556
+ *   Christian W. Damus (CEA) - 405065
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -246,6 +247,8 @@ public class ProfileOperations
 			OPTION__IGNORE);
 		options
 			.put(UML2EcoreConverter.OPTION__OPERATION_BODIES, OPTION__IGNORE);
+		options.put(UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS,
+			OPTION__IGNORE);
 		options.put(UML2EcoreConverter.OPTION__COMMENTS, OPTION__IGNORE);
 
 		return profile.define(options, null, null);
