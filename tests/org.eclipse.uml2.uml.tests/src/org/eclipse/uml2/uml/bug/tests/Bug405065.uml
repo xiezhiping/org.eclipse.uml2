@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_yboL0HrWEeOmgIVCTlT7jw" name="initials" URI="http://www.eclipse.org/uml2/schemas/tests/bugs/405065">
+  <elementImport xmi:id="_ExyDwHrXEeOmgIVCTlT7jw">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_4Z_AoHrWEeOmgIVCTlT7jw" name="Thing">
+    <ownedAttribute xmi:id="__ApLkHrWEeOmgIVCTlT7jw" name="cost">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_J7sj4HrXEeOmgIVCTlT7jw" name="tax">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+      <defaultValue xmi:type="uml:LiteralReal" xmi:id="_a5vRAHrlEeOU_OLbrrQL2A" value="0.08"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_LbQ5MHrXEeOmgIVCTlT7jw" name="discount">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_V51J0HrXEeOmgIVCTlT7jw">
+        <language>OCL</language>
+        <body>self.cost / 10.0</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_NLQQIHrXEeOmgIVCTlT7jw" name="price" isReadOnly="true" isDerived="true">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_W2ei0HrYEeOmgIVCTlT7jw">
+        <language>OCL</language>
+        <body>(self.cost - self.discount) * (1.0 + self.tax)</body>
+      </defaultValue>
+    </ownedAttribute>
+  </packagedElement>
+</uml:Package>

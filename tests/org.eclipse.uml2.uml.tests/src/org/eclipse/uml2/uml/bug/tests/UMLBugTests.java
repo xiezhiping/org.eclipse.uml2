@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
- *   Christian W. Damus (CEA) - 409396, 403365, 300957, 405061, 401682, 176998, 180744, 403374, 420338
+ *   Christian W. Damus (CEA) - 409396, 403365, 300957, 405061, 401682, 176998, 180744, 403374, 420338, 405065
  *   Manuel Bork <bork@yatta.de> (Yatta Solutions GmbH) - 421756, 422000
  *   
  */
@@ -53,6 +53,7 @@ public class UMLBugTests
 		result.addTest(Bug403374Test.suite());
 		result.addTest(Bug416833Test.suite());
 		result.addTest(Bug420338Test.suite());
+		result.addTest(Bug405065Test.suite());
 
 		return result;
 	}
