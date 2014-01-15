@@ -72,6 +72,7 @@ public class XMI2UMLHandler
 	protected void handleProxy(InternalEObject proxy, String uriLiteral) {
 
 		if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_URI)
+			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_4_1_URI)
 			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_4_URI)) {
 
 			int index = uriLiteral.indexOf('#');
@@ -213,6 +214,8 @@ public class XMI2UMLHandler
 							}
 						} else if (uriLiteral
 							.startsWith(XMI2UMLResource.UML_METAMODEL_URI)
+							|| uriLiteral
+								.startsWith(XMI2UMLResource.UML_METAMODEL_2_4_1_URI)
 							|| uriLiteral
 								.startsWith(XMI2UMLResource.UML_METAMODEL_2_4_URI)) {
 

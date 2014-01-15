@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 CEA and others.
+ * Copyright (c) 2011, 2014 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.types;
@@ -46,7 +47,7 @@ public interface TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/uml2/4.0.0/Types"; //$NON-NLS-1$
+	String eNS_URI = "http://www.eclipse.org/uml2/5.0.0/Types"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.

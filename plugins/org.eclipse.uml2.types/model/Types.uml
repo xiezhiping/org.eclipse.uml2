@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
   <uml:Model xmi:id="_ioJEwKzrEeCNdMZQmxuX_Q" name="Types">
     <packageMerge xmi:id="_0D370KzrEeCNdMZQmxuX_Q">
       <mergedPackage href="../../org.eclipse.uml2/model/PrimitiveTypes.xmi#_0"/>
@@ -16,7 +16,7 @@
       <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EPackage xmi:id="_eHAUgKzuEeC4yJrLbEUOVg" base_Package="_ioJEwKzrEeCNdMZQmxuX_Q" packageName="types" nsPrefix="types" nsURI="http://www.eclipse.org/uml2/4.0.0/Types" basePackage="org.eclipse.uml2" prefix="Types"/>
+  <Ecore:EPackage xmi:id="_eHAUgKzuEeC4yJrLbEUOVg" base_Package="_ioJEwKzrEeCNdMZQmxuX_Q" packageName="types" nsPrefix="types" nsURI="http://www.eclipse.org/uml2/5.0.0/Types" basePackage="org.eclipse.uml2" prefix="Types"/>
   <Ecore:EDataType xmi:id="_unENgKzuEeC4yJrLbEUOVg" instanceClassName="boolean" base_PrimitiveType="_QxrSIKzuEeC4yJrLbEUOVg"/>
   <Ecore:EDataType xmi:id="_wSOHwKzuEeC4yJrLbEUOVg" instanceClassName="int" base_PrimitiveType="_T5WNsKzuEeC4yJrLbEUOVg"/>
   <Ecore:EDataType xmi:id="_yCpjkKzuEeC4yJrLbEUOVg" instanceClassName="double" base_PrimitiveType="_Vu7PQKzuEeC4yJrLbEUOVg"/>

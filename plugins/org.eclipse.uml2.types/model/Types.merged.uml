@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
   <uml:Model xmi:id="_ioJEwKzrEeCNdMZQmxuX_Q" name="Types">
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_QxrSIKzuEeC4yJrLbEUOVg" name="Boolean">
-      <ownedComment xmi:id="__YFpcAsOEeGTNJLAYqz1mw" annotatedElement="_QxrSIKzuEeC4yJrLbEUOVg">
-        <body>A Boolean type is used for logical expression, consisting of the predefined values true and false.</body>
+      <ownedComment xmi:id="_mc9CcH2LEeO8wYVEP3MbNA" annotatedElement="_QxrSIKzuEeC4yJrLbEUOVg">
+        <body>Boolean is used for logical expressions, consisting of the predefined values true and false.</body>
       </ownedComment>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_T5WNsKzuEeC4yJrLbEUOVg" name="Integer">
-      <ownedComment xmi:id="__YXWQAsOEeGTNJLAYqz1mw" annotatedElement="_T5WNsKzuEeC4yJrLbEUOVg">
-        <body>An integer is a primitive type representing integer values.</body>
+      <ownedComment xmi:id="_mc_esH2LEeO8wYVEP3MbNA" annotatedElement="_T5WNsKzuEeC4yJrLbEUOVg">
+        <body>Integer is a primitive type representing integer values.</body>
       </ownedComment>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Vu7PQKzuEeC4yJrLbEUOVg" name="Real">
-      <ownedComment xmi:id="__YX9UAsOEeGTNJLAYqz1mw" annotatedElement="_Vu7PQKzuEeC4yJrLbEUOVg">
-        <body>A real is a primitive type representing the mathematical concept of real.</body>
+      <ownedComment xmi:id="_mdAFwH2LEeO8wYVEP3MbNA" annotatedElement="_Vu7PQKzuEeC4yJrLbEUOVg">
+        <body>Real is a primitive type representing the mathematical concept of real.</body>
       </ownedComment>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_XSfTwKzuEeC4yJrLbEUOVg" name="String">
-      <ownedComment xmi:id="__YYkYAsOEeGTNJLAYqz1mw" annotatedElement="_XSfTwKzuEeC4yJrLbEUOVg">
-        <body>A string is a sequence of characters in some suitable character set used to display information about the model. Character sets may include non-Roman alphabets and characters.</body>
+      <ownedComment xmi:id="_mdAFwX2LEeO8wYVEP3MbNA" annotatedElement="_XSfTwKzuEeC4yJrLbEUOVg">
+        <body>String is a sequence of characters in some suitable character set used to display information about the model. Character sets may include non-Roman alphabets and characters.</body>
       </ownedComment>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_ZX79UKzuEeC4yJrLbEUOVg" name="UnlimitedNatural">
-      <ownedComment xmi:id="__YZLcAsOEeGTNJLAYqz1mw" annotatedElement="_ZX79UKzuEeC4yJrLbEUOVg">
-        <body>An unlimited natural is a primitive type representing unlimited natural values.</body>
+      <ownedComment xmi:id="_mdAs0H2LEeO8wYVEP3MbNA" annotatedElement="_ZX79UKzuEeC4yJrLbEUOVg">
+        <body>UnlimitedNatural is a primitive type representing unlimited natural values.</body>
       </ownedComment>
     </packagedElement>
     <profileApplication xmi:id="_cR_ToKzuEeC4yJrLbEUOVg">
@@ -33,7 +33,7 @@
       <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EPackage xmi:id="_eHAUgKzuEeC4yJrLbEUOVg" base_Package="_ioJEwKzrEeCNdMZQmxuX_Q" packageName="types" nsPrefix="types" nsURI="http://www.eclipse.org/uml2/4.0.0/Types" basePackage="org.eclipse.uml2" prefix="Types"/>
+  <Ecore:EPackage xmi:id="_eHAUgKzuEeC4yJrLbEUOVg" base_Package="_ioJEwKzrEeCNdMZQmxuX_Q" packageName="types" nsPrefix="types" nsURI="http://www.eclipse.org/uml2/5.0.0/Types" basePackage="org.eclipse.uml2" prefix="Types"/>
   <Ecore:EDataType xmi:id="_unENgKzuEeC4yJrLbEUOVg" instanceClassName="boolean" base_PrimitiveType="_QxrSIKzuEeC4yJrLbEUOVg"/>
   <Ecore:EDataType xmi:id="_wSOHwKzuEeC4yJrLbEUOVg" instanceClassName="int" base_PrimitiveType="_T5WNsKzuEeC4yJrLbEUOVg"/>
   <Ecore:EDataType xmi:id="_yCpjkKzuEeC4yJrLbEUOVg" instanceClassName="double" base_PrimitiveType="_Vu7PQKzuEeC4yJrLbEUOVg"/>

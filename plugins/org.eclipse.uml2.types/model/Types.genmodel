@@ -26,6 +26,9 @@
     <details key="VALIDATION_DELEGATES" value="IGNORE"/>
     <details key="INVOCATION_DELEGATES" value="IGNORE"/>
     <details key="UNTYPED_PROPERTIES" value="REPORT"/>
+    <details key="OPPOSITE_ROLE_NAMES" value="IGNORE"/>
+    <details key="PROPERTY_DEFAULT_EXPRESSIONS" value="IGNORE"/>
+    <details key="NON_API_INVARIANTS" value="IGNORE"/>
   </genAnnotations>
   <foreignModel>Types.merged.uml</foreignModel>
   <genPackages xsi:type="genmodel:GenPackage" prefix="Types" basePackage="org.eclipse.uml2"
