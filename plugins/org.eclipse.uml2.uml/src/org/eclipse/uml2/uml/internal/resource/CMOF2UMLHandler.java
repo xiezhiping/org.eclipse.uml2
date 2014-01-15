@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2007, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   Kenn Hussey (IBM Corporation, Embarcadero Technologies) - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 218388
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -44,8 +44,10 @@ public class CMOF2UMLHandler
 	protected void processElement(String name, String prefix, String localName) {
 
 		if (EMOFExtendedMetaData.EXTENSION.equals(localName)
-			&& (XMI2UMLResource.XMI_NS_URI.equals(helper.getURI(prefix)) || XMI2UMLResource.XMI_2_4_NS_URI
-				.equals(helper.getURI(prefix)))
+			&& (XMI2UMLResource.XMI_NS_URI.equals(helper.getURI(prefix))
+				|| XMI2UMLResource.XMI_2_4_1_NS_URI.equals(helper
+					.getURI(prefix)) || XMI2UMLResource.XMI_2_4_NS_URI
+					.equals(helper.getURI(prefix)))
 			&& attribs != null
 			&& UMLPackage.eNS_URI.equals(attribs
 				.getValue(EMOFExtendedMetaData.XMI_EXTENDER_ATTRIBUTE))) {

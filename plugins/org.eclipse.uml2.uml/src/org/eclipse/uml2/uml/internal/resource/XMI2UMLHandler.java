@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2006, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 204202
- *   Kenn Hussey (CEA) - 327039, 359964, 351774, 299527
+ *   Kenn Hussey (CEA) - 327039, 359964, 351774, 299527, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -131,7 +131,8 @@ public class XMI2UMLHandler
 	protected void processElement(String name, String prefix, String localName) {
 
 		if (EMOFExtendedMetaData.EXTENSION.equals(localName)
-			&& (XMI2UMLResource.XMI_NS_URI.equals(helper.getURI(prefix)) || XMI2UMLResource.XMI_2_4_NS_URI
+			&& (XMI2UMLResource.XMI_NS_URI.equals(helper.getURI(prefix)) || XMI2UMLResource.XMI_2_4_1_NS_URI
+					.equals(helper.getURI(prefix)) || XMI2UMLResource.XMI_2_4_NS_URI
 				.equals(helper.getURI(prefix)))
 			&& attribs != null
 			&& EcorePackage.eNS_URI.equals(attribs
