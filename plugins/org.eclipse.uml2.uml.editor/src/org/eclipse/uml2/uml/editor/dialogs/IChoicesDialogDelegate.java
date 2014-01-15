@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 CEA and others.
+ * Copyright (c) 2013, 2014 CEA and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -24,7 +24,7 @@ import org.eclipse.swt.widgets.Composite;
  * Protocol for a delegate that supplies application-specific information and
  * decisions to a {@link ChoicesDialog}.
  * 
- * @since 4.2
+ * @since 5.0
  * 
  * @see ChoicesDialog
  * @see AbstractChoicesDialogDelegate

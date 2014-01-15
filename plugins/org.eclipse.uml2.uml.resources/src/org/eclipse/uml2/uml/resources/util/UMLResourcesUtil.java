@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, 2013 CEA, Obeo, and others.
+ * Copyright (c) 2012, 2014 CEA, Obeo, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -134,7 +134,7 @@ public class UMLResourcesUtil
 	 * 
 	 * @see #initLocalRegistries(ResourceSet)
 	 * 
-	 * @since 4.2
+	 * @since 5.0
 	 */
 	public static void initGlobalRegistries() {
 		initPackageRegistry(EPackage.Registry.INSTANCE);
@@ -155,7 +155,7 @@ public class UMLResourcesUtil
 	 * @see #initURIConverterURIMap(Map)
 	 * @see #initEPackageNsURIToProfileLocationMap(Map)
 	 * 
-	 * @since 4.2
+	 * @since 5.0
 	 */
 	public static void initLocalRegistries(ResourceSet resourceSet) {
 		initPackageRegistry(resourceSet.getPackageRegistry());
@@ -211,7 +211,7 @@ public class UMLResourcesUtil
 	 * 
 	 * @return the same {@code packageRegistry}
 	 * 
-	 * @since 4.2
+	 * @since 5.0
 	 */
 	public static EPackage.Registry initPackageRegistry(
 			EPackage.Registry packageRegistry) {
@@ -247,7 +247,7 @@ public class UMLResourcesUtil
 	 * 
 	 * @return the same {@code resourceFactoryRegistry}
 	 * 
-	 * @since 4.2
+	 * @since 5.0
 	 */
 	public static Resource.Factory.Registry initResourceFactoryRegistry(
 			Resource.Factory.Registry resourceFactoryRegistry) {
@@ -274,7 +274,7 @@ public class UMLResourcesUtil
 	 * 
 	 * @return the same {@code contentHandlerRegistry}
 	 * 
-	 * @since 4.2
+	 * @since 5.0
 	 */
 	public static ContentHandler.Registry initContentHandlerRegistry(
 			ContentHandler.Registry contentHandlerRegistry) {
@@ -362,7 +362,7 @@ public class UMLResourcesUtil
 	 * 
 	 * @return the same {@code uriMap}
 	 * 
-	 * @since 4.2
+	 * @since 5.0
 	 */
 	public static Map<URI, URI> initURIConverterURIMap(Map<URI, URI> uriMap) {
 		URI baseURI = getBaseUMLResourceURI();
@@ -387,7 +387,7 @@ public class UMLResourcesUtil
 	 * 
 	 * @return the same {@code ePackageNsURIToProfileLocationMap}
 	 * 
-	 * @since 4.2
+	 * @since 5.0
 	 */
 	public static Map<String, URI> initEPackageNsURIToProfileLocationMap(
 			Map<String, URI> ePackageNsURIToProfileLocationMap) {

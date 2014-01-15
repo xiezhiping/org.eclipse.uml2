@@ -239,7 +239,7 @@ public final class UMLPlugin
 	 * application.
 	 * 
 	 * @see ExtensionProcessor#process(ClassLoader)
-	 * @since 4.2
+	 * @since 5.0
 	 */
 	public static class ExtensionProcessor {
 
@@ -256,7 +256,7 @@ public final class UMLPlugin
 		 *            {@linkplain Thread#getContextClassLoader() context
 		 *            class-loader} will be used
 		 * 
-		 * @since 4.2
+		 * @since 5.0
 		 */
 		public static synchronized void process(ClassLoader classLoader) {
 			// Initialize the Ecore extensions that we rely on, which operation

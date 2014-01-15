@@ -74,7 +74,7 @@ public class StandaloneSupport {
 	 * @return a test suite if Eclipse is running, otherwise just a placeholder
 	 *         for the skipped tests
 	 * 
-	 * @since 4.2
+	 * @since 5.0
 	 */
 	public static Test eclipseTestSuite(String name, Class<?>... testClass) {
 		Test result;
@@ -107,7 +107,7 @@ public class StandaloneSupport {
 	 * @return a test suite in stand-alone mode, otherwise just a placeholder
 	 *         for the skipped tests
 	 * 
-	 * @since 4.2
+	 * @since 5.0
 	 */
 	public static Test standaloneTestSuite(String name, Class<?>... testClass) {
 		Test result;
