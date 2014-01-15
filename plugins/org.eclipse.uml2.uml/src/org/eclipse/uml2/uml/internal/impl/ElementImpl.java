@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181, 335125
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 424895
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.EModelElementImpl;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -897,8 +898,49 @@ public abstract class ElementImpl
 	@Override
 	public NotificationChain eBasicSetContainer(InternalEObject newContainer,
 			int newContainerFeatureID, NotificationChain msgs) {
-		msgs = super.eBasicSetContainer(newContainer, newContainerFeatureID,
-			msgs);
+
+		if (eDirectResource() != null
+			&& newContainer != null
+			&& eContainmentFeature(this, newContainer, newContainerFeatureID) == null) {
+
+			InternalEObject oldContainer = eInternalContainer();
+			int oldContainerFeatureID = eContainerFeatureID();
+
+			eBasicSetContainer(newContainer, newContainerFeatureID);
+
+			if (eNotificationRequired()) {
+
+				if (oldContainer != null && oldContainerFeatureID >= 0
+					&& oldContainerFeatureID != newContainerFeatureID) {
+
+					ENotificationImpl notification = new ENotificationImpl(
+						this, Notification.SET, oldContainerFeatureID,
+						oldContainer, null);
+
+					if (msgs == null) {
+						msgs = notification;
+					} else {
+						msgs.add(notification);
+					}
+				}
+				if (newContainerFeatureID >= 0) {
+					ENotificationImpl notification = new ENotificationImpl(
+						this, Notification.SET, newContainerFeatureID,
+						oldContainerFeatureID == newContainerFeatureID
+							? oldContainer
+							: null, newContainer);
+
+					if (msgs == null) {
+						msgs = notification;
+					} else {
+						msgs.add(notification);
+					}
+				}
+			}
+		} else {
+			msgs = super.eBasicSetContainer(newContainer,
+				newContainerFeatureID, msgs);
+		}
 
 		if (newContainer != null
 			&& (CHANGE_DESCRIPTION_CLASS == null || !(CHANGE_DESCRIPTION_CLASS
