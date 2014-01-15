@@ -106,8 +106,7 @@ public class UMLImporterApplication
 		appendLine(result,"                               -SUPER_CLASS_ORDER | -ANNOTATION_DETAILS |" ); //$NON-NLS-1$
 		appendLine(result,"                               -INVARIANT_CONSTRAINTS | -VALIDATION_DELEGATES | -NON_API_INVARIANTS |" ); //$NON-NLS-1$
 		appendLine(result,"                               -OPERATION_BODIES | -INVOCATION_DELEGATES |" ); //$NON-NLS-1$
-		appendLine(result,
-			"                               -PROPERTY_DEFAULT_EXPRESSIONS |"); //$NON-NLS-1$
+		appendLine(result,"                               -PROPERTY_DEFAULT_EXPRESSIONS |"); //$NON-NLS-1$
 		appendLine(result,"                               -COMMENTS | -CAMEL_CASE_NAMES >" ); //$NON-NLS-1$
 		appendLine(result,"                             < PROCESS | IGNORE | REPORT | DISCARD >"); //$NON-NLS-1$
 		appendLine(result, "<CACHE-ADAPTER-SUPPORT> ::= -cacheAdapterSupport"); //$NON-NLS-1$

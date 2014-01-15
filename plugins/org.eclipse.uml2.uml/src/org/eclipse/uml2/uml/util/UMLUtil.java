@@ -3839,7 +3839,7 @@ public class UMLUtil
 
 		/**
 		 * The option for handling cases where property default value
-		 * expressions are encountered. These generate invocation delegate
+		 * expressions are encountered. These generate setting delegate
 		 * annotations in the Ecore model. Supported choices are
 		 * <code>OPTION__IGNORE</code>, <code>OPTION__REPORT</code>, and
 		 * <code>OPTION__PROCESS</code>.
@@ -7558,8 +7558,9 @@ public class UMLUtil
 		 * 
 		 * @since 5.0
 		 */
-		protected void processPropertyDefaultExpressions(Map<String, String> options,
-				DiagnosticChain diagnostics, Map<Object, Object> context) {
+		protected void processPropertyDefaultExpressions(
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
 
 			for (Map.Entry<Element, EModelElement> entry : elementToEModelElementMap
 				.entrySet()) {
@@ -7567,16 +7568,19 @@ public class UMLUtil
 				Element key = entry.getKey();
 				EModelElement value = entry.getValue();
 
-				if (key instanceof Property && value instanceof EStructuralFeature) {
+				if (key instanceof Property
+					&& value instanceof EStructuralFeature) {
 					Property property = (Property) key;
 					EStructuralFeature eFeature = (EStructuralFeature) value;
 
-					ValueSpecification specification = property.getDefaultValue();
+					ValueSpecification specification = property
+						.getDefaultValue();
+
 					if (specification instanceof OpaqueExpression) {
 						OpaqueExpression expr = (OpaqueExpression) specification;
 
-						processPropertyExpression(eFeature, expr
-							.getLanguages(), expr.getBodies(), options,
+						processPropertyDefaultExpression(eFeature,
+							expr.getLanguages(), expr.getBodies(), options,
 							diagnostics, context);
 					}
 				}
@@ -7590,11 +7594,11 @@ public class UMLUtil
 		 * 
 		 * @since 5.0
 		 */
-		protected void processPropertyExpression(EStructuralFeature eFeature,
-				EList<String> languages, EList<String> bodies,
-				Map<String, String> options, DiagnosticChain diagnostics,
-				Map<Object, Object> context) {
-			
+		protected void processPropertyDefaultExpression(
+				EStructuralFeature eFeature, EList<String> languages,
+				EList<String> bodies, Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
+
 			int languagesSize = languages.size();
 			int bodiesSize = bodies.size();
 
@@ -7642,11 +7646,12 @@ public class UMLUtil
 						// it's an initial-value specification, not a derivation
 						detailKey = ANNOTATION_DETAIL__INITIAL;
 					}
-					
-					EcoreUtil.setAnnotation(eFeature, source,
-						detailKey, bodies.get(i));
+
+					EcoreUtil.setAnnotation(eFeature, source, detailKey,
+						bodies.get(i));
 				} else if (OPTION__REPORT.equals(options
-					.get(OPTION__PROPERTY_DEFAULT_EXPRESSIONS)) && diagnostics != null) {
+					.get(OPTION__PROPERTY_DEFAULT_EXPRESSIONS))
+					&& diagnostics != null) {
 
 					diagnostics
 						.add(new BasicDiagnostic(
@@ -7656,9 +7661,8 @@ public class UMLUtil
 							UMLPlugin.INSTANCE
 								.getString(
 									"_UI_UML2EcoreConverter_ReportPropertyDefaultExpression_diagnostic", //$NON-NLS-1$
-									getMessageSubstitutions(context,
-										eFeature, language)),
-							new Object[]{eFeature}));
+									getMessageSubstitutions(context, eFeature,
+										language)), new Object[]{eFeature}));
 				}
 			}
 		}
@@ -7954,6 +7958,7 @@ public class UMLUtil
 
 			if (!OPTION__IGNORE.equals(options
 				.get(OPTION__PROPERTY_DEFAULT_EXPRESSIONS))) {
+
 				processPropertyDefaultExpressions(options, diagnostics, context);
 			}
 
@@ -12241,6 +12246,7 @@ public class UMLUtil
 
 		if (!options
 			.containsKey(UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS)) {
+
 			options.put(
 				UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS,
 				OPTION__IGNORE);
@@ -12389,6 +12395,7 @@ public class UMLUtil
 
 		if (!options
 			.containsKey(UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS)) {
+
 			options.put(
 				UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS,
 				OPTION__REPORT);
@@ -12526,6 +12533,7 @@ public class UMLUtil
 
 		if (!options
 			.containsKey(UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS)) {
+
 			options.put(
 				UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS,
 				OPTION__IGNORE);
@@ -12657,6 +12665,7 @@ public class UMLUtil
 
 		if (!options
 			.containsKey(UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS)) {
+
 			options.put(
 				UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS,
 				OPTION__REPORT);
