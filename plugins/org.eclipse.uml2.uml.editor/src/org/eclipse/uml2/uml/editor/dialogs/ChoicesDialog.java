@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2002, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,7 +73,7 @@ import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
  * The dialog delegates a variety of decisions to a
  * {@linkplain IChoicesDialogDelegate delegate}.
  * 
- * @since 4.2
+ * @since 5.0
  * 
  * @see IChoicesDialogDelegate
  */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 CEA LIST and others.
+ * Copyright (c) 2013, 2014 CEA LIST and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,7 @@ import org.eclipse.uml2.uml.Element;
  * A UMLTraversalStrategy extends a standard recursive traversal to insert
  * stereotype applications following each each stereotyped element.
  * 
- * @since 4.2
+ * @since 5.0
  */
 public class UMLTraversalStrategy
 		implements ITraversalStrategy {

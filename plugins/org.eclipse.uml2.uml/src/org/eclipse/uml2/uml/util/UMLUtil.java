@@ -1932,7 +1932,7 @@ public class UMLUtil
 		 * This accounts for any references that the receiving package had to
 		 * elements in the merged packages before the merge.
 		 * 
-		 * @since 4.2
+		 * @since 5.0
 		 */
 		protected void updateReferences() {
 
@@ -2759,7 +2759,7 @@ public class UMLUtil
 		 * @return the receiving element, or {@code null} if there is no merge
 		 *         receiver distinguished for this element
 		 * 
-		 * @since 4.2
+		 * @since 5.0
 		 */
 		protected NamedElement getReceivingElement(EObject resultingEObject) {
 			return (resultingEObject instanceof RedefinableElement)
@@ -2776,7 +2776,7 @@ public class UMLUtil
 		 * 
 		 * @return the capability element (never {@code null})
 		 * 
-		 * @since 4.2
+		 * @since 5.0
 		 */
 		protected NamedElement getCapability(EObject mergedEObject) {
 			return ((Element) mergedEObject).getNearestPackage();
@@ -2885,7 +2885,7 @@ public class UMLUtil
 		 * @return whether I am a package merge operation ({@code true}) or
 		 *         something else ({@false})
 		 * 
-		 * @since 4.2
+		 * @since 5.0
 		 */
 		protected boolean isPackageMerge() {
 			// N.B.: Don't test whether receivingElement is a package, because
@@ -2898,7 +2898,7 @@ public class UMLUtil
 		 * relationships on the {@link #receivingElement} that define the merges
 		 * that were performed.
 		 * 
-		 * @since 4.2
+		 * @since 5.0
 		 */
 		protected void cleanupMergeRelationships() {
 
@@ -2932,7 +2932,7 @@ public class UMLUtil
 		 * @return A traceability map from resulting elements to merged
 		 *         elements.
 		 * 
-		 * @since 4.2
+		 * @since 5.0
 		 */
 		protected Map<EObject, List<EObject>> merge(
 				TemplateableElement receivingElement,
@@ -2972,7 +2972,7 @@ public class UMLUtil
 	 * {@link PackageMerger} works to effect a
 	 * {@link org.eclipse.uml2.uml.Package}'s {@link PackageMerge}s.
 	 * 
-	 * @since 4.2
+	 * @since 5.0
 	 */
 	public static class TemplateExpander
 			extends PackageMerger {
@@ -3327,7 +3327,7 @@ public class UMLUtil
 		 * 
 		 * @return its nearest containing template, which may be itself
 		 * 
-		 * @since 4.2
+		 * @since 5.0
 		 */
 		@Override
 		protected NamedElement getCapability(EObject mergedEObject) {
@@ -3362,7 +3362,7 @@ public class UMLUtil
 		 * 
 		 * @return its nearest containing bound template, which may be itself
 		 * 
-		 * @since 4.2
+		 * @since 5.0
 		 */
 		@Override
 		protected NamedElement getReceivingElement(EObject resultingEObject) {
@@ -3816,7 +3816,7 @@ public class UMLUtil
 		 * in EClasses, rather than as API operations. Supported choices are
 		 * <code>OPTION__IGNORE</code> and <code>OPTION__PROCESS</code>.
 		 * 
-		 * @since 4.2
+		 * @since 5.0
 		 */
 		public static final String OPTION__NON_API_INVARIANTS = "NON_API_INVARIANTS"; //$NON-NLS-1$
 
@@ -3825,7 +3825,7 @@ public class UMLUtil
 		 * {@code OPTION__IGNORE}, {@code OPTION__REPORT},
 		 * {@code OPTION__DISCARD}, and {@code OPTION__PROCESS}.
 		 * 
-		 * @since 4.2
+		 * @since 5.0
 		 */
 		public static final String OPTION__UNTYPED_PROPERTIES = "UNTYPED_PROPERTIES"; //$NON-NLS-1$
 
@@ -3833,7 +3833,7 @@ public class UMLUtil
 		 * The option for handling opposite role names. Supported choices are
 		 * {@code OPTION__IGNORE} and {@code OPTION__PROCESS}.
 		 * 
-		 * @since 4.2
+		 * @since 5.0
 		 */
 		public static final String OPTION__OPPOSITE_ROLE_NAMES = "OPPOSITE_ROLE_NAMES"; //$NON-NLS-1$
 
@@ -3944,7 +3944,7 @@ public class UMLUtil
 		/**
 		 * The diagnostic code for untyped properties.
 		 * 
-		 * @since 4.2
+		 * @since 5.0
 		 */
 		public static final int UNTYPED_PROPERTY = DIAGNOSTIC_CODE_OFFSET + 17;
 
@@ -3952,7 +3952,7 @@ public class UMLUtil
 		 * The diagnostic code for notification of opposite role name
 		 * annotations.
 		 * 
-		 * @since 4.2
+		 * @since 5.0
 		 */
 		public static final int OPPOSITE_ROLE_NAME = DIAGNOSTIC_CODE_OFFSET + 18;
 
@@ -4138,7 +4138,7 @@ public class UMLUtil
 		 *         just its Ecore name if the original name is not recorded or is
 		 *         not different
 		 * 
-		 * @since 4.2
+		 * @since 5.0
 		 * 
 		 * @see UML2EcoreConverter#setName(ENamedElement, String, boolean)
 		 */
@@ -7742,7 +7742,7 @@ public class UMLUtil
 		 * packages' UML annotations to generate trace statements in the
 		 * generator documentation comments of Ecore API elements.
 		 * 
-		 * @since 4.2
+		 * @since 5.0
 		 */
 		protected void processCapabilityAnnotations(
 				Map<String, String> options, DiagnosticChain diagnostics,
@@ -7819,7 +7819,7 @@ public class UMLUtil
 		 * @param context
 		 *            validation context for problem reporting
 		 * 
-		 * @since 4.2
+		 * @since 5.0
 		 */
 		protected void processUntypedProperties(
 				final Map<String, String> options,
@@ -8289,7 +8289,7 @@ public class UMLUtil
 		 * The option for handling opposite role name annotations. Supported
 		 * choices are {@code OPTION__IGNORE} and {@code OPTION__PROCESS}.
 		 * 
-		 * @since 4.2
+		 * @since 5.0
 		 */
 		public static final String OPTION__OPPOSITE_ROLE_NAMES = "OPPOSITE_ROLE_NAMES"; //$NON-NLS-1$
 
@@ -8345,7 +8345,7 @@ public class UMLUtil
 		 * The diagnostic code for cases where an opposite role name annotation
 		 * is encountered.
 		 * 
-		 * @since 4.2
+		 * @since 5.0
 		 */
 		public static final int OPPOSITE_ROLE_NAME = DIAGNOSTIC_CODE_OFFSET + 9;
 
@@ -12050,7 +12050,7 @@ public class UMLUtil
 	 *            The options to use.
 	 * @return A traceability map from resulting elements to template elements.
 	 * 
-	 * @since 4.2
+	 * @since 5.0
 	 */
 	public static Map<EObject, List<EObject>> expand(
 			TemplateableElement templateableElement, Map<String, String> options) {
@@ -12084,7 +12084,7 @@ public class UMLUtil
 	 *            The cache of context-specific information.
 	 * @return A traceability map from resulting elements to template elements.
 	 * 
-	 * @since 4.2
+	 * @since 5.0
 	 */
 	public static Map<EObject, List<EObject>> expand(
 			TemplateableElement boundElement,
