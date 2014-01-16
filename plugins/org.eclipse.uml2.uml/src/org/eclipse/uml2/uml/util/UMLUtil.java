@@ -10726,6 +10726,8 @@ public class UMLUtil
 
 	public static final String UML2_UML_PACKAGE_4_1_NS_URI = "http://www.eclipse.org/uml2/4.1.0/UML"; //$NON-NLS-1$
 
+	public static final String UML2_TYPES_PACKAGE_4_0_NS_URI = "http://www.eclipse.org/uml2/4.0.0/Types"; //$NON-NLS-1$
+
 	/**
 	 * An annotation tag that can be used for backward compatibility.
 	 */

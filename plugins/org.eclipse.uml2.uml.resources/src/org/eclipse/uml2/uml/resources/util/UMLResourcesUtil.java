@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
- *   Kenn Hussey (CEA) - 389542, 399544
+ *   Kenn Hussey (CEA) - 389542, 399544, 425846
  *   Mikael Barbero (Obeo) - 414572
  *   Christian W. Damus (CEA) - 414572, 401682
  */
@@ -106,6 +106,12 @@ public class UMLResourcesUtil
 		new String[]{XMI2UMLResource.FILE_EXTENSION},
 		RootXMLContentHandlerImpl.XMI_KIND,
 		XMI2UMLResource.UML_METAMODEL_2_4_1_NS_URI, null);
+
+	private static final ContentHandler OMG_2_5_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
+		XMI2UMLResource.UML_2_5_CONTENT_TYPE_IDENTIFIER,
+		new String[]{XMI2UMLResource.FILE_EXTENSION},
+		RootXMLContentHandlerImpl.XMI_KIND,
+		XMI2UMLResource.UML_METAMODEL_2_5_NS_URI, null);
 
 	private static final ContentHandler CMOF_2_0_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
 		CMOF2UMLResource.CMOF_2_0_CONTENT_TYPE_IDENTIFIER, new String[]{
@@ -217,6 +223,9 @@ public class UMLResourcesUtil
 			EPackage.Registry packageRegistry) {
 		packageRegistry.put(EcorePackage.eNS_URI, EcorePackage.eINSTANCE);
 
+		packageRegistry
+			.put(UML2_TYPES_PACKAGE_4_0_NS_URI, UMLPackage.eINSTANCE);
+
 		packageRegistry.put(TypesPackage.eNS_URI, TypesPackage.eINSTANCE);
 
 		packageRegistry.put(UML2_UML_PACKAGE_2_0_NS_URI, UMLPackage.eINSTANCE);
@@ -314,6 +323,10 @@ public class UMLResourcesUtil
 
 		if (!contentHandlers.contains(UML2_1_0_0_CONTENT_HANDLER)) {
 			contentHandlers.add(UML2_1_0_0_CONTENT_HANDLER);
+		}
+
+		if (!contentHandlers.contains(OMG_2_5_CONTENT_HANDLER)) {
+			contentHandlers.add(OMG_2_5_CONTENT_HANDLER);
 		}
 
 		if (!contentHandlers.contains(OMG_2_4_1_CONTENT_HANDLER)) {
