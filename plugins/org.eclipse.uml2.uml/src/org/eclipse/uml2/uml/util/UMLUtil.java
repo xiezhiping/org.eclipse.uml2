@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833, 424568
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833, 420338, 405065
  *   E.D.Willink - 420338
@@ -3848,6 +3848,15 @@ public class UMLUtil
 		 */
 		public static final String OPTION__PROPERTY_DEFAULT_EXPRESSIONS = "PROPERTY_DEFAULT_EXPRESSIONS"; //$NON-NLS-1$
 
+		/**
+		 * The option for specifying the line separator to use when processing
+		 * text. If unspecified, the system's 'line.separator' property will be
+		 * used as a default.
+		 * 
+		 * @since 5.0
+		 */
+		public static final String OPTION__LINE_SEPARATOR = "LINE_SEPARATOR"; //$NON-NLS-1$
+
 		private static final int DIAGNOSTIC_CODE_OFFSET = 2000;
 
 		/**
@@ -4461,8 +4470,8 @@ public class UMLUtil
 							&& options != null && OPTION__PROCESS
 							.equals(options.get(OPTION__OPERATION_BODIES)))) {
 
-						addDocumentation(eModelElement, specification
-							.stringValue());
+						addDocumentation(eModelElement,
+							specification.stringValue(), getLineSeparator());
 					}
 
 					return eModelElement;
@@ -5228,6 +5237,19 @@ public class UMLUtil
 			}
 
 			return result;
+		}
+
+		private String getLineSeparator() {
+
+			if (options != null) {
+				String lineSeparator = options.get(OPTION__LINE_SEPARATOR);
+
+				if (!isEmpty(lineSeparator)) {
+					return lineSeparator;
+				}
+			}
+
+			return LINE_SEPARATOR;
 		}
 
 		protected void processEcoreTaggedValue(EModelElement eModelElement,
@@ -7234,7 +7256,7 @@ public class UMLUtil
 						new Object[]{eModelElement}));
 				}
 
-				addDocumentation(eModelElement, comment);
+				addDocumentation(eModelElement, comment, getLineSeparator());
 			} else if (OPTION__REPORT.equals(options.get(OPTION__COMMENTS))
 				&& diagnostics != null) {
 
@@ -7462,8 +7484,9 @@ public class UMLUtil
 						eOperation.getEParameters().add(eParameter);
 
 						setName(eParameter, "diagnostics", false); //$NON-NLS-1$
-						addDocumentation(eParameter,
-							"The chain of diagnostics to which problems are to be appended."); //$NON-NLS-1$
+						addDocumentation(
+							eParameter,
+							"The chain of diagnostics to which problems are to be appended.", getLineSeparator()); //$NON-NLS-1$
 
 						eParameter
 							.setEType(EcorePackage.Literals.EDIAGNOSTIC_CHAIN);
@@ -7473,8 +7496,9 @@ public class UMLUtil
 						eOperation.getEParameters().add(eParameter);
 
 						setName(eParameter, "context", false); //$NON-NLS-1$
-						addDocumentation(eParameter,
-							"The cache of context-specific information."); //$NON-NLS-1$
+						addDocumentation(
+							eParameter,
+							"The cache of context-specific information.", getLineSeparator()); //$NON-NLS-1$
 
 						EGenericType eGenericType = EcoreFactory.eINSTANCE
 							.createEGenericType();
@@ -7784,7 +7808,8 @@ public class UMLUtil
 												.format(
 													"<p>From package %s (URI {@literal %s}).</p>", //$NON-NLS-1$
 													capName, capURI);
-										addDocumentation(ecore, doc);
+										addDocumentation(ecore, doc,
+											getLineSeparator());
 									}
 								}
 							}

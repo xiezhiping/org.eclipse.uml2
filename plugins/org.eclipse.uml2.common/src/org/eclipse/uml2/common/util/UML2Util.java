@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 247980
  *   Keith Campbell (IBM) - 343783
- *   Kenn Hussey (CEA) - 316165, 322715, 212765, 421756
+ *   Kenn Hussey (CEA) - 316165, 322715, 212765, 421756, 424568
  *   Christian W. Damus (CEA) - 405065
  *
  */
@@ -258,8 +258,8 @@ public class UML2Util {
 	/**
 	 * The platform line separator.
 	 */
-	protected static final String LINE_SEPARATOR = System.getProperties()
-		.getProperty("line.separator"); //$NON-NLS-1$
+	protected static final String LINE_SEPARATOR = System
+		.getProperty(Platform.PREF_LINE_SEPARATOR);
 
 	/**
 	 * The scheme for platform URIs.
@@ -1000,15 +1000,20 @@ public class UML2Util {
 	}
 
 	protected static void addDocumentation(EModelElement eModelElement,
-			String text) {
+			String text, String lineSeparator) {
 
 		if (!isEmpty(text)) {
 			String documentation = EcoreUtil.getDocumentation(eModelElement);
 
 			EcoreUtil.setDocumentation(eModelElement, documentation == null
 				? text
-				: documentation + LINE_SEPARATOR + text);
+				: documentation + lineSeparator + text);
 		}
+	}
+
+	protected static void addDocumentation(EModelElement eModelElement,
+			String text) {
+		addDocumentation(eModelElement, text, LINE_SEPARATOR);
 	}
 
 	protected static Collection<EObject> getRootContainers(
@@ -1316,7 +1321,7 @@ public class UML2Util {
 	 *         empty, or was already present; {@code true} if the setting
 	 *         delegate was added to the package
 	 * 
-	 * @since 5.0
+	 * @since 2.0
 	 */
 	protected static boolean addSettingDelegate(EPackage ePackage,
 			String settingDelegate) {
