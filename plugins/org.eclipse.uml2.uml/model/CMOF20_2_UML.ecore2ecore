@@ -107,9 +107,6 @@
     <outputs href="UML.ecore#//DeploymentTarget/deployment"/>
   </nested>
   <nested>
-    <outputs href="UML.ecore#//StructuralFeature/isReadOnly"/>
-  </nested>
-  <nested>
     <outputs href="UML.ecore#//Feature/isStatic"/>
   </nested>
   <nested>
