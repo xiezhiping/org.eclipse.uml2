@@ -145,10 +145,6 @@
     <value xMLRepresentation="0"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xsi:type="ecore:EAttribute" href="UML.ecore#//StructuralFeature/isReadOnly"/>
-    <value xMLRepresentation="1"/>
-  </ecoreToXMLInfo>
-  <ecoreToXMLInfo>
     <key xsi:type="ecore:EAttribute" href="UML.ecore#//Feature/isStatic"/>
     <value xMLRepresentation="1"/>
   </ecoreToXMLInfo>
