@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Profile xmi:id="_ihtF8L5MEeCUg9_01zj7Og" name="Standard">
+    <packageMerge xmi:id="_pUgPcL5MEeCUg9_01zj7Og">
+      <mergedPackage xmi:type="uml:Profile" href="../../org.eclipse.uml2/model/StandardProfile.xmi#_0"/>
+    </packageMerge>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Auxiliary" name="Auxiliary">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Auxiliary-_ownedComment.0" annotatedElement="Auxiliary">
+        <body>A class that supports another more central or fundamental class, typically by implementing secondary logic or control flow. Auxiliary classes are typically used together with Focus classes, and are particularly useful for specifying the secondary business logic or control flow of components during design. See also: «Focus».</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Call" name="Call">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Call-_ownedComment.0" annotatedElement="Call">
+        <body>A usage dependency whose source is an operation and whose target is an operation. The relationship may also be subsumed to the class containing an operation, with the meaning that there exists an operation in the class to which the dependency applies. A call dependency specifies that the source operation or an operation in the source class invokes the target operation or an operation in the target class. A call dependency may connect a source operation to any target operation that is within scope including, but not limited to, operations of the enclosing classifier and operations of other visible classifiers.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="Call-client_and_supplier_are_operations" name="client_and_supplier_are_operations" constrainedElement="Call">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="Call-client_and_supplier_are_operations-_specification">
+          <language>OCL</language>
+          <body>self.base_Usage.client-&gt;forAll(oclIsKindOf(Operation)) and self.base_Usage.supplier-&gt;forAll(oclIsKindOf(Operation))</body>
+        </specification>
+      </ownedRule>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Create" name="Create">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Create-_ownedComment.0" annotatedElement="Create">
+        <body>When applied to a Usage, denotes that the client classifier creates instances of the supplier classifier. When applied to a BehavioralFeature, specifies that the designated feature creates an instance of the classifier to which the feature is attached.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="Create-client_and_supplier_are_classifiers" name="client_and_supplier_are_classifiers" constrainedElement="Create">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="Create-client_and_supplier_are_classifiers-_specification">
+          <language>OCL</language>
+          <body>self.base_Usage-&gt;notEmpty() implies (self.base_Usage.client-&gt;forAll(oclIsKindOf(Classifier)) and self.base_Usage.supplier-&gt;forAll(oclIsKindOf(Classifier)))</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:id="_r7_hcHVEEeKiPqYCgcAI6g" name="base_BehavioralFeature">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#BehavioralFeature"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_tFtikHVEEeKiPqYCgcAI6g"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2BACkHVEEeKiPqYCgcAI6g" name="base_Usage">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Usage"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3lO1cHVEEeKiPqYCgcAI6g"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Derive" name="Derive">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Derive-_ownedComment.0" annotatedElement="Derive">
+        <body>Specifies a derivation relationship among model elements that are usually, but not necessarily, of the same type. A derived dependency specifies that the client may be computed from the supplier. The mapping specifies the computation. The client may be implemented for design reasons, such as efficiency, even though it is logically redundant.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="Derive-computation" name="computation" visibility="public" aggregation="composite">
+        <ownedComment xmi:type="uml:Comment" xmi:id="Derive-computation-_ownedComment.0" annotatedElement="Derive-computation">
+          <body>The specification for computing the derived client element from the derivation supplier element.</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#ValueSpecification"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Derive-computation-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Derive-computation-_lowerValue" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Destroy" name="Destroy">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Destroy-_ownedComment.0" annotatedElement="Destroy">
+        <body>Specifies that the designated feature destroys an instance of the classifier to which the feature is attached.</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Document" name="Document">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Document-_ownedComment.0" annotatedElement="Document">
+        <body>A human-readable file. Subclass of «File».</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Entity" name="Entity">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Entity-_ownedComment.0" annotatedElement="Entity">
+        <body>A persistent information component representing a business concept.</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Executable" name="Executable">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Executable-_ownedComment.0" annotatedElement="Executable">
+        <body>A program file that can be executed on a computer system. Subclass of «File».</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="File" name="File" isAbstract="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="File-_ownedComment.0" annotatedElement="File">
+        <body>A physical file in the context of the system developed.</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Focus" name="Focus">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Focus-_ownedComment.0" annotatedElement="Focus">
+        <body>A class that defines the core logic or control flow for one or more auxiliary classes that support it. Focus classes are typically used together with one or more Auxiliary classes, and are particularly useful for specifying the core business logic or control flow of components during design. See also: «Auxiliary».</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Framework" name="Framework">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Framework-_ownedComment.0" annotatedElement="Framework">
+        <body>A package that contains model elements that specify a reusable architecture for all or part of a system. Frameworks typically include classes, patterns, or templates. When frameworks are specialized for an application domain they are sometimes referred to as application frameworks.</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Implement" name="Implement">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Implement-_ownedComment.0" annotatedElement="Implement">
+        <body>A component definition that is not intended to have a specification itself. Rather, it is an implementation for a separate «Specification» to which it has a Dependency.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="Implement-implements_specification" name="implements_specification" constrainedElement="Implement">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="Implement-implements_specification-_specification">
+          <language>OCL</language>
+          <body>self.base_Component.clientDependency.supplier-&gt;select(oclIsKindOf(Classifier)).oclAsType(Classifier).extension_Specificaiton-&gt;notEmpty()</body>
+        </specification>
+      </ownedRule>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="ImplementationClass" name="ImplementationClass">
+      <ownedComment xmi:type="uml:Comment" xmi:id="ImplementationClass-_ownedComment.0" annotatedElement="ImplementationClass">
+        <body>The implementation of a class in some programming language (e.g., C++, Smalltalk, Java) in which an instance may not have more than one class. This is in contrast to Class, for which an instance may have multiple classes at one time and may gain or lose classes over time, and an object may dynamically have multiple classes. An Implementation class is said to realize a Classifier if it provides all of the operations defined for the Classifier with the same behavior as specified for the Classifier's operations. An Implementation Class may realize a number of different Types. The physical attributes and associations of the Implementation class do not have to be the same as those of any Classifier it realizes and the Implementation Class may provide methods for its operations in terms of its physical attributes and associations. See also: «Type».</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="ImplementationClass-cannot_be_realization" name="cannot_be_realization" constrainedElement="ImplementationClass">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="ImplementationClass-cannot_be_realization-_specification">
+          <language>OCL</language>
+          <body>self.base_Class.extension_Realization-&gt;isEmpty()</body>
+        </specification>
+      </ownedRule>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Instantiate" name="Instantiate">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Instantiate-_ownedComment.0" annotatedElement="Instantiate">
+        <body>A usage dependency among classifiers indicating that operations on the client create instances of the supplier.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="Instantiate-client_and_supplier_are_classifiers" name="client_and_supplier_are_classifiers" constrainedElement="Instantiate">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="Instantiate-client_and_supplier_are_classifiers-_specification">
+          <language>OCL</language>
+          <body>self.base_Usage.client-&gt;forAll(oclIsKindOf(Classifier)) and self.base_Usage.supplier-&gt;forAll(oclIsKindOf(Classifier))</body>
+        </specification>
+      </ownedRule>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Library" name="Library">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Library-_ownedComment.0" annotatedElement="Library">
+        <body>A static or dynamic library file. Subclass of «File».</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Metaclass" name="Metaclass">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Metaclass-_ownedComment.0" annotatedElement="Metaclass">
+        <body>A class whose instances are also classes.</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="ModelLibrary" name="ModelLibrary">
+      <ownedComment xmi:type="uml:Comment" xmi:id="ModelLibrary-_ownedComment.0" annotatedElement="ModelLibrary">
+        <body>A package that contains model elements that are intended to be reused by other packages. It is analogous to a class library in some programming languages. The model library may not include instances of the metamodel extension metaclasses specified in Clause 12.3, such as Profiles and Stereotypes. However it may include ProfileApplications and Stereotype applications, and a model library is often used in conjunction with an applied Profile.</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Process" name="Process">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Process-_ownedComment.0" annotatedElement="Process">
+        <body>A transaction based component.</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Realization" name="Realization">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Realization-_ownedComment.0" annotatedElement="Realization">
+        <body>A classifier that specifies a domain of objects and that also defines the physical implementation of those objects. For example, a Component stereotyped by «Realization» will only have realizing Classifiers that implement behavior specified by a separate «Specification» Component. See «Specification». This differs from «ImplementationClass» because an «ImplementationClass» is a realization of a Class that can have features such as attributes and methods that are useful to system designers.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="Realization-cannot_be_implementationClass" name="cannot_be_implementationClass" constrainedElement="Realization">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="Realization-cannot_be_implementationClass-_specification">
+          <language>OCL</language>
+          <body>self.base_Classifier.extension_ImplementationClass-&gt;isEmpty()</body>
+        </specification>
+      </ownedRule>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Refine" name="Refine">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Refine-_ownedComment.0" annotatedElement="Refine">
+        <body>Specifies a refinement relationship between model elements at different semantic levels, such as analysis and design. The mapping specifies the relationship between the two elements or sets of elements. The mapping may or may not be computable, and it may be unidirectional or bidirectional. Refinement can be used to model transformations from analysis to design and other such changes.</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Responsibility" name="Responsibility">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Responsibility-_ownedComment.0" annotatedElement="Responsibility">
+        <body>A contract or an obligation of an element in its relationship to other elements.</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Script" name="Script">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Script-_ownedComment.0" annotatedElement="Script">
+        <body>A script file that can be interpreted by a computer system. Subclass of «File».</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Send" name="Send">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Send-_ownedComment.0" annotatedElement="Send">
+        <body>A Usage whose client is an Operation and whose supplier is a Signal, specifying that the Operation sends the Signal.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="Send-client_operation_sends_supplier_signal" name="client_operation_sends_supplier_signal" constrainedElement="Send">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="Send-client_operation_sends_supplier_signal-_specification">
+          <language>OCL</language>
+          <body>self.base_Usage.client-&gt;forAll(oclIsKindOf(Operation)) and self.base_Usage.supplier-&gt;forAll(oclIsKindOf(Signal))</body>
+        </specification>
+      </ownedRule>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Service" name="Service">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Service-_ownedComment.0" annotatedElement="Service">
+        <body>A stateless, functional component.</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Source" name="Source">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Source-_ownedComment.0" annotatedElement="Source">
+        <body>A source file that can be compiled into an executable file. Subclass of «File».</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Specification" name="Specification">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Specification-_ownedComment.0" annotatedElement="Specification">
+        <body>A classifier that specifies a domain of objects without defining the physical implementation of those objects. For example, a Component stereotyped by «Specification» will only have provided and required interfaces, and is not intended to have any realizingClassifiers as part of its definition. This differs from «Type» because a «Type» can have features such as attributes and methods that are useful to analysts modeling systems. Also see: «Realization».</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="Specification-cannot_be_type" name="cannot_be_type" constrainedElement="Specification">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="Specification-cannot_be_type-_specification">
+          <language>OCL</language>
+          <body>self.base_Classifier.extension_Type-&gt;isEmpty()</body>
+        </specification>
+      </ownedRule>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Subsystem" name="Subsystem">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Subsystem-_ownedComment.0" annotatedElement="Subsystem">
+        <body>A unit of hierarchical decomposition for large systems. A subsystem is commonly instantiated indirectly. Definitions of subsystems vary widely among domains and methods, and it is expected that domain and method profiles will specialize this construct. A subsystem may be defined to have specification and realization elements. See also: «Specification» and «Realization».</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Trace" name="Trace">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Trace-_ownedComment.0" annotatedElement="Trace">
+        <body>Specifies a trace relationship between model elements or sets of model elements that represent the same concept in different models. Traces are mainly used for tracking requirements and changes across models. As model changes can occur in both directions, the directionality of the dependency can often be ignored. The mapping specifies the relationship between the two, but it is rarely computable and is usually informal.</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Type" name="Type">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Type-_ownedComment.0" annotatedElement="Type">
+        <body>A class that specifies a domain of objects together with the operations applicable to the objects, without defining the physical implementation of those objects. However, it may have attributes and associations. Behavioral specifications for type operations may be expressed using, for example, activity diagrams. An object may have at most one implementation class, however it may conform to multiple different types. See also: «ImplementationClass».</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="Type-cannot_be_specification" name="cannot_be_specification" constrainedElement="Type">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="Type-cannot_be_specification-_specification">
+          <language>OCL</language>
+          <body>self.base_Class.extension_Specification-&gt;isEmpty()</body>
+        </specification>
+      </ownedRule>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Utility" name="Utility">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Utility-_ownedComment.0" annotatedElement="Utility">
+        <body>A class that has no instances, but rather denotes a named collection of attributes and operations, all of which are static.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="Utility-is_utility" name="is_utility" constrainedElement="Utility">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="Utility-is_utility-_specification">
+          <language>OCL</language>
+          <body>self.base_Class.feature-&gt;forAll(isStatic)</body>
+        </specification>
+      </ownedRule>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="BuildComponent" name="BuildComponent">
+      <ownedComment xmi:type="uml:Comment" xmi:id="BuildComponent-_ownedComment.0" annotatedElement="BuildComponent">
+        <body>A collection of elements defined for the purpose of system level development activities, such as compilation and versioning.</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Metamodel" name="Metamodel">
+      <ownedComment xmi:type="uml:Comment" xmi:id="Metamodel-_ownedComment.0" annotatedElement="Metamodel">
+        <body>A model that specifies the modeling concepts of some modeling language (e.g., a MOF model). See «Metaclass».</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="SystemModel" name="SystemModel">
+      <ownedComment xmi:type="uml:Comment" xmi:id="SystemModel-_ownedComment.0" annotatedElement="SystemModel">
+        <body>A SystemModel is a stereotyped model that contains a collection of models of the same system. A SystemModel also contains all relationships and constraints between model elements contained in different models.</body>
+      </ownedComment>
+    </packagedElement>
+    <profileApplication xmi:id="_6ryEUL5MEeCUg9_01zj7Og">
+      <eAnnotations xmi:id="_6ryrYL5MEeCUg9_01zj7Og" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Profile>
+  <Ecore:EPackage xmi:id="_7-6gIL5MEeCUg9_01zj7Og" base_Package="_ihtF8L5MEeCUg9_01zj7Og" packageName="standard" nsPrefix="standard" nsURI="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" basePackage="org.eclipse.uml2.uml.profile" prefix="Standard"/>
+</xmi:XMI>

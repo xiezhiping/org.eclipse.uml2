@@ -102,6 +102,10 @@ public interface XMI2UMLResource
 
 	String UML_PRIMITIVE_TYPES_LIBRARY_2_4_1_URI = "http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi"; //$NON-NLS-1$
 
+	String STANDARD_PROFILE_2_5_NS_URI = "http://www.omg.org/spec/UML/20131001/StandardProfile"; //$NON-NLS-1$
+
+	String STANDARD_PROFILE_2_5_URI = "http://www.omg.org/spec/UML/20131001/StandardProfile.xmi"; //$NON-NLS-1$
+
 	String UML_METAMODEL_2_5_NS_URI = "http://www.omg.org/spec/UML/20131001"; //$NON-NLS-1$
 
 	String UML_METAMODEL_2_5_URI = "http://www.omg.org/spec/UML/20131001/UML.xmi"; //$NON-NLS-1$
@@ -117,6 +121,10 @@ public interface XMI2UMLResource
 	String STANDARD_L3_PROFILE_NS_URI = STANDARD_L3_PROFILE_2_4_1_NS_URI;
 
 	String STANDARD_L3_PROFILE_URI = STANDARD_L3_PROFILE_2_4_1_URI;
+
+	String STANDARD_PROFILE_NS_URI = STANDARD_PROFILE_2_5_NS_URI;
+
+	String STANDARD_PROFILE_URI = STANDARD_PROFILE_2_5_URI;
 
 	String UML_METAMODEL_NS_URI = UML_METAMODEL_2_5_NS_URI;
 

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/uml2/2.2.0/GenModel"
+    modelDirectory="/org.eclipse.uml2.uml.profile.standard/src" editDirectory=""
+    editorDirectory="" modelPluginID="org.eclipse.uml2.uml.profile.standard" templateDirectory="/org.eclipse.uml2/templates"
+    runtimeJar="true" dynamicTemplates="true" modelName="Standard" modelPluginClass="org.eclipse.uml2.uml.profile.standard.StandardPlugin"
+    updateClasspath="false" nonNLSMarkers="true" codeFormatting="true" testsDirectory=""
+    importerID="org.eclipse.uml2.uml.ecore.importer" containmentProxies="true" complianceLevel="5.0"
+    copyrightFields="false" usedGenPackages="platform:/plugin/org.eclipse.uml2.uml/model/UML.genmodel#//uml platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore platform:/plugin/org.eclipse.uml2.types/model/Types.genmodel#//types"
+    operationReflection="true" invariantPrefix="validate">
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/importer/org.eclipse.uml2.uml.ecore.importer">
+    <details key="ECORE_TAGGED_VALUES" value="PROCESS"/>
+    <details key="UNION_PROPERTIES" value="PROCESS"/>
+    <details key="UNTYPED_PROPERTIES" value="REPORT"/>
+    <details key="DUPLICATE_FEATURES" value="PROCESS"/>
+    <details key="SUBSETTING_PROPERTIES" value="PROCESS"/>
+    <details key="VALIDATION_DELEGATES" value="IGNORE"/>
+    <details key="OPPOSITE_ROLE_NAMES" value="IGNORE"/>
+    <details key="COMMENTS" value="PROCESS"/>
+    <details key="DUPLICATE_FEATURE_INHERITANCE" value="PROCESS"/>
+    <details key="DUPLICATE_OPERATIONS" value="PROCESS"/>
+    <details key="PROPERTY_DEFAULT_EXPRESSIONS" value="IGNORE"/>
+    <details key="INVARIANT_CONSTRAINTS" value="PROCESS"/>
+    <details key="REDEFINING_PROPERTIES" value="PROCESS"/>
+    <details key="ANNOTATION_DETAILS" value="PROCESS"/>
+    <details key="NON_API_INVARIANTS" value="IGNORE"/>
+    <details key="DUPLICATE_OPERATION_INHERITANCE" value="PROCESS"/>
+    <details key="REDEFINING_OPERATIONS" value="PROCESS"/>
+    <details key="INVOCATION_DELEGATES" value="IGNORE"/>
+    <details key="DERIVED_FEATURES" value="PROCESS"/>
+    <details key="OPERATION_BODIES" value="IGNORE"/>
+    <details key="CAMEL_CASE_NAMES" value="IGNORE"/>
+    <details key="SUPER_CLASS_ORDER" value="PROCESS"/>
+  </genAnnotations>
+  <foreignModel>Standard.merged.uml</foreignModel>
+  <genPackages xsi:type="genmodel:GenPackage" prefix="Standard" basePackage="org.eclipse.uml2.uml.profile"
+      classPackageSuffix="internal.impl" generateExampleClass="false" ecorePackage="Standard.ecore#/"
+      operationsPackage="org.eclipse.uml2.uml.profile.standard.internal.operations">
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Auxiliary">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Auxiliary/base_Class"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Call">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Call/base_Usage"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="Standard.ecore#//Call/client_and_supplier_are_operations">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="Standard.ecore#//Call/client_and_supplier_are_operations/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="Standard.ecore#//Call/client_and_supplier_are_operations/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Create">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Create/base_BehavioralFeature"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Create/base_Usage"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="Standard.ecore#//Create/client_and_supplier_are_classifiers">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="Standard.ecore#//Create/client_and_supplier_are_classifiers/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="Standard.ecore#//Create/client_and_supplier_are_classifiers/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Derive">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference Standard.ecore#//Derive/computation"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Derive/base_Abstraction"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Destroy">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Destroy/base_BehavioralFeature"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Document"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//File">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//File/base_Artifact"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Entity">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Entity/base_Component"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Executable"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Focus">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Focus/base_Class"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Framework">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Framework/base_Package"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Implement">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Implement/base_Component"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="Standard.ecore#//Implement/implements_specification">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="Standard.ecore#//Implement/implements_specification/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="Standard.ecore#//Implement/implements_specification/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//ImplementationClass">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//ImplementationClass/base_Class"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="Standard.ecore#//ImplementationClass/cannot_be_realization">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="Standard.ecore#//ImplementationClass/cannot_be_realization/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="Standard.ecore#//ImplementationClass/cannot_be_realization/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Instantiate">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Instantiate/base_Usage"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="Standard.ecore#//Instantiate/client_and_supplier_are_classifiers">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="Standard.ecore#//Instantiate/client_and_supplier_are_classifiers/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="Standard.ecore#//Instantiate/client_and_supplier_are_classifiers/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Library"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Metaclass">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Metaclass/base_Class"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//ModelLibrary">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//ModelLibrary/base_Package"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Process">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Process/base_Component"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Realization">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Realization/base_Classifier"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="Standard.ecore#//Realization/cannot_be_implementationClass">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="Standard.ecore#//Realization/cannot_be_implementationClass/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="Standard.ecore#//Realization/cannot_be_implementationClass/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Refine">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Refine/base_Abstraction"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Responsibility">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Responsibility/base_Usage"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Script"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Send">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Send/base_Usage"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="Standard.ecore#//Send/client_operation_sends_supplier_signal">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="Standard.ecore#//Send/client_operation_sends_supplier_signal/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="Standard.ecore#//Send/client_operation_sends_supplier_signal/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Service">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Service/base_Component"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Source"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Specification">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Specification/base_Classifier"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="Standard.ecore#//Specification/cannot_be_type">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="Standard.ecore#//Specification/cannot_be_type/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="Standard.ecore#//Specification/cannot_be_type/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Subsystem">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Subsystem/base_Component"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Trace">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Trace/base_Abstraction"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Type">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Type/base_Class"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="Standard.ecore#//Type/cannot_be_specification">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="Standard.ecore#//Type/cannot_be_specification/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="Standard.ecore#//Type/cannot_be_specification/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Utility">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Utility/base_Class"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="Standard.ecore#//Utility/is_utility">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="Standard.ecore#//Utility/is_utility/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="Standard.ecore#//Utility/is_utility/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//BuildComponent">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//BuildComponent/base_Component"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//Metamodel">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//Metamodel/base_Model"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="Standard.ecore#//SystemModel">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference Standard.ecore#//SystemModel/base_Model"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
