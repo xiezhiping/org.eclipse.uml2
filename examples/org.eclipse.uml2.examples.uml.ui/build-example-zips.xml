@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2010, 2014 E.D.Willink, CEA, and others.
+ All rights reserved.   This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+ Contributors: 
+   E.D.Willink - initial API and implementation
+   Christian W. Damus (CEA) - adapted from OCL project for 382342
+-->
+<project name="org.eclipse.uml2.examples.ui" default="zip.examples" basedir=".">
+	<target name="init">
+	</target>
+
+	<patternset id="zip.excludes"
+		excludes="src.zip,build*.xml,javaCompiler*,bin/**,temp.folder/**,@dot/**,**/*.graffle"/>
+	
+	<target name="zip.examples" depends="init">
+		<!-- UML2 examples -->
+		<eclipse.convertPath resourcePath="org.eclipse.uml2.examples.gettingstarted" property="projectDir"/>
+		<zip destfile="zips/gettingstarted.zip" basedir="${projectDir}">
+			<patternset refid="zip.excludes"/>
+		</zip>
+		
+        <eclipse.convertPath resourcePath="org.eclipse.uml2.examples.introtoprofiles" property="projectDir"/>
+        <zip destfile="zips/introtoprofiles.zip" basedir="${projectDir}">
+            <patternset refid="zip.excludes"/>
+        </zip>
+	</target>
+
+	<target name="clean" depends="init">
+		<delete>
+			<fileset dir="zips" includes="*.zip"/>
+		</delete>
+		<antcall target="refresh"/>
+	</target>
+
+	<target name="refresh" depends="init" if="eclipse.running">
+		<eclipse.refreshLocal resource="/org.eclipse.uml2.examples.ui" depth="infinite"/>
+	</target>
+</project>
