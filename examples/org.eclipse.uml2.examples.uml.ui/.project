@@ -27,6 +27,31 @@
 			</arguments>
 		</buildCommand>
 		-->
+        <buildCommand>
+            <name>org.eclipse.buckminster.ant.AntBuilder</name>
+            <arguments>
+                <dictionary>
+                    <key>given.name</key>
+                    <value>Create example projects ZIP archives</value>
+                </dictionary>
+                <dictionary>
+                    <key>script.file</key>
+                    <value>build-example-zips.xml</value>
+                </dictionary>
+                <dictionary>
+                    <key>derived.resource</key>
+                    <value>zips</value>
+                </dictionary>
+                <dictionary>
+                    <key>refresh.resource</key>
+                    <value>zips</value>
+                </dictionary>
+                <dictionary>
+                    <key>delta.resource</key>
+                    <value>zips</value>
+                </dictionary>
+            </arguments>
+        </buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.pde.PluginNature</nature>
