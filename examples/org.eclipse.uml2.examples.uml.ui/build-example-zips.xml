@@ -10,7 +10,7 @@
    E.D.Willink - initial API and implementation
    Christian W. Damus (CEA) - adapted from OCL project for 382342
 -->
-<project name="org.eclipse.uml2.examples.ui" default="zip.examples" basedir=".">
+<project name="org.eclipse.uml2.examples.uml.ui" default="zip.examples" basedir=".">
 	<target name="init">
 	</target>
 
@@ -38,6 +38,6 @@
 	</target>
 
 	<target name="refresh" depends="init" if="eclipse.running">
-		<eclipse.refreshLocal resource="/org.eclipse.uml2.examples.ui" depth="infinite"/>
+		<eclipse.refreshLocal resource="/org.eclipse.uml2.examples.uml.ui" depth="infinite"/>
 	</target>
 </project>
