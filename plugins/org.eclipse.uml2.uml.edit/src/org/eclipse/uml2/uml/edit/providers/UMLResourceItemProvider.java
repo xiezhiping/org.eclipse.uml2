@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2007 IBM Corporation and others.
+ * Copyright (c) 2006, 2014 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   E.D.Willink - 426595
  *
- * $Id: UMLResourceItemProvider.java,v 1.2 2007/01/05 21:49:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -33,9 +33,11 @@ public class UMLResourceItemProvider
 	@Override
 	public Collection<?> getChildren(Object object) {
 		EList<EObject> contents = ((Resource) object).getContents();
-		Collection<Object> children = new ArrayList<Object>(contents.size());
+		int size = contents.size();
+		Collection<Object> children = new ArrayList<Object>(size);
 
-		for (EObject content : contents) {
+		for (int i = 0; i < size; i++) {
+			EObject content = contents.get(i);
 
 			if (!AdapterFactoryEditingDomain.isControlled(content)
 				&& UMLUtil.getStereotype(content) == null) {
