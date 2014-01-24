@@ -325,7 +325,7 @@ public class ItemProvider
   protected final String TEXT_306 = "(domain, owner, feature, ";
   protected final String TEXT_307 = ", collection);" + NL + "\t\t}";
   protected final String TEXT_308 = NL + "\t\treturn super.createRemoveCommand(domain, owner, feature, collection);" + NL + "\t}" + NL;
-  protected final String TEXT_309 = NL + "\t/**" + NL + "\t * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject, java.util.Collection)" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */";
+  protected final String TEXT_309 = NL + "\t/**" + NL + "\t * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object, java.util.Collection)" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */";
   protected final String TEXT_310 = NL + "\t@Override";
   protected final String TEXT_311 = NL + "\tprotected ";
   protected final String TEXT_312 = " createReplaceCommand(";
@@ -1120,7 +1120,7 @@ public class ItemProvider
     stringBuffer.append(TEXT_314);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature"));
     stringBuffer.append(TEXT_315);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EObject"));
+    stringBuffer.append(genModel.getImportedName("java.lang.Object"));
     stringBuffer.append(TEXT_316);
     stringBuffer.append(genModel.getImportedName(genModel.useGenerics() ? "java.util.Collection<?>" : "java.util.Collection"));
     stringBuffer.append(TEXT_317);
