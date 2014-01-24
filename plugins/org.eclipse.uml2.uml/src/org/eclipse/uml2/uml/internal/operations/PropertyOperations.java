@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 407028
+ *   Kenn Hussey (CEA) - 327039, 351774, 407028, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -57,15 +57,18 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Property#isCompatibleWith(org.eclipse.uml2.uml.ParameterableElement) <em>Is Compatible With</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#validateSubsettedPropertyNames(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Subsetted Property Names</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#validateSubsettingRules(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Subsetting Rules</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#validateMultiplicityOfComposite(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Composite</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#validateBindingToAttribute(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Binding To Attribute</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#validateRedefinedPropertyInherited(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Redefined Property Inherited</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#validateSubsettingContextConforms(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Subsetting Context Conforms</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#validateDeploymentTarget(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Deployment Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#validateDerivedUnionIsDerived(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Derived Union Is Derived</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#validateDerivedUnionIsReadOnly(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Derived Union Is Read Only</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#validateMultiplicityOfComposite(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Composite</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#validateRedefinedPropertyInherited(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Redefined Property Inherited</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#validateSubsettingRules(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Subsetting Rules</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#validateBindingToAttribute(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Binding To Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#validateDerivedUnionIsDerived(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Derived Union Is Derived</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#validateDeploymentTarget(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Deployment Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#validateSubsettedPropertyNames(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Subsetted Property Names</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#validateTypeOfOppositeEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Opposite End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#validateQualifiedIsAssociationEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Qualified Is Association End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#getDefault() <em>Get Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getOtherEnd() <em>Get Other End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#isSetDefault() <em>Is Set Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#setBooleanDefaultValue(boolean) <em>Set Boolean Default Value</em>}</li>
@@ -79,8 +82,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Property#setStringDefaultValue(java.lang.String) <em>Set String Default Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#setUnlimitedNaturalDefaultValue(int) <em>Set Unlimited Natural Default Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#unsetDefault() <em>Unset Default</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#getDefault() <em>Get Default</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#isAttribute(org.eclipse.uml2.uml.Property) <em>Is Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#isAttribute() <em>Is Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#isComposite() <em>Is Composite</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#isNavigable() <em>Is Navigable</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getOpposite() <em>Get Opposite</em>}</li>
@@ -198,12 +200,12 @@ public class PropertyOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A redefined property must be inherited from a more general classifier containing the redefining property.
-	 * if (redefinedProperty->notEmpty()) then
+	 * A redefined Property must be inherited from a more general Classifier.
+	 * (redefinedProperty->notEmpty()) implies
 	 *   (redefinitionContext->notEmpty() and
 	 *       redefinedProperty->forAll(rp|
 	 *         ((redefinitionContext->collect(fc|
-	 *           fc.allParents()))->asSet())->collect(c| c.allFeatures())->asSet()->includes(rp))
+	 *           fc.allParents()))->asSet())->collect(c| c.allFeatures())->asSet()->includes(rp)))
 	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -395,6 +397,76 @@ public class PropertyOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
+	 * If a Property is a classifier-owned end of a binary Association, its owner must be the type of the opposite end.
+	 * (opposite->notEmpty() and owningAssociation->isEmpty()) implies classifier = opposite.type
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateTypeOfOppositeEnd(Property property,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.PROPERTY__TYPE_OF_OPPOSITE_END,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateTypeOfOppositeEnd", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(property, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{property}));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * All qualified Properties must be Association ends
+	 * qualifier->notEmpty() implies association->notEmpty()
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateQualifiedIsAssociationEnd(Property property,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.PROPERTY__QUALIFIED_IS_ASSOCIATION_END,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateQualifiedIsAssociationEnd", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(property, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{property}));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
 	 * A Property can be a DeploymentTarget if it is a kind of Node and functions as a part in the internal structure of an encompassing Node.
 	 * true
 	 * @param property The receiving '<em><b>Property</b></em>' model object.
@@ -434,9 +506,12 @@ public class PropertyOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A binding of a property template parameter representing an attribute must be to an attribute.
-	 * (isAttribute(self) and (templateParameterSubstitution->notEmpty())
-	 *   implies (templateParameterSubstitution->forAll(ts | isAttribute(ts.formal)))
+	 * A binding of a PropertyTemplateParameter representing an attribute must be to an attribute.
+	 * (self.isAttribute()
+	 * and (templateParameterSubstitution->notEmpty())
+	 * implies (templateParameterSubstitution->forAll(ts |
+	 *     ts.formal.oclIsKindOf(Property)
+	 *     and ts.formal.oclAsType(Property).isAttribute())))
 	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -464,31 +539,6 @@ public class PropertyOperations
 			return false;
 		}
 		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query isAttribute() is true if the Property is defined as an attribute of some classifier.
-	 * result = Classifier.allInstances->exists(c | c.attribute->includes(p))
-	 * @param property The receiving '<em><b>Property</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isAttribute(Property property, Property p) {
-
-		for (EStructuralFeature.Setting inverseReference : getInverseReferences(p)) {
-			EObject eObject = inverseReference.getEObject();
-
-			if (eObject instanceof Classifier
-				&& ((Classifier) eObject).getAttributes().contains(p)) {
-
-				return true;
-			}
-		}
-
-		return false;
 	}
 
 	/**
@@ -567,6 +617,18 @@ public class PropertyOperations
 			: property.createDefaultValue(null, null,
 				UMLPackage.Literals.LITERAL_UNLIMITED_NATURAL)))
 			.setValue(value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static void unsetDefault(Property property) {
+
+		if (property.getDefault() != null) {
+			property.eUnset(UMLPackage.Literals.PROPERTY__DEFAULT_VALUE);
+		}
 	}
 
 	/**
@@ -815,22 +877,27 @@ public class PropertyOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The query isAttribute() is true if the Property is defined as an attribute of some Classifier.
+	 * result = (not classifier->isEmpty())
+	 * <p>From package UML::Classification.</p>
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static boolean isSetDefault(Property property) {
-		return property.getDefault() != null;
-	}
+	public static boolean isAttribute(Property property) {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static void unsetDefault(Property property) {
+		for (EStructuralFeature.Setting inverseReference : getInverseReferences(property)) {
+			EObject eObject = inverseReference.getEObject();
 
-		if (property.isSetDefault()) {
-			property.eUnset(UMLPackage.Literals.PROPERTY__DEFAULT_VALUE);
+			if (eObject instanceof Classifier
+				&& ((Classifier) eObject).getAttributes().contains(property)) {
+
+				return true;
+			}
 		}
+
+		return false;
 	}
 
 	/**
@@ -889,6 +956,15 @@ public class PropertyOperations
 		}
 
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static boolean isSetDefault(Property property) {
+		return property.getDefault() != null;
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -37,7 +37,6 @@ import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.DataType;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.MultiplicityElement;
@@ -480,9 +479,9 @@ public class PortImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePortDestroyed(DiagnosticChain diagnostics,
+	public boolean validateDefaultValue(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return PortOperations.validatePortDestroyed(this, diagnostics, context);
+		return PortOperations.validateDefaultValue(this, diagnostics, context);
 	}
 
 	/**
@@ -490,9 +489,28 @@ public class PortImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDefaultValue(DiagnosticChain diagnostics,
+	public boolean validateEncapsulatedOwner(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return PortOperations.validateDefaultValue(this, diagnostics, context);
+		return PortOperations.validateEncapsulatedOwner(this, diagnostics,
+			context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Interface> basicProvided() {
+		return PortOperations.basicProvided(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Interface> basicRequired() {
+		return PortOperations.basicRequired(this);
 	}
 
 	/**
@@ -575,14 +593,16 @@ public class PortImpl
 				return getDeployedElements();
 			case UMLPackage.PORT__DEPLOYMENT :
 				return getDeployments();
-			case UMLPackage.PORT__INTERFACE :
-				if (resolve)
-					return getInterface();
-				return basicGetInterface();
 			case UMLPackage.PORT__DATATYPE :
 				if (resolve)
 					return getDatatype();
 				return basicGetDatatype();
+			case UMLPackage.PORT__INTERFACE :
+				if (resolve)
+					return getInterface();
+				return basicGetInterface();
+			case UMLPackage.PORT__DEFAULT :
+				return getDefault();
 			case UMLPackage.PORT__AGGREGATION :
 				return getAggregation();
 			case UMLPackage.PORT__ASSOCIATION_END :
@@ -595,8 +615,6 @@ public class PortImpl
 				if (resolve)
 					return getClass_();
 				return basicGetClass_();
-			case UMLPackage.PORT__DEFAULT :
-				return getDefault();
 			case UMLPackage.PORT__DEFAULT_VALUE :
 				if (resolve)
 					return getDefaultValue();
@@ -664,11 +682,6 @@ public class PortImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.PORT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.PORT__NAME :
 				setName((String) newValue);
 				return;
@@ -719,11 +732,14 @@ public class PortImpl
 				getDeployments().addAll(
 					(Collection<? extends Deployment>) newValue);
 				return;
+			case UMLPackage.PORT__DATATYPE :
+				setDatatype((DataType) newValue);
+				return;
 			case UMLPackage.PORT__INTERFACE :
 				setInterface((Interface) newValue);
 				return;
-			case UMLPackage.PORT__DATATYPE :
-				setDatatype((DataType) newValue);
+			case UMLPackage.PORT__DEFAULT :
+				setDefault((String) newValue);
 				return;
 			case UMLPackage.PORT__AGGREGATION :
 				setAggregation((AggregationKind) newValue);
@@ -735,9 +751,6 @@ public class PortImpl
 				getQualifiers().clear();
 				getQualifiers().addAll(
 					(Collection<? extends Property>) newValue);
-				return;
-			case UMLPackage.PORT__DEFAULT :
-				setDefault((String) newValue);
 				return;
 			case UMLPackage.PORT__DEFAULT_VALUE :
 				setDefaultValue((ValueSpecification) newValue);
@@ -819,9 +832,6 @@ public class PortImpl
 			case UMLPackage.PORT__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.PORT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.PORT__NAME :
 				unsetName();
 				return;
@@ -870,11 +880,14 @@ public class PortImpl
 			case UMLPackage.PORT__DEPLOYMENT :
 				getDeployments().clear();
 				return;
+			case UMLPackage.PORT__DATATYPE :
+				setDatatype((DataType) null);
+				return;
 			case UMLPackage.PORT__INTERFACE :
 				setInterface((Interface) null);
 				return;
-			case UMLPackage.PORT__DATATYPE :
-				setDatatype((DataType) null);
+			case UMLPackage.PORT__DEFAULT :
+				unsetDefault();
 				return;
 			case UMLPackage.PORT__AGGREGATION :
 				setAggregation(AGGREGATION_EDEFAULT);
@@ -884,9 +897,6 @@ public class PortImpl
 				return;
 			case UMLPackage.PORT__QUALIFIER :
 				getQualifiers().clear();
-				return;
-			case UMLPackage.PORT__DEFAULT :
-				unsetDefault();
 				return;
 			case UMLPackage.PORT__DEFAULT_VALUE :
 				setDefaultValue((ValueSpecification) null);
@@ -954,8 +964,7 @@ public class PortImpl
 			case UMLPackage.PORT__OWNER :
 				return isSetOwner();
 			case UMLPackage.PORT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.PORT__NAME :
 				return isSetName();
 			case UMLPackage.PORT__NAME_EXPRESSION :
@@ -993,7 +1002,7 @@ public class PortImpl
 			case UMLPackage.PORT__UPPER_VALUE :
 				return upperValue != null;
 			case UMLPackage.PORT__IS_READ_ONLY :
-				return isSetIsReadOnly();
+				return ((eFlags & IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
 			case UMLPackage.PORT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.PORT__TEMPLATE_PARAMETER :
@@ -1004,10 +1013,12 @@ public class PortImpl
 				return !getDeployedElements().isEmpty();
 			case UMLPackage.PORT__DEPLOYMENT :
 				return deployments != null && !deployments.isEmpty();
-			case UMLPackage.PORT__INTERFACE :
-				return basicGetInterface() != null;
 			case UMLPackage.PORT__DATATYPE :
 				return basicGetDatatype() != null;
+			case UMLPackage.PORT__INTERFACE :
+				return basicGetInterface() != null;
+			case UMLPackage.PORT__DEFAULT :
+				return isSetDefault();
 			case UMLPackage.PORT__AGGREGATION :
 				return (eFlags & AGGREGATION_EFLAG) != AGGREGATION_EFLAG_DEFAULT;
 			case UMLPackage.PORT__ASSOCIATION_END :
@@ -1016,8 +1027,6 @@ public class PortImpl
 				return qualifiers != null && !qualifiers.isEmpty();
 			case UMLPackage.PORT__CLASS :
 				return basicGetClass_() != null;
-			case UMLPackage.PORT__DEFAULT :
-				return isSetDefault();
 			case UMLPackage.PORT__DEFAULT_VALUE :
 				return defaultValue != null;
 			case UMLPackage.PORT__IS_COMPOSITE :
@@ -1150,16 +1159,16 @@ public class PortImpl
 				return allOwnedElements();
 			case UMLPackage.PORT___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.PORT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PORT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PORT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PORT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PORT___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1170,6 +1179,8 @@ public class PortImpl
 				return getLabel();
 			case UMLPackage.PORT___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.PORT___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.PORT___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.PORT___ALL_OWNING_PACKAGES :
@@ -1177,12 +1188,12 @@ public class PortImpl
 			case UMLPackage.PORT___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.PORT___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.PORT___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.PORT___SEPARATOR :
 				return separator();
+			case UMLPackage.PORT___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.PORT___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -1200,18 +1211,26 @@ public class PortImpl
 			case UMLPackage.PORT___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
+			case UMLPackage.PORT___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
+				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PORT___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
 				return validateLowerGe0((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PORT___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
-				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
+			case UMLPackage.PORT___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
+				return validateValueSpecificationNoSideEffects(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PORT___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
 				return validateValueSpecificationConstant(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PORT___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
-				return validateValueSpecificationNoSideEffects(
+			case UMLPackage.PORT___VALIDATE_LOWER_IS_INTEGER__DIAGNOSTICCHAIN_MAP :
+				return validateLowerIsInteger(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_UPPER_IS_UNLIMITED_NATURAL__DIAGNOSTICCHAIN_MAP :
+				return validateUpperIsUnlimitedNatural(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PORT___SET_LOWER__INT :
@@ -1222,8 +1241,6 @@ public class PortImpl
 				return null;
 			case UMLPackage.PORT___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
 				return compatibleWith((MultiplicityElement) arguments.get(0));
-			case UMLPackage.PORT___INCLUDES_CARDINALITY__INT :
-				return includesCardinality((Integer) arguments.get(0));
 			case UMLPackage.PORT___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
 				return includesMultiplicity((MultiplicityElement) arguments
 					.get(0));
@@ -1248,42 +1265,52 @@ public class PortImpl
 				return getEnds();
 			case UMLPackage.PORT___GET_DEPLOYED_ELEMENTS :
 				return getDeployedElements();
-			case UMLPackage.PORT___VALIDATE_SUBSETTED_PROPERTY_NAMES__DIAGNOSTICCHAIN_MAP :
-				return validateSubsettedPropertyNames(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PORT___VALIDATE_SUBSETTING_RULES__DIAGNOSTICCHAIN_MAP :
-				return validateSubsettingRules(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PORT___VALIDATE_MULTIPLICITY_OF_COMPOSITE__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicityOfComposite(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PORT___VALIDATE_BINDING_TO_ATTRIBUTE__DIAGNOSTICCHAIN_MAP :
-				return validateBindingToAttribute(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PORT___VALIDATE_REDEFINED_PROPERTY_INHERITED__DIAGNOSTICCHAIN_MAP :
-				return validateRedefinedPropertyInherited(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PORT___VALIDATE_SUBSETTING_CONTEXT_CONFORMS__DIAGNOSTICCHAIN_MAP :
 				return validateSubsettingContextConforms(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PORT___VALIDATE_DEPLOYMENT_TARGET__DIAGNOSTICCHAIN_MAP :
-				return validateDeploymentTarget(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PORT___VALIDATE_DERIVED_UNION_IS_DERIVED__DIAGNOSTICCHAIN_MAP :
-				return validateDerivedUnionIsDerived(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PORT___VALIDATE_DERIVED_UNION_IS_READ_ONLY__DIAGNOSTICCHAIN_MAP :
 				return validateDerivedUnionIsReadOnly(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_MULTIPLICITY_OF_COMPOSITE__DIAGNOSTICCHAIN_MAP :
+				return validateMultiplicityOfComposite(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_REDEFINED_PROPERTY_INHERITED__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinedPropertyInherited(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_SUBSETTING_RULES__DIAGNOSTICCHAIN_MAP :
+				return validateSubsettingRules(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_BINDING_TO_ATTRIBUTE__DIAGNOSTICCHAIN_MAP :
+				return validateBindingToAttribute(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_DERIVED_UNION_IS_DERIVED__DIAGNOSTICCHAIN_MAP :
+				return validateDerivedUnionIsDerived(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_DEPLOYMENT_TARGET__DIAGNOSTICCHAIN_MAP :
+				return validateDeploymentTarget(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_SUBSETTED_PROPERTY_NAMES__DIAGNOSTICCHAIN_MAP :
+				return validateSubsettedPropertyNames(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_TYPE_OF_OPPOSITE_END__DIAGNOSTICCHAIN_MAP :
+				return validateTypeOfOppositeEnd(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_QUALIFIED_IS_ASSOCIATION_END__DIAGNOSTICCHAIN_MAP :
+				return validateQualifiedIsAssociationEnd(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___GET_DEFAULT :
+				return getDefault();
 			case UMLPackage.PORT___GET_OTHER_END :
 				return getOtherEnd();
 			case UMLPackage.PORT___IS_SET_DEFAULT :
@@ -1321,10 +1348,8 @@ public class PortImpl
 			case UMLPackage.PORT___UNSET_DEFAULT :
 				unsetDefault();
 				return null;
-			case UMLPackage.PORT___GET_DEFAULT :
-				return getDefault();
-			case UMLPackage.PORT___IS_ATTRIBUTE__PROPERTY :
-				return isAttribute((Property) arguments.get(0));
+			case UMLPackage.PORT___IS_ATTRIBUTE :
+				return isAttribute();
 			case UMLPackage.PORT___IS_COMPOSITE :
 				return isComposite();
 			case UMLPackage.PORT___IS_NAVIGABLE :
@@ -1333,21 +1358,25 @@ public class PortImpl
 				return getOpposite();
 			case UMLPackage.PORT___SUBSETTING_CONTEXT :
 				return subsettingContext();
-			case UMLPackage.PORT___VALIDATE_DEFAULT_VALUE__DIAGNOSTICCHAIN_MAP :
-				return validateDefaultValue((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PORT___VALIDATE_PORT_AGGREGATION__DIAGNOSTICCHAIN_MAP :
 				return validatePortAggregation(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PORT___VALIDATE_PORT_DESTROYED__DIAGNOSTICCHAIN_MAP :
-				return validatePortDestroyed(
+			case UMLPackage.PORT___VALIDATE_DEFAULT_VALUE__DIAGNOSTICCHAIN_MAP :
+				return validateDefaultValue((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_ENCAPSULATED_OWNER__DIAGNOSTICCHAIN_MAP :
+				return validateEncapsulatedOwner(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PORT___GET_PROVIDEDS :
 				return getProvideds();
 			case UMLPackage.PORT___GET_REQUIREDS :
 				return getRequireds();
+			case UMLPackage.PORT___BASIC_PROVIDED :
+				return basicProvided();
+			case UMLPackage.PORT___BASIC_REQUIRED :
+				return basicRequired();
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}

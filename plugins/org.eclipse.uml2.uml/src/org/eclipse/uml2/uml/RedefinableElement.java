@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -28,8 +28,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A redefinable element is an element that, when defined in the context of a classifier, can be redefined more specifically or differently in the context of another classifier that specializes (directly or indirectly) the context classifier.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A RedefinableElement is an element that, when defined in the context of a Classifier, can be redefined more specifically or differently in the context of another Classifier that specializes (directly or indirectly) the context Classifier.
+ * <p>From package UML::Classification.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -54,8 +54,8 @@ public interface RedefinableElement
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Leaf</em>' attribute.
 	 * @see #setIsLeaf(boolean)
@@ -82,8 +82,8 @@ public interface RedefinableElement
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The redefinable element that is being redefined by this element.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The RedefinableElement that is being redefined by this element.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Element</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRedefinableElement_RedefinedElement()
@@ -124,8 +124,8 @@ public interface RedefinableElement
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the contexts that this element may be redefined from.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The contexts that this element may be redefined from.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefinition Context</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRedefinableElement_RedefinitionContext()
@@ -164,7 +164,7 @@ public interface RedefinableElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * At least one of the redefinition contexts of the redefining element must be a specialization of at least one of the redefinition contexts for each redefined element.
-	 * self.redefinedElement->forAll(e | self.isRedefinitionContextValid(e))
+	 * redefinedElement->forAll(re | self.isRedefinitionContextValid(re))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -179,7 +179,7 @@ public interface RedefinableElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A redefining element must be consistent with each redefined element.
-	 * self.redefinedElement->forAll(re | re.isConsistentWith(self))
+	 * redefinedElement->forAll(re | re.isConsistentWith(self))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -193,8 +193,8 @@ public interface RedefinableElement
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A redefinable element can only redefine non-leaf redefinable elements
-	 * self.redefinedElement->forAll(not isLeaf)
+	 * A RedefinableElement can only redefine non-leaf RedefinableElements.
+	 * redefinedElement->forAll(re | not re.isLeaf)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -209,26 +209,26 @@ public interface RedefinableElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.
-	 * result = redefinitionContext->exists(c | c.allParents()->includes(redefined.redefinitionContext)))
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * result = (redefinitionContext->exists(c | c.allParents()->includesAll(redefinedElement.redefinitionContext)))
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" redefinedElementRequired="true" redefinedElementOrdered="false"
 	 * @generated
 	 */
-	boolean isRedefinitionContextValid(RedefinableElement redefined);
+	boolean isRedefinitionContextValid(RedefinableElement redefinedElement);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.
-	 * result = false
-	 * redefinee.isRedefinitionContextValid(self)
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * result = (false)
+	 * redefiningElement.isRedefinitionContextValid(self)
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" redefineeRequired="true" redefineeOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" redefiningElementRequired="true" redefiningElementOrdered="false"
 	 * @generated
 	 */
-	boolean isConsistentWith(RedefinableElement redefinee);
+	boolean isConsistentWith(RedefinableElement redefiningElement);
 
 } // RedefinableElement

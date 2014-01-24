@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,15 +7,11 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
 package org.eclipse.uml2.uml;
-
-import java.util.Map;
-
-import org.eclipse.emf.common.util.DiagnosticChain;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,9 +19,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A variable is considered a connectable element.
- * Variables are elements for passing data between actions indirectly. A local variable stores values shared by the actions within a structured activity group but not accessible outside it. The output of an action may be written to a variable and read for the input to a subsequent action, which is effectively an indirect data flow path. Because there is no predefined relationship between actions that read and write variables, these actions must be sequenced by control flows to prevent race conditions that may occur between actions that read or write the same variable.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A Variable is a ConnectableElement that may store values during the execution of an Activity. Reading and writing the values of a Variable provides an alternative means for passing data than the use of ObjectFlows. A Variable may be owned directly by an Activity, in which case it is accessible from anywhere within that activity, or it may be owned by a StructuredActivityNode, in which case it is only accessible within that node.
+ * <p>From package UML::Activities.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -55,8 +50,8 @@ public interface Variable
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An activity that owns the variable.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * An Activity that owns the Variable.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Activity Scope</em>' container reference.
 	 * @see #setActivityScope(Activity)
@@ -89,8 +84,8 @@ public interface Variable
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A structured activity node that owns the variable.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * A StructuredActivityNode that owns the Variable.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Scope</em>' container reference.
 	 * @see #setScope(StructuredActivityNode)
@@ -115,24 +110,11 @@ public interface Variable
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A variable is owned by a StructuredNode or Activity, but not both.
-	 * true
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateOwned(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The isAccessibleBy() operation is not defined in standard UML. Implementations should define it to specify which actions can access a variable.
-	 * result = true
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * A Variable is accessible by Actions within its scope (the Activity or StructuredActivityNode that owns it).
+	 * result = (if scope<>null then scope.allOwnedNodes()->includes(a)
+	 * else a.containingActivity()=activityScope
+	 * endif)
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" aRequired="true" aOrdered="false"
 	 * @generated

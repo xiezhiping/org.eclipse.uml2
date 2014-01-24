@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -186,16 +186,16 @@ public class PartDecompositionImpl
 				return allOwnedElements();
 			case UMLPackage.PART_DECOMPOSITION___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.PART_DECOMPOSITION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PART_DECOMPOSITION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PART_DECOMPOSITION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PART_DECOMPOSITION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PART_DECOMPOSITION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -206,6 +206,8 @@ public class PartDecompositionImpl
 				return getLabel();
 			case UMLPackage.PART_DECOMPOSITION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.PART_DECOMPOSITION___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.PART_DECOMPOSITION___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.PART_DECOMPOSITION___ALL_OWNING_PACKAGES :
@@ -213,14 +215,18 @@ public class PartDecompositionImpl
 			case UMLPackage.PART_DECOMPOSITION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.PART_DECOMPOSITION___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.PART_DECOMPOSITION___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.PART_DECOMPOSITION___SEPARATOR :
 				return separator();
-			case UMLPackage.PART_DECOMPOSITION___VALIDATE_ALL_LIFELINES__DIAGNOSTICCHAIN_MAP :
-				return validateAllLifelines((DiagnosticChain) arguments.get(0),
+			case UMLPackage.PART_DECOMPOSITION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
+			case UMLPackage.PART_DECOMPOSITION___VALIDATE_GATES_MATCH__DIAGNOSTICCHAIN_MAP :
+				return validateGatesMatch((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PART_DECOMPOSITION___VALIDATE_ARGUMENTS_ARE_CONSTANTS__DIAGNOSTICCHAIN_MAP :
+				return validateArgumentsAreConstants(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PART_DECOMPOSITION___VALIDATE_RETURN_VALUE_RECIPIENT_COVERAGE__DIAGNOSTICCHAIN_MAP :
 				return validateReturnValueRecipientCoverage(
@@ -230,26 +236,22 @@ public class PartDecompositionImpl
 				return validateArgumentsCorrespondToParameters(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PART_DECOMPOSITION___VALIDATE_GATES_MATCH__DIAGNOSTICCHAIN_MAP :
-				return validateGatesMatch((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PART_DECOMPOSITION___VALIDATE_ARGUMENTS_ARE_CONSTANTS__DIAGNOSTICCHAIN_MAP :
-				return validateArgumentsAreConstants(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PART_DECOMPOSITION___VALIDATE_RETURN_VALUE_TYPE_RECIPIENT_CORRESPONDENCE__DIAGNOSTICCHAIN_MAP :
 				return validateReturnValueTypeRecipientCorrespondence(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PART_DECOMPOSITION___VALIDATE_PARTS_OF_INTERNAL_STRUCTURES__DIAGNOSTICCHAIN_MAP :
-				return validatePartsOfInternalStructures(
+			case UMLPackage.PART_DECOMPOSITION___VALIDATE_ALL_LIFELINES__DIAGNOSTICCHAIN_MAP :
+				return validateAllLifelines((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PART_DECOMPOSITION___VALIDATE_COMMUTATIVITY_OF_DECOMPOSITION__DIAGNOSTICCHAIN_MAP :
+				return validateCommutativityOfDecomposition(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PART_DECOMPOSITION___VALIDATE_ASSUME__DIAGNOSTICCHAIN_MAP :
 				return validateAssume((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PART_DECOMPOSITION___VALIDATE_COMMUTATIVITY_OF_DECOMPOSITION__DIAGNOSTICCHAIN_MAP :
-				return validateCommutativityOfDecomposition(
+			case UMLPackage.PART_DECOMPOSITION___VALIDATE_PARTS_OF_INTERNAL_STRUCTURES__DIAGNOSTICCHAIN_MAP :
+				return validatePartsOfInternalStructures(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

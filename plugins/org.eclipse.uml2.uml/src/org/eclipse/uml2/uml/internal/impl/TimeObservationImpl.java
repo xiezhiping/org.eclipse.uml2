@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: TimeObservationImpl.java,v 1.11 2009/01/07 15:55:25 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -25,7 +24,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
@@ -238,11 +236,6 @@ public class TimeObservationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.TIME_OBSERVATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.TIME_OBSERVATION__NAME :
 				setName((String) newValue);
 				return;
@@ -281,9 +274,6 @@ public class TimeObservationImpl
 				return;
 			case UMLPackage.TIME_OBSERVATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.TIME_OBSERVATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.TIME_OBSERVATION__NAME :
 				unsetName();
@@ -327,8 +317,7 @@ public class TimeObservationImpl
 			case UMLPackage.TIME_OBSERVATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.TIME_OBSERVATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.TIME_OBSERVATION__NAME :
 				return isSetName();
 			case UMLPackage.TIME_OBSERVATION__NAME_EXPRESSION :

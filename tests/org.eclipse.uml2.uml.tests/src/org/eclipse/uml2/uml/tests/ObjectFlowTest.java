@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.tests;
@@ -24,14 +24,14 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateIsMulticastOrIsMultireceive(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Is Multicast Or Is Multireceive</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateSelectionBehaviour(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Selection Behaviour</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateCompatibleTypes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Compatible Types</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateNoActions(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Actions</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateInputAndOutputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input And Output Parameter</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateTransformationBehaviour(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Transformation Behaviour</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateTarget(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateNoExecutableNodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Executable Nodes</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateTransformationBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Transformation Behavior</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateSelectionBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Selection Behavior</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateCompatibleTypes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Compatible Types</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateSameUpperBounds(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Upper Bounds</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateTarget(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateIsMulticastOrIsMultireceive(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Is Multicast Or Is Multireceive</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -94,18 +94,6 @@ public class ObjectFlowTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.ObjectFlow#validateNoActions(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Actions</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.ObjectFlow#validateNoActions(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	public void testValidateNoActions__DiagnosticChain_Map() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
 	 * Tests the '{@link org.eclipse.uml2.uml.ObjectFlow#validateCompatibleTypes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Compatible Types</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -142,30 +130,6 @@ public class ObjectFlowTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.ObjectFlow#validateTransformationBehaviour(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Transformation Behaviour</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.ObjectFlow#validateTransformationBehaviour(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	public void testValidateTransformationBehaviour__DiagnosticChain_Map() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.ObjectFlow#validateSelectionBehaviour(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Selection Behaviour</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.ObjectFlow#validateSelectionBehaviour(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	public void testValidateSelectionBehaviour__DiagnosticChain_Map() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
 	 * Tests the '{@link org.eclipse.uml2.uml.ObjectFlow#validateInputAndOutputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input And Output Parameter</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -173,6 +137,42 @@ public class ObjectFlowTest
 	 * @generated
 	 */
 	public void testValidateInputAndOutputParameter__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.ObjectFlow#validateNoExecutableNodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Executable Nodes</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.ObjectFlow#validateNoExecutableNodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateNoExecutableNodes__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.ObjectFlow#validateTransformationBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Transformation Behavior</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.ObjectFlow#validateTransformationBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateTransformationBehavior__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.ObjectFlow#validateSelectionBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Selection Behavior</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.ObjectFlow#validateSelectionBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateSelectionBehavior__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

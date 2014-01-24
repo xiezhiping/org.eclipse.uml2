@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -27,8 +27,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * State machines can be used to express the behavior of part of a system. Behavior is modeled as a traversal of a graph of state nodes interconnected by one or more joined transition arcs that are triggered by the dispatching of series of (event) occurrences. During this traversal, the state machine executes a series of activities associated with various elements of the state machine.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * StateMachines can be used to express event-driven behaviors of parts of a system. Behavior is modeled as a traversal of a graph of Vertices interconnected by one or more joined Transition arcs that are triggered by the dispatching of successive Event occurrences. During this traversal, the StateMachine may execute a sequence of Behaviors associated with various elements of the StateMachine.
+ * <p>From package UML::StateMachines.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -61,8 +61,8 @@ public interface StateMachine
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The regions owned directly by the state machine.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Regions owned directly by the StateMachine.
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Region</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStateMachine_Region()
@@ -114,8 +114,8 @@ public interface StateMachine
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the submachine(s) in case of a submachine state. Multiple machines are referenced in case of a concurrent state.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * References the submachine(s) in case of a submachine State. Multiple machines are referenced in case of a concurrent State.
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Submachine State</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStateMachine_SubmachineState()
@@ -162,8 +162,8 @@ public interface StateMachine
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The connection points defined for this state machine. They represent the interface of the state machine when used as part of submachine state.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The connection points defined for this StateMachine. They represent the interface of the StateMachine when used as part of submachine State
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Connection Point</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStateMachine_ConnectionPoint()
@@ -221,8 +221,8 @@ public interface StateMachine
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The state machines of which this is an extension.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The StateMachines of which this is an extension.
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Extended State Machine</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStateMachine_ExtendedStateMachine()
@@ -260,8 +260,8 @@ public interface StateMachine
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The classifier context of a state machine cannot be an interface.
-	 * context->notEmpty() implies not context.oclIsKindOf(Interface)
+	 * The Classifier context of a StateMachine cannot be an Interface.
+	 * _'context' <> null implies not _'context'.oclIsKindOf(Interface)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -275,8 +275,8 @@ public interface StateMachine
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The context classifier of the method state machine of a behavioral feature must be the classifier that owns the behavioral feature.
-	 * specification->notEmpty() implies (context->notEmpty() and specification->featuringClassifier->exists (c | c = context))
+	 * The context Classifier of the method StateMachine of a BehavioralFeature must be the Classifier that owns the BehavioralFeature.
+	 * specification <> null implies ( _'context' <> null and specification.featuringClassifier->exists(c | c = _'context'))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -290,8 +290,74 @@ public interface StateMachine
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The connection points of a state machine are pseudostates of kind entry point or exit point.
-	 * conectionPoint->forAll (c | c.kind = #entryPoint or c.kind = #exitPoint)
+	 * The operation LCA(s1,s2) returns the Region that is the least common ancestor of Vertices s1 and s2, based on the StateMachine containment hierarchy.
+	 * result = (if ancestor(s1, s2) then 
+	 *     s2.container
+	 * else
+	 * 	if ancestor(s2, s1) then
+	 * 	    s1.container 
+	 * 	else 
+	 * 	    LCA(s1.container.state, s2.container.state)
+	 * 	endif
+	 * endif)
+	 * <p>From package UML::StateMachines.</p>
+	 * <!-- end-model-doc -->
+	 * @model required="true" ordered="false" s1Required="true" s1Ordered="false" s2Required="true" s2Ordered="false"
+	 * @generated
+	 */
+	Region LCA(Vertex s1, Vertex s2);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The query ancestor(s1, s2) checks whether Vertex s2 is an ancestor of Vertex s1.
+	 * result = (if (s2 = s1) then 
+	 * 	true 
+	 * else 
+	 * 	if s1.container.stateMachine->notEmpty() then 
+	 * 	    true
+	 * 	else 
+	 * 	    if s2.container.stateMachine->notEmpty() then 
+	 * 	        false
+	 * 	    else
+	 * 	        ancestor(s1, s2.container.state)
+	 * 	     endif
+	 * 	 endif
+	 * endif  )
+	 * <p>From package UML::StateMachines.</p>
+	 * <!-- end-model-doc -->
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" s1Required="true" s1Ordered="false" s2Required="true" s2Ordered="false"
+	 * @generated
+	 */
+	boolean ancestor(Vertex s1, Vertex s2);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * This utility funciton is like the LCA, except that it returns the nearest composite State that contains both input Vertices.
+	 * result = (if v2.oclIsTypeOf(State) and ancestor(v1, v2) then
+	 * 	v2.oclAsType(State)
+	 * else if v1.oclIsTypeOf(State) and ancestor(v2, v1) then
+	 * 	v1.oclAsType(State)
+	 * else if (v1.container.state->isEmpty() or v2.container.state->isEmpty()) then 
+	 * 	null.oclAsType(State)
+	 * else LCAState(v1.container.state, v2.container.state)
+	 * endif endif endif)
+	 * <p>From package UML::StateMachines.</p>
+	 * <!-- end-model-doc -->
+	 * @model required="true" ordered="false" v1Required="true" v1Ordered="false" v2Required="true" v2Ordered="false"
+	 * @generated
+	 */
+	State LCAState(Vertex v1, Vertex v2);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The connection points of a StateMachine are Pseudostates of kind entry point or exit point.
+	 * connectionPoint->forAll (kind = PseudostateKind::entryPoint or kind = PseudostateKind::exitPoint)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -305,8 +371,8 @@ public interface StateMachine
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A state machine as the method for a behavioral feature cannot have entry/exit connection points.
-	 * specification->notEmpty() implies connectionPoint->isEmpty()
+	 * A StateMachine as the method for a BehavioralFeature cannot have entry/exit connection points.
+	 * specification <> null implies connectionPoint->isEmpty()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -315,60 +381,5 @@ public interface StateMachine
 	 */
 	boolean validateMethod(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The operation LCA(s1,s2) returns an orthogonal state or region which is the least common ancestor of states s1 and s2, based on the statemachine containment hierarchy.
-	 * true
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
-	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" s1Required="true" s1Ordered="false" s2Required="true" s2Ordered="false"
-	 * @generated
-	 */
-	Namespace LCA(State s1, State s2);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query ancestor(s1, s2) checks whether s1 is an ancestor state of state s2.
-	 * result = 
-	 * if (s2 = s1) then 
-	 * 	true 
-	 * else 
-	 * 	if (s2.container->isEmpty() or not s2.container.owner.oclIsKindOf(State)) then 
-	 * 		false 
-	 * 	else 
-	 * 		ancestor(s1, s2.container.owner.oclAsType(State))
-	 * 	endif
-	 * endif 
-	 * 
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" s1Required="true" s1Ordered="false" s2Required="true" s2Ordered="false"
-	 * @generated
-	 */
-	boolean ancestor(State s1, State s2);
-
-	/**
-	 * <p>
-	 * This operation redefines the following operations:
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#isRedefinitionContextValid(org.eclipse.uml2.uml.RedefinableElement) <em>Is Redefinition Context Valid</em>}' </li>
-	 * </ul>
-	 * </p>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of a statemachine are properly related to the redefinition contexts of the specified statemachine to allow this element to redefine the other. The containing classifier of a redefining statemachine must redefine the containing classifier of the redefined statemachine.
-	 * result = true
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
-	 * @generated
-	 */
-	boolean isRedefinitionContextValid(StateMachine redefined);
 
 } // StateMachine

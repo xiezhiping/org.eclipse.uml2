@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: SendSignalActionOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -33,13 +32,14 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.SendSignalAction#validateTypeOrderingMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Ordering Multiplicity</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.SendSignalAction#validateNumberOrder(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Number Order</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.SendSignalAction#validateTypeTargetPin(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Target Pin</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class SendSignalActionOperations
-		extends InvocationActionOperations {
+		extends ActionOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -54,8 +54,8 @@ public class SendSignalActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The number and order of argument pins must be the same as the number and order of attributes in the signal.
-	 * true
+	 * The number and order of argument InputPins must be the same as the number and order of attributes of the signal.
+	 * argument->size()=signal.allAttributes()->size()
 	 * @param sendSignalAction The receiving '<em><b>Send Signal Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -90,8 +90,49 @@ public class SendSignalActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type, ordering, and multiplicity of an argument pin must be the same as the corresponding attribute of the signal.
-	 * true
+	 * If onPort is not empty, the Port given by onPort must be an owned or inherited feature of the type of the target InputPin.
+	 * not onPort->isEmpty() implies target.type.oclAsType(Classifier).allFeatures()->includes(onPort)
+	 * 
+	 * @param sendSignalAction The receiving '<em><b>Send Signal Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateTypeTargetPin(
+			SendSignalAction sendSignalAction, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.SEND_SIGNAL_ACTION__TYPE_TARGET_PIN,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateTypeTargetPin", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(sendSignalAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{sendSignalAction}));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The type, ordering, and multiplicity of an argument InputPin must be the same as the corresponding attribute of the signal.
+	 * let attribute: OrderedSet(Property) = signal.allAttributes() in
+	 * Sequence{1..argument->size()}->forAll(i | 
+	 * 	argument->at(i).type.conformsTo(attribute->at(i).type) and 
+	 * 	argument->at(i).isOrdered = attribute->at(i).isOrdered and
+	 * 	argument->at(i).compatibleWith(attribute->at(i)))
 	 * @param sendSignalAction The receiving '<em><b>Send Signal Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

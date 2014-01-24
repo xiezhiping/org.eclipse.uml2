@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -25,8 +25,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A classifier template parameter exposes a classifier as a formal template parameter.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A ClassifierTemplateParameter exposes a Classifier as a formal template parameter.
+ * <p>From package UML::Classification.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -51,7 +51,7 @@ public interface ClassifierTemplateParameter
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Constrains the required relationship between an actual parameter and the parameteredElement for this formal parameter.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Allow Substitutable</em>' attribute.
 	 * @see #setAllowSubstitutable(boolean)
@@ -77,8 +77,8 @@ public interface ClassifierTemplateParameter
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The classifiers that constrain the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any classifier that is compatible with this constraining classifier can be substituted; otherwise, it must be either this classifier or one of its subclasses. If this property is empty, there are no constraints on the classifier that can be used as an argument.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The classifiers that constrain the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any Classifier that is compatible with this constraining Classifier can be substituted; otherwise, it must be either this Classifier or one of its specializations. If this property is empty, there are no constraints on the Classifier that can be used as an argument.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Constraining Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifierTemplateParameter_ConstrainingClassifier()
@@ -116,7 +116,7 @@ public interface ClassifierTemplateParameter
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If "allowSubstitutable" is true, then there must be a constrainingClassifier.
+	 * If allowSubstitutable is true, then there must be a constrainingClassifier.
 	 * allowSubstitutable implies constrainingClassifier->notEmpty()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -126,5 +126,89 @@ public interface ClassifierTemplateParameter
 	 */
 	boolean validateHasConstrainingClassifier(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The parameteredElement has no direct features, and if constrainedElement is empty it has no generalizations.
+	 * parameteredElement.feature->isEmpty() and (constrainingClassifier->isEmpty() implies  parameteredElement.allParents()->isEmpty())
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateParameteredElementNoFeatures(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If the parameteredElement is not abstract, then the Classifier used as an argument shall not be abstract.
+	 * (not parameteredElement.isAbstract) implies templateParameterSubstitution.actual->forAll(a | not a.oclAsType(Classifier).isAbstract)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateMatchingAbstract(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The argument to a ClassifierTemplateParameter is a Classifier.
+	 *  templateParameterSubstitution.actual->forAll(a | a.oclIsKindOf(Classifier))
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateActualIsClassifier(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If there are any constrainingClassifiers, then every argument must be the same as or a specialization of them, or if allowSubstitutable is true, then it can also be substitutable.
+	 * templateParameterSubstitution.actual->forAll( a |
+	 *   let arg : Classifier = a.oclAsType(Classifier) in
+	 *     constrainingClassifier->forAll(
+	 *       cc |  
+	 *          arg = cc or arg.conformsTo(cc) or (allowSubstitutable and arg.isSubstitutableFor(cc))
+	 *       )
+	 * )
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateConstrainingClassifiersConstrainArgs(
+			DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If there are any constrainingClassifiers, then the parameteredElement must be the same as or a specialization of them, or if allowSubstitutable is true, then it can also be substitutable.
+	 * constrainingClassifier->forAll(
+	 *      cc |  parameteredElement = cc or parameteredElement.conformsTo(cc) or (allowSubstitutable and parameteredElement.isSubstitutableFor(cc))
+	 * )
+	 * 
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateConstrainingClassifiersConstrainParameteredElement(
+			DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // ClassifierTemplateParameter

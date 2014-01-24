@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -172,16 +172,16 @@ public class LiteralNullImpl
 				return allOwnedElements();
 			case UMLPackage.LITERAL_NULL___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.LITERAL_NULL___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LITERAL_NULL___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LITERAL_NULL___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LITERAL_NULL___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LITERAL_NULL___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -192,6 +192,8 @@ public class LiteralNullImpl
 				return getLabel();
 			case UMLPackage.LITERAL_NULL___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.LITERAL_NULL___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.LITERAL_NULL___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.LITERAL_NULL___ALL_OWNING_PACKAGES :
@@ -199,16 +201,20 @@ public class LiteralNullImpl
 			case UMLPackage.LITERAL_NULL___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.LITERAL_NULL___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.LITERAL_NULL___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.LITERAL_NULL___SEPARATOR :
 				return separator();
+			case UMLPackage.LITERAL_NULL___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.LITERAL_NULL___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.LITERAL_NULL___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.LITERAL_NULL___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LITERAL_NULL___BOOLEAN_VALUE :
 				return booleanValue();
 			case UMLPackage.LITERAL_NULL___INTEGER_VALUE :

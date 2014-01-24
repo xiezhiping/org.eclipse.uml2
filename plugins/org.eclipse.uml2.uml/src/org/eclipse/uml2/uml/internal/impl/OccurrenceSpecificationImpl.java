@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 297216
+ *   Kenn Hussey (CEA) - 327039, 297216, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.GeneralOrdering;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.InteractionOperand;
@@ -261,21 +260,18 @@ public class OccurrenceSpecificationImpl
 			case UMLPackage.OCCURRENCE_SPECIFICATION__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__COVERED :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getCovereds())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetEnclosingInteraction((Interaction) otherEnd,
-					msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetEnclosingOperand((InteractionOperand) otherEnd,
+					msgs);
+			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetEnclosingInteraction((Interaction) otherEnd,
 					msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getToAfters())
@@ -302,18 +298,15 @@ public class OccurrenceSpecificationImpl
 			case UMLPackage.OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__COVERED :
 				return ((InternalEList<?>) getCovereds()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
-				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
 				return basicSetEnclosingOperand(null, msgs);
+			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
+				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
 				return ((InternalEList<?>) getGeneralOrderings()).basicRemove(
 					otherEnd, msgs);
@@ -363,14 +356,14 @@ public class OccurrenceSpecificationImpl
 				return getVisibility();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__COVERED :
 				return getCovereds();
-			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
-				if (resolve)
-					return getEnclosingInteraction();
-				return basicGetEnclosingInteraction();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
 				if (resolve)
 					return getEnclosingOperand();
 				return basicGetEnclosingOperand();
+			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
+				if (resolve)
+					return getEnclosingInteraction();
+				return basicGetEnclosingInteraction();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
 				return getGeneralOrderings();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER :
@@ -400,11 +393,6 @@ public class OccurrenceSpecificationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__NAME :
 				setName((String) newValue);
 				return;
@@ -418,11 +406,11 @@ public class OccurrenceSpecificationImpl
 				getCovereds().clear();
 				getCovereds().addAll((Collection<? extends Lifeline>) newValue);
 				return;
-			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
-				setEnclosingInteraction((Interaction) newValue);
-				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) newValue);
+				return;
+			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
+				setEnclosingInteraction((Interaction) newValue);
 				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
@@ -457,9 +445,6 @@ public class OccurrenceSpecificationImpl
 			case UMLPackage.OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__NAME :
 				unsetName();
 				return;
@@ -472,11 +457,11 @@ public class OccurrenceSpecificationImpl
 			case UMLPackage.OCCURRENCE_SPECIFICATION__COVERED :
 				getCovereds().clear();
 				return;
-			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
-				setEnclosingInteraction((Interaction) null);
-				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) null);
+				return;
+			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
+				setEnclosingInteraction((Interaction) null);
 				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
@@ -508,8 +493,7 @@ public class OccurrenceSpecificationImpl
 			case UMLPackage.OCCURRENCE_SPECIFICATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__NAME :
 				return isSetName();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__NAME_EXPRESSION :
@@ -524,10 +508,10 @@ public class OccurrenceSpecificationImpl
 				return isSetVisibility();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__COVERED :
 				return isSetCovereds();
-			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
-				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
+			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
+				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
 				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER :
@@ -630,16 +614,16 @@ public class OccurrenceSpecificationImpl
 				return allOwnedElements();
 			case UMLPackage.OCCURRENCE_SPECIFICATION___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.OCCURRENCE_SPECIFICATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OCCURRENCE_SPECIFICATION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OCCURRENCE_SPECIFICATION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OCCURRENCE_SPECIFICATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OCCURRENCE_SPECIFICATION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -650,6 +634,8 @@ public class OccurrenceSpecificationImpl
 				return getLabel();
 			case UMLPackage.OCCURRENCE_SPECIFICATION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.OCCURRENCE_SPECIFICATION___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.OCCURRENCE_SPECIFICATION___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.OCCURRENCE_SPECIFICATION___ALL_OWNING_PACKAGES :
@@ -657,12 +643,12 @@ public class OccurrenceSpecificationImpl
 			case UMLPackage.OCCURRENCE_SPECIFICATION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.OCCURRENCE_SPECIFICATION___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.OCCURRENCE_SPECIFICATION___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.OCCURRENCE_SPECIFICATION___SEPARATOR :
 				return separator();
+			case UMLPackage.OCCURRENCE_SPECIFICATION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.OCCURRENCE_SPECIFICATION___GET_COVERED :
 				return getCovered();
 			case UMLPackage.OCCURRENCE_SPECIFICATION___SET_COVERED__LIFELINE :

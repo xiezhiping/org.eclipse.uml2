@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.uml;
@@ -22,8 +23,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * WriteLinkAction is an abstract class for link actions that create and destroy links.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * WriteLinkAction is an abstract class for LinkActions that create and destroy links.
+ * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  *
  *
@@ -38,8 +39,14 @@ public interface WriteLinkAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The visibility of at least one end must allow access to the class using the action.
-	 * true
+	 * The visibility of at least one end must allow access from the context Classifier of the WriteLinkAction.
+	 * endData.end->exists(end |
+	 *   end.type=_'context' or
+	 *   end.visibility=VisibilityKind::public or 
+	 *   end.visibility=VisibilityKind::protected and
+	 *   endData.end->exists(other | 
+	 *     other<>end and _'context'.conformsTo(other.type.oclAsType(Classifier))))
+	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

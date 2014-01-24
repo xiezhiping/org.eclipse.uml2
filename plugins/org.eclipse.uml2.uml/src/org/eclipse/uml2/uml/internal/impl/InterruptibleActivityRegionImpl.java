@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -39,7 +39,6 @@ import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -58,8 +57,8 @@ import org.eclipse.uml2.uml.internal.operations.InterruptibleActivityRegionOpera
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterruptibleActivityRegionImpl#getContainedNodes <em>Contained Node</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterruptibleActivityRegionImpl#getNodes <em>Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterruptibleActivityRegionImpl#getInterruptingEdges <em>Interrupting Edge</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterruptibleActivityRegionImpl#getNodes <em>Node</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,16 +69,6 @@ public class InterruptibleActivityRegionImpl
 		implements InterruptibleActivityRegion {
 
 	/**
-	 * The cached value of the '{@link #getNodes() <em>Node</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNodes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ActivityNode> nodes;
-
-	/**
 	 * The cached value of the '{@link #getInterruptingEdges() <em>Interrupting Edge</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -88,6 +77,16 @@ public class InterruptibleActivityRegionImpl
 	 * @ordered
 	 */
 	protected EList<ActivityEdge> interruptingEdges;
+
+	/**
+	 * The cached value of the '{@link #getNodes() <em>Node</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ActivityNode> nodes;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -250,14 +249,11 @@ public class InterruptibleActivityRegionImpl
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInterruptingEdges())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getNodes())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInterruptingEdges())
 					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
@@ -278,17 +274,14 @@ public class InterruptibleActivityRegionImpl
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
-				return ((InternalEList<?>) getNodes()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
 				return ((InternalEList<?>) getInterruptingEdges()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
+				return ((InternalEList<?>) getNodes()).basicRemove(otherEnd,
+					msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -341,10 +334,10 @@ public class InterruptibleActivityRegionImpl
 				if (resolve)
 					return getSuperGroup();
 				return basicGetSuperGroup();
-			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
-				return getNodes();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
 				return getInterruptingEdges();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
+				return getNodes();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -368,11 +361,6 @@ public class InterruptibleActivityRegionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NAME :
 				setName((String) newValue);
 				return;
@@ -385,15 +373,15 @@ public class InterruptibleActivityRegionImpl
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
 				setInActivity((Activity) newValue);
 				return;
-			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
-				getNodes().clear();
-				getNodes()
-					.addAll((Collection<? extends ActivityNode>) newValue);
-				return;
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
 				getInterruptingEdges().clear();
 				getInterruptingEdges().addAll(
 					(Collection<? extends ActivityEdge>) newValue);
+				return;
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
+				getNodes().clear();
+				getNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -413,9 +401,6 @@ public class InterruptibleActivityRegionImpl
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NAME :
 				unsetName();
 				return;
@@ -428,11 +413,11 @@ public class InterruptibleActivityRegionImpl
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
 				setInActivity((Activity) null);
 				return;
-			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
-				getNodes().clear();
-				return;
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
 				getInterruptingEdges().clear();
+				return;
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
+				getNodes().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -455,8 +440,7 @@ public class InterruptibleActivityRegionImpl
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNER :
 				return isSetOwner();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NAME :
 				return isSetName();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NAME_EXPRESSION :
@@ -479,11 +463,11 @@ public class InterruptibleActivityRegionImpl
 				return isSetSubgroups();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__SUPER_GROUP :
 				return isSetSuperGroup();
-			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
-				return nodes != null && !nodes.isEmpty();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
 				return interruptingEdges != null
 					&& !interruptingEdges.isEmpty();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
+				return nodes != null && !nodes.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -580,16 +564,16 @@ public class InterruptibleActivityRegionImpl
 				return allOwnedElements();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -600,6 +584,8 @@ public class InterruptibleActivityRegionImpl
 				return getLabel();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___ALL_OWNING_PACKAGES :
@@ -607,21 +593,20 @@ public class InterruptibleActivityRegionImpl
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___SEPARATOR :
 				return separator();
-			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___VALIDATE_GROUP_OWNED__DIAGNOSTICCHAIN_MAP :
-				return validateGroupOwned((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
-				return validateNotContained((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___CONTAINING_ACTIVITY :
+				return containingActivity();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP :
 				return validateNodesAndEdges(
 					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
+				return validateNotContained((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___VALIDATE_INTERRUPTING_EDGES__DIAGNOSTICCHAIN_MAP :
 				return validateInterruptingEdges(

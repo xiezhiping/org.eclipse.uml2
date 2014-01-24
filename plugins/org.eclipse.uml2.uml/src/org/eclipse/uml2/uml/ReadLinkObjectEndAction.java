@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -25,8 +25,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A read link object end action is an action that retrieves an end object from a link object.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A ReadLinkObjectEndAction is an Action that retrieves an end object from a link object.
+ * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -56,8 +56,8 @@ public interface ReadLinkObjectEndAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Gives the input pin from which the link object is obtained.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The input pin from which the link object is obtained.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)
@@ -107,8 +107,8 @@ public interface ReadLinkObjectEndAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Link end to be read.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Association end to be read.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End</em>' reference.
 	 * @see #setEnd(Property)
@@ -139,8 +139,8 @@ public interface ReadLinkObjectEndAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Pin where the result value is placed.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The OutputPin where the result value is placed.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)
@@ -176,8 +176,8 @@ public interface ReadLinkObjectEndAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The property must be an association end.
-	 * self.end.association.notEmpty()
+	 * The end Property must be an Association memberEnd.
+	 * end.association <> null
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -191,8 +191,8 @@ public interface ReadLinkObjectEndAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The association of the association end must be an association class.
-	 * self.end.Association.oclIsKindOf(AssociationClass)
+	 * The association of the end must be an AssociationClass.
+	 * end.association.oclIsKindOf(AssociationClass)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -207,7 +207,7 @@ public interface ReadLinkObjectEndAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The ends of the association must not be static.
-	 * self.end.association.memberEnd->forall(e | not e.isStatic)
+	 * end.association.memberEnd->forAll(e | not e.isStatic)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -221,8 +221,8 @@ public interface ReadLinkObjectEndAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the object input pin is the association class that owns the association end.
-	 * self.object.type = self.end.association
+	 * The type of the object InputPin is the AssociationClass that owns the end Property.
+	 * object.type = end.association
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -236,8 +236,8 @@ public interface ReadLinkObjectEndAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the object input pin is 1..1.
-	 * self.object.multiplicity.is(1,1)
+	 * The multiplicity of the object InputPin is 1..1.
+	 * object.is(1,1)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -251,8 +251,8 @@ public interface ReadLinkObjectEndAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the result output pin is the same as the type of the association end.
-	 * self.result.type = self.end.type
+	 * The type of the result OutputPin is the same as the type of the end Property.
+	 * result.type = end.type
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -266,8 +266,8 @@ public interface ReadLinkObjectEndAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the result output pin is 1..1.
-	 * self.result.multiplicity.is(1,1)
+	 * The multiplicity of the result OutputPin is 1..1.
+	 * result.is(1,1)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

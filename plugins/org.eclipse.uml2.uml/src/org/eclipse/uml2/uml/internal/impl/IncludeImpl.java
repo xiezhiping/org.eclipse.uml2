@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: IncludeImpl.java,v 1.19 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -34,7 +33,6 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.DirectedRelationship;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Include;
@@ -286,9 +284,6 @@ public class IncludeImpl
 			case UMLPackage.INCLUDE__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.INCLUDE__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.INCLUDE__INCLUDING_CASE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -312,9 +307,6 @@ public class IncludeImpl
 			case UMLPackage.INCLUDE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.INCLUDE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INCLUDE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INCLUDE__INCLUDING_CASE :
@@ -410,11 +402,6 @@ public class IncludeImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.INCLUDE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.INCLUDE__NAME :
 				setName((String) newValue);
 				return;
@@ -447,9 +434,6 @@ public class IncludeImpl
 				return;
 			case UMLPackage.INCLUDE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.INCLUDE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.INCLUDE__NAME :
 				unsetName();
@@ -487,8 +471,7 @@ public class IncludeImpl
 			case UMLPackage.INCLUDE__OWNER :
 				return isSetOwner();
 			case UMLPackage.INCLUDE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.INCLUDE__NAME :
 				return isSetName();
 			case UMLPackage.INCLUDE__NAME_EXPRESSION :

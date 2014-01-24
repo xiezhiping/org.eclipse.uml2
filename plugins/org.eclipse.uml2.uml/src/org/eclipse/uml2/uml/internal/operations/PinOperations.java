@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 418466
  *
- * $Id: PinOperations.java,v 1.6 2007/05/03 21:11:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -31,6 +31,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Pin#validateControlPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Control Pins</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Pin#validateNotUnique(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Not Unique</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,7 +53,7 @@ public class PinOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Control pins have a control type
+	 * A control Pin has a control type.
 	 * isControl implies isControlType
 	 * @param pin The receiving '<em><b>Pin</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -76,6 +77,41 @@ public class PinOperations
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
 								"_UI_GenericInvariant_diagnostic", new Object[]{"validateControlPins", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(pin, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{pin}));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Pin multiplicity is not unique.
+	 * not isUnique
+	 * @param pin The receiving '<em><b>Pin</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateNotUnique(Pin pin,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.PIN__NOT_UNIQUE,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNotUnique", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(pin, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{pin}));
 			}
 			return false;

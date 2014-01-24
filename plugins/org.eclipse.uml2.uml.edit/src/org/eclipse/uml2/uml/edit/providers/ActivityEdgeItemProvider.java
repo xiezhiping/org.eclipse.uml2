@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -73,11 +73,11 @@ public class ActivityEdgeItemProvider
 			addActivityPropertyDescriptor(object);
 			addGuardPropertyDescriptor(object);
 			addInPartitionPropertyDescriptor(object);
-			addInStructuredNodePropertyDescriptor(object);
 			addInterruptsPropertyDescriptor(object);
-			addRedefinedEdgePropertyDescriptor(object);
-			addSourcePropertyDescriptor(object);
+			addInStructuredNodePropertyDescriptor(object);
 			addTargetPropertyDescriptor(object);
+			addSourcePropertyDescriptor(object);
+			addRedefinedEdgePropertyDescriptor(object);
 			addWeightPropertyDescriptor(object);
 			addInGroupPropertyDescriptor(object);
 		}
@@ -375,6 +375,10 @@ public class ActivityEdgeItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
 			UMLFactory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -383,7 +387,11 @@ public class ActivityEdgeItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
+			UMLFactory.eINSTANCE.createInstanceValue()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
@@ -396,10 +404,6 @@ public class ActivityEdgeItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
 			UMLFactory.eINSTANCE.createDurationInterval()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
-			UMLFactory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
@@ -430,8 +434,8 @@ public class ActivityEdgeItemProvider
 			UMLFactory.eINSTANCE.createTimeInterval()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
-			UMLFactory.eINSTANCE.createTimeExpression()));
+			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
@@ -443,7 +447,11 @@ public class ActivityEdgeItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
+			UMLFactory.eINSTANCE.createInstanceValue()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
@@ -456,10 +464,6 @@ public class ActivityEdgeItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
 			UMLFactory.eINSTANCE.createDurationInterval()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-			UMLFactory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
@@ -488,10 +492,6 @@ public class ActivityEdgeItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
 			UMLFactory.eINSTANCE.createTimeInterval()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-			UMLFactory.eINSTANCE.createTimeExpression()));
 	}
 
 	/**

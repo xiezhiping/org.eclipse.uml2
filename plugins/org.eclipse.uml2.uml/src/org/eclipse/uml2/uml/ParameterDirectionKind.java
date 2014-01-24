@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.uml;
@@ -24,8 +25,8 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
- * Parameter direction kind is an enumeration type that defines literals used to specify direction of parameters.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * ParameterDirectionKind is an Enumeration that defines literals used to specify direction of parameters.
+ * <p>From package UML::Classification.</p>
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getParameterDirectionKind()
  * @model
@@ -78,7 +79,7 @@ public enum ParameterDirectionKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that parameter values are passed into the behavioral element by the caller.
+	 * Indicates that Parameter values are passed in by the caller. 
 	 * <!-- end-model-doc -->
 	 * @see #IN_LITERAL
 	 * @model name="in"
@@ -92,7 +93,7 @@ public enum ParameterDirectionKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that parameter values are passed into a behavioral element by the caller and then back out to the caller from the behavioral element.
+	 * Indicates that Parameter values are passed in by the caller and (possibly different) values passed out to the caller.
 	 * <!-- end-model-doc -->
 	 * @see #INOUT_LITERAL
 	 * @model name="inout"
@@ -106,7 +107,7 @@ public enum ParameterDirectionKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that parameter values are passed from a behavioral element out to the caller.
+	 * Indicates that Parameter values are passed out to the caller.
 	 * <!-- end-model-doc -->
 	 * @see #OUT_LITERAL
 	 * @model name="out"
@@ -120,7 +121,7 @@ public enum ParameterDirectionKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that parameter values are passed as return values from a behavioral element back to the caller.
+	 * Indicates that Parameter values are passed as return values back to the caller.
 	 * <!-- end-model-doc -->
 	 * @see #RETURN_LITERAL
 	 * @model name="return"

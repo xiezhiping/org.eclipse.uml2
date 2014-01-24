@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -25,8 +25,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A remove variable value action is a write variable action that removes values from variables.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A RemoveVariableValueAction is a WriteVariableAction that removes values from a Variables.
+ * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -50,8 +50,8 @@ public interface RemoveVariableValueAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies whether to remove duplicates of the value in nonunique variables.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Specifies whether to remove duplicates of the value in nonunique Variables.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Remove Duplicates</em>' attribute.
 	 * @see #setIsRemoveDuplicates(boolean)
@@ -82,8 +82,8 @@ public interface RemoveVariableValueAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies the position of an existing value to remove in ordered nonunique variables. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * An InputPin that provides the position of an existing value to remove in ordered, nonunique Variables. The type of the removeAt InputPin is UnlimitedNatural, but the value cannot be zero or unlimited.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Remove At</em>' containment reference.
 	 * @see #setRemoveAt(InputPin)
@@ -132,15 +132,14 @@ public interface RemoveVariableValueAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Actions removing a value from ordered non-unique variables must have a single removeAt input pin and no value input pin if isRemoveDuplicates is false. The removeAt pin must be of type Unlimited Natural with multiplicity 1..1. Otherwise, the action has a value input pin and no removeAt input pin.
-	 * if not self.variable.isOrdered or self.variable.isUnique or isRemoveDuplicates then 
-	 *   self.removeAt -> isEmpty() and self.value -> notEmpty()
+	 * ReadVariableActions removing a value from ordered, non-unique Variables must have a single removeAt InputPin and no value InputPin, if isRemoveDuplicates is false. The removeAt InputPin must be of type Unlimited Natural with multiplicity 1..1. Otherwise, the Action has a value InputPin and no removeAt InputPin.
+	 * if  variable.isOrdered and not variable.isUnique and not isRemoveDuplicates then 
+	 *   value = null and
+	 *   removeAt <> null and
+	 *   removeAt.type = UnlimitedNatural and
+	 *   removeAt.is(1,1)
 	 * else
-	 *   self.value -> isEmpty() and
-	 *   self.removeAt -> notEmpty() and
-	 *   self.removeAt.type = UnlimitedNatural and
-	 *   self.removeAt.lower() = 1 and
-	 *   self.removeAt.upper() = 1
+	 *   removeAt = null and value <> null
 	 * endif
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -148,7 +147,7 @@ public interface RemoveVariableValueAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateUnlimitedNatural(DiagnosticChain diagnostics,
+	boolean validateRemoveAtAndValue(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 } // RemoveVariableValueAction

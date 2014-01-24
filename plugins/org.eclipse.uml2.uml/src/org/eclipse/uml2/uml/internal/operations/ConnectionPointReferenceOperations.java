@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,8 +30,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ConnectionPointReference#validateEntryPseudostates(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Entry Pseudostates</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ConnectionPointReference#validateExitPseudostates(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Exit Pseudostates</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ConnectionPointReference#validateEntryPseudostates(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Entry Pseudostates</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,7 +54,7 @@ public class ConnectionPointReferenceOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The entry Pseudostates must be Pseudostates with kind entryPoint.
-	 * entry->notEmpty() implies entry->forAll(e | e.kind = #entryPoint)
+	 * entry->forAll(kind = PseudostateKind::entryPoint)
 	 * @param connectionPointReference The receiving '<em><b>Connection Point Reference</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -90,7 +90,7 @@ public class ConnectionPointReferenceOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The exit Pseudostates must be Pseudostates with kind exitPoint.
-	 * exit->notEmpty() implies exit->forAll(e | e.kind = #exitPoint)
+	 * exit->forAll(kind = PseudostateKind::exitPoint)
 	 * @param connectionPointReference The receiving '<em><b>Connection Point Reference</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

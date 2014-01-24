@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,15 +7,11 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
 package org.eclipse.uml2.uml;
-
-import java.util.Map;
-
-import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -27,9 +23,9 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * InvocationAction is an abstract class for the various actions that invoke behavior.
- * In addition to targeting an object, invocation actions can also invoke behavioral features on ports from where the invocation requests are routed onwards on links deriving from attached connectors. Invocation actions may also be sent to a target via a given port, either on the sending object or on another object.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * InvocationAction is an abstract class for the various actions that request Behavior invocation.
+ * 
+ * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -59,8 +55,8 @@ public interface InvocationAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specification of the ordered set of argument values that appears during execution.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The InputPins that provide the argument values passed in the invocation request.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Argument</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInvocationAction_Argument()
@@ -127,8 +123,8 @@ public interface InvocationAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A optional port of the receiver object on which the behavioral feature is invoked.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * For CallOperationActions, SendSignalActions, and SendObjectActions, an optional Port of the target object through which the invocation request is sent.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>On Port</em>' reference.
 	 * @see #setOnPort(Port)
@@ -147,20 +143,5 @@ public interface InvocationAction
 	 * @generated
 	 */
 	void setOnPort(Port value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The onPort must be a port on the receiver object.
-	 * true
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateOnPortReceiver(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
 
 } // InvocationAction

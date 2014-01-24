@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -34,7 +34,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -46,6 +45,7 @@ import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
+import org.eclipse.uml2.uml.internal.operations.PackageableElementOperations;
 import org.eclipse.uml2.uml.internal.operations.ParameterableElementOperations;
 
 /**
@@ -326,6 +326,17 @@ public abstract class PackageableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateNamespaceNeedsVisibility(
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return PackageableElementOperations.validateNamespaceNeedsVisibility(
+			this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
@@ -333,9 +344,6 @@ public abstract class PackageableElementImpl
 		switch (featureID) {
 			case UMLPackage.PACKAGEABLE_ELEMENT__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.PACKAGEABLE_ELEMENT__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
@@ -369,9 +377,6 @@ public abstract class PackageableElementImpl
 			case UMLPackage.PACKAGEABLE_ELEMENT__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.PACKAGEABLE_ELEMENT__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PACKAGEABLE_ELEMENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
@@ -464,11 +469,6 @@ public abstract class PackageableElementImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.PACKAGEABLE_ELEMENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.PACKAGEABLE_ELEMENT__NAME :
 				setName((String) newValue);
 				return;
@@ -501,9 +501,6 @@ public abstract class PackageableElementImpl
 				return;
 			case UMLPackage.PACKAGEABLE_ELEMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.PACKAGEABLE_ELEMENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.PACKAGEABLE_ELEMENT__NAME :
 				unsetName();
@@ -541,8 +538,7 @@ public abstract class PackageableElementImpl
 			case UMLPackage.PACKAGEABLE_ELEMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.PACKAGEABLE_ELEMENT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.PACKAGEABLE_ELEMENT__NAME :
 				return isSetName();
 			case UMLPackage.PACKAGEABLE_ELEMENT__NAME_EXPRESSION :
@@ -715,16 +711,16 @@ public abstract class PackageableElementImpl
 				return allOwnedElements();
 			case UMLPackage.PACKAGEABLE_ELEMENT___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.PACKAGEABLE_ELEMENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PACKAGEABLE_ELEMENT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PACKAGEABLE_ELEMENT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PACKAGEABLE_ELEMENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PACKAGEABLE_ELEMENT___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -735,6 +731,8 @@ public abstract class PackageableElementImpl
 				return getLabel();
 			case UMLPackage.PACKAGEABLE_ELEMENT___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.PACKAGEABLE_ELEMENT___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.PACKAGEABLE_ELEMENT___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.PACKAGEABLE_ELEMENT___ALL_OWNING_PACKAGES :
@@ -742,16 +740,20 @@ public abstract class PackageableElementImpl
 			case UMLPackage.PACKAGEABLE_ELEMENT___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.PACKAGEABLE_ELEMENT___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.PACKAGEABLE_ELEMENT___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.PACKAGEABLE_ELEMENT___SEPARATOR :
 				return separator();
+			case UMLPackage.PACKAGEABLE_ELEMENT___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.PACKAGEABLE_ELEMENT___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.PACKAGEABLE_ELEMENT___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.PACKAGEABLE_ELEMENT___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}

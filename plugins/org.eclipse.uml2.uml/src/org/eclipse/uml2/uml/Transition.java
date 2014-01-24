@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -27,8 +27,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A transition is a directed relationship between a source vertex and a target vertex. It may be part of a compound transition, which takes the state machine from one state configuration to another, representing the complete response of the state machine to an occurrence of an event of a particular type.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A Transition represents an arc between exactly one source Vertex and exactly one Target vertex (the source and targets may be the same Vertex). It may form part of a compound transition, which takes the StateMachine from one steady State configuration to another, representing the full response of the StateMachine to an occurrence of an Event that triggered it.
+ * <p>From package UML::StateMachines.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -59,8 +59,8 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates the precise type of the transition.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Indicates the precise type of the Transition.
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Kind</em>' attribute.
 	 * @see org.eclipse.uml2.uml.TransitionKind
@@ -94,8 +94,8 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Designates the region that owns this transition.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Designates the Region that owns this Transition.
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Container</em>' container reference.
 	 * @see #setContainer(Region)
@@ -120,7 +120,7 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A transition with kind external can source any vertex except entry points.
+	 * A Transition with kind external can source any Vertex except entry points.
 	 * (kind = TransitionKind::external) implies
 	 * 	not (source.oclIsKindOf(Pseudostate) and source.oclAsType(Pseudostate).kind = PseudostateKind::entryPoint)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -137,8 +137,8 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Designates the target vertex that is reached when the transition is taken.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Designates the target Vertex that is reached when the Transition is taken.
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see #setTarget(Vertex)
@@ -169,8 +169,8 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The transition that is redefined by this transition.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Transition that is redefined by this Transition.
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Transition</em>' reference.
 	 * @see #setRedefinedTransition(Transition)
@@ -201,8 +201,8 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * A guard is a Constraint that provides a fine-grained control over the firing of the Transition. The guard is evaluated when an Event occurrence is dispatched by the StateMachine. If the guard is true at that time, the Transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Guard</em>' reference.
 	 * @see #setGuard(Constraint)
@@ -256,8 +256,8 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies an optional behavior to be performed when the transition fires.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Specifies an optional behavior to be performed when the Transition fires.
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Effect</em>' containment reference.
 	 * @see #setEffect(Behavior)
@@ -301,8 +301,8 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies the triggers that may fire the transition.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Specifies the Triggers that may fire the transition.
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Trigger</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTransition_Trigger()
@@ -351,8 +351,8 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Designates the originating vertex (state or pseudostate) of the transition.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Designates the originating Vertex (State or Pseudostate) of the Transition.
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see #setSource(Vertex)
@@ -376,8 +376,8 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A fork segment must not have guards or triggers.
-	 * (source.oclIsKindOf(Pseudostate) and source.kind = #fork) implies (guard->isEmpty() and trigger->isEmpty())
+	 * A fork segment must not have Guards or Triggers.
+	 * (source.oclIsKindOf(Pseudostate) and source.oclAsType(Pseudostate).kind = PseudostateKind::fork) implies (guard = null and trigger->isEmpty())
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -391,8 +391,8 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A join segment must not have guards or triggers.
-	 * (target.oclIsKindOf(Pseudostate) and target.kind = #join) implies (guard->isEmpty() and trigger->isEmpty())
+	 * A join segment must not have Guards or Triggers.
+	 * (target.oclIsKindOf(Pseudostate) and target.oclAsType(Pseudostate).kind = PseudostateKind::join) implies (guard = null and trigger->isEmpty())
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -406,7 +406,7 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A transition with kind internal must have a state as its source, and its source and target must be equal.
+	 * A Transition with kind internal must have a State as its source, and its source and target must be equal.
 	 * (kind = TransitionKind::internal) implies
 	 * 		(source.oclIsKindOf (State) and source = target)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -422,8 +422,8 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A fork segment must always target a state.
-	 * (source.oclIsKindOf(Pseudostate) and source.kind = #fork) implies (target.oclIsKindOf(State))
+	 * A fork segment must always target a State.
+	 * (source.oclIsKindOf(Pseudostate) and  source.oclAsType(Pseudostate).kind = PseudostateKind::fork) implies (target.oclIsKindOf(State))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -437,8 +437,8 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A join segment must always originate from a state.
-	 * (target.oclIsKindOf(Pseudostate) and target.kind = #join) implies (source.oclIsKindOf(State))
+	 * A join segment must always originate from a State.
+	 * (target.oclIsKindOf(Pseudostate) and target.oclAsType(Pseudostate).kind = PseudostateKind::join) implies (source.oclIsKindOf(State))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -452,8 +452,8 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Transitions outgoing pseudostates may not have a trigger.
-	 * source.oclIsKindOf(Pseudostate) and (source.kind <> #initial)) implies trigger->isEmpty()
+	 * Transitions outgoing Pseudostates may not have a Trigger.
+	 * source.oclIsKindOf(Pseudostate) and (source.oclAsType(Pseudostate).kind <> PseudostateKind::initial) implies trigger->isEmpty()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -467,12 +467,9 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An initial transition at the topmost level (region of a statemachine) either has no trigger or it has a trigger with the stereotype >.
-	 * self.source.oclIsKindOf(Pseudostate) implies
-	 * (self.source.oclAsType(Pseudostate).kind = #initial) implies
-	 * (self.source.container = self.stateMachine.top) implies
-	 * ((self.trigger->isEmpty) or
-	 * (self.trigger.stereotype.name = 'create'))
+	 * An initial Transition at the topmost level Region of a StateMachine that has no Trigger.
+	 * (source.oclIsKindOf(Pseudostate) and container.stateMachine->notEmpty()) implies
+	 * 	trigger->isEmpty()
 	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -487,22 +484,7 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * In case of more than one trigger, the signatures of these must be compatible in case the parameters of the signal are assigned to local variables/attributes.
-	 * true
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateSignaturesCompatible(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A transition with kind local must have a composite state or an entry point as its source.
+	 * A Transition with kind local must have a composite State or an entry point as its source.
 	 * (kind = TransitionKind::local) implies
 	 * 		((source.oclIsKindOf (State) and source.oclAsType(State).isComposite) or
 	 * 		(source.oclIsKindOf (Pseudostate) and source.oclAsType(Pseudostate).kind = PseudostateKind::entryPoint))
@@ -519,14 +501,14 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The redefinition context of a transition is the nearest containing statemachine.
-	 * result = let sm = containingStateMachine() in
-	 * if sm.context->isEmpty() or sm.general->notEmpty() then
-	 * sm
+	 * The redefinition context of a Transition is the nearest containing StateMachine.
+	 * result = (let sm : StateMachine = containingStateMachine() in
+	 * if sm._'context' = null or sm.general->notEmpty() then
+	 *   sm
 	 * else
-	 * sm.context
-	 * endif
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 *   sm._'context'
+	 * endif)
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false"
 	 * @generated
@@ -537,9 +519,9 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query containingStateMachine() returns the state machine that contains the transition either directly or transitively.
-	 * result = container.containingStateMachine()
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The query containingStateMachine() returns the StateMachine that contains the Transition either directly or transitively.
+	 * result = (container.containingStateMachine())
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false"
 	 * @generated

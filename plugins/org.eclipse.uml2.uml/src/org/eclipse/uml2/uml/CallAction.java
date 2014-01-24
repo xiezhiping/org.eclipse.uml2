@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -25,8 +25,8 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * CallAction is an abstract class for actions that invoke behavior and receive return values.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * CallAction is an abstract class for Actions that invoke a Behavior with given argument values and (if the invocation is synchronous) receive reply values.
+ * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -50,8 +50,8 @@ public interface CallAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If true, the call is synchronous and the caller waits for completion of the invoked behavior. If false, the call is asynchronous and the caller proceeds immediately and does not expect a return values.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * If true, the call is synchronous and the caller waits for completion of the invoked Behavior. If false, the call is asynchronous and the caller proceeds immediately and cannot receive return values.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Synchronous</em>' attribute.
 	 * @see #setIsSynchronous(boolean)
@@ -83,8 +83,8 @@ public interface CallAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A list of output pins where the results of performing the invocation are placed.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The OutputPins on which the reply values from the invocation are placed (if the call is synchronous).
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getCallAction_Result()
@@ -136,8 +136,48 @@ public interface CallAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Only synchronous call actions can have result pins.
-	 * true
+	 * The number of argument InputPins must be the same as the number of input (in and inout) ownedParameters of the called Behavior or Operation. The type, ordering and multiplicity of each argument InputPin must be consistent with the corresponding input Parameter.
+	 * let parameter: OrderedSet(Parameter) = self.inputParameters() in
+	 * argument->size() = parameter->size() and
+	 * Sequence{1..argument->size()}->forAll(i | 
+	 * 	argument->at(i).type.conformsTo(parameter->at(i).type) and 
+	 * 	argument->at(i).isOrdered = parameter->at(i).isOrdered and
+	 * 	argument->at(i).compatibleWith(parameter->at(i)))
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateArgumentPins(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The number of result OutputPins must be the same as the number of output (inout, out and return) ownedParameters of the called Behavior or Operation. The type, ordering and multiplicity of each result OutputPin must be consistent with the corresponding input Parameter.
+	 * let parameter: OrderedSet(Parameter) = self.outputParameters() in
+	 * result->size() = parameter->size() and
+	 * Sequence{1..result->size()}->forAll(i | 
+	 * 	parameter->at(i).type.conformsTo(result->at(i).type) and 
+	 * 	parameter->at(i).isOrdered = result->at(i).isOrdered and
+	 * 	parameter->at(i).compatibleWith(result->at(i)))
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateResultPins(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Only synchronous CallActions can have result OutputPins.
+	 * result->notEmpty() implies isSynchronous
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -151,30 +191,24 @@ public interface CallAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The number and order of argument pins must be the same as the number and order of parameters of the invoked behavior or behavioral feature. Pins are matched to parameters by order.
-	 * true
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
+	 * Return the in and inout ownedParameters of the Behavior or Operation being called. (This operation is abstract and should be overridden by subclasses of CallAction.)
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
 	 */
-	boolean validateNumberAndOrder(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
+	EList<Parameter> inputParameters();
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type, ordering, and multiplicity of an argument pin must be the same as the corresponding parameter of the behavior or behavioral feature.
-	 * true
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
+	 * Return the inout, out and return ownedParameters of the Behavior or Operation being called. (This operation is abstract and should be overridden by subclasses of CallAction.)
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
 	 */
-	boolean validateTypeOrderingMultiplicity(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
+	EList<Parameter> outputParameters();
 
 } // CallAction

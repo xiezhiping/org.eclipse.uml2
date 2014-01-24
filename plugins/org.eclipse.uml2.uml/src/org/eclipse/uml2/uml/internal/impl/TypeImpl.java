@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -29,7 +29,6 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -272,11 +271,6 @@ public abstract class TypeImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.TYPE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.TYPE__NAME :
 				setName((String) newValue);
 				return;
@@ -312,9 +306,6 @@ public abstract class TypeImpl
 				return;
 			case UMLPackage.TYPE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.TYPE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.TYPE__NAME :
 				unsetName();
@@ -355,8 +346,7 @@ public abstract class TypeImpl
 			case UMLPackage.TYPE__OWNER :
 				return isSetOwner();
 			case UMLPackage.TYPE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.TYPE__NAME :
 				return isSetName();
 			case UMLPackage.TYPE__NAME_EXPRESSION :
@@ -471,16 +461,16 @@ public abstract class TypeImpl
 				return allOwnedElements();
 			case UMLPackage.TYPE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.TYPE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TYPE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TYPE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.TYPE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TYPE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -491,6 +481,8 @@ public abstract class TypeImpl
 				return getLabel();
 			case UMLPackage.TYPE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.TYPE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.TYPE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.TYPE___ALL_OWNING_PACKAGES :
@@ -498,16 +490,20 @@ public abstract class TypeImpl
 			case UMLPackage.TYPE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.TYPE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.TYPE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.TYPE___SEPARATOR :
 				return separator();
+			case UMLPackage.TYPE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.TYPE___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.TYPE___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.TYPE___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TYPE___CREATE_ASSOCIATION__BOOLEAN_AGGREGATIONKIND_STRING_INT_INT_TYPE_BOOLEAN_AGGREGATIONKIND_STRING_INT_INT :
 				return createAssociation((Boolean) arguments.get(0),
 					(AggregationKind) arguments.get(1),

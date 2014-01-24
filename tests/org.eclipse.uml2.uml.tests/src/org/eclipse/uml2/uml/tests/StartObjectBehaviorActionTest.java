@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2008, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.tests;
@@ -24,11 +24,12 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateNumberOrderArguments(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Number Order Arguments</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateTypeOrderingMultiplicityMatch(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Ordering Multiplicity Match</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateNumberOrderResults(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Number Order Results</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateTypeOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Object</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateMultiplicityOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Object</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateTypeOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Object</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateNoOnport(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Onport</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#behavior() <em>Behavior</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#outputParameters() <em>Output Parameters</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#inputParameters() <em>Input Parameters</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -103,6 +104,56 @@ public class StartObjectBehaviorActionTest
 	}
 
 	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateNoOnport(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Onport</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.StartObjectBehaviorAction#validateNoOnport(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateNoOnport__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#behavior() <em>Behavior</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.StartObjectBehaviorAction#behavior()
+	 * @generated
+	 */
+	public void testBehavior() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#outputParameters() <em>Output Parameters</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.StartObjectBehaviorAction#outputParameters()
+	 * @generated
+	 */
+	@Override
+	public void testOutputParameters() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#inputParameters() <em>Input Parameters</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.StartObjectBehaviorAction#inputParameters()
+	 * @generated
+	 */
+	@Override
+	public void testInputParameters() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
 	 * Tests the '{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateMultiplicityOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Object</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -110,42 +161,6 @@ public class StartObjectBehaviorActionTest
 	 * @generated
 	 */
 	public void testValidateMultiplicityOfObject__DiagnosticChain_Map() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateNumberOrderArguments(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Number Order Arguments</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.StartObjectBehaviorAction#validateNumberOrderArguments(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	public void testValidateNumberOrderArguments__DiagnosticChain_Map() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateNumberOrderResults(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Number Order Results</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.StartObjectBehaviorAction#validateNumberOrderResults(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	public void testValidateNumberOrderResults__DiagnosticChain_Map() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateTypeOrderingMultiplicityMatch(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Ordering Multiplicity Match</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.StartObjectBehaviorAction#validateTypeOrderingMultiplicityMatch(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	public void testValidateTypeOrderingMultiplicityMatch__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

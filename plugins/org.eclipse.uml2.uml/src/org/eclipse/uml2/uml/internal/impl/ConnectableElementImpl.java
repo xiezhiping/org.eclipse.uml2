@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 212765
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -37,7 +37,6 @@ import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.ConnectableElementTemplateParameter;
 import org.eclipse.uml2.uml.ConnectorEnd;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -340,9 +339,6 @@ public abstract class ConnectableElementImpl
 			case UMLPackage.CONNECTABLE_ELEMENT__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.CONNECTABLE_ELEMENT__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.CONNECTABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -375,9 +371,6 @@ public abstract class ConnectableElementImpl
 			case UMLPackage.CONNECTABLE_ELEMENT__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.CONNECTABLE_ELEMENT__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CONNECTABLE_ELEMENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.CONNECTABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
@@ -476,11 +469,6 @@ public abstract class ConnectableElementImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.CONNECTABLE_ELEMENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.CONNECTABLE_ELEMENT__NAME :
 				setName((String) newValue);
 				return;
@@ -516,9 +504,6 @@ public abstract class ConnectableElementImpl
 				return;
 			case UMLPackage.CONNECTABLE_ELEMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.CONNECTABLE_ELEMENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.CONNECTABLE_ELEMENT__NAME :
 				unsetName();
@@ -559,8 +544,7 @@ public abstract class ConnectableElementImpl
 			case UMLPackage.CONNECTABLE_ELEMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.CONNECTABLE_ELEMENT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.CONNECTABLE_ELEMENT__NAME :
 				return isSetName();
 			case UMLPackage.CONNECTABLE_ELEMENT__NAME_EXPRESSION :
@@ -737,16 +721,16 @@ public abstract class ConnectableElementImpl
 				return allOwnedElements();
 			case UMLPackage.CONNECTABLE_ELEMENT___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.CONNECTABLE_ELEMENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTABLE_ELEMENT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTABLE_ELEMENT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONNECTABLE_ELEMENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTABLE_ELEMENT___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -757,6 +741,8 @@ public abstract class ConnectableElementImpl
 				return getLabel();
 			case UMLPackage.CONNECTABLE_ELEMENT___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.CONNECTABLE_ELEMENT___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.CONNECTABLE_ELEMENT___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.CONNECTABLE_ELEMENT___ALL_OWNING_PACKAGES :
@@ -764,12 +750,12 @@ public abstract class ConnectableElementImpl
 			case UMLPackage.CONNECTABLE_ELEMENT___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.CONNECTABLE_ELEMENT___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.CONNECTABLE_ELEMENT___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.CONNECTABLE_ELEMENT___SEPARATOR :
 				return separator();
+			case UMLPackage.CONNECTABLE_ELEMENT___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.CONNECTABLE_ELEMENT___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.CONNECTABLE_ELEMENT___IS_TEMPLATE_PARAMETER :

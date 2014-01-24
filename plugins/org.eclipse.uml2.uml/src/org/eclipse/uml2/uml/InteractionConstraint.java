@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -25,8 +25,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An interaction constraint is a Boolean expression that guards an operand in a combined fragment.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * An InteractionConstraint is a Boolean expression that guards an operand in a CombinedFragment.
+ * <p>From package UML::Interactions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -56,7 +56,7 @@ public interface InteractionConstraint
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The minimum number of iterations of a loop
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Interactions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Minint</em>' containment reference.
 	 * @see #setMinint(ValueSpecification)
@@ -101,7 +101,7 @@ public interface InteractionConstraint
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The maximum number of iterations of a loop
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Interactions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Maxint</em>' containment reference.
 	 * @see #setMaxint(ValueSpecification)
@@ -139,7 +139,6 @@ public interface InteractionConstraint
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The dynamic variables that take part in the constraint must be owned by the ConnectableElement corresponding to the covered Lifeline.
-	 * true
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -154,7 +153,6 @@ public interface InteractionConstraint
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The constraint may contain references to global data or write-once data.
-	 * true
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -169,7 +167,9 @@ public interface InteractionConstraint
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Minint/maxint can only be present if the InteractionConstraint is associated with the operand of a loop CombinedFragment.
-	 * true
+	 * maxint->notEmpty() or minint->notEmpty() implies
+	 * interactionOperand.combinedFragment.interactionOperator =
+	 * InteractionOperatorKind::loop
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -184,7 +184,8 @@ public interface InteractionConstraint
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If minint is specified, then the expression must evaluate to a non-negative integer.
-	 * true
+	 * minint->notEmpty() implies 
+	 * minint->asSequence()->first().integerValue() >= 0
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -199,7 +200,8 @@ public interface InteractionConstraint
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If maxint is specified, then the expression must evaluate to a positive integer.
-	 * true
+	 * maxint->notEmpty() implies 
+	 * maxint->asSequence()->first().integerValue() > 0
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -213,8 +215,10 @@ public interface InteractionConstraint
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If maxint is specified, then minint must be specified and the evaluation of maxint must be >= the evaluation of minint
-	 * true
+	 * If maxint is specified, then minint must be specified and the evaluation of maxint must be >= the evaluation of minint.
+	 * maxint->notEmpty() implies (minint->notEmpty() and 
+	 * maxint->asSequence()->first().integerValue() >=
+	 * minint->asSequence()->first().integerValue() )
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

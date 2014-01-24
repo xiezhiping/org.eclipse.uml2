@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 397139
+ *   Kenn Hussey (CEA) - 327039, 351774, 397139, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -39,6 +39,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityNode;
@@ -47,7 +48,6 @@ import org.eclipse.uml2.uml.Clause;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.ConditionalNode;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.ExceptionHandler;
@@ -411,6 +411,16 @@ public class ConditionalNodeImpl
 	 * @generated
 	 */
 	@Override
+	public EList<Action> allActions() {
+		return ConditionalNodeOperations.allActions(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -420,24 +430,21 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.CONDITIONAL_NODE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CONDITIONAL_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.CONDITIONAL_NODE__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.CONDITIONAL_NODE__IN_STRUCTURED_NODE :
-				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.CONDITIONAL_NODE__IN_INTERRUPTIBLE_REGION :
 				return ((InternalEList<?>) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
+			case UMLPackage.CONDITIONAL_NODE__IN_STRUCTURED_NODE :
+				return basicSetInStructuredNode(null, msgs);
+			case UMLPackage.CONDITIONAL_NODE__INCOMING :
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.CONDITIONAL_NODE__OUTGOING :
 				return ((InternalEList<?>) getOutgoings()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.CONDITIONAL_NODE__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
+			case UMLPackage.CONDITIONAL_NODE__IN_PARTITION :
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.CONDITIONAL_NODE__HANDLER :
 				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
@@ -448,17 +455,17 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE__LOCAL_PRECONDITION :
 				return ((InternalEList<?>) getLocalPreconditions())
 					.basicRemove(otherEnd, msgs);
+			case UMLPackage.CONDITIONAL_NODE__OWNED_RULE :
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.CONDITIONAL_NODE__ELEMENT_IMPORT :
 				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.CONDITIONAL_NODE__PACKAGE_IMPORT :
 				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.CONDITIONAL_NODE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.CONDITIONAL_NODE__NODE :
-				return ((InternalEList<?>) getNodes()).basicRemove(otherEnd,
+			case UMLPackage.CONDITIONAL_NODE__EDGE :
+				return ((InternalEList<?>) getEdges()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.CONDITIONAL_NODE__STRUCTURED_NODE_INPUT :
 				return ((InternalEList<?>) getStructuredNodeInputs())
@@ -469,8 +476,8 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE__VARIABLE :
 				return ((InternalEList<?>) getVariables()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.CONDITIONAL_NODE__EDGE :
-				return ((InternalEList<?>) getEdges()).basicRemove(otherEnd,
+			case UMLPackage.CONDITIONAL_NODE__NODE :
+				return ((InternalEList<?>) getNodes()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.CONDITIONAL_NODE__CLAUSE :
 				return ((InternalEList<?>) getClauses()).basicRemove(otherEnd,
@@ -526,22 +533,22 @@ public class ConditionalNodeImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.CONDITIONAL_NODE__IN_PARTITION :
-				return getInPartitions();
+			case UMLPackage.CONDITIONAL_NODE__IN_GROUP :
+				return getInGroups();
+			case UMLPackage.CONDITIONAL_NODE__IN_INTERRUPTIBLE_REGION :
+				return getInInterruptibleRegions();
 			case UMLPackage.CONDITIONAL_NODE__IN_STRUCTURED_NODE :
 				if (resolve)
 					return getInStructuredNode();
 				return basicGetInStructuredNode();
-			case UMLPackage.CONDITIONAL_NODE__IN_INTERRUPTIBLE_REGION :
-				return getInInterruptibleRegions();
-			case UMLPackage.CONDITIONAL_NODE__OUTGOING :
-				return getOutgoings();
 			case UMLPackage.CONDITIONAL_NODE__INCOMING :
 				return getIncomings();
-			case UMLPackage.CONDITIONAL_NODE__IN_GROUP :
-				return getInGroups();
+			case UMLPackage.CONDITIONAL_NODE__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.CONDITIONAL_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
+			case UMLPackage.CONDITIONAL_NODE__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.CONDITIONAL_NODE__HANDLER :
 				return getHandlers();
 			case UMLPackage.CONDITIONAL_NODE__CONTEXT :
@@ -558,12 +565,12 @@ public class ConditionalNodeImpl
 				return getLocalPreconditions();
 			case UMLPackage.CONDITIONAL_NODE__OUTPUT :
 				return getOutputs();
+			case UMLPackage.CONDITIONAL_NODE__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.CONDITIONAL_NODE__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.CONDITIONAL_NODE__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.CONDITIONAL_NODE__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.CONDITIONAL_NODE__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.CONDITIONAL_NODE__IMPORTED_MEMBER :
@@ -584,18 +591,18 @@ public class ConditionalNodeImpl
 				if (resolve)
 					return getSuperGroup();
 				return basicGetSuperGroup();
+			case UMLPackage.CONDITIONAL_NODE__EDGE :
+				return getEdges();
 			case UMLPackage.CONDITIONAL_NODE__MUST_ISOLATE :
 				return isMustIsolate();
-			case UMLPackage.CONDITIONAL_NODE__NODE :
-				return getNodes();
 			case UMLPackage.CONDITIONAL_NODE__STRUCTURED_NODE_INPUT :
 				return getStructuredNodeInputs();
 			case UMLPackage.CONDITIONAL_NODE__STRUCTURED_NODE_OUTPUT :
 				return getStructuredNodeOutputs();
 			case UMLPackage.CONDITIONAL_NODE__VARIABLE :
 				return getVariables();
-			case UMLPackage.CONDITIONAL_NODE__EDGE :
-				return getEdges();
+			case UMLPackage.CONDITIONAL_NODE__NODE :
+				return getNodes();
 			case UMLPackage.CONDITIONAL_NODE__CLAUSE :
 				return getClauses();
 			case UMLPackage.CONDITIONAL_NODE__IS_ASSURED :
@@ -627,11 +634,6 @@ public class ConditionalNodeImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.CONDITIONAL_NODE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.CONDITIONAL_NODE__NAME :
 				setName((String) newValue);
 				return;
@@ -647,34 +649,34 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
-			case UMLPackage.CONDITIONAL_NODE__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
-				return;
-			case UMLPackage.CONDITIONAL_NODE__IN_STRUCTURED_NODE :
-				setInStructuredNode((StructuredActivityNode) newValue);
-				return;
 			case UMLPackage.CONDITIONAL_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
 				getInInterruptibleRegions()
 					.addAll(
 						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
-			case UMLPackage.CONDITIONAL_NODE__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+			case UMLPackage.CONDITIONAL_NODE__IN_STRUCTURED_NODE :
+				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.CONDITIONAL_NODE__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll(
 					(Collection<? extends ActivityEdge>) newValue);
 				return;
+			case UMLPackage.CONDITIONAL_NODE__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
+				return;
 			case UMLPackage.CONDITIONAL_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
 				getRedefinedNodes().addAll(
 					(Collection<? extends ActivityNode>) newValue);
+				return;
+			case UMLPackage.CONDITIONAL_NODE__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.CONDITIONAL_NODE__HANDLER :
 				getHandlers().clear();
@@ -694,6 +696,11 @@ public class ConditionalNodeImpl
 				getLocalPreconditions().addAll(
 					(Collection<? extends Constraint>) newValue);
 				return;
+			case UMLPackage.CONDITIONAL_NODE__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
+				return;
 			case UMLPackage.CONDITIONAL_NODE__ELEMENT_IMPORT :
 				getElementImports().clear();
 				getElementImports().addAll(
@@ -704,21 +711,16 @@ public class ConditionalNodeImpl
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
 				return;
-			case UMLPackage.CONDITIONAL_NODE__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
-				return;
 			case UMLPackage.CONDITIONAL_NODE__IN_ACTIVITY :
 				setInActivity((Activity) newValue);
 				return;
+			case UMLPackage.CONDITIONAL_NODE__EDGE :
+				getEdges().clear();
+				getEdges()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
+				return;
 			case UMLPackage.CONDITIONAL_NODE__MUST_ISOLATE :
 				setMustIsolate((Boolean) newValue);
-				return;
-			case UMLPackage.CONDITIONAL_NODE__NODE :
-				getNodes().clear();
-				getNodes()
-					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.CONDITIONAL_NODE__STRUCTURED_NODE_INPUT :
 				getStructuredNodeInputs().clear();
@@ -735,10 +737,10 @@ public class ConditionalNodeImpl
 				getVariables()
 					.addAll((Collection<? extends Variable>) newValue);
 				return;
-			case UMLPackage.CONDITIONAL_NODE__EDGE :
-				getEdges().clear();
-				getEdges()
-					.addAll((Collection<? extends ActivityEdge>) newValue);
+			case UMLPackage.CONDITIONAL_NODE__NODE :
+				getNodes().clear();
+				getNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.CONDITIONAL_NODE__CLAUSE :
 				getClauses().clear();
@@ -772,9 +774,6 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.CONDITIONAL_NODE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.CONDITIONAL_NODE__NAME :
 				unsetName();
 				return;
@@ -790,23 +789,23 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE__ACTIVITY :
 				setActivity((Activity) null);
 				return;
-			case UMLPackage.CONDITIONAL_NODE__IN_PARTITION :
-				getInPartitions().clear();
+			case UMLPackage.CONDITIONAL_NODE__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
 				return;
 			case UMLPackage.CONDITIONAL_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
-			case UMLPackage.CONDITIONAL_NODE__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
+			case UMLPackage.CONDITIONAL_NODE__INCOMING :
+				getIncomings().clear();
 				return;
 			case UMLPackage.CONDITIONAL_NODE__OUTGOING :
 				getOutgoings().clear();
 				return;
-			case UMLPackage.CONDITIONAL_NODE__INCOMING :
-				getIncomings().clear();
-				return;
 			case UMLPackage.CONDITIONAL_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
+				return;
+			case UMLPackage.CONDITIONAL_NODE__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.CONDITIONAL_NODE__HANDLER :
 				getHandlers().clear();
@@ -820,23 +819,23 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
 				return;
+			case UMLPackage.CONDITIONAL_NODE__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.CONDITIONAL_NODE__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.CONDITIONAL_NODE__PACKAGE_IMPORT :
 				getPackageImports().clear();
 				return;
-			case UMLPackage.CONDITIONAL_NODE__OWNED_RULE :
-				getOwnedRules().clear();
-				return;
 			case UMLPackage.CONDITIONAL_NODE__IN_ACTIVITY :
 				setInActivity((Activity) null);
 				return;
+			case UMLPackage.CONDITIONAL_NODE__EDGE :
+				getEdges().clear();
+				return;
 			case UMLPackage.CONDITIONAL_NODE__MUST_ISOLATE :
 				setMustIsolate(MUST_ISOLATE_EDEFAULT);
-				return;
-			case UMLPackage.CONDITIONAL_NODE__NODE :
-				getNodes().clear();
 				return;
 			case UMLPackage.CONDITIONAL_NODE__STRUCTURED_NODE_INPUT :
 				getStructuredNodeInputs().clear();
@@ -847,8 +846,8 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE__VARIABLE :
 				getVariables().clear();
 				return;
-			case UMLPackage.CONDITIONAL_NODE__EDGE :
-				getEdges().clear();
+			case UMLPackage.CONDITIONAL_NODE__NODE :
+				getNodes().clear();
 				return;
 			case UMLPackage.CONDITIONAL_NODE__CLAUSE :
 				getClauses().clear();
@@ -883,8 +882,7 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE__OWNER :
 				return isSetOwner();
 			case UMLPackage.CONDITIONAL_NODE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__NAME :
 				return isSetName();
 			case UMLPackage.CONDITIONAL_NODE__NAME_EXPRESSION :
@@ -905,21 +903,21 @@ public class ConditionalNodeImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.CONDITIONAL_NODE__ACTIVITY :
 				return isSetActivity();
-			case UMLPackage.CONDITIONAL_NODE__IN_PARTITION :
-				return inPartitions != null && !inPartitions.isEmpty();
-			case UMLPackage.CONDITIONAL_NODE__IN_STRUCTURED_NODE :
-				return basicGetInStructuredNode() != null;
+			case UMLPackage.CONDITIONAL_NODE__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.CONDITIONAL_NODE__IN_INTERRUPTIBLE_REGION :
 				return inInterruptibleRegions != null
 					&& !inInterruptibleRegions.isEmpty();
-			case UMLPackage.CONDITIONAL_NODE__OUTGOING :
-				return outgoings != null && !outgoings.isEmpty();
+			case UMLPackage.CONDITIONAL_NODE__IN_STRUCTURED_NODE :
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.CONDITIONAL_NODE__INCOMING :
 				return incomings != null && !incomings.isEmpty();
-			case UMLPackage.CONDITIONAL_NODE__IN_GROUP :
-				return isSetInGroups();
+			case UMLPackage.CONDITIONAL_NODE__OUTGOING :
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
+			case UMLPackage.CONDITIONAL_NODE__IN_PARTITION :
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__HANDLER :
 				return handlers != null && !handlers.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__CONTEXT :
@@ -936,12 +934,12 @@ public class ConditionalNodeImpl
 					&& !localPreconditions.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__OUTPUT :
 				return isSetOutputs();
+			case UMLPackage.CONDITIONAL_NODE__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.CONDITIONAL_NODE__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.CONDITIONAL_NODE__IMPORTED_MEMBER :
@@ -958,10 +956,10 @@ public class ConditionalNodeImpl
 				return isSetSubgroups();
 			case UMLPackage.CONDITIONAL_NODE__SUPER_GROUP :
 				return isSetSuperGroup();
+			case UMLPackage.CONDITIONAL_NODE__EDGE :
+				return edges != null && !edges.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__MUST_ISOLATE :
 				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
-			case UMLPackage.CONDITIONAL_NODE__NODE :
-				return nodes != null && !nodes.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__STRUCTURED_NODE_INPUT :
 				return structuredNodeInputs != null
 					&& !structuredNodeInputs.isEmpty();
@@ -969,8 +967,8 @@ public class ConditionalNodeImpl
 				return isSetStructuredNodeOutputs();
 			case UMLPackage.CONDITIONAL_NODE__VARIABLE :
 				return variables != null && !variables.isEmpty();
-			case UMLPackage.CONDITIONAL_NODE__EDGE :
-				return edges != null && !edges.isEmpty();
+			case UMLPackage.CONDITIONAL_NODE__NODE :
+				return nodes != null && !nodes.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__CLAUSE :
 				return clauses != null && !clauses.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__IS_ASSURED :
@@ -1075,16 +1073,16 @@ public class ConditionalNodeImpl
 				return allOwnedElements();
 			case UMLPackage.CONDITIONAL_NODE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONDITIONAL_NODE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONDITIONAL_NODE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONDITIONAL_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONDITIONAL_NODE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1095,6 +1093,8 @@ public class ConditionalNodeImpl
 				return getLabel();
 			case UMLPackage.CONDITIONAL_NODE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.CONDITIONAL_NODE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.CONDITIONAL_NODE___ALL_OWNING_PACKAGES :
@@ -1102,12 +1102,12 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.CONDITIONAL_NODE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.CONDITIONAL_NODE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.CONDITIONAL_NODE___SEPARATOR :
 				return separator();
+			case UMLPackage.CONDITIONAL_NODE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.CONDITIONAL_NODE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -1125,17 +1125,26 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.CONDITIONAL_NODE___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
-				return validateOwned((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONDITIONAL_NODE___VALIDATE_OWNED_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateOwnedStructuredNode(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___CONTAINING_ACTIVITY :
+				return containingActivity();
 			case UMLPackage.CONDITIONAL_NODE___GET_CONTEXT :
 				return getContext();
+			case UMLPackage.CONDITIONAL_NODE___ALL_ACTIONS :
+				return allActions();
+			case UMLPackage.CONDITIONAL_NODE___ALL_OWNED_NODES :
+				return allOwnedNodes();
+			case UMLPackage.CONDITIONAL_NODE___CONTAINING_BEHAVIOR :
+				return containingBehavior();
 			case UMLPackage.CONDITIONAL_NODE___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONDITIONAL_NODE___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -1150,6 +1159,8 @@ public class ConditionalNodeImpl
 				return getImportedElements();
 			case UMLPackage.CONDITIONAL_NODE___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.CONDITIONAL_NODE___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.CONDITIONAL_NODE___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -1162,27 +1173,41 @@ public class ConditionalNodeImpl
 				return getImportedMembers();
 			case UMLPackage.CONDITIONAL_NODE___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.CONDITIONAL_NODE___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
-			case UMLPackage.CONDITIONAL_NODE___VALIDATE_GROUP_OWNED__DIAGNOSTICCHAIN_MAP :
-				return validateGroupOwned((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONDITIONAL_NODE___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
-				return validateNotContained((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONDITIONAL_NODE___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP :
 				return validateNodesAndEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONDITIONAL_NODE___VALIDATE_INPUT_PIN_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateInputPinEdges(
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
+				return validateNotContained((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_OUTPUT_PIN_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateOutputPinEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONDITIONAL_NODE___VALIDATE_EDGES__DIAGNOSTICCHAIN_MAP :
 				return validateEdges((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONDITIONAL_NODE___VALIDATE_OUTPUT_PIN_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateOutputPinEdges(
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_INPUT_PIN_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateInputPinEdges(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___SOURCE_NODES :
+				return sourceNodes();
+			case UMLPackage.CONDITIONAL_NODE___TARGET_NODES :
+				return targetNodes();
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_RESULT_NO_INCOMING__DIAGNOSTICCHAIN_MAP :
+				return validateResultNoIncoming(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_NO_INPUT_PINS__DIAGNOSTICCHAIN_MAP :
+				return validateNoInputPins((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_ONE_CLAUSE_WITH_EXECUTABLE_NODE__DIAGNOSTICCHAIN_MAP :
+				return validateOneClauseWithExecutableNode(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_MATCHING_OUTPUT_PINS__DIAGNOSTICCHAIN_MAP :
+				return validateMatchingOutputPins(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONDITIONAL_NODE___VALIDATE_EXECUTABLE_NODES__DIAGNOSTICCHAIN_MAP :
@@ -1192,21 +1217,6 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE___VALIDATE_CLAUSE_NO_PREDECESSOR__DIAGNOSTICCHAIN_MAP :
 				return validateClauseNoPredecessor(
 					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONDITIONAL_NODE___VALIDATE_MATCHING_OUTPUT_PINS__DIAGNOSTICCHAIN_MAP :
-				return validateMatchingOutputPins(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONDITIONAL_NODE___VALIDATE_ONE_CLAUSE_WITH_EXECUTABLE_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateOneClauseWithExecutableNode(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONDITIONAL_NODE___VALIDATE_RESULT_NO_INCOMING__DIAGNOSTICCHAIN_MAP :
-				return validateResultNoIncoming(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONDITIONAL_NODE___VALIDATE_NO_INPUT_PINS__DIAGNOSTICCHAIN_MAP :
-				return validateNoInputPins((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);
@@ -1251,7 +1261,7 @@ public class ConditionalNodeImpl
 		UMLPackage.CONDITIONAL_NODE__PACKAGE_IMPORT,
 		UMLPackage.CONDITIONAL_NODE__OWNED_MEMBER,
 		UMLPackage.CONDITIONAL_NODE__SUBGROUP,
-		UMLPackage.CONDITIONAL_NODE__NODE, UMLPackage.CONDITIONAL_NODE__EDGE,
+		UMLPackage.CONDITIONAL_NODE__EDGE, UMLPackage.CONDITIONAL_NODE__NODE,
 		UMLPackage.CONDITIONAL_NODE__CLAUSE};
 
 	/**

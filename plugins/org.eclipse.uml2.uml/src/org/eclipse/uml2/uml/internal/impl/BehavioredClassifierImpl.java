@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -32,13 +32,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
-import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Behavior;
@@ -47,7 +46,6 @@ import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Generalization;
@@ -83,7 +81,6 @@ import org.eclipse.uml2.uml.internal.operations.BehavioredClassifierOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehavioredClassifierImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehavioredClassifierImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehavioredClassifierImpl#getOwnedBehaviors <em>Owned Behavior</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehavioredClassifierImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehavioredClassifierImpl#getClassifierBehavior <em>Classifier Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehavioredClassifierImpl#getInterfaceRealizations <em>Interface Realization</em>}</li>
  * </ul>
@@ -220,22 +217,6 @@ public abstract class BehavioredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EList<Dependency> getClientDependencies() {
-		if (clientDependencies == null) {
-			clientDependencies = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse<Dependency>(
-				Dependency.class, this,
-				UMLPackage.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY, null,
-				CLIENT_DEPENDENCY_ESUBSETS, UMLPackage.DEPENDENCY__CLIENT);
-		}
-		return clientDependencies;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Behavior getClassifierBehavior() {
 		if (classifierBehavior != null && classifierBehavior.eIsProxy()) {
 			InternalEObject oldClassifierBehavior = (InternalEObject) classifierBehavior;
@@ -302,10 +283,9 @@ public abstract class BehavioredClassifierImpl
 	 */
 	public EList<InterfaceRealization> getInterfaceRealizations() {
 		if (interfaceRealizations == null) {
-			interfaceRealizations = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<InterfaceRealization>(
+			interfaceRealizations = new EObjectContainmentWithInverseEList.Resolving<InterfaceRealization>(
 				InterfaceRealization.class, this,
 				UMLPackage.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION,
-				INTERFACE_REALIZATION_ESUPERSETS, null,
 				UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER);
 		}
 		return interfaceRealizations;
@@ -387,17 +367,14 @@ public abstract class BehavioredClassifierImpl
 			case UMLPackage.BEHAVIORED_CLASSIFIER__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_RULE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.BEHAVIORED_CLASSIFIER__ELEMENT_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.BEHAVIORED_CLASSIFIER__PACKAGE_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
@@ -412,6 +389,9 @@ public abstract class BehavioredClassifierImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
+			case UMLPackage.BEHAVIORED_CLASSIFIER__TEMPLATE_BINDING :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -422,9 +402,6 @@ public abstract class BehavioredClassifierImpl
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
-			case UMLPackage.BEHAVIORED_CLASSIFIER__TEMPLATE_BINDING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.BEHAVIORED_CLASSIFIER__GENERALIZATION :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getGeneralizations())
 					.basicAdd(otherEnd, msgs);
@@ -459,29 +436,26 @@ public abstract class BehavioredClassifierImpl
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIORED_CLASSIFIER__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_RULE :
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.BEHAVIORED_CLASSIFIER__ELEMENT_IMPORT :
 				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.BEHAVIORED_CLASSIFIER__PACKAGE_IMPORT :
 				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.BEHAVIORED_CLASSIFIER__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
-				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.BEHAVIORED_CLASSIFIER__TEMPLATE_BINDING :
 				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.BEHAVIORED_CLASSIFIER__COLLABORATION_USE :
 				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
@@ -544,12 +518,12 @@ public abstract class BehavioredClassifierImpl
 				return getQualifiedName();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__IMPORTED_MEMBER :
@@ -574,12 +548,12 @@ public abstract class BehavioredClassifierImpl
 				if (resolve)
 					return getPackage();
 				return basicGetPackage();
+			case UMLPackage.BEHAVIORED_CLASSIFIER__TEMPLATE_BINDING :
+				return getTemplateBindings();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.BEHAVIORED_CLASSIFIER__TEMPLATE_BINDING :
-				return getTemplateBindings();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__FEATURE :
 				return getFeatures();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__ATTRIBUTE :
@@ -641,11 +615,6 @@ public abstract class BehavioredClassifierImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.BEHAVIORED_CLASSIFIER__NAME :
 				setName((String) newValue);
 				return;
@@ -654,6 +623,11 @@ public abstract class BehavioredClassifierImpl
 				return;
 			case UMLPackage.BEHAVIORED_CLASSIFIER__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.BEHAVIORED_CLASSIFIER__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -664,11 +638,6 @@ public abstract class BehavioredClassifierImpl
 				getPackageImports().clear();
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
-				return;
-			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.BEHAVIORED_CLASSIFIER__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -682,13 +651,13 @@ public abstract class BehavioredClassifierImpl
 			case UMLPackage.BEHAVIORED_CLASSIFIER__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
-			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
-				return;
 			case UMLPackage.BEHAVIORED_CLASSIFIER__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
+				return;
+			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.BEHAVIORED_CLASSIFIER__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -769,9 +738,6 @@ public abstract class BehavioredClassifierImpl
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.BEHAVIORED_CLASSIFIER__NAME :
 				unsetName();
 				return;
@@ -781,14 +747,14 @@ public abstract class BehavioredClassifierImpl
 			case UMLPackage.BEHAVIORED_CLASSIFIER__VISIBILITY :
 				unsetVisibility();
 				return;
+			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.BEHAVIORED_CLASSIFIER__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.BEHAVIORED_CLASSIFIER__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				return;
-			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_RULE :
-				getOwnedRules().clear();
 				return;
 			case UMLPackage.BEHAVIORED_CLASSIFIER__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
@@ -802,11 +768,11 @@ public abstract class BehavioredClassifierImpl
 			case UMLPackage.BEHAVIORED_CLASSIFIER__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
 				return;
-			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) null);
-				return;
 			case UMLPackage.BEHAVIORED_CLASSIFIER__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
+				return;
+			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
 			case UMLPackage.BEHAVIORED_CLASSIFIER__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -871,8 +837,7 @@ public abstract class BehavioredClassifierImpl
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNER :
 				return isSetOwner();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__NAME :
 				return isSetName();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__NAME_EXPRESSION :
@@ -885,12 +850,12 @@ public abstract class BehavioredClassifierImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.BEHAVIORED_CLASSIFIER__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__IMPORTED_MEMBER :
@@ -909,10 +874,10 @@ public abstract class BehavioredClassifierImpl
 				return isSetTemplateParameter();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__PACKAGE :
 				return basicGetPackage() != null;
-			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
-				return isSetOwnedTemplateSignature();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__TEMPLATE_BINDING :
 				return templateBindings != null && !templateBindings.isEmpty();
+			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__ATTRIBUTE :
@@ -1046,16 +1011,16 @@ public abstract class BehavioredClassifierImpl
 				return allOwnedElements();
 			case UMLPackage.BEHAVIORED_CLASSIFIER___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.BEHAVIORED_CLASSIFIER___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.BEHAVIORED_CLASSIFIER___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.BEHAVIORED_CLASSIFIER___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.BEHAVIORED_CLASSIFIER___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.BEHAVIORED_CLASSIFIER___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1066,6 +1031,8 @@ public abstract class BehavioredClassifierImpl
 				return getLabel();
 			case UMLPackage.BEHAVIORED_CLASSIFIER___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.BEHAVIORED_CLASSIFIER___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.BEHAVIORED_CLASSIFIER___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.BEHAVIORED_CLASSIFIER___ALL_OWNING_PACKAGES :
@@ -1073,14 +1040,22 @@ public abstract class BehavioredClassifierImpl
 			case UMLPackage.BEHAVIORED_CLASSIFIER___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.BEHAVIORED_CLASSIFIER___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.BEHAVIORED_CLASSIFIER___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.BEHAVIORED_CLASSIFIER___SEPARATOR :
 				return separator();
+			case UMLPackage.BEHAVIORED_CLASSIFIER___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.BEHAVIORED_CLASSIFIER___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.BEHAVIORED_CLASSIFIER___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.BEHAVIORED_CLASSIFIER___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.BEHAVIORED_CLASSIFIER___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -1095,6 +1070,8 @@ public abstract class BehavioredClassifierImpl
 				return getImportedElements();
 			case UMLPackage.BEHAVIORED_CLASSIFIER___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.BEHAVIORED_CLASSIFIER___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.BEHAVIORED_CLASSIFIER___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -1107,8 +1084,6 @@ public abstract class BehavioredClassifierImpl
 				return getImportedMembers();
 			case UMLPackage.BEHAVIORED_CLASSIFIER___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.BEHAVIORED_CLASSIFIER___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 			case UMLPackage.BEHAVIORED_CLASSIFIER___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -1130,6 +1105,10 @@ public abstract class BehavioredClassifierImpl
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.BEHAVIORED_CLASSIFIER___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.BEHAVIORED_CLASSIFIER___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.BEHAVIORED_CLASSIFIER___CREATE_ASSOCIATION__BOOLEAN_AGGREGATIONKIND_STRING_INT_INT_TYPE_BOOLEAN_AGGREGATIONKIND_STRING_INT_INT :
 				return createAssociation((Boolean) arguments.get(0),
 					(AggregationKind) arguments.get(1),
@@ -1147,20 +1126,20 @@ public abstract class BehavioredClassifierImpl
 				return isTemplate();
 			case UMLPackage.BEHAVIORED_CLASSIFIER___PARAMETERABLE_ELEMENTS :
 				return parameterableElements();
-			case UMLPackage.BEHAVIORED_CLASSIFIER___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
-				return validateNonFinalParents(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.BEHAVIORED_CLASSIFIER___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
-				return validateNoCyclesInGeneralization(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.BEHAVIORED_CLASSIFIER___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateSpecializeType(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.BEHAVIORED_CLASSIFIER___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
 				return validateMapsToGeneralizationSet(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.BEHAVIORED_CLASSIFIER___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
+				return validateNonFinalParents(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.BEHAVIORED_CLASSIFIER___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
+				return validateNoCyclesInGeneralization(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.BEHAVIORED_CLASSIFIER___GET_ALL_ATTRIBUTES :
@@ -1185,8 +1164,6 @@ public abstract class BehavioredClassifierImpl
 				return allFeatures();
 			case UMLPackage.BEHAVIORED_CLASSIFIER___ALL_PARENTS :
 				return allParents();
-			case UMLPackage.BEHAVIORED_CLASSIFIER___CONFORMS_TO__CLASSIFIER :
-				return conformsTo((Classifier) arguments.get(0));
 			case UMLPackage.BEHAVIORED_CLASSIFIER___GET_GENERALS :
 				return getGenerals();
 			case UMLPackage.BEHAVIORED_CLASSIFIER___HAS_VISIBILITY_OF__NAMEDELEMENT :
@@ -1201,6 +1178,20 @@ public abstract class BehavioredClassifierImpl
 				return maySpecializeType((Classifier) arguments.get(0));
 			case UMLPackage.BEHAVIORED_CLASSIFIER___PARENTS :
 				return parents();
+			case UMLPackage.BEHAVIORED_CLASSIFIER___DIRECTLY_REALIZED_INTERFACES :
+				return directlyRealizedInterfaces();
+			case UMLPackage.BEHAVIORED_CLASSIFIER___DIRECTLY_USED_INTERFACES :
+				return directlyUsedInterfaces();
+			case UMLPackage.BEHAVIORED_CLASSIFIER___ALL_REALIZED_INTERFACES :
+				return allRealizedInterfaces();
+			case UMLPackage.BEHAVIORED_CLASSIFIER___ALL_USED_INTERFACES :
+				return allUsedInterfaces();
+			case UMLPackage.BEHAVIORED_CLASSIFIER___IS_SUBSTITUTABLE_FOR__CLASSIFIER :
+				return isSubstitutableFor((Classifier) arguments.get(0));
+			case UMLPackage.BEHAVIORED_CLASSIFIER___ALL_ATTRIBUTES :
+				return allAttributes();
+			case UMLPackage.BEHAVIORED_CLASSIFIER___ALL_SLOTTABLE_FEATURES :
+				return allSlottableFeatures();
 			case UMLPackage.BEHAVIORED_CLASSIFIER___VALIDATE_CLASS_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
 				return validateClassBehavior(
 					(DiagnosticChain) arguments.get(0),
@@ -1238,8 +1229,8 @@ public abstract class BehavioredClassifierImpl
 		UMLPackage.BEHAVIORED_CLASSIFIER__ELEMENT_IMPORT,
 		UMLPackage.BEHAVIORED_CLASSIFIER__PACKAGE_IMPORT,
 		UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_MEMBER,
-		UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE,
 		UMLPackage.BEHAVIORED_CLASSIFIER__TEMPLATE_BINDING,
+		UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE,
 		UMLPackage.BEHAVIORED_CLASSIFIER__COLLABORATION_USE,
 		UMLPackage.BEHAVIORED_CLASSIFIER__GENERALIZATION,
 		UMLPackage.BEHAVIORED_CLASSIFIER__SUBSTITUTION,
@@ -1310,28 +1301,6 @@ public abstract class BehavioredClassifierImpl
 			? createOwnedBehavior(name, eClass)
 			: null;
 	}
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClientDependencies()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[]{
-		UMLPackage.BEHAVIORED_CLASSIFIER__SUBSTITUTION,
-		UMLPackage.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getInterfaceRealizations() <em>Interface Realization</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInterfaceRealizations()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] INTERFACE_REALIZATION_ESUPERSETS = new int[]{UMLPackage.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->

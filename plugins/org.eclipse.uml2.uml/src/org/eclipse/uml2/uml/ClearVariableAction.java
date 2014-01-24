@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.uml;
@@ -18,8 +19,8 @@ package org.eclipse.uml2.uml;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A clear variable action is a variable action that removes all values of a variable.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A ClearVariableAction is a VariableAction that removes all values of a Variable.
+ * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  *
  *

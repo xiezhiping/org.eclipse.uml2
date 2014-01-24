@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: ValueSpecificationActionOperations.java,v 1.6 2007/05/03 21:11:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -54,8 +53,8 @@ public class ValueSpecificationActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of value specification must be compatible with the type of the result pin.
-	 * true
+	 * The type of the value ValueSpecification must conform to the type of the result OutputPin.
+	 * value.type.conformsTo(result.type)
 	 * @param valueSpecificationAction The receiving '<em><b>Value Specification Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -90,8 +89,8 @@ public class ValueSpecificationActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the result pin is 1..1
-	 * true
+	 * The multiplicity of the result OutputPin is 1..1
+	 * result.is(1,1)
 	 * @param valueSpecificationAction The receiving '<em><b>Value Specification Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

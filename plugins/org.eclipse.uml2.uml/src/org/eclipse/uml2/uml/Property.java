@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 351777, 382718
+ *   Kenn Hussey (CEA) - 327039, 351774, 351777, 382718, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -27,24 +27,19 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Property represents a declared state of one or more instances in terms of a named relationship to a value or values. When a property is an attribute of a classifier, the value or values are related to the instance of the classifier by being held in slots of the instance. When a property is an association end, the value or values are related to the instance or instances at the other end(s) of the association. The range of valid values represented by the property can be controlled by setting the property's type.
- * A property is a structural feature of a classifier that characterizes instances of the classifier. A property related by ownedAttribute to a classifier (other than an association) represents an attribute and might also represent an association end. It relates an instance of the class to a value or set of values of the type of the attribute. A property related by memberEnd or its specializations to an association represents an end of the association. The type of the property is the type of the end of the association.
- * A property has the capability of being a deployment target in a deployment relationship. This enables modeling the deployment to hierarchical nodes that have properties functioning as internal parts.
- * Property specializes ParameterableElement to specify that a property can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.
- * A property represents a set of instances that are owned by a containing classifier instance.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A Property is a StructuralFeature. A Property related by ownedAttribute to a Classifier (other than an association) represents an attribute and might also represent an association end. It relates an instance of the Classifier to a value or set of values of the type of the attribute. A Property related by memberEnd to an Association represents an end of the Association. The type of the Property is the type of the end of the Association. A Property has the capability of being a DeploymentTarget in a Deployment relationship. This enables modeling the deployment to hierarchical nodes that have Properties functioning as internal parts.  Property specializes ParameterableElement to specify that a Property can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.
+ * <p>From package UML::Classification.</p>
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Property#getInterface <em>Interface</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getDatatype <em>Datatype</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#getInterface <em>Interface</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getAggregation <em>Aggregation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getAssociationEnd <em>Association End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getQualifiers <em>Qualifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getClass_ <em>Class</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#getDefault <em>Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getDefaultValue <em>Default Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#isComposite <em>Is Composite</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#isDerived <em>Is Derived</em>}</li>
@@ -59,7 +54,8 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getProperty()
- * @model
+ * @model features="default" 
+ *        defaultUnsettable="true" defaultDataType="org.eclipse.uml2.types.String" defaultTransient="true" defaultVolatile="true" defaultDerived="true" defaultOrdered="false" defaultSuppressedGetVisibility="true" defaultSuppressedSetVisibility="true" defaultSuppressedIsSetVisibility="true" defaultSuppressedUnsetVisibility="true"
  * @generated
  */
 public interface Property
@@ -79,8 +75,8 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The DataType that owns this Property.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The DataType that owns this Property, if any.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Datatype</em>' container reference.
 	 * @see #setDatatype(DataType)
@@ -115,8 +111,8 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the Interface that owns the Property
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Interface that owns this Property, if any.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Interface</em>' container reference.
 	 * @see #setInterface(Interface)
@@ -143,9 +139,8 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If isDerived is true, the value of the attribute is derived from information elsewhere.
 	 * Specifies whether the Property is derived, i.e., whether its value or values can be computed from other information.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Derived</em>' attribute.
 	 * @see #setIsDerived(boolean)
@@ -171,8 +166,8 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies whether the property is derived as the union of all of the properties that are constrained to subset it.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Specifies whether the property is derived as the union of all of the Properties that are constrained to subset it.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Derived Union</em>' attribute.
 	 * @see #setIsDerivedUnion(boolean)
@@ -199,7 +194,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * True indicates this property can be used to uniquely identify an instance of the containing Class.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is ID</em>' attribute.
 	 * @see #setIsID(boolean)
@@ -220,58 +215,27 @@ public interface Property
 	void setIsID(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Default</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies a String that represents a value to be used when no argument is supplied for the Property.
-	 * A String that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Retrieves a string representation of the default value for this property.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Default</em>' attribute.
-	 * @see #isSetDefault()
-	 * @see #unsetDefault()
-	 * @see #setDefault(String)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_Default()
-	 * @model unsettable="true" dataType="org.eclipse.uml2.types.String" transient="true" volatile="true" derived="true" ordered="false"
-	 * @generated
+	 * @model ordered="false"
+	 * @generated NOT
 	 */
 	String getDefault();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Property#getDefault <em>Default</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Default</em>' attribute.
-	 * @see #isSetDefault()
-	 * @see #unsetDefault()
-	 * @see #getDefault()
-	 * @generated
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this property based on the specified string representation.
+	 * @param newDefault A string representation of the new default value.
+	 * <!-- end-model-doc -->
+	 * @model ordered="false" newDefaultRequired="true" newDefaultOrdered="false"
+	 * @generated NOT
 	 */
-	void setDefault(String value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.uml2.uml.Property#getDefault <em>Default</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetDefault()
-	 * @see #getDefault()
-	 * @see #setDefault(String)
-	 * @generated
-	 */
-	void unsetDefault();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.Property#getDefault <em>Default</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Default</em>' attribute is set.
-	 * @see #unsetDefault()
-	 * @see #getDefault()
-	 * @see #setDefault(String)
-	 * @generated
-	 */
-	boolean isSetDefault();
+	void setDefault(String newDefault);
 
 	/**
 	 * Returns the value of the '<em><b>Aggregation</b></em>' attribute.
@@ -281,7 +245,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the kind of aggregation that applies to the Property.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Aggregation</em>' attribute.
 	 * @see org.eclipse.uml2.uml.AggregationKind
@@ -309,9 +273,8 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If isComposite is true, the object containing the attribute is a container for the object or value contained in the attribute.
-	 * This is a derived value, indicating whether the aggregation of the Property is composite or not.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * If isComposite is true, the object containing the attribute is a container for the object or value contained in the attribute. This is a derived value, indicating whether the aggregation of the Property is composite or not.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Composite</em>' attribute.
 	 * @see #setIsComposite(boolean)
@@ -344,9 +307,8 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the Class that owns the Property.
-	 * References the Class that owns the Property.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Class that owns this Property, if any.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Class</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_Class()
@@ -367,8 +329,8 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the properties that are redefined by this property.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The properties that are redefined by this property, if any.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Property</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_RedefinedProperty()
@@ -411,16 +373,16 @@ public interface Property
 	 * This feature subsets the following features:
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}'</li>
-	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Property#getAssociation() <em>Association</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the owning association of this property, if any.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The owning association of this property, if any.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owning Association</em>' container reference.
 	 * @see #setOwningAssociation(Association)
@@ -447,8 +409,8 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the association of which this property is a member, if any.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Association of which this Property is a member, if any.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Association</em>' reference.
 	 * @see #setAssociation(Association)
@@ -480,8 +442,8 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A ValueSpecification that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * A ValueSpecification that is evaluated to give a default value for the Property when an instance of the owning Classifier is instantiated.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Default Value</em>' containment reference.
 	 * @see #setDefaultValue(ValueSpecification)
@@ -519,8 +481,8 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * In the case where the property is one navigable end of a binary association with both ends navigable, this gives the other end.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * In the case where the Property is one end of a binary association this gives the other end.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Opposite</em>' reference.
 	 * @see #setOpposite(Property)
@@ -546,8 +508,8 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the properties of which this property is constrained to be a subset.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The properties of which this Property is constrained to be a subset, if any.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Subsetted Property</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_SubsettedProperty()
@@ -596,8 +558,8 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An optional list of ordered qualifier attributes for the end. If the list is empty, then the Association is not qualified.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * An optional list of ordered qualifier attributes for the end.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Qualifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_Qualifier()
@@ -673,7 +635,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Designates the optional association end that owns a qualifier attribute.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Association End</em>' container reference.
 	 * @see #setAssociationEnd(Property)
@@ -698,9 +660,10 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A multiplicity on an aggregate end of a composite aggregation must not have an upper bound greater than 1.
-	 * A multiplicity of a composite aggregation must not have an upper bound greater than 1.
-	 * isComposite implies (upperBound()->isEmpty() or upperBound() <= 1)
+	 * A multiplicity on the composing end of a composite aggregation must not have an upper bound greater than 1.
+	 * isComposite and association <> null implies opposite.upperBound() <= 1
+	 * 
+	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -715,9 +678,9 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Subsetting may only occur when the context of the subsetting property conforms to the context of the subsetted property.
-	 * self.subsettedProperty->notEmpty() implies
-	 *   (self.subsettingContext()->notEmpty() and self.subsettingContext()->forAll (sc |
-	 *     self.subsettedProperty->forAll(sp |
+	 * subsettedProperty->notEmpty() implies
+	 *   (subsettingContext()->notEmpty() and subsettingContext()->forAll (sc |
+	 *     subsettedProperty->forAll(sp |
 	 *       sp.subsettingContext()->exists(c | sc.conformsTo(c)))))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -732,12 +695,12 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A redefined property must be inherited from a more general classifier containing the redefining property.
-	 * if (redefinedProperty->notEmpty()) then
+	 * A redefined Property must be inherited from a more general Classifier.
+	 * (redefinedProperty->notEmpty()) implies
 	 *   (redefinitionContext->notEmpty() and
 	 *       redefinedProperty->forAll(rp|
 	 *         ((redefinitionContext->collect(fc|
-	 *           fc.allParents()))->asSet())->collect(c| c.allFeatures())->asSet()->includes(rp))
+	 *           fc.allParents()))->asSet())->collect(c| c.allFeatures())->asSet()->includes(rp)))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -751,11 +714,11 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A subsetting property may strengthen the type of the subsetted property, and its upper bound may be less.
-	 * self.subsettedProperty->forAll(sp |
+	 * A subsetting Property may strengthen the type of the subsetted Property, and its upper bound may be less.
+	 * subsettedProperty->forAll(sp |
 	 *   self.type.conformsTo(sp.type) and
 	 *     ((self.upperBound()->notEmpty() and sp.upperBound()->notEmpty()) implies
-	 *       self.upperBound()<=sp.upperBound() ))
+	 *       self.upperBound() <= sp.upperBound() ))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -799,8 +762,8 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A property may not subset a property with the same name.
-	 * true
+	 * A Property may not subset a Property with the same name.
+	 * subsettedProperty->forAll(sp | sp.name <> name)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -814,8 +777,38 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
+	 * If a Property is a classifier-owned end of a binary Association, its owner must be the type of the opposite end.
+	 * (opposite->notEmpty() and owningAssociation->isEmpty()) implies classifier = opposite.type
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateTypeOfOppositeEnd(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * All qualified Properties must be Association ends
+	 * qualifier->notEmpty() implies association->notEmpty()
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateQualifiedIsAssociationEnd(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
 	 * A Property can be a DeploymentTarget if it is a kind of Node and functions as a part in the internal structure of an encompassing Node.
-	 * true
+	 * deployment->notEmpty() implies owner.oclIsKindOf(Node) and Node.allInstances()->exists(n | n.part->exists(p | p = self))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -829,9 +822,12 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A binding of a property template parameter representing an attribute must be to an attribute.
-	 * (isAttribute(self) and (templateParameterSubstitution->notEmpty())
-	 *   implies (templateParameterSubstitution->forAll(ts | isAttribute(ts.formal)))
+	 * A binding of a PropertyTemplateParameter representing an attribute must be to an attribute.
+	 * (self.isAttribute()
+	 * and (templateParameterSubstitution->notEmpty())
+	 * implies (templateParameterSubstitution->forAll(ts |
+	 *     ts.formal.oclIsKindOf(Property)
+	 *     and ts.formal.oclAsType(Property).isAttribute())))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -916,6 +912,19 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
+	 * The query isAttribute() is true if the Property is defined as an attribute of some Classifier.
+	 * result = (not classifier->isEmpty())
+	 * <p>From package UML::Classification.</p>
+	 * <!-- end-model-doc -->
+	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
+	 * @generated
+	 */
+	boolean isAttribute();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
 	 * Sets the default value for this property to the null value.
 	 * <!-- end-model-doc -->
 	 * @model
@@ -939,25 +948,16 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isAttribute() is true if the Property is defined as an attribute of some classifier.
-	 * result = Classifier.allInstances->exists(c | c.attribute->includes(p))
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" pRequired="true" pOrdered="false"
-	 * @generated
-	 */
-	boolean isAttribute(Property p);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query subsettingContext() gives the context for subsetting a property. It consists, in the case of an attribute, of the corresponding classifier, and in the case of an association end, all of the classifiers at the other ends.
-	 * result = if association->notEmpty()
-	 * then association.endType-type
-	 * else if classifier->notEmpty() then Set{classifier} else Set{} endif
-	 * endif
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The query subsettingContext() gives the context for subsetting a Property. It consists, in the case of an attribute, of the corresponding Classifier, and in the case of an association end, all of the Classifiers at the other ends.
+	 * result = (if association <> null
+	 * then association.memberEnd->excluding(self)->collect(type)->asSet()
+	 * else 
+	 *   if classifier<>null
+	 *   then classifier->asSet()
+	 *   else Set{} 
+	 *   endif
+	 * endif)
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false"
 	 * @generated
@@ -969,8 +969,8 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isNavigable() indicates whether it is possible to navigate across the property.
-	 * result = not classifier->isEmpty() or association.owningAssociation.navigableOwnedEnd->includes(self)
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * result = (not classifier->isEmpty() or association.navigableOwnedEnd->includes(self))
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated

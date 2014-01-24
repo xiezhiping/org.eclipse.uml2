@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -39,9 +39,10 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Association#validateSpecializedEndNumber(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Specialized End Number</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Association#validateAssociationEnds(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Association Ends</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Association#validateBinaryAssociations(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Binary Associations</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Association#validateSpecializedEndTypes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Specialized End Types</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Association#validateBinaryAssociations(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Binary Associations</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Association#validateAssociationEnds(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Association Ends</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Association#validateEndsMustBeTyped(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Ends Must Be Typed</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Association#isBinary() <em>Is Binary</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Association#getEndTypes() <em>Get End Types</em>}</li>
  * </ul>
@@ -65,7 +66,7 @@ public class AssociationOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An association specializing another association has the same number of ends as the other association.
+	 * An Association specializing another Association has the same number of ends as the other Association.
 	 * parents()->select(oclIsKindOf(Association)).oclAsType(Association)->forAll(p | p.memberEnd->size() = self.memberEnd->size())
 	 * @param association The receiving '<em><b>Association</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -100,10 +101,10 @@ public class AssociationOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * When an association specializes another association, every end of the specific association corresponds to an end of the general association, and the specific end reaches the same type or a subtype of the more general end.
-	 * Sequence{1..self.memberEnd->size()}->
-	 * 	forAll(i | self.general->select(oclIsKindOf(Association)).oclAsType(Association)->
-	 * 		forAll(ga |self.memberEnd->at(i).type.conformsTo(ga.memberEnd->at(i).type)))
+	 * When an Association specializes another Association, every end of the specific Association corresponds to an end of the general Association, and the specific end reaches the same type or a subtype of the corresponding general end.
+	 * Sequence{1..memberEnd->size()}->
+	 * 	forAll(i | general->select(oclIsKindOf(Association)).oclAsType(Association)->
+	 * 		forAll(ga | self.memberEnd->at(i).type.conformsTo(ga.memberEnd->at(i).type)))
 	 * @param association The receiving '<em><b>Association</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -137,8 +138,8 @@ public class AssociationOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Only binary associations can be aggregations.
-	 * self.memberEnd->exists(aggregation <> Aggregation::none) implies self.memberEnd->size() = 2
+	 * Only binary Associations can be aggregations.
+	 * memberEnd->exists(aggregation <> AggregationKind::none) implies (memberEnd->size() = 2 and memberEnd->exists(aggregation = AggregationKind::none))
 	 * @param association The receiving '<em><b>Association</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -172,8 +173,8 @@ public class AssociationOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Association ends of associations with more than two ends must be owned by the association.
-	 * if memberEnd->size() > 2 then ownedEnd->includesAll(memberEnd)
+	 * Ends of Associations with more than two ends must be owned by the Association itself.
+	 * memberEnd->size() > 2 implies ownedEnd->includesAll(memberEnd)
 	 * @param association The receiving '<em><b>Association</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -207,6 +208,40 @@ public class AssociationOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
+	 * memberEnd->forAll(type->notEmpty())
+	 * @param association The receiving '<em><b>Association</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateEndsMustBeTyped(Association association,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.ASSOCIATION__ENDS_MUST_BE_TYPED,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateEndsMustBeTyped", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(association, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{association}));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
 	 * Determines whether this association is a binary association, i.e. whether it has exactly two member ends.
 	 * @param association The receiving '<em><b>Association</b></em>' model object.
 	 * <!-- end-model-doc -->
@@ -221,7 +256,7 @@ public class AssociationOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * endType is derived from the types of the member ends.
-	 * result = self.memberEnd->collect(e | e.type)
+	 * result = (memberEnd->collect(type)->asSet())
 	 * @param association The receiving '<em><b>Association</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

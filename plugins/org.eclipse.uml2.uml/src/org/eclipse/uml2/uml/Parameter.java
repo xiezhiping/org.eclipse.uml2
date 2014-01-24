@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -27,10 +27,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Parameters are allowed to be treated as connectable elements.
- * A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral feature.
- * Parameters have support for streaming, exceptions, and parameter sets.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A Parameter is a specification of an argument used to pass information into or out of an invocation of a BehavioralFeature.  Parameters can be treated as ConnectableElements within Collaborations.
+ * <p>From package UML::Classification.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -61,8 +59,8 @@ public interface Parameter
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The parameter sets containing the parameter. See ParameterSet.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The ParameterSets containing the parameter. See ParameterSet.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Parameter Set</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getParameter_ParameterSet()
@@ -106,8 +104,8 @@ public interface Parameter
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the Operation owning this parameter.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Operation owning this parameter.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Operation</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getParameter_Operation()
@@ -124,7 +122,7 @@ public interface Parameter
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Indicates whether a parameter is being sent into or out of a behavioral element.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Direction</em>' attribute.
 	 * @see org.eclipse.uml2.uml.ParameterDirectionKind
@@ -151,8 +149,8 @@ public interface Parameter
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies a String that represents a value to be used when no argument is supplied for the Parameter.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * A String that represents a value to be used when no argument is supplied for the Parameter.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Default</em>' attribute.
 	 * @see #isSetDefault()
@@ -211,7 +209,7 @@ public interface Parameter
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Default Value</em>' containment reference.
 	 * @see #setDefaultValue(ValueSpecification)
@@ -251,7 +249,7 @@ public interface Parameter
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Tells whether an output parameter may emit a value to the exclusion of the other outputs.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Exception</em>' attribute.
 	 * @see #setIsException(boolean)
@@ -277,8 +275,8 @@ public interface Parameter
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Tells whether an input parameter may accept values while its behavior is executing, or whether an output parameter post values while the behavior is executing.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Tells whether an input parameter may accept values while its behavior is executing, or whether an output parameter may post values while the behavior is executing.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Stream</em>' attribute.
 	 * @see #setIsStream(boolean)
@@ -304,8 +302,8 @@ public interface Parameter
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies the effect that the owner of the parameter has on values passed in or out of the parameter.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Specifies the effect that executions of the owner of the Parameter have on objects passed in or out of the parameter.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Effect</em>' attribute.
 	 * @see org.eclipse.uml2.uml.ParameterEffectKind
@@ -358,8 +356,8 @@ public interface Parameter
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A parameter may only be associated with a connector end within the context of a collaboration.
-	 * self.end.notEmpty() implies self.collaboration.notEmpty()
+	 * A Parameter may only be associated with a Connector end within the context of a Collaboration.
+	 * end->notEmpty() implies collaboration->notEmpty()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -373,8 +371,8 @@ public interface Parameter
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A parameter cannot be a stream and exception at the same time.
-	 * true
+	 * A Parameter cannot be a stream and exception at the same time.
+	 * not (isException and isStream)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -388,8 +386,23 @@ public interface Parameter
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An input parameter cannot be an exception.
-	 * true
+	 * Parameters typed by DataTypes cannot have an effect.
+	 * (type.oclIsKindOf(DataType)) implies (effect = null)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateObjectEffect(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An input Parameter cannot be an exception.
+	 * isException implies (direction <> ParameterDirectionKind::_'in' and direction <> ParameterDirectionKind::inout)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -403,8 +416,8 @@ public interface Parameter
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Reentrant behaviors cannot have stream parameters.
-	 * true
+	 * Reentrant behaviors cannot have stream Parameters.
+	 * (isStream and behavior <> null) implies not behavior.isReentrant
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -418,8 +431,10 @@ public interface Parameter
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Only in and inout parameters may have a delete effect. Only out, inout, and return parameters may have a create effect.
-	 * true
+	 * Only in and inout Parameters may have a delete effect. Only out, inout, and return Parameters may have a create effect.
+	 * (effect = ParameterEffectKind::delete implies (direction = ParameterDirectionKind::_'in' or direction = ParameterDirectionKind::inout))
+	 * and
+	 * (effect = ParameterEffectKind::create implies (direction = ParameterDirectionKind::out or direction = ParameterDirectionKind::inout or direction = ParameterDirectionKind::return))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

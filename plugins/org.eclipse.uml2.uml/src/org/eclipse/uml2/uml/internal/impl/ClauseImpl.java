@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -661,9 +661,6 @@ public class ClauseImpl
 				return allOwnedElements();
 			case UMLPackage.CLAUSE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.CLAUSE___VALIDATE_TEST_AND_BODY__DIAGNOSTICCHAIN_MAP :
-				return validateTestAndBody((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CLAUSE___VALIDATE_BODY_OUTPUT_PINS__DIAGNOSTICCHAIN_MAP :
 				return validateBodyOutputPins(
 					(DiagnosticChain) arguments.get(0),
@@ -671,6 +668,9 @@ public class ClauseImpl
 			case UMLPackage.CLAUSE___VALIDATE_DECIDER_OUTPUT__DIAGNOSTICCHAIN_MAP :
 				return validateDeciderOutput(
 					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CLAUSE___VALIDATE_TEST_AND_BODY__DIAGNOSTICCHAIN_MAP :
+				return validateTestAndBody((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

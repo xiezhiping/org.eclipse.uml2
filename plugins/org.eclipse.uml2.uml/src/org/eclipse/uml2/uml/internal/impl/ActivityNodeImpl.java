@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -41,12 +41,12 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityContent;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityGroup;
 import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.NamedElement;
@@ -71,12 +71,12 @@ import org.eclipse.uml2.uml.internal.operations.ActivityNodeOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getInGroups <em>In Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getActivity <em>Activity</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getInPartitions <em>In Partition</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getInStructuredNode <em>In Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getInInterruptibleRegions <em>In Interruptible Region</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getOutgoings <em>Outgoing</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getInStructuredNode <em>In Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getIncomings <em>Incoming</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getOutgoings <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getRedefinedNodes <em>Redefined Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getInPartitions <em>In Partition</em>}</li>
  * </ul>
  * </p>
  *
@@ -85,16 +85,6 @@ import org.eclipse.uml2.uml.internal.operations.ActivityNodeOperations;
 public abstract class ActivityNodeImpl
 		extends RedefinableElementImpl
 		implements ActivityNode {
-
-	/**
-	 * The cached value of the '{@link #getInPartitions() <em>In Partition</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInPartitions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ActivityPartition> inPartitions;
 
 	/**
 	 * The cached value of the '{@link #getInInterruptibleRegions() <em>In Interruptible Region</em>}' reference list.
@@ -107,16 +97,6 @@ public abstract class ActivityNodeImpl
 	protected EList<InterruptibleActivityRegion> inInterruptibleRegions;
 
 	/**
-	 * The cached value of the '{@link #getOutgoings() <em>Outgoing</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutgoings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ActivityEdge> outgoings;
-
-	/**
 	 * The cached value of the '{@link #getIncomings() <em>Incoming</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -127,6 +107,16 @@ public abstract class ActivityNodeImpl
 	protected EList<ActivityEdge> incomings;
 
 	/**
+	 * The cached value of the '{@link #getOutgoings() <em>Outgoing</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutgoings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ActivityEdge> outgoings;
+
+	/**
 	 * The cached value of the '{@link #getRedefinedNodes() <em>Redefined Node</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -135,6 +125,16 @@ public abstract class ActivityNodeImpl
 	 * @ordered
 	 */
 	protected EList<ActivityNode> redefinedNodes;
+
+	/**
+	 * The cached value of the '{@link #getInPartitions() <em>In Partition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInPartitions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ActivityPartition> inPartitions;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -293,6 +293,25 @@ public abstract class ActivityNodeImpl
 			return inPartition;
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Activity containingActivity() {
+		return ActivityNodeOperations.containingActivity(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isConsistentWith(RedefinableElement redefiningElement) {
+		return ActivityNodeOperations.isConsistentWith(this, redefiningElement);
 	}
 
 	/**
@@ -545,27 +564,6 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateOwned(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return ActivityNodeOperations.validateOwned(this, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateOwnedStructuredNode(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return ActivityNodeOperations.validateOwnedStructuredNode(this,
-			diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
@@ -574,25 +572,22 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ACTIVITY_NODE__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInPartitions())
+			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInInterruptibleRegions())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetInStructuredNode(
 					(StructuredActivityNode) otherEnd, msgs);
-			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInInterruptibleRegions())
+			case UMLPackage.ACTIVITY_NODE__INCOMING :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomings())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__OUTGOING :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutgoings())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ACTIVITY_NODE__INCOMING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomings())
+			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInPartitions())
 					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
@@ -613,24 +608,21 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ACTIVITY_NODE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
-				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
 				return ((InternalEList<?>) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
+			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
+				return basicSetInStructuredNode(null, msgs);
+			case UMLPackage.ACTIVITY_NODE__INCOMING :
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__OUTGOING :
 				return ((InternalEList<?>) getOutgoings()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ACTIVITY_NODE__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
+			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
@@ -697,22 +689,22 @@ public abstract class ActivityNodeImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
-				return getInPartitions();
+			case UMLPackage.ACTIVITY_NODE__IN_GROUP :
+				return getInGroups();
+			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
+				return getInInterruptibleRegions();
 			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
 				if (resolve)
 					return getInStructuredNode();
 				return basicGetInStructuredNode();
-			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
-				return getInInterruptibleRegions();
-			case UMLPackage.ACTIVITY_NODE__OUTGOING :
-				return getOutgoings();
 			case UMLPackage.ACTIVITY_NODE__INCOMING :
 				return getIncomings();
-			case UMLPackage.ACTIVITY_NODE__IN_GROUP :
-				return getInGroups();
+			case UMLPackage.ACTIVITY_NODE__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.ACTIVITY_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
+			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
+				return getInPartitions();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -736,11 +728,6 @@ public abstract class ActivityNodeImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.ACTIVITY_NODE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.ACTIVITY_NODE__NAME :
 				setName((String) newValue);
 				return;
@@ -756,34 +743,34 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
-			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
-				return;
-			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
-				setInStructuredNode((StructuredActivityNode) newValue);
-				return;
 			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
 				getInInterruptibleRegions()
 					.addAll(
 						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
-			case UMLPackage.ACTIVITY_NODE__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
+				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.ACTIVITY_NODE__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll(
 					(Collection<? extends ActivityEdge>) newValue);
 				return;
+			case UMLPackage.ACTIVITY_NODE__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
+				return;
 			case UMLPackage.ACTIVITY_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
 				getRedefinedNodes().addAll(
 					(Collection<? extends ActivityNode>) newValue);
+				return;
+			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -803,9 +790,6 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.ACTIVITY_NODE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.ACTIVITY_NODE__NAME :
 				unsetName();
 				return;
@@ -821,23 +805,23 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
 				setActivity((Activity) null);
 				return;
-			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
-				getInPartitions().clear();
+			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
 				return;
 			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
-			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
+			case UMLPackage.ACTIVITY_NODE__INCOMING :
+				getIncomings().clear();
 				return;
 			case UMLPackage.ACTIVITY_NODE__OUTGOING :
 				getOutgoings().clear();
 				return;
-			case UMLPackage.ACTIVITY_NODE__INCOMING :
-				getIncomings().clear();
-				return;
 			case UMLPackage.ACTIVITY_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
+				return;
+			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -860,8 +844,7 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE__OWNER :
 				return isSetOwner();
 			case UMLPackage.ACTIVITY_NODE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.ACTIVITY_NODE__NAME :
 				return isSetName();
 			case UMLPackage.ACTIVITY_NODE__NAME_EXPRESSION :
@@ -882,23 +865,41 @@ public abstract class ActivityNodeImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
-				return inPartitions != null && !inPartitions.isEmpty();
-			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
-				return basicGetInStructuredNode() != null;
+			case UMLPackage.ACTIVITY_NODE__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
 				return inInterruptibleRegions != null
 					&& !inInterruptibleRegions.isEmpty();
-			case UMLPackage.ACTIVITY_NODE__OUTGOING :
-				return outgoings != null && !outgoings.isEmpty();
+			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.ACTIVITY_NODE__INCOMING :
 				return incomings != null && !incomings.isEmpty();
-			case UMLPackage.ACTIVITY_NODE__IN_GROUP :
-				return isSetInGroups();
+			case UMLPackage.ACTIVITY_NODE__OUTGOING :
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.ACTIVITY_NODE__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
+			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
+				return inPartitions != null && !inPartitions.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == ActivityContent.class) {
+			switch (baseOperationID) {
+				case UMLPackage.ACTIVITY_CONTENT___CONTAINING_ACTIVITY :
+					return UMLPackage.ACTIVITY_NODE___CONTAINING_ACTIVITY;
+				default :
+					return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
 	}
 
 	/**
@@ -993,16 +994,16 @@ public abstract class ActivityNodeImpl
 				return allOwnedElements();
 			case UMLPackage.ACTIVITY_NODE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.ACTIVITY_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_NODE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_NODE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_NODE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1013,6 +1014,8 @@ public abstract class ActivityNodeImpl
 				return getLabel();
 			case UMLPackage.ACTIVITY_NODE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.ACTIVITY_NODE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.ACTIVITY_NODE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.ACTIVITY_NODE___ALL_OWNING_PACKAGES :
@@ -1020,12 +1023,12 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.ACTIVITY_NODE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.ACTIVITY_NODE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.ACTIVITY_NODE___SEPARATOR :
 				return separator();
+			case UMLPackage.ACTIVITY_NODE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.ACTIVITY_NODE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -1043,13 +1046,8 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.ACTIVITY_NODE___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
-				return validateOwned((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_NODE___VALIDATE_OWNED_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateOwnedStructuredNode(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_NODE___CONTAINING_ACTIVITY :
+				return containingActivity();
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}
@@ -1063,9 +1061,9 @@ public abstract class ActivityNodeImpl
 	 * @ordered
 	 */
 	protected static final int[] IN_GROUP_ESUBSETS = new int[]{
-		UMLPackage.ACTIVITY_NODE__IN_PARTITION,
+		UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION,
 		UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE,
-		UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION};
+		UMLPackage.ACTIVITY_NODE__IN_PARTITION};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1114,9 +1112,9 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public boolean isSetInGroups() {
-		return eIsSet(UMLPackage.ACTIVITY_NODE__IN_PARTITION)
+		return eIsSet(UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION)
 			|| eIsSet(UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE)
-			|| eIsSet(UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION);
+			|| eIsSet(UMLPackage.ACTIVITY_NODE__IN_PARTITION);
 	}
 
 	/**

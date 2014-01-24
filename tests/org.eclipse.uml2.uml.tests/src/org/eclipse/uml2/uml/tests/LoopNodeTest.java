@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.tests;
@@ -24,10 +24,17 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateExecutableNodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Executable Nodes</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateBodyOutputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Body Output Pins</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateResultNoIncoming(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Result No Incoming</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateInputEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Edges</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateExecutableNodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Executable Nodes</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateBodyOutputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Body Output Pins</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateSetupTestAndBody(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Setup Test And Body</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateMatchingOutputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Matching Output Pins</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateMatchingLoopVariables(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Matching Loop Variables</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateMatchingResultPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Matching Result Pins</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LoopNode#validateLoopVariableOutgoing(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Loop Variable Outgoing</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LoopNode#allActions() <em>All Actions</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LoopNode#sourceNodes() <em>Source Nodes</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -121,6 +128,92 @@ public class LoopNodeTest
 	 * @generated
 	 */
 	public void testValidateBodyOutputPins__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.LoopNode#validateSetupTestAndBody(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Setup Test And Body</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.LoopNode#validateSetupTestAndBody(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateSetupTestAndBody__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.LoopNode#validateMatchingOutputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Matching Output Pins</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.LoopNode#validateMatchingOutputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateMatchingOutputPins__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.LoopNode#validateMatchingLoopVariables(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Matching Loop Variables</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.LoopNode#validateMatchingLoopVariables(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateMatchingLoopVariables__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.LoopNode#validateMatchingResultPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Matching Result Pins</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.LoopNode#validateMatchingResultPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateMatchingResultPins__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.LoopNode#validateLoopVariableOutgoing(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Loop Variable Outgoing</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.LoopNode#validateLoopVariableOutgoing(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateLoopVariableOutgoing__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.LoopNode#allActions() <em>All Actions</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.LoopNode#allActions()
+	 * @generated
+	 */
+	@Override
+	public void testAllActions() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.LoopNode#sourceNodes() <em>Source Nodes</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.LoopNode#sourceNodes()
+	 * @generated
+	 */
+	@Override
+	public void testSourceNodes() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

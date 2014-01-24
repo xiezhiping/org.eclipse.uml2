@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: SignalEventImpl.java,v 1.14 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,7 +22,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.SignalEvent;
 import org.eclipse.uml2.uml.StringExpression;
@@ -186,11 +184,6 @@ public class SignalEventImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.SIGNAL_EVENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.SIGNAL_EVENT__NAME :
 				setName((String) newValue);
 				return;
@@ -226,9 +219,6 @@ public class SignalEventImpl
 				return;
 			case UMLPackage.SIGNAL_EVENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.SIGNAL_EVENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.SIGNAL_EVENT__NAME :
 				unsetName();
@@ -269,8 +259,7 @@ public class SignalEventImpl
 			case UMLPackage.SIGNAL_EVENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.SIGNAL_EVENT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.SIGNAL_EVENT__NAME :
 				return isSetName();
 			case UMLPackage.SIGNAL_EVENT__NAME_EXPRESSION :

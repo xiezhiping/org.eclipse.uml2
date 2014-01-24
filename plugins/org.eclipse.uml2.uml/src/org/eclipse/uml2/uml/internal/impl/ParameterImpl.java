@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -41,7 +41,6 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
@@ -1115,8 +1114,10 @@ public class ParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isMultivalued() {
-		return MultiplicityElementOperations.isMultivalued(this);
+	public boolean validateLowerIsInteger(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return MultiplicityElementOperations.validateLowerIsInteger(this,
+			diagnostics, context);
 	}
 
 	/**
@@ -1124,8 +1125,19 @@ public class ParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean includesCardinality(int C) {
-		return MultiplicityElementOperations.includesCardinality(this, C);
+	public boolean validateUpperIsUnlimitedNatural(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return MultiplicityElementOperations.validateUpperIsUnlimitedNatural(
+			this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isMultivalued() {
+		return MultiplicityElementOperations.isMultivalued(this);
 	}
 
 	/**
@@ -1193,6 +1205,17 @@ public class ParameterImpl
 			Map<Object, Object> context) {
 		return ParameterOperations.validateStreamAndException(this,
 			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateObjectEffect(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return ParameterOperations.validateObjectEffect(this, diagnostics,
+			context);
 	}
 
 	/**
@@ -1294,9 +1317,6 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.PARAMETER__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PARAMETER__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -1332,9 +1352,6 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.PARAMETER__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PARAMETER__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.PARAMETER__OWNING_TEMPLATE_PARAMETER :
@@ -1461,11 +1478,6 @@ public class ParameterImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.PARAMETER__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.PARAMETER__NAME :
 				setName((String) newValue);
 				return;
@@ -1554,9 +1566,6 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.PARAMETER__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.PARAMETER__NAME :
 				unsetName();
 				return;
@@ -1635,8 +1644,7 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__OWNER :
 				return isSetOwner();
 			case UMLPackage.PARAMETER__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.PARAMETER__NAME :
 				return isSetName();
 			case UMLPackage.PARAMETER__NAME_EXPRESSION :
@@ -1754,22 +1762,24 @@ public class ParameterImpl
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
 		if (baseClass == MultiplicityElement.class) {
 			switch (baseOperationID) {
-				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
-					return UMLPackage.PARAMETER___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
 					return UMLPackage.PARAMETER___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP;
-				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
-					return UMLPackage.PARAMETER___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.PARAMETER___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
 					return UMLPackage.PARAMETER___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.PARAMETER___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_LOWER_IS_INTEGER__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.PARAMETER___VALIDATE_LOWER_IS_INTEGER__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_UPPER_IS_UNLIMITED_NATURAL__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.PARAMETER___VALIDATE_UPPER_IS_UNLIMITED_NATURAL__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___SET_LOWER__INT :
 					return UMLPackage.PARAMETER___SET_LOWER__INT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___SET_UPPER__INT :
 					return UMLPackage.PARAMETER___SET_UPPER__INT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
 					return UMLPackage.PARAMETER___COMPATIBLE_WITH__MULTIPLICITYELEMENT;
-				case UMLPackage.MULTIPLICITY_ELEMENT___INCLUDES_CARDINALITY__INT :
-					return UMLPackage.PARAMETER___INCLUDES_CARDINALITY__INT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
 					return UMLPackage.PARAMETER___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___IS__INT_INT :
@@ -1883,16 +1893,16 @@ public class ParameterImpl
 				return allOwnedElements();
 			case UMLPackage.PARAMETER___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.PARAMETER___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PARAMETER___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1903,6 +1913,8 @@ public class ParameterImpl
 				return getLabel();
 			case UMLPackage.PARAMETER___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.PARAMETER___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.PARAMETER___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.PARAMETER___ALL_OWNING_PACKAGES :
@@ -1910,30 +1922,38 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.PARAMETER___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.PARAMETER___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.PARAMETER___SEPARATOR :
 				return separator();
+			case UMLPackage.PARAMETER___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.PARAMETER___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.PARAMETER___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.PARAMETER___GET_ENDS :
 				return getEnds();
+			case UMLPackage.PARAMETER___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
+				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
 				return validateLowerGe0((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PARAMETER___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
-				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
+			case UMLPackage.PARAMETER___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
+				return validateValueSpecificationNoSideEffects(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
 				return validateValueSpecificationConstant(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PARAMETER___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
-				return validateValueSpecificationNoSideEffects(
+			case UMLPackage.PARAMETER___VALIDATE_LOWER_IS_INTEGER__DIAGNOSTICCHAIN_MAP :
+				return validateLowerIsInteger(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PARAMETER___VALIDATE_UPPER_IS_UNLIMITED_NATURAL__DIAGNOSTICCHAIN_MAP :
+				return validateUpperIsUnlimitedNatural(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER___SET_LOWER__INT :
@@ -1944,8 +1964,6 @@ public class ParameterImpl
 				return null;
 			case UMLPackage.PARAMETER___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
 				return compatibleWith((MultiplicityElement) arguments.get(0));
-			case UMLPackage.PARAMETER___INCLUDES_CARDINALITY__INT :
-				return includesCardinality((Integer) arguments.get(0));
 			case UMLPackage.PARAMETER___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
 				return includesMultiplicity((MultiplicityElement) arguments
 					.get(0));
@@ -1962,22 +1980,25 @@ public class ParameterImpl
 				return getUpper();
 			case UMLPackage.PARAMETER___UPPER_BOUND :
 				return upperBound();
-			case UMLPackage.PARAMETER___VALIDATE_REENTRANT_BEHAVIORS__DIAGNOSTICCHAIN_MAP :
-				return validateReentrantBehaviors(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PARAMETER___VALIDATE_CONNECTOR_END__DIAGNOSTICCHAIN_MAP :
-				return validateConnectorEnd((DiagnosticChain) arguments.get(0),
+			case UMLPackage.PARAMETER___VALIDATE_IN_AND_OUT__DIAGNOSTICCHAIN_MAP :
+				return validateInAndOut((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER___VALIDATE_NOT_EXCEPTION__DIAGNOSTICCHAIN_MAP :
 				return validateNotException((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PARAMETER___VALIDATE_IN_AND_OUT__DIAGNOSTICCHAIN_MAP :
-				return validateInAndOut((DiagnosticChain) arguments.get(0),
+			case UMLPackage.PARAMETER___VALIDATE_CONNECTOR_END__DIAGNOSTICCHAIN_MAP :
+				return validateConnectorEnd((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PARAMETER___VALIDATE_REENTRANT_BEHAVIORS__DIAGNOSTICCHAIN_MAP :
+				return validateReentrantBehaviors(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER___VALIDATE_STREAM_AND_EXCEPTION__DIAGNOSTICCHAIN_MAP :
 				return validateStreamAndException(
 					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PARAMETER___VALIDATE_OBJECT_EFFECT__DIAGNOSTICCHAIN_MAP :
+				return validateObjectEffect((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER___IS_SET_DEFAULT :
 				return isSetDefault();

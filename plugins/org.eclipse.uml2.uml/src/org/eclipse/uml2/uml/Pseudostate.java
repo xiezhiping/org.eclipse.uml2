@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -23,8 +23,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A pseudostate is an abstraction that encompasses different types of transient vertices in the state machine graph.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A Pseudostate is an abstraction that encompasses different types of transient Vertices in the StateMachine graph. A StateMachine instance never comes to rest in a Pseudostate, instead, it will exit and enter the Pseudostate within a single run-to-completion step.
+ * <p>From package UML::StateMachines.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -51,7 +51,7 @@ public interface Pseudostate
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Determines the precise type of the Pseudostate and can be one of: entryPoint, exitPoint, initial, deepHistory, shallowHistory, join, fork, junction, terminate or choice.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Kind</em>' attribute.
 	 * @see org.eclipse.uml2.uml.PseudostateKind
@@ -86,7 +86,7 @@ public interface Pseudostate
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The StateMachine in which this Pseudostate is defined. This only applies to Pseudostates of the kind entryPoint or exitPoint.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>State Machine</em>' container reference.
 	 * @see #setStateMachine(StateMachine)
@@ -119,8 +119,8 @@ public interface Pseudostate
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The State that owns this pseudostate and in which it appears.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The State that owns this Pseudostate and in which it appears.
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>State</em>' container reference.
 	 * @see #setState(State)
@@ -145,8 +145,8 @@ public interface Pseudostate
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An initial vertex can have at most one outgoing transition.
-	 * (self.kind = #initial) implies (self.outgoing->size <= 1)
+	 * An initial Vertex can have at most one outgoing Transition.
+	 * (kind = PseudostateKind::initial) implies (outgoing->size() <= 1)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -160,9 +160,8 @@ public interface Pseudostate
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * History vertices can have at most one outgoing transition.
-	 * ((self.kind = #deepHistory) or (self.kind = #shallowHistory)) implies
-	 * (self.outgoing->size <= 1)
+	 * History Vertices can have at most one outgoing Transition.
+	 * ((kind = PseudostateKind::deepHistory) or (kind = PseudostateKind::shallowHistory)) implies (outgoing->size() <= 1)
 	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -177,9 +176,8 @@ public interface Pseudostate
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * In a complete statemachine, a join vertex must have at least two incoming transitions and exactly one outgoing transition.
-	 * (self.kind = #join) implies
-	 * ((self.outgoing->size = 1) and (self.incoming->size >= 2))
+	 * In a complete StateMachine, a join Vertex must have at least two incoming Transitions and exactly one outgoing Transition.
+	 * (kind = PseudostateKind::join) implies (outgoing->size() = 1 and incoming->size() >= 2)
 	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -194,10 +192,15 @@ public interface Pseudostate
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * All transitions incoming a join vertex must originate in different regions of an orthogonal state.
-	 * (self.kind = #join) implies
-	 *   self.incoming->forAll (t1, t2 | t1<>t2 implies
-	 *     (self.stateMachine.LCA(t1.source, t2.source).container.isOrthogonal))
+	 * All Transitions incoming a join Vertex must originate in different Regions of an orthogonal State.
+	 * (kind = PseudostateKind::join) implies
+	 * 
+	 * -- for any pair of incoming transitions there exists an orthogonal state which contains the source vetices of these transitions 
+	 * -- such that these source vertices belong to different regions of that orthogonal state 
+	 * 
+	 * incoming->forAll(t1:Transition, t2:Transition | let contState:State = containingStateMachine().LCAState(t1.source, t2.source) in
+	 * 	((contState <> null) and (contState.region
+	 * 		->exists(r1:Region, r2: Region | (r1 <> r2) and t1.source.isContainedInRegion(r1) and t2.source.isContainedInRegion(r2)))))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -211,9 +214,8 @@ public interface Pseudostate
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * In a complete statemachine, a fork vertex must have at least two outgoing transitions and exactly one incoming transition.
-	 * (self.kind = #fork) implies
-	 * ((self.incoming->size = 1) and (self.outgoing->size >= 2))
+	 * In a complete StateMachine, a fork Vertex must have at least two outgoing Transitions and exactly one incoming Transition.
+	 * (kind = PseudostateKind::fork) implies (incoming->size() = 1 and outgoing->size() >= 2)
 	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -229,9 +231,15 @@ public interface Pseudostate
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * All transitions outgoing a fork vertex must target states in different regions of an orthogonal state.
-	 * (self.kind = #fork) implies
-	 *   self.outgoing->forAll (t1, t2 | t1<>t2 implies
-	 *     (self.stateMachine.LCA(t1.target, t2.target).container.isOrthogonal))
+	 * (kind = PseudostateKind::fork) implies
+	 * 
+	 * -- for any pair of outgoing transitions there exists an orthogonal state which contains the targets of these transitions 
+	 * -- such that these targets belong to different regions of that orthogonal state 
+	 * 
+	 * outgoing->forAll(t1:Transition, t2:Transition | let contState:State = containingStateMachine().LCAState(t1.target, t2.target) in
+	 * 	((contState <> null) and (contState.region
+	 * 		->exists(r1:Region, r2: Region | (r1 <> r2) and t1.target.isContainedInRegion(r1) and t2.target.isContainedInRegion(r2)))))
+	 * 	
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -245,9 +253,8 @@ public interface Pseudostate
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * In a complete statemachine, a junction vertex must have at least one incoming and one outgoing transition.
-	 * (self.kind = #junction) implies
-	 * ((self.incoming->size >= 1) and (self.outgoing->size >= 1))
+	 * In a complete StateMachine, a junction Vertex must have at least one incoming and one outgoing Transition.
+	 * (kind = PseudostateKind::junction) implies (incoming->size() >= 1 and outgoing->size() >= 1)
 	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -262,9 +269,8 @@ public interface Pseudostate
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * In a complete statemachine, a choice vertex must have at least one incoming and one outgoing transition.
-	 * (self.kind = #choice) implies
-	 * ((self.incoming->size >= 1) and (self.outgoing->size >= 1))
+	 * In a complete statemachine, a choice Vertex must have at least one incoming and one outgoing Transition.
+	 * (kind = PseudostateKind::choice) implies (incoming->size() >= 1 and outgoing->size() >= 1)
 	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -279,9 +285,8 @@ public interface Pseudostate
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The outgoing transition from and initial vertex may have a behavior, but not a trigger or a guard.
-	 * (self.kind = #initial) implies (self.outgoing.guard->isEmpty()
-	 *   and self.outgoing.trigger->isEmpty())
+	 * The outgoing Transition from an initial vertex may have a behavior, but not a trigger or a guard.
+	 * (kind = PseudostateKind::initial) implies (outgoing.guard = null and outgoing.trigger->isEmpty())
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

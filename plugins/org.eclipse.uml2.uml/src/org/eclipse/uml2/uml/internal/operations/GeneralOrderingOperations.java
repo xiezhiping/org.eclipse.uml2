@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 CEA and others.
+ * Copyright (c) 2011, 2014 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -29,7 +30,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.GeneralOrdering#validateIrreflexsiveTransitiveClosure(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Irreflexsive Transitive Closure</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.GeneralOrdering#validateIrreflexiveTransitiveClosure(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Irreflexive Transitive Closure</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,14 +53,14 @@ public class GeneralOrderingOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An occurrence specification must not be ordered relative to itself through a series of general orderings. (In other words, the transitive closure of the general orderings is irreflexive.)
-	 * start.lifeline = finish.lifeline
+	 * after->closure(toAfter.after)->excludes(before)
 	 * @param generalOrdering The receiving '<em><b>General Ordering</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateIrreflexsiveTransitiveClosure(
+	public static boolean validateIrreflexiveTransitiveClosure(
 			GeneralOrdering generalOrdering, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		// TODO: implement this method
@@ -72,10 +73,10 @@ public class GeneralOrderingOperations
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.GENERAL_ORDERING__IRREFLEXSIVE_TRANSITIVE_CLOSURE,
+						UMLValidator.GENERAL_ORDERING__IRREFLEXIVE_TRANSITIVE_CLOSURE,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateIrreflexsiveTransitiveClosure", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(generalOrdering, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateIrreflexiveTransitiveClosure", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(generalOrdering, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{generalOrdering}));
 			}
 			return false;

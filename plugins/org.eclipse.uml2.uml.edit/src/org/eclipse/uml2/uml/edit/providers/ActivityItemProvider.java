@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 416121
+ *   Kenn Hussey (CEA) - 327039, 351774, 416121, 418466
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -80,13 +80,13 @@ public class ActivityItemProvider
 			super.getPropertyDescriptors(object);
 
 			addEdgePropertyDescriptor(object);
+			addNodePropertyDescriptor(object);
 			addVariablePropertyDescriptor(object);
 			addGroupPropertyDescriptor(object);
 			addIsReadOnlyPropertyDescriptor(object);
 			addIsSingleExecutionPropertyDescriptor(object);
 			addPartitionPropertyDescriptor(object);
 			addStructuredNodePropertyDescriptor(object);
-			addNodePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -332,11 +332,11 @@ public class ActivityItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Activity.class)) {
+			case UMLPackage.ACTIVITY__NODE :
 			case UMLPackage.ACTIVITY__GROUP :
 			case UMLPackage.ACTIVITY__IS_READ_ONLY :
 			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
 			case UMLPackage.ACTIVITY__PARTITION :
-			case UMLPackage.ACTIVITY__NODE :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
@@ -370,11 +370,11 @@ public class ActivityItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__OWNED_GROUP,
-			UMLFactory.eINSTANCE.createStructuredActivityNode()));
+			UMLFactory.eINSTANCE.createInterruptibleActivityRegion()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__OWNED_GROUP,
-			UMLFactory.eINSTANCE.createInterruptibleActivityRegion()));
+			UMLFactory.eINSTANCE.createStructuredActivityNode()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__OWNED_GROUP,
@@ -406,14 +406,6 @@ public class ActivityItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
-			UMLFactory.eINSTANCE.createAcceptEventAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
-			UMLFactory.eINSTANCE.createAcceptCallAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
 			UMLFactory.eINSTANCE.createStructuredActivityNode()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -426,15 +418,19 @@ public class ActivityItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
+			UMLFactory.eINSTANCE.createValueSpecificationAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
+			UMLFactory.eINSTANCE.createAcceptEventAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
+			UMLFactory.eINSTANCE.createAcceptCallAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
 			UMLFactory.eINSTANCE.createActionInputPin()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
-			UMLFactory.eINSTANCE.createActivityFinalNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
-			UMLFactory.eINSTANCE.createActivityParameterNode()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
@@ -455,10 +451,6 @@ public class ActivityItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
 			UMLFactory.eINSTANCE.createCallOperationAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
-			UMLFactory.eINSTANCE.createCentralBufferNode()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
@@ -490,14 +482,6 @@ public class ActivityItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
-			UMLFactory.eINSTANCE.createDataStoreNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
-			UMLFactory.eINSTANCE.createDecisionNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
 			UMLFactory.eINSTANCE.createDestroyLinkAction()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -514,27 +498,7 @@ public class ActivityItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
-			UMLFactory.eINSTANCE.createFlowFinalNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
-			UMLFactory.eINSTANCE.createForkNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
-			UMLFactory.eINSTANCE.createInitialNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
-			UMLFactory.eINSTANCE.createJoinNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
 			UMLFactory.eINSTANCE.createLoopNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
-			UMLFactory.eINSTANCE.createMergeNode()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
@@ -630,7 +594,43 @@ public class ActivityItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
-			UMLFactory.eINSTANCE.createValueSpecificationAction()));
+			UMLFactory.eINSTANCE.createActivityFinalNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
+			UMLFactory.eINSTANCE.createActivityParameterNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
+			UMLFactory.eINSTANCE.createCentralBufferNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
+			UMLFactory.eINSTANCE.createDataStoreNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
+			UMLFactory.eINSTANCE.createDecisionNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
+			UMLFactory.eINSTANCE.createFlowFinalNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
+			UMLFactory.eINSTANCE.createForkNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
+			UMLFactory.eINSTANCE.createInitialNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
+			UMLFactory.eINSTANCE.createJoinNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__OWNED_NODE,
+			UMLFactory.eINSTANCE.createMergeNode()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__PARTITION,
@@ -761,14 +761,14 @@ public class ActivityItemProvider
 	}
 
 	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject, java.util.Collection)
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object, java.util.Collection)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, EObject value, Collection<?> collection) {
+			EStructuralFeature feature, Object value, Collection<?> collection) {
 		if (feature == UMLPackage.Literals.ACTIVITY__GROUP) {
 			return new SubsetSupersetReplaceCommand(domain, owner, feature,
 				null, new EStructuralFeature[]{

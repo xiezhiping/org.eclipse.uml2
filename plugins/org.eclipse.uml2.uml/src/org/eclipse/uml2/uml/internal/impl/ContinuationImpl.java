@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Continuation;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.GeneralOrdering;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.InteractionOperand;
@@ -194,14 +193,14 @@ public class ContinuationImpl
 				return getVisibility();
 			case UMLPackage.CONTINUATION__COVERED :
 				return getCovereds();
-			case UMLPackage.CONTINUATION__ENCLOSING_INTERACTION :
-				if (resolve)
-					return getEnclosingInteraction();
-				return basicGetEnclosingInteraction();
 			case UMLPackage.CONTINUATION__ENCLOSING_OPERAND :
 				if (resolve)
 					return getEnclosingOperand();
 				return basicGetEnclosingOperand();
+			case UMLPackage.CONTINUATION__ENCLOSING_INTERACTION :
+				if (resolve)
+					return getEnclosingInteraction();
+				return basicGetEnclosingInteraction();
 			case UMLPackage.CONTINUATION__GENERAL_ORDERING :
 				return getGeneralOrderings();
 			case UMLPackage.CONTINUATION__SETTING :
@@ -229,11 +228,6 @@ public class ContinuationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.CONTINUATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.CONTINUATION__NAME :
 				setName((String) newValue);
 				return;
@@ -247,11 +241,11 @@ public class ContinuationImpl
 				getCovereds().clear();
 				getCovereds().addAll((Collection<? extends Lifeline>) newValue);
 				return;
-			case UMLPackage.CONTINUATION__ENCLOSING_INTERACTION :
-				setEnclosingInteraction((Interaction) newValue);
-				return;
 			case UMLPackage.CONTINUATION__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) newValue);
+				return;
+			case UMLPackage.CONTINUATION__ENCLOSING_INTERACTION :
+				setEnclosingInteraction((Interaction) newValue);
 				return;
 			case UMLPackage.CONTINUATION__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
@@ -279,9 +273,6 @@ public class ContinuationImpl
 			case UMLPackage.CONTINUATION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.CONTINUATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.CONTINUATION__NAME :
 				unsetName();
 				return;
@@ -294,11 +285,11 @@ public class ContinuationImpl
 			case UMLPackage.CONTINUATION__COVERED :
 				getCovereds().clear();
 				return;
-			case UMLPackage.CONTINUATION__ENCLOSING_INTERACTION :
-				setEnclosingInteraction((Interaction) null);
-				return;
 			case UMLPackage.CONTINUATION__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) null);
+				return;
+			case UMLPackage.CONTINUATION__ENCLOSING_INTERACTION :
+				setEnclosingInteraction((Interaction) null);
 				return;
 			case UMLPackage.CONTINUATION__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
@@ -327,8 +318,7 @@ public class ContinuationImpl
 			case UMLPackage.CONTINUATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.CONTINUATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.CONTINUATION__NAME :
 				return isSetName();
 			case UMLPackage.CONTINUATION__NAME_EXPRESSION :
@@ -343,10 +333,10 @@ public class ContinuationImpl
 				return isSetVisibility();
 			case UMLPackage.CONTINUATION__COVERED :
 				return covereds != null && !covereds.isEmpty();
-			case UMLPackage.CONTINUATION__ENCLOSING_INTERACTION :
-				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.CONTINUATION__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
+			case UMLPackage.CONTINUATION__ENCLOSING_INTERACTION :
+				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.CONTINUATION__GENERAL_ORDERING :
 				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.CONTINUATION__SETTING :
@@ -447,16 +437,16 @@ public class ContinuationImpl
 				return allOwnedElements();
 			case UMLPackage.CONTINUATION___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.CONTINUATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONTINUATION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONTINUATION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONTINUATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONTINUATION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -467,6 +457,8 @@ public class ContinuationImpl
 				return getLabel();
 			case UMLPackage.CONTINUATION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.CONTINUATION___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.CONTINUATION___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.CONTINUATION___ALL_OWNING_PACKAGES :
@@ -474,18 +466,18 @@ public class ContinuationImpl
 			case UMLPackage.CONTINUATION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.CONTINUATION___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.CONTINUATION___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.CONTINUATION___SEPARATOR :
 				return separator();
-			case UMLPackage.CONTINUATION___VALIDATE_SAME_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateSameName((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONTINUATION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.CONTINUATION___VALIDATE_FIRST_OR_LAST_INTERACTION_FRAGMENT__DIAGNOSTICCHAIN_MAP :
 				return validateFirstOrLastInteractionFragment(
 					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONTINUATION___VALIDATE_SAME_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateSameName((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONTINUATION___VALIDATE_GLOBAL__DIAGNOSTICCHAIN_MAP :
 				return validateGlobal((DiagnosticChain) arguments.get(0),

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 397141
+ *   Kenn Hussey (CEA) - 327039, 397141, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -27,8 +27,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A loop node is a structured activity node that represents a loop with setup, test, and body sections.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A LoopNode is a StructuredActivityNode that represents an iterative loop with setup, test, and body sections.
+ * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -59,8 +59,8 @@ public interface LoopNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If true, the test is performed before the first execution of the body. If false, the body is executed once before the test is performed.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * If true, the test is performed before the first execution of the bodyPart. If false, the bodyPart is executed once before the test is performed.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Tested First</em>' attribute.
 	 * @see #setIsTestedFirst(boolean)
@@ -86,8 +86,8 @@ public interface LoopNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The set of nodes and edges that perform the repetitive computations of the loop. The body section is executed as long as the test section produces a true value.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The set of ExecutableNodes that perform the repetitive computations of the loop. The bodyPart is executed as long as the test section produces a true value.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body Part</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_BodyPart()
@@ -126,8 +126,8 @@ public interface LoopNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The set of nodes and edges that initialize values or perform other setup computations for the loop.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The set of ExecutableNodes executed before the first iteration of the loop, in order to initialize values or perform other setup computations.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Setup Part</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_SetupPart()
@@ -165,8 +165,8 @@ public interface LoopNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An output pin within the test fragment the value of which is examined after execution of the test to determine whether to execute the loop body.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * An OutputPin on an Action in the test section whose Boolean value determines whether to continue executing the loop bodyPart.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Decider</em>' reference.
 	 * @see #setDecider(OutputPin)
@@ -192,8 +192,8 @@ public interface LoopNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The set of nodes, edges, and designated value that compute a Boolean value to determine if another execution of the body will be performed.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The set of ExecutableNodes executed in order to provide the test result for the loop.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Test</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_Test()
@@ -238,8 +238,8 @@ public interface LoopNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A list of output pins that constitute the data flow output of the entire loop.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * A list of OutputPins that receive the loopVariable values after the last iteration of the loop and constitute the output of the LoopNode.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_Result()
@@ -290,11 +290,17 @@ public interface LoopNode
 	/**
 	 * Returns the value of the '<em><b>Loop Variable</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.OutputPin}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * A list of OutputPins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are moved to the result OutputPins of the loop.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Loop Variable</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_LoopVariable()
@@ -361,8 +367,8 @@ public interface LoopNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A list of output pins within the body fragment the values of which are moved to the loop variable pins after completion of execution of the body, before the next iteration of the loop begins or before the loop exits.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The OutputPins on Actions within the bodyPart, the values of which are moved to the loopVariable OutputPins after the completion of each execution of the bodyPart, before the next iteration of the loop begins or before the loop exits.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body Output</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_BodyOutput()
@@ -408,8 +414,8 @@ public interface LoopNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A list of values that are moved into the loop variable pins before the first iteration of the loop.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * A list of InputPins whose values are moved into the loopVariable Pins before the first iteration of the loop.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Loop Variable Input</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_LoopVariableInput()
@@ -475,8 +481,8 @@ public interface LoopNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Loop variable inputs must not have outgoing edges.
-	 * true
+	 * The loopVariableInputs must not have outgoing edges.
+	 * loopVariableInput.outgoing->isEmpty()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -491,7 +497,7 @@ public interface LoopNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The union of the ExecutableNodes in the setupPart, test and bodyPart of a LoopNode must be the same as the subset of nodes contained in the LoopNode (considered as a StructuredActivityNode) that are ExecutableNodes.
-	 * true
+	 * setupPart->union(test)->union(bodyPart)=node->select(oclIsKindOf(ExecutableNode)).oclAsType(ExecutableNode)->asSet()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -505,8 +511,8 @@ public interface LoopNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The bodyOutput pins are output pins on actions in the body of the loop node.
-	 * true
+	 * The bodyOutput pins are OutputPins on Actions in the body of the LoopNode.
+	 * bodyPart.oclAsType(Action).allActions().output->includesAll(bodyOutput)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -520,8 +526,98 @@ public interface LoopNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The result output pins have no incoming edges.
-	 * true
+	 * The test and body parts of a ConditionalNode must be disjoint with each other.
+	 * setupPart->intersection(test)->isEmpty() and
+	 * setupPart->intersection(bodyPart)->isEmpty() and
+	 * test->intersection(bodyPart)->isEmpty()
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateSetupTestAndBody(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A LoopNode must have the same number of bodyOutput Pins as loopVariables, and each bodyOutput Pin must be compatible with the corresponding loopVariable (by positional order) in type, multiplicity, ordering and uniqueness.
+	 * bodyOutput->size()=loopVariable->size() and
+	 * Sequence{1..loopVariable->size()}->forAll(i |
+	 * 	bodyOutput->at(i).type.conformsTo(loopVariable->at(i).type) and
+	 * 	bodyOutput->at(i).isOrdered = loopVariable->at(i).isOrdered and
+	 * 	bodyOutput->at(i).isUnique = loopVariable->at(i).isUnique and
+	 * 	loopVariable->at(i).includesMultiplicity(bodyOutput->at(i)))
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateMatchingOutputPins(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A LoopNode must have the same number of loopVariableInputs and loopVariables, and they must match in type, uniqueness and multiplicity.
+	 * loopVariableInput->size()=loopVariable->size() and
+	 * loopVariableInput.type=loopVariable.type and
+	 * loopVariableInput.isUnique=loopVariable.isUnique and
+	 * loopVariableInput.lower=loopVariable.lower and
+	 * loopVariableInput.upper=loopVariable.upper
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateMatchingLoopVariables(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A LoopNode must have the same number of result OutputPins and loopVariables, and they must match in type, uniqueness and multiplicity.
+	 * result->size()=loopVariable->size() and
+	 * result.type=loopVariable.type and
+	 * result.isUnique=loopVariable.isUnique and
+	 * result.lower=loopVariable.lower and
+	 * result.upper=loopVariable.upper
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateMatchingResultPins(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * All ActivityEdges outgoing from loopVariable OutputPins must have targets within the LoopNode.
+	 * allOwnedNodes()->includesAll(loopVariable.outgoing.target)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateLoopVariableOutgoing(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The result OutputPins have no incoming edges.
+	 * result.incoming->isEmpty()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

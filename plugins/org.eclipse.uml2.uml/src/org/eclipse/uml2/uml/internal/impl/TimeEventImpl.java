@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -39,7 +39,6 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -288,17 +287,6 @@ public class TimeEventImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateStartingTime(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return TimeEventOperations.validateStartingTime(this, diagnostics,
-			context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
@@ -309,9 +297,6 @@ public class TimeEventImpl
 			case UMLPackage.TIME_EVENT__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.TIME_EVENT__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TIME_EVENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.TIME_EVENT__OWNING_TEMPLATE_PARAMETER :
@@ -395,11 +380,6 @@ public class TimeEventImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.TIME_EVENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.TIME_EVENT__NAME :
 				setName((String) newValue);
 				return;
@@ -438,9 +418,6 @@ public class TimeEventImpl
 				return;
 			case UMLPackage.TIME_EVENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.TIME_EVENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.TIME_EVENT__NAME :
 				unsetName();
@@ -484,8 +461,7 @@ public class TimeEventImpl
 			case UMLPackage.TIME_EVENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.TIME_EVENT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.TIME_EVENT__NAME :
 				return isSetName();
 			case UMLPackage.TIME_EVENT__NAME_EXPRESSION :
@@ -602,16 +578,16 @@ public class TimeEventImpl
 				return allOwnedElements();
 			case UMLPackage.TIME_EVENT___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.TIME_EVENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TIME_EVENT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TIME_EVENT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.TIME_EVENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TIME_EVENT___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -622,6 +598,8 @@ public class TimeEventImpl
 				return getLabel();
 			case UMLPackage.TIME_EVENT___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.TIME_EVENT___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.TIME_EVENT___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.TIME_EVENT___ALL_OWNING_PACKAGES :
@@ -629,18 +607,19 @@ public class TimeEventImpl
 			case UMLPackage.TIME_EVENT___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.TIME_EVENT___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.TIME_EVENT___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.TIME_EVENT___SEPARATOR :
 				return separator();
+			case UMLPackage.TIME_EVENT___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.TIME_EVENT___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.TIME_EVENT___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
-			case UMLPackage.TIME_EVENT___VALIDATE_STARTING_TIME__DIAGNOSTICCHAIN_MAP :
-				return validateStartingTime((DiagnosticChain) arguments.get(0),
+			case UMLPackage.TIME_EVENT___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TIME_EVENT___VALIDATE_WHEN_NON_NEGATIVE__DIAGNOSTICCHAIN_MAP :
 				return validateWhenNonNegative(

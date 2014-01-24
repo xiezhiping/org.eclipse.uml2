@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -35,7 +35,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -294,6 +293,17 @@ public class TimeExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateNoExprRequiresObservation(
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return TimeExpressionOperations.validateNoExprRequiresObservation(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public String stringValue() {
 		return TimeExpressionOperations.stringValue(this);
@@ -314,9 +324,6 @@ public class TimeExpressionImpl
 			case UMLPackage.TIME_EXPRESSION__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.TIME_EXPRESSION__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TIME_EXPRESSION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.TIME_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
@@ -404,11 +411,6 @@ public class TimeExpressionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.TIME_EXPRESSION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.TIME_EXPRESSION__NAME :
 				setName((String) newValue);
 				return;
@@ -452,9 +454,6 @@ public class TimeExpressionImpl
 				return;
 			case UMLPackage.TIME_EXPRESSION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.TIME_EXPRESSION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.TIME_EXPRESSION__NAME :
 				unsetName();
@@ -501,8 +500,7 @@ public class TimeExpressionImpl
 			case UMLPackage.TIME_EXPRESSION__OWNER :
 				return isSetOwner();
 			case UMLPackage.TIME_EXPRESSION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.TIME_EXPRESSION__NAME :
 				return isSetName();
 			case UMLPackage.TIME_EXPRESSION__NAME_EXPRESSION :
@@ -621,16 +619,16 @@ public class TimeExpressionImpl
 				return allOwnedElements();
 			case UMLPackage.TIME_EXPRESSION___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.TIME_EXPRESSION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TIME_EXPRESSION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TIME_EXPRESSION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.TIME_EXPRESSION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TIME_EXPRESSION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -641,6 +639,8 @@ public class TimeExpressionImpl
 				return getLabel();
 			case UMLPackage.TIME_EXPRESSION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.TIME_EXPRESSION___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.TIME_EXPRESSION___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.TIME_EXPRESSION___ALL_OWNING_PACKAGES :
@@ -648,16 +648,20 @@ public class TimeExpressionImpl
 			case UMLPackage.TIME_EXPRESSION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.TIME_EXPRESSION___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.TIME_EXPRESSION___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.TIME_EXPRESSION___SEPARATOR :
 				return separator();
+			case UMLPackage.TIME_EXPRESSION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.TIME_EXPRESSION___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.TIME_EXPRESSION___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.TIME_EXPRESSION___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TIME_EXPRESSION___BOOLEAN_VALUE :
 				return booleanValue();
 			case UMLPackage.TIME_EXPRESSION___INTEGER_VALUE :
@@ -672,6 +676,10 @@ public class TimeExpressionImpl
 				return stringValue();
 			case UMLPackage.TIME_EXPRESSION___UNLIMITED_VALUE :
 				return unlimitedValue();
+			case UMLPackage.TIME_EXPRESSION___VALIDATE_NO_EXPR_REQUIRES_OBSERVATION__DIAGNOSTICCHAIN_MAP :
+				return validateNoExprRequiresObservation(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}

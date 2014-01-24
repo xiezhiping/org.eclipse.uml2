@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation and others.
+ * Copyright (c) 2005, 2014 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,9 +30,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.QualifierValue#validateQualifierAttribute(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Qualifier Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.QualifierValue#validateMultiplicityOfQualifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Qualifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.QualifierValue#validateTypeOfQualifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Qualifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.QualifierValue#validateQualifierAttribute(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Qualifier Attribute</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,8 +54,8 @@ public class QualifierValueOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The qualifier attribute must be a qualifier of the association end of the link-end data.
-	 * self.LinkEndData.end->collect(qualifier)->includes(self.qualifier)
+	 * The qualifier must be a qualifier of the Association end of the linkEndData that owns this QualifierValue.
+	 * linkEndData.end.qualifier->includes(qualifier)
 	 * @param qualifierValue The receiving '<em><b>Qualifier Value</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -90,8 +90,8 @@ public class QualifierValueOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the qualifier value input pin is the same as the type of the qualifier attribute.
-	 * self.value.type = self.qualifier.type
+	 * The type of the value InputPin conforms to the type of the qualifier Property.
+	 * value.type.conformsTo(qualifier.type)
 	 * @param qualifierValue The receiving '<em><b>Qualifier Value</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -126,8 +126,8 @@ public class QualifierValueOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the qualifier value input pin is "1..1".
-	 * self.value.multiplicity.is(1,1)
+	 * The multiplicity of the value InputPin is 1..1.
+	 * value.is(1,1)
 	 * @param qualifierValue The receiving '<em><b>Qualifier Value</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -176,16 +176,16 @@ public class InitialNodeImpl
 				return allOwnedElements();
 			case UMLPackage.INITIAL_NODE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.INITIAL_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INITIAL_NODE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INITIAL_NODE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INITIAL_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INITIAL_NODE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -196,6 +196,8 @@ public class InitialNodeImpl
 				return getLabel();
 			case UMLPackage.INITIAL_NODE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.INITIAL_NODE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.INITIAL_NODE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.INITIAL_NODE___ALL_OWNING_PACKAGES :
@@ -203,12 +205,12 @@ public class InitialNodeImpl
 			case UMLPackage.INITIAL_NODE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.INITIAL_NODE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.INITIAL_NODE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.INITIAL_NODE___SEPARATOR :
 				return separator();
+			case UMLPackage.INITIAL_NODE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.INITIAL_NODE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -226,13 +228,8 @@ public class InitialNodeImpl
 			case UMLPackage.INITIAL_NODE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.INITIAL_NODE___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
-				return validateOwned((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INITIAL_NODE___VALIDATE_OWNED_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateOwnedStructuredNode(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INITIAL_NODE___CONTAINING_ACTIVITY :
+				return containingActivity();
 			case UMLPackage.INITIAL_NODE___VALIDATE_NO_INCOMING_EDGES__DIAGNOSTICCHAIN_MAP :
 				return validateNoIncomingEdges(
 					(DiagnosticChain) arguments.get(0),

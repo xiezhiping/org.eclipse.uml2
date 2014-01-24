@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,13 +30,13 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndAction#validateAssociationOfAssociation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Association Of Association</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndAction#validateMultiplicityOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Object</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndAction#validateTypeOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Result</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndAction#validateTypeOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Object</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndAction#validateProperty(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Property</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndAction#validateMultiplicityOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Result</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndAction#validateMultiplicityOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Object</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndAction#validateEndsOfAssociation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Ends Of Association</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndAction#validateTypeOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Result</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndAction#validateMultiplicityOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Result</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndAction#validateTypeOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Object</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndAction#validateAssociationOfAssociation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Association Of Association</em>}</li>
  * </ul>
  * </p>
  *
@@ -58,8 +58,8 @@ public class ReadLinkObjectEndActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The property must be an association end.
-	 * self.end.association.notEmpty()
+	 * The end Property must be an Association memberEnd.
+	 * end.association <> null
 	 * @param readLinkObjectEndAction The receiving '<em><b>Read Link Object End Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -94,8 +94,8 @@ public class ReadLinkObjectEndActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The association of the association end must be an association class.
-	 * self.end.Association.oclIsKindOf(AssociationClass)
+	 * The association of the end must be an AssociationClass.
+	 * end.association.oclIsKindOf(AssociationClass)
 	 * @param readLinkObjectEndAction The receiving '<em><b>Read Link Object End Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -131,7 +131,7 @@ public class ReadLinkObjectEndActionOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The ends of the association must not be static.
-	 * self.end.association.memberEnd->forall(e | not e.isStatic)
+	 * end.association.memberEnd->forAll(e | not e.isStatic)
 	 * @param readLinkObjectEndAction The receiving '<em><b>Read Link Object End Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -166,8 +166,8 @@ public class ReadLinkObjectEndActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the object input pin is the association class that owns the association end.
-	 * self.object.type = self.end.association
+	 * The type of the object InputPin is the AssociationClass that owns the end Property.
+	 * object.type = end.association
 	 * @param readLinkObjectEndAction The receiving '<em><b>Read Link Object End Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -202,8 +202,8 @@ public class ReadLinkObjectEndActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the object input pin is 1..1.
-	 * self.object.multiplicity.is(1,1)
+	 * The multiplicity of the object InputPin is 1..1.
+	 * object.is(1,1)
 	 * @param readLinkObjectEndAction The receiving '<em><b>Read Link Object End Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -238,8 +238,8 @@ public class ReadLinkObjectEndActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the result output pin is the same as the type of the association end.
-	 * self.result.type = self.end.type
+	 * The type of the result OutputPin is the same as the type of the end Property.
+	 * result.type = end.type
 	 * @param readLinkObjectEndAction The receiving '<em><b>Read Link Object End Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -274,8 +274,8 @@ public class ReadLinkObjectEndActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the result output pin is 1..1.
-	 * self.result.multiplicity.is(1,1)
+	 * The multiplicity of the result OutputPin is 1..1.
+	 * result.is(1,1)
 	 * @param readLinkObjectEndAction The receiving '<em><b>Read Link Object End Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 212765
+ *   Kenn Hussey (CEA) - 212765, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -201,16 +201,6 @@ public class ConnectableElementTemplateParameterImpl
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				if (ownedParameteredElement != null)
-					msgs = ((InternalEObject) ownedParameteredElement)
-						.eInverseRemove(
-							this,
-							EOPPOSITE_FEATURE_BASE
-								- UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-							null, msgs);
-				return basicSetOwnedParameteredElement(
-					(ParameterableElement) otherEnd, msgs);
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				if (parameteredElement != null)
 					msgs = ((InternalEObject) parameteredElement)
@@ -224,6 +214,16 @@ public class ConnectableElementTemplateParameterImpl
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetSignature((TemplateSignature) otherEnd, msgs);
+			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				if (ownedParameteredElement != null)
+					msgs = ((InternalEObject) ownedParameteredElement)
+						.eInverseRemove(
+							this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+							null, msgs);
+				return basicSetOwnedParameteredElement(
+					(ParameterableElement) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -245,12 +245,12 @@ public class ConnectableElementTemplateParameterImpl
 					otherEnd, msgs);
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				return basicSetOwnedDefault(null, msgs);
-			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				return basicSetOwnedParameteredElement(null, msgs);
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				return basicSetParameteredElement(null, msgs);
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__SIGNATURE :
 				return basicSetSignature(null, msgs);
+			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				return basicSetOwnedParameteredElement(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -281,10 +281,6 @@ public class ConnectableElementTemplateParameterImpl
 				if (resolve)
 					return getOwnedDefault();
 				return basicGetOwnedDefault();
-			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				if (resolve)
-					return getOwnedParameteredElement();
-				return basicGetOwnedParameteredElement();
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				if (resolve)
 					return getParameteredElement();
@@ -293,6 +289,10 @@ public class ConnectableElementTemplateParameterImpl
 				if (resolve)
 					return getSignature();
 				return basicGetSignature();
+			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				if (resolve)
+					return getOwnedParameteredElement();
+				return basicGetOwnedParameteredElement();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -322,14 +322,14 @@ public class ConnectableElementTemplateParameterImpl
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				setOwnedDefault((ParameterableElement) newValue);
 				return;
-			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				setOwnedParameteredElement((ParameterableElement) newValue);
-				return;
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				setParameteredElement((ParameterableElement) newValue);
 				return;
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__SIGNATURE :
 				setSignature((TemplateSignature) newValue);
+				return;
+			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				setOwnedParameteredElement((ParameterableElement) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -355,14 +355,14 @@ public class ConnectableElementTemplateParameterImpl
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				setOwnedDefault((ParameterableElement) null);
 				return;
-			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				setOwnedParameteredElement((ParameterableElement) null);
-				return;
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				setParameteredElement((ParameterableElement) null);
 				return;
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__SIGNATURE :
 				setSignature((TemplateSignature) null);
+				return;
+			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				setOwnedParameteredElement((ParameterableElement) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -388,12 +388,12 @@ public class ConnectableElementTemplateParameterImpl
 				return default_ != null;
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				return ownedDefault != null;
-			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				return ownedParameteredElement != null;
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				return isSetParameteredElement();
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__SIGNATURE :
 				return basicGetSignature() != null;
+			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				return ownedParameteredElement != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

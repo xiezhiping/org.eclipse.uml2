@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -59,13 +59,17 @@ public class ActorOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An actor can only have associations to use cases, components and classes. Furthermore these associations must be binary.
-	 * self.ownedAttribute->forAll ( a |
-	 * (a.association->notEmpty()) implies
-	 * ((a.association.memberEnd.size() = 2) and
-	 * (a.opposite.class.oclIsKindOf(UseCase) or
-	 * (a.opposite.class.oclIsKindOf(Class) and not a.opposite.class.oclIsKindOf(Behavior))))
-	 * 
+	 * An Actor can only have Associations to UseCases, Components, and Classes. Furthermore these Associations must be binary.
+	 * Association.allInstances()->forAll( a |
+	 *   a.memberEnd->collect(type)->includes(self) implies
+	 *   (
+	 *     a.memberEnd->size() = 2 and
+	 *     let actorEnd : Property = a.memberEnd->any(type = self) in
+	 *       actorEnd.opposite.class.oclIsKindOf(UseCase) or
+	 *       ( actorEnd.opposite.class.oclIsKindOf(Class) and not
+	 *          actorEnd.opposite.class.oclIsKindOf(Behavior))
+	 *       )
+	 *   )
 	 * @param actor The receiving '<em><b>Actor</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -77,15 +81,20 @@ public class ActorOperations
 		boolean result = true;
 
 		for (Association association : actor.getAssociations()) {
-			Property otherEnd = association.getMemberEnd(null, actor)
-				.getOtherEnd();
-			Type otherEndType = otherEnd == null
-				? null
-				: otherEnd.getType();
+			result &= association.isBinary();
 
-			if (!(otherEndType instanceof UseCase || (otherEndType instanceof org.eclipse.uml2.uml.Class && !(otherEndType instanceof Behavior)))) {
-				result &= false;
+			if (result) {
+				Property otherEnd = association.getMemberEnd(null, actor)
+					.getOtherEnd();
+				Type otherEndType = otherEnd == null
+					? null
+					: otherEnd.getType();
 
+				result &= otherEndType instanceof UseCase
+					|| (otherEndType instanceof org.eclipse.uml2.uml.Class && !(otherEndType instanceof Behavior));
+			}
+
+			if (!result) {
 				diagnostics
 					.add(new BasicDiagnostic(
 						Diagnostic.WARNING,
@@ -95,6 +104,8 @@ public class ActorOperations
 							.getString(
 								"_UI_Actor_Associations_diagnostic", getMessageSubstitutions(context, actor, association)), //$NON-NLS-1$
 						new Object[]{actor, association}));
+
+				break;
 			}
 		}
 

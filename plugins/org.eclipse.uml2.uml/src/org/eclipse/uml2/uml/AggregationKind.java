@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.uml;
@@ -24,8 +25,8 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
- * AggregationKind is an enumeration type that specifies the literals for defining the kind of aggregation of a property.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * AggregationKind is an Enumeration for specifying the kind of aggregation of a Property.
+ * <p>From package UML::Classification.</p>
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getAggregationKind()
  * @model
@@ -68,7 +69,7 @@ public enum AggregationKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that the property has no aggregation.
+	 * Indicates that the Property has no aggregation.
 	 * <!-- end-model-doc -->
 	 * @see #NONE_LITERAL
 	 * @model name="none"
@@ -82,7 +83,7 @@ public enum AggregationKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that the property has a shared aggregation.
+	 * Indicates that the Property has shared aggregation.
 	 * <!-- end-model-doc -->
 	 * @see #SHARED_LITERAL
 	 * @model name="shared"
@@ -96,7 +97,7 @@ public enum AggregationKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that the property is aggregated compositely, i.e., the composite object has responsibility for the existence and storage of the composed objects (parts).
+	 * Indicates that the Property is aggregated compositely, i.e., the composite object has responsibility for the existence and storage of the composed objects (parts).
 	 * <!-- end-model-doc -->
 	 * @see #COMPOSITE_LITERAL
 	 * @model name="composite"

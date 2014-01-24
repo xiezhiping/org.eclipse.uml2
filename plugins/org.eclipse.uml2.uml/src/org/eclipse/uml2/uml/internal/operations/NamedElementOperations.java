@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 374878
+ *   Kenn Hussey (CEA) - 327039, 351774, 374878, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -22,8 +22,10 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.uml2.common.util.UnionEObjectEList;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -41,19 +43,20 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.NamedElement#validateVisibilityNeedsOwnership(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility Needs Ownership</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#validateHasQualifiedName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Has Qualified Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#validateHasNoQualifiedName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Has No Qualified Name</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.NamedElement#validateVisibilityNeedsOwnership(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility Needs Ownership</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#createDependency(org.eclipse.uml2.uml.NamedElement) <em>Create Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#createUsage(org.eclipse.uml2.uml.NamedElement) <em>Create Usage</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#getLabel() <em>Get Label</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#getLabel(boolean) <em>Get Label</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Get Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#allNamespaces() <em>All Namespaces</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#allOwningPackages() <em>All Owning Packages</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#isDistinguishableFrom(org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.Namespace) <em>Is Distinguishable From</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Get Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#getQualifiedName() <em>Get Qualified Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#separator() <em>Separator</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.NamedElement#getClientDependencies() <em>Get Client Dependencies</em>}</li>
  * </ul>
  * </p>
  *
@@ -75,9 +78,8 @@ public class NamedElementOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If there is no name, or one of the containing namespaces has no name, there is no qualified name.
-	 * (self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty())
-	 *   implies self.qualifiedName->isEmpty()
+	 * If there is no name, or one of the containing Namespaces has no name, there is no qualifiedName.
+	 * name=null or allNamespaces()->select( ns | ns.name=null )->notEmpty() implies qualifiedName = null
 	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -111,9 +113,9 @@ public class NamedElementOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.
-	 * (self.name->notEmpty() and self.allNamespaces()->select(ns | ns.name->isEmpty())->isEmpty()) implies
-	 *   self.qualifiedName = self.allNamespaces()->iterate( ns : Namespace; result: String = self.name | ns.name->union(self.separator())->union(result))
+	 * When there is a name, and all of the containing Namespaces have a name, the qualifiedName is constructed from the name of the NamedElement and the names of the containing Namespaces.
+	 * (name <> null and allNamespaces()->select(ns | ns.name = null)->isEmpty()) implies
+	 *   qualifiedName = allNamespaces()->iterate( ns : Namespace; agg: String = name | ns.name.concat(self.separator()).concat(agg))
 	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -385,6 +387,34 @@ public class NamedElementOperations
 	 */
 	public static String separator(NamedElement namedElement) {
 		return NamedElement.SEPARATOR;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * result = (Dependency.allInstances()->select(d | d.client->includes(self)))
+	 * <p>From package UML::CommonStructure.</p>
+	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static EList<Dependency> getClientDependencies(
+			NamedElement namedElement) {
+		EList<Dependency> clientDependency = new UniqueEList.FastCompare<Dependency>();
+
+		for (EStructuralFeature.Setting nonNavigableInverseReference : getNonNavigableInverseReferences(namedElement)) {
+
+			if (nonNavigableInverseReference.getEStructuralFeature() == UMLPackage.Literals.DEPENDENCY__CLIENT) {
+				clientDependency.add((Dependency) nonNavigableInverseReference
+					.getEObject());
+			}
+		}
+
+		return new UnionEObjectEList<Dependency>(
+			(InternalEObject) namedElement,
+			UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY,
+			clientDependency.size(), clientDependency.toArray());
 	}
 
 	/**

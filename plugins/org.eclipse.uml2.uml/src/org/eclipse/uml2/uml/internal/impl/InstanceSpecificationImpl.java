@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -43,7 +43,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.DeployedArtifact;
 import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.Element;
@@ -62,6 +61,7 @@ import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.eclipse.uml2.uml.internal.operations.InstanceSpecificationOperations;
+import org.eclipse.uml2.uml.internal.operations.PackageableElementOperations;
 import org.eclipse.uml2.uml.internal.operations.ParameterableElementOperations;
 
 /**
@@ -577,6 +577,17 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateNamespaceNeedsVisibility(
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return PackageableElementOperations.validateNamespaceNeedsVisibility(
+			this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateDefiningFeature(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return InstanceSpecificationOperations.validateDefiningFeature(this,
@@ -629,9 +640,6 @@ public class InstanceSpecificationImpl
 			case UMLPackage.INSTANCE_SPECIFICATION__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__DEPLOYMENT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getDeployments())
 					.basicAdd(otherEnd, msgs);
@@ -670,9 +678,6 @@ public class InstanceSpecificationImpl
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__DEPLOYMENT :
@@ -785,11 +790,6 @@ public class InstanceSpecificationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__NAME :
 				setName((String) newValue);
 				return;
@@ -840,9 +840,6 @@ public class InstanceSpecificationImpl
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__NAME :
 				unsetName();
 				return;
@@ -891,8 +888,7 @@ public class InstanceSpecificationImpl
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.INSTANCE_SPECIFICATION__NAME :
 				return isSetName();
 			case UMLPackage.INSTANCE_SPECIFICATION__NAME_EXPRESSION :
@@ -1006,6 +1002,8 @@ public class InstanceSpecificationImpl
 		}
 		if (baseClass == PackageableElement.class) {
 			switch (baseOperationID) {
+				case UMLPackage.PACKAGEABLE_ELEMENT___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.INSTANCE_SPECIFICATION___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP;
 				default :
 					return -1;
 			}
@@ -1111,16 +1109,16 @@ public class InstanceSpecificationImpl
 				return allOwnedElements();
 			case UMLPackage.INSTANCE_SPECIFICATION___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.INSTANCE_SPECIFICATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INSTANCE_SPECIFICATION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INSTANCE_SPECIFICATION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INSTANCE_SPECIFICATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INSTANCE_SPECIFICATION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1131,6 +1129,8 @@ public class InstanceSpecificationImpl
 				return getLabel();
 			case UMLPackage.INSTANCE_SPECIFICATION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.INSTANCE_SPECIFICATION___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.INSTANCE_SPECIFICATION___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.INSTANCE_SPECIFICATION___ALL_OWNING_PACKAGES :
@@ -1138,18 +1138,26 @@ public class InstanceSpecificationImpl
 			case UMLPackage.INSTANCE_SPECIFICATION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.INSTANCE_SPECIFICATION___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.INSTANCE_SPECIFICATION___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.INSTANCE_SPECIFICATION___SEPARATOR :
 				return separator();
+			case UMLPackage.INSTANCE_SPECIFICATION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.INSTANCE_SPECIFICATION___GET_DEPLOYED_ELEMENTS :
 				return getDeployedElements();
 			case UMLPackage.INSTANCE_SPECIFICATION___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.INSTANCE_SPECIFICATION___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.INSTANCE_SPECIFICATION___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INSTANCE_SPECIFICATION___VALIDATE_DEPLOYMENT_ARTIFACT__DIAGNOSTICCHAIN_MAP :
+				return validateDeploymentArtifact(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INSTANCE_SPECIFICATION___VALIDATE_STRUCTURAL_FEATURE__DIAGNOSTICCHAIN_MAP :
 				return validateStructuralFeature(
 					(DiagnosticChain) arguments.get(0),
@@ -1160,10 +1168,6 @@ public class InstanceSpecificationImpl
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INSTANCE_SPECIFICATION___VALIDATE_DEPLOYMENT_TARGET__DIAGNOSTICCHAIN_MAP :
 				return validateDeploymentTarget(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INSTANCE_SPECIFICATION___VALIDATE_DEPLOYMENT_ARTIFACT__DIAGNOSTICCHAIN_MAP :
-				return validateDeploymentArtifact(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

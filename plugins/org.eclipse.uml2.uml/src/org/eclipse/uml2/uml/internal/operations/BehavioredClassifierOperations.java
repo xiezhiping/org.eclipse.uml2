@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: BehavioredClassifierOperations.java,v 1.13 2008/11/04 14:30:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -62,7 +61,7 @@ public class BehavioredClassifierOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If a behavior is classifier behavior, it does not have a specification.
-	 * self.classifierBehavior->notEmpty() implies self.classifierBehavior.specification->isEmpty()
+	 * classifierBehavior->notEmpty() implies classifierBehavior.specification->isEmpty()
 	 * @param behavioredClassifier The receiving '<em><b>Behaviored Classifier</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

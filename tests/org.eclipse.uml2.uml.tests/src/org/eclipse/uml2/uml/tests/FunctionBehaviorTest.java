@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 418466
  *
- * $Id: FunctionBehaviorTest.java,v 1.3 2007/02/14 20:06:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -26,6 +26,7 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.FunctionBehavior#validateOneOutputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Output Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.FunctionBehavior#validateTypesOfParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Types Of Parameters</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.FunctionBehavior#hasAllDataTypeAttributes(org.eclipse.uml2.uml.DataType) <em>Has All Data Type Attributes</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -107,6 +108,18 @@ public class FunctionBehaviorTest
 	 * @generated
 	 */
 	public void testValidateTypesOfParameters__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.FunctionBehavior#hasAllDataTypeAttributes(org.eclipse.uml2.uml.DataType) <em>Has All Data Type Attributes</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.FunctionBehavior#hasAllDataTypeAttributes(org.eclipse.uml2.uml.DataType)
+	 * @generated
+	 */
+	public void testHasAllDataTypeAttributes__DataType() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

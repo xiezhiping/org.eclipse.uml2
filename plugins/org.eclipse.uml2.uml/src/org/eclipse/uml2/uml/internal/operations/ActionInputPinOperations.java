@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -31,8 +31,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ActionInputPin#validateInputPin(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Pin</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActionInputPin#validateNoControlOrDataFlow(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Control Or Data Flow</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActionInputPin#validateOneOutputPin(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Output Pin</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActionInputPin#validateNoControlOrObjectFlow(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Control Or Object Flow</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,8 +54,8 @@ public class ActionInputPinOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The fromAction of an action input pin must have exactly one output pin.
-	 * true
+	 * The fromAction of an ActionInputPin must have exactly one OutputPin.
+	 * fromAction.output->size() = 1
 	 * @param actionInputPin The receiving '<em><b>Action Input Pin</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -89,8 +89,46 @@ public class ActionInputPinOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The fromAction of an action input pin must only have action input pins as input pins.
-	 * true
+	 * The fromAction of an ActionInputPin cannot have ActivityEdges coming into or out of it or its Pins.
+	 * fromAction.incoming->union(outgoing)->isEmpty() and
+	 * fromAction.input.incoming->isEmpty() and
+	 * fromAction.output.outgoing->isEmpty()
+	 * @param actionInputPin The receiving '<em><b>Action Input Pin</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateNoControlOrObjectFlow(
+			ActionInputPin actionInputPin, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.ACTION_INPUT_PIN__NO_CONTROL_OR_OBJECT_FLOW,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoControlOrObjectFlow", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(actionInputPin, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{actionInputPin}));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The fromAction of an ActionInputPin must only have ActionInputPins as InputPins.
+	 * fromAction.input->forAll(oclIsKindOf(ActionInputPin))
 	 * @param actionInputPin The receiving '<em><b>Action Input Pin</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -113,42 +151,6 @@ public class ActionInputPinOperations
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
 								"_UI_GenericInvariant_diagnostic", new Object[]{"validateInputPin", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(actionInputPin, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{actionInputPin}));
-			}
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The fromAction of an action input pin cannot have control or data flows coming into or out of it or its pins.
-	 * true
-	 * @param actionInputPin The receiving '<em><b>Action Input Pin</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateNoControlOrDataFlow(
-			ActionInputPin actionInputPin, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACTION_INPUT_PIN__NO_CONTROL_OR_DATA_FLOW,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoControlOrDataFlow", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(actionInputPin, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{actionInputPin}));
 			}
 			return false;

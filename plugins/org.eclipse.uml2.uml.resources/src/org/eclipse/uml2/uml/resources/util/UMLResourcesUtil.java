@@ -75,6 +75,11 @@ public class UMLResourcesUtil
 	private static final ContentHandler UML2_4_0_0_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
 		UMLResource.UML_4_0_0_CONTENT_TYPE_IDENTIFIER,
 		new String[]{UMLResource.FILE_EXTENSION},
+		RootXMLContentHandlerImpl.XMI_KIND, UML2_UML_PACKAGE_4_0_NS_URI, null);
+
+	private static final ContentHandler UML2_5_0_0_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
+		UMLResource.UML_5_0_0_CONTENT_TYPE_IDENTIFIER,
+		new String[]{UMLResource.FILE_EXTENSION},
 		RootXMLContentHandlerImpl.XMI_KIND, UMLPackage.eNS_URI, null);
 
 	private static final ContentHandler OMG_2_1_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
@@ -235,6 +240,8 @@ public class UMLResourcesUtil
 		packageRegistry.put(UML302UMLResource.UML_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
 
+		packageRegistry.put(UML2_UML_PACKAGE_4_0_NS_URI, UMLPackage.eINSTANCE);
+
 		packageRegistry.put(UMLPackage.eNS_URI, UMLPackage.eINSTANCE);
 
 		packageRegistry.put(UML302UMLResource.STANDARD_PROFILE_NS_URI,
@@ -303,6 +310,10 @@ public class UMLResourcesUtil
 		if (contentHandlers == null) {
 			contentHandlerRegistry.put(ContentHandler.Registry.NORMAL_PRIORITY,
 				contentHandlers = new ArrayList<ContentHandler>());
+		}
+
+		if (!contentHandlers.contains(UML2_5_0_0_CONTENT_HANDLER)) {
+			contentHandlers.add(UML2_5_0_0_CONTENT_HANDLER);
 		}
 
 		if (!contentHandlers.contains(UML2_4_0_0_CONTENT_HANDLER)) {

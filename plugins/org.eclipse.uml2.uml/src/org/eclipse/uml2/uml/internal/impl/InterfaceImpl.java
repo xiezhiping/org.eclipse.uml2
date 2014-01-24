@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -45,7 +45,6 @@ import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Generalization;
@@ -88,10 +87,10 @@ import org.eclipse.uml2.uml.internal.operations.InterfaceOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getRedefinedClassifiers <em>Redefined Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getNestedClassifiers <em>Nested Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getOwnedAttributes <em>Owned Attribute</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getOwnedOperations <em>Owned Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getOwnedReceptions <em>Owned Reception</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getProtocol <em>Protocol</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getRedefinedInterfaces <em>Redefined Interface</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getOwnedOperations <em>Owned Operation</em>}</li>
  * </ul>
  * </p>
  *
@@ -122,16 +121,6 @@ public class InterfaceImpl
 	protected EList<Property> ownedAttributes;
 
 	/**
-	 * The cached value of the '{@link #getOwnedOperations() <em>Owned Operation</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedOperations()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Operation> ownedOperations;
-
-	/**
 	 * The cached value of the '{@link #getOwnedReceptions() <em>Owned Reception</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -160,6 +149,16 @@ public class InterfaceImpl
 	 * @ordered
 	 */
 	protected EList<Interface> redefinedInterfaces;
+
+	/**
+	 * The cached value of the '{@link #getOwnedOperations() <em>Owned Operation</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedOperations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Operation> ownedOperations;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -739,17 +738,14 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.INTERFACE__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+			case UMLPackage.INTERFACE__OWNED_RULE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.INTERFACE__ELEMENT_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.INTERFACE__PACKAGE_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.INTERFACE__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.INTERFACE__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
@@ -764,6 +760,9 @@ public class InterfaceImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
+			case UMLPackage.INTERFACE__TEMPLATE_BINDING :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.INTERFACE__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -772,9 +771,6 @@ public class InterfaceImpl
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
-			case UMLPackage.INTERFACE__TEMPLATE_BINDING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.INTERFACE__GENERALIZATION :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getGeneralizations())
 					.basicAdd(otherEnd, msgs);
@@ -812,29 +808,26 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.INTERFACE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERFACE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.INTERFACE__OWNED_RULE :
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.INTERFACE__ELEMENT_IMPORT :
 				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INTERFACE__PACKAGE_IMPORT :
 				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.INTERFACE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.INTERFACE__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.INTERFACE__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.INTERFACE__OWNED_TEMPLATE_SIGNATURE :
-				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.INTERFACE__TEMPLATE_BINDING :
 				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.INTERFACE__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.INTERFACE__COLLABORATION_USE :
 				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
@@ -859,14 +852,14 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
 				return ((InternalEList<?>) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.INTERFACE__OWNED_OPERATION :
-				return ((InternalEList<?>) getOwnedOperations()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.INTERFACE__OWNED_RECEPTION :
 				return ((InternalEList<?>) getOwnedReceptions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INTERFACE__PROTOCOL :
 				return basicSetProtocol(null, msgs);
+			case UMLPackage.INTERFACE__OWNED_OPERATION :
+				return ((InternalEList<?>) getOwnedOperations()).basicRemove(
+					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -905,12 +898,12 @@ public class InterfaceImpl
 				return getQualifiedName();
 			case UMLPackage.INTERFACE__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.INTERFACE__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.INTERFACE__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.INTERFACE__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.INTERFACE__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.INTERFACE__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.INTERFACE__IMPORTED_MEMBER :
@@ -935,12 +928,12 @@ public class InterfaceImpl
 				if (resolve)
 					return getPackage();
 				return basicGetPackage();
+			case UMLPackage.INTERFACE__TEMPLATE_BINDING :
+				return getTemplateBindings();
 			case UMLPackage.INTERFACE__OWNED_TEMPLATE_SIGNATURE :
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.INTERFACE__TEMPLATE_BINDING :
-				return getTemplateBindings();
 			case UMLPackage.INTERFACE__FEATURE :
 				return getFeatures();
 			case UMLPackage.INTERFACE__ATTRIBUTE :
@@ -975,8 +968,6 @@ public class InterfaceImpl
 				return getNestedClassifiers();
 			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
-			case UMLPackage.INTERFACE__OWNED_OPERATION :
-				return getOwnedOperations();
 			case UMLPackage.INTERFACE__OWNED_RECEPTION :
 				return getOwnedReceptions();
 			case UMLPackage.INTERFACE__PROTOCOL :
@@ -985,6 +976,8 @@ public class InterfaceImpl
 				return basicGetProtocol();
 			case UMLPackage.INTERFACE__REDEFINED_INTERFACE :
 				return getRedefinedInterfaces();
+			case UMLPackage.INTERFACE__OWNED_OPERATION :
+				return getOwnedOperations();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -1008,11 +1001,6 @@ public class InterfaceImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.INTERFACE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.INTERFACE__NAME :
 				setName((String) newValue);
 				return;
@@ -1021,6 +1009,11 @@ public class InterfaceImpl
 				return;
 			case UMLPackage.INTERFACE__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.INTERFACE__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.INTERFACE__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -1031,11 +1024,6 @@ public class InterfaceImpl
 				getPackageImports().clear();
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
-				return;
-			case UMLPackage.INTERFACE__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.INTERFACE__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -1049,13 +1037,13 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
-			case UMLPackage.INTERFACE__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
-				return;
 			case UMLPackage.INTERFACE__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
+				return;
+			case UMLPackage.INTERFACE__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.INTERFACE__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -1115,11 +1103,6 @@ public class InterfaceImpl
 				getOwnedAttributes().addAll(
 					(Collection<? extends Property>) newValue);
 				return;
-			case UMLPackage.INTERFACE__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				getOwnedOperations().addAll(
-					(Collection<? extends Operation>) newValue);
-				return;
 			case UMLPackage.INTERFACE__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				getOwnedReceptions().addAll(
@@ -1132,6 +1115,11 @@ public class InterfaceImpl
 				getRedefinedInterfaces().clear();
 				getRedefinedInterfaces().addAll(
 					(Collection<? extends Interface>) newValue);
+				return;
+			case UMLPackage.INTERFACE__OWNED_OPERATION :
+				getOwnedOperations().clear();
+				getOwnedOperations().addAll(
+					(Collection<? extends Operation>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1151,9 +1139,6 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.INTERFACE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.INTERFACE__NAME :
 				unsetName();
 				return;
@@ -1163,14 +1148,14 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__VISIBILITY :
 				unsetVisibility();
 				return;
+			case UMLPackage.INTERFACE__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.INTERFACE__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.INTERFACE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				return;
-			case UMLPackage.INTERFACE__OWNED_RULE :
-				getOwnedRules().clear();
 				return;
 			case UMLPackage.INTERFACE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
@@ -1184,11 +1169,11 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
 				return;
-			case UMLPackage.INTERFACE__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) null);
-				return;
 			case UMLPackage.INTERFACE__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
+				return;
+			case UMLPackage.INTERFACE__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
 			case UMLPackage.INTERFACE__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -1229,9 +1214,6 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				return;
-			case UMLPackage.INTERFACE__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				return;
 			case UMLPackage.INTERFACE__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				return;
@@ -1240,6 +1222,9 @@ public class InterfaceImpl
 				return;
 			case UMLPackage.INTERFACE__REDEFINED_INTERFACE :
 				getRedefinedInterfaces().clear();
+				return;
+			case UMLPackage.INTERFACE__OWNED_OPERATION :
+				getOwnedOperations().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -1262,8 +1247,7 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__OWNER :
 				return isSetOwner();
 			case UMLPackage.INTERFACE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.INTERFACE__NAME :
 				return isSetName();
 			case UMLPackage.INTERFACE__NAME_EXPRESSION :
@@ -1276,12 +1260,12 @@ public class InterfaceImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.INTERFACE__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.INTERFACE__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.INTERFACE__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.INTERFACE__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.INTERFACE__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.INTERFACE__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.INTERFACE__IMPORTED_MEMBER :
@@ -1300,10 +1284,10 @@ public class InterfaceImpl
 				return isSetTemplateParameter();
 			case UMLPackage.INTERFACE__PACKAGE :
 				return basicGetPackage() != null;
-			case UMLPackage.INTERFACE__OWNED_TEMPLATE_SIGNATURE :
-				return isSetOwnedTemplateSignature();
 			case UMLPackage.INTERFACE__TEMPLATE_BINDING :
 				return templateBindings != null && !templateBindings.isEmpty();
+			case UMLPackage.INTERFACE__OWNED_TEMPLATE_SIGNATURE :
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.INTERFACE__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.INTERFACE__ATTRIBUTE :
@@ -1339,8 +1323,6 @@ public class InterfaceImpl
 					&& !nestedClassifiers.isEmpty();
 			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
 				return ownedAttributes != null && !ownedAttributes.isEmpty();
-			case UMLPackage.INTERFACE__OWNED_OPERATION :
-				return ownedOperations != null && !ownedOperations.isEmpty();
 			case UMLPackage.INTERFACE__OWNED_RECEPTION :
 				return ownedReceptions != null && !ownedReceptions.isEmpty();
 			case UMLPackage.INTERFACE__PROTOCOL :
@@ -1348,6 +1330,8 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__REDEFINED_INTERFACE :
 				return redefinedInterfaces != null
 					&& !redefinedInterfaces.isEmpty();
+			case UMLPackage.INTERFACE__OWNED_OPERATION :
+				return ownedOperations != null && !ownedOperations.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1444,16 +1428,16 @@ public class InterfaceImpl
 				return allOwnedElements();
 			case UMLPackage.INTERFACE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.INTERFACE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERFACE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERFACE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INTERFACE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERFACE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1464,6 +1448,8 @@ public class InterfaceImpl
 				return getLabel();
 			case UMLPackage.INTERFACE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.INTERFACE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.INTERFACE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.INTERFACE___ALL_OWNING_PACKAGES :
@@ -1471,14 +1457,22 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.INTERFACE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.INTERFACE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.INTERFACE___SEPARATOR :
 				return separator();
+			case UMLPackage.INTERFACE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.INTERFACE___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INTERFACE___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INTERFACE___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERFACE___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -1493,6 +1487,8 @@ public class InterfaceImpl
 				return getImportedElements();
 			case UMLPackage.INTERFACE___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.INTERFACE___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.INTERFACE___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -1505,8 +1501,6 @@ public class InterfaceImpl
 				return getImportedMembers();
 			case UMLPackage.INTERFACE___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.INTERFACE___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 			case UMLPackage.INTERFACE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -1528,6 +1522,10 @@ public class InterfaceImpl
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.INTERFACE___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.INTERFACE___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERFACE___CREATE_ASSOCIATION__BOOLEAN_AGGREGATIONKIND_STRING_INT_INT_TYPE_BOOLEAN_AGGREGATIONKIND_STRING_INT_INT :
 				return createAssociation((Boolean) arguments.get(0),
 					(AggregationKind) arguments.get(1),
@@ -1545,20 +1543,20 @@ public class InterfaceImpl
 				return isTemplate();
 			case UMLPackage.INTERFACE___PARAMETERABLE_ELEMENTS :
 				return parameterableElements();
-			case UMLPackage.INTERFACE___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
-				return validateNonFinalParents(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INTERFACE___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
-				return validateNoCyclesInGeneralization(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERFACE___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateSpecializeType(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERFACE___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
 				return validateMapsToGeneralizationSet(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INTERFACE___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
+				return validateNonFinalParents(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INTERFACE___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
+				return validateNoCyclesInGeneralization(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERFACE___GET_ALL_ATTRIBUTES :
@@ -1583,8 +1581,6 @@ public class InterfaceImpl
 				return allFeatures();
 			case UMLPackage.INTERFACE___ALL_PARENTS :
 				return allParents();
-			case UMLPackage.INTERFACE___CONFORMS_TO__CLASSIFIER :
-				return conformsTo((Classifier) arguments.get(0));
 			case UMLPackage.INTERFACE___GET_GENERALS :
 				return getGenerals();
 			case UMLPackage.INTERFACE___HAS_VISIBILITY_OF__NAMEDELEMENT :
@@ -1599,6 +1595,20 @@ public class InterfaceImpl
 				return maySpecializeType((Classifier) arguments.get(0));
 			case UMLPackage.INTERFACE___PARENTS :
 				return parents();
+			case UMLPackage.INTERFACE___DIRECTLY_REALIZED_INTERFACES :
+				return directlyRealizedInterfaces();
+			case UMLPackage.INTERFACE___DIRECTLY_USED_INTERFACES :
+				return directlyUsedInterfaces();
+			case UMLPackage.INTERFACE___ALL_REALIZED_INTERFACES :
+				return allRealizedInterfaces();
+			case UMLPackage.INTERFACE___ALL_USED_INTERFACES :
+				return allUsedInterfaces();
+			case UMLPackage.INTERFACE___IS_SUBSTITUTABLE_FOR__CLASSIFIER :
+				return isSubstitutableFor((Classifier) arguments.get(0));
+			case UMLPackage.INTERFACE___ALL_ATTRIBUTES :
+				return allAttributes();
+			case UMLPackage.INTERFACE___ALL_SLOTTABLE_FEATURES :
+				return allSlottableFeatures();
 			case UMLPackage.INTERFACE___VALIDATE_VISIBILITY__DIAGNOSTICCHAIN_MAP :
 				return validateVisibility((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
@@ -1637,8 +1647,8 @@ public class InterfaceImpl
 		UMLPackage.INTERFACE__OWNED_RULE, UMLPackage.INTERFACE__OWNED_USE_CASE,
 		UMLPackage.INTERFACE__NESTED_CLASSIFIER,
 		UMLPackage.INTERFACE__OWNED_ATTRIBUTE,
-		UMLPackage.INTERFACE__OWNED_OPERATION,
-		UMLPackage.INTERFACE__OWNED_RECEPTION, UMLPackage.INTERFACE__PROTOCOL};
+		UMLPackage.INTERFACE__OWNED_RECEPTION, UMLPackage.INTERFACE__PROTOCOL,
+		UMLPackage.INTERFACE__OWNED_OPERATION};
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getAttributes() <em>Attribute</em>}' reference list.
@@ -1660,9 +1670,9 @@ public class InterfaceImpl
 		return super.isSetOwnedMembers()
 			|| eIsSet(UMLPackage.INTERFACE__NESTED_CLASSIFIER)
 			|| eIsSet(UMLPackage.INTERFACE__OWNED_ATTRIBUTE)
-			|| eIsSet(UMLPackage.INTERFACE__OWNED_OPERATION)
 			|| eIsSet(UMLPackage.INTERFACE__OWNED_RECEPTION)
-			|| eIsSet(UMLPackage.INTERFACE__PROTOCOL);
+			|| eIsSet(UMLPackage.INTERFACE__PROTOCOL)
+			|| eIsSet(UMLPackage.INTERFACE__OWNED_OPERATION);
 	}
 
 	/**
@@ -1674,8 +1684,8 @@ public class InterfaceImpl
 	 * @ordered
 	 */
 	protected static final int[] FEATURE_ESUBSETS = new int[]{
-		UMLPackage.INTERFACE__ATTRIBUTE, UMLPackage.INTERFACE__OWNED_OPERATION,
-		UMLPackage.INTERFACE__OWNED_RECEPTION};
+		UMLPackage.INTERFACE__ATTRIBUTE, UMLPackage.INTERFACE__OWNED_RECEPTION,
+		UMLPackage.INTERFACE__OWNED_OPERATION};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1746,8 +1756,8 @@ public class InterfaceImpl
 	@Override
 	public boolean isSetFeatures() {
 		return super.isSetFeatures()
-			|| eIsSet(UMLPackage.INTERFACE__OWNED_OPERATION)
-			|| eIsSet(UMLPackage.INTERFACE__OWNED_RECEPTION);
+			|| eIsSet(UMLPackage.INTERFACE__OWNED_RECEPTION)
+			|| eIsSet(UMLPackage.INTERFACE__OWNED_OPERATION);
 	}
 
 } //InterfaceImpl

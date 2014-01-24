@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 386760, 212765
+ *   Kenn Hussey (CEA) - 327039, 351774, 386760, 212765, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -44,7 +44,6 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -68,8 +67,8 @@ import org.eclipse.uml2.uml.internal.operations.TemplateSignatureOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.RedefinableTemplateSignatureImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RedefinableTemplateSignatureImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.RedefinableTemplateSignatureImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RedefinableTemplateSignatureImpl#getParameters <em>Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RedefinableTemplateSignatureImpl#getOwnedParameters <em>Owned Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RedefinableTemplateSignatureImpl#getRedefinedElements <em>Redefined Element</em>}</li>
@@ -485,10 +484,21 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateInheritedParameters(DiagnosticChain diagnostics,
+	public boolean validateUniqueParameters(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return RedefinableTemplateSignatureOperations
-			.validateInheritedParameters(this, diagnostics, context);
+		return TemplateSignatureOperations.validateUniqueParameters(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRedefinesParents(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return RedefinableTemplateSignatureOperations.validateRedefinesParents(
+			this, diagnostics, context);
 	}
 
 	/**
@@ -497,9 +507,9 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	@Override
-	public boolean isConsistentWith(RedefinableElement redefinee) {
+	public boolean isConsistentWith(RedefinableElement redefiningElement) {
 		return RedefinableTemplateSignatureOperations.isConsistentWith(this,
-			redefinee);
+			redefiningElement);
 	}
 
 	/**
@@ -515,16 +525,13 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedParameters())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetTemplate((TemplateableElement) otherEnd, msgs);
+			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedParameters())
+					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -544,16 +551,13 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
+				return basicSetTemplate(null, msgs);
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
 				return ((InternalEList<?>) getOwnedParameters()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
-				return basicSetTemplate(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -609,14 +613,14 @@ public class RedefinableTemplateSignatureImpl
 				return getRedefinedElements();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
-				return getOwnedParameters();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER :
 				return getParameters();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
 				if (resolve)
 					return getTemplate();
 				return basicGetTemplate();
+			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
+				return getOwnedParameters();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE :
 				return getExtendedSignatures();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETER :
@@ -648,11 +652,6 @@ public class RedefinableTemplateSignatureImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__NAME :
 				setName((String) newValue);
 				return;
@@ -665,11 +664,6 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
 				return;
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
-				getOwnedParameters().clear();
-				getOwnedParameters().addAll(
-					(Collection<? extends TemplateParameter>) newValue);
-				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER :
 				getParameters().clear();
 				getParameters().addAll(
@@ -677,6 +671,11 @@ public class RedefinableTemplateSignatureImpl
 				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
 				setTemplate((TemplateableElement) newValue);
+				return;
+			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
+				getOwnedParameters().clear();
+				getOwnedParameters().addAll(
+					(Collection<? extends TemplateParameter>) newValue);
 				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE :
 				getExtendedSignatures().clear();
@@ -713,9 +712,6 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__NAME :
 				unsetName();
 				return;
@@ -728,14 +724,14 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
-				getOwnedParameters().clear();
-				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER :
 				getParameters().clear();
 				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
 				setTemplate((TemplateableElement) null);
+				return;
+			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
+				getOwnedParameters().clear();
 				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE :
 				getExtendedSignatures().clear();
@@ -761,8 +757,7 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNER :
 				return isSetOwner();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__NAME :
 				return isSetName();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__NAME_EXPRESSION :
@@ -781,12 +776,12 @@ public class RedefinableTemplateSignatureImpl
 				return isSetRedefinedElements();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
-				return ownedParameters != null && !ownedParameters.isEmpty();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER :
 				return parameters != null && !parameters.isEmpty();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
 				return isSetTemplate();
+			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
+				return ownedParameters != null && !ownedParameters.isEmpty();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE :
 				return extendedSignatures != null
 					&& !extendedSignatures.isEmpty();
@@ -807,12 +802,12 @@ public class RedefinableTemplateSignatureImpl
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == TemplateSignature.class) {
 			switch (derivedFeatureID) {
-				case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
-					return UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER;
 				case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER :
 					return UMLPackage.TEMPLATE_SIGNATURE__PARAMETER;
 				case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
 					return UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE;
+				case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
+					return UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER;
 				default :
 					return -1;
 			}
@@ -829,12 +824,12 @@ public class RedefinableTemplateSignatureImpl
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == TemplateSignature.class) {
 			switch (baseFeatureID) {
-				case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
-					return UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER;
 				case UMLPackage.TEMPLATE_SIGNATURE__PARAMETER :
 					return UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER;
 				case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
 					return UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE;
+				case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
+					return UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER;
 				default :
 					return -1;
 			}
@@ -853,6 +848,8 @@ public class RedefinableTemplateSignatureImpl
 			switch (baseOperationID) {
 				case UMLPackage.TEMPLATE_SIGNATURE___VALIDATE_OWN_ELEMENTS__DIAGNOSTICCHAIN_MAP :
 					return UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___VALIDATE_OWN_ELEMENTS__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.TEMPLATE_SIGNATURE___VALIDATE_UNIQUE_PARAMETERS__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___VALIDATE_UNIQUE_PARAMETERS__DIAGNOSTICCHAIN_MAP;
 				default :
 					return -1;
 			}
@@ -952,16 +949,16 @@ public class RedefinableTemplateSignatureImpl
 				return allOwnedElements();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -972,6 +969,8 @@ public class RedefinableTemplateSignatureImpl
 				return getLabel();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___ALL_OWNING_PACKAGES :
@@ -979,12 +978,12 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___SEPARATOR :
 				return separator();
+			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -1005,8 +1004,12 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___VALIDATE_OWN_ELEMENTS__DIAGNOSTICCHAIN_MAP :
 				return validateOwnElements((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___VALIDATE_INHERITED_PARAMETERS__DIAGNOSTICCHAIN_MAP :
-				return validateInheritedParameters(
+			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___VALIDATE_UNIQUE_PARAMETERS__DIAGNOSTICCHAIN_MAP :
+				return validateUniqueParameters(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___VALIDATE_REDEFINES_PARENTS__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinesParents(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___GET_INHERITED_PARAMETERS :

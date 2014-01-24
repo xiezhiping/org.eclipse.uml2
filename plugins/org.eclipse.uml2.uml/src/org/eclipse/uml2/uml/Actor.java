@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.uml;
@@ -22,8 +23,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An actor specifies a role played by a user or any other system that interacts with the subject.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * An Actor specifies a role played by a user or any other system that interacts with the subject.
+ * <p>From package UML::UseCases.</p>
  * <!-- end-model-doc -->
  *
  *
@@ -38,13 +39,17 @@ public interface Actor
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An actor can only have associations to use cases, components and classes. Furthermore these associations must be binary.
-	 * self.ownedAttribute->forAll ( a |
-	 * (a.association->notEmpty()) implies
-	 * ((a.association.memberEnd.size() = 2) and
-	 * (a.opposite.class.oclIsKindOf(UseCase) or
-	 * (a.opposite.class.oclIsKindOf(Class) and not a.opposite.class.oclIsKindOf(Behavior))))
-	 * 
+	 * An Actor can only have Associations to UseCases, Components, and Classes. Furthermore these Associations must be binary.
+	 * Association.allInstances()->forAll( a |
+	 *   a.memberEnd->collect(type)->includes(self) implies
+	 *   (
+	 *     a.memberEnd->size() = 2 and
+	 *     let actorEnd : Property = a.memberEnd->any(type = self) in
+	 *       actorEnd.opposite.class.oclIsKindOf(UseCase) or
+	 *       ( actorEnd.opposite.class.oclIsKindOf(Class) and not
+	 *          actorEnd.opposite.class.oclIsKindOf(Behavior))
+	 *       )
+	 *   )
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -58,7 +63,7 @@ public interface Actor
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An actor must have a name.
+	 * An Actor must have a name.
 	 * name->notEmpty()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

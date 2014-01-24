@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2007, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   Kenn Hussey (IBM Corporation, Embarcadero Technologies) - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 213903, 226178
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -61,7 +61,6 @@ public class CMOF2UMLSaveImpl
 			} else if (f == UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER
 				|| f == UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER
 				|| f == UMLPackage.Literals.PARAMETER__DEFAULT
-				|| f == UMLPackage.Literals.PROPERTY__DEFAULT
 				|| f == UMLPackage.Literals.PROPERTY__IS_COMPOSITE) {
 
 				return DATATYPE_SINGLE;

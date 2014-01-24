@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: InterfaceRealizationImpl.java,v 1.19 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -31,11 +30,9 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
-import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
@@ -157,10 +154,9 @@ public class InterfaceRealizationImpl
 	@Override
 	public EList<NamedElement> getClients() {
 		if (clients == null) {
-			clients = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse<NamedElement>(
+			clients = new SubsetSupersetEObjectResolvingEList<NamedElement>(
 				NamedElement.class, this,
-				UMLPackage.INTERFACE_REALIZATION__CLIENT, null,
-				CLIENT_ESUBSETS, UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY);
+				UMLPackage.INTERFACE_REALIZATION__CLIENT, null, CLIENT_ESUBSETS);
 		}
 		return clients;
 	}
@@ -314,9 +310,6 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.INTERFACE_REALIZATION__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -330,9 +323,6 @@ public class InterfaceRealizationImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.INTERFACE_REALIZATION__CLIENT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClients())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -357,18 +347,12 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.INTERFACE_REALIZATION__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERFACE_REALIZATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.INTERFACE_REALIZATION__CLIENT :
-				return ((InternalEList<?>) getClients()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.INTERFACE_REALIZATION__MAPPING :
 				return basicSetMapping(null, msgs);
 			case UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER :
@@ -485,11 +469,6 @@ public class InterfaceRealizationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.INTERFACE_REALIZATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.INTERFACE_REALIZATION__NAME :
 				setName((String) newValue);
 				return;
@@ -542,9 +521,6 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.INTERFACE_REALIZATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.INTERFACE_REALIZATION__NAME :
 				unsetName();
 				return;
@@ -596,8 +572,7 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.INTERFACE_REALIZATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.INTERFACE_REALIZATION__NAME :
 				return isSetName();
 			case UMLPackage.INTERFACE_REALIZATION__NAME_EXPRESSION :

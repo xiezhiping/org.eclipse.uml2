@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -27,20 +27,19 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A structured activity node is an executable activity node that may have an expansion into subordinate nodes as an activity group. The subordinate nodes must belong to only one structured activity node, although they may be nested.
- * Because of the concurrent nature of the execution of actions within and across activities, it can be difficult to guarantee the consistent access and modification of object memory. In order to avoid race conditions or other concurrency-related problems, it is sometimes necessary to isolate the effects of a group of actions from the effects of actions outside the group. This may be indicated by setting the mustIsolate attribute to true on a structured activity node. If a structured activity node is "isolated," then any object used by an action within the node cannot be accessed by any action outside the node until the structured activity node as a whole completes. Any concurrent actions that would result in accessing such objects are required to have their execution deferred until the completion of the node.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A StructuredActivityNode is an Action that is also an ActivityGroup and whose behavior is specified by the ActivityNodes and ActivityEdges it so contains. Unlike other kinds of ActivityGroup, a StructuredActivityNode owns the ActivityNodes and ActivityEdges it contains, and so a node or edge can only be directly contained in one StructuredActivityNode, though StructuredActivityNodes may be nested.
+ * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#getEdges <em>Edge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#isMustIsolate <em>Must Isolate</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#getNodes <em>Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#getStructuredNodeInputs <em>Structured Node Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#getStructuredNodeOutputs <em>Structured Node Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#getVariables <em>Variable</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#getEdges <em>Edge</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#getNodes <em>Node</em>}</li>
  * </ul>
  * </p>
  *
@@ -64,8 +63,8 @@ public interface StructuredActivityNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A variable defined in the scope of the structured activity node. It has no value and may not be accessed
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Variables defined in the scope of the StructuredActivityNode.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Variable</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredActivityNode_Variable()
@@ -128,8 +127,8 @@ public interface StructuredActivityNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Nodes immediately contained in the group.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The ActivityNodes immediately contained in the StructuredActivityNode.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Node</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredActivityNode_Node()
@@ -193,7 +192,8 @@ public interface StructuredActivityNode
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The InputPins owned by the StructuredActivityNode.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Structured Node Input</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredActivityNode_StructuredNodeInput()
@@ -271,7 +271,8 @@ public interface StructuredActivityNode
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The OutputPins owned by the StructuredActivityNode.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Structured Node Output</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredActivityNode_StructuredNodeOutput()
@@ -325,8 +326,9 @@ public interface StructuredActivityNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If true, then the actions in the node execute in isolation from actions outside the node.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * If true, then any object used by an Action within the StructuredActivityNode cannot be accessed by any Action outside the node until the StructuredActivityNode as a whole completes. Any concurrent Actions that would result in accessing such objects are required to have their execution deferred until the completion of the StructuredActivityNode.
+	 * 
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Must Isolate</em>' attribute.
 	 * @see #setMustIsolate(boolean)
@@ -360,8 +362,8 @@ public interface StructuredActivityNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Edges immediately contained in the structured node.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The ActivityEdges immediately contained in the StructuredActivityNode.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Edge</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredActivityNode_Edge()
@@ -413,8 +415,8 @@ public interface StructuredActivityNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The outgoing edges of the output pins of a StructuredActivityNode must have targets that are not within the StructuredActivityNode.
-	 * true
+	 * The outgoing ActivityEdges of the OutputPins of a StructuredActivityNode must have targets that are not within the StructuredActivityNode.
+	 * output.outgoing.target->excludesAll(allOwnedNodes()-input)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -428,8 +430,9 @@ public interface StructuredActivityNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The edges owned by a structured node must have source and target nodes in the structured node, and vice versa.
-	 * true
+	 * The edges of a StructuredActivityNode are all the ActivityEdges with source and target ActivityNodes contained directly or indirectly within the StructuredActivityNode and at least one of the source or target not contained in any more deeply nested StructuredActivityNode.
+	 * edge=self.sourceNodes().outgoing->intersection(self.allOwnedNodes().incoming)->
+	 * 	union(self.targetNodes().incoming->intersection(self.allOwnedNodes().outgoing))->asSet()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -443,8 +446,8 @@ public interface StructuredActivityNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The incoming edges of the input pins of a StructuredActivityNode must have sources that are not within the StructuredActivityNode.
-	 * true
+	 * The incoming ActivityEdges of an InputPin of a StructuredActivityNode must have sources that are not within the StructuredActivityNode.
+	 * input.incoming.source->excludesAll(allOwnedNodes()-output)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -453,5 +456,33 @@ public interface StructuredActivityNode
 	 */
 	boolean validateInputPinEdges(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Return those ActivityNodes contained immediately within the StructuredActivityNode that may act as sources of edges owned by the StructuredActivityNode.
+	 * result = (node->union(input.oclAsType(ActivityNode)->asSet())->
+	 *   union(node->select(oclIsKindOf(Action)).oclAsType(Action).output)->asSet())
+	 * <p>From package UML::Actions.</p>
+	 * <!-- end-model-doc -->
+	 * @model ordered="false"
+	 * @generated
+	 */
+	EList<ActivityNode> sourceNodes();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Return those ActivityNodes contained immediately within the StructuredActivityNode that may act as targets of edges owned by the StructuredActivityNode.
+	 * result = (node->union(output.oclAsType(ActivityNode)->asSet())->
+	 *   union(node->select(oclIsKindOf(Action)).oclAsType(Action).input)->asSet())
+	 * <p>From package UML::Actions.</p>
+	 * <!-- end-model-doc -->
+	 * @model ordered="false"
+	 * @generated
+	 */
+	EList<ActivityNode> targetNodes();
 
 } // StructuredActivityNode

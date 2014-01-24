@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *   Christian W. Damus (CEA) - 392957, 251963
  *
  */
@@ -27,8 +27,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An activity is the specification of parameterized behavior as the coordinated sequencing of subordinate units whose individual elements are actions.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * An Activity is the specification of parameterized Behavior as the coordinated sequencing of subordinate units.
+ * <p>From package UML::Activities.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -36,6 +36,7 @@ import org.eclipse.emf.ecore.EClass;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getOwnedGroups <em>Owned Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getEdges <em>Edge</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#getNodes <em>Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getVariables <em>Variable</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getGroups <em>Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getOwnedNodes <em>Owned Node</em>}</li>
@@ -43,7 +44,6 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.uml.Activity#isSingleExecution <em>Is Single Execution</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getPartitions <em>Partition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getStructuredNodes <em>Structured Node</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Activity#getNodes <em>Node</em>}</li>
  * </ul>
  * </p>
  *
@@ -121,8 +121,8 @@ public interface Activity
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If true, this activity must not make any changes to variables outside the activity or to objects. (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the action, then the model is ill-formed.) The default is false (an activity may make nonlocal changes).
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * If true, this Activity must not make any changes to objects. The default is false (an Activity may make nonlocal changes). (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the Activity, then the model is ill-formed.) 
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Read Only</em>' attribute.
 	 * @see #setIsReadOnly(boolean)
@@ -155,8 +155,8 @@ public interface Activity
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Top-level groups in the activity.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Top-level ActivityGroups in the Activity.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Group</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_Group()
@@ -259,8 +259,8 @@ public interface Activity
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If true, all invocations of the activity are handled by the same execution.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * If true, all invocations of the Activity are handled by the same execution.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Single Execution</em>' attribute.
 	 * @see #setIsSingleExecution(boolean)
@@ -293,8 +293,8 @@ public interface Activity
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Top-level structured nodes in the activity.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Top-level StructuredActivityNodes in the Activity.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Structured Node</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_StructuredNode()
@@ -353,6 +353,46 @@ public interface Activity
 			EClass eClass, boolean createOnDemand);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A Parameter with direction other than inout must have exactly one ActivityParameterNode in an Activity.
+	 * ownedParameter->forAll(p | 
+	 *    p.direction <> ParameterDirectionKind::inout implies node->select(
+	 *        oclIsKindOf(ActivityParameterNode) and oclAsType(ActivityParameterNode).parameter = p)->size()= 1)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateMaximumOneParameterNode(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A Parameter with direction inout must have exactly two ActivityParameterNodes in an Activity, at most one with incoming ActivityEdges and at most one with outgoing ActivityEdges.
+	 * ownedParameter->forAll(p | 
+	 * p.direction = ParameterDirectionKind::inout implies
+	 * let associatedNodes : Set(ActivityNode) = node->select(
+	 *        oclIsKindOf(ActivityParameterNode) and oclAsType(ActivityParameterNode).parameter = p) in 
+	 *   associatedNodes->size()=2 and
+	 *   associatedNodes->select(incoming->notEmpty())->size()<=1 and
+	 *   associatedNodes->select(outgoing->notEmpty())->size()<=1
+	 * )
+	 * 
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateMaximumTwoParameterNodes(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.StructuredActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Structured Node</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -379,8 +419,8 @@ public interface Activity
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Top-level variables in the activity.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Top-level Variables defined by the Activity.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Variable</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_Variable()
@@ -442,8 +482,8 @@ public interface Activity
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Nodes coordinated by the activity.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * ActivityNodes coordinated by the Activity.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Node</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_Node()
@@ -492,8 +532,8 @@ public interface Activity
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Edges expressing flow between nodes of the activity.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * ActivityEdges expressing flow between the nodes of the Activity.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Edge</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_Edge()
@@ -554,8 +594,8 @@ public interface Activity
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Top-level partitions in the activity.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Top-level ActivityPartitions in the Activity.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Partition</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_Partition()
@@ -599,50 +639,5 @@ public interface Activity
 	 */
 	ActivityPartition getPartition(String name, boolean ignoreCase,
 			boolean createOnDemand);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The groups of an activity have no supergroups.
-	 * true
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateNoSupergroups(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The nodes of the activity must include one ActivityParameterNode for each parameter.
-	 * true
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateActivityParameterNode(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * An activity cannot be autonomous and have a classifier or behavioral feature context at the same time.
-	 * true
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateAutonomous(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
 
 } // Activity

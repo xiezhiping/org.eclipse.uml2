@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: StateItemProvider.java,v 1.16 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -645,19 +644,15 @@ public class StateItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__DO_ACTIVITY,
+			UMLFactory.eINSTANCE.createActivity()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__DO_ACTIVITY,
 			UMLFactory.eINSTANCE.createStateMachine()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__DO_ACTIVITY,
 			UMLFactory.eINSTANCE.createProtocolStateMachine()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__DO_ACTIVITY,
-			UMLFactory.eINSTANCE.createActivity()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__DO_ACTIVITY,
-			UMLFactory.eINSTANCE.createInteraction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__DO_ACTIVITY,
@@ -668,12 +663,8 @@ public class StateItemProvider
 			UMLFactory.eINSTANCE.createFunctionBehavior()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__ENTRY,
-			UMLFactory.eINSTANCE.createStateMachine()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__ENTRY,
-			UMLFactory.eINSTANCE.createProtocolStateMachine()));
+			UMLPackage.Literals.STATE__DO_ACTIVITY,
+			UMLFactory.eINSTANCE.createInteraction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__ENTRY,
@@ -681,7 +672,11 @@ public class StateItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__ENTRY,
-			UMLFactory.eINSTANCE.createInteraction()));
+			UMLFactory.eINSTANCE.createStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__ENTRY,
+			UMLFactory.eINSTANCE.createProtocolStateMachine()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__ENTRY,
@@ -692,6 +687,14 @@ public class StateItemProvider
 			UMLFactory.eINSTANCE.createFunctionBehavior()));
 
 		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__ENTRY,
+			UMLFactory.eINSTANCE.createInteraction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__EXIT,
+			UMLFactory.eINSTANCE.createActivity()));
+
+		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__EXIT,
 			UMLFactory.eINSTANCE.createStateMachine()));
 
@@ -701,19 +704,15 @@ public class StateItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__EXIT,
-			UMLFactory.eINSTANCE.createActivity()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__EXIT,
-			UMLFactory.eINSTANCE.createInteraction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__EXIT,
 			UMLFactory.eINSTANCE.createOpaqueBehavior()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__EXIT,
 			UMLFactory.eINSTANCE.createFunctionBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__EXIT,
+			UMLFactory.eINSTANCE.createInteraction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__STATE_INVARIANT,
@@ -787,14 +786,14 @@ public class StateItemProvider
 	}
 
 	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject, java.util.Collection)
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object, java.util.Collection)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, EObject value, Collection<?> collection) {
+			EStructuralFeature feature, Object value, Collection<?> collection) {
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
 			return new SubsetSupersetReplaceCommand(
 				domain,

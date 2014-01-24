@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -25,8 +25,8 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A redefinable template signature supports the addition of formal template parameters in a specialization of a template classifier.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A RedefinableTemplateSignature supports the addition of formal template parameters in a specialization of a template classifier.
+ * <p>From package UML::Classification.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -57,8 +57,8 @@ public interface RedefinableTemplateSignature
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The template signature that is extended by this template signature.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The signatures extended by this RedefinableTemplateSignature.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Extended Signature</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRedefinableTemplateSignature_ExtendedSignature()
@@ -103,8 +103,8 @@ public interface RedefinableTemplateSignature
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The formal template parameters of the extendedSignature.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The formal template parameters of the extended signatures.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Inherited Parameter</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRedefinableTemplateSignature_InheritedParameter()
@@ -130,8 +130,8 @@ public interface RedefinableTemplateSignature
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The classifier that owns this template signature.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Classifier that owns this RedefinableTemplateSignature.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Classifier</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRedefinableTemplateSignature_Classifier()
@@ -144,15 +144,15 @@ public interface RedefinableTemplateSignature
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The inherited parameters are the parameters of the extended template signature.
-	 * if extendedSignature->isEmpty() then Set{} else extendedSignature.parameter endif
+	 * If any of the parent Classifiers are a template, then the extendedSignature must include the signature of that Classifier.
+	 * classifier.allParents()->forAll(c | c.ownedTemplateSignature->notEmpty() implies self->closure(extendedSignature)->includes(c.ownedTemplateSignature))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
 	 */
-	boolean validateInheritedParameters(DiagnosticChain diagnostics,
+	boolean validateRedefinesParents(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 } // RedefinableTemplateSignature

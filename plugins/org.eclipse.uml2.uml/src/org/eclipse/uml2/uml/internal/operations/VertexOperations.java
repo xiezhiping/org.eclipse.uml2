@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: VertexOperations.java,v 1.10 2010/09/28 21:02:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -42,6 +41,8 @@ import org.eclipse.uml2.uml.Vertex;
  *   <li>{@link org.eclipse.uml2.uml.Vertex#containingStateMachine() <em>Containing State Machine</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Vertex#getIncomings() <em>Get Incomings</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Vertex#getOutgoings() <em>Get Outgoings</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Vertex#isContainedInState(org.eclipse.uml2.uml.State) <em>Is Contained In State</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Vertex#isContainedInRegion(org.eclipse.uml2.uml.Region) <em>Is Contained In Region</em>}</li>
  * </ul>
  * </p>
  *
@@ -299,6 +300,56 @@ public class VertexOperations
 
 		return new OutgoingEList((InternalEObject) vertex,
 			UMLPackage.Literals.VERTEX__OUTGOING, outgoings);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * This utility operation returns true if the Vertex is contained in the State s (input argument).
+	 * result = (if not s.isComposite() or container->isEmpty() then
+	 * 	false
+	 * else
+	 * 	if container.state = s then 
+	 * 		true
+	 * 	else
+	 * 		container.state.isContainedInState(s)
+	 * 	endif
+	 * endif)
+	 * <p>From package UML::StateMachines.</p>
+	 * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean isContainedInState(Vertex vertex, State s) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * This utility query returns true if the Vertex is contained in the Region r (input argument).
+	 * result = (if (container = r) then
+	 * 	true
+	 * else
+	 * 	if (r.state->isEmpty()) then
+	 * 		false
+	 * 	else
+	 * 		container.state.isContainedInRegion(r)
+	 * 	endif
+	 * endif)
+	 * <p>From package UML::StateMachines.</p>
+	 * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean isContainedInRegion(Vertex vertex, Region r) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } // VertexOperations

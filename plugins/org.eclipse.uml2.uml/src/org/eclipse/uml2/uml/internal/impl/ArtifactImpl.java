@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -36,8 +36,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
-import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Artifact;
@@ -45,7 +43,6 @@ import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Feature;
@@ -85,7 +82,6 @@ import org.eclipse.uml2.uml.internal.operations.ArtifactOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ArtifactImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ArtifactImpl#getAttributes <em>Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ArtifactImpl#getFeatures <em>Feature</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ArtifactImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ArtifactImpl#getFileName <em>File Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ArtifactImpl#getManifestations <em>Manifestation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ArtifactImpl#getNestedArtifacts <em>Nested Artifact</em>}</li>
@@ -299,21 +295,6 @@ public class ArtifactImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EList<Dependency> getClientDependencies() {
-		if (clientDependencies == null) {
-			clientDependencies = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse<Dependency>(
-				Dependency.class, this, UMLPackage.ARTIFACT__CLIENT_DEPENDENCY,
-				null, CLIENT_DEPENDENCY_ESUBSETS, UMLPackage.DEPENDENCY__CLIENT);
-		}
-		return clientDependencies;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getFileName() {
 		return fileName;
 	}
@@ -431,9 +412,8 @@ public class ArtifactImpl
 	 */
 	public EList<Manifestation> getManifestations() {
 		if (manifestations == null) {
-			manifestations = new SubsetSupersetEObjectContainmentEList.Resolving<Manifestation>(
-				Manifestation.class, this, UMLPackage.ARTIFACT__MANIFESTATION,
-				MANIFESTATION_ESUPERSETS, null);
+			manifestations = new EObjectContainmentEList.Resolving<Manifestation>(
+				Manifestation.class, this, UMLPackage.ARTIFACT__MANIFESTATION);
 		}
 		return manifestations;
 	}
@@ -633,71 +613,6 @@ public class ArtifactImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case UMLPackage.ARTIFACT__EANNOTATIONS :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ARTIFACT__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ARTIFACT__ELEMENT_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ARTIFACT__PACKAGE_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ARTIFACT__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ARTIFACT__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetOwningTemplateParameter(
-					(TemplateParameter) otherEnd, msgs);
-			case UMLPackage.ARTIFACT__TEMPLATE_PARAMETER :
-				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
-				return basicSetTemplateParameter((TemplateParameter) otherEnd,
-					msgs);
-			case UMLPackage.ARTIFACT__OWNED_TEMPLATE_SIGNATURE :
-				if (ownedTemplateSignature != null)
-					msgs = ((InternalEObject) ownedTemplateSignature)
-						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.ARTIFACT__OWNED_TEMPLATE_SIGNATURE,
-							null, msgs);
-				return basicSetOwnedTemplateSignature(
-					(TemplateSignature) otherEnd, msgs);
-			case UMLPackage.ARTIFACT__TEMPLATE_BINDING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ARTIFACT__GENERALIZATION :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getGeneralizations())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ARTIFACT__POWERTYPE_EXTENT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPowertypeExtents())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ARTIFACT__USE_CASE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getUseCases())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ARTIFACT__SUBSTITUTION :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubstitutions())
-					.basicAdd(otherEnd, msgs);
-		}
-		return eDynamicInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
@@ -708,29 +623,26 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ARTIFACT__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ARTIFACT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.ARTIFACT__OWNED_RULE :
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.ARTIFACT__ELEMENT_IMPORT :
 				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ARTIFACT__PACKAGE_IMPORT :
 				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ARTIFACT__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.ARTIFACT__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.ARTIFACT__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.ARTIFACT__OWNED_TEMPLATE_SIGNATURE :
-				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.ARTIFACT__TEMPLATE_BINDING :
 				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.ARTIFACT__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.ARTIFACT__COLLABORATION_USE :
 				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
@@ -799,12 +711,12 @@ public class ArtifactImpl
 				return getQualifiedName();
 			case UMLPackage.ARTIFACT__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.ARTIFACT__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.ARTIFACT__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.ARTIFACT__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.ARTIFACT__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.ARTIFACT__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.ARTIFACT__IMPORTED_MEMBER :
@@ -829,12 +741,12 @@ public class ArtifactImpl
 				if (resolve)
 					return getPackage();
 				return basicGetPackage();
+			case UMLPackage.ARTIFACT__TEMPLATE_BINDING :
+				return getTemplateBindings();
 			case UMLPackage.ARTIFACT__OWNED_TEMPLATE_SIGNATURE :
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.ARTIFACT__TEMPLATE_BINDING :
-				return getTemplateBindings();
 			case UMLPackage.ARTIFACT__FEATURE :
 				return getFeatures();
 			case UMLPackage.ARTIFACT__ATTRIBUTE :
@@ -898,11 +810,6 @@ public class ArtifactImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.ARTIFACT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.ARTIFACT__NAME :
 				setName((String) newValue);
 				return;
@@ -911,6 +818,11 @@ public class ArtifactImpl
 				return;
 			case UMLPackage.ARTIFACT__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.ARTIFACT__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.ARTIFACT__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -921,11 +833,6 @@ public class ArtifactImpl
 				getPackageImports().clear();
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
-				return;
-			case UMLPackage.ARTIFACT__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.ARTIFACT__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -939,13 +846,13 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
-			case UMLPackage.ARTIFACT__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
-				return;
 			case UMLPackage.ARTIFACT__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
+				return;
+			case UMLPackage.ARTIFACT__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.ARTIFACT__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -1036,9 +943,6 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.ARTIFACT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.ARTIFACT__NAME :
 				unsetName();
 				return;
@@ -1048,14 +952,14 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__VISIBILITY :
 				unsetVisibility();
 				return;
+			case UMLPackage.ARTIFACT__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.ARTIFACT__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.ARTIFACT__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				return;
-			case UMLPackage.ARTIFACT__OWNED_RULE :
-				getOwnedRules().clear();
 				return;
 			case UMLPackage.ARTIFACT__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
@@ -1069,11 +973,11 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
 				return;
-			case UMLPackage.ARTIFACT__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) null);
-				return;
 			case UMLPackage.ARTIFACT__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
+				return;
+			case UMLPackage.ARTIFACT__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
 			case UMLPackage.ARTIFACT__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -1144,8 +1048,7 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__OWNER :
 				return isSetOwner();
 			case UMLPackage.ARTIFACT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.ARTIFACT__NAME :
 				return isSetName();
 			case UMLPackage.ARTIFACT__NAME_EXPRESSION :
@@ -1158,12 +1061,12 @@ public class ArtifactImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ARTIFACT__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.ARTIFACT__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.ARTIFACT__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.ARTIFACT__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.ARTIFACT__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.ARTIFACT__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.ARTIFACT__IMPORTED_MEMBER :
@@ -1182,10 +1085,10 @@ public class ArtifactImpl
 				return isSetTemplateParameter();
 			case UMLPackage.ARTIFACT__PACKAGE :
 				return basicGetPackage() != null;
-			case UMLPackage.ARTIFACT__OWNED_TEMPLATE_SIGNATURE :
-				return isSetOwnedTemplateSignature();
 			case UMLPackage.ARTIFACT__TEMPLATE_BINDING :
 				return templateBindings != null && !templateBindings.isEmpty();
+			case UMLPackage.ARTIFACT__OWNED_TEMPLATE_SIGNATURE :
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.ARTIFACT__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.ARTIFACT__ATTRIBUTE :
@@ -1322,16 +1225,16 @@ public class ArtifactImpl
 				return allOwnedElements();
 			case UMLPackage.ARTIFACT___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.ARTIFACT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ARTIFACT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ARTIFACT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ARTIFACT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ARTIFACT___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1342,6 +1245,8 @@ public class ArtifactImpl
 				return getLabel();
 			case UMLPackage.ARTIFACT___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.ARTIFACT___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.ARTIFACT___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.ARTIFACT___ALL_OWNING_PACKAGES :
@@ -1349,14 +1254,22 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.ARTIFACT___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.ARTIFACT___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.ARTIFACT___SEPARATOR :
 				return separator();
+			case UMLPackage.ARTIFACT___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.ARTIFACT___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ARTIFACT___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ARTIFACT___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ARTIFACT___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -1371,6 +1284,8 @@ public class ArtifactImpl
 				return getImportedElements();
 			case UMLPackage.ARTIFACT___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.ARTIFACT___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.ARTIFACT___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -1383,8 +1298,6 @@ public class ArtifactImpl
 				return getImportedMembers();
 			case UMLPackage.ARTIFACT___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.ARTIFACT___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 			case UMLPackage.ARTIFACT___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -1406,6 +1319,10 @@ public class ArtifactImpl
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.ARTIFACT___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.ARTIFACT___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ARTIFACT___CREATE_ASSOCIATION__BOOLEAN_AGGREGATIONKIND_STRING_INT_INT_TYPE_BOOLEAN_AGGREGATIONKIND_STRING_INT_INT :
 				return createAssociation((Boolean) arguments.get(0),
 					(AggregationKind) arguments.get(1),
@@ -1423,20 +1340,20 @@ public class ArtifactImpl
 				return isTemplate();
 			case UMLPackage.ARTIFACT___PARAMETERABLE_ELEMENTS :
 				return parameterableElements();
-			case UMLPackage.ARTIFACT___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
-				return validateNonFinalParents(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ARTIFACT___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
-				return validateNoCyclesInGeneralization(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ARTIFACT___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateSpecializeType(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ARTIFACT___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
 				return validateMapsToGeneralizationSet(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ARTIFACT___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
+				return validateNonFinalParents(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ARTIFACT___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
+				return validateNoCyclesInGeneralization(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ARTIFACT___GET_ALL_ATTRIBUTES :
@@ -1461,8 +1378,6 @@ public class ArtifactImpl
 				return allFeatures();
 			case UMLPackage.ARTIFACT___ALL_PARENTS :
 				return allParents();
-			case UMLPackage.ARTIFACT___CONFORMS_TO__CLASSIFIER :
-				return conformsTo((Classifier) arguments.get(0));
 			case UMLPackage.ARTIFACT___GET_GENERALS :
 				return getGenerals();
 			case UMLPackage.ARTIFACT___HAS_VISIBILITY_OF__NAMEDELEMENT :
@@ -1477,6 +1392,20 @@ public class ArtifactImpl
 				return maySpecializeType((Classifier) arguments.get(0));
 			case UMLPackage.ARTIFACT___PARENTS :
 				return parents();
+			case UMLPackage.ARTIFACT___DIRECTLY_REALIZED_INTERFACES :
+				return directlyRealizedInterfaces();
+			case UMLPackage.ARTIFACT___DIRECTLY_USED_INTERFACES :
+				return directlyUsedInterfaces();
+			case UMLPackage.ARTIFACT___ALL_REALIZED_INTERFACES :
+				return allRealizedInterfaces();
+			case UMLPackage.ARTIFACT___ALL_USED_INTERFACES :
+				return allUsedInterfaces();
+			case UMLPackage.ARTIFACT___IS_SUBSTITUTABLE_FOR__CLASSIFIER :
+				return isSubstitutableFor((Classifier) arguments.get(0));
+			case UMLPackage.ARTIFACT___ALL_ATTRIBUTES :
+				return allAttributes();
+			case UMLPackage.ARTIFACT___ALL_SLOTTABLE_FEATURES :
+				return allSlottableFeatures();
 			case UMLPackage.ARTIFACT___CREATE_OWNED_ATTRIBUTE__STRING_TYPE_INT_INT :
 				return createOwnedAttribute((String) arguments.get(0),
 					(Type) arguments.get(1), (Integer) arguments.get(2),
@@ -1535,8 +1464,8 @@ public class ArtifactImpl
 		UMLPackage.ARTIFACT__NAME_EXPRESSION,
 		UMLPackage.ARTIFACT__ELEMENT_IMPORT,
 		UMLPackage.ARTIFACT__PACKAGE_IMPORT, UMLPackage.ARTIFACT__OWNED_MEMBER,
-		UMLPackage.ARTIFACT__OWNED_TEMPLATE_SIGNATURE,
 		UMLPackage.ARTIFACT__TEMPLATE_BINDING,
+		UMLPackage.ARTIFACT__OWNED_TEMPLATE_SIGNATURE,
 		UMLPackage.ARTIFACT__COLLABORATION_USE,
 		UMLPackage.ARTIFACT__GENERALIZATION, UMLPackage.ARTIFACT__SUBSTITUTION,
 		UMLPackage.ARTIFACT__MANIFESTATION};
@@ -1597,27 +1526,6 @@ public class ArtifactImpl
 	 */
 	protected static final int[] FEATURE_ESUBSETS = new int[]{
 		UMLPackage.ARTIFACT__ATTRIBUTE, UMLPackage.ARTIFACT__OWNED_OPERATION};
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClientDependencies()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[]{
-		UMLPackage.ARTIFACT__SUBSTITUTION, UMLPackage.ARTIFACT__MANIFESTATION};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getManifestations() <em>Manifestation</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getManifestations()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] MANIFESTATION_ESUPERSETS = new int[]{UMLPackage.ARTIFACT__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->

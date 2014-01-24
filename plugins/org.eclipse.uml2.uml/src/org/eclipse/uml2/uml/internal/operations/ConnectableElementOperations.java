@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2010 IBM Corporation and others.
+ * Copyright (c) 2006, 2014 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 323181
+ *   Kenn Hussey - 323181, 418466
  *
- * $Id: ConnectableElementOperations.java,v 1.7 2010/09/28 21:02:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -155,11 +154,11 @@ public class ConnectableElementOperations
 					requiredInterfaces);
 			} else if (type instanceof Classifier) {
 				Classifier classifier = (Classifier) type;
-				ComponentOperations.usedInterfaces(null, classifier, true,
+				ClassifierOperations.directlyUsedInterfaces(classifier, true,
 					requiredInterfaces);
 
 				for (Classifier parent : classifier.allParents()) {
-					ComponentOperations.usedInterfaces(null, parent, true,
+					ClassifierOperations.directlyUsedInterfaces(parent, true,
 						requiredInterfaces);
 				}
 			}
@@ -195,12 +194,12 @@ public class ConnectableElementOperations
 				providedInterfaces.add((Interface) type);
 			} else if (type instanceof Classifier) {
 				Classifier classifier = (Classifier) type;
-				ComponentOperations.realizedInterfaces(null, classifier, true,
-					providedInterfaces);
+				ClassifierOperations.directlyRealizedInterfaces(classifier,
+					true, providedInterfaces);
 
 				for (Classifier parent : classifier.allParents()) {
-					ComponentOperations.realizedInterfaces(null, parent, true,
-						providedInterfaces);
+					ClassifierOperations.directlyRealizedInterfaces(parent,
+						true, providedInterfaces);
 				}
 			}
 		}

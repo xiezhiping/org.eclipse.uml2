@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -27,8 +27,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A message defines a particular communication between lifelines of an interaction.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A Message defines a particular communication between Lifelines of an Interaction.
+ * <p>From package UML::Interactions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -59,8 +59,8 @@ public interface Message
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The derived kind of the Message (complete, lost, found or unknown)
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The derived kind of the Message (complete, lost, found, or unknown).
+	 * <p>From package UML::Interactions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Message Kind</em>' attribute.
 	 * @see org.eclipse.uml2.uml.MessageKind
@@ -77,8 +77,8 @@ public interface Message
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The sort of communication reflected by the Message
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The sort of communication reflected by the Message.
+	 * <p>From package UML::Interactions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Message Sort</em>' attribute.
 	 * @see org.eclipse.uml2.uml.MessageSort
@@ -105,8 +105,8 @@ public interface Message
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the Receiving of the Message
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * References the Receiving of the Message.
+	 * <p>From package UML::Interactions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Receive Event</em>' reference.
 	 * @see #setReceiveEvent(MessageEnd)
@@ -132,7 +132,7 @@ public interface Message
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Sending of the Message.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Interactions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Send Event</em>' reference.
 	 * @see #setSendEvent(MessageEnd)
@@ -158,7 +158,7 @@ public interface Message
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Connector on which this Message is sent.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Interactions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Connector</em>' reference.
 	 * @see #setConnector(Connector)
@@ -190,8 +190,8 @@ public interface Message
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The enclosing Interaction owning the Message
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The enclosing Interaction owning the Message.
+	 * <p>From package UML::Interactions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Interaction</em>' container reference.
 	 * @see #setInteraction(Interaction)
@@ -224,8 +224,8 @@ public interface Message
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The arguments of the Message
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The arguments of the Message.
+	 * <p>From package UML::Interactions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Argument</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMessage_Argument()
@@ -281,7 +281,7 @@ public interface Message
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The signature of the Message is the specification of its content. It refers either an Operation or a Signal.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Interactions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Signature</em>' reference.
 	 * @see #setSignature(NamedElement)
@@ -306,7 +306,12 @@ public interface Message
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If the sendEvent and the receiveEvent of the same Message are on the same Lifeline, the sendEvent must be ordered before the receiveEvent.
-	 * true
+	 * receiveEvent.oclIsKindOf(MessageOccurrenceSpecification)
+	 * implies
+	 * let f :  Lifeline = sendEvent->select(oclIsKindOf(MessageOccurrenceSpecification)).oclAsType(MessageOccurrenceSpecification)->asOrderedSet()->first().covered in
+	 * f = receiveEvent->select(oclIsKindOf(MessageOccurrenceSpecification)).oclAsType(MessageOccurrenceSpecification)->asOrderedSet()->first().covered  implies
+	 * f.events->indexOf(sendEvent.oclAsType(MessageOccurrenceSpecification)->asOrderedSet()->first() ) < 
+	 * f.events->indexOf(receiveEvent.oclAsType(MessageOccurrenceSpecification)->asOrderedSet()->first() )
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -320,8 +325,12 @@ public interface Message
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The signature must either refer an Operation (in which case messageSort is either synchCall or asynchCall) or a Signal (in which case messageSort is asynchSignal). The name of the NamedElement referenced by signature must be the same as that of the Message.
-	 * true
+	 * The signature must either refer an Operation (in which case messageSort is either synchCall or asynchCall or reply) or a Signal (in which case messageSort is asynchSignal). The name of the NamedElement referenced by signature must be the same as that of the Message.
+	 * signature->notEmpty() implies 
+	 * ((signature.oclIsKindOf(Operation) and 
+	 * (messageSort = MessageSort::asynchCall or messageSort = MessageSort::synchCall or messageSort = MessageSort::reply) 
+	 * ) or (signature.oclIsKindOf(Signal)  and messageSort = MessageSort::asynchSignal )
+	 *  ) and name = signature.name
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -335,23 +344,64 @@ public interface Message
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * In the case when the Message signature is an Operation, the arguments of the Message must correspond to the parameters of the Operation. A Parameter corresponds to an Argument if the Argument is of the same Class or a specialization of that of the Parameter.
-	 * true
+	 * In the case when a Message with messageSort synchCall or asynchCall has a non empty Operation signature, the arguments of the Message must correspond to the in and inout parameters of the Operation. A Parameter corresponds to an Argument if the Argument is of the same Class or a specialization of that of the Parameter.
+	 * (messageSort = MessageSort::asynchCall or messageSort = MessageSort::synchCall) and signature.oclIsKindOf(Operation)  implies 
+	 *  let requestParms : OrderedSet(Parameter) = signature.oclAsType(Operation).ownedParameter->
+	 *  select(direction = ParameterDirectionKind::inout or direction = ParameterDirectionKind::_'in'  )
+	 * in requestParms->size() = self.argument->size() and
+	 * self.argument->forAll( o: ValueSpecification | 
+	 * not (o.oclIsKindOf(Expression) and o.oclAsType(Expression).symbol->size()=0 and o.oclAsType(Expression).operand->isEmpty() ) implies 
+	 * let p : Parameter = requestParms->at(self.argument->indexOf(o)) in
+	 * o.type.oclAsType(Classifier).conformsTo(p.type.oclAsType(Classifier))
+	 * )
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
 	 */
-	boolean validateSignatureIsOperation(DiagnosticChain diagnostics,
+	boolean validateSignatureIsOperationRequest(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * In the case when the Message signature is a Signal, the arguments of the Message must correspond to the attributes of the Signal. A Message Argument corresponds to a Signal Attribute if the Arguement is of the same Class or a specialization of that of the Attribute.
-	 * true
+	 * In the case when a Message with messageSort reply has a non empty Operation signature, the arguments of the Message must correspond to the out, inout, and return parameters of the Operation. A Parameter corresponds to an Argument if the Argument is of the same Class or a specialization of that of the Parameter.
+	 * (messageSort = MessageSort::reply) and signature.oclIsKindOf(Operation) implies 
+	 *  let replyParms : OrderedSet(Parameter) = signature.oclAsType(Operation).ownedParameter->
+	 * select(direction = ParameterDirectionKind::inout or direction = ParameterDirectionKind::out or direction = ParameterDirectionKind::return)
+	 * in replyParms->size() = self.argument->size() and
+	 * self.argument->forAll( o: ValueSpecification | o.oclIsKindOf(Expression) and let e : Expression = o.oclAsType(Expression) in
+	 * e.operand->notEmpty()  implies 
+	 * let p : Parameter = replyParms->at(self.argument->indexOf(o)) in
+	 * e.operand->asSequence()->first().type.oclAsType(Classifier).conformsTo(p.type.oclAsType(Classifier))
+	 * )
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateSignatureIsOperationReply(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * In the case when the Message signature is a Signal, the arguments of the Message must correspond to the attributes of the Signal. A Message Argument corresponds to a Signal Attribute if the Argument is of the same Class or a specialization of that of the Attribute.
+	 * (messageSort = MessageSort::asynchSignal ) and signature.oclIsKindOf(Signal) implies
+	 *    let signalAttributes : OrderedSet(Property) = signature.oclAsType(Signal).inheritedMember()->
+	 *              select(n:NamedElement | n.oclIsTypeOf(Property))->collect(oclAsType(Property))->asOrderedSet()
+	 *    in signalAttributes->size() = self.argument->size()
+	 *    and self.argument->forAll( o: ValueSpecification |
+	 *           not (o.oclIsKindOf(Expression)
+	 *           and o.oclAsType(Expression).symbol->size()=0
+	 *           and o.oclAsType(Expression).operand->isEmpty() ) implies
+	 *               let p : Property = signalAttributes->at(self.argument->indexOf(o))
+	 *               in o.type.oclAsType(Classifier).conformsTo(p.type.oclAsType(Classifier)))
+	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -365,8 +415,7 @@ public interface Message
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Arguments of a Message must only be: i) attributes of the sending lifeline ii) constants iii) symbolic values (which are wildcard values representing any legal value) iv) explicit parameters of the enclosing Interaction v) attributes of the class owning the Interaction
-	 * true
+	 * Arguments of a Message must only be: i) attributes of the sending lifeline, ii) constants, iii) symbolic values (which are wildcard values representing any legal value), iv) explicit parameters of the enclosing Interaction, v) attributes of the class owning the Interaction.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -380,8 +429,14 @@ public interface Message
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Messages cannot cross bounderies of CombinedFragments or their operands.
-	 * true
+	 * Messages cannot cross boundaries of CombinedFragments or their operands.  This is true if and only if both MessageEnds are enclosed within the same InteractionFragment (i.e., an InteractionOperand or an Interaction).
+	 * sendEvent->notEmpty() and receiveEvent->notEmpty() implies
+	 * let sendEnclosingFrag : Set(InteractionFragment) = 
+	 * sendEvent->asOrderedSet()->first().enclosingFragment()
+	 * in 
+	 * let receiveEnclosingFrag : Set(InteractionFragment) = 
+	 * receiveEvent->asOrderedSet()->first().enclosingFragment()
+	 * in  sendEnclosingFrag = receiveEnclosingFrag
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -395,8 +450,7 @@ public interface Message
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If the MessageEnds are both OccurrenceSpecifications then the connector must go between the Parts represented by the Lifelines of the two MessageEnds.
-	 * true
+	 * If the MessageEnds are both OccurrenceSpecifications, then the connector must go between the Parts represented by the Lifelines of the two MessageEnds.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

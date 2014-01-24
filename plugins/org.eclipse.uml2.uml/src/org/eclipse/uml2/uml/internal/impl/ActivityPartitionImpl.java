@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -47,7 +47,6 @@ import org.eclipse.uml2.uml.ActivityGroup;
 import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -584,17 +583,6 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateRepresentsPart(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return ActivityPartitionOperations.validateRepresentsPart(this,
-			diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateRepresentsClassifier(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return ActivityPartitionOperations.validateRepresentsClassifier(this,
@@ -606,10 +594,22 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateRepresentsPartAndIsContained(
+	public boolean validateRepresentsPropertyAndIsContained(
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return ActivityPartitionOperations
-			.validateRepresentsPartAndIsContained(this, diagnostics, context);
+			.validateRepresentsPropertyAndIsContained(this, diagnostics,
+				context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRepresentsProperty(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return ActivityPartitionOperations.validateRepresentsProperty(this,
+			diagnostics, context);
 	}
 
 	/**
@@ -624,9 +624,6 @@ public class ActivityPartitionImpl
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_PARTITION__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ACTIVITY_PARTITION__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_PARTITION__NODE :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getNodes())
@@ -661,9 +658,6 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ACTIVITY_PARTITION__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_PARTITION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.ACTIVITY_PARTITION__NODE :
@@ -787,11 +781,6 @@ public class ActivityPartitionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.ACTIVITY_PARTITION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.ACTIVITY_PARTITION__NAME :
 				setName((String) newValue);
 				return;
@@ -849,9 +838,6 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.ACTIVITY_PARTITION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.ACTIVITY_PARTITION__NAME :
 				unsetName();
 				return;
@@ -906,8 +892,7 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__OWNER :
 				return isSetOwner();
 			case UMLPackage.ACTIVITY_PARTITION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.ACTIVITY_PARTITION__NAME :
 				return isSetName();
 			case UMLPackage.ACTIVITY_PARTITION__NAME_EXPRESSION :
@@ -1040,16 +1025,16 @@ public class ActivityPartitionImpl
 				return allOwnedElements();
 			case UMLPackage.ACTIVITY_PARTITION___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARTITION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1060,6 +1045,8 @@ public class ActivityPartitionImpl
 				return getLabel();
 			case UMLPackage.ACTIVITY_PARTITION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.ACTIVITY_PARTITION___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.ACTIVITY_PARTITION___ALL_OWNING_PACKAGES :
@@ -1067,32 +1054,31 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARTITION___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.ACTIVITY_PARTITION___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.ACTIVITY_PARTITION___SEPARATOR :
 				return separator();
-			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_GROUP_OWNED__DIAGNOSTICCHAIN_MAP :
-				return validateGroupOwned((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
-				return validateNotContained((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
+			case UMLPackage.ACTIVITY_PARTITION___CONTAINING_ACTIVITY :
+				return containingActivity();
 			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP :
 				return validateNodesAndEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_REPRESENTS_PART__DIAGNOSTICCHAIN_MAP :
-				return validateRepresentsPart(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
+				return validateNotContained((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_REPRESENTS_CLASSIFIER__DIAGNOSTICCHAIN_MAP :
 				return validateRepresentsClassifier(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_REPRESENTS_PART_AND_IS_CONTAINED__DIAGNOSTICCHAIN_MAP :
-				return validateRepresentsPartAndIsContained(
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_REPRESENTS_PROPERTY_AND_IS_CONTAINED__DIAGNOSTICCHAIN_MAP :
+				return validateRepresentsPropertyAndIsContained(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_REPRESENTS_PROPERTY__DIAGNOSTICCHAIN_MAP :
+				return validateRepresentsProperty(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_DIMENSION_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :

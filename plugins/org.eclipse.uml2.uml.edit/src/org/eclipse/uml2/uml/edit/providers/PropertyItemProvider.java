@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208353, 205188, 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *   Christian W. Damus (CEA) - 412912
  *
  */
@@ -40,10 +40,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
-import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
 import org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand;
-import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
 import org.eclipse.uml2.common.util.UML2Util;
 
 import org.eclipse.uml2.uml.Property;
@@ -91,13 +88,13 @@ public class PropertyItemProvider
 			addEndPropertyDescriptor(object);
 			addDeployedElementPropertyDescriptor(object);
 			addDeploymentPropertyDescriptor(object);
-			addInterfacePropertyDescriptor(object);
 			addDatatypePropertyDescriptor(object);
+			addInterfacePropertyDescriptor(object);
+			addDefaultPropertyDescriptor(object);
 			addAggregationPropertyDescriptor(object);
 			addAssociationEndPropertyDescriptor(object);
 			addQualifierPropertyDescriptor(object);
 			addClassPropertyDescriptor(object);
-			addDefaultPropertyDescriptor(object);
 			addDefaultValuePropertyDescriptor(object);
 			addIsCompositePropertyDescriptor(object);
 			addIsDerivedPropertyDescriptor(object);
@@ -670,8 +667,8 @@ public class PropertyItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Property.class)) {
-			case UMLPackage.PROPERTY__AGGREGATION :
 			case UMLPackage.PROPERTY__DEFAULT :
+			case UMLPackage.PROPERTY__AGGREGATION :
 			case UMLPackage.PROPERTY__IS_COMPOSITE :
 			case UMLPackage.PROPERTY__IS_DERIVED :
 			case UMLPackage.PROPERTY__IS_DERIVED_UNION :
@@ -719,6 +716,10 @@ public class PropertyItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
 			UMLFactory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -727,7 +728,11 @@ public class PropertyItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
+			UMLFactory.eINSTANCE.createInstanceValue()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
@@ -740,10 +745,6 @@ public class PropertyItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
 			UMLFactory.eINSTANCE.createDurationInterval()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
-			UMLFactory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
@@ -772,10 +773,6 @@ public class PropertyItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
 			UMLFactory.eINSTANCE.createTimeInterval()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
-			UMLFactory.eINSTANCE.createTimeExpression()));
 	}
 
 	/**
@@ -801,77 +798,6 @@ public class PropertyItemProvider
 					getFeatureText(childFeature), getTypeText(owner)});
 		}
 		return super.getCreateChildText(owner, feature, child, selection);
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected Command createAddCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Collection<?> collection, int index) {
-		if (feature == UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT) {
-			return new SubsetAddCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY},
-				collection, index);
-		}
-		return super
-			.createAddCommand(domain, owner, feature, collection, index);
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Collection<?> collection) {
-		if (feature == UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
-			return new SupersetRemoveCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT},
-				collection);
-		}
-		return super.createRemoveCommand(domain, owner, feature, collection);
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject, java.util.Collection)
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, EObject value, Collection<?> collection) {
-		if (feature == UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT) {
-			return new SubsetSupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY},
-				null, value, collection);
-		}
-		if (feature == UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
-			return new SubsetSupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
-				null,
-				new EStructuralFeature[]{UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT},
-				value, collection);
-		}
-		return super.createReplaceCommand(domain, owner, feature, value,
-			collection);
 	}
 
 	/**

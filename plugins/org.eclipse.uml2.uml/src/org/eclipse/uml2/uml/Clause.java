@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -27,8 +27,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A clause is an element that represents a single branch of a conditional construct, including a test and a body section. The body section is executed only if (but not necessarily if) the test section evaluates true.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A Clause is an Element that represents a single branch of a ConditionalNode, including a test and a body section. The body section is executed only if (but not necessarily if) the test section evaluates to true.
+ * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -56,8 +56,8 @@ public interface Clause
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A nested activity fragment with a designated output pin that specifies the result of the test.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The set of ExecutableNodes that are executed in order to provide a test result for the Clause.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Test</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClause_Test()
@@ -96,8 +96,8 @@ public interface Clause
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The set of ExecutableNodes that are executed if the test evaluates to true and the Clause is chosen over other Clauses within the ConditionalNode that also have tests that evaluate to true.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClause_Body()
@@ -137,8 +137,8 @@ public interface Clause
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A set of clauses whose tests must all evaluate false before the current clause can be tested.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * A set of Clauses whose tests must all evaluate to false before this Clause can evaluate its test.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Predecessor Clause</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClause_PredecessorClause()
@@ -155,8 +155,8 @@ public interface Clause
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A set of clauses which may not be tested unless the current clause tests false.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * A set of Clauses that may not evaluate their tests unless the test for this Clause evaluates to false.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Successor Clause</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClause_SuccessorClause()
@@ -171,8 +171,8 @@ public interface Clause
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An output pin within the test fragment the value of which is examined after execution of the test to determine whether the body should be executed.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * An OutputPin on an Action in the test section whose Boolean value determines the result of the test.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Decider</em>' reference.
 	 * @see #setDecider(OutputPin)
@@ -198,8 +198,8 @@ public interface Clause
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The OutputPins on Actions within the body section whose values are moved to the result OutputPins of the containing ConditionalNode after execution of the body.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body Output</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClause_BodyOutput()
@@ -237,8 +237,10 @@ public interface Clause
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The decider output pin must be for the test body or a node contained by the test body as a structured node.
-	 * true
+	 * The decider Pin must be on an Action in the test section of the Clause and must be of type Boolean with multiplicity 1..1.
+	 * test.oclAsType(Action).allActions().output->includes(decider) and
+	 * decider.type = Boolean and
+	 * decider.is(1,1)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -252,8 +254,8 @@ public interface Clause
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The test and body parts must be disjoint.
-	 * true
+	 * The test and body parts of a ConditionalNode must be disjoint with each other.
+	 * test->intersection(_'body')->isEmpty()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -267,8 +269,8 @@ public interface Clause
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The bodyOutput pins are output pins on actions in the body of the clause.
-	 * true
+	 * The bodyOutput Pins are OutputPins on Actions in the body of the Clause.
+	 * _'body'.oclAsType(Action).allActions().output->includesAll(bodyOutput)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

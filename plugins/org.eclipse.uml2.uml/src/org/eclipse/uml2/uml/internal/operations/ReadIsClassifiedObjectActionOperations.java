@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: ReadIsClassifiedObjectActionOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -56,8 +55,8 @@ public class ReadIsClassifiedObjectActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the input pin is 1..1.
-	 * self.object.multiplicity.is(1,1)
+	 * The multiplicity of the object InputPin is 1..1.
+	 * object.is(1,1)
 	 * @param readIsClassifiedObjectAction The receiving '<em><b>Read Is Classified Object Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -92,8 +91,8 @@ public class ReadIsClassifiedObjectActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The input pin has no type.
-	 * self.object.type->isEmpty()
+	 * The object InputPin has no type.
+	 * object.type = null
 	 * @param readIsClassifiedObjectAction The receiving '<em><b>Read Is Classified Object Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -128,8 +127,8 @@ public class ReadIsClassifiedObjectActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the output pin is 1..1.
-	 * self.result.multiplicity.is(1,1)
+	 * The multiplicity of the result OutputPin is 1..1.
+	 * result.is(1,1)
 	 * @param readIsClassifiedObjectAction The receiving '<em><b>Read Is Classified Object Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -164,8 +163,8 @@ public class ReadIsClassifiedObjectActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the output pin is Boolean
-	 * self.result.type = Boolean
+	 * The type of the result OutputPin is Boolean.
+	 * result.type = Boolean
 	 * @param readIsClassifiedObjectAction The receiving '<em><b>Read Is Classified Object Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -18,6 +18,8 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.LinkEndDestructionData;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -30,8 +32,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.LinkEndDestructionData#validateDestroyLinkAction(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Destroy Link Action</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.LinkEndDestructionData#validateUnlimitedNaturalAndMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Unlimited Natural And Multiplicity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LinkEndDestructionData#validateDestroyAtPin(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Destroy At Pin</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LinkEndDestructionData#allPins() <em>All Pins</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,15 +55,21 @@ public class LinkEndDestructionDataOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * LinkEndDestructionData can only be end data for DestroyLinkAction or one of its specializations.
-	 * true
+	 * LinkEndDestructionData for ordered, nonunique Association ends must have a single destroyAt InputPin if isDestroyDuplicates is false, which must be of type UnlimitedNatural and have a multiplicity of 1..1. Otherwise, the action has no destroyAt input pin.
+	 * if  not end.isOrdered or end.isUnique or isDestroyDuplicates
+	 * then destroyAt = null
+	 * else
+	 * 	destroyAt <> null and 
+	 * 	destroyAt->forAll(type=UnlimitedNatural and is(1,1))
+	 * endif
+	 * 
 	 * @param linkEndDestructionData The receiving '<em><b>Link End Destruction Data</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateDestroyLinkAction(
+	public static boolean validateDestroyAtPin(
 			LinkEndDestructionData linkEndDestructionData,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
@@ -74,10 +82,10 @@ public class LinkEndDestructionDataOperations
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.LINK_END_DESTRUCTION_DATA__DESTROY_LINK_ACTION,
+						UMLValidator.LINK_END_DESTRUCTION_DATA__DESTROY_AT_PIN,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateDestroyLinkAction", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(linkEndDestructionData, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateDestroyAtPin", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(linkEndDestructionData, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{linkEndDestructionData}));
 			}
 			return false;
@@ -89,36 +97,18 @@ public class LinkEndDestructionDataOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * LinkEndDestructionData for ordered nonunique association ends must have a single destroyAt input pin if isDestroyDuplicates is false. It must be of type UnlimitedNatural and have a multiplicity of 1..1. Otherwise, the action has no input pin for the removal position.
-	 * true
+	 * Adds the destroyAt InputPin (if any) to the set of all Pins.
+	 * result = (self.LinkEndData::allPins()->including(destroyAt))
+	 * <p>From package UML::Actions.</p>
 	 * @param linkEndDestructionData The receiving '<em><b>Link End Destruction Data</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateUnlimitedNaturalAndMultiplicity(
-			LinkEndDestructionData linkEndDestructionData,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public static EList<InputPin> allPins(
+			LinkEndDestructionData linkEndDestructionData) {
 		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.LINK_END_DESTRUCTION_DATA__UNLIMITED_NATURAL_AND_MULTIPLICITY,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateUnlimitedNaturalAndMultiplicity", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(linkEndDestructionData, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{linkEndDestructionData}));
-			}
-			return false;
-		}
-		return true;
+		throw new UnsupportedOperationException();
 	}
 
 } // LinkEndDestructionDataOperations

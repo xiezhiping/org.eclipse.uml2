@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EPackage;
  *
  * <!-- begin-model-doc -->
  * A profile defines limited extensions to a reference metamodel with the purpose of adapting the metamodel to a specific platform or domain.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * <p>From package UML::Packages.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -61,7 +61,7 @@ public interface Profile
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References a metaclass that may be extended.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Packages.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Metaclass Reference</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProfile_MetaclassReference()
@@ -118,7 +118,7 @@ public interface Profile
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References a package containing (directly or indirectly) metaclasses that may be extended.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Packages.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Metamodel Reference</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProfile_MetamodelReference()
@@ -169,9 +169,13 @@ public interface Profile
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An element imported as a metaclassReference is not specialized or generalized in a Profile.
-	 * self.metaclassReference.importedElement->
+	 * metaclassReference.importedElement->
 	 * 	select(c | c.oclIsKindOf(Classifier) and
-	 * 		(c.generalization.namespace = self or	c.specialization.namespace = self))->isEmpty()
+	 * 		(c.oclAsType(Classifier).allParents()->collect(namespace)->includes(self)))->isEmpty()
+	 * and 
+	 * packagedElement->
+	 *     select(oclIsKindOf(Classifier))->collect(oclAsType(Classifier).allParents())->
+	 *        intersection(metaclassReference.importedElement->select(oclIsKindOf(Classifier))->collect(oclAsType(Classifier)))->isEmpty()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -186,8 +190,8 @@ public interface Profile
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * All elements imported either as metaclassReferences or through metamodelReferences are members of the same base reference metamodel.
-	 * self.metamodelReference.importedPackage.elementImport.importedElement.allOwningPackages()->
-	 *   union(self.metaclassReference.importedElement.allOwningPackages() )->notEmpty()
+	 * metamodelReference.importedPackage.elementImport.importedElement.allOwningPackages()->
+	 *   union(metaclassReference.importedElement.allOwningPackages() )->notEmpty()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

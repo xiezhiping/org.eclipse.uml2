@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -35,7 +35,6 @@ import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.DecisionNode;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -321,22 +320,22 @@ public class DecisionNodeImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.DECISION_NODE__IN_PARTITION :
-				return getInPartitions();
+			case UMLPackage.DECISION_NODE__IN_GROUP :
+				return getInGroups();
+			case UMLPackage.DECISION_NODE__IN_INTERRUPTIBLE_REGION :
+				return getInInterruptibleRegions();
 			case UMLPackage.DECISION_NODE__IN_STRUCTURED_NODE :
 				if (resolve)
 					return getInStructuredNode();
 				return basicGetInStructuredNode();
-			case UMLPackage.DECISION_NODE__IN_INTERRUPTIBLE_REGION :
-				return getInInterruptibleRegions();
-			case UMLPackage.DECISION_NODE__OUTGOING :
-				return getOutgoings();
 			case UMLPackage.DECISION_NODE__INCOMING :
 				return getIncomings();
-			case UMLPackage.DECISION_NODE__IN_GROUP :
-				return getInGroups();
+			case UMLPackage.DECISION_NODE__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.DECISION_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
+			case UMLPackage.DECISION_NODE__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.DECISION_NODE__DECISION_INPUT :
 				if (resolve)
 					return getDecisionInput();
@@ -368,11 +367,6 @@ public class DecisionNodeImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.DECISION_NODE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.DECISION_NODE__NAME :
 				setName((String) newValue);
 				return;
@@ -388,34 +382,34 @@ public class DecisionNodeImpl
 			case UMLPackage.DECISION_NODE__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
-			case UMLPackage.DECISION_NODE__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
-				return;
-			case UMLPackage.DECISION_NODE__IN_STRUCTURED_NODE :
-				setInStructuredNode((StructuredActivityNode) newValue);
-				return;
 			case UMLPackage.DECISION_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
 				getInInterruptibleRegions()
 					.addAll(
 						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
-			case UMLPackage.DECISION_NODE__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+			case UMLPackage.DECISION_NODE__IN_STRUCTURED_NODE :
+				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.DECISION_NODE__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll(
 					(Collection<? extends ActivityEdge>) newValue);
 				return;
+			case UMLPackage.DECISION_NODE__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
+				return;
 			case UMLPackage.DECISION_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
 				getRedefinedNodes().addAll(
 					(Collection<? extends ActivityNode>) newValue);
+				return;
+			case UMLPackage.DECISION_NODE__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.DECISION_NODE__DECISION_INPUT :
 				setDecisionInput((Behavior) newValue);
@@ -441,9 +435,6 @@ public class DecisionNodeImpl
 			case UMLPackage.DECISION_NODE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.DECISION_NODE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.DECISION_NODE__NAME :
 				unsetName();
 				return;
@@ -459,23 +450,23 @@ public class DecisionNodeImpl
 			case UMLPackage.DECISION_NODE__ACTIVITY :
 				setActivity((Activity) null);
 				return;
-			case UMLPackage.DECISION_NODE__IN_PARTITION :
-				getInPartitions().clear();
+			case UMLPackage.DECISION_NODE__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
 				return;
 			case UMLPackage.DECISION_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
-			case UMLPackage.DECISION_NODE__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
+			case UMLPackage.DECISION_NODE__INCOMING :
+				getIncomings().clear();
 				return;
 			case UMLPackage.DECISION_NODE__OUTGOING :
 				getOutgoings().clear();
 				return;
-			case UMLPackage.DECISION_NODE__INCOMING :
-				getIncomings().clear();
-				return;
 			case UMLPackage.DECISION_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
+				return;
+			case UMLPackage.DECISION_NODE__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.DECISION_NODE__DECISION_INPUT :
 				setDecisionInput((Behavior) null);
@@ -504,8 +495,7 @@ public class DecisionNodeImpl
 			case UMLPackage.DECISION_NODE__OWNER :
 				return isSetOwner();
 			case UMLPackage.DECISION_NODE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.DECISION_NODE__NAME :
 				return isSetName();
 			case UMLPackage.DECISION_NODE__NAME_EXPRESSION :
@@ -526,21 +516,21 @@ public class DecisionNodeImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.DECISION_NODE__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.DECISION_NODE__IN_PARTITION :
-				return inPartitions != null && !inPartitions.isEmpty();
-			case UMLPackage.DECISION_NODE__IN_STRUCTURED_NODE :
-				return basicGetInStructuredNode() != null;
+			case UMLPackage.DECISION_NODE__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.DECISION_NODE__IN_INTERRUPTIBLE_REGION :
 				return inInterruptibleRegions != null
 					&& !inInterruptibleRegions.isEmpty();
-			case UMLPackage.DECISION_NODE__OUTGOING :
-				return outgoings != null && !outgoings.isEmpty();
+			case UMLPackage.DECISION_NODE__IN_STRUCTURED_NODE :
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.DECISION_NODE__INCOMING :
 				return incomings != null && !incomings.isEmpty();
-			case UMLPackage.DECISION_NODE__IN_GROUP :
-				return isSetInGroups();
+			case UMLPackage.DECISION_NODE__OUTGOING :
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.DECISION_NODE__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
+			case UMLPackage.DECISION_NODE__IN_PARTITION :
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.DECISION_NODE__DECISION_INPUT :
 				return decisionInput != null;
 			case UMLPackage.DECISION_NODE__DECISION_INPUT_FLOW :
@@ -641,16 +631,16 @@ public class DecisionNodeImpl
 				return allOwnedElements();
 			case UMLPackage.DECISION_NODE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.DECISION_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DECISION_NODE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DECISION_NODE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.DECISION_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DECISION_NODE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -661,6 +651,8 @@ public class DecisionNodeImpl
 				return getLabel();
 			case UMLPackage.DECISION_NODE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.DECISION_NODE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.DECISION_NODE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.DECISION_NODE___ALL_OWNING_PACKAGES :
@@ -668,12 +660,12 @@ public class DecisionNodeImpl
 			case UMLPackage.DECISION_NODE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.DECISION_NODE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.DECISION_NODE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.DECISION_NODE___SEPARATOR :
 				return separator();
+			case UMLPackage.DECISION_NODE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.DECISION_NODE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -691,18 +683,21 @@ public class DecisionNodeImpl
 			case UMLPackage.DECISION_NODE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.DECISION_NODE___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
-				return validateOwned((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.DECISION_NODE___VALIDATE_OWNED_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateOwnedStructuredNode(
+			case UMLPackage.DECISION_NODE___CONTAINING_ACTIVITY :
+				return containingActivity();
+			case UMLPackage.DECISION_NODE___VALIDATE_ZERO_INPUT_PARAMETERS__DIAGNOSTICCHAIN_MAP :
+				return validateZeroInputParameters(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.DECISION_NODE___VALIDATE_PARAMETERS__DIAGNOSTICCHAIN_MAP :
-				return validateParameters((DiagnosticChain) arguments.get(0),
+			case UMLPackage.DECISION_NODE___VALIDATE_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateEdges((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.DECISION_NODE___VALIDATE_INCOMING_OBJECT_ONE_INPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
-				return validateIncomingObjectOneInputParameter(
+			case UMLPackage.DECISION_NODE___VALIDATE_DECISION_INPUT_FLOW_INCOMING__DIAGNOSTICCHAIN_MAP :
+				return validateDecisionInputFlowIncoming(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.DECISION_NODE___VALIDATE_TWO_INPUT_PARAMETERS__DIAGNOSTICCHAIN_MAP :
+				return validateTwoInputParameters(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DECISION_NODE___VALIDATE_INCOMING_OUTGOING_EDGES__DIAGNOSTICCHAIN_MAP :
@@ -713,20 +708,12 @@ public class DecisionNodeImpl
 				return validateIncomingControlOneInputParameter(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.DECISION_NODE___VALIDATE_TWO_INPUT_PARAMETERS__DIAGNOSTICCHAIN_MAP :
-				return validateTwoInputParameters(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.DECISION_NODE___VALIDATE_PARAMETERS__DIAGNOSTICCHAIN_MAP :
+				return validateParameters((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.DECISION_NODE___VALIDATE_DECISION_INPUT_FLOW_INCOMING__DIAGNOSTICCHAIN_MAP :
-				return validateDecisionInputFlowIncoming(
+			case UMLPackage.DECISION_NODE___VALIDATE_INCOMING_OBJECT_ONE_INPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
+				return validateIncomingObjectOneInputParameter(
 					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.DECISION_NODE___VALIDATE_ZERO_INPUT_PARAMETERS__DIAGNOSTICCHAIN_MAP :
-				return validateZeroInputParameters(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.DECISION_NODE___VALIDATE_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateEdges((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

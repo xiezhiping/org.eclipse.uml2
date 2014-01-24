@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -43,11 +43,13 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Port#validateDefaultValue(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Default Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Port#validatePortAggregation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Port Aggregation</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Port#validatePortDestroyed(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Port Destroyed</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Port#validateDefaultValue(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Default Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Port#validateEncapsulatedOwner(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Encapsulated Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Port#getProvideds() <em>Get Provideds</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Port#getRequireds() <em>Get Requireds</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Port#basicProvided() <em>Basic Provided</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Port#basicRequired() <em>Basic Required</em>}</li>
  * </ul>
  * </p>
  *
@@ -101,41 +103,6 @@ public class PortOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * When a port is destroyed, all connectors attached to this port will be destroyed also.
-	 * true
-	 * @param port The receiving '<em><b>Port</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validatePortDestroyed(Port port,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PORT__PORT_DESTROYED,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validatePortDestroyed", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(port, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{port}));
-			}
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
 	 * A defaultValue for port cannot be specified when the type of the Port is an Interface
 	 * true
 	 * @param port The receiving '<em><b>Port</b></em>' model object.
@@ -169,6 +136,41 @@ public class PortOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
+	 * All Ports are owned by an EncapsulatedClassifier.
+	 * owner = encapsulatedClassifier
+	 * @param port The receiving '<em><b>Port</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateEncapsulatedOwner(Port port,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.PORT__ENCAPSULATED_OWNER,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateEncapsulatedOwner", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(port, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{port}));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
 	 * Missing derivation for Port::/provided : Interface
 	 * true
 	 * @param port The receiving '<em><b>Port</b></em>' model object.
@@ -185,11 +187,11 @@ public class PortOperations
 
 			if (type instanceof Classifier) {
 				Classifier classifier = (Classifier) port.getType();
-				ComponentOperations.usedInterfaces(null, classifier, false,
+				ClassifierOperations.directlyUsedInterfaces(classifier, false,
 					provideds);
 
 				for (Classifier parent : classifier.allParents()) {
-					ComponentOperations.usedInterfaces(null, parent, false,
+					ClassifierOperations.directlyUsedInterfaces(parent, false,
 						provideds);
 				}
 			}
@@ -199,13 +201,13 @@ public class PortOperations
 				provideds.add((Interface) type);
 			} else if (type instanceof Classifier) {
 				Classifier classifier = (Classifier) port.getType();
-				ComponentOperations.realizedInterfaces(null, classifier, false,
-					provideds);
+				ClassifierOperations.directlyRealizedInterfaces(classifier,
+					false, provideds);
 
 				for (Classifier parent : classifier.allParents()) {
 
-					ComponentOperations.realizedInterfaces(null, parent, false,
-						provideds);
+					ClassifierOperations.directlyRealizedInterfaces(parent,
+						false, provideds);
 				}
 			}
 		}
@@ -237,24 +239,24 @@ public class PortOperations
 				requireds.add((Interface) type);
 			} else if (type instanceof Classifier) {
 				Classifier classifier = (Classifier) port.getType();
-				ComponentOperations.realizedInterfaces(null, classifier, false,
-					requireds);
+				ClassifierOperations.directlyRealizedInterfaces(classifier,
+					false, requireds);
 
 				for (Classifier parent : classifier.allParents()) {
 
-					ComponentOperations.realizedInterfaces(null, parent, false,
-						requireds);
+					ClassifierOperations.directlyRealizedInterfaces(parent,
+						false, requireds);
 				}
 			}
 		} else {
 
 			if (type instanceof Classifier) {
 				Classifier classifier = (Classifier) port.getType();
-				ComponentOperations.usedInterfaces(null, classifier, false,
+				ClassifierOperations.directlyUsedInterfaces(classifier, false,
 					requireds);
 
 				for (Classifier parent : classifier.allParents()) {
-					ComponentOperations.usedInterfaces(null, parent, false,
+					ClassifierOperations.directlyUsedInterfaces(parent, false,
 						requireds);
 				}
 			}
@@ -263,6 +265,43 @@ public class PortOperations
 		return new UnionEObjectEList<Interface>((InternalEObject) port,
 			UMLPackage.Literals.PORT__REQUIRED, requireds.size(),
 			requireds.toArray());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The union of the sets of Interfaces realized by the type of the Port and its supertypes, or directly the type of the Port if the Port is typed by an Interface.
+	 * result = (if type.oclIsKindOf(Interface) 
+	 * then type.oclAsType(Interface)->asSet() 
+	 * else type.oclAsType(Classifier).allRealizedInterfaces() 
+	 * endif)
+	 * <p>From package UML::StructuredClassifiers.</p>
+	 * @param port The receiving '<em><b>Port</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static EList<Interface> basicProvided(Port port) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The union of the sets of Interfaces used by the type of the Port and its supertypes.
+	 * result = ( type.oclAsType(Classifier).allUsedInterfaces() )
+	 * <p>From package UML::StructuredClassifiers.</p>
+	 * @param port The receiving '<em><b>Port</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static EList<Interface> basicRequired(Port port) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } // PortOperations

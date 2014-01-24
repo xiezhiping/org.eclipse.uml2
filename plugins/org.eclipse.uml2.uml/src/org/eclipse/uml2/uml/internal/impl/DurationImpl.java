@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -35,7 +35,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Duration;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
@@ -291,6 +290,17 @@ public class DurationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateNoExprRequiresObservation(
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return DurationOperations.validateNoExprRequiresObservation(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public String stringValue() {
 		return DurationOperations.stringValue(this);
@@ -311,9 +321,6 @@ public class DurationImpl
 			case UMLPackage.DURATION__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.DURATION__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DURATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.DURATION__OWNING_TEMPLATE_PARAMETER :
@@ -401,11 +408,6 @@ public class DurationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.DURATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.DURATION__NAME :
 				setName((String) newValue);
 				return;
@@ -449,9 +451,6 @@ public class DurationImpl
 				return;
 			case UMLPackage.DURATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.DURATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.DURATION__NAME :
 				unsetName();
@@ -498,8 +497,7 @@ public class DurationImpl
 			case UMLPackage.DURATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.DURATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.DURATION__NAME :
 				return isSetName();
 			case UMLPackage.DURATION__NAME_EXPRESSION :
@@ -618,16 +616,16 @@ public class DurationImpl
 				return allOwnedElements();
 			case UMLPackage.DURATION___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.DURATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DURATION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DURATION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.DURATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DURATION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -638,6 +636,8 @@ public class DurationImpl
 				return getLabel();
 			case UMLPackage.DURATION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.DURATION___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.DURATION___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.DURATION___ALL_OWNING_PACKAGES :
@@ -645,16 +645,20 @@ public class DurationImpl
 			case UMLPackage.DURATION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.DURATION___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.DURATION___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.DURATION___SEPARATOR :
 				return separator();
+			case UMLPackage.DURATION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.DURATION___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.DURATION___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.DURATION___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DURATION___BOOLEAN_VALUE :
 				return booleanValue();
 			case UMLPackage.DURATION___INTEGER_VALUE :
@@ -669,6 +673,10 @@ public class DurationImpl
 				return stringValue();
 			case UMLPackage.DURATION___UNLIMITED_VALUE :
 				return unlimitedValue();
+			case UMLPackage.DURATION___VALIDATE_NO_EXPR_REQUIRES_OBSERVATION__DIAGNOSTICCHAIN_MAP :
+				return validateNoExprRequiresObservation(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}

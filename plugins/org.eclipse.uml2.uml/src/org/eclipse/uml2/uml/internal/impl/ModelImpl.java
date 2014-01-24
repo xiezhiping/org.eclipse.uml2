@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
@@ -207,12 +206,12 @@ public class ModelImpl
 				return getQualifiedName();
 			case UMLPackage.MODEL__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.MODEL__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.MODEL__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.MODEL__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.MODEL__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.MODEL__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.MODEL__IMPORTED_MEMBER :
@@ -227,12 +226,12 @@ public class ModelImpl
 				if (resolve)
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
+			case UMLPackage.MODEL__TEMPLATE_BINDING :
+				return getTemplateBindings();
 			case UMLPackage.MODEL__OWNED_TEMPLATE_SIGNATURE :
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.MODEL__TEMPLATE_BINDING :
-				return getTemplateBindings();
 			case UMLPackage.MODEL__URI :
 				return getURI();
 			case UMLPackage.MODEL__NESTED_PACKAGE :
@@ -243,14 +242,14 @@ public class ModelImpl
 				return basicGetNestingPackage();
 			case UMLPackage.MODEL__OWNED_STEREOTYPE :
 				return getOwnedStereotypes();
+			case UMLPackage.MODEL__OWNED_TYPE :
+				return getOwnedTypes();
 			case UMLPackage.MODEL__PACKAGE_MERGE :
 				return getPackageMerges();
 			case UMLPackage.MODEL__PACKAGED_ELEMENT :
 				return getPackagedElements();
 			case UMLPackage.MODEL__PROFILE_APPLICATION :
 				return getProfileApplications();
-			case UMLPackage.MODEL__OWNED_TYPE :
-				return getOwnedTypes();
 			case UMLPackage.MODEL__VIEWPOINT :
 				return getViewpoint();
 		}
@@ -276,11 +275,6 @@ public class ModelImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.MODEL__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.MODEL__NAME :
 				setName((String) newValue);
 				return;
@@ -289,6 +283,11 @@ public class ModelImpl
 				return;
 			case UMLPackage.MODEL__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.MODEL__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.MODEL__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -300,24 +299,19 @@ public class ModelImpl
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
 				return;
-			case UMLPackage.MODEL__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
-				return;
 			case UMLPackage.MODEL__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.MODEL__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) newValue);
 				return;
-			case UMLPackage.MODEL__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
-				return;
 			case UMLPackage.MODEL__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
+				return;
+			case UMLPackage.MODEL__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.MODEL__URI :
 				setURI((String) newValue);
@@ -330,6 +324,10 @@ public class ModelImpl
 				return;
 			case UMLPackage.MODEL__NESTING_PACKAGE :
 				setNestingPackage((org.eclipse.uml2.uml.Package) newValue);
+				return;
+			case UMLPackage.MODEL__OWNED_TYPE :
+				getOwnedTypes().clear();
+				getOwnedTypes().addAll((Collection<? extends Type>) newValue);
 				return;
 			case UMLPackage.MODEL__PACKAGE_MERGE :
 				getPackageMerges().clear();
@@ -345,10 +343,6 @@ public class ModelImpl
 				getProfileApplications().clear();
 				getProfileApplications().addAll(
 					(Collection<? extends ProfileApplication>) newValue);
-				return;
-			case UMLPackage.MODEL__OWNED_TYPE :
-				getOwnedTypes().clear();
-				getOwnedTypes().addAll((Collection<? extends Type>) newValue);
 				return;
 			case UMLPackage.MODEL__VIEWPOINT :
 				setViewpoint((String) newValue);
@@ -371,9 +365,6 @@ public class ModelImpl
 			case UMLPackage.MODEL__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.MODEL__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.MODEL__NAME :
 				unsetName();
 				return;
@@ -383,14 +374,14 @@ public class ModelImpl
 			case UMLPackage.MODEL__VISIBILITY :
 				unsetVisibility();
 				return;
+			case UMLPackage.MODEL__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.MODEL__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.MODEL__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				return;
-			case UMLPackage.MODEL__OWNED_RULE :
-				getOwnedRules().clear();
 				return;
 			case UMLPackage.MODEL__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
@@ -398,11 +389,11 @@ public class ModelImpl
 			case UMLPackage.MODEL__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) null);
 				return;
-			case UMLPackage.MODEL__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) null);
-				return;
 			case UMLPackage.MODEL__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
+				return;
+			case UMLPackage.MODEL__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
 			case UMLPackage.MODEL__URI :
 				setURI(URI_EDEFAULT);
@@ -413,6 +404,9 @@ public class ModelImpl
 			case UMLPackage.MODEL__NESTING_PACKAGE :
 				setNestingPackage((org.eclipse.uml2.uml.Package) null);
 				return;
+			case UMLPackage.MODEL__OWNED_TYPE :
+				getOwnedTypes().clear();
+				return;
 			case UMLPackage.MODEL__PACKAGE_MERGE :
 				getPackageMerges().clear();
 				return;
@@ -421,9 +415,6 @@ public class ModelImpl
 				return;
 			case UMLPackage.MODEL__PROFILE_APPLICATION :
 				getProfileApplications().clear();
-				return;
-			case UMLPackage.MODEL__OWNED_TYPE :
-				getOwnedTypes().clear();
 				return;
 			case UMLPackage.MODEL__VIEWPOINT :
 				unsetViewpoint();
@@ -449,8 +440,7 @@ public class ModelImpl
 			case UMLPackage.MODEL__OWNER :
 				return isSetOwner();
 			case UMLPackage.MODEL__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.MODEL__NAME :
 				return isSetName();
 			case UMLPackage.MODEL__NAME_EXPRESSION :
@@ -463,12 +453,12 @@ public class ModelImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.MODEL__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.MODEL__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.MODEL__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.MODEL__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.MODEL__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.MODEL__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.MODEL__IMPORTED_MEMBER :
@@ -479,10 +469,10 @@ public class ModelImpl
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.MODEL__TEMPLATE_PARAMETER :
 				return templateParameter != null;
-			case UMLPackage.MODEL__OWNED_TEMPLATE_SIGNATURE :
-				return ownedTemplateSignature != null;
 			case UMLPackage.MODEL__TEMPLATE_BINDING :
 				return templateBindings != null && !templateBindings.isEmpty();
+			case UMLPackage.MODEL__OWNED_TEMPLATE_SIGNATURE :
+				return ownedTemplateSignature != null;
 			case UMLPackage.MODEL__URI :
 				return URI_EDEFAULT == null
 					? uri != null
@@ -493,6 +483,8 @@ public class ModelImpl
 				return basicGetNestingPackage() != null;
 			case UMLPackage.MODEL__OWNED_STEREOTYPE :
 				return !getOwnedStereotypes().isEmpty();
+			case UMLPackage.MODEL__OWNED_TYPE :
+				return !getOwnedTypes().isEmpty();
 			case UMLPackage.MODEL__PACKAGE_MERGE :
 				return packageMerges != null && !packageMerges.isEmpty();
 			case UMLPackage.MODEL__PACKAGED_ELEMENT :
@@ -500,8 +492,6 @@ public class ModelImpl
 			case UMLPackage.MODEL__PROFILE_APPLICATION :
 				return profileApplications != null
 					&& !profileApplications.isEmpty();
-			case UMLPackage.MODEL__OWNED_TYPE :
-				return !getOwnedTypes().isEmpty();
 			case UMLPackage.MODEL__VIEWPOINT :
 				return isSetViewpoint();
 		}
@@ -600,16 +590,16 @@ public class ModelImpl
 				return allOwnedElements();
 			case UMLPackage.MODEL___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.MODEL___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MODEL___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MODEL___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.MODEL___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MODEL___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -620,6 +610,8 @@ public class ModelImpl
 				return getLabel();
 			case UMLPackage.MODEL___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.MODEL___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.MODEL___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.MODEL___ALL_OWNING_PACKAGES :
@@ -627,14 +619,22 @@ public class ModelImpl
 			case UMLPackage.MODEL___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.MODEL___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.MODEL___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.MODEL___SEPARATOR :
 				return separator();
+			case UMLPackage.MODEL___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.MODEL___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.MODEL___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.MODEL___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MODEL___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -649,6 +649,8 @@ public class ModelImpl
 				return getImportedElements();
 			case UMLPackage.MODEL___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.MODEL___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.MODEL___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -661,12 +663,14 @@ public class ModelImpl
 				return getImportedMembers();
 			case UMLPackage.MODEL___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.MODEL___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 			case UMLPackage.MODEL___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.MODEL___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.MODEL___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MODEL___IS_TEMPLATE :
 				return isTemplate();
 			case UMLPackage.MODEL___PARAMETERABLE_ELEMENTS :

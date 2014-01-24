@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -32,10 +32,10 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Region;
+import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StringExpression;
@@ -243,6 +243,24 @@ public abstract class VertexImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isContainedInState(State s) {
+		return VertexOperations.isContainedInState(this, s);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isContainedInRegion(Region r) {
+		return VertexOperations.isContainedInRegion(this, r);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
@@ -250,9 +268,6 @@ public abstract class VertexImpl
 		switch (featureID) {
 			case UMLPackage.VERTEX__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.VERTEX__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.VERTEX__CONTAINER :
 				if (eInternalContainer() != null)
@@ -277,9 +292,6 @@ public abstract class VertexImpl
 			case UMLPackage.VERTEX__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.VERTEX__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.VERTEX__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.VERTEX__CONTAINER :
@@ -369,11 +381,6 @@ public abstract class VertexImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.VERTEX__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.VERTEX__NAME :
 				setName((String) newValue);
 				return;
@@ -403,9 +410,6 @@ public abstract class VertexImpl
 				return;
 			case UMLPackage.VERTEX__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.VERTEX__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.VERTEX__NAME :
 				unsetName();
@@ -440,8 +444,7 @@ public abstract class VertexImpl
 			case UMLPackage.VERTEX__OWNER :
 				return isSetOwner();
 			case UMLPackage.VERTEX__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.VERTEX__NAME :
 				return isSetName();
 			case UMLPackage.VERTEX__NAME_EXPRESSION :
@@ -556,16 +559,16 @@ public abstract class VertexImpl
 				return allOwnedElements();
 			case UMLPackage.VERTEX___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.VERTEX___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VERTEX___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VERTEX___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.VERTEX___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VERTEX___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -576,6 +579,8 @@ public abstract class VertexImpl
 				return getLabel();
 			case UMLPackage.VERTEX___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.VERTEX___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.VERTEX___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.VERTEX___ALL_OWNING_PACKAGES :
@@ -583,18 +588,22 @@ public abstract class VertexImpl
 			case UMLPackage.VERTEX___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.VERTEX___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.VERTEX___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.VERTEX___SEPARATOR :
 				return separator();
+			case UMLPackage.VERTEX___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.VERTEX___CONTAINING_STATE_MACHINE :
 				return containingStateMachine();
 			case UMLPackage.VERTEX___GET_INCOMINGS :
 				return getIncomings();
 			case UMLPackage.VERTEX___GET_OUTGOINGS :
 				return getOutgoings();
+			case UMLPackage.VERTEX___IS_CONTAINED_IN_STATE__STATE :
+				return isContainedInState((State) arguments.get(0));
+			case UMLPackage.VERTEX___IS_CONTAINED_IN_REGION__REGION :
+				return isContainedInRegion((Region) arguments.get(0));
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}

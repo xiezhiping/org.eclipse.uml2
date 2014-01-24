@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 418466
  *
- * $Id: ActionTest.java,v 1.5 2007/02/14 20:06:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -22,6 +22,14 @@ import org.eclipse.uml2.uml.Action;
  * The following features are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Action#getContext() <em>Context</em>}</li>
+ * </ul>
+ * </p>
+ * <p>
+ * The following operations are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Action#allActions() <em>All Actions</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Action#allOwnedNodes() <em>All Owned Nodes</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Action#containingBehavior() <em>Containing Behavior</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -58,6 +66,42 @@ public abstract class ActionTest
 	 * @generated
 	 */
 	public void testGetContext() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Action#allActions() <em>All Actions</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Action#allActions()
+	 * @generated
+	 */
+	public void testAllActions() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Action#allOwnedNodes() <em>All Owned Nodes</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Action#allOwnedNodes()
+	 * @generated
+	 */
+	public void testAllOwnedNodes() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Action#containingBehavior() <em>Containing Behavior</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Action#containingBehavior()
+	 * @generated
+	 */
+	public void testContainingBehavior() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

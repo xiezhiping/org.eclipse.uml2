@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -19,8 +19,8 @@ package org.eclipse.uml2.uml;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A parameterable element is an element that can be exposed as a formal template parameter for a template, or specified as an actual parameter in a binding of a template.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A ParameterableElement is an Element that can be exposed as a formal TemplateParameter for a template, or specified as an actual parameter in a binding of a template.
+ * <p>From package UML::CommonStructure.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -44,8 +44,8 @@ public interface ParameterableElement
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The template parameter that exposes this element as a formal parameter.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The TemplateParameter that exposes this ParameterableElement as a formal parameter.
+	 * <p>From package UML::CommonStructure.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Template Parameter</em>' reference.
 	 * @see #setTemplateParameter(TemplateParameter)
@@ -72,15 +72,15 @@ public interface ParameterableElement
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.ParameterableElement#getTemplateParameter() <em>Template Parameter</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.ParameterableElement#getTemplateParameter() <em>Template Parameter</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The formal template parameter that owns this element.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The formal TemplateParameter that owns this ParameterableElement.
+	 * <p>From package UML::CommonStructure.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owning Template Parameter</em>' container reference.
 	 * @see #setOwningTemplateParameter(TemplateParameter)
@@ -105,9 +105,9 @@ public interface ParameterableElement
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. Subclasses should override this operation to specify different compatibility constraints.
-	 * result = p->oclIsKindOf(self.oclType)
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The query isCompatibleWith() determines if this ParameterableElement is compatible with the specified ParameterableElement. By default, this ParameterableElement is compatible with another ParameterableElement p if the kind of this ParameterableElement is the same as or a subtype of the kind of p. Subclasses of ParameterableElement should override this operation to specify different compatibility constraints.
+	 * result = (self.oclIsKindOf(p.oclType()))
+	 * <p>From package UML::CommonStructure.</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" pRequired="true" pOrdered="false"
 	 * @generated
@@ -118,9 +118,9 @@ public interface ParameterableElement
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isTemplateParameter() determines if this parameterable element is exposed as a formal template parameter.
-	 * result = templateParameter->notEmpty()
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The query isTemplateParameter() determines if this ParameterableElement is exposed as a formal TemplateParameter.
+	 * result = (templateParameter->notEmpty())
+	 * <p>From package UML::CommonStructure.</p>
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -180,16 +180,16 @@ public class ActorImpl
 				return allOwnedElements();
 			case UMLPackage.ACTOR___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.ACTOR___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTOR___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTOR___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTOR___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTOR___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -200,6 +200,8 @@ public class ActorImpl
 				return getLabel();
 			case UMLPackage.ACTOR___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.ACTOR___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.ACTOR___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.ACTOR___ALL_OWNING_PACKAGES :
@@ -207,14 +209,22 @@ public class ActorImpl
 			case UMLPackage.ACTOR___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.ACTOR___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.ACTOR___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.ACTOR___SEPARATOR :
 				return separator();
+			case UMLPackage.ACTOR___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.ACTOR___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTOR___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTOR___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTOR___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -229,6 +239,8 @@ public class ActorImpl
 				return getImportedElements();
 			case UMLPackage.ACTOR___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.ACTOR___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.ACTOR___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -241,8 +253,6 @@ public class ActorImpl
 				return getImportedMembers();
 			case UMLPackage.ACTOR___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.ACTOR___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 			case UMLPackage.ACTOR___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -264,6 +274,10 @@ public class ActorImpl
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.ACTOR___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.ACTOR___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTOR___CREATE_ASSOCIATION__BOOLEAN_AGGREGATIONKIND_STRING_INT_INT_TYPE_BOOLEAN_AGGREGATIONKIND_STRING_INT_INT :
 				return createAssociation((Boolean) arguments.get(0),
 					(AggregationKind) arguments.get(1),
@@ -281,20 +295,20 @@ public class ActorImpl
 				return isTemplate();
 			case UMLPackage.ACTOR___PARAMETERABLE_ELEMENTS :
 				return parameterableElements();
-			case UMLPackage.ACTOR___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
-				return validateNonFinalParents(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTOR___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
-				return validateNoCyclesInGeneralization(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTOR___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateSpecializeType(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTOR___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
 				return validateMapsToGeneralizationSet(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTOR___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
+				return validateNonFinalParents(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTOR___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
+				return validateNoCyclesInGeneralization(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTOR___GET_ALL_ATTRIBUTES :
@@ -319,8 +333,6 @@ public class ActorImpl
 				return allFeatures();
 			case UMLPackage.ACTOR___ALL_PARENTS :
 				return allParents();
-			case UMLPackage.ACTOR___CONFORMS_TO__CLASSIFIER :
-				return conformsTo((Classifier) arguments.get(0));
 			case UMLPackage.ACTOR___GET_GENERALS :
 				return getGenerals();
 			case UMLPackage.ACTOR___HAS_VISIBILITY_OF__NAMEDELEMENT :
@@ -335,6 +347,20 @@ public class ActorImpl
 				return maySpecializeType((Classifier) arguments.get(0));
 			case UMLPackage.ACTOR___PARENTS :
 				return parents();
+			case UMLPackage.ACTOR___DIRECTLY_REALIZED_INTERFACES :
+				return directlyRealizedInterfaces();
+			case UMLPackage.ACTOR___DIRECTLY_USED_INTERFACES :
+				return directlyUsedInterfaces();
+			case UMLPackage.ACTOR___ALL_REALIZED_INTERFACES :
+				return allRealizedInterfaces();
+			case UMLPackage.ACTOR___ALL_USED_INTERFACES :
+				return allUsedInterfaces();
+			case UMLPackage.ACTOR___IS_SUBSTITUTABLE_FOR__CLASSIFIER :
+				return isSubstitutableFor((Classifier) arguments.get(0));
+			case UMLPackage.ACTOR___ALL_ATTRIBUTES :
+				return allAttributes();
+			case UMLPackage.ACTOR___ALL_SLOTTABLE_FEATURES :
+				return allSlottableFeatures();
 			case UMLPackage.ACTOR___VALIDATE_CLASS_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
 				return validateClassBehavior(
 					(DiagnosticChain) arguments.get(0),

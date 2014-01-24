@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: DeploymentTargetImpl.java,v 1.24 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -25,15 +24,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.DeploymentTarget;
 import org.eclipse.uml2.uml.Element;
@@ -52,7 +49,6 @@ import org.eclipse.uml2.uml.internal.operations.DeploymentTargetOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentTargetImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentTargetImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentTargetImpl#getDeployedElements <em>Deployed Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentTargetImpl#getDeployments <em>Deployment</em>}</li>
  * </ul>
@@ -125,28 +121,12 @@ public abstract class DeploymentTargetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EList<Dependency> getClientDependencies() {
-		if (clientDependencies == null) {
-			clientDependencies = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse<Dependency>(
-				Dependency.class, this,
-				UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY, null,
-				CLIENT_DEPENDENCY_ESUBSETS, UMLPackage.DEPENDENCY__CLIENT);
-		}
-		return clientDependencies;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<Deployment> getDeployments() {
 		if (deployments == null) {
-			deployments = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Deployment>(
+			deployments = new EObjectContainmentWithInverseEList.Resolving<Deployment>(
 				Deployment.class, this,
 				UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT,
-				DEPLOYMENT_ESUPERSETS, null, UMLPackage.DEPLOYMENT__LOCATION);
+				UMLPackage.DEPLOYMENT__LOCATION);
 		}
 		return deployments;
 	}
@@ -216,9 +196,6 @@ public abstract class DeploymentTargetImpl
 			case UMLPackage.DEPLOYMENT_TARGET__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getDeployments())
 					.basicAdd(otherEnd, msgs);
@@ -241,9 +218,6 @@ public abstract class DeploymentTargetImpl
 			case UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_TARGET__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT :
@@ -314,11 +288,6 @@ public abstract class DeploymentTargetImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.DEPLOYMENT_TARGET__NAME :
 				setName((String) newValue);
 				return;
@@ -350,9 +319,6 @@ public abstract class DeploymentTargetImpl
 				return;
 			case UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.DEPLOYMENT_TARGET__NAME :
 				unsetName();
@@ -387,8 +353,7 @@ public abstract class DeploymentTargetImpl
 			case UMLPackage.DEPLOYMENT_TARGET__OWNER :
 				return isSetOwner();
 			case UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.DEPLOYMENT_TARGET__NAME :
 				return isSetName();
 			case UMLPackage.DEPLOYMENT_TARGET__NAME_EXPRESSION :
@@ -421,26 +386,6 @@ public abstract class DeploymentTargetImpl
 		UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT,
 		UMLPackage.DEPLOYMENT_TARGET__NAME_EXPRESSION,
 		UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT};
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClientDependencies()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[]{UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDeployments()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] DEPLOYMENT_ESUPERSETS = new int[]{UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->

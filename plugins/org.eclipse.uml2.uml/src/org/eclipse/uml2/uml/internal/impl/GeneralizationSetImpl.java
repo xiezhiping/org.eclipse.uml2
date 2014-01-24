@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -36,7 +36,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.GeneralizationSet;
 import org.eclipse.uml2.uml.NamedElement;
@@ -339,9 +338,6 @@ public class GeneralizationSetImpl
 			case UMLPackage.GENERALIZATION_SET__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.GENERALIZATION_SET__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -383,9 +379,6 @@ public class GeneralizationSetImpl
 			case UMLPackage.GENERALIZATION_SET__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.GENERALIZATION_SET__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.GENERALIZATION_SET__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
@@ -476,11 +469,6 @@ public class GeneralizationSetImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.GENERALIZATION_SET__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.GENERALIZATION_SET__NAME :
 				setName((String) newValue);
 				return;
@@ -527,9 +515,6 @@ public class GeneralizationSetImpl
 				return;
 			case UMLPackage.GENERALIZATION_SET__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.GENERALIZATION_SET__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.GENERALIZATION_SET__NAME :
 				unsetName();
@@ -579,8 +564,7 @@ public class GeneralizationSetImpl
 			case UMLPackage.GENERALIZATION_SET__OWNER :
 				return isSetOwner();
 			case UMLPackage.GENERALIZATION_SET__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.GENERALIZATION_SET__NAME :
 				return isSetName();
 			case UMLPackage.GENERALIZATION_SET__NAME_EXPRESSION :
@@ -701,16 +685,16 @@ public class GeneralizationSetImpl
 				return allOwnedElements();
 			case UMLPackage.GENERALIZATION_SET___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.GENERALIZATION_SET___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.GENERALIZATION_SET___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.GENERALIZATION_SET___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.GENERALIZATION_SET___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.GENERALIZATION_SET___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -721,6 +705,8 @@ public class GeneralizationSetImpl
 				return getLabel();
 			case UMLPackage.GENERALIZATION_SET___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.GENERALIZATION_SET___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.GENERALIZATION_SET___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.GENERALIZATION_SET___ALL_OWNING_PACKAGES :
@@ -728,22 +714,26 @@ public class GeneralizationSetImpl
 			case UMLPackage.GENERALIZATION_SET___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.GENERALIZATION_SET___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.GENERALIZATION_SET___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.GENERALIZATION_SET___SEPARATOR :
 				return separator();
+			case UMLPackage.GENERALIZATION_SET___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.GENERALIZATION_SET___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.GENERALIZATION_SET___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
-			case UMLPackage.GENERALIZATION_SET___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
-				return validateMapsToGeneralizationSet(
+			case UMLPackage.GENERALIZATION_SET___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.GENERALIZATION_SET___VALIDATE_GENERALIZATION_SAME_CLASSIFIER__DIAGNOSTICCHAIN_MAP :
 				return validateGeneralizationSameClassifier(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.GENERALIZATION_SET___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
+				return validateMapsToGeneralizationSet(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

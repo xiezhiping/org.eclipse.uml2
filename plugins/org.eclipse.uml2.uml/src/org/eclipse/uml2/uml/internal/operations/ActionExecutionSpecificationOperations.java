@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 418466
  *
- * $Id: ActionExecutionSpecificationOperations.java,v 1.6 2007/05/03 21:11:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -52,8 +52,12 @@ public class ActionExecutionSpecificationOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The Action referenced by the ActionExecutionSpecification, if any, must be owned by the Interaction owning the ActionExecutionOccurrence.
-	 * true
+	 * The Action referenced by the ActionExecutionSpecification must be owned by the Interaction owning that ActionExecutionSpecification.
+	 * (enclosingInteraction->notEmpty() or enclosingOperand.combinedFragment->notEmpty()) and
+	 * let parentInteraction : Set(Interaction) = enclosingInteraction.oclAsType(Interaction)->asSet()->union(
+	 * enclosingOperand.combinedFragment->closure(enclosingOperand.combinedFragment)->
+	 * collect(enclosingInteraction).oclAsType(Interaction)->asSet()) in
+	 * (parentInteraction->size() = 1) and self.action.interaction->asSet() = parentInteraction
 	 * @param actionExecutionSpecification The receiving '<em><b>Action Execution Specification</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2013 CEA and others.
+ * Copyright (c) 2011, 2014 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
- *   Kenn Hussey (CEA) - 297216
+ *   Kenn Hussey (CEA) - 297216, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -53,7 +53,9 @@ public class DestructionOccurrenceSpecificationOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * No other OccurrenceSpecifications on a given Lifeline in an InteractionOperand may appear below a DestructionOccurrenceSpecification.
-	 * true
+	 * let o : InteractionOperand = enclosingOperand in o->notEmpty() and 
+	 * let peerEvents : OrderedSet(OccurrenceSpecification) = covered.events->select(enclosingOperand = o)
+	 * in peerEvents->last() = self
 	 * @param destructionOccurrenceSpecification The receiving '<em><b>Destruction Occurrence Specification</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

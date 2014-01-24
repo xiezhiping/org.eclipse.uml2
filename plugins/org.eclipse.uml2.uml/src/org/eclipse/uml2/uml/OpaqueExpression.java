@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -25,9 +25,8 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context.
- * Provides a mechanism for precisely defining the behavior of an opaque expression. An opaque expression is defined by a behavior restricted to return one result.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * An OpaqueExpression is a ValueSpecification that specifies the computation of a collection of values either in terms of a UML Behavior or based on a textual statement in a language other than UML
+ * <p>From package UML::Values.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -53,8 +52,8 @@ public interface OpaqueExpression
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The text of the expression, possibly in multiple languages.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * A textual definition of the behavior of the OpaqueExpression, possibly in multiple languages.
+	 * <p>From package UML::Values.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body</em>' attribute list.
 	 * @see #isSetBodies()
@@ -93,8 +92,8 @@ public interface OpaqueExpression
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Specifies the languages used to express the textual bodies of the OpaqueExpression.  Languages are matched to body Strings by order. The interpretation of the body depends on the languages. If the languages are unspecified, they may be implicit from the expression body or the context.
+	 * <p>From package UML::Values.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Language</em>' attribute list.
 	 * @see #isSetLanguages()
@@ -131,8 +130,8 @@ public interface OpaqueExpression
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Restricts an opaque expression to return exactly one return result. When the invocation of the opaque expression completes, a single set of values is returned to its owner. This association is derived from the single return result parameter of the associated behavior.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * If an OpaqueExpression is specified using a UML Behavior, then this refers to the single required return Parameter of that Behavior. When the Behavior completes execution, the values on this Parameter give the result of evaluating the OpaqueExpression.
+	 * <p>From package UML::Values.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueExpression_Result()
@@ -146,8 +145,8 @@ public interface OpaqueExpression
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies the behavior of the opaque expression.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Specifies the behavior of the OpaqueExpression as a UML Behavior.
+	 * <p>From package UML::Values.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Behavior</em>' reference.
 	 * @see #setBehavior(Behavior)
@@ -172,7 +171,7 @@ public interface OpaqueExpression
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If the language attribute is not empty, then the size of the body and language arrays must be the same.
-	 * language->notEmpty() implies (body->size() = language->size())
+	 * language->notEmpty() implies (_'body'->size() = language->size())
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -187,8 +186,7 @@ public interface OpaqueExpression
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The behavior may only have return result parameters.
-	 * self.behavior.notEmpty() implies
-	 *   self.behavior.ownedParameters->select(p | p.direction<>#return)->isEmpty()
+	 * behavior <> null implies behavior.ownedParameter->select(direction<>ParameterDirectionKind::return)->isEmpty()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -203,8 +201,8 @@ public interface OpaqueExpression
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The behavior must have exactly one return result parameter.
-	 * self.behavior.notEmpty() implies
-	 *   self.behavior.ownedParameter->select(p | p.direction=#return)->size() = 1
+	 * behavior <> null implies
+	 *    behavior.ownedParameter->select(direction=ParameterDirectionKind::return)->size() = 1
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -220,8 +218,8 @@ public interface OpaqueExpression
 	 * <!-- begin-model-doc -->
 	 * The query value() gives an integer value for an expression intended to produce one.
 	 * self.isIntegral()
-	 * true
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * result = (0)
+	 * <p>From package UML::Values.</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Integer" required="true" ordered="false"
 	 * @generated
@@ -232,9 +230,9 @@ public interface OpaqueExpression
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isIntegral() tells whether an expression is intended to produce an integer.
-	 * result = false
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The query isIntegral() tells whether an expression is intended to produce an Integer.
+	 * result = (false)
+	 * <p>From package UML::Values.</p>
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
@@ -246,9 +244,9 @@ public interface OpaqueExpression
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isPositive() tells whether an integer expression has a positive value.
-	 * result = false
+	 * result = (false)
 	 * self.isIntegral()
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Values.</p>
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
@@ -260,9 +258,9 @@ public interface OpaqueExpression
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isNonNegative() tells whether an integer expression has a non-negative value.
-	 * result = false
 	 * self.isIntegral()
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * result = (false)
+	 * <p>From package UML::Values.</p>
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated

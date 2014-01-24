@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -19,11 +19,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.AddVariableValueAction;
-import org.eclipse.uml2.uml.InputPin;
-import org.eclipse.uml2.uml.PrimitiveType;
-import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPlugin;
-import org.eclipse.uml2.uml.Variable;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -36,7 +32,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.AddVariableValueAction#validateRequiredValue(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Required Value</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.AddVariableValueAction#validateSingleInputPin(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Single Input Pin</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.AddVariableValueAction#validateInsertAtPin(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Insert At Pin</em>}</li>
  * </ul>
  * </p>
  *
@@ -59,7 +55,7 @@ public class AddVariableValueActionOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A value input pin is required.
-	 * self.value -> notEmpty()
+	 * value <> null
 	 * @param addVariableValueAction The receiving '<em><b>Add Variable Value Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -90,58 +86,42 @@ public class AddVariableValueActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Actions adding values to ordered variables must have a single input pin for the insertion point with type UnlimtedNatural and multiplicity of 1..1, otherwise the action has no input pin for the insertion point.
-	 * let insertAtPins : Collection = self.insertAt in
-	 * if self.variable.ordering = #unordered
-	 * then insertAtPins->size() = 0
-	 * else let insertAtPin : InputPin = insertAt->asSequence()->first() in
-	 * insertAtPins->size() = 1
-	 * and insertAtPin.type = UnlimitedNatural
-	 * and insertAtPin.multiplicity.is(1,1))
+	 * AddVariableValueActions for ordered Variables must have a single InputPin for the insertion point with type UnlimtedNatural and multiplicity of 1..1 if isReplaceAll=false, otherwise the Action has no InputPin for the insertion point.
+	 * if not variable.isOrdered then insertAt = null
+	 * else 
+	 *   not isReplaceAll implies
+	 *   	insertAt<>null and 
+	 *   	insertAt->forAll(type=UnlimitedNatural and is(1,1.oclAsType(UnlimitedNatural)))
 	 * endif
 	 * 
 	 * @param addVariableValueAction The receiving '<em><b>Add Variable Value Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public static boolean validateSingleInputPin(
+	public static boolean validateInsertAtPin(
 			AddVariableValueAction addVariableValueAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		boolean result = true;
-
-		Variable variable = addVariableValueAction.getVariable();
-
-		if (variable != null) {
-			InputPin insertAt = addVariableValueAction.getInsertAt();
-
-			if (variable.isOrdered()) {
-				Type insertAtType = insertAt == null
-					? null
-					: insertAt.getType();
-
-				result = insertAtType instanceof PrimitiveType
-					&& safeEquals("PrimitiveTypes::UnlimitedNatural", //$NON-NLS-1$
-						insertAtType.getQualifiedName()) && insertAt.is(1, 1);
-			} else {
-				result = insertAt == null;
-			}
-
-			if (!result && diagnostics != null) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
 				diagnostics
 					.add(new BasicDiagnostic(
-						Diagnostic.WARNING,
+						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ADD_VARIABLE_VALUE_ACTION__SINGLE_INPUT_PIN,
-						UMLPlugin.INSTANCE
+						UMLValidator.ADD_VARIABLE_VALUE_ACTION__INSERT_AT_PIN,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_AddVariableValueAction_SingleInputPin_diagnostic", getMessageSubstitutions(context, addVariableValueAction)), //$NON-NLS-1$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateInsertAtPin", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(addVariableValueAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{addVariableValueAction}));
 			}
+			return false;
 		}
-
-		return result;
+		return true;
 	}
 
 } // AddVariableValueActionOperations

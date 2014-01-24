@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -39,7 +39,6 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
@@ -652,8 +651,10 @@ public abstract class StructuralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isMultivalued() {
-		return MultiplicityElementOperations.isMultivalued(this);
+	public boolean validateLowerIsInteger(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return MultiplicityElementOperations.validateLowerIsInteger(this,
+			diagnostics, context);
 	}
 
 	/**
@@ -661,8 +662,19 @@ public abstract class StructuralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean includesCardinality(int C) {
-		return MultiplicityElementOperations.includesCardinality(this, C);
+	public boolean validateUpperIsUnlimitedNatural(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return MultiplicityElementOperations.validateUpperIsUnlimitedNatural(
+			this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isMultivalued() {
+		return MultiplicityElementOperations.isMultivalued(this);
 	}
 
 	/**
@@ -725,9 +737,6 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.STRUCTURAL_FEATURE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STRUCTURAL_FEATURE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE :
@@ -827,11 +836,6 @@ public abstract class StructuralFeatureImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.STRUCTURAL_FEATURE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.STRUCTURAL_FEATURE__NAME :
 				setName((String) newValue);
 				return;
@@ -888,9 +892,6 @@ public abstract class StructuralFeatureImpl
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.STRUCTURAL_FEATURE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__NAME :
 				unsetName();
@@ -952,8 +953,7 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE__OWNER :
 				return isSetOwner();
 			case UMLPackage.STRUCTURAL_FEATURE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.STRUCTURAL_FEATURE__NAME :
 				return isSetName();
 			case UMLPackage.STRUCTURAL_FEATURE__NAME_EXPRESSION :
@@ -1083,22 +1083,24 @@ public abstract class StructuralFeatureImpl
 		}
 		if (baseClass == MultiplicityElement.class) {
 			switch (baseOperationID) {
-				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
-					return UMLPackage.STRUCTURAL_FEATURE___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
 					return UMLPackage.STRUCTURAL_FEATURE___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP;
-				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
-					return UMLPackage.STRUCTURAL_FEATURE___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.STRUCTURAL_FEATURE___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
 					return UMLPackage.STRUCTURAL_FEATURE___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.STRUCTURAL_FEATURE___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_LOWER_IS_INTEGER__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.STRUCTURAL_FEATURE___VALIDATE_LOWER_IS_INTEGER__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_UPPER_IS_UNLIMITED_NATURAL__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.STRUCTURAL_FEATURE___VALIDATE_UPPER_IS_UNLIMITED_NATURAL__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___SET_LOWER__INT :
 					return UMLPackage.STRUCTURAL_FEATURE___SET_LOWER__INT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___SET_UPPER__INT :
 					return UMLPackage.STRUCTURAL_FEATURE___SET_UPPER__INT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
 					return UMLPackage.STRUCTURAL_FEATURE___COMPATIBLE_WITH__MULTIPLICITYELEMENT;
-				case UMLPackage.MULTIPLICITY_ELEMENT___INCLUDES_CARDINALITY__INT :
-					return UMLPackage.STRUCTURAL_FEATURE___INCLUDES_CARDINALITY__INT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
 					return UMLPackage.STRUCTURAL_FEATURE___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___IS__INT_INT :
@@ -1212,16 +1214,16 @@ public abstract class StructuralFeatureImpl
 				return allOwnedElements();
 			case UMLPackage.STRUCTURAL_FEATURE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1232,6 +1234,8 @@ public abstract class StructuralFeatureImpl
 				return getLabel();
 			case UMLPackage.STRUCTURAL_FEATURE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.STRUCTURAL_FEATURE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.STRUCTURAL_FEATURE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.STRUCTURAL_FEATURE___ALL_OWNING_PACKAGES :
@@ -1239,12 +1243,12 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.STRUCTURAL_FEATURE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.STRUCTURAL_FEATURE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.STRUCTURAL_FEATURE___SEPARATOR :
 				return separator();
+			case UMLPackage.STRUCTURAL_FEATURE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -1262,18 +1266,26 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
+			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
+				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
 				return validateLowerGe0((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
-				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
+			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
+				return validateValueSpecificationNoSideEffects(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
 				return validateValueSpecificationConstant(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
-				return validateValueSpecificationNoSideEffects(
+			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_LOWER_IS_INTEGER__DIAGNOSTICCHAIN_MAP :
+				return validateLowerIsInteger(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_UPPER_IS_UNLIMITED_NATURAL__DIAGNOSTICCHAIN_MAP :
+				return validateUpperIsUnlimitedNatural(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE___SET_LOWER__INT :
@@ -1284,8 +1296,6 @@ public abstract class StructuralFeatureImpl
 				return null;
 			case UMLPackage.STRUCTURAL_FEATURE___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
 				return compatibleWith((MultiplicityElement) arguments.get(0));
-			case UMLPackage.STRUCTURAL_FEATURE___INCLUDES_CARDINALITY__INT :
-				return includesCardinality((Integer) arguments.get(0));
 			case UMLPackage.STRUCTURAL_FEATURE___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
 				return includesMultiplicity((MultiplicityElement) arguments
 					.get(0));

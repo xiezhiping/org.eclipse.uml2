@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2014 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 418466
  *
- * $Id: ExtensionEndOperations.java,v 1.14 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -58,7 +58,7 @@ public class ExtensionEndOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of ExtensionEnd is 0..1 or 1.
-	 * (self->lowerBound() = 0 or self->lowerBound() = 1) and self->upperBound() = 1
+	 * (lowerBound() = 0 or lowerBound() = 1) and upperBound() = 1
 	 * @param extensionEnd The receiving '<em><b>Extension End</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -93,7 +93,7 @@ public class ExtensionEndOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The aggregation of an ExtensionEnd is composite.
-	 * self.aggregation = #composite
+	 * self.aggregation = AggregationKind::composite
 	 * @param extensionEnd The receiving '<em><b>Extension End</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

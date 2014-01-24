@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: BehaviorExecutionSpecificationImpl.java,v 1.16 2007/04/25 17:47:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -25,7 +24,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.GeneralOrdering;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.InteractionOperand;
@@ -159,14 +157,14 @@ public class BehaviorExecutionSpecificationImpl
 				return getVisibility();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__COVERED :
 				return getCovereds();
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
-				if (resolve)
-					return getEnclosingInteraction();
-				return basicGetEnclosingInteraction();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_OPERAND :
 				if (resolve)
 					return getEnclosingOperand();
 				return basicGetEnclosingOperand();
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
+				if (resolve)
+					return getEnclosingInteraction();
+				return basicGetEnclosingInteraction();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__GENERAL_ORDERING :
 				return getGeneralOrderings();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__FINISH :
@@ -204,11 +202,6 @@ public class BehaviorExecutionSpecificationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME :
 				setName((String) newValue);
 				return;
@@ -222,11 +215,11 @@ public class BehaviorExecutionSpecificationImpl
 				getCovereds().clear();
 				getCovereds().addAll((Collection<? extends Lifeline>) newValue);
 				return;
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
-				setEnclosingInteraction((Interaction) newValue);
-				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) newValue);
+				return;
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
+				setEnclosingInteraction((Interaction) newValue);
 				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
@@ -260,9 +253,6 @@ public class BehaviorExecutionSpecificationImpl
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME :
 				unsetName();
 				return;
@@ -275,11 +265,11 @@ public class BehaviorExecutionSpecificationImpl
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__COVERED :
 				getCovereds().clear();
 				return;
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
-				setEnclosingInteraction((Interaction) null);
-				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) null);
+				return;
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
+				setEnclosingInteraction((Interaction) null);
 				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
@@ -314,8 +304,7 @@ public class BehaviorExecutionSpecificationImpl
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME :
 				return isSetName();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME_EXPRESSION :
@@ -330,10 +319,10 @@ public class BehaviorExecutionSpecificationImpl
 				return isSetVisibility();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__COVERED :
 				return covereds != null && !covereds.isEmpty();
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
-				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
+				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__GENERAL_ORDERING :
 				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__FINISH :

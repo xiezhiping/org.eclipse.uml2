@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -25,8 +25,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * StructuralFeatureAction is an abstract class for all structural feature actions.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * StructuralFeatureAction is an abstract class for all Actions that operate on StructuralFeatures.
+ * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -49,8 +49,8 @@ public interface StructuralFeatureAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Structural feature to be read.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The StructuralFeature to be read or written.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Structural Feature</em>' reference.
 	 * @see #setStructuralFeature(StructuralFeature)
@@ -81,8 +81,8 @@ public interface StructuralFeatureAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Gives the input pin from which the object whose structural feature is to be read or written is obtained.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The InputPin from which the object whose StructuralFeature is to be read or written is obtained.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)
@@ -131,8 +131,8 @@ public interface StructuralFeatureAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The structural feature must not be static.
-	 * self.structuralFeature.isStatic = #false
+	 * The structuralFeature must not be static.
+	 * not structuralFeature.isStatic
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -146,24 +146,8 @@ public interface StructuralFeatureAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The structural feature must either be owned by the type of the object input pin, or it must be an owned end of a binary association with the type of the opposite end being the type of the object input pin.
-	 * self.structuralFeature.featuringClassifier.oclAsType(Type)->includes(self.object.type) or
-	 * 	self.structuralFeature.oclAsType(Property).opposite.type = self.object.type
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateSameType(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The multiplicity of the object input pin must be 1..1.
-	 * self.object.lowerBound()=1 and self.object.upperBound()=1
+	 * The multiplicity of the object InputPin must be 1..1.
+	 * object.is(1,1)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -177,12 +161,27 @@ public interface StructuralFeatureAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Visibility of structural feature must allow access to the object performing the action.
-	 * let host : Classifier = self.context in
-	 * self.structuralFeature.visibility = #public
-	 * or host = self.structuralFeature.featuringClassifier.type
-	 * or (self.structuralFeature.visibility = #protected and host.allSupertypes
-	 * ->includes(self.structuralFeature.featuringClassifier.type)))
+	 * The structuralFeature must either be an owned or inherited feature of the type of the object InputPin, or it must be an owned end of a binary Association whose opposite end had as a type to which the type of the object InputPin conforms.
+	 * object.type.oclAsType(Classifier).allFeatures()->includes(structuralFeature) or
+	 * 	object.type.conformsTo(structuralFeature.oclAsType(Property).opposite.type)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateObjectType(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The visibility of the structuralFeature must allow access from the object performing the ReadStructuralFeatureAction.
+	 * structuralFeature.visibility = VisibilityKind::public or
+	 * _'context'.allFeatures()->includes(structuralFeature) or
+	 * structuralFeature.visibility=VisibilityKind::protected and
+	 * _'context'.conformsTo(structuralFeature.oclAsType(Property).opposite.type.oclAsType(Classifier))
 	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -197,8 +196,8 @@ public interface StructuralFeatureAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A structural feature has exactly one featuringClassifier.
-	 * self.structuralFeature.featuringClassifier->size() = 1
+	 * The structuralFeature must have exactly one featuringClassifier.
+	 * structuralFeature.featuringClassifier->size() = 1
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

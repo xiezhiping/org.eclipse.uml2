@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -46,7 +46,6 @@ import org.eclipse.uml2.uml.ActivityGroup;
 import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.NamedElement;
@@ -76,11 +75,11 @@ import org.eclipse.uml2.uml.internal.operations.ActivityEdgeOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getActivity <em>Activity</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInPartitions <em>In Partition</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInStructuredNode <em>In Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInterrupts <em>Interrupts</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getRedefinedEdges <em>Redefined Edge</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInStructuredNode <em>In Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getRedefinedEdges <em>Redefined Edge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getWeight <em>Weight</em>}</li>
  * </ul>
  * </p>
@@ -122,14 +121,14 @@ public abstract class ActivityEdgeImpl
 	protected InterruptibleActivityRegion interrupts;
 
 	/**
-	 * The cached value of the '{@link #getRedefinedEdges() <em>Redefined Edge</em>}' reference list.
+	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRedefinedEdges()
+	 * @see #getTarget()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActivityEdge> redefinedEdges;
+	protected ActivityNode target;
 
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
@@ -142,14 +141,14 @@ public abstract class ActivityEdgeImpl
 	protected ActivityNode source;
 
 	/**
-	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
+	 * The cached value of the '{@link #getRedefinedEdges() <em>Redefined Edge</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTarget()
+	 * @see #getRedefinedEdges()
 	 * @generated
 	 * @ordered
 	 */
-	protected ActivityNode target;
+	protected EList<ActivityEdge> redefinedEdges;
 
 	/**
 	 * The cached value of the '{@link #getWeight() <em>Weight</em>}' containment reference.
@@ -899,20 +898,9 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateOwned(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return ActivityEdgeOperations.validateOwned(this, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateStructuredNode(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return ActivityEdgeOperations.validateStructuredNode(this, diagnostics,
-			context);
+	@Override
+	public boolean isConsistentWith(RedefinableElement redefiningElement) {
+		return ActivityEdgeOperations.isConsistentWith(this, redefiningElement);
 	}
 
 	/**
@@ -928,9 +916,6 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ACTIVITY_EDGE__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -938,11 +923,6 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInPartitions())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetInStructuredNode(
-					(StructuredActivityNode) otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
 				if (interrupts != null)
 					msgs = ((InternalEObject) interrupts)
@@ -952,18 +932,23 @@ public abstract class ActivityEdgeImpl
 							InterruptibleActivityRegion.class, msgs);
 				return basicSetInterrupts(
 					(InterruptibleActivityRegion) otherEnd, msgs);
-			case UMLPackage.ACTIVITY_EDGE__SOURCE :
-				if (source != null)
-					msgs = ((InternalEObject) source).eInverseRemove(this,
-						UMLPackage.ACTIVITY_NODE__OUTGOING, ActivityNode.class,
-						msgs);
-				return basicSetSource((ActivityNode) otherEnd, msgs);
+			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetInStructuredNode(
+					(StructuredActivityNode) otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__TARGET :
 				if (target != null)
 					msgs = ((InternalEObject) target).eInverseRemove(this,
 						UMLPackage.ACTIVITY_NODE__INCOMING, ActivityNode.class,
 						msgs);
 				return basicSetTarget((ActivityNode) otherEnd, msgs);
+			case UMLPackage.ACTIVITY_EDGE__SOURCE :
+				if (source != null)
+					msgs = ((InternalEObject) source).eInverseRemove(this,
+						UMLPackage.ACTIVITY_NODE__OUTGOING, ActivityNode.class,
+						msgs);
+				return basicSetSource((ActivityNode) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -983,9 +968,6 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ACTIVITY_EDGE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
@@ -995,14 +977,14 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
 				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
 				return basicSetInterrupts(null, msgs);
-			case UMLPackage.ACTIVITY_EDGE__SOURCE :
-				return basicSetSource(null, msgs);
+			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
+				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.ACTIVITY_EDGE__TARGET :
 				return basicSetTarget(null, msgs);
+			case UMLPackage.ACTIVITY_EDGE__SOURCE :
+				return basicSetSource(null, msgs);
 			case UMLPackage.ACTIVITY_EDGE__WEIGHT :
 				return basicSetWeight(null, msgs);
 		}
@@ -1079,24 +1061,24 @@ public abstract class ActivityEdgeImpl
 				return basicGetGuard();
 			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
 				return getInPartitions();
-			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-				if (resolve)
-					return getInStructuredNode();
-				return basicGetInStructuredNode();
 			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
 				if (resolve)
 					return getInterrupts();
 				return basicGetInterrupts();
-			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
-				return getRedefinedEdges();
-			case UMLPackage.ACTIVITY_EDGE__SOURCE :
+			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
 				if (resolve)
-					return getSource();
-				return basicGetSource();
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.ACTIVITY_EDGE__TARGET :
 				if (resolve)
 					return getTarget();
 				return basicGetTarget();
+			case UMLPackage.ACTIVITY_EDGE__SOURCE :
+				if (resolve)
+					return getSource();
+				return basicGetSource();
+			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
+				return getRedefinedEdges();
 			case UMLPackage.ACTIVITY_EDGE__WEIGHT :
 				if (resolve)
 					return getWeight();
@@ -1126,11 +1108,6 @@ public abstract class ActivityEdgeImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.ACTIVITY_EDGE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.ACTIVITY_EDGE__NAME :
 				setName((String) newValue);
 				return;
@@ -1154,22 +1131,22 @@ public abstract class ActivityEdgeImpl
 				getInPartitions().addAll(
 					(Collection<? extends ActivityPartition>) newValue);
 				return;
+			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
+				setInterrupts((InterruptibleActivityRegion) newValue);
+				return;
 			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
-			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
-				setInterrupts((InterruptibleActivityRegion) newValue);
+			case UMLPackage.ACTIVITY_EDGE__TARGET :
+				setTarget((ActivityNode) newValue);
+				return;
+			case UMLPackage.ACTIVITY_EDGE__SOURCE :
+				setSource((ActivityNode) newValue);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
 				getRedefinedEdges().clear();
 				getRedefinedEdges().addAll(
 					(Collection<? extends ActivityEdge>) newValue);
-				return;
-			case UMLPackage.ACTIVITY_EDGE__SOURCE :
-				setSource((ActivityNode) newValue);
-				return;
-			case UMLPackage.ACTIVITY_EDGE__TARGET :
-				setTarget((ActivityNode) newValue);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__WEIGHT :
 				setWeight((ValueSpecification) newValue);
@@ -1192,9 +1169,6 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.ACTIVITY_EDGE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.ACTIVITY_EDGE__NAME :
 				unsetName();
 				return;
@@ -1216,20 +1190,20 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
 				getInPartitions().clear();
 				return;
-			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-				setInStructuredNode((StructuredActivityNode) null);
-				return;
 			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
 				setInterrupts((InterruptibleActivityRegion) null);
 				return;
-			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
-				getRedefinedEdges().clear();
+			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
+				setInStructuredNode((StructuredActivityNode) null);
+				return;
+			case UMLPackage.ACTIVITY_EDGE__TARGET :
+				setTarget((ActivityNode) null);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__SOURCE :
 				setSource((ActivityNode) null);
 				return;
-			case UMLPackage.ACTIVITY_EDGE__TARGET :
-				setTarget((ActivityNode) null);
+			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
+				getRedefinedEdges().clear();
 				return;
 			case UMLPackage.ACTIVITY_EDGE__WEIGHT :
 				setWeight((ValueSpecification) null);
@@ -1255,8 +1229,7 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__OWNER :
 				return isSetOwner();
 			case UMLPackage.ACTIVITY_EDGE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.ACTIVITY_EDGE__NAME :
 				return isSetName();
 			case UMLPackage.ACTIVITY_EDGE__NAME_EXPRESSION :
@@ -1281,16 +1254,16 @@ public abstract class ActivityEdgeImpl
 				return guard != null;
 			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
-			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-				return basicGetInStructuredNode() != null;
 			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
 				return interrupts != null;
-			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
-				return redefinedEdges != null && !redefinedEdges.isEmpty();
-			case UMLPackage.ACTIVITY_EDGE__SOURCE :
-				return source != null;
+			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.ACTIVITY_EDGE__TARGET :
 				return target != null;
+			case UMLPackage.ACTIVITY_EDGE__SOURCE :
+				return source != null;
+			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
+				return redefinedEdges != null && !redefinedEdges.isEmpty();
 			case UMLPackage.ACTIVITY_EDGE__WEIGHT :
 				return weight != null;
 			case UMLPackage.ACTIVITY_EDGE__IN_GROUP :
@@ -1391,16 +1364,16 @@ public abstract class ActivityEdgeImpl
 				return allOwnedElements();
 			case UMLPackage.ACTIVITY_EDGE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.ACTIVITY_EDGE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_EDGE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_EDGE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_EDGE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_EDGE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1411,6 +1384,8 @@ public abstract class ActivityEdgeImpl
 				return getLabel();
 			case UMLPackage.ACTIVITY_EDGE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.ACTIVITY_EDGE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.ACTIVITY_EDGE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.ACTIVITY_EDGE___ALL_OWNING_PACKAGES :
@@ -1418,12 +1393,12 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.ACTIVITY_EDGE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.ACTIVITY_EDGE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.ACTIVITY_EDGE___SEPARATOR :
 				return separator();
+			case UMLPackage.ACTIVITY_EDGE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.ACTIVITY_EDGE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -1441,15 +1416,8 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.ACTIVITY_EDGE___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
-				return validateOwned((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_EDGE___VALIDATE_SOURCE_AND_TARGET__DIAGNOSTICCHAIN_MAP :
 				return validateSourceAndTarget(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_EDGE___VALIDATE_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateStructuredNode(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -25,8 +25,8 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An expression that specifies a string value that is derived by concatenating a set of sub string expressions, some of which might be template parameters.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A StringExpression is an Expression that specifies a String value that is derived by concatenating a sequence of operands with String values or a sequence of subExpressions, some of which might be template parameters.
+ * <p>From package UML::Values.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -58,12 +58,12 @@ public interface StringExpression
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The StringExpressions that constitute this StringExpression.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Values.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Sub Expression</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStringExpression_SubExpression()
 	 * @see org.eclipse.uml2.uml.StringExpression#getOwningExpression
-	 * @model opposite="owningExpression" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="owningExpression" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<StringExpression> getSubExpressions();
@@ -119,8 +119,8 @@ public interface StringExpression
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The string expression of which this expression is a substring.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The StringExpression of which this StringExpression is a subExpression.
+	 * <p>From package UML::Values.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owning Expression</em>' container reference.
 	 * @see #setOwningExpression(StringExpression)
@@ -146,7 +146,7 @@ public interface StringExpression
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * All the operands of a StringExpression must be LiteralStrings
-	 * operand->forAll (op | op.oclIsKindOf (LiteralString))
+	 * operand->forAll (oclIsKindOf (LiteralString))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -161,7 +161,7 @@ public interface StringExpression
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If a StringExpression has sub-expressions, it cannot have operands and vice versa (this avoids the problem of having to define a collating sequence between operands and subexpressions).
-	 * if subExpression->notEmpty() then operand->isEmpty() else operand->notEmpty()
+	 * if subExpression->notEmpty() then operand->isEmpty() else operand->notEmpty() endif
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

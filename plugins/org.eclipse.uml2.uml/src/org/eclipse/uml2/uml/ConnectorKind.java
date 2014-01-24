@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.uml;
@@ -24,8 +25,8 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
- * ConnectorKind is an enumeration type.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * ConnectorKind is an enumeration that defines whether a Connector is an assembly or a delegation.
+ * <p>From package UML::StructuredClassifiers.</p>
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getConnectorKind()
  * @model
@@ -58,7 +59,7 @@ public enum ConnectorKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that the connector is an assembly connector.
+	 * Indicates that the Connector is an assembly Connector.
 	 * <!-- end-model-doc -->
 	 * @see #ASSEMBLY_LITERAL
 	 * @model name="assembly"
@@ -72,7 +73,7 @@ public enum ConnectorKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that the connector is a delegation connector.
+	 * Indicates that the Connector is a delegation Connector.
 	 * <!-- end-model-doc -->
 	 * @see #DELEGATION_LITERAL
 	 * @model name="delegation"

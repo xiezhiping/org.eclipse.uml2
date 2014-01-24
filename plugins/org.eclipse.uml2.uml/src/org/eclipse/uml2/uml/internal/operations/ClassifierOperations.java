@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,11 +7,12 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 394623
+ *   Kenn Hussey (CEA) - 327039, 351774, 394623, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
@@ -25,6 +26,7 @@ import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
 import org.eclipse.uml2.common.util.UnionEObjectEList;
@@ -38,6 +40,9 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Realization;
+import org.eclipse.uml2.uml.RedefinableElement;
+import org.eclipse.uml2.uml.StructuralFeature;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -55,11 +60,12 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#conformsTo(org.eclipse.uml2.uml.Type) <em>Conforms To</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#isTemplate() <em>Is Template</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#validateNonFinalParents(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Non Final Parents</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#validateNoCyclesInGeneralization(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Cycles In Generalization</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#validateSpecializeType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Specialize Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#validateMapsToGeneralizationSet(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maps To Generalization Set</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#validateNonFinalParents(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Non Final Parents</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#validateNoCyclesInGeneralization(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Cycles In Generalization</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getAllAttributes() <em>Get All Attributes</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getAllOperations() <em>Get All Operations</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getAllUsedInterfaces() <em>Get All Used Interfaces</em>}</li>
@@ -69,7 +75,6 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getUsedInterfaces() <em>Get Used Interfaces</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#allFeatures() <em>All Features</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#allParents() <em>All Parents</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#conformsTo(org.eclipse.uml2.uml.Classifier) <em>Conforms To</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getGenerals() <em>Get Generals</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#hasVisibilityOf(org.eclipse.uml2.uml.NamedElement) <em>Has Visibility Of</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#inherit(org.eclipse.emf.common.util.EList) <em>Inherit</em>}</li>
@@ -77,6 +82,13 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getInheritedMembers() <em>Get Inherited Members</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#maySpecializeType(org.eclipse.uml2.uml.Classifier) <em>May Specialize Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#parents() <em>Parents</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#directlyRealizedInterfaces() <em>Directly Realized Interfaces</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#directlyUsedInterfaces() <em>Directly Used Interfaces</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#allRealizedInterfaces() <em>All Realized Interfaces</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#allUsedInterfaces() <em>All Used Interfaces</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#isSubstitutableFor(org.eclipse.uml2.uml.Classifier) <em>Is Substitutable For</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#allAttributes() <em>All Attributes</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#allSlottableFeatures() <em>All Slottable Features</em>}</li>
  * </ul>
  * </p>
  *
@@ -92,6 +104,27 @@ public class ClassifierOperations
 	 */
 	protected ClassifierOperations() {
 		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The query conformsTo() gives true for a Classifier that defines a type that conforms to another. This is used, for example, in the specification of signature conformance for operations.
+	 * result = (if other.oclIsKindOf(Classifier) then
+	 *   let otherClassifier : Classifier = other.oclAsType(Classifier) in
+	 *     self = otherClassifier or allParents()->includes(otherClassifier)
+	 * else
+	 *   false
+	 * endif)
+	 * <p>From package UML::Classification.</p>
+	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static boolean conformsTo(Classifier classifier, Type other) {
+		return other instanceof Classifier
+			&& (classifier == other || classifier.allParents().contains(other));
 	}
 
 	/**
@@ -172,7 +205,10 @@ public class ClassifierOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Classifier that maps to a GeneralizationSet may neither be a specific nor a general Classifier in any of the Generalization relationships defined for that GeneralizationSet. In other words, a power type may not be an instance of itself nor may its instances also be its subclasses.
-	 * true
+	 * powertypeExtent->forAll( gs | 
+	 *   gs.generalization->forAll( gen | 
+	 *     not (gen.general = self) and not gen.general.allParents()->includes(self) and not (gen.specific = self) and not self.allParents()->includes(gen.specific) 
+	 *   ))
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -207,8 +243,8 @@ public class ClassifierOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The parents of a classifier must be non-final.
-	 * self.parents()->forAll(not isFinalSpecialization)
+	 * The parents of a Classifier must be non-final.
+	 * parents()->forAll(not isFinalSpecialization)
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -487,7 +523,7 @@ public class ClassifierOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The inheritedMember association is derived by inheriting the inheritable members of the parents.
-	 * result = self.inherit(self.parents()->collect(p | p.inheritableMembers(self))
+	 * result = (inherit(parents()->collect(inheritableMembers(self))->asSet()))
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -511,8 +547,8 @@ public class ClassifierOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query allFeatures() gives all of the features in the namespace of the classifier. In general, through mechanisms such as inheritance, this will be a larger set than feature.
-	 * result = member->select(oclIsKindOf(Feature))
+	 * The query allFeatures() gives all of the Features in the namespace of the Classifier. In general, through mechanisms such as inheritance, this will be a larger set than feature.
+	 * result = (member->select(oclIsKindOf(Feature))->collect(oclAsType(Feature))->asSet())
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -535,7 +571,7 @@ public class ClassifierOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query parents() gives all of the immediate ancestors of a generalized Classifier.
-	 * result = generalization.general
+	 * result = (generalization.general->asSet())
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -552,6 +588,194 @@ public class ClassifierOperations
 		}
 
 		return ECollections.unmodifiableEList(parents);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The Interfaces directly realized by this Classifier
+	 * result = ((clientDependency->
+	 *   select(oclIsKindOf(Realization) and supplier->forAll(oclIsKindOf(Interface))))->
+	 *       collect(supplier.oclAsType(Interface))->asSet())
+	 * <p>From package UML::Classification.</p>
+	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static EList<Interface> directlyRealizedInterfaces(
+			Classifier classifier) {
+		return ECollections.unmodifiableEList(directlyRealizedInterfaces(
+			classifier, true));
+	}
+
+	protected static EList<Interface> directlyRealizedInterfaces(
+			Classifier classifier, boolean resolve) {
+		return directlyRealizedInterfaces(classifier, resolve,
+			new UniqueEList.FastCompare<Interface>());
+	}
+
+	protected static EList<Interface> directlyRealizedInterfaces(
+			Classifier classifier, boolean resolve,
+			EList<Interface> realizedInterfaces) {
+
+		for (Dependency clientDependency : classifier.getClientDependencies()) {
+
+			if (clientDependency instanceof Realization) {
+				Iterator<NamedElement> suppliers = resolve
+					? clientDependency.getSuppliers().iterator()
+					: ((InternalEList<NamedElement>) clientDependency
+						.getSuppliers()).basicIterator();
+
+				while (suppliers.hasNext()) {
+					NamedElement supplier = suppliers.next();
+
+					if (supplier instanceof Interface) {
+						realizedInterfaces.add((Interface) supplier);
+					}
+				}
+			}
+		}
+
+		return realizedInterfaces;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The Interfaces directly used by this Classifier
+	 * result = ((supplierDependency->
+	 *   select(oclIsKindOf(Usage) and client->forAll(oclIsKindOf(Interface))))->
+	 *     collect(client.oclAsType(Interface))->asSet())
+	 * <p>From package UML::Classification.</p>
+	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static EList<Interface> directlyUsedInterfaces(Classifier classifier) {
+		return ECollections.unmodifiableEList(directlyUsedInterfaces(
+			classifier, true));
+	}
+
+	protected static EList<Interface> directlyUsedInterfaces(
+			Classifier classifier, boolean resolve) {
+		return directlyUsedInterfaces(classifier, resolve,
+			new UniqueEList.FastCompare<Interface>());
+	}
+
+	protected static EList<Interface> directlyUsedInterfaces(
+			Classifier classifier, boolean resolve,
+			EList<Interface> usedInterfaces) {
+
+		for (Dependency clientDependency : classifier.getClientDependencies()) {
+
+			if (clientDependency instanceof Usage) {
+				Iterator<NamedElement> suppliers = resolve
+					? clientDependency.getSuppliers().iterator()
+					: ((InternalEList<NamedElement>) clientDependency
+						.getSuppliers()).basicIterator();
+
+				while (suppliers.hasNext()) {
+					NamedElement supplier = suppliers.next();
+
+					if (supplier instanceof Interface) {
+						usedInterfaces.add((Interface) supplier);
+					}
+				}
+			}
+		}
+
+		return usedInterfaces;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The Interfaces realized by this Classifier and all of its generalizations
+	 * result = (directlyRealizedInterfaces()->union(self.allParents()->collect(directlyRealizedInterfaces()))->asSet())
+	 * <p>From package UML::Classification.</p>
+	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static EList<Interface> allRealizedInterfaces(Classifier classifier) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The Interfaces used by this Classifier and all of its generalizations
+	 * result = (directlyUsedInterfaces()->union(self.allParents()->collect(directlyUsedInterfaces()))->asSet())
+	 * <p>From package UML::Classification.</p>
+	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static EList<Interface> allUsedInterfaces(Classifier classifier) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * result = (substitution.contract->includes(contract))
+	 * <p>From package UML::Classification.</p>
+	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean isSubstitutableFor(Classifier classifier,
+			Classifier contract) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The query allAttributes gives an ordered set of all owned and inherited attributes of the Classifier. All owned attributes appear before any inherited attributes, and the attributes inherited from any more specific parent Classifier appear before those of any more general parent Classifier. However, if the Classifier has multiple immediate parents, then the relative ordering of the sets of attributes from those parents is not defined.
+	 * result = (attribute->asSequence()->union(parents()->asSequence().allAttributes())->select(p | member->includes(p))->asOrderedSet())
+	 * <p>From package UML::Classification.</p>
+	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static EList<Property> allAttributes(Classifier classifier) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * All StructuralFeatures related to the Classifier that may have Slots, including direct attributes, inherited attributes, private attributes in generalizations, and memberEnds of Associations, but excluding redefined StructuralFeatures.
+	 * result = (member->select(oclIsKindOf(StructuralFeature))->
+	 *   collect(oclAsType(StructuralFeature))->
+	 *    union(self.inherit(self.allParents()->collect(p | p.attribute)->asSet())->
+	 *      collect(oclAsType(StructuralFeature)))->asSet())
+	 * <p>From package UML::Classification.</p>
+	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static EList<StructuralFeature> allSlottableFeatures(
+			Classifier classifier) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -589,8 +813,8 @@ public class ClassifierOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query hasVisibilityOf() determines whether a named element is visible in the classifier. By default all are visible. It is only called when the argument is something owned by a parent.
-	 * self.allParents()->including(self)->collect(c | c.member)->includes(n)
+	 * The query hasVisibilityOf() determines whether a NamedElement is visible in the classifier. Non-private members are visible. It is only called when the argument is something owned by a parent.
+	 * allParents()->including(self)->collect(member)->includes(n)
 	 * result = (n.visibility <> VisibilityKind::private)
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
@@ -615,30 +839,37 @@ public class ClassifierOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query conformsTo() gives true for a classifier that defines a type that conforms to another. This is used, for example, in the specification of signature conformance for operations.
-	 * result = (self=other) or (self.allParents()->includes(other))
-	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean conformsTo(Classifier classifier, Classifier other) {
-		return classifier == other || classifier.allParents().contains(other);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The inherit operation is overridden to exclude redefined properties.
-	 * The query inherit() defines how to inherit a set of elements. Here the operation is defined to inherit them all. It is intended to be redefined in circumstances where inheritance is affected by redefinition.
-	 * result = inhs
+	 * The query inherit() defines how to inherit a set of elements passed as its argument.  It excludes redefined elements from the result.
+	 * result = (inhs->reject(inh |
+	 *   inh.oclIsKindOf(RedefinableElement) and
+	 *   ownedMember->select(oclIsKindOf(RedefinableElement))->
+	 *     select(redefinedElement->includes(inh.oclAsType(RedefinableElement)))
+	 *        ->notEmpty()))
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<NamedElement> inherit(Classifier classifier,
 			EList<NamedElement> inhs) {
-		return ECollections.unmodifiableEList(inhs);
+		EList<NamedElement> inherit = new UniqueEList.FastCompare<NamedElement>();
+		EList<RedefinableElement> redefinedElements = new UniqueEList.FastCompare<RedefinableElement>();
+
+		for (NamedElement ownedMember : classifier.getOwnedMembers()) {
+
+			if (ownedMember instanceof RedefinableElement) {
+				redefinedElements.addAll(((RedefinableElement) ownedMember)
+					.getRedefinedElements());
+			}
+		}
+
+		for (NamedElement inh : inhs) {
+
+			if (!redefinedElements.contains(inh)) {
+				inherit.add(inh);
+			}
+		}
+
+		return ECollections.unmodifiableEList(inherit);
 	}
 
 	protected static EList<Classifier> allParents(Classifier classifier,
@@ -659,7 +890,7 @@ public class ClassifierOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query allParents() gives all of the direct and indirect ancestors of a generalized Classifier.
-	 * result = self.parents()->union(self.parents()->collect(p | p.allParents())
+	 * result = (parents()->union(parents()->collect(allParents())->asSet()))
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -673,27 +904,14 @@ public class ClassifierOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isTemplate() returns whether this templateable element is actually a template.
-	 * result = oclAsType(TemplatableElement).isTemplate() or general->exists(g | g.isTemplate())
+	 * The query isTemplate() returns whether this TemplateableElement is actually a template.
+	 * result = (ownedTemplateSignature <> null)
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean isTemplate(Classifier classifier) {
-
-		if (classifier.getOwnedTemplateSignature() == null) {
-
-			for (Classifier parent : classifier.allParents()) {
-
-				if (parent.getOwnedTemplateSignature() != null) {
-					return true;
-				}
-			}
-
-			return false;
-		}
-
-		return true;
+		return classifier.getOwnedTemplateSignature() != null;
 	}
 
 	protected static EList<Interface> getUsedInterfaces(Classifier classifier,

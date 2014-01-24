@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -47,7 +47,6 @@ import org.eclipse.uml2.uml.CallConcurrencyKind;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.NamedElement;
@@ -887,9 +886,21 @@ public abstract class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isRedefinitionContextValid(RedefinableElement redefined) {
+	public boolean isRedefinitionContextValid(
+			RedefinableElement redefinedElement) {
 		return RedefinableElementOperations.isRedefinitionContextValid(this,
-			redefined);
+			redefinedElement);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAbstractNoMethod(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return BehavioralFeatureOperations.validateAbstractNoMethod(this,
+			diagnostics, context);
 	}
 
 	/**
@@ -906,8 +917,27 @@ public abstract class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isConsistentWith(RedefinableElement redefinee) {
-		return RedefinableElementOperations.isConsistentWith(this, redefinee);
+	public EList<Parameter> inputParameters() {
+		return BehavioralFeatureOperations.inputParameters(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Parameter> outputParameters() {
+		return BehavioralFeatureOperations.outputParameters(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isConsistentWith(RedefinableElement redefiningElement) {
+		return RedefinableElementOperations.isConsistentWith(this,
+			redefiningElement);
 	}
 
 	/**
@@ -933,17 +963,14 @@ public abstract class BehavioralFeatureImpl
 			case UMLPackage.BEHAVIORAL_FEATURE__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.BEHAVIORAL_FEATURE__ELEMENT_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.BEHAVIORAL_FEATURE__PACKAGE_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.BEHAVIORAL_FEATURE__METHOD :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getMethods())
@@ -967,19 +994,16 @@ public abstract class BehavioralFeatureImpl
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIORAL_FEATURE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE :
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.BEHAVIORAL_FEATURE__ELEMENT_IMPORT :
 				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.BEHAVIORAL_FEATURE__PACKAGE_IMPORT :
 				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.BEHAVIORAL_FEATURE__METHOD :
 				return ((InternalEList<?>) getMethods()).basicRemove(otherEnd,
@@ -1028,12 +1052,12 @@ public abstract class BehavioralFeatureImpl
 				return getQualifiedName();
 			case UMLPackage.BEHAVIORAL_FEATURE__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.BEHAVIORAL_FEATURE__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.BEHAVIORAL_FEATURE__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.BEHAVIORAL_FEATURE__IMPORTED_MEMBER :
@@ -1085,11 +1109,6 @@ public abstract class BehavioralFeatureImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__NAME :
 				setName((String) newValue);
 				return;
@@ -1098,6 +1117,11 @@ public abstract class BehavioralFeatureImpl
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -1108,11 +1132,6 @@ public abstract class BehavioralFeatureImpl
 				getPackageImports().clear();
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
-				return;
-			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -1163,9 +1182,6 @@ public abstract class BehavioralFeatureImpl
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__NAME :
 				unsetName();
 				return;
@@ -1175,14 +1191,14 @@ public abstract class BehavioralFeatureImpl
 			case UMLPackage.BEHAVIORAL_FEATURE__VISIBILITY :
 				unsetVisibility();
 				return;
+			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				return;
-			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE :
-				getOwnedRules().clear();
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
@@ -1229,8 +1245,7 @@ public abstract class BehavioralFeatureImpl
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNER :
 				return isSetOwner();
 			case UMLPackage.BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__NAME :
 				return isSetName();
 			case UMLPackage.BEHAVIORAL_FEATURE__NAME_EXPRESSION :
@@ -1243,12 +1258,12 @@ public abstract class BehavioralFeatureImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.BEHAVIORAL_FEATURE__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.BEHAVIORAL_FEATURE__IMPORTED_MEMBER :
@@ -1470,16 +1485,16 @@ public abstract class BehavioralFeatureImpl
 				return allOwnedElements();
 			case UMLPackage.BEHAVIORAL_FEATURE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.BEHAVIORAL_FEATURE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.BEHAVIORAL_FEATURE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.BEHAVIORAL_FEATURE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.BEHAVIORAL_FEATURE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.BEHAVIORAL_FEATURE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1490,6 +1505,8 @@ public abstract class BehavioralFeatureImpl
 				return getLabel();
 			case UMLPackage.BEHAVIORAL_FEATURE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.BEHAVIORAL_FEATURE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.BEHAVIORAL_FEATURE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.BEHAVIORAL_FEATURE___ALL_OWNING_PACKAGES :
@@ -1497,14 +1514,22 @@ public abstract class BehavioralFeatureImpl
 			case UMLPackage.BEHAVIORAL_FEATURE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.BEHAVIORAL_FEATURE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.BEHAVIORAL_FEATURE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.BEHAVIORAL_FEATURE___SEPARATOR :
 				return separator();
+			case UMLPackage.BEHAVIORAL_FEATURE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.BEHAVIORAL_FEATURE___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.BEHAVIORAL_FEATURE___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.BEHAVIORAL_FEATURE___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.BEHAVIORAL_FEATURE___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -1519,6 +1544,8 @@ public abstract class BehavioralFeatureImpl
 				return getImportedElements();
 			case UMLPackage.BEHAVIORAL_FEATURE___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.BEHAVIORAL_FEATURE___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.BEHAVIORAL_FEATURE___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -1531,8 +1558,6 @@ public abstract class BehavioralFeatureImpl
 				return getImportedMembers();
 			case UMLPackage.BEHAVIORAL_FEATURE___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.BEHAVIORAL_FEATURE___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 			case UMLPackage.BEHAVIORAL_FEATURE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -1550,9 +1575,17 @@ public abstract class BehavioralFeatureImpl
 			case UMLPackage.BEHAVIORAL_FEATURE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
+			case UMLPackage.BEHAVIORAL_FEATURE___VALIDATE_ABSTRACT_NO_METHOD__DIAGNOSTICCHAIN_MAP :
+				return validateAbstractNoMethod(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.BEHAVIORAL_FEATURE___CREATE_RETURN_RESULT__STRING_TYPE :
 				return createReturnResult((String) arguments.get(0),
 					(Type) arguments.get(1));
+			case UMLPackage.BEHAVIORAL_FEATURE___INPUT_PARAMETERS :
+				return inputParameters();
+			case UMLPackage.BEHAVIORAL_FEATURE___OUTPUT_PARAMETERS :
+				return outputParameters();
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}

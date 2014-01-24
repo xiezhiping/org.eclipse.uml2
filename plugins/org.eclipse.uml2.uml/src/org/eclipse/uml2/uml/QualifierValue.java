@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.uml;
@@ -22,8 +23,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A qualifier value is not an action. It is an element that identifies links. It gives a single qualifier within a link end data specification.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A QualifierValue is an Element that is used as part of LinkEndData to provide the value for a single qualifier of the end given by the LinkEndData.
+ * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -46,8 +47,8 @@ public interface QualifierValue
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Attribute representing the qualifier for which the value is to be specified.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The qualifier Property for which the value is to be specified.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Qualifier</em>' reference.
 	 * @see #setQualifier(Property)
@@ -72,8 +73,8 @@ public interface QualifierValue
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Input pin from which the specified value for the qualifier is taken.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The InputPin from which the specified value for the qualifier is taken.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Value</em>' reference.
 	 * @see #setValue(InputPin)
@@ -97,8 +98,8 @@ public interface QualifierValue
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The qualifier attribute must be a qualifier of the association end of the link-end data.
-	 * self.LinkEndData.end->collect(qualifier)->includes(self.qualifier)
+	 * The qualifier must be a qualifier of the Association end of the linkEndData that owns this QualifierValue.
+	 * linkEndData.end.qualifier->includes(qualifier)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -112,8 +113,8 @@ public interface QualifierValue
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the qualifier value input pin is the same as the type of the qualifier attribute.
-	 * self.value.type = self.qualifier.type
+	 * The type of the value InputPin conforms to the type of the qualifier Property.
+	 * value.type.conformsTo(qualifier.type)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -127,8 +128,8 @@ public interface QualifierValue
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the qualifier value input pin is "1..1".
-	 * self.value.multiplicity.is(1,1)
+	 * The multiplicity of the value InputPin is 1..1.
+	 * value.is(1,1)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

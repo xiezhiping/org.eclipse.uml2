@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -43,7 +43,6 @@ import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Generalization;
@@ -75,6 +74,7 @@ import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UseCase;
+import org.eclipse.uml2.uml.Vertex;
 import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.eclipse.uml2.uml.internal.operations.ProtocolStateMachineOperations;
@@ -249,17 +249,6 @@ public class ProtocolStateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePortsConnected(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return ProtocolStateMachineOperations.validatePortsConnected(this,
-			diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public boolean validateClassifierContext(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
@@ -280,17 +269,14 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.PROTOCOL_STATE_MACHINE__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RULE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__ELEMENT_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__PACKAGE_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
@@ -305,6 +291,9 @@ public class ProtocolStateMachineImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
+			case UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -315,9 +304,6 @@ public class ProtocolStateMachineImpl
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
-			case UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__GENERALIZATION :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getGeneralizations())
 					.basicAdd(otherEnd, msgs);
@@ -373,29 +359,26 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.PROTOCOL_STATE_MACHINE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RULE :
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__ELEMENT_IMPORT :
 				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__PACKAGE_IMPORT :
 				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
-				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING :
 				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__COLLABORATION_USE :
 				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
@@ -435,14 +418,14 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RECEPTION :
 				return ((InternalEList<?>) getOwnedReceptions()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
+				return basicSetSpecification(null, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER :
 				return ((InternalEList<?>) getOwnedParameters()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET :
 				return ((InternalEList<?>) getOwnedParameterSets())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
-				return basicSetSpecification(null, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONNECTION_POINT :
 				return ((InternalEList<?>) getConnectionPoints()).basicRemove(
 					otherEnd, msgs);
@@ -493,12 +476,12 @@ public class ProtocolStateMachineImpl
 				return getQualifiedName();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IMPORTED_MEMBER :
@@ -523,12 +506,12 @@ public class ProtocolStateMachineImpl
 				if (resolve)
 					return getPackage();
 				return basicGetPackage();
+			case UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING :
+				return getTemplateBindings();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING :
-				return getTemplateBindings();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__FEATURE :
 				return getFeatures();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__ATTRIBUTE :
@@ -589,6 +572,10 @@ public class ProtocolStateMachineImpl
 				return getOwnedReceptions();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUPER_CLASS :
 				return getSuperClasses();
+			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
+				if (resolve)
+					return getSpecification();
+				return basicGetSpecification();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONTEXT :
 				if (resolve)
 					return getContext();
@@ -605,10 +592,6 @@ public class ProtocolStateMachineImpl
 				return getPreconditions();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REDEFINED_BEHAVIOR :
 				return getRedefinedBehaviors();
-			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
-				if (resolve)
-					return getSpecification();
-				return basicGetSpecification();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONNECTION_POINT :
 				return getConnectionPoints();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBMACHINE_STATE :
@@ -642,11 +625,6 @@ public class ProtocolStateMachineImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__NAME :
 				setName((String) newValue);
 				return;
@@ -655,6 +633,11 @@ public class ProtocolStateMachineImpl
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -665,11 +648,6 @@ public class ProtocolStateMachineImpl
 				getPackageImports().clear();
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
-				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -683,13 +661,13 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
-				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
+				return;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -786,6 +764,9 @@ public class ProtocolStateMachineImpl
 					.addAll(
 						(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
 				return;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
+				setSpecification((BehavioralFeature) newValue);
+				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_REENTRANT :
 				setIsReentrant((Boolean) newValue);
 				return;
@@ -813,9 +794,6 @@ public class ProtocolStateMachineImpl
 				getRedefinedBehaviors().clear();
 				getRedefinedBehaviors().addAll(
 					(Collection<? extends Behavior>) newValue);
-				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
-				setSpecification((BehavioralFeature) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONNECTION_POINT :
 				getConnectionPoints().clear();
@@ -859,9 +837,6 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__NAME :
 				unsetName();
 				return;
@@ -871,14 +846,14 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__VISIBILITY :
 				unsetVisibility();
 				return;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RULE :
-				getOwnedRules().clear();
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
@@ -892,11 +867,11 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
 				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) null);
-				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
+				return;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -961,6 +936,9 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUPER_CLASS :
 				getSuperClasses().clear();
 				return;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
+				setSpecification((BehavioralFeature) null);
+				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_REENTRANT :
 				unsetIsReentrant();
 				return;
@@ -978,9 +956,6 @@ public class ProtocolStateMachineImpl
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REDEFINED_BEHAVIOR :
 				getRedefinedBehaviors().clear();
-				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
-				setSpecification((BehavioralFeature) null);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONNECTION_POINT :
 				getConnectionPoints().clear();
@@ -1018,8 +993,7 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNER :
 				return isSetOwner();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__NAME :
 				return isSetName();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__NAME_EXPRESSION :
@@ -1032,12 +1006,12 @@ public class ProtocolStateMachineImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.PROTOCOL_STATE_MACHINE__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IMPORTED_MEMBER :
@@ -1056,10 +1030,10 @@ public class ProtocolStateMachineImpl
 				return isSetTemplateParameter();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__PACKAGE :
 				return basicGetPackage() != null;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
-				return isSetOwnedTemplateSignature();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING :
 				return templateBindings != null && !templateBindings.isEmpty();
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__ATTRIBUTE :
@@ -1120,6 +1094,8 @@ public class ProtocolStateMachineImpl
 				return ownedReceptions != null && !ownedReceptions.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUPER_CLASS :
 				return isSetSuperClasses();
+			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
+				return specification != null;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_REENTRANT :
@@ -1135,8 +1111,6 @@ public class ProtocolStateMachineImpl
 				return preconditions != null && !preconditions.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REDEFINED_BEHAVIOR :
 				return isSetRedefinedBehaviors();
-			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
-				return specification != null;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONNECTION_POINT :
 				return connectionPoints != null && !connectionPoints.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBMACHINE_STATE :
@@ -1243,16 +1217,16 @@ public class ProtocolStateMachineImpl
 				return allOwnedElements();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1263,6 +1237,8 @@ public class ProtocolStateMachineImpl
 				return getLabel();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.PROTOCOL_STATE_MACHINE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___ALL_OWNING_PACKAGES :
@@ -1270,14 +1246,22 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.PROTOCOL_STATE_MACHINE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___SEPARATOR :
 				return separator();
+			case UMLPackage.PROTOCOL_STATE_MACHINE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -1292,6 +1276,8 @@ public class ProtocolStateMachineImpl
 				return getImportedElements();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.PROTOCOL_STATE_MACHINE___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -1304,8 +1290,6 @@ public class ProtocolStateMachineImpl
 				return getImportedMembers();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.PROTOCOL_STATE_MACHINE___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -1327,6 +1311,10 @@ public class ProtocolStateMachineImpl
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___CREATE_ASSOCIATION__BOOLEAN_AGGREGATIONKIND_STRING_INT_INT_TYPE_BOOLEAN_AGGREGATIONKIND_STRING_INT_INT :
 				return createAssociation((Boolean) arguments.get(0),
 					(AggregationKind) arguments.get(1),
@@ -1344,20 +1332,20 @@ public class ProtocolStateMachineImpl
 				return isTemplate();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___PARAMETERABLE_ELEMENTS :
 				return parameterableElements();
-			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
-				return validateNonFinalParents(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
-				return validateNoCyclesInGeneralization(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateSpecializeType(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
 				return validateMapsToGeneralizationSet(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
+				return validateNonFinalParents(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
+				return validateNoCyclesInGeneralization(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___GET_ALL_ATTRIBUTES :
@@ -1382,8 +1370,6 @@ public class ProtocolStateMachineImpl
 				return allFeatures();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___ALL_PARENTS :
 				return allParents();
-			case UMLPackage.PROTOCOL_STATE_MACHINE___CONFORMS_TO__CLASSIFIER :
-				return conformsTo((Classifier) arguments.get(0));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___GET_GENERALS :
 				return getGenerals();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___HAS_VISIBILITY_OF__NAMEDELEMENT :
@@ -1398,16 +1384,28 @@ public class ProtocolStateMachineImpl
 				return maySpecializeType((Classifier) arguments.get(0));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___PARENTS :
 				return parents();
-			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_MULTIPLICITIES__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicities(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROTOCOL_STATE_MACHINE___DIRECTLY_REALIZED_INTERFACES :
+				return directlyRealizedInterfaces();
+			case UMLPackage.PROTOCOL_STATE_MACHINE___DIRECTLY_USED_INTERFACES :
+				return directlyUsedInterfaces();
+			case UMLPackage.PROTOCOL_STATE_MACHINE___ALL_REALIZED_INTERFACES :
+				return allRealizedInterfaces();
+			case UMLPackage.PROTOCOL_STATE_MACHINE___ALL_USED_INTERFACES :
+				return allUsedInterfaces();
+			case UMLPackage.PROTOCOL_STATE_MACHINE___IS_SUBSTITUTABLE_FOR__CLASSIFIER :
+				return isSubstitutableFor((Classifier) arguments.get(0));
+			case UMLPackage.PROTOCOL_STATE_MACHINE___ALL_ATTRIBUTES :
+				return allAttributes();
+			case UMLPackage.PROTOCOL_STATE_MACHINE___ALL_SLOTTABLE_FEATURES :
+				return allSlottableFeatures();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___CREATE_OWNED_ATTRIBUTE__STRING_TYPE_INT_INT :
 				return createOwnedAttribute((String) arguments.get(0),
 					(Type) arguments.get(1), (Integer) arguments.get(2),
 					(Integer) arguments.get(3));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___GET_PARTS :
 				return getParts();
+			case UMLPackage.PROTOCOL_STATE_MACHINE___ALL_ROLES :
+				return allRoles();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___GET_OWNED_PORTS :
 				return getOwnedPorts();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_CLASS_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
@@ -1431,6 +1429,10 @@ public class ProtocolStateMachineImpl
 				return getExtensions();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___GET_SUPER_CLASSES :
 				return getSuperClasses();
+			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_MOST_ONE_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
+				return validateMostOneBehavior(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_PARAMETERS_MATCH__DIAGNOSTICCHAIN_MAP :
 				return validateParametersMatch(
 					(DiagnosticChain) arguments.get(0),
@@ -1439,51 +1441,46 @@ public class ProtocolStateMachineImpl
 				return validateFeatureOfContextClassifier(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_MUST_REALIZE__DIAGNOSTICCHAIN_MAP :
-				return validateMustRealize((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_MOST_ONE_BEHAVIOUR__DIAGNOSTICCHAIN_MAP :
-				return validateMostOneBehaviour(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___GET_CONTEXT :
 				return getContext();
-			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_METHOD__DIAGNOSTICCHAIN_MAP :
-				return validateMethod((DiagnosticChain) arguments.get(0),
+			case UMLPackage.PROTOCOL_STATE_MACHINE___BEHAVIORED_CLASSIFIER__ELEMENT :
+				return behavioredClassifier((Element) arguments.get(0));
+			case UMLPackage.PROTOCOL_STATE_MACHINE___INPUT_PARAMETERS :
+				return inputParameters();
+			case UMLPackage.PROTOCOL_STATE_MACHINE___OUTPUT_PARAMETERS :
+				return outputParameters();
+			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_CONNECTION_POINTS__DIAGNOSTICCHAIN_MAP :
+				return validateConnectionPoints(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_CLASSIFIER_CONTEXT__DIAGNOSTICCHAIN_MAP :
 				return validateClassifierContext(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_METHOD__DIAGNOSTICCHAIN_MAP :
+				return validateMethod((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_CONTEXT_CLASSIFIER__DIAGNOSTICCHAIN_MAP :
 				return validateContextClassifier(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_CONNECTION_POINTS__DIAGNOSTICCHAIN_MAP :
-				return validateConnectionPoints(
+			case UMLPackage.PROTOCOL_STATE_MACHINE___LCA__VERTEX_VERTEX :
+				return LCA((Vertex) arguments.get(0), (Vertex) arguments.get(1));
+			case UMLPackage.PROTOCOL_STATE_MACHINE___ANCESTOR__VERTEX_VERTEX :
+				return ancestor((Vertex) arguments.get(0),
+					(Vertex) arguments.get(1));
+			case UMLPackage.PROTOCOL_STATE_MACHINE___LCA_STATE__VERTEX_VERTEX :
+				return LCAState((Vertex) arguments.get(0),
+					(Vertex) arguments.get(1));
+			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_DEEP_OR_SHALLOW_HISTORY__DIAGNOSTICCHAIN_MAP :
+				return validateDeepOrShallowHistory(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_STATE_MACHINE___LCA__STATE_STATE :
-				return LCA((State) arguments.get(0), (State) arguments.get(1));
-			case UMLPackage.PROTOCOL_STATE_MACHINE___ANCESTOR__STATE_STATE :
-				return ancestor((State) arguments.get(0),
-					(State) arguments.get(1));
-			case UMLPackage.PROTOCOL_STATE_MACHINE___IS_REDEFINITION_CONTEXT_VALID__STATEMACHINE :
-				return isRedefinitionContextValid((StateMachine) arguments
-					.get(0));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_ENTRY_EXIT_DO__DIAGNOSTICCHAIN_MAP :
 				return validateEntryExitDo((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_PROTOCOL_TRANSITIONS__DIAGNOSTICCHAIN_MAP :
 				return validateProtocolTransitions(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_DEEP_OR_SHALLOW_HISTORY__DIAGNOSTICCHAIN_MAP :
-				return validateDeepOrShallowHistory(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_PORTS_CONNECTED__DIAGNOSTICCHAIN_MAP :
-				return validatePortsConnected(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
@@ -1504,8 +1501,8 @@ public class ProtocolStateMachineImpl
 		UMLPackage.PROTOCOL_STATE_MACHINE__ELEMENT_IMPORT,
 		UMLPackage.PROTOCOL_STATE_MACHINE__PACKAGE_IMPORT,
 		UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_MEMBER,
-		UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE,
 		UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING,
+		UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE,
 		UMLPackage.PROTOCOL_STATE_MACHINE__COLLABORATION_USE,
 		UMLPackage.PROTOCOL_STATE_MACHINE__GENERALIZATION,
 		UMLPackage.PROTOCOL_STATE_MACHINE__SUBSTITUTION,

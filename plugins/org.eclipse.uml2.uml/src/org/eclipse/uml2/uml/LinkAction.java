@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -27,8 +27,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * LinkAction is an abstract class for all link actions that identify their links by the objects at the ends of the links and by the qualifiers at ends of the links.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * LinkAction is an abstract class for all Actions that identify the links to be acted on using LinkEndData.
+ * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -58,8 +58,8 @@ public interface LinkAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Data identifying one end of a link by the objects on its ends and qualifiers.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The LinkEndData identifying the values on the ends of the links acting on by this LinkAction.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End Data</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLinkAction_EndData()
@@ -101,8 +101,8 @@ public interface LinkAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Pins taking end objects and qualifier values as input.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * InputPins used by the LinkEndData of the LinkAction.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Input Value</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLinkAction_InputValue()
@@ -168,8 +168,8 @@ public interface LinkAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The association ends of the link end data must all be from the same association and include all and only the association ends of that association.
-	 * self.endData->collect(end) = self.association()->collect(connection))
+	 * The ends of the endData must all be from the same Association and include all and only the memberEnds of that association.
+	 * endData.end = self.association().memberEnd->asBag()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -183,8 +183,8 @@ public interface LinkAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The association ends of the link end data must not be static.
-	 * self.endData->forall(end.oclisKindOf(NavigableEnd) implies end.isStatic = #false
+	 * The ends of the endData must not be static.
+	 * endData->forAll(not end.isStatic)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -198,13 +198,8 @@ public interface LinkAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The input pins of the action are the same as the pins of the link end data and insertion pins.
-	 * self.input->asSet() =
-	 * let ledpins : Set = self.endData->collect(value) in
-	 * if self.oclIsKindOf(LinkEndCreationData)
-	 * then ledpins->union(self.endData.oclAsType(LinkEndCreationData).insertAt)
-	 * else ledpins
-	 * 
+	 * The inputValue InputPins is the same as the union of all the InputPins referenced by the endData.
+	 * inputValue->asBag()=endData.allPins()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -218,9 +213,9 @@ public interface LinkAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The association operates on LinkAction. It returns the association of the action.
-	 * result = self.endData->asSequence().first().end.association
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Returns the Association acted on by this LinkAction.
+	 * result = (endData->asSequence()->first().end.association)
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false"
 	 * @generated

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -25,8 +25,8 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A template binding represents a relationship between a templateable element and a template. A template binding specifies the substitutions of actual parameters for the formal parameters of the template.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A TemplateBinding is a DirectedRelationship between a TemplateableElement and a template. A TemplateBinding specifies the TemplateParameterSubstitutions of actual parameters for the formal parameters of the template.
+ * <p>From package UML::CommonStructure.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -56,8 +56,8 @@ public interface TemplateBinding
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The template signature for the template that is the target of the binding.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The TemplateSignature for the template that is the target of this TemplateBinding.
+	 * <p>From package UML::CommonStructure.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Signature</em>' reference.
 	 * @see #setSignature(TemplateSignature)
@@ -90,8 +90,8 @@ public interface TemplateBinding
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The parameter substitutions owned by this template binding.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The TemplateParameterSubstitutions owned by this TemplateBinding.
+	 * <p>From package UML::CommonStructure.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Parameter Substitution</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTemplateBinding_ParameterSubstitution()
@@ -117,15 +117,15 @@ public interface TemplateBinding
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.DirectedRelationship#getSources() <em>Source</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The element that is bound by this binding.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The TemplateableElement that is bound by this TemplateBinding.
+	 * <p>From package UML::CommonStructure.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Bound Element</em>' container reference.
 	 * @see #setBoundElement(TemplateableElement)
@@ -150,8 +150,8 @@ public interface TemplateBinding
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Each parameter substitution must refer to a formal template parameter of the target template signature.
-	 * parameterSubstitution->forAll(b | template.parameter->includes(b.formal))
+	 * Each parameterSubstitution must refer to a formal TemplateParameter of the target TemplateSignature.
+	 * parameterSubstitution->forAll(b | signature.parameter->includes(b.formal))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -165,8 +165,8 @@ public interface TemplateBinding
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A binding contains at most one parameter substitution for each formal template parameter of the target template signature.
-	 * template.parameter->forAll(p | parameterSubstitution->select(b | b.formal = p)->size() <= 1)
+	 * A TemplateBiinding contains at most one TemplateParameterSubstitution for each formal TemplateParameter of the target TemplateSignature.
+	 * signature.parameter->forAll(p | parameterSubstitution->select(b | b.formal = p)->size() <= 1)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

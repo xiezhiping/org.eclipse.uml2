@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -220,11 +220,11 @@ public class CollaborationUseItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
-			UMLFactory.eINSTANCE.createAbstraction()));
+			UMLFactory.eINSTANCE.createDeployment()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
-			UMLFactory.eINSTANCE.createDeployment()));
+			UMLFactory.eINSTANCE.createAbstraction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
@@ -232,19 +232,19 @@ public class CollaborationUseItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
-			UMLFactory.eINSTANCE.createRealization()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
-			UMLFactory.eINSTANCE.createInterfaceRealization()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
 			UMLFactory.eINSTANCE.createUsage()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
+			UMLFactory.eINSTANCE.createRealization()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
 			UMLFactory.eINSTANCE.createSubstitution()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
+			UMLFactory.eINSTANCE.createInterfaceRealization()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,

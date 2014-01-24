@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,8 +30,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.StartClassifierBehaviorAction#validateTypeHasClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Has Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StartClassifierBehaviorAction#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StartClassifierBehaviorAction#validateTypeHasClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Has Classifier</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,8 +53,8 @@ public class StartClassifierBehaviorActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the input pin is 1..1
-	 * true
+	 * The multiplicity of the object InputPin is 1..1
+	 * object.is(1,1)
 	 * @param startClassifierBehaviorAction The receiving '<em><b>Start Classifier Behavior Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -89,8 +89,9 @@ public class StartClassifierBehaviorActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If the input pin has a type, then the type must have a classifier behavior.
-	 * true
+	 * If the InputPin has a type, then the type or one of its ancestors must have a classifierBehavior.
+	 * object.type->notEmpty() implies 
+	 *    (object.type.oclIsKindOf(BehavioredClassifier) and object.type.oclAsType(BehavioredClassifier).classifierBehavior<>null)
 	 * @param startClassifierBehaviorAction The receiving '<em><b>Start Classifier Behavior Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -25,8 +25,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A reduce action is an action that reduces a collection to a single value by combining the elements of the collection.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A ReduceAction is an Action that reduces a collection to a single value by repeatedly combining the elements of the collection using a reducer Behavior.
+ * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -51,8 +51,8 @@ public interface ReduceAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Behavior that is applied to two elements of the input collection to produce a value that is the same type as elements of the collection.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * A Behavior that is repreatedly applied to two elements of the input collection to produce a value that is of the same type as elements of the collection.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Reducer</em>' reference.
 	 * @see #setReducer(Behavior)
@@ -83,8 +83,8 @@ public interface ReduceAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Gives the output pin on which the result is put.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The output pin on which the result value is placed.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)
@@ -127,8 +127,8 @@ public interface ReduceAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The collection to be reduced.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The InputPin that provides the collection to be reduced.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Collection</em>' containment reference.
 	 * @see #setCollection(InputPin)
@@ -179,8 +179,8 @@ public interface ReduceAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Tells whether the order of the input collection should determine the order in which the behavior is applied to its elements.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Indicates whether the order of the input collection should determine the order in which the reducer Behavior is applied to its elements.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Ordered</em>' attribute.
 	 * @see #setIsOrdered(boolean)
@@ -204,8 +204,7 @@ public interface ReduceAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the input must be a collection.
-	 * true
+	 * The type of the collection InputPin must be a collection.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -219,8 +218,8 @@ public interface ReduceAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the output must be compatible with the type of the output of the reducer behavior.
-	 * true
+	 * The type of the output of the reducer Behavior must conform to the type of the result OutputPin.
+	 * reducer.outputParameters().type->forAll(conformsTo(result.type))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -234,8 +233,14 @@ public interface ReduceAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The reducer behavior must have two input parameters and one output parameter, of types compatible with the types of elements of the input collection.
-	 * true
+	 * The reducer Behavior must have two input ownedParameters and one output ownedParameter, where the type of the output Parameter and the type of elements of the input collection conform to the types of the input Parameters.
+	 * let inputs: OrderedSet(Parameter) = reducer.inputParameters() in
+	 * let outputs: OrderedSet(Parameter) = reducer.outputParameters() in
+	 * inputs->size()=2 and outputs->size()=1 and
+	 * inputs.type->forAll(t | 
+	 * 	outputs.type->forAll(conformsTo(t)) and 
+	 * 	-- Note that the following only checks the case when the collection is via multiple tokens.
+	 * 	collection.upperBound()>1 implies collection.type.conformsTo(t))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

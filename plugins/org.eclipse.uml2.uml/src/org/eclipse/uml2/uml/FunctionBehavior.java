@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.uml;
@@ -22,8 +23,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A function behavior is an opaque behavior that does not access or modify any objects or other external data.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A FunctionBehavior is an OpaqueBehavior that does not access or modify any objects or other external data.
+ * <p>From package UML::CommonBehavior.</p>
  * <!-- end-model-doc -->
  *
  *
@@ -38,9 +39,9 @@ public interface FunctionBehavior
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A function behavior has at least one output parameter.
-	 * self.ownedParameters->
-	 *   select(p | p.direction=#out or p.direction=#inout or p.direction=#return)->size() >= 1
+	 * A FunctionBehavior has at least one output Parameter.
+	 * self.ownedParameter->
+	 *   select(p | p.direction = ParameterDirectionKind::out or p.direction= ParameterDirectionKind::inout or p.direction= ParameterDirectionKind::return)->size() >= 1
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -54,13 +55,9 @@ public interface FunctionBehavior
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The types of parameters are all data types, which may not nest anything but other datatypes.
-	 * def: hasAllDataTypeAttributes(d : DataType) : Boolean =
-	 *   d.ownedAttribute->forAll(a |
-	 *     a.type.oclIsTypeOf(DataType) and
-	 *       hasAllDataTypeAttributes(a.type))
-	 * self.ownedParameters->forAll(p | p.type.notEmpty() and
-	 *   p.oclIsTypeOf(DataType) and hasAllDataTypeAttributes(p))
+	 * The types of the ownedParameters are all DataTypes, which may not nest anything but other DataTypes.
+	 * ownedParameter->forAll(p | p.type <> null and
+	 *   p.type.oclIsTypeOf(DataType) and hasAllDataTypeAttributes(p.type.oclAsType(DataType)))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -69,5 +66,20 @@ public interface FunctionBehavior
 	 */
 	boolean validateTypesOfParameters(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The hasAllDataTypeAttributes query tests whether the types of the attributes of the given DataType are all DataTypes, and similarly for all those DataTypes.
+	 * result = (d.ownedAttribute->forAll(a |
+	 *     a.type.oclIsKindOf(DataType) and
+	 *       hasAllDataTypeAttributes(a.type.oclAsType(DataType))))
+	 * <p>From package UML::CommonBehavior.</p>
+	 * <!-- end-model-doc -->
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" dRequired="true" dOrdered="false"
+	 * @generated
+	 */
+	boolean hasAllDataTypeAttributes(DataType d);
 
 } // FunctionBehavior

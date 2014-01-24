@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -18,6 +18,8 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.LinkEndData;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -30,11 +32,12 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.LinkEndData#validatePropertyIsAssociationEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Property Is Association End</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.LinkEndData#validateEndObjectInputPin(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate End Object Input Pin</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LinkEndData#validateSameType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LinkEndData#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LinkEndData#validateEndObjectInputPin(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate End Object Input Pin</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LinkEndData#validatePropertyIsAssociationEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Property Is Association End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LinkEndData#validateQualifiers(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Qualifiers</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LinkEndData#allPins() <em>All Pins</em>}</li>
  * </ul>
  * </p>
  *
@@ -56,8 +59,8 @@ public class LinkEndDataOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The property must be an association end.
-	 * self.end.association->size() = 1
+	 * The Property must be an Association memberEnd.
+	 * end.association <> null
 	 * @param linkEndData The receiving '<em><b>Link End Data</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -92,8 +95,8 @@ public class LinkEndDataOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the end object input pin is the same as the type of the association end.
-	 * self.value.type = self.end.type
+	 * The type of the value InputPin conforms to the type of the Association end.
+	 * value<>null implies value.type.conformsTo(end.type)
 	 * @param linkEndData The receiving '<em><b>Link End Data</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -127,8 +130,8 @@ public class LinkEndDataOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the end object input pin must be 1..1.
-	 * self.value.multiplicity.is(1,1)
+	 * The multiplicity of the value InputPin must be 1..1.
+	 * value<>null implies value.is(1,1)
 	 * @param linkEndData The receiving '<em><b>Link End Data</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -162,8 +165,8 @@ public class LinkEndDataOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The qualifiers include all and only the qualifiers of the association end.
-	 * self.qualifier->collect(qualifier) = self.end.qualifier
+	 * The qualifiers must be qualifiers of the Association end.
+	 * end.qualifier->includesAll(qualifier.qualifier)
 	 * @param linkEndData The receiving '<em><b>Link End Data</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -197,8 +200,25 @@ public class LinkEndDataOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The end object input pin is not also a qualifier value input pin.
-	 * self.value->excludesAll(self.qualifier.value)
+	 * Returns all the InputPins referenced by this LinkEndData. By default this includes the value and qualifier InputPins, but subclasses may override the operation to add other InputPins.
+	 * result = (value->asBag()->union(qualifier.value))
+	 * <p>From package UML::Actions.</p>
+	 * @param linkEndData The receiving '<em><b>Link End Data</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static EList<InputPin> allPins(LinkEndData linkEndData) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The value InputPin is not also the qualifier value InputPin.
+	 * value->excludesAll(qualifier.value)
 	 * @param linkEndData The receiving '<em><b>Link End Data</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

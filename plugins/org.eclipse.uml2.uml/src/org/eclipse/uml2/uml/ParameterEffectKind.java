@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.uml;
@@ -24,8 +25,8 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
- * The datatype ParameterEffectKind is an enumeration that indicates the effect of a behavior on values passed in or out of its parameters.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * ParameterEffectKind is an Enumeration that indicates the effect of a Behavior on values passed in or out of its parameters.
+ * <p>From package UML::Classification.</p>
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getParameterEffectKind()
  * @model
@@ -92,7 +93,7 @@ public enum ParameterEffectKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that the behavior reads values.
+	 * Indicates objects that are values of the parameter have values of their properties, or links in which they participate, or their classifiers retrieved during executions of the behavior.
 	 * <!-- end-model-doc -->
 	 * @see #READ_LITERAL
 	 * @model name="read"
@@ -106,7 +107,7 @@ public enum ParameterEffectKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that the behavior updates values.
+	 * Indicates objects that are values of the parameter have values of their properties, or links in which they participate, or their classification changed during executions of the behavior.
 	 * <!-- end-model-doc -->
 	 * @see #UPDATE_LITERAL
 	 * @model name="update"
@@ -120,7 +121,7 @@ public enum ParameterEffectKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that the behavior deletes values.
+	 * Indicates objects that are values of the parameter do not exist after executions of the behavior are finished.
 	 * <!-- end-model-doc -->
 	 * @see #DELETE_LITERAL
 	 * @model name="delete"

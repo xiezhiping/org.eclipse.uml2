@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 212765
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -32,7 +32,6 @@ import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.DataType;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.Interface;
@@ -286,14 +285,16 @@ public class ExtensionEndImpl
 				return getDeployedElements();
 			case UMLPackage.EXTENSION_END__DEPLOYMENT :
 				return getDeployments();
-			case UMLPackage.EXTENSION_END__INTERFACE :
-				if (resolve)
-					return getInterface();
-				return basicGetInterface();
 			case UMLPackage.EXTENSION_END__DATATYPE :
 				if (resolve)
 					return getDatatype();
 				return basicGetDatatype();
+			case UMLPackage.EXTENSION_END__INTERFACE :
+				if (resolve)
+					return getInterface();
+				return basicGetInterface();
+			case UMLPackage.EXTENSION_END__DEFAULT :
+				return getDefault();
 			case UMLPackage.EXTENSION_END__AGGREGATION :
 				return getAggregation();
 			case UMLPackage.EXTENSION_END__ASSOCIATION_END :
@@ -306,8 +307,6 @@ public class ExtensionEndImpl
 				if (resolve)
 					return getClass_();
 				return basicGetClass_();
-			case UMLPackage.EXTENSION_END__DEFAULT :
-				return getDefault();
 			case UMLPackage.EXTENSION_END__DEFAULT_VALUE :
 				if (resolve)
 					return getDefaultValue();
@@ -359,11 +358,6 @@ public class ExtensionEndImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.EXTENSION_END__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.EXTENSION_END__NAME :
 				setName((String) newValue);
 				return;
@@ -414,11 +408,14 @@ public class ExtensionEndImpl
 				getDeployments().addAll(
 					(Collection<? extends Deployment>) newValue);
 				return;
+			case UMLPackage.EXTENSION_END__DATATYPE :
+				setDatatype((DataType) newValue);
+				return;
 			case UMLPackage.EXTENSION_END__INTERFACE :
 				setInterface((Interface) newValue);
 				return;
-			case UMLPackage.EXTENSION_END__DATATYPE :
-				setDatatype((DataType) newValue);
+			case UMLPackage.EXTENSION_END__DEFAULT :
+				setDefault((String) newValue);
 				return;
 			case UMLPackage.EXTENSION_END__AGGREGATION :
 				setAggregation((AggregationKind) newValue);
@@ -430,9 +427,6 @@ public class ExtensionEndImpl
 				getQualifiers().clear();
 				getQualifiers().addAll(
 					(Collection<? extends Property>) newValue);
-				return;
-			case UMLPackage.EXTENSION_END__DEFAULT :
-				setDefault((String) newValue);
 				return;
 			case UMLPackage.EXTENSION_END__DEFAULT_VALUE :
 				setDefaultValue((ValueSpecification) newValue);
@@ -486,9 +480,6 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.EXTENSION_END__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.EXTENSION_END__NAME :
 				unsetName();
 				return;
@@ -537,11 +528,14 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END__DEPLOYMENT :
 				getDeployments().clear();
 				return;
+			case UMLPackage.EXTENSION_END__DATATYPE :
+				setDatatype((DataType) null);
+				return;
 			case UMLPackage.EXTENSION_END__INTERFACE :
 				setInterface((Interface) null);
 				return;
-			case UMLPackage.EXTENSION_END__DATATYPE :
-				setDatatype((DataType) null);
+			case UMLPackage.EXTENSION_END__DEFAULT :
+				unsetDefault();
 				return;
 			case UMLPackage.EXTENSION_END__AGGREGATION :
 				setAggregation(AGGREGATION_EDEFAULT);
@@ -551,9 +545,6 @@ public class ExtensionEndImpl
 				return;
 			case UMLPackage.EXTENSION_END__QUALIFIER :
 				getQualifiers().clear();
-				return;
-			case UMLPackage.EXTENSION_END__DEFAULT :
-				unsetDefault();
 				return;
 			case UMLPackage.EXTENSION_END__DEFAULT_VALUE :
 				setDefaultValue((ValueSpecification) null);
@@ -606,8 +597,7 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END__OWNER :
 				return isSetOwner();
 			case UMLPackage.EXTENSION_END__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.EXTENSION_END__NAME :
 				return isSetName();
 			case UMLPackage.EXTENSION_END__NAME_EXPRESSION :
@@ -645,7 +635,7 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END__UPPER_VALUE :
 				return upperValue != null;
 			case UMLPackage.EXTENSION_END__IS_READ_ONLY :
-				return isSetIsReadOnly();
+				return ((eFlags & IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
 			case UMLPackage.EXTENSION_END__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.EXTENSION_END__TEMPLATE_PARAMETER :
@@ -656,10 +646,12 @@ public class ExtensionEndImpl
 				return !getDeployedElements().isEmpty();
 			case UMLPackage.EXTENSION_END__DEPLOYMENT :
 				return deployments != null && !deployments.isEmpty();
-			case UMLPackage.EXTENSION_END__INTERFACE :
-				return basicGetInterface() != null;
 			case UMLPackage.EXTENSION_END__DATATYPE :
 				return basicGetDatatype() != null;
+			case UMLPackage.EXTENSION_END__INTERFACE :
+				return basicGetInterface() != null;
+			case UMLPackage.EXTENSION_END__DEFAULT :
+				return isSetDefault();
 			case UMLPackage.EXTENSION_END__AGGREGATION :
 				return (eFlags & AGGREGATION_EFLAG) != AGGREGATION_EFLAG_DEFAULT;
 			case UMLPackage.EXTENSION_END__ASSOCIATION_END :
@@ -668,8 +660,6 @@ public class ExtensionEndImpl
 				return qualifiers != null && !qualifiers.isEmpty();
 			case UMLPackage.EXTENSION_END__CLASS :
 				return basicGetClass_() != null;
-			case UMLPackage.EXTENSION_END__DEFAULT :
-				return isSetDefault();
 			case UMLPackage.EXTENSION_END__DEFAULT_VALUE :
 				return defaultValue != null;
 			case UMLPackage.EXTENSION_END__IS_COMPOSITE :
@@ -788,16 +778,16 @@ public class ExtensionEndImpl
 				return allOwnedElements();
 			case UMLPackage.EXTENSION_END___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.EXTENSION_END___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTENSION_END___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTENSION_END___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXTENSION_END___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTENSION_END___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -808,6 +798,8 @@ public class ExtensionEndImpl
 				return getLabel();
 			case UMLPackage.EXTENSION_END___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.EXTENSION_END___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.EXTENSION_END___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.EXTENSION_END___ALL_OWNING_PACKAGES :
@@ -815,12 +807,12 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.EXTENSION_END___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.EXTENSION_END___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.EXTENSION_END___SEPARATOR :
 				return separator();
+			case UMLPackage.EXTENSION_END___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.EXTENSION_END___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -838,18 +830,26 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
+			case UMLPackage.EXTENSION_END___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
+				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTENSION_END___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
 				return validateLowerGe0((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXTENSION_END___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
-				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
+			case UMLPackage.EXTENSION_END___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
+				return validateValueSpecificationNoSideEffects(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTENSION_END___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
 				return validateValueSpecificationConstant(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXTENSION_END___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
-				return validateValueSpecificationNoSideEffects(
+			case UMLPackage.EXTENSION_END___VALIDATE_LOWER_IS_INTEGER__DIAGNOSTICCHAIN_MAP :
+				return validateLowerIsInteger(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.EXTENSION_END___VALIDATE_UPPER_IS_UNLIMITED_NATURAL__DIAGNOSTICCHAIN_MAP :
+				return validateUpperIsUnlimitedNatural(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTENSION_END___SET_LOWER__INT :
@@ -860,8 +860,6 @@ public class ExtensionEndImpl
 				return null;
 			case UMLPackage.EXTENSION_END___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
 				return compatibleWith((MultiplicityElement) arguments.get(0));
-			case UMLPackage.EXTENSION_END___INCLUDES_CARDINALITY__INT :
-				return includesCardinality((Integer) arguments.get(0));
 			case UMLPackage.EXTENSION_END___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
 				return includesMultiplicity((MultiplicityElement) arguments
 					.get(0));
@@ -886,42 +884,52 @@ public class ExtensionEndImpl
 				return getEnds();
 			case UMLPackage.EXTENSION_END___GET_DEPLOYED_ELEMENTS :
 				return getDeployedElements();
-			case UMLPackage.EXTENSION_END___VALIDATE_SUBSETTED_PROPERTY_NAMES__DIAGNOSTICCHAIN_MAP :
-				return validateSubsettedPropertyNames(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXTENSION_END___VALIDATE_SUBSETTING_RULES__DIAGNOSTICCHAIN_MAP :
-				return validateSubsettingRules(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXTENSION_END___VALIDATE_MULTIPLICITY_OF_COMPOSITE__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicityOfComposite(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXTENSION_END___VALIDATE_BINDING_TO_ATTRIBUTE__DIAGNOSTICCHAIN_MAP :
-				return validateBindingToAttribute(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXTENSION_END___VALIDATE_REDEFINED_PROPERTY_INHERITED__DIAGNOSTICCHAIN_MAP :
-				return validateRedefinedPropertyInherited(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTENSION_END___VALIDATE_SUBSETTING_CONTEXT_CONFORMS__DIAGNOSTICCHAIN_MAP :
 				return validateSubsettingContextConforms(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXTENSION_END___VALIDATE_DEPLOYMENT_TARGET__DIAGNOSTICCHAIN_MAP :
-				return validateDeploymentTarget(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXTENSION_END___VALIDATE_DERIVED_UNION_IS_DERIVED__DIAGNOSTICCHAIN_MAP :
-				return validateDerivedUnionIsDerived(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTENSION_END___VALIDATE_DERIVED_UNION_IS_READ_ONLY__DIAGNOSTICCHAIN_MAP :
 				return validateDerivedUnionIsReadOnly(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.EXTENSION_END___VALIDATE_MULTIPLICITY_OF_COMPOSITE__DIAGNOSTICCHAIN_MAP :
+				return validateMultiplicityOfComposite(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.EXTENSION_END___VALIDATE_REDEFINED_PROPERTY_INHERITED__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinedPropertyInherited(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.EXTENSION_END___VALIDATE_SUBSETTING_RULES__DIAGNOSTICCHAIN_MAP :
+				return validateSubsettingRules(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.EXTENSION_END___VALIDATE_BINDING_TO_ATTRIBUTE__DIAGNOSTICCHAIN_MAP :
+				return validateBindingToAttribute(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.EXTENSION_END___VALIDATE_DERIVED_UNION_IS_DERIVED__DIAGNOSTICCHAIN_MAP :
+				return validateDerivedUnionIsDerived(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.EXTENSION_END___VALIDATE_DEPLOYMENT_TARGET__DIAGNOSTICCHAIN_MAP :
+				return validateDeploymentTarget(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.EXTENSION_END___VALIDATE_SUBSETTED_PROPERTY_NAMES__DIAGNOSTICCHAIN_MAP :
+				return validateSubsettedPropertyNames(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.EXTENSION_END___VALIDATE_TYPE_OF_OPPOSITE_END__DIAGNOSTICCHAIN_MAP :
+				return validateTypeOfOppositeEnd(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.EXTENSION_END___VALIDATE_QUALIFIED_IS_ASSOCIATION_END__DIAGNOSTICCHAIN_MAP :
+				return validateQualifiedIsAssociationEnd(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.EXTENSION_END___GET_DEFAULT :
+				return getDefault();
 			case UMLPackage.EXTENSION_END___GET_OTHER_END :
 				return getOtherEnd();
 			case UMLPackage.EXTENSION_END___IS_SET_DEFAULT :
@@ -959,10 +967,8 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END___UNSET_DEFAULT :
 				unsetDefault();
 				return null;
-			case UMLPackage.EXTENSION_END___GET_DEFAULT :
-				return getDefault();
-			case UMLPackage.EXTENSION_END___IS_ATTRIBUTE__PROPERTY :
-				return isAttribute((Property) arguments.get(0));
+			case UMLPackage.EXTENSION_END___IS_ATTRIBUTE :
+				return isAttribute();
 			case UMLPackage.EXTENSION_END___IS_COMPOSITE :
 				return isComposite();
 			case UMLPackage.EXTENSION_END___IS_NAVIGABLE :

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -23,8 +23,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An execution specification is a specification of the execution of a unit of behavior or action within the lifeline. The duration of an execution specification is represented by two cccurrence specifications, the start occurrence specification and the finish occurrence specification.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * An ExecutionSpecification is a specification of the execution of a unit of Behavior or Action within the Lifeline. The duration of an ExecutionSpecification is represented by two OccurrenceSpecifications, the start OccurrenceSpecification and the finish OccurrenceSpecification.
+ * <p>From package UML::Interactions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -47,8 +47,8 @@ public interface ExecutionSpecification
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the OccurrenceSpecification that designates the start of the Action or Behavior
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * References the OccurrenceSpecification that designates the start of the Action or Behavior.
+	 * <p>From package UML::Interactions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Start</em>' reference.
 	 * @see #setStart(OccurrenceSpecification)
@@ -74,7 +74,7 @@ public interface ExecutionSpecification
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the OccurrenceSpecification that designates the finish of the Action or Behavior.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Interactions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Finish</em>' reference.
 	 * @see #setFinish(OccurrenceSpecification)
@@ -98,8 +98,8 @@ public interface ExecutionSpecification
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The startEvent and the finishEvent must be on the same Lifeline
-	 * start.lifeline = finish.lifeline
+	 * The startEvent and the finishEvent must be on the same Lifeline.
+	 * start.covered = finish.covered
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

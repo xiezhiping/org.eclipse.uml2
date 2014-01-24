@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -27,9 +27,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A behaviored classifier may have an interface realization.
- * A classifier can have behavior specifications defined in its namespace. One of these may specify the behavior of the classifier itself.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A BehavioredClassifier may have InterfaceRealizations, and owns a set of Behaviors one of which may specify the behavior of the BehavioredClassifier itself.
+ * <p>From package UML::SimpleClassifiers.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -60,8 +59,8 @@ public interface BehavioredClassifier
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References behavior specifications owned by a classifier.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Behaviors owned by a BehavioredClassifier.
+	 * <p>From package UML::SimpleClassifiers.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Behavior</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioredClassifier_OwnedBehavior()
@@ -119,8 +118,8 @@ public interface BehavioredClassifier
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A behavior specification that specifies the behavior of the classifier itself.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * A Behavior that specifies the behavior of the BehavioredClassifier itself.
+	 * <p>From package UML::SimpleClassifiers.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Classifier Behavior</em>' reference.
 	 * @see #setClassifierBehavior(Behavior)
@@ -160,14 +159,13 @@ public interface BehavioredClassifier
 	 * This feature subsets the following features:
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
-	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getClientDependencies() <em>Client Dependency</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::SimpleClassifiers.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Interface Realization</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioredClassifier_InterfaceRealization()
@@ -222,7 +220,7 @@ public interface BehavioredClassifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If a behavior is classifier behavior, it does not have a specification.
-	 * self.classifierBehavior->notEmpty() implies self.classifierBehavior.specification->isEmpty()
+	 * classifierBehavior->notEmpty() implies classifierBehavior.specification->isEmpty()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

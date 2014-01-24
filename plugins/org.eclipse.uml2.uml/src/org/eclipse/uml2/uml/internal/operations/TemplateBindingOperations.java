@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 418466
  *
- * $Id: TemplateBindingOperations.java,v 1.7 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -53,8 +53,8 @@ public class TemplateBindingOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Each parameter substitution must refer to a formal template parameter of the target template signature.
-	 * parameterSubstitution->forAll(b | template.parameter->includes(b.formal))
+	 * Each parameterSubstitution must refer to a formal TemplateParameter of the target TemplateSignature.
+	 * parameterSubstitution->forAll(b | signature.parameter->includes(b.formal))
 	 * @param templateBinding The receiving '<em><b>Template Binding</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -89,8 +89,8 @@ public class TemplateBindingOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A binding contains at most one parameter substitution for each formal template parameter of the target template signature.
-	 * template.parameter->forAll(p | parameterSubstitution->select(b | b.formal = p)->size() <= 1)
+	 * A TemplateBiinding contains at most one TemplateParameterSubstitution for each formal TemplateParameter of the target TemplateSignature.
+	 * signature.parameter->forAll(p | parameterSubstitution->select(b | b.formal = p)->size() <= 1)
 	 * @param templateBinding The receiving '<em><b>Template Binding</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

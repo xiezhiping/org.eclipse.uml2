@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -23,8 +23,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A connector end is an endpoint of a connector, which attaches the connector to a connectable element. Each connector end is part of one connector.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A ConnectorEnd is an endpoint of a Connector, which attaches the Connector to a ConnectableElement.
+ * <p>From package UML::StructuredClassifiers.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -48,8 +48,8 @@ public interface ConnectorEnd
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * A derived property referencing the corresponding end on the Association which types the Connector owing this ConnectorEnd, if any. It is derived by selecting the end at the same place in the ordering of Association ends as this ConnectorEnd.
+	 * <p>From package UML::StructuredClassifiers.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Defining End</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnectorEnd_DefiningEnd()
@@ -63,8 +63,8 @@ public interface ConnectorEnd
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates the role of the internal structure of a classifier with the port to which the connector end is attached.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Indicates the role of the internal structure of a Classifier with the Port to which the ConnectorEnd is attached.
+	 * <p>From package UML::StructuredClassifiers.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Part With Port</em>' reference.
 	 * @see #setPartWithPort(Property)
@@ -89,8 +89,8 @@ public interface ConnectorEnd
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The ConnectableElement attached at this ConnectorEnd. When an instance of the containing Classifier is created, a link may (depending on the multiplicities) be created to an instance of the Classifier that types this ConnectableElement.
+	 * <p>From package UML::StructuredClassifiers.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Role</em>' reference.
 	 * @see #setRole(ConnectableElement)
@@ -114,8 +114,8 @@ public interface ConnectorEnd
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the connector end may not be more general than the multiplicity of the association typing the owning connector.
-	 * true
+	 * The multiplicity of the ConnectorEnd may not be more general than the multiplicity of the corresponding end of the Association typing the owning Connector, if any.
+	 * self.compatibleWith(definingEnd)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -129,8 +129,8 @@ public interface ConnectorEnd
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If a connector end is attached to a port of the containing classifier, partWithPort will be empty.
-	 * true
+	 * If a ConnectorEnd is attached to a Port of the containing Classifier, partWithPort will be empty.
+	 * (role.oclIsKindOf(Port) and role.owner = connector.owner) implies partWithPort->isEmpty()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -144,8 +144,9 @@ public interface ConnectorEnd
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If a connector end references a partWithPort, then the role must be a port that is defined by the type of the partWithPort.
-	 * true
+	 * If a ConnectorEnd references a partWithPort, then the role must be a Port that is defined or inherited by the type of the partWithPort.
+	 * partWithPort->notEmpty() implies 
+	 *   (role.oclIsKindOf(Port) and partWithPort.type.oclAsType(Namespace).member->includes(role))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -159,8 +160,8 @@ public interface ConnectorEnd
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The property held in self.partWithPort must not be a Port.
-	 * true
+	 * The Property held in self.partWithPort must not be a Port.
+	 * partWithPort->notEmpty() implies not partWithPort.oclIsKindOf(Port)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

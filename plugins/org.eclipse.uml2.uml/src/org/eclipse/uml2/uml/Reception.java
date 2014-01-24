@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -23,8 +23,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A reception is a declaration stating that a classifier is prepared to react to the receipt of a signal. A reception designates a signal and specifies the expected behavioral response. The details of handling a signal are specified by the behavior associated with the reception or the classifier itself.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A Reception is a declaration stating that a Classifier is prepared to react to the receipt of a Signal.
+ * <p>From package UML::SimpleClassifiers.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -46,8 +46,8 @@ public interface Reception
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The signal that this reception handles.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Signal that this Reception handles.
+	 * <p>From package UML::SimpleClassifiers.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Signal</em>' reference.
 	 * @see #setSignal(Signal)
@@ -71,15 +71,37 @@ public interface Reception
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A Reception can not be a query.
-	 * not self.isQuery
+	 * A Reception has the same name as its signal
+	 * name = signal.name
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
 	 */
-	boolean validateNotQuery(DiagnosticChain diagnostics,
+	boolean validateSameNameAsSignal(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A Reception's parameters match the ownedAttributes of its signal by name, type, and multiplicity
+	 * signal.ownedAttribute->size() = ownedParameter->size() and
+	 * Sequence{1..signal.ownedAttribute->size()}->forAll( i | 
+	 *     ownedParameter->at(i).direction = ParameterDirectionKind::_'in' and 
+	 *     ownedParameter->at(i).name = signal.ownedAttribute->at(i).name and
+	 *     ownedParameter->at(i).type = signal.ownedAttribute->at(i).type and
+	 *     ownedParameter->at(i).lowerBound() = signal.ownedAttribute->at(i).lowerBound() and
+	 *     ownedParameter->at(i).upperBound() = signal.ownedAttribute->at(i).upperBound()
+	 * )
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateSameStructureAsSignal(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 } // Reception

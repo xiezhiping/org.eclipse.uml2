@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 383550
+ *   Kenn Hussey (CEA) - 327039, 351774, 383550, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -25,6 +25,7 @@ import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
@@ -39,11 +40,13 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Behavior#validateMostOneBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Most One Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#validateParametersMatch(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Parameters Match</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#validateFeatureOfContextClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Feature Of Context Classifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Behavior#validateMustRealize(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Must Realize</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Behavior#validateMostOneBehaviour(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Most One Behaviour</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#getContext() <em>Get Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Behavior#behavioredClassifier(org.eclipse.uml2.uml.Element) <em>Behaviored Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Behavior#inputParameters() <em>Input Parameters</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Behavior#outputParameters() <em>Output Parameters</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,8 +68,43 @@ public class BehaviorOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The parameters of the behavior must match the parameters of the implemented behavioral feature.
-	 * true
+	 * There may be at most one Behavior for a given pairing of BehavioredClassifier (as owner of the Behavior) and BehavioralFeature (as specification of the Behavior).
+	 * specification <> null implies _'context'.ownedBehavior->select(specification=self.specification)->size() = 1
+	 * @param behavior The receiving '<em><b>Behavior</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateMostOneBehavior(Behavior behavior,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.BEHAVIOR__MOST_ONE_BEHAVIOR,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMostOneBehavior", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(behavior, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{behavior}));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If a Behavior has a specification BehavioralFeature, then it must have the same number of ownedParameters as its specification. The Behavior Parameters must also "match" the BehavioralParameter Parameters, but the exact requirements for this matching are not formalized.
+	 * specification <> null implies ownedParameter->size() = specification.ownedParameter->size()
 	 * @param behavior The receiving '<em><b>Behavior</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -119,8 +157,8 @@ public class BehaviorOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The implemented behavioral feature must be a feature (possibly inherited) of the context classifier of the behavior.
-	 * true
+	 * The specification BehavioralFeature must be a feature (possibly inherited) of the context BehavioredClassifier of the Behavior.
+	 * _'context'.feature->includes(specification)
 	 * @param behavior The receiving '<em><b>Behavior</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -161,75 +199,19 @@ public class BehaviorOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If the implemented behavioral feature has been redefined in the ancestors of the owner of the behavior, then the behavior must realize the latest redefining behavioral feature.
-	 * true
-	 * @param behavior The receiving '<em><b>Behavior</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
+	 * A Behavior that is directly owned as a nestedClassifier does not have a context. Otherwise, to determine the context of a Behavior, find the first BehavioredClassifier reached by following the chain of owner relationships from the Behavior, if any. If there is such a BehavioredClassifier, then it is the context, unless it is itself a Behavior with a non-empty context, in which case that is also the context for the original Behavior.
+	 * result = (if nestingClass <> null then
+	 *     null
+	 * else
+	 *     let b:BehavioredClassifier = self.behavioredClassifier(self.owner) in
+	 *     if b.oclIsKindOf(Behavior) and b.oclAsType(Behavior)._'context' <> null then 
+	 *         b.oclAsType(Behavior)._'context'
+	 *     else 
+	 *         b
+	 *     endif
+	 * endif
+	 *         )
 	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateMustRealize(Behavior behavior,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.BEHAVIOR__MUST_REALIZE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMustRealize", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(behavior, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{behavior}));
-			}
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * There may be at most one behavior for a given pairing of classifier (as owner of the behavior) and behavioral feature (as specification of the behavior).
-	 * true
-	 * @param behavior The receiving '<em><b>Behavior</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateMostOneBehaviour(Behavior behavior,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.BEHAVIOR__MOST_ONE_BEHAVIOUR,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMostOneBehaviour", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(behavior, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{behavior}));
-			}
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public static BehavioredClassifier getContext(Behavior behavior) {
@@ -240,22 +222,89 @@ public class BehaviorOperations
 		if (containmentFeature != UMLPackage.Literals.CLASS__NESTED_CLASSIFIER
 			&& containmentFeature != UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER) {
 
-			BehavioredClassifier owningElement = (BehavioredClassifier) getOwningElement(
-				behavior, UMLPackage.Literals.BEHAVIORED_CLASSIFIER, false);
+			BehavioredClassifier b = behavior.behavioredClassifier(behavior
+				.getOwner());
 
-			if (owningElement != null) {
+			if (b != null) {
 
-				if (owningElement instanceof Behavior) {
-					context = ((Behavior) owningElement).getContext();
+				if (b instanceof Behavior) {
+					context = ((Behavior) b).getContext();
 				}
 
 				if (context == null) {
-					context = owningElement;
+					context = b;
 				}
 			}
 		}
 
 		return context;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The first BehavioredClassifier reached by following the chain of owner relationships from the Behavior, if any.
+	 * if from.oclIsKindOf(BehavioredClassifier) then
+	 *     from.oclAsType(BehavioredClassifier)
+	 * else if from.owner = null then
+	 *     null
+	 * else
+	 *     self.behavioredClassifier(from.owner)
+	 * endif
+	 * endif
+	 *     
+	 * <p>From package UML::CommonBehavior.</p>
+	 * @param behavior The receiving '<em><b>Behavior</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static BehavioredClassifier behavioredClassifier(Behavior behavior,
+			Element from) {
+
+		if (from instanceof BehavioredClassifier) {
+			return (BehavioredClassifier) from;
+		} else {
+			Element owner = from.getOwner();
+
+			return owner == null
+				? null
+				: behavior.behavioredClassifier(owner);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The in and inout ownedParameters of the Behavior.
+	 * result = (ownedParameter->select(direction=ParameterDirectionKind::_'in' or direction=ParameterDirectionKind::inout))
+	 * <p>From package UML::CommonBehavior.</p>
+	 * @param behavior The receiving '<em><b>Behavior</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static EList<Parameter> inputParameters(Behavior behavior) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The out, inout and return ownedParameters.
+	 * result = (ownedParameter->select(direction=ParameterDirectionKind::out or direction=ParameterDirectionKind::inout or direction=ParameterDirectionKind::return))
+	 * <p>From package UML::CommonBehavior.</p>
+	 * @param behavior The receiving '<em><b>Behavior</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static EList<Parameter> outputParameters(Behavior behavior) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } // BehaviorOperations

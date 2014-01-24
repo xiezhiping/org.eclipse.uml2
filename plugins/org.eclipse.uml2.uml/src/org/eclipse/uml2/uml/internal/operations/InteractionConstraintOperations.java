@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,12 +30,12 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateMaxintPositive(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maxint Positive</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateMinintMaxint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Minint Maxint</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateMinintNonNegative(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Minint Non Negative</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateMaxintPositive(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maxint Positive</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateDynamicVariables(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Dynamic Variables</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateGlobalData(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Global Data</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateMaxintGreaterEqualMinint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maxint Greater Equal Minint</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.InteractionConstraint#validateDynamicVariables(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Dynamic Variables</em>}</li>
  * </ul>
  * </p>
  *
@@ -58,7 +58,6 @@ public class InteractionConstraintOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The dynamic variables that take part in the constraint must be owned by the ConnectableElement corresponding to the covered Lifeline.
-	 * true
 	 * @param interactionConstraint The receiving '<em><b>Interaction Constraint</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -94,7 +93,6 @@ public class InteractionConstraintOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The constraint may contain references to global data or write-once data.
-	 * true
 	 * @param interactionConstraint The receiving '<em><b>Interaction Constraint</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -130,7 +128,9 @@ public class InteractionConstraintOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Minint/maxint can only be present if the InteractionConstraint is associated with the operand of a loop CombinedFragment.
-	 * true
+	 * maxint->notEmpty() or minint->notEmpty() implies
+	 * interactionOperand.combinedFragment.interactionOperator =
+	 * InteractionOperatorKind::loop
 	 * @param interactionConstraint The receiving '<em><b>Interaction Constraint</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -166,7 +166,8 @@ public class InteractionConstraintOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If minint is specified, then the expression must evaluate to a non-negative integer.
-	 * true
+	 * minint->notEmpty() implies 
+	 * minint->asSequence()->first().integerValue() >= 0
 	 * @param interactionConstraint The receiving '<em><b>Interaction Constraint</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -202,7 +203,8 @@ public class InteractionConstraintOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If maxint is specified, then the expression must evaluate to a positive integer.
-	 * true
+	 * maxint->notEmpty() implies 
+	 * maxint->asSequence()->first().integerValue() > 0
 	 * @param interactionConstraint The receiving '<em><b>Interaction Constraint</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -237,8 +239,10 @@ public class InteractionConstraintOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If maxint is specified, then minint must be specified and the evaluation of maxint must be >= the evaluation of minint
-	 * true
+	 * If maxint is specified, then minint must be specified and the evaluation of maxint must be >= the evaluation of minint.
+	 * maxint->notEmpty() implies (minint->notEmpty() and 
+	 * maxint->asSequence()->first().integerValue() >=
+	 * minint->asSequence()->first().integerValue() )
 	 * @param interactionConstraint The receiving '<em><b>Interaction Constraint</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

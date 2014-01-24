@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,12 +7,14 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 351774
+ *   Kenn Hussey (CEA) - 351774, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
 package org.eclipse.uml2.uml;
 
+import java.util.Map;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -21,9 +23,8 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A trigger specification may be qualified by the port on which the event occurred.
- * A trigger relates an event to a behavior that may affect an instance of the classifier.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A Trigger specifies a specific point  at which an Event occurrence may trigger an effect in a Behavior. A Trigger may be qualified by the Port on which the Event occurred.
+ * <p>From package UML::CommonBehavior.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -46,8 +47,8 @@ public interface Trigger
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The event that causes the trigger.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Event that detected by the Trigger.
+	 * <p>From package UML::CommonBehavior.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Event</em>' reference.
 	 * @see #setEvent(Event)
@@ -73,8 +74,8 @@ public interface Trigger
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A optional port of the receiver object on which the behavioral feature is invoked.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * A optional Port of through which the given effect is detected.
+	 * <p>From package UML::CommonBehavior.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Port</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTrigger_Port()
@@ -107,5 +108,20 @@ public interface Trigger
 	 * @generated
 	 */
 	Port getPort(String name, Type type, boolean ignoreCase);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If a Trigger specifies one or more ports, the event of the Trigger must be a MessageEvent.
+	 * port->notEmpty() implies event.oclIsKindOf(MessageEvent)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateTriggerWithPorts(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // Trigger

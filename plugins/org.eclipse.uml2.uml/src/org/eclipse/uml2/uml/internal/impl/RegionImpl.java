@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -45,7 +45,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -646,13 +645,10 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isRedefinitionContextValidGen(RedefinableElement redefined) {
-		return isRedefinitionContextValid(redefined);
-	}
-
-	public boolean isRedefinitionContextValid(RedefinableElement redefined) {
-		return redefined instanceof Region
-			&& isRedefinitionContextValid((Region) redefined);
+	public boolean isRedefinitionContextValid(
+			RedefinableElement redefinedElement) {
+		return RegionOperations.isRedefinitionContextValid(this,
+			redefinedElement);
 	}
 
 	/**
@@ -660,8 +656,8 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isConsistentWith(RedefinableElement redefinee) {
-		return RegionOperations.isConsistentWith(this, redefinee);
+	public boolean isConsistentWith(RedefinableElement redefiningElement) {
+		return RegionOperations.isConsistentWith(this, redefiningElement);
 	}
 
 	/**
@@ -721,15 +717,6 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isRedefinitionContextValid(Region redefined) {
-		return RegionOperations.isRedefinitionContextValid(this, redefined);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public StateMachine containingStateMachine() {
 		return RegionOperations.containingStateMachine(this);
 	}
@@ -756,17 +743,14 @@ public class RegionImpl
 			case UMLPackage.REGION__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.REGION__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+			case UMLPackage.REGION__OWNED_RULE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.REGION__ELEMENT_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.REGION__PACKAGE_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.REGION__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.REGION__STATE :
 				if (eInternalContainer() != null)
@@ -801,19 +785,16 @@ public class RegionImpl
 			case UMLPackage.REGION__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.REGION__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.REGION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.REGION__OWNED_RULE :
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.REGION__ELEMENT_IMPORT :
 				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.REGION__PACKAGE_IMPORT :
 				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.REGION__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.REGION__STATE :
 				return basicSetState(null, msgs);
@@ -882,12 +863,12 @@ public class RegionImpl
 				return getQualifiedName();
 			case UMLPackage.REGION__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.REGION__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.REGION__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.REGION__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.REGION__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.REGION__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.REGION__IMPORTED_MEMBER :
@@ -939,11 +920,6 @@ public class RegionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.REGION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.REGION__NAME :
 				setName((String) newValue);
 				return;
@@ -952,6 +928,11 @@ public class RegionImpl
 				return;
 			case UMLPackage.REGION__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.REGION__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.REGION__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -962,11 +943,6 @@ public class RegionImpl
 				getPackageImports().clear();
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
-				return;
-			case UMLPackage.REGION__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.REGION__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -1008,9 +984,6 @@ public class RegionImpl
 			case UMLPackage.REGION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.REGION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.REGION__NAME :
 				unsetName();
 				return;
@@ -1020,14 +993,14 @@ public class RegionImpl
 			case UMLPackage.REGION__VISIBILITY :
 				unsetVisibility();
 				return;
+			case UMLPackage.REGION__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.REGION__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.REGION__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				return;
-			case UMLPackage.REGION__OWNED_RULE :
-				getOwnedRules().clear();
 				return;
 			case UMLPackage.REGION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
@@ -1068,8 +1041,7 @@ public class RegionImpl
 			case UMLPackage.REGION__OWNER :
 				return isSetOwner();
 			case UMLPackage.REGION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.REGION__NAME :
 				return isSetName();
 			case UMLPackage.REGION__NAME_EXPRESSION :
@@ -1082,12 +1054,12 @@ public class RegionImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.REGION__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.REGION__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.REGION__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.REGION__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.REGION__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.REGION__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.REGION__IMPORTED_MEMBER :
@@ -1276,16 +1248,16 @@ public class RegionImpl
 				return allOwnedElements();
 			case UMLPackage.REGION___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.REGION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REGION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REGION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.REGION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REGION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1296,6 +1268,8 @@ public class RegionImpl
 				return getLabel();
 			case UMLPackage.REGION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.REGION___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.REGION___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.REGION___ALL_OWNING_PACKAGES :
@@ -1303,14 +1277,22 @@ public class RegionImpl
 			case UMLPackage.REGION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.REGION___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.REGION___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.REGION___SEPARATOR :
 				return separator();
+			case UMLPackage.REGION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.REGION___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.REGION___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.REGION___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REGION___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -1325,6 +1307,8 @@ public class RegionImpl
 				return getImportedElements();
 			case UMLPackage.REGION___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.REGION___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.REGION___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -1337,8 +1321,6 @@ public class RegionImpl
 				return getImportedMembers();
 			case UMLPackage.REGION___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.REGION___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 			case UMLPackage.REGION___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -1356,27 +1338,25 @@ public class RegionImpl
 			case UMLPackage.REGION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.REGION___VALIDATE_SHALLOW_HISTORY_VERTEX__DIAGNOSTICCHAIN_MAP :
-				return validateShallowHistoryVertex(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REGION___VALIDATE_DEEP_HISTORY_VERTEX__DIAGNOSTICCHAIN_MAP :
 				return validateDeepHistoryVertex(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.REGION___VALIDATE_INITIAL_VERTEX__DIAGNOSTICCHAIN_MAP :
-				return validateInitialVertex(
+			case UMLPackage.REGION___VALIDATE_SHALLOW_HISTORY_VERTEX__DIAGNOSTICCHAIN_MAP :
+				return validateShallowHistoryVertex(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REGION___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
 				return validateOwned((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.REGION___VALIDATE_INITIAL_VERTEX__DIAGNOSTICCHAIN_MAP :
+				return validateInitialVertex(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REGION___BELONGS_TO_PSM :
 				return belongsToPSM();
 			case UMLPackage.REGION___CONTAINING_STATE_MACHINE :
 				return containingStateMachine();
-			case UMLPackage.REGION___IS_REDEFINITION_CONTEXT_VALID__REGION :
-				return isRedefinitionContextValid((Region) arguments.get(0));
 			case UMLPackage.REGION___REDEFINITION_CONTEXT :
 				return redefinitionContext();
 		}

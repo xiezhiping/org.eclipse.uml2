@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.uml;
@@ -22,8 +23,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A broadcast signal action is an action that transmits a signal instance to all the potential target objects in the system, which may cause the firing of a state machine transitions or the execution of associated activities of a target object. The argument values are available to the execution of associated behaviors. The requestor continues execution immediately after the signals are sent out. It does not wait for receipt. Any reply messages are ignored and are not transmitted to the requestor.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A BroadcastSignalAction is an InvocationAction that transmits a Signal instance to all the potential target objects in the system. Values from the argument InputPins are used to provide values for the attributes of the Signal. The requestor continues execution immediately after the Signal instances are sent out and cannot receive reply values.
+ * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -45,8 +46,8 @@ public interface BroadcastSignalAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The specification of signal object transmitted to the target objects.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Signal whose instances are to be sent.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Signal</em>' reference.
 	 * @see #setSignal(Signal)
@@ -70,23 +71,27 @@ public interface BroadcastSignalAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The number and order of argument pins must be the same as the number and order of attributes in the signal.
-	 * true
+	 * The number of argument InputPins must be the same as the number of attributes in the signal.
+	 * argument->size() = signal.allAttributes()->size()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
 	 */
-	boolean validateNumberAndOrder(DiagnosticChain diagnostics,
+	boolean validateNumberOfArguments(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type, ordering, and multiplicity of an argument pin must be the same as the corresponding attribute of the signal.
-	 * true
+	 * The type, ordering, and multiplicity of an argument InputPin must be the same as the corresponding attribute of the signal.
+	 * let attribute: OrderedSet(Property) = signal.allAttributes() in
+	 * Sequence{1..argument->size()}->forAll(i | 
+	 * 	argument->at(i).type.conformsTo(attribute->at(i).type) and 
+	 * 	argument->at(i).isOrdered = attribute->at(i).isOrdered and
+	 * 	argument->at(i).compatibleWith(attribute->at(i)))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -94,6 +99,21 @@ public interface BroadcastSignalAction
 	 * @generated
 	 */
 	boolean validateTypeOrderingMultiplicity(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A BroadcaseSignalAction may not specify onPort.
+	 * onPort=null
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateNoOnport(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 } // BroadcastSignalAction

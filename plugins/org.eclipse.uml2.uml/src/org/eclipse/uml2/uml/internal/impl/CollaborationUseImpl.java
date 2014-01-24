@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -291,9 +291,6 @@ public class CollaborationUseImpl
 			case UMLPackage.COLLABORATION_USE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.COLLABORATION_USE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.COLLABORATION_USE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.COLLABORATION_USE__ROLE_BINDING :
@@ -366,11 +363,6 @@ public class CollaborationUseImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.COLLABORATION_USE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.COLLABORATION_USE__NAME :
 				setName((String) newValue);
 				return;
@@ -405,9 +397,6 @@ public class CollaborationUseImpl
 				return;
 			case UMLPackage.COLLABORATION_USE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.COLLABORATION_USE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.COLLABORATION_USE__NAME :
 				unsetName();
@@ -445,8 +434,7 @@ public class CollaborationUseImpl
 			case UMLPackage.COLLABORATION_USE__OWNER :
 				return isSetOwner();
 			case UMLPackage.COLLABORATION_USE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.COLLABORATION_USE__NAME :
 				return isSetName();
 			case UMLPackage.COLLABORATION_USE__NAME_EXPRESSION :
@@ -559,16 +547,16 @@ public class CollaborationUseImpl
 				return allOwnedElements();
 			case UMLPackage.COLLABORATION_USE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.COLLABORATION_USE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COLLABORATION_USE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COLLABORATION_USE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.COLLABORATION_USE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COLLABORATION_USE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -579,6 +567,8 @@ public class CollaborationUseImpl
 				return getLabel();
 			case UMLPackage.COLLABORATION_USE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.COLLABORATION_USE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.COLLABORATION_USE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.COLLABORATION_USE___ALL_OWNING_PACKAGES :
@@ -586,21 +576,21 @@ public class CollaborationUseImpl
 			case UMLPackage.COLLABORATION_USE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.COLLABORATION_USE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.COLLABORATION_USE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.COLLABORATION_USE___SEPARATOR :
 				return separator();
-			case UMLPackage.COLLABORATION_USE___VALIDATE_CONNECTORS__DIAGNOSTICCHAIN_MAP :
-				return validateConnectors((DiagnosticChain) arguments.get(0),
+			case UMLPackage.COLLABORATION_USE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
+			case UMLPackage.COLLABORATION_USE___VALIDATE_CLIENT_ELEMENTS__DIAGNOSTICCHAIN_MAP :
+				return validateClientElements(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COLLABORATION_USE___VALIDATE_EVERY_ROLE__DIAGNOSTICCHAIN_MAP :
 				return validateEveryRole((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.COLLABORATION_USE___VALIDATE_CLIENT_ELEMENTS__DIAGNOSTICCHAIN_MAP :
-				return validateClientElements(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.COLLABORATION_USE___VALIDATE_CONNECTORS__DIAGNOSTICCHAIN_MAP :
+				return validateConnectors((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

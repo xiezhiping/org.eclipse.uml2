@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -21,8 +21,8 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An behavior with implementation-specific semantics.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * An OpaqueBehavior is a Behavior whose specification is given in a textual language other than UML.
+ * <p>From package UML::CommonBehavior.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -47,7 +47,7 @@ public interface OpaqueBehavior
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the behavior in one or more languages.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::CommonBehavior.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body</em>' attribute list.
 	 * @see #isSetBodies()
@@ -87,7 +87,7 @@ public interface OpaqueBehavior
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Languages the body strings use in the same order as the body strings.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::CommonBehavior.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Language</em>' attribute list.
 	 * @see #isSetLanguages()

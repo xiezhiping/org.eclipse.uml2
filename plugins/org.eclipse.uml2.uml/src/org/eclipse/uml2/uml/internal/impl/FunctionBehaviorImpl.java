@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -23,6 +23,8 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.DataType;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.FunctionBehavior;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -88,6 +90,15 @@ public class FunctionBehaviorImpl
 			Map<Object, Object> context) {
 		return FunctionBehaviorOperations.validateTypesOfParameters(this,
 			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean hasAllDataTypeAttributes(DataType d) {
+		return FunctionBehaviorOperations.hasAllDataTypeAttributes(this, d);
 	}
 
 	/**
@@ -182,16 +193,16 @@ public class FunctionBehaviorImpl
 				return allOwnedElements();
 			case UMLPackage.FUNCTION_BEHAVIOR___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.FUNCTION_BEHAVIOR___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -202,6 +213,8 @@ public class FunctionBehaviorImpl
 				return getLabel();
 			case UMLPackage.FUNCTION_BEHAVIOR___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.FUNCTION_BEHAVIOR___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.FUNCTION_BEHAVIOR___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.FUNCTION_BEHAVIOR___ALL_OWNING_PACKAGES :
@@ -209,14 +222,22 @@ public class FunctionBehaviorImpl
 			case UMLPackage.FUNCTION_BEHAVIOR___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.FUNCTION_BEHAVIOR___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.FUNCTION_BEHAVIOR___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.FUNCTION_BEHAVIOR___SEPARATOR :
 				return separator();
+			case UMLPackage.FUNCTION_BEHAVIOR___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.FUNCTION_BEHAVIOR___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -231,6 +252,8 @@ public class FunctionBehaviorImpl
 				return getImportedElements();
 			case UMLPackage.FUNCTION_BEHAVIOR___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.FUNCTION_BEHAVIOR___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.FUNCTION_BEHAVIOR___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -243,8 +266,6 @@ public class FunctionBehaviorImpl
 				return getImportedMembers();
 			case UMLPackage.FUNCTION_BEHAVIOR___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.FUNCTION_BEHAVIOR___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -266,6 +287,10 @@ public class FunctionBehaviorImpl
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.FUNCTION_BEHAVIOR___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.FUNCTION_BEHAVIOR___CREATE_ASSOCIATION__BOOLEAN_AGGREGATIONKIND_STRING_INT_INT_TYPE_BOOLEAN_AGGREGATIONKIND_STRING_INT_INT :
 				return createAssociation((Boolean) arguments.get(0),
 					(AggregationKind) arguments.get(1),
@@ -283,20 +308,20 @@ public class FunctionBehaviorImpl
 				return isTemplate();
 			case UMLPackage.FUNCTION_BEHAVIOR___PARAMETERABLE_ELEMENTS :
 				return parameterableElements();
-			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
-				return validateNonFinalParents(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
-				return validateNoCyclesInGeneralization(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateSpecializeType(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
 				return validateMapsToGeneralizationSet(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
+				return validateNonFinalParents(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
+				return validateNoCyclesInGeneralization(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.FUNCTION_BEHAVIOR___GET_ALL_ATTRIBUTES :
@@ -321,8 +346,6 @@ public class FunctionBehaviorImpl
 				return allFeatures();
 			case UMLPackage.FUNCTION_BEHAVIOR___ALL_PARENTS :
 				return allParents();
-			case UMLPackage.FUNCTION_BEHAVIOR___CONFORMS_TO__CLASSIFIER :
-				return conformsTo((Classifier) arguments.get(0));
 			case UMLPackage.FUNCTION_BEHAVIOR___GET_GENERALS :
 				return getGenerals();
 			case UMLPackage.FUNCTION_BEHAVIOR___HAS_VISIBILITY_OF__NAMEDELEMENT :
@@ -337,16 +360,28 @@ public class FunctionBehaviorImpl
 				return maySpecializeType((Classifier) arguments.get(0));
 			case UMLPackage.FUNCTION_BEHAVIOR___PARENTS :
 				return parents();
-			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_MULTIPLICITIES__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicities(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.FUNCTION_BEHAVIOR___DIRECTLY_REALIZED_INTERFACES :
+				return directlyRealizedInterfaces();
+			case UMLPackage.FUNCTION_BEHAVIOR___DIRECTLY_USED_INTERFACES :
+				return directlyUsedInterfaces();
+			case UMLPackage.FUNCTION_BEHAVIOR___ALL_REALIZED_INTERFACES :
+				return allRealizedInterfaces();
+			case UMLPackage.FUNCTION_BEHAVIOR___ALL_USED_INTERFACES :
+				return allUsedInterfaces();
+			case UMLPackage.FUNCTION_BEHAVIOR___IS_SUBSTITUTABLE_FOR__CLASSIFIER :
+				return isSubstitutableFor((Classifier) arguments.get(0));
+			case UMLPackage.FUNCTION_BEHAVIOR___ALL_ATTRIBUTES :
+				return allAttributes();
+			case UMLPackage.FUNCTION_BEHAVIOR___ALL_SLOTTABLE_FEATURES :
+				return allSlottableFeatures();
 			case UMLPackage.FUNCTION_BEHAVIOR___CREATE_OWNED_ATTRIBUTE__STRING_TYPE_INT_INT :
 				return createOwnedAttribute((String) arguments.get(0),
 					(Type) arguments.get(1), (Integer) arguments.get(2),
 					(Integer) arguments.get(3));
 			case UMLPackage.FUNCTION_BEHAVIOR___GET_PARTS :
 				return getParts();
+			case UMLPackage.FUNCTION_BEHAVIOR___ALL_ROLES :
+				return allRoles();
 			case UMLPackage.FUNCTION_BEHAVIOR___GET_OWNED_PORTS :
 				return getOwnedPorts();
 			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_CLASS_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
@@ -370,6 +405,10 @@ public class FunctionBehaviorImpl
 				return getExtensions();
 			case UMLPackage.FUNCTION_BEHAVIOR___GET_SUPER_CLASSES :
 				return getSuperClasses();
+			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_MOST_ONE_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
+				return validateMostOneBehavior(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_PARAMETERS_MATCH__DIAGNOSTICCHAIN_MAP :
 				return validateParametersMatch(
 					(DiagnosticChain) arguments.get(0),
@@ -378,15 +417,14 @@ public class FunctionBehaviorImpl
 				return validateFeatureOfContextClassifier(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_MUST_REALIZE__DIAGNOSTICCHAIN_MAP :
-				return validateMustRealize((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_MOST_ONE_BEHAVIOUR__DIAGNOSTICCHAIN_MAP :
-				return validateMostOneBehaviour(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.FUNCTION_BEHAVIOR___GET_CONTEXT :
 				return getContext();
+			case UMLPackage.FUNCTION_BEHAVIOR___BEHAVIORED_CLASSIFIER__ELEMENT :
+				return behavioredClassifier((Element) arguments.get(0));
+			case UMLPackage.FUNCTION_BEHAVIOR___INPUT_PARAMETERS :
+				return inputParameters();
+			case UMLPackage.FUNCTION_BEHAVIOR___OUTPUT_PARAMETERS :
+				return outputParameters();
 			case UMLPackage.FUNCTION_BEHAVIOR___VALIDATE_ONE_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
 				return validateOneOutputParameter(
 					(DiagnosticChain) arguments.get(0),
@@ -395,6 +433,8 @@ public class FunctionBehaviorImpl
 				return validateTypesOfParameters(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.FUNCTION_BEHAVIOR___HAS_ALL_DATA_TYPE_ATTRIBUTES__DATATYPE :
+				return hasAllDataTypeAttributes((DataType) arguments.get(0));
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}

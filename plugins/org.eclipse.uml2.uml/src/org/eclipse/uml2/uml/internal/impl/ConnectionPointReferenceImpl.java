@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -36,7 +36,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.ConnectionPointReference;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Pseudostate;
@@ -292,9 +291,6 @@ public class ConnectionPointReferenceImpl
 			case UMLPackage.CONNECTION_POINT_REFERENCE__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -322,9 +318,6 @@ public class ConnectionPointReferenceImpl
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
@@ -427,11 +420,6 @@ public class ConnectionPointReferenceImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME :
 				setName((String) newValue);
 				return;
@@ -473,9 +461,6 @@ public class ConnectionPointReferenceImpl
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME :
 				unsetName();
@@ -519,8 +504,7 @@ public class ConnectionPointReferenceImpl
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNER :
 				return isSetOwner();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME :
 				return isSetName();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION :
@@ -641,16 +625,16 @@ public class ConnectionPointReferenceImpl
 				return allOwnedElements();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTION_POINT_REFERENCE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -661,6 +645,8 @@ public class ConnectionPointReferenceImpl
 				return getLabel();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___ALL_OWNING_PACKAGES :
@@ -668,24 +654,28 @@ public class ConnectionPointReferenceImpl
 			case UMLPackage.CONNECTION_POINT_REFERENCE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___SEPARATOR :
 				return separator();
+			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___CONTAINING_STATE_MACHINE :
 				return containingStateMachine();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_INCOMINGS :
 				return getIncomings();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_OUTGOINGS :
 				return getOutgoings();
-			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_ENTRY_PSEUDOSTATES__DIAGNOSTICCHAIN_MAP :
-				return validateEntryPseudostates(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___IS_CONTAINED_IN_STATE__STATE :
+				return isContainedInState((State) arguments.get(0));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___IS_CONTAINED_IN_REGION__REGION :
+				return isContainedInRegion((Region) arguments.get(0));
 			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_EXIT_PSEUDOSTATES__DIAGNOSTICCHAIN_MAP :
 				return validateExitPseudostates(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_ENTRY_PSEUDOSTATES__DIAGNOSTICCHAIN_MAP :
+				return validateEntryPseudostates(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

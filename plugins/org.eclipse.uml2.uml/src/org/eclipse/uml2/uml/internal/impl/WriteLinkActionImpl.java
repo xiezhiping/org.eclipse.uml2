@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -165,16 +165,16 @@ public abstract class WriteLinkActionImpl
 				return allOwnedElements();
 			case UMLPackage.WRITE_LINK_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.WRITE_LINK_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.WRITE_LINK_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.WRITE_LINK_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.WRITE_LINK_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.WRITE_LINK_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -185,6 +185,8 @@ public abstract class WriteLinkActionImpl
 				return getLabel();
 			case UMLPackage.WRITE_LINK_ACTION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.WRITE_LINK_ACTION___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.WRITE_LINK_ACTION___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.WRITE_LINK_ACTION___ALL_OWNING_PACKAGES :
@@ -192,12 +194,12 @@ public abstract class WriteLinkActionImpl
 			case UMLPackage.WRITE_LINK_ACTION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.WRITE_LINK_ACTION___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.WRITE_LINK_ACTION___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.WRITE_LINK_ACTION___SEPARATOR :
 				return separator();
+			case UMLPackage.WRITE_LINK_ACTION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.WRITE_LINK_ACTION___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -215,15 +217,16 @@ public abstract class WriteLinkActionImpl
 			case UMLPackage.WRITE_LINK_ACTION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.WRITE_LINK_ACTION___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
-				return validateOwned((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.WRITE_LINK_ACTION___VALIDATE_OWNED_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateOwnedStructuredNode(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.WRITE_LINK_ACTION___CONTAINING_ACTIVITY :
+				return containingActivity();
 			case UMLPackage.WRITE_LINK_ACTION___GET_CONTEXT :
 				return getContext();
+			case UMLPackage.WRITE_LINK_ACTION___ALL_ACTIONS :
+				return allActions();
+			case UMLPackage.WRITE_LINK_ACTION___ALL_OWNED_NODES :
+				return allOwnedNodes();
+			case UMLPackage.WRITE_LINK_ACTION___CONTAINING_BEHAVIOR :
+				return containingBehavior();
 			case UMLPackage.WRITE_LINK_ACTION___VALIDATE_SAME_PINS__DIAGNOSTICCHAIN_MAP :
 				return validateSamePins((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));

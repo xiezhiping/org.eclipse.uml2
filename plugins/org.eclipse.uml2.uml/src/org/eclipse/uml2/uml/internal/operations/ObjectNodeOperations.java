@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,9 +30,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ObjectNode#validateObjectFlowEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Object Flow Edges</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ObjectNode#validateSelectionBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Selection Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ObjectNode#validateInputOutputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Output Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ObjectNode#validateSelectionBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Selection Behavior</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ObjectNode#validateObjectFlowEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Object Flow Edges</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,8 +54,8 @@ public class ObjectNodeOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * All edges coming into or going out of object nodes must be object flow edges.
-	 * true
+	 * If isControlType=false, the ActivityEdges incoming to or outgoing from an ObjectNode must all be ObjectFlows.
+	 * (not isControlType) implies incoming->union(outgoing)->forAll(oclIsKindOf(ObjectFlow))
 	 * @param objectNode The receiving '<em><b>Object Node</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -89,8 +89,8 @@ public class ObjectNodeOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If an object node has a selection behavior, then the ordering of the object node is ordered, and vice versa.
-	 * true
+	 * If an ObjectNode has a selection Behavior, then the ordering of the object node is ordered, and vice versa.
+	 * (selection<>null) = (ordering=ObjectNodeOrderingKind::ordered)
 	 * @param objectNode The receiving '<em><b>Object Node</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -124,8 +124,13 @@ public class ObjectNodeOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A selection behavior has one input parameter and one output parameter. The input parameter must be a bag of elements of the same type as the object node or a supertype of the type of object node. The output parameter must be the same or a subtype of the type of object node. The behavior cannot have side effects.
-	 * true
+	 * A selection Behavior has one input Parameter and one output Parameter. The input Parameter must have the same type as  or a supertype of the type of ObjectNode, be non-unique, and have multiplicity 0..*. The output Parameter must be the same or a subtype of the type of ObjectNode. The Behavior cannot have side effects.
+	 * selection<>null implies
+	 * 	selection.inputParameters()->size()=1 and
+	 * 	selection.inputParameters()->forAll(p | not p.isUnique and p.is(0,*) and self.type.conformsTo(p.type)) and
+	 * 	selection.outputParameters()->size()=1 and
+	 * 		selection.inputParameters()->forAll(p | self.type.conformsTo(p.type))
+	 * 	
 	 * @param objectNode The receiving '<em><b>Object Node</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

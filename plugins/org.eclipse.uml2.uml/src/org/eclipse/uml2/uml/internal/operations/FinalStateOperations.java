@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,12 +30,12 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoOutgoingTransitions(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Outgoing Transitions</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.FinalState#validateCannotReferenceSubmachine(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Cannot Reference Submachine</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoExitBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Exit Behavior</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoOutgoingTransitions(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Outgoing Transitions</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoRegions(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Regions</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.FinalState#validateCannotReferenceSubmachine(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Cannot Reference Submachine</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoEntryBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Entry Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoStateBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No State Behavior</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoRegions(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Regions</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,8 +57,8 @@ public class FinalStateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A final state cannot have any outgoing transitions.
-	 * self.outgoing->size() = 0
+	 * A FinalState cannot have any outgoing Transitions.
+	 * outgoing->size() = 0
 	 * @param finalState The receiving '<em><b>Final State</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -92,8 +92,8 @@ public class FinalStateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A final state cannot have regions.
-	 * self.region->size() = 0
+	 * A FinalState cannot have Regions.
+	 * region->size() = 0
 	 * @param finalState The receiving '<em><b>Final State</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -127,8 +127,8 @@ public class FinalStateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A final state cannot reference a submachine.
-	 * self.submachine->isEmpty()
+	 * A FinalState cannot reference a submachine.
+	 * submachine->isEmpty()
 	 * @param finalState The receiving '<em><b>Final State</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -163,8 +163,8 @@ public class FinalStateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A final state has no entry behavior.
-	 * self.entry->isEmpty()
+	 * A FinalState has no entry Behavior.
+	 * entry->isEmpty()
 	 * @param finalState The receiving '<em><b>Final State</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -198,8 +198,8 @@ public class FinalStateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A final state has no exit behavior.
-	 * self.exit->isEmpty()
+	 * A FinalState has no exit Behavior.
+	 * exit->isEmpty()
 	 * @param finalState The receiving '<em><b>Final State</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -233,8 +233,8 @@ public class FinalStateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A final state has no state (doActivity) behavior.
-	 * self.doActivity->isEmpty()
+	 * A FinalState has no state (doActivity) Behavior.
+	 * doActivity->isEmpty()
 	 * @param finalState The receiving '<em><b>Final State</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

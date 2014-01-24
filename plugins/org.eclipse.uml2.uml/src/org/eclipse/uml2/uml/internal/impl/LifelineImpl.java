@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -41,7 +41,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.ConnectableElement;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.InteractionFragment;
@@ -502,6 +501,17 @@ public class LifelineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateSelectorIntOrString(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return LifelineOperations.validateSelectorIntOrString(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
@@ -509,9 +519,6 @@ public class LifelineImpl
 		switch (featureID) {
 			case UMLPackage.LIFELINE__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.LIFELINE__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.LIFELINE__INTERACTION :
 				if (eInternalContainer() != null)
@@ -539,9 +546,6 @@ public class LifelineImpl
 			case UMLPackage.LIFELINE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.LIFELINE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.LIFELINE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.LIFELINE__INTERACTION :
@@ -646,11 +650,6 @@ public class LifelineImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.LIFELINE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.LIFELINE__NAME :
 				setName((String) newValue);
 				return;
@@ -694,9 +693,6 @@ public class LifelineImpl
 				return;
 			case UMLPackage.LIFELINE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.LIFELINE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.LIFELINE__NAME :
 				unsetName();
@@ -743,8 +739,7 @@ public class LifelineImpl
 			case UMLPackage.LIFELINE__OWNER :
 				return isSetOwner();
 			case UMLPackage.LIFELINE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.LIFELINE__NAME :
 				return isSetName();
 			case UMLPackage.LIFELINE__NAME_EXPRESSION :
@@ -863,16 +858,16 @@ public class LifelineImpl
 				return allOwnedElements();
 			case UMLPackage.LIFELINE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.LIFELINE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LIFELINE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LIFELINE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LIFELINE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LIFELINE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -883,6 +878,8 @@ public class LifelineImpl
 				return getLabel();
 			case UMLPackage.LIFELINE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.LIFELINE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.LIFELINE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.LIFELINE___ALL_OWNING_PACKAGES :
@@ -890,12 +887,16 @@ public class LifelineImpl
 			case UMLPackage.LIFELINE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.LIFELINE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.LIFELINE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.LIFELINE___SEPARATOR :
 				return separator();
+			case UMLPackage.LIFELINE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
+			case UMLPackage.LIFELINE___VALIDATE_SELECTOR_SPECIFIED__DIAGNOSTICCHAIN_MAP :
+				return validateSelectorSpecified(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LIFELINE___VALIDATE_INTERACTION_USES_SHARE_LIFELINE__DIAGNOSTICCHAIN_MAP :
 				return validateInteractionUsesShareLifeline(
 					(DiagnosticChain) arguments.get(0),
@@ -904,8 +905,8 @@ public class LifelineImpl
 				return validateSameClassifier(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LIFELINE___VALIDATE_SELECTOR_SPECIFIED__DIAGNOSTICCHAIN_MAP :
-				return validateSelectorSpecified(
+			case UMLPackage.LIFELINE___VALIDATE_SELECTOR_INT_OR_STRING__DIAGNOSTICCHAIN_MAP :
+				return validateSelectorIntOrString(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

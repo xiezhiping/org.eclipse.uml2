@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,12 +7,16 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 418466
  *
- * $Id: BehavioralFeatureOperations.java,v 1.8 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.Iterator;
+import java.util.Map;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.NamedElement;
@@ -21,6 +25,7 @@ import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
 
 import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,7 +35,10 @@ import org.eclipse.uml2.uml.Type;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.BehavioralFeature#validateAbstractNoMethod(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Abstract No Method</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.BehavioralFeature#createReturnResult(java.lang.String, org.eclipse.uml2.uml.Type) <em>Create Return Result</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.BehavioralFeature#inputParameters() <em>Input Parameters</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.BehavioralFeature#outputParameters() <em>Output Parameters</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.BehavioralFeature#isDistinguishableFrom(org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.Namespace) <em>Is Distinguishable From</em>}</li>
  * </ul>
  * </p>
@@ -47,6 +55,42 @@ public class BehavioralFeatureOperations
 	 */
 	protected BehavioralFeatureOperations() {
 		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * When isAbstract is true there are no methods.
+	 * isAbstract implies method->isEmpty()
+	 * @param behavioralFeature The receiving '<em><b>Behavioral Feature</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateAbstractNoMethod(
+			BehavioralFeature behavioralFeature, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.BEHAVIORAL_FEATURE__ABSTRACT_NO_METHOD,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateAbstractNoMethod", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(behavioralFeature, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{behavioralFeature}));
+			}
+			return false;
+		}
+		return true;
 	}
 
 	/**
@@ -72,15 +116,48 @@ public class BehavioralFeatureOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isDistinguishableFrom() determines whether two BehavioralFeatures may coexist in the same Namespace. It specifies that they have to have different signatures.
-	 * result = if n.oclIsKindOf(BehavioralFeature)
-	 * then
-	 *   if ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->notEmpty()
-	 *   then Set{}->including(self)->including(n)->isUnique(bf | bf.ownedParameter->collect(type))
-	 *   else true
-	 *   endif
-	 * else true
-	 * endif
+	 * The ownedParameters with direction in and inout.
+	 * result = (ownedParameter->select(direction=ParameterDirectionKind::_'in' or direction=ParameterDirectionKind::inout))
+	 * <p>From package UML::Classification.</p>
+	 * @param behavioralFeature The receiving '<em><b>Behavioral Feature</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static EList<Parameter> inputParameters(
+			BehavioralFeature behavioralFeature) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The ownedParameters with direction out, inout, or return.
+	 * result = (ownedParameter->select(direction=ParameterDirectionKind::out or direction=ParameterDirectionKind::inout or direction=ParameterDirectionKind::return))
+	 * <p>From package UML::Classification.</p>
+	 * @param behavioralFeature The receiving '<em><b>Behavioral Feature</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static EList<Parameter> outputParameters(
+			BehavioralFeature behavioralFeature) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The query isDistinguishableFrom() determines whether two BehavioralFeatures may coexist in the same Namespace. It specifies that they must have different signatures.
+	 * result = ((n.oclIsKindOf(BehavioralFeature) and ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->notEmpty()) implies
+	 *   Set{self}->including(n.oclAsType(BehavioralFeature))->isUnique(ownedParameter->collect(p|
+	 *   Tuple { name=p.name, type=p.type,effect=p.effect,direction=p.direction,isException=p.isException,
+	 *           isStream=p.isStream,isOrdered=p.isOrdered,isUnique=p.isUnique,lower=p.lower, upper=p.upper }))
+	 *   )
 	 * @param behavioralFeature The receiving '<em><b>Behavioral Feature</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -101,8 +178,8 @@ public class BehavioralFeatureOperations
 
 					while (bfParameters.hasNext() && nParameters.hasNext()) {
 
-						if (!safeEquals(bfParameters.next().getType(),
-							nParameters.next().getType())) {
+						if (!ParameterOperations.matches(bfParameters.next(),
+							nParameters.next())) {
 
 							return true;
 						}

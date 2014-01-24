@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: TemplateSignatureImpl.java,v 1.24 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -58,11 +57,11 @@ import org.eclipse.uml2.uml.internal.operations.TemplateSignatureOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getParameters <em>Parameter</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getOwnedParameters <em>Owned Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getTemplate <em>Template</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getOwnedParameters <em>Owned Parameter</em>}</li>
  * </ul>
  * </p>
  *
@@ -267,6 +266,17 @@ public class TemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateUniqueParameters(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return TemplateSignatureOperations.validateUniqueParameters(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
@@ -275,13 +285,13 @@ public class TemplateSignatureImpl
 			case UMLPackage.TEMPLATE_SIGNATURE__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedParameters())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetTemplate((TemplateableElement) otherEnd, msgs);
+			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedParameters())
+					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -301,11 +311,11 @@ public class TemplateSignatureImpl
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
+				return basicSetTemplate(null, msgs);
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
 				return ((InternalEList<?>) getOwnedParameters()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
-				return basicSetTemplate(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -345,14 +355,14 @@ public class TemplateSignatureImpl
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
-				return getOwnedParameters();
 			case UMLPackage.TEMPLATE_SIGNATURE__PARAMETER :
 				return getParameters();
 			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
 				if (resolve)
 					return getTemplate();
 				return basicGetTemplate();
+			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
+				return getOwnedParameters();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -376,11 +386,6 @@ public class TemplateSignatureImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
-				getOwnedParameters().clear();
-				getOwnedParameters().addAll(
-					(Collection<? extends TemplateParameter>) newValue);
-				return;
 			case UMLPackage.TEMPLATE_SIGNATURE__PARAMETER :
 				getParameters().clear();
 				getParameters().addAll(
@@ -388,6 +393,11 @@ public class TemplateSignatureImpl
 				return;
 			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
 				setTemplate((TemplateableElement) newValue);
+				return;
+			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
+				getOwnedParameters().clear();
+				getOwnedParameters().addAll(
+					(Collection<? extends TemplateParameter>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -407,14 +417,14 @@ public class TemplateSignatureImpl
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
-				getOwnedParameters().clear();
-				return;
 			case UMLPackage.TEMPLATE_SIGNATURE__PARAMETER :
 				getParameters().clear();
 				return;
 			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
 				setTemplate((TemplateableElement) null);
+				return;
+			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
+				getOwnedParameters().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -436,12 +446,12 @@ public class TemplateSignatureImpl
 				return isSetOwnedElements();
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNER :
 				return isSetOwner();
-			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
-				return ownedParameters != null && !ownedParameters.isEmpty();
 			case UMLPackage.TEMPLATE_SIGNATURE__PARAMETER :
 				return parameters != null && !parameters.isEmpty();
 			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
 				return basicGetTemplate() != null;
+			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
+				return ownedParameters != null && !ownedParameters.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -540,6 +550,10 @@ public class TemplateSignatureImpl
 				return mustBeOwned();
 			case UMLPackage.TEMPLATE_SIGNATURE___VALIDATE_OWN_ELEMENTS__DIAGNOSTICCHAIN_MAP :
 				return validateOwnElements((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.TEMPLATE_SIGNATURE___VALIDATE_UNIQUE_PARAMETERS__DIAGNOSTICCHAIN_MAP :
+				return validateUniqueParameters(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

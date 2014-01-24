@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.uml;
@@ -24,8 +25,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An action input pin is a kind of pin that executes an action to determine the values to input to another.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * An ActionInputPin is a kind of InputPin that executes an Action to determine the values to input to another Action.
+ * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -53,8 +54,8 @@ public interface ActionInputPin
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The action used to provide values.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Action used to provide the values of the ActionInputPin.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>From Action</em>' containment reference.
 	 * @see #setFromAction(Action)
@@ -90,8 +91,8 @@ public interface ActionInputPin
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The fromAction of an action input pin must have exactly one output pin.
-	 * true
+	 * The fromAction of an ActionInputPin must have exactly one OutputPin.
+	 * fromAction.output->size() = 1
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -105,8 +106,25 @@ public interface ActionInputPin
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The fromAction of an action input pin must only have action input pins as input pins.
-	 * true
+	 * The fromAction of an ActionInputPin cannot have ActivityEdges coming into or out of it or its Pins.
+	 * fromAction.incoming->union(outgoing)->isEmpty() and
+	 * fromAction.input.incoming->isEmpty() and
+	 * fromAction.output.outgoing->isEmpty()
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateNoControlOrObjectFlow(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The fromAction of an ActionInputPin must only have ActionInputPins as InputPins.
+	 * fromAction.input->forAll(oclIsKindOf(ActionInputPin))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -114,21 +132,6 @@ public interface ActionInputPin
 	 * @generated
 	 */
 	boolean validateInputPin(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The fromAction of an action input pin cannot have control or data flows coming into or out of it or its pins.
-	 * true
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateNoControlOrDataFlow(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 } // ActionInputPin

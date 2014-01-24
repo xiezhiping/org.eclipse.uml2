@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -43,7 +43,6 @@ import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ExceptionHandler;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
@@ -534,24 +533,21 @@ public class ReadLinkObjectEndActionImpl
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_STRUCTURED_NODE :
-				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_INTERRUPTIBLE_REGION :
 				return ((InternalEList<?>) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_STRUCTURED_NODE :
+				return basicSetInStructuredNode(null, msgs);
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION__INCOMING :
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__OUTGOING :
 				return ((InternalEList<?>) getOutgoings()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_PARTITION :
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__HANDLER :
 				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
@@ -614,22 +610,22 @@ public class ReadLinkObjectEndActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_PARTITION :
-				return getInPartitions();
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_GROUP :
+				return getInGroups();
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_INTERRUPTIBLE_REGION :
+				return getInInterruptibleRegions();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_STRUCTURED_NODE :
 				if (resolve)
 					return getInStructuredNode();
 				return basicGetInStructuredNode();
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_INTERRUPTIBLE_REGION :
-				return getInInterruptibleRegions();
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION__OUTGOING :
-				return getOutgoings();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__INCOMING :
 				return getIncomings();
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_GROUP :
-				return getInGroups();
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__HANDLER :
 				return getHandlers();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__CONTEXT :
@@ -681,11 +677,6 @@ public class ReadLinkObjectEndActionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__NAME :
 				setName((String) newValue);
 				return;
@@ -701,34 +692,34 @@ public class ReadLinkObjectEndActionImpl
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
-				return;
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_STRUCTURED_NODE :
-				setInStructuredNode((StructuredActivityNode) newValue);
-				return;
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
 				getInInterruptibleRegions()
 					.addAll(
 						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_STRUCTURED_NODE :
+				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll(
 					(Collection<? extends ActivityEdge>) newValue);
 				return;
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
+				return;
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
 				getRedefinedNodes().addAll(
 					(Collection<? extends ActivityNode>) newValue);
+				return;
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__HANDLER :
 				getHandlers().clear();
@@ -775,9 +766,6 @@ public class ReadLinkObjectEndActionImpl
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__NAME :
 				unsetName();
 				return;
@@ -793,23 +781,23 @@ public class ReadLinkObjectEndActionImpl
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__ACTIVITY :
 				setActivity((Activity) null);
 				return;
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_PARTITION :
-				getInPartitions().clear();
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
 				return;
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION__INCOMING :
+				getIncomings().clear();
 				return;
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__OUTGOING :
 				getOutgoings().clear();
 				return;
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION__INCOMING :
-				getIncomings().clear();
-				return;
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
+				return;
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__HANDLER :
 				getHandlers().clear();
@@ -853,8 +841,7 @@ public class ReadLinkObjectEndActionImpl
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__NAME :
 				return isSetName();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__NAME_EXPRESSION :
@@ -875,21 +862,21 @@ public class ReadLinkObjectEndActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_PARTITION :
-				return inPartitions != null && !inPartitions.isEmpty();
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_STRUCTURED_NODE :
-				return basicGetInStructuredNode() != null;
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_INTERRUPTIBLE_REGION :
 				return inInterruptibleRegions != null
 					&& !inInterruptibleRegions.isEmpty();
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION__OUTGOING :
-				return outgoings != null && !outgoings.isEmpty();
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_STRUCTURED_NODE :
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_GROUP :
-				return isSetInGroups();
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION__OUTGOING :
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IN_PARTITION :
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__HANDLER :
 				return handlers != null && !handlers.isEmpty();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__CONTEXT :
@@ -1008,16 +995,16 @@ public class ReadLinkObjectEndActionImpl
 				return allOwnedElements();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1028,6 +1015,8 @@ public class ReadLinkObjectEndActionImpl
 				return getLabel();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION___ALL_OWNING_PACKAGES :
@@ -1035,12 +1024,12 @@ public class ReadLinkObjectEndActionImpl
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION___SEPARATOR :
 				return separator();
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -1058,38 +1047,39 @@ public class ReadLinkObjectEndActionImpl
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
-				return validateOwned((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION___VALIDATE_OWNED_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateOwnedStructuredNode(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION___CONTAINING_ACTIVITY :
+				return containingActivity();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION___GET_CONTEXT :
 				return getContext();
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION___VALIDATE_ASSOCIATION_OF_ASSOCIATION__DIAGNOSTICCHAIN_MAP :
-				return validateAssociationOfAssociation(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION___ALL_ACTIONS :
+				return allActions();
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION___ALL_OWNED_NODES :
+				return allOwnedNodes();
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION___CONTAINING_BEHAVIOR :
+				return containingBehavior();
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION___VALIDATE_PROPERTY__DIAGNOSTICCHAIN_MAP :
+				return validateProperty((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION___VALIDATE_MULTIPLICITY_OF_OBJECT__DIAGNOSTICCHAIN_MAP :
 				return validateMultiplicityOfObject(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION___VALIDATE_ENDS_OF_ASSOCIATION__DIAGNOSTICCHAIN_MAP :
+				return validateEndsOfAssociation(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION___VALIDATE_TYPE_OF_RESULT__DIAGNOSTICCHAIN_MAP :
 				return validateTypeOfResult((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION___VALIDATE_TYPE_OF_OBJECT__DIAGNOSTICCHAIN_MAP :
-				return validateTypeOfObject((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION___VALIDATE_PROPERTY__DIAGNOSTICCHAIN_MAP :
-				return validateProperty((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION___VALIDATE_MULTIPLICITY_OF_RESULT__DIAGNOSTICCHAIN_MAP :
 				return validateMultiplicityOfResult(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.READ_LINK_OBJECT_END_ACTION___VALIDATE_ENDS_OF_ASSOCIATION__DIAGNOSTICCHAIN_MAP :
-				return validateEndsOfAssociation(
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION___VALIDATE_TYPE_OF_OBJECT__DIAGNOSTICCHAIN_MAP :
+				return validateTypeOfObject((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.READ_LINK_OBJECT_END_ACTION___VALIDATE_ASSOCIATION_OF_ASSOCIATION__DIAGNOSTICCHAIN_MAP :
+				return validateAssociationOfAssociation(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

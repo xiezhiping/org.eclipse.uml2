@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -27,8 +27,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A use case is the specification of a set of actions performed by a system, which yields an observable result that is, typically, of value for one or more actors or other stakeholders of the system.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A UseCase specifies a set of actions performed by its subjects, which yields an observable result that is of value for one or more Actors or other stakeholders of each subject.
+ * <p>From package UML::UseCases.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -61,8 +61,8 @@ public interface UseCase
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the Include relationships owned by this use case.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Include relationships owned by this UseCase.
+	 * <p>From package UML::UseCases.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Include</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getUseCase_Include()
@@ -124,8 +124,8 @@ public interface UseCase
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the Extend relationships owned by this use case.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Extend relationships owned by this UseCase.
+	 * <p>From package UML::UseCases.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Extend</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getUseCase_Extend()
@@ -187,8 +187,8 @@ public interface UseCase
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the ExtensionPoints owned by the use case.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The ExtensionPoints owned by this UseCase.
+	 * <p>From package UML::UseCases.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Extension Point</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getUseCase_ExtensionPoint()
@@ -241,8 +241,8 @@ public interface UseCase
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the subjects to which this use case applies. The subject or its parts realize all the use cases that apply to this subject. Use cases need not be attached to any specific subject, however. The subject may, but need not, own the use cases that apply to it.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The subjects to which this UseCase applies. Each subject or its parts realize all the UseCases that apply to it.
+	 * <p>From package UML::UseCases.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Subject</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getUseCase_Subject()
@@ -281,7 +281,7 @@ public interface UseCase
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A UseCase must have a name.
-	 * self.name -> notEmpty ()
+	 * name -> notEmpty ()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -296,7 +296,7 @@ public interface UseCase
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * UseCases can only be involved in binary Associations.
-	 * true
+	 * Association.allInstances()->forAll(a | a.memberEnd.type->includes(self) implies a.memberEnd->size() = 2)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -310,8 +310,13 @@ public interface UseCase
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * UseCases can not have Associations to UseCases specifying the same subject.
-	 * true
+	 * UseCases cannot have Associations to UseCases specifying the same subject.
+	 * Association.allInstances()->forAll(a | a.memberEnd.type->includes(self) implies 
+	 *    (
+	 *    let usecases: Set(UseCase) = a.memberEnd.type->select(oclIsKindOf(UseCase))->collect(oclAsType(UseCase))->asSet() in
+	 *    usecases->size() > 1 implies usecases->collect(subject)->size() > 1
+	 *    )
+	 * )
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -325,8 +330,8 @@ public interface UseCase
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A use case cannot include use cases that directly or indirectly include it.
-	 * not self.allIncludedUseCases()->includes(self)
+	 * A UseCase cannot include UseCases that directly or indirectly include it.
+	 * not allIncludedUseCases()->includes(self)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -340,9 +345,9 @@ public interface UseCase
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query allIncludedUseCases() returns the transitive closure of all use cases (directly or indirectly) included by this use case.
-	 * result = self.include->union(self.include->collect(in | in.allIncludedUseCases()))
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The query allIncludedUseCases() returns the transitive closure of all UseCases (directly or indirectly) included by this UseCase.
+	 * result = (self.include.addition->union(self.include.addition->collect(uc | uc.allIncludedUseCases()))->asSet())
+	 * <p>From package UML::UseCases.</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false"
 	 * @generated

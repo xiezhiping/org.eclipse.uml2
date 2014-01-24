@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: ManifestationImpl.java,v 1.17 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,7 +28,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Manifestation;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.OpaqueExpression;
@@ -245,11 +243,6 @@ public class ManifestationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.MANIFESTATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.MANIFESTATION__NAME :
 				setName((String) newValue);
 				return;
@@ -299,9 +292,6 @@ public class ManifestationImpl
 			case UMLPackage.MANIFESTATION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.MANIFESTATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.MANIFESTATION__NAME :
 				unsetName();
 				return;
@@ -350,8 +340,7 @@ public class ManifestationImpl
 			case UMLPackage.MANIFESTATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.MANIFESTATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.MANIFESTATION__NAME :
 				return isSetName();
 			case UMLPackage.MANIFESTATION__NAME_EXPRESSION :

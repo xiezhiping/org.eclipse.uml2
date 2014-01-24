@@ -109,6 +109,8 @@ public interface UMLResource
 
 	String UML_4_0_0_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_4_0_0"; //$NON-NLS-1$
 
+	String UML_5_0_0_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_5_0_0"; //$NON-NLS-1$
+
 	String UML_CONTENT_TYPE_IDENTIFIER = UML_4_0_0_CONTENT_TYPE_IDENTIFIER;
 
 	String UML2_PROFILE_NS_URI = "http://www.eclipse.org/uml2/schemas/UML2/2"; //$NON-NLS-1$

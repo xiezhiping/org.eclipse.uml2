@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 351774
+ *   Kenn Hussey (CEA) - 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,9 +30,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ParameterSet#validateTwoParameterSets(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Two Parameter Sets</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ParameterSet#validateInput(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ParameterSet#validateSameParameterizedEntity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Parameterized Entity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ParameterSet#validateInput(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ParameterSet#validateTwoParameterSets(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Two Parameter Sets</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,8 +54,8 @@ public class ParameterSetOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The parameters in a parameter set must all be inputs or all be outputs of the same parameterized entity, and the parameter set is owned by that entity.
-	 * true
+	 * The Parameters in a ParameterSet must all be inputs or all be outputs of the same parameterized entity, and the ParameterSet is owned by that entity.
+	 * parameter->forAll(p1, p2 | self.owner = p1.owner and self.owner = p2.owner and p1.direction = p2.direction)
 	 * @param parameterSet The receiving '<em><b>Parameter Set</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -90,8 +90,13 @@ public class ParameterSetOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If a behavior has input parameters that are in a parameter set, then any inputs that are not in a parameter set must be streaming. Same for output parameters.
-	 * true
+	 * If a parameterized entity has input Parameters that are in a ParameterSet, then any inputs that are not in a ParameterSet must be streaming. Same for output Parameters.
+	 * ((parameter->exists(direction = ParameterDirectionKind::_'in')) implies 
+	 *     behavioralFeature.ownedParameter->select(p | p.direction = ParameterDirectionKind::_'in' and p.parameterSet->isEmpty())->forAll(isStream))
+	 *     and
+	 * ((parameter->exists(direction = ParameterDirectionKind::out)) implies 
+	 *     behavioralFeature.ownedParameter->select(p | p.direction = ParameterDirectionKind::out and p.parameterSet->isEmpty())->forAll(isStream))  
+	 * 
 	 * @param parameterSet The receiving '<em><b>Parameter Set</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -125,8 +130,8 @@ public class ParameterSetOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Two parameter sets cannot have exactly the same set of parameters.
-	 * true
+	 * Two ParameterSets cannot have exactly the same set of Parameters.
+	 * parameter->forAll(parameterSet->forAll(s1, s2 | s1->size() = s2->size() implies s1.parameter->exists(p | not s2.parameter->includes(p))))
 	 * @param parameterSet The receiving '<em><b>Parameter Set</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -17,6 +17,7 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.uml2.uml.AcceptCallAction;
 import org.eclipse.uml2.uml.CallEvent;
@@ -33,9 +34,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.AcceptCallAction#validateResultPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Result Pins</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.AcceptCallAction#validateTriggerCallEvent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Trigger Call Event</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.AcceptCallAction#validateUnmarshall(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Unmarshall</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.AcceptCallAction#validateResultPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Result Pins</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,8 +58,13 @@ public class AcceptCallActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The result pins must match the in and inout parameters of the operation specified by the trigger event in number, type, and order.
-	 * true
+	 * The number of result OutputPins must be the same as the number of input (in and inout) ownedParameters of the Operation specified by the trigger Event. The type, ordering and multiplicity of each result OutputPin must be consistent with the corresponding input Parameter.
+	 * let parameter: OrderedSet(Parameter) = trigger.event->asSequence()->first().oclAsType(CallEvent).operation.inputParameters() in
+	 * result->size() = parameter->size() and
+	 * Sequence{1..result->size()}->forAll(i | 
+	 * 	parameter->at(i).type.conformsTo(result->at(i).type) and 
+	 * 	parameter->at(i).isOrdered = result->at(i).isOrdered and
+	 * 	parameter->at(i).compatibleWith(result->at(i)))
 	 * @param acceptCallAction The receiving '<em><b>Accept Call Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -92,8 +98,10 @@ public class AcceptCallActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The trigger event must be a CallEvent.
-	 * trigger.event.oclIsKindOf(CallEvent)
+	 * The action must have exactly one trigger, which must be for a CallEvent.
+	 * trigger->size()=1 and
+	 * trigger->asSequence()->first().event.oclIsKindOf(CallEvent)
+	 * 
 	 * @param acceptCallAction The receiving '<em><b>Accept Call Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -103,15 +111,10 @@ public class AcceptCallActionOperations
 	public static boolean validateTriggerCallEvent(
 			AcceptCallAction acceptCallAction, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		boolean result = true;
+		EList<Trigger> triggers = acceptCallAction.getTriggers();
 
-		for (Trigger trigger : acceptCallAction.getTriggers()) {
-
-			if (!(trigger.getEvent() instanceof CallEvent)) {
-				result = false;
-				break;
-			}
-		}
+		boolean result = triggers.size() == 1
+			&& triggers.get(0).getEvent() instanceof CallEvent;
 
 		if (!result && diagnostics != null) {
 			diagnostics

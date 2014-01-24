@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,25 +7,17 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: StructuredClassifierOperations.java,v 1.8 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Map;
-
-import org.eclipse.emf.common.util.BasicDiagnostic;
-import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StructuredClassifier;
 
 import org.eclipse.uml2.uml.Type;
-
-import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,9 +27,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.StructuredClassifier#validateMultiplicities(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicities</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuredClassifier#createOwnedAttribute(java.lang.String, org.eclipse.uml2.uml.Type, int, int) <em>Create Owned Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuredClassifier#getParts() <em>Get Parts</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuredClassifier#allRoles() <em>All Roles</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,42 +45,6 @@ public class StructuredClassifierOperations
 	 */
 	protected StructuredClassifierOperations() {
 		super();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The multiplicities on connected elements must be consistent.
-	 * true
-	 * @param structuredClassifier The receiving '<em><b>Structured Classifier</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateMultiplicities(
-			StructuredClassifier structuredClassifier,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STRUCTURED_CLASSIFIER__MULTIPLICITIES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMultiplicities", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(structuredClassifier, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{structuredClassifier}));
-			}
-			return false;
-		}
-		return true;
 	}
 
 	/**
@@ -124,6 +80,24 @@ public class StructuredClassifierOperations
 	public static EList<Property> getParts(
 			StructuredClassifier structuredClassifier) {
 		return structuredClassifier.getParts();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * All features of type ConnectableElement, equivalent to all direct and inherited roles.
+	 * result = (allFeatures()->select(oclIsKindOf(ConnectableElement))->collect(oclAsType(ConnectableElement))->asSet())
+	 * <p>From package UML::StructuredClassifiers.</p>
+	 * @param structuredClassifier The receiving '<em><b>Structured Classifier</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static EList<ConnectableElement> allRoles(
+			StructuredClassifier structuredClassifier) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } // StructuredClassifierOperations

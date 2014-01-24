@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.uml;
@@ -26,15 +27,15 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An interaction operand is contained in a combined fragment. An interaction operand represents one operand of the expression given by the enclosing combined fragment.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * An InteractionOperand is contained in a CombinedFragment. An InteractionOperand represents one operand of the expression given by the enclosing CombinedFragment.
+ * <p>From package UML::Interactions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.InteractionOperand#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionOperand#getFragments <em>Fragment</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InteractionOperand#getGuard <em>Guard</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,7 +58,7 @@ public interface InteractionOperand
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Constraint of the operand.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Interactions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Guard</em>' containment reference.
 	 * @see #setGuard(InteractionConstraint)
@@ -102,7 +103,7 @@ public interface InteractionOperand
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The fragments of the operand.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Interactions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Fragment</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteractionOperand_Fragment()
@@ -155,7 +156,6 @@ public interface InteractionOperand
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The guard must be placed directly prior to (above) the OccurrenceSpecification that will become the first OccurrenceSpecification within this InteractionOperand.
-	 * true
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -170,7 +170,6 @@ public interface InteractionOperand
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The guard must contain only references to values local to the Lifeline on which it resides, or values global to the whole Interaction.
-	 * true
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

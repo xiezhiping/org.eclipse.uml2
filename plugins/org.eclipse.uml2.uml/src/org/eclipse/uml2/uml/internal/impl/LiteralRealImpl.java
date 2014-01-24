@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 CEA and others.
+ * Copyright (c) 2011, 2014 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
- *   Kenn Hussey (CEA) - 351774
+ *   Kenn Hussey (CEA) - 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.LiteralReal;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -221,11 +220,6 @@ public class LiteralRealImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.LITERAL_REAL__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.LITERAL_REAL__NAME :
 				setName((String) newValue);
 				return;
@@ -264,9 +258,6 @@ public class LiteralRealImpl
 				return;
 			case UMLPackage.LITERAL_REAL__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.LITERAL_REAL__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.LITERAL_REAL__NAME :
 				unsetName();
@@ -310,8 +301,7 @@ public class LiteralRealImpl
 			case UMLPackage.LITERAL_REAL__OWNER :
 				return isSetOwner();
 			case UMLPackage.LITERAL_REAL__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.LITERAL_REAL__NAME :
 				return isSetName();
 			case UMLPackage.LITERAL_REAL__NAME_EXPRESSION :
@@ -428,16 +418,16 @@ public class LiteralRealImpl
 				return allOwnedElements();
 			case UMLPackage.LITERAL_REAL___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.LITERAL_REAL___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LITERAL_REAL___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LITERAL_REAL___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LITERAL_REAL___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LITERAL_REAL___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -448,6 +438,8 @@ public class LiteralRealImpl
 				return getLabel();
 			case UMLPackage.LITERAL_REAL___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.LITERAL_REAL___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.LITERAL_REAL___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.LITERAL_REAL___ALL_OWNING_PACKAGES :
@@ -455,16 +447,20 @@ public class LiteralRealImpl
 			case UMLPackage.LITERAL_REAL___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.LITERAL_REAL___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.LITERAL_REAL___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.LITERAL_REAL___SEPARATOR :
 				return separator();
+			case UMLPackage.LITERAL_REAL___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.LITERAL_REAL___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.LITERAL_REAL___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.LITERAL_REAL___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LITERAL_REAL___BOOLEAN_VALUE :
 				return booleanValue();
 			case UMLPackage.LITERAL_REAL___INTEGER_VALUE :

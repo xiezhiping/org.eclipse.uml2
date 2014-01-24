@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -25,8 +25,8 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
- * VisibilityKind is an enumeration type that defines literals to determine the visibility of elements in a model.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * VisibilityKind is an enumeration type that defines literals to determine the visibility of Elements in a model.
+ * <p>From package UML::CommonStructure.</p>
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getVisibilityKind()
  * @model
@@ -79,7 +79,7 @@ public enum VisibilityKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A public element is visible to all elements that can access the contents of the namespace that owns it.
+	 * A Named Element with public visibility is visible to all elements that can access the contents of the Namespace that owns it.
 	 * <!-- end-model-doc -->
 	 * @see #PUBLIC_LITERAL
 	 * @model name="public"
@@ -93,7 +93,7 @@ public enum VisibilityKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A private element is only visible inside the namespace that owns it.
+	 * A NamedElement with private visibility is only visible inside the Namespace that owns it.
 	 * <!-- end-model-doc -->
 	 * @see #PRIVATE_LITERAL
 	 * @model name="private"
@@ -107,7 +107,7 @@ public enum VisibilityKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A protected element is visible to elements that have a generalization relationship to the namespace that owns it.
+	 * A NamedElement with protected visibility is visible to Elements that have a generalization relationship to the Namespace that owns it.
 	 * <!-- end-model-doc -->
 	 * @see #PROTECTED_LITERAL
 	 * @model name="protected"
@@ -121,7 +121,7 @@ public enum VisibilityKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A package element is owned by a namespace that is not a package, and is visible to elements that are in the same package as its owning namespace. Only named elements that are not owned by packages can be marked as having package visibility. Any element marked as having package visibility is visible to all elements within the nearest enclosing package (given that other owning elements have proper visibility). Outside the nearest enclosing package, an element marked as having package visibility is not visible.
+	 * A NamedElement with package visibility is visible to all Elements within the nearest enclosing Package (given that other owning Elements have proper visibility). Outside the nearest enclosing Package, a NamedElement marked as having package visibility is not visible.  Only NamedElements that are not owned by Packages can be marked as having package visibility. 
 	 * <!-- end-model-doc -->
 	 * @see #PACKAGE_LITERAL
 	 * @model name="package"

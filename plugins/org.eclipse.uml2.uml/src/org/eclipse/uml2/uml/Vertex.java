@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -23,8 +23,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A vertex is an abstraction of a node in a state machine graph. In general, it can be the source or destination of any number of transitions.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A Vertex is an abstraction of a node in a StateMachine graph. It can be the source or destination of any number of Transitions.
+ * <p>From package UML::StateMachines.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -49,8 +49,8 @@ public interface Vertex
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies the transitions departing from this vertex.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Specifies the Transitions departing from this Vertex.
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Outgoing</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getVertex_Outgoing()
@@ -89,8 +89,8 @@ public interface Vertex
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies the transitions entering this vertex.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Specifies the Transitions entering this Vertex.
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Incoming</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getVertex_Incoming()
@@ -135,8 +135,8 @@ public interface Vertex
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The region that contains this vertex.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Region that contains this Vertex.
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Container</em>' container reference.
 	 * @see #setContainer(Region)
@@ -161,24 +161,71 @@ public interface Vertex
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The operation containingStateMachine() returns the state machine in which this Vertex is defined
-	 * result = if not container->isEmpty()
+	 * The operation containingStateMachine() returns the StateMachine in which this Vertex is defined.
+	 * result = (if container <> null
 	 * then
 	 * -- the container is a region
-	 * container.containingStateMachine()
-	 * else if (oclIsKindOf(Pseudostate)) then
-	 * -- entry or exit point?
-	 * if (kind = #entryPoint) or (kind = #exitPoint) then
-	 * stateMachine
-	 * else if (oclIsKindOf(ConnectionPointReference)) then
-	 * state.containingStateMachine() -- no other valid cases possible
+	 *    container.containingStateMachine()
+	 * else 
+	 *    if (self.oclIsKindOf(Pseudostate)) and ((self.oclAsType(Pseudostate).kind = PseudostateKind::entryPoint) or (self.oclAsType(Pseudostate).kind = PseudostateKind::exitPoint)) then
+	 *       self.oclAsType(Pseudostate).stateMachine
+	 *    else 
+	 *       if (self.oclIsKindOf(ConnectionPointReference)) then
+	 *           self.oclAsType(ConnectionPointReference).state.containingStateMachine() -- no other valid cases possible
+	 *       else 
+	 *           null
+	 *       endif
+	 *    endif
 	 * endif
 	 * 
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * )
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false"
 	 * @generated
 	 */
 	StateMachine containingStateMachine();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * This utility operation returns true if the Vertex is contained in the State s (input argument).
+	 * result = (if not s.isComposite() or container->isEmpty() then
+	 * 	false
+	 * else
+	 * 	if container.state = s then 
+	 * 		true
+	 * 	else
+	 * 		container.state.isContainedInState(s)
+	 * 	endif
+	 * endif)
+	 * <p>From package UML::StateMachines.</p>
+	 * <!-- end-model-doc -->
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" sRequired="true" sOrdered="false"
+	 * @generated
+	 */
+	boolean isContainedInState(State s);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * This utility query returns true if the Vertex is contained in the Region r (input argument).
+	 * result = (if (container = r) then
+	 * 	true
+	 * else
+	 * 	if (r.state->isEmpty()) then
+	 * 		false
+	 * 	else
+	 * 		container.state.isContainedInRegion(r)
+	 * 	endif
+	 * endif)
+	 * <p>From package UML::StateMachines.</p>
+	 * <!-- end-model-doc -->
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" rRequired="true" rOrdered="false"
+	 * @generated
+	 */
+	boolean isContainedInRegion(Region r);
 
 } // Vertex

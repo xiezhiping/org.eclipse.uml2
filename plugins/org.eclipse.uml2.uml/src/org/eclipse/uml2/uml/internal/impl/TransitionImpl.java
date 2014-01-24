@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -48,7 +48,6 @@ import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.NamedElement;
@@ -979,17 +978,6 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSignaturesCompatible(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return TransitionOperations.validateSignaturesCompatible(this,
-			diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateStateIsLocal(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return TransitionOperations.validateStateIsLocal(this, diagnostics,
@@ -1019,8 +1007,8 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isConsistentWith(RedefinableElement redefinee) {
-		return TransitionOperations.isConsistentWith(this, redefinee);
+	public boolean isConsistentWith(RedefinableElement redefiningElement) {
+		return TransitionOperations.isConsistentWith(this, redefiningElement);
 	}
 
 	/**
@@ -1028,9 +1016,10 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isRedefinitionContextValid(RedefinableElement redefined) {
+	public boolean isRedefinitionContextValid(
+			RedefinableElement redefinedElement) {
 		return RedefinableElementOperations.isRedefinitionContextValid(this,
-			redefined);
+			redefinedElement);
 	}
 
 	/**
@@ -1057,17 +1046,14 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.TRANSITION__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+			case UMLPackage.TRANSITION__OWNED_RULE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.TRANSITION__ELEMENT_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.TRANSITION__PACKAGE_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.TRANSITION__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.TRANSITION__CONTAINER :
 				if (eInternalContainer() != null)
@@ -1092,19 +1078,16 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.TRANSITION__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TRANSITION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.TRANSITION__OWNED_RULE :
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.TRANSITION__ELEMENT_IMPORT :
 				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.TRANSITION__PACKAGE_IMPORT :
 				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.TRANSITION__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.TRANSITION__EFFECT :
 				return basicSetEffect(null, msgs);
@@ -1167,12 +1150,12 @@ public class TransitionImpl
 				return getQualifiedName();
 			case UMLPackage.TRANSITION__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.TRANSITION__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.TRANSITION__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.TRANSITION__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.TRANSITION__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.TRANSITION__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.TRANSITION__IMPORTED_MEMBER :
@@ -1236,11 +1219,6 @@ public class TransitionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.TRANSITION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.TRANSITION__NAME :
 				setName((String) newValue);
 				return;
@@ -1249,6 +1227,11 @@ public class TransitionImpl
 				return;
 			case UMLPackage.TRANSITION__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.TRANSITION__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.TRANSITION__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -1259,11 +1242,6 @@ public class TransitionImpl
 				getPackageImports().clear();
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
-				return;
-			case UMLPackage.TRANSITION__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.TRANSITION__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -1311,9 +1289,6 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.TRANSITION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.TRANSITION__NAME :
 				unsetName();
 				return;
@@ -1323,14 +1298,14 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__VISIBILITY :
 				unsetVisibility();
 				return;
+			case UMLPackage.TRANSITION__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.TRANSITION__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.TRANSITION__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				return;
-			case UMLPackage.TRANSITION__OWNED_RULE :
-				getOwnedRules().clear();
 				return;
 			case UMLPackage.TRANSITION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
@@ -1380,8 +1355,7 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__OWNER :
 				return isSetOwner();
 			case UMLPackage.TRANSITION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.TRANSITION__NAME :
 				return isSetName();
 			case UMLPackage.TRANSITION__NAME_EXPRESSION :
@@ -1394,12 +1368,12 @@ public class TransitionImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.TRANSITION__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.TRANSITION__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.TRANSITION__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.TRANSITION__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.TRANSITION__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.TRANSITION__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.TRANSITION__IMPORTED_MEMBER :
@@ -1594,16 +1568,16 @@ public class TransitionImpl
 				return allOwnedElements();
 			case UMLPackage.TRANSITION___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.TRANSITION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TRANSITION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TRANSITION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.TRANSITION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TRANSITION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1614,6 +1588,8 @@ public class TransitionImpl
 				return getLabel();
 			case UMLPackage.TRANSITION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.TRANSITION___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.TRANSITION___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.TRANSITION___ALL_OWNING_PACKAGES :
@@ -1621,14 +1597,22 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.TRANSITION___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.TRANSITION___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.TRANSITION___SEPARATOR :
 				return separator();
+			case UMLPackage.TRANSITION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.TRANSITION___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.TRANSITION___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.TRANSITION___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TRANSITION___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -1643,6 +1627,8 @@ public class TransitionImpl
 				return getImportedElements();
 			case UMLPackage.TRANSITION___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.TRANSITION___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.TRANSITION___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -1655,8 +1641,6 @@ public class TransitionImpl
 				return getImportedMembers();
 			case UMLPackage.TRANSITION___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.TRANSITION___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 			case UMLPackage.TRANSITION___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -1674,43 +1658,39 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.TRANSITION___VALIDATE_STATE_IS_LOCAL__DIAGNOSTICCHAIN_MAP :
-				return validateStateIsLocal((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.TRANSITION___VALIDATE_FORK_SEGMENT_GUARDS__DIAGNOSTICCHAIN_MAP :
-				return validateForkSegmentGuards(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.TRANSITION___VALIDATE_JOIN_SEGMENT_STATE__DIAGNOSTICCHAIN_MAP :
-				return validateJoinSegmentState(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.TRANSITION___VALIDATE_INITIAL_TRANSITION__DIAGNOSTICCHAIN_MAP :
-				return validateInitialTransition(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.TRANSITION___VALIDATE_OUTGOING_PSEUDOSTATES__DIAGNOSTICCHAIN_MAP :
-				return validateOutgoingPseudostates(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.TRANSITION___VALIDATE_SIGNATURES_COMPATIBLE__DIAGNOSTICCHAIN_MAP :
-				return validateSignaturesCompatible(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.TRANSITION___VALIDATE_STATE_IS_INTERNAL__DIAGNOSTICCHAIN_MAP :
-				return validateStateIsInternal(
+			case UMLPackage.TRANSITION___VALIDATE_STATE_IS_EXTERNAL__DIAGNOSTICCHAIN_MAP :
+				return validateStateIsExternal(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TRANSITION___VALIDATE_JOIN_SEGMENT_GUARDS__DIAGNOSTICCHAIN_MAP :
 				return validateJoinSegmentGuards(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.TRANSITION___VALIDATE_STATE_IS_INTERNAL__DIAGNOSTICCHAIN_MAP :
+				return validateStateIsInternal(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.TRANSITION___VALIDATE_OUTGOING_PSEUDOSTATES__DIAGNOSTICCHAIN_MAP :
+				return validateOutgoingPseudostates(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.TRANSITION___VALIDATE_JOIN_SEGMENT_STATE__DIAGNOSTICCHAIN_MAP :
+				return validateJoinSegmentState(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TRANSITION___VALIDATE_FORK_SEGMENT_STATE__DIAGNOSTICCHAIN_MAP :
 				return validateForkSegmentState(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.TRANSITION___VALIDATE_STATE_IS_EXTERNAL__DIAGNOSTICCHAIN_MAP :
-				return validateStateIsExternal(
+			case UMLPackage.TRANSITION___VALIDATE_STATE_IS_LOCAL__DIAGNOSTICCHAIN_MAP :
+				return validateStateIsLocal((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.TRANSITION___VALIDATE_INITIAL_TRANSITION__DIAGNOSTICCHAIN_MAP :
+				return validateInitialTransition(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.TRANSITION___VALIDATE_FORK_SEGMENT_GUARDS__DIAGNOSTICCHAIN_MAP :
+				return validateForkSegmentGuards(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TRANSITION___CONTAINING_STATE_MACHINE :

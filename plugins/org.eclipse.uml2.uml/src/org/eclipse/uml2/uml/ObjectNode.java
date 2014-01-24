@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -27,9 +27,9 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An object node is an abstract activity node that is part of defining object flow in an activity.
- * Object nodes have support for token selection, limitation on the number of tokens, specifying the state required for tokens, and carrying control values.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * An ObjectNode is an abstract ActivityNode that may hold tokens within the object flow in an Activity. ObjectNodes also support token selection, limitation on the number of tokens held, specification of the state required for tokens being held, and carrying control values.
+ * 
+ * <p>From package UML::Activities.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -57,8 +57,8 @@ public interface ObjectNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Tells whether and how the tokens in the object node are ordered for selection to traverse edges outgoing from the object node.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Indicates how the tokens held by the ObjectNode are ordered for selection to traverse ActivityEdges outgoing from the ObjectNode.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Ordering</em>' attribute.
 	 * @see org.eclipse.uml2.uml.ObjectNodeOrderingKind
@@ -86,8 +86,8 @@ public interface ObjectNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Tells whether the type of the object node is to be treated as control.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Indicates whether the type of the ObjectNode is to be treated as representing control values that may traverse ControlFlows.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Control Type</em>' attribute.
 	 * @see #setIsControlType(boolean)
@@ -118,13 +118,13 @@ public interface ObjectNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The maximum number of tokens allowed in the node. Objects cannot flow into the node if the upper bound is reached.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The maximum number of tokens that may be held by this ObjectNode. Tokens cannot flow into the ObjectNode if the upperBound is reached. If no upperBound is specified, then there is no limit on how many tokens the ObjectNode can hold.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Upper Bound</em>' containment reference.
 	 * @see #setUpperBound(ValueSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getObjectNode_UpperBound()
-	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	ValueSpecification getUpperBound();
@@ -158,8 +158,8 @@ public interface ObjectNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The required states of the object available at this point in the activity.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The States required to be associated with the values held by tokens on this ObjectNode.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>In State</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getObjectNode_InState()
@@ -197,8 +197,8 @@ public interface ObjectNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Selects tokens for outgoing edges.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * A Behavior used to select tokens to be offered on outgoing ActivityEdges.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Selection</em>' reference.
 	 * @see #setSelection(Behavior)
@@ -222,8 +222,8 @@ public interface ObjectNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * All edges coming into or going out of object nodes must be object flow edges.
-	 * true
+	 * If isControlType=false, the ActivityEdges incoming to or outgoing from an ObjectNode must all be ObjectFlows.
+	 * (not isControlType) implies incoming->union(outgoing)->forAll(oclIsKindOf(ObjectFlow))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -237,8 +237,8 @@ public interface ObjectNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If an object node has a selection behavior, then the ordering of the object node is ordered, and vice versa.
-	 * true
+	 * If an ObjectNode has a selection Behavior, then the ordering of the object node is ordered, and vice versa.
+	 * (selection<>null) = (ordering=ObjectNodeOrderingKind::ordered)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -252,8 +252,13 @@ public interface ObjectNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A selection behavior has one input parameter and one output parameter. The input parameter must be a bag of elements of the same type as the object node or a supertype of the type of object node. The output parameter must be the same or a subtype of the type of object node. The behavior cannot have side effects.
-	 * true
+	 * A selection Behavior has one input Parameter and one output Parameter. The input Parameter must have the same type as  or a supertype of the type of ObjectNode, be non-unique, and have multiplicity 0..*. The output Parameter must be the same or a subtype of the type of ObjectNode. The Behavior cannot have side effects.
+	 * selection<>null implies
+	 * 	selection.inputParameters()->size()=1 and
+	 * 	selection.inputParameters()->forAll(p | not p.isUnique and p.is(0,*) and self.type.conformsTo(p.type)) and
+	 * 	selection.outputParameters()->size()=1 and
+	 * 		selection.inputParameters()->forAll(p | self.type.conformsTo(p.type))
+	 * 	
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

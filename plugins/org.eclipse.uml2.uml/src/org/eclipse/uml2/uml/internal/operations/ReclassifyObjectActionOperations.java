@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -31,8 +31,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ReclassifyObjectAction#validateInputPin(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Pin</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ReclassifyObjectAction#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReclassifyObjectAction#validateClassifierNotAbstract(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Classifier Not Abstract</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReclassifyObjectAction#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,8 +54,8 @@ public class ReclassifyObjectActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * None of the new classifiers may be abstract.
-	 * not self.newClassifier->exists(isAbstract = true)
+	 * None of the newClassifiers may be abstract.
+	 * not newClassifier->exists(isAbstract)
 	 * @param reclassifyObjectAction The receiving '<em><b>Reclassify Object Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -90,8 +90,8 @@ public class ReclassifyObjectActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the input pin is 1..1.
-	 * self.argument.multiplicity.is(1,1)
+	 * The multiplicity of the object InputPin is 1..1.
+	 * object.is(1,1)
 	 * @param reclassifyObjectAction The receiving '<em><b>Reclassify Object Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -126,8 +126,8 @@ public class ReclassifyObjectActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The input pin has no type.
-	 * self.argument.type->size() = 0
+	 * The object InputPin has no type.
+	 * object.type = null
 	 * @param reclassifyObjectAction The receiving '<em><b>Reclassify Object Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

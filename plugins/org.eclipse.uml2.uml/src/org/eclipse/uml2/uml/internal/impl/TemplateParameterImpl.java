@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -60,8 +60,8 @@ import org.eclipse.uml2.uml.internal.operations.TemplateParameterOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getDefault <em>Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getParameteredElement <em>Parametered Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getOwnedDefault <em>Owned Default</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getOwnedParameteredElement <em>Owned Parametered Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getSignature <em>Signature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getOwnedParameteredElement <em>Owned Parametered Element</em>}</li>
  * </ul>
  * </p>
  *
@@ -612,16 +612,6 @@ public class TemplateParameterImpl
 			case UMLPackage.TEMPLATE_PARAMETER__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				if (ownedParameteredElement != null)
-					msgs = ((InternalEObject) ownedParameteredElement)
-						.eInverseRemove(
-							this,
-							EOPPOSITE_FEATURE_BASE
-								- UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-							null, msgs);
-				return basicSetOwnedParameteredElement(
-					(ParameterableElement) otherEnd, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				if (parameteredElement != null)
 					msgs = ((InternalEObject) parameteredElement)
@@ -635,6 +625,16 @@ public class TemplateParameterImpl
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetSignature((TemplateSignature) otherEnd, msgs);
+			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				if (ownedParameteredElement != null)
+					msgs = ((InternalEObject) ownedParameteredElement)
+						.eInverseRemove(
+							this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+							null, msgs);
+				return basicSetOwnedParameteredElement(
+					(ParameterableElement) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -656,12 +656,12 @@ public class TemplateParameterImpl
 					otherEnd, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				return basicSetOwnedDefault(null, msgs);
-			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				return basicSetOwnedParameteredElement(null, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				return basicSetParameteredElement(null, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
 				return basicSetSignature(null, msgs);
+			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				return basicSetOwnedParameteredElement(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -709,10 +709,6 @@ public class TemplateParameterImpl
 				if (resolve)
 					return getOwnedDefault();
 				return basicGetOwnedDefault();
-			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				if (resolve)
-					return getOwnedParameteredElement();
-				return basicGetOwnedParameteredElement();
 			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				if (resolve)
 					return getParameteredElement();
@@ -721,6 +717,10 @@ public class TemplateParameterImpl
 				if (resolve)
 					return getSignature();
 				return basicGetSignature();
+			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				if (resolve)
+					return getOwnedParameteredElement();
+				return basicGetOwnedParameteredElement();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -750,14 +750,14 @@ public class TemplateParameterImpl
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				setOwnedDefault((ParameterableElement) newValue);
 				return;
-			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				setOwnedParameteredElement((ParameterableElement) newValue);
-				return;
 			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				setParameteredElement((ParameterableElement) newValue);
 				return;
 			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
 				setSignature((TemplateSignature) newValue);
+				return;
+			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				setOwnedParameteredElement((ParameterableElement) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -783,14 +783,14 @@ public class TemplateParameterImpl
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				setOwnedDefault((ParameterableElement) null);
 				return;
-			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				setOwnedParameteredElement((ParameterableElement) null);
-				return;
 			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				setParameteredElement((ParameterableElement) null);
 				return;
 			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
 				setSignature((TemplateSignature) null);
+				return;
+			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				setOwnedParameteredElement((ParameterableElement) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -816,12 +816,12 @@ public class TemplateParameterImpl
 				return default_ != null;
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				return ownedDefault != null;
-			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				return ownedParameteredElement != null;
 			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				return parameteredElement != null;
 			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
 				return basicGetSignature() != null;
+			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				return ownedParameteredElement != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

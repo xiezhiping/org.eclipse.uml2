@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.tests;
@@ -37,14 +37,16 @@ import org.eclipse.uml2.uml.UMLPackage;
  *   <li>{@link org.eclipse.uml2.uml.RedefinableElement#isRedefinitionContextValid(org.eclipse.uml2.uml.RedefinableElement) <em>Is Redefinition Context Valid</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ParameterableElement#isCompatibleWith(org.eclipse.uml2.uml.ParameterableElement) <em>Is Compatible With</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ParameterableElement#isTemplateParameter() <em>Is Template Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.PackageableElement#validateNamespaceNeedsVisibility(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Namespace Needs Visibility</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Type#createAssociation(boolean, org.eclipse.uml2.uml.AggregationKind, java.lang.String, int, int, org.eclipse.uml2.uml.Type, boolean, org.eclipse.uml2.uml.AggregationKind, java.lang.String, int, int) <em>Create Association</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Type#getAssociations() <em>Get Associations</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#conformsTo(org.eclipse.uml2.uml.Type) <em>Conforms To</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#isTemplate() <em>Is Template</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.TemplateableElement#parameterableElements() <em>Parameterable Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#validateNonFinalParents(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Non Final Parents</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#validateNoCyclesInGeneralization(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Cycles In Generalization</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#validateSpecializeType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Specialize Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#validateMapsToGeneralizationSet(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maps To Generalization Set</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#validateNonFinalParents(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Non Final Parents</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#validateNoCyclesInGeneralization(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Cycles In Generalization</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getAllAttributes() <em>Get All Attributes</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getAllOperations() <em>Get All Operations</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getAllUsedInterfaces() <em>Get All Used Interfaces</em>}</li>
@@ -54,12 +56,18 @@ import org.eclipse.uml2.uml.UMLPackage;
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getUsedInterfaces() <em>Get Used Interfaces</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#allFeatures() <em>All Features</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#allParents() <em>All Parents</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#conformsTo(org.eclipse.uml2.uml.Classifier) <em>Conforms To</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#hasVisibilityOf(org.eclipse.uml2.uml.NamedElement) <em>Has Visibility Of</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#inherit(org.eclipse.emf.common.util.EList) <em>Inherit</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#inheritableMembers(org.eclipse.uml2.uml.Classifier) <em>Inheritable Members</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#maySpecializeType(org.eclipse.uml2.uml.Classifier) <em>May Specialize Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#parents() <em>Parents</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#directlyRealizedInterfaces() <em>Directly Realized Interfaces</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#directlyUsedInterfaces() <em>Directly Used Interfaces</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#allRealizedInterfaces() <em>All Realized Interfaces</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#allUsedInterfaces() <em>All Used Interfaces</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#isSubstitutableFor(org.eclipse.uml2.uml.Classifier) <em>Is Substitutable For</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#allAttributes() <em>All Attributes</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#allSlottableFeatures() <em>All Slottable Features</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -216,6 +224,18 @@ public abstract class ClassifierTest
 	 * @generated
 	 */
 	public void testIsTemplateParameter() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.PackageableElement#validateNamespaceNeedsVisibility(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Namespace Needs Visibility</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.PackageableElement#validateNamespaceNeedsVisibility(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateNamespaceNeedsVisibility__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
@@ -441,6 +461,90 @@ public abstract class ClassifierTest
 	}
 
 	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Classifier#directlyRealizedInterfaces() <em>Directly Realized Interfaces</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Classifier#directlyRealizedInterfaces()
+	 * @generated
+	 */
+	public void testDirectlyRealizedInterfaces() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Classifier#directlyUsedInterfaces() <em>Directly Used Interfaces</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Classifier#directlyUsedInterfaces()
+	 * @generated
+	 */
+	public void testDirectlyUsedInterfaces() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Classifier#allRealizedInterfaces() <em>All Realized Interfaces</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Classifier#allRealizedInterfaces()
+	 * @generated
+	 */
+	public void testAllRealizedInterfaces() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Classifier#allUsedInterfaces() <em>All Used Interfaces</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Classifier#allUsedInterfaces()
+	 * @generated
+	 */
+	public void testAllUsedInterfaces() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Classifier#isSubstitutableFor(org.eclipse.uml2.uml.Classifier) <em>Is Substitutable For</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Classifier#isSubstitutableFor(org.eclipse.uml2.uml.Classifier)
+	 * @generated
+	 */
+	public void testIsSubstitutableFor__Classifier() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Classifier#allAttributes() <em>All Attributes</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Classifier#allAttributes()
+	 * @generated
+	 */
+	public void testAllAttributes() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Classifier#allSlottableFeatures() <em>All Slottable Features</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Classifier#allSlottableFeatures()
+	 * @generated
+	 */
+	public void testAllSlottableFeatures() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
 	 * Tests the '{@link org.eclipse.uml2.uml.Classifier#inheritableMembers(org.eclipse.uml2.uml.Classifier) <em>Inheritable Members</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -460,18 +564,6 @@ public abstract class ClassifierTest
 	 * @generated
 	 */
 	public void testHasVisibilityOf__NamedElement() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Classifier#conformsTo(org.eclipse.uml2.uml.Classifier) <em>Conforms To</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Classifier#conformsTo(org.eclipse.uml2.uml.Classifier)
-	 * @generated
-	 */
-	public void testConformsTo__Classifier() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
@@ -501,14 +593,14 @@ public abstract class ClassifierTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Type#conformsTo(org.eclipse.uml2.uml.Type) <em>Conforms To</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.uml.Classifier#conformsTo(org.eclipse.uml2.uml.Type) <em>Conforms To</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Type#conformsTo(org.eclipse.uml2.uml.Type)
+	 * @see org.eclipse.uml2.uml.Classifier#conformsTo(org.eclipse.uml2.uml.Type)
 	 * @generated
 	 */
 	public void testConformsTo__Type() {
-		// TODO: implement this redefined operation test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 } //ClassifierTest

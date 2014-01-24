@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -18,8 +18,10 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.CallOperationAction;
 
+import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -30,10 +32,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.CallOperationAction#validateArgumentPinEqualParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Argument Pin Equal Parameter</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.CallOperationAction#validateResultPinEqualParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Result Pin Equal Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.CallOperationAction#validateTypeTargetPin(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Target Pin</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.CallOperationAction#validateTypeOrderingMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Ordering Multiplicity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.CallOperationAction#outputParameters() <em>Output Parameters</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.CallOperationAction#inputParameters() <em>Input Parameters</em>}</li>
  * </ul>
  * </p>
  *
@@ -55,80 +56,10 @@ public class CallOperationActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The number of argument pins and the number of owned parameters of the operation of type in and in-out must be equal.
-	 * true
-	 * @param callOperationAction The receiving '<em><b>Call Operation Action</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateArgumentPinEqualParameter(
-			CallOperationAction callOperationAction,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CALL_OPERATION_ACTION__ARGUMENT_PIN_EQUAL_PARAMETER,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateArgumentPinEqualParameter", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(callOperationAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{callOperationAction}));
-			}
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The number of result pins and the number of owned parameters of the operation of type return, out, and in-out must be equal.
-	 * true
-	 * @param callOperationAction The receiving '<em><b>Call Operation Action</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateResultPinEqualParameter(
-			CallOperationAction callOperationAction,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CALL_OPERATION_ACTION__RESULT_PIN_EQUAL_PARAMETER,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateResultPinEqualParameter", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(callOperationAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{callOperationAction}));
-			}
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The type of the target pin must be the same as the type that owns the operation.
-	 * true
+	 * If onPort has no value, the operation must be an owned or inherited feature of the type of the target InputPin, otherwise the Port given by onPort must be an owned or inherited feature of the type of the target InputPin, and the Port must have a required or provided Interface with the operation as an owned or inherited feature.
+	 * if onPort=null then  target.type.oclAsType(Classifier).allFeatures()->includes(operation)
+	 * else target.type.oclAsType(Classifier).allFeatures()->includes(onPort) and onPort.provided->union(onPort.required).allFeatures()->includes(operation)
+	 * endif
 	 * @param callOperationAction The receiving '<em><b>Call Operation Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -163,36 +94,36 @@ public class CallOperationActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type, ordering, and multiplicity of an argument or result pin is derived from the corresponding owned parameter of the operation.
-	 * true
+	 * Return the inout, out and return ownedParameters of the Operation being called.
+	 * result = (operation.outputParameters())
+	 * <p>From package UML::Actions.</p>
 	 * @param callOperationAction The receiving '<em><b>Call Operation Action</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateTypeOrderingMultiplicity(
-			CallOperationAction callOperationAction,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public static EList<Parameter> outputParameters(
+			CallOperationAction callOperationAction) {
 		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CALL_OPERATION_ACTION__TYPE_ORDERING_MULTIPLICITY,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateTypeOrderingMultiplicity", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(callOperationAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{callOperationAction}));
-			}
-			return false;
-		}
-		return true;
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Return the in and inout ownedParameters of the Operation being called.
+	 * result = (operation.inputParameters())
+	 * <p>From package UML::Actions.</p>
+	 * @param callOperationAction The receiving '<em><b>Call Operation Action</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static EList<Parameter> inputParameters(
+			CallOperationAction callOperationAction) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } // CallOperationActionOperations

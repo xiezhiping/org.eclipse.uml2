@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A deployment target is the location for a deployed artifact.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * <p>From package UML::Deployments.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -50,14 +50,13 @@ public interface DeploymentTarget
 	 * This feature subsets the following features:
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
-	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getClientDependencies() <em>Client Dependency</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The set of Deployments for a DeploymentTarget.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Deployments.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Deployment</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDeploymentTarget_Deployment()
@@ -110,7 +109,7 @@ public interface DeploymentTarget
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Deployments.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Deployed Element</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDeploymentTarget_DeployedElement()

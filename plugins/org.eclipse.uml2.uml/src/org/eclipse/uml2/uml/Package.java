@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.EObject;
  * A package can have one or more profile applications to indicate which profiles have been applied. Because a profile is a package, it is possible to apply a profile not only to packages, but also to profiles.
  * Package specializes TemplateableElement and PackageableElement specializes ParameterableElement to specify that a package can be used as a template and a PackageableElement as a template parameter.
  * A package is used to group elements, and provides a namespace for the grouped elements.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * <p>From package UML::Packages.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -41,10 +41,10 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.uml2.uml.Package#getNestedPackages <em>Nested Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getNestingPackage <em>Nesting Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getOwnedStereotypes <em>Owned Stereotype</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#getOwnedTypes <em>Owned Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getPackageMerges <em>Package Merge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getPackagedElements <em>Packaged Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getProfileApplications <em>Profile Application</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Package#getOwnedTypes <em>Owned Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -61,7 +61,7 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Provides an identifier for the package that can be used for many purposes. A URI is the universally unique identification of the package following the IETF URI specification, RFC 2396 http://www.ietf.org/rfc/rfc2396.txt and it must comply with those syntax rules.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Packages.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>URI</em>' attribute.
 	 * @see #setURI(String)
@@ -95,7 +95,7 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the PackageMerges that are owned by this Package.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Packages.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Package Merge</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_PackageMerge()
@@ -152,7 +152,7 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the packageable elements that are owned by this Package.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Packages.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Packaged Element</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_PackagedElement()
@@ -213,7 +213,7 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the packaged elements that are Types.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Packages.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Type</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_OwnedType()
@@ -275,7 +275,7 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the packaged elements that are Packages.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Packages.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Nested Package</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_NestedPackage()
@@ -347,7 +347,7 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Package that owns this Package.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Packages.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Nesting Package</em>' reference.
 	 * @see #setNestingPackage(Package)
@@ -380,8 +380,8 @@ public interface Package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the Stereotypes that are owned by the Package
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * References the Stereotypes that are owned by the Package.
+	 * <p>From package UML::Packages.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Stereotype</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_OwnedStereotype()
@@ -427,7 +427,7 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the ProfileApplications that indicate which profiles have been applied to the Package.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Packages.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Profile Application</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_ProfileApplication()
@@ -452,7 +452,7 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If an element that is owned by a package has visibility, it is public or private.
-	 * self.ownedElements->forAll(e | e.visibility->notEmpty() implies e.visbility = #public or e.visibility = #private)
+	 * packagedElement->forAll(e | e.visibility<> null implies e.visibility = VisibilityKind::public or e.visibility = VisibilityKind::private)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -553,10 +553,10 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query allApplicableStereotypes() returns all the directly or indirectly owned stereotypes, including stereotypes contained in sub-profiles.
-	 * result = 
-	 * self.ownedStereotype->union(self.ownedMember->
-	 * 	select(oclIsKindOf(Package)).oclAsType(Package).allApplicableStereotypes()->flatten())->asSet()
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * result = (let ownedPackages : Bag(Package) = ownedMember->select(oclIsKindOf(Package))->collect(oclAsType(Package)) in
+	 *  ownedStereotype->union(ownedPackages.allApplicableStereotypes())->flatten()->asSet()
+	 * )
+	 * <p>From package UML::Packages.</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false"
 	 * @generated
@@ -568,13 +568,12 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query containingProfile() returns the closest profile directly or indirectly containing this package (or this package itself, if it is a profile).
-	 * result =
-	 * if self.oclIsKindOf(Profile) then 
+	 * result = (if self.oclIsKindOf(Profile) then 
 	 * 	self.oclAsType(Profile)
 	 * else
 	 * 	self.namespace.oclAsType(Package).containingProfile()
-	 * endif
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * endif)
+	 * <p>From package UML::Packages.</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false"
 	 * @generated
@@ -692,8 +691,8 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query visibleMembers() defines which members of a Package can be accessed outside it.
-	 * result = member->select( m | self.makesVisible(m))
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * result = (member->select( m | m.oclIsKindOf(PackageableElement) and self.makesVisible(m))->collect(oclAsType(PackageableElement))->asSet())
+	 * <p>From package UML::Packages.</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false"
 	 * @generated
@@ -705,11 +704,11 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query makesVisible() defines whether a Package makes an element visible outside itself. Elements with no visibility and elements with public visibility are made visible.
-	 * result = (ownedMember->includes(el)) or
-	 * (elementImport->select(ei|ei.importedElement = #public)->collect(ei|ei.importedElement)->includes(el)) or
-	 * (packageImport->select(pi|pi.visibility = #public)->collect(pi|pi.importedPackage.member->includes(el))->notEmpty())
-	 * self.member->includes(el)
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * member->includes(el)
+	 * result = (ownedMember->includes(el) or
+	 * (elementImport->select(ei|ei.importedElement = VisibilityKind::public)->collect(importedElement.oclAsType(NamedElement))->includes(el)) or
+	 * (packageImport->select(visibility = VisibilityKind::public)->collect(importedPackage.member->includes(el))->notEmpty()))
+	 * <p>From package UML::Packages.</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" elRequired="true" elOrdered="false"
 	 * @generated

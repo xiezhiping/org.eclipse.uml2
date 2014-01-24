@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -37,7 +37,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.NamedElement;
@@ -58,12 +57,12 @@ import org.eclipse.uml2.uml.internal.operations.NamespaceOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getMembers <em>Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getElementImports <em>Element Import</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getPackageImports <em>Package Import</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getImportedMembers <em>Imported Member</em>}</li>
  * </ul>
  * </p>
@@ -73,6 +72,16 @@ import org.eclipse.uml2.uml.internal.operations.NamespaceOperations;
 public abstract class NamespaceImpl
 		extends NamedElementImpl
 		implements Namespace {
+
+	/**
+	 * The cached value of the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedRules()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Constraint> ownedRules;
 
 	/**
 	 * The cached value of the '{@link #getElementImports() <em>Element Import</em>}' containment reference list.
@@ -93,16 +102,6 @@ public abstract class NamespaceImpl
 	 * @ordered
 	 */
 	protected EList<PackageImport> packageImports;
-
-	/**
-	 * The cached value of the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedRules()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Constraint> ownedRules;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -443,6 +442,28 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateCannotImportSelf(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return NamespaceOperations.validateCannotImportSelf(this, diagnostics,
+			context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCannotImportOwnedMembers(
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return NamespaceOperations.validateCannotImportOwnedMembers(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ElementImport createElementImport(PackageableElement element,
 			VisibilityKind visibility) {
 		return NamespaceOperations.createElementImport(this, element,
@@ -555,17 +576,14 @@ public abstract class NamespaceImpl
 			case UMLPackage.NAMESPACE__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.NAMESPACE__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+			case UMLPackage.NAMESPACE__OWNED_RULE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.NAMESPACE__ELEMENT_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.NAMESPACE__PACKAGE_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.NAMESPACE__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
@@ -586,19 +604,16 @@ public abstract class NamespaceImpl
 			case UMLPackage.NAMESPACE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.NAMESPACE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.NAMESPACE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.NAMESPACE__OWNED_RULE :
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.NAMESPACE__ELEMENT_IMPORT :
 				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.NAMESPACE__PACKAGE_IMPORT :
 				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.NAMESPACE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
 					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
@@ -638,12 +653,12 @@ public abstract class NamespaceImpl
 				return getQualifiedName();
 			case UMLPackage.NAMESPACE__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.NAMESPACE__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.NAMESPACE__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.NAMESPACE__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.NAMESPACE__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.NAMESPACE__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.NAMESPACE__IMPORTED_MEMBER :
@@ -673,11 +688,6 @@ public abstract class NamespaceImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.NAMESPACE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.NAMESPACE__NAME :
 				setName((String) newValue);
 				return;
@@ -686,6 +696,11 @@ public abstract class NamespaceImpl
 				return;
 			case UMLPackage.NAMESPACE__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.NAMESPACE__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.NAMESPACE__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -696,11 +711,6 @@ public abstract class NamespaceImpl
 				getPackageImports().clear();
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
-				return;
-			case UMLPackage.NAMESPACE__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -720,9 +730,6 @@ public abstract class NamespaceImpl
 			case UMLPackage.NAMESPACE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.NAMESPACE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.NAMESPACE__NAME :
 				unsetName();
 				return;
@@ -732,14 +739,14 @@ public abstract class NamespaceImpl
 			case UMLPackage.NAMESPACE__VISIBILITY :
 				unsetVisibility();
 				return;
+			case UMLPackage.NAMESPACE__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.NAMESPACE__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.NAMESPACE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				return;
-			case UMLPackage.NAMESPACE__OWNED_RULE :
-				getOwnedRules().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -762,8 +769,7 @@ public abstract class NamespaceImpl
 			case UMLPackage.NAMESPACE__OWNER :
 				return isSetOwner();
 			case UMLPackage.NAMESPACE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.NAMESPACE__NAME :
 				return isSetName();
 			case UMLPackage.NAMESPACE__NAME_EXPRESSION :
@@ -776,12 +782,12 @@ public abstract class NamespaceImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.NAMESPACE__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.NAMESPACE__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.NAMESPACE__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.NAMESPACE__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.NAMESPACE__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.NAMESPACE__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.NAMESPACE__IMPORTED_MEMBER :
@@ -884,16 +890,16 @@ public abstract class NamespaceImpl
 				return allOwnedElements();
 			case UMLPackage.NAMESPACE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.NAMESPACE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.NAMESPACE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.NAMESPACE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.NAMESPACE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.NAMESPACE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -904,6 +910,8 @@ public abstract class NamespaceImpl
 				return getLabel();
 			case UMLPackage.NAMESPACE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.NAMESPACE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.NAMESPACE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.NAMESPACE___ALL_OWNING_PACKAGES :
@@ -911,14 +919,22 @@ public abstract class NamespaceImpl
 			case UMLPackage.NAMESPACE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.NAMESPACE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.NAMESPACE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.NAMESPACE___SEPARATOR :
 				return separator();
+			case UMLPackage.NAMESPACE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.NAMESPACE___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.NAMESPACE___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.NAMESPACE___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.NAMESPACE___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -933,6 +949,8 @@ public abstract class NamespaceImpl
 				return getImportedElements();
 			case UMLPackage.NAMESPACE___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.NAMESPACE___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.NAMESPACE___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -945,26 +963,9 @@ public abstract class NamespaceImpl
 				return getImportedMembers();
 			case UMLPackage.NAMESPACE___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.NAMESPACE___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedElements()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
-		UMLPackage.NAMESPACE__OWNED_COMMENT,
-		UMLPackage.NAMESPACE__NAME_EXPRESSION,
-		UMLPackage.NAMESPACE__ELEMENT_IMPORT,
-		UMLPackage.NAMESPACE__PACKAGE_IMPORT,
-		UMLPackage.NAMESPACE__OWNED_MEMBER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -988,6 +989,21 @@ public abstract class NamespaceImpl
 	 * @ordered
 	 */
 	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[]{UMLPackage.NAMESPACE__OWNED_RULE};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.NAMESPACE__OWNED_COMMENT,
+		UMLPackage.NAMESPACE__NAME_EXPRESSION,
+		UMLPackage.NAMESPACE__ELEMENT_IMPORT,
+		UMLPackage.NAMESPACE__PACKAGE_IMPORT,
+		UMLPackage.NAMESPACE__OWNED_MEMBER};
 
 	/**
 	 * <!-- begin-user-doc -->

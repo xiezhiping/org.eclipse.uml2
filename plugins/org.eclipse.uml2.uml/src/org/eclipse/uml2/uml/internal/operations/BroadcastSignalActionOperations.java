@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 351774
+ *   Kenn Hussey (CEA) - 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,15 +30,16 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.BroadcastSignalAction#validateNumberOfArguments(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Number Of Arguments</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.BroadcastSignalAction#validateTypeOrderingMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Ordering Multiplicity</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.BroadcastSignalAction#validateNumberAndOrder(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Number And Order</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.BroadcastSignalAction#validateNoOnport(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Onport</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class BroadcastSignalActionOperations
-		extends InvocationActionOperations {
+		extends ActionOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -53,15 +54,15 @@ public class BroadcastSignalActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The number and order of argument pins must be the same as the number and order of attributes in the signal.
-	 * true
+	 * The number of argument InputPins must be the same as the number of attributes in the signal.
+	 * argument->size() = signal.allAttributes()->size()
 	 * @param broadcastSignalAction The receiving '<em><b>Broadcast Signal Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateNumberAndOrder(
+	public static boolean validateNumberOfArguments(
 			BroadcastSignalAction broadcastSignalAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
@@ -74,10 +75,10 @@ public class BroadcastSignalActionOperations
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.BROADCAST_SIGNAL_ACTION__NUMBER_AND_ORDER,
+						UMLValidator.BROADCAST_SIGNAL_ACTION__NUMBER_OF_ARGUMENTS,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNumberAndOrder", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(broadcastSignalAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNumberOfArguments", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(broadcastSignalAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{broadcastSignalAction}));
 			}
 			return false;
@@ -89,8 +90,12 @@ public class BroadcastSignalActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type, ordering, and multiplicity of an argument pin must be the same as the corresponding attribute of the signal.
-	 * true
+	 * The type, ordering, and multiplicity of an argument InputPin must be the same as the corresponding attribute of the signal.
+	 * let attribute: OrderedSet(Property) = signal.allAttributes() in
+	 * Sequence{1..argument->size()}->forAll(i | 
+	 * 	argument->at(i).type.conformsTo(attribute->at(i).type) and 
+	 * 	argument->at(i).isOrdered = attribute->at(i).isOrdered and
+	 * 	argument->at(i).compatibleWith(attribute->at(i)))
 	 * @param broadcastSignalAction The receiving '<em><b>Broadcast Signal Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -114,6 +119,42 @@ public class BroadcastSignalActionOperations
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
 								"_UI_GenericInvariant_diagnostic", new Object[]{"validateTypeOrderingMultiplicity", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(broadcastSignalAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{broadcastSignalAction}));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A BroadcaseSignalAction may not specify onPort.
+	 * onPort=null
+	 * @param broadcastSignalAction The receiving '<em><b>Broadcast Signal Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateNoOnport(
+			BroadcastSignalAction broadcastSignalAction,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.BROADCAST_SIGNAL_ACTION__NO_ONPORT,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoOnport", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(broadcastSignalAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{broadcastSignalAction}));
 			}
 			return false;

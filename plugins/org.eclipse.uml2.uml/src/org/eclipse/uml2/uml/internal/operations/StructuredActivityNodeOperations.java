@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -18,6 +18,10 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.uml2.uml.Action;
+import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -30,9 +34,14 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#validateInputPinEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Pin Edges</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#validateEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Edges</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#containingActivity() <em>Containing Activity</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#validateOutputPinEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Output Pin Edges</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#validateEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Edges</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#validateInputPinEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Pin Edges</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#sourceNodes() <em>Source Nodes</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#targetNodes() <em>Target Nodes</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#allActions() <em>All Actions</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#allOwnedNodes() <em>All Owned Nodes</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,8 +63,26 @@ public class StructuredActivityNodeOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The outgoing edges of the output pins of a StructuredActivityNode must have targets that are not within the StructuredActivityNode.
-	 * true
+	 * The Activity that directly or indirectly contains this StructuredActivityNode (considered as an Action).
+	 * result = (self.Action::containingActivity())
+	 * <p>From package UML::Actions.</p>
+	 * @param structuredActivityNode The receiving '<em><b>Structured Activity Node</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static Activity containingActivity(
+			StructuredActivityNode structuredActivityNode) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The outgoing ActivityEdges of the OutputPins of a StructuredActivityNode must have targets that are not within the StructuredActivityNode.
+	 * output.outgoing.target->excludesAll(allOwnedNodes()-input)
 	 * @param structuredActivityNode The receiving '<em><b>Structured Activity Node</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -90,8 +117,9 @@ public class StructuredActivityNodeOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The edges owned by a structured node must have source and target nodes in the structured node, and vice versa.
-	 * true
+	 * The edges of a StructuredActivityNode are all the ActivityEdges with source and target ActivityNodes contained directly or indirectly within the StructuredActivityNode and at least one of the source or target not contained in any more deeply nested StructuredActivityNode.
+	 * edge=self.sourceNodes().outgoing->intersection(self.allOwnedNodes().incoming)->
+	 * 	union(self.targetNodes().incoming->intersection(self.allOwnedNodes().outgoing))->asSet()
 	 * @param structuredActivityNode The receiving '<em><b>Structured Activity Node</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -126,8 +154,8 @@ public class StructuredActivityNodeOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The incoming edges of the input pins of a StructuredActivityNode must have sources that are not within the StructuredActivityNode.
-	 * true
+	 * The incoming ActivityEdges of an InputPin of a StructuredActivityNode must have sources that are not within the StructuredActivityNode.
+	 * input.incoming.source->excludesAll(allOwnedNodes()-output)
 	 * @param structuredActivityNode The receiving '<em><b>Structured Activity Node</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -156,6 +184,80 @@ public class StructuredActivityNodeOperations
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Return those ActivityNodes contained immediately within the StructuredActivityNode that may act as sources of edges owned by the StructuredActivityNode.
+	 * result = (node->union(input.oclAsType(ActivityNode)->asSet())->
+	 *   union(node->select(oclIsKindOf(Action)).oclAsType(Action).output)->asSet())
+	 * <p>From package UML::Actions.</p>
+	 * @param structuredActivityNode The receiving '<em><b>Structured Activity Node</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static EList<ActivityNode> sourceNodes(
+			StructuredActivityNode structuredActivityNode) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Return those ActivityNodes contained immediately within the StructuredActivityNode that may act as targets of edges owned by the StructuredActivityNode.
+	 * result = (node->union(output.oclAsType(ActivityNode)->asSet())->
+	 *   union(node->select(oclIsKindOf(Action)).oclAsType(Action).input)->asSet())
+	 * <p>From package UML::Actions.</p>
+	 * @param structuredActivityNode The receiving '<em><b>Structured Activity Node</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static EList<ActivityNode> targetNodes(
+			StructuredActivityNode structuredActivityNode) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns this StructuredActivityNode and all Actions contained in it.
+	 * result = (node->select(oclIsKindOf(Action)).oclAsType(Action).allActions()->including(self)->asSet())
+	 * <p>From package UML::Actions.</p>
+	 * @param structuredActivityNode The receiving '<em><b>Structured Activity Node</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static EList<Action> allActions(
+			StructuredActivityNode structuredActivityNode) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns all the ActivityNodes contained directly or indirectly within this StructuredActivityNode, in addition to the Pins of the StructuredActivityNode.
+	 * result = (self.Action::allOwnedNodes()->union(node)->union(node->select(oclIsKindOf(Action)).oclAsType(Action).allOwnedNodes())->asSet())
+	 * <p>From package UML::Actions.</p>
+	 * @param structuredActivityNode The receiving '<em><b>Structured Activity Node</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static EList<ActivityNode> allOwnedNodes(
+			StructuredActivityNode structuredActivityNode) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } // StructuredActivityNodeOperations

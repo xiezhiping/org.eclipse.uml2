@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: ExpressionImpl.java,v 1.23 2008/04/21 16:32:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -35,7 +34,6 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Expression;
 import org.eclipse.uml2.uml.StringExpression;
@@ -275,9 +273,6 @@ public class ExpressionImpl
 			case UMLPackage.EXPRESSION__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.EXPRESSION__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPRESSION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.EXPRESSION__OWNING_TEMPLATE_PARAMETER :
@@ -364,11 +359,6 @@ public class ExpressionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.EXPRESSION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.EXPRESSION__NAME :
 				setName((String) newValue);
 				return;
@@ -412,9 +402,6 @@ public class ExpressionImpl
 				return;
 			case UMLPackage.EXPRESSION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.EXPRESSION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.EXPRESSION__NAME :
 				unsetName();
@@ -461,8 +448,7 @@ public class ExpressionImpl
 			case UMLPackage.EXPRESSION__OWNER :
 				return isSetOwner();
 			case UMLPackage.EXPRESSION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.EXPRESSION__NAME :
 				return isSetName();
 			case UMLPackage.EXPRESSION__NAME_EXPRESSION :

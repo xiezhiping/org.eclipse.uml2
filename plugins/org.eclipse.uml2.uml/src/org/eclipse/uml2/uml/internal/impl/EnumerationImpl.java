@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,15 +7,17 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: EnumerationImpl.java,v 1.28 2009/01/07 15:55:25 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.Map;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -30,28 +32,35 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.GeneralizationSet;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.PackageableElement;
+import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.RedefinableElement;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.Substitution;
 import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.VisibilityKind;
+import org.eclipse.uml2.uml.internal.operations.EnumerationOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -188,6 +197,17 @@ public class EnumerationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateImmutable(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return EnumerationOperations.validateImmutable(this, diagnostics,
+			context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
@@ -196,17 +216,14 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ENUMERATION__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+			case UMLPackage.ENUMERATION__OWNED_RULE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ENUMERATION__ELEMENT_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ENUMERATION__PACKAGE_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ENUMERATION__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ENUMERATION__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
@@ -221,6 +238,9 @@ public class EnumerationImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
+			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -229,9 +249,6 @@ public class EnumerationImpl
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
-			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ENUMERATION__GENERALIZATION :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getGeneralizations())
 					.basicAdd(otherEnd, msgs);
@@ -272,29 +289,26 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ENUMERATION__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ENUMERATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.ENUMERATION__OWNED_RULE :
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.ENUMERATION__ELEMENT_IMPORT :
 				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ENUMERATION__PACKAGE_IMPORT :
 				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ENUMERATION__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.ENUMERATION__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.ENUMERATION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
-				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
 				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.ENUMERATION__COLLABORATION_USE :
 				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
@@ -360,12 +374,12 @@ public class EnumerationImpl
 				return getQualifiedName();
 			case UMLPackage.ENUMERATION__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.ENUMERATION__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.ENUMERATION__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.ENUMERATION__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.ENUMERATION__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.ENUMERATION__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.ENUMERATION__IMPORTED_MEMBER :
@@ -390,12 +404,12 @@ public class EnumerationImpl
 				if (resolve)
 					return getPackage();
 				return basicGetPackage();
+			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
+				return getTemplateBindings();
 			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
-				return getTemplateBindings();
 			case UMLPackage.ENUMERATION__FEATURE :
 				return getFeatures();
 			case UMLPackage.ENUMERATION__ATTRIBUTE :
@@ -455,11 +469,6 @@ public class EnumerationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.ENUMERATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.ENUMERATION__NAME :
 				setName((String) newValue);
 				return;
@@ -468,6 +477,11 @@ public class EnumerationImpl
 				return;
 			case UMLPackage.ENUMERATION__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.ENUMERATION__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.ENUMERATION__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -478,11 +492,6 @@ public class EnumerationImpl
 				getPackageImports().clear();
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
-				return;
-			case UMLPackage.ENUMERATION__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.ENUMERATION__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -496,13 +505,13 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
-			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
-				return;
 			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
+				return;
+			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.ENUMERATION__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -585,9 +594,6 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.ENUMERATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.ENUMERATION__NAME :
 				unsetName();
 				return;
@@ -597,14 +603,14 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__VISIBILITY :
 				unsetVisibility();
 				return;
+			case UMLPackage.ENUMERATION__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.ENUMERATION__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.ENUMERATION__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				return;
-			case UMLPackage.ENUMERATION__OWNED_RULE :
-				getOwnedRules().clear();
 				return;
 			case UMLPackage.ENUMERATION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
@@ -618,11 +624,11 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
 				return;
-			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) null);
-				return;
 			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
+				return;
+			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
 			case UMLPackage.ENUMERATION__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -687,8 +693,7 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.ENUMERATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.ENUMERATION__NAME :
 				return isSetName();
 			case UMLPackage.ENUMERATION__NAME_EXPRESSION :
@@ -701,12 +706,12 @@ public class EnumerationImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ENUMERATION__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.ENUMERATION__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.ENUMERATION__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.ENUMERATION__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.ENUMERATION__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.ENUMERATION__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.ENUMERATION__IMPORTED_MEMBER :
@@ -725,10 +730,10 @@ public class EnumerationImpl
 				return isSetTemplateParameter();
 			case UMLPackage.ENUMERATION__PACKAGE :
 				return basicGetPackage() != null;
-			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
-				return isSetOwnedTemplateSignature();
 			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
 				return templateBindings != null && !templateBindings.isEmpty();
+			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.ENUMERATION__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.ENUMERATION__ATTRIBUTE :
@@ -767,6 +772,294 @@ public class EnumerationImpl
 				return ownedLiterals != null && !ownedLiterals.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments)
+			throws InvocationTargetException {
+		switch (operationID) {
+			case UMLPackage.ENUMERATION___GET_EANNOTATION__STRING :
+				return getEAnnotation((String) arguments.get(0));
+			case UMLPackage.ENUMERATION___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
+				return validateHasOwner((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ENUMERATION___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ENUMERATION___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.ENUMERATION___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.ENUMERATION___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.ENUMERATION___DESTROY :
+				destroy();
+				return null;
+			case UMLPackage.ENUMERATION___GET_KEYWORDS :
+				return getKeywords();
+			case UMLPackage.ENUMERATION___GET_APPLICABLE_STEREOTYPE__STRING :
+				return getApplicableStereotype((String) arguments.get(0));
+			case UMLPackage.ENUMERATION___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
+			case UMLPackage.ENUMERATION___GET_APPLIED_STEREOTYPE__STRING :
+				return getAppliedStereotype((String) arguments.get(0));
+			case UMLPackage.ENUMERATION___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
+			case UMLPackage.ENUMERATION___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
+				return getAppliedSubstereotype((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.ENUMERATION___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.ENUMERATION___GET_MODEL :
+				return getModel();
+			case UMLPackage.ENUMERATION___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
+			case UMLPackage.ENUMERATION___GET_RELATIONSHIPS :
+				return getRelationships();
+			case UMLPackage.ENUMERATION___GET_RELATIONSHIPS__ECLASS :
+				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.ENUMERATION___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.ENUMERATION___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
+			case UMLPackage.ENUMERATION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
+				return getSourceDirectedRelationships();
+			case UMLPackage.ENUMERATION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.ENUMERATION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.ENUMERATION___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
+			case UMLPackage.ENUMERATION___GET_TARGET_DIRECTED_RELATIONSHIPS :
+				return getTargetDirectedRelationships();
+			case UMLPackage.ENUMERATION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.ENUMERATION___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.ENUMERATION___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.ENUMERATION___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.ENUMERATION___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.ENUMERATION___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.ENUMERATION___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.ENUMERATION___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.ENUMERATION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.ENUMERATION___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.ENUMERATION___ALL_OWNED_ELEMENTS :
+				return allOwnedElements();
+			case UMLPackage.ENUMERATION___MUST_BE_OWNED :
+				return mustBeOwned();
+			case UMLPackage.ENUMERATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ENUMERATION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ENUMERATION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ENUMERATION___CREATE_DEPENDENCY__NAMEDELEMENT :
+				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.ENUMERATION___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
+			case UMLPackage.ENUMERATION___GET_LABEL :
+				return getLabel();
+			case UMLPackage.ENUMERATION___GET_LABEL__BOOLEAN :
+				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.ENUMERATION___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.ENUMERATION___ALL_NAMESPACES :
+				return allNamespaces();
+			case UMLPackage.ENUMERATION___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
+			case UMLPackage.ENUMERATION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
+				return isDistinguishableFrom((NamedElement) arguments.get(0),
+					(Namespace) arguments.get(1));
+			case UMLPackage.ENUMERATION___GET_QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.ENUMERATION___SEPARATOR :
+				return separator();
+			case UMLPackage.ENUMERATION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
+			case UMLPackage.ENUMERATION___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
+				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ENUMERATION___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ENUMERATION___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ENUMERATION___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
+				return createElementImport(
+					(PackageableElement) arguments.get(0),
+					(VisibilityKind) arguments.get(1));
+			case UMLPackage.ENUMERATION___CREATE_PACKAGE_IMPORT__PACKAGE_VISIBILITYKIND :
+				return createPackageImport(
+					(org.eclipse.uml2.uml.Package) arguments.get(0),
+					(VisibilityKind) arguments.get(1));
+			case UMLPackage.ENUMERATION___GET_IMPORTED_ELEMENTS :
+				return getImportedElements();
+			case UMLPackage.ENUMERATION___GET_IMPORTED_PACKAGES :
+				return getImportedPackages();
+			case UMLPackage.ENUMERATION___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
+			case UMLPackage.ENUMERATION___EXCLUDE_COLLISIONS__ELIST :
+				return excludeCollisions((EList<PackageableElement>) arguments
+					.get(0));
+			case UMLPackage.ENUMERATION___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
+				return getNamesOfMember((NamedElement) arguments.get(0));
+			case UMLPackage.ENUMERATION___IMPORT_MEMBERS__ELIST :
+				return importMembers((EList<PackageableElement>) arguments
+					.get(0));
+			case UMLPackage.ENUMERATION___GET_IMPORTED_MEMBERS :
+				return getImportedMembers();
+			case UMLPackage.ENUMERATION___MEMBERS_ARE_DISTINGUISHABLE :
+				return membersAreDistinguishable();
+			case UMLPackage.ENUMERATION___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionConsistent(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ENUMERATION___VALIDATE_NON_LEAF_REDEFINITION__DIAGNOSTICCHAIN_MAP :
+				return validateNonLeafRedefinition(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ENUMERATION___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionContextValid(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ENUMERATION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
+				return isConsistentWith((RedefinableElement) arguments.get(0));
+			case UMLPackage.ENUMERATION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
+				return isRedefinitionContextValid((RedefinableElement) arguments
+					.get(0));
+			case UMLPackage.ENUMERATION___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
+				return isCompatibleWith((ParameterableElement) arguments.get(0));
+			case UMLPackage.ENUMERATION___IS_TEMPLATE_PARAMETER :
+				return isTemplateParameter();
+			case UMLPackage.ENUMERATION___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ENUMERATION___CREATE_ASSOCIATION__BOOLEAN_AGGREGATIONKIND_STRING_INT_INT_TYPE_BOOLEAN_AGGREGATIONKIND_STRING_INT_INT :
+				return createAssociation((Boolean) arguments.get(0),
+					(AggregationKind) arguments.get(1),
+					(String) arguments.get(2), (Integer) arguments.get(3),
+					(Integer) arguments.get(4), (Type) arguments.get(5),
+					(Boolean) arguments.get(6),
+					(AggregationKind) arguments.get(7),
+					(String) arguments.get(8), (Integer) arguments.get(9),
+					(Integer) arguments.get(10));
+			case UMLPackage.ENUMERATION___GET_ASSOCIATIONS :
+				return getAssociations();
+			case UMLPackage.ENUMERATION___CONFORMS_TO__TYPE :
+				return conformsTo((Type) arguments.get(0));
+			case UMLPackage.ENUMERATION___IS_TEMPLATE :
+				return isTemplate();
+			case UMLPackage.ENUMERATION___PARAMETERABLE_ELEMENTS :
+				return parameterableElements();
+			case UMLPackage.ENUMERATION___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
+				return validateSpecializeType(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ENUMERATION___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
+				return validateMapsToGeneralizationSet(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ENUMERATION___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
+				return validateNonFinalParents(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ENUMERATION___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
+				return validateNoCyclesInGeneralization(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ENUMERATION___GET_ALL_ATTRIBUTES :
+				return getAllAttributes();
+			case UMLPackage.ENUMERATION___GET_ALL_OPERATIONS :
+				return getAllOperations();
+			case UMLPackage.ENUMERATION___GET_ALL_USED_INTERFACES :
+				return getAllUsedInterfaces();
+			case UMLPackage.ENUMERATION___GET_OPERATION__STRING_ELIST_ELIST :
+				return getOperation((String) arguments.get(0),
+					(EList<String>) arguments.get(1),
+					(EList<Type>) arguments.get(2));
+			case UMLPackage.ENUMERATION___GET_OPERATION__STRING_ELIST_ELIST_BOOLEAN :
+				return getOperation((String) arguments.get(0),
+					(EList<String>) arguments.get(1),
+					(EList<Type>) arguments.get(2), (Boolean) arguments.get(3));
+			case UMLPackage.ENUMERATION___GET_OPERATIONS :
+				return getOperations();
+			case UMLPackage.ENUMERATION___GET_USED_INTERFACES :
+				return getUsedInterfaces();
+			case UMLPackage.ENUMERATION___ALL_FEATURES :
+				return allFeatures();
+			case UMLPackage.ENUMERATION___ALL_PARENTS :
+				return allParents();
+			case UMLPackage.ENUMERATION___GET_GENERALS :
+				return getGenerals();
+			case UMLPackage.ENUMERATION___HAS_VISIBILITY_OF__NAMEDELEMENT :
+				return hasVisibilityOf((NamedElement) arguments.get(0));
+			case UMLPackage.ENUMERATION___INHERIT__ELIST :
+				return inherit((EList<NamedElement>) arguments.get(0));
+			case UMLPackage.ENUMERATION___INHERITABLE_MEMBERS__CLASSIFIER :
+				return inheritableMembers((Classifier) arguments.get(0));
+			case UMLPackage.ENUMERATION___GET_INHERITED_MEMBERS :
+				return getInheritedMembers();
+			case UMLPackage.ENUMERATION___MAY_SPECIALIZE_TYPE__CLASSIFIER :
+				return maySpecializeType((Classifier) arguments.get(0));
+			case UMLPackage.ENUMERATION___PARENTS :
+				return parents();
+			case UMLPackage.ENUMERATION___DIRECTLY_REALIZED_INTERFACES :
+				return directlyRealizedInterfaces();
+			case UMLPackage.ENUMERATION___DIRECTLY_USED_INTERFACES :
+				return directlyUsedInterfaces();
+			case UMLPackage.ENUMERATION___ALL_REALIZED_INTERFACES :
+				return allRealizedInterfaces();
+			case UMLPackage.ENUMERATION___ALL_USED_INTERFACES :
+				return allUsedInterfaces();
+			case UMLPackage.ENUMERATION___IS_SUBSTITUTABLE_FOR__CLASSIFIER :
+				return isSubstitutableFor((Classifier) arguments.get(0));
+			case UMLPackage.ENUMERATION___ALL_ATTRIBUTES :
+				return allAttributes();
+			case UMLPackage.ENUMERATION___ALL_SLOTTABLE_FEATURES :
+				return allSlottableFeatures();
+			case UMLPackage.ENUMERATION___CREATE_OWNED_ATTRIBUTE__STRING_TYPE_INT_INT :
+				return createOwnedAttribute((String) arguments.get(0),
+					(Type) arguments.get(1), (Integer) arguments.get(2),
+					(Integer) arguments.get(3));
+			case UMLPackage.ENUMERATION___CREATE_OWNED_OPERATION__STRING_ELIST_ELIST_TYPE :
+				return createOwnedOperation((String) arguments.get(0),
+					(EList<String>) arguments.get(1),
+					(EList<Type>) arguments.get(2), (Type) arguments.get(3));
+			case UMLPackage.ENUMERATION___VALIDATE_IMMUTABLE__DIAGNOSTICCHAIN_MAP :
+				return validateImmutable((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+		}
+		return eDynamicInvoke(operationID, arguments);
 	}
 
 	/**

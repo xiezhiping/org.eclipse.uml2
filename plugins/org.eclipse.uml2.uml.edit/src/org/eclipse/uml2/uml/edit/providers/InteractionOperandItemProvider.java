@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: InteractionOperandItemProvider.java,v 1.12 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -72,11 +71,11 @@ public class InteractionOperandItemProvider
 			super.getPropertyDescriptors(object);
 
 			addCoveredPropertyDescriptor(object);
-			addEnclosingInteractionPropertyDescriptor(object);
 			addEnclosingOperandPropertyDescriptor(object);
+			addEnclosingInteractionPropertyDescriptor(object);
 			addGeneralOrderingPropertyDescriptor(object);
-			addGuardPropertyDescriptor(object);
 			addFragmentPropertyDescriptor(object);
+			addGuardPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -221,9 +220,9 @@ public class InteractionOperandItemProvider
 			childrenFeatures
 				.add(UMLPackage.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING);
 			childrenFeatures
-				.add(UMLPackage.Literals.INTERACTION_OPERAND__GUARD);
-			childrenFeatures
 				.add(UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT);
+			childrenFeatures
+				.add(UMLPackage.Literals.INTERACTION_OPERAND__GUARD);
 		}
 		return childrenFeatures;
 	}
@@ -289,8 +288,8 @@ public class InteractionOperandItemProvider
 
 		switch (notification.getFeatureID(InteractionOperand.class)) {
 			case UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING :
-			case UMLPackage.INTERACTION_OPERAND__GUARD :
 			case UMLPackage.INTERACTION_OPERAND__FRAGMENT :
+			case UMLPackage.INTERACTION_OPERAND__GUARD :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -315,12 +314,8 @@ public class InteractionOperandItemProvider
 			UMLFactory.eINSTANCE.createGeneralOrdering()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_OPERAND__GUARD,
-			UMLFactory.eINSTANCE.createInteractionConstraint()));
-
-		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
-			UMLFactory.eINSTANCE.createActionExecutionSpecification()));
+			UMLFactory.eINSTANCE.createInteraction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
@@ -332,15 +327,15 @@ public class InteractionOperandItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
-			UMLFactory.eINSTANCE.createInteraction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
 			UMLFactory.eINSTANCE.createInteractionOperand()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
 			UMLFactory.eINSTANCE.createOccurrenceSpecification()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
+			UMLFactory.eINSTANCE.createActionExecutionSpecification()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
@@ -373,6 +368,10 @@ public class InteractionOperandItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
 			UMLFactory.eINSTANCE.createStateInvariant()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_OPERAND__GUARD,
+			UMLFactory.eINSTANCE.createInteractionConstraint()));
 	}
 
 	/**

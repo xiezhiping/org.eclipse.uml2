@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: InteractionConstraintItemProvider.java,v 1.11 2010/09/28 21:00:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -223,6 +222,10 @@ public class InteractionConstraintItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
 			UMLFactory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -231,7 +234,11 @@ public class InteractionConstraintItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
+			UMLFactory.eINSTANCE.createInstanceValue()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
@@ -244,10 +251,6 @@ public class InteractionConstraintItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
 			UMLFactory.eINSTANCE.createDurationInterval()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
-			UMLFactory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
@@ -278,8 +281,8 @@ public class InteractionConstraintItemProvider
 			UMLFactory.eINSTANCE.createTimeInterval()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
-			UMLFactory.eINSTANCE.createTimeExpression()));
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
@@ -291,7 +294,11 @@ public class InteractionConstraintItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
+			UMLFactory.eINSTANCE.createInstanceValue()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
@@ -304,10 +311,6 @@ public class InteractionConstraintItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
 			UMLFactory.eINSTANCE.createDurationInterval()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
-			UMLFactory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
@@ -336,10 +339,6 @@ public class InteractionConstraintItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
 			UMLFactory.eINSTANCE.createTimeInterval()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
-			UMLFactory.eINSTANCE.createTimeExpression()));
 	}
 
 	/**

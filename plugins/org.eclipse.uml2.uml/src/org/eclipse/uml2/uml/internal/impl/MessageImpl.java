@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -42,7 +42,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Connector;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.Message;
@@ -597,10 +596,31 @@ public class MessageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSignatureIsOperation(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return MessageOperations.validateSignatureIsOperation(this,
+	public boolean validateSignatureIsOperationRequest(
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return MessageOperations.validateSignatureIsOperationRequest(this,
 			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSignatureIsOperationReply(
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return MessageOperations.validateSignatureIsOperationReply(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isDistinguishableFrom(NamedElement n, Namespace ns) {
+		return MessageOperations.isDistinguishableFrom(this, n, ns);
 	}
 
 	/**
@@ -659,9 +679,6 @@ public class MessageImpl
 			case UMLPackage.MESSAGE__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.MESSAGE__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.MESSAGE__INTERACTION :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -685,9 +702,6 @@ public class MessageImpl
 			case UMLPackage.MESSAGE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.MESSAGE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.MESSAGE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.MESSAGE__ARGUMENT :
@@ -798,11 +812,6 @@ public class MessageImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.MESSAGE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.MESSAGE__NAME :
 				setName((String) newValue);
 				return;
@@ -852,9 +861,6 @@ public class MessageImpl
 				return;
 			case UMLPackage.MESSAGE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.MESSAGE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.MESSAGE__NAME :
 				unsetName();
@@ -907,8 +913,7 @@ public class MessageImpl
 			case UMLPackage.MESSAGE__OWNER :
 				return isSetOwner();
 			case UMLPackage.MESSAGE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.MESSAGE__NAME :
 				return isSetName();
 			case UMLPackage.MESSAGE__NAME_EXPRESSION :
@@ -1033,16 +1038,16 @@ public class MessageImpl
 				return allOwnedElements();
 			case UMLPackage.MESSAGE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.MESSAGE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MESSAGE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MESSAGE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.MESSAGE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MESSAGE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1053,6 +1058,8 @@ public class MessageImpl
 				return getLabel();
 			case UMLPackage.MESSAGE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.MESSAGE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.MESSAGE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.MESSAGE___ALL_OWNING_PACKAGES :
@@ -1060,26 +1067,14 @@ public class MessageImpl
 			case UMLPackage.MESSAGE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.MESSAGE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.MESSAGE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.MESSAGE___SEPARATOR :
 				return separator();
+			case UMLPackage.MESSAGE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.MESSAGE___VALIDATE_SENDING_RECEIVING_MESSAGE_EVENT__DIAGNOSTICCHAIN_MAP :
 				return validateSendingReceivingMessageEvent(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.MESSAGE___VALIDATE_OCCURRENCE_SPECIFICATIONS__DIAGNOSTICCHAIN_MAP :
-				return validateOccurrenceSpecifications(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.MESSAGE___VALIDATE_SIGNATURE_IS_SIGNAL__DIAGNOSTICCHAIN_MAP :
-				return validateSignatureIsSignal(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.MESSAGE___VALIDATE_SIGNATURE_IS_OPERATION__DIAGNOSTICCHAIN_MAP :
-				return validateSignatureIsOperation(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MESSAGE___VALIDATE_ARGUMENTS__DIAGNOSTICCHAIN_MAP :
@@ -1089,8 +1084,24 @@ public class MessageImpl
 				return validateCannotCrossBoundaries(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.MESSAGE___VALIDATE_SIGNATURE_IS_SIGNAL__DIAGNOSTICCHAIN_MAP :
+				return validateSignatureIsSignal(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.MESSAGE___VALIDATE_OCCURRENCE_SPECIFICATIONS__DIAGNOSTICCHAIN_MAP :
+				return validateOccurrenceSpecifications(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MESSAGE___VALIDATE_SIGNATURE_REFER_TO__DIAGNOSTICCHAIN_MAP :
 				return validateSignatureReferTo(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.MESSAGE___VALIDATE_SIGNATURE_IS_OPERATION_REQUEST__DIAGNOSTICCHAIN_MAP :
+				return validateSignatureIsOperationRequest(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.MESSAGE___VALIDATE_SIGNATURE_IS_OPERATION_REPLY__DIAGNOSTICCHAIN_MAP :
+				return validateSignatureIsOperationReply(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MESSAGE___GET_MESSAGE_KIND :

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -23,9 +23,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A time event can be defined relative to entering the current state of the executing state machine.
- * A time event specifies a point in time. At the specified time, the event occurs.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A TimeEvent is an Event that occurs at a specific point in time.
+ * <p>From package UML::CommonBehavior.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -49,8 +48,8 @@ public interface TimeEvent
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies whether it is relative or absolute time.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Specifies whether the TimeEvent is specified as an absolute or relative time.
+	 * <p>From package UML::CommonBehavior.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Relative</em>' attribute.
 	 * @see #setIsRelative(boolean)
@@ -81,8 +80,8 @@ public interface TimeEvent
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies the corresponding time deadline.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Specifies the time of the TimeEvent.
+	 * <p>From package UML::CommonBehavior.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>When</em>' containment reference.
 	 * @see #setWhen(TimeExpression)
@@ -119,7 +118,7 @@ public interface TimeEvent
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The ValueSpecification when must return a non-negative Integer.
-	 * true
+	 * when.integerValue() >= 0
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -127,21 +126,6 @@ public interface TimeEvent
 	 * @generated
 	 */
 	boolean validateWhenNonNegative(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The starting time for a relative time event may only be omitted for a time event that is the trigger of a state machine.
-	 * true
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateStartingTime(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 } // TimeEvent

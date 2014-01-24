@@ -1,12 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
   <uml:Model xmi:id="_o8I_sGvaEdq4DLWZOhbdEA" name="UML">
     <packageImport xmi:id="__as3cGvaEdq4DLWZOhbdEA">
       <importedPackage xmi:type="uml:Model" href="Ecore.uml#_SeWiQMX_EduPJbEsMYXjUQ"/>
     </packageImport>
     <packageMerge xmi:id="_H2HkkGvbEdq4DLWZOhbdEA">
-      <mergedPackage href="../../org.eclipse.uml2/model/UML.xmi#_0"/>
+      <mergedPackage href="../../org.eclipse.uml2/model/UML.xmi#Actions"/>
     </packageMerge>
+    <packageMerge xmi:id="_BhxfsEaOEeODDe5wyJ95uA">
+      <mergedPackage href="../../org.eclipse.uml2/model/UML.xmi#Activities"/>
+    </packageMerge>
+    <packageMerge xmi:id="_B6wncEaOEeODDe5wyJ95uA">
+      <mergedPackage href="../../org.eclipse.uml2/model/UML.xmi#Classification"/>
+    </packageMerge>
+    <packageMerge xmi:id="_CWvY0EaOEeODDe5wyJ95uA">
+      <mergedPackage href="../../org.eclipse.uml2/model/UML.xmi#CommonBehavior"/>
+    </packageMerge>
+    <packageMerge xmi:id="_C0qq8EaOEeODDe5wyJ95uA">
+      <mergedPackage href="../../org.eclipse.uml2/model/UML.xmi#CommonStructure"/>
+    </packageMerge>
+    <packageMerge xmi:id="_DM6y4EaOEeODDe5wyJ95uA">
+      <mergedPackage href="../../org.eclipse.uml2/model/UML.xmi#Deployments"/>
+    </packageMerge>
+    <packageMerge xmi:id="_HPOxwEaOEeODDe5wyJ95uA">
+      <mergedPackage href="../../org.eclipse.uml2/model/UML.xmi#InformationFlows"/>
+    </packageMerge>
+    <packageMerge xmi:id="_HamUQEaOEeODDe5wyJ95uA">
+      <mergedPackage href="../../org.eclipse.uml2/model/UML.xmi#Interactions"/>
+    </packageMerge>
+    <packageMerge xmi:id="_Hio18EaOEeODDe5wyJ95uA">
+      <mergedPackage href="../../org.eclipse.uml2/model/UML.xmi#Packages"/>
+    </packageMerge>
+    <packageMerge xmi:id="_Hr9xEEaOEeODDe5wyJ95uA">
+      <mergedPackage href="../../org.eclipse.uml2/model/UML.xmi#SimpleClassifiers"/>
+    </packageMerge>
+    <packageMerge xmi:id="_H1ncUEaOEeODDe5wyJ95uA">
+      <mergedPackage href="../../org.eclipse.uml2/model/UML.xmi#StateMachines"/>
+    </packageMerge>
+    <packageMerge xmi:id="_H9qlEEaOEeODDe5wyJ95uA">
+      <mergedPackage href="../../org.eclipse.uml2/model/UML.xmi#StructuredClassifiers"/>
+    </packageMerge>
+    <packageMerge xmi:id="_IIgjIEaOEeODDe5wyJ95uA">
+      <mergedPackage href="../../org.eclipse.uml2/model/UML.xmi#UseCases"/>
+    </packageMerge>
+    <packageMerge xmi:id="_IRZZYEaOEeODDe5wyJ95uA">
+      <mergedPackage href="../../org.eclipse.uml2/model/UML.xmi#Values"/>
+    </packageMerge>
+    <packagedElement xmi:type="uml:Association" xmi:id="_epbu4EzPEeO2z-YY6ENIIA" name="A_clientDependency_client" memberEnd="_lGLv4EzPEeO2z-YY6ENIIA _sD4acEzSEeO2z-YY6ENIIA">
+      <ownedEnd xmi:id="_lGLv4EzPEeO2z-YY6ENIIA" visibility="private" type="_rEDGkGwKEdq7X4sGURiZYA" association="_epbu4EzPEeO2z-YY6ENIIA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHS38EzVEeO2z-YY6ENIIA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rQyQ8EzPEeO2z-YY6ENIIA" value="*"/>
+      </ownedEnd>
+    </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_81UZgPnhEdunWsS3se92JQ" name="A_end_role" memberEnd="_81UZgfnhEdunWsS3se92JQ _81UZhPnhEdunWsS3se92JQ">
       <ownedEnd xmi:id="_81UZhPnhEdunWsS3se92JQ" name="end" visibility="private" type="_aOgw0GveEdq4DLWZOhbdEA" association="_81UZgPnhEdunWsS3se92JQ">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_81UZhfnhEdunWsS3se92JQ"/>
@@ -71,12 +116,21 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mZSowAs-EeGcpbeCPJfCmw" value="*"/>
       </ownedAttribute>
     </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_9d3z0EzMEeO2z-YY6ENIIA" name="ActivityContent" isAbstract="true">
+      <ownedOperation xmi:id="_HACtoEzNEeO2z-YY6ENIIA" name="containingActivity">
+        <ownedParameter xmi:id="_M8qdEEzNEeO2z-YY6ENIIA" name="containingActivity" type="_eGtFwLLREeCsYvaJqFFivQ" direction="return" effect="read">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PtJnsEzNEeO2z-YY6ENIIA"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_aZICgAs-EeGcpbeCPJfCmw" name="ActivityGroup" isAbstract="true">
+      <generalization xmi:id="_jVRd0EzNEeO2z-YY6ENIIA" general="_9d3z0EzMEeO2z-YY6ENIIA"/>
       <ownedAttribute xmi:id="_5V2SAAtBEeGcpbeCPJfCmw" name="inActivity" visibility="protected" type="_eGtFwLLREeCsYvaJqFFivQ" subsettedProperty="_N3hRMAtAEeGcpbeCPJfCmw" association="_DwV68AtCEeGcpbeCPJfCmw">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7Ul2oAtBEeGcpbeCPJfCmw"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_WpiyYAs-EeGcpbeCPJfCmw" name="ActivityNode" isAbstract="true">
+      <generalization xmi:id="_ns0s4EzNEeO2z-YY6ENIIA" general="_9d3z0EzMEeO2z-YY6ENIIA"/>
       <ownedAttribute xmi:id="_X0ZfIAtCEeGcpbeCPJfCmw" name="activity" visibility="protected" type="_eGtFwLLREeCsYvaJqFFivQ" subsettedProperty="_N3hRMAtAEeGcpbeCPJfCmw" association="_RFCrMAtCEeGcpbeCPJfCmw">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dnzBIAtCEeGcpbeCPJfCmw"/>
       </ownedAttribute>
@@ -585,7 +639,11 @@
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_rEDGkGwKEdq7X4sGURiZYA" name="Dependency"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_rEDGkGwKEdq7X4sGURiZYA" name="Dependency">
+      <ownedAttribute xmi:id="_sD4acEzSEeO2z-YY6ENIIA" name="client" type="_csVgUGvtEdqG6fBIPwe-mw" association="_epbu4EzPEeO2z-YY6ENIIA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xOlkwEzSEeO2z-YY6ENIIA" value="*"/>
+      </ownedAttribute>
+    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_W2CnILG2EeCDe8CO90iVKQ" name="DeploymentSpecification">
       <ownedAttribute xmi:id="_at8FwLG2EeCDe8CO90iVKQ" name="deploymentLocation">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -1051,7 +1109,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_HiSd0LL2EeCBifIhhuFqZA" name="EncapsulatedClassifier" isAbstract="true">
       <ownedOperation xmi:id="_O9x_ALL2EeCBifIhhuFqZA" name="ownedPort" visibility="protected">
-        <ownedParameter xmi:id="_PyQI4LL2EeCBifIhhuFqZA" name="result" type="_ZAuvEGveEdq4DLWZOhbdEA" direction="return">
+        <ownedParameter xmi:id="_PyQI4LL2EeCBifIhhuFqZA" name="result" type="_ZAuvEGveEdq4DLWZOhbdEA" isOrdered="true" direction="return">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TkjV0LL2EeCBifIhhuFqZA"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PyQv8LL2EeCBifIhhuFqZA" value="*"/>
         </ownedParameter>
@@ -1261,6 +1319,9 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_gfgNwGveEdq4DLWZOhbdEA" name="Message">
+      <ownedAttribute xmi:id="__1Qw8IROEeOnobsWSpJONg" name="messageKind" type="_Y_jskGvtEdqG6fBIPwe-mw" isReadOnly="true" isDerived="true">
+        <defaultValue xmi:type="uml:InstanceValue" xmi:id="_sAUKUIRPEeOnobsWSpJONg" instance="_VJVLgIRPEeOnobsWSpJONg"/>
+      </ownedAttribute>
       <ownedOperation xmi:id="_8U6CAFYfEdqB6vblk3tuMA" name="messageKind" visibility="protected" isQuery="true">
         <ownedParameter xmi:id="_-_OTMFYfEdqB6vblk3tuMA" name="result" type="_Y_jskGvtEdqG6fBIPwe-mw" direction="return"/>
       </ownedOperation>
@@ -1280,6 +1341,14 @@
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_Gjgl0GveEdq4DLWZOhbdEA" name="MultiplicityElement" isAbstract="true">
+      <ownedAttribute xmi:id="_5i6zsIRPEeOnobsWSpJONg" name="lower" isDerived="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_VRJOQIRQEeOnobsWSpJONg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_ZQJacIRQEeOnobsWSpJONg" name="upper" isDerived="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+        <defaultValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ffIFMIRQEeOnobsWSpJONg" value="1"/>
+      </ownedAttribute>
       <ownedOperation xmi:id="_Y8IpELL3EeCBifIhhuFqZA" name="lower" visibility="protected" isQuery="true">
         <ownedParameter xmi:id="_Y8IpEbL3EeCBifIhhuFqZA" name="result" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
@@ -1311,6 +1380,10 @@
       </ownedAttribute>
       <ownedAttribute xmi:id="_PfdtELG0EeCDe8CO90iVKQ" name="visibility" type="_AyM_oGwMEdq7X4sGURiZYA">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SGKpkLG0EeCDe8CO90iVKQ"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_A9YUsIUBEeOxOrTbpQATOA" name="clientDependency" type="_rEDGkGwKEdq7X4sGURiZYA" isReadOnly="true" isDerived="true">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JoVSoIUBEeOxOrTbpQATOA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KB3M8IUBEeOxOrTbpQATOA" value="*"/>
       </ownedAttribute>
       <ownedOperation xmi:id="_o2CW4GwKEdq7X4sGURiZYA" name="createDependency">
         <ownedComment xmi:id="_kZ5L8OwgEdqYHf-imTcTdw" annotatedElement="_o2CW4GwKEdq7X4sGURiZYA">
@@ -1369,6 +1442,12 @@
         <ownedParameter xmi:id="_BRx3ILL4EeCBifIhhuFqZA" name="result" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BRyeMLL4EeCBifIhhuFqZA"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_uR4xEIRfEeOrzvVsV3Q4sA" name="clientDependency" visibility="protected" isQuery="true">
+        <ownedParameter xmi:id="_uR4xE4RfEeOrzvVsV3Q4sA" name="result" type="_rEDGkGwKEdq7X4sGURiZYA" direction="return">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_uR4xFIRfEeOrzvVsV3Q4sA"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_uR4xFYRfEeOrzvVsV3Q4sA" value="*"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
@@ -1580,6 +1659,18 @@
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_M4X2IGveEdq4DLWZOhbdEA" name="Operation">
+      <ownedAttribute xmi:id="_msu7YIRQEeOnobsWSpJONg" name="isUnique" isReadOnly="true" isDerived="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_yW41YIRQEeOnobsWSpJONg" value="true"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2DzzEIRQEeOnobsWSpJONg" name="lower" isReadOnly="true" isDerived="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_2DzzEYRQEeOnobsWSpJONg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2DzzEoRQEeOnobsWSpJONg" name="upper" isReadOnly="true" isDerived="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+        <defaultValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2DzzE4RQEeOnobsWSpJONg" value="1"/>
+      </ownedAttribute>
       <ownedOperation xmi:id="_HxDswKOyEdqi_5gqUMOQtA" name="getReturnResult">
         <ownedComment xmi:id="_tVUrUOwfEdqYHf-imTcTdw" annotatedElement="_HxDswKOyEdqi_5gqUMOQtA">
           <body>Retrieves the (only) return result parameter for this operation.</body>
@@ -2146,7 +2237,7 @@
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_Jp_1oGveEdq4DLWZOhbdEA" name="Property">
-      <ownedAttribute xmi:id="_L_JWELG2EeCDe8CO90iVKQ" name="default" isDerived="true">
+      <ownedAttribute xmi:id="_L_JWELG2EeCDe8CO90iVKQ" name="default" visibility="protected" isDerived="true">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L_JWEbG2EeCDe8CO90iVKQ"/>
       </ownedAttribute>
@@ -2159,7 +2250,10 @@
       <ownedAttribute xmi:id="_68HLsLa_EeCRxrN1JUGuxA" name="interface" type="_8Ugn8GvtEdqG6fBIPwe-mw" subsettedProperty="_YUdlwLbAEeCRxrN1JUGuxA _zYrE4La-EeCRxrN1JUGuxA">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HTMdILbAEeCRxrN1JUGuxA"/>
       </ownedAttribute>
-      <ownedOperation xmi:id="_oLamMFYJEdqrn7iZ0eqieg" name="default" visibility="protected" isQuery="true">
+      <ownedOperation xmi:id="_oLamMFYJEdqrn7iZ0eqieg" name="getDefault" isQuery="true">
+        <ownedComment xmi:id="_KsK3QIPaEeOyLuI0bir0Bg" annotatedElement="_oLamMFYJEdqrn7iZ0eqieg">
+          <body>Retrieves a string representation of the default value for this property.</body>
+        </ownedComment>
         <ownedParameter xmi:id="_vkrSwFYJEdqrn7iZ0eqieg" name="result" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_uJsjsFYjEdqB6vblk3tuMA"/>
@@ -2196,8 +2290,14 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
         </ownedParameter>
       </ownedOperation>
-      <ownedOperation xmi:id="_vbp60FYjEdqB6vblk3tuMA" name="setDefault" visibility="protected">
-        <ownedParameter xmi:id="_xXxpQFYjEdqB6vblk3tuMA" name="newDefault" visibility="protected" effect="read">
+      <ownedOperation xmi:id="_vbp60FYjEdqB6vblk3tuMA" name="setDefault">
+        <ownedComment xmi:id="_TusAoIPaEeOyLuI0bir0Bg" annotatedElement="_vbp60FYjEdqB6vblk3tuMA">
+          <body>Sets the default value for this property based on the specified string representation.</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_xXxpQFYjEdqB6vblk3tuMA" name="newDefault" effect="read">
+          <ownedComment xmi:id="_LSln8IPjEeOMsq-_jJoljg" annotatedElement="_xXxpQFYjEdqB6vblk3tuMA">
+            <body>A string repesentation of the new default value.</body>
+          </ownedComment>
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedParameter>
       </ownedOperation>
@@ -2328,6 +2428,12 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
         </ownedParameter>
       </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_AjbzoIRREeOnobsWSpJONg" name="State">
+      <ownedAttribute xmi:id="_ECR5EIRREeOnobsWSpJONg" name="isSimple" isReadOnly="true" isDerived="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_Q8o2sIRREeOnobsWSpJONg" value="true"/>
+      </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_A7vDAGv0Edq7X4sGURiZYA" name="Stereotype">
       <ownedOperation xmi:id="_FJce8GwHEdq7X4sGURiZYA" name="createExtension">
@@ -2595,8 +2701,62 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Enumeration" xmi:id="_B3q9cGwNEdq7X4sGURiZYA" name="AggregationKind" visibility="private"/>
     <packagedElement xmi:type="uml:Enumeration" xmi:id="_echygLLWEeCsYvaJqFFivQ" name="ConnectorKind" visibility="private"/>
-    <packagedElement xmi:type="uml:Enumeration" xmi:id="_Y_jskGvtEdqG6fBIPwe-mw" name="MessageKind" visibility="private"/>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_Y_jskGvtEdqG6fBIPwe-mw" name="MessageKind" visibility="private">
+      <ownedLiteral xmi:id="_VJVLgIRPEeOnobsWSpJONg" name="unknown"/>
+    </packagedElement>
     <packagedElement xmi:type="uml:Enumeration" xmi:id="_oNLHgLG1EeCDe8CO90iVKQ" name="ParameterEffectKind" visibility="private"/>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_WTCRYC-TEeO5Ur9hrpFPZA" name="PseudostateKind" visibility="private">
+      <ownedLiteral xmi:id="_WTCRYi-TEeO5Ur9hrpFPZA" name="initial">
+        <ownedComment xmi:id="_WTCRYy-TEeO5Ur9hrpFPZA" annotatedElement="_WTCRYi-TEeO5Ur9hrpFPZA">
+          <body>An initial pseudostate represents a default vertex that is the source for a single transition to the default state of a composite state. There can be at most one initial vertex in a region. The outgoing transition from the initial vertex may have a behavior, but not a trigger or guard.</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_WTCRZC-TEeO5Ur9hrpFPZA" name="deepHistory">
+        <ownedComment xmi:id="_WTCRZS-TEeO5Ur9hrpFPZA" annotatedElement="_WTCRZC-TEeO5Ur9hrpFPZA">
+          <body>DeepHistory represents the most recent active configuration of the composite state that directly contains this pseudostate; e.g. the state configuration that was active when the composite state was last exited. A composite state can have at most one deep history vertex. At most one transition may originate from the history connector to the default deep history state. This transition is taken in case the composite state had never been active before. Entry actions of states entered on the path to the state represented by a deep history are performed.</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_WTCRZi-TEeO5Ur9hrpFPZA" name="shallowHistory">
+        <ownedComment xmi:id="_WTCRZy-TEeO5Ur9hrpFPZA" annotatedElement="_WTCRZi-TEeO5Ur9hrpFPZA">
+          <body>ShallowHistory represents the most recent active substate of its containing state (but not the substates of that substate). A composite state can have at most one shallow history vertex. A transition coming into the shallow history vertex is equivalent to a transition coming into the most recent active substate of a state. At most one transition may originate from the history connector to the default shallow history state. This transition is taken in case the composite state had never been active before. Entry actions of states entered on the path to the state represented by a shallow history are performed.</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_WTCRaC-TEeO5Ur9hrpFPZA" name="join">
+        <ownedComment xmi:id="_WTCRaS-TEeO5Ur9hrpFPZA" annotatedElement="_WTCRaC-TEeO5Ur9hrpFPZA">
+          <body>Join vertices serve to merge several transitions emanating from source vertices in different orthogonal regions. The transitions entering a join vertex cannot have guards or triggers.</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_WTCRai-TEeO5Ur9hrpFPZA" name="fork">
+        <ownedComment xmi:id="_WTCRay-TEeO5Ur9hrpFPZA" annotatedElement="_WTCRai-TEeO5Ur9hrpFPZA">
+          <body>Fork vertices serve to split an incoming transition into two or more transitions terminating on orthogonal target vertices (i.e. vertices in different regions of a composite state). The segments outgoing from a fork vertex must not have guards or triggers.</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_WTCRbC-TEeO5Ur9hrpFPZA" name="junction">
+        <ownedComment xmi:id="_WTCRbS-TEeO5Ur9hrpFPZA" annotatedElement="_WTCRbC-TEeO5Ur9hrpFPZA">
+          <body>Junction vertices are semantic-free vertices that are used to chain together multiple transitions. They are used to construct compound transition paths between states. For example, a junction can be used to converge multiple incoming transitions into a single outgoing transition representing a shared transition path (this is known as an merge). Conversely, they can be used to split an incoming transition into multiple outgoing transition segments with different guard conditions. This realizes a static conditional branch. (In the latter case, outgoing transitions whose guard conditions evaluate to false are disabled. A predefined guard denoted 'else' may be defined for at most one outgoing transition. This transition is enabled if all the guards labeling the other transitions are false.) Static conditional branches are distinct from dynamic conditional branches that are realized by choice vertices (described below).</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_WTCRbi-TEeO5Ur9hrpFPZA" name="choice">
+        <ownedComment xmi:id="_WTCRby-TEeO5Ur9hrpFPZA" annotatedElement="_WTCRbi-TEeO5Ur9hrpFPZA">
+          <body>Choice vertices which, when reached, result in the dynamic evaluation of the guards of the triggers of its outgoing transitions. This realizes a dynamic conditional branch. It allows splitting of transitions into multiple outgoing paths such that the decision on which path to take may be a function of the results of prior actions performed in the same run-tocompletion step. If more than one of the guards evaluates to true, an arbitrary one is selected. If none of the guards evaluates to true, then the model is considered ill-formed. (To avoid this, it is recommended to define one outgoing transition with the predefined else guard for every choice vertex.) Choice vertices should be distinguished from static branch points that are based on junction points (described above).</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_WTCRcC-TEeO5Ur9hrpFPZA" name="entryPoint">
+        <ownedComment xmi:id="_WTCRcS-TEeO5Ur9hrpFPZA" annotatedElement="_WTCRcC-TEeO5Ur9hrpFPZA">
+          <body>An entry point pseudostate is an entry point of a state machine or composite state. In each region of the state machine or composite state it has a single transition to a vertex within the same region.</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_WTCRci-TEeO5Ur9hrpFPZA" name="exitPoint">
+        <ownedComment xmi:id="_WTCRcy-TEeO5Ur9hrpFPZA" annotatedElement="_WTCRci-TEeO5Ur9hrpFPZA">
+          <body>An exit point pseudostate is an exit point of a state machine or composite state. Entering an exit point within any region of the composite state or state machine referenced by a submachine state implies the exit of this composite state or submachine state and the triggering of the transition that has this exit point as source in the state machine enclosing the submachine or composite state.</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_WTCRdC-TEeO5Ur9hrpFPZA" name="terminate">
+        <ownedComment xmi:id="_WTCRdS-TEeO5Ur9hrpFPZA" annotatedElement="_WTCRdC-TEeO5Ur9hrpFPZA">
+          <body>Entering a terminate pseudostate implies that the execution of this state machine by means of its context object is terminated. The state machine does not exit any states nor does it perform any exit actions other than those associated with the transition leading to the terminate pseudostate. Entering a terminate pseudostate is equivalent to invoking a DestroyObjectAction.</body>
+        </ownedComment>
+      </ownedLiteral>
+    </packagedElement>
     <packagedElement xmi:type="uml:Enumeration" xmi:id="_AyM_oGwMEdq7X4sGURiZYA" name="VisibilityKind" visibility="private"/>
     <profileApplication xmi:id="_0TBYYGvaEdq4DLWZOhbdEA">
       <eAnnotations xmi:id="_0TBYYWvaEdq4DLWZOhbdEA" source="http://www.eclipse.org/uml2/2.0.0/UML">
@@ -2622,12 +2782,10 @@
   <Ecore:EOperation xmi:id="_n89b0Mb7EdyrC427ygySag" base_Operation="_aXS3gGWKEdq-f4093SZhVA" visibility="None"/>
   <Ecore:EOperation xmi:id="_poGH8Mb7EdyrC427ygySag" base_Operation="_qtCaIFYkEdqB6vblk3tuMA" visibility="None"/>
   <Ecore:EOperation xmi:id="_q6DfEMb7EdyrC427ygySag" base_Operation="_vlEgEFYkEdqB6vblk3tuMA" visibility="None"/>
-  <Ecore:EOperation xmi:id="_sq2uUMb7EdyrC427ygySag" base_Operation="_oLamMFYJEdqrn7iZ0eqieg" operationName="getDefault" visibility="None"/>
-  <Ecore:EOperation xmi:id="_uRhxMMb7EdyrC427ygySag" base_Operation="_f-9wMGXCEdqEJs8umHJc9g" visibility="None"/>
-  <Ecore:EOperation xmi:id="_vxMNIMb7EdyrC427ygySag" base_Operation="_vbp60FYjEdqB6vblk3tuMA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_uRhxMMb7EdyrC427ygySag" visibility="None"/>
   <Ecore:EOperation xmi:id="_wtF0sMb7EdyrC427ygySag" base_Operation="_d8dDkFYkEdqB6vblk3tuMA" visibility="None"/>
   <Ecore:EOperation xmi:id="_xr-e0Mb7EdyrC427ygySag" base_Operation="_sJdfYFYlEdqB6vblk3tuMA" visibility="None"/>
-  <Ecore:EOperation xmi:id="_1ce8AMb7EdyrC427ygySag" base_Operation="_kGtosGXCEdqEJs8umHJc9g" visibility="None"/>
+  <Ecore:EOperation xmi:id="_1ce8AMb7EdyrC427ygySag" visibility="None"/>
   <Ecore:EOperation xmi:id="_ADORMMb8EdyrC427ygySag" base_Operation="_ho5pgFYLEdqrn7iZ0eqieg" operationName="getLower" visibility="None"/>
   <Ecore:EOperation xmi:id="_Bqyr8Mb8EdyrC427ygySag" base_Operation="_ljsEEFYLEdqrn7iZ0eqieg" operationName="getUpper" visibility="None"/>
   <Ecore:EOperation xmi:id="_M8TccMb8EdyrC427ygySag" base_Operation="_QUJ-oWWKEdq-f4093SZhVA" visibility="None"/>
@@ -2649,7 +2807,7 @@
   <Ecore:EAttribute xmi:id="_HIUmgLG1EeCDe8CO90iVKQ" isUnsettable="true" base_Property="_D0kWwLG1EeCDe8CO90iVKQ"/>
   <Ecore:EAttribute xmi:id="_ez3OwLG1EeCDe8CO90iVKQ" isUnsettable="true" base_Property="_ZSw9sLG1EeCDe8CO90iVKQ"/>
   <Ecore:EAttribute xmi:id="_7MAJALG1EeCDe8CO90iVKQ" isUnsettable="true" base_Property="_rkJDULG1EeCDe8CO90iVKQ"/>
-  <Ecore:EAttribute xmi:id="_Nqs48LG2EeCDe8CO90iVKQ" isUnsettable="true" base_Property="_L_JWELG2EeCDe8CO90iVKQ"/>
+  <Ecore:EAttribute xmi:id="_Nqs48LG2EeCDe8CO90iVKQ" isUnsettable="true"/>
   <Ecore:EAttribute xmi:id="_gB_ZULG2EeCDe8CO90iVKQ" isUnsettable="true" base_Property="_at8FwLG2EeCDe8CO90iVKQ"/>
   <Ecore:EAttribute xmi:id="_oqhVYLG2EeCDe8CO90iVKQ" isUnsettable="true" base_Property="_lncl8LG2EeCDe8CO90iVKQ"/>
   <Ecore:EAttribute xmi:id="_15YjYLG2EeCDe8CO90iVKQ" isUnsettable="true" base_Property="_wvc1ILG2EeCDe8CO90iVKQ"/>
@@ -2702,4 +2860,9 @@
   <Ecore:EReference xmi:id="_4FNjYBCNEeG9F6n8Twp9jA" xmlFeatureKind="Attribute" base_Property="_PCvjoAs_EeGcpbeCPJfCmw">
     <annotation>http://www.eclipse.org/emf/CDO persistent='true' filter='ownedGroup'</annotation>
   </Ecore:EReference>
+  <Ecore:EAttribute xmi:id="_oHuy0IPZEeOyLuI0bir0Bg" isTransient="true" isVolatile="true" isUnsettable="true" visibility="None" base_Property="_L_JWELG2EeCDe8CO90iVKQ"/>
+  <Ecore:EOperation xmi:id="_64Y1cIPZEeOyLuI0bir0Bg" base_Operation="_f-9wMGXCEdqEJs8umHJc9g" visibility="None"/>
+  <Ecore:EOperation xmi:id="_GwdPoIPaEeOyLuI0bir0Bg" base_Operation="_kGtosGXCEdqEJs8umHJc9g" visibility="None"/>
+  <Ecore:EOperation xmi:id="_oiwrEIRfEeOrzvVsV3Q4sA" operationName="getQualifiedName"/>
+  <Ecore:EOperation xmi:id="_6p4ogIRfEeOrzvVsV3Q4sA" base_Operation="_uR4xEIRfEeOrzvVsV3Q4sA" operationName="getClientDependencies" visibility="None"/>
 </xmi:XMI>

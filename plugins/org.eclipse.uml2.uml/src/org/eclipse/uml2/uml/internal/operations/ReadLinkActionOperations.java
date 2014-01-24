@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -18,6 +18,8 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.ReadLinkAction;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -31,10 +33,11 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateTypeAndOrdering(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type And Ordering</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateOneOpenEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Open End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateCompatibleMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Compatible Multiplicity</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateNavigableOpenEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Navigable Open End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateVisibility(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateOneOpenEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Open End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateNavigableOpenEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Navigable Open End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#openEnd() <em>Open End</em>}</li>
  * </ul>
  * </p>
  *
@@ -56,8 +59,8 @@ public class ReadLinkActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Exactly one link-end data specification (the 'open' end) must not have an end object input pin.
-	 * self.endData->select(ed | ed.value->size() = 0)->size() = 1
+	 * Exactly one linkEndData specification (corresponding to the "open" end) must not have an value InputPin.
+	 * self.openEnd()->size() = 1
 	 * @param readLinkAction The receiving '<em><b>Read Link Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -91,10 +94,8 @@ public class ReadLinkActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type and ordering of the result output pin are same as the type and ordering of the open association end.
-	 * let openend : Property = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
-	 * self.result.type = openend.type
-	 * and self.result.ordering = openend.ordering
+	 * The type and ordering of the result OutputPin are same as the type and ordering of the open Association end.
+	 * self.openEnd()->forAll(type=result.type and isOrdered=result.isOrdered)
 	 * 
 	 * @param readLinkAction The receiving '<em><b>Read Link Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -130,9 +131,8 @@ public class ReadLinkActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the open association end must be compatible with the multiplicity of the result output pin.
-	 * let openend : Property = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
-	 * openend.multiplicity.compatibleWith(self.result.multiplicity)
+	 * The multiplicity of the open Association end must be compatible with the multiplicity of the result OutputPin.
+	 * self.openEnd()->first().compatibleWith(result)
 	 * 
 	 * @param readLinkAction The receiving '<em><b>Read Link Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -169,8 +169,7 @@ public class ReadLinkActionOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The open end must be navigable.
-	 * let openend : Property = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
-	 * openend.isNavigable()
+	 * self.openEnd()->first().isNavigable()
 	 * 
 	 * @param readLinkAction The receiving '<em><b>Read Link Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -206,14 +205,31 @@ public class ReadLinkActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Visibility of the open end must allow access to the object performing the action.
-	 * let host : Classifier = self.context in
-	 * let openend : Property = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
-	 * openend.visibility = #public
-	 * or self.endData->exists(oed | not oed.end = openend
-	 * and (host = oed.end.participant
-	 * or (openend.visibility = #protected
-	 * and host.allSupertypes->includes(oed.end.participant))))
+	 * Returns the ends corresponding to endData with no value InputPin. (A well-formed ReadLinkAction is constrained to have only one of these.)
+	 * result = (endData->select(value=null).end->asOrderedSet())
+	 * <p>From package UML::Actions.</p>
+	 * @param readLinkAction The receiving '<em><b>Read Link Action</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static EList<Property> openEnd(ReadLinkAction readLinkAction) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Visibility of the open end must allow access from the object performing the action.
+	 * let openEnd : Property = self.openEnd()->first() in
+	 *   openEnd.visibility = VisibilityKind::public or 
+	 *   endData->exists(oed | 
+	 *     oed.end<>openEnd and 
+	 *     (_'context' = oed.end.type or 
+	 *       (openEnd.visibility = VisibilityKind::protected and 
+	 *         _'context'.conformsTo(oed.end.type.oclAsType(Classifier)))))
 	 * 
 	 * @param readLinkAction The receiving '<em><b>Read Link Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.

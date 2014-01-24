@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -27,8 +27,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An information flow specifies that one or more information items circulates from its sources to its targets. Information flows require some kind of information channel for transmitting information items from the source to the destination. An information channel is represented in various ways depending on the nature of its sources and targets. It may be represented by connectors, links, associations, or even dependencies. For example, if the source and destination are parts in some composite structure such as a collaboration, then the information channel is likely to be represented by a connector between them. Or, if the source and target are objects (which are a kind of instance specification), they may be represented by a link that joins the two, and so on.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * InformationFlows describe circulation of information through a system in a general manner. They do not specify the nature of the information, mechanisms by which it is conveyed, sequences of exchange or any control conditions. During more detailed modeling, representation and realization links may be added to specify which model elements implement an InformationFlow and to show how information is conveyed.  InformationFlows require some kind of “information channel” for unidirectional transmission of information items from sources to targets.  They specify the information channel’s realizations, if any, and identify the information that flows along them.  Information moving along the information channel may be represented by abstract InformationItems and by concrete Classifiers.
+ * <p>From package UML::InformationFlows.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -57,8 +57,8 @@ public interface InformationFlow
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Determines which Relationship will realize the specified flow
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Determines which Relationship will realize the specified flow.
+	 * <p>From package UML::InformationFlows.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Realization</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInformationFlow_Realization()
@@ -74,7 +74,7 @@ public interface InformationFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the information items that may circulate on this information flow.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::InformationFlows.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Conveyed</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInformationFlow_Conveyed()
@@ -120,7 +120,7 @@ public interface InformationFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Defines from which source the conveyed InformationItems are initiated.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::InformationFlows.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Information Source</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInformationFlow_InformationSource()
@@ -167,7 +167,7 @@ public interface InformationFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Defines to which target the conveyed InformationItems are directed.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::InformationFlows.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Information Target</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInformationFlow_InformationTarget()
@@ -208,7 +208,7 @@ public interface InformationFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Determines which ActivityEdges will realize the specified flow.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::InformationFlows.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Realizing Activity Edge</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInformationFlow_RealizingActivityEdge()
@@ -249,7 +249,7 @@ public interface InformationFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Determines which Connectors will realize the specified flow.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::InformationFlows.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Realizing Connector</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInformationFlow_RealizingConnector()
@@ -288,7 +288,7 @@ public interface InformationFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Determines which Messages will realize the specified flow.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::InformationFlows.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Realizing Message</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInformationFlow_RealizingMessage()
@@ -324,17 +324,21 @@ public interface InformationFlow
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The sources and targets of the information flow can only be one of the following kind: Actor, Node, UseCase, Artifact, Class, Component, Port, Property, Interface, Package, ActivityNode, ActivityPartition and InstanceSpecification except when its classifier is a relationship (i.e. it represents a link).
-	 * (self.informationSource->forAll(p | p->oclIsKindOf(Actor) or oclIsKindOf(Node) or
-	 *   oclIsKindOf(UseCase) or oclIsKindOf(Artifact) or oclIsKindOf(Class) or
-	 *   oclIsKindOf(Component) or oclIsKindOf(Port) or oclIsKindOf(Property) or
-	 *   oclIsKindOf(Interface) or oclIsKindOf(Package) or oclIsKindOf(ActivityNode) or
-	 *   oclIsKindOf(ActivityPartition) or oclIsKindOf(InstanceSpecification))) and
-	 *     (self.informationTarget->forAll(p | p->oclIsKindOf(Actor) or oclIsKindOf(Node) or
-	 *       oclIsKindOf(UseCase) or oclIsKindOf(Artifact) or oclIsKindOf(Class) or
-	 *       oclIsKindOf(Component) or oclIsKindOf(Port) or oclIsKindOf(Property) or
-	 *       oclIsKindOf(Interface) or oclIsKindOf(Package) or oclIsKindOf(ActivityNode) or
-	 *       oclIsKindOf(ActivityPartition) or oclIsKindOf(InstanceSpecification)))
+	 * The sources and targets of the information flow can only be one of the following kind: Actor, Node, UseCase, Artifact, Class, Component, Port, Property, Interface, Package, ActivityNode, ActivityPartition,
+	 * Behavior and InstanceSpecification except when its classifier is a relationship (i.e. it represents a link).
+	 * (self.informationSource->forAll( sis |
+	 *   oclIsKindOf(Actor) or oclIsKindOf(Node) or oclIsKindOf(UseCase) or oclIsKindOf(Artifact) or 
+	 *   oclIsKindOf(Class) or oclIsKindOf(Component) or oclIsKindOf(Port) or oclIsKindOf(Property) or 
+	 *   oclIsKindOf(Interface) or oclIsKindOf(Package) or oclIsKindOf(ActivityNode) or oclIsKindOf(ActivityPartition) or 
+	 *   (oclIsKindOf(InstanceSpecification) and not sis.oclAsType(InstanceSpecification).classifier->exists(oclIsKindOf(Relationship))))) 
+	 * 
+	 * and
+	 * 
+	 * (self.informationTarget->forAll( sit | 
+	 *   oclIsKindOf(Actor) or oclIsKindOf(Node) or oclIsKindOf(UseCase) or oclIsKindOf(Artifact) or 
+	 *   oclIsKindOf(Class) or oclIsKindOf(Component) or oclIsKindOf(Port) or oclIsKindOf(Property) or 
+	 *   oclIsKindOf(Interface) or oclIsKindOf(Package) or oclIsKindOf(ActivityNode) or oclIsKindOf(ActivityPartition) or 
+	 * (oclIsKindOf(InstanceSpecification) and not sit.oclAsType(InstanceSpecification).classifier->exists(oclIsKindOf(Relationship)))))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -348,8 +352,7 @@ public interface InformationFlow
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The sources and targets of the information flow must conform with the sources and targets or conversely the targets and sources of the realization relationships.
-	 * true
+	 * The sources and targets of the information flow must conform to the sources and targets or conversely the targets and sources of the realization relationships.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -364,7 +367,7 @@ public interface InformationFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An information flow can only convey classifiers that are allowed to represent an information item.
-	 * self.conveyed.represented->forAll(p | p->oclIsKindOf(Class) or oclIsKindOf(Interface)
+	 * self.conveyed->forAll(oclIsKindOf(Class) or oclIsKindOf(Interface)
 	 *   or oclIsKindOf(InformationItem) or oclIsKindOf(Signal) or oclIsKindOf(Component))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,14 +7,11 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 322715
+ *   Kenn Hussey (CEA) - 327039, 322715, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
 package org.eclipse.uml2.uml;
-
-import java.util.Map;
-import org.eclipse.emf.common.util.DiagnosticChain;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,8 +19,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An enumeration literal is a user-defined data value for an enumeration.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * An EnumerationLiteral is a user-defined data value for an Enumeration.
+ * <p>From package UML::SimpleClassifiers.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -53,13 +50,13 @@ public interface EnumerationLiteral
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Enumeration that this EnumerationLiteral is a member of.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::SimpleClassifiers.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Enumeration</em>' container reference.
 	 * @see #setEnumeration(Enumeration)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getEnumerationLiteral_Enumeration()
 	 * @see org.eclipse.uml2.uml.Enumeration#getOwnedLiterals
-	 * @model opposite="ownedLiteral" transient="false" ordered="false"
+	 * @model opposite="ownedLiteral" required="true" transient="false" ordered="false"
 	 * @generated
 	 */
 	Enumeration getEnumeration();
@@ -78,23 +75,9 @@ public interface EnumerationLiteral
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * classifier = enumeration
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateClassifierEqualsOwningEnumeration(
-			DiagnosticChain diagnostics, Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Missing derivation for EnumerationLiteral::/classifier : Enumeration
-	 * true
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Derivation of Enumeration::/classifier
+	 * result = (enumeration)
+	 * <p>From package UML::SimpleClassifiers.</p>
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" required="true" ordered="false"
 	 * @generated

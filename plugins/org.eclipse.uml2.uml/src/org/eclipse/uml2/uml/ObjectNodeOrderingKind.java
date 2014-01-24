@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.uml;
@@ -24,8 +25,8 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
- * ObjectNodeOrderingKind is an enumeration indicating queuing order within a node.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * ObjectNodeOrderingKind is an enumeration indicating queuing order for offering the tokens held by an ObjectNode.
+ * <p>From package UML::Activities.</p>
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getObjectNodeOrderingKind()
  * @model
@@ -78,7 +79,7 @@ public enum ObjectNodeOrderingKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that object node tokens are unordered.
+	 * Indicates that tokens are unordered.
 	 * <!-- end-model-doc -->
 	 * @see #UNORDERED_LITERAL
 	 * @model name="unordered"
@@ -92,7 +93,7 @@ public enum ObjectNodeOrderingKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that object node tokens are ordered.
+	 * Indicates that tokens are ordered.
 	 * <!-- end-model-doc -->
 	 * @see #ORDERED_LITERAL
 	 * @model name="ordered"
@@ -106,7 +107,7 @@ public enum ObjectNodeOrderingKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that object node tokens are queued in a last in, first out manner.
+	 * Indicates that tokens are queued in a last in, first out manner.
 	 * <!-- end-model-doc -->
 	 * @see #LIFO_LITERAL
 	 * @model
@@ -120,7 +121,7 @@ public enum ObjectNodeOrderingKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that object node tokens are queued in a first in, first out manner.
+	 * Indicates that tokens are queued in a first in, first out manner.
 	 * <!-- end-model-doc -->
 	 * @see #FIFO_LITERAL
 	 * @model

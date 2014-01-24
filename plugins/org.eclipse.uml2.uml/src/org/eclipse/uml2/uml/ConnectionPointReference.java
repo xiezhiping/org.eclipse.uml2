@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.uml;
@@ -24,8 +25,8 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A connection point reference represents a usage (as part of a submachine state) of an entry/exit point defined in the statemachine reference by the submachine state.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A ConnectionPointReference represents a usage (as part of a submachine State) of an entry/exit point Pseudostate defined in the StateMachine referenced by the submachine State.
+ * <p>From package UML::StateMachines.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -50,8 +51,8 @@ public interface ConnectionPointReference
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The entryPoint kind pseudo states corresponding to this connection point.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The entryPoint Pseudostates corresponding to this connection point.
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Entry</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnectionPointReference_Entry()
@@ -89,8 +90,8 @@ public interface ConnectionPointReference
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The exitPoints kind pseudo states corresponding to this connection point.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The exitPoints kind Pseudostates corresponding to this connection point.
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Exit</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnectionPointReference_Exit()
@@ -134,8 +135,8 @@ public interface ConnectionPointReference
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The State in which the connection point refreshens are defined.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The State in which the ConnectionPointReference is defined.
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>State</em>' container reference.
 	 * @see #setState(State)
@@ -161,7 +162,7 @@ public interface ConnectionPointReference
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The entry Pseudostates must be Pseudostates with kind entryPoint.
-	 * entry->notEmpty() implies entry->forAll(e | e.kind = #entryPoint)
+	 * entry->forAll(kind = PseudostateKind::entryPoint)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -176,7 +177,7 @@ public interface ConnectionPointReference
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The exit Pseudostates must be Pseudostates with kind exitPoint.
-	 * exit->notEmpty() implies exit->forAll(e | e.kind = #exitPoint)
+	 * exit->forAll(kind = PseudostateKind::exitPoint)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

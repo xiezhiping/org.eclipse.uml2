@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,9 +30,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Clause#validateTestAndBody(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Test And Body</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Clause#validateBodyOutputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Body Output Pins</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Clause#validateDeciderOutput(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Decider Output</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Clause#validateTestAndBody(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Test And Body</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,8 +54,10 @@ public class ClauseOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The decider output pin must be for the test body or a node contained by the test body as a structured node.
-	 * true
+	 * The decider Pin must be on an Action in the test section of the Clause and must be of type Boolean with multiplicity 1..1.
+	 * test.oclAsType(Action).allActions().output->includes(decider) and
+	 * decider.type = Boolean and
+	 * decider.is(1,1)
 	 * @param clause The receiving '<em><b>Clause</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -89,8 +91,8 @@ public class ClauseOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The test and body parts must be disjoint.
-	 * true
+	 * The test and body parts of a ConditionalNode must be disjoint with each other.
+	 * test->intersection(_'body')->isEmpty()
 	 * @param clause The receiving '<em><b>Clause</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -124,8 +126,8 @@ public class ClauseOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The bodyOutput pins are output pins on actions in the body of the clause.
-	 * true
+	 * The bodyOutput Pins are OutputPins on Actions in the body of the Clause.
+	 * _'body'.oclAsType(Action).allActions().output->includesAll(bodyOutput)
 	 * @param clause The receiving '<em><b>Clause</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

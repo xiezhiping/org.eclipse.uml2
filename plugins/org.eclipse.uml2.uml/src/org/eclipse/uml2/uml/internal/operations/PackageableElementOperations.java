@@ -1,14 +1,13 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2014 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   IBM - initial API and implementation
+ *   CEA - initial API and implementation
  *
- * $Id: GeneralizationOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -18,33 +17,33 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
-import org.eclipse.uml2.uml.Generalization;
+import org.eclipse.uml2.uml.PackageableElement;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
  * <!-- begin-user-doc -->
- * A static utility class that provides operations related to '<em><b>Generalization</b></em>' model objects.
+ * A static utility class that provides operations related to '<em><b>Packageable Element</b></em>' model objects.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Generalization#validateGeneralizationSameClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Generalization Same Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.PackageableElement#validateNamespaceNeedsVisibility(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Namespace Needs Visibility</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class GeneralizationOperations
-		extends ElementOperations {
+public class PackageableElementOperations
+		extends NamedElementOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected GeneralizationOperations() {
+	protected PackageableElementOperations() {
 		super();
 	}
 
@@ -52,16 +51,16 @@ public class GeneralizationOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Every Generalization associated with a given GeneralizationSet must have the same general Classifier. That is, all Generalizations for a particular GeneralizationSet must have the same superclass.
-	 * true
-	 * @param generalization The receiving '<em><b>Generalization</b></em>' model object.
+	 * A PackageableElement owned by a Namespace must have a visibility.
+	 * visibility = null implies namespace = null
+	 * @param packageableElement The receiving '<em><b>Packageable Element</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateGeneralizationSameClassifier(
-			Generalization generalization, DiagnosticChain diagnostics,
+	public static boolean validateNamespaceNeedsVisibility(
+			PackageableElement packageableElement, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
@@ -73,15 +72,15 @@ public class GeneralizationOperations
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.GENERALIZATION__GENERALIZATION_SAME_CLASSIFIER,
+						UMLValidator.PACKAGEABLE_ELEMENT__NAMESPACE_NEEDS_VISIBILITY,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateGeneralizationSameClassifier", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(generalization, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{generalization}));
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNamespaceNeedsVisibility", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(packageableElement, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{packageableElement}));
 			}
 			return false;
 		}
 		return true;
 	}
 
-} // GeneralizationOperations
+} // PackageableElementOperations

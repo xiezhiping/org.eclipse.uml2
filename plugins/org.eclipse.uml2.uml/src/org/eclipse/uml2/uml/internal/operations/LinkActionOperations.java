@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: LinkActionOperations.java,v 1.7 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -60,8 +59,8 @@ public class LinkActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The association ends of the link end data must all be from the same association and include all and only the association ends of that association.
-	 * self.endData->collect(end) = self.association()->collect(connection))
+	 * The ends of the endData must all be from the same Association and include all and only the memberEnds of that association.
+	 * endData.end = self.association().memberEnd->asBag()
 	 * @param linkAction The receiving '<em><b>Link Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -95,8 +94,8 @@ public class LinkActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The association ends of the link end data must not be static.
-	 * self.endData->forall(end.oclisKindOf(NavigableEnd) implies end.isStatic = #false
+	 * The ends of the endData must not be static.
+	 * endData->forAll(not end.isStatic)
 	 * @param linkAction The receiving '<em><b>Link Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -130,13 +129,8 @@ public class LinkActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The input pins of the action are the same as the pins of the link end data and insertion pins.
-	 * self.input->asSet() =
-	 * let ledpins : Set = self.endData->collect(value) in
-	 * if self.oclIsKindOf(LinkEndCreationData)
-	 * then ledpins->union(self.endData.oclAsType(LinkEndCreationData).insertAt)
-	 * else ledpins
-	 * 
+	 * The inputValue InputPins is the same as the union of all the InputPins referenced by the endData.
+	 * inputValue->asBag()=endData.allPins()
 	 * @param linkAction The receiving '<em><b>Link Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

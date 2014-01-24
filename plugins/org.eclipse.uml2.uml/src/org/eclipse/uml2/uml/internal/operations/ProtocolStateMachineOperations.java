@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,10 +30,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.ProtocolStateMachine#validateDeepOrShallowHistory(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Deep Or Shallow History</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ProtocolStateMachine#validateEntryExitDo(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Entry Exit Do</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ProtocolStateMachine#validateProtocolTransitions(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Protocol Transitions</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ProtocolStateMachine#validateDeepOrShallowHistory(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Deep Or Shallow History</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ProtocolStateMachine#validatePortsConnected(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Ports Connected</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ProtocolStateMachine#validateClassifierContext(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Classifier Context</em>}</li>
  * </ul>
  * </p>
@@ -56,7 +55,7 @@ public class ProtocolStateMachineOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * All transitions of a protocol state machine must be protocol transitions. (transitions as extended by the ProtocolStateMachines package)
+	 * All Transitions of a ProtocolStateMachine must be ProtocolTransitions.
 	 * region->forAll(r | r.transition->forAll(t | t.oclIsTypeOf(ProtocolTransition)))
 	 * @param protocolStateMachine The receiving '<em><b>Protocol State Machine</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -92,9 +91,9 @@ public class ProtocolStateMachineOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The states of a protocol state machine cannot have entry, exit, or do activity actions.
+	 * The states of a ProtocolStateMachine cannot have entry, exit, or do activity Behaviors.
 	 * region->forAll(r | r.subvertex->forAll(v | v.oclIsKindOf(State) implies
-	 * (v.entry->isEmpty() and v.exit->isEmpty() and v.doActivity->isEmpty())))
+	 * (v.oclAsType(State).entry->isEmpty() and v.oclAsType(State).exit->isEmpty() and v.oclAsType(State).doActivity->isEmpty())))
 	 * 
 	 * @param protocolStateMachine The receiving '<em><b>Protocol State Machine</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -130,9 +129,9 @@ public class ProtocolStateMachineOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Protocol state machines cannot have deep or shallow history pseudostates.
-	 * region->forAll (r | r.subvertex->forAll (v | v.oclIsKindOf(Psuedostate) implies
-	 * ((v.kind <> #deepHistory) and (v.kind <> #shallowHistory)))))
+	 * ProtocolStateMachines cannot have deep or shallow history Pseudostates.
+	 * region->forAll (r | r.subvertex->forAll (v | v.oclIsKindOf(Pseudostate) implies
+	 * ((v.oclAsType(Pseudostate).kind <>  PseudostateKind::deepHistory) and (v.oclAsType(Pseudostate).kind <> PseudostateKind::shallowHistory))))
 	 * 
 	 * @param protocolStateMachine The receiving '<em><b>Protocol State Machine</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -168,44 +167,8 @@ public class ProtocolStateMachineOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If two ports are connected, then the protocol state machine of the required interface (if defined) must be conformant to the protocol state machine of the provided interface (if defined).
-	 * true
-	 * @param protocolStateMachine The receiving '<em><b>Protocol State Machine</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validatePortsConnected(
-			ProtocolStateMachine protocolStateMachine,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PROTOCOL_STATE_MACHINE__PORTS_CONNECTED,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validatePortsConnected", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(protocolStateMachine, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{protocolStateMachine}));
-			}
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A protocol state machine must only have a classifier context, not a behavioral feature context.
-	 * (not context->isEmpty( )) and specification->isEmpty()
+	 * A ProtocolStateMachine must only have a Classifier context, not a BehavioralFeature context.
+	 * _'context' <> null and specification = null
 	 * @param protocolStateMachine The receiving '<em><b>Protocol State Machine</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

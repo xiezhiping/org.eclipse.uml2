@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351777, 382718
+ *   Kenn Hussey (CEA) - 327039, 351777, 382718, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A stereotype defines how an existing metaclass may be extended, and enables the use of platform or domain specific terminology or notation in place of, or in addition to, the ones used for the extended metaclass.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * <p>From package UML::Packages.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -59,7 +59,7 @@ public interface Stereotype
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Packages.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Icon</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStereotype_Icon()
@@ -83,7 +83,6 @@ public interface Stereotype
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Stereotype names should not clash with keyword names for the extended model element.
-	 * true
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -114,8 +113,52 @@ public interface Stereotype
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
+	 * The upper bound of base-properties is exactly 1.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateBasePropertyUpperBound(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If a Stereotype extends only one metaclass, the multiplicity of the corresponding base-property shall be 1..1.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateBasePropertyMultiplicitySingleExtension(
+			DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If a Stereotype extends more than one metaclass, the multiplicity of the corresponding base-properties shall be [0..1]. At any point in time, only one of these base-properties can contain a metaclass instance during runtime.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateBasePropertyMultiplicityMultipleExtension(
+			DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
 	 * A Stereotype may only generalize or specialize another Stereotype.
-	 * generalization.general->forAll(e |e.oclIsKindOf(Stereotype)) and generalization.specific->forAll(e | e.oclIsKindOf(Stereotype)) 
+	 * allParents()->forAll(oclIsKindOf(Stereotype)) 
+	 * and Classifier.allInstances()->forAll(c | c.allParents()->exists(oclIsKindOf(Stereotype)) implies c.oclIsKindOf(Stereotype))
+	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -145,7 +188,7 @@ public interface Stereotype
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The profile that directly or indirectly contains this stereotype.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Packages.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Profile</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStereotype_Profile()
@@ -197,8 +240,8 @@ public interface Stereotype
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query containingProfile returns the closest profile directly or indirectly containing this stereotype.
-	 * result = self.namespace.oclAsType(Package).containingProfile()
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * result = (self.namespace.oclAsType(Package).containingProfile())
+	 * <p>From package UML::Packages.</p>
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false"
 	 * @generated

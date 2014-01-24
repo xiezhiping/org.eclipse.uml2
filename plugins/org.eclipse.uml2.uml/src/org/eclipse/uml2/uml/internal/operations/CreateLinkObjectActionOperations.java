@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,9 +30,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.CreateLinkObjectAction#validateAssociationClass(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Association Class</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.CreateLinkObjectAction#validateTypeOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.CreateLinkObjectAction#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.CreateLinkObjectAction#validateTypeOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Result</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.CreateLinkObjectAction#validateAssociationClass(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Association Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,8 +54,8 @@ public class CreateLinkObjectActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The association must be an association class.
-	 * self.association().oclIsKindOf(Class)
+	 * The Association must be an AssociationClass.
+	 * self.association().oclIsKindOf(AssociationClass)
 	 * @param createLinkObjectAction The receiving '<em><b>Create Link Object Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -90,8 +90,8 @@ public class CreateLinkObjectActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the result pin must be the same as the association of the action.
-	 * self.result.type = self.association()
+	 * The type of the result OutputPin must be the same as the Association of the CreateLinkObjectAction.
+	 * result.type = association()
 	 * @param createLinkObjectAction The receiving '<em><b>Create Link Object Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -126,8 +126,8 @@ public class CreateLinkObjectActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the output pin is 1..1.
-	 * self.result.multiplicity.is(1,1)
+	 * The multiplicity of the OutputPin is 1..1.
+	 * result.is(1,1)
 	 * @param createLinkObjectAction The receiving '<em><b>Create Link Object Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

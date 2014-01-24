@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -47,7 +47,6 @@ import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Feature;
@@ -439,6 +438,17 @@ public class AssociationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateEndsMustBeTyped(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return AssociationOperations.validateEndsMustBeTyped(this, diagnostics,
+			context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isBinary() {
 		return AssociationOperations.isBinary(this);
 	}
@@ -456,17 +466,14 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ASSOCIATION__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+			case UMLPackage.ASSOCIATION__OWNED_RULE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ASSOCIATION__ELEMENT_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ASSOCIATION__PACKAGE_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ASSOCIATION__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ASSOCIATION__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
@@ -481,6 +488,9 @@ public class AssociationImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
+			case UMLPackage.ASSOCIATION__TEMPLATE_BINDING :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ASSOCIATION__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -489,9 +499,6 @@ public class AssociationImpl
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
-			case UMLPackage.ASSOCIATION__TEMPLATE_BINDING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ASSOCIATION__GENERALIZATION :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getGeneralizations())
 					.basicAdd(otherEnd, msgs);
@@ -529,29 +536,26 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ASSOCIATION__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ASSOCIATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.ASSOCIATION__OWNED_RULE :
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.ASSOCIATION__ELEMENT_IMPORT :
 				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ASSOCIATION__PACKAGE_IMPORT :
 				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ASSOCIATION__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.ASSOCIATION__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.ASSOCIATION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.ASSOCIATION__OWNED_TEMPLATE_SIGNATURE :
-				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.ASSOCIATION__TEMPLATE_BINDING :
 				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.ASSOCIATION__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.ASSOCIATION__COLLABORATION_USE :
 				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
@@ -614,12 +618,12 @@ public class AssociationImpl
 				return getQualifiedName();
 			case UMLPackage.ASSOCIATION__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.ASSOCIATION__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.ASSOCIATION__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.ASSOCIATION__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.ASSOCIATION__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.ASSOCIATION__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.ASSOCIATION__IMPORTED_MEMBER :
@@ -644,12 +648,12 @@ public class AssociationImpl
 				if (resolve)
 					return getPackage();
 				return basicGetPackage();
+			case UMLPackage.ASSOCIATION__TEMPLATE_BINDING :
+				return getTemplateBindings();
 			case UMLPackage.ASSOCIATION__OWNED_TEMPLATE_SIGNATURE :
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.ASSOCIATION__TEMPLATE_BINDING :
-				return getTemplateBindings();
 			case UMLPackage.ASSOCIATION__FEATURE :
 				return getFeatures();
 			case UMLPackage.ASSOCIATION__ATTRIBUTE :
@@ -715,11 +719,6 @@ public class AssociationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.ASSOCIATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.ASSOCIATION__NAME :
 				setName((String) newValue);
 				return;
@@ -728,6 +727,11 @@ public class AssociationImpl
 				return;
 			case UMLPackage.ASSOCIATION__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.ASSOCIATION__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.ASSOCIATION__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -738,11 +742,6 @@ public class AssociationImpl
 				getPackageImports().clear();
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
-				return;
-			case UMLPackage.ASSOCIATION__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.ASSOCIATION__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -756,13 +755,13 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
-			case UMLPackage.ASSOCIATION__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
-				return;
 			case UMLPackage.ASSOCIATION__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
+				return;
+			case UMLPackage.ASSOCIATION__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.ASSOCIATION__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -848,9 +847,6 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.ASSOCIATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.ASSOCIATION__NAME :
 				unsetName();
 				return;
@@ -860,14 +856,14 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__VISIBILITY :
 				unsetVisibility();
 				return;
+			case UMLPackage.ASSOCIATION__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.ASSOCIATION__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.ASSOCIATION__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				return;
-			case UMLPackage.ASSOCIATION__OWNED_RULE :
-				getOwnedRules().clear();
 				return;
 			case UMLPackage.ASSOCIATION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
@@ -881,11 +877,11 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
 				return;
-			case UMLPackage.ASSOCIATION__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) null);
-				return;
 			case UMLPackage.ASSOCIATION__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
+				return;
+			case UMLPackage.ASSOCIATION__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
 			case UMLPackage.ASSOCIATION__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -953,8 +949,7 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.ASSOCIATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.ASSOCIATION__NAME :
 				return isSetName();
 			case UMLPackage.ASSOCIATION__NAME_EXPRESSION :
@@ -967,12 +962,12 @@ public class AssociationImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ASSOCIATION__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.ASSOCIATION__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.ASSOCIATION__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.ASSOCIATION__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.ASSOCIATION__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.ASSOCIATION__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.ASSOCIATION__IMPORTED_MEMBER :
@@ -991,10 +986,10 @@ public class AssociationImpl
 				return isSetTemplateParameter();
 			case UMLPackage.ASSOCIATION__PACKAGE :
 				return basicGetPackage() != null;
-			case UMLPackage.ASSOCIATION__OWNED_TEMPLATE_SIGNATURE :
-				return isSetOwnedTemplateSignature();
 			case UMLPackage.ASSOCIATION__TEMPLATE_BINDING :
 				return templateBindings != null && !templateBindings.isEmpty();
+			case UMLPackage.ASSOCIATION__OWNED_TEMPLATE_SIGNATURE :
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.ASSOCIATION__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.ASSOCIATION__ATTRIBUTE :
@@ -1170,16 +1165,16 @@ public class AssociationImpl
 				return allOwnedElements();
 			case UMLPackage.ASSOCIATION___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.ASSOCIATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ASSOCIATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1190,6 +1185,8 @@ public class AssociationImpl
 				return getLabel();
 			case UMLPackage.ASSOCIATION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.ASSOCIATION___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.ASSOCIATION___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.ASSOCIATION___ALL_OWNING_PACKAGES :
@@ -1197,14 +1194,22 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.ASSOCIATION___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.ASSOCIATION___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.ASSOCIATION___SEPARATOR :
 				return separator();
+			case UMLPackage.ASSOCIATION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.ASSOCIATION___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ASSOCIATION___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ASSOCIATION___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -1219,6 +1224,8 @@ public class AssociationImpl
 				return getImportedElements();
 			case UMLPackage.ASSOCIATION___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.ASSOCIATION___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.ASSOCIATION___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -1231,8 +1238,6 @@ public class AssociationImpl
 				return getImportedMembers();
 			case UMLPackage.ASSOCIATION___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.ASSOCIATION___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 			case UMLPackage.ASSOCIATION___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -1254,6 +1259,10 @@ public class AssociationImpl
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.ASSOCIATION___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.ASSOCIATION___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION___CREATE_ASSOCIATION__BOOLEAN_AGGREGATIONKIND_STRING_INT_INT_TYPE_BOOLEAN_AGGREGATIONKIND_STRING_INT_INT :
 				return createAssociation((Boolean) arguments.get(0),
 					(AggregationKind) arguments.get(1),
@@ -1271,20 +1280,20 @@ public class AssociationImpl
 				return isTemplate();
 			case UMLPackage.ASSOCIATION___PARAMETERABLE_ELEMENTS :
 				return parameterableElements();
-			case UMLPackage.ASSOCIATION___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
-				return validateNonFinalParents(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ASSOCIATION___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
-				return validateNoCyclesInGeneralization(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateSpecializeType(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
 				return validateMapsToGeneralizationSet(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ASSOCIATION___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
+				return validateNonFinalParents(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ASSOCIATION___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
+				return validateNoCyclesInGeneralization(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION___GET_ALL_ATTRIBUTES :
@@ -1309,8 +1318,6 @@ public class AssociationImpl
 				return allFeatures();
 			case UMLPackage.ASSOCIATION___ALL_PARENTS :
 				return allParents();
-			case UMLPackage.ASSOCIATION___CONFORMS_TO__CLASSIFIER :
-				return conformsTo((Classifier) arguments.get(0));
 			case UMLPackage.ASSOCIATION___GET_GENERALS :
 				return getGenerals();
 			case UMLPackage.ASSOCIATION___HAS_VISIBILITY_OF__NAMEDELEMENT :
@@ -1325,20 +1332,38 @@ public class AssociationImpl
 				return maySpecializeType((Classifier) arguments.get(0));
 			case UMLPackage.ASSOCIATION___PARENTS :
 				return parents();
+			case UMLPackage.ASSOCIATION___DIRECTLY_REALIZED_INTERFACES :
+				return directlyRealizedInterfaces();
+			case UMLPackage.ASSOCIATION___DIRECTLY_USED_INTERFACES :
+				return directlyUsedInterfaces();
+			case UMLPackage.ASSOCIATION___ALL_REALIZED_INTERFACES :
+				return allRealizedInterfaces();
+			case UMLPackage.ASSOCIATION___ALL_USED_INTERFACES :
+				return allUsedInterfaces();
+			case UMLPackage.ASSOCIATION___IS_SUBSTITUTABLE_FOR__CLASSIFIER :
+				return isSubstitutableFor((Classifier) arguments.get(0));
+			case UMLPackage.ASSOCIATION___ALL_ATTRIBUTES :
+				return allAttributes();
+			case UMLPackage.ASSOCIATION___ALL_SLOTTABLE_FEATURES :
+				return allSlottableFeatures();
 			case UMLPackage.ASSOCIATION___VALIDATE_SPECIALIZED_END_NUMBER__DIAGNOSTICCHAIN_MAP :
 				return validateSpecializedEndNumber(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ASSOCIATION___VALIDATE_ASSOCIATION_ENDS__DIAGNOSTICCHAIN_MAP :
-				return validateAssociationEnds(
+			case UMLPackage.ASSOCIATION___VALIDATE_SPECIALIZED_END_TYPES__DIAGNOSTICCHAIN_MAP :
+				return validateSpecializedEndTypes(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION___VALIDATE_BINARY_ASSOCIATIONS__DIAGNOSTICCHAIN_MAP :
 				return validateBinaryAssociations(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ASSOCIATION___VALIDATE_SPECIALIZED_END_TYPES__DIAGNOSTICCHAIN_MAP :
-				return validateSpecializedEndTypes(
+			case UMLPackage.ASSOCIATION___VALIDATE_ASSOCIATION_ENDS__DIAGNOSTICCHAIN_MAP :
+				return validateAssociationEnds(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ASSOCIATION___VALIDATE_ENDS_MUST_BE_TYPED__DIAGNOSTICCHAIN_MAP :
+				return validateEndsMustBeTyped(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION___IS_BINARY :

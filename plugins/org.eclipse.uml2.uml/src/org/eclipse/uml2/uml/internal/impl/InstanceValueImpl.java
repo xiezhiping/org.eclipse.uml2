@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.NamedElement;
@@ -212,11 +211,6 @@ public class InstanceValueImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.INSTANCE_VALUE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.INSTANCE_VALUE__NAME :
 				setName((String) newValue);
 				return;
@@ -255,9 +249,6 @@ public class InstanceValueImpl
 				return;
 			case UMLPackage.INSTANCE_VALUE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.INSTANCE_VALUE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.INSTANCE_VALUE__NAME :
 				unsetName();
@@ -301,8 +292,7 @@ public class InstanceValueImpl
 			case UMLPackage.INSTANCE_VALUE__OWNER :
 				return isSetOwner();
 			case UMLPackage.INSTANCE_VALUE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.INSTANCE_VALUE__NAME :
 				return isSetName();
 			case UMLPackage.INSTANCE_VALUE__NAME_EXPRESSION :
@@ -419,16 +409,16 @@ public class InstanceValueImpl
 				return allOwnedElements();
 			case UMLPackage.INSTANCE_VALUE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.INSTANCE_VALUE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INSTANCE_VALUE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INSTANCE_VALUE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INSTANCE_VALUE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INSTANCE_VALUE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -439,6 +429,8 @@ public class InstanceValueImpl
 				return getLabel();
 			case UMLPackage.INSTANCE_VALUE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.INSTANCE_VALUE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.INSTANCE_VALUE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.INSTANCE_VALUE___ALL_OWNING_PACKAGES :
@@ -446,16 +438,20 @@ public class InstanceValueImpl
 			case UMLPackage.INSTANCE_VALUE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.INSTANCE_VALUE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.INSTANCE_VALUE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.INSTANCE_VALUE___SEPARATOR :
 				return separator();
+			case UMLPackage.INSTANCE_VALUE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.INSTANCE_VALUE___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.INSTANCE_VALUE___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.INSTANCE_VALUE___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INSTANCE_VALUE___BOOLEAN_VALUE :
 				return booleanValue();
 			case UMLPackage.INSTANCE_VALUE___INTEGER_VALUE :

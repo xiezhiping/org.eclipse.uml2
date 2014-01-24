@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -35,7 +35,6 @@ import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -289,17 +288,6 @@ public class ObjectFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNoActions(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return ObjectFlowOperations.validateNoActions(this, diagnostics,
-			context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateCompatibleTypes(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return ObjectFlowOperations.validateCompatibleTypes(this, diagnostics,
@@ -332,31 +320,42 @@ public class ObjectFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateTransformationBehaviour(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return ObjectFlowOperations.validateTransformationBehaviour(this,
-			diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateSelectionBehaviour(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return ObjectFlowOperations.validateSelectionBehaviour(this,
-			diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateInputAndOutputParameter(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return ObjectFlowOperations.validateInputAndOutputParameter(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNoExecutableNodes(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return ObjectFlowOperations.validateNoExecutableNodes(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTransformationBehavior(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return ObjectFlowOperations.validateTransformationBehavior(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSelectionBehavior(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return ObjectFlowOperations.validateSelectionBehavior(this,
 			diagnostics, context);
 	}
 
@@ -421,24 +420,24 @@ public class ObjectFlowImpl
 				return basicGetGuard();
 			case UMLPackage.OBJECT_FLOW__IN_PARTITION :
 				return getInPartitions();
-			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
-				if (resolve)
-					return getInStructuredNode();
-				return basicGetInStructuredNode();
 			case UMLPackage.OBJECT_FLOW__INTERRUPTS :
 				if (resolve)
 					return getInterrupts();
 				return basicGetInterrupts();
-			case UMLPackage.OBJECT_FLOW__REDEFINED_EDGE :
-				return getRedefinedEdges();
-			case UMLPackage.OBJECT_FLOW__SOURCE :
+			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
 				if (resolve)
-					return getSource();
-				return basicGetSource();
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.OBJECT_FLOW__TARGET :
 				if (resolve)
 					return getTarget();
 				return basicGetTarget();
+			case UMLPackage.OBJECT_FLOW__SOURCE :
+				if (resolve)
+					return getSource();
+				return basicGetSource();
+			case UMLPackage.OBJECT_FLOW__REDEFINED_EDGE :
+				return getRedefinedEdges();
 			case UMLPackage.OBJECT_FLOW__WEIGHT :
 				if (resolve)
 					return getWeight();
@@ -480,11 +479,6 @@ public class ObjectFlowImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.OBJECT_FLOW__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.OBJECT_FLOW__NAME :
 				setName((String) newValue);
 				return;
@@ -508,22 +502,22 @@ public class ObjectFlowImpl
 				getInPartitions().addAll(
 					(Collection<? extends ActivityPartition>) newValue);
 				return;
+			case UMLPackage.OBJECT_FLOW__INTERRUPTS :
+				setInterrupts((InterruptibleActivityRegion) newValue);
+				return;
 			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
-			case UMLPackage.OBJECT_FLOW__INTERRUPTS :
-				setInterrupts((InterruptibleActivityRegion) newValue);
+			case UMLPackage.OBJECT_FLOW__TARGET :
+				setTarget((ActivityNode) newValue);
+				return;
+			case UMLPackage.OBJECT_FLOW__SOURCE :
+				setSource((ActivityNode) newValue);
 				return;
 			case UMLPackage.OBJECT_FLOW__REDEFINED_EDGE :
 				getRedefinedEdges().clear();
 				getRedefinedEdges().addAll(
 					(Collection<? extends ActivityEdge>) newValue);
-				return;
-			case UMLPackage.OBJECT_FLOW__SOURCE :
-				setSource((ActivityNode) newValue);
-				return;
-			case UMLPackage.OBJECT_FLOW__TARGET :
-				setTarget((ActivityNode) newValue);
 				return;
 			case UMLPackage.OBJECT_FLOW__WEIGHT :
 				setWeight((ValueSpecification) newValue);
@@ -558,9 +552,6 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.OBJECT_FLOW__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.OBJECT_FLOW__NAME :
 				unsetName();
 				return;
@@ -582,20 +573,20 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW__IN_PARTITION :
 				getInPartitions().clear();
 				return;
-			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
-				setInStructuredNode((StructuredActivityNode) null);
-				return;
 			case UMLPackage.OBJECT_FLOW__INTERRUPTS :
 				setInterrupts((InterruptibleActivityRegion) null);
 				return;
-			case UMLPackage.OBJECT_FLOW__REDEFINED_EDGE :
-				getRedefinedEdges().clear();
+			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
+				setInStructuredNode((StructuredActivityNode) null);
+				return;
+			case UMLPackage.OBJECT_FLOW__TARGET :
+				setTarget((ActivityNode) null);
 				return;
 			case UMLPackage.OBJECT_FLOW__SOURCE :
 				setSource((ActivityNode) null);
 				return;
-			case UMLPackage.OBJECT_FLOW__TARGET :
-				setTarget((ActivityNode) null);
+			case UMLPackage.OBJECT_FLOW__REDEFINED_EDGE :
+				getRedefinedEdges().clear();
 				return;
 			case UMLPackage.OBJECT_FLOW__WEIGHT :
 				setWeight((ValueSpecification) null);
@@ -633,8 +624,7 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW__OWNER :
 				return isSetOwner();
 			case UMLPackage.OBJECT_FLOW__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.OBJECT_FLOW__NAME :
 				return isSetName();
 			case UMLPackage.OBJECT_FLOW__NAME_EXPRESSION :
@@ -659,16 +649,16 @@ public class ObjectFlowImpl
 				return guard != null;
 			case UMLPackage.OBJECT_FLOW__IN_PARTITION :
 				return inPartitions != null && !inPartitions.isEmpty();
-			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
-				return basicGetInStructuredNode() != null;
 			case UMLPackage.OBJECT_FLOW__INTERRUPTS :
 				return interrupts != null;
-			case UMLPackage.OBJECT_FLOW__REDEFINED_EDGE :
-				return redefinedEdges != null && !redefinedEdges.isEmpty();
-			case UMLPackage.OBJECT_FLOW__SOURCE :
-				return source != null;
+			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.OBJECT_FLOW__TARGET :
 				return target != null;
+			case UMLPackage.OBJECT_FLOW__SOURCE :
+				return source != null;
+			case UMLPackage.OBJECT_FLOW__REDEFINED_EDGE :
+				return redefinedEdges != null && !redefinedEdges.isEmpty();
 			case UMLPackage.OBJECT_FLOW__WEIGHT :
 				return weight != null;
 			case UMLPackage.OBJECT_FLOW__IN_GROUP :
@@ -777,16 +767,16 @@ public class ObjectFlowImpl
 				return allOwnedElements();
 			case UMLPackage.OBJECT_FLOW___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.OBJECT_FLOW___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_FLOW___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -797,6 +787,8 @@ public class ObjectFlowImpl
 				return getLabel();
 			case UMLPackage.OBJECT_FLOW___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.OBJECT_FLOW___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.OBJECT_FLOW___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.OBJECT_FLOW___ALL_OWNING_PACKAGES :
@@ -804,12 +796,12 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.OBJECT_FLOW___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.OBJECT_FLOW___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.OBJECT_FLOW___SEPARATOR :
 				return separator();
+			case UMLPackage.OBJECT_FLOW___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.OBJECT_FLOW___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -827,45 +819,39 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.OBJECT_FLOW___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
-				return validateOwned((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_SOURCE_AND_TARGET__DIAGNOSTICCHAIN_MAP :
 				return validateSourceAndTarget(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_FLOW___VALIDATE_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateStructuredNode(
+			case UMLPackage.OBJECT_FLOW___VALIDATE_INPUT_AND_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
+				return validateInputAndOutputParameter(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_FLOW___VALIDATE_IS_MULTICAST_OR_IS_MULTIRECEIVE__DIAGNOSTICCHAIN_MAP :
-				return validateIsMulticastOrIsMultireceive(
+			case UMLPackage.OBJECT_FLOW___VALIDATE_NO_EXECUTABLE_NODES__DIAGNOSTICCHAIN_MAP :
+				return validateNoExecutableNodes(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_FLOW___VALIDATE_SELECTION_BEHAVIOUR__DIAGNOSTICCHAIN_MAP :
-				return validateSelectionBehaviour(
+			case UMLPackage.OBJECT_FLOW___VALIDATE_TRANSFORMATION_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
+				return validateTransformationBehavior(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OBJECT_FLOW___VALIDATE_SELECTION_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
+				return validateSelectionBehavior(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_COMPATIBLE_TYPES__DIAGNOSTICCHAIN_MAP :
 				return validateCompatibleTypes(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_FLOW___VALIDATE_NO_ACTIONS__DIAGNOSTICCHAIN_MAP :
-				return validateNoActions((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_FLOW___VALIDATE_INPUT_AND_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
-				return validateInputAndOutputParameter(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_FLOW___VALIDATE_TRANSFORMATION_BEHAVIOUR__DIAGNOSTICCHAIN_MAP :
-				return validateTransformationBehaviour(
+			case UMLPackage.OBJECT_FLOW___VALIDATE_SAME_UPPER_BOUNDS__DIAGNOSTICCHAIN_MAP :
+				return validateSameUpperBounds(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_TARGET__DIAGNOSTICCHAIN_MAP :
 				return validateTarget((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_FLOW___VALIDATE_SAME_UPPER_BOUNDS__DIAGNOSTICCHAIN_MAP :
-				return validateSameUpperBounds(
+			case UMLPackage.OBJECT_FLOW___VALIDATE_IS_MULTICAST_OR_IS_MULTIRECEIVE__DIAGNOSTICCHAIN_MAP :
+				return validateIsMulticastOrIsMultireceive(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

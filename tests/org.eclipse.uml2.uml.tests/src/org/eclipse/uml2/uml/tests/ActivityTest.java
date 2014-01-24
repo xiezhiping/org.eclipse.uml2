@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 351777
+ *   Kenn Hussey (CEA) - 327039, 351774, 351777, 418466
  *
  */
 package org.eclipse.uml2.uml.tests;
@@ -28,16 +28,15 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Activity#getGroups() <em>Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getNodes() <em>Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#getGroups() <em>Group</em>}</li>
  * </ul>
  * </p>
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Activity#validateActivityParameterNode(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Activity Parameter Node</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Activity#validateAutonomous(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Autonomous</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Activity#validateNoSupergroups(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Supergroups</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#validateMaximumOneParameterNode(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maximum One Parameter Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#validateMaximumTwoParameterNodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maximum Two Parameter Nodes</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -147,6 +146,30 @@ public class ActivityTest
 	}
 
 	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Activity#validateMaximumOneParameterNode(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maximum One Parameter Node</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Activity#validateMaximumOneParameterNode(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateMaximumOneParameterNode__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Activity#validateMaximumTwoParameterNodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maximum Two Parameter Nodes</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Activity#validateMaximumTwoParameterNodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateMaximumTwoParameterNodes__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
 	 * Tests the '{@link org.eclipse.uml2.uml.Activity#getNodes() <em>Node</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -176,42 +199,6 @@ public class ActivityTest
 
 		assertFalse(getFixture().getStructuredNodes().contains(structuredNode));
 		assertFalse(getFixture().getNodes().contains(structuredNode));
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Activity#validateNoSupergroups(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Supergroups</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Activity#validateNoSupergroups(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	public void testValidateNoSupergroups__DiagnosticChain_Map() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Activity#validateActivityParameterNode(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Activity Parameter Node</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Activity#validateActivityParameterNode(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	public void testValidateActivityParameterNode__DiagnosticChain_Map() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Activity#validateAutonomous(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Autonomous</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Activity#validateAutonomous(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	public void testValidateAutonomous__DiagnosticChain_Map() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 } //ActivityTest

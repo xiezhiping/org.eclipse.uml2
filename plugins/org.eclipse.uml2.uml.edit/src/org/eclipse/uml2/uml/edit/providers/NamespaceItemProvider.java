@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: NamespaceItemProvider.java,v 1.10 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -71,9 +70,9 @@ public class NamespaceItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addOwnedRulePropertyDescriptor(object);
 			addElementImportPropertyDescriptor(object);
 			addPackageImportPropertyDescriptor(object);
-			addOwnedRulePropertyDescriptor(object);
 			addOwnedMemberPropertyDescriptor(object);
 			addImportedMemberPropertyDescriptor(object);
 			addMemberPropertyDescriptor(object);
@@ -220,9 +219,9 @@ public class NamespaceItemProvider
 			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(UMLPackage.Literals.NAMESPACE__OWNED_RULE);
 			childrenFeatures.add(UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT);
 			childrenFeatures.add(UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT);
-			childrenFeatures.add(UMLPackage.Literals.NAMESPACE__OWNED_RULE);
 		}
 		return childrenFeatures;
 	}
@@ -276,9 +275,9 @@ public class NamespaceItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Namespace.class)) {
+			case UMLPackage.NAMESPACE__OWNED_RULE :
 			case UMLPackage.NAMESPACE__ELEMENT_IMPORT :
 			case UMLPackage.NAMESPACE__PACKAGE_IMPORT :
-			case UMLPackage.NAMESPACE__OWNED_RULE :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -299,14 +298,6 @@ public class NamespaceItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT,
-			UMLFactory.eINSTANCE.createElementImport()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT,
-			UMLFactory.eINSTANCE.createPackageImport()));
-
-		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.NAMESPACE__OWNED_RULE,
 			UMLFactory.eINSTANCE.createConstraint()));
 
@@ -325,6 +316,14 @@ public class NamespaceItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.NAMESPACE__OWNED_RULE,
 			UMLFactory.eINSTANCE.createTimeConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT,
+			UMLFactory.eINSTANCE.createElementImport()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT,
+			UMLFactory.eINSTANCE.createPackageImport()));
 	}
 
 }

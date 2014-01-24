@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -19,8 +19,8 @@ package org.eclipse.uml2.uml;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An interval defines the range between two value specifications.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * An Interval defines the range between two ValueSpecifications.
+ * <p>From package UML::Values.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -44,7 +44,7 @@ public interface Interval
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Refers to the ValueSpecification denoting the minimum value of the range.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Values.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Min</em>' reference.
 	 * @see #setMin(ValueSpecification)
@@ -70,7 +70,7 @@ public interface Interval
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Refers to the ValueSpecification denoting the maximum value of the range.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Values.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Max</em>' reference.
 	 * @see #setMax(ValueSpecification)

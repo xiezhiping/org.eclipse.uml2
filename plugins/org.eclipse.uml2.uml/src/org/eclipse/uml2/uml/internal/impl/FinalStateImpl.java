@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -26,6 +26,7 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.RedefinableElement;
+import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -223,16 +224,16 @@ public class FinalStateImpl
 				return allOwnedElements();
 			case UMLPackage.FINAL_STATE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.FINAL_STATE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.FINAL_STATE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.FINAL_STATE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.FINAL_STATE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.FINAL_STATE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -243,6 +244,8 @@ public class FinalStateImpl
 				return getLabel();
 			case UMLPackage.FINAL_STATE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.FINAL_STATE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.FINAL_STATE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.FINAL_STATE___ALL_OWNING_PACKAGES :
@@ -250,14 +253,22 @@ public class FinalStateImpl
 			case UMLPackage.FINAL_STATE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.FINAL_STATE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.FINAL_STATE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.FINAL_STATE___SEPARATOR :
 				return separator();
+			case UMLPackage.FINAL_STATE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.FINAL_STATE___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.FINAL_STATE___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.FINAL_STATE___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.FINAL_STATE___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -272,6 +283,8 @@ public class FinalStateImpl
 				return getImportedElements();
 			case UMLPackage.FINAL_STATE___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.FINAL_STATE___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.FINAL_STATE___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -284,8 +297,6 @@ public class FinalStateImpl
 				return getImportedMembers();
 			case UMLPackage.FINAL_STATE___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.FINAL_STATE___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 			case UMLPackage.FINAL_STATE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -309,8 +320,16 @@ public class FinalStateImpl
 				return getIncomings();
 			case UMLPackage.FINAL_STATE___GET_OUTGOINGS :
 				return getOutgoings();
+			case UMLPackage.FINAL_STATE___IS_CONTAINED_IN_STATE__STATE :
+				return isContainedInState((State) arguments.get(0));
+			case UMLPackage.FINAL_STATE___IS_CONTAINED_IN_REGION__REGION :
+				return isContainedInRegion((Region) arguments.get(0));
 			case UMLPackage.FINAL_STATE___VALIDATE_ENTRY_OR_EXIT__DIAGNOSTICCHAIN_MAP :
 				return validateEntryOrExit((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.FINAL_STATE___VALIDATE_SUBMACHINE_STATES__DIAGNOSTICCHAIN_MAP :
+				return validateSubmachineStates(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.FINAL_STATE___VALIDATE_COMPOSITE_STATES__DIAGNOSTICCHAIN_MAP :
 				return validateCompositeStates(
@@ -324,32 +343,29 @@ public class FinalStateImpl
 				return validateSubmachineOrRegions(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.FINAL_STATE___VALIDATE_SUBMACHINE_STATES__DIAGNOSTICCHAIN_MAP :
-				return validateSubmachineStates(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.FINAL_STATE___IS_COMPOSITE :
 				return isComposite();
 			case UMLPackage.FINAL_STATE___IS_ORTHOGONAL :
 				return isOrthogonal();
-			case UMLPackage.FINAL_STATE___IS_REDEFINITION_CONTEXT_VALID__STATE :
-				return isRedefinitionContextValid((State) arguments.get(0));
 			case UMLPackage.FINAL_STATE___IS_SIMPLE :
 				return isSimple();
 			case UMLPackage.FINAL_STATE___IS_SUBMACHINE_STATE :
 				return isSubmachineState();
 			case UMLPackage.FINAL_STATE___REDEFINITION_CONTEXT :
 				return redefinitionContext();
+			case UMLPackage.FINAL_STATE___VALIDATE_NO_EXIT_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
+				return validateNoExitBehavior(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.FINAL_STATE___VALIDATE_NO_OUTGOING_TRANSITIONS__DIAGNOSTICCHAIN_MAP :
 				return validateNoOutgoingTransitions(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.FINAL_STATE___VALIDATE_NO_REGIONS__DIAGNOSTICCHAIN_MAP :
+				return validateNoRegions((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.FINAL_STATE___VALIDATE_CANNOT_REFERENCE_SUBMACHINE__DIAGNOSTICCHAIN_MAP :
 				return validateCannotReferenceSubmachine(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.FINAL_STATE___VALIDATE_NO_EXIT_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
-				return validateNoExitBehavior(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.FINAL_STATE___VALIDATE_NO_ENTRY_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
@@ -359,9 +375,6 @@ public class FinalStateImpl
 			case UMLPackage.FINAL_STATE___VALIDATE_NO_STATE_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
 				return validateNoStateBehavior(
 					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.FINAL_STATE___VALIDATE_NO_REGIONS__DIAGNOSTICCHAIN_MAP :
-				return validateNoRegions((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

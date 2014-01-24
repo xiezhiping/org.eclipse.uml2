@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,12 +30,12 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateMultiplicityOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Object</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateTypeOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Object</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateMultiplicityOfQualifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Qualifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateEndsOfAssociation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Ends Of Association</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateMultiplicityOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateSameType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateEndsOfAssociation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Ends Of Association</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateMultiplicityOfQualifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Qualifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateMultiplicityOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Object</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateAssociationOfAssociation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Association Of Association</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction#validateQualifierAttribute(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Qualifier Attribute</em>}</li>
  * </ul>
@@ -59,8 +59,8 @@ public class ReadLinkObjectEndQualifierActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The qualifier attribute must be a qualifier attribute of an association end.
-	 * self.qualifier.associationEnd->size() = 1
+	 * The qualifier Property must be a qualifier of an Association end.
+	 * qualifier.associationEnd <> null
 	 * @param readLinkObjectEndQualifierAction The receiving '<em><b>Read Link Object End Qualifier Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -95,8 +95,8 @@ public class ReadLinkObjectEndQualifierActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The association of the association end of the qualifier attribute must be an association class.
-	 * self.qualifier.associationEnd.association.oclIsKindOf(AssociationClass)
+	 * The association of the Association end of the qualifier Property must be an AssociationClass.
+	 * qualifier.associationEnd.association.oclIsKindOf(AssociationClass)
 	 * @param readLinkObjectEndQualifierAction The receiving '<em><b>Read Link Object End Qualifier Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -131,8 +131,8 @@ public class ReadLinkObjectEndQualifierActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The ends of the association must not be static.
-	 * self.qualifier.associationEnd.association.memberEnd->forall(e | not e.isStatic)
+	 * The ends of the Association must not be static.
+	 * qualifier.associationEnd.association.memberEnd->forAll(e | not e.isStatic)
 	 * @param readLinkObjectEndQualifierAction The receiving '<em><b>Read Link Object End Qualifier Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -167,8 +167,8 @@ public class ReadLinkObjectEndQualifierActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the object input pin is the association class that owns the association end that has the given qualifier attribute.
-	 * self.object.type = self.qualifier.associationEnd.association
+	 * The type of the object InputPin is the AssociationClass that owns the Association end that has the given qualifier Property.
+	 * object.type = qualifier.associationEnd.association
 	 * @param readLinkObjectEndQualifierAction The receiving '<em><b>Read Link Object End Qualifier Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -203,8 +203,8 @@ public class ReadLinkObjectEndQualifierActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the qualifier attribute is 1..1.
-	 * self.qualifier.multiplicity.is(1,1)
+	 * The multiplicity of the qualifier Property is 1..1.
+	 * qualifier.is(1,1)
 	 * @param readLinkObjectEndQualifierAction The receiving '<em><b>Read Link Object End Qualifier Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -239,8 +239,8 @@ public class ReadLinkObjectEndQualifierActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the object input pin is 1..1.
-	 * self.object.multiplicity.is(1,1)
+	 * The multiplicity of the object InputPin is 1..1.
+	 * object.is(1,1)
 	 * @param readLinkObjectEndQualifierAction The receiving '<em><b>Read Link Object End Qualifier Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -275,8 +275,8 @@ public class ReadLinkObjectEndQualifierActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the result output pin is the same as the type of the qualifier attribute.
-	 * self.result.type = self.qualifier.type
+	 * The type of the result OutputPin is the same as the type of the qualifier Property.
+	 * result.type = qualifier.type
 	 * @param readLinkObjectEndQualifierAction The receiving '<em><b>Read Link Object End Qualifier Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -311,8 +311,8 @@ public class ReadLinkObjectEndQualifierActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the result output pin is 1..1.
-	 * self.result.multiplicity.is(1,1)
+	 * The multiplicity of the result OutputPin is 1..1.
+	 * result.is(1,1)
 	 * @param readLinkObjectEndQualifierAction The receiving '<em><b>Read Link Object End Qualifier Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

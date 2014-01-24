@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: TemplateableElementImpl.java,v 1.23 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -56,8 +55,8 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateableElementImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateableElementImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateableElementImpl#getTemplateBindings <em>Template Binding</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateableElementImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
  * </ul>
  * </p>
  *
@@ -68,16 +67,6 @@ public abstract class TemplateableElementImpl
 		implements TemplateableElement {
 
 	/**
-	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedTemplateSignature()
-	 * @generated
-	 * @ordered
-	 */
-	protected TemplateSignature ownedTemplateSignature;
-
-	/**
 	 * The cached value of the '{@link #getTemplateBindings() <em>Template Binding</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -86,6 +75,16 @@ public abstract class TemplateableElementImpl
 	 * @ordered
 	 */
 	protected EList<TemplateBinding> templateBindings;
+
+	/**
+	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedTemplateSignature()
+	 * @generated
+	 * @ordered
+	 */
+	protected TemplateSignature ownedTemplateSignature;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -349,6 +348,9 @@ public abstract class TemplateableElementImpl
 			case UMLPackage.TEMPLATEABLE_ELEMENT__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
+			case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -359,9 +361,6 @@ public abstract class TemplateableElementImpl
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
-			case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
-					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -381,11 +380,11 @@ public abstract class TemplateableElementImpl
 			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE :
-				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :
 				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -408,12 +407,12 @@ public abstract class TemplateableElementImpl
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
+			case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :
+				return getTemplateBindings();
 			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE :
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :
-				return getTemplateBindings();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -437,13 +436,13 @@ public abstract class TemplateableElementImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
-				return;
 			case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
+				return;
+			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -463,11 +462,11 @@ public abstract class TemplateableElementImpl
 			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) null);
-				return;
 			case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
+				return;
+			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -489,10 +488,10 @@ public abstract class TemplateableElementImpl
 				return isSetOwnedElements();
 			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNER :
 				return isSetOwner();
-			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE :
-				return ownedTemplateSignature != null;
 			case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :
 				return templateBindings != null && !templateBindings.isEmpty();
+			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE :
+				return ownedTemplateSignature != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -607,8 +606,8 @@ public abstract class TemplateableElementImpl
 	 */
 	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
 		UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_COMMENT,
-		UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
-		UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING};
+		UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
+		UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -618,8 +617,8 @@ public abstract class TemplateableElementImpl
 	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE)
-			|| eIsSet(UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
+			|| eIsSet(UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING)
+			|| eIsSet(UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
 	}
 
 } //TemplateableElementImpl

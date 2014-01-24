@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -16,6 +16,7 @@ package org.eclipse.uml2.uml;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,8 +24,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A read link action is a link action that navigates across associations to retrieve objects on one end.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A ReadLinkAction is a LinkAction that navigates across an Association to retrieve the objects on one end.
+ * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -52,8 +53,8 @@ public interface ReadLinkAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The pin on which are put the objects participating in the association at the end not specified by the inputs.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The OutputPin on which the objects retrieved from the "open" end of those links whose values on other ends are given by the endData.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)
@@ -89,8 +90,8 @@ public interface ReadLinkAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Exactly one link-end data specification (the 'open' end) must not have an end object input pin.
-	 * self.endData->select(ed | ed.value->size() = 0)->size() = 1
+	 * Exactly one linkEndData specification (corresponding to the "open" end) must not have an value InputPin.
+	 * self.openEnd()->size() = 1
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -104,10 +105,8 @@ public interface ReadLinkAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type and ordering of the result output pin are same as the type and ordering of the open association end.
-	 * let openend : Property = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
-	 * self.result.type = openend.type
-	 * and self.result.ordering = openend.ordering
+	 * The type and ordering of the result OutputPin are same as the type and ordering of the open Association end.
+	 * self.openEnd()->forAll(type=result.type and isOrdered=result.isOrdered)
 	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -122,9 +121,8 @@ public interface ReadLinkAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the open association end must be compatible with the multiplicity of the result output pin.
-	 * let openend : Property = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
-	 * openend.multiplicity.compatibleWith(self.result.multiplicity)
+	 * The multiplicity of the open Association end must be compatible with the multiplicity of the result OutputPin.
+	 * self.openEnd()->first().compatibleWith(result)
 	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -140,8 +138,7 @@ public interface ReadLinkAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The open end must be navigable.
-	 * let openend : Property = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
-	 * openend.isNavigable()
+	 * self.openEnd()->first().isNavigable()
 	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -156,14 +153,27 @@ public interface ReadLinkAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Visibility of the open end must allow access to the object performing the action.
-	 * let host : Classifier = self.context in
-	 * let openend : Property = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
-	 * openend.visibility = #public
-	 * or self.endData->exists(oed | not oed.end = openend
-	 * and (host = oed.end.participant
-	 * or (openend.visibility = #protected
-	 * and host.allSupertypes->includes(oed.end.participant))))
+	 * Returns the ends corresponding to endData with no value InputPin. (A well-formed ReadLinkAction is constrained to have only one of these.)
+	 * result = (endData->select(value=null).end->asOrderedSet())
+	 * <p>From package UML::Actions.</p>
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	EList<Property> openEnd();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Visibility of the open end must allow access from the object performing the action.
+	 * let openEnd : Property = self.openEnd()->first() in
+	 *   openEnd.visibility = VisibilityKind::public or 
+	 *   endData->exists(oed | 
+	 *     oed.end<>openEnd and 
+	 *     (_'context' = oed.end.type or 
+	 *       (openEnd.visibility = VisibilityKind::protected and 
+	 *         _'context'.conformsTo(oed.end.type.oclAsType(Classifier)))))
 	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

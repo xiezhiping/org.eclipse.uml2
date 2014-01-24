@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
+ *   Kenn Hussey (CEA) - 418466
  *
- * $Id: TypeOperations.java,v 1.17 2008/01/09 18:56:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -54,7 +54,7 @@ import org.eclipse.uml2.uml.util.UMLSwitch;
  * @generated
  */
 public class TypeOperations
-		extends NamedElementOperations {
+		extends PackageableElementOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

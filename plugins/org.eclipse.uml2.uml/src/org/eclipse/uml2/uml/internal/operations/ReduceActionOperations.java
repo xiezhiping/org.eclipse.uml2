@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,9 +30,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ReduceAction#validateOutputTypesAreCompatible(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Output Types Are Compatible</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReduceAction#validateReducerInputsOutput(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Reducer Inputs Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReduceAction#validateInputTypeIsCollection(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Type Is Collection</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReduceAction#validateOutputTypesAreCompatible(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Output Types Are Compatible</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,8 +54,7 @@ public class ReduceActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the input must be a collection.
-	 * true
+	 * The type of the collection InputPin must be a collection.
 	 * @param reduceAction The receiving '<em><b>Reduce Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -90,8 +89,8 @@ public class ReduceActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the output must be compatible with the type of the output of the reducer behavior.
-	 * true
+	 * The type of the output of the reducer Behavior must conform to the type of the result OutputPin.
+	 * reducer.outputParameters().type->forAll(conformsTo(result.type))
 	 * @param reduceAction The receiving '<em><b>Reduce Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -126,8 +125,14 @@ public class ReduceActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The reducer behavior must have two input parameters and one output parameter, of types compatible with the types of elements of the input collection.
-	 * true
+	 * The reducer Behavior must have two input ownedParameters and one output ownedParameter, where the type of the output Parameter and the type of elements of the input collection conform to the types of the input Parameters.
+	 * let inputs: OrderedSet(Parameter) = reducer.inputParameters() in
+	 * let outputs: OrderedSet(Parameter) = reducer.outputParameters() in
+	 * inputs->size()=2 and outputs->size()=1 and
+	 * inputs.type->forAll(t | 
+	 * 	outputs.type->forAll(conformsTo(t)) and 
+	 * 	-- Note that the following only checks the case when the collection is via multiple tokens.
+	 * 	collection.upperBound()>1 implies collection.type.conformsTo(t))
 	 * @param reduceAction The receiving '<em><b>Reduce Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

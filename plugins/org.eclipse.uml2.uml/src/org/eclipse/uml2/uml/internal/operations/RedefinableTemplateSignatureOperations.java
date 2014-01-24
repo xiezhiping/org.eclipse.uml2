@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2014 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 418466
  *
- * $Id: RedefinableTemplateSignatureOperations.java,v 1.9 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -40,7 +40,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.RedefinableTemplateSignature#validateInheritedParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Inherited Parameters</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.RedefinableTemplateSignature#validateRedefinesParents(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Redefines Parents</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.RedefinableTemplateSignature#getInheritedParameters() <em>Get Inherited Parameters</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.RedefinableTemplateSignature#isConsistentWith(org.eclipse.uml2.uml.RedefinableElement) <em>Is Consistent With</em>}</li>
  * </ul>
@@ -64,15 +64,15 @@ public class RedefinableTemplateSignatureOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The inherited parameters are the parameters of the extended template signature.
-	 * if extendedSignature->isEmpty() then Set{} else extendedSignature.parameter endif
+	 * If any of the parent Classifiers are a template, then the extendedSignature must include the signature of that Classifier.
+	 * classifier.allParents()->forAll(c | c.ownedTemplateSignature->notEmpty() implies self->closure(extendedSignature)->includes(c.ownedTemplateSignature))
 	 * @param redefinableTemplateSignature The receiving '<em><b>Redefinable Template Signature</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateInheritedParameters(
+	public static boolean validateRedefinesParents(
 			RedefinableTemplateSignature redefinableTemplateSignature,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
@@ -85,10 +85,10 @@ public class RedefinableTemplateSignatureOperations
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETERS,
+						UMLValidator.REDEFINABLE_TEMPLATE_SIGNATURE__REDEFINES_PARENTS,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateInheritedParameters", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(redefinableTemplateSignature, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateRedefinesParents", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(redefinableTemplateSignature, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{redefinableTemplateSignature}));
 			}
 			return false;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,9 +30,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Activity#validateActivityParameterNode(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Activity Parameter Node</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Activity#validateAutonomous(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Autonomous</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Activity#validateNoSupergroups(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Supergroups</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#validateMaximumOneParameterNode(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maximum One Parameter Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#validateMaximumTwoParameterNodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maximum Two Parameter Nodes</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,15 +53,17 @@ public class ActivityOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The groups of an activity have no supergroups.
-	 * true
+	 * A Parameter with direction other than inout must have exactly one ActivityParameterNode in an Activity.
+	 * ownedParameter->forAll(p | 
+	 *    p.direction <> ParameterDirectionKind::inout implies node->select(
+	 *        oclIsKindOf(ActivityParameterNode) and oclAsType(ActivityParameterNode).parameter = p)->size()= 1)
 	 * @param activity The receiving '<em><b>Activity</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateNoSupergroups(Activity activity,
+	public static boolean validateMaximumOneParameterNode(Activity activity,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
@@ -74,10 +75,10 @@ public class ActivityOperations
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACTIVITY__NO_SUPERGROUPS,
+						UMLValidator.ACTIVITY__MAXIMUM_ONE_PARAMETER_NODE,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoSupergroups", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(activity, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMaximumOneParameterNode", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(activity, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{activity}));
 			}
 			return false;
@@ -89,15 +90,23 @@ public class ActivityOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The nodes of the activity must include one ActivityParameterNode for each parameter.
-	 * true
+	 * A Parameter with direction inout must have exactly two ActivityParameterNodes in an Activity, at most one with incoming ActivityEdges and at most one with outgoing ActivityEdges.
+	 * ownedParameter->forAll(p | 
+	 * p.direction = ParameterDirectionKind::inout implies
+	 * let associatedNodes : Set(ActivityNode) = node->select(
+	 *        oclIsKindOf(ActivityParameterNode) and oclAsType(ActivityParameterNode).parameter = p) in 
+	 *   associatedNodes->size()=2 and
+	 *   associatedNodes->select(incoming->notEmpty())->size()<=1 and
+	 *   associatedNodes->select(outgoing->notEmpty())->size()<=1
+	 * )
+	 * 
 	 * @param activity The receiving '<em><b>Activity</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateActivityParameterNode(Activity activity,
+	public static boolean validateMaximumTwoParameterNodes(Activity activity,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
@@ -109,45 +118,10 @@ public class ActivityOperations
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACTIVITY__ACTIVITY_PARAMETER_NODE,
+						UMLValidator.ACTIVITY__MAXIMUM_TWO_PARAMETER_NODES,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateActivityParameterNode", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(activity, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{activity}));
-			}
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * An activity cannot be autonomous and have a classifier or behavioral feature context at the same time.
-	 * true
-	 * @param activity The receiving '<em><b>Activity</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateAutonomous(Activity activity,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACTIVITY__AUTONOMOUS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateAutonomous", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(activity, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMaximumTwoParameterNodes", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(activity, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{activity}));
 			}
 			return false;

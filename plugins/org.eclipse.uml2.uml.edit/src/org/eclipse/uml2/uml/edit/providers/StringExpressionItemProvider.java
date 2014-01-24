@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: StringExpressionItemProvider.java,v 1.11 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -73,8 +72,8 @@ public class StringExpressionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addOwnedTemplateSignaturePropertyDescriptor(object);
 			addTemplateBindingPropertyDescriptor(object);
+			addOwnedTemplateSignaturePropertyDescriptor(object);
 			addOwningExpressionPropertyDescriptor(object);
 			addSubExpressionPropertyDescriptor(object);
 		}
@@ -179,9 +178,9 @@ public class StringExpressionItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures
-				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
-			childrenFeatures
 				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
+			childrenFeatures
+				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
 			childrenFeatures
 				.add(UMLPackage.Literals.STRING_EXPRESSION__SUB_EXPRESSION);
 		}
@@ -257,8 +256,8 @@ public class StringExpressionItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(StringExpression.class)) {
-			case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
+			case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
 			case UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
@@ -280,16 +279,16 @@ public class StringExpressionItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
+			UMLFactory.eINSTANCE.createTemplateBinding()));
+
+		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 			UMLFactory.eINSTANCE.createTemplateSignature()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 			UMLFactory.eINSTANCE.createRedefinableTemplateSignature()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
-			UMLFactory.eINSTANCE.createTemplateBinding()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STRING_EXPRESSION__SUB_EXPRESSION,

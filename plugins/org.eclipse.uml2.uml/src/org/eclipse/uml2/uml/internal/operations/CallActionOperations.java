@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -18,8 +18,10 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.CallAction;
 
+import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -30,16 +32,18 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.CallAction#validateArgumentPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Argument Pins</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.CallAction#validateResultPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Result Pins</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.CallAction#validateSynchronousCall(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Synchronous Call</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.CallAction#validateNumberAndOrder(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Number And Order</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.CallAction#validateTypeOrderingMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Ordering Multiplicity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.CallAction#inputParameters() <em>Input Parameters</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.CallAction#outputParameters() <em>Output Parameters</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class CallActionOperations
-		extends InvocationActionOperations {
+		extends ActionOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -54,8 +58,88 @@ public class CallActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Only synchronous call actions can have result pins.
-	 * true
+	 * The number of argument InputPins must be the same as the number of input (in and inout) ownedParameters of the called Behavior or Operation. The type, ordering and multiplicity of each argument InputPin must be consistent with the corresponding input Parameter.
+	 * let parameter: OrderedSet(Parameter) = self.inputParameters() in
+	 * argument->size() = parameter->size() and
+	 * Sequence{1..argument->size()}->forAll(i | 
+	 * 	argument->at(i).type.conformsTo(parameter->at(i).type) and 
+	 * 	argument->at(i).isOrdered = parameter->at(i).isOrdered and
+	 * 	argument->at(i).compatibleWith(parameter->at(i)))
+	 * @param callAction The receiving '<em><b>Call Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateArgumentPins(CallAction callAction,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.CALL_ACTION__ARGUMENT_PINS,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateArgumentPins", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(callAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{callAction}));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The number of result OutputPins must be the same as the number of output (inout, out and return) ownedParameters of the called Behavior or Operation. The type, ordering and multiplicity of each result OutputPin must be consistent with the corresponding input Parameter.
+	 * let parameter: OrderedSet(Parameter) = self.outputParameters() in
+	 * result->size() = parameter->size() and
+	 * Sequence{1..result->size()}->forAll(i | 
+	 * 	parameter->at(i).type.conformsTo(result->at(i).type) and 
+	 * 	parameter->at(i).isOrdered = result->at(i).isOrdered and
+	 * 	parameter->at(i).compatibleWith(result->at(i)))
+	 * @param callAction The receiving '<em><b>Call Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateResultPins(CallAction callAction,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.CALL_ACTION__RESULT_PINS,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateResultPins", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(callAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{callAction}));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Only synchronous CallActions can have result OutputPins.
+	 * result->notEmpty() implies isSynchronous
 	 * @param callAction The receiving '<em><b>Call Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -89,71 +173,32 @@ public class CallActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The number and order of argument pins must be the same as the number and order of parameters of the invoked behavior or behavioral feature. Pins are matched to parameters by order.
-	 * true
+	 * Return the in and inout ownedParameters of the Behavior or Operation being called. (This operation is abstract and should be overridden by subclasses of CallAction.)
+	 * <p>From package UML::Actions.</p>
 	 * @param callAction The receiving '<em><b>Call Action</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateNumberAndOrder(CallAction callAction,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public static EList<Parameter> inputParameters(CallAction callAction) {
 		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CALL_ACTION__NUMBER_AND_ORDER,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNumberAndOrder", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(callAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{callAction}));
-			}
-			return false;
-		}
-		return true;
+		throw new UnsupportedOperationException();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type, ordering, and multiplicity of an argument pin must be the same as the corresponding parameter of the behavior or behavioral feature.
-	 * true
+	 * Return the inout, out and return ownedParameters of the Behavior or Operation being called. (This operation is abstract and should be overridden by subclasses of CallAction.)
+	 * <p>From package UML::Actions.</p>
 	 * @param callAction The receiving '<em><b>Call Action</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateTypeOrderingMultiplicity(
-			CallAction callAction, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
+	public static EList<Parameter> outputParameters(CallAction callAction) {
 		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CALL_ACTION__TYPE_ORDERING_MULTIPLICITY,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateTypeOrderingMultiplicity", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(callAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{callAction}));
-			}
-			return false;
-		}
-		return true;
+		throw new UnsupportedOperationException();
 	}
 
 } // CallActionOperations

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -39,7 +39,6 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Gate;
 import org.eclipse.uml2.uml.GeneralOrdering;
@@ -560,18 +559,15 @@ public class InteractionUseImpl
 			case UMLPackage.INTERACTION_USE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.INTERACTION_USE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION_USE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INTERACTION_USE__COVERED :
 				return ((InternalEList<?>) getCovereds()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.INTERACTION_USE__ENCLOSING_INTERACTION :
-				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.INTERACTION_USE__ENCLOSING_OPERAND :
 				return basicSetEnclosingOperand(null, msgs);
+			case UMLPackage.INTERACTION_USE__ENCLOSING_INTERACTION :
+				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.INTERACTION_USE__GENERAL_ORDERING :
 				return ((InternalEList<?>) getGeneralOrderings()).basicRemove(
 					otherEnd, msgs);
@@ -623,14 +619,14 @@ public class InteractionUseImpl
 				return getVisibility();
 			case UMLPackage.INTERACTION_USE__COVERED :
 				return getCovereds();
-			case UMLPackage.INTERACTION_USE__ENCLOSING_INTERACTION :
-				if (resolve)
-					return getEnclosingInteraction();
-				return basicGetEnclosingInteraction();
 			case UMLPackage.INTERACTION_USE__ENCLOSING_OPERAND :
 				if (resolve)
 					return getEnclosingOperand();
 				return basicGetEnclosingOperand();
+			case UMLPackage.INTERACTION_USE__ENCLOSING_INTERACTION :
+				if (resolve)
+					return getEnclosingInteraction();
+				return basicGetEnclosingInteraction();
 			case UMLPackage.INTERACTION_USE__GENERAL_ORDERING :
 				return getGeneralOrderings();
 			case UMLPackage.INTERACTION_USE__ACTUAL_GATE :
@@ -672,11 +668,6 @@ public class InteractionUseImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.INTERACTION_USE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.INTERACTION_USE__NAME :
 				setName((String) newValue);
 				return;
@@ -690,11 +681,11 @@ public class InteractionUseImpl
 				getCovereds().clear();
 				getCovereds().addAll((Collection<? extends Lifeline>) newValue);
 				return;
-			case UMLPackage.INTERACTION_USE__ENCLOSING_INTERACTION :
-				setEnclosingInteraction((Interaction) newValue);
-				return;
 			case UMLPackage.INTERACTION_USE__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) newValue);
+				return;
+			case UMLPackage.INTERACTION_USE__ENCLOSING_INTERACTION :
+				setEnclosingInteraction((Interaction) newValue);
 				return;
 			case UMLPackage.INTERACTION_USE__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
@@ -737,9 +728,6 @@ public class InteractionUseImpl
 			case UMLPackage.INTERACTION_USE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.INTERACTION_USE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.INTERACTION_USE__NAME :
 				unsetName();
 				return;
@@ -752,11 +740,11 @@ public class InteractionUseImpl
 			case UMLPackage.INTERACTION_USE__COVERED :
 				getCovereds().clear();
 				return;
-			case UMLPackage.INTERACTION_USE__ENCLOSING_INTERACTION :
-				setEnclosingInteraction((Interaction) null);
-				return;
 			case UMLPackage.INTERACTION_USE__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) null);
+				return;
+			case UMLPackage.INTERACTION_USE__ENCLOSING_INTERACTION :
+				setEnclosingInteraction((Interaction) null);
 				return;
 			case UMLPackage.INTERACTION_USE__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
@@ -797,8 +785,7 @@ public class InteractionUseImpl
 			case UMLPackage.INTERACTION_USE__OWNER :
 				return isSetOwner();
 			case UMLPackage.INTERACTION_USE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.INTERACTION_USE__NAME :
 				return isSetName();
 			case UMLPackage.INTERACTION_USE__NAME_EXPRESSION :
@@ -813,10 +800,10 @@ public class InteractionUseImpl
 				return isSetVisibility();
 			case UMLPackage.INTERACTION_USE__COVERED :
 				return covereds != null && !covereds.isEmpty();
-			case UMLPackage.INTERACTION_USE__ENCLOSING_INTERACTION :
-				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.INTERACTION_USE__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
+			case UMLPackage.INTERACTION_USE__ENCLOSING_INTERACTION :
+				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.INTERACTION_USE__GENERAL_ORDERING :
 				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.INTERACTION_USE__ACTUAL_GATE :
@@ -925,16 +912,16 @@ public class InteractionUseImpl
 				return allOwnedElements();
 			case UMLPackage.INTERACTION_USE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.INTERACTION_USE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERACTION_USE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERACTION_USE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INTERACTION_USE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERACTION_USE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -945,6 +932,8 @@ public class InteractionUseImpl
 				return getLabel();
 			case UMLPackage.INTERACTION_USE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.INTERACTION_USE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.INTERACTION_USE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.INTERACTION_USE___ALL_OWNING_PACKAGES :
@@ -952,14 +941,18 @@ public class InteractionUseImpl
 			case UMLPackage.INTERACTION_USE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.INTERACTION_USE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.INTERACTION_USE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.INTERACTION_USE___SEPARATOR :
 				return separator();
-			case UMLPackage.INTERACTION_USE___VALIDATE_ALL_LIFELINES__DIAGNOSTICCHAIN_MAP :
-				return validateAllLifelines((DiagnosticChain) arguments.get(0),
+			case UMLPackage.INTERACTION_USE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
+			case UMLPackage.INTERACTION_USE___VALIDATE_GATES_MATCH__DIAGNOSTICCHAIN_MAP :
+				return validateGatesMatch((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INTERACTION_USE___VALIDATE_ARGUMENTS_ARE_CONSTANTS__DIAGNOSTICCHAIN_MAP :
+				return validateArgumentsAreConstants(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERACTION_USE___VALIDATE_RETURN_VALUE_RECIPIENT_COVERAGE__DIAGNOSTICCHAIN_MAP :
 				return validateReturnValueRecipientCoverage(
@@ -969,16 +962,12 @@ public class InteractionUseImpl
 				return validateArgumentsCorrespondToParameters(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INTERACTION_USE___VALIDATE_GATES_MATCH__DIAGNOSTICCHAIN_MAP :
-				return validateGatesMatch((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INTERACTION_USE___VALIDATE_ARGUMENTS_ARE_CONSTANTS__DIAGNOSTICCHAIN_MAP :
-				return validateArgumentsAreConstants(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERACTION_USE___VALIDATE_RETURN_VALUE_TYPE_RECIPIENT_CORRESPONDENCE__DIAGNOSTICCHAIN_MAP :
 				return validateReturnValueTypeRecipientCorrespondence(
 					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INTERACTION_USE___VALIDATE_ALL_LIFELINES__DIAGNOSTICCHAIN_MAP :
+				return validateAllLifelines((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 418466
  *
- * $Id: ReadStructuralFeatureActionOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -53,9 +53,9 @@ public class ReadStructuralFeatureActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type and ordering of the result output pin are the same as the type and ordering of the structural feature.
-	 * self.result.type = self.structuralFeature.type
-	 * and self.result.ordering = self.structuralFeature.ordering
+	 * The type and ordering of the result OutputPin are the same as the type and ordering of the StructuralFeature.
+	 * result.type =structuralFeature.type and 
+	 * result.isOrdered = structuralFeature.isOrdered
 	 * 
 	 * @param readStructuralFeatureAction The receiving '<em><b>Read Structural Feature Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -91,8 +91,8 @@ public class ReadStructuralFeatureActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the structural feature must be compatible with the multiplicity of the output pin.
-	 * self.structuralFeature.multiplicity.compatibleWith(self.result.multiplicity)
+	 * The multiplicity of the StructuralFeature must be compatible with the multiplicity of the result OutputPin.
+	 * structuralFeature.compatibleWith(result)
 	 * @param readStructuralFeatureAction The receiving '<em><b>Read Structural Feature Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

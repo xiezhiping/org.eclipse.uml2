@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: RedefinableTemplateSignatureTest.java,v 1.7 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -33,7 +32,8 @@ import org.eclipse.uml2.uml.UMLFactory;
  * The following operations are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.TemplateSignature#validateOwnElements(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Own Elements</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.RedefinableTemplateSignature#validateInheritedParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Inherited Parameters</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.TemplateSignature#validateUniqueParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Unique Parameters</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.RedefinableTemplateSignature#validateRedefinesParents(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Redefines Parents</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.RedefinableTemplateSignature#isConsistentWith(org.eclipse.uml2.uml.RedefinableElement) <em>Is Consistent With</em>}</li>
  * </ul>
  * </p>
@@ -133,13 +133,25 @@ public class RedefinableTemplateSignatureTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.RedefinableTemplateSignature#validateInheritedParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Inherited Parameters</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.uml.TemplateSignature#validateUniqueParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Unique Parameters</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.RedefinableTemplateSignature#validateInheritedParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @see org.eclipse.uml2.uml.TemplateSignature#validateUniqueParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public void testValidateInheritedParameters__DiagnosticChain_Map() {
+	public void testValidateUniqueParameters__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.RedefinableTemplateSignature#validateRedefinesParents(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Redefines Parents</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.RedefinableTemplateSignature#validateRedefinesParents(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateRedefinesParents__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

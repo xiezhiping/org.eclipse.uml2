@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -407,16 +407,16 @@ public class QualifierValueImpl
 				return allOwnedElements();
 			case UMLPackage.QUALIFIER_VALUE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.QUALIFIER_VALUE___VALIDATE_QUALIFIER_ATTRIBUTE__DIAGNOSTICCHAIN_MAP :
-				return validateQualifierAttribute(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.QUALIFIER_VALUE___VALIDATE_MULTIPLICITY_OF_QUALIFIER__DIAGNOSTICCHAIN_MAP :
 				return validateMultiplicityOfQualifier(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.QUALIFIER_VALUE___VALIDATE_TYPE_OF_QUALIFIER__DIAGNOSTICCHAIN_MAP :
 				return validateTypeOfQualifier(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.QUALIFIER_VALUE___VALIDATE_QUALIFIER_ATTRIBUTE__DIAGNOSTICCHAIN_MAP :
+				return validateQualifierAttribute(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -33,7 +33,6 @@ import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.CallConcurrencyKind;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -143,9 +142,21 @@ public class ReceptionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNotQuery(DiagnosticChain diagnostics,
+	public boolean validateSameNameAsSignal(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return ReceptionOperations.validateNotQuery(this, diagnostics, context);
+		return ReceptionOperations.validateSameNameAsSignal(this, diagnostics,
+			context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSameStructureAsSignal(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return ReceptionOperations.validateSameStructureAsSignal(this,
+			diagnostics, context);
 	}
 
 	/**
@@ -182,12 +193,12 @@ public class ReceptionImpl
 				return getQualifiedName();
 			case UMLPackage.RECEPTION__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.RECEPTION__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.RECEPTION__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.RECEPTION__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.RECEPTION__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.RECEPTION__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.RECEPTION__IMPORTED_MEMBER :
@@ -243,11 +254,6 @@ public class ReceptionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.RECEPTION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.RECEPTION__NAME :
 				setName((String) newValue);
 				return;
@@ -256,6 +262,11 @@ public class ReceptionImpl
 				return;
 			case UMLPackage.RECEPTION__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.RECEPTION__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.RECEPTION__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -266,11 +277,6 @@ public class ReceptionImpl
 				getPackageImports().clear();
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
-				return;
-			case UMLPackage.RECEPTION__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.RECEPTION__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -324,9 +330,6 @@ public class ReceptionImpl
 			case UMLPackage.RECEPTION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.RECEPTION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.RECEPTION__NAME :
 				unsetName();
 				return;
@@ -336,14 +339,14 @@ public class ReceptionImpl
 			case UMLPackage.RECEPTION__VISIBILITY :
 				unsetVisibility();
 				return;
+			case UMLPackage.RECEPTION__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.RECEPTION__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.RECEPTION__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				return;
-			case UMLPackage.RECEPTION__OWNED_RULE :
-				getOwnedRules().clear();
 				return;
 			case UMLPackage.RECEPTION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
@@ -393,8 +396,7 @@ public class ReceptionImpl
 			case UMLPackage.RECEPTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.RECEPTION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.RECEPTION__NAME :
 				return isSetName();
 			case UMLPackage.RECEPTION__NAME_EXPRESSION :
@@ -407,12 +409,12 @@ public class ReceptionImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.RECEPTION__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.RECEPTION__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.RECEPTION__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.RECEPTION__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.RECEPTION__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.RECEPTION__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.RECEPTION__IMPORTED_MEMBER :
@@ -540,16 +542,16 @@ public class ReceptionImpl
 				return allOwnedElements();
 			case UMLPackage.RECEPTION___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.RECEPTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.RECEPTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.RECEPTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.RECEPTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.RECEPTION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -560,6 +562,8 @@ public class ReceptionImpl
 				return getLabel();
 			case UMLPackage.RECEPTION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.RECEPTION___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.RECEPTION___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.RECEPTION___ALL_OWNING_PACKAGES :
@@ -567,14 +571,22 @@ public class ReceptionImpl
 			case UMLPackage.RECEPTION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.RECEPTION___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.RECEPTION___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.RECEPTION___SEPARATOR :
 				return separator();
+			case UMLPackage.RECEPTION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.RECEPTION___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.RECEPTION___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.RECEPTION___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.RECEPTION___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -589,6 +601,8 @@ public class ReceptionImpl
 				return getImportedElements();
 			case UMLPackage.RECEPTION___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.RECEPTION___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.RECEPTION___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -601,8 +615,6 @@ public class ReceptionImpl
 				return getImportedMembers();
 			case UMLPackage.RECEPTION___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.RECEPTION___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 			case UMLPackage.RECEPTION___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -620,11 +632,24 @@ public class ReceptionImpl
 			case UMLPackage.RECEPTION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
+			case UMLPackage.RECEPTION___VALIDATE_ABSTRACT_NO_METHOD__DIAGNOSTICCHAIN_MAP :
+				return validateAbstractNoMethod(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.RECEPTION___CREATE_RETURN_RESULT__STRING_TYPE :
 				return createReturnResult((String) arguments.get(0),
 					(Type) arguments.get(1));
-			case UMLPackage.RECEPTION___VALIDATE_NOT_QUERY__DIAGNOSTICCHAIN_MAP :
-				return validateNotQuery((DiagnosticChain) arguments.get(0),
+			case UMLPackage.RECEPTION___INPUT_PARAMETERS :
+				return inputParameters();
+			case UMLPackage.RECEPTION___OUTPUT_PARAMETERS :
+				return outputParameters();
+			case UMLPackage.RECEPTION___VALIDATE_SAME_NAME_AS_SIGNAL__DIAGNOSTICCHAIN_MAP :
+				return validateSameNameAsSignal(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.RECEPTION___VALIDATE_SAME_STRUCTURE_AS_SIGNAL__DIAGNOSTICCHAIN_MAP :
+				return validateSameStructureAsSignal(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

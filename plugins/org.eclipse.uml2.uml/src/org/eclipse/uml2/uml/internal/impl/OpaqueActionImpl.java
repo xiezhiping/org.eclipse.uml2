@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,14 +7,17 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.Map;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -38,17 +41,21 @@ import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ExceptionHandler;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
+import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.OutputPin;
+import org.eclipse.uml2.uml.RedefinableElement;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
+import org.eclipse.uml2.uml.internal.operations.OpaqueActionOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -386,6 +393,17 @@ public class OpaqueActionImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateLanguageBodySize(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return OpaqueActionOperations.validateLanguageBodySize(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public OutputPin getOutputValue(String name, Type type, boolean ignoreCase) {
@@ -407,24 +425,21 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.OPAQUE_ACTION__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OPAQUE_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.OPAQUE_ACTION__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.OPAQUE_ACTION__IN_STRUCTURED_NODE :
-				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.OPAQUE_ACTION__IN_INTERRUPTIBLE_REGION :
 				return ((InternalEList<?>) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
+			case UMLPackage.OPAQUE_ACTION__IN_STRUCTURED_NODE :
+				return basicSetInStructuredNode(null, msgs);
+			case UMLPackage.OPAQUE_ACTION__INCOMING :
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.OPAQUE_ACTION__OUTGOING :
 				return ((InternalEList<?>) getOutgoings()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.OPAQUE_ACTION__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
+			case UMLPackage.OPAQUE_ACTION__IN_PARTITION :
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.OPAQUE_ACTION__HANDLER :
 				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
@@ -489,22 +504,22 @@ public class OpaqueActionImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.OPAQUE_ACTION__IN_PARTITION :
-				return getInPartitions();
+			case UMLPackage.OPAQUE_ACTION__IN_GROUP :
+				return getInGroups();
+			case UMLPackage.OPAQUE_ACTION__IN_INTERRUPTIBLE_REGION :
+				return getInInterruptibleRegions();
 			case UMLPackage.OPAQUE_ACTION__IN_STRUCTURED_NODE :
 				if (resolve)
 					return getInStructuredNode();
 				return basicGetInStructuredNode();
-			case UMLPackage.OPAQUE_ACTION__IN_INTERRUPTIBLE_REGION :
-				return getInInterruptibleRegions();
-			case UMLPackage.OPAQUE_ACTION__OUTGOING :
-				return getOutgoings();
 			case UMLPackage.OPAQUE_ACTION__INCOMING :
 				return getIncomings();
-			case UMLPackage.OPAQUE_ACTION__IN_GROUP :
-				return getInGroups();
+			case UMLPackage.OPAQUE_ACTION__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.OPAQUE_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
+			case UMLPackage.OPAQUE_ACTION__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.OPAQUE_ACTION__HANDLER :
 				return getHandlers();
 			case UMLPackage.OPAQUE_ACTION__CONTEXT :
@@ -552,11 +567,6 @@ public class OpaqueActionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.OPAQUE_ACTION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.OPAQUE_ACTION__NAME :
 				setName((String) newValue);
 				return;
@@ -572,34 +582,34 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
-			case UMLPackage.OPAQUE_ACTION__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
-				return;
-			case UMLPackage.OPAQUE_ACTION__IN_STRUCTURED_NODE :
-				setInStructuredNode((StructuredActivityNode) newValue);
-				return;
 			case UMLPackage.OPAQUE_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
 				getInInterruptibleRegions()
 					.addAll(
 						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
-			case UMLPackage.OPAQUE_ACTION__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+			case UMLPackage.OPAQUE_ACTION__IN_STRUCTURED_NODE :
+				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.OPAQUE_ACTION__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll(
 					(Collection<? extends ActivityEdge>) newValue);
 				return;
+			case UMLPackage.OPAQUE_ACTION__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
+				return;
 			case UMLPackage.OPAQUE_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
 				getRedefinedNodes().addAll(
 					(Collection<? extends ActivityNode>) newValue);
+				return;
+			case UMLPackage.OPAQUE_ACTION__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.OPAQUE_ACTION__HANDLER :
 				getHandlers().clear();
@@ -655,9 +665,6 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.OPAQUE_ACTION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.OPAQUE_ACTION__NAME :
 				unsetName();
 				return;
@@ -673,23 +680,23 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION__ACTIVITY :
 				setActivity((Activity) null);
 				return;
-			case UMLPackage.OPAQUE_ACTION__IN_PARTITION :
-				getInPartitions().clear();
+			case UMLPackage.OPAQUE_ACTION__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
 				return;
 			case UMLPackage.OPAQUE_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
-			case UMLPackage.OPAQUE_ACTION__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
+			case UMLPackage.OPAQUE_ACTION__INCOMING :
+				getIncomings().clear();
 				return;
 			case UMLPackage.OPAQUE_ACTION__OUTGOING :
 				getOutgoings().clear();
 				return;
-			case UMLPackage.OPAQUE_ACTION__INCOMING :
-				getIncomings().clear();
-				return;
 			case UMLPackage.OPAQUE_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
+				return;
+			case UMLPackage.OPAQUE_ACTION__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.OPAQUE_ACTION__HANDLER :
 				getHandlers().clear();
@@ -736,8 +743,7 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.OPAQUE_ACTION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.OPAQUE_ACTION__NAME :
 				return isSetName();
 			case UMLPackage.OPAQUE_ACTION__NAME_EXPRESSION :
@@ -758,21 +764,21 @@ public class OpaqueActionImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.OPAQUE_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.OPAQUE_ACTION__IN_PARTITION :
-				return inPartitions != null && !inPartitions.isEmpty();
-			case UMLPackage.OPAQUE_ACTION__IN_STRUCTURED_NODE :
-				return basicGetInStructuredNode() != null;
+			case UMLPackage.OPAQUE_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.OPAQUE_ACTION__IN_INTERRUPTIBLE_REGION :
 				return inInterruptibleRegions != null
 					&& !inInterruptibleRegions.isEmpty();
-			case UMLPackage.OPAQUE_ACTION__OUTGOING :
-				return outgoings != null && !outgoings.isEmpty();
+			case UMLPackage.OPAQUE_ACTION__IN_STRUCTURED_NODE :
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.OPAQUE_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
-			case UMLPackage.OPAQUE_ACTION__IN_GROUP :
-				return isSetInGroups();
+			case UMLPackage.OPAQUE_ACTION__OUTGOING :
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
+			case UMLPackage.OPAQUE_ACTION__IN_PARTITION :
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__HANDLER :
 				return handlers != null && !handlers.isEmpty();
 			case UMLPackage.OPAQUE_ACTION__CONTEXT :
@@ -799,6 +805,168 @@ public class OpaqueActionImpl
 				return outputValues != null && !outputValues.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments)
+			throws InvocationTargetException {
+		switch (operationID) {
+			case UMLPackage.OPAQUE_ACTION___GET_EANNOTATION__STRING :
+				return getEAnnotation((String) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
+				return validateHasOwner((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPAQUE_ACTION___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPAQUE_ACTION___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___DESTROY :
+				destroy();
+				return null;
+			case UMLPackage.OPAQUE_ACTION___GET_KEYWORDS :
+				return getKeywords();
+			case UMLPackage.OPAQUE_ACTION___GET_APPLICABLE_STEREOTYPE__STRING :
+				return getApplicableStereotype((String) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
+			case UMLPackage.OPAQUE_ACTION___GET_APPLIED_STEREOTYPE__STRING :
+				return getAppliedStereotype((String) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
+			case UMLPackage.OPAQUE_ACTION___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
+				return getAppliedSubstereotype((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.OPAQUE_ACTION___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___GET_MODEL :
+				return getModel();
+			case UMLPackage.OPAQUE_ACTION___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
+			case UMLPackage.OPAQUE_ACTION___GET_RELATIONSHIPS :
+				return getRelationships();
+			case UMLPackage.OPAQUE_ACTION___GET_RELATIONSHIPS__ECLASS :
+				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
+			case UMLPackage.OPAQUE_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
+				return getSourceDirectedRelationships();
+			case UMLPackage.OPAQUE_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
+			case UMLPackage.OPAQUE_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS :
+				return getTargetDirectedRelationships();
+			case UMLPackage.OPAQUE_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.OPAQUE_ACTION___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.OPAQUE_ACTION___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.OPAQUE_ACTION___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___ALL_OWNED_ELEMENTS :
+				return allOwnedElements();
+			case UMLPackage.OPAQUE_ACTION___MUST_BE_OWNED :
+				return mustBeOwned();
+			case UMLPackage.OPAQUE_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPAQUE_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPAQUE_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPAQUE_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :
+				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___GET_LABEL :
+				return getLabel();
+			case UMLPackage.OPAQUE_ACTION___GET_LABEL__BOOLEAN :
+				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.OPAQUE_ACTION___ALL_NAMESPACES :
+				return allNamespaces();
+			case UMLPackage.OPAQUE_ACTION___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
+			case UMLPackage.OPAQUE_ACTION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
+				return isDistinguishableFrom((NamedElement) arguments.get(0),
+					(Namespace) arguments.get(1));
+			case UMLPackage.OPAQUE_ACTION___GET_QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.OPAQUE_ACTION___SEPARATOR :
+				return separator();
+			case UMLPackage.OPAQUE_ACTION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
+			case UMLPackage.OPAQUE_ACTION___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionConsistent(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPAQUE_ACTION___VALIDATE_NON_LEAF_REDEFINITION__DIAGNOSTICCHAIN_MAP :
+				return validateNonLeafRedefinition(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPAQUE_ACTION___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionContextValid(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPAQUE_ACTION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
+				return isConsistentWith((RedefinableElement) arguments.get(0));
+			case UMLPackage.OPAQUE_ACTION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
+				return isRedefinitionContextValid((RedefinableElement) arguments
+					.get(0));
+			case UMLPackage.OPAQUE_ACTION___CONTAINING_ACTIVITY :
+				return containingActivity();
+			case UMLPackage.OPAQUE_ACTION___GET_CONTEXT :
+				return getContext();
+			case UMLPackage.OPAQUE_ACTION___ALL_ACTIONS :
+				return allActions();
+			case UMLPackage.OPAQUE_ACTION___ALL_OWNED_NODES :
+				return allOwnedNodes();
+			case UMLPackage.OPAQUE_ACTION___CONTAINING_BEHAVIOR :
+				return containingBehavior();
+			case UMLPackage.OPAQUE_ACTION___VALIDATE_LANGUAGE_BODY_SIZE__DIAGNOSTICCHAIN_MAP :
+				return validateLanguageBodySize(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+		}
+		return eDynamicInvoke(operationID, arguments);
 	}
 
 	/**

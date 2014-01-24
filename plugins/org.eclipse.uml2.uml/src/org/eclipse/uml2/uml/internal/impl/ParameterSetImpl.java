@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -38,7 +38,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -288,9 +287,6 @@ public class ParameterSetImpl
 			case UMLPackage.PARAMETER_SET__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.PARAMETER_SET__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PARAMETER_SET__PARAMETER :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getParameters())
 					.basicAdd(otherEnd, msgs);
@@ -313,9 +309,6 @@ public class ParameterSetImpl
 			case UMLPackage.PARAMETER_SET__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.PARAMETER_SET__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PARAMETER_SET__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.PARAMETER_SET__CONDITION :
@@ -389,11 +382,6 @@ public class ParameterSetImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.PARAMETER_SET__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.PARAMETER_SET__NAME :
 				setName((String) newValue);
 				return;
@@ -431,9 +419,6 @@ public class ParameterSetImpl
 			case UMLPackage.PARAMETER_SET__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.PARAMETER_SET__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.PARAMETER_SET__NAME :
 				unsetName();
 				return;
@@ -470,8 +455,7 @@ public class ParameterSetImpl
 			case UMLPackage.PARAMETER_SET__OWNER :
 				return isSetOwner();
 			case UMLPackage.PARAMETER_SET__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.PARAMETER_SET__NAME :
 				return isSetName();
 			case UMLPackage.PARAMETER_SET__NAME_EXPRESSION :
@@ -584,16 +568,16 @@ public class ParameterSetImpl
 				return allOwnedElements();
 			case UMLPackage.PARAMETER_SET___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.PARAMETER_SET___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER_SET___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER_SET___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PARAMETER_SET___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER_SET___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -604,6 +588,8 @@ public class ParameterSetImpl
 				return getLabel();
 			case UMLPackage.PARAMETER_SET___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.PARAMETER_SET___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.PARAMETER_SET___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.PARAMETER_SET___ALL_OWNING_PACKAGES :
@@ -611,21 +597,21 @@ public class ParameterSetImpl
 			case UMLPackage.PARAMETER_SET___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.PARAMETER_SET___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.PARAMETER_SET___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.PARAMETER_SET___SEPARATOR :
 				return separator();
-			case UMLPackage.PARAMETER_SET___VALIDATE_TWO_PARAMETER_SETS__DIAGNOSTICCHAIN_MAP :
-				return validateTwoParameterSets(
+			case UMLPackage.PARAMETER_SET___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
+			case UMLPackage.PARAMETER_SET___VALIDATE_SAME_PARAMETERIZED_ENTITY__DIAGNOSTICCHAIN_MAP :
+				return validateSameParameterizedEntity(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER_SET___VALIDATE_INPUT__DIAGNOSTICCHAIN_MAP :
 				return validateInput((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PARAMETER_SET___VALIDATE_SAME_PARAMETERIZED_ENTITY__DIAGNOSTICCHAIN_MAP :
-				return validateSameParameterizedEntity(
+			case UMLPackage.PARAMETER_SET___VALIDATE_TWO_PARAMETER_SETS__DIAGNOSTICCHAIN_MAP :
+				return validateTwoParameterSets(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

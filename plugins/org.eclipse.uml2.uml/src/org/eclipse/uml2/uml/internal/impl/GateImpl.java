@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.uml2.uml.Gate;
+import org.eclipse.uml2.uml.InteractionOperand;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Stereotype;
@@ -66,9 +67,9 @@ public class GateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMessagesActualGate(DiagnosticChain diagnostics,
+	public boolean validateActualGateMatched(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return GateOperations.validateMessagesActualGate(this, diagnostics,
+		return GateOperations.validateActualGateMatched(this, diagnostics,
 			context);
 	}
 
@@ -77,10 +78,129 @@ public class GateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMessagesCombinedFragment(
+	public boolean validateInsideCfMatched(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return GateOperations.validateInsideCfMatched(this, diagnostics,
+			context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateOutsideCfMatched(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return GateOperations.validateOutsideCfMatched(this, diagnostics,
+			context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateFormalGateDistinguishable(
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return GateOperations.validateMessagesCombinedFragment(this,
+		return GateOperations.validateFormalGateDistinguishable(this,
 			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateActualGateDistinguishable(
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return GateOperations.validateActualGateDistinguishable(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateOutsideCfGateDistinguishable(
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return GateOperations.validateOutsideCfGateDistinguishable(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateInsideCfGateDistinguishable(
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return GateOperations.validateInsideCfGateDistinguishable(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isOutsideCF() {
+		return GateOperations.isOutsideCF(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isInsideCF() {
+		return GateOperations.isInsideCF(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isActual() {
+		return GateOperations.isActual(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isFormal() {
+		return GateOperations.isFormal(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean matches(Gate gateToMatch) {
+		return GateOperations.matches(this, gateToMatch);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InteractionOperand getOperand() {
+		return GateOperations.getOperand(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isDistinguishableFrom(NamedElement n, Namespace ns) {
+		return GateOperations.isDistinguishableFrom(this, n, ns);
 	}
 
 	/**
@@ -175,16 +295,16 @@ public class GateImpl
 				return allOwnedElements();
 			case UMLPackage.GATE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.GATE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.GATE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.GATE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.GATE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.GATE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -195,6 +315,8 @@ public class GateImpl
 				return getLabel();
 			case UMLPackage.GATE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.GATE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.GATE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.GATE___ALL_OWNING_PACKAGES :
@@ -202,20 +324,62 @@ public class GateImpl
 			case UMLPackage.GATE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.GATE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.GATE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.GATE___SEPARATOR :
 				return separator();
-			case UMLPackage.GATE___VALIDATE_MESSAGES_COMBINED_FRAGMENT__DIAGNOSTICCHAIN_MAP :
-				return validateMessagesCombinedFragment(
+			case UMLPackage.GATE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
+			case UMLPackage.GATE___OPPOSITE_END :
+				return oppositeEnd();
+			case UMLPackage.GATE___IS_SEND :
+				return isSend();
+			case UMLPackage.GATE___IS_RECEIVE :
+				return isReceive();
+			case UMLPackage.GATE___ENCLOSING_FRAGMENT :
+				return enclosingFragment();
+			case UMLPackage.GATE___VALIDATE_ACTUAL_GATE_MATCHED__DIAGNOSTICCHAIN_MAP :
+				return validateActualGateMatched(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.GATE___VALIDATE_MESSAGES_ACTUAL_GATE__DIAGNOSTICCHAIN_MAP :
-				return validateMessagesActualGate(
+			case UMLPackage.GATE___VALIDATE_INSIDE_CF_MATCHED__DIAGNOSTICCHAIN_MAP :
+				return validateInsideCfMatched(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.GATE___VALIDATE_OUTSIDE_CF_MATCHED__DIAGNOSTICCHAIN_MAP :
+				return validateOutsideCfMatched(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.GATE___VALIDATE_FORMAL_GATE_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
+				return validateFormalGateDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.GATE___VALIDATE_ACTUAL_GATE_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
+				return validateActualGateDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.GATE___VALIDATE_OUTSIDE_CF_GATE_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
+				return validateOutsideCfGateDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.GATE___VALIDATE_INSIDE_CF_GATE_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
+				return validateInsideCfGateDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.GATE___IS_OUTSIDE_CF :
+				return isOutsideCF();
+			case UMLPackage.GATE___IS_INSIDE_CF :
+				return isInsideCF();
+			case UMLPackage.GATE___IS_ACTUAL :
+				return isActual();
+			case UMLPackage.GATE___IS_FORMAL :
+				return isFormal();
+			case UMLPackage.GATE___GET_NAME :
+				return getName();
+			case UMLPackage.GATE___MATCHES__GATE :
+				return matches((Gate) arguments.get(0));
+			case UMLPackage.GATE___GET_OPERAND :
+				return getOperand();
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}

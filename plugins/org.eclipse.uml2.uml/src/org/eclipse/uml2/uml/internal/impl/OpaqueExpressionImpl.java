@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -35,7 +35,6 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.OpaqueExpression;
@@ -406,11 +405,6 @@ public class OpaqueExpressionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.OPAQUE_EXPRESSION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.OPAQUE_EXPRESSION__NAME :
 				setName((String) newValue);
 				return;
@@ -457,9 +451,6 @@ public class OpaqueExpressionImpl
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.OPAQUE_EXPRESSION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__NAME :
 				unsetName();
@@ -509,8 +500,7 @@ public class OpaqueExpressionImpl
 			case UMLPackage.OPAQUE_EXPRESSION__OWNER :
 				return isSetOwner();
 			case UMLPackage.OPAQUE_EXPRESSION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.OPAQUE_EXPRESSION__NAME :
 				return isSetName();
 			case UMLPackage.OPAQUE_EXPRESSION__NAME_EXPRESSION :
@@ -633,16 +623,16 @@ public class OpaqueExpressionImpl
 				return allOwnedElements();
 			case UMLPackage.OPAQUE_EXPRESSION___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPAQUE_EXPRESSION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -653,6 +643,8 @@ public class OpaqueExpressionImpl
 				return getLabel();
 			case UMLPackage.OPAQUE_EXPRESSION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.OPAQUE_EXPRESSION___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.OPAQUE_EXPRESSION___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.OPAQUE_EXPRESSION___ALL_OWNING_PACKAGES :
@@ -660,16 +652,20 @@ public class OpaqueExpressionImpl
 			case UMLPackage.OPAQUE_EXPRESSION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.OPAQUE_EXPRESSION___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.OPAQUE_EXPRESSION___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.OPAQUE_EXPRESSION___SEPARATOR :
 				return separator();
+			case UMLPackage.OPAQUE_EXPRESSION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.OPAQUE_EXPRESSION___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.OPAQUE_EXPRESSION___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPAQUE_EXPRESSION___BOOLEAN_VALUE :
 				return booleanValue();
 			case UMLPackage.OPAQUE_EXPRESSION___INTEGER_VALUE :
@@ -684,16 +680,16 @@ public class OpaqueExpressionImpl
 				return stringValue();
 			case UMLPackage.OPAQUE_EXPRESSION___UNLIMITED_VALUE :
 				return unlimitedValue();
-			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_ONLY_RETURN_RESULT_PARAMETERS__DIAGNOSTICCHAIN_MAP :
-				return validateOnlyReturnResultParameters(
+			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_LANGUAGE_BODY_SIZE__DIAGNOSTICCHAIN_MAP :
+				return validateLanguageBodySize(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_ONE_RETURN_RESULT_PARAMETER__DIAGNOSTICCHAIN_MAP :
 				return validateOneReturnResultParameter(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_LANGUAGE_BODY_SIZE__DIAGNOSTICCHAIN_MAP :
-				return validateLanguageBodySize(
+			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_ONLY_RETURN_RESULT_PARAMETERS__DIAGNOSTICCHAIN_MAP :
+				return validateOnlyReturnResultParameters(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPAQUE_EXPRESSION___IS_INTEGRAL :

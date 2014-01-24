@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: OpaqueBehaviorImpl.java,v 1.22 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,7 +28,6 @@ import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.GeneralizationSet;
@@ -206,12 +204,12 @@ public class OpaqueBehaviorImpl
 				return getQualifiedName();
 			case UMLPackage.OPAQUE_BEHAVIOR__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.OPAQUE_BEHAVIOR__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.OPAQUE_BEHAVIOR__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.OPAQUE_BEHAVIOR__IMPORTED_MEMBER :
@@ -236,12 +234,12 @@ public class OpaqueBehaviorImpl
 				if (resolve)
 					return getPackage();
 				return basicGetPackage();
+			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_BINDING :
+				return getTemplateBindings();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_BINDING :
-				return getTemplateBindings();
 			case UMLPackage.OPAQUE_BEHAVIOR__FEATURE :
 				return getFeatures();
 			case UMLPackage.OPAQUE_BEHAVIOR__ATTRIBUTE :
@@ -302,6 +300,10 @@ public class OpaqueBehaviorImpl
 				return getOwnedReceptions();
 			case UMLPackage.OPAQUE_BEHAVIOR__SUPER_CLASS :
 				return getSuperClasses();
+			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
+				if (resolve)
+					return getSpecification();
+				return basicGetSpecification();
 			case UMLPackage.OPAQUE_BEHAVIOR__CONTEXT :
 				if (resolve)
 					return getContext();
@@ -318,10 +320,6 @@ public class OpaqueBehaviorImpl
 				return getPreconditions();
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_BEHAVIOR :
 				return getRedefinedBehaviors();
-			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
-				if (resolve)
-					return getSpecification();
-				return basicGetSpecification();
 			case UMLPackage.OPAQUE_BEHAVIOR__BODY :
 				return getBodies();
 			case UMLPackage.OPAQUE_BEHAVIOR__LANGUAGE :
@@ -349,11 +347,6 @@ public class OpaqueBehaviorImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__NAME :
 				setName((String) newValue);
 				return;
@@ -362,6 +355,11 @@ public class OpaqueBehaviorImpl
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -372,11 +370,6 @@ public class OpaqueBehaviorImpl
 				getPackageImports().clear();
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
-				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -390,13 +383,13 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
-				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -493,6 +486,9 @@ public class OpaqueBehaviorImpl
 					.addAll(
 						(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
 				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
+				setSpecification((BehavioralFeature) newValue);
+				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_REENTRANT :
 				setIsReentrant((Boolean) newValue);
 				return;
@@ -521,9 +517,6 @@ public class OpaqueBehaviorImpl
 				getRedefinedBehaviors().addAll(
 					(Collection<? extends Behavior>) newValue);
 				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
-				setSpecification((BehavioralFeature) newValue);
-				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__BODY :
 				getBodies().clear();
 				getBodies().addAll((Collection<? extends String>) newValue);
@@ -550,9 +543,6 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__NAME :
 				unsetName();
 				return;
@@ -562,14 +552,14 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__VISIBILITY :
 				unsetVisibility();
 				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RULE :
-				getOwnedRules().clear();
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
@@ -583,11 +573,11 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
 				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) null);
-				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -652,6 +642,9 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__SUPER_CLASS :
 				getSuperClasses().clear();
 				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
+				setSpecification((BehavioralFeature) null);
+				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_REENTRANT :
 				unsetIsReentrant();
 				return;
@@ -669,9 +662,6 @@ public class OpaqueBehaviorImpl
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_BEHAVIOR :
 				getRedefinedBehaviors().clear();
-				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
-				setSpecification((BehavioralFeature) null);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__BODY :
 				unsetBodies();
@@ -700,8 +690,7 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNER :
 				return isSetOwner();
 			case UMLPackage.OPAQUE_BEHAVIOR__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__NAME :
 				return isSetName();
 			case UMLPackage.OPAQUE_BEHAVIOR__NAME_EXPRESSION :
@@ -714,12 +703,12 @@ public class OpaqueBehaviorImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.OPAQUE_BEHAVIOR__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.OPAQUE_BEHAVIOR__IMPORTED_MEMBER :
@@ -738,10 +727,10 @@ public class OpaqueBehaviorImpl
 				return isSetTemplateParameter();
 			case UMLPackage.OPAQUE_BEHAVIOR__PACKAGE :
 				return basicGetPackage() != null;
-			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
-				return isSetOwnedTemplateSignature();
 			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_BINDING :
 				return templateBindings != null && !templateBindings.isEmpty();
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.OPAQUE_BEHAVIOR__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.OPAQUE_BEHAVIOR__ATTRIBUTE :
@@ -802,6 +791,8 @@ public class OpaqueBehaviorImpl
 				return ownedReceptions != null && !ownedReceptions.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__SUPER_CLASS :
 				return isSetSuperClasses();
+			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
+				return specification != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_REENTRANT :
@@ -818,8 +809,6 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_BEHAVIOR :
 				return redefinedBehaviors != null
 					&& !redefinedBehaviors.isEmpty();
-			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
-				return specification != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__BODY :
 				return isSetBodies();
 			case UMLPackage.OPAQUE_BEHAVIOR__LANGUAGE :

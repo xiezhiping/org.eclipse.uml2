@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 397324, 212765
+ *   Kenn Hussey (CEA) - 327039, 351774, 397324, 212765, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -33,7 +33,6 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.DurationConstraint;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
@@ -257,6 +256,17 @@ public class DurationConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateHasOneOrTwoConstrainedElements(
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return DurationConstraintOperations
+			.validateHasOneOrTwoConstrainedElements(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
@@ -267,9 +277,6 @@ public class DurationConstraintImpl
 			case UMLPackage.DURATION_CONSTRAINT__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.DURATION_CONSTRAINT__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DURATION_CONSTRAINT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.DURATION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
@@ -361,11 +368,6 @@ public class DurationConstraintImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.DURATION_CONSTRAINT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.DURATION_CONSTRAINT__NAME :
 				setName((String) newValue);
 				return;
@@ -415,9 +417,6 @@ public class DurationConstraintImpl
 			case UMLPackage.DURATION_CONSTRAINT__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.DURATION_CONSTRAINT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.DURATION_CONSTRAINT__NAME :
 				unsetName();
 				return;
@@ -466,8 +465,7 @@ public class DurationConstraintImpl
 			case UMLPackage.DURATION_CONSTRAINT__OWNER :
 				return isSetOwner();
 			case UMLPackage.DURATION_CONSTRAINT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.DURATION_CONSTRAINT__NAME :
 				return isSetName();
 			case UMLPackage.DURATION_CONSTRAINT__NAME_EXPRESSION :
@@ -589,16 +587,16 @@ public class DurationConstraintImpl
 				return allOwnedElements();
 			case UMLPackage.DURATION_CONSTRAINT___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DURATION_CONSTRAINT___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -609,6 +607,8 @@ public class DurationConstraintImpl
 				return getLabel();
 			case UMLPackage.DURATION_CONSTRAINT___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.DURATION_CONSTRAINT___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.DURATION_CONSTRAINT___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.DURATION_CONSTRAINT___ALL_OWNING_PACKAGES :
@@ -616,33 +616,37 @@ public class DurationConstraintImpl
 			case UMLPackage.DURATION_CONSTRAINT___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.DURATION_CONSTRAINT___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.DURATION_CONSTRAINT___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.DURATION_CONSTRAINT___SEPARATOR :
 				return separator();
+			case UMLPackage.DURATION_CONSTRAINT___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.DURATION_CONSTRAINT___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.DURATION_CONSTRAINT___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
-			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_NOT_APPLY_TO_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotApplyToSelf(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
-				return validateNoSideEffects(
+			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_BOOLEAN_VALUE__DIAGNOSTICCHAIN_MAP :
 				return validateBooleanValue((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_VALUE_SPECIFICATION_BOOLEAN__DIAGNOSTICCHAIN_MAP :
-				return validateValueSpecificationBoolean(
+			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
+				return validateNoSideEffects(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_NOT_APPLY_TO_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotApplyToSelf(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_FIRST_EVENT_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
 				return validateFirstEventMultiplicity(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_HAS_ONE_OR_TWO_CONSTRAINED_ELEMENTS__DIAGNOSTICCHAIN_MAP :
+				return validateHasOneOrTwoConstrainedElements(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

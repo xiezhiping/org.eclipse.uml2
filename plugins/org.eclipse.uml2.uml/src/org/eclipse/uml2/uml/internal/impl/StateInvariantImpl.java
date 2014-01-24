@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 212765
+ *   Kenn Hussey (CEA) - 327039, 212765, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -34,7 +34,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.GeneralOrdering;
 import org.eclipse.uml2.uml.Interaction;
@@ -289,21 +288,18 @@ public class StateInvariantImpl
 			case UMLPackage.STATE_INVARIANT__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.STATE_INVARIANT__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STATE_INVARIANT__COVERED :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getCovereds())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetEnclosingInteraction((Interaction) otherEnd,
-					msgs);
 			case UMLPackage.STATE_INVARIANT__ENCLOSING_OPERAND :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetEnclosingOperand((InteractionOperand) otherEnd,
+					msgs);
+			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetEnclosingInteraction((Interaction) otherEnd,
 					msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
@@ -324,18 +320,15 @@ public class StateInvariantImpl
 			case UMLPackage.STATE_INVARIANT__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.STATE_INVARIANT__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STATE_INVARIANT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.STATE_INVARIANT__COVERED :
 				return ((InternalEList<?>) getCovereds()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
-				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.STATE_INVARIANT__ENCLOSING_OPERAND :
 				return basicSetEnclosingOperand(null, msgs);
+			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
+				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.STATE_INVARIANT__GENERAL_ORDERING :
 				return ((InternalEList<?>) getGeneralOrderings()).basicRemove(
 					otherEnd, msgs);
@@ -381,14 +374,14 @@ public class StateInvariantImpl
 				return getVisibility();
 			case UMLPackage.STATE_INVARIANT__COVERED :
 				return getCovereds();
-			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
-				if (resolve)
-					return getEnclosingInteraction();
-				return basicGetEnclosingInteraction();
 			case UMLPackage.STATE_INVARIANT__ENCLOSING_OPERAND :
 				if (resolve)
 					return getEnclosingOperand();
 				return basicGetEnclosingOperand();
+			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
+				if (resolve)
+					return getEnclosingInteraction();
+				return basicGetEnclosingInteraction();
 			case UMLPackage.STATE_INVARIANT__GENERAL_ORDERING :
 				return getGeneralOrderings();
 			case UMLPackage.STATE_INVARIANT__INVARIANT :
@@ -418,11 +411,6 @@ public class StateInvariantImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.STATE_INVARIANT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.STATE_INVARIANT__NAME :
 				setName((String) newValue);
 				return;
@@ -436,11 +424,11 @@ public class StateInvariantImpl
 				getCovereds().clear();
 				getCovereds().addAll((Collection<? extends Lifeline>) newValue);
 				return;
-			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
-				setEnclosingInteraction((Interaction) newValue);
-				return;
 			case UMLPackage.STATE_INVARIANT__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) newValue);
+				return;
+			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
+				setEnclosingInteraction((Interaction) newValue);
 				return;
 			case UMLPackage.STATE_INVARIANT__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
@@ -468,9 +456,6 @@ public class StateInvariantImpl
 			case UMLPackage.STATE_INVARIANT__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.STATE_INVARIANT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.STATE_INVARIANT__NAME :
 				unsetName();
 				return;
@@ -483,11 +468,11 @@ public class StateInvariantImpl
 			case UMLPackage.STATE_INVARIANT__COVERED :
 				getCovereds().clear();
 				return;
-			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
-				setEnclosingInteraction((Interaction) null);
-				return;
 			case UMLPackage.STATE_INVARIANT__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) null);
+				return;
+			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
+				setEnclosingInteraction((Interaction) null);
 				return;
 			case UMLPackage.STATE_INVARIANT__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
@@ -516,8 +501,7 @@ public class StateInvariantImpl
 			case UMLPackage.STATE_INVARIANT__OWNER :
 				return isSetOwner();
 			case UMLPackage.STATE_INVARIANT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.STATE_INVARIANT__NAME :
 				return isSetName();
 			case UMLPackage.STATE_INVARIANT__NAME_EXPRESSION :
@@ -532,10 +516,10 @@ public class StateInvariantImpl
 				return isSetVisibility();
 			case UMLPackage.STATE_INVARIANT__COVERED :
 				return isSetCovereds();
-			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
-				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.STATE_INVARIANT__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
+			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
+				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.STATE_INVARIANT__GENERAL_ORDERING :
 				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.STATE_INVARIANT__INVARIANT :

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -27,6 +27,7 @@ import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateMachine;
 
+import org.eclipse.uml2.uml.Vertex;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -37,14 +38,15 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.StateMachine#validateMethod(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Method</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StateMachine#validateClassifierContext(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Classifier Context</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StateMachine#validateContextClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Context Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#validateConnectionPoints(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Connection Points</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StateMachine#LCA(org.eclipse.uml2.uml.State, org.eclipse.uml2.uml.State) <em>LCA</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StateMachine#ancestor(org.eclipse.uml2.uml.State, org.eclipse.uml2.uml.State) <em>Ancestor</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StateMachine#isRedefinitionContextValid(org.eclipse.uml2.uml.StateMachine) <em>Is Redefinition Context Valid</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StateMachine#validateClassifierContext(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Classifier Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StateMachine#validateMethod(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Method</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StateMachine#validateContextClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Context Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StateMachine#LCA(org.eclipse.uml2.uml.Vertex, org.eclipse.uml2.uml.Vertex) <em>LCA</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StateMachine#ancestor(org.eclipse.uml2.uml.Vertex, org.eclipse.uml2.uml.Vertex) <em>Ancestor</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StateMachine#LCAState(org.eclipse.uml2.uml.Vertex, org.eclipse.uml2.uml.Vertex) <em>LCA State</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#isConsistentWith(org.eclipse.uml2.uml.RedefinableElement) <em>Is Consistent With</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StateMachine#isRedefinitionContextValid(org.eclipse.uml2.uml.RedefinableElement) <em>Is Redefinition Context Valid</em>}</li>
  * </ul>
  * </p>
  *
@@ -66,8 +68,8 @@ public class StateMachineOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The classifier context of a state machine cannot be an interface.
-	 * context->notEmpty() implies not context.oclIsKindOf(Interface)
+	 * The Classifier context of a StateMachine cannot be an Interface.
+	 * _'context' <> null implies not _'context'.oclIsKindOf(Interface)
 	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -101,8 +103,8 @@ public class StateMachineOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The context classifier of the method state machine of a behavioral feature must be the classifier that owns the behavioral feature.
-	 * specification->notEmpty() implies (context->notEmpty() and specification->featuringClassifier->exists (c | c = context))
+	 * The context Classifier of the method StateMachine of a BehavioralFeature must be the Classifier that owns the BehavioralFeature.
+	 * specification <> null implies ( _'context' <> null and specification.featuringClassifier->exists(c | c = _'context'))
 	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -136,8 +138,87 @@ public class StateMachineOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The connection points of a state machine are pseudostates of kind entry point or exit point.
-	 * conectionPoint->forAll (c | c.kind = #entryPoint or c.kind = #exitPoint)
+	 * The operation LCA(s1,s2) returns the Region that is the least common ancestor of Vertices s1 and s2, based on the StateMachine containment hierarchy.
+	 * result = (if ancestor(s1, s2) then 
+	 *     s2.container
+	 * else
+	 * 	if ancestor(s2, s1) then
+	 * 	    s1.container 
+	 * 	else 
+	 * 	    LCA(s1.container.state, s2.container.state)
+	 * 	endif
+	 * endif)
+	 * <p>From package UML::StateMachines.</p>
+	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static Region LCA(StateMachine stateMachine, Vertex s1, Vertex s2) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The query ancestor(s1, s2) checks whether Vertex s2 is an ancestor of Vertex s1.
+	 * result = (if (s2 = s1) then 
+	 * 	true 
+	 * else 
+	 * 	if s1.container.stateMachine->notEmpty() then 
+	 * 	    true
+	 * 	else 
+	 * 	    if s2.container.stateMachine->notEmpty() then 
+	 * 	        false
+	 * 	    else
+	 * 	        ancestor(s1, s2.container.state)
+	 * 	     endif
+	 * 	 endif
+	 * endif  )
+	 * <p>From package UML::StateMachines.</p>
+	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean ancestor(StateMachine stateMachine, Vertex s1,
+			Vertex s2) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * This utility funciton is like the LCA, except that it returns the nearest composite State that contains both input Vertices.
+	 * result = (if v2.oclIsTypeOf(State) and ancestor(v1, v2) then
+	 * 	v2.oclAsType(State)
+	 * else if v1.oclIsTypeOf(State) and ancestor(v2, v1) then
+	 * 	v1.oclAsType(State)
+	 * else if (v1.container.state->isEmpty() or v2.container.state->isEmpty()) then 
+	 * 	null.oclAsType(State)
+	 * else LCAState(v1.container.state, v2.container.state)
+	 * endif endif endif)
+	 * <p>From package UML::StateMachines.</p>
+	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static State LCAState(StateMachine stateMachine, Vertex v1, Vertex v2) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The connection points of a StateMachine are Pseudostates of kind entry point or exit point.
+	 * connectionPoint->forAll (kind = PseudostateKind::entryPoint or kind = PseudostateKind::exitPoint)
 	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -171,8 +252,8 @@ public class StateMachineOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A state machine as the method for a behavioral feature cannot have entry/exit connection points.
-	 * specification->notEmpty() implies connectionPoint->isEmpty()
+	 * A StateMachine as the method for a BehavioralFeature cannot have entry/exit connection points.
+	 * specification <> null implies connectionPoint->isEmpty()
 	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -346,6 +427,30 @@ public class StateMachineOperations
 		}
 
 		return false;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The query isRedefinitionContextValid() specifies whether the redefinition context of a StateMachine is properly related to the redefinition contexts of the specified StateMachine to allow this element to redefine the other. The context Classifier of a redefining StateMachine must redefine the context Classifier of the redefined StateMachine.
+	 * result = (if redefinedElement.oclIsKindOf(StateMachine) then
+	 *   let redefinedStateMachine : StateMachine = redefinedElement.oclAsType(StateMachine) in
+	 *     self._'context'().oclAsType(BehavioredClassifier).redefinedClassifier->
+	 *       includes(redefinedStateMachine._'context'())
+	 * else
+	 *   false
+	 * endif)
+	 * <p>From package UML::StateMachines.</p>
+	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean isRedefinitionContextValid(StateMachine stateMachine,
+			RedefinableElement redefinedElement) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	protected static EList<StateMachine> getAllExtendedStateMachines(

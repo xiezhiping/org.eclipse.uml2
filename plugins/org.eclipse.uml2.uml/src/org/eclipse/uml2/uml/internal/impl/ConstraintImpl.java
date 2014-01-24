@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -41,7 +41,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -332,17 +331,6 @@ public class ConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateValueSpecificationBoolean(
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return ConstraintOperations.validateValueSpecificationBoolean(this,
-			diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateBooleanValue(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return ConstraintOperations.validateBooleanValue(this, diagnostics,
@@ -372,9 +360,6 @@ public class ConstraintImpl
 		switch (featureID) {
 			case UMLPackage.CONSTRAINT__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.CONSTRAINT__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
@@ -412,9 +397,6 @@ public class ConstraintImpl
 			case UMLPackage.CONSTRAINT__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.CONSTRAINT__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CONSTRAINT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
@@ -524,11 +506,6 @@ public class ConstraintImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.CONSTRAINT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.CONSTRAINT__NAME :
 				setName((String) newValue);
 				return;
@@ -572,9 +549,6 @@ public class ConstraintImpl
 				return;
 			case UMLPackage.CONSTRAINT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.CONSTRAINT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.CONSTRAINT__NAME :
 				unsetName();
@@ -621,8 +595,7 @@ public class ConstraintImpl
 			case UMLPackage.CONSTRAINT__OWNER :
 				return isSetOwner();
 			case UMLPackage.CONSTRAINT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.CONSTRAINT__NAME :
 				return isSetName();
 			case UMLPackage.CONSTRAINT__NAME_EXPRESSION :
@@ -742,16 +715,16 @@ public class ConstraintImpl
 				return allOwnedElements();
 			case UMLPackage.CONSTRAINT___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.CONSTRAINT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSTRAINT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSTRAINT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONSTRAINT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSTRAINT___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -762,6 +735,8 @@ public class ConstraintImpl
 				return getLabel();
 			case UMLPackage.CONSTRAINT___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.CONSTRAINT___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.CONSTRAINT___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.CONSTRAINT___ALL_OWNING_PACKAGES :
@@ -769,29 +744,29 @@ public class ConstraintImpl
 			case UMLPackage.CONSTRAINT___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.CONSTRAINT___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.CONSTRAINT___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.CONSTRAINT___SEPARATOR :
 				return separator();
+			case UMLPackage.CONSTRAINT___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.CONSTRAINT___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.CONSTRAINT___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
-			case UMLPackage.CONSTRAINT___VALIDATE_NOT_APPLY_TO_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotApplyToSelf(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONSTRAINT___VALIDATE_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
-				return validateNoSideEffects(
+			case UMLPackage.CONSTRAINT___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSTRAINT___VALIDATE_BOOLEAN_VALUE__DIAGNOSTICCHAIN_MAP :
 				return validateBooleanValue((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONSTRAINT___VALIDATE_VALUE_SPECIFICATION_BOOLEAN__DIAGNOSTICCHAIN_MAP :
-				return validateValueSpecificationBoolean(
+			case UMLPackage.CONSTRAINT___VALIDATE_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
+				return validateNoSideEffects(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONSTRAINT___VALIDATE_NOT_APPLY_TO_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotApplyToSelf(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

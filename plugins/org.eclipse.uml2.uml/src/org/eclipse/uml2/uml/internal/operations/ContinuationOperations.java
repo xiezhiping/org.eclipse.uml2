@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,8 +30,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Continuation#validateSameName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Continuation#validateFirstOrLastInteractionFragment(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate First Or Last Interaction Fragment</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Continuation#validateSameName(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Continuation#validateGlobal(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Global</em>}</li>
  * </ul>
  * </p>
@@ -54,8 +54,31 @@ public class ContinuationOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Continuations with the same name may only cover the same set of Lifelines (within one Classifier).
-	 * true
+	 * Across all Interaction instances having the same context value, every Lifeline instance covered by a Continuation (self) must be common with one covered Lifeline instance of all other Continuation instances with the same name as self, and every Lifeline instance covered by a Continuation instance with the same name as self must be common with one covered Lifeline instance of self. Lifeline instances are common if they have the same selector and represents associationEnd values.
+	 * enclosingOperand.combinedFragment->notEmpty() and
+	 * let parentInteraction : Set(Interaction) = 
+	 * enclosingOperand.combinedFragment->closure(enclosingOperand.combinedFragment)->
+	 * collect(enclosingInteraction).oclAsType(Interaction)->asSet()
+	 * in 
+	 * (parentInteraction->size() = 1) 
+	 * and let peerInteractions : Set(Interaction) =
+	 *  (parentInteraction->union(parentInteraction->collect(_'context')->collect(behavior)->
+	 *  select(oclIsKindOf(Interaction)).oclAsType(Interaction)->asSet())->asSet()) in
+	 *  (peerInteractions->notEmpty()) and 
+	 *   let combinedFragments1 : Set(CombinedFragment) = peerInteractions.fragment->
+	 *  select(oclIsKindOf(CombinedFragment)).oclAsType(CombinedFragment)->asSet() in
+	 *    combinedFragments1->notEmpty() and  combinedFragments1->closure(operand.fragment->
+	 *    select(oclIsKindOf(CombinedFragment)).oclAsType(CombinedFragment))->asSet().operand.fragment->
+	 *    select(oclIsKindOf(Continuation)).oclAsType(Continuation)->asSet()->
+	 *    forAll(c : Continuation |  (c.name = self.name) implies 
+	 *   (c.covered->asSet()->forAll(cl : Lifeline | --  cl must be common to one lifeline covered by self
+	 *   self.covered->asSet()->
+	 *   select(represents = cl.represents and selector = cl.selector)->asSet()->size()=1))
+	 *    and
+	 *  (self.covered->asSet()->forAll(cl : Lifeline | --  cl must be common to one lifeline covered by c
+	 *  c.covered->asSet()->
+	 *   select(represents = cl.represents and selector = cl.selector)->asSet()->size()=1))
+	 *   )
 	 * @param continuation The receiving '<em><b>Continuation</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -89,8 +112,11 @@ public class ContinuationOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Continuations are always global in the enclosing InteractionFragment e.g. it always covers all Lifelines covered by the enclosing InteractionFragment.
-	 * true
+	 * Continuations are always global in the enclosing InteractionFragment e.g., it always covers all Lifelines covered by the enclosing InteractionOperator.
+	 * enclosingOperand->notEmpty() and
+	 *   let operandLifelines : Set(Lifeline) =  enclosingOperand.covered in 
+	 *     (operandLifelines->notEmpty() and 
+	 *     operandLifelines->forAll(ol :Lifeline |self.covered->includes(ol)))
 	 * @param continuation The receiving '<em><b>Continuation</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -124,8 +150,11 @@ public class ContinuationOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Continuations always occur as the very first InteractionFragment or the very last InteractionFragment of the enclosing InteractionFragment.
-	 * true
+	 * Continuations always occur as the very first InteractionFragment or the very last InteractionFragment of the enclosing InteractionOperand.
+	 *  enclosingOperand->notEmpty() and 
+	 *  let peerFragments : OrderedSet(InteractionFragment) =  enclosingOperand.fragment in 
+	 *    ( peerFragments->notEmpty() and 
+	 *    ((peerFragments->first() = self) or  (peerFragments->last() = self)))
 	 * @param continuation The receiving '<em><b>Continuation</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

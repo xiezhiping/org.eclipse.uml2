@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -31,9 +31,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ReadSelfAction#validateContained(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Contained</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ReadSelfAction#validateType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ReadSelfAction#validateNotStatic(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Not Static</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReadSelfAction#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReadSelfAction#validateNotStatic(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Not Static</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReadSelfAction#validateType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -55,8 +55,8 @@ public class ReadSelfActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The action must be contained in an behavior that has a host classifier.
-	 * self.context->size() = 1
+	 * A ReadSelfAction must have a context Classifier.
+	 * _'context' <> null
 	 * @param readSelfAction The receiving '<em><b>Read Self Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -90,8 +90,9 @@ public class ReadSelfActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If the action is contained in an behavior that is acting as the body of a method, then the operation of the method must not be static.
-	 * true
+	 * If the ReadSelfAction is contained in an Behavior that is acting as a method, then the Operation of the method must not be static.
+	 * let behavior: Behavior = self.containingBehavior() in
+	 * behavior.specification<>null implies not behavior.specification.isStatic
 	 * @param readSelfAction The receiving '<em><b>Read Self Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -125,8 +126,8 @@ public class ReadSelfActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the result output pin is the host classifier.
-	 * self.result.type = self.context
+	 * The type of the result OutputPin is the context Classifier.
+	 * result.type = _'context'
 	 * @param readSelfAction The receiving '<em><b>Read Self Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -160,8 +161,8 @@ public class ReadSelfActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the result output pin is 1..1.
-	 * self.result.multiplicity.is(1,1)
+	 * The multiplicity of the result OutputPin is 1..1.
+	 * result.is(1,1)
 	 * @param readSelfAction The receiving '<em><b>Read Self Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: InteractionItemProvider.java,v 1.21 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -72,13 +71,13 @@ public class InteractionItemProvider
 			super.getPropertyDescriptors(object);
 
 			addCoveredPropertyDescriptor(object);
-			addEnclosingInteractionPropertyDescriptor(object);
 			addEnclosingOperandPropertyDescriptor(object);
+			addEnclosingInteractionPropertyDescriptor(object);
 			addGeneralOrderingPropertyDescriptor(object);
+			addLifelinePropertyDescriptor(object);
+			addFragmentPropertyDescriptor(object);
 			addActionPropertyDescriptor(object);
 			addFormalGatePropertyDescriptor(object);
-			addFragmentPropertyDescriptor(object);
-			addLifelinePropertyDescriptor(object);
 			addMessagePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -286,10 +285,10 @@ public class InteractionItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures
 				.add(UMLPackage.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING);
+			childrenFeatures.add(UMLPackage.Literals.INTERACTION__LIFELINE);
+			childrenFeatures.add(UMLPackage.Literals.INTERACTION__FRAGMENT);
 			childrenFeatures.add(UMLPackage.Literals.INTERACTION__ACTION);
 			childrenFeatures.add(UMLPackage.Literals.INTERACTION__FORMAL_GATE);
-			childrenFeatures.add(UMLPackage.Literals.INTERACTION__FRAGMENT);
-			childrenFeatures.add(UMLPackage.Literals.INTERACTION__LIFELINE);
 			childrenFeatures.add(UMLPackage.Literals.INTERACTION__MESSAGE);
 		}
 		return childrenFeatures;
@@ -356,10 +355,10 @@ public class InteractionItemProvider
 
 		switch (notification.getFeatureID(Interaction.class)) {
 			case UMLPackage.INTERACTION__GENERAL_ORDERING :
+			case UMLPackage.INTERACTION__LIFELINE :
+			case UMLPackage.INTERACTION__FRAGMENT :
 			case UMLPackage.INTERACTION__ACTION :
 			case UMLPackage.INTERACTION__FORMAL_GATE :
-			case UMLPackage.INTERACTION__FRAGMENT :
-			case UMLPackage.INTERACTION__LIFELINE :
 			case UMLPackage.INTERACTION__MESSAGE :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
@@ -385,16 +384,80 @@ public class InteractionItemProvider
 			UMLFactory.eINSTANCE.createGeneralOrdering()));
 
 		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__LIFELINE,
+			UMLFactory.eINSTANCE.createLifeline()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__FRAGMENT,
+			UMLFactory.eINSTANCE.createInteraction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__FRAGMENT,
+			UMLFactory.eINSTANCE.createInteractionUse()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__FRAGMENT,
+			UMLFactory.eINSTANCE.createPartDecomposition()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__FRAGMENT,
+			UMLFactory.eINSTANCE.createInteractionOperand()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__FRAGMENT,
+			UMLFactory.eINSTANCE.createOccurrenceSpecification()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__FRAGMENT,
+			UMLFactory.eINSTANCE.createActionExecutionSpecification()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__FRAGMENT,
+			UMLFactory.eINSTANCE.createBehaviorExecutionSpecification()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__FRAGMENT,
+			UMLFactory.eINSTANCE.createCombinedFragment()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__FRAGMENT,
+			UMLFactory.eINSTANCE.createConsiderIgnoreFragment()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__FRAGMENT,
+			UMLFactory.eINSTANCE.createContinuation()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__FRAGMENT,
+			UMLFactory.eINSTANCE.createMessageOccurrenceSpecification()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__FRAGMENT,
+			UMLFactory.eINSTANCE.createDestructionOccurrenceSpecification()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__FRAGMENT,
+			UMLFactory.eINSTANCE.createExecutionOccurrenceSpecification()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__FRAGMENT,
+			UMLFactory.eINSTANCE.createStateInvariant()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__ACTION,
+			UMLFactory.eINSTANCE.createStructuredActivityNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__ACTION,
+			UMLFactory.eINSTANCE.createValueSpecificationAction()));
+
+		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION__ACTION,
 			UMLFactory.eINSTANCE.createAcceptEventAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION__ACTION,
 			UMLFactory.eINSTANCE.createAcceptCallAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createStructuredActivityNode()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION__ACTION,
@@ -549,72 +612,8 @@ public class InteractionItemProvider
 			UMLFactory.eINSTANCE.createUnmarshallAction()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createValueSpecificationAction()));
-
-		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION__FORMAL_GATE,
 			UMLFactory.eINSTANCE.createGate()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createActionExecutionSpecification()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createInteractionUse()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createPartDecomposition()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createInteraction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createInteractionOperand()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createOccurrenceSpecification()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createBehaviorExecutionSpecification()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createCombinedFragment()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createConsiderIgnoreFragment()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createContinuation()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createMessageOccurrenceSpecification()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createDestructionOccurrenceSpecification()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createExecutionOccurrenceSpecification()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createStateInvariant()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__LIFELINE,
-			UMLFactory.eINSTANCE.createLifeline()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION__MESSAGE,

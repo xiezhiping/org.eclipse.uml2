@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.uml;
@@ -22,8 +23,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A read variable action is a variable action that retrieves the values of a variable.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A ReadVariableAction is a VariableAction that retrieves the values of a Variable.
+ * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -51,8 +52,8 @@ public interface ReadVariableAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Gives the output pin on which the result is put.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The OutputPin on which the result values are placed.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)
@@ -88,9 +89,9 @@ public interface ReadVariableAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type and ordering of the result output pin of a read-variable action are the same as the type and ordering of the variable.
-	 * self.result.type =self.variable.type
-	 * and self.result.ordering = self.variable.ordering
+	 * The type and ordering of the result OutputPin are the same as the type and ordering of the variable.
+	 * result.type =variable.type and 
+	 * result.isOrdered = variable.isOrdered
 	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -106,7 +107,7 @@ public interface ReadVariableAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of the variable must be compatible with the multiplicity of the output pin.
-	 * self.variable.multiplicity.compatibleWith(self.result.multiplicity)
+	 * variable.compatibleWith(result)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

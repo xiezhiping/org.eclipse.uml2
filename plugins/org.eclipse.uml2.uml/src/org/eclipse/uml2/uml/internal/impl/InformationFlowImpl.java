@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -34,7 +34,6 @@ import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Connector;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.DirectedRelationship;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InformationFlow;
@@ -620,11 +619,6 @@ public class InformationFlowImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.INFORMATION_FLOW__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.INFORMATION_FLOW__NAME :
 				setName((String) newValue);
 				return;
@@ -693,9 +687,6 @@ public class InformationFlowImpl
 			case UMLPackage.INFORMATION_FLOW__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.INFORMATION_FLOW__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.INFORMATION_FLOW__NAME :
 				unsetName();
 				return;
@@ -753,8 +744,7 @@ public class InformationFlowImpl
 			case UMLPackage.INFORMATION_FLOW__OWNER :
 				return isSetOwner();
 			case UMLPackage.INFORMATION_FLOW__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.INFORMATION_FLOW__NAME :
 				return isSetName();
 			case UMLPackage.INFORMATION_FLOW__NAME_EXPRESSION :
@@ -948,16 +938,16 @@ public class InformationFlowImpl
 				return allOwnedElements();
 			case UMLPackage.INFORMATION_FLOW___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.INFORMATION_FLOW___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INFORMATION_FLOW___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INFORMATION_FLOW___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INFORMATION_FLOW___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INFORMATION_FLOW___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -968,6 +958,8 @@ public class InformationFlowImpl
 				return getLabel();
 			case UMLPackage.INFORMATION_FLOW___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.INFORMATION_FLOW___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.INFORMATION_FLOW___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.INFORMATION_FLOW___ALL_OWNING_PACKAGES :
@@ -975,22 +967,26 @@ public class InformationFlowImpl
 			case UMLPackage.INFORMATION_FLOW___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.INFORMATION_FLOW___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.INFORMATION_FLOW___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.INFORMATION_FLOW___SEPARATOR :
 				return separator();
+			case UMLPackage.INFORMATION_FLOW___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.INFORMATION_FLOW___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.INFORMATION_FLOW___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
-			case UMLPackage.INFORMATION_FLOW___VALIDATE_SOURCES_AND_TARGETS_KIND__DIAGNOSTICCHAIN_MAP :
-				return validateSourcesAndTargetsKind(
+			case UMLPackage.INFORMATION_FLOW___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INFORMATION_FLOW___VALIDATE_MUST_CONFORM__DIAGNOSTICCHAIN_MAP :
 				return validateMustConform((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INFORMATION_FLOW___VALIDATE_SOURCES_AND_TARGETS_KIND__DIAGNOSTICCHAIN_MAP :
+				return validateSourcesAndTargetsKind(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INFORMATION_FLOW___VALIDATE_CONVEY_CLASSIFIERS__DIAGNOSTICCHAIN_MAP :
 				return validateConveyClassifiers(

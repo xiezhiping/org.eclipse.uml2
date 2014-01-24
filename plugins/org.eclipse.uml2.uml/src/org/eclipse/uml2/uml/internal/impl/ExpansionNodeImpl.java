@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -35,7 +35,6 @@ import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ExpansionNode;
 import org.eclipse.uml2.uml.ExpansionRegion;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
@@ -282,25 +281,22 @@ public class ExpansionNodeImpl
 			case UMLPackage.EXPANSION_NODE__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.EXPANSION_NODE__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.EXPANSION_NODE__IN_PARTITION :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInPartitions())
+			case UMLPackage.EXPANSION_NODE__IN_INTERRUPTIBLE_REGION :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInInterruptibleRegions())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetInStructuredNode(
 					(StructuredActivityNode) otherEnd, msgs);
-			case UMLPackage.EXPANSION_NODE__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInInterruptibleRegions())
+			case UMLPackage.EXPANSION_NODE__INCOMING :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomings())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__OUTGOING :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutgoings())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.EXPANSION_NODE__INCOMING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomings())
+			case UMLPackage.EXPANSION_NODE__IN_PARTITION :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInPartitions())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__REGION_AS_INPUT :
 				if (regionAsInput != null)
@@ -333,24 +329,21 @@ public class ExpansionNodeImpl
 			case UMLPackage.EXPANSION_NODE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.EXPANSION_NODE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.EXPANSION_NODE__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
-				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.EXPANSION_NODE__IN_INTERRUPTIBLE_REGION :
 				return ((InternalEList<?>) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
+			case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
+				return basicSetInStructuredNode(null, msgs);
+			case UMLPackage.EXPANSION_NODE__INCOMING :
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__OUTGOING :
 				return ((InternalEList<?>) getOutgoings()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.EXPANSION_NODE__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
+			case UMLPackage.EXPANSION_NODE__IN_PARTITION :
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__UPPER_BOUND :
 				return basicSetUpperBound(null, msgs);
@@ -406,22 +399,22 @@ public class ExpansionNodeImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.EXPANSION_NODE__IN_PARTITION :
-				return getInPartitions();
+			case UMLPackage.EXPANSION_NODE__IN_GROUP :
+				return getInGroups();
+			case UMLPackage.EXPANSION_NODE__IN_INTERRUPTIBLE_REGION :
+				return getInInterruptibleRegions();
 			case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
 				if (resolve)
 					return getInStructuredNode();
 				return basicGetInStructuredNode();
-			case UMLPackage.EXPANSION_NODE__IN_INTERRUPTIBLE_REGION :
-				return getInInterruptibleRegions();
-			case UMLPackage.EXPANSION_NODE__OUTGOING :
-				return getOutgoings();
 			case UMLPackage.EXPANSION_NODE__INCOMING :
 				return getIncomings();
-			case UMLPackage.EXPANSION_NODE__IN_GROUP :
-				return getInGroups();
+			case UMLPackage.EXPANSION_NODE__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.EXPANSION_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
+			case UMLPackage.EXPANSION_NODE__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.EXPANSION_NODE__TYPE :
 				if (resolve)
 					return getType();
@@ -471,11 +464,6 @@ public class ExpansionNodeImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.EXPANSION_NODE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.EXPANSION_NODE__NAME :
 				setName((String) newValue);
 				return;
@@ -491,34 +479,34 @@ public class ExpansionNodeImpl
 			case UMLPackage.EXPANSION_NODE__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
-			case UMLPackage.EXPANSION_NODE__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
-				return;
-			case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
-				setInStructuredNode((StructuredActivityNode) newValue);
-				return;
 			case UMLPackage.EXPANSION_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
 				getInInterruptibleRegions()
 					.addAll(
 						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
-			case UMLPackage.EXPANSION_NODE__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+			case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
+				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.EXPANSION_NODE__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll(
 					(Collection<? extends ActivityEdge>) newValue);
 				return;
+			case UMLPackage.EXPANSION_NODE__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
+				return;
 			case UMLPackage.EXPANSION_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
 				getRedefinedNodes().addAll(
 					(Collection<? extends ActivityNode>) newValue);
+				return;
+			case UMLPackage.EXPANSION_NODE__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.EXPANSION_NODE__TYPE :
 				setType((Type) newValue);
@@ -563,9 +551,6 @@ public class ExpansionNodeImpl
 			case UMLPackage.EXPANSION_NODE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.EXPANSION_NODE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.EXPANSION_NODE__NAME :
 				unsetName();
 				return;
@@ -581,23 +566,23 @@ public class ExpansionNodeImpl
 			case UMLPackage.EXPANSION_NODE__ACTIVITY :
 				setActivity((Activity) null);
 				return;
-			case UMLPackage.EXPANSION_NODE__IN_PARTITION :
-				getInPartitions().clear();
+			case UMLPackage.EXPANSION_NODE__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
 				return;
 			case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
-			case UMLPackage.EXPANSION_NODE__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
+			case UMLPackage.EXPANSION_NODE__INCOMING :
+				getIncomings().clear();
 				return;
 			case UMLPackage.EXPANSION_NODE__OUTGOING :
 				getOutgoings().clear();
 				return;
-			case UMLPackage.EXPANSION_NODE__INCOMING :
-				getIncomings().clear();
-				return;
 			case UMLPackage.EXPANSION_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
+				return;
+			case UMLPackage.EXPANSION_NODE__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.EXPANSION_NODE__TYPE :
 				setType((Type) null);
@@ -644,8 +629,7 @@ public class ExpansionNodeImpl
 			case UMLPackage.EXPANSION_NODE__OWNER :
 				return isSetOwner();
 			case UMLPackage.EXPANSION_NODE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.EXPANSION_NODE__NAME :
 				return isSetName();
 			case UMLPackage.EXPANSION_NODE__NAME_EXPRESSION :
@@ -666,21 +650,21 @@ public class ExpansionNodeImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.EXPANSION_NODE__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.EXPANSION_NODE__IN_PARTITION :
-				return inPartitions != null && !inPartitions.isEmpty();
-			case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
-				return basicGetInStructuredNode() != null;
+			case UMLPackage.EXPANSION_NODE__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.EXPANSION_NODE__IN_INTERRUPTIBLE_REGION :
 				return inInterruptibleRegions != null
 					&& !inInterruptibleRegions.isEmpty();
-			case UMLPackage.EXPANSION_NODE__OUTGOING :
-				return outgoings != null && !outgoings.isEmpty();
+			case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.EXPANSION_NODE__INCOMING :
 				return incomings != null && !incomings.isEmpty();
-			case UMLPackage.EXPANSION_NODE__IN_GROUP :
-				return isSetInGroups();
+			case UMLPackage.EXPANSION_NODE__OUTGOING :
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.EXPANSION_NODE__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
+			case UMLPackage.EXPANSION_NODE__IN_PARTITION :
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.EXPANSION_NODE__TYPE :
 				return type != null;
 			case UMLPackage.EXPANSION_NODE__IN_STATE :
@@ -793,16 +777,16 @@ public class ExpansionNodeImpl
 				return allOwnedElements();
 			case UMLPackage.EXPANSION_NODE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.EXPANSION_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXPANSION_NODE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXPANSION_NODE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXPANSION_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXPANSION_NODE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -813,6 +797,8 @@ public class ExpansionNodeImpl
 				return getLabel();
 			case UMLPackage.EXPANSION_NODE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.EXPANSION_NODE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.EXPANSION_NODE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.EXPANSION_NODE___ALL_OWNING_PACKAGES :
@@ -820,12 +806,12 @@ public class ExpansionNodeImpl
 			case UMLPackage.EXPANSION_NODE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.EXPANSION_NODE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.EXPANSION_NODE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.EXPANSION_NODE___SEPARATOR :
 				return separator();
+			case UMLPackage.EXPANSION_NODE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.EXPANSION_NODE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -843,23 +829,18 @@ public class ExpansionNodeImpl
 			case UMLPackage.EXPANSION_NODE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.EXPANSION_NODE___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
-				return validateOwned((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXPANSION_NODE___VALIDATE_OWNED_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateOwnedStructuredNode(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXPANSION_NODE___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateObjectFlowEdges(
+			case UMLPackage.EXPANSION_NODE___CONTAINING_ACTIVITY :
+				return containingActivity();
+			case UMLPackage.EXPANSION_NODE___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
+				return validateInputOutputParameter(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXPANSION_NODE___VALIDATE_SELECTION_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
 				return validateSelectionBehavior(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXPANSION_NODE___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
-				return validateInputOutputParameter(
+			case UMLPackage.EXPANSION_NODE___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateObjectFlowEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXPANSION_NODE___VALIDATE_REGION_AS_INPUT_OR_OUTPUT__DIAGNOSTICCHAIN_MAP :

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -47,7 +47,6 @@ import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.ComponentRealization;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Enumeration;
@@ -508,24 +507,6 @@ public class ComponentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Interface> realizedInterfaces(Classifier classifier) {
-		return ComponentOperations.realizedInterfaces(this, classifier);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Interface> usedInterfaces(Classifier classifier) {
-		return ComponentOperations.usedInterfaces(this, classifier);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
@@ -534,17 +515,14 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.COMPONENT__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+			case UMLPackage.COMPONENT__OWNED_RULE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.COMPONENT__ELEMENT_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.COMPONENT__PACKAGE_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.COMPONENT__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.COMPONENT__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
@@ -559,6 +537,9 @@ public class ComponentImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
+			case UMLPackage.COMPONENT__TEMPLATE_BINDING :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -567,9 +548,6 @@ public class ComponentImpl
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
-			case UMLPackage.COMPONENT__TEMPLATE_BINDING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.COMPONENT__GENERALIZATION :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getGeneralizations())
 					.basicAdd(otherEnd, msgs);
@@ -610,29 +588,26 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.COMPONENT__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.COMPONENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.COMPONENT__OWNED_RULE :
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.COMPONENT__ELEMENT_IMPORT :
 				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.COMPONENT__PACKAGE_IMPORT :
 				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.COMPONENT__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.COMPONENT__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.COMPONENT__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE :
-				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.COMPONENT__TEMPLATE_BINDING :
 				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.COMPONENT__COLLABORATION_USE :
 				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
@@ -716,12 +691,12 @@ public class ComponentImpl
 				return getQualifiedName();
 			case UMLPackage.COMPONENT__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.COMPONENT__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.COMPONENT__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.COMPONENT__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.COMPONENT__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.COMPONENT__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.COMPONENT__IMPORTED_MEMBER :
@@ -746,12 +721,12 @@ public class ComponentImpl
 				if (resolve)
 					return getPackage();
 				return basicGetPackage();
+			case UMLPackage.COMPONENT__TEMPLATE_BINDING :
+				return getTemplateBindings();
 			case UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE :
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.COMPONENT__TEMPLATE_BINDING :
-				return getTemplateBindings();
 			case UMLPackage.COMPONENT__FEATURE :
 				return getFeatures();
 			case UMLPackage.COMPONENT__ATTRIBUTE :
@@ -845,11 +820,6 @@ public class ComponentImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.COMPONENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.COMPONENT__NAME :
 				setName((String) newValue);
 				return;
@@ -858,6 +828,11 @@ public class ComponentImpl
 				return;
 			case UMLPackage.COMPONENT__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.COMPONENT__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.COMPONENT__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -868,11 +843,6 @@ public class ComponentImpl
 				getPackageImports().clear();
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
-				return;
-			case UMLPackage.COMPONENT__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.COMPONENT__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -886,13 +856,13 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
-			case UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
-				return;
 			case UMLPackage.COMPONENT__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
+				return;
+			case UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.COMPONENT__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -1020,9 +990,6 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.COMPONENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.COMPONENT__NAME :
 				unsetName();
 				return;
@@ -1032,14 +999,14 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__VISIBILITY :
 				unsetVisibility();
 				return;
+			case UMLPackage.COMPONENT__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.COMPONENT__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.COMPONENT__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				return;
-			case UMLPackage.COMPONENT__OWNED_RULE :
-				getOwnedRules().clear();
 				return;
 			case UMLPackage.COMPONENT__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
@@ -1053,11 +1020,11 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
 				return;
-			case UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) null);
-				return;
 			case UMLPackage.COMPONENT__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
+				return;
+			case UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
 			case UMLPackage.COMPONENT__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -1152,8 +1119,7 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.COMPONENT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.COMPONENT__NAME :
 				return isSetName();
 			case UMLPackage.COMPONENT__NAME_EXPRESSION :
@@ -1166,12 +1132,12 @@ public class ComponentImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.COMPONENT__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.COMPONENT__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.COMPONENT__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.COMPONENT__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.COMPONENT__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.COMPONENT__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.COMPONENT__IMPORTED_MEMBER :
@@ -1190,10 +1156,10 @@ public class ComponentImpl
 				return isSetTemplateParameter();
 			case UMLPackage.COMPONENT__PACKAGE :
 				return basicGetPackage() != null;
-			case UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE :
-				return isSetOwnedTemplateSignature();
 			case UMLPackage.COMPONENT__TEMPLATE_BINDING :
 				return templateBindings != null && !templateBindings.isEmpty();
+			case UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE :
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.COMPONENT__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.COMPONENT__ATTRIBUTE :
@@ -1360,16 +1326,16 @@ public class ComponentImpl
 				return allOwnedElements();
 			case UMLPackage.COMPONENT___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.COMPONENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMPONENT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMPONENT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.COMPONENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMPONENT___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1380,6 +1346,8 @@ public class ComponentImpl
 				return getLabel();
 			case UMLPackage.COMPONENT___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.COMPONENT___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.COMPONENT___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.COMPONENT___ALL_OWNING_PACKAGES :
@@ -1387,14 +1355,22 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.COMPONENT___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.COMPONENT___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.COMPONENT___SEPARATOR :
 				return separator();
+			case UMLPackage.COMPONENT___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.COMPONENT___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.COMPONENT___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.COMPONENT___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMPONENT___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -1409,6 +1385,8 @@ public class ComponentImpl
 				return getImportedElements();
 			case UMLPackage.COMPONENT___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.COMPONENT___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.COMPONENT___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -1421,8 +1399,6 @@ public class ComponentImpl
 				return getImportedMembers();
 			case UMLPackage.COMPONENT___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.COMPONENT___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 			case UMLPackage.COMPONENT___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -1444,6 +1420,10 @@ public class ComponentImpl
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.COMPONENT___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.COMPONENT___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMPONENT___CREATE_ASSOCIATION__BOOLEAN_AGGREGATIONKIND_STRING_INT_INT_TYPE_BOOLEAN_AGGREGATIONKIND_STRING_INT_INT :
 				return createAssociation((Boolean) arguments.get(0),
 					(AggregationKind) arguments.get(1),
@@ -1461,20 +1441,20 @@ public class ComponentImpl
 				return isTemplate();
 			case UMLPackage.COMPONENT___PARAMETERABLE_ELEMENTS :
 				return parameterableElements();
-			case UMLPackage.COMPONENT___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
-				return validateNonFinalParents(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.COMPONENT___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
-				return validateNoCyclesInGeneralization(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMPONENT___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateSpecializeType(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMPONENT___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
 				return validateMapsToGeneralizationSet(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.COMPONENT___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
+				return validateNonFinalParents(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.COMPONENT___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
+				return validateNoCyclesInGeneralization(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMPONENT___GET_ALL_ATTRIBUTES :
@@ -1499,8 +1479,6 @@ public class ComponentImpl
 				return allFeatures();
 			case UMLPackage.COMPONENT___ALL_PARENTS :
 				return allParents();
-			case UMLPackage.COMPONENT___CONFORMS_TO__CLASSIFIER :
-				return conformsTo((Classifier) arguments.get(0));
 			case UMLPackage.COMPONENT___GET_GENERALS :
 				return getGenerals();
 			case UMLPackage.COMPONENT___HAS_VISIBILITY_OF__NAMEDELEMENT :
@@ -1515,16 +1493,28 @@ public class ComponentImpl
 				return maySpecializeType((Classifier) arguments.get(0));
 			case UMLPackage.COMPONENT___PARENTS :
 				return parents();
-			case UMLPackage.COMPONENT___VALIDATE_MULTIPLICITIES__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicities(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.COMPONENT___DIRECTLY_REALIZED_INTERFACES :
+				return directlyRealizedInterfaces();
+			case UMLPackage.COMPONENT___DIRECTLY_USED_INTERFACES :
+				return directlyUsedInterfaces();
+			case UMLPackage.COMPONENT___ALL_REALIZED_INTERFACES :
+				return allRealizedInterfaces();
+			case UMLPackage.COMPONENT___ALL_USED_INTERFACES :
+				return allUsedInterfaces();
+			case UMLPackage.COMPONENT___IS_SUBSTITUTABLE_FOR__CLASSIFIER :
+				return isSubstitutableFor((Classifier) arguments.get(0));
+			case UMLPackage.COMPONENT___ALL_ATTRIBUTES :
+				return allAttributes();
+			case UMLPackage.COMPONENT___ALL_SLOTTABLE_FEATURES :
+				return allSlottableFeatures();
 			case UMLPackage.COMPONENT___CREATE_OWNED_ATTRIBUTE__STRING_TYPE_INT_INT :
 				return createOwnedAttribute((String) arguments.get(0),
 					(Type) arguments.get(1), (Integer) arguments.get(2),
 					(Integer) arguments.get(3));
 			case UMLPackage.COMPONENT___GET_PARTS :
 				return getParts();
+			case UMLPackage.COMPONENT___ALL_ROLES :
+				return allRoles();
 			case UMLPackage.COMPONENT___GET_OWNED_PORTS :
 				return getOwnedPorts();
 			case UMLPackage.COMPONENT___VALIDATE_CLASS_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
@@ -1548,12 +1538,12 @@ public class ComponentImpl
 				return getExtensions();
 			case UMLPackage.COMPONENT___GET_SUPER_CLASSES :
 				return getSuperClasses();
-			case UMLPackage.COMPONENT___VALIDATE_NO_PACKAGED_ELEMENTS__DIAGNOSTICCHAIN_MAP :
-				return validateNoPackagedElements(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMPONENT___VALIDATE_NO_NESTED_CLASSIFIERS__DIAGNOSTICCHAIN_MAP :
 				return validateNoNestedClassifiers(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.COMPONENT___VALIDATE_NO_PACKAGED_ELEMENTS__DIAGNOSTICCHAIN_MAP :
+				return validateNoPackagedElements(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMPONENT___CREATE_OWNED_CLASS__STRING_BOOLEAN :
@@ -1567,12 +1557,8 @@ public class ComponentImpl
 				return createOwnedPrimitiveType((String) arguments.get(0));
 			case UMLPackage.COMPONENT___GET_PROVIDEDS :
 				return getProvideds();
-			case UMLPackage.COMPONENT___REALIZED_INTERFACES__CLASSIFIER :
-				return realizedInterfaces((Classifier) arguments.get(0));
 			case UMLPackage.COMPONENT___GET_REQUIREDS :
 				return getRequireds();
-			case UMLPackage.COMPONENT___USED_INTERFACES__CLASSIFIER :
-				return usedInterfaces((Classifier) arguments.get(0));
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}
@@ -1637,8 +1623,8 @@ public class ComponentImpl
 		UMLPackage.COMPONENT__ELEMENT_IMPORT,
 		UMLPackage.COMPONENT__PACKAGE_IMPORT,
 		UMLPackage.COMPONENT__OWNED_MEMBER,
-		UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE,
 		UMLPackage.COMPONENT__TEMPLATE_BINDING,
+		UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE,
 		UMLPackage.COMPONENT__COLLABORATION_USE,
 		UMLPackage.COMPONENT__GENERALIZATION,
 		UMLPackage.COMPONENT__SUBSTITUTION,

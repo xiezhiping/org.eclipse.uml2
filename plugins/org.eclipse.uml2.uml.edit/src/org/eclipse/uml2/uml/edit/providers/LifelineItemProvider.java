@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: LifelineItemProvider.java,v 1.11 2010/09/28 21:00:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -278,6 +277,10 @@ public class LifelineItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.LIFELINE__SELECTOR,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LIFELINE__SELECTOR,
 			UMLFactory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -286,7 +289,11 @@ public class LifelineItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.LIFELINE__SELECTOR,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
+			UMLFactory.eINSTANCE.createInstanceValue()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LIFELINE__SELECTOR,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.LIFELINE__SELECTOR,
@@ -299,10 +306,6 @@ public class LifelineItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.LIFELINE__SELECTOR,
 			UMLFactory.eINSTANCE.createDurationInterval()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LIFELINE__SELECTOR,
-			UMLFactory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.LIFELINE__SELECTOR,
@@ -331,10 +334,6 @@ public class LifelineItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.LIFELINE__SELECTOR,
 			UMLFactory.eINSTANCE.createTimeInterval()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LIFELINE__SELECTOR,
-			UMLFactory.eINSTANCE.createTimeExpression()));
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,13 +7,18 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 418466
  *
- * $Id: TimeExpressionOperations.java,v 1.3 2006/11/08 20:26:09 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Map;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.ValueSpecification;
+import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,6 +28,7 @@ import org.eclipse.uml2.uml.ValueSpecification;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.TimeExpression#validateNoExprRequiresObservation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Expr Requires Observation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.TimeExpression#stringValue() <em>String Value</em>}</li>
  * </ul>
  * </p>
@@ -39,6 +45,42 @@ public class TimeExpressionOperations
 	 */
 	protected TimeExpressionOperations() {
 		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If a TimeExpression has no expr, then it must have a single observation that is a TimeObservation.
+	 * expr = null implies (observation->size() = 1 and observation->forAll(oclIsKindOf(TimeObservation)))
+	 * @param timeExpression The receiving '<em><b>Time Expression</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateNoExprRequiresObservation(
+			TimeExpression timeExpression, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.TIME_EXPRESSION__NO_EXPR_REQUIRES_OBSERVATION,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoExprRequiresObservation", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(timeExpression, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{timeExpression}));
+			}
+			return false;
+		}
+		return true;
 	}
 
 	/**

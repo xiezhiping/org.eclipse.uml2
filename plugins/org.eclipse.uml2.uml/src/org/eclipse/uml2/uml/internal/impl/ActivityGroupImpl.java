@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -39,11 +39,11 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityContent;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityGroup;
 import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -355,6 +355,15 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Activity containingActivity() {
+		return ActivityGroupOperations.containingActivity(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateNodesAndEdges(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return ActivityGroupOperations.validateNodesAndEdges(this, diagnostics,
@@ -369,17 +378,6 @@ public abstract class ActivityGroupImpl
 	public boolean validateNotContained(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return ActivityGroupOperations.validateNotContained(this, diagnostics,
-			context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateGroupOwned(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return ActivityGroupOperations.validateGroupOwned(this, diagnostics,
 			context);
 	}
 
@@ -454,11 +452,6 @@ public abstract class ActivityGroupImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.ACTIVITY_GROUP__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.ACTIVITY_GROUP__NAME :
 				setName((String) newValue);
 				return;
@@ -488,9 +481,6 @@ public abstract class ActivityGroupImpl
 				return;
 			case UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.ACTIVITY_GROUP__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.ACTIVITY_GROUP__NAME :
 				unsetName();
@@ -525,8 +515,7 @@ public abstract class ActivityGroupImpl
 			case UMLPackage.ACTIVITY_GROUP__OWNER :
 				return isSetOwner();
 			case UMLPackage.ACTIVITY_GROUP__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.ACTIVITY_GROUP__NAME :
 				return isSetName();
 			case UMLPackage.ACTIVITY_GROUP__NAME_EXPRESSION :
@@ -551,6 +540,24 @@ public abstract class ActivityGroupImpl
 				return isSetSuperGroup();
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == ActivityContent.class) {
+			switch (baseOperationID) {
+				case UMLPackage.ACTIVITY_CONTENT___CONTAINING_ACTIVITY :
+					return UMLPackage.ACTIVITY_GROUP___CONTAINING_ACTIVITY;
+				default :
+					return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
 	}
 
 	/**
@@ -645,16 +652,16 @@ public abstract class ActivityGroupImpl
 				return allOwnedElements();
 			case UMLPackage.ACTIVITY_GROUP___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.ACTIVITY_GROUP___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_GROUP___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_GROUP___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_GROUP___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_GROUP___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -665,6 +672,8 @@ public abstract class ActivityGroupImpl
 				return getLabel();
 			case UMLPackage.ACTIVITY_GROUP___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.ACTIVITY_GROUP___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.ACTIVITY_GROUP___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.ACTIVITY_GROUP___ALL_OWNING_PACKAGES :
@@ -672,21 +681,20 @@ public abstract class ActivityGroupImpl
 			case UMLPackage.ACTIVITY_GROUP___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.ACTIVITY_GROUP___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.ACTIVITY_GROUP___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.ACTIVITY_GROUP___SEPARATOR :
 				return separator();
-			case UMLPackage.ACTIVITY_GROUP___VALIDATE_GROUP_OWNED__DIAGNOSTICCHAIN_MAP :
-				return validateGroupOwned((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_GROUP___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
-				return validateNotContained((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_GROUP___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
+			case UMLPackage.ACTIVITY_GROUP___CONTAINING_ACTIVITY :
+				return containingActivity();
 			case UMLPackage.ACTIVITY_GROUP___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP :
 				return validateNodesAndEdges(
 					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_GROUP___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
+				return validateNotContained((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

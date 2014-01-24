@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 CEA and others.
+ * Copyright (c) 2011, 2014 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -52,7 +53,7 @@ public class ExpansionNodeOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * One of regionAsInput or regionAsOutput must be non-empty, but not both.
-	 * true
+	 * regionAsInput->notEmpty() xor regionAsOutput->notEmpty()
 	 * @param expansionNode The receiving '<em><b>Expansion Node</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

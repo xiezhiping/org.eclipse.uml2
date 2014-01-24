@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -136,6 +136,27 @@ public class LinkEndDestructionDataImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateDestroyAtPin(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return LinkEndDestructionDataOperations.validateDestroyAtPin(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<InputPin> allPins() {
+		return LinkEndDestructionDataOperations.allPins(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public InputPin getDestroyAt() {
 		if (destroyAt != null && destroyAt.eIsProxy()) {
 			InternalEObject oldDestroyAt = (InternalEObject) destroyAt;
@@ -171,28 +192,6 @@ public class LinkEndDestructionDataImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.LINK_END_DESTRUCTION_DATA__DESTROY_AT, oldDestroyAt,
 				destroyAt));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateDestroyLinkAction(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return LinkEndDestructionDataOperations.validateDestroyLinkAction(this,
-			diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateUnlimitedNaturalAndMultiplicity(
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return LinkEndDestructionDataOperations
-			.validateUnlimitedNaturalAndMultiplicity(this, diagnostics, context);
 	}
 
 	/**
@@ -428,30 +427,27 @@ public class LinkEndDestructionDataImpl
 				return allOwnedElements();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_PROPERTY_IS_ASSOCIATION_END__DIAGNOSTICCHAIN_MAP :
-				return validatePropertyIsAssociationEnd(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_END_OBJECT_INPUT_PIN__DIAGNOSTICCHAIN_MAP :
-				return validateEndObjectInputPin(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_SAME_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateSameType((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
 				return validateMultiplicity((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_END_OBJECT_INPUT_PIN__DIAGNOSTICCHAIN_MAP :
+				return validateEndObjectInputPin(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_PROPERTY_IS_ASSOCIATION_END__DIAGNOSTICCHAIN_MAP :
+				return validatePropertyIsAssociationEnd(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_QUALIFIERS__DIAGNOSTICCHAIN_MAP :
 				return validateQualifiers((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_DESTROY_LINK_ACTION__DIAGNOSTICCHAIN_MAP :
-				return validateDestroyLinkAction(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_UNLIMITED_NATURAL_AND_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
-				return validateUnlimitedNaturalAndMultiplicity(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___ALL_PINS :
+				return allPins();
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_DESTROY_AT_PIN__DIAGNOSTICCHAIN_MAP :
+				return validateDestroyAtPin((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

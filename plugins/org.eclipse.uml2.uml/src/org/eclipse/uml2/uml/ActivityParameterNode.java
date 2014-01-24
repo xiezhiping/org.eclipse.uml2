@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -23,8 +23,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An activity parameter node is an object node for inputs and outputs to activities.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * An ActivityParameterNode is an ObjectNode for accepting values from the input Parameters or providing values to the output Parameters of an Activity.
+ * <p>From package UML::Activities.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -46,8 +46,8 @@ public interface ActivityParameterNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The parameter the object node will be accepting or providing values for.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Parameter for which the ActivityParameterNode will be accepting or providing values.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Parameter</em>' reference.
 	 * @see #setParameter(Parameter)
@@ -71,8 +71,8 @@ public interface ActivityParameterNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Activity parameter nodes must have parameters from the containing activity.
-	 * true
+	 * The parameter of an ActivityParameterNode must be from the containing Activity.
+	 * activity.ownedParameter->includes(parameter)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -86,8 +86,8 @@ public interface ActivityParameterNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of an activity parameter node is the same as the type of its parameter.
-	 * true
+	 * The type of an ActivityParameterNode is the same as the type of its parameter.
+	 * type = parameter.type
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -101,8 +101,8 @@ public interface ActivityParameterNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An activity parameter node may have all incoming edges or all outgoing edges, but it must not have both incoming and outgoing edges.
-	 * true
+	 * An ActivityParameterNode may have all incoming ActivityEdges or all outgoing ActivityEdges, but it must not have both incoming and outgoing ActivityEdges.
+	 * incoming->isEmpty() or outgoing->isEmpty()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -116,8 +116,10 @@ public interface ActivityParameterNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Activity parameter object nodes with no incoming edges and one or more outgoing edges must have a parameter with in or inout direction.
-	 * true
+	 * An ActivityParameterNode with no incoming ActivityEdges and one or more outgoing ActivityEdges must have a parameter with direction in or inout.
+	 * (outgoing->notEmpty() and incoming->isEmpty()) implies 
+	 * 	(parameter.direction = ParameterDirectionKind::_'in' or 
+	 * 	 parameter.direction = ParameterDirectionKind::inout)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -131,8 +133,11 @@ public interface ActivityParameterNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Activity parameter object nodes with no outgoing edges and one or more incoming edges must have a parameter with out, inout, or return direction.
-	 * true
+	 * An ActivityParameterNode with no outgoing ActivityEdges and one or more incoming ActivityEdges must have a parameter with direction out, inout, or return.
+	 * (incoming->notEmpty() and outgoing->isEmpty()) implies 
+	 * 	(parameter.direction = ParameterDirectionKind::out or 
+	 * 	 parameter.direction = ParameterDirectionKind::inout or 
+	 * 	 parameter.direction = ParameterDirectionKind::return)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -140,36 +145,6 @@ public interface ActivityParameterNode
 	 * @generated
 	 */
 	boolean validateNoOutgoingEdges(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A parameter with direction other than inout must have at most one activity parameter node in an activity.
-	 * true
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateMaximumOneParameterNode(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A parameter with direction inout must have at most two activity parameter nodes in an activity, one with incoming flows and one with outgoing flows.
-	 * true
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateMaximumTwoParameterNodes(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 } // ActivityParameterNode

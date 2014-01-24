@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,14 +30,14 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateTransitionsOutgoing(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Transitions Outgoing</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateChoiceVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Choice Vertex</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateOutgoingFromInitial(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Outgoing From Initial</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateJoinVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Join Vertex</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateJunctionVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Junction Vertex</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateHistoryVertices(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate History Vertices</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateTransitionsOutgoing(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Transitions Outgoing</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateOutgoingFromInitial(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Outgoing From Initial</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateForkVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Fork Vertex</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateJoinVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Join Vertex</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateChoiceVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Choice Vertex</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateInitialVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Initial Vertex</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateForkVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Fork Vertex</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateTransitionsIncoming(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Transitions Incoming</em>}</li>
  * </ul>
  * </p>
@@ -60,8 +60,8 @@ public class PseudostateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An initial vertex can have at most one outgoing transition.
-	 * (self.kind = #initial) implies (self.outgoing->size <= 1)
+	 * An initial Vertex can have at most one outgoing Transition.
+	 * (kind = PseudostateKind::initial) implies (outgoing->size() <= 1)
 	 * @param pseudostate The receiving '<em><b>Pseudostate</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -95,9 +95,8 @@ public class PseudostateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * History vertices can have at most one outgoing transition.
-	 * ((self.kind = #deepHistory) or (self.kind = #shallowHistory)) implies
-	 * (self.outgoing->size <= 1)
+	 * History Vertices can have at most one outgoing Transition.
+	 * ((kind = PseudostateKind::deepHistory) or (kind = PseudostateKind::shallowHistory)) implies (outgoing->size() <= 1)
 	 * 
 	 * @param pseudostate The receiving '<em><b>Pseudostate</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -132,9 +131,8 @@ public class PseudostateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * In a complete statemachine, a join vertex must have at least two incoming transitions and exactly one outgoing transition.
-	 * (self.kind = #join) implies
-	 * ((self.outgoing->size = 1) and (self.incoming->size >= 2))
+	 * In a complete StateMachine, a join Vertex must have at least two incoming Transitions and exactly one outgoing Transition.
+	 * (kind = PseudostateKind::join) implies (outgoing->size() = 1 and incoming->size() >= 2)
 	 * 
 	 * @param pseudostate The receiving '<em><b>Pseudostate</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -169,10 +167,15 @@ public class PseudostateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * All transitions incoming a join vertex must originate in different regions of an orthogonal state.
-	 * (self.kind = #join) implies
-	 *   self.incoming->forAll (t1, t2 | t1<>t2 implies
-	 *     (self.stateMachine.LCA(t1.source, t2.source).container.isOrthogonal))
+	 * All Transitions incoming a join Vertex must originate in different Regions of an orthogonal State.
+	 * (kind = PseudostateKind::join) implies
+	 * 
+	 * -- for any pair of incoming transitions there exists an orthogonal state which contains the source vetices of these transitions 
+	 * -- such that these source vertices belong to different regions of that orthogonal state 
+	 * 
+	 * incoming->forAll(t1:Transition, t2:Transition | let contState:State = containingStateMachine().LCAState(t1.source, t2.source) in
+	 * 	((contState <> null) and (contState.region
+	 * 		->exists(r1:Region, r2: Region | (r1 <> r2) and t1.source.isContainedInRegion(r1) and t2.source.isContainedInRegion(r2)))))
 	 * @param pseudostate The receiving '<em><b>Pseudostate</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -206,9 +209,8 @@ public class PseudostateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * In a complete statemachine, a fork vertex must have at least two outgoing transitions and exactly one incoming transition.
-	 * (self.kind = #fork) implies
-	 * ((self.incoming->size = 1) and (self.outgoing->size >= 2))
+	 * In a complete StateMachine, a fork Vertex must have at least two outgoing Transitions and exactly one incoming Transition.
+	 * (kind = PseudostateKind::fork) implies (incoming->size() = 1 and outgoing->size() >= 2)
 	 * 
 	 * @param pseudostate The receiving '<em><b>Pseudostate</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -244,9 +246,15 @@ public class PseudostateOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * All transitions outgoing a fork vertex must target states in different regions of an orthogonal state.
-	 * (self.kind = #fork) implies
-	 *   self.outgoing->forAll (t1, t2 | t1<>t2 implies
-	 *     (self.stateMachine.LCA(t1.target, t2.target).container.isOrthogonal))
+	 * (kind = PseudostateKind::fork) implies
+	 * 
+	 * -- for any pair of outgoing transitions there exists an orthogonal state which contains the targets of these transitions 
+	 * -- such that these targets belong to different regions of that orthogonal state 
+	 * 
+	 * outgoing->forAll(t1:Transition, t2:Transition | let contState:State = containingStateMachine().LCAState(t1.target, t2.target) in
+	 * 	((contState <> null) and (contState.region
+	 * 		->exists(r1:Region, r2: Region | (r1 <> r2) and t1.target.isContainedInRegion(r1) and t2.target.isContainedInRegion(r2)))))
+	 * 	
 	 * @param pseudostate The receiving '<em><b>Pseudostate</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -280,9 +288,8 @@ public class PseudostateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * In a complete statemachine, a junction vertex must have at least one incoming and one outgoing transition.
-	 * (self.kind = #junction) implies
-	 * ((self.incoming->size >= 1) and (self.outgoing->size >= 1))
+	 * In a complete StateMachine, a junction Vertex must have at least one incoming and one outgoing Transition.
+	 * (kind = PseudostateKind::junction) implies (incoming->size() >= 1 and outgoing->size() >= 1)
 	 * 
 	 * @param pseudostate The receiving '<em><b>Pseudostate</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -317,9 +324,8 @@ public class PseudostateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * In a complete statemachine, a choice vertex must have at least one incoming and one outgoing transition.
-	 * (self.kind = #choice) implies
-	 * ((self.incoming->size >= 1) and (self.outgoing->size >= 1))
+	 * In a complete statemachine, a choice Vertex must have at least one incoming and one outgoing Transition.
+	 * (kind = PseudostateKind::choice) implies (incoming->size() >= 1 and outgoing->size() >= 1)
 	 * 
 	 * @param pseudostate The receiving '<em><b>Pseudostate</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -354,9 +360,8 @@ public class PseudostateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The outgoing transition from and initial vertex may have a behavior, but not a trigger or a guard.
-	 * (self.kind = #initial) implies (self.outgoing.guard->isEmpty()
-	 *   and self.outgoing.trigger->isEmpty())
+	 * The outgoing Transition from an initial vertex may have a behavior, but not a trigger or a guard.
+	 * (kind = PseudostateKind::initial) implies (outgoing.guard = null and outgoing.trigger->isEmpty())
 	 * @param pseudostate The receiving '<em><b>Pseudostate</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

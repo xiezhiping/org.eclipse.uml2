@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -19,8 +19,6 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.CombinedFragment;
-import org.eclipse.uml2.uml.InteractionConstraint;
-import org.eclipse.uml2.uml.InteractionOperand;
 import org.eclipse.uml2.uml.InteractionOperatorKind;
 import org.eclipse.uml2.uml.UMLPlugin;
 
@@ -35,9 +33,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.CombinedFragment#validateBreak(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Break</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.CombinedFragment#validateOptLoopBreakNeg(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Opt Loop Break Neg</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.CombinedFragment#validateConsiderAndIgnore(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Consider And Ignore</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.CombinedFragment#validateMinintAndMaxint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Minint And Maxint</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.CombinedFragment#validateOptLoopBreakNeg(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Opt Loop Break Neg</em>}</li>
  * </ul>
  * </p>
  *
@@ -59,8 +56,11 @@ public class CombinedFragmentOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If the interactionOperator is opt, loop, break, or neg there must be exactly one operand
-	 * true
+	 * If the interactionOperator is opt, loop, break, assert or neg, there must be exactly one operand.
+	 * (interactionOperator =  InteractionOperatorKind::opt or interactionOperator = InteractionOperatorKind::loop or
+	 * interactionOperator = InteractionOperatorKind::break or interactionOperator = InteractionOperatorKind::assert or
+	 * interactionOperator = InteractionOperatorKind::neg)
+	 * implies operand->size()=1
 	 * @param combinedFragment The receiving '<em><b>Combined Fragment</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -73,9 +73,10 @@ public class CombinedFragmentOperations
 
 		switch (combinedFragment.getInteractionOperator().getValue()) {
 			case InteractionOperatorKind.OPT :
+			case InteractionOperatorKind.BREAK :
 			case InteractionOperatorKind.LOOP :
 			case InteractionOperatorKind.NEG :
-			case InteractionOperatorKind.BREAK :
+			case InteractionOperatorKind.ASSERT :
 				if (combinedFragment.getOperands().size() != 1) {
 
 					if (diagnostics != null) {
@@ -103,54 +104,10 @@ public class CombinedFragmentOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The InteractionConstraint with minint and maxint only apply when attached to an InteractionOperand where the interactionOperator is loop.
-	 * true
-	 * @param combinedFragment The receiving '<em><b>Combined Fragment</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean validateMinintAndMaxint(
-			CombinedFragment combinedFragment, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-
-		if (combinedFragment.getInteractionOperator() != InteractionOperatorKind.LOOP_LITERAL) {
-
-			for (InteractionOperand operand : combinedFragment.getOperands()) {
-				InteractionConstraint guard = operand.getGuard();
-
-				if (guard != null
-					&& (guard.getMinint() != null || guard.getMaxint() != null)) {
-
-					if (diagnostics != null) {
-						diagnostics
-							.add(new BasicDiagnostic(
-								Diagnostic.WARNING,
-								UMLValidator.DIAGNOSTIC_SOURCE,
-								UMLValidator.COMBINED_FRAGMENT__MININT_AND_MAXINT,
-								UMLPlugin.INSTANCE
-									.getString(
-										"_UI_CombinedFragment_MinintAndMaxint_diagnostic", //$NON-NLS-1$
-										getMessageSubstitutions(context,
-											combinedFragment)),
-								new Object[]{combinedFragment}));
-					}
-
-					return false;
-				}
-			}
-		}
-
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * If the interactionOperator is break, the corresponding InteractionOperand must cover all Lifelines within the enclosing InteractionFragment.
-	 * true
+	 * If the interactionOperator is break, the corresponding InteractionOperand must cover all Lifelines covered by the enclosing InteractionFragment.
+	 * interactionOperator=InteractionOperatorKind::break  implies   
+	 * enclosingInteraction.oclAsType(InteractionFragment)->asSet()->union(
+	 *    enclosingOperand.oclAsType(InteractionFragment)->asSet()).covered->asSet() = self.covered->asSet()
 	 * @param combinedFragment The receiving '<em><b>Combined Fragment</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -184,8 +141,8 @@ public class CombinedFragmentOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The interaction operators 'consider' and 'ignore' can only be used for the CombineIgnoreFragment subtype of CombinedFragment
-	 * ((interactionOperator = #consider) or (interactionOperator = #ignore)) implies oclsisTypeOf(CombineIgnoreFragment)
+	 * The interaction operators 'consider' and 'ignore' can only be used for the ConsiderIgnoreFragment subtype of CombinedFragment
+	 * ((interactionOperator = InteractionOperatorKind::consider) or (interactionOperator =  InteractionOperatorKind::ignore)) implies oclIsKindOf(ConsiderIgnoreFragment)
 	 * @param combinedFragment The receiving '<em><b>Combined Fragment</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

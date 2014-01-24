@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ExecutionSpecification;
 import org.eclipse.uml2.uml.GeneralOrdering;
 import org.eclipse.uml2.uml.Interaction;
@@ -231,14 +230,14 @@ public abstract class ExecutionSpecificationImpl
 				return getVisibility();
 			case UMLPackage.EXECUTION_SPECIFICATION__COVERED :
 				return getCovereds();
-			case UMLPackage.EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
-				if (resolve)
-					return getEnclosingInteraction();
-				return basicGetEnclosingInteraction();
 			case UMLPackage.EXECUTION_SPECIFICATION__ENCLOSING_OPERAND :
 				if (resolve)
 					return getEnclosingOperand();
 				return basicGetEnclosingOperand();
+			case UMLPackage.EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
+				if (resolve)
+					return getEnclosingInteraction();
+				return basicGetEnclosingInteraction();
 			case UMLPackage.EXECUTION_SPECIFICATION__GENERAL_ORDERING :
 				return getGeneralOrderings();
 			case UMLPackage.EXECUTION_SPECIFICATION__FINISH :
@@ -272,11 +271,6 @@ public abstract class ExecutionSpecificationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.EXECUTION_SPECIFICATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.EXECUTION_SPECIFICATION__NAME :
 				setName((String) newValue);
 				return;
@@ -290,11 +284,11 @@ public abstract class ExecutionSpecificationImpl
 				getCovereds().clear();
 				getCovereds().addAll((Collection<? extends Lifeline>) newValue);
 				return;
-			case UMLPackage.EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
-				setEnclosingInteraction((Interaction) newValue);
-				return;
 			case UMLPackage.EXECUTION_SPECIFICATION__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) newValue);
+				return;
+			case UMLPackage.EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
+				setEnclosingInteraction((Interaction) newValue);
 				return;
 			case UMLPackage.EXECUTION_SPECIFICATION__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
@@ -325,9 +319,6 @@ public abstract class ExecutionSpecificationImpl
 			case UMLPackage.EXECUTION_SPECIFICATION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.EXECUTION_SPECIFICATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.EXECUTION_SPECIFICATION__NAME :
 				unsetName();
 				return;
@@ -340,11 +331,11 @@ public abstract class ExecutionSpecificationImpl
 			case UMLPackage.EXECUTION_SPECIFICATION__COVERED :
 				getCovereds().clear();
 				return;
-			case UMLPackage.EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
-				setEnclosingInteraction((Interaction) null);
-				return;
 			case UMLPackage.EXECUTION_SPECIFICATION__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) null);
+				return;
+			case UMLPackage.EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
+				setEnclosingInteraction((Interaction) null);
 				return;
 			case UMLPackage.EXECUTION_SPECIFICATION__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
@@ -376,8 +367,7 @@ public abstract class ExecutionSpecificationImpl
 			case UMLPackage.EXECUTION_SPECIFICATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.EXECUTION_SPECIFICATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.EXECUTION_SPECIFICATION__NAME :
 				return isSetName();
 			case UMLPackage.EXECUTION_SPECIFICATION__NAME_EXPRESSION :
@@ -392,10 +382,10 @@ public abstract class ExecutionSpecificationImpl
 				return isSetVisibility();
 			case UMLPackage.EXECUTION_SPECIFICATION__COVERED :
 				return covereds != null && !covereds.isEmpty();
-			case UMLPackage.EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
-				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.EXECUTION_SPECIFICATION__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
+			case UMLPackage.EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
+				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.EXECUTION_SPECIFICATION__GENERAL_ORDERING :
 				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.EXECUTION_SPECIFICATION__FINISH :
@@ -498,16 +488,16 @@ public abstract class ExecutionSpecificationImpl
 				return allOwnedElements();
 			case UMLPackage.EXECUTION_SPECIFICATION___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.EXECUTION_SPECIFICATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXECUTION_SPECIFICATION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXECUTION_SPECIFICATION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXECUTION_SPECIFICATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXECUTION_SPECIFICATION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -518,6 +508,8 @@ public abstract class ExecutionSpecificationImpl
 				return getLabel();
 			case UMLPackage.EXECUTION_SPECIFICATION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.EXECUTION_SPECIFICATION___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.EXECUTION_SPECIFICATION___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.EXECUTION_SPECIFICATION___ALL_OWNING_PACKAGES :
@@ -525,12 +517,12 @@ public abstract class ExecutionSpecificationImpl
 			case UMLPackage.EXECUTION_SPECIFICATION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.EXECUTION_SPECIFICATION___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.EXECUTION_SPECIFICATION___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.EXECUTION_SPECIFICATION___SEPARATOR :
 				return separator();
+			case UMLPackage.EXECUTION_SPECIFICATION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.EXECUTION_SPECIFICATION___VALIDATE_SAME_LIFELINE__DIAGNOSTICCHAIN_MAP :
 				return validateSameLifeline((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));

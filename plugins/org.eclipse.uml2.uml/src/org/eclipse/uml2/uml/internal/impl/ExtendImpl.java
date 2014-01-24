@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -41,7 +41,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.DirectedRelationship;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Extend;
@@ -502,9 +501,6 @@ public class ExtendImpl
 			case UMLPackage.EXTEND__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.EXTEND__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXTEND__EXTENSION :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -528,9 +524,6 @@ public class ExtendImpl
 			case UMLPackage.EXTEND__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.EXTEND__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXTEND__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.EXTEND__CONDITION :
@@ -634,11 +627,6 @@ public class ExtendImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.EXTEND__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.EXTEND__NAME :
 				setName((String) newValue);
 				return;
@@ -679,9 +667,6 @@ public class ExtendImpl
 				return;
 			case UMLPackage.EXTEND__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.EXTEND__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.EXTEND__NAME :
 				unsetName();
@@ -725,8 +710,7 @@ public class ExtendImpl
 			case UMLPackage.EXTEND__OWNER :
 				return isSetOwner();
 			case UMLPackage.EXTEND__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.EXTEND__NAME :
 				return isSetName();
 			case UMLPackage.EXTEND__NAME_EXPRESSION :
@@ -906,16 +890,16 @@ public class ExtendImpl
 				return allOwnedElements();
 			case UMLPackage.EXTEND___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.EXTEND___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTEND___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTEND___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXTEND___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTEND___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -926,6 +910,8 @@ public class ExtendImpl
 				return getLabel();
 			case UMLPackage.EXTEND___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.EXTEND___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.EXTEND___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.EXTEND___ALL_OWNING_PACKAGES :
@@ -933,12 +919,12 @@ public class ExtendImpl
 			case UMLPackage.EXTEND___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.EXTEND___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.EXTEND___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.EXTEND___SEPARATOR :
 				return separator();
+			case UMLPackage.EXTEND___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.EXTEND___VALIDATE_EXTENSION_POINTS__DIAGNOSTICCHAIN_MAP :
 				return validateExtensionPoints(
 					(DiagnosticChain) arguments.get(0),

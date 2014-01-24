@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 212765
+ *   Kenn Hussey (CEA) - 212765, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TimeExpression;
@@ -258,11 +257,6 @@ public class TimeIntervalImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.TIME_INTERVAL__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.TIME_INTERVAL__NAME :
 				setName((String) newValue);
 				return;
@@ -304,9 +298,6 @@ public class TimeIntervalImpl
 				return;
 			case UMLPackage.TIME_INTERVAL__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.TIME_INTERVAL__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.TIME_INTERVAL__NAME :
 				unsetName();
@@ -353,8 +344,7 @@ public class TimeIntervalImpl
 			case UMLPackage.TIME_INTERVAL__OWNER :
 				return isSetOwner();
 			case UMLPackage.TIME_INTERVAL__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.TIME_INTERVAL__NAME :
 				return isSetName();
 			case UMLPackage.TIME_INTERVAL__NAME_EXPRESSION :

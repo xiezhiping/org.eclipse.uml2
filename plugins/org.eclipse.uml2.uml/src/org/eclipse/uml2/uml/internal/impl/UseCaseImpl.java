@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -42,7 +42,6 @@ import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Extend;
 import org.eclipse.uml2.uml.ExtensionPoint;
@@ -470,17 +469,14 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.USE_CASE__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+			case UMLPackage.USE_CASE__OWNED_RULE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.USE_CASE__ELEMENT_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.USE_CASE__PACKAGE_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.USE_CASE__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.USE_CASE__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
@@ -495,6 +491,9 @@ public class UseCaseImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
+			case UMLPackage.USE_CASE__TEMPLATE_BINDING :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.USE_CASE__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -503,9 +502,6 @@ public class UseCaseImpl
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
-			case UMLPackage.USE_CASE__TEMPLATE_BINDING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.USE_CASE__GENERALIZATION :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getGeneralizations())
 					.basicAdd(otherEnd, msgs);
@@ -552,29 +548,26 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.USE_CASE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.USE_CASE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.USE_CASE__OWNED_RULE :
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.USE_CASE__ELEMENT_IMPORT :
 				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.USE_CASE__PACKAGE_IMPORT :
 				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.USE_CASE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.USE_CASE__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.USE_CASE__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.USE_CASE__OWNED_TEMPLATE_SIGNATURE :
-				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.USE_CASE__TEMPLATE_BINDING :
 				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.USE_CASE__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.USE_CASE__COLLABORATION_USE :
 				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
@@ -649,12 +642,12 @@ public class UseCaseImpl
 				return getQualifiedName();
 			case UMLPackage.USE_CASE__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.USE_CASE__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.USE_CASE__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.USE_CASE__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.USE_CASE__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.USE_CASE__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.USE_CASE__IMPORTED_MEMBER :
@@ -679,12 +672,12 @@ public class UseCaseImpl
 				if (resolve)
 					return getPackage();
 				return basicGetPackage();
+			case UMLPackage.USE_CASE__TEMPLATE_BINDING :
+				return getTemplateBindings();
 			case UMLPackage.USE_CASE__OWNED_TEMPLATE_SIGNATURE :
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.USE_CASE__TEMPLATE_BINDING :
-				return getTemplateBindings();
 			case UMLPackage.USE_CASE__FEATURE :
 				return getFeatures();
 			case UMLPackage.USE_CASE__ATTRIBUTE :
@@ -754,11 +747,6 @@ public class UseCaseImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.USE_CASE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.USE_CASE__NAME :
 				setName((String) newValue);
 				return;
@@ -767,6 +755,11 @@ public class UseCaseImpl
 				return;
 			case UMLPackage.USE_CASE__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.USE_CASE__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.USE_CASE__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -777,11 +770,6 @@ public class UseCaseImpl
 				getPackageImports().clear();
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
-				return;
-			case UMLPackage.USE_CASE__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.USE_CASE__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -795,13 +783,13 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
-			case UMLPackage.USE_CASE__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
-				return;
 			case UMLPackage.USE_CASE__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
+				return;
+			case UMLPackage.USE_CASE__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.USE_CASE__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -900,9 +888,6 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.USE_CASE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.USE_CASE__NAME :
 				unsetName();
 				return;
@@ -912,14 +897,14 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__VISIBILITY :
 				unsetVisibility();
 				return;
+			case UMLPackage.USE_CASE__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.USE_CASE__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.USE_CASE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				return;
-			case UMLPackage.USE_CASE__OWNED_RULE :
-				getOwnedRules().clear();
 				return;
 			case UMLPackage.USE_CASE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
@@ -933,11 +918,11 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
 				return;
-			case UMLPackage.USE_CASE__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) null);
-				return;
 			case UMLPackage.USE_CASE__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
+				return;
+			case UMLPackage.USE_CASE__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
 			case UMLPackage.USE_CASE__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -1014,8 +999,7 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__OWNER :
 				return isSetOwner();
 			case UMLPackage.USE_CASE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.USE_CASE__NAME :
 				return isSetName();
 			case UMLPackage.USE_CASE__NAME_EXPRESSION :
@@ -1028,12 +1012,12 @@ public class UseCaseImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.USE_CASE__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.USE_CASE__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.USE_CASE__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.USE_CASE__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.USE_CASE__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.USE_CASE__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.USE_CASE__IMPORTED_MEMBER :
@@ -1052,10 +1036,10 @@ public class UseCaseImpl
 				return isSetTemplateParameter();
 			case UMLPackage.USE_CASE__PACKAGE :
 				return basicGetPackage() != null;
-			case UMLPackage.USE_CASE__OWNED_TEMPLATE_SIGNATURE :
-				return isSetOwnedTemplateSignature();
 			case UMLPackage.USE_CASE__TEMPLATE_BINDING :
 				return templateBindings != null && !templateBindings.isEmpty();
+			case UMLPackage.USE_CASE__OWNED_TEMPLATE_SIGNATURE :
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.USE_CASE__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.USE_CASE__ATTRIBUTE :
@@ -1197,16 +1181,16 @@ public class UseCaseImpl
 				return allOwnedElements();
 			case UMLPackage.USE_CASE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.USE_CASE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.USE_CASE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.USE_CASE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.USE_CASE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.USE_CASE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1217,6 +1201,8 @@ public class UseCaseImpl
 				return getLabel();
 			case UMLPackage.USE_CASE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.USE_CASE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.USE_CASE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.USE_CASE___ALL_OWNING_PACKAGES :
@@ -1224,14 +1210,22 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.USE_CASE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.USE_CASE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.USE_CASE___SEPARATOR :
 				return separator();
+			case UMLPackage.USE_CASE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.USE_CASE___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.USE_CASE___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.USE_CASE___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.USE_CASE___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -1246,6 +1240,8 @@ public class UseCaseImpl
 				return getImportedElements();
 			case UMLPackage.USE_CASE___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.USE_CASE___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.USE_CASE___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -1258,8 +1254,6 @@ public class UseCaseImpl
 				return getImportedMembers();
 			case UMLPackage.USE_CASE___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.USE_CASE___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 			case UMLPackage.USE_CASE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -1281,6 +1275,10 @@ public class UseCaseImpl
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.USE_CASE___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.USE_CASE___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.USE_CASE___CREATE_ASSOCIATION__BOOLEAN_AGGREGATIONKIND_STRING_INT_INT_TYPE_BOOLEAN_AGGREGATIONKIND_STRING_INT_INT :
 				return createAssociation((Boolean) arguments.get(0),
 					(AggregationKind) arguments.get(1),
@@ -1298,20 +1296,20 @@ public class UseCaseImpl
 				return isTemplate();
 			case UMLPackage.USE_CASE___PARAMETERABLE_ELEMENTS :
 				return parameterableElements();
-			case UMLPackage.USE_CASE___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
-				return validateNonFinalParents(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.USE_CASE___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
-				return validateNoCyclesInGeneralization(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.USE_CASE___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateSpecializeType(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.USE_CASE___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
 				return validateMapsToGeneralizationSet(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.USE_CASE___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
+				return validateNonFinalParents(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.USE_CASE___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
+				return validateNoCyclesInGeneralization(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.USE_CASE___GET_ALL_ATTRIBUTES :
@@ -1336,8 +1334,6 @@ public class UseCaseImpl
 				return allFeatures();
 			case UMLPackage.USE_CASE___ALL_PARENTS :
 				return allParents();
-			case UMLPackage.USE_CASE___CONFORMS_TO__CLASSIFIER :
-				return conformsTo((Classifier) arguments.get(0));
 			case UMLPackage.USE_CASE___GET_GENERALS :
 				return getGenerals();
 			case UMLPackage.USE_CASE___HAS_VISIBILITY_OF__NAMEDELEMENT :
@@ -1352,6 +1348,20 @@ public class UseCaseImpl
 				return maySpecializeType((Classifier) arguments.get(0));
 			case UMLPackage.USE_CASE___PARENTS :
 				return parents();
+			case UMLPackage.USE_CASE___DIRECTLY_REALIZED_INTERFACES :
+				return directlyRealizedInterfaces();
+			case UMLPackage.USE_CASE___DIRECTLY_USED_INTERFACES :
+				return directlyUsedInterfaces();
+			case UMLPackage.USE_CASE___ALL_REALIZED_INTERFACES :
+				return allRealizedInterfaces();
+			case UMLPackage.USE_CASE___ALL_USED_INTERFACES :
+				return allUsedInterfaces();
+			case UMLPackage.USE_CASE___IS_SUBSTITUTABLE_FOR__CLASSIFIER :
+				return isSubstitutableFor((Classifier) arguments.get(0));
+			case UMLPackage.USE_CASE___ALL_ATTRIBUTES :
+				return allAttributes();
+			case UMLPackage.USE_CASE___ALL_SLOTTABLE_FEATURES :
+				return allSlottableFeatures();
 			case UMLPackage.USE_CASE___VALIDATE_CLASS_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
 				return validateClassBehavior(
 					(DiagnosticChain) arguments.get(0),
@@ -1360,13 +1370,6 @@ public class UseCaseImpl
 				return getAllImplementedInterfaces();
 			case UMLPackage.USE_CASE___GET_IMPLEMENTED_INTERFACES :
 				return getImplementedInterfaces();
-			case UMLPackage.USE_CASE___VALIDATE_MUST_HAVE_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateMustHaveName((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.USE_CASE___VALIDATE_CANNOT_INCLUDE_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateCannotIncludeSelf(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.USE_CASE___VALIDATE_BINARY_ASSOCIATIONS__DIAGNOSTICCHAIN_MAP :
 				return validateBinaryAssociations(
 					(DiagnosticChain) arguments.get(0),
@@ -1374,6 +1377,13 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE___VALIDATE_NO_ASSOCIATION_TO_USE_CASE__DIAGNOSTICCHAIN_MAP :
 				return validateNoAssociationToUseCase(
 					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.USE_CASE___VALIDATE_CANNOT_INCLUDE_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotIncludeSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.USE_CASE___VALIDATE_MUST_HAVE_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateMustHaveName((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.USE_CASE___ALL_INCLUDED_USE_CASES :
 				return allIncludedUseCases();

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -136,6 +136,27 @@ public class LinkEndCreationDataImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateInsertAtPin(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return LinkEndCreationDataOperations.validateInsertAtPin(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<InputPin> allPins() {
+		return LinkEndCreationDataOperations.allPins(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public InputPin getInsertAt() {
 		if (insertAt != null && insertAt.eIsProxy()) {
 			InternalEObject oldInsertAt = (InternalEObject) insertAt;
@@ -171,28 +192,6 @@ public class LinkEndCreationDataImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.LINK_END_CREATION_DATA__INSERT_AT, oldInsertAt,
 				insertAt));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateCreateLinkAction(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return LinkEndCreationDataOperations.validateCreateLinkAction(this,
-			diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateSingleInputPin(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return LinkEndCreationDataOperations.validateSingleInputPin(this,
-			diagnostics, context);
 	}
 
 	/**
@@ -428,30 +427,27 @@ public class LinkEndCreationDataImpl
 				return allOwnedElements();
 			case UMLPackage.LINK_END_CREATION_DATA___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.LINK_END_CREATION_DATA___VALIDATE_PROPERTY_IS_ASSOCIATION_END__DIAGNOSTICCHAIN_MAP :
-				return validatePropertyIsAssociationEnd(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LINK_END_CREATION_DATA___VALIDATE_END_OBJECT_INPUT_PIN__DIAGNOSTICCHAIN_MAP :
-				return validateEndObjectInputPin(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_CREATION_DATA___VALIDATE_SAME_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateSameType((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_CREATION_DATA___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
 				return validateMultiplicity((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LINK_END_CREATION_DATA___VALIDATE_END_OBJECT_INPUT_PIN__DIAGNOSTICCHAIN_MAP :
+				return validateEndObjectInputPin(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LINK_END_CREATION_DATA___VALIDATE_PROPERTY_IS_ASSOCIATION_END__DIAGNOSTICCHAIN_MAP :
+				return validatePropertyIsAssociationEnd(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_CREATION_DATA___VALIDATE_QUALIFIERS__DIAGNOSTICCHAIN_MAP :
 				return validateQualifiers((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LINK_END_CREATION_DATA___VALIDATE_CREATE_LINK_ACTION__DIAGNOSTICCHAIN_MAP :
-				return validateCreateLinkAction(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LINK_END_CREATION_DATA___VALIDATE_SINGLE_INPUT_PIN__DIAGNOSTICCHAIN_MAP :
-				return validateSingleInputPin(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.LINK_END_CREATION_DATA___ALL_PINS :
+				return allPins();
+			case UMLPackage.LINK_END_CREATION_DATA___VALIDATE_INSERT_AT_PIN__DIAGNOSTICCHAIN_MAP :
+				return validateInsertAtPin((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

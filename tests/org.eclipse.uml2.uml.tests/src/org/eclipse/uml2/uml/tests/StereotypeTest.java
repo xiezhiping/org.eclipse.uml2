@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.tests;
@@ -30,10 +30,13 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateAssociationEndOwnership(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Association End Ownership</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateNameNotClash(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Name Not Clash</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateBinaryAssociationsOnly(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Binary Associations Only</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateGeneralize(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Generalize</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateNameNotClash(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Name Not Clash</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateAssociationEndOwnership(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Association End Ownership</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateBasePropertyUpperBound(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Base Property Upper Bound</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateBasePropertyMultiplicitySingleExtension(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Base Property Multiplicity Single Extension</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateBasePropertyMultiplicityMultipleExtension(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Base Property Multiplicity Multiple Extension</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#createExtension(org.eclipse.uml2.uml.Class, boolean) <em>Create Extension</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#createIcon(java.lang.String) <em>Create Icon</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#createIcon(java.lang.String, java.lang.String) <em>Create Icon</em>}</li>
@@ -124,6 +127,42 @@ public class StereotypeTest
 	 * @generated
 	 */
 	public void testValidateAssociationEndOwnership__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Stereotype#validateBasePropertyUpperBound(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Base Property Upper Bound</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Stereotype#validateBasePropertyUpperBound(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateBasePropertyUpperBound__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Stereotype#validateBasePropertyMultiplicitySingleExtension(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Base Property Multiplicity Single Extension</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Stereotype#validateBasePropertyMultiplicitySingleExtension(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateBasePropertyMultiplicitySingleExtension__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Stereotype#validateBasePropertyMultiplicityMultipleExtension(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Base Property Multiplicity Multiple Extension</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Stereotype#validateBasePropertyMultiplicityMultipleExtension(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateBasePropertyMultiplicityMultipleExtension__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 212765
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -50,7 +50,6 @@ import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataType;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Interface;
@@ -89,17 +88,17 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwningTemplateParameter <em>Owning Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getTemplateBindings <em>Template Binding</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedRules <em>Owned Rule</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getInterface <em>Interface</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getBodyCondition <em>Body Condition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getDatatype <em>Datatype</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getInterface <em>Interface</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#isQuery <em>Is Query</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#isUnique <em>Is Unique</em>}</li>
@@ -109,8 +108,8 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRedefinedOperations <em>Redefined Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getUpper <em>Upper</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedParameters <em>Owned Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRaisedExceptions <em>Raised Exception</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedParameters <em>Owned Parameter</em>}</li>
  * </ul>
  * </p>
  *
@@ -131,16 +130,6 @@ public class OperationImpl
 	protected TemplateParameter templateParameter;
 
 	/**
-	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedTemplateSignature()
-	 * @generated
-	 * @ordered
-	 */
-	protected TemplateSignature ownedTemplateSignature;
-
-	/**
 	 * The cached value of the '{@link #getTemplateBindings() <em>Template Binding</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -149,6 +138,16 @@ public class OperationImpl
 	 * @ordered
 	 */
 	protected EList<TemplateBinding> templateBindings;
+
+	/**
+	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedTemplateSignature()
+	 * @generated
+	 * @ordered
+	 */
+	protected TemplateSignature ownedTemplateSignature;
 
 	/**
 	 * The cached value of the '{@link #getBodyCondition() <em>Body Condition</em>}' reference.
@@ -1473,8 +1472,8 @@ public class OperationImpl
 	 * @generated
 	 */
 	@Override
-	public boolean isConsistentWith(RedefinableElement redefinee) {
-		return OperationOperations.isConsistentWith(this, redefinee);
+	public boolean isConsistentWith(RedefinableElement redefiningElement) {
+		return OperationOperations.isConsistentWith(this, redefiningElement);
 	}
 
 	/**
@@ -1490,17 +1489,14 @@ public class OperationImpl
 			case UMLPackage.OPERATION__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.OPERATION__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+			case UMLPackage.OPERATION__OWNED_RULE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.OPERATION__ELEMENT_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.OPERATION__PACKAGE_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.OPERATION__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.OPERATION__METHOD :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getMethods())
@@ -1518,6 +1514,9 @@ public class OperationImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
+			case UMLPackage.OPERATION__TEMPLATE_BINDING :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -1526,13 +1525,6 @@ public class OperationImpl
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
-			case UMLPackage.OPERATION__TEMPLATE_BINDING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.OPERATION__INTERFACE :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetInterface((Interface) otherEnd, msgs);
 			case UMLPackage.OPERATION__CLASS :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -1542,6 +1534,10 @@ public class OperationImpl
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetDatatype((DataType) otherEnd, msgs);
+			case UMLPackage.OPERATION__INTERFACE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetInterface((Interface) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -1561,19 +1557,16 @@ public class OperationImpl
 			case UMLPackage.OPERATION__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.OPERATION__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OPERATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.OPERATION__OWNED_RULE :
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.OPERATION__ELEMENT_IMPORT :
 				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.OPERATION__PACKAGE_IMPORT :
 				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.OPERATION__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.OPERATION__METHOD :
 				return ((InternalEList<?>) getMethods()).basicRemove(otherEnd,
@@ -1588,17 +1581,17 @@ public class OperationImpl
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.OPERATION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
-				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
 				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.OPERATION__INTERFACE :
-				return basicSetInterface(null, msgs);
+			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.OPERATION__CLASS :
 				return basicSetClass_(null, msgs);
 			case UMLPackage.OPERATION__DATATYPE :
 				return basicSetDatatype(null, msgs);
+			case UMLPackage.OPERATION__INTERFACE :
+				return basicSetInterface(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1616,10 +1609,6 @@ public class OperationImpl
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 					TemplateParameter.class, msgs);
-			case UMLPackage.OPERATION__INTERFACE :
-				return eInternalContainer().eInverseRemove(this,
-					UMLPackage.INTERFACE__OWNED_OPERATION, Interface.class,
-					msgs);
 			case UMLPackage.OPERATION__CLASS :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.CLASS__OWNED_OPERATION,
@@ -1629,6 +1618,10 @@ public class OperationImpl
 					.eInverseRemove(this,
 						UMLPackage.DATA_TYPE__OWNED_OPERATION, DataType.class,
 						msgs);
+			case UMLPackage.OPERATION__INTERFACE :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.INTERFACE__OWNED_OPERATION, Interface.class,
+					msgs);
 		}
 		return eDynamicBasicRemoveFromContainer(msgs);
 	}
@@ -1667,12 +1660,12 @@ public class OperationImpl
 				return getQualifiedName();
 			case UMLPackage.OPERATION__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.OPERATION__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.OPERATION__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.OPERATION__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.OPERATION__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.OPERATION__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.OPERATION__IMPORTED_MEMBER :
@@ -1709,16 +1702,12 @@ public class OperationImpl
 				if (resolve)
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
+			case UMLPackage.OPERATION__TEMPLATE_BINDING :
+				return getTemplateBindings();
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.OPERATION__TEMPLATE_BINDING :
-				return getTemplateBindings();
-			case UMLPackage.OPERATION__INTERFACE :
-				if (resolve)
-					return getInterface();
-				return basicGetInterface();
 			case UMLPackage.OPERATION__BODY_CONDITION :
 				if (resolve)
 					return getBodyCondition();
@@ -1731,6 +1720,10 @@ public class OperationImpl
 				if (resolve)
 					return getDatatype();
 				return basicGetDatatype();
+			case UMLPackage.OPERATION__INTERFACE :
+				if (resolve)
+					return getInterface();
+				return basicGetInterface();
 			case UMLPackage.OPERATION__IS_ORDERED :
 				return isOrdered();
 			case UMLPackage.OPERATION__IS_QUERY :
@@ -1774,11 +1767,6 @@ public class OperationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.OPERATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.OPERATION__NAME :
 				setName((String) newValue);
 				return;
@@ -1787,6 +1775,11 @@ public class OperationImpl
 				return;
 			case UMLPackage.OPERATION__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.OPERATION__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.OPERATION__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -1797,11 +1790,6 @@ public class OperationImpl
 				getPackageImports().clear();
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
-				return;
-			case UMLPackage.OPERATION__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.OPERATION__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -1840,16 +1828,13 @@ public class OperationImpl
 			case UMLPackage.OPERATION__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) newValue);
 				return;
-			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
-				return;
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
 				return;
-			case UMLPackage.OPERATION__INTERFACE :
-				setInterface((Interface) newValue);
+			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.OPERATION__BODY_CONDITION :
 				setBodyCondition((Constraint) newValue);
@@ -1859,6 +1844,9 @@ public class OperationImpl
 				return;
 			case UMLPackage.OPERATION__DATATYPE :
 				setDatatype((DataType) newValue);
+				return;
+			case UMLPackage.OPERATION__INTERFACE :
+				setInterface((Interface) newValue);
 				return;
 			case UMLPackage.OPERATION__IS_QUERY :
 				setIsQuery((Boolean) newValue);
@@ -1896,9 +1884,6 @@ public class OperationImpl
 			case UMLPackage.OPERATION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.OPERATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.OPERATION__NAME :
 				unsetName();
 				return;
@@ -1908,14 +1893,14 @@ public class OperationImpl
 			case UMLPackage.OPERATION__VISIBILITY :
 				unsetVisibility();
 				return;
+			case UMLPackage.OPERATION__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.OPERATION__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.OPERATION__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				return;
-			case UMLPackage.OPERATION__OWNED_RULE :
-				getOwnedRules().clear();
 				return;
 			case UMLPackage.OPERATION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
@@ -1947,14 +1932,11 @@ public class OperationImpl
 			case UMLPackage.OPERATION__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) null);
 				return;
-			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) null);
-				return;
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				return;
-			case UMLPackage.OPERATION__INTERFACE :
-				setInterface((Interface) null);
+			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
 			case UMLPackage.OPERATION__BODY_CONDITION :
 				setBodyCondition((Constraint) null);
@@ -1964,6 +1946,9 @@ public class OperationImpl
 				return;
 			case UMLPackage.OPERATION__DATATYPE :
 				setDatatype((DataType) null);
+				return;
+			case UMLPackage.OPERATION__INTERFACE :
+				setInterface((Interface) null);
 				return;
 			case UMLPackage.OPERATION__IS_QUERY :
 				setIsQuery(IS_QUERY_EDEFAULT);
@@ -1998,8 +1983,7 @@ public class OperationImpl
 			case UMLPackage.OPERATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.OPERATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.OPERATION__NAME :
 				return isSetName();
 			case UMLPackage.OPERATION__NAME_EXPRESSION :
@@ -2012,12 +1996,12 @@ public class OperationImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.OPERATION__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.OPERATION__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.OPERATION__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.OPERATION__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.OPERATION__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.OPERATION__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.OPERATION__IMPORTED_MEMBER :
@@ -2051,18 +2035,18 @@ public class OperationImpl
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.OPERATION__TEMPLATE_PARAMETER :
 				return isSetTemplateParameter();
-			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
-				return ownedTemplateSignature != null;
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
 				return templateBindings != null && !templateBindings.isEmpty();
-			case UMLPackage.OPERATION__INTERFACE :
-				return basicGetInterface() != null;
+			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
+				return ownedTemplateSignature != null;
 			case UMLPackage.OPERATION__BODY_CONDITION :
 				return bodyCondition != null;
 			case UMLPackage.OPERATION__CLASS :
 				return basicGetClass_() != null;
 			case UMLPackage.OPERATION__DATATYPE :
 				return basicGetDatatype() != null;
+			case UMLPackage.OPERATION__INTERFACE :
+				return basicGetInterface() != null;
 			case UMLPackage.OPERATION__IS_ORDERED :
 				return isOrdered() != IS_ORDERED_EDEFAULT;
 			case UMLPackage.OPERATION__IS_QUERY :
@@ -2105,10 +2089,10 @@ public class OperationImpl
 		}
 		if (baseClass == TemplateableElement.class) {
 			switch (derivedFeatureID) {
-				case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
-					return UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
 				case UMLPackage.OPERATION__TEMPLATE_BINDING :
 					return UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING;
+				case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
+					return UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
 				default :
 					return -1;
 			}
@@ -2135,10 +2119,10 @@ public class OperationImpl
 		}
 		if (baseClass == TemplateableElement.class) {
 			switch (baseFeatureID) {
-				case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE :
-					return UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE;
 				case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :
 					return UMLPackage.OPERATION__TEMPLATE_BINDING;
+				case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE :
+					return UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE;
 				default :
 					return -1;
 			}
@@ -2268,16 +2252,16 @@ public class OperationImpl
 				return allOwnedElements();
 			case UMLPackage.OPERATION___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.OPERATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPERATION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPERATION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OPERATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPERATION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -2288,6 +2272,8 @@ public class OperationImpl
 				return getLabel();
 			case UMLPackage.OPERATION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.OPERATION___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.OPERATION___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.OPERATION___ALL_OWNING_PACKAGES :
@@ -2295,14 +2281,22 @@ public class OperationImpl
 			case UMLPackage.OPERATION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.OPERATION___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.OPERATION___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.OPERATION___SEPARATOR :
 				return separator();
+			case UMLPackage.OPERATION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.OPERATION___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPERATION___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPERATION___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPERATION___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -2317,6 +2311,8 @@ public class OperationImpl
 				return getImportedElements();
 			case UMLPackage.OPERATION___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.OPERATION___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.OPERATION___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -2329,8 +2325,6 @@ public class OperationImpl
 				return getImportedMembers();
 			case UMLPackage.OPERATION___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.OPERATION___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 			case UMLPackage.OPERATION___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -2348,9 +2342,17 @@ public class OperationImpl
 			case UMLPackage.OPERATION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
+			case UMLPackage.OPERATION___VALIDATE_ABSTRACT_NO_METHOD__DIAGNOSTICCHAIN_MAP :
+				return validateAbstractNoMethod(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPERATION___CREATE_RETURN_RESULT__STRING_TYPE :
 				return createReturnResult((String) arguments.get(0),
 					(Type) arguments.get(1));
+			case UMLPackage.OPERATION___INPUT_PARAMETERS :
+				return inputParameters();
+			case UMLPackage.OPERATION___OUTPUT_PARAMETERS :
+				return outputParameters();
 			case UMLPackage.OPERATION___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.OPERATION___IS_TEMPLATE_PARAMETER :
@@ -2456,8 +2458,8 @@ public class OperationImpl
 		UMLPackage.OPERATION__ELEMENT_IMPORT,
 		UMLPackage.OPERATION__PACKAGE_IMPORT,
 		UMLPackage.OPERATION__OWNED_MEMBER,
-		UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE,
-		UMLPackage.OPERATION__TEMPLATE_BINDING};
+		UMLPackage.OPERATION__TEMPLATE_BINDING,
+		UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2467,8 +2469,8 @@ public class OperationImpl
 	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE)
-			|| eIsSet(UMLPackage.OPERATION__TEMPLATE_BINDING);
+			|| eIsSet(UMLPackage.OPERATION__TEMPLATE_BINDING)
+			|| eIsSet(UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE);
 	}
 
 	/**
@@ -2492,9 +2494,9 @@ public class OperationImpl
 	@Override
 	public boolean isSetRedefinitionContexts() {
 		return super.isSetRedefinitionContexts()
-			|| eIsSet(UMLPackage.OPERATION__INTERFACE)
 			|| eIsSet(UMLPackage.OPERATION__CLASS)
-			|| eIsSet(UMLPackage.OPERATION__DATATYPE);
+			|| eIsSet(UMLPackage.OPERATION__DATATYPE)
+			|| eIsSet(UMLPackage.OPERATION__INTERFACE);
 	}
 
 	/**
@@ -2504,10 +2506,6 @@ public class OperationImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-		Interface interface_ = basicGetInterface();
-		if (interface_ != null) {
-			return interface_;
-		}
 		org.eclipse.uml2.uml.Class class_ = basicGetClass_();
 		if (class_ != null) {
 			return class_;
@@ -2515,6 +2513,10 @@ public class OperationImpl
 		DataType datatype = basicGetDatatype();
 		if (datatype != null) {
 			return datatype;
+		}
+		Interface interface_ = basicGetInterface();
+		if (interface_ != null) {
+			return interface_;
 		}
 		return super.basicGetNamespace();
 	}
@@ -2526,10 +2528,9 @@ public class OperationImpl
 	 */
 	@Override
 	public boolean isSetNamespace() {
-		return super.isSetNamespace()
-			|| eIsSet(UMLPackage.OPERATION__INTERFACE)
-			|| eIsSet(UMLPackage.OPERATION__CLASS)
-			|| eIsSet(UMLPackage.OPERATION__DATATYPE);
+		return super.isSetNamespace() || eIsSet(UMLPackage.OPERATION__CLASS)
+			|| eIsSet(UMLPackage.OPERATION__DATATYPE)
+			|| eIsSet(UMLPackage.OPERATION__INTERFACE);
 	}
 
 	/**
@@ -2541,8 +2542,8 @@ public class OperationImpl
 	 * @ordered
 	 */
 	protected static final int[] FEATURING_CLASSIFIER_ESUBSETS = new int[]{
-		UMLPackage.OPERATION__INTERFACE, UMLPackage.OPERATION__CLASS,
-		UMLPackage.OPERATION__DATATYPE};
+		UMLPackage.OPERATION__CLASS, UMLPackage.OPERATION__DATATYPE,
+		UMLPackage.OPERATION__INTERFACE};
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getRedefinitionContexts() <em>Redefinition Context</em>}' reference list.
@@ -2553,8 +2554,8 @@ public class OperationImpl
 	 * @ordered
 	 */
 	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{
-		UMLPackage.OPERATION__INTERFACE, UMLPackage.OPERATION__CLASS,
-		UMLPackage.OPERATION__DATATYPE};
+		UMLPackage.OPERATION__CLASS, UMLPackage.OPERATION__DATATYPE,
+		UMLPackage.OPERATION__INTERFACE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2564,9 +2565,9 @@ public class OperationImpl
 	@Override
 	public boolean isSetFeaturingClassifiers() {
 		return super.isSetFeaturingClassifiers()
-			|| eIsSet(UMLPackage.OPERATION__INTERFACE)
 			|| eIsSet(UMLPackage.OPERATION__CLASS)
-			|| eIsSet(UMLPackage.OPERATION__DATATYPE);
+			|| eIsSet(UMLPackage.OPERATION__DATATYPE)
+			|| eIsSet(UMLPackage.OPERATION__INTERFACE);
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 212765
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -314,6 +314,63 @@ public class ClassifierTemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateParameteredElementNoFeatures(
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return ClassifierTemplateParameterOperations
+			.validateParameteredElementNoFeatures(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMatchingAbstract(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return ClassifierTemplateParameterOperations.validateMatchingAbstract(
+			this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateActualIsClassifier(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return ClassifierTemplateParameterOperations
+			.validateActualIsClassifier(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateConstrainingClassifiersConstrainArgs(
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return ClassifierTemplateParameterOperations
+			.validateConstrainingClassifiersConstrainArgs(this, diagnostics,
+				context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateConstrainingClassifiersConstrainParameteredElement(
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return ClassifierTemplateParameterOperations
+			.validateConstrainingClassifiersConstrainParameteredElement(this,
+				diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
@@ -322,16 +379,6 @@ public class ClassifierTemplateParameterImpl
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				if (ownedParameteredElement != null)
-					msgs = ((InternalEObject) ownedParameteredElement)
-						.eInverseRemove(
-							this,
-							EOPPOSITE_FEATURE_BASE
-								- UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-							null, msgs);
-				return basicSetOwnedParameteredElement(
-					(ParameterableElement) otherEnd, msgs);
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				if (parameteredElement != null)
 					msgs = ((InternalEObject) parameteredElement)
@@ -345,6 +392,16 @@ public class ClassifierTemplateParameterImpl
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetSignature((TemplateSignature) otherEnd, msgs);
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				if (ownedParameteredElement != null)
+					msgs = ((InternalEObject) ownedParameteredElement)
+						.eInverseRemove(
+							this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+							null, msgs);
+				return basicSetOwnedParameteredElement(
+					(ParameterableElement) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -366,12 +423,12 @@ public class ClassifierTemplateParameterImpl
 					otherEnd, msgs);
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				return basicSetOwnedDefault(null, msgs);
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				return basicSetOwnedParameteredElement(null, msgs);
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				return basicSetParameteredElement(null, msgs);
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
 				return basicSetSignature(null, msgs);
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				return basicSetOwnedParameteredElement(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -402,10 +459,6 @@ public class ClassifierTemplateParameterImpl
 				if (resolve)
 					return getOwnedDefault();
 				return basicGetOwnedDefault();
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				if (resolve)
-					return getOwnedParameteredElement();
-				return basicGetOwnedParameteredElement();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				if (resolve)
 					return getParameteredElement();
@@ -414,6 +467,10 @@ public class ClassifierTemplateParameterImpl
 				if (resolve)
 					return getSignature();
 				return basicGetSignature();
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				if (resolve)
+					return getOwnedParameteredElement();
+				return basicGetOwnedParameteredElement();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :
 				return isAllowSubstitutable();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER :
@@ -447,14 +504,14 @@ public class ClassifierTemplateParameterImpl
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				setOwnedDefault((ParameterableElement) newValue);
 				return;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				setOwnedParameteredElement((ParameterableElement) newValue);
-				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				setParameteredElement((ParameterableElement) newValue);
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
 				setSignature((TemplateSignature) newValue);
+				return;
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				setOwnedParameteredElement((ParameterableElement) newValue);
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :
 				setAllowSubstitutable((Boolean) newValue);
@@ -488,14 +545,14 @@ public class ClassifierTemplateParameterImpl
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				setOwnedDefault((ParameterableElement) null);
 				return;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				setOwnedParameteredElement((ParameterableElement) null);
-				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				setParameteredElement((ParameterableElement) null);
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
 				setSignature((TemplateSignature) null);
+				return;
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				setOwnedParameteredElement((ParameterableElement) null);
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :
 				setAllowSubstitutable(ALLOW_SUBSTITUTABLE_EDEFAULT);
@@ -527,12 +584,12 @@ public class ClassifierTemplateParameterImpl
 				return default_ != null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				return ownedDefault != null;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				return ownedParameteredElement != null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				return isSetParameteredElement();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
 				return basicGetSignature() != null;
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				return ownedParameteredElement != null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :
 				return ((eFlags & ALLOW_SUBSTITUTABLE_EFLAG) != 0) != ALLOW_SUBSTITUTABLE_EDEFAULT;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER :
@@ -640,6 +697,26 @@ public class ClassifierTemplateParameterImpl
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___VALIDATE_HAS_CONSTRAINING_CLASSIFIER__DIAGNOSTICCHAIN_MAP :
 				return validateHasConstrainingClassifier(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___VALIDATE_PARAMETERED_ELEMENT_NO_FEATURES__DIAGNOSTICCHAIN_MAP :
+				return validateParameteredElementNoFeatures(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___VALIDATE_MATCHING_ABSTRACT__DIAGNOSTICCHAIN_MAP :
+				return validateMatchingAbstract(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___VALIDATE_ACTUAL_IS_CLASSIFIER__DIAGNOSTICCHAIN_MAP :
+				return validateActualIsClassifier(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___VALIDATE_CONSTRAINING_CLASSIFIERS_CONSTRAIN_ARGS__DIAGNOSTICCHAIN_MAP :
+				return validateConstrainingClassifiersConstrainArgs(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___VALIDATE_CONSTRAINING_CLASSIFIERS_CONSTRAIN_PARAMETERED_ELEMENT__DIAGNOSTICCHAIN_MAP :
+				return validateConstrainingClassifiersConstrainParameteredElement(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

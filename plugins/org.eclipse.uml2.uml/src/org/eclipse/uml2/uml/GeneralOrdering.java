@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -22,8 +22,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A general ordering represents a binary relation between two occurrence specifications, to describe that one occurrence specification must occur before the other in a valid trace. This mechanism provides the ability to define partial orders of occurrence cpecifications that may otherwise not have a specified order.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A GeneralOrdering represents a binary relation between two OccurrenceSpecifications, to describe that one OccurrenceSpecification must occur before the other in a valid trace. This mechanism provides the ability to define partial orders of OccurrenceSpecifications that may otherwise not have a specified order.
+ * <p>From package UML::Interactions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -48,7 +48,7 @@ public interface GeneralOrdering
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The OccurrenceSpecification referenced comes before the OccurrenceSpecification referenced by after.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Interactions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Before</em>' reference.
 	 * @see #setBefore(OccurrenceSpecification)
@@ -74,14 +74,14 @@ public interface GeneralOrdering
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An occurrence specification must not be ordered relative to itself through a series of general orderings. (In other words, the transitive closure of the general orderings is irreflexive.)
-	 * start.lifeline = finish.lifeline
+	 * after->closure(toAfter.after)->excludes(before)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
 	 */
-	boolean validateIrreflexsiveTransitiveClosure(DiagnosticChain diagnostics,
+	boolean validateIrreflexiveTransitiveClosure(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 	/**
@@ -91,7 +91,7 @@ public interface GeneralOrdering
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The OccurrenceSpecification referenced comes after the OccurrenceSpecification referenced by before.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Interactions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>After</em>' reference.
 	 * @see #setAfter(OccurrenceSpecification)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -28,8 +28,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * ActivityGroup is an abstract class for defining sets of nodes and edges in an activity.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * ActivityGroup is an abstract class for defining sets of ActivityNodes and ActivityEdges in an Activity.
+ * <p>From package UML::Activities.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -48,7 +48,7 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public interface ActivityGroup
-		extends NamedElement {
+		extends NamedElement, ActivityContent {
 
 	/**
 	 * Returns the value of the '<em><b>Subgroup</b></em>' reference list.
@@ -64,8 +64,8 @@ public interface ActivityGroup
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Groups immediately contained in the group.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Other ActivityGroups immediately contained in this ActivityGroup.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Subgroup</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityGroup_Subgroup()
@@ -112,8 +112,8 @@ public interface ActivityGroup
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Group immediately containing the group.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The ActivityGroup immediately containing this ActivityGroup, if it is directly owned by another ActivityGroup.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Super Group</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityGroup_SuperGroup()
@@ -131,8 +131,8 @@ public interface ActivityGroup
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Nodes immediately contained in the group.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * ActivityNodes immediately contained in the ActivityGroup.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Contained Node</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityGroup_ContainedNode()
@@ -178,8 +178,8 @@ public interface ActivityGroup
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Activity containing the group.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Activity containing the ActivityGroup, if it is directly owned by an Activity.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>In Activity</em>' reference.
 	 * @see #setInActivity(Activity)
@@ -208,8 +208,8 @@ public interface ActivityGroup
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Edges immediately contained in the group.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * ActivityEdges immediately contained in the ActivityGroup.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Contained Edge</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityGroup_ContainedEdge()
@@ -247,8 +247,9 @@ public interface ActivityGroup
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * All nodes and edges of the group must be in the same activity as the group.
-	 * true
+	 * All containedNodes and containeEdges of an ActivityGroup must be in the same Activity as the group.
+	 * containedNode->forAll(activity = self.containingActivity()) and 
+	 * containedEdge->forAll(activity = self.containingActivity())
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -262,8 +263,11 @@ public interface ActivityGroup
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * No node or edge in a group may be contained by its subgroups or its containing groups, transitively.
-	 * true
+	 * No containedNode or containedEdge of an ActivityGroup may be contained by its subgroups or its superGroups, transitively.
+	 * subgroup->closure(subgroup).containedNode->excludesAll(containedNode) and
+	 * superGroup->closure(superGroup).containedNode->excludesAll(containedNode) and 
+	 * subgroup->closure(subgroup).containedEdge->excludesAll(containedEdge) and 
+	 * superGroup->closure(superGroup).containedEdge->excludesAll(containedEdge)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -271,21 +275,6 @@ public interface ActivityGroup
 	 * @generated
 	 */
 	boolean validateNotContained(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Groups may only be owned by activities or groups.
-	 * true
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateGroupOwned(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 } // ActivityGroup

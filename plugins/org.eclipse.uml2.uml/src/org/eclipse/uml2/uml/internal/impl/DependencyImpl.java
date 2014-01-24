@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,26 +7,21 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: DependencyImpl.java,v 1.18 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -227,9 +222,8 @@ public class DependencyImpl
 	 */
 	public EList<NamedElement> getClients() {
 		if (clients == null) {
-			clients = new EObjectWithInverseResolvingEList.ManyInverse<NamedElement>(
-				NamedElement.class, this, UMLPackage.DEPENDENCY__CLIENT,
-				UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY);
+			clients = new EObjectResolvingEList<NamedElement>(
+				NamedElement.class, this, UMLPackage.DEPENDENCY__CLIENT);
 		}
 		return clients;
 	}
@@ -259,73 +253,6 @@ public class DependencyImpl
 			return client;
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case UMLPackage.DEPENDENCY__EANNOTATIONS :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetOwningTemplateParameter(
-					(TemplateParameter) otherEnd, msgs);
-			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
-				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
-				return basicSetTemplateParameter((TemplateParameter) otherEnd,
-					msgs);
-			case UMLPackage.DEPENDENCY__CLIENT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClients())
-					.basicAdd(otherEnd, msgs);
-		}
-		return eDynamicInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case UMLPackage.DEPENDENCY__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.DEPENDENCY__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
-			case UMLPackage.DEPENDENCY__NAME_EXPRESSION :
-				return basicSetNameExpression(null, msgs);
-			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
-				return basicSetOwningTemplateParameter(null, msgs);
-			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.DEPENDENCY__CLIENT :
-				return ((InternalEList<?>) getClients()).basicRemove(otherEnd,
-					msgs);
-		}
-		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -403,11 +330,6 @@ public class DependencyImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.DEPENDENCY__NAME :
 				setName((String) newValue);
 				return;
@@ -451,9 +373,6 @@ public class DependencyImpl
 			case UMLPackage.DEPENDENCY__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.DEPENDENCY__NAME :
 				unsetName();
 				return;
@@ -496,8 +415,7 @@ public class DependencyImpl
 			case UMLPackage.DEPENDENCY__OWNER :
 				return isSetOwner();
 			case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.DEPENDENCY__NAME :
 				return isSetName();
 			case UMLPackage.DEPENDENCY__NAME_EXPRESSION :

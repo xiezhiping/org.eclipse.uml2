@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -38,7 +38,6 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InteractionConstraint;
 import org.eclipse.uml2.uml.NamedElement;
@@ -421,9 +420,6 @@ public class InteractionConstraintImpl
 			case UMLPackage.INTERACTION_CONSTRAINT__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION_CONSTRAINT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INTERACTION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
@@ -525,11 +521,6 @@ public class InteractionConstraintImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.INTERACTION_CONSTRAINT__NAME :
 				setName((String) newValue);
 				return;
@@ -579,9 +570,6 @@ public class InteractionConstraintImpl
 				return;
 			case UMLPackage.INTERACTION_CONSTRAINT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.INTERACTION_CONSTRAINT__NAME :
 				unsetName();
@@ -634,8 +622,7 @@ public class InteractionConstraintImpl
 			case UMLPackage.INTERACTION_CONSTRAINT__OWNER :
 				return isSetOwner();
 			case UMLPackage.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.INTERACTION_CONSTRAINT__NAME :
 				return isSetName();
 			case UMLPackage.INTERACTION_CONSTRAINT__NAME_EXPRESSION :
@@ -759,16 +746,16 @@ public class InteractionConstraintImpl
 				return allOwnedElements();
 			case UMLPackage.INTERACTION_CONSTRAINT___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.INTERACTION_CONSTRAINT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERACTION_CONSTRAINT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERACTION_CONSTRAINT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INTERACTION_CONSTRAINT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERACTION_CONSTRAINT___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -779,6 +766,8 @@ public class InteractionConstraintImpl
 				return getLabel();
 			case UMLPackage.INTERACTION_CONSTRAINT___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.INTERACTION_CONSTRAINT___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.INTERACTION_CONSTRAINT___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.INTERACTION_CONSTRAINT___ALL_OWNING_PACKAGES :
@@ -786,33 +775,29 @@ public class InteractionConstraintImpl
 			case UMLPackage.INTERACTION_CONSTRAINT___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.INTERACTION_CONSTRAINT___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.INTERACTION_CONSTRAINT___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.INTERACTION_CONSTRAINT___SEPARATOR :
 				return separator();
+			case UMLPackage.INTERACTION_CONSTRAINT___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.INTERACTION_CONSTRAINT___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.INTERACTION_CONSTRAINT___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
-			case UMLPackage.INTERACTION_CONSTRAINT___VALIDATE_NOT_APPLY_TO_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotApplyToSelf(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INTERACTION_CONSTRAINT___VALIDATE_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
-				return validateNoSideEffects(
+			case UMLPackage.INTERACTION_CONSTRAINT___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERACTION_CONSTRAINT___VALIDATE_BOOLEAN_VALUE__DIAGNOSTICCHAIN_MAP :
 				return validateBooleanValue((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INTERACTION_CONSTRAINT___VALIDATE_VALUE_SPECIFICATION_BOOLEAN__DIAGNOSTICCHAIN_MAP :
-				return validateValueSpecificationBoolean(
+			case UMLPackage.INTERACTION_CONSTRAINT___VALIDATE_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
+				return validateNoSideEffects(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INTERACTION_CONSTRAINT___VALIDATE_MAXINT_POSITIVE__DIAGNOSTICCHAIN_MAP :
-				return validateMaxintPositive(
+			case UMLPackage.INTERACTION_CONSTRAINT___VALIDATE_NOT_APPLY_TO_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotApplyToSelf(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERACTION_CONSTRAINT___VALIDATE_MININT_MAXINT__DIAGNOSTICCHAIN_MAP :
@@ -822,15 +807,19 @@ public class InteractionConstraintImpl
 				return validateMinintNonNegative(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INTERACTION_CONSTRAINT___VALIDATE_MAXINT_POSITIVE__DIAGNOSTICCHAIN_MAP :
+				return validateMaxintPositive(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INTERACTION_CONSTRAINT___VALIDATE_DYNAMIC_VARIABLES__DIAGNOSTICCHAIN_MAP :
+				return validateDynamicVariables(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERACTION_CONSTRAINT___VALIDATE_GLOBAL_DATA__DIAGNOSTICCHAIN_MAP :
 				return validateGlobalData((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERACTION_CONSTRAINT___VALIDATE_MAXINT_GREATER_EQUAL_MININT__DIAGNOSTICCHAIN_MAP :
 				return validateMaxintGreaterEqualMinint(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INTERACTION_CONSTRAINT___VALIDATE_DYNAMIC_VARIABLES__DIAGNOSTICCHAIN_MAP :
-				return validateDynamicVariables(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

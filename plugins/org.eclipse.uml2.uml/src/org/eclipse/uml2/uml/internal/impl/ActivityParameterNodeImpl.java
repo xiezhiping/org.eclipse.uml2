@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -36,7 +36,6 @@ import org.eclipse.uml2.uml.ActivityParameterNode;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -202,28 +201,6 @@ public class ActivityParameterNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMaximumOneParameterNode(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return ActivityParameterNodeOperations.validateMaximumOneParameterNode(
-			this, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateMaximumTwoParameterNodes(
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return ActivityParameterNodeOperations
-			.validateMaximumTwoParameterNodes(this, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -263,22 +240,22 @@ public class ActivityParameterNodeImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION :
-				return getInPartitions();
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_GROUP :
+				return getInGroups();
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_INTERRUPTIBLE_REGION :
+				return getInInterruptibleRegions();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_STRUCTURED_NODE :
 				if (resolve)
 					return getInStructuredNode();
 				return basicGetInStructuredNode();
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_INTERRUPTIBLE_REGION :
-				return getInInterruptibleRegions();
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING :
-				return getOutgoings();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__INCOMING :
 				return getIncomings();
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_GROUP :
-				return getInGroups();
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__TYPE :
 				if (resolve)
 					return getType();
@@ -324,11 +301,6 @@ public class ActivityParameterNodeImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__NAME :
 				setName((String) newValue);
 				return;
@@ -344,34 +316,34 @@ public class ActivityParameterNodeImpl
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
-				return;
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_STRUCTURED_NODE :
-				setInStructuredNode((StructuredActivityNode) newValue);
-				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
 				getInInterruptibleRegions()
 					.addAll(
 						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_STRUCTURED_NODE :
+				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll(
 					(Collection<? extends ActivityEdge>) newValue);
 				return;
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
+				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
 				getRedefinedNodes().addAll(
 					(Collection<? extends ActivityNode>) newValue);
+				return;
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__TYPE :
 				setType((Type) newValue);
@@ -413,9 +385,6 @@ public class ActivityParameterNodeImpl
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__NAME :
 				unsetName();
 				return;
@@ -431,23 +400,23 @@ public class ActivityParameterNodeImpl
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__ACTIVITY :
 				setActivity((Activity) null);
 				return;
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION :
-				getInPartitions().clear();
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__INCOMING :
+				getIncomings().clear();
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING :
 				getOutgoings().clear();
 				return;
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__INCOMING :
-				getIncomings().clear();
-				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
+				return;
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__TYPE :
 				setType((Type) null);
@@ -491,8 +460,7 @@ public class ActivityParameterNodeImpl
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__OWNER :
 				return isSetOwner();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__NAME :
 				return isSetName();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__NAME_EXPRESSION :
@@ -513,21 +481,21 @@ public class ActivityParameterNodeImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION :
-				return inPartitions != null && !inPartitions.isEmpty();
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_STRUCTURED_NODE :
-				return basicGetInStructuredNode() != null;
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_INTERRUPTIBLE_REGION :
 				return inInterruptibleRegions != null
 					&& !inInterruptibleRegions.isEmpty();
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING :
-				return outgoings != null && !outgoings.isEmpty();
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_STRUCTURED_NODE :
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__INCOMING :
 				return incomings != null && !incomings.isEmpty();
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_GROUP :
-				return isSetInGroups();
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING :
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION :
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__TYPE :
 				return type != null;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_STATE :
@@ -638,16 +606,16 @@ public class ActivityParameterNodeImpl
 				return allOwnedElements();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -658,6 +626,8 @@ public class ActivityParameterNodeImpl
 				return getLabel();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARAMETER_NODE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___ALL_OWNING_PACKAGES :
@@ -665,12 +635,12 @@ public class ActivityParameterNodeImpl
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARAMETER_NODE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___SEPARATOR :
 				return separator();
+			case UMLPackage.ACTIVITY_PARAMETER_NODE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -688,50 +658,37 @@ public class ActivityParameterNodeImpl
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
-				return validateOwned((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_OWNED_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateOwnedStructuredNode(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateObjectFlowEdges(
+			case UMLPackage.ACTIVITY_PARAMETER_NODE___CONTAINING_ACTIVITY :
+				return containingActivity();
+			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
+				return validateInputOutputParameter(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_SELECTION_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
 				return validateSelectionBehavior(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
-				return validateInputOutputParameter(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_MAXIMUM_ONE_PARAMETER_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateMaximumOneParameterNode(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_MAXIMUM_TWO_PARAMETER_NODES__DIAGNOSTICCHAIN_MAP :
-				return validateMaximumTwoParameterNodes(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_NO_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateNoEdges((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_NO_INCOMING_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateNoIncomingEdges(
+			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateObjectFlowEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_NO_OUTGOING_EDGES__DIAGNOSTICCHAIN_MAP :
 				return validateNoOutgoingEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_SAME_TYPE__DIAGNOSTICCHAIN_MAP :
-				return validateSameType((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_HAS_PARAMETERS__DIAGNOSTICCHAIN_MAP :
 				return validateHasParameters(
 					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_SAME_TYPE__DIAGNOSTICCHAIN_MAP :
+				return validateSameType((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_NO_INCOMING_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateNoIncomingEdges(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARAMETER_NODE___VALIDATE_NO_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateNoEdges((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

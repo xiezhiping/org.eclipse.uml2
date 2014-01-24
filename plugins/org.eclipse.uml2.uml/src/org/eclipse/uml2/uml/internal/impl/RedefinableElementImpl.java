@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -36,7 +36,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.RedefinableElement;
@@ -323,9 +322,10 @@ public abstract class RedefinableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isRedefinitionContextValid(RedefinableElement redefined) {
+	public boolean isRedefinitionContextValid(
+			RedefinableElement redefinedElement) {
 		return RedefinableElementOperations.isRedefinitionContextValid(this,
-			redefined);
+			redefinedElement);
 	}
 
 	/**
@@ -391,11 +391,6 @@ public abstract class RedefinableElementImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.REDEFINABLE_ELEMENT__NAME :
 				setName((String) newValue);
 				return;
@@ -425,9 +420,6 @@ public abstract class RedefinableElementImpl
 				return;
 			case UMLPackage.REDEFINABLE_ELEMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.REDEFINABLE_ELEMENT__NAME :
 				unsetName();
@@ -462,8 +454,7 @@ public abstract class RedefinableElementImpl
 			case UMLPackage.REDEFINABLE_ELEMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.REDEFINABLE_ELEMENT__NAME :
 				return isSetName();
 			case UMLPackage.REDEFINABLE_ELEMENT__NAME_EXPRESSION :
@@ -578,16 +569,16 @@ public abstract class RedefinableElementImpl
 				return allOwnedElements();
 			case UMLPackage.REDEFINABLE_ELEMENT___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.REDEFINABLE_ELEMENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REDEFINABLE_ELEMENT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REDEFINABLE_ELEMENT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.REDEFINABLE_ELEMENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REDEFINABLE_ELEMENT___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -598,6 +589,8 @@ public abstract class RedefinableElementImpl
 				return getLabel();
 			case UMLPackage.REDEFINABLE_ELEMENT___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.REDEFINABLE_ELEMENT___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.REDEFINABLE_ELEMENT___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.REDEFINABLE_ELEMENT___ALL_OWNING_PACKAGES :
@@ -605,12 +598,12 @@ public abstract class RedefinableElementImpl
 			case UMLPackage.REDEFINABLE_ELEMENT___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.REDEFINABLE_ELEMENT___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.REDEFINABLE_ELEMENT___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.REDEFINABLE_ELEMENT___SEPARATOR :
 				return separator();
+			case UMLPackage.REDEFINABLE_ELEMENT___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.REDEFINABLE_ELEMENT___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -637,8 +630,9 @@ public abstract class RedefinableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isConsistentWith(RedefinableElement redefinee) {
-		return RedefinableElementOperations.isConsistentWith(this, redefinee);
+	public boolean isConsistentWith(RedefinableElement redefiningElement) {
+		return RedefinableElementOperations.isConsistentWith(this,
+			redefiningElement);
 	}
 
 	/**

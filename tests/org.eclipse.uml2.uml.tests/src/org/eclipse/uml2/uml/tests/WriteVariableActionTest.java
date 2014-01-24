@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 351774
+ *   Kenn Hussey (CEA) - 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.tests;
@@ -21,8 +21,8 @@ import org.eclipse.uml2.uml.WriteVariableAction;
  * <p>
  * The following operations are tested:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.WriteVariableAction#validateValueType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Value Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.WriteVariableAction#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.WriteVariableAction#validateSameType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Type</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -52,13 +52,13 @@ public abstract class WriteVariableActionTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.WriteVariableAction#validateSameType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Type</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.uml.WriteVariableAction#validateValueType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Value Type</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.WriteVariableAction#validateSameType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @see org.eclipse.uml2.uml.WriteVariableAction#validateValueType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public void testValidateSameType__DiagnosticChain_Map() {
+	public void testValidateValueType__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

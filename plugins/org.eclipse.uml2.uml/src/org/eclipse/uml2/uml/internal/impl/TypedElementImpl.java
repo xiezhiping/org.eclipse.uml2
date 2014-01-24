@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: TypedElementImpl.java,v 1.14 2007/04/25 17:47:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,7 +22,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.TypedElement;
@@ -177,11 +175,6 @@ public abstract class TypedElementImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.TYPED_ELEMENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.TYPED_ELEMENT__NAME :
 				setName((String) newValue);
 				return;
@@ -211,9 +204,6 @@ public abstract class TypedElementImpl
 				return;
 			case UMLPackage.TYPED_ELEMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.TYPED_ELEMENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.TYPED_ELEMENT__NAME :
 				unsetName();
@@ -248,8 +238,7 @@ public abstract class TypedElementImpl
 			case UMLPackage.TYPED_ELEMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.TYPED_ELEMENT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.TYPED_ELEMENT__NAME :
 				return isSetName();
 			case UMLPackage.TYPED_ELEMENT__NAME_EXPRESSION :

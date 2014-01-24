@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,9 +30,10 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Lifeline#validateSelectorSpecified(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Selector Specified</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Lifeline#validateInteractionUsesShareLifeline(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Interaction Uses Share Lifeline</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Lifeline#validateSameClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Classifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Lifeline#validateSelectorSpecified(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Selector Specified</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Lifeline#validateSelectorIntOrString(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Selector Int Or String</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,8 +55,46 @@ public class LifelineOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If two (or more) InteractionUses within one Interaction, refer to Interactions with 'common Lifelines,' those Lifelines must also appear in the Interaction with the InteractionUses. By common Lifelines we mean Lifelines with the same selector and represents associations.
-	 * true
+	 * If a lifeline is in an Interaction referred to by an InteractionUse in an enclosing Interaction,  and that lifeline is common with another lifeline in an Interaction referred to by another InteractonUse within that same enclosing Interaction, it must be common to a lifeline within that enclosing Interaction. By common Lifelines we mean Lifelines with the same selector and represents associations.
+	 * 
+	 * let intUses : Set(InteractionUse) = interaction.interactionUse  in 
+	 * intUses->forAll
+	 * ( iuse : InteractionUse | 
+	 * let usingInteraction : Set(Interaction)  = iuse.enclosingInteraction->asSet()
+	 * ->union(
+	 * iuse.enclosingOperand.combinedFragment->asSet()->closure(enclosingOperand.combinedFragment).enclosingInteraction->asSet()
+	 *                ) 
+	 * in
+	 * let peerUses : Set(InteractionUse) = usingInteraction.fragment->select(oclIsKindOf(InteractionUse)).oclAsType(InteractionUse)->asSet()
+	 * ->union(
+	 * usingInteraction.fragment->select(oclIsKindOf(CombinedFragment)).oclAsType(CombinedFragment)->asSet()
+	 * ->closure(operand.fragment->select(oclIsKindOf(CombinedFragment)).oclAsType(CombinedFragment)).operand.fragment->
+	 * select(oclIsKindOf(InteractionUse)).oclAsType(InteractionUse)->asSet()
+	 *                )->excluding(iuse)
+	 *  in
+	 * peerUses->forAll( peerUse : InteractionUse |
+	 *  peerUse.refersTo.lifeline->forAll( l : Lifeline | (l.represents = self.represents and 
+	 *  ( self.selector.oclIsKindOf(LiteralString) implies
+	 *   l.selector.oclIsKindOf(LiteralString) and 
+	 *   self.selector.oclAsType(LiteralString).value = l.selector.oclAsType(LiteralString).value )
+	 *   and 
+	 * ( self.selector.oclIsKindOf(LiteralInteger) implies
+	 *   l.selector.oclIsKindOf(LiteralInteger) and 
+	 *   self.selector.oclAsType(LiteralInteger).value = l.selector.oclAsType(LiteralInteger).value )
+	 * )  
+	 * implies
+	 *  usingInteraction.lifeline->select(represents = self.represents and
+	 *  ( self.selector.oclIsKindOf(LiteralString) implies
+	 *   l.selector.oclIsKindOf(LiteralString) and 
+	 *   self.selector.oclAsType(LiteralString).value = l.selector.oclAsType(LiteralString).value )
+	 * and 
+	 * ( self.selector.oclIsKindOf(LiteralInteger) implies
+	 *   l.selector.oclIsKindOf(LiteralInteger) and 
+	 *   self.selector.oclAsType(LiteralInteger).value = l.selector.oclAsType(LiteralInteger).value )
+	 * )
+	 *                                                 )
+	 *                     )
+	 * )
 	 * @param lifeline The receiving '<em><b>Lifeline</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -91,9 +130,7 @@ public class LifelineOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The selector for a Lifeline must only be specified if the referenced Part is multivalued.
-	 * (self.selector->isEmpty() implies not self.represents.isMultivalued()) or
-	 * (not self.selector->isEmpty() implies self.represents.isMultivalued())
-	 * 
+	 *  self.selector->notEmpty() = (self.represents.oclIsKindOf(MultiplicityElement) and self.represents.oclAsType(MultiplicityElement).isMultivalued())
 	 * @param lifeline The receiving '<em><b>Lifeline</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -128,9 +165,7 @@ public class LifelineOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The classifier containing the referenced ConnectableElement must be the same classifier, or an ancestor, of the classifier that contains the interaction enclosing this lifeline.
-	 * if (represents->notEmpty()) then
-	 * (if selector->notEmpty() then represents.isMultivalued() else not represents.isMultivalued())
-	 * 
+	 * represents.namespace->closure(namespace)->includes(interaction._'context')
 	 * @param lifeline The receiving '<em><b>Lifeline</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -153,6 +188,43 @@ public class LifelineOperations
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
 								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSameClassifier", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(lifeline, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{lifeline}));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The selector value, if present, must be a LiteralString or a LiteralInteger 
+	 * self.selector->notEmpty() implies 
+	 * self.selector.oclIsKindOf(LiteralInteger) or 
+	 * self.selector.oclIsKindOf(LiteralString)
+	 * @param lifeline The receiving '<em><b>Lifeline</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateSelectorIntOrString(Lifeline lifeline,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.LIFELINE__SELECTOR_INT_OR_STRING,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSelectorIntOrString", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(lifeline, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{lifeline}));
 			}
 			return false;

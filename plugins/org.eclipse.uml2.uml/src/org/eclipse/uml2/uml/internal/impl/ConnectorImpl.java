@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -46,7 +46,6 @@ import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.ConnectorKind;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -376,31 +375,9 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateCompatible(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return ConnectorOperations.validateCompatible(this, diagnostics,
-			context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateRoles(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return ConnectorOperations.validateRoles(this, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateBetweenInterfacesPorts(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return ConnectorOperations.validateBetweenInterfacesPorts(this,
-			diagnostics, context);
 	}
 
 	/**
@@ -418,9 +395,6 @@ public class ConnectorImpl
 			case UMLPackage.CONNECTOR__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.CONNECTOR__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CONNECTOR__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.CONNECTOR__END :
@@ -509,11 +483,6 @@ public class ConnectorImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.CONNECTOR__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.CONNECTOR__NAME :
 				setName((String) newValue);
 				return;
@@ -564,9 +533,6 @@ public class ConnectorImpl
 			case UMLPackage.CONNECTOR__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.CONNECTOR__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.CONNECTOR__NAME :
 				unsetName();
 				return;
@@ -615,8 +581,7 @@ public class ConnectorImpl
 			case UMLPackage.CONNECTOR__OWNER :
 				return isSetOwner();
 			case UMLPackage.CONNECTOR__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.CONNECTOR__NAME :
 				return isSetName();
 			case UMLPackage.CONNECTOR__NAME_EXPRESSION :
@@ -746,16 +711,16 @@ public class ConnectorImpl
 				return allOwnedElements();
 			case UMLPackage.CONNECTOR___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.CONNECTOR___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTOR___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTOR___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONNECTOR___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTOR___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -766,6 +731,8 @@ public class ConnectorImpl
 				return getLabel();
 			case UMLPackage.CONNECTOR___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.CONNECTOR___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.CONNECTOR___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.CONNECTOR___ALL_OWNING_PACKAGES :
@@ -773,12 +740,12 @@ public class ConnectorImpl
 			case UMLPackage.CONNECTOR___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.CONNECTOR___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.CONNECTOR___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.CONNECTOR___SEPARATOR :
 				return separator();
+			case UMLPackage.CONNECTOR___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.CONNECTOR___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -796,18 +763,11 @@ public class ConnectorImpl
 			case UMLPackage.CONNECTOR___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.CONNECTOR___VALIDATE_COMPATIBLE__DIAGNOSTICCHAIN_MAP :
-				return validateCompatible((DiagnosticChain) arguments.get(0),
+			case UMLPackage.CONNECTOR___VALIDATE_TYPES__DIAGNOSTICCHAIN_MAP :
+				return validateTypes((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTOR___VALIDATE_ROLES__DIAGNOSTICCHAIN_MAP :
 				return validateRoles((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONNECTOR___VALIDATE_BETWEEN_INTERFACES_PORTS__DIAGNOSTICCHAIN_MAP :
-				return validateBetweenInterfacesPorts(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONNECTOR___VALIDATE_TYPES__DIAGNOSTICCHAIN_MAP :
-				return validateTypes((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTOR___GET_KIND :
 				return getKind();

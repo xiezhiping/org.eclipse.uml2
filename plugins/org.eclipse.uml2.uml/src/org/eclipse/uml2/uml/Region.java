@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -27,8 +27,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A region is an orthogonal part of either a composite state or a state machine. It contains states and transitions.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A Region is a top-level part of a StateMachine or a composite State, that serves as a container for the Vertices and Transitions of the StateMachine. A StateMachine or composite State may contain multiple Regions representing behaviors that may occur in parallel.
+ * <p>From package UML::StateMachines.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -62,8 +62,8 @@ public interface Region
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The set of vertices that are owned by this region.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The set of Vertices that are owned by this Region.
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Subvertex</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRegion_Subvertex()
@@ -124,8 +124,8 @@ public interface Region
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The set of transitions owned by the region.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The set of Transitions owned by the Region.
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Transition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRegion_Transition()
@@ -197,7 +197,7 @@ public interface Region
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The State that owns the Region. If a Region is owned by a State, then it cannot also be owned by a StateMachine.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>State</em>' container reference.
 	 * @see #setState(State)
@@ -230,7 +230,7 @@ public interface Region
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The region of which this region is an extension.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Extended Region</em>' reference.
 	 * @see #setExtendedRegion(Region)
@@ -263,7 +263,7 @@ public interface Region
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The StateMachine that owns the Region. If a Region is owned by a StateMachine, then it cannot also be owned by a State.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>State Machine</em>' container reference.
 	 * @see #setStateMachine(StateMachine)
@@ -288,9 +288,9 @@ public interface Region
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A region can have at most one initial vertex
-	 * self.subvertex->select (v | v.oclIsKindOf(Pseudostate))->
-	 * select(p : Pseudostate | p.kind = #initial)->size() <= 1
+	 * A Region can have at most one initial Vertex.
+	 * self.subvertex->select (oclIsKindOf(Pseudostate))->collect(oclAsType(Pseudostate))->
+	 *   select(kind = PseudostateKind::initial)->size() <= 1
 	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -305,9 +305,9 @@ public interface Region
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A region can have at most one deep history vertex
-	 * self.subvertex->select (v | v.oclIsKindOf(Pseudostate))->
-	 * select(p : Pseudostate | p.kind = #deepHistory)->size() <= 1
+	 * A Region can have at most one deep history Vertex.
+	 * self.subvertex->select (oclIsKindOf(Pseudostate))->collect(oclAsType(Pseudostate))->
+	 *    select(kind = PseudostateKind::deepHistory)->size() <= 1
 	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -322,9 +322,9 @@ public interface Region
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A region can have at most one shallow history vertex
-	 * self.subvertex->select(v | v.oclIsKindOf(Pseudostate))->
-	 * select(p : Pseudostate | p.kind = #shallowHistory)->size() <= 1
+	 * A Region can have at most one shallow history Vertex.
+	 * subvertex->select(oclIsKindOf(Pseudostate))->collect(oclAsType(Pseudostate))->
+	 *   select(kind = PseudostateKind::shallowHistory)->size() <= 1
 	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -340,7 +340,7 @@ public interface Region
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If a Region is owned by a StateMachine, then it cannot also be owned by a State and vice versa.
-	 * (stateMachine->notEmpty() implies state->isEmpty()) and (state->notEmpty() implies stateMachine->isEmpty())
+	 * (stateMachine <> null implies state = null) and (state <> null implies stateMachine = null)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -354,14 +354,14 @@ public interface Region
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The redefinition context of a region is the nearest containing statemachine
-	 * result = let sm = containingStateMachine() in
-	 * if sm.context->isEmpty() or sm.general->notEmpty() then
-	 * sm
+	 * The redefinition context of a Region is the nearest containing StateMachine.
+	 * result = (let sm : StateMachine = containingStateMachine() in
+	 * if sm._'context' = null or sm.general->notEmpty() then
+	 *   sm
 	 * else
-	 * sm.context
-	 * endif
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 *   sm._'context'
+	 * endif)
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false"
 	 * @generated
@@ -369,36 +369,17 @@ public interface Region
 	Classifier redefinitionContext();
 
 	/**
-	 * <p>
-	 * This operation redefines the following operations:
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#isRedefinitionContextValid(org.eclipse.uml2.uml.RedefinableElement) <em>Is Redefinition Context Valid</em>}' </li>
-	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of a region are properly related to the redefinition contexts of the specified region to allow this element to redefine the other. The containing statemachine/state of a redefining region must redefine the containing statemachine/state of the redefined region.
-	 * result = true
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
-	 * @generated
-	 */
-	boolean isRedefinitionContextValid(Region redefined);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The operation containingStateMachine() returns the sate machine in which this Region is defined
-	 * result = if stateMachine->isEmpty() 
+	 * The operation containingStateMachine() returns the StateMachine in which this Region is defined.
+	 * result = (if stateMachine = null 
 	 * then
-	 * state.containingStateMachine()
+	 *   state.containingStateMachine()
 	 * else
-	 * stateMachine
-	 * endif
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 *   stateMachine
+	 * endif)
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false"
 	 * @generated
@@ -409,13 +390,14 @@ public interface Region
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The operation belongsToPSM () checks if the region belongs to a protocol state machine
-	 * result = if not stateMachine->isEmpty() then
-	 * oclIsTypeOf(ProtocolStateMachine)
-	 * else if not state->isEmpty() then
-	 * state.container.belongsToPSM ()
-	 * else false
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The operation belongsToPSM () checks if the Region belongs to a ProtocolStateMachine.
+	 * result = (if  stateMachine <> null 
+	 * then
+	 *   stateMachine.oclIsKindOf(ProtocolStateMachine)
+	 * else 
+	 *   state <> null  implies  state.container.belongsToPSM()
+	 * endif )
+	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Sergey Boyko (Borland) - 282440
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -37,7 +37,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -81,16 +80,6 @@ import org.eclipse.uml2.uml.internal.operations.NamedElementOperations;
 public abstract class NamedElementImpl
 		extends ElementImpl
 		implements NamedElement {
-
-	/**
-	 * The cached value of the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClientDependencies()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Dependency> clientDependencies;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -362,13 +351,22 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public EList<Dependency> getClientDependencies() {
-		if (clientDependencies == null) {
-			clientDependencies = new EObjectWithInverseResolvingEList.ManyInverse<Dependency>(
-				Dependency.class, this,
-				UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY,
-				UMLPackage.DEPENDENCY__CLIENT);
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<Dependency> result = (EList<Dependency>) cache.get(this,
+				UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY);
+			if (result == null) {
+				cache
+					.put(
+						this,
+						UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY,
+						result = NamedElementOperations
+							.getClientDependencies(this));
+			}
+			return result;
 		}
-		return clientDependencies;
+		return NamedElementOperations.getClientDependencies(this);
 	}
 
 	/**
@@ -636,26 +634,6 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case UMLPackage.NAMED_ELEMENT__EANNOTATIONS :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
-		}
-		return eDynamicInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
@@ -666,9 +644,6 @@ public abstract class NamedElementImpl
 			case UMLPackage.NAMED_ELEMENT__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 		}
@@ -732,11 +707,6 @@ public abstract class NamedElementImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.NAMED_ELEMENT__NAME :
 				setName((String) newValue);
 				return;
@@ -763,9 +733,6 @@ public abstract class NamedElementImpl
 				return;
 			case UMLPackage.NAMED_ELEMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.NAMED_ELEMENT__NAME :
 				unsetName();
@@ -797,8 +764,7 @@ public abstract class NamedElementImpl
 			case UMLPackage.NAMED_ELEMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.NAMED_ELEMENT__NAME :
 				return isSetName();
 			case UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION :
@@ -907,16 +873,16 @@ public abstract class NamedElementImpl
 				return allOwnedElements();
 			case UMLPackage.NAMED_ELEMENT___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.NAMED_ELEMENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.NAMED_ELEMENT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.NAMED_ELEMENT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.NAMED_ELEMENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.NAMED_ELEMENT___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -927,6 +893,8 @@ public abstract class NamedElementImpl
 				return getLabel();
 			case UMLPackage.NAMED_ELEMENT___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.NAMED_ELEMENT___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.NAMED_ELEMENT___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.NAMED_ELEMENT___ALL_OWNING_PACKAGES :
@@ -934,12 +902,12 @@ public abstract class NamedElementImpl
 			case UMLPackage.NAMED_ELEMENT___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.NAMED_ELEMENT___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.NAMED_ELEMENT___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.NAMED_ELEMENT___SEPARATOR :
 				return separator();
+			case UMLPackage.NAMED_ELEMENT___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}

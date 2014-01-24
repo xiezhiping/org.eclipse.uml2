@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 418466
  *
- * $Id: DurationObservationOperations.java,v 1.6 2007/05/03 21:11:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -37,7 +37,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * @generated
  */
 public class DurationObservationOperations
-		extends NamedElementOperations {
+		extends PackageableElementOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -55,6 +55,7 @@ public class DurationObservationOperations
 	 * The multiplicity of firstEvent must be 2 if the multiplicity of event is 2. Otherwise the multiplicity of firstEvent is 0.
 	 * if (event->size() = 2)
 	 *   then (firstEvent->size() = 2) else (firstEvent->size() = 0)
+	 * endif
 	 * @param durationObservation The receiving '<em><b>Duration Observation</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

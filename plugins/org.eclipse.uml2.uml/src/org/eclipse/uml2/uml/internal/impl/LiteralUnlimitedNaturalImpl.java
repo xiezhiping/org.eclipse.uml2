@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -218,11 +217,6 @@ public class LiteralUnlimitedNaturalImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.LITERAL_UNLIMITED_NATURAL__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__NAME :
 				setName((String) newValue);
 				return;
@@ -261,9 +255,6 @@ public class LiteralUnlimitedNaturalImpl
 				return;
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.LITERAL_UNLIMITED_NATURAL__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__NAME :
 				unsetName();
@@ -307,8 +298,7 @@ public class LiteralUnlimitedNaturalImpl
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__OWNER :
 				return isSetOwner();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__NAME :
 				return isSetName();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL__NAME_EXPRESSION :
@@ -425,16 +415,16 @@ public class LiteralUnlimitedNaturalImpl
 				return allOwnedElements();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.LITERAL_UNLIMITED_NATURAL___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LITERAL_UNLIMITED_NATURAL___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -445,6 +435,8 @@ public class LiteralUnlimitedNaturalImpl
 				return getLabel();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.LITERAL_UNLIMITED_NATURAL___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL___ALL_OWNING_PACKAGES :
@@ -452,16 +444,20 @@ public class LiteralUnlimitedNaturalImpl
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.LITERAL_UNLIMITED_NATURAL___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL___SEPARATOR :
 				return separator();
+			case UMLPackage.LITERAL_UNLIMITED_NATURAL___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.LITERAL_UNLIMITED_NATURAL___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL___BOOLEAN_VALUE :
 				return booleanValue();
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL___INTEGER_VALUE :

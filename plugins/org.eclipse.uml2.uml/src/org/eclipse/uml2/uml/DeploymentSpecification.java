@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -24,7 +24,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * <!-- begin-model-doc -->
  * A deployment specification specifies a set of properties that determine execution parameters of a component artifact that is deployed on a node. A deployment specification can be aimed at a specific type of container. An artifact that reifies or implements deployment specification properties is a deployment descriptor.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * <p>From package UML::Deployments.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -48,8 +48,8 @@ public interface DeploymentSpecification
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The location where an Artifact is deployed onto a Node. This is typically a 'directory' or 'memory address'.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The location where an Artifact is deployed onto a Node. This is typically a 'directory' or 'memory address.'
+	 * <p>From package UML::Deployments.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Deployment Location</em>' attribute.
 	 * @see #isSetDeploymentLocation()
@@ -102,7 +102,7 @@ public interface DeploymentSpecification
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The location where a component Artifact executes. This may be a local or remote location.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Deployments.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Execution Location</em>' attribute.
 	 * @see #isSetExecutionLocation()
@@ -162,7 +162,7 @@ public interface DeploymentSpecification
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The deployment with which the DeploymentSpecification is associated.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Deployments.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Deployment</em>' container reference.
 	 * @see #setDeployment(Deployment)
@@ -187,9 +187,8 @@ public interface DeploymentSpecification
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The deployedElements of a DeploymentTarget that are involved in a Deployment that has an associated Deployment-Specification is a kind of Component (i.e. the configured components).
-	 * self.deployment->forAll (d | d.location.deployedElements->forAll (de |
-	 *   de.oclIsKindOf(Component)))
+	 * The deployedElements of a DeploymentTarget that are involved in a Deployment that has an associated Deployment-Specification is a kind of Component (i.e., the configured components).
+	 * deployment->forAll (location.deployedElement->forAll (oclIsKindOf(Component)))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -204,7 +203,7 @@ public interface DeploymentSpecification
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The DeploymentTarget of a DeploymentSpecification is a kind of ExecutionEnvironment.
-	 * self.deployment->forAll (d | d.location.oclIsKindOf(ExecutionEnvironment))
+	 * deployment->forAll (location.oclIsKindOf(ExecutionEnvironment))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

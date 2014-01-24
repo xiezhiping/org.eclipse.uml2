@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -172,16 +172,16 @@ public class CommunicationPathImpl
 				return allOwnedElements();
 			case UMLPackage.COMMUNICATION_PATH___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.COMMUNICATION_PATH___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMMUNICATION_PATH___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMMUNICATION_PATH___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.COMMUNICATION_PATH___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMMUNICATION_PATH___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -192,6 +192,8 @@ public class CommunicationPathImpl
 				return getLabel();
 			case UMLPackage.COMMUNICATION_PATH___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.COMMUNICATION_PATH___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.COMMUNICATION_PATH___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.COMMUNICATION_PATH___ALL_OWNING_PACKAGES :
@@ -199,14 +201,22 @@ public class CommunicationPathImpl
 			case UMLPackage.COMMUNICATION_PATH___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.COMMUNICATION_PATH___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.COMMUNICATION_PATH___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.COMMUNICATION_PATH___SEPARATOR :
 				return separator();
+			case UMLPackage.COMMUNICATION_PATH___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.COMMUNICATION_PATH___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.COMMUNICATION_PATH___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.COMMUNICATION_PATH___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMMUNICATION_PATH___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -221,6 +231,8 @@ public class CommunicationPathImpl
 				return getImportedElements();
 			case UMLPackage.COMMUNICATION_PATH___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.COMMUNICATION_PATH___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.COMMUNICATION_PATH___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -233,8 +245,6 @@ public class CommunicationPathImpl
 				return getImportedMembers();
 			case UMLPackage.COMMUNICATION_PATH___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.COMMUNICATION_PATH___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 			case UMLPackage.COMMUNICATION_PATH___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -256,6 +266,10 @@ public class CommunicationPathImpl
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.COMMUNICATION_PATH___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.COMMUNICATION_PATH___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMMUNICATION_PATH___CREATE_ASSOCIATION__BOOLEAN_AGGREGATIONKIND_STRING_INT_INT_TYPE_BOOLEAN_AGGREGATIONKIND_STRING_INT_INT :
 				return createAssociation((Boolean) arguments.get(0),
 					(AggregationKind) arguments.get(1),
@@ -273,20 +287,20 @@ public class CommunicationPathImpl
 				return isTemplate();
 			case UMLPackage.COMMUNICATION_PATH___PARAMETERABLE_ELEMENTS :
 				return parameterableElements();
-			case UMLPackage.COMMUNICATION_PATH___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
-				return validateNonFinalParents(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.COMMUNICATION_PATH___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
-				return validateNoCyclesInGeneralization(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMMUNICATION_PATH___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateSpecializeType(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMMUNICATION_PATH___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
 				return validateMapsToGeneralizationSet(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.COMMUNICATION_PATH___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
+				return validateNonFinalParents(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.COMMUNICATION_PATH___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
+				return validateNoCyclesInGeneralization(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMMUNICATION_PATH___GET_ALL_ATTRIBUTES :
@@ -311,8 +325,6 @@ public class CommunicationPathImpl
 				return allFeatures();
 			case UMLPackage.COMMUNICATION_PATH___ALL_PARENTS :
 				return allParents();
-			case UMLPackage.COMMUNICATION_PATH___CONFORMS_TO__CLASSIFIER :
-				return conformsTo((Classifier) arguments.get(0));
 			case UMLPackage.COMMUNICATION_PATH___GET_GENERALS :
 				return getGenerals();
 			case UMLPackage.COMMUNICATION_PATH___HAS_VISIBILITY_OF__NAMEDELEMENT :
@@ -327,20 +339,38 @@ public class CommunicationPathImpl
 				return maySpecializeType((Classifier) arguments.get(0));
 			case UMLPackage.COMMUNICATION_PATH___PARENTS :
 				return parents();
+			case UMLPackage.COMMUNICATION_PATH___DIRECTLY_REALIZED_INTERFACES :
+				return directlyRealizedInterfaces();
+			case UMLPackage.COMMUNICATION_PATH___DIRECTLY_USED_INTERFACES :
+				return directlyUsedInterfaces();
+			case UMLPackage.COMMUNICATION_PATH___ALL_REALIZED_INTERFACES :
+				return allRealizedInterfaces();
+			case UMLPackage.COMMUNICATION_PATH___ALL_USED_INTERFACES :
+				return allUsedInterfaces();
+			case UMLPackage.COMMUNICATION_PATH___IS_SUBSTITUTABLE_FOR__CLASSIFIER :
+				return isSubstitutableFor((Classifier) arguments.get(0));
+			case UMLPackage.COMMUNICATION_PATH___ALL_ATTRIBUTES :
+				return allAttributes();
+			case UMLPackage.COMMUNICATION_PATH___ALL_SLOTTABLE_FEATURES :
+				return allSlottableFeatures();
 			case UMLPackage.COMMUNICATION_PATH___VALIDATE_SPECIALIZED_END_NUMBER__DIAGNOSTICCHAIN_MAP :
 				return validateSpecializedEndNumber(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.COMMUNICATION_PATH___VALIDATE_ASSOCIATION_ENDS__DIAGNOSTICCHAIN_MAP :
-				return validateAssociationEnds(
+			case UMLPackage.COMMUNICATION_PATH___VALIDATE_SPECIALIZED_END_TYPES__DIAGNOSTICCHAIN_MAP :
+				return validateSpecializedEndTypes(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMMUNICATION_PATH___VALIDATE_BINARY_ASSOCIATIONS__DIAGNOSTICCHAIN_MAP :
 				return validateBinaryAssociations(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.COMMUNICATION_PATH___VALIDATE_SPECIALIZED_END_TYPES__DIAGNOSTICCHAIN_MAP :
-				return validateSpecializedEndTypes(
+			case UMLPackage.COMMUNICATION_PATH___VALIDATE_ASSOCIATION_ENDS__DIAGNOSTICCHAIN_MAP :
+				return validateAssociationEnds(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.COMMUNICATION_PATH___VALIDATE_ENDS_MUST_BE_TYPED__DIAGNOSTICCHAIN_MAP :
+				return validateEndsMustBeTyped(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMMUNICATION_PATH___IS_BINARY :

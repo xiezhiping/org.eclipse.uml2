@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -23,8 +23,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A link end creation data is not an action. It is an element that identifies links. It identifies one end of a link to be created by a create link action.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * LinkEndCreationData is LinkEndData used to provide values for one end of a link to be created by a CreateLinkAction.
+ * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -49,7 +49,7 @@ public interface LinkEndCreationData
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies whether the existing links emanating from the object on this end should be destroyed before creating a new link.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Replace All</em>' attribute.
 	 * @see #setIsReplaceAll(boolean)
@@ -70,12 +70,33 @@ public interface LinkEndCreationData
 	void setIsReplaceAll(boolean value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * LinkEndCreationData for ordered Association ends must have a single insertAt InputPin for the insertion point with type UnlimitedNatural and multiplicity of 1..1, if isReplaceAll=false, and must have no InputPin for the insertion point when the association ends are unordered.
+	 * if  not end.isOrdered
+	 * then insertAt = null
+	 * else
+	 * 	not isReplaceAll=false implies
+	 * 	insertAt <> null and insertAt->forAll(type=UnlimitedNatural and is(1,1))
+	 * endif
+	 * 
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateInsertAtPin(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
 	 * Returns the value of the '<em><b>Insert At</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies where the new link should be inserted for ordered association ends, or where an existing link should be moved to. The type of the input is UnlimitedNatural, but the input cannot be zero. This pin is omitted for association ends that are not ordered.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * For ordered Association ends, the InputPin that provides the position where the new link should be inserted or where an existing link should be moved to. The type of the insertAt InputPin is UnlimitedNatural, but the input cannot be zero. It is omitted for Association ends that are not ordered.
+	 * <p>From package UML::Actions.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Insert At</em>' reference.
 	 * @see #setInsertAt(InputPin)
@@ -94,43 +115,5 @@ public interface LinkEndCreationData
 	 * @generated
 	 */
 	void setInsertAt(InputPin value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * LinkEndCreationData can only be end data for CreateLinkAction or one of its specializations.
-	 * self.LinkAction.oclIsKindOf(CreateLinkAction)
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateCreateLinkAction(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Link end creation data for ordered association ends must have a single input pin for the insertion point with type UnlimitedNatural and multiplicity of 1..1, otherwise the action has no input pin for the insertion point.
-	 * let insertAtPins : Collection = self.insertAt in
-	 * if self.end.ordering = #unordered
-	 * then insertAtPins->size() = 0
-	 * else let insertAtPin : InputPin = insertAts->asSequence()->first() in
-	 * insertAtPins->size() = 1
-	 * and insertAtPin.type = UnlimitedNatural
-	 * and insertAtPin.multiplicity.is(1,1))
-	 * endif
-	 * 
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateSingleInputPin(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
 
 } // LinkEndCreationData

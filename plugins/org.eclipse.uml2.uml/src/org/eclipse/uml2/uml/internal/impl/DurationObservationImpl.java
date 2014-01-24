@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 397324
+ *   Kenn Hussey (CEA) - 327039, 351774, 397324, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.DurationObservation;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -231,11 +230,6 @@ public class DurationObservationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.DURATION_OBSERVATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.DURATION_OBSERVATION__NAME :
 				setName((String) newValue);
 				return;
@@ -279,9 +273,6 @@ public class DurationObservationImpl
 			case UMLPackage.DURATION_OBSERVATION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.DURATION_OBSERVATION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.DURATION_OBSERVATION__NAME :
 				unsetName();
 				return;
@@ -324,8 +315,7 @@ public class DurationObservationImpl
 			case UMLPackage.DURATION_OBSERVATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.DURATION_OBSERVATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.DURATION_OBSERVATION__NAME :
 				return isSetName();
 			case UMLPackage.DURATION_OBSERVATION__NAME_EXPRESSION :
@@ -442,16 +432,16 @@ public class DurationObservationImpl
 				return allOwnedElements();
 			case UMLPackage.DURATION_OBSERVATION___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.DURATION_OBSERVATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DURATION_OBSERVATION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DURATION_OBSERVATION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.DURATION_OBSERVATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DURATION_OBSERVATION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -462,6 +452,8 @@ public class DurationObservationImpl
 				return getLabel();
 			case UMLPackage.DURATION_OBSERVATION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.DURATION_OBSERVATION___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.DURATION_OBSERVATION___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.DURATION_OBSERVATION___ALL_OWNING_PACKAGES :
@@ -469,16 +461,20 @@ public class DurationObservationImpl
 			case UMLPackage.DURATION_OBSERVATION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.DURATION_OBSERVATION___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.DURATION_OBSERVATION___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.DURATION_OBSERVATION___SEPARATOR :
 				return separator();
+			case UMLPackage.DURATION_OBSERVATION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.DURATION_OBSERVATION___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.DURATION_OBSERVATION___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.DURATION_OBSERVATION___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DURATION_OBSERVATION___VALIDATE_FIRST_EVENT_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
 				return validateFirstEventMultiplicity(
 					(DiagnosticChain) arguments.get(0),

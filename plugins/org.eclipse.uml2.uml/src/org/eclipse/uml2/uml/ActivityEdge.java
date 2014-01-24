@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -28,9 +28,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Activity edges can be contained in interruptible regions.
- * An activity edge is an abstract class for directed connections between two activity nodes.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * An ActivityEdge is an abstract class for directed connections between two ActivityNodes.
+ * <p>From package UML::Activities.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -39,11 +38,11 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getActivity <em>Activity</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInPartitions <em>In Partition</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInStructuredNode <em>In Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInterrupts <em>Interrupts</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getRedefinedEdges <em>Redefined Edge</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getSource <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInStructuredNode <em>In Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getSource <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getRedefinedEdges <em>Redefined Edge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getWeight <em>Weight</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInGroups <em>In Group</em>}</li>
  * </ul>
@@ -68,8 +67,8 @@ public interface ActivityEdge
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Activity containing the edge.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Activity containing the ActivityEdge, if it is directly owned by an Activity.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Activity</em>' container reference.
 	 * @see #setActivity(Activity)
@@ -98,8 +97,8 @@ public interface ActivityEdge
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Groups containing the edge.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * ActivityGroups containing the ActivityEdge.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>In Group</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityEdge_InGroup()
@@ -146,8 +145,8 @@ public interface ActivityEdge
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Partitions containing the edge.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * ActivityPartitions containing the ActivityEdge.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>In Partition</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityEdge_InPartition()
@@ -193,8 +192,8 @@ public interface ActivityEdge
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Structured activity node containing the edge.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The StructuredActivityNode containing the ActivityEdge, if it is owned by a StructuredActivityNode.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>In Structured Node</em>' container reference.
 	 * @see #setInStructuredNode(StructuredActivityNode)
@@ -221,8 +220,8 @@ public interface ActivityEdge
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Node to which tokens are put when they traverse the edge.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The ActivityNode to which tokens are put when they traverse the ActivityEdge.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see #setTarget(ActivityNode)
@@ -255,8 +254,8 @@ public interface ActivityEdge
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Inherited edges replaced by this edge in a specialization of the activity.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * ActivityEdges from a generalization of the Activity containing this ActivityEdge that are redefined by this ActivityEdge.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Edge</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityEdge_RedefinedEdge()
@@ -300,13 +299,13 @@ public interface ActivityEdge
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specification evaluated at runtime to determine if the edge can be traversed.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * A ValueSpecification that is evaluated to determine if a token can traverse the ActivityEdge. If an ActivityEdge has no guard, then there is no restriction on tokens traversing the edge.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Guard</em>' containment reference.
 	 * @see #setGuard(ValueSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityEdge_Guard()
-	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	ValueSpecification getGuard();
@@ -345,13 +344,13 @@ public interface ActivityEdge
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The minimum number of tokens that must traverse the edge at the same time.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The minimum number of tokens that must traverse the ActivityEdge at the same time. If no weight is specified, this is equivalent to specifying a constant value of 1.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Weight</em>' containment reference.
 	 * @see #setWeight(ValueSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityEdge_Weight()
-	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	ValueSpecification getWeight();
@@ -385,8 +384,8 @@ public interface ActivityEdge
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Region that the edge can interrupt.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The InterruptibleActivityRegion for which this ActivityEdge is an interruptingEdge.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Interrupts</em>' reference.
 	 * @see #setInterrupts(InterruptibleActivityRegion)
@@ -413,8 +412,8 @@ public interface ActivityEdge
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Node from which tokens are taken when they traverse the edge.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The ActivityNode from which tokens are taken when they traverse the ActivityEdge.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see #setSource(ActivityNode)
@@ -439,8 +438,8 @@ public interface ActivityEdge
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The source and target of an edge must be in the same activity as the edge.
-	 * true
+	 * If an ActivityEdge is directly owned by an Activity, then its source and target must be directly or indirectly contained in the same Activity.
+	 * activity<>null implies source.containingActivity() = activity and target.containingActivity() = activity
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -448,36 +447,6 @@ public interface ActivityEdge
 	 * @generated
 	 */
 	boolean validateSourceAndTarget(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Activity edges may be owned only by activities or groups.
-	 * true
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateOwned(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Activity edges may be owned by at most one structured node.
-	 * true
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateStructuredNode(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 } // ActivityEdge

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 212765
+ *   Kenn Hussey (CEA) - 327039, 212765, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interval;
 import org.eclipse.uml2.uml.IntervalConstraint;
@@ -214,9 +213,6 @@ public class IntervalConstraintImpl
 			case UMLPackage.INTERVAL_CONSTRAINT__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.INTERVAL_CONSTRAINT__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERVAL_CONSTRAINT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INTERVAL_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
@@ -306,11 +302,6 @@ public class IntervalConstraintImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.INTERVAL_CONSTRAINT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.INTERVAL_CONSTRAINT__NAME :
 				setName((String) newValue);
 				return;
@@ -354,9 +345,6 @@ public class IntervalConstraintImpl
 				return;
 			case UMLPackage.INTERVAL_CONSTRAINT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.INTERVAL_CONSTRAINT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.INTERVAL_CONSTRAINT__NAME :
 				unsetName();
@@ -403,8 +391,7 @@ public class IntervalConstraintImpl
 			case UMLPackage.INTERVAL_CONSTRAINT__OWNER :
 				return isSetOwner();
 			case UMLPackage.INTERVAL_CONSTRAINT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.INTERVAL_CONSTRAINT__NAME :
 				return isSetName();
 			case UMLPackage.INTERVAL_CONSTRAINT__NAME_EXPRESSION :

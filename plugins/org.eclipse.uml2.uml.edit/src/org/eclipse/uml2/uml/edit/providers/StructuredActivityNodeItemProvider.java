@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -71,9 +71,9 @@ public class StructuredActivityNodeItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addOwnedRulePropertyDescriptor(object);
 			addElementImportPropertyDescriptor(object);
 			addPackageImportPropertyDescriptor(object);
-			addOwnedRulePropertyDescriptor(object);
 			addOwnedMemberPropertyDescriptor(object);
 			addImportedMemberPropertyDescriptor(object);
 			addMemberPropertyDescriptor(object);
@@ -82,12 +82,12 @@ public class StructuredActivityNodeItemProvider
 			addInActivityPropertyDescriptor(object);
 			addSubgroupPropertyDescriptor(object);
 			addSuperGroupPropertyDescriptor(object);
+			addEdgePropertyDescriptor(object);
 			addMustIsolatePropertyDescriptor(object);
-			addNodePropertyDescriptor(object);
 			addStructuredNodeInputPropertyDescriptor(object);
 			addStructuredNodeOutputPropertyDescriptor(object);
 			addVariablePropertyDescriptor(object);
-			addEdgePropertyDescriptor(object);
+			addNodePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -461,11 +461,11 @@ public class StructuredActivityNodeItemProvider
 			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(UMLPackage.Literals.NAMESPACE__OWNED_RULE);
 			childrenFeatures.add(UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT);
 			childrenFeatures.add(UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT);
-			childrenFeatures.add(UMLPackage.Literals.NAMESPACE__OWNED_RULE);
 			childrenFeatures
-				.add(UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE);
+				.add(UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__EDGE);
 			childrenFeatures
 				.add(UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_INPUT);
 			childrenFeatures
@@ -473,7 +473,7 @@ public class StructuredActivityNodeItemProvider
 			childrenFeatures
 				.add(UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__VARIABLE);
 			childrenFeatures
-				.add(UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__EDGE);
+				.add(UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE);
 		}
 		return childrenFeatures;
 	}
@@ -542,14 +542,14 @@ public class StructuredActivityNodeItemProvider
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE :
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT :
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT :
-			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE :
-			case UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE :
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE :
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_INPUT :
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_OUTPUT :
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE :
-			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE :
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -568,14 +568,6 @@ public class StructuredActivityNodeItemProvider
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT,
-			UMLFactory.eINSTANCE.createElementImport()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT,
-			UMLFactory.eINSTANCE.createPackageImport()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.NAMESPACE__OWNED_RULE,
@@ -598,12 +590,44 @@ public class StructuredActivityNodeItemProvider
 			UMLFactory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
-			UMLFactory.eINSTANCE.createAcceptEventAction()));
+			UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT,
+			UMLFactory.eINSTANCE.createElementImport()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
-			UMLFactory.eINSTANCE.createAcceptCallAction()));
+			UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT,
+			UMLFactory.eINSTANCE.createPackageImport()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__EDGE,
+			UMLFactory.eINSTANCE.createControlFlow()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__EDGE,
+			UMLFactory.eINSTANCE.createObjectFlow()));
+
+		newChildDescriptors
+			.add(createChildParameter(
+				UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_INPUT,
+				UMLFactory.eINSTANCE.createInputPin()));
+
+		newChildDescriptors
+			.add(createChildParameter(
+				UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_INPUT,
+				UMLFactory.eINSTANCE.createActionInputPin()));
+
+		newChildDescriptors
+			.add(createChildParameter(
+				UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_INPUT,
+				UMLFactory.eINSTANCE.createValuePin()));
+
+		newChildDescriptors
+			.add(createChildParameter(
+				UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_OUTPUT,
+				UMLFactory.eINSTANCE.createOutputPin()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__VARIABLE,
+			UMLFactory.eINSTANCE.createVariable()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
@@ -619,15 +643,19 @@ public class StructuredActivityNodeItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createValueSpecificationAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createAcceptEventAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createAcceptCallAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
 			UMLFactory.eINSTANCE.createActionInputPin()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
-			UMLFactory.eINSTANCE.createActivityFinalNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
-			UMLFactory.eINSTANCE.createActivityParameterNode()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
@@ -648,10 +676,6 @@ public class StructuredActivityNodeItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
 			UMLFactory.eINSTANCE.createCallOperationAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
-			UMLFactory.eINSTANCE.createCentralBufferNode()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
@@ -683,14 +707,6 @@ public class StructuredActivityNodeItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
-			UMLFactory.eINSTANCE.createDataStoreNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
-			UMLFactory.eINSTANCE.createDecisionNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
 			UMLFactory.eINSTANCE.createDestroyLinkAction()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -707,27 +723,7 @@ public class StructuredActivityNodeItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
-			UMLFactory.eINSTANCE.createFlowFinalNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
-			UMLFactory.eINSTANCE.createForkNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
-			UMLFactory.eINSTANCE.createInitialNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
-			UMLFactory.eINSTANCE.createJoinNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
 			UMLFactory.eINSTANCE.createLoopNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
-			UMLFactory.eINSTANCE.createMergeNode()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
@@ -823,39 +819,43 @@ public class StructuredActivityNodeItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
-			UMLFactory.eINSTANCE.createValueSpecificationAction()));
-
-		newChildDescriptors
-			.add(createChildParameter(
-				UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_INPUT,
-				UMLFactory.eINSTANCE.createInputPin()));
-
-		newChildDescriptors
-			.add(createChildParameter(
-				UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_INPUT,
-				UMLFactory.eINSTANCE.createActionInputPin()));
-
-		newChildDescriptors
-			.add(createChildParameter(
-				UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_INPUT,
-				UMLFactory.eINSTANCE.createValuePin()));
-
-		newChildDescriptors
-			.add(createChildParameter(
-				UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_OUTPUT,
-				UMLFactory.eINSTANCE.createOutputPin()));
+			UMLFactory.eINSTANCE.createActivityFinalNode()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__VARIABLE,
-			UMLFactory.eINSTANCE.createVariable()));
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createActivityParameterNode()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__EDGE,
-			UMLFactory.eINSTANCE.createControlFlow()));
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createCentralBufferNode()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__EDGE,
-			UMLFactory.eINSTANCE.createObjectFlow()));
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createDataStoreNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createDecisionNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createFlowFinalNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createForkNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createInitialNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createJoinNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE,
+			UMLFactory.eINSTANCE.createMergeNode()));
 	}
 
 	/**
@@ -873,8 +873,8 @@ public class StructuredActivityNodeItemProvider
 		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
 			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
 			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
-			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE
 			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_INPUT
+			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE
 			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_OUTPUT;
 
 		if (qualify) {

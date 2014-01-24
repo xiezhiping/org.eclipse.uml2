@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -41,7 +41,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.CombinedFragment;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Gate;
 import org.eclipse.uml2.uml.GeneralOrdering;
@@ -346,17 +345,6 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMinintAndMaxint(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return CombinedFragmentOperations.validateMinintAndMaxint(this,
-			diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateBreak(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return CombinedFragmentOperations.validateBreak(this, diagnostics,
@@ -389,18 +377,15 @@ public class CombinedFragmentImpl
 			case UMLPackage.COMBINED_FRAGMENT__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.COMBINED_FRAGMENT__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.COMBINED_FRAGMENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.COMBINED_FRAGMENT__COVERED :
 				return ((InternalEList<?>) getCovereds()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION :
-				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_OPERAND :
 				return basicSetEnclosingOperand(null, msgs);
+			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION :
+				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.COMBINED_FRAGMENT__GENERAL_ORDERING :
 				return ((InternalEList<?>) getGeneralOrderings()).basicRemove(
 					otherEnd, msgs);
@@ -450,14 +435,14 @@ public class CombinedFragmentImpl
 				return getVisibility();
 			case UMLPackage.COMBINED_FRAGMENT__COVERED :
 				return getCovereds();
-			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION :
-				if (resolve)
-					return getEnclosingInteraction();
-				return basicGetEnclosingInteraction();
 			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_OPERAND :
 				if (resolve)
 					return getEnclosingOperand();
 				return basicGetEnclosingOperand();
+			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION :
+				if (resolve)
+					return getEnclosingInteraction();
+				return basicGetEnclosingInteraction();
 			case UMLPackage.COMBINED_FRAGMENT__GENERAL_ORDERING :
 				return getGeneralOrderings();
 			case UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE :
@@ -489,11 +474,6 @@ public class CombinedFragmentImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.COMBINED_FRAGMENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.COMBINED_FRAGMENT__NAME :
 				setName((String) newValue);
 				return;
@@ -507,11 +487,11 @@ public class CombinedFragmentImpl
 				getCovereds().clear();
 				getCovereds().addAll((Collection<? extends Lifeline>) newValue);
 				return;
-			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION :
-				setEnclosingInteraction((Interaction) newValue);
-				return;
 			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) newValue);
+				return;
+			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION :
+				setEnclosingInteraction((Interaction) newValue);
 				return;
 			case UMLPackage.COMBINED_FRAGMENT__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
@@ -549,9 +529,6 @@ public class CombinedFragmentImpl
 			case UMLPackage.COMBINED_FRAGMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.COMBINED_FRAGMENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.COMBINED_FRAGMENT__NAME :
 				unsetName();
 				return;
@@ -564,11 +541,11 @@ public class CombinedFragmentImpl
 			case UMLPackage.COMBINED_FRAGMENT__COVERED :
 				getCovereds().clear();
 				return;
-			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION :
-				setEnclosingInteraction((Interaction) null);
-				return;
 			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) null);
+				return;
+			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION :
+				setEnclosingInteraction((Interaction) null);
 				return;
 			case UMLPackage.COMBINED_FRAGMENT__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
@@ -603,8 +580,7 @@ public class CombinedFragmentImpl
 			case UMLPackage.COMBINED_FRAGMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.COMBINED_FRAGMENT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.COMBINED_FRAGMENT__NAME :
 				return isSetName();
 			case UMLPackage.COMBINED_FRAGMENT__NAME_EXPRESSION :
@@ -619,10 +595,10 @@ public class CombinedFragmentImpl
 				return isSetVisibility();
 			case UMLPackage.COMBINED_FRAGMENT__COVERED :
 				return covereds != null && !covereds.isEmpty();
-			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION :
-				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
+			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION :
+				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.COMBINED_FRAGMENT__GENERAL_ORDERING :
 				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE :
@@ -727,16 +703,16 @@ public class CombinedFragmentImpl
 				return allOwnedElements();
 			case UMLPackage.COMBINED_FRAGMENT___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.COMBINED_FRAGMENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMBINED_FRAGMENT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMBINED_FRAGMENT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.COMBINED_FRAGMENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMBINED_FRAGMENT___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -747,6 +723,8 @@ public class CombinedFragmentImpl
 				return getLabel();
 			case UMLPackage.COMBINED_FRAGMENT___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.COMBINED_FRAGMENT___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.COMBINED_FRAGMENT___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.COMBINED_FRAGMENT___ALL_OWNING_PACKAGES :
@@ -754,25 +732,21 @@ public class CombinedFragmentImpl
 			case UMLPackage.COMBINED_FRAGMENT___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.COMBINED_FRAGMENT___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.COMBINED_FRAGMENT___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.COMBINED_FRAGMENT___SEPARATOR :
 				return separator();
+			case UMLPackage.COMBINED_FRAGMENT___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.COMBINED_FRAGMENT___VALIDATE_BREAK__DIAGNOSTICCHAIN_MAP :
 				return validateBreak((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.COMBINED_FRAGMENT___VALIDATE_OPT_LOOP_BREAK_NEG__DIAGNOSTICCHAIN_MAP :
-				return validateOptLoopBreakNeg(
-					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMBINED_FRAGMENT___VALIDATE_CONSIDER_AND_IGNORE__DIAGNOSTICCHAIN_MAP :
 				return validateConsiderAndIgnore(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.COMBINED_FRAGMENT___VALIDATE_MININT_AND_MAXINT__DIAGNOSTICCHAIN_MAP :
-				return validateMinintAndMaxint(
+			case UMLPackage.COMBINED_FRAGMENT___VALIDATE_OPT_LOOP_BREAK_NEG__DIAGNOSTICCHAIN_MAP :
+				return validateOptLoopBreakNeg(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

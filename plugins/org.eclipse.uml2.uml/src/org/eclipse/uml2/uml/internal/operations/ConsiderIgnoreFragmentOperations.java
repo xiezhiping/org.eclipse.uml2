@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 351774
+ *   Kenn Hussey (CEA) - 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,8 +30,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ConsiderIgnoreFragment#validateType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ConsiderIgnoreFragment#validateConsiderOrIgnore(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Consider Or Ignore</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ConsiderIgnoreFragment#validateType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,7 +54,7 @@ public class ConsiderIgnoreFragmentOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The interaction operator of a ConsiderIgnoreFragment must be either 'consider' or 'ignore'.
-	 * (interactionOperator = #consider) or (interactionOperator = #ignore)
+	 * (interactionOperator =  InteractionOperatorKind::consider) or (interactionOperator =  InteractionOperatorKind::ignore)
 	 * @param considerIgnoreFragment The receiving '<em><b>Consider Ignore Fragment</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -89,8 +89,8 @@ public class ConsiderIgnoreFragmentOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The NamedElements must be of a type of element that identifies a message (e.g., an Operation, Reception, or a Signal).
-	 * message->forAll(m | m.oclIsKindOf(Operation) or m.oclIsKindOf(Reception) or m.oclIsKindOf(Signal))
+	 * The NamedElements must be of a type of element that can be a signature for a message (i.e.., an Operation, or a Signal).
+	 * message->forAll(m | m.oclIsKindOf(Operation) or m.oclIsKindOf(Signal))
 	 * @param considerIgnoreFragment The receiving '<em><b>Consider Ignore Fragment</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

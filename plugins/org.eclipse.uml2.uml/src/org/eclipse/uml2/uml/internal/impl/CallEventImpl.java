@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: CallEventImpl.java,v 1.14 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +23,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.uml.CallEvent;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
@@ -187,11 +185,6 @@ public class CallEventImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.CALL_EVENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.CALL_EVENT__NAME :
 				setName((String) newValue);
 				return;
@@ -227,9 +220,6 @@ public class CallEventImpl
 				return;
 			case UMLPackage.CALL_EVENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				return;
-			case UMLPackage.CALL_EVENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
 				return;
 			case UMLPackage.CALL_EVENT__NAME :
 				unsetName();
@@ -270,8 +260,7 @@ public class CallEventImpl
 			case UMLPackage.CALL_EVENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.CALL_EVENT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.CALL_EVENT__NAME :
 				return isSetName();
 			case UMLPackage.CALL_EVENT__NAME_EXPRESSION :

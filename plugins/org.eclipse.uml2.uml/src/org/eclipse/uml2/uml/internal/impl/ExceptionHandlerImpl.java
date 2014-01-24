@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -320,9 +320,9 @@ public class ExceptionHandlerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateExceptionBody(DiagnosticChain diagnostics,
+	public boolean validateHandlerBodyEdges(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return ExceptionHandlerOperations.validateExceptionBody(this,
+		return ExceptionHandlerOperations.validateHandlerBodyEdges(this,
 			diagnostics, context);
 	}
 
@@ -331,9 +331,9 @@ public class ExceptionHandlerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateResultPins(DiagnosticChain diagnostics,
+	public boolean validateOutputPins(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return ExceptionHandlerOperations.validateResultPins(this, diagnostics,
+		return ExceptionHandlerOperations.validateOutputPins(this, diagnostics,
 			context);
 	}
 
@@ -356,6 +356,28 @@ public class ExceptionHandlerImpl
 	public boolean validateEdgeSourceTarget(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return ExceptionHandlerOperations.validateEdgeSourceTarget(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateHandlerBodyOwner(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return ExceptionHandlerOperations.validateHandlerBodyOwner(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateExceptionInputType(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return ExceptionHandlerOperations.validateExceptionInputType(this,
 			diagnostics, context);
 	}
 
@@ -641,6 +663,13 @@ public class ExceptionHandlerImpl
 				return allOwnedElements();
 			case UMLPackage.EXCEPTION_HANDLER___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.EXCEPTION_HANDLER___VALIDATE_HANDLER_BODY_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateHandlerBodyEdges(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.EXCEPTION_HANDLER___VALIDATE_OUTPUT_PINS__DIAGNOSTICCHAIN_MAP :
+				return validateOutputPins((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXCEPTION_HANDLER___VALIDATE_ONE_INPUT__DIAGNOSTICCHAIN_MAP :
 				return validateOneInput((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
@@ -648,11 +677,12 @@ public class ExceptionHandlerImpl
 				return validateEdgeSourceTarget(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXCEPTION_HANDLER___VALIDATE_RESULT_PINS__DIAGNOSTICCHAIN_MAP :
-				return validateResultPins((DiagnosticChain) arguments.get(0),
+			case UMLPackage.EXCEPTION_HANDLER___VALIDATE_HANDLER_BODY_OWNER__DIAGNOSTICCHAIN_MAP :
+				return validateHandlerBodyOwner(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXCEPTION_HANDLER___VALIDATE_EXCEPTION_BODY__DIAGNOSTICCHAIN_MAP :
-				return validateExceptionBody(
+			case UMLPackage.EXCEPTION_HANDLER___VALIDATE_EXCEPTION_INPUT_TYPE__DIAGNOSTICCHAIN_MAP :
+				return validateExceptionInputType(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

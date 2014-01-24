@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 383028
+ *   Kenn Hussey (CEA) - 327039, 351774, 383028, 418466
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -89,12 +89,12 @@ public class OperationItemProvider
 
 			addOwningTemplateParameterPropertyDescriptor(object);
 			addTemplateParameterPropertyDescriptor(object);
-			addOwnedTemplateSignaturePropertyDescriptor(object);
 			addTemplateBindingPropertyDescriptor(object);
-			addInterfacePropertyDescriptor(object);
+			addOwnedTemplateSignaturePropertyDescriptor(object);
 			addBodyConditionPropertyDescriptor(object);
 			addClassPropertyDescriptor(object);
 			addDatatypePropertyDescriptor(object);
+			addInterfacePropertyDescriptor(object);
 			addIsOrderedPropertyDescriptor(object);
 			addIsQueryPropertyDescriptor(object);
 			addIsUniquePropertyDescriptor(object);
@@ -456,9 +456,9 @@ public class OperationItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures
-				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
-			childrenFeatures
 				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
+			childrenFeatures
+				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
 		}
 		return childrenFeatures;
 	}
@@ -592,8 +592,8 @@ public class OperationItemProvider
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
-			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
+			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -614,16 +614,16 @@ public class OperationItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
+			UMLFactory.eINSTANCE.createTemplateBinding()));
+
+		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 			UMLFactory.eINSTANCE.createTemplateSignature()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 			UMLFactory.eINSTANCE.createRedefinableTemplateSignature()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
-			UMLFactory.eINSTANCE.createTemplateBinding()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.OPERATION__BODY_CONDITION,
@@ -760,14 +760,14 @@ public class OperationItemProvider
 	}
 
 	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject, java.util.Collection)
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object, java.util.Collection)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, EObject value, Collection<?> collection) {
+			EStructuralFeature feature, Object value, Collection<?> collection) {
 		if (feature == UMLPackage.Literals.OPERATION__POSTCONDITION) {
 			return new SubsetSupersetReplaceCommand(
 				domain,

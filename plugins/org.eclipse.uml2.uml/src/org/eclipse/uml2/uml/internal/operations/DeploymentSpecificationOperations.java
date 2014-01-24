@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,8 +30,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.DeploymentSpecification#validateDeployedElements(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Deployed Elements</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.DeploymentSpecification#validateDeploymentTarget(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Deployment Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.DeploymentSpecification#validateDeployedElements(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Deployed Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,9 +53,8 @@ public class DeploymentSpecificationOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The deployedElements of a DeploymentTarget that are involved in a Deployment that has an associated Deployment-Specification is a kind of Component (i.e. the configured components).
-	 * self.deployment->forAll (d | d.location.deployedElements->forAll (de |
-	 *   de.oclIsKindOf(Component)))
+	 * The deployedElements of a DeploymentTarget that are involved in a Deployment that has an associated Deployment-Specification is a kind of Component (i.e., the configured components).
+	 * deployment->forAll (location.deployedElement->forAll (oclIsKindOf(Component)))
 	 * @param deploymentSpecification The receiving '<em><b>Deployment Specification</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -91,7 +90,7 @@ public class DeploymentSpecificationOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The DeploymentTarget of a DeploymentSpecification is a kind of ExecutionEnvironment.
-	 * self.deployment->forAll (d | d.location.oclIsKindOf(ExecutionEnvironment))
+	 * deployment->forAll (location.oclIsKindOf(ExecutionEnvironment))
 	 * @param deploymentSpecification The receiving '<em><b>Deployment Specification</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

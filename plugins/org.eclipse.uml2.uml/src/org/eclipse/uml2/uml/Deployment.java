@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-model-doc -->
  * A deployment is the allocation of an artifact or artifact instance to a deployment target.
  * A component deployment is the deployment of one or more artifacts or artifact instances to a deployment target, optionally parameterized by a deployment specification. Examples are executables and configuration files.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * <p>From package UML::Deployments.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -57,7 +57,7 @@ public interface Deployment
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Artifacts that are deployed onto a Node. This association specializes the supplier association.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Deployments.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Deployed Artifact</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDeployment_DeployedArtifact()
@@ -105,7 +105,7 @@ public interface Deployment
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The specification of properties that parameterize the deployment and execution of one or more Artifacts.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Deployments.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Configuration</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDeployment_Configuration()
@@ -157,15 +157,15 @@ public interface Deployment
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Dependency#getClients() <em>Client</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The DeployedTarget which is the target of a Deployment.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * <p>From package UML::Deployments.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Location</em>' container reference.
 	 * @see #setLocation(DeploymentTarget)

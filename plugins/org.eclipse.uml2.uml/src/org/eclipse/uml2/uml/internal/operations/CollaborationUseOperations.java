@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,9 +30,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.CollaborationUse#validateConnectors(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Connectors</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.CollaborationUse#validateEveryRole(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Every Role</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.CollaborationUse#validateClientElements(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Client Elements</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.CollaborationUse#validateEveryRole(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Every Role</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.CollaborationUse#validateConnectors(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Connectors</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,8 +54,16 @@ public class CollaborationUseOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * All the client elements of a roleBinding are in one classifier and all supplier elements of a roleBinding are in one collaboration and they are compatible.
-	 * true
+	 * All the client elements of a roleBinding are in one Classifier and all supplier elements of a roleBinding are in one Collaboration.
+	 * roleBinding->collect(client)->forAll(ne1, ne2 |
+	 *   ne1.oclIsKindOf(ConnectableElement) and ne2.oclIsKindOf(ConnectableElement) and
+	 *     let ce1 : ConnectableElement = ne1.oclAsType(ConnectableElement), ce2 : ConnectableElement = ne2.oclAsType(ConnectableElement) in
+	 *       ce1.structuredClassifier = ce2.structuredClassifier)
+	 * and
+	 *   roleBinding->collect(supplier)->forAll(ne1, ne2 |
+	 *   ne1.oclIsKindOf(ConnectableElement) and ne2.oclIsKindOf(ConnectableElement) and
+	 *     let ce1 : ConnectableElement = ne1.oclAsType(ConnectableElement), ce2 : ConnectableElement = ne2.oclAsType(ConnectableElement) in
+	 *       ce1.collaboration = ce2.collaboration)
 	 * @param collaborationUse The receiving '<em><b>Collaboration Use</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -90,8 +98,8 @@ public class CollaborationUseOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Every role in the collaboration is bound within the collaboration use to a connectable element within the owning classifier.
-	 * true
+	 * Every collaborationRole in the Collaboration is bound within the CollaborationUse.
+	 * type.collaborationRole->forAll(role | roleBinding->exists(rb | rb.supplier->includes(role)))
 	 * @param collaborationUse The receiving '<em><b>Collaboration Use</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -125,8 +133,16 @@ public class CollaborationUseOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The connectors in the classifier connect according to the connectors in the collaboration
-	 * true
+	 * Connectors in a Collaboration typing a CollaborationUse must have corresponding Connectors between elements bound in the context Classifier, and these corresponding Connectors must have the same or more general type than the Collaboration Connectors.
+	 * type.ownedConnector->forAll(connector |
+	 *   let rolesConnectedInCollab : Set(ConnectableElement) = connector.end.role->asSet(),
+	 *         relevantBindings : Set(Dependency) = roleBinding->select(rb | rb.supplier->intersection(rolesConnectedInCollab)->notEmpty()),
+	 *         boundRoles : Set(ConnectableElement) = relevantBindings->collect(client.oclAsType(ConnectableElement))->asSet(),
+	 *         contextClassifier : StructuredClassifier = boundRoles->any(true).structuredClassifier->any(true) in
+	 *           contextClassifier.ownedConnector->exists( correspondingConnector | 
+	 *               correspondingConnector.end.role->forAll( role | boundRoles->includes(role) )
+	 *               and (connector.type->notEmpty() and correspondingConnector.type->notEmpty()) implies connector.type->forAll(conformsTo(correspondingConnector.type)) )
+	 * )
 	 * @param collaborationUse The receiving '<em><b>Collaboration Use</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

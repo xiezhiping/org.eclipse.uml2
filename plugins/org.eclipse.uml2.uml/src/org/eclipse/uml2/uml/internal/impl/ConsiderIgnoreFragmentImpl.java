@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.ConsiderIgnoreFragment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Gate;
 import org.eclipse.uml2.uml.GeneralOrdering;
 import org.eclipse.uml2.uml.Interaction;
@@ -190,14 +189,14 @@ public class ConsiderIgnoreFragmentImpl
 				return getVisibility();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__COVERED :
 				return getCovereds();
-			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_INTERACTION :
-				if (resolve)
-					return getEnclosingInteraction();
-				return basicGetEnclosingInteraction();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_OPERAND :
 				if (resolve)
 					return getEnclosingOperand();
 				return basicGetEnclosingOperand();
+			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_INTERACTION :
+				if (resolve)
+					return getEnclosingInteraction();
+				return basicGetEnclosingInteraction();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__GENERAL_ORDERING :
 				return getGeneralOrderings();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__CFRAGMENT_GATE :
@@ -231,11 +230,6 @@ public class ConsiderIgnoreFragmentImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME :
 				setName((String) newValue);
 				return;
@@ -249,11 +243,11 @@ public class ConsiderIgnoreFragmentImpl
 				getCovereds().clear();
 				getCovereds().addAll((Collection<? extends Lifeline>) newValue);
 				return;
-			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_INTERACTION :
-				setEnclosingInteraction((Interaction) newValue);
-				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) newValue);
+				return;
+			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_INTERACTION :
+				setEnclosingInteraction((Interaction) newValue);
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
@@ -296,9 +290,6 @@ public class ConsiderIgnoreFragmentImpl
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME :
 				unsetName();
 				return;
@@ -311,11 +302,11 @@ public class ConsiderIgnoreFragmentImpl
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__COVERED :
 				getCovereds().clear();
 				return;
-			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_INTERACTION :
-				setEnclosingInteraction((Interaction) null);
-				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) null);
+				return;
+			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_INTERACTION :
+				setEnclosingInteraction((Interaction) null);
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
@@ -353,8 +344,7 @@ public class ConsiderIgnoreFragmentImpl
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME :
 				return isSetName();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME_EXPRESSION :
@@ -369,10 +359,10 @@ public class ConsiderIgnoreFragmentImpl
 				return isSetVisibility();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__COVERED :
 				return covereds != null && !covereds.isEmpty();
-			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_INTERACTION :
-				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
+			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_INTERACTION :
+				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__GENERAL_ORDERING :
 				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__CFRAGMENT_GATE :
@@ -479,16 +469,16 @@ public class ConsiderIgnoreFragmentImpl
 				return allOwnedElements();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -499,6 +489,8 @@ public class ConsiderIgnoreFragmentImpl
 				return getLabel();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___ALL_OWNING_PACKAGES :
@@ -506,33 +498,29 @@ public class ConsiderIgnoreFragmentImpl
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___SEPARATOR :
 				return separator();
+			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_BREAK__DIAGNOSTICCHAIN_MAP :
 				return validateBreak((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_OPT_LOOP_BREAK_NEG__DIAGNOSTICCHAIN_MAP :
-				return validateOptLoopBreakNeg(
-					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_CONSIDER_AND_IGNORE__DIAGNOSTICCHAIN_MAP :
 				return validateConsiderAndIgnore(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_MININT_AND_MAXINT__DIAGNOSTICCHAIN_MAP :
-				return validateMinintAndMaxint(
+			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_OPT_LOOP_BREAK_NEG__DIAGNOSTICCHAIN_MAP :
+				return validateOptLoopBreakNeg(
 					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_TYPE__DIAGNOSTICCHAIN_MAP :
-				return validateType((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_CONSIDER_OR_IGNORE__DIAGNOSTICCHAIN_MAP :
 				return validateConsiderOrIgnore(
 					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___VALIDATE_TYPE__DIAGNOSTICCHAIN_MAP :
+				return validateType((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

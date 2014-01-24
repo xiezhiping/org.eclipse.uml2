@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,8 +30,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ReplyAction#validateEventOnReplyToCallTrigger(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Event On Reply To Call Trigger</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReplyAction#validatePinsMatchParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Pins Match Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReplyAction#validateEventOnReplyToCallTrigger(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Event On Reply To Call Trigger</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,8 +53,13 @@ public class ReplyActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The reply value pins must match the return, out, and inout parameters of the operation on the event on the trigger in number, type, and order.
-	 * true
+	 * The replyValue InputPins must match the output (return, out, and inout) parameters of the operation of the event of the replyToCall Trigger in number, type, ordering, and multiplicity.
+	 * let parameter:OrderedSet(Parameter) = replyToCall.event.oclAsType(CallEvent).operation.outputParameters() in
+	 * replyValue->size()=parameter->size() and
+	 * Sequence{1..replyValue->size()}->forAll(i |
+	 * 	replyValue->at(i).type.conformsTo(parameter->at(i).type) and
+	 * 	replyValue->at(i).isOrdered=parameter->at(i).isOrdered and
+	 * 	replyValue->at(i).compatibleWith(parameter->at(i)))
 	 * @param replyAction The receiving '<em><b>Reply Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -88,8 +93,8 @@ public class ReplyActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The event on replyToCall trigger must be a CallEvent replyToCallEvent.oclIsKindOf(CallEvent)
-	 * replyToCallEvent.oclIsKindOf(CallEvent)
+	 * The event of the replyToCall Trigger must be a CallEvent.
+	 * replyToCall.event.oclIsKindOf(CallEvent)
 	 * @param replyAction The receiving '<em><b>Reply Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

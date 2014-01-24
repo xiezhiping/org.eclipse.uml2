@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -38,7 +38,6 @@ import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.GeneralizationSet;
@@ -70,8 +69,8 @@ import org.eclipse.uml2.uml.internal.operations.SignalOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.SignalImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.SignalImpl#getAttributes <em>Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.SignalImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.SignalImpl#getOwnedAttributes <em>Owned Attribute</em>}</li>
  * </ul>
  * </p>
@@ -262,29 +261,26 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.SIGNAL__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SIGNAL__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.SIGNAL__OWNED_RULE :
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.SIGNAL__ELEMENT_IMPORT :
 				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.SIGNAL__PACKAGE_IMPORT :
 				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.SIGNAL__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.SIGNAL__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.SIGNAL__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.SIGNAL__OWNED_TEMPLATE_SIGNATURE :
-				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.SIGNAL__TEMPLATE_BINDING :
 				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.SIGNAL__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.SIGNAL__COLLABORATION_USE :
 				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
@@ -344,12 +340,12 @@ public class SignalImpl
 				return getQualifiedName();
 			case UMLPackage.SIGNAL__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.SIGNAL__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.SIGNAL__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.SIGNAL__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.SIGNAL__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.SIGNAL__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.SIGNAL__IMPORTED_MEMBER :
@@ -374,12 +370,12 @@ public class SignalImpl
 				if (resolve)
 					return getPackage();
 				return basicGetPackage();
+			case UMLPackage.SIGNAL__TEMPLATE_BINDING :
+				return getTemplateBindings();
 			case UMLPackage.SIGNAL__OWNED_TEMPLATE_SIGNATURE :
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.SIGNAL__TEMPLATE_BINDING :
-				return getTemplateBindings();
 			case UMLPackage.SIGNAL__FEATURE :
 				return getFeatures();
 			case UMLPackage.SIGNAL__ATTRIBUTE :
@@ -435,11 +431,6 @@ public class SignalImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.SIGNAL__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.SIGNAL__NAME :
 				setName((String) newValue);
 				return;
@@ -448,6 +439,11 @@ public class SignalImpl
 				return;
 			case UMLPackage.SIGNAL__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.SIGNAL__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.SIGNAL__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -458,11 +454,6 @@ public class SignalImpl
 				getPackageImports().clear();
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
-				return;
-			case UMLPackage.SIGNAL__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.SIGNAL__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -476,13 +467,13 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
-			case UMLPackage.SIGNAL__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
-				return;
 			case UMLPackage.SIGNAL__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
+				return;
+			case UMLPackage.SIGNAL__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.SIGNAL__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -555,9 +546,6 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.SIGNAL__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.SIGNAL__NAME :
 				unsetName();
 				return;
@@ -567,14 +555,14 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__VISIBILITY :
 				unsetVisibility();
 				return;
+			case UMLPackage.SIGNAL__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.SIGNAL__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.SIGNAL__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				return;
-			case UMLPackage.SIGNAL__OWNED_RULE :
-				getOwnedRules().clear();
 				return;
 			case UMLPackage.SIGNAL__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
@@ -588,11 +576,11 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
 				return;
-			case UMLPackage.SIGNAL__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) null);
-				return;
 			case UMLPackage.SIGNAL__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
+				return;
+			case UMLPackage.SIGNAL__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
 			case UMLPackage.SIGNAL__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -651,8 +639,7 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__OWNER :
 				return isSetOwner();
 			case UMLPackage.SIGNAL__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.SIGNAL__NAME :
 				return isSetName();
 			case UMLPackage.SIGNAL__NAME_EXPRESSION :
@@ -665,12 +652,12 @@ public class SignalImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.SIGNAL__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.SIGNAL__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.SIGNAL__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.SIGNAL__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.SIGNAL__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.SIGNAL__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.SIGNAL__IMPORTED_MEMBER :
@@ -689,10 +676,10 @@ public class SignalImpl
 				return isSetTemplateParameter();
 			case UMLPackage.SIGNAL__PACKAGE :
 				return basicGetPackage() != null;
-			case UMLPackage.SIGNAL__OWNED_TEMPLATE_SIGNATURE :
-				return isSetOwnedTemplateSignature();
 			case UMLPackage.SIGNAL__TEMPLATE_BINDING :
 				return templateBindings != null && !templateBindings.isEmpty();
+			case UMLPackage.SIGNAL__OWNED_TEMPLATE_SIGNATURE :
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.SIGNAL__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.SIGNAL__ATTRIBUTE :
@@ -821,16 +808,16 @@ public class SignalImpl
 				return allOwnedElements();
 			case UMLPackage.SIGNAL___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.SIGNAL___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.SIGNAL___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.SIGNAL___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.SIGNAL___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.SIGNAL___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -841,6 +828,8 @@ public class SignalImpl
 				return getLabel();
 			case UMLPackage.SIGNAL___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.SIGNAL___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.SIGNAL___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.SIGNAL___ALL_OWNING_PACKAGES :
@@ -848,14 +837,22 @@ public class SignalImpl
 			case UMLPackage.SIGNAL___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.SIGNAL___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.SIGNAL___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.SIGNAL___SEPARATOR :
 				return separator();
+			case UMLPackage.SIGNAL___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.SIGNAL___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.SIGNAL___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.SIGNAL___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.SIGNAL___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -870,6 +867,8 @@ public class SignalImpl
 				return getImportedElements();
 			case UMLPackage.SIGNAL___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.SIGNAL___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.SIGNAL___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -882,8 +881,6 @@ public class SignalImpl
 				return getImportedMembers();
 			case UMLPackage.SIGNAL___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.SIGNAL___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 			case UMLPackage.SIGNAL___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -905,6 +902,10 @@ public class SignalImpl
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.SIGNAL___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.SIGNAL___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.SIGNAL___CREATE_ASSOCIATION__BOOLEAN_AGGREGATIONKIND_STRING_INT_INT_TYPE_BOOLEAN_AGGREGATIONKIND_STRING_INT_INT :
 				return createAssociation((Boolean) arguments.get(0),
 					(AggregationKind) arguments.get(1),
@@ -922,20 +923,20 @@ public class SignalImpl
 				return isTemplate();
 			case UMLPackage.SIGNAL___PARAMETERABLE_ELEMENTS :
 				return parameterableElements();
-			case UMLPackage.SIGNAL___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
-				return validateNonFinalParents(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.SIGNAL___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
-				return validateNoCyclesInGeneralization(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.SIGNAL___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateSpecializeType(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.SIGNAL___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
 				return validateMapsToGeneralizationSet(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.SIGNAL___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
+				return validateNonFinalParents(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.SIGNAL___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
+				return validateNoCyclesInGeneralization(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.SIGNAL___GET_ALL_ATTRIBUTES :
@@ -960,8 +961,6 @@ public class SignalImpl
 				return allFeatures();
 			case UMLPackage.SIGNAL___ALL_PARENTS :
 				return allParents();
-			case UMLPackage.SIGNAL___CONFORMS_TO__CLASSIFIER :
-				return conformsTo((Classifier) arguments.get(0));
 			case UMLPackage.SIGNAL___GET_GENERALS :
 				return getGenerals();
 			case UMLPackage.SIGNAL___HAS_VISIBILITY_OF__NAMEDELEMENT :
@@ -976,6 +975,20 @@ public class SignalImpl
 				return maySpecializeType((Classifier) arguments.get(0));
 			case UMLPackage.SIGNAL___PARENTS :
 				return parents();
+			case UMLPackage.SIGNAL___DIRECTLY_REALIZED_INTERFACES :
+				return directlyRealizedInterfaces();
+			case UMLPackage.SIGNAL___DIRECTLY_USED_INTERFACES :
+				return directlyUsedInterfaces();
+			case UMLPackage.SIGNAL___ALL_REALIZED_INTERFACES :
+				return allRealizedInterfaces();
+			case UMLPackage.SIGNAL___ALL_USED_INTERFACES :
+				return allUsedInterfaces();
+			case UMLPackage.SIGNAL___IS_SUBSTITUTABLE_FOR__CLASSIFIER :
+				return isSubstitutableFor((Classifier) arguments.get(0));
+			case UMLPackage.SIGNAL___ALL_ATTRIBUTES :
+				return allAttributes();
+			case UMLPackage.SIGNAL___ALL_SLOTTABLE_FEATURES :
+				return allSlottableFeatures();
 			case UMLPackage.SIGNAL___CREATE_OWNED_ATTRIBUTE__STRING_TYPE_INT_INT :
 				return createOwnedAttribute((String) arguments.get(0),
 					(Type) arguments.get(1), (Integer) arguments.get(2),
@@ -996,6 +1009,16 @@ public class SignalImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getAttributes() <em>Attribute</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAttributes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] ATTRIBUTE_ESUBSETS = new int[]{UMLPackage.SIGNAL__OWNED_ATTRIBUTE};
+
+	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1006,16 +1029,6 @@ public class SignalImpl
 	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[]{
 		UMLPackage.SIGNAL__OWNED_RULE, UMLPackage.SIGNAL__OWNED_USE_CASE,
 		UMLPackage.SIGNAL__OWNED_ATTRIBUTE};
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getAttributes() <em>Attribute</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAttributes()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] ATTRIBUTE_ESUBSETS = new int[]{UMLPackage.SIGNAL__OWNED_ATTRIBUTE};
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: AbstractionImpl.java,v 1.22 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -34,7 +33,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Abstraction;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.OpaqueExpression;
@@ -230,18 +228,12 @@ public class AbstractionImpl
 			case UMLPackage.ABSTRACTION__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ABSTRACTION__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ABSTRACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.ABSTRACTION__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.ABSTRACTION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.ABSTRACTION__CLIENT :
-				return ((InternalEList<?>) getClients()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.ABSTRACTION__MAPPING :
 				return basicSetMapping(null, msgs);
 		}
@@ -327,11 +319,6 @@ public class AbstractionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.ABSTRACTION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.ABSTRACTION__NAME :
 				setName((String) newValue);
 				return;
@@ -378,9 +365,6 @@ public class AbstractionImpl
 			case UMLPackage.ABSTRACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.ABSTRACTION__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.ABSTRACTION__NAME :
 				unsetName();
 				return;
@@ -426,8 +410,7 @@ public class AbstractionImpl
 			case UMLPackage.ABSTRACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.ABSTRACTION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.ABSTRACTION__NAME :
 				return isSetName();
 			case UMLPackage.ABSTRACTION__NAME_EXPRESSION :

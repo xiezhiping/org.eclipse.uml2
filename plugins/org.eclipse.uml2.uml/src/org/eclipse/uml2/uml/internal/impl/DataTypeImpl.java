@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -39,7 +39,6 @@ import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataType;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Generalization;
@@ -73,8 +72,8 @@ import org.eclipse.uml2.uml.internal.operations.DataTypeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.DataTypeImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DataTypeImpl#getAttributes <em>Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DataTypeImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DataTypeImpl#getFeatures <em>Feature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DataTypeImpl#getOwnedAttributes <em>Owned Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DataTypeImpl#getOwnedOperations <em>Owned Operation</em>}</li>
@@ -402,16 +401,6 @@ public class DataTypeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EList<NamedElement> inherit(EList<NamedElement> inhs) {
-		return DataTypeOperations.inherit(this, inhs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
@@ -420,17 +409,14 @@ public class DataTypeImpl
 			case UMLPackage.DATA_TYPE__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.DATA_TYPE__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+			case UMLPackage.DATA_TYPE__OWNED_RULE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.DATA_TYPE__ELEMENT_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.DATA_TYPE__PACKAGE_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.DATA_TYPE__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.DATA_TYPE__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
@@ -445,6 +431,9 @@ public class DataTypeImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
+			case UMLPackage.DATA_TYPE__TEMPLATE_BINDING :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.DATA_TYPE__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -453,9 +442,6 @@ public class DataTypeImpl
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
-			case UMLPackage.DATA_TYPE__TEMPLATE_BINDING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.DATA_TYPE__GENERALIZATION :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getGeneralizations())
 					.basicAdd(otherEnd, msgs);
@@ -493,29 +479,26 @@ public class DataTypeImpl
 			case UMLPackage.DATA_TYPE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.DATA_TYPE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DATA_TYPE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.DATA_TYPE__OWNED_RULE :
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.DATA_TYPE__ELEMENT_IMPORT :
 				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.DATA_TYPE__PACKAGE_IMPORT :
 				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.DATA_TYPE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.DATA_TYPE__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.DATA_TYPE__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.DATA_TYPE__OWNED_TEMPLATE_SIGNATURE :
-				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.DATA_TYPE__TEMPLATE_BINDING :
 				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.DATA_TYPE__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.DATA_TYPE__COLLABORATION_USE :
 				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
@@ -578,12 +561,12 @@ public class DataTypeImpl
 				return getQualifiedName();
 			case UMLPackage.DATA_TYPE__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.DATA_TYPE__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.DATA_TYPE__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.DATA_TYPE__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.DATA_TYPE__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.DATA_TYPE__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.DATA_TYPE__IMPORTED_MEMBER :
@@ -608,12 +591,12 @@ public class DataTypeImpl
 				if (resolve)
 					return getPackage();
 				return basicGetPackage();
+			case UMLPackage.DATA_TYPE__TEMPLATE_BINDING :
+				return getTemplateBindings();
 			case UMLPackage.DATA_TYPE__OWNED_TEMPLATE_SIGNATURE :
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.DATA_TYPE__TEMPLATE_BINDING :
-				return getTemplateBindings();
 			case UMLPackage.DATA_TYPE__FEATURE :
 				return getFeatures();
 			case UMLPackage.DATA_TYPE__ATTRIBUTE :
@@ -671,11 +654,6 @@ public class DataTypeImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.DATA_TYPE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.DATA_TYPE__NAME :
 				setName((String) newValue);
 				return;
@@ -684,6 +662,11 @@ public class DataTypeImpl
 				return;
 			case UMLPackage.DATA_TYPE__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.DATA_TYPE__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.DATA_TYPE__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -694,11 +677,6 @@ public class DataTypeImpl
 				getPackageImports().clear();
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
-				return;
-			case UMLPackage.DATA_TYPE__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.DATA_TYPE__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -712,13 +690,13 @@ public class DataTypeImpl
 			case UMLPackage.DATA_TYPE__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
-			case UMLPackage.DATA_TYPE__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
-				return;
 			case UMLPackage.DATA_TYPE__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
+				return;
+			case UMLPackage.DATA_TYPE__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.DATA_TYPE__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -796,9 +774,6 @@ public class DataTypeImpl
 			case UMLPackage.DATA_TYPE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.DATA_TYPE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.DATA_TYPE__NAME :
 				unsetName();
 				return;
@@ -808,14 +783,14 @@ public class DataTypeImpl
 			case UMLPackage.DATA_TYPE__VISIBILITY :
 				unsetVisibility();
 				return;
+			case UMLPackage.DATA_TYPE__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.DATA_TYPE__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.DATA_TYPE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				return;
-			case UMLPackage.DATA_TYPE__OWNED_RULE :
-				getOwnedRules().clear();
 				return;
 			case UMLPackage.DATA_TYPE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
@@ -829,11 +804,11 @@ public class DataTypeImpl
 			case UMLPackage.DATA_TYPE__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
 				return;
-			case UMLPackage.DATA_TYPE__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) null);
-				return;
 			case UMLPackage.DATA_TYPE__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
+				return;
+			case UMLPackage.DATA_TYPE__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
 			case UMLPackage.DATA_TYPE__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -895,8 +870,7 @@ public class DataTypeImpl
 			case UMLPackage.DATA_TYPE__OWNER :
 				return isSetOwner();
 			case UMLPackage.DATA_TYPE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.DATA_TYPE__NAME :
 				return isSetName();
 			case UMLPackage.DATA_TYPE__NAME_EXPRESSION :
@@ -909,12 +883,12 @@ public class DataTypeImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.DATA_TYPE__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.DATA_TYPE__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.DATA_TYPE__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.DATA_TYPE__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.DATA_TYPE__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.DATA_TYPE__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.DATA_TYPE__IMPORTED_MEMBER :
@@ -933,10 +907,10 @@ public class DataTypeImpl
 				return isSetTemplateParameter();
 			case UMLPackage.DATA_TYPE__PACKAGE :
 				return basicGetPackage() != null;
-			case UMLPackage.DATA_TYPE__OWNED_TEMPLATE_SIGNATURE :
-				return isSetOwnedTemplateSignature();
 			case UMLPackage.DATA_TYPE__TEMPLATE_BINDING :
 				return templateBindings != null && !templateBindings.isEmpty();
+			case UMLPackage.DATA_TYPE__OWNED_TEMPLATE_SIGNATURE :
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.DATA_TYPE__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.DATA_TYPE__ATTRIBUTE :
@@ -1067,16 +1041,16 @@ public class DataTypeImpl
 				return allOwnedElements();
 			case UMLPackage.DATA_TYPE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.DATA_TYPE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DATA_TYPE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DATA_TYPE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.DATA_TYPE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DATA_TYPE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1087,6 +1061,8 @@ public class DataTypeImpl
 				return getLabel();
 			case UMLPackage.DATA_TYPE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.DATA_TYPE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.DATA_TYPE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.DATA_TYPE___ALL_OWNING_PACKAGES :
@@ -1094,14 +1070,22 @@ public class DataTypeImpl
 			case UMLPackage.DATA_TYPE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.DATA_TYPE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.DATA_TYPE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.DATA_TYPE___SEPARATOR :
 				return separator();
+			case UMLPackage.DATA_TYPE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.DATA_TYPE___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.DATA_TYPE___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.DATA_TYPE___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DATA_TYPE___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -1116,6 +1100,8 @@ public class DataTypeImpl
 				return getImportedElements();
 			case UMLPackage.DATA_TYPE___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.DATA_TYPE___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.DATA_TYPE___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -1128,8 +1114,6 @@ public class DataTypeImpl
 				return getImportedMembers();
 			case UMLPackage.DATA_TYPE___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.DATA_TYPE___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 			case UMLPackage.DATA_TYPE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -1151,6 +1135,10 @@ public class DataTypeImpl
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.DATA_TYPE___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.DATA_TYPE___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
+				return validateNamespaceNeedsVisibility(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DATA_TYPE___CREATE_ASSOCIATION__BOOLEAN_AGGREGATIONKIND_STRING_INT_INT_TYPE_BOOLEAN_AGGREGATIONKIND_STRING_INT_INT :
 				return createAssociation((Boolean) arguments.get(0),
 					(AggregationKind) arguments.get(1),
@@ -1168,20 +1156,20 @@ public class DataTypeImpl
 				return isTemplate();
 			case UMLPackage.DATA_TYPE___PARAMETERABLE_ELEMENTS :
 				return parameterableElements();
-			case UMLPackage.DATA_TYPE___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
-				return validateNonFinalParents(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.DATA_TYPE___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
-				return validateNoCyclesInGeneralization(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DATA_TYPE___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateSpecializeType(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DATA_TYPE___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
 				return validateMapsToGeneralizationSet(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.DATA_TYPE___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
+				return validateNonFinalParents(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.DATA_TYPE___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
+				return validateNoCyclesInGeneralization(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DATA_TYPE___GET_ALL_ATTRIBUTES :
@@ -1206,8 +1194,6 @@ public class DataTypeImpl
 				return allFeatures();
 			case UMLPackage.DATA_TYPE___ALL_PARENTS :
 				return allParents();
-			case UMLPackage.DATA_TYPE___CONFORMS_TO__CLASSIFIER :
-				return conformsTo((Classifier) arguments.get(0));
 			case UMLPackage.DATA_TYPE___GET_GENERALS :
 				return getGenerals();
 			case UMLPackage.DATA_TYPE___HAS_VISIBILITY_OF__NAMEDELEMENT :
@@ -1222,6 +1208,20 @@ public class DataTypeImpl
 				return maySpecializeType((Classifier) arguments.get(0));
 			case UMLPackage.DATA_TYPE___PARENTS :
 				return parents();
+			case UMLPackage.DATA_TYPE___DIRECTLY_REALIZED_INTERFACES :
+				return directlyRealizedInterfaces();
+			case UMLPackage.DATA_TYPE___DIRECTLY_USED_INTERFACES :
+				return directlyUsedInterfaces();
+			case UMLPackage.DATA_TYPE___ALL_REALIZED_INTERFACES :
+				return allRealizedInterfaces();
+			case UMLPackage.DATA_TYPE___ALL_USED_INTERFACES :
+				return allUsedInterfaces();
+			case UMLPackage.DATA_TYPE___IS_SUBSTITUTABLE_FOR__CLASSIFIER :
+				return isSubstitutableFor((Classifier) arguments.get(0));
+			case UMLPackage.DATA_TYPE___ALL_ATTRIBUTES :
+				return allAttributes();
+			case UMLPackage.DATA_TYPE___ALL_SLOTTABLE_FEATURES :
+				return allSlottableFeatures();
 			case UMLPackage.DATA_TYPE___CREATE_OWNED_ATTRIBUTE__STRING_TYPE_INT_INT :
 				return createOwnedAttribute((String) arguments.get(0),
 					(Type) arguments.get(1), (Integer) arguments.get(2),
@@ -1246,6 +1246,16 @@ public class DataTypeImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getAttributes() <em>Attribute</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAttributes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] ATTRIBUTE_ESUBSETS = new int[]{UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE};
+
+	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1257,16 +1267,6 @@ public class DataTypeImpl
 		UMLPackage.DATA_TYPE__OWNED_RULE, UMLPackage.DATA_TYPE__OWNED_USE_CASE,
 		UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE,
 		UMLPackage.DATA_TYPE__OWNED_OPERATION};
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getAttributes() <em>Attribute</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAttributes()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] ATTRIBUTE_ESUBSETS = new int[]{UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE};
 
 	/**
 	 * <!-- begin-user-doc -->

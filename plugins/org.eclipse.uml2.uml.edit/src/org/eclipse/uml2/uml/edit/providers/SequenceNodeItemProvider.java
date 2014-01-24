@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation, 204200
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: SequenceNodeItemProvider.java,v 1.18 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -392,10 +391,10 @@ public class SequenceNodeItemProvider
 		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
 			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
 			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
-			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE
-			|| childFeature == UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE
 			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_INPUT
-			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_OUTPUT;
+			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE
+			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_OUTPUT
+			|| childFeature == UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

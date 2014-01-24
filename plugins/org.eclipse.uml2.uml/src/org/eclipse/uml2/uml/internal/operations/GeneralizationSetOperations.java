@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 351774
+ *   Kenn Hussey (CEA) - 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,15 +30,15 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.GeneralizationSet#validateMapsToGeneralizationSet(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maps To Generalization Set</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.GeneralizationSet#validateGeneralizationSameClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Generalization Same Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.GeneralizationSet#validateMapsToGeneralizationSet(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maps To Generalization Set</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class GeneralizationSetOperations
-		extends NamedElementOperations {
+		extends PackageableElementOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class GeneralizationSetOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Every Generalization associated with a particular GeneralizationSet must have the same general Classifier.
-	 * generalization->collect(g | g.general)->asSet()->size() <= 1
+	 * generalization->collect(general)->asSet()->size() <= 1
 	 * @param generalizationSet The receiving '<em><b>Generalization Set</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -90,7 +90,9 @@ public class GeneralizationSetOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Classifier that maps to a GeneralizationSet may neither be a specific nor a general Classifier in any of the Generalization relationships defined for that GeneralizationSet. In other words, a power type may not be an instance of itself nor may its instances be its subclasses.
-	 * true
+	 * powertype <> null implies generalization->forAll( gen | 
+	 *     not (gen.general = powertype) and not gen.general.allParents()->includes(powertype) and not (gen.specific = powertype) and not powertype.allParents()->includes(gen.specific)
+	 *   )
 	 * @param generalizationSet The receiving '<em><b>Generalization Set</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

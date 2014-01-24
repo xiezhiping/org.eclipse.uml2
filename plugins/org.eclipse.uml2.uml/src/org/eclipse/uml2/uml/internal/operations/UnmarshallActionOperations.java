@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,13 +30,11 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateSameType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateStructuralFeature(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Structural Feature</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateMultiplicityOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Object</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateTypeAndOrdering(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type And Ordering</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateNumberOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Number Of Result</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateUnmarshallTypeIsClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Unmarshall Type Is Classifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateMultiplicityOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Result</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateTypeOrderingAndMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Ordering And Multiplicity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateMultiplicityOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Object</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#validateObjectType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Object Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -58,43 +56,8 @@ public class UnmarshallActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the object input pin must be the same as the unmarshall classifier.
-	 * true
-	 * @param unmarshallAction The receiving '<em><b>Unmarshall Action</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateSameType(UnmarshallAction unmarshallAction,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.UNMARSHALL_ACTION__SAME_TYPE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSameType", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(unmarshallAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{unmarshallAction}));
-			}
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The multiplicity of the object input pin is 1..1
-	 * true
+	 * The multiplicity of the object InputPin is 1..1
+	 * object.is(1,1)
 	 * @param unmarshallAction The receiving '<em><b>Unmarshall Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -129,8 +92,43 @@ public class UnmarshallActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The number of result output pins must be the same as the number of structural features of the unmarshall classifier.
-	 * true
+	 * The type of the object InputPin conform to the unmarshallType.
+	 * object.type.conformsTo(unmarshallType)
+	 * @param unmarshallAction The receiving '<em><b>Unmarshall Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateObjectType(UnmarshallAction unmarshallAction,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.UNMARSHALL_ACTION__OBJECT_TYPE,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateObjectType", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(unmarshallAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{unmarshallAction}));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The number of result outputPins must be the same as the number of attributes of the unmarshallType.
+	 * unmarshallType.allAttributes()->size() = result->size()
 	 * @param unmarshallAction The receiving '<em><b>Unmarshall Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -165,15 +163,19 @@ public class UnmarshallActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type and ordering of each result output pin must be the same as the corresponding structural feature of the unmarshall classifier.
-	 * true
+	 * The type, ordering and multiplicity of each attribute of the unmarshallType must be compatible with the type, ordering and multiplicity of the corresponding result OutputPin.
+	 * let attribute:OrderedSet(Property) = unmarshallType.allAttributes() in
+	 * Sequence{1..result->size()}->forAll(i | 
+	 * 	attribute->at(i).type.conformsTo(result->at(i).type) and
+	 * 	attribute->at(i).isOrdered=result->at(i).isOrdered and
+	 * 	attribute->at(i).compatibleWith(result->at(i)))
 	 * @param unmarshallAction The receiving '<em><b>Unmarshall Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateTypeAndOrdering(
+	public static boolean validateTypeOrderingAndMultiplicity(
 			UnmarshallAction unmarshallAction, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		// TODO: implement this method
@@ -186,10 +188,10 @@ public class UnmarshallActionOperations
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.UNMARSHALL_ACTION__TYPE_AND_ORDERING,
+						UMLValidator.UNMARSHALL_ACTION__TYPE_ORDERING_AND_MULTIPLICITY,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateTypeAndOrdering", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(unmarshallAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateTypeOrderingAndMultiplicity", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(unmarshallAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{unmarshallAction}));
 			}
 			return false;
@@ -201,44 +203,8 @@ public class UnmarshallActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of each result output pin must be compatible with the multiplicity of the corresponding structural features of the unmarshall classifier.
-	 * true
-	 * @param unmarshallAction The receiving '<em><b>Unmarshall Action</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateMultiplicityOfResult(
-			UnmarshallAction unmarshallAction, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.UNMARSHALL_ACTION__MULTIPLICITY_OF_RESULT,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMultiplicityOfResult", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(unmarshallAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{unmarshallAction}));
-			}
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The unmarshall classifier must have at least one structural feature.
-	 * true
+	 * The unmarshallType must have at least one StructuralFeature.
+	 * unmarshallType.allAttributes()->size() >= 1
 	 * @param unmarshallAction The receiving '<em><b>Unmarshall Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -262,42 +228,6 @@ public class UnmarshallActionOperations
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
 								"_UI_GenericInvariant_diagnostic", new Object[]{"validateStructuralFeature", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(unmarshallAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{unmarshallAction}));
-			}
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * unmarshallType must be a Classifier with ordered attributes
-	 * true
-	 * @param unmarshallAction The receiving '<em><b>Unmarshall Action</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateUnmarshallTypeIsClassifier(
-			UnmarshallAction unmarshallAction, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.UNMARSHALL_ACTION__UNMARSHALL_TYPE_IS_CLASSIFIER,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateUnmarshallTypeIsClassifier", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(unmarshallAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{unmarshallAction}));
 			}
 			return false;

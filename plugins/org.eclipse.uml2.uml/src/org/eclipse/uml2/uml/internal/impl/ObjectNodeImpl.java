@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -45,7 +45,6 @@ import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.NamedElement;
@@ -565,24 +564,21 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.OBJECT_NODE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.OBJECT_NODE__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
-				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
 				return ((InternalEList<?>) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
+			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
+				return basicSetInStructuredNode(null, msgs);
+			case UMLPackage.OBJECT_NODE__INCOMING :
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__OUTGOING :
 				return ((InternalEList<?>) getOutgoings()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.OBJECT_NODE__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
+			case UMLPackage.OBJECT_NODE__IN_PARTITION :
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__UPPER_BOUND :
 				return basicSetUpperBound(null, msgs);
@@ -634,22 +630,22 @@ public abstract class ObjectNodeImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.OBJECT_NODE__IN_PARTITION :
-				return getInPartitions();
+			case UMLPackage.OBJECT_NODE__IN_GROUP :
+				return getInGroups();
+			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
+				return getInInterruptibleRegions();
 			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
 				if (resolve)
 					return getInStructuredNode();
 				return basicGetInStructuredNode();
-			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
-				return getInInterruptibleRegions();
-			case UMLPackage.OBJECT_NODE__OUTGOING :
-				return getOutgoings();
 			case UMLPackage.OBJECT_NODE__INCOMING :
 				return getIncomings();
-			case UMLPackage.OBJECT_NODE__IN_GROUP :
-				return getInGroups();
+			case UMLPackage.OBJECT_NODE__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.OBJECT_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
+			case UMLPackage.OBJECT_NODE__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.OBJECT_NODE__TYPE :
 				if (resolve)
 					return getType();
@@ -691,11 +687,6 @@ public abstract class ObjectNodeImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.OBJECT_NODE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.OBJECT_NODE__NAME :
 				setName((String) newValue);
 				return;
@@ -711,34 +702,34 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
-			case UMLPackage.OBJECT_NODE__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
-				return;
-			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
-				setInStructuredNode((StructuredActivityNode) newValue);
-				return;
 			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
 				getInInterruptibleRegions()
 					.addAll(
 						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
-			case UMLPackage.OBJECT_NODE__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
+				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll(
 					(Collection<? extends ActivityEdge>) newValue);
 				return;
+			case UMLPackage.OBJECT_NODE__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
+				return;
 			case UMLPackage.OBJECT_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
 				getRedefinedNodes().addAll(
 					(Collection<? extends ActivityNode>) newValue);
+				return;
+			case UMLPackage.OBJECT_NODE__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__TYPE :
 				setType((Type) newValue);
@@ -777,9 +768,6 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.OBJECT_NODE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.OBJECT_NODE__NAME :
 				unsetName();
 				return;
@@ -795,23 +783,23 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE__ACTIVITY :
 				setActivity((Activity) null);
 				return;
-			case UMLPackage.OBJECT_NODE__IN_PARTITION :
-				getInPartitions().clear();
+			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
 				return;
 			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
-			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
+			case UMLPackage.OBJECT_NODE__INCOMING :
+				getIncomings().clear();
 				return;
 			case UMLPackage.OBJECT_NODE__OUTGOING :
 				getOutgoings().clear();
 				return;
-			case UMLPackage.OBJECT_NODE__INCOMING :
-				getIncomings().clear();
-				return;
 			case UMLPackage.OBJECT_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
+				return;
+			case UMLPackage.OBJECT_NODE__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.OBJECT_NODE__TYPE :
 				setType((Type) null);
@@ -852,8 +840,7 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE__OWNER :
 				return isSetOwner();
 			case UMLPackage.OBJECT_NODE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.OBJECT_NODE__NAME :
 				return isSetName();
 			case UMLPackage.OBJECT_NODE__NAME_EXPRESSION :
@@ -874,21 +861,21 @@ public abstract class ObjectNodeImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.OBJECT_NODE__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.OBJECT_NODE__IN_PARTITION :
-				return inPartitions != null && !inPartitions.isEmpty();
-			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
-				return basicGetInStructuredNode() != null;
+			case UMLPackage.OBJECT_NODE__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
 				return inInterruptibleRegions != null
 					&& !inInterruptibleRegions.isEmpty();
-			case UMLPackage.OBJECT_NODE__OUTGOING :
-				return outgoings != null && !outgoings.isEmpty();
+			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.OBJECT_NODE__INCOMING :
 				return incomings != null && !incomings.isEmpty();
-			case UMLPackage.OBJECT_NODE__IN_GROUP :
-				return isSetInGroups();
+			case UMLPackage.OBJECT_NODE__OUTGOING :
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.OBJECT_NODE__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
+			case UMLPackage.OBJECT_NODE__IN_PARTITION :
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.OBJECT_NODE__TYPE :
 				return type != null;
 			case UMLPackage.OBJECT_NODE__IN_STATE :
@@ -1033,16 +1020,16 @@ public abstract class ObjectNodeImpl
 				return allOwnedElements();
 			case UMLPackage.OBJECT_NODE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.OBJECT_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_NODE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_NODE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_NODE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -1053,6 +1040,8 @@ public abstract class ObjectNodeImpl
 				return getLabel();
 			case UMLPackage.OBJECT_NODE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.OBJECT_NODE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.OBJECT_NODE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.OBJECT_NODE___ALL_OWNING_PACKAGES :
@@ -1060,12 +1049,12 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.OBJECT_NODE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.OBJECT_NODE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.OBJECT_NODE___SEPARATOR :
 				return separator();
+			case UMLPackage.OBJECT_NODE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.OBJECT_NODE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -1083,23 +1072,18 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.OBJECT_NODE___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
-				return validateOwned((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_NODE___VALIDATE_OWNED_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateOwnedStructuredNode(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_NODE___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateObjectFlowEdges(
+			case UMLPackage.OBJECT_NODE___CONTAINING_ACTIVITY :
+				return containingActivity();
+			case UMLPackage.OBJECT_NODE___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
+				return validateInputOutputParameter(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_NODE___VALIDATE_SELECTION_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
 				return validateSelectionBehavior(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_NODE___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
-				return validateInputOutputParameter(
+			case UMLPackage.OBJECT_NODE___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateObjectFlowEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: EncapsulatedClassifierImpl.java,v 1.26 2009/01/07 15:55:25 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -33,7 +32,6 @@ import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.EncapsulatedClassifier;
 import org.eclipse.uml2.uml.Generalization;
@@ -211,29 +209,26 @@ public abstract class EncapsulatedClassifierImpl
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_RULE :
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__ELEMENT_IMPORT :
 				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE_IMPORT :
 				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
-				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_BINDING :
 				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__COLLABORATION_USE :
 				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
@@ -296,12 +291,12 @@ public abstract class EncapsulatedClassifierImpl
 				return getQualifiedName();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__IMPORTED_MEMBER :
@@ -326,12 +321,12 @@ public abstract class EncapsulatedClassifierImpl
 				if (resolve)
 					return getPackage();
 				return basicGetPackage();
+			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_BINDING :
+				return getTemplateBindings();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_BINDING :
-				return getTemplateBindings();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__FEATURE :
 				return getFeatures();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__ATTRIBUTE :
@@ -395,11 +390,6 @@ public abstract class EncapsulatedClassifierImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__NAME :
 				setName((String) newValue);
 				return;
@@ -408,6 +398,11 @@ public abstract class EncapsulatedClassifierImpl
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -418,11 +413,6 @@ public abstract class EncapsulatedClassifierImpl
 				getPackageImports().clear();
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
-				return;
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -436,13 +426,13 @@ public abstract class EncapsulatedClassifierImpl
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
-				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
+				return;
+			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -520,9 +510,6 @@ public abstract class EncapsulatedClassifierImpl
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__NAME :
 				unsetName();
 				return;
@@ -532,14 +519,14 @@ public abstract class EncapsulatedClassifierImpl
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__VISIBILITY :
 				unsetVisibility();
 				return;
+			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				return;
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_RULE :
-				getOwnedRules().clear();
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
@@ -553,11 +540,11 @@ public abstract class EncapsulatedClassifierImpl
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
 				return;
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) null);
-				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
+				return;
+			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__COLLABORATION_USE :
 				getCollaborationUses().clear();
@@ -619,8 +606,7 @@ public abstract class EncapsulatedClassifierImpl
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNER :
 				return isSetOwner();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__NAME :
 				return isSetName();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__NAME_EXPRESSION :
@@ -633,12 +619,12 @@ public abstract class EncapsulatedClassifierImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__IMPORTED_MEMBER :
@@ -657,10 +643,10 @@ public abstract class EncapsulatedClassifierImpl
 				return isSetTemplateParameter();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE :
 				return basicGetPackage() != null;
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
-				return isSetOwnedTemplateSignature();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_BINDING :
 				return templateBindings != null && !templateBindings.isEmpty();
+			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__ATTRIBUTE :

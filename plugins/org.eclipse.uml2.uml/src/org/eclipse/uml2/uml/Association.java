@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -27,9 +27,9 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link.A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.
- * An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link. A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * A link is a tuple of values that refer to typed objects.  An Association classifies a set of links, each of which is an instance of the Association.  Each value in the link refers to an instance of the type of the corresponding end of the Association.
+ * 
+ * <p>From package UML::StructuredClassifiers.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -56,8 +56,8 @@ public interface Association
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies whether the association is derived from other model elements such as other associations or constraints.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Specifies whether the Association is derived from other model elements such as other Associations.
+	 * <p>From package UML::StructuredClassifiers.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Derived</em>' attribute.
 	 * @see #setIsDerived(boolean)
@@ -89,12 +89,12 @@ public interface Association
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the classifiers that are used as types of the ends of the association.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Classifiers that are used as types of the ends of the Association.
+	 * <p>From package UML::StructuredClassifiers.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End Type</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAssociation_EndType()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<Type> getEndTypes();
@@ -136,8 +136,8 @@ public interface Association
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Each end represents participation of instances of the classifier connected to the end in links of the association.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * Each end represents participation of instances of the Classifier connected to the end in links of the Association.
+	 * <p>From package UML::StructuredClassifiers.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Member End</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAssociation_MemberEnd()
@@ -186,8 +186,8 @@ public interface Association
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The navigable ends that are owned by the association itself.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The navigable ends that are owned by the Association itself.
+	 * <p>From package UML::StructuredClassifiers.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Navigable Owned End</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAssociation_NavigableOwnedEnd()
@@ -264,8 +264,8 @@ public interface Association
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The ends that are owned by the association itself.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The ends that are owned by the Association itself.
+	 * <p>From package UML::StructuredClassifiers.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned End</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAssociation_OwnedEnd()
@@ -332,7 +332,7 @@ public interface Association
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An association specializing another association has the same number of ends as the other association.
+	 * An Association specializing another Association has the same number of ends as the other Association.
 	 * parents()->select(oclIsKindOf(Association)).oclAsType(Association)->forAll(p | p.memberEnd->size() = self.memberEnd->size())
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -347,10 +347,10 @@ public interface Association
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * When an association specializes another association, every end of the specific association corresponds to an end of the general association, and the specific end reaches the same type or a subtype of the more general end.
-	 * Sequence{1..self.memberEnd->size()}->
-	 * 	forAll(i | self.general->select(oclIsKindOf(Association)).oclAsType(Association)->
-	 * 		forAll(ga |self.memberEnd->at(i).type.conformsTo(ga.memberEnd->at(i).type)))
+	 * When an Association specializes another Association, every end of the specific Association corresponds to an end of the general Association, and the specific end reaches the same type or a subtype of the corresponding general end.
+	 * Sequence{1..memberEnd->size()}->
+	 * 	forAll(i | general->select(oclIsKindOf(Association)).oclAsType(Association)->
+	 * 		forAll(ga | self.memberEnd->at(i).type.conformsTo(ga.memberEnd->at(i).type)))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -364,8 +364,8 @@ public interface Association
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Only binary associations can be aggregations.
-	 * self.memberEnd->exists(aggregation <> Aggregation::none) implies self.memberEnd->size() = 2
+	 * Only binary Associations can be aggregations.
+	 * memberEnd->exists(aggregation <> AggregationKind::none) implies (memberEnd->size() = 2 and memberEnd->exists(aggregation = AggregationKind::none))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -379,8 +379,8 @@ public interface Association
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Association ends of associations with more than two ends must be owned by the association.
-	 * if memberEnd->size() > 2 then ownedEnd->includesAll(memberEnd)
+	 * Ends of Associations with more than two ends must be owned by the Association itself.
+	 * memberEnd->size() > 2 implies ownedEnd->includesAll(memberEnd)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -388,6 +388,20 @@ public interface Association
 	 * @generated
 	 */
 	boolean validateAssociationEnds(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * memberEnd->forAll(type->notEmpty())
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateEndsMustBeTyped(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 	/**

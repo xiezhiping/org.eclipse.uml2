@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2013 CEA and others.
+ * Copyright (c) 2011, 2014 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
- *   Kenn Hussey (CEA) - 351774, 297216
+ *   Kenn Hussey (CEA) - 351774, 297216, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -165,16 +165,16 @@ public class DestructionOccurrenceSpecificationImpl
 				return allOwnedElements();
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -185,6 +185,8 @@ public class DestructionOccurrenceSpecificationImpl
 				return getLabel();
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___ALL_OWNING_PACKAGES :
@@ -192,17 +194,25 @@ public class DestructionOccurrenceSpecificationImpl
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___SEPARATOR :
 				return separator();
+			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___GET_COVERED :
 				return getCovered();
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___SET_COVERED__LIFELINE :
 				setCovered((Lifeline) arguments.get(0));
 				return null;
+			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___OPPOSITE_END :
+				return oppositeEnd();
+			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___IS_SEND :
+				return isSend();
+			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___IS_RECEIVE :
+				return isReceive();
+			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___ENCLOSING_FRAGMENT :
+				return enclosingFragment();
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___VALIDATE_NO_OCCURRENCE_SPECIFICATIONS_BELOW__DIAGNOSTICCHAIN_MAP :
 				return validateNoOccurrenceSpecificationsBelow(
 					(DiagnosticChain) arguments.get(0),

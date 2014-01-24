@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -28,6 +28,7 @@ import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.ActionExecutionSpecification;
 import org.eclipse.uml2.uml.ActionInputPin;
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityContent;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityFinalNode;
 import org.eclipse.uml2.uml.ActivityGroup;
@@ -322,38 +323,18 @@ public class UMLAdapterFactory
 	protected UMLSwitch<Adapter> modelSwitch = new UMLSwitch<Adapter>() {
 
 		@Override
-		public Adapter caseAbstraction(Abstraction object) {
-			return createAbstractionAdapter();
+		public Adapter caseActivityContent(ActivityContent object) {
+			return createActivityContentAdapter();
 		}
 
 		@Override
-		public Adapter caseDependency(Dependency object) {
-			return createDependencyAdapter();
+		public Adapter caseActivity(Activity object) {
+			return createActivityAdapter();
 		}
 
 		@Override
-		public Adapter casePackageableElement(PackageableElement object) {
-			return createPackageableElementAdapter();
-		}
-
-		@Override
-		public Adapter caseParameterableElement(ParameterableElement object) {
-			return createParameterableElementAdapter();
-		}
-
-		@Override
-		public Adapter caseElement(Element object) {
-			return createElementAdapter();
-		}
-
-		@Override
-		public Adapter caseComment(Comment object) {
-			return createCommentAdapter();
-		}
-
-		@Override
-		public Adapter caseStereotype(Stereotype object) {
-			return createStereotypeAdapter();
+		public Adapter caseBehavior(Behavior object) {
+			return createBehaviorAdapter();
 		}
 
 		@Override
@@ -362,13 +343,8 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseEncapsulatedClassifier(EncapsulatedClassifier object) {
-			return createEncapsulatedClassifierAdapter();
-		}
-
-		@Override
-		public Adapter caseStructuredClassifier(StructuredClassifier object) {
-			return createStructuredClassifierAdapter();
+		public Adapter caseBehavioredClassifier(BehavioredClassifier object) {
+			return createBehavioredClassifierAdapter();
 		}
 
 		@Override
@@ -387,28 +363,28 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseStringExpression(StringExpression object) {
-			return createStringExpressionAdapter();
+		public Adapter caseElement(Element object) {
+			return createElementAdapter();
 		}
 
 		@Override
-		public Adapter caseExpression(Expression object) {
-			return createExpressionAdapter();
+		public Adapter caseComment(Comment object) {
+			return createCommentAdapter();
 		}
 
 		@Override
-		public Adapter caseValueSpecification(ValueSpecification object) {
-			return createValueSpecificationAdapter();
+		public Adapter caseStereotype(Stereotype object) {
+			return createStereotypeAdapter();
 		}
 
 		@Override
-		public Adapter caseTypedElement(TypedElement object) {
-			return createTypedElementAdapter();
+		public Adapter caseImage(Image object) {
+			return createImageAdapter();
 		}
 
 		@Override
-		public Adapter caseType(Type object) {
-			return createTypeAdapter();
+		public Adapter caseProfile(Profile object) {
+			return createProfileAdapter();
 		}
 
 		@Override
@@ -417,8 +393,18 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseTemplateableElement(TemplateableElement object) {
-			return createTemplateableElementAdapter();
+		public Adapter casePackageableElement(PackageableElement object) {
+			return createPackageableElementAdapter();
+		}
+
+		@Override
+		public Adapter caseParameterableElement(ParameterableElement object) {
+			return createParameterableElementAdapter();
+		}
+
+		@Override
+		public Adapter caseTemplateParameter(TemplateParameter object) {
+			return createTemplateParameterAdapter();
 		}
 
 		@Override
@@ -427,8 +413,8 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseTemplateParameter(TemplateParameter object) {
-			return createTemplateParameterAdapter();
+		public Adapter caseTemplateableElement(TemplateableElement object) {
+			return createTemplateableElementAdapter();
 		}
 
 		@Override
@@ -453,33 +439,8 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter casePackageMerge(PackageMerge object) {
-			return createPackageMergeAdapter();
-		}
-
-		@Override
-		public Adapter caseProfileApplication(ProfileApplication object) {
-			return createProfileApplicationAdapter();
-		}
-
-		@Override
-		public Adapter caseProfile(Profile object) {
-			return createProfileAdapter();
-		}
-
-		@Override
-		public Adapter caseElementImport(ElementImport object) {
-			return createElementImportAdapter();
-		}
-
-		@Override
-		public Adapter casePackageImport(PackageImport object) {
-			return createPackageImportAdapter();
-		}
-
-		@Override
-		public Adapter caseExtension(Extension object) {
-			return createExtensionAdapter();
+		public Adapter caseType(Type object) {
+			return createTypeAdapter();
 		}
 
 		@Override
@@ -493,8 +454,18 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseStructuralFeature(StructuralFeature object) {
-			return createStructuralFeatureAdapter();
+		public Adapter caseConnectableElement(ConnectableElement object) {
+			return createConnectableElementAdapter();
+		}
+
+		@Override
+		public Adapter caseTypedElement(TypedElement object) {
+			return createTypedElementAdapter();
+		}
+
+		@Override
+		public Adapter caseConnectorEnd(ConnectorEnd object) {
+			return createConnectorEndAdapter();
 		}
 
 		@Override
@@ -503,23 +474,8 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseFeature(Feature object) {
-			return createFeatureAdapter();
-		}
-
-		@Override
-		public Adapter caseRedefinableElement(RedefinableElement object) {
-			return createRedefinableElementAdapter();
-		}
-
-		@Override
-		public Adapter caseConnectableElement(ConnectableElement object) {
-			return createConnectableElementAdapter();
-		}
-
-		@Override
-		public Adapter caseConnectorEnd(ConnectorEnd object) {
-			return createConnectorEndAdapter();
+		public Adapter caseValueSpecification(ValueSpecification object) {
+			return createValueSpecificationAdapter();
 		}
 
 		@Override
@@ -536,6 +492,11 @@ public class UMLAdapterFactory
 		@Override
 		public Adapter caseDeployment(Deployment object) {
 			return createDeploymentAdapter();
+		}
+
+		@Override
+		public Adapter caseDependency(Dependency object) {
+			return createDependencyAdapter();
 		}
 
 		@Override
@@ -560,6 +521,21 @@ public class UMLAdapterFactory
 		}
 
 		@Override
+		public Adapter caseAbstraction(Abstraction object) {
+			return createAbstractionAdapter();
+		}
+
+		@Override
+		public Adapter caseOpaqueExpression(OpaqueExpression object) {
+			return createOpaqueExpressionAdapter();
+		}
+
+		@Override
+		public Adapter caseParameter(Parameter object) {
+			return createParameterAdapter();
+		}
+
+		@Override
 		public Adapter caseOperation(Operation object) {
 			return createOperationAdapter();
 		}
@@ -570,23 +546,28 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseBehavior(Behavior object) {
-			return createBehaviorAdapter();
+		public Adapter caseFeature(Feature object) {
+			return createFeatureAdapter();
 		}
 
 		@Override
-		public Adapter caseBehavioredClassifier(BehavioredClassifier object) {
-			return createBehavioredClassifierAdapter();
+		public Adapter caseRedefinableElement(RedefinableElement object) {
+			return createRedefinableElementAdapter();
 		}
 
 		@Override
-		public Adapter caseInterfaceRealization(InterfaceRealization object) {
-			return createInterfaceRealizationAdapter();
+		public Adapter caseParameterSet(ParameterSet object) {
+			return createParameterSetAdapter();
 		}
 
 		@Override
-		public Adapter caseRealization(Realization object) {
-			return createRealizationAdapter();
+		public Adapter caseConstraint(Constraint object) {
+			return createConstraintAdapter();
+		}
+
+		@Override
+		public Adapter caseDataType(DataType object) {
+			return createDataTypeAdapter();
 		}
 
 		@Override
@@ -656,11 +637,6 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseConstraint(Constraint object) {
-			return createConstraintAdapter();
-		}
-
-		@Override
 		public Adapter caseTransition(Transition object) {
 			return createTransitionAdapter();
 		}
@@ -671,34 +647,24 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseParameter(Parameter object) {
-			return createParameterAdapter();
-		}
-
-		@Override
-		public Adapter caseParameterSet(ParameterSet object) {
-			return createParameterSetAdapter();
-		}
-
-		@Override
-		public Adapter caseDataType(DataType object) {
-			return createDataTypeAdapter();
-		}
-
-		@Override
 		public Adapter caseOperationTemplateParameter(
 				OperationTemplateParameter object) {
 			return createOperationTemplateParameterAdapter();
 		}
 
 		@Override
-		public Adapter caseExtensionEnd(ExtensionEnd object) {
-			return createExtensionEndAdapter();
+		public Adapter caseStructuralFeature(StructuralFeature object) {
+			return createStructuralFeatureAdapter();
 		}
 
 		@Override
-		public Adapter caseModel(Model object) {
-			return createModelAdapter();
+		public Adapter casePackageMerge(PackageMerge object) {
+			return createPackageMergeAdapter();
+		}
+
+		@Override
+		public Adapter caseProfileApplication(ProfileApplication object) {
+			return createProfileApplicationAdapter();
 		}
 
 		@Override
@@ -727,6 +693,41 @@ public class UMLAdapterFactory
 		}
 
 		@Override
+		public Adapter caseElementImport(ElementImport object) {
+			return createElementImportAdapter();
+		}
+
+		@Override
+		public Adapter casePackageImport(PackageImport object) {
+			return createPackageImportAdapter();
+		}
+
+		@Override
+		public Adapter caseExtension(Extension object) {
+			return createExtensionAdapter();
+		}
+
+		@Override
+		public Adapter caseExtensionEnd(ExtensionEnd object) {
+			return createExtensionEndAdapter();
+		}
+
+		@Override
+		public Adapter caseModel(Model object) {
+			return createModelAdapter();
+		}
+
+		@Override
+		public Adapter caseStringExpression(StringExpression object) {
+			return createStringExpressionAdapter();
+		}
+
+		@Override
+		public Adapter caseExpression(Expression object) {
+			return createExpressionAdapter();
+		}
+
+		@Override
 		public Adapter caseUsage(Usage object) {
 			return createUsageAdapter();
 		}
@@ -739,6 +740,16 @@ public class UMLAdapterFactory
 		@Override
 		public Adapter caseCollaboration(Collaboration object) {
 			return createCollaborationAdapter();
+		}
+
+		@Override
+		public Adapter caseStructuredClassifier(StructuredClassifier object) {
+			return createStructuredClassifierAdapter();
+		}
+
+		@Override
+		public Adapter caseConnector(Connector object) {
+			return createConnectorAdapter();
 		}
 
 		@Override
@@ -783,54 +794,24 @@ public class UMLAdapterFactory
 		}
 
 		@Override
+		public Adapter caseRealization(Realization object) {
+			return createRealizationAdapter();
+		}
+
+		@Override
 		public Adapter caseClassifierTemplateParameter(
 				ClassifierTemplateParameter object) {
 			return createClassifierTemplateParameterAdapter();
 		}
 
 		@Override
-		public Adapter caseConnector(Connector object) {
-			return createConnectorAdapter();
+		public Adapter caseInterfaceRealization(InterfaceRealization object) {
+			return createInterfaceRealizationAdapter();
 		}
 
 		@Override
-		public Adapter caseImage(Image object) {
-			return createImageAdapter();
-		}
-
-		@Override
-		public Adapter caseOpaqueExpression(OpaqueExpression object) {
-			return createOpaqueExpressionAdapter();
-		}
-
-		@Override
-		public Adapter caseAcceptCallAction(AcceptCallAction object) {
-			return createAcceptCallActionAdapter();
-		}
-
-		@Override
-		public Adapter caseAcceptEventAction(AcceptEventAction object) {
-			return createAcceptEventActionAdapter();
-		}
-
-		@Override
-		public Adapter caseAction(Action object) {
-			return createActionAdapter();
-		}
-
-		@Override
-		public Adapter caseExecutableNode(ExecutableNode object) {
-			return createExecutableNodeAdapter();
-		}
-
-		@Override
-		public Adapter caseActivityNode(ActivityNode object) {
-			return createActivityNodeAdapter();
-		}
-
-		@Override
-		public Adapter caseActivity(Activity object) {
-			return createActivityAdapter();
+		public Adapter caseEncapsulatedClassifier(EncapsulatedClassifier object) {
+			return createEncapsulatedClassifierAdapter();
 		}
 
 		@Override
@@ -849,8 +830,39 @@ public class UMLAdapterFactory
 		}
 
 		@Override
+		public Adapter caseActivityNode(ActivityNode object) {
+			return createActivityNodeAdapter();
+		}
+
+		@Override
+		public Adapter caseInterruptibleActivityRegion(
+				InterruptibleActivityRegion object) {
+			return createInterruptibleActivityRegionAdapter();
+		}
+
+		@Override
 		public Adapter caseStructuredActivityNode(StructuredActivityNode object) {
 			return createStructuredActivityNodeAdapter();
+		}
+
+		@Override
+		public Adapter caseAction(Action object) {
+			return createActionAdapter();
+		}
+
+		@Override
+		public Adapter caseExecutableNode(ExecutableNode object) {
+			return createExecutableNodeAdapter();
+		}
+
+		@Override
+		public Adapter caseExceptionHandler(ExceptionHandler object) {
+			return createExceptionHandlerAdapter();
+		}
+
+		@Override
+		public Adapter caseObjectNode(ObjectNode object) {
+			return createObjectNodeAdapter();
 		}
 
 		@Override
@@ -864,11 +876,6 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseObjectNode(ObjectNode object) {
-			return createObjectNodeAdapter();
-		}
-
-		@Override
 		public Adapter caseOutputPin(OutputPin object) {
 			return createOutputPinAdapter();
 		}
@@ -879,122 +886,34 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseInterruptibleActivityRegion(
-				InterruptibleActivityRegion object) {
-			return createInterruptibleActivityRegionAdapter();
+		public Adapter caseValueSpecificationAction(
+				ValueSpecificationAction object) {
+			return createValueSpecificationActionAdapter();
 		}
 
 		@Override
-		public Adapter caseExceptionHandler(ExceptionHandler object) {
-			return createExceptionHandlerAdapter();
+		public Adapter caseVariableAction(VariableAction object) {
+			return createVariableActionAdapter();
 		}
 
 		@Override
-		public Adapter caseActionExecutionSpecification(
-				ActionExecutionSpecification object) {
-			return createActionExecutionSpecificationAdapter();
+		public Adapter caseWriteLinkAction(WriteLinkAction object) {
+			return createWriteLinkActionAdapter();
 		}
 
 		@Override
-		public Adapter caseExecutionSpecification(ExecutionSpecification object) {
-			return createExecutionSpecificationAdapter();
+		public Adapter caseLinkAction(LinkAction object) {
+			return createLinkActionAdapter();
 		}
 
 		@Override
-		public Adapter caseInteractionFragment(InteractionFragment object) {
-			return createInteractionFragmentAdapter();
+		public Adapter caseLinkEndData(LinkEndData object) {
+			return createLinkEndDataAdapter();
 		}
 
 		@Override
-		public Adapter caseLifeline(Lifeline object) {
-			return createLifelineAdapter();
-		}
-
-		@Override
-		public Adapter casePartDecomposition(PartDecomposition object) {
-			return createPartDecompositionAdapter();
-		}
-
-		@Override
-		public Adapter caseInteractionUse(InteractionUse object) {
-			return createInteractionUseAdapter();
-		}
-
-		@Override
-		public Adapter caseGate(Gate object) {
-			return createGateAdapter();
-		}
-
-		@Override
-		public Adapter caseMessageEnd(MessageEnd object) {
-			return createMessageEndAdapter();
-		}
-
-		@Override
-		public Adapter caseMessage(Message object) {
-			return createMessageAdapter();
-		}
-
-		@Override
-		public Adapter caseInteraction(Interaction object) {
-			return createInteractionAdapter();
-		}
-
-		@Override
-		public Adapter caseInteractionOperand(InteractionOperand object) {
-			return createInteractionOperandAdapter();
-		}
-
-		@Override
-		public Adapter caseInteractionConstraint(InteractionConstraint object) {
-			return createInteractionConstraintAdapter();
-		}
-
-		@Override
-		public Adapter caseGeneralOrdering(GeneralOrdering object) {
-			return createGeneralOrderingAdapter();
-		}
-
-		@Override
-		public Adapter caseOccurrenceSpecification(
-				OccurrenceSpecification object) {
-			return createOccurrenceSpecificationAdapter();
-		}
-
-		@Override
-		public Adapter caseActionInputPin(ActionInputPin object) {
-			return createActionInputPinAdapter();
-		}
-
-		@Override
-		public Adapter caseActivityFinalNode(ActivityFinalNode object) {
-			return createActivityFinalNodeAdapter();
-		}
-
-		@Override
-		public Adapter caseFinalNode(FinalNode object) {
-			return createFinalNodeAdapter();
-		}
-
-		@Override
-		public Adapter caseControlNode(ControlNode object) {
-			return createControlNodeAdapter();
-		}
-
-		@Override
-		public Adapter caseActivityParameterNode(ActivityParameterNode object) {
-			return createActivityParameterNodeAdapter();
-		}
-
-		@Override
-		public Adapter caseActor(Actor object) {
-			return createActorAdapter();
-		}
-
-		@Override
-		public Adapter caseAddStructuralFeatureValueAction(
-				AddStructuralFeatureValueAction object) {
-			return createAddStructuralFeatureValueActionAdapter();
+		public Adapter caseQualifierValue(QualifierValue object) {
+			return createQualifierValueAdapter();
 		}
 
 		@Override
@@ -1010,39 +929,34 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseAddVariableValueAction(AddVariableValueAction object) {
-			return createAddVariableValueActionAdapter();
-		}
-
-		@Override
 		public Adapter caseWriteVariableAction(WriteVariableAction object) {
 			return createWriteVariableActionAdapter();
 		}
 
 		@Override
-		public Adapter caseVariableAction(VariableAction object) {
-			return createVariableActionAdapter();
+		public Adapter caseAcceptCallAction(AcceptCallAction object) {
+			return createAcceptCallActionAdapter();
 		}
 
 		@Override
-		public Adapter caseAnyReceiveEvent(AnyReceiveEvent object) {
-			return createAnyReceiveEventAdapter();
+		public Adapter caseAcceptEventAction(AcceptEventAction object) {
+			return createAcceptEventActionAdapter();
 		}
 
 		@Override
-		public Adapter caseMessageEvent(MessageEvent object) {
-			return createMessageEventAdapter();
+		public Adapter caseActionInputPin(ActionInputPin object) {
+			return createActionInputPinAdapter();
 		}
 
 		@Override
-		public Adapter caseAssociationClass(AssociationClass object) {
-			return createAssociationClassAdapter();
+		public Adapter caseAddStructuralFeatureValueAction(
+				AddStructuralFeatureValueAction object) {
+			return createAddStructuralFeatureValueActionAdapter();
 		}
 
 		@Override
-		public Adapter caseBehaviorExecutionSpecification(
-				BehaviorExecutionSpecification object) {
-			return createBehaviorExecutionSpecificationAdapter();
+		public Adapter caseAddVariableValueAction(AddVariableValueAction object) {
+			return createAddVariableValueActionAdapter();
 		}
 
 		@Override
@@ -1066,23 +980,8 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseCallEvent(CallEvent object) {
-			return createCallEventAdapter();
-		}
-
-		@Override
 		public Adapter caseCallOperationAction(CallOperationAction object) {
 			return createCallOperationActionAdapter();
-		}
-
-		@Override
-		public Adapter caseCentralBufferNode(CentralBufferNode object) {
-			return createCentralBufferNodeAdapter();
-		}
-
-		@Override
-		public Adapter caseChangeEvent(ChangeEvent object) {
-			return createChangeEventAdapter();
 		}
 
 		@Override
@@ -1107,68 +1006,13 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseCombinedFragment(CombinedFragment object) {
-			return createCombinedFragmentAdapter();
-		}
-
-		@Override
-		public Adapter caseCommunicationPath(CommunicationPath object) {
-			return createCommunicationPathAdapter();
-		}
-
-		@Override
-		public Adapter caseComponent(Component object) {
-			return createComponentAdapter();
-		}
-
-		@Override
-		public Adapter caseComponentRealization(ComponentRealization object) {
-			return createComponentRealizationAdapter();
-		}
-
-		@Override
 		public Adapter caseConditionalNode(ConditionalNode object) {
 			return createConditionalNodeAdapter();
 		}
 
 		@Override
-		public Adapter caseConsiderIgnoreFragment(ConsiderIgnoreFragment object) {
-			return createConsiderIgnoreFragmentAdapter();
-		}
-
-		@Override
-		public Adapter caseContinuation(Continuation object) {
-			return createContinuationAdapter();
-		}
-
-		@Override
-		public Adapter caseControlFlow(ControlFlow object) {
-			return createControlFlowAdapter();
-		}
-
-		@Override
 		public Adapter caseCreateLinkAction(CreateLinkAction object) {
 			return createCreateLinkActionAdapter();
-		}
-
-		@Override
-		public Adapter caseWriteLinkAction(WriteLinkAction object) {
-			return createWriteLinkActionAdapter();
-		}
-
-		@Override
-		public Adapter caseLinkAction(LinkAction object) {
-			return createLinkActionAdapter();
-		}
-
-		@Override
-		public Adapter caseLinkEndData(LinkEndData object) {
-			return createLinkEndDataAdapter();
-		}
-
-		@Override
-		public Adapter caseQualifierValue(QualifierValue object) {
-			return createQualifierValueAdapter();
 		}
 
 		@Override
@@ -1187,21 +1031,6 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseDataStoreNode(DataStoreNode object) {
-			return createDataStoreNodeAdapter();
-		}
-
-		@Override
-		public Adapter caseDecisionNode(DecisionNode object) {
-			return createDecisionNodeAdapter();
-		}
-
-		@Override
-		public Adapter caseObjectFlow(ObjectFlow object) {
-			return createObjectFlowAdapter();
-		}
-
-		@Override
 		public Adapter caseDestroyLinkAction(DestroyLinkAction object) {
 			return createDestroyLinkActionAdapter();
 		}
@@ -1217,74 +1046,6 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseDestructionOccurrenceSpecification(
-				DestructionOccurrenceSpecification object) {
-			return createDestructionOccurrenceSpecificationAdapter();
-		}
-
-		@Override
-		public Adapter caseMessageOccurrenceSpecification(
-				MessageOccurrenceSpecification object) {
-			return createMessageOccurrenceSpecificationAdapter();
-		}
-
-		@Override
-		public Adapter caseDevice(Device object) {
-			return createDeviceAdapter();
-		}
-
-		@Override
-		public Adapter caseNode(Node object) {
-			return createNodeAdapter();
-		}
-
-		@Override
-		public Adapter caseDuration(Duration object) {
-			return createDurationAdapter();
-		}
-
-		@Override
-		public Adapter caseObservation(Observation object) {
-			return createObservationAdapter();
-		}
-
-		@Override
-		public Adapter caseDurationConstraint(DurationConstraint object) {
-			return createDurationConstraintAdapter();
-		}
-
-		@Override
-		public Adapter caseIntervalConstraint(IntervalConstraint object) {
-			return createIntervalConstraintAdapter();
-		}
-
-		@Override
-		public Adapter caseInterval(Interval object) {
-			return createIntervalAdapter();
-		}
-
-		@Override
-		public Adapter caseDurationInterval(DurationInterval object) {
-			return createDurationIntervalAdapter();
-		}
-
-		@Override
-		public Adapter caseDurationObservation(DurationObservation object) {
-			return createDurationObservationAdapter();
-		}
-
-		@Override
-		public Adapter caseExecutionEnvironment(ExecutionEnvironment object) {
-			return createExecutionEnvironmentAdapter();
-		}
-
-		@Override
-		public Adapter caseExecutionOccurrenceSpecification(
-				ExecutionOccurrenceSpecification object) {
-			return createExecutionOccurrenceSpecificationAdapter();
-		}
-
-		@Override
 		public Adapter caseExpansionNode(ExpansionNode object) {
 			return createExpansionNodeAdapter();
 		}
@@ -1295,109 +1056,13 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseFinalState(FinalState object) {
-			return createFinalStateAdapter();
-		}
-
-		@Override
-		public Adapter caseFlowFinalNode(FlowFinalNode object) {
-			return createFlowFinalNodeAdapter();
-		}
-
-		@Override
-		public Adapter caseForkNode(ForkNode object) {
-			return createForkNodeAdapter();
-		}
-
-		@Override
-		public Adapter caseFunctionBehavior(FunctionBehavior object) {
-			return createFunctionBehaviorAdapter();
-		}
-
-		@Override
-		public Adapter caseOpaqueBehavior(OpaqueBehavior object) {
-			return createOpaqueBehaviorAdapter();
-		}
-
-		@Override
-		public Adapter caseInformationFlow(InformationFlow object) {
-			return createInformationFlowAdapter();
-		}
-
-		@Override
-		public Adapter caseInformationItem(InformationItem object) {
-			return createInformationItemAdapter();
-		}
-
-		@Override
-		public Adapter caseInitialNode(InitialNode object) {
-			return createInitialNodeAdapter();
-		}
-
-		@Override
-		public Adapter caseInstanceValue(InstanceValue object) {
-			return createInstanceValueAdapter();
-		}
-
-		@Override
-		public Adapter caseJoinNode(JoinNode object) {
-			return createJoinNodeAdapter();
-		}
-
-		@Override
-		public Adapter caseLiteralBoolean(LiteralBoolean object) {
-			return createLiteralBooleanAdapter();
-		}
-
-		@Override
-		public Adapter caseLiteralSpecification(LiteralSpecification object) {
-			return createLiteralSpecificationAdapter();
-		}
-
-		@Override
-		public Adapter caseLiteralInteger(LiteralInteger object) {
-			return createLiteralIntegerAdapter();
-		}
-
-		@Override
-		public Adapter caseLiteralNull(LiteralNull object) {
-			return createLiteralNullAdapter();
-		}
-
-		@Override
-		public Adapter caseLiteralReal(LiteralReal object) {
-			return createLiteralRealAdapter();
-		}
-
-		@Override
-		public Adapter caseLiteralString(LiteralString object) {
-			return createLiteralStringAdapter();
-		}
-
-		@Override
-		public Adapter caseLiteralUnlimitedNatural(
-				LiteralUnlimitedNatural object) {
-			return createLiteralUnlimitedNaturalAdapter();
-		}
-
-		@Override
 		public Adapter caseLoopNode(LoopNode object) {
 			return createLoopNodeAdapter();
 		}
 
 		@Override
-		public Adapter caseMergeNode(MergeNode object) {
-			return createMergeNodeAdapter();
-		}
-
-		@Override
 		public Adapter caseOpaqueAction(OpaqueAction object) {
 			return createOpaqueActionAdapter();
-		}
-
-		@Override
-		public Adapter caseProtocolTransition(ProtocolTransition object) {
-			return createProtocolTransitionAdapter();
 		}
 
 		@Override
@@ -1492,11 +1157,6 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseSignalEvent(SignalEvent object) {
-			return createSignalEventAdapter();
-		}
-
-		@Override
 		public Adapter caseStartClassifierBehaviorAction(
 				StartClassifierBehaviorAction object) {
 			return createStartClassifierBehaviorActionAdapter();
@@ -1509,38 +1169,8 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseStateInvariant(StateInvariant object) {
-			return createStateInvariantAdapter();
-		}
-
-		@Override
 		public Adapter caseTestIdentityAction(TestIdentityAction object) {
 			return createTestIdentityActionAdapter();
-		}
-
-		@Override
-		public Adapter caseTimeConstraint(TimeConstraint object) {
-			return createTimeConstraintAdapter();
-		}
-
-		@Override
-		public Adapter caseTimeInterval(TimeInterval object) {
-			return createTimeIntervalAdapter();
-		}
-
-		@Override
-		public Adapter caseTimeExpression(TimeExpression object) {
-			return createTimeExpressionAdapter();
-		}
-
-		@Override
-		public Adapter caseTimeEvent(TimeEvent object) {
-			return createTimeEventAdapter();
-		}
-
-		@Override
-		public Adapter caseTimeObservation(TimeObservation object) {
-			return createTimeObservationAdapter();
 		}
 
 		@Override
@@ -1554,9 +1184,385 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseValueSpecificationAction(
-				ValueSpecificationAction object) {
-			return createValueSpecificationActionAdapter();
+		public Adapter caseActivityFinalNode(ActivityFinalNode object) {
+			return createActivityFinalNodeAdapter();
+		}
+
+		@Override
+		public Adapter caseFinalNode(FinalNode object) {
+			return createFinalNodeAdapter();
+		}
+
+		@Override
+		public Adapter caseControlNode(ControlNode object) {
+			return createControlNodeAdapter();
+		}
+
+		@Override
+		public Adapter caseActivityParameterNode(ActivityParameterNode object) {
+			return createActivityParameterNodeAdapter();
+		}
+
+		@Override
+		public Adapter caseCentralBufferNode(CentralBufferNode object) {
+			return createCentralBufferNodeAdapter();
+		}
+
+		@Override
+		public Adapter caseControlFlow(ControlFlow object) {
+			return createControlFlowAdapter();
+		}
+
+		@Override
+		public Adapter caseDataStoreNode(DataStoreNode object) {
+			return createDataStoreNodeAdapter();
+		}
+
+		@Override
+		public Adapter caseDecisionNode(DecisionNode object) {
+			return createDecisionNodeAdapter();
+		}
+
+		@Override
+		public Adapter caseObjectFlow(ObjectFlow object) {
+			return createObjectFlowAdapter();
+		}
+
+		@Override
+		public Adapter caseFlowFinalNode(FlowFinalNode object) {
+			return createFlowFinalNodeAdapter();
+		}
+
+		@Override
+		public Adapter caseForkNode(ForkNode object) {
+			return createForkNodeAdapter();
+		}
+
+		@Override
+		public Adapter caseInitialNode(InitialNode object) {
+			return createInitialNodeAdapter();
+		}
+
+		@Override
+		public Adapter caseJoinNode(JoinNode object) {
+			return createJoinNodeAdapter();
+		}
+
+		@Override
+		public Adapter caseMergeNode(MergeNode object) {
+			return createMergeNodeAdapter();
+		}
+
+		@Override
+		public Adapter caseInstanceValue(InstanceValue object) {
+			return createInstanceValueAdapter();
+		}
+
+		@Override
+		public Adapter caseAnyReceiveEvent(AnyReceiveEvent object) {
+			return createAnyReceiveEventAdapter();
+		}
+
+		@Override
+		public Adapter caseMessageEvent(MessageEvent object) {
+			return createMessageEventAdapter();
+		}
+
+		@Override
+		public Adapter caseCallEvent(CallEvent object) {
+			return createCallEventAdapter();
+		}
+
+		@Override
+		public Adapter caseChangeEvent(ChangeEvent object) {
+			return createChangeEventAdapter();
+		}
+
+		@Override
+		public Adapter caseFunctionBehavior(FunctionBehavior object) {
+			return createFunctionBehaviorAdapter();
+		}
+
+		@Override
+		public Adapter caseOpaqueBehavior(OpaqueBehavior object) {
+			return createOpaqueBehaviorAdapter();
+		}
+
+		@Override
+		public Adapter caseSignalEvent(SignalEvent object) {
+			return createSignalEventAdapter();
+		}
+
+		@Override
+		public Adapter caseTimeEvent(TimeEvent object) {
+			return createTimeEventAdapter();
+		}
+
+		@Override
+		public Adapter caseTimeExpression(TimeExpression object) {
+			return createTimeExpressionAdapter();
+		}
+
+		@Override
+		public Adapter caseObservation(Observation object) {
+			return createObservationAdapter();
+		}
+
+		@Override
+		public Adapter caseCommunicationPath(CommunicationPath object) {
+			return createCommunicationPathAdapter();
+		}
+
+		@Override
+		public Adapter caseDevice(Device object) {
+			return createDeviceAdapter();
+		}
+
+		@Override
+		public Adapter caseNode(Node object) {
+			return createNodeAdapter();
+		}
+
+		@Override
+		public Adapter caseExecutionEnvironment(ExecutionEnvironment object) {
+			return createExecutionEnvironmentAdapter();
+		}
+
+		@Override
+		public Adapter caseInformationFlow(InformationFlow object) {
+			return createInformationFlowAdapter();
+		}
+
+		@Override
+		public Adapter caseMessage(Message object) {
+			return createMessageAdapter();
+		}
+
+		@Override
+		public Adapter caseInteraction(Interaction object) {
+			return createInteractionAdapter();
+		}
+
+		@Override
+		public Adapter caseInteractionFragment(InteractionFragment object) {
+			return createInteractionFragmentAdapter();
+		}
+
+		@Override
+		public Adapter caseLifeline(Lifeline object) {
+			return createLifelineAdapter();
+		}
+
+		@Override
+		public Adapter casePartDecomposition(PartDecomposition object) {
+			return createPartDecompositionAdapter();
+		}
+
+		@Override
+		public Adapter caseInteractionUse(InteractionUse object) {
+			return createInteractionUseAdapter();
+		}
+
+		@Override
+		public Adapter caseGate(Gate object) {
+			return createGateAdapter();
+		}
+
+		@Override
+		public Adapter caseMessageEnd(MessageEnd object) {
+			return createMessageEndAdapter();
+		}
+
+		@Override
+		public Adapter caseInteractionOperand(InteractionOperand object) {
+			return createInteractionOperandAdapter();
+		}
+
+		@Override
+		public Adapter caseInteractionConstraint(InteractionConstraint object) {
+			return createInteractionConstraintAdapter();
+		}
+
+		@Override
+		public Adapter caseGeneralOrdering(GeneralOrdering object) {
+			return createGeneralOrderingAdapter();
+		}
+
+		@Override
+		public Adapter caseOccurrenceSpecification(
+				OccurrenceSpecification object) {
+			return createOccurrenceSpecificationAdapter();
+		}
+
+		@Override
+		public Adapter caseInformationItem(InformationItem object) {
+			return createInformationItemAdapter();
+		}
+
+		@Override
+		public Adapter caseActionExecutionSpecification(
+				ActionExecutionSpecification object) {
+			return createActionExecutionSpecificationAdapter();
+		}
+
+		@Override
+		public Adapter caseExecutionSpecification(ExecutionSpecification object) {
+			return createExecutionSpecificationAdapter();
+		}
+
+		@Override
+		public Adapter caseBehaviorExecutionSpecification(
+				BehaviorExecutionSpecification object) {
+			return createBehaviorExecutionSpecificationAdapter();
+		}
+
+		@Override
+		public Adapter caseCombinedFragment(CombinedFragment object) {
+			return createCombinedFragmentAdapter();
+		}
+
+		@Override
+		public Adapter caseConsiderIgnoreFragment(ConsiderIgnoreFragment object) {
+			return createConsiderIgnoreFragmentAdapter();
+		}
+
+		@Override
+		public Adapter caseContinuation(Continuation object) {
+			return createContinuationAdapter();
+		}
+
+		@Override
+		public Adapter caseDestructionOccurrenceSpecification(
+				DestructionOccurrenceSpecification object) {
+			return createDestructionOccurrenceSpecificationAdapter();
+		}
+
+		@Override
+		public Adapter caseMessageOccurrenceSpecification(
+				MessageOccurrenceSpecification object) {
+			return createMessageOccurrenceSpecificationAdapter();
+		}
+
+		@Override
+		public Adapter caseExecutionOccurrenceSpecification(
+				ExecutionOccurrenceSpecification object) {
+			return createExecutionOccurrenceSpecificationAdapter();
+		}
+
+		@Override
+		public Adapter caseStateInvariant(StateInvariant object) {
+			return createStateInvariantAdapter();
+		}
+
+		@Override
+		public Adapter caseFinalState(FinalState object) {
+			return createFinalStateAdapter();
+		}
+
+		@Override
+		public Adapter caseProtocolTransition(ProtocolTransition object) {
+			return createProtocolTransitionAdapter();
+		}
+
+		@Override
+		public Adapter caseAssociationClass(AssociationClass object) {
+			return createAssociationClassAdapter();
+		}
+
+		@Override
+		public Adapter caseComponent(Component object) {
+			return createComponentAdapter();
+		}
+
+		@Override
+		public Adapter caseComponentRealization(ComponentRealization object) {
+			return createComponentRealizationAdapter();
+		}
+
+		@Override
+		public Adapter caseActor(Actor object) {
+			return createActorAdapter();
+		}
+
+		@Override
+		public Adapter caseDuration(Duration object) {
+			return createDurationAdapter();
+		}
+
+		@Override
+		public Adapter caseDurationConstraint(DurationConstraint object) {
+			return createDurationConstraintAdapter();
+		}
+
+		@Override
+		public Adapter caseIntervalConstraint(IntervalConstraint object) {
+			return createIntervalConstraintAdapter();
+		}
+
+		@Override
+		public Adapter caseInterval(Interval object) {
+			return createIntervalAdapter();
+		}
+
+		@Override
+		public Adapter caseDurationInterval(DurationInterval object) {
+			return createDurationIntervalAdapter();
+		}
+
+		@Override
+		public Adapter caseDurationObservation(DurationObservation object) {
+			return createDurationObservationAdapter();
+		}
+
+		@Override
+		public Adapter caseLiteralBoolean(LiteralBoolean object) {
+			return createLiteralBooleanAdapter();
+		}
+
+		@Override
+		public Adapter caseLiteralSpecification(LiteralSpecification object) {
+			return createLiteralSpecificationAdapter();
+		}
+
+		@Override
+		public Adapter caseLiteralInteger(LiteralInteger object) {
+			return createLiteralIntegerAdapter();
+		}
+
+		@Override
+		public Adapter caseLiteralNull(LiteralNull object) {
+			return createLiteralNullAdapter();
+		}
+
+		@Override
+		public Adapter caseLiteralReal(LiteralReal object) {
+			return createLiteralRealAdapter();
+		}
+
+		@Override
+		public Adapter caseLiteralString(LiteralString object) {
+			return createLiteralStringAdapter();
+		}
+
+		@Override
+		public Adapter caseLiteralUnlimitedNatural(
+				LiteralUnlimitedNatural object) {
+			return createLiteralUnlimitedNaturalAdapter();
+		}
+
+		@Override
+		public Adapter caseTimeConstraint(TimeConstraint object) {
+			return createTimeConstraintAdapter();
+		}
+
+		@Override
+		public Adapter caseTimeInterval(TimeInterval object) {
+			return createTimeIntervalAdapter();
+		}
+
+		@Override
+		public Adapter caseTimeObservation(TimeObservation object) {
+			return createTimeObservationAdapter();
 		}
 
 		@Override
@@ -1581,6 +1587,20 @@ public class UMLAdapterFactory
 	@Override
 	public Adapter createAdapter(Notifier target) {
 		return modelSwitch.doSwitch((EObject) target);
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.uml2.uml.ActivityContent <em>Activity Content</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.uml2.uml.ActivityContent
+	 * @generated
+	 */
+	public Adapter createActivityContentAdapter() {
+		return null;
 	}
 
 	/**

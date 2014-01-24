@@ -38,6 +38,12 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
        uri = "http://www.eclipse.org/uml2/4.0.0/UML" 
+       class = "org.eclipse.uml2.uml.UMLPackage" /> 
+  </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.eclipse.org/uml2/5.0.0/UML" 
        class = "org.eclipse.uml2.uml.UMLPackage"
        genModel = "model/UML.genmodel" /> 
   </extension>
@@ -90,7 +96,7 @@
               class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
            <parameter
                  name="namespacePattern"
-                 value="http://www\.eclipse\.org/uml2/(2\.0\.0|2\.1\.0|3\.0\.0|4\.0\.0)/UML" />
+                 value="http://www\.eclipse\.org/uml2/(2\.0\.0|2\.1\.0|3\.0\.0|4\.0\.0|5\.0\.0)/UML" />
            <parameter
                  name="kind"
                  value="xmi" />
@@ -155,6 +161,22 @@
            <parameter
                  name="namespace"
                  value="http://www.eclipse.org/uml2/4.0.0/UML" />
+           <parameter
+                 name="kind"
+                 value="xmi" />
+        </describer>
+     </content-type>
+     <content-type
+           base-type="org.eclipse.uml2.uml"
+           file-extensions="uml"
+           id="org.eclipse.uml2.uml_5_0_0"
+           name="%_UI_UML_5_0_0_content_type"
+           priority="normal">
+        <describer
+              class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
+           <parameter
+                 name="namespace"
+                 value="http://www.eclipse.org/uml2/5.0.0/UML" />
            <parameter
                  name="kind"
                  value="xmi" />

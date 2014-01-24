@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.uml;
@@ -24,8 +25,8 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
- * ExpansionKind is an enumeration type used to specify how multiple executions of an expansion region interact.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * ExpansionKind is an enumeration type used to specify how an ExpansionRegion executes its contents.
+ * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getExpansionKind()
  * @model
@@ -68,7 +69,7 @@ public enum ExpansionKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The executions are independent. They may be executed concurrently.
+	 * The content of the ExpansionRegion is executed concurrently for the elements of the input collections.
 	 * <!-- end-model-doc -->
 	 * @see #PARALLEL_LITERAL
 	 * @model name="parallel"
@@ -82,7 +83,7 @@ public enum ExpansionKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The executions are dependent and must be executed one at a time, in order of the collection elements.
+	 * The content of the ExpansionRegion is executed iteratively for the elements of the input collections, in the order of the input elements, if the collections are ordered.
 	 * <!-- end-model-doc -->
 	 * @see #ITERATIVE_LITERAL
 	 * @model name="iterative"
@@ -96,7 +97,7 @@ public enum ExpansionKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A stream of collection elements flows into a single execution, in order of the collection elements.
+	 * A stream of input collection elements flows into a single execution of the content of the ExpansionRegion, in the order of the collection elements if the input collections are ordered.
 	 * <!-- end-model-doc -->
 	 * @see #STREAM_LITERAL
 	 * @model name="stream"

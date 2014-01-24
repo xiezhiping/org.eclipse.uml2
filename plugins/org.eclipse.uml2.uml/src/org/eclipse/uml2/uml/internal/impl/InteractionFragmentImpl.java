@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: InteractionFragmentImpl.java,v 1.24 2009/01/07 15:55:32 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -36,7 +35,6 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.GeneralOrdering;
 import org.eclipse.uml2.uml.Interaction;
@@ -58,8 +56,8 @@ import org.eclipse.uml2.uml.VisibilityKind;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionFragmentImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionFragmentImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionFragmentImpl#getCovereds <em>Covered</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionFragmentImpl#getEnclosingInteraction <em>Enclosing Interaction</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionFragmentImpl#getEnclosingOperand <em>Enclosing Operand</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionFragmentImpl#getEnclosingInteraction <em>Enclosing Interaction</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionFragmentImpl#getGeneralOrderings <em>General Ordering</em>}</li>
  * </ul>
  * </p>
@@ -366,21 +364,18 @@ public abstract class InteractionFragmentImpl
 			case UMLPackage.INTERACTION_FRAGMENT__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.INTERACTION_FRAGMENT__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.INTERACTION_FRAGMENT__COVERED :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getCovereds())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetEnclosingInteraction((Interaction) otherEnd,
-					msgs);
 			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetEnclosingOperand((InteractionOperand) otherEnd,
+					msgs);
+			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetEnclosingInteraction((Interaction) otherEnd,
 					msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
@@ -401,18 +396,15 @@ public abstract class InteractionFragmentImpl
 			case UMLPackage.INTERACTION_FRAGMENT__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.INTERACTION_FRAGMENT__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION_FRAGMENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INTERACTION_FRAGMENT__COVERED :
 				return ((InternalEList<?>) getCovereds()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
-				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND :
 				return basicSetEnclosingOperand(null, msgs);
+			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
+				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING :
 				return ((InternalEList<?>) getGeneralOrderings()).basicRemove(
 					otherEnd, msgs);
@@ -429,13 +421,13 @@ public abstract class InteractionFragmentImpl
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
-				return eInternalContainer().eInverseRemove(this,
-					UMLPackage.INTERACTION__FRAGMENT, Interaction.class, msgs);
 			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.INTERACTION_OPERAND__FRAGMENT,
 					InteractionOperand.class, msgs);
+			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.INTERACTION__FRAGMENT, Interaction.class, msgs);
 		}
 		return eDynamicBasicRemoveFromContainer(msgs);
 	}
@@ -476,14 +468,14 @@ public abstract class InteractionFragmentImpl
 				return getVisibility();
 			case UMLPackage.INTERACTION_FRAGMENT__COVERED :
 				return getCovereds();
-			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
-				if (resolve)
-					return getEnclosingInteraction();
-				return basicGetEnclosingInteraction();
 			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND :
 				if (resolve)
 					return getEnclosingOperand();
 				return basicGetEnclosingOperand();
+			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
+				if (resolve)
+					return getEnclosingInteraction();
+				return basicGetEnclosingInteraction();
 			case UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING :
 				return getGeneralOrderings();
 		}
@@ -509,11 +501,6 @@ public abstract class InteractionFragmentImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.INTERACTION_FRAGMENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.INTERACTION_FRAGMENT__NAME :
 				setName((String) newValue);
 				return;
@@ -527,11 +514,11 @@ public abstract class InteractionFragmentImpl
 				getCovereds().clear();
 				getCovereds().addAll((Collection<? extends Lifeline>) newValue);
 				return;
-			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
-				setEnclosingInteraction((Interaction) newValue);
-				return;
 			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) newValue);
+				return;
+			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
+				setEnclosingInteraction((Interaction) newValue);
 				return;
 			case UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
@@ -556,9 +543,6 @@ public abstract class InteractionFragmentImpl
 			case UMLPackage.INTERACTION_FRAGMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.INTERACTION_FRAGMENT__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.INTERACTION_FRAGMENT__NAME :
 				unsetName();
 				return;
@@ -571,11 +555,11 @@ public abstract class InteractionFragmentImpl
 			case UMLPackage.INTERACTION_FRAGMENT__COVERED :
 				getCovereds().clear();
 				return;
-			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
-				setEnclosingInteraction((Interaction) null);
-				return;
 			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) null);
+				return;
+			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
+				setEnclosingInteraction((Interaction) null);
 				return;
 			case UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
@@ -601,8 +585,7 @@ public abstract class InteractionFragmentImpl
 			case UMLPackage.INTERACTION_FRAGMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.INTERACTION_FRAGMENT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.INTERACTION_FRAGMENT__NAME :
 				return isSetName();
 			case UMLPackage.INTERACTION_FRAGMENT__NAME_EXPRESSION :
@@ -617,10 +600,10 @@ public abstract class InteractionFragmentImpl
 				return isSetVisibility();
 			case UMLPackage.INTERACTION_FRAGMENT__COVERED :
 				return covereds != null && !covereds.isEmpty();
-			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
-				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
+			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
+				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING :
 				return generalOrderings != null && !generalOrderings.isEmpty();
 		}
@@ -671,13 +654,13 @@ public abstract class InteractionFragmentImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-		Interaction enclosingInteraction = basicGetEnclosingInteraction();
-		if (enclosingInteraction != null) {
-			return enclosingInteraction;
-		}
 		InteractionOperand enclosingOperand = basicGetEnclosingOperand();
 		if (enclosingOperand != null) {
 			return enclosingOperand;
+		}
+		Interaction enclosingInteraction = basicGetEnclosingInteraction();
+		if (enclosingInteraction != null) {
+			return enclosingInteraction;
 		}
 		return super.basicGetNamespace();
 	}
@@ -690,8 +673,8 @@ public abstract class InteractionFragmentImpl
 	@Override
 	public boolean isSetNamespace() {
 		return super.isSetNamespace()
-			|| eIsSet(UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION)
-			|| eIsSet(UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND);
+			|| eIsSet(UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND)
+			|| eIsSet(UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION);
 	}
 
 } //InteractionFragmentImpl

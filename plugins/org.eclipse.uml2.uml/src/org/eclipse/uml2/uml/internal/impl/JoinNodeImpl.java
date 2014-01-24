@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -43,7 +43,6 @@ import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.JoinNode;
@@ -317,24 +316,21 @@ public class JoinNodeImpl
 			case UMLPackage.JOIN_NODE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.JOIN_NODE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.JOIN_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.JOIN_NODE__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE :
-				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.JOIN_NODE__IN_INTERRUPTIBLE_REGION :
 				return ((InternalEList<?>) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
+			case UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE :
+				return basicSetInStructuredNode(null, msgs);
+			case UMLPackage.JOIN_NODE__INCOMING :
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.JOIN_NODE__OUTGOING :
 				return ((InternalEList<?>) getOutgoings()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.JOIN_NODE__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
+			case UMLPackage.JOIN_NODE__IN_PARTITION :
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.JOIN_NODE__JOIN_SPEC :
 				return basicSetJoinSpec(null, msgs);
@@ -386,22 +382,22 @@ public class JoinNodeImpl
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
-			case UMLPackage.JOIN_NODE__IN_PARTITION :
-				return getInPartitions();
+			case UMLPackage.JOIN_NODE__IN_GROUP :
+				return getInGroups();
+			case UMLPackage.JOIN_NODE__IN_INTERRUPTIBLE_REGION :
+				return getInInterruptibleRegions();
 			case UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE :
 				if (resolve)
 					return getInStructuredNode();
 				return basicGetInStructuredNode();
-			case UMLPackage.JOIN_NODE__IN_INTERRUPTIBLE_REGION :
-				return getInInterruptibleRegions();
-			case UMLPackage.JOIN_NODE__OUTGOING :
-				return getOutgoings();
 			case UMLPackage.JOIN_NODE__INCOMING :
 				return getIncomings();
-			case UMLPackage.JOIN_NODE__IN_GROUP :
-				return getInGroups();
+			case UMLPackage.JOIN_NODE__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.JOIN_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
+			case UMLPackage.JOIN_NODE__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.JOIN_NODE__IS_COMBINE_DUPLICATE :
 				return isCombineDuplicate();
 			case UMLPackage.JOIN_NODE__JOIN_SPEC :
@@ -431,11 +427,6 @@ public class JoinNodeImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.JOIN_NODE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.JOIN_NODE__NAME :
 				setName((String) newValue);
 				return;
@@ -451,34 +442,34 @@ public class JoinNodeImpl
 			case UMLPackage.JOIN_NODE__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
-			case UMLPackage.JOIN_NODE__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
-				return;
-			case UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE :
-				setInStructuredNode((StructuredActivityNode) newValue);
-				return;
 			case UMLPackage.JOIN_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
 				getInInterruptibleRegions()
 					.addAll(
 						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
-			case UMLPackage.JOIN_NODE__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+			case UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE :
+				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.JOIN_NODE__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll(
 					(Collection<? extends ActivityEdge>) newValue);
 				return;
+			case UMLPackage.JOIN_NODE__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
+				return;
 			case UMLPackage.JOIN_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
 				getRedefinedNodes().addAll(
 					(Collection<? extends ActivityNode>) newValue);
+				return;
+			case UMLPackage.JOIN_NODE__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.JOIN_NODE__IS_COMBINE_DUPLICATE :
 				setIsCombineDuplicate((Boolean) newValue);
@@ -504,9 +495,6 @@ public class JoinNodeImpl
 			case UMLPackage.JOIN_NODE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.JOIN_NODE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.JOIN_NODE__NAME :
 				unsetName();
 				return;
@@ -522,23 +510,23 @@ public class JoinNodeImpl
 			case UMLPackage.JOIN_NODE__ACTIVITY :
 				setActivity((Activity) null);
 				return;
-			case UMLPackage.JOIN_NODE__IN_PARTITION :
-				getInPartitions().clear();
+			case UMLPackage.JOIN_NODE__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
 				return;
 			case UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
-			case UMLPackage.JOIN_NODE__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
+			case UMLPackage.JOIN_NODE__INCOMING :
+				getIncomings().clear();
 				return;
 			case UMLPackage.JOIN_NODE__OUTGOING :
 				getOutgoings().clear();
 				return;
-			case UMLPackage.JOIN_NODE__INCOMING :
-				getIncomings().clear();
-				return;
 			case UMLPackage.JOIN_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
+				return;
+			case UMLPackage.JOIN_NODE__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.JOIN_NODE__IS_COMBINE_DUPLICATE :
 				setIsCombineDuplicate(IS_COMBINE_DUPLICATE_EDEFAULT);
@@ -567,8 +555,7 @@ public class JoinNodeImpl
 			case UMLPackage.JOIN_NODE__OWNER :
 				return isSetOwner();
 			case UMLPackage.JOIN_NODE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.JOIN_NODE__NAME :
 				return isSetName();
 			case UMLPackage.JOIN_NODE__NAME_EXPRESSION :
@@ -589,21 +576,21 @@ public class JoinNodeImpl
 				return isSetRedefinitionContexts();
 			case UMLPackage.JOIN_NODE__ACTIVITY :
 				return basicGetActivity() != null;
-			case UMLPackage.JOIN_NODE__IN_PARTITION :
-				return inPartitions != null && !inPartitions.isEmpty();
-			case UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE :
-				return basicGetInStructuredNode() != null;
+			case UMLPackage.JOIN_NODE__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.JOIN_NODE__IN_INTERRUPTIBLE_REGION :
 				return inInterruptibleRegions != null
 					&& !inInterruptibleRegions.isEmpty();
-			case UMLPackage.JOIN_NODE__OUTGOING :
-				return outgoings != null && !outgoings.isEmpty();
+			case UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE :
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.JOIN_NODE__INCOMING :
 				return incomings != null && !incomings.isEmpty();
-			case UMLPackage.JOIN_NODE__IN_GROUP :
-				return isSetInGroups();
+			case UMLPackage.JOIN_NODE__OUTGOING :
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.JOIN_NODE__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
+			case UMLPackage.JOIN_NODE__IN_PARTITION :
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.JOIN_NODE__IS_COMBINE_DUPLICATE :
 				return ((eFlags & IS_COMBINE_DUPLICATE_EFLAG) != 0) != IS_COMBINE_DUPLICATE_EDEFAULT;
 			case UMLPackage.JOIN_NODE__JOIN_SPEC :
@@ -704,16 +691,16 @@ public class JoinNodeImpl
 				return allOwnedElements();
 			case UMLPackage.JOIN_NODE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.JOIN_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.JOIN_NODE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.JOIN_NODE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.JOIN_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.JOIN_NODE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -724,6 +711,8 @@ public class JoinNodeImpl
 				return getLabel();
 			case UMLPackage.JOIN_NODE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.JOIN_NODE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.JOIN_NODE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.JOIN_NODE___ALL_OWNING_PACKAGES :
@@ -731,12 +720,12 @@ public class JoinNodeImpl
 			case UMLPackage.JOIN_NODE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.JOIN_NODE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.JOIN_NODE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.JOIN_NODE___SEPARATOR :
 				return separator();
+			case UMLPackage.JOIN_NODE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.JOIN_NODE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -754,13 +743,8 @@ public class JoinNodeImpl
 			case UMLPackage.JOIN_NODE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.JOIN_NODE___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
-				return validateOwned((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.JOIN_NODE___VALIDATE_OWNED_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateOwnedStructuredNode(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.JOIN_NODE___CONTAINING_ACTIVITY :
+				return containingActivity();
 			case UMLPackage.JOIN_NODE___VALIDATE_ONE_OUTGOING_EDGE__DIAGNOSTICCHAIN_MAP :
 				return validateOneOutgoingEdge(
 					(DiagnosticChain) arguments.get(0),

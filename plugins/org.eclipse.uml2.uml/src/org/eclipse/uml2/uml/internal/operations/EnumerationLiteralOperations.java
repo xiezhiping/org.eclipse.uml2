@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2013 CEA and others.
+ * Copyright (c) 2011, 2014 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,16 +7,11 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
- *   Kenn Hussey (CEA) - 375553, 397140, 403365, 212765
+ *   Kenn Hussey (CEA) - 375553, 397140, 403365, 212765, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Map;
-
-import org.eclipse.emf.common.util.BasicDiagnostic;
-import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.common.util.EList;
@@ -26,9 +21,6 @@ import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.uml2.uml.UMLPlugin;
-
-import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,7 +30,6 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.EnumerationLiteral#validateClassifierEqualsOwningEnumeration(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Classifier Equals Owning Enumeration</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.EnumerationLiteral#getClassifiers() <em>Get Classifiers</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.EnumerationLiteral#getClassifier() <em>Get Classifier</em>}</li>
  * </ul>
@@ -56,45 +47,6 @@ public class EnumerationLiteralOperations
 	 */
 	protected EnumerationLiteralOperations() {
 		super();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * classifier = enumeration
-	 * @param enumerationLiteral The receiving '<em><b>Enumeration Literal</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean validateClassifierEqualsOwningEnumeration(
-			EnumerationLiteral enumerationLiteral, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		boolean result = true;
-
-		if (enumerationLiteral.getClassifier() != enumerationLiteral
-			.getEnumeration()) {
-
-			result = false;
-
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ENUMERATION_LITERAL__CLASSIFIER_EQUALS_OWNING_ENUMERATION,
-						UMLPlugin.INSTANCE
-							.getString(
-								"_UI_EnumerationLiteral_ClassifierEqualsOwningEnumeration_diagnostic", //$NON-NLS-1$
-								getMessageSubstitutions(context,
-									enumerationLiteral)),
-						new Object[]{enumerationLiteral}));
-			}
-		}
-
-		return result;
 	}
 
 	/**

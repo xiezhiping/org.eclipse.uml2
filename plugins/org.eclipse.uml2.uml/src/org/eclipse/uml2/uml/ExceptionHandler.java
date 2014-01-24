@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -27,8 +27,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An exception handler is an element that specifies a body to execute in case the specified exception occurs during the execution of the protected node.
- * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+ * An ExceptionHandler is an Element that specifies a handlerBody ExecutableNode to execute in case the specified exception occurs during the execution of the protected ExecutableNode.
+ * <p>From package UML::Activities.</p>
  * <!-- end-model-doc -->
  *
  * <p>
@@ -53,8 +53,8 @@ public interface ExceptionHandler
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A node that is executed if the handler satisfies an uncaught exception.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * An ExecutableNode that is executed if the ExceptionHandler catches an exception.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Handler Body</em>' reference.
 	 * @see #setHandlerBody(ExecutableNode)
@@ -79,8 +79,8 @@ public interface ExceptionHandler
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An object node within the handler body. When the handler catches an exception, the exception token is placed in this node, causing the body to execute.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * An ObjectNode within the handlerBody. When the ExceptionHandler catches an exception, the exception token is placed on this ObjectNode, causing the handlerBody to execute.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Exception Input</em>' reference.
 	 * @see #setExceptionInput(ObjectNode)
@@ -106,8 +106,8 @@ public interface ExceptionHandler
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The Classifiers whose instances the ExceptionHandler catches as exceptions. If an exception occurs whose type is any exceptionType, the ExceptionHandler catches the exception and executes the handlerBody.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Exception Type</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExceptionHandler_ExceptionType()
@@ -152,8 +152,8 @@ public interface ExceptionHandler
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The node protected by the handler. The handler is examined if an exception propagates to the outside of the node.
-	 * <p>From package UML (URI {@literal http://www.omg.org/spec/UML/20110701}).</p>
+	 * The ExecutableNode protected by the ExceptionHandler. If an exception propagates out of the protectedNode and has a type matching one of the exceptionTypes, then it is caught by this ExceptionHandler.
+	 * <p>From package UML::Activities.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Protected Node</em>' container reference.
 	 * @see #setProtectedNode(ExecutableNode)
@@ -178,38 +178,50 @@ public interface ExceptionHandler
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The exception handler and its input object node are not the source or target of any edge.
-	 * true
+	 * The handlerBody has no incoming or outgoing ActivityEdges and the exceptionInput has no incoming ActivityEdges.
+	 * handlerBody.incoming->isEmpty() and handlerBody.outgoing->isEmpty() and exceptionInput.incoming->isEmpty()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
 	 */
-	boolean validateExceptionBody(DiagnosticChain diagnostics,
+	boolean validateHandlerBodyEdges(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If the protected node is a StructuredActivityNode with output pins, then the exception handler body must also be a StructuredActivityNode with output pins that correspond in number and types to those of the protected node.
-	 * true
+	 * If the protectedNode is an Action with OutputPins, then the handlerBody must also be an Action with the same number of OutputPins, which are compatible in type, ordering, and multiplicity to those of the protectedNode.
+	 * (protectedNode.oclIsKindOf(Action) and protectedNode.oclAsType(Action).output->notEmpty()) implies
+	 * (
+	 *   handlerBody.oclIsKindOf(Action) and 
+	 *   let protectedNodeOutput : OrderedSet(OutputPin) = protectedNode.oclAsType(Action).output,
+	 *         handlerBodyOutput : OrderedSet(OutputPin) =  handlerBody.oclAsType(Action).output in
+	 *     protectedNodeOutput->size() = handlerBodyOutput->size() and
+	 *     Sequence{1..protectedNodeOutput->size()}->forAll(i |
+	 *     	handlerBodyOutput->at(i).type.conformsTo(protectedNodeOutput->at(i).type) and
+	 *     	handlerBodyOutput->at(i).isOrdered=protectedNodeOutput->at(i).isOrdered and
+	 *     	handlerBodyOutput->at(i).compatibleWith(protectedNodeOutput->at(i)))
+	 * )
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
 	 */
-	boolean validateResultPins(DiagnosticChain diagnostics,
+	boolean validateOutputPins(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The handler body has one input, and that input is the same as the exception input.
-	 * true
+	 * The handlerBody is an Action with one InputPin, and that InputPin is the same as the exceptionInput.
+	 * handlerBody.oclIsKindOf(Action) and
+	 * let inputs: OrderedSet(InputPin) = handlerBody.oclAsType(Action).input in
+	 * inputs->size()=1 and inputs->first()=exceptionInput
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -223,8 +235,10 @@ public interface ExceptionHandler
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An edge that has a source in an exception handler structured node must have its target in the handler also, and vice versa.
-	 * true
+	 * An ActivityEdge that has a source within the handlerBody of an ExceptionHandler must have its target in the handlerBody also, and vice versa.
+	 * let nodes:Set(ActivityNode) = handlerBody.oclAsType(Action).allOwnedNodes() in
+	 * nodes.outgoing->forAll(nodes->includes(target)) and
+	 * nodes.incoming->forAll(nodes->includes(source))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -232,6 +246,37 @@ public interface ExceptionHandler
 	 * @generated
 	 */
 	boolean validateEdgeSourceTarget(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The handlerBody must have the same owner as the protectedNode.
+	 * handlerBody.owner=protectedNode.owner
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateHandlerBodyOwner(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The exceptionInput must either have no type or every exceptionType must conform to the exceptionInput type.
+	 * exceptionInput.type=null or 
+	 * exceptionType->forAll(conformsTo(exceptionInput.type.oclAsType(Classifier)))
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateExceptionInputType(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 } // ExceptionHandler

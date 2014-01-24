@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -49,7 +49,6 @@ import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.ConnectionPointReference;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.NamedElement;
@@ -1388,13 +1387,10 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isRedefinitionContextValidGen(RedefinableElement redefined) {
-		return isRedefinitionContextValid(redefined);
-	}
-
-	public boolean isRedefinitionContextValid(RedefinableElement redefined) {
-		return redefined instanceof State
-			&& isRedefinitionContextValid((State) redefined);
+	public boolean isRedefinitionContextValid(
+			RedefinableElement redefinedElement) {
+		return StateOperations.isRedefinitionContextValid(this,
+			redefinedElement);
 	}
 
 	/**
@@ -1402,8 +1398,8 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isConsistentWith(RedefinableElement redefinee) {
-		return StateOperations.isConsistentWith(this, redefinee);
+	public boolean isConsistentWith(RedefinableElement redefiningElement) {
+		return StateOperations.isConsistentWith(this, redefiningElement);
 	}
 
 	/**
@@ -1474,8 +1470,8 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isRedefinitionContextValid(State redefined) {
-		return StateOperations.isRedefinitionContextValid(this, redefined);
+	public StateMachine containingStateMachine() {
+		return StateOperations.containingStateMachine(this);
 	}
 
 	/**
@@ -1483,8 +1479,17 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StateMachine containingStateMachine() {
-		return StateOperations.containingStateMachine(this);
+	public boolean isContainedInState(State s) {
+		return VertexOperations.isContainedInState(this, s);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isContainedInRegion(Region r) {
+		return VertexOperations.isContainedInRegion(this, r);
 	}
 
 	/**
@@ -1500,17 +1505,14 @@ public class StateImpl
 			case UMLPackage.STATE__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.STATE__CLIENT_DEPENDENCY :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+			case UMLPackage.STATE__OWNED_RULE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STATE__ELEMENT_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STATE__PACKAGE_IMPORT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.STATE__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STATE__CONTAINER :
 				if (eInternalContainer() != null)
@@ -1550,19 +1552,16 @@ public class StateImpl
 			case UMLPackage.STATE__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.STATE__CLIENT_DEPENDENCY :
-				return ((InternalEList<?>) getClientDependencies())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STATE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.STATE__OWNED_RULE :
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.STATE__ELEMENT_IMPORT :
 				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STATE__PACKAGE_IMPORT :
 				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.STATE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STATE__CONTAINER :
 				return basicSetContainer(null, msgs);
@@ -1640,12 +1639,12 @@ public class StateImpl
 				return getQualifiedName();
 			case UMLPackage.STATE__VISIBILITY :
 				return getVisibility();
+			case UMLPackage.STATE__OWNED_RULE :
+				return getOwnedRules();
 			case UMLPackage.STATE__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.STATE__PACKAGE_IMPORT :
 				return getPackageImports();
-			case UMLPackage.STATE__OWNED_RULE :
-				return getOwnedRules();
 			case UMLPackage.STATE__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.STATE__IMPORTED_MEMBER :
@@ -1729,11 +1728,6 @@ public class StateImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.STATE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				getClientDependencies().addAll(
-					(Collection<? extends Dependency>) newValue);
-				return;
 			case UMLPackage.STATE__NAME :
 				setName((String) newValue);
 				return;
@@ -1742,6 +1736,11 @@ public class StateImpl
 				return;
 			case UMLPackage.STATE__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.STATE__OWNED_RULE :
+				getOwnedRules().clear();
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.STATE__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -1752,11 +1751,6 @@ public class StateImpl
 				getPackageImports().clear();
 				getPackageImports().addAll(
 					(Collection<? extends PackageImport>) newValue);
-				return;
-			case UMLPackage.STATE__OWNED_RULE :
-				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.STATE__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -1819,9 +1813,6 @@ public class StateImpl
 			case UMLPackage.STATE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.STATE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
-				return;
 			case UMLPackage.STATE__NAME :
 				unsetName();
 				return;
@@ -1831,14 +1822,14 @@ public class StateImpl
 			case UMLPackage.STATE__VISIBILITY :
 				unsetVisibility();
 				return;
+			case UMLPackage.STATE__OWNED_RULE :
+				getOwnedRules().clear();
+				return;
 			case UMLPackage.STATE__ELEMENT_IMPORT :
 				getElementImports().clear();
 				return;
 			case UMLPackage.STATE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				return;
-			case UMLPackage.STATE__OWNED_RULE :
-				getOwnedRules().clear();
 				return;
 			case UMLPackage.STATE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
@@ -1897,8 +1888,7 @@ public class StateImpl
 			case UMLPackage.STATE__OWNER :
 				return isSetOwner();
 			case UMLPackage.STATE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
+				return !getClientDependencies().isEmpty();
 			case UMLPackage.STATE__NAME :
 				return isSetName();
 			case UMLPackage.STATE__NAME_EXPRESSION :
@@ -1911,12 +1901,12 @@ public class StateImpl
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.STATE__VISIBILITY :
 				return isSetVisibility();
+			case UMLPackage.STATE__OWNED_RULE :
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.STATE__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.STATE__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
-			case UMLPackage.STATE__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.STATE__OWNED_MEMBER :
 				return isSetOwnedMembers();
 			case UMLPackage.STATE__IMPORTED_MEMBER :
@@ -2067,6 +2057,10 @@ public class StateImpl
 					return UMLPackage.STATE___GET_INCOMINGS;
 				case UMLPackage.VERTEX___GET_OUTGOINGS :
 					return UMLPackage.STATE___GET_OUTGOINGS;
+				case UMLPackage.VERTEX___IS_CONTAINED_IN_STATE__STATE :
+					return UMLPackage.STATE___IS_CONTAINED_IN_STATE__STATE;
+				case UMLPackage.VERTEX___IS_CONTAINED_IN_REGION__REGION :
+					return UMLPackage.STATE___IS_CONTAINED_IN_REGION__REGION;
 				default :
 					return -1;
 			}
@@ -2166,16 +2160,16 @@ public class StateImpl
 				return allOwnedElements();
 			case UMLPackage.STATE___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.STATE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.STATE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE___CREATE_DEPENDENCY__NAMEDELEMENT :
@@ -2186,6 +2180,8 @@ public class StateImpl
 				return getLabel();
 			case UMLPackage.STATE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.STATE___GET_NAMESPACE :
+				return getNamespace();
 			case UMLPackage.STATE___ALL_NAMESPACES :
 				return allNamespaces();
 			case UMLPackage.STATE___ALL_OWNING_PACKAGES :
@@ -2193,14 +2189,22 @@ public class StateImpl
 			case UMLPackage.STATE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
-			case UMLPackage.STATE___GET_NAMESPACE :
-				return getNamespace();
 			case UMLPackage.STATE___GET_QUALIFIED_NAME :
 				return getQualifiedName();
 			case UMLPackage.STATE___SEPARATOR :
 				return separator();
+			case UMLPackage.STATE___GET_CLIENT_DEPENDENCIES :
+				return getClientDependencies();
 			case UMLPackage.STATE___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STATE___VALIDATE_CANNOT_IMPORT_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STATE___VALIDATE_CANNOT_IMPORT_OWNED_MEMBERS__DIAGNOSTICCHAIN_MAP :
+				return validateCannotImportOwnedMembers(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
@@ -2215,6 +2219,8 @@ public class StateImpl
 				return getImportedElements();
 			case UMLPackage.STATE___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
+			case UMLPackage.STATE___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.STATE___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
@@ -2227,8 +2233,6 @@ public class StateImpl
 				return getImportedMembers();
 			case UMLPackage.STATE___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
-			case UMLPackage.STATE___GET_OWNED_MEMBERS :
-				return getOwnedMembers();
 			case UMLPackage.STATE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
 					(DiagnosticChain) arguments.get(0),
@@ -2252,8 +2256,16 @@ public class StateImpl
 				return getIncomings();
 			case UMLPackage.STATE___GET_OUTGOINGS :
 				return getOutgoings();
+			case UMLPackage.STATE___IS_CONTAINED_IN_STATE__STATE :
+				return isContainedInState((State) arguments.get(0));
+			case UMLPackage.STATE___IS_CONTAINED_IN_REGION__REGION :
+				return isContainedInRegion((Region) arguments.get(0));
 			case UMLPackage.STATE___VALIDATE_ENTRY_OR_EXIT__DIAGNOSTICCHAIN_MAP :
 				return validateEntryOrExit((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STATE___VALIDATE_SUBMACHINE_STATES__DIAGNOSTICCHAIN_MAP :
+				return validateSubmachineStates(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE___VALIDATE_COMPOSITE_STATES__DIAGNOSTICCHAIN_MAP :
 				return validateCompositeStates(
@@ -2267,16 +2279,10 @@ public class StateImpl
 				return validateSubmachineOrRegions(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.STATE___VALIDATE_SUBMACHINE_STATES__DIAGNOSTICCHAIN_MAP :
-				return validateSubmachineStates(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE___IS_COMPOSITE :
 				return isComposite();
 			case UMLPackage.STATE___IS_ORTHOGONAL :
 				return isOrthogonal();
-			case UMLPackage.STATE___IS_REDEFINITION_CONTEXT_VALID__STATE :
-				return isRedefinitionContextValid((State) arguments.get(0));
 			case UMLPackage.STATE___IS_SIMPLE :
 				return isSimple();
 			case UMLPackage.STATE___IS_SUBMACHINE_STATE :

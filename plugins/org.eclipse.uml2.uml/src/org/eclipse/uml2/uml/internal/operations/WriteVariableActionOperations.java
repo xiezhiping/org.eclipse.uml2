@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -30,8 +30,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.WriteVariableAction#validateValueType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Value Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.WriteVariableAction#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.WriteVariableAction#validateSameType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,15 +53,15 @@ public class WriteVariableActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type input pin is the same as the type of the variable.
-	 * self.value -> notEmpty() implies self.value.type = self.variable.type
+	 * The type of the value InputPin must conform to the type of the variable.
+	 * value <> null implies value.type.conformsTo(variable.type)
 	 * @param writeVariableAction The receiving '<em><b>Write Variable Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateSameType(
+	public static boolean validateValueType(
 			WriteVariableAction writeVariableAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
@@ -74,10 +74,10 @@ public class WriteVariableActionOperations
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.WRITE_VARIABLE_ACTION__SAME_TYPE,
+						UMLValidator.WRITE_VARIABLE_ACTION__VALUE_TYPE,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSameType", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(writeVariableAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateValueType", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(writeVariableAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{writeVariableAction}));
 			}
 			return false;
@@ -89,8 +89,8 @@ public class WriteVariableActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the input pin is 1..1.
-	 * self.value.multiplicity.is(1,1)
+	 * The multiplicity of the value InputPin is 1..1.
+	 * value<>null implies value.is(1,1)
 	 * @param writeVariableAction The receiving '<em><b>Write Variable Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

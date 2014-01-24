@@ -12818,6 +12818,9 @@ public class UMLUtil
 				.getResourceFactoryRegistry().getContentTypeToFactoryMap();
 
 			contentTypeToFactoryMap.put(
+				UMLResource.UML_4_0_0_CONTENT_TYPE_IDENTIFIER,
+				UMLResource.Factory.INSTANCE);
+			contentTypeToFactoryMap.put(
 				UML302UMLResource.UML_3_0_0_CONTENT_TYPE_IDENTIFIER,
 				UML302UMLResource.Factory.INSTANCE);
 			contentTypeToFactoryMap.put(

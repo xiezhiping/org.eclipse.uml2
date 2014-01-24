@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 418466
  *
- * $Id: FunctionBehaviorOperations.java,v 1.7 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.FunctionBehavior;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -32,6 +33,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.FunctionBehavior#validateOneOutputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Output Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.FunctionBehavior#validateTypesOfParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Types Of Parameters</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.FunctionBehavior#hasAllDataTypeAttributes(org.eclipse.uml2.uml.DataType) <em>Has All Data Type Attributes</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,9 +55,9 @@ public class FunctionBehaviorOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A function behavior has at least one output parameter.
-	 * self.ownedParameters->
-	 *   select(p | p.direction=#out or p.direction=#inout or p.direction=#return)->size() >= 1
+	 * A FunctionBehavior has at least one output Parameter.
+	 * self.ownedParameter->
+	 *   select(p | p.direction = ParameterDirectionKind::out or p.direction= ParameterDirectionKind::inout or p.direction= ParameterDirectionKind::return)->size() >= 1
 	 * @param functionBehavior The receiving '<em><b>Function Behavior</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -90,13 +92,9 @@ public class FunctionBehaviorOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The types of parameters are all data types, which may not nest anything but other datatypes.
-	 * def: hasAllDataTypeAttributes(d : DataType) : Boolean =
-	 *   d.ownedAttribute->forAll(a |
-	 *     a.type.oclIsTypeOf(DataType) and
-	 *       hasAllDataTypeAttributes(a.type))
-	 * self.ownedParameters->forAll(p | p.type.notEmpty() and
-	 *   p.oclIsTypeOf(DataType) and hasAllDataTypeAttributes(p))
+	 * The types of the ownedParameters are all DataTypes, which may not nest anything but other DataTypes.
+	 * ownedParameter->forAll(p | p.type <> null and
+	 *   p.type.oclIsTypeOf(DataType) and hasAllDataTypeAttributes(p.type.oclAsType(DataType)))
 	 * @param functionBehavior The receiving '<em><b>Function Behavior</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -125,6 +123,26 @@ public class FunctionBehaviorOperations
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The hasAllDataTypeAttributes query tests whether the types of the attributes of the given DataType are all DataTypes, and similarly for all those DataTypes.
+	 * result = (d.ownedAttribute->forAll(a |
+	 *     a.type.oclIsKindOf(DataType) and
+	 *       hasAllDataTypeAttributes(a.type.oclAsType(DataType))))
+	 * <p>From package UML::CommonBehavior.</p>
+	 * @param functionBehavior The receiving '<em><b>Function Behavior</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean hasAllDataTypeAttributes(
+			FunctionBehavior functionBehavior, DataType d) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } // FunctionBehaviorOperations
