@@ -886,8 +886,7 @@
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertySortChoices="true"
-          ecoreFeature="ecore:EReference UML.ecore#//TemplateBinding/signature"
-          key="true"/>
+          ecoreFeature="ecore:EReference UML.ecore#//TemplateBinding/signature" key="true"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//TemplateBinding/boundElement">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -2064,8 +2063,7 @@
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//PackageMerge">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertySortChoices="true"
-          ecoreFeature="ecore:EReference UML.ecore#//PackageMerge/mergedPackage"
-          key="true"/>
+          ecoreFeature="ecore:EReference UML.ecore#//PackageMerge/mergedPackage" key="true"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//PackageMerge/receivingPackage">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>

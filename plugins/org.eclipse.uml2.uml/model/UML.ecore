@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="uml" nsURI="http://www.eclipse.org/uml2/4.0.0/UML" nsPrefix="uml">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="uml" nsURI="http://www.eclipse.org/uml2/5.0.0/UML" nsPrefix="uml">
   <eClassifiers xsi:type="ecore:EClass" name="ActivityContent" abstract="true" interface="true">
     <eOperations name="containingActivity" ordered="false" eType="#//Activity"/>
   </eClassifiers>

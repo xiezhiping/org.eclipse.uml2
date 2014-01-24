@@ -11,6 +11,7 @@
  Contributors:
    Christian W. Damus (CEA) - initial API and implementation
    Christian W. Damus (CEA) - 401804
+   Kenn Hussey (CEA) - 418466
 -->
 
 <plugin>
@@ -25,7 +26,7 @@
             class="org.eclipse.uml2.uml.validation.DelegatingConstraintProvider"
             mode="Batch">
          <package
-               namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML">
+               namespaceUri="http://www.eclipse.org/uml2/5.0.0/UML">
          </package>
          <category path="org.eclipse.uml2.uml.tests"/>
       </constraintProvider>

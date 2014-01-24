@@ -2765,7 +2765,7 @@
       <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EPackage xmi:id="_LWVYQN7NEduglsXU_NKRsA" base_Package="_o8I_sGvaEdq4DLWZOhbdEA" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/4.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
+  <Ecore:EPackage xmi:id="_LWVYQN7NEduglsXU_NKRsA" base_Package="_o8I_sGvaEdq4DLWZOhbdEA" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/5.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
   <Ecore:EGenericType xmi:id="_PUkIYN7NEduglsXU_NKRsA" base_DataType="_HmwyMtrxEduW-vlXzvw90A"/>
   <Ecore:EGenericType xmi:id="_QfhfoN7NEduglsXU_NKRsA" base_DataType="_HmwyNtrxEduW-vlXzvw90A"/>
   <Ecore:EOperation xmi:id="_SnLRYMb4EdyrC427ygySag" base_Operation="_mv9LcFYiEdqB6vblk3tuMA" operationName="getResult" visibility="None"/>

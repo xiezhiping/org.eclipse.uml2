@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:l2="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2" xmlns:l3="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L3" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
-  <uml:Model xmi:id="_0" name="UML" URI="http://www.omg.org/spec/UML/20110701">
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:l2="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2" xmlns:l3="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L3" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Model xmi:id="_0" name="UML" URI="http://www.omg.org/spec/UML/20131001">
     <packageImport xmi:id="_packageImport.0">
       <importedPackage xmi:type="uml:Model" href="Ecore.metamodel.uml#_0"/>
     </packageImport>
@@ -16421,7 +16421,7 @@ endif
       <appliedProfile href="pathmap://UML_PROFILES/StandardL2.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EPackage xmi:id="_LWVYQN7NEduglsXU_NKRsA" base_Package="_0" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/4.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
+  <Ecore:EPackage xmi:id="_LWVYQN7NEduglsXU_NKRsA" base_Package="_0" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/5.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
   <Ecore:EGenericType xmi:id="_PUkIYN7NEduglsXU_NKRsA" base_DataType="Profile-EMap_EJavaObject_EJavaObject"/>
   <Ecore:EGenericType xmi:id="_QfhfoN7NEduglsXU_NKRsA" base_DataType="Profile-EMap_EString_EString"/>
   <Ecore:EOperation xmi:id="_SnLRYMb4EdyrC427ygySag" base_Operation="OpaqueExpression-result.1" operationName="getResult" visibility="None"/>
