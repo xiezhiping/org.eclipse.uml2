@@ -648,6 +648,18 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public EList<Parameter> inputParameters() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<Parameter> result = (EList<Parameter>) cache.get(this,
+				UMLPackage.Literals.BEHAVIOR___INPUT_PARAMETERS);
+			if (result == null) {
+				cache.put(this,
+					UMLPackage.Literals.BEHAVIOR___INPUT_PARAMETERS,
+					result = BehaviorOperations.inputParameters(this));
+			}
+			return result;
+		}
 		return BehaviorOperations.inputParameters(this);
 	}
 
@@ -657,6 +669,18 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public EList<Parameter> outputParameters() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<Parameter> result = (EList<Parameter>) cache.get(this,
+				UMLPackage.Literals.BEHAVIOR___OUTPUT_PARAMETERS);
+			if (result == null) {
+				cache.put(this,
+					UMLPackage.Literals.BEHAVIOR___OUTPUT_PARAMETERS,
+					result = BehaviorOperations.outputParameters(this));
+			}
+			return result;
+		}
 		return BehaviorOperations.outputParameters(this);
 	}
 

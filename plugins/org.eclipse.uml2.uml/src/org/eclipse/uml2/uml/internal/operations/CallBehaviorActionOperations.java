@@ -17,8 +17,10 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.CallBehaviorAction;
 
 import org.eclipse.uml2.uml.Parameter;
@@ -97,13 +99,17 @@ public class CallBehaviorActionOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param callBehaviorAction The receiving '<em><b>Call Behavior Action</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<Parameter> outputParameters(
 			CallBehaviorAction callBehaviorAction) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		Behavior behavior = callBehaviorAction.getBehavior();
+
+		if (behavior != null) {
+			return behavior.outputParameters();
+		} else {
+			return ECollections.emptyEList();
+		}
 	}
 
 	/**
@@ -115,13 +121,17 @@ public class CallBehaviorActionOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param callBehaviorAction The receiving '<em><b>Call Behavior Action</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<Parameter> inputParameters(
 			CallBehaviorAction callBehaviorAction) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		Behavior behavior = callBehaviorAction.getBehavior();
+
+		if (behavior != null) {
+			return behavior.inputParameters();
+		} else {
+			return ECollections.emptyEList();
+		}
 	}
 
 } // CallBehaviorActionOperations

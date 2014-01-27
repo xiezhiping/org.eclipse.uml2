@@ -1979,6 +1979,21 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList<Interface> directlyRealizedInterfaces() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<Interface> result = (EList<Interface>) cache.get(this,
+				UMLPackage.Literals.CLASSIFIER___DIRECTLY_REALIZED_INTERFACES);
+			if (result == null) {
+				cache
+					.put(
+						this,
+						UMLPackage.Literals.CLASSIFIER___DIRECTLY_REALIZED_INTERFACES,
+						result = ClassifierOperations
+							.directlyRealizedInterfaces(this));
+			}
+			return result;
+		}
 		return ClassifierOperations.directlyRealizedInterfaces(this);
 	}
 
@@ -1988,6 +2003,18 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList<Interface> directlyUsedInterfaces() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<Interface> result = (EList<Interface>) cache.get(this,
+				UMLPackage.Literals.CLASSIFIER___DIRECTLY_USED_INTERFACES);
+			if (result == null) {
+				cache.put(this,
+					UMLPackage.Literals.CLASSIFIER___DIRECTLY_USED_INTERFACES,
+					result = ClassifierOperations.directlyUsedInterfaces(this));
+			}
+			return result;
+		}
 		return ClassifierOperations.directlyUsedInterfaces(this);
 	}
 
@@ -1997,6 +2024,18 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList<Interface> allRealizedInterfaces() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<Interface> result = (EList<Interface>) cache.get(this,
+				UMLPackage.Literals.CLASSIFIER___ALL_REALIZED_INTERFACES);
+			if (result == null) {
+				cache.put(this,
+					UMLPackage.Literals.CLASSIFIER___ALL_REALIZED_INTERFACES,
+					result = ClassifierOperations.allRealizedInterfaces(this));
+			}
+			return result;
+		}
 		return ClassifierOperations.allRealizedInterfaces(this);
 	}
 
@@ -2006,6 +2045,18 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList<Interface> allUsedInterfaces() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<Interface> result = (EList<Interface>) cache.get(this,
+				UMLPackage.Literals.CLASSIFIER___ALL_USED_INTERFACES);
+			if (result == null) {
+				cache.put(this,
+					UMLPackage.Literals.CLASSIFIER___ALL_USED_INTERFACES,
+					result = ClassifierOperations.allUsedInterfaces(this));
+			}
+			return result;
+		}
 		return ClassifierOperations.allUsedInterfaces(this);
 	}
 
@@ -2024,6 +2075,18 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList<Property> allAttributes() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<Property> result = (EList<Property>) cache.get(this,
+				UMLPackage.Literals.CLASSIFIER___ALL_ATTRIBUTES);
+			if (result == null) {
+				cache.put(this,
+					UMLPackage.Literals.CLASSIFIER___ALL_ATTRIBUTES,
+					result = ClassifierOperations.allAttributes(this));
+			}
+			return result;
+		}
 		return ClassifierOperations.allAttributes(this);
 	}
 
@@ -2033,6 +2096,19 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList<StructuralFeature> allSlottableFeatures() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<StructuralFeature> result = (EList<StructuralFeature>) cache
+				.get(this,
+					UMLPackage.Literals.CLASSIFIER___ALL_SLOTTABLE_FEATURES);
+			if (result == null) {
+				cache.put(this,
+					UMLPackage.Literals.CLASSIFIER___ALL_SLOTTABLE_FEATURES,
+					result = ClassifierOperations.allSlottableFeatures(this));
+			}
+			return result;
+		}
 		return ClassifierOperations.allSlottableFeatures(this);
 	}
 

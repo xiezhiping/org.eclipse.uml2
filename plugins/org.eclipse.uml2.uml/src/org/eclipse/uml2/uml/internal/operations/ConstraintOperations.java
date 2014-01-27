@@ -55,7 +55,7 @@ public class ConstraintOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A constraint cannot be applied to itself.
+	 * A Constraint cannot be applied to itself.
 	 * not constrainedElement->includes(self)
 	 * @param constraint The receiving '<em><b>Constraint</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.

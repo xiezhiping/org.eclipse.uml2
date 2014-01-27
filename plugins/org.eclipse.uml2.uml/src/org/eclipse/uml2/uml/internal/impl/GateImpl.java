@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Gate;
 import org.eclipse.uml2.uml.InteractionOperand;
 import org.eclipse.uml2.uml.NamedElement;
@@ -382,6 +383,15 @@ public class GateImpl
 				return getOperand();
 		}
 		return eDynamicInvoke(operationID, arguments);
+	}
+
+	@Override
+	public String getName() {
+		String name = super.getName();
+
+		return UML2Util.isEmpty(name)
+			? GateOperations.getName(this)
+			: name;
 	}
 
 } //GateImpl

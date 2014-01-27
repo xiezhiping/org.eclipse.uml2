@@ -211,8 +211,10 @@
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Behavior/behavioredClassifier">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Behavior/behavioredClassifier/from"/>
       </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Behavior/inputParameters"/>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Behavior/outputParameters"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Behavior/inputParameters"
+          cacheAdapterScope="Global"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Behavior/outputParameters"
+          cacheAdapterScope="Global"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Class">
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
@@ -371,15 +373,21 @@
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/parents"
           cacheAdapterScope="Global"/>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/directlyRealizedInterfaces"/>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/directlyUsedInterfaces"/>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/allRealizedInterfaces"/>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/allUsedInterfaces"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/directlyRealizedInterfaces"
+          cacheAdapterScope="Global"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/directlyUsedInterfaces"
+          cacheAdapterScope="Global"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/allRealizedInterfaces"
+          cacheAdapterScope="Global"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/allUsedInterfaces"
+          cacheAdapterScope="Global"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/isSubstitutableFor">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Classifier/isSubstitutableFor/contract"/>
       </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/allAttributes"/>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/allSlottableFeatures"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/allAttributes"
+          cacheAdapterScope="Global"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/allSlottableFeatures"
+          cacheAdapterScope="Global"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//Namespace">
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
@@ -1499,8 +1507,10 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//BehavioralFeature/createReturnResult/name"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//BehavioralFeature/createReturnResult/type"/>
       </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//BehavioralFeature/inputParameters"/>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//BehavioralFeature/outputParameters"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//BehavioralFeature/inputParameters"
+          cacheAdapterScope="Global"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//BehavioralFeature/outputParameters"
+          cacheAdapterScope="Global"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//Feature">
       <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
@@ -2677,8 +2687,10 @@
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Action/getContext"/>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Action/allActions"/>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Action/allOwnedNodes"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Action/allActions"
+          cacheAdapterScope="Global"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Action/allOwnedNodes"
+          cacheAdapterScope="Global"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Action/containingBehavior"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//ExecutableNode">
@@ -3094,8 +3106,10 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//CallAction/synchronous_call/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//CallAction/synchronous_call/context"/>
       </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//CallAction/inputParameters"/>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//CallAction/outputParameters"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//CallAction/inputParameters"
+          cacheAdapterScope="Global"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//CallAction/outputParameters"
+          cacheAdapterScope="Global"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//CallBehaviorAction">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"

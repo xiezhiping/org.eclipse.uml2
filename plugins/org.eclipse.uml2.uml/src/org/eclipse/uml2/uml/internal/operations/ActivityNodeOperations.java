@@ -61,6 +61,7 @@ public class ActivityNodeOperations
 	public static Activity containingActivity(ActivityNode activityNode) {
 		StructuredActivityNode inStructuredNode = activityNode
 			.getInStructuredNode();
+
 		return inStructuredNode != null
 			? inStructuredNode.containingActivity()
 			: activityNode.getActivity();

@@ -84,26 +84,29 @@ public class ActorOperations
 			result &= association.isBinary();
 
 			if (result) {
-				Property otherEnd = association.getMemberEnd(null, actor)
+				Property actorEnd = association.getMemberEnd(null, actor)
 					.getOtherEnd();
-				Type otherEndType = otherEnd == null
+				Type actorEndType = actorEnd == null
 					? null
-					: otherEnd.getType();
+					: actorEnd.getType();
 
-				result &= otherEndType instanceof UseCase
-					|| (otherEndType instanceof org.eclipse.uml2.uml.Class && !(otherEndType instanceof Behavior));
+				result &= actorEndType instanceof UseCase
+					|| (actorEndType instanceof org.eclipse.uml2.uml.Class && !(actorEndType instanceof Behavior));
 			}
 
 			if (!result) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.WARNING,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACTOR__ASSOCIATIONS,
-						UMLPlugin.INSTANCE
-							.getString(
-								"_UI_Actor_Associations_diagnostic", getMessageSubstitutions(context, actor, association)), //$NON-NLS-1$
-						new Object[]{actor, association}));
+
+				if (diagnostics != null) {
+					diagnostics
+						.add(new BasicDiagnostic(
+							Diagnostic.WARNING,
+							UMLValidator.DIAGNOSTIC_SOURCE,
+							UMLValidator.ACTOR__ASSOCIATIONS,
+							UMLPlugin.INSTANCE
+								.getString(
+									"_UI_Actor_Associations_diagnostic", getMessageSubstitutions(context, actor, association)), //$NON-NLS-1$
+							new Object[]{actor, association}));
+				}
 
 				break;
 			}

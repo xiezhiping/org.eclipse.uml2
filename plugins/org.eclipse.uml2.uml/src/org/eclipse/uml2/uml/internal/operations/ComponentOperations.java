@@ -221,11 +221,8 @@ public class ComponentOperations
 	 * @generated NOT
 	 */
 	public static EList<Interface> getRequireds(Component component) {
-		// TODO: reimplement this method
-
-		EList<Interface> requireds = ClassifierOperations
-			.directlyUsedInterfaces(component, false,
-				new UniqueEList.FastCompare<Interface>());
+		EList<Interface> requireds = allUsedInterfaces(component, false,
+			new UniqueEList.FastCompare<Interface>());
 
 		EList<Component> components = new UniqueEList.FastCompare<Component>();
 		components.add(component);
@@ -245,15 +242,7 @@ public class ComponentOperations
 					.getRealizingClassifiers()) {
 
 					if (realizingClassifier != null) {
-						ClassifierOperations.directlyUsedInterfaces(
-							realizingClassifier, false, requireds);
-
-						for (Classifier parent : realizingClassifier
-							.allParents()) {
-
-							ClassifierOperations.directlyUsedInterfaces(parent,
-								false, requireds);
-						}
+						allUsedInterfaces(realizingClassifier, false, requireds);
 					}
 				}
 			}
@@ -299,11 +288,8 @@ public class ComponentOperations
 	 * @generated NOT
 	 */
 	public static EList<Interface> getProvideds(Component component) {
-		// TODO: reimplement this method
-
-		EList<Interface> provideds = ClassifierOperations
-			.directlyRealizedInterfaces(component, false,
-				new UniqueEList.FastCompare<Interface>());
+		EList<Interface> provideds = allRealizedInterfaces(component, false,
+			new UniqueEList.FastCompare<Interface>());
 
 		EList<Component> components = new UniqueEList.FastCompare<Component>();
 		components.add(component);
@@ -323,14 +309,8 @@ public class ComponentOperations
 					.getRealizingClassifiers()) {
 
 					if (realizingClassifier != null) {
-						directlyRealizedInterfaces(realizingClassifier, false,
+						allRealizedInterfaces(realizingClassifier, false,
 							provideds);
-
-						for (Classifier parent : realizingClassifier
-							.allParents()) {
-
-							directlyRealizedInterfaces(parent, false, provideds);
-						}
 					}
 				}
 			}
@@ -357,40 +337,6 @@ public class ComponentOperations
 		return new UnionEObjectEList<Interface>((InternalEObject) component,
 			UMLPackage.Literals.COMPONENT__PROVIDED, provideds.size(),
 			provideds.toArray());
-	}
-
-	protected static EList<Interface> getAllProvideds(Component component,
-			EList<Interface> allProvideds) {
-		allProvideds.addAll(component.getProvideds());
-
-		for (Classifier parent : component.allParents()) {
-
-			if (parent instanceof Component) {
-				allProvideds.addAll(((Component) parent).getProvideds());
-			} else {
-				ClassifierOperations.directlyRealizedInterfaces(parent, true,
-					allProvideds);
-			}
-		}
-
-		return allProvideds;
-	}
-
-	protected static EList<Interface> getAllRequireds(Component component,
-			EList<Interface> allRequireds) {
-		allRequireds.addAll(component.getRequireds());
-
-		for (Classifier parent : component.allParents()) {
-
-			if (parent instanceof Component) {
-				allRequireds.addAll(((Component) parent).getRequireds());
-			} else {
-				ClassifierOperations.directlyUsedInterfaces(parent, true,
-					allRequireds);
-			}
-		}
-
-		return allRequireds;
 	}
 
 } // ComponentOperations

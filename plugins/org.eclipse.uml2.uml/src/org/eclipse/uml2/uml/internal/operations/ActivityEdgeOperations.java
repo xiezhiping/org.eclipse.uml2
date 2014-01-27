@@ -93,13 +93,11 @@ public class ActivityEdgeOperations
 	 * <p>From package UML::Activities.</p>
 	 * @param activityEdge The receiving '<em><b>Activity Edge</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isConsistentWith(ActivityEdge activityEdge,
 			RedefinableElement redefiningElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return redefiningElement instanceof ActivityEdge;
 	}
 
 } // ActivityEdgeOperations

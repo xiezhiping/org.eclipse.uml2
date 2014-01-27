@@ -62,12 +62,14 @@ public class ActivityGroupOperations
 	 * <p>From package UML::Activities.</p>
 	 * @param activityGroup The receiving '<em><b>Activity Group</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Activity containingActivity(ActivityGroup activityGroup) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		ActivityGroup superGroup = activityGroup.getSuperGroup();
+
+		return superGroup != null
+			? superGroup.containingActivity()
+			: activityGroup.getInActivity();
 	}
 
 	/**

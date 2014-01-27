@@ -20,6 +20,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.FunctionBehavior;
+import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Type;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -136,13 +138,22 @@ public class FunctionBehaviorOperations
 	 * <p>From package UML::CommonBehavior.</p>
 	 * @param functionBehavior The receiving '<em><b>Function Behavior</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean hasAllDataTypeAttributes(
 			FunctionBehavior functionBehavior, DataType d) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		for (Property ownedAttribute : d.getOwnedAttributes()) {
+			Type type = ownedAttribute.getType();
+
+			if (!(type instanceof DataType && hasAllDataTypeAttributes(
+				functionBehavior, (DataType) type))) {
+
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 } // FunctionBehaviorOperations

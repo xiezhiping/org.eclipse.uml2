@@ -17,9 +17,11 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.CallOperationAction;
+import org.eclipse.uml2.uml.Operation;
 
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -99,13 +101,17 @@ public class CallOperationActionOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param callOperationAction The receiving '<em><b>Call Operation Action</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<Parameter> outputParameters(
 			CallOperationAction callOperationAction) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		Operation operation = callOperationAction.getOperation();
+
+		if (operation != null) {
+			return operation.outputParameters();
+		} else {
+			return ECollections.emptyEList();
+		}
 	}
 
 	/**
@@ -117,13 +123,17 @@ public class CallOperationActionOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param callOperationAction The receiving '<em><b>Call Operation Action</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<Parameter> inputParameters(
 			CallOperationAction callOperationAction) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		Operation operation = callOperationAction.getOperation();
+
+		if (operation != null) {
+			return operation.inputParameters();
+		} else {
+			return ECollections.emptyEList();
+		}
 	}
 
 } // CallOperationActionOperations

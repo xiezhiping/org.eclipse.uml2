@@ -12,12 +12,18 @@
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.Action;
+import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Interaction;
+import org.eclipse.uml2.uml.StructuredActivityNode;
 
 /**
  * <!-- begin-user-doc -->
@@ -69,6 +75,7 @@ public class ActionOperations
 
 		if (behavior != null) {
 			BehavioredClassifier context = behavior.getContext();
+
 			return context == null
 				? behavior
 				: context;
@@ -86,12 +93,10 @@ public class ActionOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param action The receiving '<em><b>Action</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<Action> allActions(Action action) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return ECollections.singletonEList(action);
 	}
 
 	/**
@@ -103,12 +108,15 @@ public class ActionOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param action The receiving '<em><b>Action</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<ActivityNode> allOwnedNodes(Action action) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<ActivityNode> allOwnedNodes = new UniqueEList.FastCompare<ActivityNode>();
+
+		allOwnedNodes.addAll(action.getInputs());
+		allOwnedNodes.addAll(action.getOutputs());
+
+		return ECollections.unmodifiableEList(allOwnedNodes);
 	}
 
 	/**
@@ -124,12 +132,26 @@ public class ActionOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param action The receiving '<em><b>Action</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Behavior containingBehavior(Action action) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		StructuredActivityNode inStructuredNode = action.getInStructuredNode();
+
+		if (inStructuredNode != null) {
+			return inStructuredNode.containingBehavior();
+		} else {
+			Activity activity = action.getActivity();
+
+			if (activity != null) {
+				return activity;
+			} else {
+				EObject eContainer = action.eContainer();
+
+				return eContainer instanceof Interaction
+					? (Interaction) eContainer
+					: null;
+			}
+		}
 	}
 
 } // ActionOperations

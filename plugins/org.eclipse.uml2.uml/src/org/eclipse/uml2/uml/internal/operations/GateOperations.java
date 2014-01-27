@@ -17,12 +17,21 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.uml2.uml.Gate;
 
+import org.eclipse.uml2.uml.CombinedFragment;
+import org.eclipse.uml2.uml.InteractionFragment;
 import org.eclipse.uml2.uml.InteractionOperand;
+import org.eclipse.uml2.uml.Message;
+import org.eclipse.uml2.uml.MessageEnd;
+import org.eclipse.uml2.uml.MessageOccurrenceSpecification;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -340,12 +349,76 @@ public class GateOperations
 	 * <p>From package UML::Interactions.</p>
 	 * @param gate The receiving '<em><b>Gate</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isOutsideCF(Gate gate) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<MessageEnd> oppositeEnd = gate.oppositeEnd();
+		EObject eContainer = gate.eContainer();
+
+		if (oppositeEnd.size() > 0 && eContainer instanceof CombinedFragment) {
+			MessageEnd oppEnd = oppositeEnd.get(0);
+			CombinedFragment combinedFragment = (CombinedFragment) eContainer;
+
+			EList<InteractionFragment> cfFragments = new UniqueEList.FastCompare<InteractionFragment>();
+
+			InteractionFragment cfEnclosingInteraction = combinedFragment
+				.getEnclosingInteraction();
+
+			if (cfEnclosingInteraction != null) {
+				cfFragments.add(cfEnclosingInteraction);
+			}
+
+			InteractionFragment cfEnclosingOperand = combinedFragment
+				.getEnclosingOperand();
+
+			if (cfEnclosingOperand != null) {
+				cfFragments.add(cfEnclosingOperand);
+			}
+
+			EList<InteractionFragment> oppFragments = new UniqueEList.FastCompare<InteractionFragment>();
+
+			if (oppEnd instanceof MessageOccurrenceSpecification) {
+				MessageOccurrenceSpecification oppMOS = (MessageOccurrenceSpecification) oppEnd;
+
+				InteractionFragment oppEnclosingInteraction = oppMOS
+					.getEnclosingInteraction();
+
+				if (oppEnclosingInteraction != null) {
+					oppFragments.add(oppEnclosingInteraction);
+				}
+
+				InteractionFragment oppEnclosingOperand = oppMOS
+					.getEnclosingOperand();
+
+				if (oppEnclosingOperand != null) {
+					oppFragments.add(oppEnclosingOperand);
+				}
+			} else if (oppEnd instanceof Gate) {
+				EObject oppGateEContainer = oppEnd.eContainer();
+
+				if (oppGateEContainer instanceof CombinedFragment) {
+					CombinedFragment oppGateCF = (CombinedFragment) oppGateEContainer;
+
+					InteractionFragment oppEnclosingInteraction = oppGateCF
+						.getEnclosingInteraction();
+
+					if (oppEnclosingInteraction != null) {
+						oppFragments.add(oppEnclosingInteraction);
+					}
+
+					InteractionFragment oppEnclosingOperand = oppGateCF
+						.getEnclosingOperand();
+
+					if (oppEnclosingOperand != null) {
+						oppFragments.add(oppEnclosingOperand);
+					}
+				}
+			}
+
+			return cfFragments.equals(oppFragments);
+		}
+
+		return false;
 	}
 
 	/**
@@ -365,12 +438,38 @@ public class GateOperations
 	 * <p>From package UML::Interactions.</p>
 	 * @param gate The receiving '<em><b>Gate</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isInsideCF(Gate gate) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<MessageEnd> oppositeEnd = gate.oppositeEnd();
+		EObject eContainer = gate.eContainer();
+
+		if (oppositeEnd.size() > 0 && eContainer instanceof CombinedFragment) {
+			MessageEnd oppEnd = oppositeEnd.get(0);
+			CombinedFragment combinedFragment = (CombinedFragment) eContainer;
+
+			if (oppEnd instanceof MessageOccurrenceSpecification) {
+				InteractionFragment oppEnclosingOperand = ((MessageOccurrenceSpecification) oppEnd)
+					.getEnclosingOperand();
+
+				return combinedFragment == (oppEnclosingOperand == null
+					? null
+					: oppEnclosingOperand.eContainer());
+			} else {
+				EObject oppGateEContainer = oppEnd.eContainer();
+
+				if (oppGateEContainer instanceof CombinedFragment) {
+					InteractionFragment oppEnclosingOperand = ((CombinedFragment) oppGateEContainer)
+						.getEnclosingOperand();
+
+					return combinedFragment == (oppEnclosingOperand == null
+						? null
+						: oppEnclosingOperand.eContainer());
+				}
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -382,12 +481,10 @@ public class GateOperations
 	 * <p>From package UML::Interactions.</p>
 	 * @param gate The receiving '<em><b>Gate</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isActual(Gate gate) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return gate.eContainingFeature() == UMLPackage.Literals.INTERACTION_USE__ACTUAL_GATE;
 	}
 
 	/**
@@ -399,12 +496,10 @@ public class GateOperations
 	 * <p>From package UML::Interactions.</p>
 	 * @param gate The receiving '<em><b>Gate</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isFormal(Gate gate) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return gate.eContainingFeature() == UMLPackage.Literals.INTERACTION__FORMAL_GATE;
 	}
 
 	/**
@@ -427,12 +522,25 @@ public class GateOperations
 	 * <p>From package UML::Interactions.</p>
 	 * @param gate The receiving '<em><b>Gate</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static String getName(Gate gate) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		Message message = gate.getMessage();
+
+		if (message != null) {
+
+			if (gate.isActual() || gate.isOutsideCF()) {
+				return (gate.isSend()
+					? "out_"
+					: "in_") + message.getName();
+			} else {
+				return (gate.isSend()
+					? "in_"
+					: "out_") + message.getName();
+			}
+		}
+
+		return null;
 	}
 
 	/**
@@ -449,12 +557,37 @@ public class GateOperations
 	 * <p>From package UML::Interactions.</p>
 	 * @param gate The receiving '<em><b>Gate</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean matches(Gate gate, Gate gateToMatch) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (safeEquals(gate.getName(), gateToMatch.getName())) {
+			Message message = gate.getMessage();
+			Message messageToMatch = gateToMatch.getMessage();
+
+			if (message == null) {
+				return messageToMatch == null;
+			} else {
+				if (messageToMatch == null) {
+					return false;
+				} else {
+					return safeEquals(message.getMessageSort(),
+						messageToMatch.getMessageSort())
+						&& safeEquals(message.getName(),
+							messageToMatch.getName())
+						&& (message.getSendEvent() == gate
+							? messageToMatch.getReceiveEvent() == gateToMatch
+							: true)
+						&& (message.getReceiveEvent() == gate
+							? messageToMatch.getSendEvent() == gateToMatch
+							: true)
+						&& safeEquals(message.getSignature(),
+							messageToMatch.getSignature());
+				}
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -475,12 +608,31 @@ public class GateOperations
 	 * <p>From package UML::Interactions.</p>
 	 * @param gate The receiving '<em><b>Gate</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static InteractionOperand getOperand(Gate gate) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (gate.isInsideCF()) {
+			EList<MessageEnd> oppositeEnd = gate.oppositeEnd();
+
+			if (oppositeEnd.size() > 0) {
+				MessageEnd oppEnd = oppositeEnd.get(0);
+
+				if (oppEnd instanceof MessageOccurrenceSpecification) {
+					return ((MessageOccurrenceSpecification) oppEnd)
+						.getEnclosingOperand();
+				} else if (oppEnd instanceof Gate) {
+					EObject eContainer = oppEnd.eContainer();
+
+					if (eContainer instanceof CombinedFragment) {
+						return ((CombinedFragment) eContainer)
+							.getEnclosingOperand();
+					}
+				}
+			}
+		}
+
+		return null;
 	}
 
 	/**
@@ -493,13 +645,11 @@ public class GateOperations
 	 * <p>From package UML::Interactions.</p>
 	 * @param gate The receiving '<em><b>Gate</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isDistinguishableFrom(Gate gate, NamedElement n,
 			Namespace ns) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return true;
 	}
 
 } // GateOperations

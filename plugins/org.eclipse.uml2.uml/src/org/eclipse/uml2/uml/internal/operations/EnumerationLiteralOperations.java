@@ -74,8 +74,8 @@ public class EnumerationLiteralOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Missing derivation for EnumerationLiteral::/classifier : Enumeration
-	 * true
+	 * Derivation of Enumeration::/classifier
+	 * result = (enumeration)
 	 * @param enumerationLiteral The receiving '<em><b>Enumeration Literal</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

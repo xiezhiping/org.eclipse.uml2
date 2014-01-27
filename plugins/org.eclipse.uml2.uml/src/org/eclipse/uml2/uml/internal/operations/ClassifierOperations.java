@@ -12,6 +12,7 @@
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -43,6 +44,7 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Realization;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.StructuralFeature;
+import org.eclipse.uml2.uml.Substitution;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -131,8 +133,8 @@ public class ClassifierOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Generalization hierarchies must be directed and acyclical. A classifier can not be both a transitively general and transitively specific classifier of the same classifier.
-	 * not self.allParents()->includes(self)
+	 * Generalization hierarchies must be directed and acyclical. A Classifier can not be both a transitively general and transitively specific Classifier of the same Classifier.
+	 * not allParents()->includes(self)
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -165,8 +167,8 @@ public class ClassifierOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A classifier may only specialize classifiers of a valid type.
-	 * self.parents()->forAll(c | self.maySpecializeType(c))
+	 * A Classifier may only specialize Classifiers of a valid type.
+	 * parents()->forAll(c | self.maySpecializeType(c))
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -426,8 +428,7 @@ public class ClassifierOperations
 	 * @generated NOT
 	 */
 	public static EList<Interface> getUsedInterfaces(Classifier classifier) {
-		return getUsedInterfaces(classifier,
-			new UniqueEList.FastCompare<Interface>());
+		return directlyUsedInterfaces(classifier);
 	}
 
 	/**
@@ -440,8 +441,7 @@ public class ClassifierOperations
 	 * @generated NOT
 	 */
 	public static EList<Interface> getAllUsedInterfaces(Classifier classifier) {
-		return getAllUsedInterfaces(classifier,
-			new UniqueEList.FastCompare<Interface>());
+		return allUsedInterfaces(classifier);
 	}
 
 	/**
@@ -449,7 +449,7 @@ public class ClassifierOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query maySpecializeType() determines whether this classifier may have a generalization relationship to classifiers of the specified type. By default a classifier may specialize classifiers of the same or a more general type. It is intended to be redefined by classifiers that have different specialization constraints.
-	 * result = self.oclIsKindOf(c.oclType)
+	 * result = (self.oclIsKindOf(c.oclType()))
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -505,8 +505,8 @@ public class ClassifierOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The general classifiers are the classifiers referenced by the generalization relationships.
-	 * result = self.parents()
+	 * The general Classifiers are the ones referenced by the Generalization relationships.
+	 * result = (parents())
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -698,12 +698,23 @@ public class ClassifierOperations
 	 * <p>From package UML::Classification.</p>
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<Interface> allRealizedInterfaces(Classifier classifier) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return allRealizedInterfaces(classifier, true,
+			new UniqueEList.FastCompare<Interface>());
+	}
+
+	protected static EList<Interface> allRealizedInterfaces(
+			Classifier classifier, boolean resolve,
+			EList<Interface> allRealizedInterfaces) {
+		directlyRealizedInterfaces(classifier, resolve, allRealizedInterfaces);
+
+		for (Classifier parent : classifier.allParents()) {
+			directlyRealizedInterfaces(parent, resolve, allRealizedInterfaces);
+		}
+
+		return allRealizedInterfaces;
 	}
 
 	/**
@@ -715,12 +726,22 @@ public class ClassifierOperations
 	 * <p>From package UML::Classification.</p>
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<Interface> allUsedInterfaces(Classifier classifier) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return allUsedInterfaces(classifier, true,
+			new UniqueEList.FastCompare<Interface>());
+	}
+
+	protected static EList<Interface> allUsedInterfaces(Classifier classifier,
+			boolean resolve, EList<Interface> allUsedInterfaces) {
+		directlyUsedInterfaces(classifier, resolve, allUsedInterfaces);
+
+		for (Classifier parent : classifier.allParents()) {
+			directlyUsedInterfaces(parent, resolve, allUsedInterfaces);
+		}
+
+		return allUsedInterfaces;
 	}
 
 	/**
@@ -731,13 +752,19 @@ public class ClassifierOperations
 	 * <p>From package UML::Classification.</p>
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isSubstitutableFor(Classifier classifier,
 			Classifier contract) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		for (Substitution subsitution : classifier.getSubstitutions()) {
+
+			if (subsitution.getContract() == contract) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -749,12 +776,27 @@ public class ClassifierOperations
 	 * <p>From package UML::Classification.</p>
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<Property> allAttributes(Classifier classifier) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<Property> allAttributes = new UniqueEList.FastCompare<Property>(
+			classifier.getAttributes());
+
+		for (Classifier parent : classifier.parents()) {
+			allAttributes.addAll(parent.allAttributes());
+		}
+
+		EList<NamedElement> members = classifier.getMembers();
+
+		for (ListIterator<Property> attribute = allAttributes.listIterator(); attribute
+			.hasNext();) {
+
+			if (!members.contains(attribute.next())) {
+				attribute.remove();
+			}
+		}
+
+		return ECollections.unmodifiableEList(allAttributes);
 	}
 
 	/**
@@ -769,22 +811,40 @@ public class ClassifierOperations
 	 * <p>From package UML::Classification.</p>
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
+	@SuppressWarnings("unchecked")
 	public static EList<StructuralFeature> allSlottableFeatures(
 			Classifier classifier) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<StructuralFeature> allSlottableFeatures = new UniqueEList.FastCompare<StructuralFeature>();
+
+		for (NamedElement member : classifier.getMembers()) {
+
+			if (member instanceof StructuralFeature) {
+				allSlottableFeatures.add((StructuralFeature) member);
+			}
+		}
+
+		EList<NamedElement> parentAttributes = new UniqueEList.FastCompare<NamedElement>();
+
+		for (Classifier parent : classifier.allParents()) {
+			parentAttributes.addAll(parent.getAttributes());
+		}
+
+		allSlottableFeatures
+			.addAll((Collection<? extends StructuralFeature>) inherit(
+				classifier, parentAttributes));
+
+		return ECollections.unmodifiableEList(allSlottableFeatures);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query inheritableMembers() gives all of the members of a classifier that may be inherited in one of its descendants, subject to whatever visibility restrictions apply.
+	 * The query inheritableMembers() gives all of the members of a Classifier that may be inherited in one of its descendants, subject to whatever visibility restrictions apply.
 	 * c.allParents()->includes(self)
-	 * result = member->select(m | c.hasVisibilityOf(m))
+	 * result = (member->select(m | c.hasVisibilityOf(m)))
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -912,36 +972,6 @@ public class ClassifierOperations
 	 */
 	public static boolean isTemplate(Classifier classifier) {
 		return classifier.getOwnedTemplateSignature() != null;
-	}
-
-	protected static EList<Interface> getUsedInterfaces(Classifier classifier,
-			EList<Interface> usedInterfaces) {
-
-		for (Dependency clientDependency : classifier.getClientDependencies()) {
-
-			if (clientDependency instanceof Usage) {
-
-				for (NamedElement supplier : clientDependency.getSuppliers()) {
-
-					if (supplier instanceof Interface) {
-						usedInterfaces.add((Interface) supplier);
-					}
-				}
-			}
-		}
-
-		return usedInterfaces;
-	}
-
-	protected static EList<Interface> getAllUsedInterfaces(
-			Classifier classifier, EList<Interface> allUsedInterfaces) {
-		getUsedInterfaces(classifier, allUsedInterfaces);
-
-		for (Classifier parent : classifier.allParents()) {
-			getUsedInterfaces(parent, allUsedInterfaces);
-		}
-
-		return allUsedInterfaces;
 	}
 
 } // ClassifierOperations

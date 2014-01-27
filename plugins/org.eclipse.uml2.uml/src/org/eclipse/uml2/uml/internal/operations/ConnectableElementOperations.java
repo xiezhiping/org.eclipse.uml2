@@ -14,20 +14,13 @@ package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.List;
 
-import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.DelegatingEcoreEList;
-import org.eclipse.uml2.uml.Classifier;
-import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.ConnectorEnd;
-import org.eclipse.uml2.uml.Interface;
-import org.eclipse.uml2.uml.Port;
-import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 
 /**
@@ -137,84 +130,6 @@ public class ConnectableElementOperations
 
 		return new EndEList((InternalEObject) connectableElement,
 			UMLPackage.Literals.CONNECTABLE_ELEMENT__END, ends);
-	}
-
-	protected static EList<Interface> getRequiredInterfaces(
-			ConnectableElement connectableElement) {
-		EList<Interface> requiredInterfaces = new UniqueEList.FastCompare<Interface>();
-
-		if (connectableElement instanceof Port) {
-			requiredInterfaces.addAll(((Port) connectableElement)
-				.getRequireds());
-		} else if (connectableElement instanceof Property) {
-			Type type = connectableElement.getType();
-
-			if (type instanceof Component) {
-				ComponentOperations.getAllRequireds((Component) type,
-					requiredInterfaces);
-			} else if (type instanceof Classifier) {
-				Classifier classifier = (Classifier) type;
-				ClassifierOperations.directlyUsedInterfaces(classifier, true,
-					requiredInterfaces);
-
-				for (Classifier parent : classifier.allParents()) {
-					ClassifierOperations.directlyUsedInterfaces(parent, true,
-						requiredInterfaces);
-				}
-			}
-		}
-
-		for (int i = 0, size = requiredInterfaces.size(); i < size; i++) {
-
-			for (Classifier parent : requiredInterfaces.get(i).allParents()) {
-
-				if (parent instanceof Interface) {
-					requiredInterfaces.add((Interface) parent);
-				}
-			}
-		}
-
-		return ECollections.unmodifiableEList(requiredInterfaces);
-	}
-
-	protected static EList<Interface> getProvidedInterfaces(
-			ConnectableElement connectableElement) {
-		EList<Interface> providedInterfaces = new UniqueEList.FastCompare<Interface>();
-
-		if (connectableElement instanceof Port) {
-			providedInterfaces.addAll(((Port) connectableElement)
-				.getProvideds());
-		} else if (connectableElement instanceof Property) {
-			Type type = ((Property) connectableElement).getType();
-
-			if (type instanceof Component) {
-				ComponentOperations.getAllProvideds((Component) type,
-					providedInterfaces);
-			} else if (type instanceof Interface) {
-				providedInterfaces.add((Interface) type);
-			} else if (type instanceof Classifier) {
-				Classifier classifier = (Classifier) type;
-				ClassifierOperations.directlyRealizedInterfaces(classifier,
-					true, providedInterfaces);
-
-				for (Classifier parent : classifier.allParents()) {
-					ClassifierOperations.directlyRealizedInterfaces(parent,
-						true, providedInterfaces);
-				}
-			}
-		}
-
-		for (int i = 0, size = providedInterfaces.size(); i < size; i++) {
-
-			for (Classifier parent : providedInterfaces.get(i).allParents()) {
-
-				if (parent instanceof Interface) {
-					providedInterfaces.add((Interface) parent);
-				}
-			}
-		}
-
-		return ECollections.unmodifiableEList(providedInterfaces);
 	}
 
 } // ConnectableElementOperations

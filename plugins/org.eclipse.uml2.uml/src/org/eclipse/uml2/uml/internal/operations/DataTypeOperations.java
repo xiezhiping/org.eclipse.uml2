@@ -90,37 +90,4 @@ public class DataTypeOperations
 			upper);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The inherit operation is overridden to exclude redefined properties.
-	 * result = inhs->excluding(inh | ownedMember->select(oclIsKindOf(RedefinableElement))->select(redefinedElement->includes(inh)))
-	 * @param dataType The receiving '<em><b>Data Type</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static EList<NamedElement> inherit(DataType dataType,
-			EList<NamedElement> inhs) {
-		EList<NamedElement> inherit = new UniqueEList.FastCompare<NamedElement>();
-		EList<NamedElement> redefinedElements = new UniqueEList.FastCompare<NamedElement>();
-
-		for (NamedElement ownedMember : dataType.getOwnedMembers()) {
-
-			if (ownedMember instanceof RedefinableElement) {
-				redefinedElements.addAll(((RedefinableElement) ownedMember)
-					.getRedefinedElements());
-			}
-		}
-
-		for (NamedElement inh : inhs) {
-
-			if (!redefinedElements.contains(inh)) {
-				inherit.add(inh);
-			}
-		}
-
-		return ECollections.unmodifiableEList(inherit);
-	}
-
 } // DataTypeOperations

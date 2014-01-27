@@ -174,7 +174,7 @@ public class ExtensionOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query metaclassEnd() returns the Property that is typed by a metaclass (as opposed to a stereotype).
-	 * result = memberEnd->reject(ownedEnd)
+	 * result = (memberEnd->reject(p | ownedEnd->includes(p.oclAsType(ExtensionEnd)))->any(true))
 	 * @param extension The receiving '<em><b>Extension</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -197,7 +197,7 @@ public class ExtensionOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query metaclass() returns the metaclass that is being extended (as opposed to the extending stereotype).
-	 * result = metaclassEnd().type
+	 * result = (metaclassEnd().type.oclAsType(Class))
 	 * @param extension The receiving '<em><b>Extension</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

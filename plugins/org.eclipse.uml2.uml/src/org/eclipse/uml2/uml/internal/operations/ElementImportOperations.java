@@ -58,7 +58,7 @@ public class ElementImportOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The visibility of an ElementImport is either public or private.
-	 * self.visibility = #public or self.visibility = #private
+	 * visibility = VisibilityKind::public or visibility = VisibilityKind::private
 	 * @param elementImport The receiving '<em><b>Element Import</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -99,7 +99,7 @@ public class ElementImportOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An importedElement has either public visibility or no visibility at all.
-	 * self.importedElement.visibility.notEmpty() implies self.importedElement.visibility = #public
+	 * importedElement.visibility <> null implies importedElement.visibility = VisibilityKind::public
 	 * @param elementImport The receiving '<em><b>Element Import</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -117,7 +117,6 @@ public class ElementImportOperations
 			: importedElement.getVisibility();
 
 		if (visibility != null && visibility != VisibilityKind.PUBLIC_LITERAL) {
-
 			result = false;
 
 			if (diagnostics != null) {
@@ -140,11 +139,11 @@ public class ElementImportOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query getName() returns the name under which the imported PackageableElement will be known in the importing namespace.
-	 * result = if self.alias->notEmpty() then
-	 *   self.alias
+	 * result = (if self.alias->notEmpty() then
+	 *   alias
 	 * else
-	 *   self.importedElement.name
-	 * endif
+	 *   importedElement.name
+	 * endif)
 	 * @param elementImport The receiving '<em><b>Element Import</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

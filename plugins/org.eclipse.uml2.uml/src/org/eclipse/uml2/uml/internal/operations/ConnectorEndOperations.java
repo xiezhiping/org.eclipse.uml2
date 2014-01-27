@@ -204,6 +204,17 @@ public class ConnectorEndOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Derivation for ConnectorEnd::/definingEnd : Property
+	 * result = (if connector.type = null 
+	 * then
+	 *   null 
+	 * else
+	 *   let index : Integer = connector.end->indexOf(self) in
+	 *     connector.type.memberEnd->at(index)
+	 * endif)
+	 * @param connectorEnd The receiving '<em><b>Connector End</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Property getDefiningEnd(ConnectorEnd connectorEnd) {

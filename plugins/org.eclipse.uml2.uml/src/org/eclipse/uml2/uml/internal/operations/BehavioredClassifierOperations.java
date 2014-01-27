@@ -103,8 +103,25 @@ public class BehavioredClassifierOperations
 	 */
 	public static EList<Interface> getImplementedInterfaces(
 			BehavioredClassifier behavioredClassifier) {
-		return getRealizedInterfaces(behavioredClassifier,
+		return getImplementedInterfaces(behavioredClassifier,
 			new UniqueEList.FastCompare<Interface>());
+	}
+
+	protected static EList<Interface> getImplementedInterfaces(
+			BehavioredClassifier behavioredClassifier,
+			EList<Interface> implementedInterfaces) {
+
+		for (InterfaceRealization interfaceRealization : behavioredClassifier
+			.getInterfaceRealizations()) {
+
+			Interface contract = interfaceRealization.getContract();
+
+			if (contract != null) {
+				implementedInterfaces.add(contract);
+			}
+		}
+
+		return implementedInterfaces;
 	}
 
 	/**
@@ -118,51 +135,35 @@ public class BehavioredClassifierOperations
 	 */
 	public static EList<Interface> getAllImplementedInterfaces(
 			BehavioredClassifier behavioredClassifier) {
-		return getAllRealizedInterfaces(behavioredClassifier,
+		return getAllImplementedInterfaces(behavioredClassifier,
 			new UniqueEList.FastCompare<Interface>());
 	}
 
-	protected static EList<Interface> getRealizedInterfaces(
+	protected static EList<Interface> getAllImplementedInterfaces(
 			BehavioredClassifier behavioredClassifier,
-			EList<Interface> realizedInterfaces) {
-
-		for (InterfaceRealization interfaceRealization : behavioredClassifier
-			.getInterfaceRealizations()) {
-
-			Interface contract = interfaceRealization.getContract();
-
-			if (contract != null) {
-				realizedInterfaces.add(contract);
-			}
-		}
-
-		return realizedInterfaces;
-	}
-
-	protected static EList<Interface> getAllRealizedInterfaces(
-			BehavioredClassifier behavioredClassifier,
-			EList<Interface> allRealizedInterfaces) {
-		getRealizedInterfaces(behavioredClassifier, allRealizedInterfaces);
+			EList<Interface> allImplementedInterfaces) {
+		getImplementedInterfaces(behavioredClassifier, allImplementedInterfaces);
 
 		for (Classifier parent : behavioredClassifier.allParents()) {
 
 			if (parent instanceof BehavioredClassifier) {
-				getRealizedInterfaces((BehavioredClassifier) parent,
-					allRealizedInterfaces);
+				getImplementedInterfaces((BehavioredClassifier) parent,
+					allImplementedInterfaces);
 			}
 		}
 
-		for (int i = 0, size = allRealizedInterfaces.size(); i < size; i++) {
+		for (int i = 0, size = allImplementedInterfaces.size(); i < size; i++) {
 
-			for (Classifier parent : allRealizedInterfaces.get(i).allParents()) {
+			for (Classifier parent : allImplementedInterfaces.get(i)
+				.allParents()) {
 
 				if (parent instanceof Interface) {
-					allRealizedInterfaces.add((Interface) parent);
+					allImplementedInterfaces.add((Interface) parent);
 				}
 			}
 		}
 
-		return allRealizedInterfaces;
+		return allImplementedInterfaces;
 	}
 
 } // BehavioredClassifierOperations

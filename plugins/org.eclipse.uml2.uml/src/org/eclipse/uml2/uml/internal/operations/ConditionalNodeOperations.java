@@ -17,6 +17,8 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.Action;
@@ -287,12 +289,14 @@ public class ConditionalNodeOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param conditionalNode The receiving '<em><b>Conditional Node</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<Action> allActions(ConditionalNode conditionalNode) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<Action> allActions = new UniqueEList.FastCompare<Action>();
+
+		allActions.add(conditionalNode);
+
+		return ECollections.unmodifiableEList(allActions);
 	}
 
 } // ConditionalNodeOperations

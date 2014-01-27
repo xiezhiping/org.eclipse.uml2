@@ -17,7 +17,9 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -121,13 +123,23 @@ public class BehavioralFeatureOperations
 	 * <p>From package UML::Classification.</p>
 	 * @param behavioralFeature The receiving '<em><b>Behavioral Feature</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<Parameter> inputParameters(
 			BehavioralFeature behavioralFeature) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<Parameter> inputParameters = new UniqueEList.FastCompare<Parameter>();
+
+		for (Parameter ownedParameter : behavioralFeature.getOwnedParameters()) {
+			ParameterDirectionKind direction = ownedParameter.getDirection();
+
+			if (direction == ParameterDirectionKind.IN_LITERAL
+				|| direction == ParameterDirectionKind.INOUT_LITERAL) {
+
+				inputParameters.add(ownedParameter);
+			}
+		}
+
+		return ECollections.unmodifiableEList(inputParameters);
 	}
 
 	/**
@@ -139,13 +151,24 @@ public class BehavioralFeatureOperations
 	 * <p>From package UML::Classification.</p>
 	 * @param behavioralFeature The receiving '<em><b>Behavioral Feature</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<Parameter> outputParameters(
 			BehavioralFeature behavioralFeature) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<Parameter> outputParameters = new UniqueEList.FastCompare<Parameter>();
+
+		for (Parameter ownedParameter : behavioralFeature.getOwnedParameters()) {
+			ParameterDirectionKind direction = ownedParameter.getDirection();
+
+			if (direction == ParameterDirectionKind.OUT_LITERAL
+				|| direction == ParameterDirectionKind.INOUT_LITERAL
+				|| direction == ParameterDirectionKind.RETURN_LITERAL) {
+
+				outputParameters.add(ownedParameter);
+			}
+		}
+
+		return ECollections.unmodifiableEList(outputParameters);
 	}
 
 	/**

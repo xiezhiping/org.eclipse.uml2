@@ -404,6 +404,17 @@ public abstract class ActionImpl
 	 * @generated
 	 */
 	public EList<Action> allActions() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<Action> result = (EList<Action>) cache.get(this,
+				UMLPackage.Literals.ACTION___ALL_ACTIONS);
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.ACTION___ALL_ACTIONS,
+					result = ActionOperations.allActions(this));
+			}
+			return result;
+		}
 		return ActionOperations.allActions(this);
 	}
 
@@ -413,6 +424,17 @@ public abstract class ActionImpl
 	 * @generated
 	 */
 	public EList<ActivityNode> allOwnedNodes() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<ActivityNode> result = (EList<ActivityNode>) cache.get(this,
+				UMLPackage.Literals.ACTION___ALL_OWNED_NODES);
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.ACTION___ALL_OWNED_NODES,
+					result = ActionOperations.allOwnedNodes(this));
+			}
+			return result;
+		}
 		return ActionOperations.allOwnedNodes(this);
 	}
 

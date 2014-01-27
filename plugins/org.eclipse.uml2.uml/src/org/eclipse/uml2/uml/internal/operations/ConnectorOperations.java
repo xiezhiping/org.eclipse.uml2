@@ -18,15 +18,17 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.ConnectorKind;
-import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPlugin;
 
@@ -64,8 +66,10 @@ public class ConnectorOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The types of the connectable elements that the ends of a connector are attached to must conform to the types of the association ends of the association that types the connector, if any.
-	 * true
+	 * The types of the ConnectableElements that the ends of a Connector are attached to must conform to the types of the ends of the Association that types the Connector, if any.
+	 * type<>null implies 
+	 *   let noOfEnds : Integer = end->size() in 
+	 *   (type.memberEnd->size() = noOfEnds) and Sequence{1..noOfEnds}->forAll(i | end->at(i).role.type.conformsTo(type.memberEnd->at(i).type))
 	 * @param connector The receiving '<em><b>Connector</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -119,15 +123,14 @@ public class ConnectorOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Missing derivation for Connector::/kind : ConnectorKind
-	 * result =
-	 * if end->exists(
-	 * 		role.oclIsKindOf(Port) 
-	 * 		and partWithPort->isEmpty()
-	 * 		and not role.oclAsType(Port).isBehavior)
+	 * Derivation for Connector::/kind : ConnectorKind
+	 * result = (if end->exists(
+	 *         role.oclIsKindOf(Port) 
+	 *         and partWithPort->isEmpty()
+	 *         and not role.oclAsType(Port).isBehavior)
 	 * then ConnectorKind::delegation 
 	 * else ConnectorKind::assembly 
-	 * endif
+	 * endif)
 	 * @param connector The receiving '<em><b>Connector</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -137,8 +140,8 @@ public class ConnectorOperations
 		for (ConnectorEnd end : connector.getEnds()) {
 			ConnectableElement role = end.getRole();
 
-			if ((role instanceof Port) && !((Port) role).isBehavior()
-				&& end.getPartWithPort() == null) {
+			if ((role instanceof Port) && end.getPartWithPort() == null
+				&& !((Port) role).isBehavior()) {
 
 				return ConnectorKind.DELEGATION_LITERAL;
 			}
@@ -151,8 +154,12 @@ public class ConnectorOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The ConnectableElements attached as roles to each ConnectorEnd owned by a Connector must be roles of the Classifier that owned the Connector, or they must be ports of such roles.
-	 * true
+	 * The ConnectableElements attached as roles to each ConnectorEnd owned by a Connector must be owned or inherited roles of the Classifier that owned the Connector, or they must be Ports of such roles.
+	 * structuredClassifier <> null
+	 * and
+	 *   end->forAll( e | structuredClassifier.allRoles()->includes(e.role)
+	 * or
+	 *   e.role.oclIsKindOf(Port) and structuredClassifier.allRoles()->includes(e.partWithPort))
 	 * @param connector The receiving '<em><b>Connector</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -161,37 +168,38 @@ public class ConnectorOperations
 	 */
 	public static boolean validateRoles(Connector connector,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		Iterator<ConnectorEnd> ends = connector.getEnds().iterator();
+		EObject eContainer = connector.eContainer();
 
-		while (ends.hasNext()) {
-			ConnectorEnd end = ends.next();
-			ConnectableElement role = end.getRole();
+		if (eContainer instanceof StructuredClassifier) {
+			EList<ConnectableElement> allRoles = ((StructuredClassifier) eContainer)
+				.allRoles();
 
-			Element owner = null;
+			for (ConnectorEnd e : connector.getEnds()) {
+				ConnectableElement role = e.getRole();
 
-			if (role instanceof Port) {
-				Property partWithPort = end.getPartWithPort();
-				owner = partWithPort == null
-					? role.getOwner()
-					: partWithPort.getOwner();
-			} else {
-				owner = role == null
-					? null
-					: role.getOwner();
-			}
+				if (role != null) {
 
-			if (connector.getOwner() != owner) {
+					if (!allRoles.contains(role)) {
 
-				if (diagnostics != null) {
-					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CONNECTOR__ROLES, UMLPlugin.INSTANCE
-							.getString("_UI_Connector_Roles_diagnostic", //$NON-NLS-1$
-								getMessageSubstitutions(context, connector)),
-						new Object[]{connector}));
+						if (!(role instanceof Port)
+							|| !(allRoles.contains(e.getPartWithPort()))) {
+
+							if (diagnostics != null) {
+								diagnostics.add(new BasicDiagnostic(
+									Diagnostic.WARNING,
+									UMLValidator.DIAGNOSTIC_SOURCE,
+									UMLValidator.CONNECTOR__ROLES,
+									UMLPlugin.INSTANCE.getString(
+										"_UI_Connector_Roles_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											connector)),
+									new Object[]{connector}));
+							}
+
+							return false;
+						}
+					}
 				}
-
-				return false;
 			}
 		}
 

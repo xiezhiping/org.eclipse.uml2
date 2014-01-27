@@ -127,9 +127,8 @@ public class ExtensionEndOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query lowerBound() returns the lower bound of the multiplicity as an Integer. This is a redefinition of the default
-	 * lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.
-	 * result = lowerBound = if lowerValue->isEmpty() then 0 else lowerValue->IntegerValue() endif
+	 * The query lowerBound() returns the lower bound of the multiplicity as an Integer. This is a redefinition of the default lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.
+	 * result = (if lowerValue=null then 0 else lowerValue.integerValue() endif)
 	 * @param extensionEnd The receiving '<em><b>Extension End</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

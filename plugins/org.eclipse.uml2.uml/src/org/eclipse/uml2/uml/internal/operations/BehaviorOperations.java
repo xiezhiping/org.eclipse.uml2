@@ -18,7 +18,9 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.uml2.uml.Behavior;
@@ -27,6 +29,7 @@ import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.ParameterDirectionKind;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
 
@@ -282,12 +285,22 @@ public class BehaviorOperations
 	 * <p>From package UML::CommonBehavior.</p>
 	 * @param behavior The receiving '<em><b>Behavior</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<Parameter> inputParameters(Behavior behavior) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<Parameter> inputParameters = new UniqueEList.FastCompare<Parameter>();
+
+		for (Parameter ownedParameter : behavior.getOwnedParameters()) {
+			ParameterDirectionKind direction = ownedParameter.getDirection();
+
+			if (direction == ParameterDirectionKind.IN_LITERAL
+				|| direction == ParameterDirectionKind.INOUT_LITERAL) {
+
+				inputParameters.add(ownedParameter);
+			}
+		}
+
+		return ECollections.unmodifiableEList(inputParameters);
 	}
 
 	/**
@@ -299,12 +312,23 @@ public class BehaviorOperations
 	 * <p>From package UML::CommonBehavior.</p>
 	 * @param behavior The receiving '<em><b>Behavior</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<Parameter> outputParameters(Behavior behavior) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<Parameter> outputParameters = new UniqueEList.FastCompare<Parameter>();
+
+		for (Parameter ownedParameter : behavior.getOwnedParameters()) {
+			ParameterDirectionKind direction = ownedParameter.getDirection();
+
+			if (direction == ParameterDirectionKind.OUT_LITERAL
+				|| direction == ParameterDirectionKind.INOUT_LITERAL
+				|| direction == ParameterDirectionKind.RETURN_LITERAL) {
+
+				outputParameters.add(ownedParameter);
+			}
+		}
+
+		return ECollections.unmodifiableEList(outputParameters);
 	}
 
 } // BehaviorOperations
