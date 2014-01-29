@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 220065
  *   Kenn Hussey - 335125
- *   Christian W. Damus (CEA) - 389632
+ *   Christian W. Damus (CEA) - 389632, 332057
  *   Kenn Hussey (CEA) - 418466
  *
  */
@@ -332,20 +332,35 @@ public class CacheAdapter
 	}
 
 	public void handleCrossReference(EObject eObject) {
-		inverseCrossReferencer.add(eObject);
+		synchronized (inverseCrossReferencer) {
+			inverseCrossReferencer.add(eObject);
+		}
+	}
+
+	@Override
+	protected void handleCrossReference(EReference reference,
+			Notification notification) {
+
+		synchronized (inverseCrossReferencer) {
+			super.handleCrossReference(reference, notification);
+		}
 	}
 
 	@Override
 	public void setTarget(Notifier target) {
 
 		if (!adapting) {
-			super.setTarget(target);
+			synchronized (inverseCrossReferencer) {
+				super.setTarget(target);
+			}
 		}
 	}
 
 	@Override
 	protected void unsetTarget(EObject target) {
-		super.unsetTarget(target);
+		synchronized (inverseCrossReferencer) {
+			super.unsetTarget(target);
+		}
 
 		// clear at resource scope iff not unloading
 		if (uriConverter == null) {
@@ -539,14 +554,18 @@ public class CacheAdapter
 						if (entry.getValue() == notifier) {
 							i.remove();
 							EObject eObject = entry.getKey();
-							Collection<EStructuralFeature.Setting> settings = inverseCrossReferencer
-								.get(eObject);
 
-							if (settings != null) {
+							synchronized (inverseCrossReferencer) {
+								Collection<EStructuralFeature.Setting> settings = inverseCrossReferencer
+									.get(eObject);
 
-								for (EStructuralFeature.Setting setting : settings) {
-									((InverseCrossReferencer) inverseCrossReferencer)
-										.addProxy(eObject, setting.getEObject());
+								if (settings != null) {
+
+									for (EStructuralFeature.Setting setting : settings) {
+										((InverseCrossReferencer) inverseCrossReferencer)
+											.addProxy(eObject,
+												setting.getEObject());
+									}
 								}
 							}
 						}
