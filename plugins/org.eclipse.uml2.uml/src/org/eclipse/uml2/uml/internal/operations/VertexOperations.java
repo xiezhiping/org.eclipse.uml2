@@ -64,19 +64,24 @@ public class VertexOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The operation containingStateMachine() returns the state machine in which this Vertex is defined
-	 * result = if not container->isEmpty()
+	 * The operation containingStateMachine() returns the StateMachine in which this Vertex is defined.
+	 * result = (if container <> null
 	 * then
 	 * -- the container is a region
-	 * container.containingStateMachine()
-	 * else if (oclIsKindOf(Pseudostate)) then
-	 * -- entry or exit point?
-	 * if (kind = #entryPoint) or (kind = #exitPoint) then
-	 * stateMachine
-	 * else if (oclIsKindOf(ConnectionPointReference)) then
-	 * state.containingStateMachine() -- no other valid cases possible
+	 *    container.containingStateMachine()
+	 * else 
+	 *    if (self.oclIsKindOf(Pseudostate)) and ((self.oclAsType(Pseudostate).kind = PseudostateKind::entryPoint) or (self.oclAsType(Pseudostate).kind = PseudostateKind::exitPoint)) then
+	 *       self.oclAsType(Pseudostate).stateMachine
+	 *    else 
+	 *       if (self.oclIsKindOf(ConnectionPointReference)) then
+	 *           self.oclAsType(ConnectionPointReference).state.containingStateMachine() -- no other valid cases possible
+	 *       else 
+	 *           null
+	 *       endif
+	 *    endif
 	 * endif
-	 * 
+	 * )
+	 * <p>From package UML::StateMachines.</p>
 	 * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -185,7 +190,9 @@ public class VertexOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * result = Transition.allInstances()->select(t | t.target=self)
+	 * Derivation for Vertex::/incoming.
+	 * result = (Transition.allInstances()->select(target=self))
+	 * <p>From package UML::StateMachines.</p>
 	 * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -283,7 +290,9 @@ public class VertexOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * result = Transition.allInstances()->select(t | t.source=self)
+	 * Derivation for Vertex::/outgoing
+	 * result = (Transition.allInstances()->select(source=self))
+	 * <p>From package UML::StateMachines.</p>
 	 * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -319,12 +328,20 @@ public class VertexOperations
 	 * <p>From package UML::StateMachines.</p>
 	 * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isContainedInState(Vertex vertex, State s) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		Region container = vertex.getContainer();
+
+		if (!s.isComposite() || container == null) {
+			return false;
+		} else {
+			State containerState = container.getState();
+
+			return containerState == s
+				|| (containerState != null && containerState
+					.isContainedInState(s));
+		}
 	}
 
 	/**
@@ -344,12 +361,21 @@ public class VertexOperations
 	 * <p>From package UML::StateMachines.</p>
 	 * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isContainedInRegion(Vertex vertex, Region r) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		Region container = vertex.getContainer();
+
+		if (container == r) {
+			return true;
+		} else if (r.getState() == null) {
+			return false;
+		} else {
+			State containerState = container.getState();
+
+			return containerState != null
+				&& containerState.isContainedInRegion(r);
+		}
 	}
 
 } // VertexOperations

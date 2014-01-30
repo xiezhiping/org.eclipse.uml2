@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.LinkEndDestructionData;
@@ -149,6 +150,17 @@ public class LinkEndDestructionDataImpl
 	 */
 	@Override
 	public EList<InputPin> allPins() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<InputPin> result = (EList<InputPin>) cache.get(this,
+				UMLPackage.Literals.LINK_END_DATA___ALL_PINS);
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.LINK_END_DATA___ALL_PINS,
+					result = LinkEndDestructionDataOperations.allPins(this));
+			}
+			return result;
+		}
 		return LinkEndDestructionDataOperations.allPins(this);
 	}
 

@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * InvocationAction is an abstract class for the various actions that request Behavior invocation.
- * 
  * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  *

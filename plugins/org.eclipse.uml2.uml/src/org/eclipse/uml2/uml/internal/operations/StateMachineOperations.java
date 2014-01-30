@@ -21,7 +21,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.BehavioredClassifier;
-import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.State;
@@ -151,12 +150,29 @@ public class StateMachineOperations
 	 * <p>From package UML::StateMachines.</p>
 	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Region LCA(StateMachine stateMachine, Vertex s1, Vertex s2) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (ancestor(stateMachine, s1, s2)) {
+			return s2.getContainer();
+		} else if (ancestor(stateMachine, s2, s1)) {
+			return s1.getContainer();
+		} else {
+			Region container1 = s1.getContainer();
+			State state1 = container1 == null
+				? null
+				: container1.getState();
+
+			Region container2 = s2.getContainer();
+			State state2 = container2 == null
+				? null
+				: container2.getState();
+
+			return state1 != null && state2 != null
+				? LCA(stateMachine, state1, state2)
+				: null;
+		}
 	}
 
 	/**
@@ -180,13 +196,37 @@ public class StateMachineOperations
 	 * <p>From package UML::StateMachines.</p>
 	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean ancestor(StateMachine stateMachine, Vertex s1,
 			Vertex s2) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (s1 == s2) {
+			return true;
+		} else {
+			Region container1 = s1.getContainer();
+
+			if (container1 != null && container1.getStateMachine() != null) {
+				return true;
+			} else {
+				Region container2 = s2.getContainer();
+
+				if (container2 != null) {
+
+					if (container2.getStateMachine() != null) {
+						return false;
+					} else {
+						State state2 = container2.getState();
+
+						if (state2 != null) {
+							return ancestor(stateMachine, s1, state2);
+						}
+					}
+				}
+
+				return false;
+			}
+		}
 	}
 
 	/**
@@ -205,12 +245,29 @@ public class StateMachineOperations
 	 * <p>From package UML::StateMachines.</p>
 	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static State LCAState(StateMachine stateMachine, Vertex v1, Vertex v2) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (v2 instanceof State && ancestor(stateMachine, v1, v2)) {
+			return (State) v2;
+		} else if (v1 instanceof State && ancestor(stateMachine, v2, v1)) {
+			return (State) v1;
+		} else {
+			Region container1 = v1.getContainer();
+			State state1 = container1 == null
+				? null
+				: container1.getState();
+
+			Region container2 = v2.getContainer();
+			State state2 = container2 == null
+				? null
+				: container2.getState();
+
+			return state1 == null || state2 == null
+				? null
+				: LCAState(stateMachine, state1, state2);
+		}
 	}
 
 	/**
@@ -287,137 +344,29 @@ public class StateMachineOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The operation LCA(s1,s2) returns an orthogonal state or region which is the least common ancestor of states s1 and s2, based on the statemachine containment hierarchy.
-	 * true
-	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static Namespace LCA(StateMachine stateMachine, State s1, State s2) {
-
-		if (s1 == null || stateMachine.ancestor(s2, s1)) {
-			return s1;
-		} else if (s2 == null || stateMachine.ancestor(s1, s2)) {
-			return s2;
-		} else {
-			Region container1 = s1.getContainer();
-
-			while (container1 != null) {
-				State container1State = container1.getState();
-
-				if (container1State == null) {
-					break;
-				} else if (stateMachine.ancestor(s2, container1State)) {
-					return container1;
-				}
-
-				container1 = container1State.getContainer();
-			}
-
-			Region container2 = s2.getContainer();
-
-			while (container2 != null) {
-				State container2State = container2.getState();
-
-				if (container2State == null) {
-					break;
-				} else if (stateMachine.ancestor(s1, container2State)) {
-					return container2;
-				}
-
-				container2 = container2State.getContainer();
-			}
-
-			return null;
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query ancestor(s1, s2) checks whether s1 is an ancestor state of state s2.
-	 * result = 
-	 * if (s2 = s1) then 
-	 * 	true 
-	 * else 
-	 * 	if (s2.container->isEmpty() or not s2.container.owner.oclIsKindOf(State)) then 
-	 * 		false 
-	 * 	else 
-	 * 		ancestor(s1, s2.container.owner.oclAsType(State))
-	 * 	endif
-	 * endif 
-	 * 
-	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean ancestor(StateMachine stateMachine, State s1, State s2) {
-
-		if (s2 == s1) {
-			return true;
-		} else {
-			Region container2 = s2 == null
-				? null
-				: s2.getContainer();
-
-			if (container2 == null) {
-				return false;
-			} else {
-				State container2State = container2.getState();
-				return container2State != null
-					&& stateMachine.ancestor(s1, container2State);
-			}
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of a statemachine are properly related to the redefinition contexts of the specified statemachine to allow this element to redefine the other. The containing classifier of a redefining statemachine must redefine the containing classifier of the redefined statemachine.
-	 * result = true
-	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isRedefinitionContextValid(StateMachine stateMachine,
-			StateMachine redefined) {
-
-		if (redefined != null) {
-			BehavioredClassifier context = stateMachine.getContext();
-
-			return context != null
-				&& context.allParents().contains(redefined.getContext());
-		}
-
-		return false;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query isConsistentWith() specifies that a redefining state machine is consistent with a redefined state machine provided that the redefining state machine is an extension of the redefined state machine: Regions are inherited and regions can be added, inherited regions can be redefined. In case of multiple redefining state machines, extension implies that the redefining state machine gets orthogonal regions for each of the redefined state machines.
-	 * result = true
+	 * The query isConsistentWith() specifies that a redefining State is consistent with a redefined State provided that the redefining State is an extension of the redefined State A simple State can be redefined (extended) to become a composite State (by adding one or more Regions) and a composite State can be redefined (extended) by adding Regions and by adding Vertices, States, and Transitions to inherited Regions. All States may add or replace entry, exit, and 'doActivity' Behaviors.
+	 * redefiningElement.isRedefinitionContextValid(self)
+	 * result = (-- the following is merely a default body; it is expected that the specific form of this constraint will be specified by profiles
+	 * true)
+	 * <p>From package UML::StateMachines.</p>
 	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean isConsistentWith(StateMachine stateMachine,
-			RedefinableElement redefinee) {
+			RedefinableElement redefiningElement) {
 
-		if (redefinee != null
-			&& redefinee.isRedefinitionContextValid(stateMachine)) {
+		if (redefiningElement != null
+			&& redefiningElement.isRedefinitionContextValid(stateMachine)) {
 
-			StateMachine redefineeStateMachine = (StateMachine) redefinee;
+			StateMachine redefiningStateMachine = (StateMachine) redefiningElement;
 			EList<Region> allRegions = getAllRegions(stateMachine);
 
-			for (Region redefineeRegion : redefineeStateMachine.getRegions()) {
-				Region extendedRegion = redefineeRegion.getExtendedRegion();
+			for (Region redefiningRegion : redefiningStateMachine.getRegions()) {
+				Region extendedRegion = redefiningRegion.getExtendedRegion();
 
 				if (allRegions.contains(extendedRegion)
-					&& !extendedRegion.isConsistentWith(redefineeRegion)) {
+					&& !extendedRegion.isConsistentWith(redefiningRegion)) {
 
 					return false;
 				}
@@ -444,13 +393,20 @@ public class StateMachineOperations
 	 * <p>From package UML::StateMachines.</p>
 	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isRedefinitionContextValid(StateMachine stateMachine,
 			RedefinableElement redefinedElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (redefinedElement instanceof StateMachine) {
+			BehavioredClassifier context = stateMachine.getContext();
+
+			return context != null
+				&& context.getRedefinedClassifiers().contains(
+					((StateMachine) redefinedElement).getContext());
+		}
+
+		return false;
 	}
 
 	protected static EList<StateMachine> getAllExtendedStateMachines(

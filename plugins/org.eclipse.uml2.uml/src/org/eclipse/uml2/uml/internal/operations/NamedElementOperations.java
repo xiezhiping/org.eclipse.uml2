@@ -27,8 +27,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.uml2.common.util.UnionEObjectEList;
 import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.TemplateParameter;
+import org.eclipse.uml2.uml.TemplateSignature;
+import org.eclipse.uml2.uml.TemplateableElement;
 import org.eclipse.uml2.uml.Usage;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
@@ -149,8 +153,8 @@ public class NamedElementOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If a NamedElement is not owned by a Namespace, it does not have a visibility.
-	 * namespace->isEmpty() implies visibility->isEmpty()
+	 * If a NamedElement is owned by something other than a Namespace, it does not have a visibility. One that is not owned by anything (and hence must be a Package, as this is the only kind of NamedElement that overrides mustBeOwned()) may have a visibility.
+	 * (namespace = null and owner <> null) implies visibility = null
 	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -274,13 +278,14 @@ public class NamedElementOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.
-	 * result = if self.name->notEmpty() and self.allNamespaces()->select(ns | ns.name->isEmpty())->isEmpty()
+	 * When a NamedElement has a name, and all of its containing Namespaces have a name, the qualifiedName is constructed from the name of the NamedElement and the names of the containing Namespaces.
+	 * result = (if self.name <> null and self.allNamespaces()->select( ns | ns.name=null )->isEmpty()
 	 * then 
-	 *     self.allNamespaces()->iterate( ns : Namespace; result: String = self.name | ns.name->union(self.separator())->union(result))
+	 *     self.allNamespaces()->iterate( ns : Namespace; agg: String = self.name | ns.name.concat(self.separator()).concat(agg))
 	 * else
-	 *     Set{}
-	 * endif
+	 *    null
+	 * endif)
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -293,6 +298,21 @@ public class NamedElementOperations
 			EList<Namespace> allNamespaces) {
 		Namespace namespace = namedElement.getNamespace();
 
+		Element owner = namedElement.getOwner();
+
+		if (owner instanceof TemplateParameter) {
+			TemplateSignature signature = ((TemplateParameter) owner)
+				.getSignature();
+
+			if (signature != null) {
+				TemplateableElement template = signature.getTemplate();
+
+				if (template instanceof Namespace) {
+					namespace = (Namespace) template;
+				}
+			}
+		}
+
 		if (namespace != null && allNamespaces.add(namespace)) {
 			allNamespaces(namespace, allNamespaces);
 		}
@@ -304,11 +324,20 @@ public class NamedElementOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
-	 * result = if self.namespace->isEmpty()
-	 * then Sequence{}
-	 * else self.namespace.allNamespaces()->prepend(self.namespace)
-	 * endif
+	 * The query allNamespaces() gives the sequence of Namespaces in which the NamedElement is nested, working outwards.
+	 * result = (if owner.oclIsKindOf(TemplateParameter) and
+	 *   owner.oclAsType(TemplateParameter).signature.template.oclIsKindOf(Namespace) then
+	 *     let enclosingNamespace : Namespace =
+	 *       owner.oclAsType(TemplateParameter).signature.template.oclAsType(Namespace) in
+	 *         enclosingNamespace.allNamespaces()->prepend(enclosingNamespace)
+	 * else
+	 *   if namespace->isEmpty()
+	 *     then OrderedSet{}
+	 *   else
+	 *     namespace.allNamespaces()->prepend(namespace)
+	 *   endif
+	 * endif)
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -322,11 +351,11 @@ public class NamedElementOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
-	 * result = if self.oclIsKindOf(n.oclType) or n.oclIsKindOf(self.oclType)
-	 * then ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->isEmpty()
-	 * else true
-	 * endif
+	 * The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have types neither of which is a kind of the other or (b) they have different names.
+	 * result = ((self.oclIsKindOf(n.oclType()) or n.oclIsKindOf(self.oclType())) implies
+	 *     ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->isEmpty()
+	 * )
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -353,11 +382,6 @@ public class NamedElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Missing derivation for NamedElement::/namespace : Namespace
-	 * true
-	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
-	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Namespace getNamespace(NamedElement namedElement) {
@@ -379,8 +403,9 @@ public class NamedElementOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query separator() gives the string that is used to separate names when constructing a qualified name.
-	 * result = '::'
+	 * The query separator() gives the string that is used to separate names when constructing a qualifiedName.
+	 * result = ('::')
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -421,8 +446,15 @@ public class NamedElementOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query allOwningPackages() returns all the directly or indirectly owning packages.
-	 * result = self.namespace->select(p | p.oclIsKindOf(Package))->union(p.allOwningPackages())
+	 * The query allOwningPackages() returns the set of all the enclosing Namespaces of this NamedElement, working outwards, that are Packages, up to but not including the first such Namespace that is not a Package.
+	 * result = (if namespace.oclIsKindOf(Package)
+	 * then
+	 *   let owningPackage : Package = namespace.oclAsType(Package) in
+	 *     owningPackage->union(owningPackage.allOwningPackages())
+	 * else
+	 *   null
+	 * endif)
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

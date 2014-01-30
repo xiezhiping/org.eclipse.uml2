@@ -73,10 +73,9 @@ public class RegionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A region can have at most one initial vertex
-	 * self.subvertex->select (v | v.oclIsKindOf(Pseudostate))->
-	 * select(p : Pseudostate | p.kind = #initial)->size() <= 1
-	 * 
+	 * A Region can have at most one initial Vertex.
+	 * self.subvertex->select (oclIsKindOf(Pseudostate))->collect(oclAsType(Pseudostate))->
+	 *   select(kind = PseudostateKind::initial)->size() <= 1
 	 * @param region The receiving '<em><b>Region</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -120,10 +119,9 @@ public class RegionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A region can have at most one deep history vertex
-	 * self.subvertex->select (v | v.oclIsKindOf(Pseudostate))->
-	 * select(p : Pseudostate | p.kind = #deepHistory)->size() <= 1
-	 * 
+	 * A Region can have at most one deep history Vertex.
+	 * self.subvertex->select (oclIsKindOf(Pseudostate))->collect(oclAsType(Pseudostate))->
+	 *    select(kind = PseudostateKind::deepHistory)->size() <= 1
 	 * @param region The receiving '<em><b>Region</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -167,10 +165,9 @@ public class RegionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A region can have at most one shallow history vertex
-	 * self.subvertex->select(v | v.oclIsKindOf(Pseudostate))->
-	 * select(p : Pseudostate | p.kind = #shallowHistory)->size() <= 1
-	 * 
+	 * A Region can have at most one shallow history Vertex.
+	 * subvertex->select(oclIsKindOf(Pseudostate))->collect(oclAsType(Pseudostate))->
+	 *   select(kind = PseudostateKind::shallowHistory)->size() <= 1
 	 * @param region The receiving '<em><b>Region</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -215,7 +212,7 @@ public class RegionOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If a Region is owned by a StateMachine, then it cannot also be owned by a State and vice versa.
-	 * (stateMachine->notEmpty() implies state->isEmpty()) and (state->notEmpty() implies stateMachine->isEmpty())
+	 * (stateMachine <> null implies state = null) and (state <> null implies stateMachine = null)
 	 * @param region The receiving '<em><b>Region</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -249,13 +246,14 @@ public class RegionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The redefinition context of a region is the nearest containing statemachine
-	 * result = let sm = containingStateMachine() in
-	 * if sm.context->isEmpty() or sm.general->notEmpty() then
-	 * sm
+	 * The redefinition context of a Region is the nearest containing StateMachine.
+	 * result = (let sm : StateMachine = containingStateMachine() in
+	 * if sm._'context' = null or sm.general->notEmpty() then
+	 *   sm
 	 * else
-	 * sm.context
-	 * endif
+	 *   sm._'context'
+	 * endif)
+	 * <p>From package UML::StateMachines.</p>
 	 * @param region The receiving '<em><b>Region</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -277,44 +275,14 @@ public class RegionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of a region are properly related to the redefinition contexts of the specified region to allow this element to redefine the other. The containing statemachine/state of a redefining region must redefine the containing statemachine/state of the redefined region.
-	 * result = true
-	 * @param region The receiving '<em><b>Region</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isRedefinitionContextValid(Region region,
-			Region redefined) {
-
-		if (redefined != null) {
-			StateMachine stateMachine = region.getStateMachine();
-
-			if (stateMachine != null) {
-				return StateMachineOperations.getAllExtendedStateMachines(
-					stateMachine).contains(redefined.getStateMachine());
-			} else {
-				State state = region.getState();
-
-				return state != null
-					&& StateOperations.getAllRedefinedStates(state).contains(
-						redefined.getState());
-			}
-		}
-
-		return false;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The operation containingStateMachine() returns the sate machine in which this Region is defined
-	 * result = if stateMachine->isEmpty() 
+	 * The operation containingStateMachine() returns the StateMachine in which this Region is defined.
+	 * result = (if stateMachine = null 
 	 * then
-	 * state.containingStateMachine()
+	 *   state.containingStateMachine()
 	 * else
-	 * stateMachine
-	 * endif
+	 *   stateMachine
+	 * endif)
+	 * <p>From package UML::StateMachines.</p>
 	 * @param region The receiving '<em><b>Region</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -336,12 +304,14 @@ public class RegionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The operation belongsToPSM () checks if the region belongs to a protocol state machine
-	 * result = if not stateMachine->isEmpty() then
-	 * oclIsTypeOf(ProtocolStateMachine)
-	 * else if not state->isEmpty() then
-	 * state.container.belongsToPSM ()
-	 * else false
+	 * The operation belongsToPSM () checks if the Region belongs to a ProtocolStateMachine.
+	 * result = (if  stateMachine <> null 
+	 * then
+	 *   stateMachine.oclIsKindOf(ProtocolStateMachine)
+	 * else 
+	 *   state <> null  implies  state.container.belongsToPSM()
+	 * endif )
+	 * <p>From package UML::StateMachines.</p>
 	 * @param region The receiving '<em><b>Region</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -367,23 +337,28 @@ public class RegionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isConsistentWith() specifies that a redefining region is consistent with a redefined region provided that the redefining region is an extension of the redefined region, i.e. it adds vertices and transitions and it redefines states and transitions of the redefined region.
-	 * result = true
+	 * The query isConsistentWith() specifies that a redefining Region is consistent with a redefined Region provided that the redefining Region is an extension of the Redefined region, i.e., its Vertices and Transitions conform to one of the following: (1) they are equal to corresponding elements of the redefined Region or, (2) they consistently redefine a State or Transition of the redefined region, or (3) they add new States or Transitions.
+	 * redefiningElement.isRedefinitionContextValid(self)
+	 * result = (-- the following is merely a default body; it is expected that the specific form of this constraint will be specified by profiles
+	 * true)
+	 * <p>From package UML::StateMachines.</p>
 	 * @param region The receiving '<em><b>Region</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean isConsistentWith(Region region,
-			RedefinableElement redefinee) {
+			RedefinableElement redefiningElement) {
 
-		if (redefinee != null && redefinee.isRedefinitionContextValid(region)) {
-			Region redefineeRegion = (Region) redefinee;
+		if (redefiningElement != null
+			&& redefiningElement.isRedefinitionContextValid(region)) {
+
+			Region redefiningRegion = (Region) redefiningElement;
 			EList<Vertex> allSubvertices = getAllSubvertices(region);
 
-			for (Vertex redefineeSubvertex : redefineeRegion.getSubvertices()) {
+			for (Vertex redefiningSubvertex : redefiningRegion.getSubvertices()) {
 
-				if (redefineeSubvertex instanceof State) {
-					State redefinedState = ((State) redefineeSubvertex)
+				if (redefiningSubvertex instanceof State) {
+					State redefinedState = ((State) redefiningSubvertex)
 						.getRedefinedState();
 
 					if (redefinedState != null
@@ -396,10 +371,10 @@ public class RegionOperations
 
 			EList<Transition> allTransitions = getAllTransitions(region);
 
-			for (Transition redefineeTransition : redefineeRegion
+			for (Transition redefiningTransition : redefiningRegion
 				.getTransitions()) {
 
-				Transition redefinedTransition = redefineeTransition
+				Transition redefinedTransition = redefiningTransition
 					.getRedefinedTransition();
 
 				if (redefinedTransition != null
@@ -436,13 +411,39 @@ public class RegionOperations
 	 * <p>From package UML::StateMachines.</p>
 	 * @param region The receiving '<em><b>Region</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isRedefinitionContextValid(Region region,
 			RedefinableElement redefinedElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (redefinedElement instanceof Region) {
+			StateMachine stateMachine = region.getStateMachine();
+
+			if (stateMachine == null) {
+				State state = region.getState();
+				State redefinedState = state == null
+					? null
+					: state.getRedefinedState();
+
+				return redefinedState != null
+					&& redefinedState.getRegions().contains(redefinedElement);
+			} else {
+
+				for (StateMachine extendedStateMachine : stateMachine
+					.getExtendedStateMachines()) {
+
+					if (extendedStateMachine.getRegions().contains(
+						redefinedElement)) {
+
+						return true;
+					}
+				}
+
+				return false;
+			}
+		}
+
+		return false;
 	}
 
 	protected static EList<Region> getAllExtendedRegions(Region region,

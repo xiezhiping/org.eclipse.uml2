@@ -131,6 +131,7 @@ public class ConnectorOperations
 	 * then ConnectorKind::delegation 
 	 * else ConnectorKind::assembly 
 	 * endif)
+	 * <p>From package UML::StructuredClassifiers.</p>
 	 * @param connector The receiving '<em><b>Connector</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

@@ -297,7 +297,6 @@ public class StereotypeOperations
 	 * A Stereotype may only generalize or specialize another Stereotype.
 	 * allParents()->forAll(oclIsKindOf(Stereotype)) 
 	 * and Classifier.allInstances()->forAll(c | c.allParents()->exists(oclIsKindOf(Stereotype)) implies c.oclIsKindOf(Stereotype))
-	 * 
 	 * @param stereotype The receiving '<em><b>Stereotype</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -390,7 +389,9 @@ public class StereotypeOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Retrieves the profile that owns this stereotype.
+	 * A stereotype must be contained, directly or indirectly, in a profile.
+	 * result = (self.containingProfile())
+	 * <p>From package UML::Packages.</p>
 	 * @param stereotype The receiving '<em><b>Stereotype</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -441,7 +442,8 @@ public class StereotypeOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query containingProfile returns the closest profile directly or indirectly containing this stereotype.
-	 * result = self.namespace.oclAsType(Package).containingProfile()
+	 * result = (self.namespace.oclAsType(Package).containingProfile())
+	 * <p>From package UML::Packages.</p>
 	 * @param stereotype The receiving '<em><b>Stereotype</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

@@ -101,7 +101,6 @@ public class AcceptCallActionOperations
 	 * The action must have exactly one trigger, which must be for a CallEvent.
 	 * trigger->size()=1 and
 	 * trigger->asSequence()->first().event.oclIsKindOf(CallEvent)
-	 * 
 	 * @param acceptCallAction The receiving '<em><b>Accept Call Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

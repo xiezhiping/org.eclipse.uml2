@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A Component represents a modular part of a system that encapsulates its contents and whose manifestation is replaceable within its environment.  
+ * A Component represents a modular part of a system that encapsulates its contents and whose manifestation is replaceable within its environment.
  * <p>From package UML::StructuredClassifiers.</p>
  * <!-- end-model-doc -->
  *

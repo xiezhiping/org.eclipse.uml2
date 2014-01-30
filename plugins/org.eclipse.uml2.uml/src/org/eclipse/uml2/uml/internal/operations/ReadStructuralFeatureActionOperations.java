@@ -56,7 +56,6 @@ public class ReadStructuralFeatureActionOperations
 	 * The type and ordering of the result OutputPin are the same as the type and ordering of the StructuralFeature.
 	 * result.type =structuralFeature.type and 
 	 * result.isOrdered = structuralFeature.isOrdered
-	 * 
 	 * @param readStructuralFeatureAction The receiving '<em><b>Read Structural Feature Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

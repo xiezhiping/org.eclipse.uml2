@@ -525,22 +525,7 @@ public class GateOperations
 	 * @generated NOT
 	 */
 	public static String getName(Gate gate) {
-		Message message = gate.getMessage();
-
-		if (message != null) {
-
-			if (gate.isActual() || gate.isOutsideCF()) {
-				return (gate.isSend()
-					? "out_"
-					: "in_") + message.getName();
-			} else {
-				return (gate.isSend()
-					? "in_"
-					: "out_") + message.getName();
-			}
-		}
-
-		return null;
+		return gate.getName();
 	}
 
 	/**

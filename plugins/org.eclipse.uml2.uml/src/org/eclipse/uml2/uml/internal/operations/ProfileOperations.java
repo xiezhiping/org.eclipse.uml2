@@ -92,10 +92,13 @@ public class ProfileOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An element imported as a metaclassReference is not specialized or generalized in a Profile.
-	 * self.metaclassReference.importedElement->
-	 *   select(c | c.oclIsKindOf(Classifier) and
-	 *     (c.generalization.namespace = self or
-	 *       (c.specialization.namespace = self) )->isEmpty()
+	 * metaclassReference.importedElement->
+	 * 	select(c | c.oclIsKindOf(Classifier) and
+	 * 		(c.oclAsType(Classifier).allParents()->collect(namespace)->includes(self)))->isEmpty()
+	 * and 
+	 * packagedElement->
+	 *     select(oclIsKindOf(Classifier))->collect(oclAsType(Classifier).allParents())->
+	 *        intersection(metaclassReference.importedElement->select(oclIsKindOf(Classifier))->collect(oclAsType(Classifier)))->isEmpty()
 	 * @param profile The receiving '<em><b>Profile</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -155,8 +158,8 @@ public class ProfileOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * All elements imported either as metaclassReferences or through metamodelReferences are members of the same base reference metamodel.
-	 * self.metamodelReference.importedPackage.elementImport.importedElement.allOwningPackages())->
-	 *   union(self.metaclassReference.importedElement.allOwningPackages() )->notEmpty()
+	 * metamodelReference.importedPackage.elementImport.importedElement.allOwningPackages()->
+	 *   union(metaclassReference.importedElement.allOwningPackages() )->notEmpty()
 	 * @param profile The receiving '<em><b>Profile</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

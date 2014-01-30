@@ -450,6 +450,7 @@ public class ClassifierOperations
 	 * <!-- begin-model-doc -->
 	 * The query maySpecializeType() determines whether this classifier may have a generalization relationship to classifiers of the specified type. By default a classifier may specialize classifiers of the same or a more general type. It is intended to be redefined by classifiers that have different specialization constraints.
 	 * result = (self.oclIsKindOf(c.oclType()))
+	 * <p>From package UML::Classification.</p>
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -507,6 +508,7 @@ public class ClassifierOperations
 	 * <!-- begin-model-doc -->
 	 * The general Classifiers are the ones referenced by the Generalization relationships.
 	 * result = (parents())
+	 * <p>From package UML::Classification.</p>
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -524,6 +526,7 @@ public class ClassifierOperations
 	 * <!-- begin-model-doc -->
 	 * The inheritedMember association is derived by inheriting the inheritable members of the parents.
 	 * result = (inherit(parents()->collect(inheritableMembers(self))->asSet()))
+	 * <p>From package UML::Classification.</p>
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -549,6 +552,7 @@ public class ClassifierOperations
 	 * <!-- begin-model-doc -->
 	 * The query allFeatures() gives all of the Features in the namespace of the Classifier. In general, through mechanisms such as inheritance, this will be a larger set than feature.
 	 * result = (member->select(oclIsKindOf(Feature))->collect(oclAsType(Feature))->asSet())
+	 * <p>From package UML::Classification.</p>
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -572,6 +576,7 @@ public class ClassifierOperations
 	 * <!-- begin-model-doc -->
 	 * The query parents() gives all of the immediate ancestors of a generalized Classifier.
 	 * result = (generalization.general->asSet())
+	 * <p>From package UML::Classification.</p>
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -845,6 +850,7 @@ public class ClassifierOperations
 	 * The query inheritableMembers() gives all of the members of a Classifier that may be inherited in one of its descendants, subject to whatever visibility restrictions apply.
 	 * c.allParents()->includes(self)
 	 * result = (member->select(m | c.hasVisibilityOf(m)))
+	 * <p>From package UML::Classification.</p>
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -876,6 +882,7 @@ public class ClassifierOperations
 	 * The query hasVisibilityOf() determines whether a NamedElement is visible in the classifier. Non-private members are visible. It is only called when the argument is something owned by a parent.
 	 * allParents()->including(self)->collect(member)->includes(n)
 	 * result = (n.visibility <> VisibilityKind::private)
+	 * <p>From package UML::Classification.</p>
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -905,6 +912,7 @@ public class ClassifierOperations
 	 *   ownedMember->select(oclIsKindOf(RedefinableElement))->
 	 *     select(redefinedElement->includes(inh.oclAsType(RedefinableElement)))
 	 *        ->notEmpty()))
+	 * <p>From package UML::Classification.</p>
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -951,6 +959,7 @@ public class ClassifierOperations
 	 * <!-- begin-model-doc -->
 	 * The query allParents() gives all of the direct and indirect ancestors of a generalized Classifier.
 	 * result = (parents()->union(parents()->collect(allParents())->asSet()))
+	 * <p>From package UML::Classification.</p>
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -966,6 +975,7 @@ public class ClassifierOperations
 	 * <!-- begin-model-doc -->
 	 * The query isTemplate() returns whether this TemplateableElement is actually a template.
 	 * result = (ownedTemplateSignature <> null)
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param classifier The receiving '<em><b>Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

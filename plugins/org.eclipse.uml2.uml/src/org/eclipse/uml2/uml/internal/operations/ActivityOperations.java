@@ -99,7 +99,6 @@ public class ActivityOperations
 	 *   associatedNodes->select(incoming->notEmpty())->size()<=1 and
 	 *   associatedNodes->select(outgoing->notEmpty())->size()<=1
 	 * )
-	 * 
 	 * @param activity The receiving '<em><b>Activity</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

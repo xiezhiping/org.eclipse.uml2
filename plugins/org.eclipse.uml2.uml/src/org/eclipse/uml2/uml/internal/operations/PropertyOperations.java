@@ -41,6 +41,7 @@ import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
@@ -109,9 +110,8 @@ public class PropertyOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A multiplicity of a composite aggregation must not have an upper bound greater than 1.
-	 * A multiplicity on an aggregate end of a composite aggregation must not have an upper bound greater than 1.
-	 * isComposite implies (upperBound()->isEmpty() or upperBound() <= 1)
+	 * A multiplicity on the composing end of a composite aggregation must not have an upper bound greater than 1.
+	 * isComposite and association <> null implies opposite.upperBound() <= 1
 	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -149,9 +149,9 @@ public class PropertyOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Subsetting may only occur when the context of the subsetting property conforms to the context of the subsetted property.
-	 * self.subsettedProperty->notEmpty() implies
-	 *   (self.subsettingContext()->notEmpty() and self.subsettingContext()->forAll (sc |
-	 *     self.subsettedProperty->forAll(sp |
+	 * subsettedProperty->notEmpty() implies
+	 *   (subsettingContext()->notEmpty() and subsettingContext()->forAll (sc |
+	 *     subsettedProperty->forAll(sp |
 	 *       sp.subsettingContext()->exists(c | sc.conformsTo(c)))))
 	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -239,11 +239,11 @@ public class PropertyOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A subsetting property may strengthen the type of the subsetted property, and its upper bound may be less.
-	 * self.subsettedProperty->forAll(sp |
+	 * A subsetting Property may strengthen the type of the subsetted Property, and its upper bound may be less.
+	 * subsettedProperty->forAll(sp |
 	 *   self.type.conformsTo(sp.type) and
 	 *     ((self.upperBound()->notEmpty() and sp.upperBound()->notEmpty()) implies
-	 *       self.upperBound()<=sp.upperBound() ))
+	 *       self.upperBound() <= sp.upperBound() ))
 	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -356,8 +356,8 @@ public class PropertyOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A property may not subset a property with the same name.
-	 * true
+	 * A Property may not subset a Property with the same name.
+	 * subsettedProperty->forAll(sp | sp.name <> name)
 	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -468,7 +468,7 @@ public class PropertyOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A Property can be a DeploymentTarget if it is a kind of Node and functions as a part in the internal structure of an encompassing Node.
-	 * true
+	 * deployment->notEmpty() implies owner.oclIsKindOf(Node) and Node.allInstances()->exists(n | n.part->exists(p | p = self))
 	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -652,13 +652,14 @@ public class PropertyOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If this property is owned by a class, associated with a binary association, and the other end of the association is also owned by a class, then opposite gives the other end.
-	 * result = if owningAssociation->isEmpty() and association.memberEnd->size() = 2
-	 *   then
-	 *     let otherEnd = (association.memberEnd - self)->any() in
-	 *       if otherEnd.owningAssociation->isEmpty() then otherEnd else Set{} endif
-	 *     else Set {}
-	 *     endif
+	 * If this property is a memberEnd of a binary association, then opposite gives the other end.
+	 * result = (if association <> null and association.memberEnd->size() = 2
+	 * then
+	 *     association.memberEnd->any(e | e <> self)
+	 * else
+	 *     null
+	 * endif)
+	 * <p>From package UML::Classification.</p>
 	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -697,7 +698,8 @@ public class PropertyOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The value of isComposite is true only if aggregation is composite.
-	 * result = (self.aggregation = #composite)
+	 * result = (aggregation = AggregationKind::composite)
+	 * <p>From package UML::Classification.</p>
 	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -710,11 +712,16 @@ public class PropertyOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query subsettingContext() gives the context for subsetting a property. It consists, in the case of an attribute, of the corresponding classifier, and in the case of an association end, all of the classifiers at the other ends.
-	 * result = if association->notEmpty()
-	 * then association.endType-type
-	 * else if classifier->notEmpty() then Set{classifier} else Set{} endif
-	 * endif
+	 * The query subsettingContext() gives the context for subsetting a Property. It consists, in the case of an attribute, of the corresponding Classifier, and in the case of an association end, all of the Classifiers at the other ends.
+	 * result = (if association <> null
+	 * then association.memberEnd->excluding(self)->collect(type)->asSet()
+	 * else 
+	 *   if classifier<>null
+	 *   then classifier->asSet()
+	 *   else Set{} 
+	 *   endif
+	 * endif)
+	 * <p>From package UML::Classification.</p>
 	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -752,7 +759,8 @@ public class PropertyOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isNavigable() indicates whether it is possible to navigate across the property.
-	 * result = not classifier->isEmpty() or association.owningAssociation.navigableOwnedEnd->includes(self)
+	 * result = (not classifier->isEmpty() or association.navigableOwnedEnd->includes(self))
+	 * <p>From package UML::Classification.</p>
 	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -971,25 +979,26 @@ public class PropertyOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining property is consistent with a redefined property if the type of the redefining property conforms to the type of the redefined property, and the multiplicity of the redefining property (if specified) is contained in the multiplicity of the redefined property.
-	 * redefinee.isRedefinitionContextValid(self)
-	 * result = redefinee.oclIsKindOf(Property) and 
-	 *   let prop : Property = redefinee.oclAsType(Property) in 
+	 * The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining Property is consistent with a redefined Property if the type of the redefining Property conforms to the type of the redefined Property, and the multiplicity of the redefining Property (if specified) is contained in the multiplicity of the redefined Property.
+	 * redefiningElement.isRedefinitionContextValid(self)
+	 * result = (redefiningElement.oclIsKindOf(Property) and 
+	 *   let prop : Property = redefiningElement.oclAsType(Property) in 
 	 *   (prop.type.conformsTo(self.type) and 
 	 *   ((prop.lowerBound()->notEmpty() and self.lowerBound()->notEmpty()) implies prop.lowerBound() >= self.lowerBound()) and 
 	 *   ((prop.upperBound()->notEmpty() and self.upperBound()->notEmpty()) implies prop.lowerBound() <= self.lowerBound()) and 
-	 *   (self.isComposite implies prop.isComposite))
+	 *   (self.isComposite implies prop.isComposite)))
+	 * <p>From package UML::Classification.</p>
 	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean isConsistentWith(Property property,
-			RedefinableElement redefinee) {
+			RedefinableElement redefiningElement) {
 
-		if (redefinee instanceof Property
-			&& redefinee.isRedefinitionContextValid(property)) {
+		if (redefiningElement instanceof Property
+			&& redefiningElement.isRedefinitionContextValid(property)) {
 
-			Property prop = (Property) redefinee;
+			Property prop = (Property) redefiningElement;
 
 			Type type = property.getType();
 			int upperBound = property.upperBound();
@@ -1014,9 +1023,10 @@ public class PropertyOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. In addition, for properties, the type must be conformant with the type of the specified parameterable element.
-	 * 
-	 * result = p->oclIsKindOf(self.oclType) and self.type.conformsTo(p.oclAsType(TypedElement).type)
+	 * The query isCompatibleWith() determines if this Property is compatible with the specified ParameterableElement. This Property is compatible with ParameterableElement p if the kind of this Property is thesame as or a subtype of the kind of p. Further, if p is a TypedElement, then the type of this Property must be conformant with the type of p.
+	 * result = (self.oclIsKindOf(p.oclType()) and (p.oclIsKindOf(TypeElement) implies
+	 * self.type.conformsTo(p.oclAsType(TypedElement).type)))
+	 * <p>From package UML::Classification.</p>
 	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -1024,13 +1034,13 @@ public class PropertyOperations
 	public static boolean isCompatibleWith(Property property,
 			ParameterableElement p) {
 
-		if (property.eClass().isInstance(p)) {
+		if (property.eClass().isInstance(p) && p instanceof TypedElement) {
 			Type type = property.getType();
 
 			return type == null
-				? ((Property) p).eGet(UMLPackage.Literals.TYPED_ELEMENT__TYPE,
-					false) == null
-				: type.conformsTo(((Property) p).getType());
+				? ((TypedElement) p).eGet(
+					UMLPackage.Literals.TYPED_ELEMENT__TYPE, false) == null
+				: type.conformsTo(((TypedElement) p).getType());
 		}
 
 		return false;

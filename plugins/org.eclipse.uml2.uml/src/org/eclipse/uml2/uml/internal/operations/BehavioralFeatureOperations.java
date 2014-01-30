@@ -181,6 +181,7 @@ public class BehavioralFeatureOperations
 	 *   Tuple { name=p.name, type=p.type,effect=p.effect,direction=p.direction,isException=p.isException,
 	 *           isStream=p.isStream,isOrdered=p.isOrdered,isUnique=p.isUnique,lower=p.lower, upper=p.upper }))
 	 *   )
+	 * <p>From package UML::Classification.</p>
 	 * @param behavioralFeature The receiving '<em><b>Behavioral Feature</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

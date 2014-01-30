@@ -285,7 +285,6 @@ public class TransitionOperations
 	 * An initial Transition at the topmost level Region of a StateMachine that has no Trigger.
 	 * (source.oclIsKindOf(Pseudostate) and container.stateMachine->notEmpty()) implies
 	 * 	trigger->isEmpty()
-	 * 
 	 * @param transition The receiving '<em><b>Transition</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -356,13 +355,14 @@ public class TransitionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The redefinition context of a transition is the nearest containing statemachine.
-	 * result = let sm = containingStateMachine() in
-	 * if sm.context->isEmpty() or sm.general->notEmpty() then
-	 * sm
+	 * The redefinition context of a Transition is the nearest containing StateMachine.
+	 * result = (let sm : StateMachine = containingStateMachine() in
+	 * if sm._'context' = null or sm.general->notEmpty() then
+	 *   sm
 	 * else
-	 * sm.context
-	 * endif
+	 *   sm._'context'
+	 * endif)
+	 * <p>From package UML::StateMachines.</p>
 	 * @param transition The receiving '<em><b>Transition</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -384,8 +384,9 @@ public class TransitionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query containingStateMachine() returns the state machine that contains the transition either directly or transitively.
-	 * result = container.containingStateMachine()
+	 * The query containingStateMachine() returns the StateMachine that contains the Transition either directly or transitively.
+	 * result = (container.containingStateMachine())
+	 * <p>From package UML::StateMachines.</p>
 	 * @param transition The receiving '<em><b>Transition</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -401,22 +402,22 @@ public class TransitionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isConsistentWith() specifies that a redefining transition is consistent with a redefined transition provided that the redefining transition has the following relation to the redefined transition: A redefining transition redefines all properties of the corresponding redefined transition, except the source state and the trigger.
-	 * result = (redefinee.oclIsKindOf(Transition) and
-	 *   let trans: Transition = redefinee.oclAsType(Transition) in
-	 *     (source() = trans.source() and trigger() = tran.trigger())
-	 * redefinee.isRedefinitionContextValid(self)
+	 * The query isConsistentWith() specifies that a redefining Transition is consistent with a redefined Transition provided that the redefining Transition has the following relation to the redefined Transition: A redefining Transition redefines all properties of the corresponding redefined Transition except the source State and the Trigger.
+	 * redefiningElement.isRedefinitionContextValid(self)
+	 * result = (-- the following is merely a default body; it is expected that the specific form of this constraint will be specified by profiles
+	 * true)
+	 * <p>From package UML::StateMachines.</p>
 	 * @param transition The receiving '<em><b>Transition</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean isConsistentWith(Transition transition,
-			RedefinableElement redefinee) {
+			RedefinableElement redefiningElement) {
 
-		if (redefinee != null
-			&& redefinee.isRedefinitionContextValid(transition)) {
+		if (redefiningElement != null
+			&& redefiningElement.isRedefinitionContextValid(transition)) {
 
-			Transition redefineeTransition = (Transition) redefinee;
+			Transition redefiningTransition = (Transition) redefiningElement;
 
 			EList<Vertex> sources = new UniqueEList.FastCompare<Vertex>();
 
@@ -426,16 +427,16 @@ public class TransitionOperations
 				sources.add(source);
 			}
 
-			Vertex redefineeSource = redefineeTransition.getSource();
+			Vertex redefiningSource = redefiningTransition.getSource();
 
-			if (redefineeSource != null) {
-				sources.add(redefineeSource);
+			if (redefiningSource != null) {
+				sources.add(redefiningSource);
 			}
 
 			return RedefinableElementOperations.excludeRedefinedElements(
 				sources).size() < 2
 				&& transition.getTriggers().equals(
-					redefineeTransition.getTriggers());
+					redefiningTransition.getTriggers());
 		}
 
 		return false;

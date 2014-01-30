@@ -309,6 +309,17 @@ public class LinkEndDataImpl
 	 * @generated
 	 */
 	public EList<InputPin> allPins() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<InputPin> result = (EList<InputPin>) cache.get(this,
+				UMLPackage.Literals.LINK_END_DATA___ALL_PINS);
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.LINK_END_DATA___ALL_PINS,
+					result = LinkEndDataOperations.allPins(this));
+			}
+			return result;
+		}
 		return LinkEndDataOperations.allPins(this);
 	}
 

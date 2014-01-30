@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 418466
  *
- * $Id: LiteralStringOperations.java,v 1.6 2007/05/03 21:11:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -80,7 +80,8 @@ public class LiteralStringOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isComputable() is redefined to be true.
-	 * result = true
+	 * result = (true)
+	 * <p>From package UML::Values.</p>
 	 * @param literalString The receiving '<em><b>Literal String</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -94,7 +95,8 @@ public class LiteralStringOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query stringValue() gives the value.
-	 * result = value
+	 * result = (value)
+	 * <p>From package UML::Values.</p>
 	 * @param literalString The receiving '<em><b>Literal String</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

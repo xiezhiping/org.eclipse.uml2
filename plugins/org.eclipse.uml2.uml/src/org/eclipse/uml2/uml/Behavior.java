@@ -520,7 +520,6 @@ public interface Behavior
 	 *     self.behavioredClassifier(from.owner)
 	 * endif
 	 * endif
-	 *     
 	 * <p>From package UML::CommonBehavior.</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false" fromRequired="true" fromOrdered="false"

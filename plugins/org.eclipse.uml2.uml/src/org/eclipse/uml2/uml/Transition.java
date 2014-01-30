@@ -470,7 +470,6 @@ public interface Transition
 	 * An initial Transition at the topmost level Region of a StateMachine that has no Trigger.
 	 * (source.oclIsKindOf(Pseudostate) and container.stateMachine->notEmpty()) implies
 	 * 	trigger->isEmpty()
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

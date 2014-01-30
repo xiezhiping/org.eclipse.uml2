@@ -170,7 +170,6 @@ public class StructuralFeatureActionOperations
 	 * _'context'.allFeatures()->includes(structuralFeature) or
 	 * structuralFeature.visibility=VisibilityKind::protected and
 	 * _'context'.conformsTo(structuralFeature.oclAsType(Property).opposite.type.oclAsType(Classifier))
-	 * 
 	 * @param structuralFeatureAction The receiving '<em><b>Structural Feature Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

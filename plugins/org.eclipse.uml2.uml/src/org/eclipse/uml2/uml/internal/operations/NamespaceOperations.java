@@ -292,9 +292,9 @@ public class NamespaceOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The importedMember property is derived from the ElementImports and the PackageImports. References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
-	 * result = self.importMembers(self.elementImport.importedElement.asSet()-
-	 * >union(self.packageImport.importedPackage->collect(p | p.visibleMembers())))
+	 * The importedMember property is derived as the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
+	 * result = (self.importMembers(elementImport.importedElement->asSet()->union(packageImport.importedPackage->collect(p | p.visibleMembers()))->asSet()))
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param namespace The receiving '<em><b>Namespace</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -320,6 +320,8 @@ public class NamespaceOperations
 				importedMembers.addAll(importedPackage.visibleMembers());
 			}
 		}
+
+		importedMembers = importMembers(namespace, importedMembers);
 
 		return new UnionEObjectEList<PackageableElement>(
 			(InternalEObject) namespace,
@@ -384,16 +386,18 @@ public class NamespaceOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query getNamesOfMember() takes importing into account. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.
-	 * The query getNamesOfMember() gives a set of all of the names that a member would have in a Namespace. In general a member can have multiple names in a Namespace if it is imported more than once with different aliases. The query takes account of importing. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.
-	 * result = if self.ownedMember ->includes(element)
-	 * then Set{}->include(element.name)
-	 * else let elementImports: ElementImport = self.elementImport->select(ei | ei.importedElement = element) in
+	 * The query getNamesOfMember() gives a set of all of the names that a member would have in a Namespace, taking importing into account. In general a member can have multiple names in a Namespace if it is imported more than once with different aliases.
+	 * result = (if self.ownedMember ->includes(element)
+	 * then Set{element.name}
+	 * else let elementImports : Set(ElementImport) = self.elementImport->select(ei | ei.importedElement = element) in
 	 *   if elementImports->notEmpty()
-	 *   then elementImports->collect(el | el.getName())
-	 *   else self.packageImport->select(pi | pi.importedPackage.visibleMembers()->includes(element))-> collect(pi | pi.importedPackage.getNamesOfMember(element))
+	 *   then
+	 *      elementImports->collect(el | el.getName())->asSet()
+	 *   else 
+	 *      self.packageImport->select(pi | pi.importedPackage.visibleMembers().oclAsType(NamedElement)->includes(element))-> collect(pi | pi.importedPackage.getNamesOfMember(element))->asSet()
 	 *   endif
-	 * endif
+	 * endif)
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param namespace The receiving '<em><b>Namespace</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -409,10 +413,11 @@ public class NamespaceOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The Boolean query membersAreDistinguishable() determines whether all of the namespace's members are distinguishable within it.
-	 * result = self.member->forAll( memb |
-	 * self.member->excluding(memb)->forAll(other |
-	 * memb.isDistinguishableFrom(other, self)))
+	 * The Boolean query membersAreDistinguishable() determines whether all of the Namespace's members are distinguishable within it.
+	 * result = (member->forAll( memb |
+	 *    member->excluding(memb)->forAll(other |
+	 *        memb.isDistinguishableFrom(other, self))))
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param namespace The receiving '<em><b>Namespace</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -438,11 +443,6 @@ public class NamespaceOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Missing derivation for Namespace::/ownedMember : NamedElement
-	 * true
-	 * @param namespace The receiving '<em><b>Namespace</b></em>' model object.
-	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<NamedElement> getOwnedMembers(Namespace namespace) {
@@ -453,9 +453,9 @@ public class NamespaceOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query importMembers() defines which of a set of PackageableElements are actually imported into the namespace. This excludes hidden ones, i.e., those which have names that conflict with names of owned members, and also excludes elements which would have the same name when imported.
-	 * result = self.excludeCollisions(imps)->select(imp | self.ownedMember->forAll(mem |
-	 * mem.imp.isDistinguishableFrom(mem, self)))
+	 * The query importMembers() defines which of a set of PackageableElements are actually imported into the Namespace. This excludes hidden ones, i.e., those which have names that conflict with names of ownedMembers, and it also excludes PackageableElements that would have the indistinguishable names when imported.
+	 * result = (self.excludeCollisions(imps)->select(imp | self.ownedMember->forAll(mem | imp.isDistinguishableFrom(mem, self))))
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param namespace The receiving '<em><b>Namespace</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -487,8 +487,9 @@ public class NamespaceOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query excludeCollisions() excludes from a set of PackageableElements any that would not be distinguishable from each other in this namespace.
-	 * result = imps->reject(imp1 | imps.exists(imp2 | not imp1.isDistinguishableFrom(imp2, self)))
+	 * The query excludeCollisions() excludes from a set of PackageableElements any that would not be distinguishable from each other in this Namespace.
+	 * result = (imps->reject(imp1  | imps->exists(imp2 | not imp1.isDistinguishableFrom(imp2, self))))
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param namespace The receiving '<em><b>Namespace</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

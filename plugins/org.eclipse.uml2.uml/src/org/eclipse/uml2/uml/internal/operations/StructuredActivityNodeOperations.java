@@ -17,6 +17,8 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.Action;
@@ -68,13 +70,11 @@ public class StructuredActivityNodeOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param structuredActivityNode The receiving '<em><b>Structured Activity Node</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Activity containingActivity(
 			StructuredActivityNode structuredActivityNode) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return ActionOperations.containingActivity(structuredActivityNode);
 	}
 
 	/**
@@ -196,13 +196,23 @@ public class StructuredActivityNodeOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param structuredActivityNode The receiving '<em><b>Structured Activity Node</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<ActivityNode> sourceNodes(
 			StructuredActivityNode structuredActivityNode) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<ActivityNode> sourceNodes = new UniqueEList.FastCompare<ActivityNode>();
+
+		for (ActivityNode node : structuredActivityNode.getNodes()) {
+			sourceNodes.add(node);
+
+			if (node instanceof Action) {
+				sourceNodes.addAll(((Action) node).getOutputs());
+			}
+		}
+
+		sourceNodes.addAll(structuredActivityNode.getInputs());
+
+		return ECollections.unmodifiableEList(sourceNodes);
 	}
 
 	/**
@@ -215,13 +225,23 @@ public class StructuredActivityNodeOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param structuredActivityNode The receiving '<em><b>Structured Activity Node</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<ActivityNode> targetNodes(
 			StructuredActivityNode structuredActivityNode) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<ActivityNode> targetNodes = new UniqueEList.FastCompare<ActivityNode>();
+
+		for (ActivityNode node : structuredActivityNode.getNodes()) {
+			targetNodes.add(node);
+
+			if (node instanceof Action) {
+				targetNodes.addAll(((Action) node).getInputs());
+			}
+		}
+
+		targetNodes.addAll(structuredActivityNode.getOutputs());
+
+		return ECollections.unmodifiableEList(targetNodes);
 	}
 
 	/**
@@ -233,13 +253,22 @@ public class StructuredActivityNodeOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param structuredActivityNode The receiving '<em><b>Structured Activity Node</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<Action> allActions(
 			StructuredActivityNode structuredActivityNode) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<Action> allActions = new UniqueEList.FastCompare<Action>();
+
+		for (ActivityNode node : structuredActivityNode.getNodes()) {
+
+			if (node instanceof Action) {
+				allActions.addAll(((Action) node).allActions());
+			}
+		}
+
+		allActions.add(structuredActivityNode);
+
+		return ECollections.unmodifiableEList(allActions);
 	}
 
 	/**
@@ -251,13 +280,24 @@ public class StructuredActivityNodeOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param structuredActivityNode The receiving '<em><b>Structured Activity Node</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<ActivityNode> allOwnedNodes(
 			StructuredActivityNode structuredActivityNode) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<ActivityNode> allOwnedNodes = new UniqueEList.FastCompare<ActivityNode>();
+
+		allOwnedNodes.addAll(ActionOperations
+			.allOwnedNodes(structuredActivityNode));
+
+		for (ActivityNode node : structuredActivityNode.getNodes()) {
+			allOwnedNodes.add(node);
+
+			if (node instanceof Action) {
+				allOwnedNodes.addAll(((Action) node).allOwnedNodes());
+			}
+		}
+
+		return ECollections.unmodifiableEList(allOwnedNodes);
 	}
 
 } // StructuredActivityNodeOperations

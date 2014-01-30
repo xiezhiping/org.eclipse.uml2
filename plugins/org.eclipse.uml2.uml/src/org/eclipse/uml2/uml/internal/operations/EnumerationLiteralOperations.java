@@ -76,6 +76,7 @@ public class EnumerationLiteralOperations
 	 * <!-- begin-model-doc -->
 	 * Derivation of Enumeration::/classifier
 	 * result = (enumeration)
+	 * <p>From package UML::SimpleClassifiers.</p>
 	 * @param enumerationLiteral The receiving '<em><b>Enumeration Literal</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

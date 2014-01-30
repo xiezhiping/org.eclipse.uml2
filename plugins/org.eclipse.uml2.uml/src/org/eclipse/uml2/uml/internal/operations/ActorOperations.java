@@ -119,7 +119,7 @@ public class ActorOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An actor must have a name.
+	 * An Actor must have a name.
 	 * name->notEmpty()
 	 * @param actor The receiving '<em><b>Actor</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.

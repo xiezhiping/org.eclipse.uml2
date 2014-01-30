@@ -130,7 +130,6 @@ public class ObjectNodeOperations
 	 * 	selection.inputParameters()->forAll(p | not p.isUnique and p.is(0,*) and self.type.conformsTo(p.type)) and
 	 * 	selection.outputParameters()->size()=1 and
 	 * 		selection.inputParameters()->forAll(p | self.type.conformsTo(p.type))
-	 * 	
 	 * @param objectNode The receiving '<em><b>Object Node</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

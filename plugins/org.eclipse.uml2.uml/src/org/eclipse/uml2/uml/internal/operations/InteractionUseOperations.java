@@ -180,7 +180,6 @@ public class InteractionUseOperations
 	 * <!-- begin-model-doc -->
 	 * The type of the returnValue must correspond to the type of the returnValueRecipient.
 	 * returnValue.type->asSequence()->notEmpty() implies returnValue.type->asSequence()->first() = returnValueRecipient.type->asSequence()->first()
-	 * 
 	 * @param interactionUse The receiving '<em><b>Interaction Use</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

@@ -107,7 +107,6 @@ public interface ReadLinkAction
 	 * <!-- begin-model-doc -->
 	 * The type and ordering of the result OutputPin are same as the type and ordering of the open Association end.
 	 * self.openEnd()->forAll(type=result.type and isOrdered=result.isOrdered)
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -123,7 +122,6 @@ public interface ReadLinkAction
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of the open Association end must be compatible with the multiplicity of the result OutputPin.
 	 * self.openEnd()->first().compatibleWith(result)
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -139,7 +137,6 @@ public interface ReadLinkAction
 	 * <!-- begin-model-doc -->
 	 * The open end must be navigable.
 	 * self.openEnd()->first().isNavigable()
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -174,7 +171,6 @@ public interface ReadLinkAction
 	 *     (_'context' = oed.end.type or 
 	 *       (openEnd.visibility = VisibilityKind::protected and 
 	 *         _'context'.conformsTo(oed.end.type.oclAsType(Classifier)))))
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

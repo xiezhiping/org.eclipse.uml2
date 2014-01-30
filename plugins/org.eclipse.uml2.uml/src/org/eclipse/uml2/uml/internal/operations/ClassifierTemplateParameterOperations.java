@@ -247,7 +247,6 @@ public class ClassifierTemplateParameterOperations
 	 * constrainingClassifier->forAll(
 	 *      cc |  parameteredElement = cc or parameteredElement.conformsTo(cc) or (allowSubstitutable and parameteredElement.isSubstitutableFor(cc))
 	 * )
-	 * 
 	 * @param classifierTemplateParameter The receiving '<em><b>Classifier Template Parameter</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

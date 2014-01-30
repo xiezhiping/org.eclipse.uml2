@@ -17,6 +17,8 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.InputPin;
@@ -62,7 +64,6 @@ public class LinkEndCreationDataOperations
 	 * 	not isReplaceAll=false implies
 	 * 	insertAt <> null and insertAt->forAll(type=UnlimitedNatural and is(1,1))
 	 * endif
-	 * 
 	 * @param linkEndCreationData The receiving '<em><b>Link End Creation Data</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -102,13 +103,20 @@ public class LinkEndCreationDataOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param linkEndCreationData The receiving '<em><b>Link End Creation Data</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<InputPin> allPins(
 			LinkEndCreationData linkEndCreationData) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<InputPin> allPins = new UniqueEList.FastCompare<InputPin>(
+			LinkEndDataOperations.allPins(linkEndCreationData));
+
+		InputPin insertAt = linkEndCreationData.getInsertAt();
+
+		if (insertAt != null) {
+			allPins.add(insertAt);
+		}
+
+		return ECollections.unmodifiableEList(allPins);
 	}
 
 } // LinkEndCreationDataOperations

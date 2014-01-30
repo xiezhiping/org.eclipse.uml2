@@ -66,6 +66,7 @@ public class ActionOperations
 	 * endif
 	 * endif)
 	 * true
+	 * <p>From package UML::Actions.</p>
 	 * @param action The receiving '<em><b>Action</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

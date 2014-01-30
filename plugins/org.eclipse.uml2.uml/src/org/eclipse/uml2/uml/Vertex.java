@@ -177,7 +177,6 @@ public interface Vertex
 	 *       endif
 	 *    endif
 	 * endif
-	 * 
 	 * )
 	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->

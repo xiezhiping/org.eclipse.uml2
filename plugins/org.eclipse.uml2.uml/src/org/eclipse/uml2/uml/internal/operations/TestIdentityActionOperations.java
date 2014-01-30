@@ -56,7 +56,6 @@ public class TestIdentityActionOperations
 	 * <!-- begin-model-doc -->
 	 * The InputPins have no type.
 	 * first.type= null and second.type = null
-	 * 
 	 * @param testIdentityAction The receiving '<em><b>Test Identity Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -92,7 +91,6 @@ public class TestIdentityActionOperations
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of the InputPins is 1..1.
 	 * first.is(1,1) and second.is(1,1)
-	 * 
 	 * @param testIdentityAction The receiving '<em><b>Test Identity Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -127,7 +125,7 @@ public class TestIdentityActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the result OutputPin is Boolean. 
+	 * The type of the result OutputPin is Boolean.
 	 * result.type=Boolean
 	 * @param testIdentityAction The receiving '<em><b>Test Identity Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.

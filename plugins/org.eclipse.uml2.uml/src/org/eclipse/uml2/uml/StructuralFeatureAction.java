@@ -182,7 +182,6 @@ public interface StructuralFeatureAction
 	 * _'context'.allFeatures()->includes(structuralFeature) or
 	 * structuralFeature.visibility=VisibilityKind::protected and
 	 * _'context'.conformsTo(structuralFeature.oclAsType(Property).opposite.type.oclAsType(Classifier))
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

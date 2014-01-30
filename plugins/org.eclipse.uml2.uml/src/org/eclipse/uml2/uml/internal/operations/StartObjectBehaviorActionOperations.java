@@ -17,11 +17,15 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.Behavior;
+import org.eclipse.uml2.uml.BehavioredClassifier;
+import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.StartObjectBehaviorAction;
+import org.eclipse.uml2.uml.Type;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -144,13 +148,22 @@ public class StartObjectBehaviorActionOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param startObjectBehaviorAction The receiving '<em><b>Start Object Behavior Action</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Behavior behavior(
 			StartObjectBehaviorAction startObjectBehaviorAction) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		InputPin object = startObjectBehaviorAction.getObject();
+		Type type = object == null
+			? null
+			: object.getType();
+
+		if (type instanceof Behavior) {
+			return (Behavior) type;
+		} else {
+			return type instanceof BehavioredClassifier
+				? ((BehavioredClassifier) type).getClassifierBehavior()
+				: null;
+		}
 	}
 
 	/**
@@ -162,13 +175,17 @@ public class StartObjectBehaviorActionOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param startObjectBehaviorAction The receiving '<em><b>Start Object Behavior Action</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<Parameter> outputParameters(
 			StartObjectBehaviorAction startObjectBehaviorAction) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		Behavior behavior = startObjectBehaviorAction.behavior();
+
+		if (behavior != null) {
+			return behavior.outputParameters();
+		} else {
+			return ECollections.emptyEList();
+		}
 	}
 
 	/**
@@ -180,13 +197,17 @@ public class StartObjectBehaviorActionOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param startObjectBehaviorAction The receiving '<em><b>Start Object Behavior Action</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<Parameter> inputParameters(
 			StartObjectBehaviorAction startObjectBehaviorAction) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		Behavior behavior = startObjectBehaviorAction.behavior();
+
+		if (behavior != null) {
+			return behavior.inputParameters();
+		} else {
+			return ECollections.emptyEList();
+		}
 	}
 
 	/**

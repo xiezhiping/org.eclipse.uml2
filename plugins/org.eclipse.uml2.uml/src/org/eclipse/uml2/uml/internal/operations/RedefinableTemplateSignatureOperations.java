@@ -99,6 +99,12 @@ public class RedefinableTemplateSignatureOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Derivation for RedefinableTemplateSignature::/inheritedParameter
+	 * result = (if extendedSignature->isEmpty() then Set{} else extendedSignature.parameter->asSet() endif)
+	 * <p>From package UML::Classification.</p>
+	 * @param redefinableTemplateSignature The receiving '<em><b>Redefinable Template Signature</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<TemplateParameter> getInheritedParameters(
@@ -123,17 +129,17 @@ public class RedefinableTemplateSignatureOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isConsistentWith() specifies, for any two RedefinableTemplateSignatures in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining template signature is always consistent with a redefined template signature, since redefinition only adds new formal parameters.
-	 * redefinee.isRedefinitionContextValid(self)
-	 * result = redefinee.oclIsKindOf(RedefineableTemplateSignature)
+	 * The query isConsistentWith() specifies, for any two RedefinableTemplateSignatures in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining template signature is always consistent with a redefined template signature, as redefinition only adds new formal parameters.
+	 * result = (redefiningElement.oclIsKindOf(RedefinableTemplateSignature))
+	 * <p>From package UML::Classification.</p>
 	 * @param redefinableTemplateSignature The receiving '<em><b>Redefinable Template Signature</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean isConsistentWith(
 			RedefinableTemplateSignature redefinableTemplateSignature,
-			RedefinableElement redefinee) {
-		return redefinee instanceof RedefinableTemplateSignature;
+			RedefinableElement redefiningElement) {
+		return redefiningElement instanceof RedefinableTemplateSignature;
 	}
 
 } // RedefinableTemplateSignatureOperations

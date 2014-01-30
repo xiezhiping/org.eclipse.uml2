@@ -287,6 +287,11 @@ public class ParameterOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Derivation for Parameter::/default
+	 * result = (if self.type = String then defaultValue.stringValue() else null endif)
+	 * @param parameter The receiving '<em><b>Parameter</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static String getDefault(Parameter parameter) {

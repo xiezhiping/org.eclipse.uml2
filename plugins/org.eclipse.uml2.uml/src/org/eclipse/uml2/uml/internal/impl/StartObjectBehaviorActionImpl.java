@@ -298,6 +298,20 @@ public class StartObjectBehaviorActionImpl
 	 */
 	@Override
 	public EList<Parameter> outputParameters() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<Parameter> result = (EList<Parameter>) cache.get(this,
+				UMLPackage.Literals.CALL_ACTION___OUTPUT_PARAMETERS);
+			if (result == null) {
+				cache.put(
+					this,
+					UMLPackage.Literals.CALL_ACTION___OUTPUT_PARAMETERS,
+					result = StartObjectBehaviorActionOperations
+						.outputParameters(this));
+			}
+			return result;
+		}
 		return StartObjectBehaviorActionOperations.outputParameters(this);
 	}
 
@@ -308,6 +322,20 @@ public class StartObjectBehaviorActionImpl
 	 */
 	@Override
 	public EList<Parameter> inputParameters() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<Parameter> result = (EList<Parameter>) cache.get(this,
+				UMLPackage.Literals.CALL_ACTION___INPUT_PARAMETERS);
+			if (result == null) {
+				cache.put(
+					this,
+					UMLPackage.Literals.CALL_ACTION___INPUT_PARAMETERS,
+					result = StartObjectBehaviorActionOperations
+						.inputParameters(this));
+			}
+			return result;
+		}
 		return StartObjectBehaviorActionOperations.inputParameters(this);
 	}
 

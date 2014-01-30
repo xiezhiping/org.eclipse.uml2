@@ -112,7 +112,9 @@ public class ConnectableElementOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
+	 * Derivation for ConnectableElement::/end : ConnectorEnd
 	 * result = ConnectorEnd.allInstances()->select(e | e.role=self)
+	 * <p>From package UML::StructuredClassifiers.</p>
 	 * @param connectableElement The receiving '<em><b>Connectable Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

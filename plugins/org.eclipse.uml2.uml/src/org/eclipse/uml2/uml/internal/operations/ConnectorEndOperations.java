@@ -213,6 +213,7 @@ public class ConnectorEndOperations
 	 *   let index : Integer = connector.end->indexOf(self) in
 	 *     connector.type.memberEnd->at(index)
 	 * endif)
+	 * <p>From package UML::StructuredClassifiers.</p>
 	 * @param connectorEnd The receiving '<em><b>Connector End</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

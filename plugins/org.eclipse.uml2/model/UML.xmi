@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.omg.org/spec/UML/20131001" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA http://www.omg.org/spec/UML/20131001 http://www.eclipse.org/uml2/4.0.0/UML">
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.omg.org/spec/UML/20131001" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA http://www.omg.org/spec/UML/20131001 http://www.eclipse.org/uml2/5.0.0/UML">
   <uml:Package xmi:id="_0" name="UML" URI="http://www.omg.org/spec/UML/20131001">
     <packageImport xmi:type="uml:PackageImport" xmi:id="_packageImport.0" importingNamespace="_0">
       <importedPackage xmi:type="uml:Model" href="http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi#_0"/>
@@ -49,8 +49,7 @@ let associatedNodes : Set(ActivityNode) = node->select(&#xD;
   associatedNodes->size()=2 and&#xD;
   associatedNodes->select(incoming->notEmpty())->size()&lt;=1 and&#xD;
   associatedNodes->select(outgoing->notEmpty())->size()&lt;=1&#xD;
-)&#xD;
-</body>
+)</body>
           </specification>
         </ownedRule>
         <generalization xmi:type="uml:Generalization" xmi:id="Activity-_generalization.0" general="Behavior" specific="Activity"/>
@@ -70,7 +69,7 @@ let associatedNodes : Set(ActivityNode) = node->select(&#xD;
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="Activity-isReadOnly" name="isReadOnly">
           <ownedComment xmi:type="uml:Comment" xmi:id="Activity-isReadOnly-_ownedComment.0" annotatedElement="Activity-isReadOnly">
-            <body>If true, this Activity must not make any changes to objects. The default is false (an Activity may make nonlocal changes). (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the Activity, then the model is ill-formed.) </body>
+            <body>If true, this Activity must not make any changes to objects. The default is false (an Activity may make nonlocal changes). (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the Activity, then the model is ill-formed.)</body>
           </ownedComment>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi#Boolean"/>
           <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="Activity-isReadOnly-_defaultValue"/>
@@ -651,8 +650,7 @@ allRelevantEdges->forAll(oclIsKindOf(ControlFlow)) or allRelevantEdges->forAll(o
      par.direction &lt;> ParameterDirectionKind::out and &#xD;
      par.direction &lt;> ParameterDirectionKind::inout ) and&#xD;
    decisionInput.ownedParameter->one(par | &#xD;
-     par.direction &lt;> ParameterDirectionKind::return))&#xD;
-     </body>
+     par.direction &lt;> ParameterDirectionKind::return))</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="DecisionNode-incoming_object_one_input_parameter" name="incoming_object_one_input_parameter" constrainedElement="DecisionNode" context="DecisionNode">
@@ -820,8 +818,7 @@ exceptionType->forAll(conformsTo(exceptionInput.type.oclAsType(Classifier)))</bo
           <specification xmi:type="uml:OpaqueExpression" xmi:id="ForkNode-edges-_specification">
             <language>OCL</language>
             <body>let allEdges : Set(ActivityEdge) = incoming->union(outgoing) in&#xD;
-allEdges->forAll(oclIsKindOf(ControlFlow)) or allEdges->forAll(oclIsKindOf(ObjectFlow))&#xD;
-</body>
+allEdges->forAll(oclIsKindOf(ControlFlow)) or allEdges->forAll(oclIsKindOf(ObjectFlow))</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="ForkNode-one_incoming_edge" name="one_incoming_edge" constrainedElement="ForkNode" context="ForkNode">
@@ -948,8 +945,7 @@ endif</body>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="MergeNode-edges-_specification">
             <language>OCL</language>
             <body>let allEdges : Set(ActivityEdge) = incoming->union(outgoing) in&#xD;
-allEdges->forAll(oclIsKindOf(ControlFlow)) or allEdges->forAll(oclIsKindOf(ObjectFlow))&#xD;
-</body>
+allEdges->forAll(oclIsKindOf(ControlFlow)) or allEdges->forAll(oclIsKindOf(ObjectFlow))</body>
           </specification>
         </ownedRule>
         <generalization xmi:type="uml:Generalization" xmi:id="MergeNode-_generalization.0" general="ControlNode" specific="MergeNode"/>
@@ -1056,8 +1052,7 @@ allEdges->forAll(oclIsKindOf(ControlFlow)) or allEdges->forAll(oclIsKindOf(Objec
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="ObjectNode" name="ObjectNode" isAbstract="true">
         <ownedComment xmi:type="uml:Comment" xmi:id="ObjectNode-_ownedComment.0" annotatedElement="ObjectNode">
-          <body>An ObjectNode is an abstract ActivityNode that may hold tokens within the object flow in an Activity. ObjectNodes also support token selection, limitation on the number of tokens held, specification of the state required for tokens being held, and carrying control values.&#xD;
-</body>
+          <body>An ObjectNode is an abstract ActivityNode that may hold tokens within the object flow in an Activity. ObjectNodes also support token selection, limitation on the number of tokens held, specification of the state required for tokens being held, and carrying control values.</body>
         </ownedComment>
         <ownedRule xmi:type="uml:Constraint" xmi:id="ObjectNode-input_output_parameter" name="input_output_parameter" constrainedElement="ObjectNode" context="ObjectNode">
           <ownedComment xmi:type="uml:Comment" xmi:id="ObjectNode-input_output_parameter-_ownedComment.0" annotatedElement="ObjectNode-input_output_parameter">
@@ -1069,8 +1064,7 @@ allEdges->forAll(oclIsKindOf(ControlFlow)) or allEdges->forAll(oclIsKindOf(Objec
 	selection.inputParameters()->size()=1 and&#xD;
 	selection.inputParameters()->forAll(p | not p.isUnique and p.is(0,*) and self.type.conformsTo(p.type)) and&#xD;
 	selection.outputParameters()->size()=1 and&#xD;
-		selection.inputParameters()->forAll(p | self.type.conformsTo(p.type))&#xD;
-	</body>
+		selection.inputParameters()->forAll(p | self.type.conformsTo(p.type))</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="ObjectNode-selection_behavior" name="selection_behavior" constrainedElement="ObjectNode" context="ObjectNode">
@@ -1836,7 +1830,7 @@ endif</body>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="OpaqueExpression-result.1" name="result" bodyCondition="OpaqueExpression-result.1-spec" class="OpaqueExpression" isQuery="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="OpaqueExpression-result.1-_ownedComment.0" annotatedElement="OpaqueExpression-result.1">
-            <body>Derivation for OpaqueExpression::/result </body>
+            <body>Derivation for OpaqueExpression::/result</body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="OpaqueExpression-result.1-spec" name="spec" constrainedElement="OpaqueExpression-result.1 OpaqueExpression-result" context="OpaqueExpression-result.1">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="OpaqueExpression-result.1-spec-_specification">
@@ -2489,8 +2483,7 @@ self.type.conformsTo(p.oclAsType(TypedElement).type)))</body>
       <packageImport xmi:type="uml:PackageImport" xmi:id="_packageImport.3" importedPackage="CommonStructure" importingNamespace="StructuredClassifiers"/>
       <packagedElement xmi:type="uml:Class" xmi:id="Association" name="Association">
         <ownedComment xmi:type="uml:Comment" xmi:id="Association-_ownedComment.0" annotatedElement="Association">
-          <body>A link is a tuple of values that refer to typed objects.  An Association classifies a set of links, each of which is an instance of the Association.  Each value in the link refers to an instance of the type of the corresponding end of the Association.&#xD;
-</body>
+          <body>A link is a tuple of values that refer to typed objects.  An Association classifies a set of links, each of which is an instance of the Association.  Each value in the link refers to an instance of the type of the corresponding end of the Association.</body>
         </ownedComment>
         <ownedRule xmi:type="uml:Constraint" xmi:id="Association-specialized_end_number" name="specialized_end_number" constrainedElement="Association" context="Association">
           <ownedComment xmi:type="uml:Comment" xmi:id="Association-specialized_end_number-_ownedComment.0" annotatedElement="Association-specialized_end_number">
@@ -2614,8 +2607,7 @@ self.type.conformsTo(p.oclAsType(TypedElement).type)))</body>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="Class" name="Class">
         <ownedComment xmi:type="uml:Comment" xmi:id="Class-_ownedComment.0" annotatedElement="Class">
-          <body>A Class classifies a set of objects and specifies the features that characterize the structure and behavior of those objects.  A Class may have an internal structure and Ports.&#xD;
-</body>
+          <body>A Class classifies a set of objects and specifies the features that characterize the structure and behavior of those objects.  A Class may have an internal structure and Ports.</body>
         </ownedComment>
         <ownedRule xmi:type="uml:Constraint" xmi:id="Class-passive_class" name="passive_class" constrainedElement="Class" context="Class">
           <ownedComment xmi:type="uml:Comment" xmi:id="Class-passive_class-_ownedComment.0" annotatedElement="Class-passive_class">
@@ -2719,7 +2711,7 @@ self.type.conformsTo(p.oclAsType(TypedElement).type)))</body>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="Collaboration" name="Collaboration">
         <ownedComment xmi:type="uml:Comment" xmi:id="Collaboration-_ownedComment.0" annotatedElement="Collaboration">
-          <body>A Collaboration describes a structure of collaborating elements (roles), each performing a specialized function, which collectively accomplish some desired functionality. </body>
+          <body>A Collaboration describes a structure of collaborating elements (roles), each performing a specialized function, which collectively accomplish some desired functionality.</body>
         </ownedComment>
         <generalization xmi:type="uml:Generalization" xmi:id="Collaboration-_generalization.1" general="StructuredClassifier" specific="Collaboration"/>
         <generalization xmi:type="uml:Generalization" xmi:id="Collaboration-_generalization.0" general="BehavioredClassifier" specific="Collaboration"/>
@@ -2794,7 +2786,7 @@ and&#xD;
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="Component" name="Component">
         <ownedComment xmi:type="uml:Comment" xmi:id="Component-_ownedComment.0" annotatedElement="Component">
-          <body>A Component represents a modular part of a system that encapsulates its contents and whose manifestation is replaceable within its environment.  </body>
+          <body>A Component represents a modular part of a system that encapsulates its contents and whose manifestation is replaceable within its environment.</body>
         </ownedComment>
         <ownedRule xmi:type="uml:Constraint" xmi:id="Component-no_nested_classifiers" name="no_nested_classifiers" constrainedElement="Component" context="Component">
           <ownedComment xmi:type="uml:Comment" xmi:id="Component-no_nested_classifiers-_ownedComment.0" annotatedElement="Component-no_nested_classifiers">
@@ -3673,8 +3665,7 @@ endif)</body>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="ProtocolStateMachine-deep_or_shallow_history-_specification">
             <language>OCL</language>
             <body>region->forAll (r | r.subvertex->forAll (v | v.oclIsKindOf(Pseudostate) implies
-((v.oclAsType(Pseudostate).kind &lt;>  PseudostateKind::deepHistory) and (v.oclAsType(Pseudostate).kind &lt;> PseudostateKind::shallowHistory))))
-</body>
+((v.oclAsType(Pseudostate).kind &lt;>  PseudostateKind::deepHistory) and (v.oclAsType(Pseudostate).kind &lt;> PseudostateKind::shallowHistory))))</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="ProtocolStateMachine-entry_exit_do" name="entry_exit_do" constrainedElement="ProtocolStateMachine" context="ProtocolStateMachine">
@@ -3684,8 +3675,7 @@ endif)</body>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="ProtocolStateMachine-entry_exit_do-_specification">
             <language>OCL</language>
             <body>region->forAll(r | r.subvertex->forAll(v | v.oclIsKindOf(State) implies
-(v.oclAsType(State).entry->isEmpty() and v.oclAsType(State).exit->isEmpty() and v.oclAsType(State).doActivity->isEmpty())))
-</body>
+(v.oclAsType(State).entry->isEmpty() and v.oclAsType(State).exit->isEmpty() and v.oclAsType(State).doActivity->isEmpty())))</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="ProtocolStateMachine-protocol_transitions" name="protocol_transitions" constrainedElement="ProtocolStateMachine" context="ProtocolStateMachine">
@@ -3700,7 +3690,7 @@ endif)</body>
         <generalization xmi:type="uml:Generalization" xmi:id="ProtocolStateMachine-_generalization.0" general="StateMachine" specific="ProtocolStateMachine"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="ProtocolStateMachine-conformance" name="conformance" type="ProtocolConformance" aggregation="composite" subsettedProperty="A_source_directedRelationship-directedRelationship Element-ownedElement" association="A_conformance_specificMachine">
           <ownedComment xmi:type="uml:Comment" xmi:id="ProtocolStateMachine-conformance-_ownedComment.0" annotatedElement="ProtocolStateMachine-conformance">
-            <body>Conformance between ProtocolStateMachine </body>
+            <body>Conformance between ProtocolStateMachine</body>
           </ownedComment>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ProtocolStateMachine-conformance-_lowerValue"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="ProtocolStateMachine-conformance-_upperValue" value="*"/>
@@ -3792,8 +3782,7 @@ else true endif</body>
 &#xD;
 outgoing->forAll(t1:Transition, t2:Transition | let contState:State = containingStateMachine().LCAState(t1.target, t2.target) in&#xD;
 	((contState &lt;> null) and (contState.region&#xD;
-		->exists(r1:Region, r2: Region | (r1 &lt;> r2) and t1.target.isContainedInRegion(r1) and t2.target.isContainedInRegion(r2)))))&#xD;
-	</body>
+		->exists(r1:Region, r2: Region | (r1 &lt;> r2) and t1.target.isContainedInRegion(r1) and t2.target.isContainedInRegion(r2)))))</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="Pseudostate-choice_vertex" name="choice_vertex" constrainedElement="Pseudostate" context="Pseudostate">
@@ -3802,8 +3791,7 @@ outgoing->forAll(t1:Transition, t2:Transition | let contState:State = containing
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="Pseudostate-choice_vertex-_specification">
             <language>OCL</language>
-            <body>(kind = PseudostateKind::choice) implies (incoming->size() >= 1 and outgoing->size() >= 1)
-</body>
+            <body>(kind = PseudostateKind::choice) implies (incoming->size() >= 1 and outgoing->size() >= 1)</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="Pseudostate-outgoing_from_initial" name="outgoing_from_initial" constrainedElement="Pseudostate" context="Pseudostate">
@@ -3821,8 +3809,7 @@ outgoing->forAll(t1:Transition, t2:Transition | let contState:State = containing
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="Pseudostate-join_vertex-_specification">
             <language>OCL</language>
-            <body>(kind = PseudostateKind::join) implies (outgoing->size() = 1 and incoming->size() >= 2)
-</body>
+            <body>(kind = PseudostateKind::join) implies (outgoing->size() = 1 and incoming->size() >= 2)</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="Pseudostate-junction_vertex" name="junction_vertex" constrainedElement="Pseudostate" context="Pseudostate">
@@ -3831,8 +3818,7 @@ outgoing->forAll(t1:Transition, t2:Transition | let contState:State = containing
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="Pseudostate-junction_vertex-_specification">
             <language>OCL</language>
-            <body>(kind = PseudostateKind::junction) implies (incoming->size() >= 1 and outgoing->size() >= 1)
-</body>
+            <body>(kind = PseudostateKind::junction) implies (incoming->size() >= 1 and outgoing->size() >= 1)</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="Pseudostate-history_vertices" name="history_vertices" constrainedElement="Pseudostate" context="Pseudostate">
@@ -3841,8 +3827,7 @@ outgoing->forAll(t1:Transition, t2:Transition | let contState:State = containing
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="Pseudostate-history_vertices-_specification">
             <language>OCL</language>
-            <body>((kind = PseudostateKind::deepHistory) or (kind = PseudostateKind::shallowHistory)) implies (outgoing->size() &lt;= 1)
-</body>
+            <body>((kind = PseudostateKind::deepHistory) or (kind = PseudostateKind::shallowHistory)) implies (outgoing->size() &lt;= 1)</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="Pseudostate-initial_vertex" name="initial_vertex" constrainedElement="Pseudostate" context="Pseudostate">
@@ -3860,8 +3845,7 @@ outgoing->forAll(t1:Transition, t2:Transition | let contState:State = containing
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="Pseudostate-fork_vertex-_specification">
             <language>OCL</language>
-            <body>(kind = PseudostateKind::fork) implies (incoming->size() = 1 and outgoing->size() >= 2)
-</body>
+            <body>(kind = PseudostateKind::fork) implies (incoming->size() = 1 and outgoing->size() >= 2)</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="Pseudostate-transitions_incoming" name="transitions_incoming" constrainedElement="Pseudostate" context="Pseudostate">
@@ -3911,8 +3895,7 @@ incoming->forAll(t1:Transition, t2:Transition | let contState:State = containing
           <specification xmi:type="uml:OpaqueExpression" xmi:id="Region-deep_history_vertex-_specification">
             <language>OCL</language>
             <body>self.subvertex->select (oclIsKindOf(Pseudostate))->collect(oclAsType(Pseudostate))->
-   select(kind = PseudostateKind::deepHistory)->size() &lt;= 1
-</body>
+   select(kind = PseudostateKind::deepHistory)->size() &lt;= 1</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="Region-shallow_history_vertex" name="shallow_history_vertex" constrainedElement="Region" context="Region">
@@ -3922,8 +3905,7 @@ incoming->forAll(t1:Transition, t2:Transition | let contState:State = containing
           <specification xmi:type="uml:OpaqueExpression" xmi:id="Region-shallow_history_vertex-_specification">
             <language>OCL</language>
             <body>subvertex->select(oclIsKindOf(Pseudostate))->collect(oclAsType(Pseudostate))->
-  select(kind = PseudostateKind::shallowHistory)->size() &lt;= 1
-</body>
+  select(kind = PseudostateKind::shallowHistory)->size() &lt;= 1</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="Region-owned" name="owned" constrainedElement="Region" context="Region">
@@ -3942,8 +3924,7 @@ incoming->forAll(t1:Transition, t2:Transition | let contState:State = containing
           <specification xmi:type="uml:OpaqueExpression" xmi:id="Region-initial_vertex-_specification">
             <language>OCL</language>
             <body>self.subvertex->select (oclIsKindOf(Pseudostate))->collect(oclAsType(Pseudostate))->
-  select(kind = PseudostateKind::initial)->size() &lt;= 1
-</body>
+  select(kind = PseudostateKind::initial)->size() &lt;= 1</body>
           </specification>
         </ownedRule>
         <generalization xmi:type="uml:Generalization" xmi:id="Region-_generalization.0" general="Namespace" specific="Region"/>
@@ -4619,8 +4600,7 @@ endif endif endif)</body>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-initial_transition-_specification">
             <language>OCL</language>
             <body>(source.oclIsKindOf(Pseudostate) and container.stateMachine->notEmpty()) implies
-	trigger->isEmpty()
-</body>
+	trigger->isEmpty()</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="Transition-fork_segment_guards" name="fork_segment_guards" constrainedElement="Transition" context="Transition">
@@ -4784,7 +4764,6 @@ else
       endif
    endif
 endif
-
 )</body>
             </specification>
           </ownedRule>
@@ -5650,7 +5629,7 @@ endif)</body>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="Package-nestedPackage.1" name="nestedPackage" bodyCondition="Package-nestedPackage.1-spec" class="Package" isQuery="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="Package-nestedPackage.1-_ownedComment.0" annotatedElement="Package-nestedPackage.1">
-            <body>Derivation for Package::/nestedPackage </body>
+            <body>Derivation for Package::/nestedPackage</body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="Package-nestedPackage.1-spec" name="spec" constrainedElement="Package-nestedPackage.1 Package-nestedPackage" context="Package-nestedPackage.1">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="Package-nestedPackage.1-spec-_specification">
@@ -5665,7 +5644,7 @@ endif)</body>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="Package-ownedStereotype.1" name="ownedStereotype" bodyCondition="Package-ownedStereotype.1-spec" class="Package" isQuery="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="Package-ownedStereotype.1-_ownedComment.0" annotatedElement="Package-ownedStereotype.1">
-            <body>Derivation for Package::/ownedStereotype </body>
+            <body>Derivation for Package::/ownedStereotype</body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="Package-ownedStereotype.1-spec" name="spec" constrainedElement="Package-ownedStereotype.1 Package-ownedStereotype" context="Package-ownedStereotype.1">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="Package-ownedStereotype.1-spec-_specification">
@@ -5813,8 +5792,7 @@ packagedElement->&#xD;
           <specification xmi:type="uml:OpaqueExpression" xmi:id="Stereotype-generalize-_specification">
             <language>OCL</language>
             <body>allParents()->forAll(oclIsKindOf(Stereotype)) &#xD;
-and Classifier.allInstances()->forAll(c | c.allParents()->exists(oclIsKindOf(Stereotype)) implies c.oclIsKindOf(Stereotype))&#xD;
-</body>
+and Classifier.allInstances()->forAll(c | c.allParents()->exists(oclIsKindOf(Stereotype)) implies c.oclIsKindOf(Stereotype))</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="Stereotype-name_not_clash" name="name_not_clash" constrainedElement="Stereotype" context="Stereotype">
@@ -6695,8 +6673,7 @@ allProps->includes(returnValueRecipient)</body>
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="InteractionUse-returnValue_type_recipient_correspondence-_specification">
             <language>OCL</language>
-            <body>returnValue.type->asSequence()->notEmpty() implies returnValue.type->asSequence()->first() = returnValueRecipient.type->asSequence()->first()&#xD;
-</body>
+            <body>returnValue.type->asSequence()->notEmpty() implies returnValue.type->asSequence()->first() = returnValueRecipient.type->asSequence()->first()</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="InteractionUse-all_lifelines" name="all_lifelines" constrainedElement="InteractionUse" context="InteractionUse">
@@ -6770,8 +6747,7 @@ forAll( refLifeline : Lifeline | refLifeline.represents = intLifeline.represents
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="Lifeline-interaction_uses_share_lifeline" name="interaction_uses_share_lifeline" constrainedElement="Lifeline" context="Lifeline">
           <ownedComment xmi:type="uml:Comment" xmi:id="Lifeline-interaction_uses_share_lifeline-_ownedComment.0" annotatedElement="Lifeline-interaction_uses_share_lifeline">
-            <body>If a lifeline is in an Interaction referred to by an InteractionUse in an enclosing Interaction,  and that lifeline is common with another lifeline in an Interaction referred to by another InteractonUse within that same enclosing Interaction, it must be common to a lifeline within that enclosing Interaction. By common Lifelines we mean Lifelines with the same selector and represents associations.&#xD;
-</body>
+            <body>If a lifeline is in an Interaction referred to by an InteractionUse in an enclosing Interaction,  and that lifeline is common with another lifeline in an Interaction referred to by another InteractonUse within that same enclosing Interaction, it must be common to a lifeline within that enclosing Interaction. By common Lifelines we mean Lifelines with the same selector and represents associations.</body>
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="Lifeline-interaction_uses_share_lifeline-_specification">
             <language>OCL</language>
@@ -6826,7 +6802,7 @@ and &#xD;
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="Lifeline-selector_int_or_string" name="selector_int_or_string" constrainedElement="Lifeline" context="Lifeline">
           <ownedComment xmi:type="uml:Comment" xmi:id="Lifeline-selector_int_or_string-_ownedComment.0" annotatedElement="Lifeline-selector_int_or_string">
-            <body>The selector value, if present, must be a LiteralString or a LiteralInteger </body>
+            <body>The selector value, if present, must be a LiteralString or a LiteralInteger</body>
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="Lifeline-selector_int_or_string-_specification">
             <language>OCL</language>
@@ -6921,8 +6897,7 @@ in  sendEnclosingFrag = receiveEnclosingFrag</body>
           and o.oclAsType(Expression).symbol->size()=0&#xD;
           and o.oclAsType(Expression).operand->isEmpty() ) implies&#xD;
               let p : Property = signalAttributes->at(self.argument->indexOf(o))&#xD;
-              in o.type.oclAsType(Classifier).conformsTo(p.type.oclAsType(Classifier)))&#xD;
-</body>
+              in o.type.oclAsType(Classifier).conformsTo(p.type.oclAsType(Classifier)))</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="Message-occurrence_specifications" name="occurrence_specifications" constrainedElement="Message" context="Message">
@@ -7079,8 +7054,7 @@ e.operand->asSequence()->first().type.oclAsType(Classifier).conformsTo(p.type.oc
           <ownedRule xmi:type="uml:Constraint" xmi:id="MessageEnd-oppositeEnd-pre" name="pre" constrainedElement="MessageEnd-oppositeEnd" context="MessageEnd-oppositeEnd">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="MessageEnd-oppositeEnd-pre-_specification">
               <language>OCL</language>
-              <body>message->notEmpty()&#xD;
-</body>
+              <body>message->notEmpty()</body>
             </specification>
           </ownedRule>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="MessageEnd-oppositeEnd-result" name="result" type="MessageEnd" direction="return">
@@ -7095,8 +7069,7 @@ e.operand->asSequence()->first().type.oclAsType(Classifier).conformsTo(p.type.oc
           <ownedRule xmi:type="uml:Constraint" xmi:id="MessageEnd-isSend-pre" name="pre" constrainedElement="MessageEnd-isSend" context="MessageEnd-isSend">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="MessageEnd-isSend-pre-_specification">
               <language>OCL</language>
-              <body>message->notEmpty()&#xD;
-</body>
+              <body>message->notEmpty()</body>
             </specification>
           </ownedRule>
           <ownedRule xmi:type="uml:Constraint" xmi:id="MessageEnd-isSend-spec" name="spec" constrainedElement="MessageEnd-isSend" context="MessageEnd-isSend">
@@ -7119,8 +7092,7 @@ e.operand->asSequence()->first().type.oclAsType(Classifier).conformsTo(p.type.oc
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="MessageEnd-isReceive-pre-_specification">
               <language>OCL</language>
-              <body>message->notEmpty()&#xD;
-</body>
+              <body>message->notEmpty()</body>
             </specification>
           </ownedRule>
           <ownedRule xmi:type="uml:Constraint" xmi:id="MessageEnd-isReceive-spec" name="spec" constrainedElement="MessageEnd-isReceive" context="MessageEnd-isReceive">
@@ -7661,7 +7633,7 @@ and&#xD;
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="InformationItem" name="InformationItem">
         <ownedComment xmi:type="uml:Comment" xmi:id="InformationItem-_ownedComment.0" annotatedElement="InformationItem">
-          <body>InformationItems represent many kinds of information that can flow from sources to targets in very abstract ways.  They represent the kinds of information that may move within a system, but do not elaborate details of the transferred information.  Details of transferred information are the province of other Classifiers that may ultimately define InformationItems.  Consequently, InformationItems cannot be instantiated and do not themselves have features, generalizations, or associations. An important use of InformationItems is to represent information during early design stages, possibly before the detailed modeling decisions that will ultimately define them have been made. Another purpose of InformationItems is to abstract portions of complex models in less precise, but perhaps more general and communicable, ways. </body>
+          <body>InformationItems represent many kinds of information that can flow from sources to targets in very abstract ways.  They represent the kinds of information that may move within a system, but do not elaborate details of the transferred information.  Details of transferred information are the province of other Classifiers that may ultimately define InformationItems.  Consequently, InformationItems cannot be instantiated and do not themselves have features, generalizations, or associations. An important use of InformationItems is to represent information during early design stages, possibly before the detailed modeling decisions that will ultimately define them have been made. Another purpose of InformationItems is to abstract portions of complex models in less precise, but perhaps more general and communicable, ways.</body>
         </ownedComment>
         <ownedRule xmi:type="uml:Constraint" xmi:id="InformationItem-sources_and_targets" name="sources_and_targets" constrainedElement="InformationItem" context="InformationItem">
           <ownedComment xmi:type="uml:Comment" xmi:id="InformationItem-sources_and_targets-_ownedComment.0" annotatedElement="InformationItem-sources_and_targets">
@@ -9242,7 +9214,7 @@ endif)</body>
         </ownedLiteral>
         <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="VisibilityKind-package" name="package" enumeration="VisibilityKind">
           <ownedComment xmi:type="uml:Comment" xmi:id="VisibilityKind-package-_ownedComment.0" annotatedElement="VisibilityKind-package">
-            <body>A NamedElement with package visibility is visible to all Elements within the nearest enclosing Package (given that other owning Elements have proper visibility). Outside the nearest enclosing Package, a NamedElement marked as having package visibility is not visible.  Only NamedElements that are not owned by Packages can be marked as having package visibility. </body>
+            <body>A NamedElement with package visibility is visible to all Elements within the nearest enclosing Package (given that other owning Elements have proper visibility). Outside the nearest enclosing Package, a NamedElement marked as having package visibility is not visible.  Only NamedElements that are not owned by Packages can be marked as having package visibility.</body>
           </ownedComment>
         </ownedLiteral>
       </packagedElement>
@@ -9497,7 +9469,7 @@ endif)</body>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="Behavior-context.1" name="context" bodyCondition="Behavior-context.1-spec" class="Behavior" isQuery="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="Behavior-context.1-_ownedComment.0" annotatedElement="Behavior-context.1">
-            <body>A Behavior that is directly owned as a nestedClassifier does not have a context. Otherwise, to determine the context of a Behavior, find the first BehavioredClassifier reached by following the chain of owner relationships from the Behavior, if any. If there is such a BehavioredClassifier, then it is the context, unless it is itself a Behavior with a non-empty context, in which case that is also the context for the original Behavior. </body>
+            <body>A Behavior that is directly owned as a nestedClassifier does not have a context. Otherwise, to determine the context of a Behavior, find the first BehavioredClassifier reached by following the chain of owner relationships from the Behavior, if any. If there is such a BehavioredClassifier, then it is the context, unless it is itself a Behavior with a non-empty context, in which case that is also the context for the original Behavior.</body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="Behavior-context.1-spec" name="spec" constrainedElement="Behavior-context.1 Behavior-context" context="Behavior-context.1">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="Behavior-context.1-spec-_specification">
@@ -9533,8 +9505,7 @@ else if from.owner = null then&#xD;
 else&#xD;
     self.behavioredClassifier(from.owner)&#xD;
 endif&#xD;
-endif&#xD;
-    </body>
+endif</body>
             </specification>
           </ownedRule>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="Behavior-behavioredClassifier-from" name="from" type="Element"/>
@@ -10450,8 +10421,7 @@ endif)</body>
             <language>OCL</language>
             <body>constrainingClassifier->forAll(&#xD;
      cc |  parameteredElement = cc or parameteredElement.conformsTo(cc) or (allowSubstitutable and parameteredElement.isSubstitutableFor(cc))&#xD;
-)&#xD;
-</body>
+)</body>
           </specification>
         </ownedRule>
         <generalization xmi:type="uml:Generalization" xmi:id="ClassifierTemplateParameter-_generalization.0" general="TemplateParameter" specific="ClassifierTemplateParameter"/>
@@ -11089,8 +11059,7 @@ and&#xD;
     behavioralFeature.ownedParameter->select(p | p.direction = ParameterDirectionKind::_'in' and p.parameterSet->isEmpty())->forAll(isStream))&#xD;
     and&#xD;
 ((parameter->exists(direction = ParameterDirectionKind::out)) implies &#xD;
-    behavioralFeature.ownedParameter->select(p | p.direction = ParameterDirectionKind::out and p.parameterSet->isEmpty())->forAll(isStream))  &#xD;
-</body>
+    behavioralFeature.ownedParameter->select(p | p.direction = ParameterDirectionKind::out and p.parameterSet->isEmpty())->forAll(isStream))</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="ParameterSet-two_parameter_sets" name="two_parameter_sets" constrainedElement="ParameterSet" context="ParameterSet">
@@ -11148,9 +11117,7 @@ and&#xD;
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="Property-multiplicity_of_composite-_specification">
             <language>OCL</language>
-            <body>isComposite and association &lt;> null implies opposite.upperBound() &lt;= 1&#xD;
-&#xD;
-</body>
+            <body>isComposite and association &lt;> null implies opposite.upperBound() &lt;= 1</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="Property-redefined_property_inherited" name="redefined_property_inherited" constrainedElement="Property" context="Property">
@@ -11711,7 +11678,7 @@ endif)</body>
         </ownedComment>
         <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="ParameterDirectionKind-in" name="in" enumeration="ParameterDirectionKind">
           <ownedComment xmi:type="uml:Comment" xmi:id="ParameterDirectionKind-in-_ownedComment.0" annotatedElement="ParameterDirectionKind-in">
-            <body>Indicates that Parameter values are passed in by the caller. </body>
+            <body>Indicates that Parameter values are passed in by the caller.</body>
           </ownedComment>
         </ownedLiteral>
         <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="ParameterDirectionKind-inout" name="inout" enumeration="ParameterDirectionKind">
@@ -12034,8 +12001,7 @@ endif)</body>
   end.visibility=VisibilityKind::public or &#xD;
   end.visibility=VisibilityKind::protected and&#xD;
   endData.end->exists(other | &#xD;
-    other&lt;>end and _'context'.conformsTo(other.type.oclAsType(Classifier))))&#xD;
-</body>
+    other&lt;>end and _'context'.conformsTo(other.type.oclAsType(Classifier))))</body>
           </specification>
         </ownedRule>
         <generalization xmi:type="uml:Generalization" xmi:id="WriteLinkAction-_generalization.0" general="LinkAction" specific="WriteLinkAction"/>
@@ -12169,8 +12135,7 @@ Sequence{1..result->size()}->forAll(i | &#xD;
           <specification xmi:type="uml:OpaqueExpression" xmi:id="AcceptCallAction-trigger_call_event-_specification">
             <language>OCL</language>
             <body>trigger->size()=1 and&#xD;
-trigger->asSequence()->first().event.oclIsKindOf(CallEvent)&#xD;
-</body>
+trigger->asSequence()->first().event.oclIsKindOf(CallEvent)</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="AcceptCallAction-unmarshall" name="unmarshall" constrainedElement="AcceptCallAction" context="AcceptCallAction">
@@ -12453,8 +12418,7 @@ else
   not isReplaceAll implies
   	insertAt&lt;>null and 
   	insertAt->forAll(type=UnlimitedNatural and is(1,1.oclAsType(UnlimitedNatural)))
-endif
-</body>
+endif</body>
           </specification>
         </ownedRule>
         <generalization xmi:type="uml:Generalization" xmi:id="AddStructuralFeatureValueAction-_generalization.0" general="WriteStructuralFeatureAction" specific="AddStructuralFeatureValueAction"/>
@@ -12496,8 +12460,7 @@ else
   not isReplaceAll implies
   	insertAt&lt;>null and 
   	insertAt->forAll(type=UnlimitedNatural and is(1,1.oclAsType(UnlimitedNatural)))
-endif
-</body>
+endif</body>
           </specification>
         </ownedRule>
         <generalization xmi:type="uml:Generalization" xmi:id="AddVariableValueAction-_generalization.0" general="WriteVariableAction" specific="AddVariableValueAction"/>
@@ -13062,7 +13025,7 @@ decider.is(1,1)</body>
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="CreateObjectAction-classifier_not_abstract-_specification">
             <language>OCL</language>
-            <body>not classifier.isAbstract </body>
+            <body>not classifier.isAbstract</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="CreateObjectAction-multiplicity" name="multiplicity" constrainedElement="CreateObjectAction" context="CreateObjectAction">
@@ -13232,8 +13195,7 @@ decider.is(1,1)</body>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="InvocationAction" name="InvocationAction" isAbstract="true">
         <ownedComment xmi:type="uml:Comment" xmi:id="InvocationAction-_ownedComment.0" annotatedElement="InvocationAction">
-          <body>InvocationAction is an abstract class for the various actions that request Behavior invocation.&#xD;
-</body>
+          <body>InvocationAction is an abstract class for the various actions that request Behavior invocation.</body>
         </ownedComment>
         <generalization xmi:type="uml:Generalization" xmi:id="InvocationAction-_generalization.0" general="Action" specific="InvocationAction"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="InvocationAction-argument" name="argument" type="InputPin" isOrdered="true" aggregation="composite" subsettedProperty="Action-input" association="A_argument_invocationAction">
@@ -13323,8 +13285,7 @@ then insertAt = null
 else
 	not isReplaceAll=false implies
 	insertAt &lt;> null and insertAt->forAll(type=UnlimitedNatural and is(1,1))
-endif
-</body>
+endif</body>
           </specification>
         </ownedRule>
         <generalization xmi:type="uml:Generalization" xmi:id="LinkEndCreationData-_generalization.0" general="LinkEndData" specific="LinkEndCreationData"/>
@@ -13456,8 +13417,7 @@ then destroyAt = null&#xD;
 else&#xD;
 	destroyAt &lt;> null and &#xD;
 	destroyAt->forAll(type=UnlimitedNatural and is(1,1))&#xD;
-endif&#xD;
-</body>
+endif</body>
           </specification>
         </ownedRule>
         <generalization xmi:type="uml:Generalization" xmi:id="LinkEndDestructionData-_generalization.0" general="LinkEndData" specific="LinkEndDestructionData"/>
@@ -13939,8 +13899,7 @@ result.upper=loopVariable.upper</body>
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="ReadLinkAction-type_and_ordering-_specification">
             <language>OCL</language>
-            <body>self.openEnd()->forAll(type=result.type and isOrdered=result.isOrdered)
-</body>
+            <body>self.openEnd()->forAll(type=result.type and isOrdered=result.isOrdered)</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="ReadLinkAction-compatible_multiplicity" name="compatible_multiplicity" constrainedElement="ReadLinkAction" context="ReadLinkAction">
@@ -13949,8 +13908,7 @@ result.upper=loopVariable.upper</body>
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="ReadLinkAction-compatible_multiplicity-_specification">
             <language>OCL</language>
-            <body>self.openEnd()->first().compatibleWith(result)
-</body>
+            <body>self.openEnd()->first().compatibleWith(result)</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="ReadLinkAction-visibility" name="visibility" constrainedElement="ReadLinkAction" context="ReadLinkAction">
@@ -13965,8 +13923,7 @@ result.upper=loopVariable.upper</body>
     oed.end&lt;>openEnd and 
     (_'context' = oed.end.type or 
       (openEnd.visibility = VisibilityKind::protected and 
-        _'context'.conformsTo(oed.end.type.oclAsType(Classifier)))))
-</body>
+        _'context'.conformsTo(oed.end.type.oclAsType(Classifier)))))</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="ReadLinkAction-one_open_end" name="one_open_end" constrainedElement="ReadLinkAction" context="ReadLinkAction">
@@ -13984,8 +13941,7 @@ result.upper=loopVariable.upper</body>
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="ReadLinkAction-navigable_open_end-_specification">
             <language>OCL</language>
-            <body>self.openEnd()->first().isNavigable()
-</body>
+            <body>self.openEnd()->first().isNavigable()</body>
           </specification>
         </ownedRule>
         <generalization xmi:type="uml:Generalization" xmi:id="ReadLinkAction-_generalization.0" general="LinkAction" specific="ReadLinkAction"/>
@@ -14255,8 +14211,7 @@ behavior.specification&lt;>null implies not behavior.specification.isStatic</bod
           <specification xmi:type="uml:OpaqueExpression" xmi:id="ReadStructuralFeatureAction-type_and_ordering-_specification">
             <language>OCL</language>
             <body>result.type =structuralFeature.type and 
-result.isOrdered = structuralFeature.isOrdered
-</body>
+result.isOrdered = structuralFeature.isOrdered</body>
           </specification>
         </ownedRule>
         <generalization xmi:type="uml:Generalization" xmi:id="ReadStructuralFeatureAction-_generalization.0" general="StructuralFeatureAction" specific="ReadStructuralFeatureAction"/>
@@ -14277,8 +14232,7 @@ result.isOrdered = structuralFeature.isOrdered
           <specification xmi:type="uml:OpaqueExpression" xmi:id="ReadVariableAction-type_and_ordering-_specification">
             <language>OCL</language>
             <body>result.type =variable.type and 
-result.isOrdered = variable.isOrdered
-</body>
+result.isOrdered = variable.isOrdered</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="ReadVariableAction-compatible_multiplicity" name="compatible_multiplicity" constrainedElement="ReadVariableAction" context="ReadVariableAction">
@@ -14587,8 +14541,7 @@ Sequence{1..argument->size()}->forAll(i | &#xD;
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="SendSignalAction-type_target_pin-_specification">
             <language>OCL</language>
-            <body>not onPort->isEmpty() implies target.type.oclAsType(Classifier).allFeatures()->includes(onPort)&#xD;
-</body>
+            <body>not onPort->isEmpty() implies target.type.oclAsType(Classifier).allFeatures()->includes(onPort)</body>
           </specification>
         </ownedRule>
         <generalization xmi:type="uml:Generalization" xmi:id="SendSignalAction-_generalization.0" general="InvocationAction" specific="SendSignalAction"/>
@@ -14767,8 +14720,7 @@ endif)</body>
             <body>structuralFeature.visibility = VisibilityKind::public or
 _'context'.allFeatures()->includes(structuralFeature) or
 structuralFeature.visibility=VisibilityKind::protected and
-_'context'.conformsTo(structuralFeature.oclAsType(Property).opposite.type.oclAsType(Classifier))
-</body>
+_'context'.conformsTo(structuralFeature.oclAsType(Property).opposite.type.oclAsType(Classifier))</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="StructuralFeatureAction-not_static" name="not_static" constrainedElement="StructuralFeatureAction" context="StructuralFeatureAction">
@@ -14851,8 +14803,7 @@ _'context'.conformsTo(structuralFeature.oclAsType(Property).opposite.type.oclAsT
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="StructuredActivityNode-mustIsolate" name="mustIsolate">
           <ownedComment xmi:type="uml:Comment" xmi:id="StructuredActivityNode-mustIsolate-_ownedComment.0" annotatedElement="StructuredActivityNode-mustIsolate">
-            <body>If true, then any object used by an Action within the StructuredActivityNode cannot be accessed by any Action outside the node until the StructuredActivityNode as a whole completes. Any concurrent Actions that would result in accessing such objects are required to have their execution deferred until the completion of the StructuredActivityNode.&#xD;
-</body>
+            <body>If true, then any object used by an Action within the StructuredActivityNode cannot be accessed by any Action outside the node until the StructuredActivityNode as a whole completes. Any concurrent Actions that would result in accessing such objects are required to have their execution deferred until the completion of the StructuredActivityNode.</body>
           </ownedComment>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi#Boolean"/>
           <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="StructuredActivityNode-mustIsolate-_defaultValue"/>
@@ -14972,8 +14923,7 @@ _'context'.conformsTo(structuralFeature.oclAsType(Property).opposite.type.oclAsT
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="TestIdentityAction-multiplicity-_specification">
             <language>OCL</language>
-            <body>first.is(1,1) and second.is(1,1)
-</body>
+            <body>first.is(1,1) and second.is(1,1)</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="TestIdentityAction-no_type" name="no_type" constrainedElement="TestIdentityAction" context="TestIdentityAction">
@@ -14982,13 +14932,12 @@ _'context'.conformsTo(structuralFeature.oclAsType(Property).opposite.type.oclAsT
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="TestIdentityAction-no_type-_specification">
             <language>OCL</language>
-            <body>first.type= null and second.type = null
-</body>
+            <body>first.type= null and second.type = null</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="TestIdentityAction-result_is_boolean" name="result_is_boolean" constrainedElement="TestIdentityAction" context="TestIdentityAction">
           <ownedComment xmi:type="uml:Comment" xmi:id="TestIdentityAction-result_is_boolean-_ownedComment.0" annotatedElement="TestIdentityAction-result_is_boolean">
-            <body>The type of the result OutputPin is Boolean. </body>
+            <body>The type of the result OutputPin is Boolean.</body>
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="TestIdentityAction-result_is_boolean-_specification">
             <language>OCL</language>
@@ -15014,7 +14963,7 @@ _'context'.conformsTo(structuralFeature.oclAsType(Property).opposite.type.oclAsT
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="UnmarshallAction" name="UnmarshallAction">
         <ownedComment xmi:type="uml:Comment" xmi:id="UnmarshallAction-_ownedComment.0" annotatedElement="UnmarshallAction">
-          <body>An UnmarshallAction is an Action that retrieves the values of the StructuralFeatures of an object and places them on OutputPins. </body>
+          <body>An UnmarshallAction is an Action that retrieves the values of the StructuralFeatures of an object and places them on OutputPins.</body>
         </ownedComment>
         <ownedRule xmi:type="uml:Constraint" xmi:id="UnmarshallAction-structural_feature" name="structural_feature" constrainedElement="UnmarshallAction" context="UnmarshallAction">
           <ownedComment xmi:type="uml:Comment" xmi:id="UnmarshallAction-structural_feature-_ownedComment.0" annotatedElement="UnmarshallAction-structural_feature">

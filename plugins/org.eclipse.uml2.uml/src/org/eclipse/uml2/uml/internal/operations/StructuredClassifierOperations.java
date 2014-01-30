@@ -12,8 +12,11 @@
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.uml2.uml.ConnectableElement;
+import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StructuredClassifier;
 
@@ -71,8 +74,8 @@ public class StructuredClassifierOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Missing derivation for StructuredClassifier::/part : Property
-	 * true
+	 * Derivation for StructuredClassifier::/part
+	 * result = (ownedAttribute->select(isComposite))
 	 * @param structuredClassifier The receiving '<em><b>Structured Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -91,13 +94,20 @@ public class StructuredClassifierOperations
 	 * <p>From package UML::StructuredClassifiers.</p>
 	 * @param structuredClassifier The receiving '<em><b>Structured Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<ConnectableElement> allRoles(
 			StructuredClassifier structuredClassifier) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<ConnectableElement> allRoles = new UniqueEList.FastCompare<ConnectableElement>();
+
+		for (Feature feature : structuredClassifier.allFeatures()) {
+
+			if (feature instanceof ConnectableElement) {
+				allRoles.add((ConnectableElement) feature);
+			}
+		}
+
+		return ECollections.unmodifiableEList(allRoles);
 	}
 
 } // StructuredClassifierOperations

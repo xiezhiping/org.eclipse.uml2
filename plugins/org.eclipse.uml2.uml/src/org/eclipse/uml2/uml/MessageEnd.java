@@ -72,7 +72,6 @@ public interface MessageEnd
 	 * This query returns a set including the MessageEnd (if exists) at the opposite end of the Message for this MessageEnd.
 	 * result = (message->asSet().messageEnd->asSet()->excluding(self))
 	 * message->notEmpty()
-	 * 
 	 * <p>From package UML::Interactions.</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false"
@@ -86,7 +85,6 @@ public interface MessageEnd
 	 * <!-- begin-model-doc -->
 	 * This query returns value true if this MessageEnd is a sendEvent.
 	 * message->notEmpty()
-	 * 
 	 * result = (message.sendEvent->asSet()->includes(self))
 	 * <p>From package UML::Interactions.</p>
 	 * <!-- end-model-doc -->
@@ -101,7 +99,6 @@ public interface MessageEnd
 	 * <!-- begin-model-doc -->
 	 * This query returns value true if this MessageEnd is a receiveEvent.
 	 * message->notEmpty()
-	 * 
 	 * result = (message.receiveEvent->asSet()->includes(self))
 	 * <p>From package UML::Interactions.</p>
 	 * <!-- end-model-doc -->

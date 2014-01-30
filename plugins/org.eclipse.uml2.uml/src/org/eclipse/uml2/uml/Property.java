@@ -662,8 +662,6 @@ public interface Property
 	 * <!-- begin-model-doc -->
 	 * A multiplicity on the composing end of a composite aggregation must not have an upper bound greater than 1.
 	 * isComposite and association <> null implies opposite.upperBound() <= 1
-	 * 
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

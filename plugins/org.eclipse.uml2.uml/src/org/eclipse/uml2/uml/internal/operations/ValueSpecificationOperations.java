@@ -27,6 +27,7 @@ import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.util.UMLSwitch;
@@ -68,8 +69,9 @@ public class ValueSpecificationOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isComputable() determines whether a value specification can be computed in a model. This operation cannot be fully defined in OCL. A conforming implementation is expected to deliver true for this operation for all value specifications that it can compute, and to compute all of those for which the operation is true. A conforming implementation is expected to be able to compute the value of all literals.
-	 * result = false
+	 * The query isComputable() determines whether a value specification can be computed in a model. This operation cannot be fully defined in OCL. A conforming implementation is expected to deliver true for this operation for all ValueSpecifications that it can compute, and to compute all of those for which the operation is true. A conforming implementation is expected to be able to compute at least the value of all LiteralSpecifications.
+	 * result = (false)
+	 * <p>From package UML::Values.</p>
 	 * @param valueSpecification The receiving '<em><b>Value Specification</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -83,7 +85,8 @@ public class ValueSpecificationOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query integerValue() gives a single Integer value when one can be computed.
-	 * result = Set{}
+	 * result = (null)
+	 * <p>From package UML::Values.</p>
 	 * @param valueSpecification The receiving '<em><b>Value Specification</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -97,7 +100,8 @@ public class ValueSpecificationOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query booleanValue() gives a single Boolean value when one can be computed.
-	 * result = Set{}
+	 * result = (null)
+	 * <p>From package UML::Values.</p>
 	 * @param valueSpecification The receiving '<em><b>Value Specification</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -111,7 +115,8 @@ public class ValueSpecificationOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query stringValue() gives a single String value when one can be computed.
-	 * result = Set{}
+	 * result = (null)
+	 * <p>From package UML::Values.</p>
 	 * @param valueSpecification The receiving '<em><b>Value Specification</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -125,7 +130,8 @@ public class ValueSpecificationOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query unlimitedValue() gives a single UnlimitedNatural value when one can be computed.
-	 * result = Set{}
+	 * result = (null)
+	 * <p>From package UML::Values.</p>
 	 * @param valueSpecification The receiving '<em><b>Value Specification</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -139,7 +145,8 @@ public class ValueSpecificationOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isNull() returns true when it can be computed that the value is null.
-	 * result = false
+	 * result = (false)
+	 * <p>From package UML::Values.</p>
 	 * @param valueSpecification The receiving '<em><b>Value Specification</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -153,7 +160,8 @@ public class ValueSpecificationOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query realValue() gives a single Real value when one can be computed.
-	 * result = Set{}
+	 * result = (null)
+	 * <p>From package UML::Values.</p>
 	 * @param valueSpecification The receiving '<em><b>Value Specification</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -166,9 +174,10 @@ public class ValueSpecificationOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. In addition, for ValueSpecification, the type must be conformant with the type of the specified parameterable element.
-	 * 
-	 * result = p->oclIsKindOf(self.oclType) and self.type.conformsTo(p.oclAsType(TypedElement).type)
+	 * The query isCompatibleWith() determines if this ValueSpecification is compatible with the specified ParameterableElement. This ValueSpecification is compatible with ParameterableElement p if the kind of this ValueSpecification is the same as or a subtype of the kind of p. Further, if p is a TypedElement, then the type of this ValueSpecification must be conformant with the type of p.
+	 * result = (self.oclIsKindOf(p.oclType()) and (p.oclIsKindOf(TypedElement) implies 
+	 * self.type.conformsTo(p.oclAsType(TypedElement).type)))
+	 * <p>From package UML::Values.</p>
 	 * @param valueSpecification The receiving '<em><b>Value Specification</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -176,12 +185,12 @@ public class ValueSpecificationOperations
 	public static boolean isCompatibleWith(
 			ValueSpecification valueSpecification, ParameterableElement p) {
 
-		if (valueSpecification.eClass().isInstance(p)) {
+		if (valueSpecification.eClass().isInstance(p)
+			&& p instanceof TypedElement) {
 			Type type = valueSpecification.getType();
 
 			return type == null
-				? ((ValueSpecification) p).eGet(
-					UMLPackage.Literals.TYPED_ELEMENT__TYPE, false) == null
+				? p.eGet(UMLPackage.Literals.TYPED_ELEMENT__TYPE, false) == null
 				: type.conformsTo(((ValueSpecification) p).getType());
 		}
 

@@ -1987,8 +1987,10 @@
           cacheAdapterScope="Global"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Port/getRequireds"
           cacheAdapterScope="Global"/>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Port/basicProvided"/>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Port/basicRequired"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Port/basicProvided"
+          cacheAdapterScope="Global"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Port/basicRequired"
+          cacheAdapterScope="Global"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Transition">
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
@@ -2297,7 +2299,8 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//StructuredClassifier/createOwnedAttribute/upper"/>
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//StructuredClassifier/getParts"/>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//StructuredClassifier/allRoles"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//StructuredClassifier/allRoles"
+          cacheAdapterScope="Global"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Connector">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
@@ -2879,7 +2882,8 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//LinkEndData/qualifiers/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//LinkEndData/qualifiers/context"/>
       </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//LinkEndData/allPins"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//LinkEndData/allPins"
+          cacheAdapterScope="Global"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//QualifierValue">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
@@ -4355,10 +4359,12 @@
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//MessageEnd">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//MessageEnd/message"/>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MessageEnd/oppositeEnd"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MessageEnd/oppositeEnd"
+          cacheAdapterScope="Global"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MessageEnd/isSend"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MessageEnd/isReceive"/>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MessageEnd/enclosingFragment"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MessageEnd/enclosingFragment"
+          cacheAdapterScope="Global"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//InteractionOperand">
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"

@@ -214,6 +214,7 @@ public class BehaviorOperations
 	 *     endif
 	 * endif
 	 *         )
+	 * <p>From package UML::CommonBehavior.</p>
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -256,7 +257,6 @@ public class BehaviorOperations
 	 *     self.behavioredClassifier(from.owner)
 	 * endif
 	 * endif
-	 *     
 	 * <p>From package UML::CommonBehavior.</p>
 	 * @param behavior The receiving '<em><b>Behavior</b></em>' model object.
 	 * <!-- end-model-doc -->

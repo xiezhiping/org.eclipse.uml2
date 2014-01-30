@@ -164,8 +164,9 @@ public class LinkActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The association operates on LinkAction. It returns the association of the action.
-	 * result = self.endData->asSequence().first().end.association
+	 * Returns the Association acted on by this LinkAction.
+	 * result = (endData->asSequence()->first().end.association)
+	 * <p>From package UML::Actions.</p>
 	 * @param linkAction The receiving '<em><b>Link Action</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

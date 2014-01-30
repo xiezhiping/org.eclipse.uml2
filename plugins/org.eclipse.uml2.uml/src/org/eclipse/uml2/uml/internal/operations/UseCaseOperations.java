@@ -63,7 +63,7 @@ public class UseCaseOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A UseCase must have a name.
-	 * self.name -> notEmpty ()
+	 * name -> notEmpty ()
 	 * @param useCase The receiving '<em><b>Use Case</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -95,7 +95,7 @@ public class UseCaseOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * UseCases can only be involved in binary Associations.
-	 * true
+	 * Association.allInstances()->forAll(a | a.memberEnd.type->includes(self) implies a.memberEnd->size() = 2)
 	 * @param useCase The receiving '<em><b>Use Case</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -130,8 +130,13 @@ public class UseCaseOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * UseCases can not have Associations to UseCases specifying the same subject.
-	 * true
+	 * UseCases cannot have Associations to UseCases specifying the same subject.
+	 * Association.allInstances()->forAll(a | a.memberEnd.type->includes(self) implies 
+	 *    (
+	 *    let usecases: Set(UseCase) = a.memberEnd.type->select(oclIsKindOf(UseCase))->collect(oclAsType(UseCase))->asSet() in
+	 *    usecases->size() > 1 implies usecases->collect(subject)->size() > 1
+	 *    )
+	 * )
 	 * @param useCase The receiving '<em><b>Use Case</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -185,8 +190,8 @@ public class UseCaseOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A use case cannot include use cases that directly or indirectly include it.
-	 * not self.allIncludedUseCases()->includes(self)
+	 * A UseCase cannot include UseCases that directly or indirectly include it.
+	 * not allIncludedUseCases()->includes(self)
 	 * @param useCase The receiving '<em><b>Use Case</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -232,8 +237,9 @@ public class UseCaseOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query allIncludedUseCases() returns the transitive closure of all use cases (directly or indirectly) included by this use case.
-	 * result = self.include->union(self.include->collect(in | in.allIncludedUseCases()))
+	 * The query allIncludedUseCases() returns the transitive closure of all UseCases (directly or indirectly) included by this UseCase.
+	 * result = (self.include.addition->union(self.include.addition->collect(uc | uc.allIncludedUseCases()))->asSet())
+	 * <p>From package UML::UseCases.</p>
 	 * @param useCase The receiving '<em><b>Use Case</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

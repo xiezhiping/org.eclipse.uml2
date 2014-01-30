@@ -147,11 +147,15 @@ public class StringExpressionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query stringValue() returns the string that concatenates, in order, all the component string literals of all the subexpressions that are part of the StringExpression.
-	 * 
+	 * The query stringValue() returns the String resulting from concatenating, in order, all the component String values of all the operands or subExpressions that are part of the StringExpression.
+	 * result = (if subExpression->notEmpty()
+	 * then subExpression->iterate(se; stringValue: String = '' | stringValue.concat(se.stringValue()))
+	 * else operand->iterate(op; stringValue: String = '' | stringValue.concat(op.stringValue()))
+	 * endif)
 	 * result = if subExpression->notEmpty()
 	 * then subExpression->iterate(se; stringValue = ?| stringValue.concat(se.stringValue()))
 	 * else operand->iterate()(op; stringValue = ? | stringValue.concat(op.value))
+	 * <p>From package UML::Values.</p>
 	 * @param stringExpression The receiving '<em><b>String Expression</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

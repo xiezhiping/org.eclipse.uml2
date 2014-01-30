@@ -93,8 +93,9 @@ public class ProtocolTransitionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Missing derivation for ProtocolTransition::/referred : Operation
-	 * true
+	 * Derivation for ProtocolTransition::/referred
+	 * result = (trigger->collect(event)->select(oclIsKindOf(CallEvent))->collect(oclAsType(CallEvent).operation)->asSet())
+	 * <p>From package UML::StateMachines.</p>
 	 * @param protocolTransition The receiving '<em><b>Protocol Transition</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

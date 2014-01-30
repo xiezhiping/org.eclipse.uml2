@@ -506,6 +506,19 @@ public abstract class StructuredClassifierImpl
 	 * @generated
 	 */
 	public EList<ConnectableElement> allRoles() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<ConnectableElement> result = (EList<ConnectableElement>) cache
+				.get(this,
+					UMLPackage.Literals.STRUCTURED_CLASSIFIER___ALL_ROLES);
+			if (result == null) {
+				cache.put(this,
+					UMLPackage.Literals.STRUCTURED_CLASSIFIER___ALL_ROLES,
+					result = StructuredClassifierOperations.allRoles(this));
+			}
+			return result;
+		}
 		return StructuredClassifierOperations.allRoles(this);
 	}
 

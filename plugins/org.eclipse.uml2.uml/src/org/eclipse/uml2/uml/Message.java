@@ -401,7 +401,6 @@ public interface Message
 	 *           and o.oclAsType(Expression).operand->isEmpty() ) implies
 	 *               let p : Property = signalAttributes->at(self.argument->indexOf(o))
 	 *               in o.type.oclAsType(Classifier).conformsTo(p.type.oclAsType(Classifier)))
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

@@ -796,6 +796,17 @@ public class LoopNodeImpl
 	 */
 	@Override
 	public EList<Action> allActions() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<Action> result = (EList<Action>) cache.get(this,
+				UMLPackage.Literals.ACTION___ALL_ACTIONS);
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.ACTION___ALL_ACTIONS,
+					result = LoopNodeOperations.allActions(this));
+			}
+			return result;
+		}
 		return LoopNodeOperations.allActions(this);
 	}
 

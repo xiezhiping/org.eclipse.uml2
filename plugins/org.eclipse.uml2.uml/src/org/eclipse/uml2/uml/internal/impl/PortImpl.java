@@ -501,6 +501,17 @@ public class PortImpl
 	 * @generated
 	 */
 	public EList<Interface> basicProvided() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<Interface> result = (EList<Interface>) cache.get(this,
+				UMLPackage.Literals.PORT___BASIC_PROVIDED);
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.PORT___BASIC_PROVIDED,
+					result = PortOperations.basicProvided(this));
+			}
+			return result;
+		}
 		return PortOperations.basicProvided(this);
 	}
 
@@ -510,6 +521,17 @@ public class PortImpl
 	 * @generated
 	 */
 	public EList<Interface> basicRequired() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<Interface> result = (EList<Interface>) cache.get(this,
+				UMLPackage.Literals.PORT___BASIC_REQUIRED);
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.PORT___BASIC_REQUIRED,
+					result = PortOperations.basicRequired(this));
+			}
+			return result;
+		}
 		return PortOperations.basicRequired(this);
 	}
 

@@ -80,7 +80,6 @@ public interface LinkEndCreationData
 	 * 	not isReplaceAll=false implies
 	 * 	insertAt <> null and insertAt->forAll(type=UnlimitedNatural and is(1,1))
 	 * endif
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

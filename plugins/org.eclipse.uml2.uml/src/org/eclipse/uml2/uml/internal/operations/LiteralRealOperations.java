@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 CEA and others.
+ * Copyright (c) 2011, 2014 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -55,7 +56,8 @@ public class LiteralRealOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isComputable() is redefined to be true.
-	 * result = true
+	 * result = (true)
+	 * <p>From package UML::Values.</p>
 	 * @param literalReal The receiving '<em><b>Literal Real</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -69,7 +71,8 @@ public class LiteralRealOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query realValue() gives the value.
-	 * result = value
+	 * result = (value)
+	 * <p>From package UML::Values.</p>
 	 * @param literalReal The receiving '<em><b>Literal Real</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

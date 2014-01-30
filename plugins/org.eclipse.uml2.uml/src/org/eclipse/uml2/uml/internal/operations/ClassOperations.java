@@ -111,6 +111,7 @@ public class ClassOperations
 	 * result = (Extension.allInstances()->select(ext | 
 	 *   let endTypes : Sequence(Classifier) = ext.memberEnd->collect(type.oclAsType(Classifier)) in
 	 *   endTypes->includes(self) or endTypes.allParents()->includes(self) ))
+	 * <p>From package UML::StructuredClassifiers.</p>
 	 * @param class_ The receiving '<em><b>Class</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -164,6 +165,7 @@ public class ClassOperations
 	 * <!-- begin-model-doc -->
 	 * Derivation for Class::/superClass : Class
 	 * result = (self.general()->select(oclIsKindOf(Class))->collect(oclAsType(Class))->asSet())
+	 * <p>From package UML::StructuredClassifiers.</p>
 	 * @param class_ The receiving '<em><b>Class</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

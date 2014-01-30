@@ -291,7 +291,6 @@ public interface Region
 	 * A Region can have at most one initial Vertex.
 	 * self.subvertex->select (oclIsKindOf(Pseudostate))->collect(oclAsType(Pseudostate))->
 	 *   select(kind = PseudostateKind::initial)->size() <= 1
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -308,7 +307,6 @@ public interface Region
 	 * A Region can have at most one deep history Vertex.
 	 * self.subvertex->select (oclIsKindOf(Pseudostate))->collect(oclAsType(Pseudostate))->
 	 *    select(kind = PseudostateKind::deepHistory)->size() <= 1
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -325,7 +323,6 @@ public interface Region
 	 * A Region can have at most one shallow history Vertex.
 	 * subvertex->select(oclIsKindOf(Pseudostate))->collect(oclAsType(Pseudostate))->
 	 *   select(kind = PseudostateKind::shallowHistory)->size() <= 1
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

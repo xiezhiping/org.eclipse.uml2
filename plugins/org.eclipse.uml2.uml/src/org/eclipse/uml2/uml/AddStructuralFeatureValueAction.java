@@ -97,7 +97,6 @@ public interface AddStructuralFeatureValueAction
 	 *   	insertAt<>null and 
 	 *   	insertAt->forAll(type=UnlimitedNatural and is(1,1.oclAsType(UnlimitedNatural)))
 	 * endif
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

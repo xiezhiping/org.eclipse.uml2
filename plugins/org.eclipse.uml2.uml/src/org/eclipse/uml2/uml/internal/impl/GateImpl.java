@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Gate;
 import org.eclipse.uml2.uml.InteractionOperand;
+import org.eclipse.uml2.uml.Message;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Stereotype;
@@ -389,9 +390,26 @@ public class GateImpl
 	public String getName() {
 		String name = super.getName();
 
-		return UML2Util.isEmpty(name)
-			? GateOperations.getName(this)
-			: name;
+		if (!UML2Util.isEmpty(name)) {
+			return name;
+		}
+
+		Message message = getMessage();
+
+		if (message != null) {
+
+			if (isActual() || isOutsideCF()) {
+				return (isSend()
+					? "out_" //$NON-NLS-1$
+					: "in_") + message.getName(); //$NON-NLS-1$
+			} else {
+				return (isSend()
+					? "in_" //$NON-NLS-1$
+					: "out_") + message.getName(); //$NON-NLS-1$
+			}
+		}
+
+		return null;
 	}
 
 } //GateImpl

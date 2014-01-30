@@ -175,6 +175,7 @@ public class ExtensionOperations
 	 * <!-- begin-model-doc -->
 	 * The query metaclassEnd() returns the Property that is typed by a metaclass (as opposed to a stereotype).
 	 * result = (memberEnd->reject(p | ownedEnd->includes(p.oclAsType(ExtensionEnd)))->any(true))
+	 * <p>From package UML::Packages.</p>
 	 * @param extension The receiving '<em><b>Extension</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -198,6 +199,7 @@ public class ExtensionOperations
 	 * <!-- begin-model-doc -->
 	 * The query metaclass() returns the metaclass that is being extended (as opposed to the extending stereotype).
 	 * result = (metaclassEnd().type.oclAsType(Class))
+	 * <p>From package UML::Packages.</p>
 	 * @param extension The receiving '<em><b>Extension</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -223,6 +225,7 @@ public class ExtensionOperations
 	 * <!-- begin-model-doc -->
 	 * The query isRequired() is true if the owned end has a multiplicity with the lower bound of 1.
 	 * result = (ownedEnd->lowerBound() = 1)
+	 * <p>From package UML::Packages.</p>
 	 * @param extension The receiving '<em><b>Extension</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

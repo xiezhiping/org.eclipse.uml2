@@ -29,7 +29,7 @@
     </eOperations>
     <eOperations name="maximum_two_parameter_nodes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="A Parameter with direction inout must have exactly two ActivityParameterNodes in an Activity, at most one with incoming ActivityEdges and at most one with outgoing ActivityEdges.&#xA;ownedParameter->forAll(p | &#xD;&#xA;p.direction = ParameterDirectionKind::inout implies&#xD;&#xA;let associatedNodes : Set(ActivityNode) = node->select(&#xD;&#xA;       oclIsKindOf(ActivityParameterNode) and oclAsType(ActivityParameterNode).parameter = p) in &#xD;&#xA;  associatedNodes->size()=2 and&#xD;&#xA;  associatedNodes->select(incoming->notEmpty())->size()&lt;=1 and&#xD;&#xA;  associatedNodes->select(outgoing->notEmpty())->size()&lt;=1&#xD;&#xA;)&#xD;&#xA;"/>
+        <details key="documentation" value="A Parameter with direction inout must have exactly two ActivityParameterNodes in an Activity, at most one with incoming ActivityEdges and at most one with outgoing ActivityEdges.&#xA;ownedParameter->forAll(p | &#xD;&#xA;p.direction = ParameterDirectionKind::inout implies&#xD;&#xA;let associatedNodes : Set(ActivityNode) = node->select(&#xD;&#xA;       oclIsKindOf(ActivityParameterNode) and oclAsType(ActivityParameterNode).parameter = p) in &#xD;&#xA;  associatedNodes->size()=2 and&#xD;&#xA;  associatedNodes->select(incoming->notEmpty())->size()&lt;=1 and&#xD;&#xA;  associatedNodes->select(outgoing->notEmpty())->size()&lt;=1&#xD;&#xA;)"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -109,7 +109,7 @@
         lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean"
         defaultValueLiteral="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="If true, this Activity must not make any changes to objects. The default is false (an Activity may make nonlocal changes). (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the Activity, then the model is ill-formed.) &#xA;&lt;p>From package UML::Activities.&lt;/p>"/>
+        <details key="documentation" value="If true, this Activity must not make any changes to objects. The default is false (an Activity may make nonlocal changes). (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the Activity, then the model is ill-formed.)&#xA;&lt;p>From package UML::Activities.&lt;/p>"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isSingleExecution" ordered="false"
@@ -197,13 +197,13 @@
     </eOperations>
     <eOperations name="getContext" ordered="false" eType="#//BehavioredClassifier">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="A Behavior that is directly owned as a nestedClassifier does not have a context. Otherwise, to determine the context of a Behavior, find the first BehavioredClassifier reached by following the chain of owner relationships from the Behavior, if any. If there is such a BehavioredClassifier, then it is the context, unless it is itself a Behavior with a non-empty context, in which case that is also the context for the original Behavior. &#xA;result = (if nestingClass &lt;> null then&#xD;&#xA;    null&#xD;&#xA;else&#xD;&#xA;    let b:BehavioredClassifier = self.behavioredClassifier(self.owner) in&#xD;&#xA;    if b.oclIsKindOf(Behavior) and b.oclAsType(Behavior)._'context' &lt;> null then &#xD;&#xA;        b.oclAsType(Behavior)._'context'&#xD;&#xA;    else &#xD;&#xA;        b &#xD;&#xA;    endif&#xD;&#xA;endif&#xD;&#xA;        )&#xA;&lt;p>From package UML::CommonBehavior.&lt;/p>"/>
+        <details key="documentation" value="A Behavior that is directly owned as a nestedClassifier does not have a context. Otherwise, to determine the context of a Behavior, find the first BehavioredClassifier reached by following the chain of owner relationships from the Behavior, if any. If there is such a BehavioredClassifier, then it is the context, unless it is itself a Behavior with a non-empty context, in which case that is also the context for the original Behavior.&#xA;result = (if nestingClass &lt;> null then&#xD;&#xA;    null&#xD;&#xA;else&#xD;&#xA;    let b:BehavioredClassifier = self.behavioredClassifier(self.owner) in&#xD;&#xA;    if b.oclIsKindOf(Behavior) and b.oclAsType(Behavior)._'context' &lt;> null then &#xD;&#xA;        b.oclAsType(Behavior)._'context'&#xD;&#xA;    else &#xD;&#xA;        b &#xD;&#xA;    endif&#xD;&#xA;endif&#xD;&#xA;        )&#xA;&lt;p>From package UML::CommonBehavior.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="behavioredClassifier" ordered="false" eType="#//BehavioredClassifier">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The first BehavioredClassifier reached by following the chain of owner relationships from the Behavior, if any.&#xA;if from.oclIsKindOf(BehavioredClassifier) then&#xD;&#xA;    from.oclAsType(BehavioredClassifier)&#xD;&#xA;else if from.owner = null then&#xD;&#xA;    null&#xD;&#xA;else&#xD;&#xA;    self.behavioredClassifier(from.owner)&#xD;&#xA;endif&#xD;&#xA;endif&#xD;&#xA;    &#xA;&lt;p>From package UML::CommonBehavior.&lt;/p>"/>
+        <details key="documentation" value="The first BehavioredClassifier reached by following the chain of owner relationships from the Behavior, if any.&#xA;if from.oclIsKindOf(BehavioredClassifier) then&#xD;&#xA;    from.oclAsType(BehavioredClassifier)&#xD;&#xA;else if from.owner = null then&#xD;&#xA;    null&#xD;&#xA;else&#xD;&#xA;    self.behavioredClassifier(from.owner)&#xD;&#xA;endif&#xD;&#xA;endif&#xA;&lt;p>From package UML::CommonBehavior.&lt;/p>"/>
       </eAnnotations>
       <eParameters name="from" ordered="false" lowerBound="1" eType="#//Element"/>
     </eOperations>
@@ -276,7 +276,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Class" eSuperTypes="#//EncapsulatedClassifier #//BehavioredClassifier">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A Class classifies a set of objects and specifies the features that characterize the structure and behavior of those objects.  A Class may have an internal structure and Ports.&#xD;&#xA;&#xA;&lt;p>From package UML::StructuredClassifiers.&lt;/p>"/>
+      <details key="documentation" value="A Class classifies a set of objects and specifies the features that characterize the structure and behavior of those objects.  A Class may have an internal structure and Ports.&#xA;&lt;p>From package UML::StructuredClassifiers.&lt;/p>"/>
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EReference" name="ownedAttribute" upperBound="-1"
@@ -1608,7 +1608,7 @@
     </eOperations>
     <eOperations name="generalize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="A Stereotype may only generalize or specialize another Stereotype.&#xA;allParents()->forAll(oclIsKindOf(Stereotype)) &#xD;&#xA;and Classifier.allInstances()->forAll(c | c.allParents()->exists(oclIsKindOf(Stereotype)) implies c.oclIsKindOf(Stereotype))&#xD;&#xA;"/>
+        <details key="documentation" value="A Stereotype may only generalize or specialize another Stereotype.&#xA;allParents()->forAll(oclIsKindOf(Stereotype)) &#xD;&#xA;and Classifier.allInstances()->forAll(c | c.allParents()->exists(oclIsKindOf(Stereotype)) implies c.oclIsKindOf(Stereotype))"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -2194,13 +2194,13 @@
     </eOperations>
     <eOperations name="getNestedPackages" ordered="false" upperBound="-1" eType="#//Package">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Derivation for Package::/nestedPackage &#xA;result = (packagedElement->select(oclIsKindOf(Package))->collect(oclAsType(Package))->asSet())&#xA;&lt;p>From package UML::Packages.&lt;/p>"/>
+        <details key="documentation" value="Derivation for Package::/nestedPackage&#xA;result = (packagedElement->select(oclIsKindOf(Package))->collect(oclAsType(Package))->asSet())&#xA;&lt;p>From package UML::Packages.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="getOwnedStereotypes" ordered="false" upperBound="-1" eType="#//Stereotype">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Derivation for Package::/ownedStereotype &#xA;result = (packagedElement->select(oclIsKindOf(Stereotype))->collect(oclAsType(Stereotype))->asSet())&#xA;&lt;p>From package UML::Packages.&lt;/p>"/>
+        <details key="documentation" value="Derivation for Package::/ownedStereotype&#xA;result = (packagedElement->select(oclIsKindOf(Stereotype))->collect(oclAsType(Stereotype))->asSet())&#xA;&lt;p>From package UML::Packages.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
     </eOperations>
@@ -2660,7 +2660,7 @@
     </eLiterals>
     <eLiterals name="package" value="3">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="A NamedElement with package visibility is visible to all Elements within the nearest enclosing Package (given that other owning Elements have proper visibility). Outside the nearest enclosing Package, a NamedElement marked as having package visibility is not visible.  Only NamedElements that are not owned by Packages can be marked as having package visibility. "/>
+        <details key="documentation" value="A NamedElement with package visibility is visible to all Elements within the nearest enclosing Package (given that other owning Elements have proper visibility). Outside the nearest enclosing Package, a NamedElement marked as having package visibility is not visible.  Only NamedElements that are not owned by Packages can be marked as having package visibility."/>
       </eAnnotations>
     </eLiterals>
   </eClassifiers>
@@ -2749,7 +2749,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Association" eSuperTypes="#//Classifier #//Relationship">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A link is a tuple of values that refer to typed objects.  An Association classifies a set of links, each of which is an instance of the Association.  Each value in the link refers to an instance of the type of the corresponding end of the Association.&#xD;&#xA;&#xA;&lt;p>From package UML::StructuredClassifiers.&lt;/p>"/>
+      <details key="documentation" value="A link is a tuple of values that refer to typed objects.  An Association classifies a set of links, each of which is an instance of the Association.  Each value in the link refers to an instance of the type of the corresponding end of the Association.&#xA;&lt;p>From package UML::StructuredClassifiers.&lt;/p>"/>
     </eAnnotations>
     <eOperations name="specialized_end_number" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -2957,7 +2957,7 @@
     </eOperations>
     <eOperations name="multiplicity_of_composite" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="A multiplicity on the composing end of a composite aggregation must not have an upper bound greater than 1.&#xA;isComposite and association &lt;> null implies opposite.upperBound() &lt;= 1&#xD;&#xA;&#xD;&#xA;"/>
+        <details key="documentation" value="A multiplicity on the composing end of a composite aggregation must not have an upper bound greater than 1.&#xA;isComposite and association &lt;> null implies opposite.upperBound() &lt;= 1"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -4152,7 +4152,7 @@
     </eOperations>
     <eOperations name="getResult" ordered="false" eType="#//Parameter">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Derivation for OpaqueExpression::/result &#xA;result = (if behavior = null then&#xD;&#xA;&#x9;null&#xD;&#xA;else&#xD;&#xA;&#x9;behavior.ownedParameter->first()&#xD;&#xA;endif)&#xA;&lt;p>From package UML::Values.&lt;/p>"/>
+        <details key="documentation" value="Derivation for OpaqueExpression::/result&#xA;result = (if behavior = null then&#xD;&#xA;&#x9;null&#xD;&#xA;else&#xD;&#xA;&#x9;behavior.ownedParameter->first()&#xD;&#xA;endif)&#xA;&lt;p>From package UML::Values.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
     </eOperations>
@@ -4446,7 +4446,7 @@
     </eAnnotations>
     <eLiterals name="in">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Indicates that Parameter values are passed in by the caller. "/>
+        <details key="documentation" value="Indicates that Parameter values are passed in by the caller."/>
       </eAnnotations>
     </eLiterals>
     <eLiterals name="inout" value="1">
@@ -4976,7 +4976,7 @@
     </eOperations>
     <eOperations name="input" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="If a parameterized entity has input Parameters that are in a ParameterSet, then any inputs that are not in a ParameterSet must be streaming. Same for output Parameters.&#xA;((parameter->exists(direction = ParameterDirectionKind::_'in')) implies &#xD;&#xA;    behavioralFeature.ownedParameter->select(p | p.direction = ParameterDirectionKind::_'in' and p.parameterSet->isEmpty())->forAll(isStream))&#xD;&#xA;    and&#xD;&#xA;((parameter->exists(direction = ParameterDirectionKind::out)) implies &#xD;&#xA;    behavioralFeature.ownedParameter->select(p | p.direction = ParameterDirectionKind::out and p.parameterSet->isEmpty())->forAll(isStream))  &#xD;&#xA;"/>
+        <details key="documentation" value="If a parameterized entity has input Parameters that are in a ParameterSet, then any inputs that are not in a ParameterSet must be streaming. Same for output Parameters.&#xA;((parameter->exists(direction = ParameterDirectionKind::_'in')) implies &#xD;&#xA;    behavioralFeature.ownedParameter->select(p | p.direction = ParameterDirectionKind::_'in' and p.parameterSet->isEmpty())->forAll(isStream))&#xD;&#xA;    and&#xD;&#xA;((parameter->exists(direction = ParameterDirectionKind::out)) implies &#xD;&#xA;    behavioralFeature.ownedParameter->select(p | p.direction = ParameterDirectionKind::out and p.parameterSet->isEmpty())->forAll(isStream))"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5407,7 +5407,7 @@
     </eAnnotations>
     <eOperations name="deep_or_shallow_history" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="ProtocolStateMachines cannot have deep or shallow history Pseudostates.&#xA;region->forAll (r | r.subvertex->forAll (v | v.oclIsKindOf(Pseudostate) implies&#xA;((v.oclAsType(Pseudostate).kind &lt;>  PseudostateKind::deepHistory) and (v.oclAsType(Pseudostate).kind &lt;> PseudostateKind::shallowHistory))))&#xA;"/>
+        <details key="documentation" value="ProtocolStateMachines cannot have deep or shallow history Pseudostates.&#xA;region->forAll (r | r.subvertex->forAll (v | v.oclIsKindOf(Pseudostate) implies&#xA;((v.oclAsType(Pseudostate).kind &lt;>  PseudostateKind::deepHistory) and (v.oclAsType(Pseudostate).kind &lt;> PseudostateKind::shallowHistory))))"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5426,7 +5426,7 @@
     </eOperations>
     <eOperations name="entry_exit_do" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The states of a ProtocolStateMachine cannot have entry, exit, or do activity Behaviors.&#xA;region->forAll(r | r.subvertex->forAll(v | v.oclIsKindOf(State) implies&#xA;(v.oclAsType(State).entry->isEmpty() and v.oclAsType(State).exit->isEmpty() and v.oclAsType(State).doActivity->isEmpty())))&#xA;"/>
+        <details key="documentation" value="The states of a ProtocolStateMachine cannot have entry, exit, or do activity Behaviors.&#xA;region->forAll(r | r.subvertex->forAll(v | v.oclIsKindOf(State) implies&#xA;(v.oclAsType(State).entry->isEmpty() and v.oclAsType(State).exit->isEmpty() and v.oclAsType(State).doActivity->isEmpty())))"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5465,7 +5465,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="conformance" ordered="false"
         upperBound="-1" eType="#//ProtocolConformance" containment="true" eOpposite="#//ProtocolConformance/specificMachine">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Conformance between ProtocolStateMachine &#xA;&lt;p>From package UML::StateMachines.&lt;/p>"/>
+        <details key="documentation" value="Conformance between ProtocolStateMachine&#xA;&lt;p>From package UML::StateMachines.&lt;/p>"/>
       </eAnnotations>
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
@@ -5623,7 +5623,7 @@
     </eAnnotations>
     <eOperations name="transitions_outgoing" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="All transitions outgoing a fork vertex must target states in different regions of an orthogonal state.&#xA;(kind = PseudostateKind::fork) implies&#xD;&#xA;&#xD;&#xA;-- for any pair of outgoing transitions there exists an orthogonal state which contains the targets of these transitions &#xD;&#xA;-- such that these targets belong to different regions of that orthogonal state &#xD;&#xA;&#xD;&#xA;outgoing->forAll(t1:Transition, t2:Transition | let contState:State = containingStateMachine().LCAState(t1.target, t2.target) in&#xD;&#xA;&#x9;((contState &lt;> null) and (contState.region&#xD;&#xA;&#x9;&#x9;->exists(r1:Region, r2: Region | (r1 &lt;> r2) and t1.target.isContainedInRegion(r1) and t2.target.isContainedInRegion(r2)))))&#xD;&#xA;&#x9;"/>
+        <details key="documentation" value="All transitions outgoing a fork vertex must target states in different regions of an orthogonal state.&#xA;(kind = PseudostateKind::fork) implies&#xD;&#xA;&#xD;&#xA;-- for any pair of outgoing transitions there exists an orthogonal state which contains the targets of these transitions &#xD;&#xA;-- such that these targets belong to different regions of that orthogonal state &#xD;&#xA;&#xD;&#xA;outgoing->forAll(t1:Transition, t2:Transition | let contState:State = containingStateMachine().LCAState(t1.target, t2.target) in&#xD;&#xA;&#x9;((contState &lt;> null) and (contState.region&#xD;&#xA;&#x9;&#x9;->exists(r1:Region, r2: Region | (r1 &lt;> r2) and t1.target.isContainedInRegion(r1) and t2.target.isContainedInRegion(r2)))))"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5642,7 +5642,7 @@
     </eOperations>
     <eOperations name="choice_vertex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="In a complete statemachine, a choice Vertex must have at least one incoming and one outgoing Transition.&#xA;(kind = PseudostateKind::choice) implies (incoming->size() >= 1 and outgoing->size() >= 1)&#xA;"/>
+        <details key="documentation" value="In a complete statemachine, a choice Vertex must have at least one incoming and one outgoing Transition.&#xA;(kind = PseudostateKind::choice) implies (incoming->size() >= 1 and outgoing->size() >= 1)"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5680,7 +5680,7 @@
     </eOperations>
     <eOperations name="join_vertex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="In a complete StateMachine, a join Vertex must have at least two incoming Transitions and exactly one outgoing Transition.&#xA;(kind = PseudostateKind::join) implies (outgoing->size() = 1 and incoming->size() >= 2)&#xA;"/>
+        <details key="documentation" value="In a complete StateMachine, a join Vertex must have at least two incoming Transitions and exactly one outgoing Transition.&#xA;(kind = PseudostateKind::join) implies (outgoing->size() = 1 and incoming->size() >= 2)"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5699,7 +5699,7 @@
     </eOperations>
     <eOperations name="junction_vertex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="In a complete StateMachine, a junction Vertex must have at least one incoming and one outgoing Transition.&#xA;(kind = PseudostateKind::junction) implies (incoming->size() >= 1 and outgoing->size() >= 1)&#xA;"/>
+        <details key="documentation" value="In a complete StateMachine, a junction Vertex must have at least one incoming and one outgoing Transition.&#xA;(kind = PseudostateKind::junction) implies (incoming->size() >= 1 and outgoing->size() >= 1)"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5718,7 +5718,7 @@
     </eOperations>
     <eOperations name="history_vertices" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="History Vertices can have at most one outgoing Transition.&#xA;((kind = PseudostateKind::deepHistory) or (kind = PseudostateKind::shallowHistory)) implies (outgoing->size() &lt;= 1)&#xA;"/>
+        <details key="documentation" value="History Vertices can have at most one outgoing Transition.&#xA;((kind = PseudostateKind::deepHistory) or (kind = PseudostateKind::shallowHistory)) implies (outgoing->size() &lt;= 1)"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5756,7 +5756,7 @@
     </eOperations>
     <eOperations name="fork_vertex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="In a complete StateMachine, a fork Vertex must have at least two outgoing Transitions and exactly one incoming Transition.&#xA;(kind = PseudostateKind::fork) implies (incoming->size() = 1 and outgoing->size() >= 2)&#xA;"/>
+        <details key="documentation" value="In a complete StateMachine, a fork Vertex must have at least two outgoing Transitions and exactly one incoming Transition.&#xA;(kind = PseudostateKind::fork) implies (incoming->size() = 1 and outgoing->size() >= 2)"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5819,7 +5819,7 @@
     </eAnnotations>
     <eOperations name="containingStateMachine" ordered="false" lowerBound="1" eType="#//StateMachine">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The operation containingStateMachine() returns the StateMachine in which this Vertex is defined.&#xA;result = (if container &lt;> null&#xA;then&#xA;-- the container is a region&#xA;   container.containingStateMachine()&#xA;else &#xA;   if (self.oclIsKindOf(Pseudostate)) and ((self.oclAsType(Pseudostate).kind = PseudostateKind::entryPoint) or (self.oclAsType(Pseudostate).kind = PseudostateKind::exitPoint)) then&#xA;      self.oclAsType(Pseudostate).stateMachine&#xA;   else &#xA;      if (self.oclIsKindOf(ConnectionPointReference)) then&#xA;          self.oclAsType(ConnectionPointReference).state.containingStateMachine() -- no other valid cases possible&#xA;      else &#xA;          null&#xA;      endif&#xA;   endif&#xA;endif&#xA;&#xA;)&#xA;&lt;p>From package UML::StateMachines.&lt;/p>"/>
+        <details key="documentation" value="The operation containingStateMachine() returns the StateMachine in which this Vertex is defined.&#xA;result = (if container &lt;> null&#xA;then&#xA;-- the container is a region&#xA;   container.containingStateMachine()&#xA;else &#xA;   if (self.oclIsKindOf(Pseudostate)) and ((self.oclAsType(Pseudostate).kind = PseudostateKind::entryPoint) or (self.oclAsType(Pseudostate).kind = PseudostateKind::exitPoint)) then&#xA;      self.oclAsType(Pseudostate).stateMachine&#xA;   else &#xA;      if (self.oclIsKindOf(ConnectionPointReference)) then&#xA;          self.oclAsType(ConnectionPointReference).state.containingStateMachine() -- no other valid cases possible&#xA;      else &#xA;          null&#xA;      endif&#xA;   endif&#xA;endif&#xA;)&#xA;&lt;p>From package UML::StateMachines.&lt;/p>"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="getIncomings" ordered="false" upperBound="-1" eType="#//Transition">
@@ -5904,7 +5904,7 @@
     </eAnnotations>
     <eOperations name="deep_history_vertex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="A Region can have at most one deep history Vertex.&#xA;self.subvertex->select (oclIsKindOf(Pseudostate))->collect(oclAsType(Pseudostate))->&#xA;   select(kind = PseudostateKind::deepHistory)->size() &lt;= 1&#xA;"/>
+        <details key="documentation" value="A Region can have at most one deep history Vertex.&#xA;self.subvertex->select (oclIsKindOf(Pseudostate))->collect(oclAsType(Pseudostate))->&#xA;   select(kind = PseudostateKind::deepHistory)->size() &lt;= 1"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5923,7 +5923,7 @@
     </eOperations>
     <eOperations name="shallow_history_vertex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="A Region can have at most one shallow history Vertex.&#xA;subvertex->select(oclIsKindOf(Pseudostate))->collect(oclAsType(Pseudostate))->&#xA;  select(kind = PseudostateKind::shallowHistory)->size() &lt;= 1&#xA;"/>
+        <details key="documentation" value="A Region can have at most one shallow history Vertex.&#xA;subvertex->select(oclIsKindOf(Pseudostate))->collect(oclAsType(Pseudostate))->&#xA;  select(kind = PseudostateKind::shallowHistory)->size() &lt;= 1"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5961,7 +5961,7 @@
     </eOperations>
     <eOperations name="initial_vertex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="A Region can have at most one initial Vertex.&#xA;self.subvertex->select (oclIsKindOf(Pseudostate))->collect(oclAsType(Pseudostate))->&#xA;  select(kind = PseudostateKind::initial)->size() &lt;= 1&#xA;"/>
+        <details key="documentation" value="A Region can have at most one initial Vertex.&#xA;self.subvertex->select (oclIsKindOf(Pseudostate))->collect(oclAsType(Pseudostate))->&#xA;  select(kind = PseudostateKind::initial)->size() &lt;= 1"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -6685,7 +6685,7 @@
     </eOperations>
     <eOperations name="initial_transition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="An initial Transition at the topmost level Region of a StateMachine that has no Trigger.&#xA;(source.oclIsKindOf(Pseudostate) and container.stateMachine->notEmpty()) implies&#xA;&#x9;trigger->isEmpty()&#xA;"/>
+        <details key="documentation" value="An initial Transition at the topmost level Region of a StateMachine that has no Trigger.&#xA;(source.oclIsKindOf(Pseudostate) and container.stateMachine->notEmpty()) implies&#xA;&#x9;trigger->isEmpty()"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -7681,7 +7681,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Collaboration" eSuperTypes="#//StructuredClassifier #//BehavioredClassifier">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A Collaboration describes a structure of collaborating elements (roles), each performing a specialized function, which collectively accomplish some desired functionality. &#xA;&lt;p>From package UML::StructuredClassifiers.&lt;/p>"/>
+      <details key="documentation" value="A Collaboration describes a structure of collaborating elements (roles), each performing a specialized function, which collectively accomplish some desired functionality.&#xA;&lt;p>From package UML::StructuredClassifiers.&lt;/p>"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="collaborationRole" ordered="false"
         upperBound="-1" eType="#//ConnectableElement">
@@ -8373,7 +8373,7 @@
     </eOperations>
     <eOperations name="constraining_classifiers_constrain_parametered_element" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="If there are any constrainingClassifiers, then the parameteredElement must be the same as or a specialization of them, or if allowSubstitutable is true, then it can also be substitutable.&#xA;constrainingClassifier->forAll(&#xD;&#xA;     cc |  parameteredElement = cc or parameteredElement.conformsTo(cc) or (allowSubstitutable and parameteredElement.isSubstitutableFor(cc))&#xD;&#xA;)&#xD;&#xA;"/>
+        <details key="documentation" value="If there are any constrainingClassifiers, then the parameteredElement must be the same as or a specialization of them, or if allowSubstitutable is true, then it can also be substitutable.&#xA;constrainingClassifier->forAll(&#xD;&#xA;     cc |  parameteredElement = cc or parameteredElement.conformsTo(cc) or (allowSubstitutable and parameteredElement.isSubstitutableFor(cc))&#xD;&#xA;)"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -8993,7 +8993,7 @@
         lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean"
         defaultValueLiteral="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="If true, then any object used by an Action within the StructuredActivityNode cannot be accessed by any Action outside the node until the StructuredActivityNode as a whole completes. Any concurrent Actions that would result in accessing such objects are required to have their execution deferred until the completion of the StructuredActivityNode.&#xD;&#xA;&#xA;&lt;p>From package UML::Actions.&lt;/p>"/>
+        <details key="documentation" value="If true, then any object used by an Action within the StructuredActivityNode cannot be accessed by any Action outside the node until the StructuredActivityNode as a whole completes. Any concurrent Actions that would result in accessing such objects are required to have their execution deferred until the completion of the StructuredActivityNode.&#xA;&lt;p>From package UML::Actions.&lt;/p>"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="structuredNodeInput" ordered="false"
@@ -9253,11 +9253,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectNode" abstract="true" eSuperTypes="#//ActivityNode #//TypedElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="An ObjectNode is an abstract ActivityNode that may hold tokens within the object flow in an Activity. ObjectNodes also support token selection, limitation on the number of tokens held, specification of the state required for tokens being held, and carrying control values.&#xD;&#xA;&#xA;&lt;p>From package UML::Activities.&lt;/p>"/>
+      <details key="documentation" value="An ObjectNode is an abstract ActivityNode that may hold tokens within the object flow in an Activity. ObjectNodes also support token selection, limitation on the number of tokens held, specification of the state required for tokens being held, and carrying control values.&#xA;&lt;p>From package UML::Activities.&lt;/p>"/>
     </eAnnotations>
     <eOperations name="input_output_parameter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="A selection Behavior has one input Parameter and one output Parameter. The input Parameter must have the same type as  or a supertype of the type of ObjectNode, be non-unique, and have multiplicity 0..*. The output Parameter must be the same or a subtype of the type of ObjectNode. The Behavior cannot have side effects.&#xA;selection&lt;>null implies&#xD;&#xA;&#x9;selection.inputParameters()->size()=1 and&#xD;&#xA;&#x9;selection.inputParameters()->forAll(p | not p.isUnique and p.is(0,*) and self.type.conformsTo(p.type)) and&#xD;&#xA;&#x9;selection.outputParameters()->size()=1 and&#xD;&#xA;&#x9;&#x9;selection.inputParameters()->forAll(p | self.type.conformsTo(p.type))&#xD;&#xA;&#x9;"/>
+        <details key="documentation" value="A selection Behavior has one input Parameter and one output Parameter. The input Parameter must have the same type as  or a supertype of the type of ObjectNode, be non-unique, and have multiplicity 0..*. The output Parameter must be the same or a subtype of the type of ObjectNode. The Behavior cannot have side effects.&#xA;selection&lt;>null implies&#xD;&#xA;&#x9;selection.inputParameters()->size()=1 and&#xD;&#xA;&#x9;selection.inputParameters()->forAll(p | not p.isUnique and p.is(0,*) and self.type.conformsTo(p.type)) and&#xD;&#xA;&#x9;selection.outputParameters()->size()=1 and&#xD;&#xA;&#x9;&#x9;selection.inputParameters()->forAll(p | self.type.conformsTo(p.type))"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -9586,7 +9586,7 @@
     </eAnnotations>
     <eOperations name="allow_access" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The visibility of at least one end must allow access from the context Classifier of the WriteLinkAction.&#xA;endData.end->exists(end |&#xD;&#xA;  end.type=_'context' or&#xD;&#xA;  end.visibility=VisibilityKind::public or &#xD;&#xA;  end.visibility=VisibilityKind::protected and&#xD;&#xA;  endData.end->exists(other | &#xD;&#xA;    other&lt;>end and _'context'.conformsTo(other.type.oclAsType(Classifier))))&#xD;&#xA;"/>
+        <details key="documentation" value="The visibility of at least one end must allow access from the context Classifier of the WriteLinkAction.&#xA;endData.end->exists(end |&#xD;&#xA;  end.type=_'context' or&#xD;&#xA;  end.visibility=VisibilityKind::public or &#xD;&#xA;  end.visibility=VisibilityKind::protected and&#xD;&#xA;  endData.end->exists(other | &#xD;&#xA;    other&lt;>end and _'context'.conformsTo(other.type.oclAsType(Classifier))))"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -10024,7 +10024,7 @@
     </eOperations>
     <eOperations name="visibility" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The visibility of the structuralFeature must allow access from the object performing the ReadStructuralFeatureAction.&#xA;structuralFeature.visibility = VisibilityKind::public or&#xA;_'context'.allFeatures()->includes(structuralFeature) or&#xA;structuralFeature.visibility=VisibilityKind::protected and&#xA;_'context'.conformsTo(structuralFeature.oclAsType(Property).opposite.type.oclAsType(Classifier))&#xA;"/>
+        <details key="documentation" value="The visibility of the structuralFeature must allow access from the object performing the ReadStructuralFeatureAction.&#xA;structuralFeature.visibility = VisibilityKind::public or&#xA;_'context'.allFeatures()->includes(structuralFeature) or&#xA;structuralFeature.visibility=VisibilityKind::protected and&#xA;_'context'.conformsTo(structuralFeature.oclAsType(Property).opposite.type.oclAsType(Classifier))"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -10189,7 +10189,7 @@
     </eOperations>
     <eOperations name="trigger_call_event" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The action must have exactly one trigger, which must be for a CallEvent.&#xA;trigger->size()=1 and&#xD;&#xA;trigger->asSequence()->first().event.oclIsKindOf(CallEvent)&#xD;&#xA;"/>
+        <details key="documentation" value="The action must have exactly one trigger, which must be for a CallEvent.&#xA;trigger->size()=1 and&#xD;&#xA;trigger->asSequence()->first().event.oclIsKindOf(CallEvent)"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -10448,7 +10448,7 @@
     </eOperations>
     <eOperations name="insertAt_pin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="AddStructuralFeatureActions adding a value to ordered StructuralFeatures must have a single InputPin for the insertion point with type UnlimitedNatural and multiplicity of 1..1 if isReplaceAll=false, and must have no Input Pin for the insertion point when the StructuralFeature is unordered.&#xA;if not structuralFeature.isOrdered then insertAt = null&#xA;else &#xA;  not isReplaceAll implies&#xA;  &#x9;insertAt&lt;>null and &#xA;  &#x9;insertAt->forAll(type=UnlimitedNatural and is(1,1.oclAsType(UnlimitedNatural)))&#xA;endif&#xA;"/>
+        <details key="documentation" value="AddStructuralFeatureActions adding a value to ordered StructuralFeatures must have a single InputPin for the insertion point with type UnlimitedNatural and multiplicity of 1..1 if isReplaceAll=false, and must have no Input Pin for the insertion point when the StructuralFeature is unordered.&#xA;if not structuralFeature.isOrdered then insertAt = null&#xA;else &#xA;  not isReplaceAll implies&#xA;  &#x9;insertAt&lt;>null and &#xA;  &#x9;insertAt->forAll(type=UnlimitedNatural and is(1,1.oclAsType(UnlimitedNatural)))&#xA;endif"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -10505,7 +10505,7 @@
     </eOperations>
     <eOperations name="insertAt_pin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="AddVariableValueActions for ordered Variables must have a single InputPin for the insertion point with type UnlimtedNatural and multiplicity of 1..1 if isReplaceAll=false, otherwise the Action has no InputPin for the insertion point.&#xA;if not variable.isOrdered then insertAt = null&#xA;else &#xA;  not isReplaceAll implies&#xA;  &#x9;insertAt&lt;>null and &#xA;  &#x9;insertAt->forAll(type=UnlimitedNatural and is(1,1.oclAsType(UnlimitedNatural)))&#xA;endif&#xA;"/>
+        <details key="documentation" value="AddVariableValueActions for ordered Variables must have a single InputPin for the insertion point with type UnlimtedNatural and multiplicity of 1..1 if isReplaceAll=false, otherwise the Action has no InputPin for the insertion point.&#xA;if not variable.isOrdered then insertAt = null&#xA;else &#xA;  not isReplaceAll implies&#xA;  &#x9;insertAt&lt;>null and &#xA;  &#x9;insertAt->forAll(type=UnlimitedNatural and is(1,1.oclAsType(UnlimitedNatural)))&#xA;endif"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -10607,7 +10607,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InvocationAction" abstract="true" eSuperTypes="#//Action">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="InvocationAction is an abstract class for the various actions that request Behavior invocation.&#xD;&#xA;&#xA;&lt;p>From package UML::Actions.&lt;/p>"/>
+      <details key="documentation" value="InvocationAction is an abstract class for the various actions that request Behavior invocation.&#xA;&lt;p>From package UML::Actions.&lt;/p>"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="argument" upperBound="-1"
         eType="#//InputPin" containment="true">
@@ -11221,7 +11221,7 @@
     </eAnnotations>
     <eOperations name="insertAt_pin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="LinkEndCreationData for ordered Association ends must have a single insertAt InputPin for the insertion point with type UnlimitedNatural and multiplicity of 1..1, if isReplaceAll=false, and must have no InputPin for the insertion point when the association ends are unordered.&#xA;if  not end.isOrdered&#xA;then insertAt = null&#xA;else&#xA;&#x9;not isReplaceAll=false implies&#xA;&#x9;insertAt &lt;> null and insertAt->forAll(type=UnlimitedNatural and is(1,1))&#xA;endif&#xA;"/>
+        <details key="documentation" value="LinkEndCreationData for ordered Association ends must have a single insertAt InputPin for the insertion point with type UnlimitedNatural and multiplicity of 1..1, if isReplaceAll=false, and must have no InputPin for the insertion point when the association ends are unordered.&#xA;if  not end.isOrdered&#xA;then insertAt = null&#xA;else&#xA;&#x9;not isReplaceAll=false implies&#xA;&#x9;insertAt &lt;> null and insertAt->forAll(type=UnlimitedNatural and is(1,1))&#xA;endif"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -11327,7 +11327,7 @@
     </eAnnotations>
     <eOperations name="classifier_not_abstract" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The classifier cannot be abstract.&#xA;not classifier.isAbstract "/>
+        <details key="documentation" value="The classifier cannot be abstract.&#xA;not classifier.isAbstract"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -11444,7 +11444,7 @@
     </eAnnotations>
     <eOperations name="destroyAt_pin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="LinkEndDestructionData for ordered, nonunique Association ends must have a single destroyAt InputPin if isDestroyDuplicates is false, which must be of type UnlimitedNatural and have a multiplicity of 1..1. Otherwise, the action has no destroyAt input pin.&#xA;if  not end.isOrdered or end.isUnique or isDestroyDuplicates&#xD;&#xA;then destroyAt = null&#xD;&#xA;else&#xD;&#xA;&#x9;destroyAt &lt;> null and &#xD;&#xA;&#x9;destroyAt->forAll(type=UnlimitedNatural and is(1,1))&#xD;&#xA;endif&#xD;&#xA;"/>
+        <details key="documentation" value="LinkEndDestructionData for ordered, nonunique Association ends must have a single destroyAt InputPin if isDestroyDuplicates is false, which must be of type UnlimitedNatural and have a multiplicity of 1..1. Otherwise, the action has no destroyAt input pin.&#xA;if  not end.isOrdered or end.isUnique or isDestroyDuplicates&#xD;&#xA;then destroyAt = null&#xD;&#xA;else&#xD;&#xA;&#x9;destroyAt &lt;> null and &#xD;&#xA;&#x9;destroyAt->forAll(type=UnlimitedNatural and is(1,1))&#xD;&#xA;endif"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -12085,7 +12085,7 @@
     </eAnnotations>
     <eOperations name="type_and_ordering" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The type and ordering of the result OutputPin are same as the type and ordering of the open Association end.&#xA;self.openEnd()->forAll(type=result.type and isOrdered=result.isOrdered)&#xA;"/>
+        <details key="documentation" value="The type and ordering of the result OutputPin are same as the type and ordering of the open Association end.&#xA;self.openEnd()->forAll(type=result.type and isOrdered=result.isOrdered)"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -12104,7 +12104,7 @@
     </eOperations>
     <eOperations name="compatible_multiplicity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The multiplicity of the open Association end must be compatible with the multiplicity of the result OutputPin.&#xA;self.openEnd()->first().compatibleWith(result)&#xA;"/>
+        <details key="documentation" value="The multiplicity of the open Association end must be compatible with the multiplicity of the result OutputPin.&#xA;self.openEnd()->first().compatibleWith(result)"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -12123,7 +12123,7 @@
     </eOperations>
     <eOperations name="visibility" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Visibility of the open end must allow access from the object performing the action.&#xA;let openEnd : Property = self.openEnd()->first() in&#xA;  openEnd.visibility = VisibilityKind::public or &#xA;  endData->exists(oed | &#xA;    oed.end&lt;>openEnd and &#xA;    (_'context' = oed.end.type or &#xA;      (openEnd.visibility = VisibilityKind::protected and &#xA;        _'context'.conformsTo(oed.end.type.oclAsType(Classifier)))))&#xA;"/>
+        <details key="documentation" value="Visibility of the open end must allow access from the object performing the action.&#xA;let openEnd : Property = self.openEnd()->first() in&#xA;  openEnd.visibility = VisibilityKind::public or &#xA;  endData->exists(oed | &#xA;    oed.end&lt;>openEnd and &#xA;    (_'context' = oed.end.type or &#xA;      (openEnd.visibility = VisibilityKind::protected and &#xA;        _'context'.conformsTo(oed.end.type.oclAsType(Classifier)))))"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -12161,7 +12161,7 @@
     </eOperations>
     <eOperations name="navigable_open_end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The open end must be navigable.&#xA;self.openEnd()->first().isNavigable()&#xA;"/>
+        <details key="documentation" value="The open end must be navigable.&#xA;self.openEnd()->first().isNavigable()"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -12642,7 +12642,7 @@
     </eAnnotations>
     <eOperations name="type_and_ordering" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The type and ordering of the result OutputPin are the same as the type and ordering of the StructuralFeature.&#xA;result.type =structuralFeature.type and &#xA;result.isOrdered = structuralFeature.isOrdered&#xA;"/>
+        <details key="documentation" value="The type and ordering of the result OutputPin are the same as the type and ordering of the StructuralFeature.&#xA;result.type =structuralFeature.type and &#xA;result.isOrdered = structuralFeature.isOrdered"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -12673,7 +12673,7 @@
     </eAnnotations>
     <eOperations name="type_and_ordering" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The type and ordering of the result OutputPin are the same as the type and ordering of the variable.&#xA;result.type =variable.type and &#xA;result.isOrdered = variable.isOrdered&#xA;"/>
+        <details key="documentation" value="The type and ordering of the result OutputPin are the same as the type and ordering of the variable.&#xA;result.type =variable.type and &#xA;result.isOrdered = variable.isOrdered"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -13116,7 +13116,7 @@
     </eOperations>
     <eOperations name="type_target_pin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="If onPort is not empty, the Port given by onPort must be an owned or inherited feature of the type of the target InputPin.&#xA;not onPort->isEmpty() implies target.type.oclAsType(Classifier).allFeatures()->includes(onPort)&#xD;&#xA;"/>
+        <details key="documentation" value="If onPort is not empty, the Port given by onPort must be an owned or inherited feature of the type of the target InputPin.&#xA;not onPort->isEmpty() implies target.type.oclAsType(Classifier).allFeatures()->includes(onPort)"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -13305,7 +13305,7 @@
     </eAnnotations>
     <eOperations name="multiplicity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The multiplicity of the InputPins is 1..1.&#xA;first.is(1,1) and second.is(1,1)&#xA;"/>
+        <details key="documentation" value="The multiplicity of the InputPins is 1..1.&#xA;first.is(1,1) and second.is(1,1)"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -13324,7 +13324,7 @@
     </eOperations>
     <eOperations name="no_type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The InputPins have no type.&#xA;first.type= null and second.type = null&#xA;"/>
+        <details key="documentation" value="The InputPins have no type.&#xA;first.type= null and second.type = null"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -13343,7 +13343,7 @@
     </eOperations>
     <eOperations name="result_is_boolean" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The type of the result OutputPin is Boolean. &#xA;result.type=Boolean"/>
+        <details key="documentation" value="The type of the result OutputPin is Boolean.&#xA;result.type=Boolean"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -13384,7 +13384,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UnmarshallAction" eSuperTypes="#//Action">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="An UnmarshallAction is an Action that retrieves the values of the StructuralFeatures of an object and places them on OutputPins. &#xA;&lt;p>From package UML::Actions.&lt;/p>"/>
+      <details key="documentation" value="An UnmarshallAction is an Action that retrieves the values of the StructuralFeatures of an object and places them on OutputPins.&#xA;&lt;p>From package UML::Actions.&lt;/p>"/>
     </eAnnotations>
     <eOperations name="structural_feature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -13846,7 +13846,7 @@
     </eOperations>
     <eOperations name="parameters" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="A decisionInput Behavior has no out parameters, no inout parameters, and one return parameter.&#xA;decisionInput&lt;>null implies &#xD;&#xA;  (decisionInput.ownedParameter->forAll(par | &#xD;&#xA;     par.direction &lt;> ParameterDirectionKind::out and &#xD;&#xA;     par.direction &lt;> ParameterDirectionKind::inout ) and&#xD;&#xA;   decisionInput.ownedParameter->one(par | &#xD;&#xA;     par.direction &lt;> ParameterDirectionKind::return))&#xD;&#xA;     "/>
+        <details key="documentation" value="A decisionInput Behavior has no out parameters, no inout parameters, and one return parameter.&#xA;decisionInput&lt;>null implies &#xD;&#xA;  (decisionInput.ownedParameter->forAll(par | &#xD;&#xA;     par.direction &lt;> ParameterDirectionKind::out and &#xD;&#xA;     par.direction &lt;> ParameterDirectionKind::inout ) and&#xD;&#xA;   decisionInput.ownedParameter->one(par | &#xD;&#xA;     par.direction &lt;> ParameterDirectionKind::return))"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -14089,7 +14089,7 @@
     </eAnnotations>
     <eOperations name="edges" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The ActivityEdges incoming to and outgoing from a ForkNode must be either all ObjectFlows or all ControlFlows.&#xA;let allEdges : Set(ActivityEdge) = incoming->union(outgoing) in&#xD;&#xA;allEdges->forAll(oclIsKindOf(ControlFlow)) or allEdges->forAll(oclIsKindOf(ObjectFlow))&#xD;&#xA;"/>
+        <details key="documentation" value="The ActivityEdges incoming to and outgoing from a ForkNode must be either all ObjectFlows or all ControlFlows.&#xA;let allEdges : Set(ActivityEdge) = incoming->union(outgoing) in&#xD;&#xA;allEdges->forAll(oclIsKindOf(ControlFlow)) or allEdges->forAll(oclIsKindOf(ObjectFlow))"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -14251,7 +14251,7 @@
     </eOperations>
     <eOperations name="edges" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The ActivityEdges incoming to and outgoing from a MergeNode must be either all ObjectFlows or all ControlFlows.&#xA;let allEdges : Set(ActivityEdge) = incoming->union(outgoing) in&#xD;&#xA;allEdges->forAll(oclIsKindOf(ControlFlow)) or allEdges->forAll(oclIsKindOf(ObjectFlow))&#xD;&#xA;"/>
+        <details key="documentation" value="The ActivityEdges incoming to and outgoing from a MergeNode must be either all ObjectFlows or all ControlFlows.&#xA;let allEdges : Set(ActivityEdge) = incoming->union(outgoing) in&#xD;&#xA;allEdges->forAll(oclIsKindOf(ControlFlow)) or allEdges->forAll(oclIsKindOf(ObjectFlow))"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -14804,7 +14804,7 @@
     </eOperations>
     <eOperations name="signature_is_signal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="In the case when the Message signature is a Signal, the arguments of the Message must correspond to the attributes of the Signal. A Message Argument corresponds to a Signal Attribute if the Argument is of the same Class or a specialization of that of the Attribute.&#xA;(messageSort = MessageSort::asynchSignal ) and signature.oclIsKindOf(Signal) implies&#xD;&#xA;   let signalAttributes : OrderedSet(Property) = signature.oclAsType(Signal).inheritedMember()->&#xD;&#xA;             select(n:NamedElement | n.oclIsTypeOf(Property))->collect(oclAsType(Property))->asOrderedSet()&#xD;&#xA;   in signalAttributes->size() = self.argument->size()&#xD;&#xA;   and self.argument->forAll( o: ValueSpecification |&#xD;&#xA;          not (o.oclIsKindOf(Expression)&#xD;&#xA;          and o.oclAsType(Expression).symbol->size()=0&#xD;&#xA;          and o.oclAsType(Expression).operand->isEmpty() ) implies&#xD;&#xA;              let p : Property = signalAttributes->at(self.argument->indexOf(o))&#xD;&#xA;              in o.type.oclAsType(Classifier).conformsTo(p.type.oclAsType(Classifier)))&#xD;&#xA;"/>
+        <details key="documentation" value="In the case when the Message signature is a Signal, the arguments of the Message must correspond to the attributes of the Signal. A Message Argument corresponds to a Signal Attribute if the Argument is of the same Class or a specialization of that of the Attribute.&#xA;(messageSort = MessageSort::asynchSignal ) and signature.oclIsKindOf(Signal) implies&#xD;&#xA;   let signalAttributes : OrderedSet(Property) = signature.oclAsType(Signal).inheritedMember()->&#xD;&#xA;             select(n:NamedElement | n.oclIsTypeOf(Property))->collect(oclAsType(Property))->asOrderedSet()&#xD;&#xA;   in signalAttributes->size() = self.argument->size()&#xD;&#xA;   and self.argument->forAll( o: ValueSpecification |&#xD;&#xA;          not (o.oclIsKindOf(Expression)&#xD;&#xA;          and o.oclAsType(Expression).symbol->size()=0&#xD;&#xA;          and o.oclAsType(Expression).operand->isEmpty() ) implies&#xD;&#xA;              let p : Property = signalAttributes->at(self.argument->indexOf(o))&#xD;&#xA;              in o.type.oclAsType(Classifier).conformsTo(p.type.oclAsType(Classifier)))"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -15072,7 +15072,7 @@
     </eOperations>
     <eOperations name="interaction_uses_share_lifeline" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="If a lifeline is in an Interaction referred to by an InteractionUse in an enclosing Interaction,  and that lifeline is common with another lifeline in an Interaction referred to by another InteractonUse within that same enclosing Interaction, it must be common to a lifeline within that enclosing Interaction. By common Lifelines we mean Lifelines with the same selector and represents associations.&#xD;&#xA;&#xA;let intUses : Set(InteractionUse) = interaction.interactionUse  in &#xD;&#xA;intUses->forAll&#xD;&#xA;( iuse : InteractionUse | &#xD;&#xA;let usingInteraction : Set(Interaction)  = iuse.enclosingInteraction->asSet()&#xD;&#xA;->union(&#xD;&#xA;iuse.enclosingOperand.combinedFragment->asSet()->closure(enclosingOperand.combinedFragment).enclosingInteraction->asSet()&#xD;&#xA;               ) &#xD;&#xA;in&#xD;&#xA;let peerUses : Set(InteractionUse) = usingInteraction.fragment->select(oclIsKindOf(InteractionUse)).oclAsType(InteractionUse)->asSet()&#xD;&#xA;->union(&#xD;&#xA;usingInteraction.fragment->select(oclIsKindOf(CombinedFragment)).oclAsType(CombinedFragment)->asSet()&#xD;&#xA;->closure(operand.fragment->select(oclIsKindOf(CombinedFragment)).oclAsType(CombinedFragment)).operand.fragment->&#xD;&#xA;select(oclIsKindOf(InteractionUse)).oclAsType(InteractionUse)->asSet()&#xD;&#xA;               )->excluding(iuse)&#xD;&#xA; in&#xD;&#xA;peerUses->forAll( peerUse : InteractionUse |&#xD;&#xA; peerUse.refersTo.lifeline->forAll( l : Lifeline | (l.represents = self.represents and &#xD;&#xA; ( self.selector.oclIsKindOf(LiteralString) implies&#xD;&#xA;  l.selector.oclIsKindOf(LiteralString) and &#xD;&#xA;  self.selector.oclAsType(LiteralString).value = l.selector.oclAsType(LiteralString).value )&#xD;&#xA;  and &#xD;&#xA;( self.selector.oclIsKindOf(LiteralInteger) implies&#xD;&#xA;  l.selector.oclIsKindOf(LiteralInteger) and &#xD;&#xA;  self.selector.oclAsType(LiteralInteger).value = l.selector.oclAsType(LiteralInteger).value )&#xD;&#xA;)  &#xD;&#xA;implies&#xD;&#xA; usingInteraction.lifeline->select(represents = self.represents and&#xD;&#xA; ( self.selector.oclIsKindOf(LiteralString) implies&#xD;&#xA;  l.selector.oclIsKindOf(LiteralString) and &#xD;&#xA;  self.selector.oclAsType(LiteralString).value = l.selector.oclAsType(LiteralString).value )&#xD;&#xA;and &#xD;&#xA;( self.selector.oclIsKindOf(LiteralInteger) implies&#xD;&#xA;  l.selector.oclIsKindOf(LiteralInteger) and &#xD;&#xA;  self.selector.oclAsType(LiteralInteger).value = l.selector.oclAsType(LiteralInteger).value )&#xD;&#xA;)&#xD;&#xA;                                                )&#xD;&#xA;                    )&#xD;&#xA;)"/>
+        <details key="documentation" value="If a lifeline is in an Interaction referred to by an InteractionUse in an enclosing Interaction,  and that lifeline is common with another lifeline in an Interaction referred to by another InteractonUse within that same enclosing Interaction, it must be common to a lifeline within that enclosing Interaction. By common Lifelines we mean Lifelines with the same selector and represents associations.&#xA;let intUses : Set(InteractionUse) = interaction.interactionUse  in &#xD;&#xA;intUses->forAll&#xD;&#xA;( iuse : InteractionUse | &#xD;&#xA;let usingInteraction : Set(Interaction)  = iuse.enclosingInteraction->asSet()&#xD;&#xA;->union(&#xD;&#xA;iuse.enclosingOperand.combinedFragment->asSet()->closure(enclosingOperand.combinedFragment).enclosingInteraction->asSet()&#xD;&#xA;               ) &#xD;&#xA;in&#xD;&#xA;let peerUses : Set(InteractionUse) = usingInteraction.fragment->select(oclIsKindOf(InteractionUse)).oclAsType(InteractionUse)->asSet()&#xD;&#xA;->union(&#xD;&#xA;usingInteraction.fragment->select(oclIsKindOf(CombinedFragment)).oclAsType(CombinedFragment)->asSet()&#xD;&#xA;->closure(operand.fragment->select(oclIsKindOf(CombinedFragment)).oclAsType(CombinedFragment)).operand.fragment->&#xD;&#xA;select(oclIsKindOf(InteractionUse)).oclAsType(InteractionUse)->asSet()&#xD;&#xA;               )->excluding(iuse)&#xD;&#xA; in&#xD;&#xA;peerUses->forAll( peerUse : InteractionUse |&#xD;&#xA; peerUse.refersTo.lifeline->forAll( l : Lifeline | (l.represents = self.represents and &#xD;&#xA; ( self.selector.oclIsKindOf(LiteralString) implies&#xD;&#xA;  l.selector.oclIsKindOf(LiteralString) and &#xD;&#xA;  self.selector.oclAsType(LiteralString).value = l.selector.oclAsType(LiteralString).value )&#xD;&#xA;  and &#xD;&#xA;( self.selector.oclIsKindOf(LiteralInteger) implies&#xD;&#xA;  l.selector.oclIsKindOf(LiteralInteger) and &#xD;&#xA;  self.selector.oclAsType(LiteralInteger).value = l.selector.oclAsType(LiteralInteger).value )&#xD;&#xA;)  &#xD;&#xA;implies&#xD;&#xA; usingInteraction.lifeline->select(represents = self.represents and&#xD;&#xA; ( self.selector.oclIsKindOf(LiteralString) implies&#xD;&#xA;  l.selector.oclIsKindOf(LiteralString) and &#xD;&#xA;  self.selector.oclAsType(LiteralString).value = l.selector.oclAsType(LiteralString).value )&#xD;&#xA;and &#xD;&#xA;( self.selector.oclIsKindOf(LiteralInteger) implies&#xD;&#xA;  l.selector.oclIsKindOf(LiteralInteger) and &#xD;&#xA;  self.selector.oclAsType(LiteralInteger).value = l.selector.oclAsType(LiteralInteger).value )&#xD;&#xA;)&#xD;&#xA;                                                )&#xD;&#xA;                    )&#xD;&#xA;)"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -15110,7 +15110,7 @@
     </eOperations>
     <eOperations name="selector_int_or_string" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The selector value, if present, must be a LiteralString or a LiteralInteger &#xA;self.selector->notEmpty() implies &#xD;&#xA;self.selector.oclIsKindOf(LiteralInteger) or &#xD;&#xA;self.selector.oclIsKindOf(LiteralString)"/>
+        <details key="documentation" value="The selector value, if present, must be a LiteralString or a LiteralInteger&#xA;self.selector->notEmpty() implies &#xD;&#xA;self.selector.oclIsKindOf(LiteralInteger) or &#xD;&#xA;self.selector.oclIsKindOf(LiteralString)"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -15304,7 +15304,7 @@
     </eOperations>
     <eOperations name="returnValue_type_recipient_correspondence" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The type of the returnValue must correspond to the type of the returnValueRecipient.&#xA;returnValue.type->asSequence()->notEmpty() implies returnValue.type->asSequence()->first() = returnValueRecipient.type->asSequence()->first()&#xD;&#xA;"/>
+        <details key="documentation" value="The type of the returnValue must correspond to the type of the returnValueRecipient.&#xA;returnValue.type->asSequence()->notEmpty() implies returnValue.type->asSequence()->first() = returnValueRecipient.type->asSequence()->first()"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -15565,17 +15565,17 @@
     </eAnnotations>
     <eOperations name="oppositeEnd" ordered="false" upperBound="-1" eType="#//MessageEnd">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="This query returns a set including the MessageEnd (if exists) at the opposite end of the Message for this MessageEnd.&#xA;result = (message->asSet().messageEnd->asSet()->excluding(self))&#xA;message->notEmpty()&#xD;&#xA;&#xA;&lt;p>From package UML::Interactions.&lt;/p>"/>
+        <details key="documentation" value="This query returns a set including the MessageEnd (if exists) at the opposite end of the Message for this MessageEnd.&#xA;result = (message->asSet().messageEnd->asSet()->excluding(self))&#xA;message->notEmpty()&#xA;&lt;p>From package UML::Interactions.&lt;/p>"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="isSend" ordered="false" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="This query returns value true if this MessageEnd is a sendEvent.&#xA;message->notEmpty()&#xD;&#xA;&#xA;result = (message.sendEvent->asSet()->includes(self))&#xA;&lt;p>From package UML::Interactions.&lt;/p>"/>
+        <details key="documentation" value="This query returns value true if this MessageEnd is a sendEvent.&#xA;message->notEmpty()&#xA;result = (message.sendEvent->asSet()->includes(self))&#xA;&lt;p>From package UML::Interactions.&lt;/p>"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="isReceive" ordered="false" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="This query returns value true if this MessageEnd is a receiveEvent.&#xA;message->notEmpty()&#xD;&#xA;&#xA;result = (message.receiveEvent->asSet()->includes(self))&#xA;&lt;p>From package UML::Interactions.&lt;/p>"/>
+        <details key="documentation" value="This query returns value true if this MessageEnd is a receiveEvent.&#xA;message->notEmpty()&#xA;result = (message.receiveEvent->asSet()->includes(self))&#xA;&lt;p>From package UML::Interactions.&lt;/p>"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="enclosingFragment" ordered="false" upperBound="-1" eType="#//InteractionFragment">
@@ -15919,7 +15919,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InformationItem" eSuperTypes="#//Classifier">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="InformationItems represent many kinds of information that can flow from sources to targets in very abstract ways.  They represent the kinds of information that may move within a system, but do not elaborate details of the transferred information.  Details of transferred information are the province of other Classifiers that may ultimately define InformationItems.  Consequently, InformationItems cannot be instantiated and do not themselves have features, generalizations, or associations. An important use of InformationItems is to represent information during early design stages, possibly before the detailed modeling decisions that will ultimately define them have been made. Another purpose of InformationItems is to abstract portions of complex models in less precise, but perhaps more general and communicable, ways. &#xA;&lt;p>From package UML::InformationFlows.&lt;/p>"/>
+      <details key="documentation" value="InformationItems represent many kinds of information that can flow from sources to targets in very abstract ways.  They represent the kinds of information that may move within a system, but do not elaborate details of the transferred information.  Details of transferred information are the province of other Classifiers that may ultimately define InformationItems.  Consequently, InformationItems cannot be instantiated and do not themselves have features, generalizations, or associations. An important use of InformationItems is to represent information during early design stages, possibly before the detailed modeling decisions that will ultimately define them have been made. Another purpose of InformationItems is to abstract portions of complex models in less precise, but perhaps more general and communicable, ways.&#xA;&lt;p>From package UML::InformationFlows.&lt;/p>"/>
     </eAnnotations>
     <eOperations name="sources_and_targets" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -16647,7 +16647,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Component" eSuperTypes="#//Class">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A Component represents a modular part of a system that encapsulates its contents and whose manifestation is replaceable within its environment.  &#xA;&lt;p>From package UML::StructuredClassifiers.&lt;/p>"/>
+      <details key="documentation" value="A Component represents a modular part of a system that encapsulates its contents and whose manifestation is replaceable within its environment.&#xA;&lt;p>From package UML::StructuredClassifiers.&lt;/p>"/>
     </eAnnotations>
     <eOperations name="no_nested_classifiers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

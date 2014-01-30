@@ -94,7 +94,6 @@ public class ProtocolStateMachineOperations
 	 * The states of a ProtocolStateMachine cannot have entry, exit, or do activity Behaviors.
 	 * region->forAll(r | r.subvertex->forAll(v | v.oclIsKindOf(State) implies
 	 * (v.oclAsType(State).entry->isEmpty() and v.oclAsType(State).exit->isEmpty() and v.oclAsType(State).doActivity->isEmpty())))
-	 * 
 	 * @param protocolStateMachine The receiving '<em><b>Protocol State Machine</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -132,7 +131,6 @@ public class ProtocolStateMachineOperations
 	 * ProtocolStateMachines cannot have deep or shallow history Pseudostates.
 	 * region->forAll (r | r.subvertex->forAll (v | v.oclIsKindOf(Pseudostate) implies
 	 * ((v.oclAsType(Pseudostate).kind <>  PseudostateKind::deepHistory) and (v.oclAsType(Pseudostate).kind <> PseudostateKind::shallowHistory))))
-	 * 
 	 * @param protocolStateMachine The receiving '<em><b>Protocol State Machine</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

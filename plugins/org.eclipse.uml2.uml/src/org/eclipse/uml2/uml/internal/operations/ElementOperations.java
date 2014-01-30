@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologie) - 247980
- *   Kenn Hussey - 323181
+ *   Kenn Hussey - 323181, 418466
  *   Christian W. Damus (CEA) - 300957
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -132,7 +132,7 @@ public class ElementOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An element may not directly or indirectly own itself.
-	 * not self.allOwnedElements()->includes(self)
+	 * not allOwnedElements()->includes(self)
 	 * @param element The receiving '<em><b>Element</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -164,7 +164,7 @@ public class ElementOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Elements that must be owned must have an owner.
-	 * self.mustBeOwned() implies owner->notEmpty()
+	 * mustBeOwned() implies owner->notEmpty()
 	 * @param element The receiving '<em><b>Element</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -1754,8 +1754,9 @@ public class ElementOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
-	 * result = ownedElement->union(ownedElement->collect(e | e.allOwnedElements()))
+	 * The query allOwnedElements() gives all of the direct and indirect ownedElements of an Element.
+	 * result = (ownedElement->union(ownedElement->collect(e | e.allOwnedElements()))->asSet())
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param element The receiving '<em><b>Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -1769,8 +1770,9 @@ public class ElementOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
-	 * result = true
+	 * The query mustBeOwned() indicates whether Elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
+	 * result = (true)
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param element The receiving '<em><b>Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

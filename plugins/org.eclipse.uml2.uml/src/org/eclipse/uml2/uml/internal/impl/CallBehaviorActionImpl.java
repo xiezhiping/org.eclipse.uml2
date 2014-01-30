@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityNode;
@@ -159,6 +160,20 @@ public class CallBehaviorActionImpl
 	 */
 	@Override
 	public EList<Parameter> outputParameters() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<Parameter> result = (EList<Parameter>) cache.get(this,
+				UMLPackage.Literals.CALL_ACTION___OUTPUT_PARAMETERS);
+			if (result == null) {
+				cache.put(
+					this,
+					UMLPackage.Literals.CALL_ACTION___OUTPUT_PARAMETERS,
+					result = CallBehaviorActionOperations
+						.outputParameters(this));
+			}
+			return result;
+		}
 		return CallBehaviorActionOperations.outputParameters(this);
 	}
 
@@ -169,6 +184,21 @@ public class CallBehaviorActionImpl
 	 */
 	@Override
 	public EList<Parameter> inputParameters() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<Parameter> result = (EList<Parameter>) cache.get(this,
+				UMLPackage.Literals.CALL_ACTION___INPUT_PARAMETERS);
+			if (result == null) {
+				cache
+					.put(
+						this,
+						UMLPackage.Literals.CALL_ACTION___INPUT_PARAMETERS,
+						result = CallBehaviorActionOperations
+							.inputParameters(this));
+			}
+			return result;
+		}
 		return CallBehaviorActionOperations.inputParameters(this);
 	}
 

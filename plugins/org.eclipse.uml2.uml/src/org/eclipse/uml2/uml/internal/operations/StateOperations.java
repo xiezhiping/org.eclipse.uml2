@@ -250,8 +250,9 @@ public class StateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A simple state does not have any regions and it does not refer to any sub-machine state machine.
-	 * result = region.isEmpty() && !isSubmachineState()
+	 * A simple State is a State without any regions.
+	 * result = ((region->isEmpty()) and not isSubmachineState())
+	 * <p>From package UML::StateMachines.</p>
 	 * @param state The receiving '<em><b>State</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -264,8 +265,9 @@ public class StateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A composite state is a state with at least one region.
-	 * result = region.notEmpty()
+	 * A composite State is a State with at least one Region.
+	 * result = (region->notEmpty())
+	 * <p>From package UML::StateMachines.</p>
 	 * @param state The receiving '<em><b>State</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -278,8 +280,9 @@ public class StateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An orthogonal state is a composite state with at least 2 regions
+	 * An orthogonal State is a composite state with at least 2 regions.
 	 * result = (region->size () > 1)
+	 * <p>From package UML::StateMachines.</p>
 	 * @param state The receiving '<em><b>State</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -292,8 +295,9 @@ public class StateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Only submachine states can have a reference statemachine.
-	 * result = submachine.notEmpty()
+	 * Only submachine State references another StateMachine.
+	 * result = (submachine <> null)
+	 * <p>From package UML::StateMachines.</p>
 	 * @param state The receiving '<em><b>State</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -306,13 +310,14 @@ public class StateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The redefinition context of a state is the nearest containing statemachine.
-	 * result = let sm = containingStateMachine() in
-	 * if sm.context->isEmpty() or sm.general->notEmpty() then
-	 * sm
+	 * The redefinition context of a State is the nearest containing StateMachine.
+	 * result = (let sm : StateMachine = containingStateMachine() in
+	 * if sm._'context' = null or sm.general->notEmpty() then
+	 *   sm
 	 * else
-	 * sm.context
-	 * endif
+	 *   sm._'context'
+	 * endif)
+	 * <p>From package UML::StateMachines.</p>
 	 * @param state The receiving '<em><b>State</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -334,50 +339,30 @@ public class StateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of a state are properly related to the redefinition contexts of the specified state to allow this element to redefine the other. The containing region of a redefining state must redefine the containing region of the redefined state.
-	 * result = true
-	 * @param state The receiving '<em><b>State</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isRedefinitionContextValid(State state,
-			State redefined) {
-
-		if (redefined != null) {
-			Region container = state.getContainer();
-
-			if (container != null) {
-				return RegionOperations.getAllExtendedRegions(container)
-					.contains(redefined.getContainer());
-			}
-		}
-
-		return false;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query isConsistentWith() specifies that a redefining state is consistent with a redefined state provided that the redefining state is an extension of the redefined state: A simple state can be redefined (extended) to become a composite state (by adding a region) and a composite state can be redefined (extended) by adding regions and by adding vertices, states, and transitions to inherited regions. All states may add or replace entry, exit, and 'doActivity' actions.
-	 * result = true
+	 * The query isConsistentWith() specifies that a redefining State is consistent with a redefined State provided that the redefining State is an extension of the redefined State A simple State can be redefined (extended) to become a composite State (by adding one or more Regions) and a composite State can be redefined (extended) by adding Regions and by adding Vertices, States, and Transitions to inherited Regions. All States may add or replace entry, exit, and 'doActivity' Behaviors.
+	 * redefiningElement.isRedefinitionContextValid(self)
+	 * result = (-- the following is merely a default body; it is expected that the specific form of this constraint will be specified by profiles
+	 * true)
+	 * <p>From package UML::StateMachines.</p>
 	 * @param state The receiving '<em><b>State</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean isConsistentWith(State state,
-			RedefinableElement redefinee) {
+			RedefinableElement redefiningElement) {
 
-		if (redefinee != null && redefinee.isRedefinitionContextValid(state)) {
-			State redefineeState = (State) redefinee;
+		if (redefiningElement != null
+			&& redefiningElement.isRedefinitionContextValid(state)) {
+
+			State redefiningState = (State) redefiningElement;
 
 			EList<Region> allRegions = getAllRegions(state);
 
-			for (Region redefineeRegion : redefineeState.getRegions()) {
-				Region extendedRegion = redefineeRegion.getExtendedRegion();
+			for (Region redefiningRegion : redefiningState.getRegions()) {
+				Region extendedRegion = redefiningRegion.getExtendedRegion();
 
 				if (allRegions.contains(extendedRegion)
-					&& !extendedRegion.isConsistentWith(redefineeRegion)) {
+					&& !extendedRegion.isConsistentWith(redefiningRegion)) {
 
 					return false;
 				}
@@ -404,21 +389,39 @@ public class StateOperations
 	 * <p>From package UML::StateMachines.</p>
 	 * @param state The receiving '<em><b>State</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isRedefinitionContextValid(State state,
 			RedefinableElement redefinedElement) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (redefinedElement instanceof State) {
+			Region container = state.getContainer();
+
+			if (container != null) {
+
+				for (RedefinableElement redefinedRegion : container
+					.getRedefinedElements()) {
+
+					if (redefinedRegion instanceof Region
+						&& ((Region) redefinedRegion).getSubvertices()
+							.contains(redefinedElement)) {
+
+						return true;
+					}
+				}
+			}
+		}
+
+		return false;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query containingStateMachine() returns the state machine that contains the state either directly or transitively.
-	 * result = container.containingStateMachine()
+	 * The query containingStateMachine() returns the StateMachine that contains the State either directly or transitively.
+	 * result = (container.containingStateMachine())
+	 * <p>From package UML::StateMachines.</p>
 	 * @param state The receiving '<em><b>State</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

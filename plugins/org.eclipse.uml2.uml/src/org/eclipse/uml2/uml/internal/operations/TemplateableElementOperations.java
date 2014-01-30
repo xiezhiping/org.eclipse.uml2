@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: TemplateableElementOperations.java,v 1.8 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -52,8 +51,9 @@ public class TemplateableElementOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query parameterableElements() returns the set of elements that may be used as the parametered elements for a template parameter of this templateable element. By default, this set includes all the owned elements. Subclasses may override this operation if they choose to restrict the set of parameterable elements.
-	 * result = allOwnedElements->select(oclIsKindOf(ParameterableElement))
+	 * The query parameterableElements() returns the set of ParameterableElements that may be used as the parameteredElements for a TemplateParameter of this TemplateableElement. By default, this set includes all the ownedElements. Subclasses may override this operation if they choose to restrict the set of ParameterableElements.
+	 * result = (self.allOwnedElements()->select(oclIsKindOf(ParameterableElement)).oclAsType(ParameterableElement)->asSet())
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param templateableElement The receiving '<em><b>Templateable Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -76,8 +76,9 @@ public class TemplateableElementOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isTemplate() returns whether this templateable element is actually a template.
-	 * result = ownedTemplateSignature->notEmpty()
+	 * The query isTemplate() returns whether this TemplateableElement is actually a template.
+	 * result = (ownedTemplateSignature <> null)
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param templateableElement The receiving '<em><b>Templateable Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

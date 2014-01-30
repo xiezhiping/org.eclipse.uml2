@@ -46,7 +46,6 @@ public interface WriteLinkAction
 	 *   end.visibility=VisibilityKind::protected and
 	 *   endData.end->exists(other | 
 	 *     other<>end and _'context'.conformsTo(other.type.oclAsType(Classifier))))
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

@@ -79,7 +79,7 @@ public enum ParameterDirectionKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that Parameter values are passed in by the caller. 
+	 * Indicates that Parameter values are passed in by the caller.
 	 * <!-- end-model-doc -->
 	 * @see #IN_LITERAL
 	 * @model name="in"

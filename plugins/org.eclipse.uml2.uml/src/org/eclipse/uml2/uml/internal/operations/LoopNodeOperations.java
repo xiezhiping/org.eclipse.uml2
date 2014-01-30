@@ -17,6 +17,8 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.Action;
@@ -365,12 +367,14 @@ public class LoopNodeOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param loopNode The receiving '<em><b>Loop Node</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<Action> allActions(LoopNode loopNode) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<Action> allActions = new UniqueEList.FastCompare<Action>();
+
+		allActions.add(loopNode);
+
+		return ECollections.unmodifiableEList(allActions);
 	}
 
 	/**
@@ -382,12 +386,15 @@ public class LoopNodeOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param loopNode The receiving '<em><b>Loop Node</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<ActivityNode> sourceNodes(LoopNode loopNode) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<ActivityNode> sourceNodes = new UniqueEList.FastCompare<ActivityNode>(
+			StructuredActivityNodeOperations.sourceNodes(loopNode));
+
+		sourceNodes.addAll(loopNode.getLoopVariables());
+
+		return ECollections.unmodifiableEList(sourceNodes);
 	}
 
 	/**

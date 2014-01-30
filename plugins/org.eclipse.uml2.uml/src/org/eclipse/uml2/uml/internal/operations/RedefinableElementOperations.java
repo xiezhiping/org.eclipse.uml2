@@ -63,7 +63,7 @@ public class RedefinableElementOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * At least one of the redefinition contexts of the redefining element must be a specialization of at least one of the redefinition contexts for each redefined element.
-	 * self.redefinedElement->forAll(e | self.isRedefinitionContextValid(e))
+	 * redefinedElement->forAll(re | self.isRedefinitionContextValid(re))
 	 * @param redefinableElement The receiving '<em><b>Redefinable Element</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -109,7 +109,7 @@ public class RedefinableElementOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A redefining element must be consistent with each redefined element.
-	 * self.redefinedElement->forAll(re | re.isConsistentWith(self))
+	 * redefinedElement->forAll(re | re.isConsistentWith(self))
 	 * @param redefinableElement The receiving '<em><b>Redefinable Element</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -189,30 +189,25 @@ public class RedefinableElementOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.
-	 * result = redefinitionContext->exists(c | c.allParents()->includes(redefined.redefinitionContext)))
+	 * result = (redefinitionContext->exists(c | c.allParents()->includesAll(redefinedElement.redefinitionContext)))
+	 * <p>From package UML::Classification.</p>
 	 * @param redefinableElement The receiving '<em><b>Redefinable Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean isRedefinitionContextValid(
 			RedefinableElement redefinableElement,
-			RedefinableElement redefinable) {
-		EList<Classifier> rRedefinitionContexts = redefinable
+			RedefinableElement redefinedElement) {
+		EList<Classifier> redefinedRedefinitionContexts = redefinedElement
 			.getRedefinitionContexts();
 
-		for (Classifier reRedefinitionContext : redefinableElement
+		for (Classifier redefinitionContext : redefinableElement
 			.getRedefinitionContexts()) {
 
-			EList<Classifier> reRedefinitionContextAllParents = reRedefinitionContext
-				.allParents();
+			if (redefinitionContext.allParents().containsAll(
+				redefinedRedefinitionContexts)) {
 
-			for (Classifier rRedefinitionContext : rRedefinitionContexts) {
-
-				if (reRedefinitionContextAllParents
-					.contains(rRedefinitionContext)) {
-
-					return true;
-				}
+				return true;
 			}
 		}
 
@@ -224,14 +219,16 @@ public class RedefinableElementOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.
-	 * redefinee.isRedefinitionContextValid(self)
-	 * result = false
+	 * result = (false)
+	 * redefiningElement.isRedefinitionContextValid(self)
+	 * <p>From package UML::Classification.</p>
 	 * @param redefinableElement The receiving '<em><b>Redefinable Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean isConsistentWith(
-			RedefinableElement redefinableElement, RedefinableElement redefinee) {
+			RedefinableElement redefinableElement,
+			RedefinableElement redefiningElement) {
 		return false;
 	}
 

@@ -56,7 +56,6 @@ public class LifelineOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If a lifeline is in an Interaction referred to by an InteractionUse in an enclosing Interaction,  and that lifeline is common with another lifeline in an Interaction referred to by another InteractonUse within that same enclosing Interaction, it must be common to a lifeline within that enclosing Interaction. By common Lifelines we mean Lifelines with the same selector and represents associations.
-	 * 
 	 * let intUses : Set(InteractionUse) = interaction.interactionUse  in 
 	 * intUses->forAll
 	 * ( iuse : InteractionUse | 
@@ -199,7 +198,7 @@ public class LifelineOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The selector value, if present, must be a LiteralString or a LiteralInteger 
+	 * The selector value, if present, must be a LiteralString or a LiteralInteger
 	 * self.selector->notEmpty() implies 
 	 * self.selector.oclIsKindOf(LiteralInteger) or 
 	 * self.selector.oclIsKindOf(LiteralString)

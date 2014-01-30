@@ -18,6 +18,7 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 
@@ -72,7 +73,7 @@ public class PortOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Port.aggregation must be composite.
-	 * true
+	 * aggregation = AggregationKind::composite
 	 * @param port The receiving '<em><b>Port</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -103,8 +104,8 @@ public class PortOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A defaultValue for port cannot be specified when the type of the Port is an Interface
-	 * true
+	 * A defaultValue for port cannot be specified when the type of the Port is an Interface.
+	 * type.oclIsKindOf(Interface) implies defaultValue->isEmpty()
 	 * @param port The receiving '<em><b>Port</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -171,46 +172,17 @@ public class PortOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Missing derivation for Port::/provided : Interface
-	 * true
+	 * Derivation for Port::/provided
+	 * result = (if isConjugated then basicRequired() else basicProvided() endif)
+	 * <p>From package UML::StructuredClassifiers.</p>
 	 * @param port The receiving '<em><b>Port</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<Interface> getProvideds(Port port) {
-		EList<Interface> provideds = new UniqueEList.FastCompare<Interface>();
-
-		Type type = (Type) port.eGet(UMLPackage.Literals.TYPED_ELEMENT__TYPE,
-			false);
-
-		if (port.isConjugated()) {
-
-			if (type instanceof Classifier) {
-				Classifier classifier = (Classifier) port.getType();
-				ClassifierOperations.directlyUsedInterfaces(classifier, false,
-					provideds);
-
-				for (Classifier parent : classifier.allParents()) {
-					ClassifierOperations.directlyUsedInterfaces(parent, false,
-						provideds);
-				}
-			}
-		} else {
-
-			if (type instanceof Interface) {
-				provideds.add((Interface) type);
-			} else if (type instanceof Classifier) {
-				Classifier classifier = (Classifier) port.getType();
-				ClassifierOperations.directlyRealizedInterfaces(classifier,
-					false, provideds);
-
-				for (Classifier parent : classifier.allParents()) {
-
-					ClassifierOperations.directlyRealizedInterfaces(parent,
-						false, provideds);
-				}
-			}
-		}
+		EList<Interface> provideds = port.isConjugated()
+			? basicRequired(port, false)
+			: basicProvided(port, false);
 
 		return new UnionEObjectEList<Interface>((InternalEObject) port,
 			UMLPackage.Literals.PORT__PROVIDED, provideds.size(),
@@ -221,46 +193,17 @@ public class PortOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Missing derivation for Port::/required : Interface
-	 * true
+	 * Derivation for Port::/required
+	 * result = (if isConjugated then basicProvided() else basicRequired() endif)
+	 * <p>From package UML::StructuredClassifiers.</p>
 	 * @param port The receiving '<em><b>Port</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<Interface> getRequireds(Port port) {
-		EList<Interface> requireds = new UniqueEList.FastCompare<Interface>();
-
-		Type type = (Type) port.eGet(UMLPackage.Literals.TYPED_ELEMENT__TYPE,
-			false);
-
-		if (port.isConjugated()) {
-
-			if (type instanceof Interface) {
-				requireds.add((Interface) type);
-			} else if (type instanceof Classifier) {
-				Classifier classifier = (Classifier) port.getType();
-				ClassifierOperations.directlyRealizedInterfaces(classifier,
-					false, requireds);
-
-				for (Classifier parent : classifier.allParents()) {
-
-					ClassifierOperations.directlyRealizedInterfaces(parent,
-						false, requireds);
-				}
-			}
-		} else {
-
-			if (type instanceof Classifier) {
-				Classifier classifier = (Classifier) port.getType();
-				ClassifierOperations.directlyUsedInterfaces(classifier, false,
-					requireds);
-
-				for (Classifier parent : classifier.allParents()) {
-					ClassifierOperations.directlyUsedInterfaces(parent, false,
-						requireds);
-				}
-			}
-		}
+		EList<Interface> requireds = port.isConjugated()
+			? basicProvided(port, false)
+			: basicRequired(port, false);
 
 		return new UnionEObjectEList<Interface>((InternalEObject) port,
 			UMLPackage.Literals.PORT__REQUIRED, requireds.size(),
@@ -279,12 +222,30 @@ public class PortOperations
 	 * <p>From package UML::StructuredClassifiers.</p>
 	 * @param port The receiving '<em><b>Port</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<Interface> basicProvided(Port port) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return ECollections.unmodifiableEList(basicProvided(port, true));
+	}
+
+	protected static EList<Interface> basicProvided(Port port, boolean resolve) {
+		return ECollections.unmodifiableEList(basicProvided(port, true));
+	}
+
+	protected static EList<Interface> basicProvided(Port port, boolean resolve,
+			EList<Interface> provided) {
+		Type type = (Type) port.eGet(UMLPackage.Literals.TYPED_ELEMENT__TYPE,
+			resolve);
+
+		if (type instanceof Interface) {
+			provided.add((Interface) type);
+		} else if (type instanceof Classifier) {
+			Classifier classifier = (Classifier) port.getType(); // must resolve
+			ClassifierOperations.allRealizedInterfaces(classifier, false,
+				provided);
+		}
+
+		return provided;
 	}
 
 	/**
@@ -296,12 +257,29 @@ public class PortOperations
 	 * <p>From package UML::StructuredClassifiers.</p>
 	 * @param port The receiving '<em><b>Port</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<Interface> basicRequired(Port port) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return ECollections.unmodifiableEList(basicRequired(port, true));
+	}
+
+	protected static EList<Interface> basicRequired(Port port, boolean resolve) {
+		return basicRequired(port, resolve,
+			new UniqueEList.FastCompare<Interface>());
+	}
+
+	protected static EList<Interface> basicRequired(Port port, boolean resolve,
+			EList<Interface> required) {
+		Type type = (Type) port.eGet(UMLPackage.Literals.TYPED_ELEMENT__TYPE,
+			resolve);
+
+		if (type instanceof Classifier) {
+			Classifier classifier = (Classifier) port.getType(); // must resolve
+			ClassifierOperations.allUsedInterfaces(classifier, resolve,
+				required);
+		}
+
+		return required;
 	}
 
 } // PortOperations

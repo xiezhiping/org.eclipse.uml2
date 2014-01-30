@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * An ObjectNode is an abstract ActivityNode that may hold tokens within the object flow in an Activity. ObjectNodes also support token selection, limitation on the number of tokens held, specification of the state required for tokens being held, and carrying control values.
- * 
  * <p>From package UML::Activities.</p>
  * <!-- end-model-doc -->
  *
@@ -258,7 +257,6 @@ public interface ObjectNode
 	 * 	selection.inputParameters()->forAll(p | not p.isUnique and p.is(0,*) and self.type.conformsTo(p.type)) and
 	 * 	selection.outputParameters()->size()=1 and
 	 * 		selection.inputParameters()->forAll(p | self.type.conformsTo(p.type))
-	 * 	
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

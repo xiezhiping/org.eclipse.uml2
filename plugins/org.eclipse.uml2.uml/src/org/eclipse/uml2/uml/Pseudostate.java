@@ -162,7 +162,6 @@ public interface Pseudostate
 	 * <!-- begin-model-doc -->
 	 * History Vertices can have at most one outgoing Transition.
 	 * ((kind = PseudostateKind::deepHistory) or (kind = PseudostateKind::shallowHistory)) implies (outgoing->size() <= 1)
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -178,7 +177,6 @@ public interface Pseudostate
 	 * <!-- begin-model-doc -->
 	 * In a complete StateMachine, a join Vertex must have at least two incoming Transitions and exactly one outgoing Transition.
 	 * (kind = PseudostateKind::join) implies (outgoing->size() = 1 and incoming->size() >= 2)
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -216,7 +214,6 @@ public interface Pseudostate
 	 * <!-- begin-model-doc -->
 	 * In a complete StateMachine, a fork Vertex must have at least two outgoing Transitions and exactly one incoming Transition.
 	 * (kind = PseudostateKind::fork) implies (incoming->size() = 1 and outgoing->size() >= 2)
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -239,7 +236,6 @@ public interface Pseudostate
 	 * outgoing->forAll(t1:Transition, t2:Transition | let contState:State = containingStateMachine().LCAState(t1.target, t2.target) in
 	 * 	((contState <> null) and (contState.region
 	 * 		->exists(r1:Region, r2: Region | (r1 <> r2) and t1.target.isContainedInRegion(r1) and t2.target.isContainedInRegion(r2)))))
-	 * 	
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -255,7 +251,6 @@ public interface Pseudostate
 	 * <!-- begin-model-doc -->
 	 * In a complete StateMachine, a junction Vertex must have at least one incoming and one outgoing Transition.
 	 * (kind = PseudostateKind::junction) implies (incoming->size() >= 1 and outgoing->size() >= 1)
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -271,7 +266,6 @@ public interface Pseudostate
 	 * <!-- begin-model-doc -->
 	 * In a complete statemachine, a choice Vertex must have at least one incoming and one outgoing Transition.
 	 * (kind = PseudostateKind::choice) implies (incoming->size() >= 1 and outgoing->size() >= 1)
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

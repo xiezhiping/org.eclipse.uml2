@@ -139,11 +139,12 @@ public class ElementImportOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query getName() returns the name under which the imported PackageableElement will be known in the importing namespace.
-	 * result = (if self.alias->notEmpty() then
+	 * result = (if alias->notEmpty() then
 	 *   alias
 	 * else
 	 *   importedElement.name
 	 * endif)
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param elementImport The receiving '<em><b>Element Import</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

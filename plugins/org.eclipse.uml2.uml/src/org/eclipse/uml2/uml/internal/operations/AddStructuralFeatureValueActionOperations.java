@@ -54,7 +54,7 @@ public class AddStructuralFeatureValueActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A value input pin is required.
+	 * A value InputPin is required.
 	 * value<>null
 	 * @param addStructuralFeatureValueAction The receiving '<em><b>Add Structural Feature Value Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -93,7 +93,6 @@ public class AddStructuralFeatureValueActionOperations
 	 *   	insertAt<>null and 
 	 *   	insertAt->forAll(type=UnlimitedNatural and is(1,1.oclAsType(UnlimitedNatural)))
 	 * endif
-	 * 
 	 * @param addStructuralFeatureValueAction The receiving '<em><b>Add Structural Feature Value Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

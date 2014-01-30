@@ -216,6 +216,7 @@ public class ComponentOperations
 	 *         usedByPorts : Set(Interface) = ports.required->asSet()
 	 *         in	    uis->union(realizingClassifierInterfaces)->union(usedByPorts)->asSet()
 	 * )
+	 * <p>From package UML::StructuredClassifiers.</p>
 	 * @param component The receiving '<em><b>Component</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -283,6 +284,7 @@ public class ComponentOperations
 	 *         ports : Set(Port) = self.ownedPort->union(allParents()->collect(ownedPort))->asSet(),
 	 *         providedByPorts : Set(Interface) = ports.provided->asSet()
 	 * in     ris->union(realizingClassifierInterfaces) ->union(providedByPorts)->asSet())
+	 * <p>From package UML::StructuredClassifiers.</p>
 	 * @param component The receiving '<em><b>Component</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

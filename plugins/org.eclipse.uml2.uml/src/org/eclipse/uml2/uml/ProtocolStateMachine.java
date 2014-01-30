@@ -56,7 +56,7 @@ public interface ProtocolStateMachine
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Conformance between ProtocolStateMachine 
+	 * Conformance between ProtocolStateMachine
 	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Conformance</em>' containment reference list.
@@ -124,7 +124,6 @@ public interface ProtocolStateMachine
 	 * The states of a ProtocolStateMachine cannot have entry, exit, or do activity Behaviors.
 	 * region->forAll(r | r.subvertex->forAll(v | v.oclIsKindOf(State) implies
 	 * (v.oclAsType(State).entry->isEmpty() and v.oclAsType(State).exit->isEmpty() and v.oclAsType(State).doActivity->isEmpty())))
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -141,7 +140,6 @@ public interface ProtocolStateMachine
 	 * ProtocolStateMachines cannot have deep or shallow history Pseudostates.
 	 * region->forAll (r | r.subvertex->forAll (v | v.oclIsKindOf(Pseudostate) implies
 	 * ((v.oclAsType(Pseudostate).kind <>  PseudostateKind::deepHistory) and (v.oclAsType(Pseudostate).kind <> PseudostateKind::shallowHistory))))
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

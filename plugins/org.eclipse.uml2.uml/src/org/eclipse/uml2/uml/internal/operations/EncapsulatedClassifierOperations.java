@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 CEA and others.
+ * Copyright (c) 2011, 2014 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -46,9 +47,10 @@ public class EncapsulatedClassifierOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Missing derivation for EncapsulatedClassifier::/ownedPort : Port
-	 * true
+	 * Derivation for EncapsulatedClassifier::/ownedPort : Port
+	 * result = (ownedAttribute->select(oclIsKindOf(Port))->collect(oclAsType(Port))->asOrderedSet())
 	 * @param encapsulatedClassifier The receiving '<em><b>Encapsulated Classifier</b></em>' model object.
+	 * <p>From package UML::StructuredClassifiers.</p>
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

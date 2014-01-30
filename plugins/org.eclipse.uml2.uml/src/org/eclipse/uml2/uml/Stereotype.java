@@ -158,7 +158,6 @@ public interface Stereotype
 	 * A Stereotype may only generalize or specialize another Stereotype.
 	 * allParents()->forAll(oclIsKindOf(Stereotype)) 
 	 * and Classifier.allInstances()->forAll(c | c.allParents()->exists(oclIsKindOf(Stereotype)) implies c.oclIsKindOf(Stereotype))
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

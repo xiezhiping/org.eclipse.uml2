@@ -92,7 +92,6 @@ public class SendSignalActionOperations
 	 * <!-- begin-model-doc -->
 	 * If onPort is not empty, the Port given by onPort must be an owned or inherited feature of the type of the target InputPin.
 	 * not onPort->isEmpty() implies target.type.oclAsType(Classifier).allFeatures()->includes(onPort)
-	 * 
 	 * @param sendSignalAction The receiving '<em><b>Send Signal Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

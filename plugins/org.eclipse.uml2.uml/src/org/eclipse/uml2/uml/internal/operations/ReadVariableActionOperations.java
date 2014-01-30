@@ -56,7 +56,6 @@ public class ReadVariableActionOperations
 	 * The type and ordering of the result OutputPin are the same as the type and ordering of the variable.
 	 * result.type =variable.type and 
 	 * result.isOrdered = variable.isOrdered
-	 * 
 	 * @param readVariableAction The receiving '<em><b>Read Variable Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

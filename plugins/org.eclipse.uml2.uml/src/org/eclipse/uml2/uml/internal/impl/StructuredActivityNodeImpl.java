@@ -1284,6 +1284,17 @@ public class StructuredActivityNodeImpl
 	 */
 	@Override
 	public EList<Action> allActions() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<Action> result = (EList<Action>) cache.get(this,
+				UMLPackage.Literals.ACTION___ALL_ACTIONS);
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.ACTION___ALL_ACTIONS,
+					result = StructuredActivityNodeOperations.allActions(this));
+			}
+			return result;
+		}
 		return StructuredActivityNodeOperations.allActions(this);
 	}
 
@@ -1294,6 +1305,20 @@ public class StructuredActivityNodeImpl
 	 */
 	@Override
 	public EList<ActivityNode> allOwnedNodes() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<ActivityNode> result = (EList<ActivityNode>) cache.get(this,
+				UMLPackage.Literals.ACTION___ALL_OWNED_NODES);
+			if (result == null) {
+				cache.put(
+					this,
+					UMLPackage.Literals.ACTION___ALL_OWNED_NODES,
+					result = StructuredActivityNodeOperations
+						.allOwnedNodes(this));
+			}
+			return result;
+		}
 		return StructuredActivityNodeOperations.allOwnedNodes(this);
 	}
 

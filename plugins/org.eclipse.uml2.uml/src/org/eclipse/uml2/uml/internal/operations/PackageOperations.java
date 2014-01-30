@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 271470
  *   Kenn Hussey - 323181, 348433
- *   Kenn Hussey (CEA) - 327039, 369492, 313951, 163556
+ *   Kenn Hussey (CEA) - 327039, 369492, 313951, 163556, 418466
  *   Christian W. Damus (CEA) - 300957
  *
  */
@@ -136,10 +136,10 @@ public class PackageOperations
 			if (definition != null) {
 				return definition;
 			} else {
-				throw new IllegalStateException("Definition for class '"
+				throw new IllegalStateException("Definition for class '" //$NON-NLS-1$
 					+ getQualifiedName(namedElement)
-					+ "' not found in profile '" + getQualifiedName(profile)
-					+ "'");
+					+ "' not found in profile '" + getQualifiedName(profile) //$NON-NLS-1$
+					+ "'"); //$NON-NLS-1$
 			}
 		}
 
@@ -154,10 +154,10 @@ public class PackageOperations
 			if (definition != null) {
 				return definition;
 			} else {
-				throw new IllegalStateException("Definition for property '"
+				throw new IllegalStateException("Definition for property '" //$NON-NLS-1$
 					+ getQualifiedName(namedElement)
-					+ "' not found in profile '" + getQualifiedName(profile)
-					+ "'");
+					+ "' not found in profile '" + getQualifiedName(profile) //$NON-NLS-1$
+					+ "'"); //$NON-NLS-1$
 			}
 		}
 
@@ -438,7 +438,7 @@ public class PackageOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If an element that is owned by a package has visibility, it is public or private.
-	 * self.ownedElements->forAll(e | e.visibility->notEmpty() implies e.visbility = #public or e.visibility = #private)
+	 * packagedElement->forAll(e | e.visibility<> null implies e.visibility = VisibilityKind::public or e.visibility = VisibilityKind::private)
 	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -575,11 +575,12 @@ public class PackageOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Missing derivation for Package::/ownedType : Type
-	 * true
+	 * Derivation for Package::/ownedType
+	 * result = (packagedElement->select(oclIsKindOf(Type))->collect(oclAsType(Type))->asSet())
+	 * <p>From package UML::Packages.</p>
 	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated NOY
+	 * @generated NOT
 	 */
 	public static EList<Type> getOwnedTypes(
 			org.eclipse.uml2.uml.Package package_) {
@@ -779,9 +780,10 @@ public class PackageOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query allApplicableStereotypes() returns all the directly or indirectly owned stereotypes, including stereotypes contained in sub-profiles.
-	 * result = 
-	 * self.ownedStereotype->union(self.ownedMember->
-	 * 	select(oclIsKindOf(Package)).oclAsType(Package).allApplicableStereotypes()->flatten())->asSet()
+	 * result = (let ownedPackages : Bag(Package) = ownedMember->select(oclIsKindOf(Package))->collect(oclAsType(Package)) in
+	 *  ownedStereotype->union(ownedPackages.allApplicableStereotypes())->flatten()->asSet()
+	 * )
+	 * <p>From package UML::Packages.</p>
 	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -811,12 +813,12 @@ public class PackageOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query containingProfile() returns the closest profile directly or indirectly containing this package (or this package itself, if it is a profile).
-	 * result =
-	 * if self.oclIsKindOf(Profile) then 
+	 * result = (if self.oclIsKindOf(Profile) then 
 	 * 	self.oclAsType(Profile)
 	 * else
 	 * 	self.namespace.oclAsType(Package).containingProfile()
-	 * endif
+	 * endif)
+	 * <p>From package UML::Packages.</p>
 	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -1104,7 +1106,8 @@ public class PackageOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query visibleMembers() defines which members of a Package can be accessed outside it.
-	 * result = member->select( m | self.makesVisible(m))
+	 * result = (member->select( m | m.oclIsKindOf(PackageableElement) and self.makesVisible(m))->collect(oclAsType(PackageableElement))->asSet())
+	 * <p>From package UML::Packages.</p>
 	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -1129,10 +1132,11 @@ public class PackageOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query makesVisible() defines whether a Package makes an element visible outside itself. Elements with no visibility and elements with public visibility are made visible.
-	 * self.member->includes(el)
-	 * result = (ownedMember->includes(el)) or
-	 * (elementImport->select(ei|ei.importedElement = #public)->collect(ei|ei.importedElement)->includes(el)) or
-	 * (packageImport->select(pi|pi.visibility = #public)->collect(pi|pi.importedPackage.member->includes(el))->notEmpty())
+	 * member->includes(el)
+	 * result = (ownedMember->includes(el) or
+	 * (elementImport->select(ei|ei.importedElement = VisibilityKind::public)->collect(importedElement.oclAsType(NamedElement))->includes(el)) or
+	 * (packageImport->select(visibility = VisibilityKind::public)->collect(importedPackage.member->includes(el))->notEmpty()))
+	 * <p>From package UML::Packages.</p>
 	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -1169,8 +1173,9 @@ public class PackageOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Missing derivation for Package::/nestedPackage : Package
-	 * true
+	 * Derivation for Package::/nestedPackage
+	 * result = (packagedElement->select(oclIsKindOf(Package))->collect(oclAsType(Package))->asSet())
+	 * <p>From package UML::Packages.</p>
 	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -1184,8 +1189,8 @@ public class PackageOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Missing derivation for Package::/ownedStereotype : Stereotype
-	 * true
+	 * Derivation for Package::/ownedStereotype
+	 * result = (packagedElement->select(oclIsKindOf(Stereotype))->collect(oclAsType(Stereotype))->asSet())
 	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -1200,7 +1205,7 @@ public class PackageOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query mustBeOwned() indicates whether elements of this type must have an owner.
-	 * result = false
+	 * result = (false)
 	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

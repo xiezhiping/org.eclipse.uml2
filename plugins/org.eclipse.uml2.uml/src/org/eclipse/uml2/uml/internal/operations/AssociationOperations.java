@@ -257,6 +257,7 @@ public class AssociationOperations
 	 * <!-- begin-model-doc -->
 	 * endType is derived from the types of the member ends.
 	 * result = (memberEnd->collect(type)->asSet())
+	 * <p>From package UML::StructuredClassifiers.</p>
 	 * @param association The receiving '<em><b>Association</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

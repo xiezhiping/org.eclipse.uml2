@@ -17,8 +17,11 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.uml2.uml.LinkEndData;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.ReadLinkAction;
 
@@ -96,7 +99,6 @@ public class ReadLinkActionOperations
 	 * <!-- begin-model-doc -->
 	 * The type and ordering of the result OutputPin are same as the type and ordering of the open Association end.
 	 * self.openEnd()->forAll(type=result.type and isOrdered=result.isOrdered)
-	 * 
 	 * @param readLinkAction The receiving '<em><b>Read Link Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -133,7 +135,6 @@ public class ReadLinkActionOperations
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of the open Association end must be compatible with the multiplicity of the result OutputPin.
 	 * self.openEnd()->first().compatibleWith(result)
-	 * 
 	 * @param readLinkAction The receiving '<em><b>Read Link Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -170,7 +171,6 @@ public class ReadLinkActionOperations
 	 * <!-- begin-model-doc -->
 	 * The open end must be navigable.
 	 * self.openEnd()->first().isNavigable()
-	 * 
 	 * @param readLinkAction The receiving '<em><b>Read Link Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -210,12 +210,23 @@ public class ReadLinkActionOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param readLinkAction The receiving '<em><b>Read Link Action</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<Property> openEnd(ReadLinkAction readLinkAction) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<Property> openEnd = new UniqueEList.FastCompare<Property>();
+
+		for (LinkEndData endData : readLinkAction.getEndData()) {
+
+			if (endData.getValue() == null) {
+				Property end = endData.getEnd();
+
+				if (end != null) {
+					openEnd.add(end);
+				}
+			}
+		}
+
+		return ECollections.unmodifiableEList(openEnd);
 	}
 
 	/**
@@ -230,7 +241,6 @@ public class ReadLinkActionOperations
 	 *     (_'context' = oed.end.type or 
 	 *       (openEnd.visibility = VisibilityKind::protected and 
 	 *         _'context'.conformsTo(oed.end.type.oclAsType(Classifier)))))
-	 * 
 	 * @param readLinkAction The receiving '<em><b>Read Link Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

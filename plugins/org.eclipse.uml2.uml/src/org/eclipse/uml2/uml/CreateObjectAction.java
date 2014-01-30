@@ -117,7 +117,7 @@ public interface CreateObjectAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The classifier cannot be abstract.
-	 * not classifier.isAbstract 
+	 * not classifier.isAbstract
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

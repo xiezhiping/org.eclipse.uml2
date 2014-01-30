@@ -17,6 +17,8 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.InputPin;
@@ -62,7 +64,6 @@ public class LinkEndDestructionDataOperations
 	 * 	destroyAt <> null and 
 	 * 	destroyAt->forAll(type=UnlimitedNatural and is(1,1))
 	 * endif
-	 * 
 	 * @param linkEndDestructionData The receiving '<em><b>Link End Destruction Data</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -102,13 +103,20 @@ public class LinkEndDestructionDataOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param linkEndDestructionData The receiving '<em><b>Link End Destruction Data</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<InputPin> allPins(
 			LinkEndDestructionData linkEndDestructionData) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<InputPin> allPins = new UniqueEList.FastCompare<InputPin>(
+			LinkEndDataOperations.allPins(linkEndDestructionData));
+
+		InputPin destroyAt = linkEndDestructionData.getDestroyAt();
+
+		if (destroyAt != null) {
+			allPins.add(destroyAt);
+		}
+
+		return ECollections.unmodifiableEList(allPins);
 	}
 
 } // LinkEndDestructionDataOperations

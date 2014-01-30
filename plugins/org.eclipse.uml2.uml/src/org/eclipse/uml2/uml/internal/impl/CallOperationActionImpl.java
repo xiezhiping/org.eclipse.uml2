@@ -315,6 +315,20 @@ public class CallOperationActionImpl
 	 */
 	@Override
 	public EList<Parameter> outputParameters() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<Parameter> result = (EList<Parameter>) cache.get(this,
+				UMLPackage.Literals.CALL_ACTION___OUTPUT_PARAMETERS);
+			if (result == null) {
+				cache.put(
+					this,
+					UMLPackage.Literals.CALL_ACTION___OUTPUT_PARAMETERS,
+					result = CallOperationActionOperations
+						.outputParameters(this));
+			}
+			return result;
+		}
 		return CallOperationActionOperations.outputParameters(this);
 	}
 
@@ -325,6 +339,20 @@ public class CallOperationActionImpl
 	 */
 	@Override
 	public EList<Parameter> inputParameters() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<Parameter> result = (EList<Parameter>) cache.get(this,
+				UMLPackage.Literals.CALL_ACTION___INPUT_PARAMETERS);
+			if (result == null) {
+				cache.put(
+					this,
+					UMLPackage.Literals.CALL_ACTION___INPUT_PARAMETERS,
+					result = CallOperationActionOperations
+						.inputParameters(this));
+			}
+			return result;
+		}
 		return CallOperationActionOperations.inputParameters(this);
 	}
 

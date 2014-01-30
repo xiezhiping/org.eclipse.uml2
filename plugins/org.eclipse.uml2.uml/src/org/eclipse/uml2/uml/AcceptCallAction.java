@@ -112,7 +112,6 @@ public interface AcceptCallAction
 	 * The action must have exactly one trigger, which must be for a CallEvent.
 	 * trigger->size()=1 and
 	 * trigger->asSequence()->first().event.oclIsKindOf(CallEvent)
-	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 295864
+ *   Kenn Hussey (CEA) - 327039, 295864, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -75,8 +75,8 @@ public class OperationOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An operation can have at most one return parameter; i.e., an owned parameter with the direction set to 'return'
-	 * self.ownedParameter->select(par | par.direction = #return)->size() <= 1
+	 * An Operation can have at most one return parameter; i.e., an owned parameter with the direction set to 'return.'
+	 * self.ownedParameter->select(direction = ParameterDirectionKind::return)->size() <= 1
 	 * @param operation The receiving '<em><b>Operation</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -117,8 +117,8 @@ public class OperationOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A bodyCondition can only be specified for a query operation.
-	 * bodyCondition->notEmpty() implies isQuery
+	 * A bodyCondition can only be specified for a query Operation.
+	 * bodyCondition <> null implies isQuery
 	 * @param operation The receiving '<em><b>Operation</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -151,7 +151,8 @@ public class OperationOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If this operation has a return parameter, isOrdered equals the value of isOrdered for that parameter. Otherwise isOrdered is false.
-	 * result = if returnResult()->notEmpty() then returnResult()->any().isOrdered else false endif
+	 * result = (if returnResult()->notEmpty() then returnResult()-> exists(isOrdered) else false endif)
+	 * <p>From package UML::Classification.</p>
 	 * @param operation The receiving '<em><b>Operation</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -168,8 +169,9 @@ public class OperationOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If this operation has a return parameter, isUnique equals the value of isUnique for that parameter. Otherwise isUnique is true.
-	 * result = if returnResult()->notEmpty() then returnResult()->any().isUnique else true endif
+	 * result = (if returnResult()->notEmpty() then returnResult()->exists(isUnique) else true endif)
 	 * @param operation The receiving '<em><b>Operation</b></em>' model object.
+	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -184,8 +186,8 @@ public class OperationOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If this operation has a return parameter, type equals the value of type for that parameter. Otherwise type is not defined.
-	 * result = if returnResult()->notEmpty() then returnResult()->any().type else Set{} endif
+	 * If this operation has a return parameter, type equals the value of type for that parameter. Otherwise type has no value.
+	 * result = (if returnResult()->notEmpty() then returnResult()->any(true).type else null endif)
 	 * @param operation The receiving '<em><b>Operation</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -203,7 +205,8 @@ public class OperationOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query returnResult() returns the set containing the return parameter of the Operation if one exists, otherwise, it returns an empty set
-	 * result = ownedParameter->select (par | par.direction = #return)
+	 * result = (ownedParameter->select (direction = ParameterDirectionKind::return))
+	 * <p>From package UML::Classification.</p>
 	 * @param operation The receiving '<em><b>Operation</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -350,59 +353,93 @@ public class OperationOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isConsistentWith() specifies, for any two Operations in a context in which redefinition is possible, whether redefinition would be consistent in the sense of maintaining type covariance. Other senses of consistency may be required, for example to determine consistency in the sense of contravariance. Users may define alternative queries under names different from 'isConsistentWith()', as for example, users may define a query named 'isContravariantWith()'.
-	 * A redefining operation is consistent with a redefined operation if it has the same number of owned parameters, and the type of each owned parameter conforms to the type of the corresponding redefined parameter. 
-	 * redefinee.isRedefinitionContextValid(self)
-	 * result = (redefinee.oclIsKindOf(Operation) and
-	 * let op: Operation = redefinee.oclAsType(Operation) in
-	 * self.ownedParameter.size() = op.ownedParameter.size() and
-	 * forAll(i | op.ownedParameter[i].type.conformsTo(self.ownedParameter[i].type))
-	 * )
+	 * The query isConsistentWith() specifies, for any two Operations in a context in which redefinition is possible, whether redefinition would be consistent. A redefining operation is consistent with a redefined operation if
+	 * it has the same number of owned parameters, and for each parameter the following holds:
+	 *
+	 * - Direction, ordering and uniqueness are the same.
+	 * - The corresponding types are covariant, contravariant or invariant.
+	 * - The multiplicities are compatible, depending on the parameter direction. 
+	 * redefiningElement.isRedefinitionContextValid(self)
+	 * result = (redefiningElement.oclIsKindOf(Operation) and
+	 * let op : Operation = redefiningElement.oclAsType(Operation) in
+	 *     self.ownedParameter->size() = op.ownedParameter->size() and
+	 *     Sequence{1..self.ownedParameter->size()}->
+	 *         forAll(i |  
+	 *           let redefiningParam : Parameter = op.ownedParameter->at(i),
+	 *           redefinedParam : Parameter = self.ownedParameter->at(i) in
+	 *             (redefiningParam.isUnique = redefinedParam.isUnique) and
+	 *             (redefiningParam.isOrdered = redefinedParam. isOrdered) and
+	 *             (redefiningParam.direction = redefinedParam.direction) and
+	 *             (redefiningParam.type.conformsTo(redefinedParam.type) or
+	 *                 redefinedParam.type.conformsTo(redefiningParam.type)) and
+	 *             (redefiningParam.direction = ParameterDirectionKind::inout implies
+	 *                     (redefinedParam.compatibleWith(redefiningParam) and
+	 *                     redefiningParam.compatibleWith(redefinedParam))) and
+	 *             (redefiningParam.direction = ParameterDirectionKind::_'in' implies
+	 *                     redefinedParam.compatibleWith(redefiningParam)) and
+	 *             ((redefiningParam.direction = ParameterDirectionKind::out or
+	 *                 redefiningParam.direction = ParameterDirectionKind::return) implies
+	 *                     redefiningParam.compatibleWith(redefinedParam))
+	 *         ))
+	 * <p>From package UML::Classification.</p>
 	 * @param operation The receiving '<em><b>Operation</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean isConsistentWith(Operation operation,
-			RedefinableElement redefinee) {
+			RedefinableElement redefiningElement) {
 
-		if (redefinee instanceof Operation
-			&& redefinee.isRedefinitionContextValid(operation)) {
+		if (redefiningElement instanceof Operation
+			&& redefiningElement.isRedefinitionContextValid(operation)) {
 
-			Operation op = (Operation) redefinee;
+			Operation op = (Operation) redefiningElement;
 
 			EList<Parameter> ownedParameters = operation.getOwnedParameters();
 			int ownedParametersSize = ownedParameters.size();
+
 			EList<Parameter> opOwnedParameters = op.getOwnedParameters();
 
-			EList<Parameter> returnResult = operation.returnResult();
-			int returnResultSize = returnResult.size();
-			EList<Parameter> opReturnResult = op.returnResult();
-
-			if (ownedParametersSize == opOwnedParameters.size()
-				&& returnResultSize == opReturnResult.size()) {
+			if (ownedParametersSize == opOwnedParameters.size()) {
 
 				for (int i = 0; i < ownedParametersSize; i++) {
-					Type opOwnedParameterType = opOwnedParameters.get(i)
-						.getType();
-					Type ownedParameterType = ownedParameters.get(i).getType();
+					Parameter redefiningParam = opOwnedParameters.get(i);
+					Parameter redefinedParam = ownedParameters.get(i);
 
-					if (opOwnedParameterType == null
-						? ownedParameterType != null
-						: !opOwnedParameterType.conformsTo(ownedParameterType)) {
-
+					if (redefiningParam.isUnique() != redefinedParam.isUnique()) {
 						return false;
 					}
-				}
 
-				for (int i = 0; i < returnResultSize; i++) {
-					Type opReturnResultType = opReturnResult.get(i).getType();
-					Type returnResultType = returnResult.get(i).getType();
-
-					if (opReturnResultType == null
-						? returnResultType != null
-						: !opReturnResultType.conformsTo(returnResultType)) {
-
+					if (redefiningParam.isUnique() == redefinedParam.isUnique()) {
 						return false;
+					}
+
+					ParameterDirectionKind redefiningDirection = redefiningParam
+						.getDirection();
+
+					if (redefiningDirection != redefinedParam.getDirection()) {
+						return false;
+					}
+
+					if (redefiningDirection == ParameterDirectionKind.INOUT_LITERAL) {
+
+						if (!redefiningParam.compatibleWith(redefinedParam)
+							|| !redefinedParam.compatibleWith(redefinedParam)) {
+							return false;
+						}
+					} else
+
+					if (redefiningDirection == ParameterDirectionKind.IN_LITERAL) {
+
+						if (!redefinedParam.compatibleWith(redefinedParam)) {
+							return false;
+						}
+					}
+
+					else {
+
+						if (!redefiningParam.compatibleWith(redefinedParam)) {
+							return false;
+						}
 					}
 				}
 

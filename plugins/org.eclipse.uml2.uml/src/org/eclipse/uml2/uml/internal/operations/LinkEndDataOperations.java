@@ -17,10 +17,13 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.LinkEndData;
+import org.eclipse.uml2.uml.QualifierValue;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -205,12 +208,26 @@ public class LinkEndDataOperations
 	 * <p>From package UML::Actions.</p>
 	 * @param linkEndData The receiving '<em><b>Link End Data</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList<InputPin> allPins(LinkEndData linkEndData) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList<InputPin> allPins = new UniqueEList.FastCompare<InputPin>();
+
+		InputPin value = linkEndData.getValue();
+
+		if (value != null) {
+			allPins.add(value);
+		}
+
+		for (QualifierValue qualifier : linkEndData.getQualifiers()) {
+			value = qualifier.getValue();
+
+			if (value != null) {
+				allPins.add(value);
+			}
+		}
+
+		return ECollections.unmodifiableEList(allPins);
 	}
 
 	/**

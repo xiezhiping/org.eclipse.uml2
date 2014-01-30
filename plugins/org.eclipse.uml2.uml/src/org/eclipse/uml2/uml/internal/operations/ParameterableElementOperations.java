@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 418466
  *
- * $Id: ParameterableElementOperations.java,v 1.7 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -46,8 +46,9 @@ public class ParameterableElementOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. Subclasses should override this operation to specify different compatibility constraints.
-	 * result = p->oclIsKindOf(self.oclType)
+	 * The query isCompatibleWith() determines if this ParameterableElement is compatible with the specified ParameterableElement. By default, this ParameterableElement is compatible with another ParameterableElement p if the kind of this ParameterableElement is the same as or a subtype of the kind of p. Subclasses of ParameterableElement should override this operation to specify different compatibility constraints.
+	 * result = (self.oclIsKindOf(p.oclType()))
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param parameterableElement The receiving '<em><b>Parameterable Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -61,8 +62,9 @@ public class ParameterableElementOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isTemplateParameter() determines if this parameterable element is exposed as a formal template parameter.
-	 * result = templateParameter->notEmpty()
+	 * The query isTemplateParameter() determines if this ParameterableElement is exposed as a formal TemplateParameter.
+	 * result = (templateParameter->notEmpty())
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param parameterableElement The receiving '<em><b>Parameterable Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

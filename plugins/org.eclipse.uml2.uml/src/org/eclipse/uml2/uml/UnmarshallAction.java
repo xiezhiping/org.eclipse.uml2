@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An UnmarshallAction is an Action that retrieves the values of the StructuralFeatures of an object and places them on OutputPins. 
+ * An UnmarshallAction is an Action that retrieves the values of the StructuralFeatures of an object and places them on OutputPins.
  * <p>From package UML::Actions.</p>
  * <!-- end-model-doc -->
  *

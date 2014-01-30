@@ -12,16 +12,18 @@
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 
+import org.eclipse.uml2.uml.Expression;
 import org.eclipse.uml2.uml.Message;
 import org.eclipse.uml2.uml.MessageKind;
+import org.eclipse.uml2.uml.MessageSort;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Property;
@@ -237,8 +239,17 @@ public class MessageOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * In the case when the Message signature is a Signal, the arguments of the Message must correspond to the attributes of the Signal. A Message Argument corresponds to a Signal Attribute if the Arguement is of the same Class or a specialization of that of the Attribute.
-	 * true
+	 * In the case when the Message signature is a Signal, the arguments of the Message must correspond to the attributes of the Signal. A Message Argument corresponds to a Signal Attribute if the Argument is of the same Class or a specialization of that of the Attribute.
+	 * (messageSort = MessageSort::asynchSignal ) and signature.oclIsKindOf(Signal) implies
+	 *    let signalAttributes : OrderedSet(Property) = signature.oclAsType(Signal).inheritedMember()->
+	 *              select(n:NamedElement | n.oclIsTypeOf(Property))->collect(oclAsType(Property))->asOrderedSet()
+	 *    in signalAttributes->size() = self.argument->size()
+	 *    and self.argument->forAll( o: ValueSpecification |
+	 *           not (o.oclIsKindOf(Expression)
+	 *           and o.oclAsType(Expression).symbol->size()=0
+	 *           and o.oclAsType(Expression).operand->isEmpty() ) implies
+	 *               let p : Property = signalAttributes->at(self.argument->indexOf(o))
+	 *               in o.type.oclAsType(Classifier).conformsTo(p.type.oclAsType(Classifier)))
 	 * @param message The receiving '<em><b>Message</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -248,31 +259,45 @@ public class MessageOperations
 	public static boolean validateSignatureIsSignal(Message message,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
-		NamedElement signature = message.getSignature();
 
-		if (signature instanceof Signal) {
-			EList<ValueSpecification> arguments = message.getArguments();
+		if (message.getMessageSort() == MessageSort.ASYNCH_SIGNAL_LITERAL) {
+			NamedElement signature = message.getSignature();
 
-			if (!arguments.isEmpty()) {
-				EList<Property> attributes = ((Signal) signature)
-					.getAttributes();
+			if (signature instanceof Signal) {
+				EList<ValueSpecification> arguments = message.getArguments();
 
-				if (arguments.size() != attributes.size()) {
-					result = false;
-				} else {
-					Iterator<ValueSpecification> ma = arguments.iterator();
-					Iterator<Property> sa = attributes.iterator();
+				if (!arguments.isEmpty()) {
+					EList<Property> signalAttributes = new UniqueEList.FastCompare<Property>();
 
-					while (ma.hasNext() && sa.hasNext()) {
-						Type argumentType = ma.next().getType();
-						Type attributeType = sa.next().getType();
+					for (NamedElement n : ((Signal) signature)
+						.getInheritedMembers()) {
 
-						if (argumentType == null
-							? attributeType != null
-							: !argumentType.conformsTo(attributeType)) {
+						if (n instanceof Property) {
+							signalAttributes.add((Property) n);
+						}
+					}
 
-							result = false;
-							break;
+					if (arguments.size() != signalAttributes.size()) {
+						result = false;
+					} else {
+						for (ValueSpecification o : arguments) {
+
+							if (!(o instanceof Expression
+								&& isEmpty(((Expression) o).getSymbol()) && ((Expression) o)
+								.getOperands().isEmpty())) {
+
+								Type oType = o.getType();
+								Type pType = signalAttributes.get(
+									arguments.indexOf(o)).getType();
+
+								if (oType == null
+									? pType != null
+									: !oType.conformsTo(pType)) {
+
+									result = false;
+									break;
+								}
+							}
 						}
 					}
 				}
@@ -403,6 +428,12 @@ public class MessageOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * This query returns the MessageKind value for this Message.
+	 * result = (messageKind)
+	 * <p>From package UML::Interactions.</p>
+	 * @param message The receiving '<em><b>Message</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static MessageKind getMessageKind(Message message) {
@@ -424,13 +455,11 @@ public class MessageOperations
 	 * <p>From package UML::Interactions.</p>
 	 * @param message The receiving '<em><b>Message</b></em>' model object.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isDistinguishableFrom(Message message,
 			NamedElement n, Namespace ns) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return true;
 	}
 
 } // MessageOperations

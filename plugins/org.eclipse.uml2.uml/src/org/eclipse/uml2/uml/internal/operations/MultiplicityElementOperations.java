@@ -73,7 +73,7 @@ public class MultiplicityElementOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The lower bound must be a non-negative integer literal.
-	 * lowerBound()->notEmpty() implies lowerBound() >= 0
+	 * lowerBound() >= 0
 	 * @param multiplicityElement The receiving '<em><b>Multiplicity Element</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -111,7 +111,7 @@ public class MultiplicityElementOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The upper bound must be greater than or equal to the lower bound.
-	 * (upperBound()->notEmpty() and lowerBound()->notEmpty()) implies upperBound() >= lowerBound()
+	 * upperBound() >= lowerBound()
 	 * @param multiplicityElement The receiving '<em><b>Multiplicity Element</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -293,7 +293,8 @@ public class MultiplicityElementOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The derived lower attribute must equal the lowerBound.
-	 * result = lowerBound()
+	 * result = (lowerBound())
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param multiplicityElement The receiving '<em><b>Multiplicity Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -307,7 +308,8 @@ public class MultiplicityElementOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The derived upper attribute must equal the upperBound.
-	 * result = upperBound()
+	 * result = (upperBound())
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param multiplicityElement The receiving '<em><b>Multiplicity Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -322,7 +324,8 @@ public class MultiplicityElementOperations
 	 * <!-- begin-model-doc -->
 	 * The query isMultivalued() checks whether this multiplicity has an upper bound greater than one.
 	 * upperBound()->notEmpty()
-	 * result = upperBound() > 1
+	 * result = (upperBound() > 1)
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param multiplicityElement The receiving '<em><b>Multiplicity Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -337,38 +340,10 @@ public class MultiplicityElementOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query includesCardinality() checks whether the specified cardinality is valid for this multiplicity.
-	 * upperBound()->notEmpty() and lowerBound()->notEmpty()
-	 * result = (lowerBound() <= C) and (upperBound() >= C)
-	 * @param multiplicityElement The receiving '<em><b>Multiplicity Element</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean includesCardinality(
-			MultiplicityElement multiplicityElement, int C) {
-
-		if (C == LiteralUnlimitedNatural.UNLIMITED) {
-			return multiplicityElement.upperBound() == LiteralUnlimitedNatural.UNLIMITED;
-		} else {
-
-			if (multiplicityElement.lowerBound() <= C) {
-				int upperBound = multiplicityElement.upperBound();
-				return upperBound == LiteralUnlimitedNatural.UNLIMITED
-					? true
-					: upperBound >= C;
-			} else {
-				return false;
-			}
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
 	 * The query includesMultiplicity() checks whether this multiplicity includes all the cardinalities allowed by the specified multiplicity.
 	 * self.upperBound()->notEmpty() and self.lowerBound()->notEmpty() and M.upperBound()->notEmpty() and M.lowerBound()->notEmpty()
-	 * result = (self.lowerBound() <= M.lowerBound()) and (self.upperBound() >= M.upperBound())
+	 * result = ((self.lowerBound() <= M.lowerBound()) and (self.upperBound() >= M.upperBound()))
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param multiplicityElement The receiving '<em><b>Multiplicity Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -396,8 +371,9 @@ public class MultiplicityElementOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query lowerBound() returns the lower bound of the multiplicity as an integer.
-	 * result = if lowerValue->isEmpty() then 1 else lowerValue.integerValue() endif
+	 * The query lowerBound() returns the lower bound of the multiplicity as an integer, which is the integerValue of lowerValue, if this is given, and 1 otherwise.
+	 * result = (if (lowerValue=null or lowerValue.integerValue()=null) then 1 else lowerValue.integerValue() endif)
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param multiplicityElement The receiving '<em><b>Multiplicity Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -421,8 +397,9 @@ public class MultiplicityElementOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.
-	 * result = if upperValue->isEmpty() then 1 else upperValue.unlimitedValue() endif
+	 * The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural, which is the unlimitedNaturalValue of upperValue, if given, and 1, otherwise.
+	 * result = (if (upperValue=null or upperValue.unlimitedValue()=null) then 1 else upperValue.unlimitedValue() endif)
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param multiplicityElement The receiving '<em><b>Multiplicity Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -446,8 +423,9 @@ public class MultiplicityElementOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The operation compatibleWith takes another multiplicity as input. It checks if one multiplicity is compatible with another.
-	 * result = Integer.allInstances()->forAll(i : Integer | self.includesCardinality(i) implies other.includesCardinality(i))
+	 * The operation compatibleWith takes another multiplicity as input. It returns true if the other multiplicity is wider than, or the same as, self.
+	 * result = ((other.lowerBound() <= self.lowerBound()) and ((other.upperBound() = *) or (self.upperBound() <= other.upperBound())))
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param multiplicityElement The receiving '<em><b>Multiplicity Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -462,7 +440,8 @@ public class MultiplicityElementOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The operation is determines if the upper and lower bound of the ranges are the ones given.
-	 * result = (lowerbound = self.lowerbound and upperbound = self.upperbound)
+	 * result = (lowerbound = self.lowerBound() and upperbound = self.upperBound())
+	 * <p>From package UML::CommonStructure.</p>
 	 * @param multiplicityElement The receiving '<em><b>Multiplicity Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

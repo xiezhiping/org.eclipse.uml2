@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: LiteralIntegerOperations.java,v 1.7 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -48,7 +47,8 @@ public class LiteralIntegerOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isComputable() is redefined to be true.
-	 * result = true
+	 * result = (true)
+	 * <p>From package UML::Values.</p>
 	 * @param literalInteger The receiving '<em><b>Literal Integer</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -62,7 +62,8 @@ public class LiteralIntegerOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query integerValue() gives the value.
-	 * result = value
+	 * result = (value)
+	 * <p>From package UML::Values.</p>
 	 * @param literalInteger The receiving '<em><b>Literal Integer</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

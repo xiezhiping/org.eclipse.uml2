@@ -176,7 +176,8 @@ public class OpaqueExpressionOperations
 	 * <!-- begin-model-doc -->
 	 * The query value() gives an integer value for an expression intended to produce one.
 	 * self.isIntegral()
-	 * true
+	 * result = (0)
+	 * <p>From package UML::Values.</p>
 	 * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -199,8 +200,9 @@ public class OpaqueExpressionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isIntegral() tells whether an expression is intended to produce an integer.
-	 * result = false
+	 * The query isIntegral() tells whether an expression is intended to produce an Integer.
+	 * result = (false)
+	 * <p>From package UML::Values.</p>
 	 * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -225,8 +227,9 @@ public class OpaqueExpressionOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isPositive() tells whether an integer expression has a positive value.
+	 * result = (false)
 	 * self.isIntegral()
-	 * result = false
+	 * <p>From package UML::Values.</p>
 	 * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -251,7 +254,8 @@ public class OpaqueExpressionOperations
 	 * <!-- begin-model-doc -->
 	 * The query isNonNegative() tells whether an integer expression has a non-negative value.
 	 * self.isIntegral()
-	 * result = false
+	 * result = (false)
+	 * <p>From package UML::Values.</p>
 	 * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -273,6 +277,16 @@ public class OpaqueExpressionOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Derivation for OpaqueExpression::/result
+	 * result = (if behavior = null then
+	 *     null
+	 * else
+	 *     behavior.ownedParameter->first()
+	 * endif)
+	 * <p>From package UML::Values.</p>
+	 * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Parameter getResult(OpaqueExpression opaqueExpression) {

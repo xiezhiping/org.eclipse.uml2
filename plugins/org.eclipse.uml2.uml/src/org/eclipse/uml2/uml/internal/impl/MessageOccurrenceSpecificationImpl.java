@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.GeneralOrdering;
 import org.eclipse.uml2.uml.Interaction;
@@ -136,6 +137,17 @@ public class MessageOccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public EList<MessageEnd> oppositeEnd() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<MessageEnd> result = (EList<MessageEnd>) cache.get(this,
+				UMLPackage.Literals.MESSAGE_END___OPPOSITE_END);
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.MESSAGE_END___OPPOSITE_END,
+					result = MessageEndOperations.oppositeEnd(this));
+			}
+			return result;
+		}
 		return MessageEndOperations.oppositeEnd(this);
 	}
 
@@ -163,6 +175,18 @@ public class MessageOccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public EList<InteractionFragment> enclosingFragment() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<InteractionFragment> result = (EList<InteractionFragment>) cache
+				.get(this, UMLPackage.Literals.MESSAGE_END___ENCLOSING_FRAGMENT);
+			if (result == null) {
+				cache.put(this,
+					UMLPackage.Literals.MESSAGE_END___ENCLOSING_FRAGMENT,
+					result = MessageEndOperations.enclosingFragment(this));
+			}
+			return result;
+		}
 		return MessageEndOperations.enclosingFragment(this);
 	}
 
