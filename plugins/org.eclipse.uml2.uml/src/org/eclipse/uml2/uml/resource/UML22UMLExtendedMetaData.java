@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  * 
  */
 package org.eclipse.uml2.uml.resource;
@@ -39,32 +39,32 @@ public class UML22UMLExtendedMetaData
 			uriMap.put(URI.createURI(UML22UMLResource.ECORE_METAMODEL_URI), URI.createURI(UMLResource.ECORE_METAMODEL_URI));
 			uriMap.put(URI.createURI(UML22UMLResource.UML2_METAMODEL_URI), URI.createURI(UMLResource.UML_METAMODEL_URI));
 
-			// Basic.profile.uml2#BuildComponent -> StandardL3.profile.uml#BuildComponent
-			uriMap.put(URI.createURI(UML22UMLResource.BASIC_PROFILE_URI).appendFragment("_9vsGw686Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("BuildComponent"));
-			uriMap.put(URI.createURI(UML22UMLResource.BASIC_PROFILE_URI).appendFragment("_9vsGyK86Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("BuildComponent-base_Component"));
-			uriMap.put(URI.createURI(UML22UMLResource.BASIC_PROFILE_URI).appendFragment("_9vsGxa86Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Component_BuildComponent"));
-			uriMap.put(URI.createURI(UML22UMLResource.BASIC_PROFILE_URI).appendFragment("_9vsGxq86Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Component_BuildComponent-extension_BuildComponent"));
+			// Basic.profile.uml2#BuildComponent -> Standard.profile.uml#BuildComponent
+			uriMap.put(URI.createURI(UML22UMLResource.BASIC_PROFILE_URI).appendFragment("_9vsGw686Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_PROFILE_URI).appendFragment("BuildComponent"));
+			uriMap.put(URI.createURI(UML22UMLResource.BASIC_PROFILE_URI).appendFragment("_9vsGyK86Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_PROFILE_URI).appendFragment("BuildComponent-base_Component"));
+			uriMap.put(URI.createURI(UML22UMLResource.BASIC_PROFILE_URI).appendFragment("_9vsGxa86Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_PROFILE_URI).appendFragment("Component_BuildComponent"));
+			uriMap.put(URI.createURI(UML22UMLResource.BASIC_PROFILE_URI).appendFragment("_9vsGxq86Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_PROFILE_URI).appendFragment("Component_BuildComponent-extension_BuildComponent"));
 
-			// Complete.profile.uml2#Metamodel -> StandardL3.profile.uml#Metamodel
-			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_Ox98AK87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Metamodel"));
-			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O1-5VK87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Metamodel-base_Model"));
-			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O1-5Ua87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Model_Metamodel"));
-			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O1-5Uq87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Model_Metamodel-extension_Metamodel"));
+			// Complete.profile.uml2#Metamodel -> Standard.profile.uml#Metamodel
+			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_Ox98AK87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_PROFILE_URI).appendFragment("Metamodel"));
+			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O1-5VK87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_PROFILE_URI).appendFragment("Metamodel-base_Model"));
+			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O1-5Ua87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_PROFILE_URI).appendFragment("Model_Metamodel"));
+			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O1-5Uq87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_PROFILE_URI).appendFragment("Model_Metamodel-extension_Metamodel"));
 
-			// Complete.profile.uml2#SystemModel -> StandardL3.profile.uml#SystemModel
-			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O1-5Va87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("SystemModel"));
-			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O2E_8687Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("SystemModel-base_Model"));
-			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O2E_8K87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Model_SystemModel"));
-			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O2E_8a87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Model_SystemModel-extension_SystemModel"));
+			// Complete.profile.uml2#SystemModel -> Standard.profile.uml#SystemModel
+			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O1-5Va87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_PROFILE_URI).appendFragment("SystemModel"));
+			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O2E_8687Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_PROFILE_URI).appendFragment("SystemModel-base_Model"));
+			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O2E_8K87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_PROFILE_URI).appendFragment("Model_SystemModel"));
+			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O2E_8a87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_PROFILE_URI).appendFragment("Model_SystemModel-extension_SystemModel"));
 
-			// Basic.profile.uml2 -> StandardL2.profile.uml
-			uriMap.put(URI.createURI(UML22UMLResource.BASIC_PROFILE_URI), URI.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
+			// Basic.profile.uml2 -> Standard.profile.uml
+			uriMap.put(URI.createURI(UML22UMLResource.BASIC_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
 
-			// Intermediate.profile.uml2 -> StandardL2.profile.uml
-			uriMap.put(URI.createURI(UML22UMLResource.INTERMEDIATE_PROFILE_URI), URI.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
+			// Intermediate.profile.uml2 -> Standard.profile.uml
+			uriMap.put(URI.createURI(UML22UMLResource.INTERMEDIATE_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
 
-			// Complete.profile.uml2 -> StandardL2.profile.uml
-			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI), URI.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
+			// Complete.profile.uml2 -> Standard.profile.uml
+			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
 
 			uriMap.put(URI.createURI(UML22UMLResource.ECORE_PROFILE_URI), URI.createURI(UMLResource.ECORE_PROFILE_URI));
 		}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:l2="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2" xmlns:l3="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L3" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
   <uml:Model xmi:id="_0" name="Ecore" URI="http://www.eclipse.org/emf/2002/Ecore">
     <packagedElement xmi:type="uml:Class" xmi:id="EAnnotation" name="EAnnotation">
       <eAnnotations xmi:id="EAnnotation-_http2F2Fwww.eclipse.org2Femf2F20022FEcore" source="http://www.eclipse.org/emf/2002/Ecore">
@@ -892,15 +892,9 @@
     </profileApplication>
     <profileApplication xmi:id="_profileApplication.1">
       <eAnnotations xmi:id="_profileApplication.1-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L3#/"/>
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
       </eAnnotations>
-      <appliedProfile href="pathmap://UML_PROFILES/StandardL3.profile.uml#_0"/>
-    </profileApplication>
-    <profileApplication xmi:id="_profileApplication.2">
-      <eAnnotations xmi:id="_profileApplication.2-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2#/"/>
-      </eAnnotations>
-      <appliedProfile href="pathmap://UML_PROFILES/StandardL2.profile.uml#_0"/>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
   <Ecore:EPackage xmi:id="_uuJ5sMYcEduPJbEsMYXjUQ" base_Package="_0" packageName="ecore" nsPrefix="ecore"/>
@@ -988,32 +982,32 @@
   <Ecore:EDataType xmi:id="_uvy4e8YcEduPJbEsMYXjUQ" instanceClassName="java.lang.String" base_PrimitiveType="EString"/>
   <Ecore:EDataType xmi:id="_uvy4fMYcEduPJbEsMYXjUQ" instanceClassName="org.eclipse.emf.common.util.TreeIterator" base_PrimitiveType="ETreeIterator"/>
   <Ecore:EDataType xmi:id="_usvVwN7TEd6R9YfsTdOlYA" instanceClassName="java.lang.reflect.InvocationTargetException" base_PrimitiveType="EInvocationTargetException"/>
-  <l3:Metamodel xmi:id="_QzhTgKtKEeGF4uwJob34Mw" base_Model="_0"/>
-  <l2:Metaclass xmi:id="_QzoBMKtKEeGF4uwJob34Mw" base_Class="EAnnotation"/>
-  <l2:Metaclass xmi:id="_QzooQKtKEeGF4uwJob34Mw" base_Class="EAttribute"/>
-  <l2:Metaclass xmi:id="_QzpPUKtKEeGF4uwJob34Mw" base_Class="EClass"/>
-  <l2:Metaclass xmi:id="_QzrrkKtKEeGF4uwJob34Mw" base_Class="EClassifier"/>
-  <l2:Metaclass xmi:id="_Qzs5sKtKEeGF4uwJob34Mw" base_Class="EClassifier-Wildcard"/>
-  <l2:Metaclass xmi:id="_QztgwKtKEeGF4uwJob34Mw" base_Class="EDataType"/>
-  <l2:Metaclass xmi:id="_QztgwatKEeGF4uwJob34Mw" base_Class="EEnum"/>
-  <l2:Metaclass xmi:id="_QzuH0KtKEeGF4uwJob34Mw" base_Class="EEnumLiteral"/>
-  <l2:Metaclass xmi:id="_Qzuu4KtKEeGF4uwJob34Mw" base_Class="EFactory"/>
-  <l2:Metaclass xmi:id="_QzvV8KtKEeGF4uwJob34Mw" base_Class="EGenericType"/>
-  <l2:Metaclass xmi:id="_Qzv9AKtKEeGF4uwJob34Mw" base_Class="EModelElement"/>
-  <l2:Metaclass xmi:id="_QzwkEKtKEeGF4uwJob34Mw" base_Class="ENamedElement"/>
-  <l2:Metaclass xmi:id="_QzwkEatKEeGF4uwJob34Mw" base_Class="EObject"/>
-  <l2:Metaclass xmi:id="_QzzAUKtKEeGF4uwJob34Mw" base_Class="EOperation"/>
-  <l2:Metaclass xmi:id="_QzznYKtKEeGF4uwJob34Mw" base_Class="EPackage"/>
-  <l2:Metaclass xmi:id="_Qz0OcKtKEeGF4uwJob34Mw" base_Class="EParameter"/>
-  <l2:Metaclass xmi:id="_Qz01gKtKEeGF4uwJob34Mw" base_Class="EReference"/>
-  <l2:Metaclass xmi:id="_Qz1ckKtKEeGF4uwJob34Mw" base_Class="EStringToStringMapEntry"/>
-  <l2:Metaclass xmi:id="_Qz1ckatKEeGF4uwJob34Mw" base_Class="EStructuralFeature"/>
-  <l2:Metaclass xmi:id="_Qz2DoKtKEeGF4uwJob34Mw" base_Class="EStructuralFeature-Wildcard"/>
-  <l2:Metaclass xmi:id="_Qz2qsKtKEeGF4uwJob34Mw" base_Class="ETypedElement"/>
-  <l2:Metaclass xmi:id="_Qz340KtKEeGF4uwJob34Mw" base_Class="ETypeParameter"/>
-  <l2:Metaclass xmi:id="_Qz7jMKtKEeGF4uwJob34Mw" base_Class="EEList-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement"/>
-  <l2:Metaclass xmi:id="_Qz9_cKtKEeGF4uwJob34Mw" base_Class="EJavaClass-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement"/>
-  <l2:Metaclass xmi:id="_Qz_0oKtKEeGF4uwJob34Mw" base_Class="EMap-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement"/>
-  <l2:Metaclass xmi:id="_Q0AbsKtKEeGF4uwJob34Mw" base_Class="EMap-_ownedElement.0-_ownedParameter.1-_ownedParameteredElement"/>
-  <l2:Metaclass xmi:id="_Q0CQ4KtKEeGF4uwJob34Mw" base_Class="ETreeIterator-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement"/>
+  <standard:Metamodel xmi:id="_QzhTgKtKEeGF4uwJob34Mw" base_Model="_0"/>
+  <standard:Metaclass xmi:id="_QzoBMKtKEeGF4uwJob34Mw" base_Class="EAnnotation"/>
+  <standard:Metaclass xmi:id="_QzooQKtKEeGF4uwJob34Mw" base_Class="EAttribute"/>
+  <standard:Metaclass xmi:id="_QzpPUKtKEeGF4uwJob34Mw" base_Class="EClass"/>
+  <standard:Metaclass xmi:id="_QzrrkKtKEeGF4uwJob34Mw" base_Class="EClassifier"/>
+  <standard:Metaclass xmi:id="_Qzs5sKtKEeGF4uwJob34Mw" base_Class="EClassifier-Wildcard"/>
+  <standard:Metaclass xmi:id="_QztgwKtKEeGF4uwJob34Mw" base_Class="EDataType"/>
+  <standard:Metaclass xmi:id="_QztgwatKEeGF4uwJob34Mw" base_Class="EEnum"/>
+  <standard:Metaclass xmi:id="_QzuH0KtKEeGF4uwJob34Mw" base_Class="EEnumLiteral"/>
+  <standard:Metaclass xmi:id="_Qzuu4KtKEeGF4uwJob34Mw" base_Class="EFactory"/>
+  <standard:Metaclass xmi:id="_QzvV8KtKEeGF4uwJob34Mw" base_Class="EGenericType"/>
+  <standard:Metaclass xmi:id="_Qzv9AKtKEeGF4uwJob34Mw" base_Class="EModelElement"/>
+  <standard:Metaclass xmi:id="_QzwkEKtKEeGF4uwJob34Mw" base_Class="ENamedElement"/>
+  <standard:Metaclass xmi:id="_QzwkEatKEeGF4uwJob34Mw" base_Class="EObject"/>
+  <standard:Metaclass xmi:id="_QzzAUKtKEeGF4uwJob34Mw" base_Class="EOperation"/>
+  <standard:Metaclass xmi:id="_QzznYKtKEeGF4uwJob34Mw" base_Class="EPackage"/>
+  <standard:Metaclass xmi:id="_Qz0OcKtKEeGF4uwJob34Mw" base_Class="EParameter"/>
+  <standard:Metaclass xmi:id="_Qz01gKtKEeGF4uwJob34Mw" base_Class="EReference"/>
+  <standard:Metaclass xmi:id="_Qz1ckKtKEeGF4uwJob34Mw" base_Class="EStringToStringMapEntry"/>
+  <standard:Metaclass xmi:id="_Qz1ckatKEeGF4uwJob34Mw" base_Class="EStructuralFeature"/>
+  <standard:Metaclass xmi:id="_Qz2DoKtKEeGF4uwJob34Mw" base_Class="EStructuralFeature-Wildcard"/>
+  <standard:Metaclass xmi:id="_Qz2qsKtKEeGF4uwJob34Mw" base_Class="ETypedElement"/>
+  <standard:Metaclass xmi:id="_Qz340KtKEeGF4uwJob34Mw" base_Class="ETypeParameter"/>
+  <standard:Metaclass xmi:id="_Qz7jMKtKEeGF4uwJob34Mw" base_Class="EEList-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement"/>
+  <standard:Metaclass xmi:id="_Qz9_cKtKEeGF4uwJob34Mw" base_Class="EJavaClass-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement"/>
+  <standard:Metaclass xmi:id="_Qz_0oKtKEeGF4uwJob34Mw" base_Class="EMap-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement"/>
+  <standard:Metaclass xmi:id="_Q0AbsKtKEeGF4uwJob34Mw" base_Class="EMap-_ownedElement.0-_ownedParameter.1-_ownedParameteredElement"/>
+  <standard:Metaclass xmi:id="_Q0CQ4KtKEeGF4uwJob34Mw" base_Class="ETreeIterator-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement"/>
 </xmi:XMI>

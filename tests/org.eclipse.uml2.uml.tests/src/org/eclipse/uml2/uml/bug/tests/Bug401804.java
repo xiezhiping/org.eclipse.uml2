@@ -72,7 +72,7 @@ public class Bug401804 {
 		// This stereotype is statically generated, which requires a
 		// UML-specific extension point to resolve
 		Stereotype specification = sessionManagerBean
-			.getAppliedStereotype("StandardProfileL2::Specification");
+			.getAppliedStereotype("StandardProfile::Specification");
 		System.out.printf("SessionManager is a <<specification>>: %s%n",
 			specification != null);
 	}

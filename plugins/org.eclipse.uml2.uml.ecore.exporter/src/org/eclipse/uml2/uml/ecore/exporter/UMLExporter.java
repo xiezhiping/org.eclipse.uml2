@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2006, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 156879, 273949
- *   Kenn Hussey (CEA) - 316165, 273948
+ *   Kenn Hussey (CEA) - 316165, 273948, 418466
  *
  */
 package org.eclipse.uml2.uml.ecore.exporter;
@@ -405,12 +405,9 @@ public class UMLExporter
 			} else if (UMLPackage.eNS_URI.equals(nsURI)) {
 				genPackageInfo.setArtifactURI(URI
 					.createURI(UMLResource.UML_METAMODEL_URI));
-			} else if (UMLResource.STANDARD_L2_PROFILE_NS_URI.equals(nsURI)) {
+			} else if (UMLResource.STANDARD_PROFILE_NS_URI.equals(nsURI)) {
 				genPackageInfo.setArtifactURI(URI
-					.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
-			} else if (UMLResource.STANDARD_L3_PROFILE_NS_URI.equals(nsURI)) {
-				genPackageInfo.setArtifactURI(URI
-					.createURI(UMLResource.STANDARD_L3_PROFILE_URI));
+					.createURI(UMLResource.STANDARD_PROFILE_URI));
 			}
 
 			genPackageInfo

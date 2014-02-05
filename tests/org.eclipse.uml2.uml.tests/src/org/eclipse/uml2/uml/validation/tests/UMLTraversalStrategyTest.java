@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 CEA and others.
+ * Copyright (c) 2013, 2014 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
+ *   Kenn Hussey (CEA) - 418466
  */
 package org.eclipse.uml2.uml.validation.tests;
 
@@ -105,7 +106,7 @@ public class UMLTraversalStrategyTest
 		res.getContents().add(model);
 
 		Profile profile = (Profile) UMLUtil.load(rset,
-			URI.createURI(UMLResource.STANDARD_L2_PROFILE_URI),
+			URI.createURI(UMLResource.STANDARD_PROFILE_URI),
 			UMLPackage.Literals.PROFILE);
 
 		model.applyProfile(profile);

@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
- *   Kenn Hussey (CEA) - 389542, 399544, 425846
+ *   Kenn Hussey (CEA) - 389542, 399544, 425846, 418466
  *   Mikael Barbero (Obeo) - 414572
  *   Christian W. Damus (CEA) - 414572, 401682
  */
@@ -30,8 +30,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMLContentHandlerImpl;
 import org.eclipse.uml2.types.TypesPackage;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
-import org.eclipse.uml2.uml.profile.l2.L2Package;
-import org.eclipse.uml2.uml.profile.l3.L3Package;
+import org.eclipse.uml2.uml.profile.standard.StandardPackage;
 import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
 import org.eclipse.uml2.uml.resource.UML212UMLResource;
 import org.eclipse.uml2.uml.resource.UML22UMLResource;
@@ -245,10 +244,14 @@ public class UMLResourcesUtil
 		packageRegistry.put(UMLPackage.eNS_URI, UMLPackage.eINSTANCE);
 
 		packageRegistry.put(UML302UMLResource.STANDARD_PROFILE_NS_URI,
-			L2Package.eINSTANCE);
+			StandardPackage.eINSTANCE);
 
-		packageRegistry.put(L2Package.eNS_URI, L2Package.eINSTANCE);
-		packageRegistry.put(L3Package.eNS_URI, L3Package.eINSTANCE);
+		packageRegistry.put(UMLResource.STANDARD_L2_PROFILE_NS_URI,
+			StandardPackage.eINSTANCE);
+		packageRegistry.put(UMLResource.STANDARD_L3_PROFILE_NS_URI,
+			StandardPackage.eINSTANCE);
+
+		packageRegistry.put(StandardPackage.eNS_URI, StandardPackage.eINSTANCE);
 
 		return packageRegistry;
 	}
@@ -415,10 +418,15 @@ public class UMLResourcesUtil
 	 */
 	public static Map<String, URI> initEPackageNsURIToProfileLocationMap(
 			Map<String, URI> ePackageNsURIToProfileLocationMap) {
-		ePackageNsURIToProfileLocationMap.put(L2Package.eNS_URI,
-			URI.createURI("pathmap://UML_PROFILES/StandardL2.profile.uml#_0")); //$NON-NLS-1$
-		ePackageNsURIToProfileLocationMap.put(L3Package.eNS_URI,
-			URI.createURI("pathmap://UML_PROFILES/StandardL3.profile.uml#_0")); //$NON-NLS-1$
+		ePackageNsURIToProfileLocationMap.put(
+			UMLResource.STANDARD_L2_PROFILE_NS_URI,
+			URI.createURI("pathmap://UML_PROFILES/Standard.profile.uml#_0")); //$NON-NLS-1$
+		ePackageNsURIToProfileLocationMap.put(
+			UMLResource.STANDARD_L3_PROFILE_NS_URI,
+			URI.createURI("pathmap://UML_PROFILES/Standard.profile.uml#_0")); //$NON-NLS-1$
+
+		ePackageNsURIToProfileLocationMap.put(StandardPackage.eNS_URI,
+			URI.createURI("pathmap://UML_PROFILES/Standard.profile.uml#_0")); //$NON-NLS-1$
 
 		ePackageNsURIToProfileLocationMap.put(UMLResource.ECORE_PROFILE_NS_URI,
 			URI.createURI("pathmap://UML_PROFILES/Ecore.profile.uml#_0")); //$NON-NLS-1$

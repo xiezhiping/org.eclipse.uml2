@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bug401804="http://www.eclipse.org/uml2/schemas/tests/profiles/bugs/401804" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:l2="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/tests/profiles/bugs/401804 ../profiles/Bug401804.profile.uml#_jiFqIXe0EeOXG-Ysr10KOA">
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bug401804="http://www.eclipse.org/uml2/schemas/tests/profiles/bugs/401804" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/tests/profiles/bugs/401804 ../profiles/Bug401804.profile.uml#_jiFqIXe0EeOXG-Ysr10KOA">
   <uml:Model xmi:id="_AzOGEHeuEeOXG-Ysr10KOA" name="beans">
     <packagedElement xmi:type="uml:Class" xmi:id="_KRmsEHeuEeOXG-Ysr10KOA" name="SessionManager">
       <ownedAttribute xmi:id="_OhjeUHeuEeOXG-Ysr10KOA" name="port">
@@ -15,11 +15,11 @@
     </profileApplication>
     <profileApplication xmi:id="_8S19QHfQEeO6xpbNqFWqFw">
       <eAnnotations xmi:id="_8S5noHfQEeO6xpbNqFWqFw" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2#/"/>
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
       </eAnnotations>
-      <appliedProfile href="pathmap://UML_PROFILES/StandardL2.profile.uml#_0"/>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
   <bug401804:ejb xmi:id="_zwvDAHe0EeOXG-Ysr10KOA" base_Class="_KRmsEHeuEeOXG-Ysr10KOA" kind="messagedriven"/>
-  <l2:Specification xmi:id="_CcAT4HfREeO6xpbNqFWqFw" base_Classifier="_KRmsEHeuEeOXG-Ysr10KOA"/>
+  <standard:Specification xmi:id="_CcAT4HfREeO6xpbNqFWqFw" base_Classifier="_KRmsEHeuEeOXG-Ysr10KOA"/>
 </xmi:XMI>
