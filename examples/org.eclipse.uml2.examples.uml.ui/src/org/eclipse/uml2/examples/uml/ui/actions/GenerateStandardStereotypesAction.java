@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 400546
+ *   Kenn Hussey (CEA) - 327039, 400546, 418466
  *
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
@@ -20,7 +20,7 @@ import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
 
-public class GenerateStandardL2StereotypesAction
+public class GenerateStandardStereotypesAction
 		extends GenerateProfileAction {
 
 	@Override
@@ -96,8 +96,10 @@ public class GenerateStandardL2StereotypesAction
 							profile, "File", true); //$NON-NLS-1$
 						generateExtension(fileStereotype, artifactMetaclass,
 							false);
-						generateGeneralization(documentStereotype, fileStereotype);
-						generateGeneralization(executableStereotype, fileStereotype);
+						generateGeneralization(documentStereotype,
+							fileStereotype);
+						generateGeneralization(executableStereotype,
+							fileStereotype);
 
 						Stereotype focusStereotype = generateOwnedStereotype(
 							profile, "Focus", false); //$NON-NLS-1$
@@ -130,7 +132,8 @@ public class GenerateStandardL2StereotypesAction
 							profile, "Library", false); //$NON-NLS-1$
 						generateExtension(libraryStereotype, artifactMetaclass,
 							false);
-						generateGeneralization(libraryStereotype, fileStereotype);
+						generateGeneralization(libraryStereotype,
+							fileStereotype);
 
 						Stereotype metaclassStereotype = generateOwnedStereotype(
 							profile, "Metaclass", false); //$NON-NLS-1$
@@ -209,10 +212,27 @@ public class GenerateStandardL2StereotypesAction
 						generateExtension(utilityStereotype, classMetaclass,
 							false);
 
+						Stereotype buildComponentStereotype = generateOwnedStereotype(
+							profile, "BuildComponent", false); //$NON-NLS-1$
+						generateExtension(buildComponentStereotype,
+							componentMetaclass, false);
+
+						Stereotype metamodelStereotype = generateOwnedStereotype(
+							profile, "Metamodel", false); //$NON-NLS-1$
+						org.eclipse.uml2.uml.Class modelMetaclass = getReferencedUMLMetaclass(
+							profile, UMLPackage.Literals.MODEL);
+						generateExtension(metamodelStereotype, modelMetaclass,
+							false);
+
+						Stereotype systemModelStereotype = generateOwnedStereotype(
+							profile, "SystemModel", false); //$NON-NLS-1$
+						generateExtension(systemModelStereotype,
+							modelMetaclass, false);
+
 						setIDs(profile);
 					}
 				}, UMLExamplesUIPlugin.INSTANCE.getString(
-					"_UI_GenerateStandardL2StereotypesActionCommand_label", //$NON-NLS-1$
+					"_UI_GenerateStandardStereotypesActionCommand_label", //$NON-NLS-1$
 					new Object[]{getLabelProvider().getText(profile)})));
 		}
 	}
