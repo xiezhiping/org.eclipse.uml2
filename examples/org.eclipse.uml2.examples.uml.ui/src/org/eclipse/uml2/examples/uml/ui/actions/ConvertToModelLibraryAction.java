@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: ConvertToModelLibraryAction.java,v 1.3 2007/01/04 18:47:13 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -46,13 +45,13 @@ public class ConvertToModelLibraryAction
 					public void run() {
 						EcoreUtil.resolveAll(package_);
 
-						Profile l2Profile = applyProfile(package_,
-							UMLResource.STANDARD_L2_PROFILE_URI);
+						Profile standardProfile = applyProfile(package_,
+							UMLResource.STANDARD_PROFILE_URI);
 
-						if (l2Profile != null) {
+						if (standardProfile != null) {
 							applyStereotype(
 								package_,
-								l2Profile
+								standardProfile
 									.getOwnedStereotype(STEREOTYPE_NAME__MODEL_LIBRARY));
 						}
 

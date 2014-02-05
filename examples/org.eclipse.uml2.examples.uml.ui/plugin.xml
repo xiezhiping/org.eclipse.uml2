@@ -10,7 +10,7 @@
 
  Contributors: 
    IBM - initial API and implementation
-   Kenn Hussey (CEA) - 327039
+   Kenn Hussey (CEA) - 327039, 418466
    Christian W. Damus (CEA) - 382342
 
 -->
@@ -63,23 +63,11 @@
         </enablement>
       </action>
       <action
-         label="%_UI_StandardL3Action_label"
-         class="org.eclipse.uml2.examples.uml.ui.actions.GenerateStandardL3StereotypesAction"
+         label="%_UI_StandardAction_label"
+         class="org.eclipse.uml2.examples.uml.ui.actions.GenerateStandardStereotypesAction"
          menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.examples.uml.ui.GenerateMenuID/org.eclipse.uml2.examples.uml.ui.StereotypesMenuID/additions"
          enablesFor="1"
-         id="org.eclipse.uml2.examples.uml.ui.GenerateStandardL3StereotypesActionID">
-        <enablement>
-          <objectClass
-             name="org.eclipse.uml2.uml.Profile">
-          </objectClass>
-        </enablement>
-      </action>
-      <action
-         label="%_UI_StandardL2Action_label"
-         class="org.eclipse.uml2.examples.uml.ui.actions.GenerateStandardL2StereotypesAction"
-         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.examples.uml.ui.GenerateMenuID/org.eclipse.uml2.examples.uml.ui.StereotypesMenuID/additions"
-         enablesFor="1"
-         id="org.eclipse.uml2.examples.uml.ui.GenerateStandardL2StereotypesActionID">
+         id="org.eclipse.uml2.examples.uml.ui.GenerateStandardStereotypesActionID">
         <enablement>
           <objectClass
              name="org.eclipse.uml2.uml.Profile">

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
- * $Id: ConvertToMetamodelAction.java,v 1.5 2008/03/24 19:57:00 jbruck Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -46,20 +45,17 @@ public class ConvertToMetamodelAction
 					public void run() {
 						EcoreUtil.resolveAll(model);
 
-						Profile l3Profile = applyProfile(model,
-							UMLResource.STANDARD_L3_PROFILE_URI);
+						Profile standardProfile = applyProfile(model,
+							UMLResource.STANDARD_PROFILE_URI);
 
-						if (l3Profile != null) {
-							applyStereotype(model, l3Profile
+						if (standardProfile != null) {
+							applyStereotype(model, standardProfile
 								.getOwnedStereotype(STEREOTYPE_NAME__METAMODEL));
 						}
 
-						Profile l2Profile = applyProfile(model,
-							UMLResource.STANDARD_L2_PROFILE_URI);
-
-						final Stereotype metaclassStereotype = l2Profile == null
+						final Stereotype metaclassStereotype = standardProfile == null
 							? null
-							: l2Profile
+							: standardProfile
 								.getOwnedStereotype(STEREOTYPE_NAME__METACLASS);
 
 						new UMLSwitch<Object>() {
