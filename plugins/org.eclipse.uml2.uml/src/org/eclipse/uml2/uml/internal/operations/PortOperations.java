@@ -229,7 +229,8 @@ public class PortOperations
 	}
 
 	protected static EList<Interface> basicProvided(Port port, boolean resolve) {
-		return ECollections.unmodifiableEList(basicProvided(port, true));
+		return basicProvided(port, resolve,
+			new UniqueEList.FastCompare<Interface>());
 	}
 
 	protected static EList<Interface> basicProvided(Port port, boolean resolve,
