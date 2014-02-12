@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332, 247980
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658, 173565, 408612, 414970
+ *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658, 173565, 408612, 414970, 427833
  *   Christian W. Damus - 355218
  *   Christian W. Damus (CEA) - 286444
  *
@@ -37,6 +37,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.ui.dialogs.DiagnosticDialog;
+import org.eclipse.emf.common.ui.viewer.ColumnViewerInformationControlToolTipSupport;
 import org.eclipse.emf.common.ui.editor.ProblemEditorPart;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 
@@ -60,6 +61,7 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 
+import org.eclipse.emf.edit.ui.provider.DecoratingColumLabelProvider;
 //import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 
 //import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
@@ -74,6 +76,7 @@ import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.edit.ui.provider.DiagnosticDecorator;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.emf.edit.ui.provider.PropertyDescriptor;
@@ -488,20 +491,31 @@ public class UMLEditor
 
 					protected Collection<Resource> removedResources = new ArrayList<Resource>();
 
-					public boolean visit(IResourceDelta delta) {
+					public boolean visit(final IResourceDelta delta) {
 						if (delta.getResource().getType() == IResource.FILE) {
 							if (delta.getKind() == IResourceDelta.REMOVED
-								|| delta.getKind() == IResourceDelta.CHANGED
-								&& delta.getFlags() != IResourceDelta.MARKERS) {
-								Resource resource = resourceSet
+								|| delta.getKind() == IResourceDelta.CHANGED) {
+								final Resource resource = resourceSet
 									.getResource(URI.createPlatformResourceURI(
 										delta.getFullPath().toString(), true),
 										false);
 								if (resource != null) {
 									if (delta.getKind() == IResourceDelta.REMOVED) {
 										removedResources.add(resource);
-									} else if (!savedResources.remove(resource)) {
-										changedResources.add(resource);
+									} else {
+										if ((delta.getFlags() & IResourceDelta.MARKERS) != 0) {
+											DiagnosticDecorator.DiagnosticAdapter
+												.update(resource, markerHelper
+													.getMarkerDiagnostics(
+														resource, (IFile) delta
+															.getResource()));
+										}
+										if ((delta.getFlags() & IResourceDelta.CONTENT) != 0) {
+											if (!savedResources
+												.remove(resource)) {
+												changedResources.add(resource);
+											}
+										}
 									}
 								}
 							}
@@ -1211,15 +1225,19 @@ public class UMLEditor
 			selectionViewer
 				.setContentProvider(new AdapterFactoryContentProvider(
 					adapterFactory));
-			selectionViewer
-				.setLabelProvider(new AdapterFactoryLabelProvider.FontAndColorProvider(
-					adapterFactory, selectionViewer));
+			selectionViewer.setLabelProvider(new DecoratingColumLabelProvider(
+				new AdapterFactoryLabelProvider.FontAndColorProvider(
+					adapterFactory, selectionViewer), new DiagnosticDecorator(
+					editingDomain.getResourceSet(), selectionViewer)));
 			selectionViewer.setInput(editingDomain.getResourceSet());
 			selectionViewer.setSelection(new StructuredSelection(editingDomain
 				.getResourceSet().getResources().get(0)), true);
 
 			new AdapterFactoryTreeEditor(selectionViewer.getTree(),
 				adapterFactory);
+			new ColumnViewerInformationControlToolTipSupport(selectionViewer,
+				new DiagnosticDecorator.EditingDomainLocationListener(
+					editingDomain, selectionViewer));
 
 			createContextMenuFor(selectionViewer);
 			int pageIndex = addPage(tree);
@@ -1356,10 +1374,18 @@ public class UMLEditor
 						.setContentProvider(new AdapterFactoryContentProvider(
 							adapterFactory));
 					contentOutlineViewer
-						.setLabelProvider(new AdapterFactoryLabelProvider.FontAndColorProvider(
-							adapterFactory, contentOutlineViewer));
+						.setLabelProvider(new DecoratingColumLabelProvider(
+							new AdapterFactoryLabelProvider.FontAndColorProvider(
+								adapterFactory, contentOutlineViewer),
+							new DiagnosticDecorator(editingDomain
+								.getResourceSet(), contentOutlineViewer)));
 					contentOutlineViewer.setInput(editingDomain
 						.getResourceSet());
+
+					new ColumnViewerInformationControlToolTipSupport(
+						contentOutlineViewer,
+						new DiagnosticDecorator.EditingDomainLocationListener(
+							editingDomain, contentOutlineViewer));
 
 					// Make sure our popups work.
 					//
@@ -1418,7 +1444,7 @@ public class UMLEditor
 	 */
 	public IPropertySheetPage getPropertySheetPageGen() {
 		PropertySheetPage propertySheetPage = new ExtendedPropertySheetPage(
-			editingDomain) {
+			editingDomain, ExtendedPropertySheetPage.Decoration.MANUAL) {
 
 			@Override
 			public void setSelectionToViewer(List<?> selection) {
