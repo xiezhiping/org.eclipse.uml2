@@ -283,7 +283,7 @@
            base-type="org.omg.uml"
            file-extensions="xmi"
            id="org.omg.uml_2_5"
-           name="%_UI_OMG_UML_2_4_1_content_type"
+           name="%_UI_OMG_UML_2_5_content_type"
            priority="normal">
         <describer
               class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">

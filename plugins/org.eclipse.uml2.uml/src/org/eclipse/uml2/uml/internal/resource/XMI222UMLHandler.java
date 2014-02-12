@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2012 CEA and others.
+ * Copyright (c) 2011, 2014 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
- *   Kenn Hussey (CEA) - 365027, 299527
+ *   Kenn Hussey (CEA) - 365027, 299527, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -125,33 +125,20 @@ public class XMI222UMLHandler
 					: uriLiteral.substring(index));
 			}
 		} else if (uriLiteral
-			.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_2_2_URI)) {
+			.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_2_2_URI)
+			|| uriLiteral
+				.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_2_2_URI)) {
 
 			int index = uriLiteral.indexOf('#');
 			if (index == -1) {
-				uriLiteral = UMLResource.STANDARD_L2_PROFILE_URI + "#_0"; //$NON-NLS-1$
+				uriLiteral = UMLResource.STANDARD_PROFILE_URI + "#_0"; //$NON-NLS-1$
 			} else {
 				String fragment = uriLiteral.substring(index);
 
 				if ("#_yzU58YinEdqtvbnfB2L_5w".equals(fragment)) { //$NON-NLS-1$
-					uriLiteral = UMLResource.STANDARD_L2_PROFILE_NS_URI + "#/";
+					uriLiteral = UMLResource.STANDARD_PROFILE_NS_URI + "#/";
 				} else {
-					uriLiteral = UMLResource.STANDARD_L2_PROFILE_URI + fragment;
-				}
-			}
-		} else if (uriLiteral
-			.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_2_2_URI)) {
-
-			int index = uriLiteral.indexOf('#');
-			if (index == -1) {
-				uriLiteral = UMLResource.STANDARD_L3_PROFILE_URI + "#_0"; //$NON-NLS-1$
-			} else {
-				String fragment = uriLiteral.substring(index);
-
-				if ("#_yzU58YinEdqtvbnfB2L_5w".equals(fragment)) { //$NON-NLS-1$
-					uriLiteral = UMLResource.STANDARD_L3_PROFILE_NS_URI + "#/";
-				} else {
-					uriLiteral = UMLResource.STANDARD_L3_PROFILE_URI + fragment;
+					uriLiteral = UMLResource.STANDARD_PROFILE_URI + fragment;
 				}
 			}
 		}
@@ -213,12 +200,10 @@ public class XMI222UMLHandler
 	@Override
 	protected EPackage getPackageForURI(String uriString) {
 
-		if (XMI2UMLResource.STANDARD_L2_PROFILE_2_2_NS_URI.equals(uriString)) {
-			uriString = UMLResource.STANDARD_L2_PROFILE_NS_URI;
-		} else if (XMI2UMLResource.STANDARD_L3_PROFILE_2_2_NS_URI
-			.equals(uriString)) {
+		if (XMI2UMLResource.STANDARD_L2_PROFILE_2_2_NS_URI.equals(uriString)
+			|| XMI2UMLResource.STANDARD_L3_PROFILE_2_2_NS_URI.equals(uriString)) {
 
-			uriString = UMLResource.STANDARD_L3_PROFILE_NS_URI;
+			uriString = UMLResource.STANDARD_PROFILE_NS_URI;
 		}
 
 		return super.getPackageForURI(uriString);

@@ -40,6 +40,9 @@ public class UML212UMLExtendedMetaData
 			uriMap = new HashMap<URI, URI>();
 		}
 
+		// Standard.profile.uml -> Standard.profile.uml
+		uriMap.put(URI.createURI(UML212UMLResource.STANDARD_PROFILE_URI).appendFragment("_yzU58YinEdqtvbnfB2L_5w"), URI.createURI(UMLResource.STANDARD_PROFILE_NS_URI).appendFragment("/"));
+
 		return uriMap;
 	}
 

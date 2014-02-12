@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2008, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 405374
+ *   Kenn Hussey (CEA) - 327039, 351774, 405374, 418466
  *
  */
 package org.eclipse.uml2.uml.resource;
@@ -255,40 +255,16 @@ public class UML212UMLResourceHandler
 			: null;
 	}
 
-	protected Profile getStandardL2Profile(Element element) {
-		return getProfile(element, UML212UMLResource.STANDARD_L2_PROFILE_URI);
-	}
-
-	protected Profile getStandardL3Profile(Element element) {
-		return getProfile(element, UML212UMLResource.STANDARD_L3_PROFILE_URI);
-	}
-
 	protected InternalEObject handleProxy(InternalEObject internalEObject) {
 
 		if (internalEObject != null && internalEObject.eIsProxy()) {
 			URI eProxyURI = internalEObject.eProxyURI();
 
-			Map<URI, URI> uriMap = UML22UMLExtendedMetaData.getURIMap();
+			Map<URI, URI> uriMap = UML212UMLExtendedMetaData.getURIMap();
 			URI uri = uriMap.get(eProxyURI);
 
 			if (uri != null) {
 				internalEObject.eSetProxyURI(uri);
-			} else {
-				uri = uriMap.get(
-					eProxyURI.trimFragment());
-				
-				if (uri != null) {
-					String eProxyURIFragment = eProxyURI.fragment();
-					String fragment = UML22UMLExtendedMetaData.getFragmentMap()
-							.get(eProxyURIFragment);
-
-						if (fragment != null) {
-							internalEObject.eSetProxyURI(uri.appendFragment(fragment));
-						}
-						else {
-							internalEObject.eSetProxyURI(uri.appendFragment(eProxyURIFragment));							
-						}
-				}
 			}
 		}
 
@@ -637,14 +613,6 @@ public class UML212UMLResourceHandler
 					defaultCase(profileApplication);
 				}
 
-				Profile standardL3Profile = getStandardL3Profile(package_);
-
-				if (package_.isProfileApplied(getStandardL2Profile(package_))
-					&& !package_.isProfileApplied(standardL3Profile)) {
-
-					package_.applyProfile(standardL3Profile);
-				}
-
 				Object nsURI = UMLUtil.getTaggedValue(package_,
 					UMLUtil.PROFILE__ECORE + NamedElement.SEPARATOR
 						+ UMLUtil.STEREOTYPE__E_PACKAGE,
@@ -779,6 +747,6 @@ public class UML212UMLResourceHandler
 			umlSwitch.doSwitch(resourceContents.get(i));
 		}
 		
-		((XMIResource)resource).setXMIVersion(xmiVersion);
+		((XMIResource) resource).setXMIVersion(xmiVersion);
 	}
 }

@@ -89,14 +89,6 @@ public interface UMLResource
 
 	String ECORE_PROFILE_URI = PROFILES_PATHMAP + "Ecore." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
 
-	String STANDARD_L2_PROFILE_NS_URI = "http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2"; //$NON-NLS-1$
-
-	String STANDARD_L2_PROFILE_URI = PROFILES_PATHMAP + "StandardL2." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
-
-	String STANDARD_L3_PROFILE_NS_URI = "http://www.eclipse.org/uml2/4.0.0/UML/Profile/L3"; //$NON-NLS-1$
-
-	String STANDARD_L3_PROFILE_URI = PROFILES_PATHMAP + "StandardL3." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
-
 	String STANDARD_PROFILE_NS_URI = "http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard"; //$NON-NLS-1$
 
 	String STANDARD_PROFILE_URI = PROFILES_PATHMAP + "Standard." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
@@ -111,7 +103,7 @@ public interface UMLResource
 
 	String UML_5_0_0_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_5_0_0"; //$NON-NLS-1$
 
-	String UML_CONTENT_TYPE_IDENTIFIER = UML_4_0_0_CONTENT_TYPE_IDENTIFIER;
+	String UML_CONTENT_TYPE_IDENTIFIER = UML_5_0_0_CONTENT_TYPE_IDENTIFIER;
 
 	String UML2_PROFILE_NS_URI = "http://www.eclipse.org/uml2/schemas/UML2/2"; //$NON-NLS-1$
 

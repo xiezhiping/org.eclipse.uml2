@@ -31,38 +31,43 @@ public class XMI2UMLExtendedMetaData
 		if (uriMap == null) {
 			uriMap = new HashMap<URI, URI>();
 
-			uriMap.put(URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_URI),
-				URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI));
-			uriMap.put(URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_URI),
-				URI.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
+			uriMap.put(URI.createURI(XMI2UMLResource.STANDARD_PROFILE_URI),
+				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+
+			uriMap.put(
+				URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_2_4_1_URI),
+				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+			uriMap.put(
+				URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_2_4_1_URI),
+				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
 
 			uriMap.put(
 				URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_2_4_URI),
-				URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI));
+				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
 			uriMap.put(
 				URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_2_4_URI),
-				URI.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
+				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
 
 			uriMap.put(
 				URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_2_2_URI),
-				URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI));
+				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
 			uriMap.put(
 				URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_2_2_URI),
-				URI.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
+				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
 
 			uriMap.put(
 				URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_2_1_1_URI),
-				URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI));
+				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
 			uriMap.put(
 				URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_2_1_1_URI),
-				URI.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
+				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
 
 			uriMap.put(
 				URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_2_1_URI),
-				URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI));
+				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
 			uriMap.put(
 				URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_2_1_URI),
-				URI.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
+				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
 		}
 
 		return uriMap;
@@ -80,11 +85,9 @@ public class XMI2UMLExtendedMetaData
 		}
 
 		String namespace = super.getNamespace(ePackage);
-		return UMLResource.STANDARD_L2_PROFILE_NS_URI.equals(namespace)
-			? XMI2UMLResource.STANDARD_L2_PROFILE_NS_URI
-			: (UMLResource.STANDARD_L3_PROFILE_NS_URI.equals(namespace)
-				? XMI2UMLResource.STANDARD_L3_PROFILE_NS_URI
-				: namespace);
+		return UMLResource.STANDARD_PROFILE_NS_URI.equals(namespace)
+			? XMI2UMLResource.STANDARD_PROFILE_NS_URI
+			: namespace;
 	}
 
 	@Override
@@ -97,8 +100,10 @@ public class XMI2UMLExtendedMetaData
 			|| XMI2UMLResource.UML_METAMODEL_2_1_1_NS_URI.equals(namespace)
 			|| XMI2UMLResource.UML_METAMODEL_2_1_NS_URI.equals(namespace)
 			? UMLPackage.eINSTANCE
-			: super.getPackage(XMI2UMLResource.STANDARD_L2_PROFILE_NS_URI
+			: super.getPackage(XMI2UMLResource.STANDARD_PROFILE_NS_URI
 				.equals(namespace)
+				|| XMI2UMLResource.STANDARD_L2_PROFILE_2_4_1_NS_URI
+					.equals(namespace)
 				|| XMI2UMLResource.STANDARD_L2_PROFILE_2_4_NS_URI
 					.equals(namespace)
 				|| XMI2UMLResource.STANDARD_L2_PROFILE_2_2_NS_URI
@@ -107,18 +112,18 @@ public class XMI2UMLExtendedMetaData
 					.equals(namespace)
 				|| XMI2UMLResource.STANDARD_L2_PROFILE_2_1_NS_URI
 					.equals(namespace)
-				? UMLResource.STANDARD_L2_PROFILE_NS_URI
-				: (XMI2UMLResource.STANDARD_L3_PROFILE_NS_URI.equals(namespace)
-					|| XMI2UMLResource.STANDARD_L3_PROFILE_2_4_NS_URI
-						.equals(namespace)
-					|| XMI2UMLResource.STANDARD_L3_PROFILE_2_2_NS_URI
-						.equals(namespace)
-					|| XMI2UMLResource.STANDARD_L3_PROFILE_2_1_1_NS_URI
-						.equals(namespace)
-					|| XMI2UMLResource.STANDARD_L3_PROFILE_2_1_NS_URI
-						.equals(namespace)
-					? UMLResource.STANDARD_L3_PROFILE_NS_URI
-					: namespace));
+				|| XMI2UMLResource.STANDARD_L3_PROFILE_2_4_1_NS_URI
+					.equals(namespace)
+				|| XMI2UMLResource.STANDARD_L3_PROFILE_2_4_NS_URI
+					.equals(namespace)
+				|| XMI2UMLResource.STANDARD_L3_PROFILE_2_2_NS_URI
+					.equals(namespace)
+				|| XMI2UMLResource.STANDARD_L3_PROFILE_2_1_1_NS_URI
+					.equals(namespace)
+				|| XMI2UMLResource.STANDARD_L3_PROFILE_2_1_NS_URI
+					.equals(namespace)
+				? UMLResource.STANDARD_PROFILE_NS_URI
+				: namespace);
 	}
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -22,21 +22,12 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xml.type.AnyType;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.UML22UMLExtendedMetaData;
-import org.eclipse.uml2.uml.resource.UML302UMLResource;
+import org.eclipse.uml2.uml.resource.UMLResource;
 
 public class UML22UMLHandler
 		extends UMLHandler {
-
-	protected static final String STANDARD_L3_PROFILE_NS_PREFIX = "l3"; //$NON-NLS-1$
-
-	protected static final String STANDARD_PROFILE_NS_PREFIX = "Standard"; //$NON-NLS-1$
-
-	protected static final String STEREOTYPE__BUILD_COMPONENT = "BuildComponent"; //$NON-NLS-1$
-
-	protected static final String STEREOTYPE__METAMODEL = "Metamodel"; //$NON-NLS-1$
-
-	protected static final String STEREOTYPE__SYSTEM_MODEL = "SystemModel"; //$NON-NLS-1$
 
 	public UML22UMLHandler(XMLResource xmiResource, XMLHelper helper,
 			Map<?, ?> options) {
@@ -80,25 +71,15 @@ public class UML22UMLHandler
 	}
 
 	@Override
-	protected EObject createObjectByType(String prefix, String name, boolean top) {
-		return super
-			.createObjectByType(
-				STANDARD_PROFILE_NS_PREFIX.equals(prefix)
-					&& (STEREOTYPE__BUILD_COMPONENT.equals(name)
-						|| STEREOTYPE__METAMODEL.equals(name) || STEREOTYPE__SYSTEM_MODEL
-							.equals(name))
-					? STANDARD_L3_PROFILE_NS_PREFIX
-					: prefix, name, top);
-	}
-
-	@Override
 	protected EFactory getFactoryForPrefix(String prefix) {
 
-		if (STANDARD_L3_PROFILE_NS_PREFIX.equals(prefix)) {
+		if ("Basic_0".equals(prefix) || "Intermediate_0".equals(prefix) //$NON-NLS-1$ //$NON-NLS-2$
+			|| "Complete_0".equals(prefix)) { //$NON-NLS-1$
+
 			EFactory factory = prefixesToFactories.get(prefix);
 
 			if (factory == null) {
-				EPackage ePackage = getPackageForURI(UML302UMLResource.STANDARD_L3_PROFILE_NS_URI);
+				EPackage ePackage = getPackageForURI(UMLResource.STANDARD_PROFILE_NS_URI);
 
 				if (ePackage != null) {
 					factory = ePackage.getEFactoryInstance();
@@ -110,6 +91,32 @@ public class UML22UMLHandler
 		}
 
 		return super.getFactoryForPrefix(prefix);
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	protected EObject createObjectFromFactory(EFactory factory, String typeName) {
+
+		if (typeName.startsWith("Basic__")) { //$NON-NLS-1$
+			typeName = typeName.substring(7);
+		} else if (typeName.startsWith("Intermediate__")) { //$NON-NLS-1$
+			typeName = typeName.substring(14);
+		} else if (typeName.startsWith("Complete__")) { //$NON-NLS-1$
+			typeName = typeName.substring(10);
+		}
+
+		return super.createObjectFromFactory(factory, typeName);
+	}
+
+	@Override
+	protected void setFeatureValue(EObject object, EStructuralFeature feature,
+			Object value, int position) {
+
+		if (feature == UMLPackage.Literals.OPERATION__TYPE) {
+			return;
+		}
+
+		super.setFeatureValue(object, feature, value, position);
 	}
 
 }

@@ -35,6 +35,7 @@ import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
 import org.eclipse.uml2.uml.resource.UML212UMLResource;
 import org.eclipse.uml2.uml.resource.UML22UMLResource;
 import org.eclipse.uml2.uml.resource.UML302UMLResource;
+import org.eclipse.uml2.uml.resource.UML402UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 import org.eclipse.uml2.uml.resources.ResourcesPlugin;
@@ -74,7 +75,8 @@ public class UMLResourcesUtil
 	private static final ContentHandler UML2_4_0_0_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
 		UMLResource.UML_4_0_0_CONTENT_TYPE_IDENTIFIER,
 		new String[]{UMLResource.FILE_EXTENSION},
-		RootXMLContentHandlerImpl.XMI_KIND, UML2_UML_PACKAGE_4_0_NS_URI, null);
+		RootXMLContentHandlerImpl.XMI_KIND,
+		UML402UMLResource.UML_METAMODEL_NS_URI, null);
 
 	private static final ContentHandler UML2_5_0_0_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
 		UMLResource.UML_5_0_0_CONTENT_TYPE_IDENTIFIER,
@@ -236,19 +238,21 @@ public class UMLResourcesUtil
 
 		packageRegistry.put(UML212UMLResource.UML_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
+
 		packageRegistry.put(UML302UMLResource.UML_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
 
-		packageRegistry.put(UML2_UML_PACKAGE_4_0_NS_URI, UMLPackage.eINSTANCE);
+		packageRegistry.put(UML402UMLResource.UML_METAMODEL_NS_URI,
+			UMLPackage.eINSTANCE);
 
 		packageRegistry.put(UMLPackage.eNS_URI, UMLPackage.eINSTANCE);
 
-		packageRegistry.put(UML302UMLResource.STANDARD_PROFILE_NS_URI,
+		packageRegistry.put(UML212UMLResource.STANDARD_PROFILE_NS_URI,
 			StandardPackage.eINSTANCE);
 
-		packageRegistry.put(UMLResource.STANDARD_L2_PROFILE_NS_URI,
+		packageRegistry.put(UML402UMLResource.STANDARD_L2_PROFILE_NS_URI,
 			StandardPackage.eINSTANCE);
-		packageRegistry.put(UMLResource.STANDARD_L3_PROFILE_NS_URI,
+		packageRegistry.put(UML402UMLResource.STANDARD_L3_PROFILE_NS_URI,
 			StandardPackage.eINSTANCE);
 
 		packageRegistry.put(StandardPackage.eNS_URI, StandardPackage.eINSTANCE);
@@ -418,18 +422,14 @@ public class UMLResourcesUtil
 	 */
 	public static Map<String, URI> initEPackageNsURIToProfileLocationMap(
 			Map<String, URI> ePackageNsURIToProfileLocationMap) {
-		ePackageNsURIToProfileLocationMap.put(
-			UMLResource.STANDARD_L2_PROFILE_NS_URI,
-			URI.createURI("pathmap://UML_PROFILES/Standard.profile.uml#_0")); //$NON-NLS-1$
-		ePackageNsURIToProfileLocationMap.put(
-			UMLResource.STANDARD_L3_PROFILE_NS_URI,
-			URI.createURI("pathmap://UML_PROFILES/Standard.profile.uml#_0")); //$NON-NLS-1$
-
 		ePackageNsURIToProfileLocationMap.put(StandardPackage.eNS_URI,
 			URI.createURI("pathmap://UML_PROFILES/Standard.profile.uml#_0")); //$NON-NLS-1$
 
 		ePackageNsURIToProfileLocationMap.put(UMLResource.ECORE_PROFILE_NS_URI,
 			URI.createURI("pathmap://UML_PROFILES/Ecore.profile.uml#_0")); //$NON-NLS-1$
+
+		ePackageNsURIToProfileLocationMap.put(UMLResource.UML2_PROFILE_NS_URI,
+			URI.createURI("pathmap://UML_PROFILES/UML2.profile.uml#_0")); //$NON-NLS-1$
 
 		return ePackageNsURIToProfileLocationMap;
 	}

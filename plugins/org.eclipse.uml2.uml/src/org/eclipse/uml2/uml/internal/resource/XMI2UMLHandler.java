@@ -71,52 +71,28 @@ public class XMI2UMLHandler
 	@Override
 	protected void handleProxy(InternalEObject proxy, String uriLiteral) {
 
-		if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_URI)
-			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_4_1_URI)
-			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_4_URI)) {
+		if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_URI)) {
 
 			int index = uriLiteral.indexOf('#');
 			uriLiteral = UMLResource.UML_METAMODEL_URI + (index == -1
 				? "#_0" //$NON-NLS-1$
 				: uriLiteral.substring(index));
-		} else if (uriLiteral
-			.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_URI)
-			|| uriLiteral
-				.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_2_4_URI)) {
+		} else if (uriLiteral.startsWith(XMI2UMLResource.STANDARD_PROFILE_URI)) {
 
 			int index = uriLiteral.indexOf('#');
 			if (index == -1) {
-				uriLiteral = UMLResource.STANDARD_L2_PROFILE_URI + "#_0"; //$NON-NLS-1$
+				uriLiteral = UMLResource.STANDARD_PROFILE_URI + "#_0"; //$NON-NLS-1$
 			} else {
 				String fragment = uriLiteral.substring(index);
 
 				if ("#_yzU58YinEdqtvbnfB2L_5w".equals(fragment)) { //$NON-NLS-1$
-					uriLiteral = UMLResource.STANDARD_L2_PROFILE_NS_URI;
+					uriLiteral = UMLResource.STANDARD_PROFILE_NS_URI;
 				} else {
-					uriLiteral = UMLResource.STANDARD_L2_PROFILE_URI + fragment;
+					uriLiteral = UMLResource.STANDARD_PROFILE_URI + fragment;
 				}
 			}
 		} else if (uriLiteral
-			.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_URI)
-			|| uriLiteral
-				.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_2_4_URI)) {
-
-			int index = uriLiteral.indexOf('#');
-			if (index == -1) {
-				uriLiteral = UMLResource.STANDARD_L3_PROFILE_URI + "#_0"; //$NON-NLS-1$
-			} else {
-				String fragment = uriLiteral.substring(index);
-
-				if ("#_yzU58YinEdqtvbnfB2L_5w".equals(fragment)) { //$NON-NLS-1$
-					uriLiteral = UMLResource.STANDARD_L3_PROFILE_NS_URI;
-				} else {
-					uriLiteral = UMLResource.STANDARD_L3_PROFILE_URI + fragment;
-				}
-			}
-		} else if (uriLiteral
-			.startsWith(XMI2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI)
-			|| uriLiteral
-				.startsWith(XMI2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_2_4_URI)) {
+			.startsWith(XMI2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI)) {
 
 			int index = uriLiteral.indexOf('#');
 			uriLiteral = UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI
@@ -132,9 +108,7 @@ public class XMI2UMLHandler
 	protected void processElement(String name, String prefix, String localName) {
 
 		if (EMOFExtendedMetaData.EXTENSION.equals(localName)
-			&& (XMI2UMLResource.XMI_NS_URI.equals(helper.getURI(prefix)) || XMI2UMLResource.XMI_2_4_1_NS_URI
-					.equals(helper.getURI(prefix)) || XMI2UMLResource.XMI_2_4_NS_URI
-				.equals(helper.getURI(prefix)))
+			&& (XMI2UMLResource.XMI_NS_URI.equals(helper.getURI(prefix)))
 			&& attribs != null
 			&& EcorePackage.eNS_URI.equals(attribs
 				.getValue(EMOFExtendedMetaData.XMI_EXTENDER_ATTRIBUTE))) {
@@ -173,8 +147,10 @@ public class XMI2UMLHandler
 	@Override
 	protected void setFeatureValue(EObject object, EStructuralFeature feature,
 			Object value, int position) {
-		
-		if (feature == UMLPackage.Literals.INSTANCE_SPECIFICATION__CLASSIFIER && object instanceof EnumerationLiteral) {
+
+		if (feature == UMLPackage.Literals.INSTANCE_SPECIFICATION__CLASSIFIER
+			&& object instanceof EnumerationLiteral) {
+
 			return;
 		}
 
@@ -197,9 +173,7 @@ public class XMI2UMLHandler
 						String uriLiteral = attribs.getValue(i);
 
 						if (uriLiteral
-							.startsWith(XMI2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI)
-							|| uriLiteral
-								.startsWith(XMI2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_2_4_URI)) {
+							.startsWith(XMI2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI)) {
 
 							int index = uriLiteral.indexOf('#');
 
@@ -213,11 +187,7 @@ public class XMI2UMLHandler
 										.getName());
 							}
 						} else if (uriLiteral
-							.startsWith(XMI2UMLResource.UML_METAMODEL_URI)
-							|| uriLiteral
-								.startsWith(XMI2UMLResource.UML_METAMODEL_2_4_1_URI)
-							|| uriLiteral
-								.startsWith(XMI2UMLResource.UML_METAMODEL_2_4_URI)) {
+							.startsWith(XMI2UMLResource.UML_METAMODEL_URI)) {
 
 							int index = uriLiteral.indexOf('#');
 
@@ -244,14 +214,8 @@ public class XMI2UMLHandler
 	@Override
 	protected EPackage getPackageForURI(String uriString) {
 
-		if (XMI2UMLResource.STANDARD_L2_PROFILE_NS_URI.equals(uriString)
-			|| XMI2UMLResource.STANDARD_L2_PROFILE_2_4_NS_URI.equals(uriString)) {
-
-			uriString = UMLResource.STANDARD_L2_PROFILE_NS_URI;
-		} else if (XMI2UMLResource.STANDARD_L3_PROFILE_NS_URI.equals(uriString)
-			|| XMI2UMLResource.STANDARD_L3_PROFILE_2_4_NS_URI.equals(uriString)) {
-
-			uriString = UMLResource.STANDARD_L3_PROFILE_NS_URI;
+		if (XMI2UMLResource.STANDARD_PROFILE_NS_URI.equals(uriString)) {
+			uriString = UMLResource.STANDARD_PROFILE_NS_URI;
 		}
 
 		return super.getPackageForURI(uriString);

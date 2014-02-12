@@ -137,9 +137,12 @@ import org.eclipse.uml2.uml.resource.UML22UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.UML22UMLResource;
 import org.eclipse.uml2.uml.resource.UML302UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.UML302UMLResource;
+import org.eclipse.uml2.uml.resource.UML402UMLExtendedMetaData;
+import org.eclipse.uml2.uml.resource.UML402UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.resource.XMI212UMLResource;
 import org.eclipse.uml2.uml.resource.XMI222UMLResource;
+import org.eclipse.uml2.uml.resource.XMI242UMLResource;
 import org.eclipse.uml2.uml.resource.XMI2UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 
@@ -12825,13 +12828,16 @@ public class UMLUtil
 				.getResourceFactoryRegistry().getContentTypeToFactoryMap();
 
 			contentTypeToFactoryMap.put(
-				UMLResource.UML_4_0_0_CONTENT_TYPE_IDENTIFIER,
-				UMLResource.Factory.INSTANCE);
+				UML402UMLResource.UML_4_0_0_CONTENT_TYPE_IDENTIFIER,
+				UML402UMLResource.Factory.INSTANCE);
 			contentTypeToFactoryMap.put(
 				UML302UMLResource.UML_3_0_0_CONTENT_TYPE_IDENTIFIER,
 				UML302UMLResource.Factory.INSTANCE);
 			contentTypeToFactoryMap.put(
 				UML212UMLResource.UML_2_1_0_CONTENT_TYPE_IDENTIFIER,
+				UML212UMLResource.Factory.INSTANCE);
+			contentTypeToFactoryMap.put(
+				UML212UMLResource.UML_2_0_0_CONTENT_TYPE_IDENTIFIER,
 				UML212UMLResource.Factory.INSTANCE);
 			contentTypeToFactoryMap.put(
 				UML22UMLResource.UML2_CONTENT_TYPE_IDENTIFIER,
@@ -12840,11 +12846,11 @@ public class UMLUtil
 				XMI2UMLResource.UML_CONTENT_TYPE_IDENTIFIER,
 				XMI2UMLResource.Factory.INSTANCE);
 			contentTypeToFactoryMap.put(
-				XMI2UMLResource.UML_2_4_1_CONTENT_TYPE_IDENTIFIER,
-				XMI2UMLResource.Factory.INSTANCE);
+				XMI242UMLResource.UML_2_4_1_CONTENT_TYPE_IDENTIFIER,
+				XMI242UMLResource.Factory.INSTANCE);
 			contentTypeToFactoryMap.put(
-				XMI2UMLResource.UML_2_4_CONTENT_TYPE_IDENTIFIER,
-				XMI2UMLResource.Factory.INSTANCE);
+				XMI242UMLResource.UML_2_4_CONTENT_TYPE_IDENTIFIER,
+				XMI242UMLResource.Factory.INSTANCE);
 			contentTypeToFactoryMap.put(
 				XMI222UMLResource.UML_2_2_CONTENT_TYPE_IDENTIFIER,
 				XMI222UMLResource.Factory.INSTANCE);
@@ -12866,6 +12872,7 @@ public class UMLUtil
 
 			Map<URI, URI> uriMap = resourceSet.getURIConverter().getURIMap();
 
+			uriMap.putAll(UML402UMLExtendedMetaData.getURIMap());
 			uriMap.putAll(UML302UMLExtendedMetaData.getURIMap());
 			uriMap.putAll(UML212UMLExtendedMetaData.getURIMap());
 			uriMap.putAll(UML22UMLExtendedMetaData.getURIMap());

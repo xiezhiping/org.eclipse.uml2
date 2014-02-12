@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2013 CEA and others.
+ * Copyright (c) 2011, 2014 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
- *   Kenn Hussey (CEA) - 351774, 405374
+ *   Kenn Hussey (CEA) - 351774, 405374, 418466
  *
  */
 package org.eclipse.uml2.uml.resource;
@@ -333,14 +333,6 @@ public class UML302UMLResourceHandler
 			: null;
 	}
 
-	protected Profile getStandardL2Profile(Element element) {
-		return getProfile(element, UML302UMLResource.STANDARD_L2_PROFILE_URI);
-	}
-
-	protected Profile getStandardL3Profile(Element element) {
-		return getProfile(element, UML302UMLResource.STANDARD_L3_PROFILE_URI);
-	}
-
 	@Override
 	public void preLoad(XMLResource resource, InputStream inputStream,
 			Map<?, ?> options) {
@@ -633,14 +625,6 @@ public class UML302UMLResourceHandler
 					.getProfileApplications()) {
 
 					defaultCase(profileApplication);
-				}
-
-				Profile standardL3Profile = getStandardL3Profile(package_);
-
-				if (package_.isProfileApplied(getStandardL2Profile(package_))
-					&& !package_.isProfileApplied(standardL3Profile)) {
-
-					package_.applyProfile(standardL3Profile);
 				}
 
 				Object nsURI = UMLUtil.getTaggedValue(package_,

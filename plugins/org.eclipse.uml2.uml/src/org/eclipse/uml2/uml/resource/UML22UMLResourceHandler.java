@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 399544
+ *   Kenn Hussey (CEA) - 327039, 351774, 399544, 418466
  * 
  */
 package org.eclipse.uml2.uml.resource;
@@ -428,14 +428,6 @@ public class UML22UMLResourceHandler
 			: null;
 	}
 
-	protected Profile getStandardL2Profile(Element element) {
-		return getProfile(element, UML22UMLResource.STANDARD_L2_PROFILE_URI);
-	}
-
-	protected Profile getStandardL3Profile(Element element) {
-		return getProfile(element, UML22UMLResource.STANDARD_L3_PROFILE_URI);
-	}
-
 	@Override
 	public void preLoad(XMLResource resource, InputStream inputStream,
 			Map<?, ?> options) {
@@ -448,6 +440,7 @@ public class UML22UMLResourceHandler
 		final EList<EObject> resourceContents = resource.getContents();
 
 		final List<EAnnotation> annotationsToRemove = new ArrayList<EAnnotation>();
+		final List<ProfileApplication> profileApplicationsToRemove = new ArrayList<ProfileApplication>();
 
 		final List<org.eclipse.uml2.uml.Package> packagesRequiringStereotypes = new ArrayList<org.eclipse.uml2.uml.Package>();
 
@@ -484,8 +477,8 @@ public class UML22UMLResourceHandler
 						"effect", true); //$NON-NLS-1$
 
 					if (value instanceof String) {
-						UMLUtil.setTaggedValue(action, getUML2Stereotype(
-							action, STEREOTYPE__ACTION),
+						UMLUtil.setTaggedValue(action,
+							getUML2Stereotype(action, STEREOTYPE__ACTION),
 							TAG_DEFINITION__EFFECT, value);
 					}
 				}
@@ -646,8 +639,9 @@ public class UML22UMLResourceHandler
 			@Override
 			public Object caseCallBehaviorAction(
 					CallBehaviorAction callBehaviorAction) {
-				EObject eObject = getEObject(getExtension(resource,
-					callBehaviorAction), resource, "function", true); //$NON-NLS-1$
+				EObject eObject = getEObject(
+					getExtension(resource, callBehaviorAction), resource,
+					"function", true); //$NON-NLS-1$
 
 				if (eObject instanceof FunctionBehavior) {
 					callBehaviorAction.setBehavior((FunctionBehavior) eObject);
@@ -672,8 +666,8 @@ public class UML22UMLResourceHandler
 						"bodyExpression", true); //$NON-NLS-1$
 
 					if (eObject instanceof StringExpression) {
-						UMLUtil.setTaggedValue(comment, getUML2Stereotype(
-							comment, STEREOTYPE__COMMENT),
+						UMLUtil.setTaggedValue(comment,
+							getUML2Stereotype(comment, STEREOTYPE__COMMENT),
 							TAG_DEFINITION__BODY_EXPRESSION, eObject);
 					}
 				}
@@ -687,8 +681,8 @@ public class UML22UMLResourceHandler
 
 				if (extension != null) {
 					getValue(extension.getAnyAttribute(), "kind", true);
-				}	
-				
+				}
+
 				return super.caseConnector(connector);
 			}
 
@@ -884,16 +878,18 @@ public class UML22UMLResourceHandler
 
 					if (eObject instanceof InputPin) {
 						InputPin inputValue = (InputPin) eObject;
-						
-						OpaqueAction argument = UMLFactory.eINSTANCE.createOpaqueAction();
+
+						OpaqueAction argument = UMLFactory.eINSTANCE
+							.createOpaqueAction();
 						argument.setName(inputValue.getName());
 						argument.getInputValues().add(inputValue);
-						
+
 						UMLUtil.setTaggedValue(
 							interactionUse,
 							getUML2Stereotype(interactionUse,
 								STEREOTYPE__INTERACTION_USE),
-							TAG_DEFINITION__ARGUMENT, Collections.singletonList(argument));
+							TAG_DEFINITION__ARGUMENT, Collections
+								.singletonList(argument));
 					}
 				}
 
@@ -1073,9 +1069,10 @@ public class UML22UMLResourceHandler
 				AnyType extension = getExtension(resource, namedElement);
 
 				if (extension != null) {
-					getValue(extension.getAnyAttribute(), "clientDependency", true);
-				}	
-				
+					getValue(extension.getAnyAttribute(), "clientDependency",
+						true);
+				}
+
 				return super.caseNamedElement(namedElement);
 			}
 
@@ -1111,8 +1108,9 @@ public class UML22UMLResourceHandler
 						Duration duration = (Duration) eObject;
 
 						ValuePin inputValue = (ValuePin) opaqueAction
-							.createInputValue(duration.getName(), duration
-								.getType(), UMLPackage.Literals.VALUE_PIN);
+							.createInputValue(duration.getName(),
+								duration.getType(),
+								UMLPackage.Literals.VALUE_PIN);
 
 						inputValue.setValue(duration);
 					}
@@ -1200,14 +1198,6 @@ public class UML22UMLResourceHandler
 					.getProfileApplications()) {
 
 					defaultCase(profileApplication);
-				}
-
-				Profile standardL3Profile = getStandardL3Profile(package_);
-
-				if (package_.isProfileApplied(getStandardL2Profile(package_))
-					&& !package_.isProfileApplied(standardL3Profile)) {
-
-					package_.applyProfile(standardL3Profile);
 				}
 
 				Object nsURI = UMLUtil.getTaggedValue(package_,
@@ -1311,6 +1301,8 @@ public class UML22UMLResourceHandler
 								.getEAnnotation(UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI);
 
 							if (eAnnotation != null) {
+								EList<EObject> references = attributesAnnotation
+									.getReferences();
 								EList<EObject> contents = eAnnotation
 									.getContents();
 
@@ -1325,9 +1317,17 @@ public class UML22UMLResourceHandler
 												.getValidJavaIdentifier(profileName)
 												+ '_' + version)) {
 
-										attributesAnnotation.getReferences()
-											.add(0, ePackage);
+										references.add(0, ePackage);
 										break;
+									}
+								}
+
+								if (references.isEmpty()) {
+									EPackage definition = appliedProfile
+										.getDefinition();
+
+									if (definition != null) {
+										references.add(definition);
 									}
 								}
 							}
@@ -1341,6 +1341,13 @@ public class UML22UMLResourceHandler
 
 								packagesRequiringStereotypes
 									.add(applyingPackage);
+							}
+
+							if (applyingPackage
+								.getProfileApplication(appliedProfile) != profileApplication) {
+
+								profileApplicationsToRemove
+									.add(profileApplication);
 							}
 						}
 					}
@@ -1515,7 +1522,7 @@ public class UML22UMLResourceHandler
 							+ name.substring(5));
 					}
 				}
-				
+
 				AnyType extension = getExtension(resource, property);
 
 				if (extension != null) {
@@ -1523,8 +1530,10 @@ public class UML22UMLResourceHandler
 					EObject ownedTemplateSignature = getEObject(extension,
 						resource, "ownedTemplateSignature", true); //$NON-NLS-1$
 
-					UMLUtil.setTaggedValue(property, getUML2Stereotype(
-						property, STEREOTYPE__TEMPLATEABLE_ELEMENT),
+					UMLUtil.setTaggedValue(
+						property,
+						getUML2Stereotype(property,
+							STEREOTYPE__TEMPLATEABLE_ELEMENT),
 						TAG_DEFINITION__OWNED_TEMPLATE_SIGNATURE,
 						ownedTemplateSignature);
 
@@ -1532,8 +1541,10 @@ public class UML22UMLResourceHandler
 						extension, resource, "templateBinding", true); //$NON-NLS-1$
 
 					if (!templateBindings.isEmpty()) {
-						UMLUtil.setTaggedValue(property, getUML2Stereotype(
-							property, STEREOTYPE__TEMPLATEABLE_ELEMENT),
+						UMLUtil.setTaggedValue(
+							property,
+							getUML2Stereotype(property,
+								STEREOTYPE__TEMPLATEABLE_ELEMENT),
 							TAG_DEFINITION__TEMPLATE_BINDING, templateBindings);
 					}
 				}
@@ -1549,7 +1560,6 @@ public class UML22UMLResourceHandler
 
 				return super.caseProperty(property);
 			}
-					
 
 			@Override
 			public Object caseRealization(Realization realization) {
@@ -1791,28 +1801,30 @@ public class UML22UMLResourceHandler
 									"when", true); //$NON-NLS-1$
 
 								if (eObject instanceof ValueSpecification) {
-									
+
 									event = (TimeEvent) trigger
 										.getNearestPackage()
 										.createPackagedElement(
 											trigger.getName(),
 											UMLPackage.Literals.TIME_EVENT);
-																		
-									Object value = getValue(extension
-										.getAnyAttribute(), "isRelative", true); //$NON-NLS-1$
+
+									Object value = getValue(
+										extension.getAnyAttribute(),
+										"isRelative", true); //$NON-NLS-1$
 
 									if (value instanceof String) {
 										((TimeEvent) event)
 											.setIsRelative(Boolean.valueOf(
 												(String) value).booleanValue());
 									}
-									
+
 									if (eObject instanceof TimeExpression) {
 										((TimeEvent) event)
 											.setWhen((TimeExpression) eObject);
-										
+
 									} else {
-										UMLUtil.setTaggedValue(event,
+										UMLUtil.setTaggedValue(
+											event,
 											getUML2Stereotype(event,
 												STEREOTYPE__TIME_EVENT),
 											TAG_DEFINITION__WHEN,
@@ -1834,7 +1846,7 @@ public class UML22UMLResourceHandler
 
 				return super.caseTrigger(trigger);
 			}
-			
+
 			@Override
 			public Object caseClassifierTemplateParameter(
 					ClassifierTemplateParameter classifierTemplateParameter) {
@@ -1852,7 +1864,8 @@ public class UML22UMLResourceHandler
 							.setDefault((ParameterableElement) value);
 
 					} else {
-						UMLUtil.setTaggedValue(classifierTemplateParameter,
+						UMLUtil.setTaggedValue(
+							classifierTemplateParameter,
 							getUML2Stereotype(classifierTemplateParameter,
 								STEREOTYPE__CLASSIFIER_TEMPLATE_PARAMETER),
 							TAG_DEFINITION__DEFAULT_CLASSIFER, value);
@@ -1931,11 +1944,16 @@ public class UML22UMLResourceHandler
 			eAnnotation.setEModelElement(null);
 		}
 
+		for (ProfileApplication profileApplication : profileApplicationsToRemove) {
+			profileApplication.getApplyingPackage().getProfileApplications()
+				.remove(profileApplication);
+		}
+
 		for (org.eclipse.uml2.uml.Package package_ : packagesRequiringStereotypes) {
 			ElementOperations.applyAllRequiredStereotypes(package_);
 		}
-		
-		((XMIResource)resource).setXMIVersion(xmiVersion);
+
+		((XMIResource) resource).setXMIVersion(xmiVersion);
 	}
 
 }

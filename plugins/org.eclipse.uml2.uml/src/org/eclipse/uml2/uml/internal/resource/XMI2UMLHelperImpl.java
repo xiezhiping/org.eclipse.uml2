@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -30,13 +30,14 @@ public class XMI2UMLHelperImpl
 		String href = super.getHREF(obj);
 
 		if (href.startsWith(UMLResource.UML_METAMODEL_URI)) {
-			href = XMI2UMLResource.UML_METAMODEL_URI + href.substring(href.indexOf('#'));
+			href = XMI2UMLResource.UML_METAMODEL_URI
+				+ href.substring(href.indexOf('#'));
 		} else if (href.startsWith(UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI)) {
-			href = XMI2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI + href.substring(href.indexOf('#'));
-		} else if (href.startsWith(UMLResource.STANDARD_L2_PROFILE_URI)) {
-			href = XMI2UMLResource.STANDARD_L2_PROFILE_URI + href.substring(href.indexOf('#'));
-		} else if (href.startsWith(UMLResource.STANDARD_L3_PROFILE_URI)) {
-			href = XMI2UMLResource.STANDARD_L3_PROFILE_URI + href.substring(href.indexOf('#'));
+			href = XMI2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI
+				+ href.substring(href.indexOf('#'));
+		} else if (href.startsWith(UMLResource.STANDARD_PROFILE_URI)) {
+			href = XMI2UMLResource.STANDARD_PROFILE_URI
+				+ href.substring(href.indexOf('#'));
 		}
 
 		return href;
