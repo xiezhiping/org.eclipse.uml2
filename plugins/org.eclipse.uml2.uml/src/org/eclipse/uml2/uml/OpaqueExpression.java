@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Opaque Expression</b></em>'.
+ * @extends BodyOwner
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
@@ -44,7 +45,7 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface OpaqueExpression
-		extends ValueSpecification {
+		extends ValueSpecification, BodyOwner {
 
 	/**
 	 * Returns the value of the '<em><b>Body</b></em>' attribute list.

@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Opaque Behavior</b></em>'.
+ * @extends BodyOwner
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
@@ -38,7 +39,7 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface OpaqueBehavior
-		extends Behavior {
+		extends Behavior, BodyOwner {
 
 	/**
 	 * Returns the value of the '<em><b>Body</b></em>' attribute list.

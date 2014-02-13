@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833, 424568, 427167, 418466
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833, 424568, 427167, 418466, 419324
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833, 420338, 405065
  *   E.D.Willink - 420338
@@ -7292,6 +7292,8 @@ public class UMLUtil
 				if (OPTION__PROCESS.equals(options
 					.get(OPTION__OPERATION_BODIES))) {
 
+					String body = bodies.get(i);
+
 					if (diagnostics != null) {
 						diagnostics
 							.add(new BasicDiagnostic(
@@ -7309,21 +7311,25 @@ public class UMLUtil
 
 					String source = UML2_GEN_MODEL_PACKAGE_1_1_NS_URI;
 
-					if (LANGUAGE__OCL.equals(language)
-						&& OPTION__PROCESS.equals(options
-							.get(OPTION__INVOCATION_DELEGATES))) {
-						addInvocationDelegate(
-							(EPackage) getContainingEObject(eOperation,
-								EcorePackage.Literals.EPACKAGE, true),
-							OCL_DELEGATE_URI);
+					if (LANGUAGE__OCL.equals(language)) {
+						body = getOCLBody(body);
 
-						source = OCL_DELEGATE_URI;
+						if (OPTION__PROCESS.equals(options
+							.get(OPTION__INVOCATION_DELEGATES))) {
+
+							addInvocationDelegate(
+								(EPackage) getContainingEObject(eOperation,
+									EcorePackage.Literals.EPACKAGE, true),
+								OCL_DELEGATE_URI);
+
+							source = OCL_DELEGATE_URI;
+						}
 					} else if (LANGUAGE__JAVA.equals(language)) {
 						source = EMF_GEN_MODEL_PACKAGE_NS_URI;
 					}
 
 					EcoreUtil.setAnnotation(eOperation, source,
-						ANNOTATION_DETAIL__BODY, bodies.get(i));
+						ANNOTATION_DETAIL__BODY, body);
 				} else if (OPTION__REPORT.equals(options
 					.get(OPTION__OPERATION_BODIES)) && diagnostics != null) {
 
@@ -10751,9 +10757,9 @@ public class UMLUtil
 
 	protected static final String UML2_GEN_MODEL_PACKAGE_1_1_NS_URI = "http://www.eclipse.org/uml2/1.1.0/GenModel"; //$NON-NLS-1$
 
-	protected static final String LANGUAGE__JAVA = "Java"; //$NON-NLS-1$
+	public static final String LANGUAGE__JAVA = "Java"; //$NON-NLS-1$
 
-	protected static final String LANGUAGE__OCL = "OCL"; //$NON-NLS-1$
+	public static final String LANGUAGE__OCL = "OCL"; //$NON-NLS-1$
 
 	public static final String UML2_UML_PACKAGE_2_0_NS_URI = "http://www.eclipse.org/uml2/2.0.0/UML"; //$NON-NLS-1$
 
@@ -13010,4 +13016,34 @@ public class UMLUtil
 
 		return false;
 	}
+
+	/**
+	 * Retrieves an OCL compliant version of the specified UML body expression.
+	 * 
+	 * @param body
+	 *            A UML body expression.
+	 * @return An OCL compliant body expression.
+	 * 
+	 * @since 5.0
+	 */
+	public static String getOCLBody(String body) {
+		String oclBody = body.trim();
+
+		if (oclBody.startsWith("result")) { //$NON-NLS-1$
+			oclBody = oclBody.substring(6).trim();
+
+			if (oclBody.startsWith("=")) { //$NON-NLS-1$
+				oclBody = oclBody.substring(1).trim();
+
+				if (oclBody.startsWith("(") && oclBody.endsWith(")")) { //$NON-NLS-1$ //$NON-NLS-2$
+					oclBody = oclBody.substring(1, oclBody.length() - 1).trim();
+				}
+
+				return oclBody;
+			}
+		}
+
+		return body;
+	}
+
 }

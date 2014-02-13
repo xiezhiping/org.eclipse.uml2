@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EClass;
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Opaque Action</b></em>'.
+ * @extends BodyOwner
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
@@ -44,7 +45,7 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public interface OpaqueAction
-		extends Action {
+		extends Action, BodyOwner {
 
 	/**
 	 * Returns the value of the '<em><b>Body</b></em>' attribute list.
