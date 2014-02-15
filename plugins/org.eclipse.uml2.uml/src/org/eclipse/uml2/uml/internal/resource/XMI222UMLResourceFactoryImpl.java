@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - initial API and implementation
  *   Kenn Hussey (CEA) - 364419
  *
  */
@@ -15,6 +15,7 @@ package org.eclipse.uml2.uml.internal.resource;
 import java.util.Map;
 
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
 import org.eclipse.uml2.uml.resource.CMOF2UMLResourceHandler;
 import org.eclipse.uml2.uml.resource.UML302UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.UML302UMLResource;
@@ -81,6 +82,8 @@ public class XMI222UMLResourceFactoryImpl
 		ePackageRegistry.put(Ecore2XMLPackage.eNS_URI,
 			Ecore2XMLPackage.eINSTANCE);
 		ePackageRegistry.put(XMI2UMLResource.UML_METAMODEL_2_2_NS_URI,
+			UMLPackage.eINSTANCE);
+		ePackageRegistry.put(CMOF2UMLResource.CMOF_2_0_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
 
 		ePackageRegistry

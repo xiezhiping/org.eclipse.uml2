@@ -28,6 +28,7 @@ import org.eclipse.emf.mapping.ecore2xml.Ecore2XMLRegistry;
 import org.eclipse.emf.mapping.ecore2xml.impl.Ecore2XMLRegistryImpl;
 import org.eclipse.emf.mapping.ecore2xml.util.Ecore2XMLResource;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
 import org.eclipse.uml2.uml.resource.CMOF2UMLResourceHandler;
 import org.eclipse.uml2.uml.resource.UML212UMLResourceHandler;
 import org.eclipse.uml2.uml.resource.UML212UMLExtendedMetaData;
@@ -82,6 +83,8 @@ public class XMI212UMLResourceFactoryImpl
 		ePackageRegistry.put(XMI2UMLResource.UML_METAMODEL_2_1_NS_URI,
 			UMLPackage.eINSTANCE);
 		ePackageRegistry.put(XMI2UMLResource.UML_METAMODEL_2_1_1_NS_URI,
+			UMLPackage.eINSTANCE);
+		ePackageRegistry.put(CMOF2UMLResource.CMOF_2_0_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
 
 		ePackageRegistry
