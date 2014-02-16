@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   Christian W. Damus (CEA) - Initial API and implementation
+ *   Christian W. Damus (CEA) - initial API and implementation
  *
  */
 package org.eclipse.uml2.examples.gettingstarted;

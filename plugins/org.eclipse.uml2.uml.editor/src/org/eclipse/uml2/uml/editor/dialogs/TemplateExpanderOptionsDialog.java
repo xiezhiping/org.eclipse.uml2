@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   CEA - initial API and implementation
+ *   Christian W. Damus (CEA) - initial API and implementation
  *   Christian W. Damus (CEA) - 180744
  *
  */

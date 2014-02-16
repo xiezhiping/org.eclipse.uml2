@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - initial API and implementation
  *   Kenn Hussey (CEA) - 375553, 397140, 403365, 212765, 418466
  *
  */
