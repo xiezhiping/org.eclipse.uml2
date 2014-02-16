@@ -1,13 +1,12 @@
 /*
- * Copyright (c) 2007, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2014 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   Kenn Hussey (IBM Corporation, Embarcadero Technologies) - initial API and implementation
- *   Kenn Hussey (CEA) - 351774, 364419, 418466
+ *   Kenn Hussey (CEA) - initial API and implementation
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -28,28 +27,29 @@ import org.eclipse.emf.mapping.ecore2xml.Ecore2XMLRegistry;
 import org.eclipse.emf.mapping.ecore2xml.impl.Ecore2XMLRegistryImpl;
 import org.eclipse.emf.mapping.ecore2xml.util.Ecore2XMLResource;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.resource.CMOF242UMLResource;
 import org.eclipse.uml2.uml.resource.CMOF2UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
 import org.eclipse.uml2.uml.resource.CMOF2UMLResourceHandler;
 
-public class CMOF2UMLResourceFactoryImpl
+public class CMOF242UMLResourceFactoryImpl
 		extends UMLResourceFactoryImpl
-		implements CMOF2UMLResource.Factory {
+		implements CMOF242UMLResource.Factory {
 
-	public CMOF2UMLResourceFactoryImpl() {
+	public CMOF242UMLResourceFactoryImpl() {
 		super();
 	}
 
 	@Override
 	public Resource createResourceGen(URI uri) {
-		CMOF2UMLResource result = new CMOF2UMLResourceImpl(uri);
+		CMOF242UMLResource result = new CMOF242UMLResourceImpl(uri);
 		result.setEncoding(CMOF2UMLResource.DEFAULT_ENCODING);
 		return result;
 	}
 
 	@Override
 	public Resource createResource(URI uri) {
-		CMOF2UMLResource resource = (CMOF2UMLResource) super
+		CMOF242UMLResource resource = (CMOF242UMLResource) super
 			.createResource(uri);
 
 		Map<Object, Object> defaultLoadOptions = resource
@@ -60,7 +60,9 @@ public class CMOF2UMLResourceFactoryImpl
 
 		ePackageRegistry.put(Ecore2XMLPackage.eNS_URI,
 			Ecore2XMLPackage.eINSTANCE);
-		ePackageRegistry.put(CMOF2UMLResource.CMOF_METAMODEL_NS_URI,
+		ePackageRegistry.put(CMOF2UMLResource.CMOF_2_4_1_METAMODEL_NS_URI,
+			UMLPackage.eINSTANCE);
+		ePackageRegistry.put(CMOF2UMLResource.CMOF_2_4_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
 
 		ePackageRegistry
@@ -81,11 +83,21 @@ public class CMOF2UMLResourceFactoryImpl
 
 		ecore2xmlRegistry
 			.put(
-				CMOF2UMLResource.CMOF_METAMODEL_NS_URI,
+				CMOF2UMLResource.CMOF_2_4_1_METAMODEL_NS_URI,
 				EcoreUtil.getObjectByType(
 					resourceSet
 						.getResource(
-							URI.createURI("platform:/plugin/org.eclipse.uml2.uml/model/CMOF_2_UML.ecore2xml"), //$NON-NLS-1$
+							URI.createURI("platform:/plugin/org.eclipse.uml2.uml/model/CMOF241_2_UML.ecore2xml"), //$NON-NLS-1$
+							true).getContents(),
+					Ecore2XMLPackage.Literals.XML_MAP));
+
+		ecore2xmlRegistry
+			.put(
+				CMOF2UMLResource.CMOF_2_4_METAMODEL_NS_URI,
+				EcoreUtil.getObjectByType(
+					resourceSet
+						.getResource(
+							URI.createURI("platform:/plugin/org.eclipse.uml2.uml/model/CMOF24_2_UML.ecore2xml"), //$NON-NLS-1$
 							true).getContents(),
 					Ecore2XMLPackage.Literals.XML_MAP));
 

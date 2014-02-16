@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2007, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   Kenn Hussey (IBM Corporation, Embarcadero Technologies) - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 213903
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 418466
  * 
  */
 package org.eclipse.uml2.uml.resource;
@@ -27,7 +27,9 @@ import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.BasicResourceHandler;
 import org.eclipse.emf.ecore.xml.type.AnyType;
@@ -37,13 +39,17 @@ import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.Profile;
+import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
 public class CMOF2UMLResourceHandler
 		extends BasicResourceHandler {
+
+	protected boolean resolveProxies = true;
 
 	protected static final boolean DEBUG = false;
 
@@ -106,7 +112,13 @@ public class CMOF2UMLResourceHandler
 				value = getValue(extension.getMixed(), name, remove);
 
 				if (value instanceof EObject) {
-					return (EObject) value;
+					EObject eObject = (EObject) value;
+
+					if (eObject.eIsProxy() && resolveProxies) {
+						eObject = EcoreUtil.resolve(eObject, resource);
+					}
+
+					return eObject;
 				}
 			} else if (value instanceof String && resource != null) {
 				return resource.getEObject((String) value);
@@ -156,7 +168,13 @@ public class CMOF2UMLResourceHandler
 				for (Object value : values) {
 
 					if (value instanceof EObject) {
-						eObjects.add((EObject) value);
+						EObject eObject = (EObject) value;
+
+						if (eObject.eIsProxy() && resolveProxies) {
+							eObject = EcoreUtil.resolve(eObject, resource);
+						}
+
+						eObjects.add(eObject);
 					}
 				}
 			} else if (resource != null) {
@@ -212,7 +230,7 @@ public class CMOF2UMLResourceHandler
 	@Override
 	public void postLoad(XMLResource resource, InputStream inputStream,
 			Map<?, ?> options) {
-		
+
 		if (delegate != null) {
 			delegate.postLoad(resource, inputStream, options);
 		}
@@ -220,6 +238,46 @@ public class CMOF2UMLResourceHandler
 		EList<EObject> resourceContents = resource.getContents();
 
 		List<AnyType> tagsToRemove = new ArrayList<AnyType>();
+
+		final List<ProfileApplication> profileApplicationsToRemove = new ArrayList<ProfileApplication>();
+
+		UMLSwitch<Object> umlSwitch = new UMLSwitch<Object>() {
+
+			@Override
+			public Object caseProfileApplication(
+					ProfileApplication profileApplication) {
+				Profile appliedProfile = profileApplication.getAppliedProfile();
+
+				if (appliedProfile != null) {
+					org.eclipse.uml2.uml.Package applyingPackage = profileApplication
+						.getApplyingPackage();
+
+					if (applyingPackage != null
+						&& applyingPackage
+							.getProfileApplication(appliedProfile) != profileApplication) {
+						profileApplicationsToRemove.add(profileApplication);
+					}
+				}
+
+				return super.caseProfileApplication(profileApplication);
+			}
+
+			@Override
+			public Object defaultCase(EObject eObject) {
+				Iterator<?> contents = resolveProxies
+					? eObject.eContents().iterator()
+					: ((InternalEList<?>) eObject.eContents()).basicIterator();
+
+				if (contents != null) {
+
+					while (contents.hasNext()) {
+						doSwitch((EObject) contents.next());
+					}
+				}
+
+				return eObject;
+			}
+		};
 
 		for (int i = 0; i < resourceContents.size(); i++) {
 			EObject content = resourceContents.get(i);
@@ -236,18 +294,21 @@ public class CMOF2UMLResourceHandler
 					.equals(name)) {
 
 					tagsToRemove.add(tag);
-				} else if (CMOF2UMLExtendedMetaData.XMI_TAG__XMI_NAME.equals(name)) {
+				} else if (CMOF2UMLExtendedMetaData.XMI_TAG__XMI_NAME
+					.equals(name)) {
+
 					EObject element = getEObject(tag, resource,
 						CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, false);
 
 					if (element instanceof org.eclipse.uml2.uml.Class
 						|| element instanceof Association) {
 
-						UMLUtil.setTaggedValue((Element) element,
+						UMLUtil.setTaggedValue(
+							(Element) element,
 							getEcoreStereotype(element,
 								UMLUtil.STEREOTYPE__E_CLASS),
-							UMLUtil.TAG_DEFINITION__XML_NAME, getValue(tag
-								.getAnyAttribute(),
+							UMLUtil.TAG_DEFINITION__XML_NAME,
+							getValue(tag.getAnyAttribute(),
 								CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE));
 
 					} else if (element instanceof Property) {
@@ -261,8 +322,8 @@ public class CMOF2UMLResourceHandler
 											.getType())
 										? UMLUtil.STEREOTYPE__E_ATTRIBUTE
 										: UMLUtil.STEREOTYPE__E_REFERENCE),
-								UMLUtil.TAG_DEFINITION__XML_NAME, getValue(tag
-									.getAnyAttribute(),
+								UMLUtil.TAG_DEFINITION__XML_NAME,
+								getValue(tag.getAnyAttribute(),
 									CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE));
 					}
 
@@ -279,8 +340,8 @@ public class CMOF2UMLResourceHandler
 
 					if (featureKindEnumeration != null
 						&& element instanceof Property
-						&& Boolean.getBoolean(String.valueOf(getValue(tag
-							.getAnyAttribute(),
+						&& Boolean.getBoolean(String.valueOf(getValue(
+							tag.getAnyAttribute(),
 							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE)))) {
 
 						UMLUtil
@@ -310,8 +371,8 @@ public class CMOF2UMLResourceHandler
 
 					if (featureKindEnumeration != null
 						&& element instanceof Property
-						&& Boolean.getBoolean(String.valueOf(getValue(tag
-							.getAnyAttribute(),
+						&& Boolean.getBoolean(String.valueOf(getValue(
+							tag.getAnyAttribute(),
 							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE)))) {
 
 						UMLUtil
@@ -401,12 +462,66 @@ public class CMOF2UMLResourceHandler
 					}
 
 					tagsToRemove.add(tag);
+				} else if (CMOF2UMLExtendedMetaData.XMI_TAG__CONTENT_TYPE
+					.equals(name)) {
+
+					EObject element = getEObject(tag, resource,
+						CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, false);
+
+					Enumeration contentKindEnumeration = (Enumeration) getEcoreProfile(
+						element)
+						.getOwnedType(UMLUtil.ENUMERATION__CONTENT_KIND);
+
+					if (contentKindEnumeration != null
+						&& element instanceof org.eclipse.uml2.uml.Class) {
+
+						String contentType = (String) getValue(
+							tag.getAnyAttribute(),
+							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE);
+
+						Object xmlContentKind = null;
+
+						if ("any".equals(contentType)) { //$NON-NLS-1$
+							xmlContentKind = contentKindEnumeration
+								.getOwnedLiteral(UMLUtil.ENUMERATION_LITERAL__UNSPECIFIED);
+						} else if ("complex".equals(contentType)) { //$NON-NLS-1$
+							xmlContentKind = contentKindEnumeration
+								.getOwnedLiteral(UMLUtil.ENUMERATION_LITERAL__ELEMENT_ONLY);
+						} else if ("empty".equals(contentType)) { //$NON-NLS-1$
+							xmlContentKind = contentKindEnumeration
+								.getOwnedLiteral(UMLUtil.ENUMERATION_LITERAL__EMPTY);
+						} else if ("mixed".equals(contentType)) { //$NON-NLS-1$
+							xmlContentKind = contentKindEnumeration
+								.getOwnedLiteral(UMLUtil.ENUMERATION_LITERAL__MIXED);
+						} else if ("simple".equals(contentType)) { //$NON-NLS-1$
+							xmlContentKind = contentKindEnumeration
+								.getOwnedLiteral(UMLUtil.ENUMERATION_LITERAL__SIMPLE);
+						}
+
+						if (xmlContentKind != null) {
+							UMLUtil.setTaggedValue(
+								(Element) element,
+								getEcoreStereotype(element,
+									UMLUtil.STEREOTYPE__E_CLASS),
+								UMLUtil.TAG_DEFINITION__XML_CONTENT_KIND,
+								xmlContentKind);
+						}
+					}
+
+					tagsToRemove.add(tag);
 				}
+			} else {
+				umlSwitch.doSwitch(content);
 			}
 		}
 
 		for (AnyType tag : tagsToRemove) {
 			resourceContents.remove(tag);
+		}
+
+		for (ProfileApplication profileApplication : profileApplicationsToRemove) {
+			profileApplication.getApplyingPackage().getProfileApplications()
+				.remove(profileApplication);
 		}
 	}
 

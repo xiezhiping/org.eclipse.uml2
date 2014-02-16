@@ -129,6 +129,7 @@ import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.resource.CMOF202UMLResource;
+import org.eclipse.uml2.uml.resource.CMOF242UMLResource;
 import org.eclipse.uml2.uml.resource.CMOF2UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
 import org.eclipse.uml2.uml.resource.UML212UMLExtendedMetaData;
@@ -10721,19 +10722,19 @@ public class UMLUtil
 
 	public static final String ENUMERATION_LITERAL__ELEMENT = "Element"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL__ELEMENT_ONLY = "ElementOnly"; //$NON-NLS-1$
+	public static final String ENUMERATION_LITERAL__ELEMENT_ONLY = "ElementOnly"; //$NON-NLS-1$
 
 	protected static final String ENUMERATION_LITERAL__ELEMENT_WILDCARD = "ElementWildcard"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL__EMPTY = "Empty"; //$NON-NLS-1$
+	public static final String ENUMERATION_LITERAL__EMPTY = "Empty"; //$NON-NLS-1$
 
 	protected static final String ENUMERATION_LITERAL__GROUP = "Group"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL__MIXED = "Mixed"; //$NON-NLS-1$
+	public static final String ENUMERATION_LITERAL__MIXED = "Mixed"; //$NON-NLS-1$
 
 	protected static final String ENUMERATION_LITERAL__NONE = "None"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL__SIMPLE = "Simple"; //$NON-NLS-1$
+	public static final String ENUMERATION_LITERAL__SIMPLE = "Simple"; //$NON-NLS-1$
 
 	protected static final String ENUMERATION_LITERAL__READ_ONLY = "ReadOnly"; //$NON-NLS-1$
 
@@ -10743,9 +10744,9 @@ public class UMLUtil
 
 	protected static final String ENUMERATION_LITERAL__READ_WRITE_UNSETTABLE = "ReadWriteUnsettable"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL__UNSPECIFIED = "Unspecified"; //$NON-NLS-1$
+	public static final String ENUMERATION_LITERAL__UNSPECIFIED = "Unspecified"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION__CONTENT_KIND = "ContentKind"; //$NON-NLS-1$
+	public static final String ENUMERATION__CONTENT_KIND = "ContentKind"; //$NON-NLS-1$
 
 	public static final String ENUMERATION__FEATURE_KIND = "FeatureKind"; //$NON-NLS-1$
 
@@ -12870,8 +12871,11 @@ public class UMLUtil
 				CMOF2UMLResource.CMOF_CONTENT_TYPE_IDENTIFIER,
 				CMOF2UMLResource.Factory.INSTANCE);
 			contentTypeToFactoryMap.put(
-				CMOF2UMLResource.CMOF_2_4_CONTENT_TYPE_IDENTIFIER,
-				CMOF2UMLResource.Factory.INSTANCE);
+				CMOF242UMLResource.CMOF_2_4_1_CONTENT_TYPE_IDENTIFIER,
+				CMOF242UMLResource.Factory.INSTANCE);
+			contentTypeToFactoryMap.put(
+				CMOF242UMLResource.CMOF_2_4_CONTENT_TYPE_IDENTIFIER,
+				CMOF242UMLResource.Factory.INSTANCE);
 			contentTypeToFactoryMap.put(
 				CMOF202UMLResource.CMOF_2_0_CONTENT_TYPE_IDENTIFIER,
 				CMOF202UMLResource.Factory.INSTANCE);

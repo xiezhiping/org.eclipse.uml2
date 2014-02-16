@@ -306,7 +306,7 @@
               class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
            <parameter
                  name="namespacePattern"
-                 value="(http://schema\.omg\.org/spec/MOF/2\.0/cmof.xml|http://www\.omg\.org/spec/MOF/(20100901|20110701)/cmof.xmi)" />
+                 value="(http://schema\.omg\.org/spec/MOF/2\.0/cmof.xml|http://www\.omg\.org/spec/MOF/(20100901|20110701|20131001)/cmof.xmi)" />
            <parameter
                  name="kind"
                  value="xmi" />
@@ -355,6 +355,22 @@
            <parameter
                  name="namespace"
                  value="http://www.omg.org/spec/MOF/20110701/cmof.xmi" />
+           <parameter
+                 name="kind"
+                 value="xmi" />
+        </describer>
+     </content-type>
+     <content-type
+           base-type="org.omg.mof.cmof"
+           file-extensions="cmof,xmi"
+           id="org.omg.mof.cmof_2_5"
+           name="%_UI_OMG_CMOF_2_5_content_type"
+           priority="normal">
+        <describer
+              class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
+           <parameter
+                 name="namespace"
+                 value="http://www.omg.org/spec/MOF/20131001/cmof.xmi" />
            <parameter
                  name="kind"
                  value="xmi" />

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 359983, 351774
+ *   Kenn Hussey (CEA) - 327039, 359983, 351774, 418466
  * 
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.impl.EPackageRegistryImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
 import org.eclipse.uml2.uml.resource.CMOF2UMLResourceHandler;
@@ -49,9 +48,9 @@ public class XMI2UMLResourceFactoryImpl
 		EPackage.Registry ePackageRegistry = new EPackageRegistryImpl(
 			EPackage.Registry.INSTANCE);
 
-		ePackageRegistry.put(CMOF2UMLResource.CMOF_METAMODEL_NS_URI,
+		ePackageRegistry.put(XMI2UMLResource.UML_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
-		ePackageRegistry.put(CMOF2UMLResource.CMOF_2_4_METAMODEL_NS_URI,
+		ePackageRegistry.put(CMOF2UMLResource.CMOF_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
 
 		ExtendedMetaData extendedMetaData = new XMI2UMLExtendedMetaData(

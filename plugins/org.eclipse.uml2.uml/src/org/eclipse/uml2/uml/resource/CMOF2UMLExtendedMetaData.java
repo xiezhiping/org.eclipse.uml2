@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2007, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   Kenn Hussey (IBM Corporation, Embarcadero Technologies) - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 213903
+ *   Kenn Hussey (CEA) - 418466
  *
- * $Id: CMOF2UMLExtendedMetaData.java,v 1.2 2008/03/06 04:30:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -57,6 +57,8 @@ public class CMOF2UMLExtendedMetaData
 	public static final String XMI_TAG__SCHEMA_TYPE = "org.omg.xmi.schemaType"; //$NON-NLS-1$
 
 	public static final String XMI_TAG__XMI_NAME = "org.omg.xmi.xmiName"; //$NON-NLS-1$
+
+	public static final String XMI_TAG__CONTENT_TYPE = "org.omg.xmi.contentType"; //$NON-NLS-1$
 
 	protected static Map<URI, URI> uriMap = null;
 

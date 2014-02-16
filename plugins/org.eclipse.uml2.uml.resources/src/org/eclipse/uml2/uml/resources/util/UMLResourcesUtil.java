@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   CEA - initial API and implementation
+ *   Kenn Hussey (CEA) - initial API and implementation
  *   Kenn Hussey (CEA) - 389542, 399544, 425846, 418466
  *   Mikael Barbero (Obeo) - 414572
  *   Christian W. Damus (CEA) - 414572, 401682
@@ -136,6 +136,12 @@ public class UMLResourcesUtil
 			CMOF2UMLResource.FILE_EXTENSION, XMI2UMLResource.FILE_EXTENSION},
 		RootXMLContentHandlerImpl.XMI_KIND,
 		CMOF2UMLResource.CMOF_2_4_1_METAMODEL_NS_URI, null);
+
+	private static final ContentHandler CMOF_2_5_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
+		CMOF2UMLResource.CMOF_2_5_CONTENT_TYPE_IDENTIFIER, new String[]{
+			CMOF2UMLResource.FILE_EXTENSION, XMI2UMLResource.FILE_EXTENSION},
+		RootXMLContentHandlerImpl.XMI_KIND,
+		CMOF2UMLResource.CMOF_2_5_METAMODEL_NS_URI, null);
 
 	/**
 	 * Adds registrations to EMF's and UML2's global registries that enable
@@ -365,6 +371,10 @@ public class UMLResourcesUtil
 
 		if (!contentHandlers.contains(OMG_2_1_CONTENT_HANDLER)) {
 			contentHandlers.add(OMG_2_1_CONTENT_HANDLER);
+		}
+
+		if (!contentHandlers.contains(CMOF_2_5_CONTENT_HANDLER)) {
+			contentHandlers.add(CMOF_2_5_CONTENT_HANDLER);
 		}
 
 		if (!contentHandlers.contains(CMOF_2_4_1_CONTENT_HANDLER)) {

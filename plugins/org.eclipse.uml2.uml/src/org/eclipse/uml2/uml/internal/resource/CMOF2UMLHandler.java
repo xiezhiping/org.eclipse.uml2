@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.EMOFExtendedMetaData;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
+import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 
 public class CMOF2UMLHandler
@@ -44,10 +45,7 @@ public class CMOF2UMLHandler
 	protected void processElement(String name, String prefix, String localName) {
 
 		if (EMOFExtendedMetaData.EXTENSION.equals(localName)
-			&& (XMI2UMLResource.XMI_NS_URI.equals(helper.getURI(prefix))
-				|| XMI2UMLResource.XMI_2_4_1_NS_URI.equals(helper
-					.getURI(prefix)) || XMI2UMLResource.XMI_2_4_NS_URI
-					.equals(helper.getURI(prefix)))
+			&& (XMI2UMLResource.XMI_NS_URI.equals(helper.getURI(prefix)))
 			&& attribs != null
 			&& UMLPackage.eNS_URI.equals(attribs
 				.getValue(EMOFExtendedMetaData.XMI_EXTENDER_ATTRIBUTE))) {
@@ -87,8 +85,7 @@ public class CMOF2UMLHandler
 	protected void handleProxy(InternalEObject proxy, String uriLiteral) {
 
 		if (uriLiteral
-			.startsWith(CMOF2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI) || uriLiteral
-			.startsWith(CMOF2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_2_4_URI)) {
+			.startsWith(CMOF2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI)) {
 
 			if (uriLiteral.endsWith(PRIMITIVE_TYPE_BOOLEAN)) {
 				uriLiteral = PRIMITIVE_TYPE_BOOLEAN_URI;
@@ -100,6 +97,12 @@ public class CMOF2UMLHandler
 				uriLiteral = PRIMITIVE_TYPE_STRING_URI;
 			} else if (uriLiteral.endsWith(PRIMITIVE_TYPE_UNLIMITED_NATURAL)) {
 				uriLiteral = PRIMITIVE_TYPE_UNLIMITED_NATURAL_URI;
+			} else {
+				int index = uriLiteral.indexOf('#');
+				uriLiteral = UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI
+					+ (index == -1
+						? "#_0" //$NON-NLS-1$
+						: uriLiteral.substring(index));
 			}
 		}
 

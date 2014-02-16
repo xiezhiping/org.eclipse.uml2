@@ -297,6 +297,59 @@ public class CMOF2UMLSaveImpl
 								.getIDREF(eObject));
 						doc.endEmptyElement();
 					}
+
+					if (eObject instanceof org.eclipse.uml2.uml.Class) {
+						Object xmlContentKind = UMLUtil.getTaggedValue(
+							(Classifier) eObject, UMLUtil.PROFILE__ECORE
+								+ NamedElement.SEPARATOR
+								+ UMLUtil.STEREOTYPE__E_CLASS,
+							UMLUtil.TAG_DEFINITION__XML_CONTENT_KIND);
+
+						if (xmlContentKind instanceof EnumerationLiteral) {
+							EnumerationLiteral enumerationLiteral = (EnumerationLiteral) xmlContentKind;
+							String enumerationLiteralName = enumerationLiteral
+								.getName();
+
+							doc.startElement(CMOF2UMLExtendedMetaData.CMOF_TAG);
+							doc.addAttribute(idAttributeName, "_" + index++); //$NON-NLS-1$
+							doc.addAttribute(
+								CMOF2UMLExtendedMetaData.CMOF_TAG_NAME,
+								CMOF2UMLExtendedMetaData.XMI_TAG__CONTENT_TYPE);
+
+							String contentType = null;
+
+							if (UMLUtil.ENUMERATION_LITERAL__ELEMENT_ONLY
+								.equals(enumerationLiteralName)) {
+
+								contentType = "complex"; //$NON-NLS-1$
+							} else if (UMLUtil.ENUMERATION_LITERAL__EMPTY
+								.equals(enumerationLiteralName)) {
+
+								contentType = "empty"; //$NON-NLS-1$
+							} else if (UMLUtil.ENUMERATION_LITERAL__MIXED
+								.equals(enumerationLiteralName)) {
+
+								contentType = "mixed"; //$NON-NLS-1$
+							} else if (UMLUtil.ENUMERATION_LITERAL__SIMPLE
+								.equals(enumerationLiteralName)) {
+
+								contentType = "simple"; //$NON-NLS-1$
+							} else if (UMLUtil.ENUMERATION_LITERAL__UNSPECIFIED
+								.equals(enumerationLiteralName)) {
+
+								contentType = "any"; //$NON-NLS-1$
+							}
+
+							doc.addAttribute(
+								CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE,
+								contentType);
+
+							doc.addAttribute(
+								CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT,
+								helper.getIDREF(eObject));
+							doc.endEmptyElement();
+						}
+					}
 				} else if (eObject instanceof PrimitiveType) {
 					String name = ((PrimitiveType) eObject).getName();
 
