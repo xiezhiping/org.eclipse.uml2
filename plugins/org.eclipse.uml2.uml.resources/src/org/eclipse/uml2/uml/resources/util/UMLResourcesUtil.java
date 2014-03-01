@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
- *   Kenn Hussey (CEA) - 389542, 399544, 425846, 418466
+ *   Kenn Hussey (CEA) - 389542, 399544, 425846, 418466, 429352
  *   Mikael Barbero (Obeo) - 414572
  *   Christian W. Damus (CEA) - 414572, 401682
  */
@@ -235,8 +235,8 @@ public class UMLResourcesUtil
 			EPackage.Registry packageRegistry) {
 		packageRegistry.put(EcorePackage.eNS_URI, EcorePackage.eINSTANCE);
 
-		packageRegistry
-			.put(UML2_TYPES_PACKAGE_4_0_NS_URI, UMLPackage.eINSTANCE);
+		packageRegistry.put(UML2_TYPES_PACKAGE_4_0_NS_URI,
+			TypesPackage.eINSTANCE);
 
 		packageRegistry.put(TypesPackage.eNS_URI, TypesPackage.eINSTANCE);
 
