@@ -20,6 +20,9 @@
     <packageImport xmi:id="_packageImport.0">
       <importedPackage xmi:type="uml:Model" href="Ecore.metamodel.uml#_0"/>
     </packageImport>
+    <packageImport xmi:id="_packageImport.1">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
     <packagedElement xmi:type="uml:Interface" xmi:id="ActivityContent" name="ActivityContent" visibility="private" isAbstract="true">
       <ownedOperation xmi:id="ActivityContent-containingActivity" name="containingActivity">
         <ownedParameter xmi:id="ActivityContent-containingActivity-containingActivity" name="containingActivity" type="Activity" direction="return" effect="read">

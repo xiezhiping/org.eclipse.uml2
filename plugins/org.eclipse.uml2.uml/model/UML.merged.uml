@@ -20,6 +20,9 @@
     <packageImport xmi:id="__as3cGvaEdq4DLWZOhbdEA">
       <importedPackage xmi:type="uml:Model" href="Ecore.uml#_SeWiQMX_EduPJbEsMYXjUQ"/>
     </packageImport>
+    <packageImport xmi:id="_WPl70C-TEeO5Ur9hrpFPZA">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
     <packagedElement xmi:type="uml:Interface" xmi:id="_9d3z0EzMEeO2z-YY6ENIIA" name="ActivityContent" isAbstract="true">
       <ownedOperation xmi:id="_HACtoEzNEeO2z-YY6ENIIA" name="containingActivity">
         <ownedParameter xmi:id="_M8qdEEzNEeO2z-YY6ENIIA" name="containingActivity" type="_eGtFwLLREeCsYvaJqFFivQ" direction="return" effect="read">
