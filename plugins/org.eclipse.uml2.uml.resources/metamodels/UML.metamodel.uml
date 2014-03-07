@@ -17695,17 +17695,14 @@ self.type.conformsTo(p.oclAsType(TypedElement).type)))</body>
   <Ecore:EOperation xmi:id="_3E_SQMb4EdyrC427ygySag" base_Operation="Parameter-unsetDefault" visibility="None"/>
   <Ecore:EOperation xmi:id="_hObjwMb6EdyrC427ygySag" base_Operation="Class-extension.1" operationName="getExtensions" visibility="None"/>
   <Ecore:EOperation xmi:id="_kCb8cMb6EdyrC427ygySag" base_Operation="ExtensionEnd-getLower" visibility="None"/>
-  <Ecore:EOperation xmi:id="_lz-ykMb6EdyrC427ygySag" visibility="None"/>
   <Ecore:EOperation xmi:id="_wTSDAMb6EdyrC427ygySag" base_Operation="RedefinableTemplateSignature-inheritedParameter.1" operationName="getInheritedParameters" visibility="None"/>
   <Ecore:EOperation xmi:id="_26LegMb6EdyrC427ygySag" base_Operation="OpaqueExpression-stringValue" visibility="None"/>
   <Ecore:EOperation xmi:id="_5WV-8Mb6EdyrC427ygySag" base_Operation="LiteralInteger-stringValue" visibility="None"/>
   <Ecore:EOperation xmi:id="_n89b0Mb7EdyrC427ygySag" base_Operation="LiteralBoolean-stringValue" visibility="None"/>
   <Ecore:EOperation xmi:id="_poGH8Mb7EdyrC427ygySag" base_Operation="MultiplicityElement-setLower" visibility="None"/>
   <Ecore:EOperation xmi:id="_q6DfEMb7EdyrC427ygySag" base_Operation="MultiplicityElement-setUpper" visibility="None"/>
-  <Ecore:EOperation xmi:id="_uRhxMMb7EdyrC427ygySag" visibility="None"/>
   <Ecore:EOperation xmi:id="_wtF0sMb7EdyrC427ygySag" base_Operation="Property-setIsComposite" visibility="None"/>
   <Ecore:EOperation xmi:id="_xr-e0Mb7EdyrC427ygySag" base_Operation="Property-setOpposite" visibility="None"/>
-  <Ecore:EOperation xmi:id="_1ce8AMb7EdyrC427ygySag" visibility="None"/>
   <Ecore:EOperation xmi:id="_ADORMMb8EdyrC427ygySag" base_Operation="Operation-lower.1" operationName="getLower" visibility="None"/>
   <Ecore:EOperation xmi:id="_Bqyr8Mb8EdyrC427ygySag" base_Operation="Operation-upper.1" operationName="getUpper" visibility="None"/>
   <Ecore:EOperation xmi:id="_M8TccMb8EdyrC427ygySag" base_Operation="InstanceValue-stringValue" visibility="None"/>
@@ -17727,7 +17724,6 @@ self.type.conformsTo(p.oclAsType(TypedElement).type)))</body>
   <Ecore:EAttribute xmi:id="_HIUmgLG1EeCDe8CO90iVKQ" isUnsettable="true" base_Property="OpaqueExpression-language"/>
   <Ecore:EAttribute xmi:id="_ez3OwLG1EeCDe8CO90iVKQ" isUnsettable="true" base_Property="Parameter-default"/>
   <Ecore:EAttribute xmi:id="_7MAJALG1EeCDe8CO90iVKQ" isUnsettable="true" base_Property="Parameter-effect"/>
-  <Ecore:EAttribute xmi:id="_Nqs48LG2EeCDe8CO90iVKQ" isUnsettable="true"/>
   <Ecore:EAttribute xmi:id="_gB_ZULG2EeCDe8CO90iVKQ" isUnsettable="true" base_Property="DeploymentSpecification-deploymentLocation"/>
   <Ecore:EAttribute xmi:id="_oqhVYLG2EeCDe8CO90iVKQ" isUnsettable="true" base_Property="DeploymentSpecification-executionLocation"/>
   <Ecore:EAttribute xmi:id="_15YjYLG2EeCDe8CO90iVKQ" isUnsettable="true" base_Property="Artifact-fileName"/>
@@ -17783,7 +17779,6 @@ self.type.conformsTo(p.oclAsType(TypedElement).type)))</body>
   <Ecore:EAttribute xmi:id="_oHuy0IPZEeOyLuI0bir0Bg" isTransient="true" isVolatile="true" isUnsettable="true" visibility="None" base_Property="Property-default"/>
   <Ecore:EOperation xmi:id="_64Y1cIPZEeOyLuI0bir0Bg" base_Operation="Property-isSetDefault" visibility="None"/>
   <Ecore:EOperation xmi:id="_GwdPoIPaEeOyLuI0bir0Bg" base_Operation="Property-unsetDefault" visibility="None"/>
-  <Ecore:EOperation xmi:id="_oiwrEIRfEeOrzvVsV3Q4sA" operationName="getQualifiedName"/>
   <Ecore:EOperation xmi:id="_6p4ogIRfEeOrzvVsV3Q4sA" base_Operation="NamedElement-clientDependency.1" operationName="getClientDependencies" visibility="None"/>
   <standard:Metamodel xmi:id="_blzWQIx_EeOumeDJYV0ScA" base_Model="_0"/>
   <standard:Metaclass xmi:id="_bmO0EIx_EeOumeDJYV0ScA" base_Class="ValueSpecificationAction"/>

@@ -17689,17 +17689,14 @@ self.type.conformsTo(p.oclAsType(TypedElement).type)))</body>
   <Ecore:EOperation xmi:id="_3E_SQMb4EdyrC427ygySag" base_Operation="_VQnXIGXCEdqEJs8umHJc9g" visibility="None"/>
   <Ecore:EOperation xmi:id="_hObjwMb6EdyrC427ygySag" base_Operation="_4xcu4FYKEdqrn7iZ0eqieg" operationName="getExtensions" visibility="None"/>
   <Ecore:EOperation xmi:id="_kCb8cMb6EdyrC427ygySag" base_Operation="_WLw30FYLEdqrn7iZ0eqieg" visibility="None"/>
-  <Ecore:EOperation xmi:id="_lz-ykMb6EdyrC427ygySag" visibility="None"/>
   <Ecore:EOperation xmi:id="_wTSDAMb6EdyrC427ygySag" base_Operation="_FvJUYFYLEdqrn7iZ0eqieg" operationName="getInheritedParameters" visibility="None"/>
   <Ecore:EOperation xmi:id="_26LegMb6EdyrC427ygySag" base_Operation="_qQchgGWKEdq-f4093SZhVA" visibility="None"/>
   <Ecore:EOperation xmi:id="_5WV-8Mb6EdyrC427ygySag" base_Operation="_e2SLUGWKEdq-f4093SZhVA" visibility="None"/>
   <Ecore:EOperation xmi:id="_n89b0Mb7EdyrC427ygySag" base_Operation="_aXS3gGWKEdq-f4093SZhVA" visibility="None"/>
   <Ecore:EOperation xmi:id="_poGH8Mb7EdyrC427ygySag" base_Operation="_qtCaIFYkEdqB6vblk3tuMA" visibility="None"/>
   <Ecore:EOperation xmi:id="_q6DfEMb7EdyrC427ygySag" base_Operation="_vlEgEFYkEdqB6vblk3tuMA" visibility="None"/>
-  <Ecore:EOperation xmi:id="_uRhxMMb7EdyrC427ygySag" visibility="None"/>
   <Ecore:EOperation xmi:id="_wtF0sMb7EdyrC427ygySag" base_Operation="_d8dDkFYkEdqB6vblk3tuMA" visibility="None"/>
   <Ecore:EOperation xmi:id="_xr-e0Mb7EdyrC427ygySag" base_Operation="_sJdfYFYlEdqB6vblk3tuMA" visibility="None"/>
-  <Ecore:EOperation xmi:id="_1ce8AMb7EdyrC427ygySag" visibility="None"/>
   <Ecore:EOperation xmi:id="_ADORMMb8EdyrC427ygySag" base_Operation="_ho5pgFYLEdqrn7iZ0eqieg" operationName="getLower" visibility="None"/>
   <Ecore:EOperation xmi:id="_Bqyr8Mb8EdyrC427ygySag" base_Operation="_ljsEEFYLEdqrn7iZ0eqieg" operationName="getUpper" visibility="None"/>
   <Ecore:EOperation xmi:id="_M8TccMb8EdyrC427ygySag" base_Operation="_QUJ-oWWKEdq-f4093SZhVA" visibility="None"/>
@@ -17721,7 +17718,6 @@ self.type.conformsTo(p.oclAsType(TypedElement).type)))</body>
   <Ecore:EAttribute xmi:id="_HIUmgLG1EeCDe8CO90iVKQ" isUnsettable="true" base_Property="_D0kWwLG1EeCDe8CO90iVKQ"/>
   <Ecore:EAttribute xmi:id="_ez3OwLG1EeCDe8CO90iVKQ" isUnsettable="true" base_Property="_ZSw9sLG1EeCDe8CO90iVKQ"/>
   <Ecore:EAttribute xmi:id="_7MAJALG1EeCDe8CO90iVKQ" isUnsettable="true" base_Property="_rkJDULG1EeCDe8CO90iVKQ"/>
-  <Ecore:EAttribute xmi:id="_Nqs48LG2EeCDe8CO90iVKQ" isUnsettable="true"/>
   <Ecore:EAttribute xmi:id="_gB_ZULG2EeCDe8CO90iVKQ" isUnsettable="true" base_Property="_at8FwLG2EeCDe8CO90iVKQ"/>
   <Ecore:EAttribute xmi:id="_oqhVYLG2EeCDe8CO90iVKQ" isUnsettable="true" base_Property="_lncl8LG2EeCDe8CO90iVKQ"/>
   <Ecore:EAttribute xmi:id="_15YjYLG2EeCDe8CO90iVKQ" isUnsettable="true" base_Property="_wvc1ILG2EeCDe8CO90iVKQ"/>
@@ -17777,6 +17773,5 @@ self.type.conformsTo(p.oclAsType(TypedElement).type)))</body>
   <Ecore:EAttribute xmi:id="_oHuy0IPZEeOyLuI0bir0Bg" isTransient="true" isVolatile="true" isUnsettable="true" visibility="None" base_Property="_L_JWELG2EeCDe8CO90iVKQ"/>
   <Ecore:EOperation xmi:id="_64Y1cIPZEeOyLuI0bir0Bg" base_Operation="_f-9wMGXCEdqEJs8umHJc9g" visibility="None"/>
   <Ecore:EOperation xmi:id="_GwdPoIPaEeOyLuI0bir0Bg" base_Operation="_kGtosGXCEdqEJs8umHJc9g" visibility="None"/>
-  <Ecore:EOperation xmi:id="_oiwrEIRfEeOrzvVsV3Q4sA" operationName="getQualifiedName"/>
   <Ecore:EOperation xmi:id="_6p4ogIRfEeOrzvVsV3Q4sA" base_Operation="_uR4xEIRfEeOrzvVsV3Q4sA" operationName="getClientDependencies" visibility="None"/>
 </xmi:XMI>
