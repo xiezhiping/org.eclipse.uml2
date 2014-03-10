@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="uml" nsURI="http://www.eclipse.org/uml2/5.0.0/UML" nsPrefix="uml">
+  <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <details key="originalName" value="UML"/>
+  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="ActivityContent" abstract="true" interface="true">
     <eOperations name="containingActivity" ordered="false" eType="#//Activity"/>
   </eClassifiers>
@@ -113,7 +116,11 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="getContext" ordered="false" eType="#//BehavioredClassifier"/>
+    <eOperations name="getContext" ordered="false" eType="#//BehavioredClassifier">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="context"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="behavioredClassifier" ordered="false" eType="#//BehavioredClassifier">
       <eParameters name="from" ordered="false" lowerBound="1" eType="#//Element"/>
     </eOperations>
@@ -179,8 +186,16 @@
       <eParameters name="returnType" ordered="false" eType="#//Type"/>
     </eOperations>
     <eOperations name="isMetaclass" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
-    <eOperations name="getExtensions" ordered="false" upperBound="-1" eType="#//Extension"/>
-    <eOperations name="getSuperClasses" ordered="false" upperBound="-1" eType="#//Class"/>
+    <eOperations name="getExtensions" ordered="false" upperBound="-1" eType="#//Extension">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="extension"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getSuperClasses" ordered="false" upperBound="-1" eType="#//Class">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="superClass"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedOperation" upperBound="-1"
         eType="#//Operation" containment="true" eOpposite="#//Operation/class">
       <eAnnotations source="subsets" references="#//Classifier/feature #//Namespace/ownedMember"/>
@@ -311,7 +326,11 @@
     <eOperations name="getUsedInterfaces" ordered="false" upperBound="-1" eType="#//Interface"/>
     <eOperations name="allFeatures" ordered="false" upperBound="-1" eType="#//Feature"/>
     <eOperations name="allParents" ordered="false" upperBound="-1" eType="#//Classifier"/>
-    <eOperations name="getGenerals" ordered="false" upperBound="-1" eType="#//Classifier"/>
+    <eOperations name="getGenerals" ordered="false" upperBound="-1" eType="#//Classifier">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="general"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="hasVisibilityOf" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean">
       <eParameters name="n" ordered="false" lowerBound="1" eType="#//NamedElement"/>
     </eOperations>
@@ -321,7 +340,11 @@
     <eOperations name="inheritableMembers" ordered="false" upperBound="-1" eType="#//NamedElement">
       <eParameters name="c" ordered="false" lowerBound="1" eType="#//Classifier"/>
     </eOperations>
-    <eOperations name="getInheritedMembers" ordered="false" upperBound="-1" eType="#//NamedElement"/>
+    <eOperations name="getInheritedMembers" ordered="false" upperBound="-1" eType="#//NamedElement">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="inheritedMember"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="maySpecializeType" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean">
       <eParameters name="c" ordered="false" lowerBound="1" eType="#//Classifier"/>
     </eOperations>
@@ -427,7 +450,11 @@
     </eOperations>
     <eOperations name="getImportedElements" ordered="false" upperBound="-1" eType="#//PackageableElement"/>
     <eOperations name="getImportedPackages" ordered="false" upperBound="-1" eType="#//Package"/>
-    <eOperations name="getOwnedMembers" ordered="false" upperBound="-1" eType="#//NamedElement"/>
+    <eOperations name="getOwnedMembers" ordered="false" upperBound="-1" eType="#//NamedElement">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="ownedMember"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="excludeCollisions" ordered="false" upperBound="-1" eType="#//PackageableElement">
       <eParameters name="imps" ordered="false" upperBound="-1" eType="#//PackageableElement"/>
     </eOperations>
@@ -437,7 +464,11 @@
     <eOperations name="importMembers" ordered="false" upperBound="-1" eType="#//PackageableElement">
       <eParameters name="imps" ordered="false" upperBound="-1" eType="#//PackageableElement"/>
     </eOperations>
-    <eOperations name="getImportedMembers" ordered="false" upperBound="-1" eType="#//PackageableElement"/>
+    <eOperations name="getImportedMembers" ordered="false" upperBound="-1" eType="#//PackageableElement">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="importedMember"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="membersAreDistinguishable" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedRule" ordered="false"
         upperBound="-1" eType="#//Constraint" containment="true" eOpposite="#//Constraint/context">
@@ -506,16 +537,28 @@
     <eOperations name="getLabel" ordered="false" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String">
       <eParameters name="localize" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
     </eOperations>
-    <eOperations name="getNamespace" ordered="false" eType="#//Namespace"/>
+    <eOperations name="getNamespace" ordered="false" eType="#//Namespace">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="namespace"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="allNamespaces" upperBound="-1" eType="#//Namespace"/>
     <eOperations name="allOwningPackages" ordered="false" upperBound="-1" eType="#//Package"/>
     <eOperations name="isDistinguishableFrom" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean">
       <eParameters name="n" ordered="false" lowerBound="1" eType="#//NamedElement"/>
       <eParameters name="ns" ordered="false" lowerBound="1" eType="#//Namespace"/>
     </eOperations>
-    <eOperations name="getQualifiedName" ordered="false" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eOperations name="getQualifiedName" ordered="false" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="qualifiedName"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="separator" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
-    <eOperations name="getClientDependencies" ordered="false" upperBound="-1" eType="#//Dependency"/>
+    <eOperations name="getClientDependencies" ordered="false" upperBound="-1" eType="#//Dependency">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="clientDependency"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="clientDependency" ordered="false"
         upperBound="-1" eType="#//Dependency" changeable="false" volatile="true" transient="true"
         derived="true"/>
@@ -751,7 +794,11 @@
       <eParameters name="localize" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
     </eOperations>
     <eOperations name="containingProfile" ordered="false" lowerBound="1" eType="#//Profile"/>
-    <eOperations name="getProfile" ordered="false" lowerBound="1" eType="#//Profile"/>
+    <eOperations name="getProfile" ordered="false" lowerBound="1" eType="#//Profile">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="profile"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="icon" ordered="false" upperBound="-1"
         eType="#//Image" containment="true">
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
@@ -891,9 +938,21 @@
     <eOperations name="makesVisible" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean">
       <eParameters name="el" ordered="false" lowerBound="1" eType="#//NamedElement"/>
     </eOperations>
-    <eOperations name="getNestedPackages" ordered="false" upperBound="-1" eType="#//Package"/>
-    <eOperations name="getOwnedStereotypes" ordered="false" upperBound="-1" eType="#//Stereotype"/>
-    <eOperations name="getOwnedTypes" ordered="false" upperBound="-1" eType="#//Type"/>
+    <eOperations name="getNestedPackages" ordered="false" upperBound="-1" eType="#//Package">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="nestedPackage"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getOwnedStereotypes" ordered="false" upperBound="-1" eType="#//Stereotype">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="ownedStereotype"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getOwnedTypes" ordered="false" upperBound="-1" eType="#//Type">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="ownedType"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="visibleMembers" ordered="false" upperBound="-1" eType="#//PackageableElement"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="URI" ordered="false" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nestedPackage" ordered="false"
@@ -1184,7 +1243,11 @@
     </eOperations>
     <eOperations name="isBinary" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
     <eOperations name="getEndTypes" ordered="false" lowerBound="1" upperBound="-1"
-        eType="#//Type"/>
+        eType="#//Type">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="endType"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="endType" ordered="false"
         lowerBound="1" upperBound="-1" eType="#//Type" changeable="false" volatile="true"
         transient="true" derived="true">
@@ -1353,7 +1416,11 @@
     <eOperations name="isAttribute" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
     <eOperations name="isComposite" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
     <eOperations name="isNavigable" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
-    <eOperations name="getOpposite" ordered="false" eType="#//Property"/>
+    <eOperations name="getOpposite" ordered="false" eType="#//Property">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="opposite"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="subsettingContext" ordered="false" upperBound="-1" eType="#//Type"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="datatype" ordered="false"
         eType="#//DataType" eOpposite="#//DataType/ownedAttribute">
@@ -1422,7 +1489,11 @@
         <eAnnotations source="redefines" references="#//ParameterableElement/templateParameter"/>
       </contents>
     </eAnnotations>
-    <eOperations name="getEnds" ordered="false" upperBound="-1" eType="#//ConnectorEnd"/>
+    <eOperations name="getEnds" ordered="false" upperBound="-1" eType="#//ConnectorEnd">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="end"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="end" ordered="false" upperBound="-1"
         eType="#//ConnectorEnd" changeable="false" volatile="true" transient="true"
         derived="true"/>
@@ -1467,7 +1538,11 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="getDefiningEnd" ordered="false" eType="#//Property"/>
+    <eOperations name="getDefiningEnd" ordered="false" eType="#//Property">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="definingEnd"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="definingEnd" ordered="false"
         eType="#//Property" changeable="false" volatile="true" transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="partWithPort" ordered="false"
@@ -1548,9 +1623,17 @@
       <eParameters name="upperbound" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//UnlimitedNatural"/>
     </eOperations>
     <eOperations name="isMultivalued" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
-    <eOperations name="getLower" ordered="false" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+    <eOperations name="getLower" ordered="false" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="lower"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="lowerBound" ordered="false" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
-    <eOperations name="getUpper" ordered="false" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//UnlimitedNatural"/>
+    <eOperations name="getUpper" ordered="false" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//UnlimitedNatural">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="upper"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="upperBound" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//UnlimitedNatural"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOrdered" ordered="false"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"
@@ -1603,7 +1686,11 @@
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DeploymentTarget" abstract="true" eSuperTypes="#//NamedElement">
-    <eOperations name="getDeployedElements" ordered="false" upperBound="-1" eType="#//PackageableElement"/>
+    <eOperations name="getDeployedElements" ordered="false" upperBound="-1" eType="#//PackageableElement">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="deployedElement"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="deployedElement" ordered="false"
         upperBound="-1" eType="#//PackageableElement" changeable="false" volatile="true"
         transient="true" derived="true"/>
@@ -1745,7 +1832,11 @@
     <eOperations name="isIntegral" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
     <eOperations name="isNonNegative" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
     <eOperations name="isPositive" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
-    <eOperations name="getResult" ordered="false" eType="#//Parameter"/>
+    <eOperations name="getResult" ordered="false" eType="#//Parameter">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="result"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="value" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="behavior" ordered="false"
         eType="#//Behavior"/>
@@ -1836,7 +1927,11 @@
       <eParameters name="value" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//UnlimitedNatural"/>
     </eOperations>
     <eOperations name="unsetDefault" ordered="false" lowerBound="1"/>
-    <eOperations name="getDefault" ordered="false" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eOperations name="getDefault" ordered="false" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="default"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" ordered="false"
         eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String" volatile="true"
         transient="true" unsettable="true" derived="true"/>
@@ -1932,10 +2027,22 @@
     </eOperations>
     <eOperations name="isOrdered" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
     <eOperations name="isUnique" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
-    <eOperations name="getLower" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+    <eOperations name="getLower" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="lower"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="returnResult" ordered="false" upperBound="-1" eType="#//Parameter"/>
-    <eOperations name="getType" ordered="false" lowerBound="1" eType="#//Type"/>
-    <eOperations name="getUpper" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//UnlimitedNatural"/>
+    <eOperations name="getType" ordered="false" lowerBound="1" eType="#//Type">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="type"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getUpper" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//UnlimitedNatural">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="upper"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" ordered="false"
         eType="#//Constraint">
       <eAnnotations source="subsets" references="#//Namespace/ownedRule"/>
@@ -2485,8 +2592,16 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Vertex" abstract="true" eSuperTypes="#//NamedElement">
     <eOperations name="containingStateMachine" ordered="false" lowerBound="1" eType="#//StateMachine"/>
-    <eOperations name="getIncomings" ordered="false" upperBound="-1" eType="#//Transition"/>
-    <eOperations name="getOutgoings" ordered="false" upperBound="-1" eType="#//Transition"/>
+    <eOperations name="getIncomings" ordered="false" upperBound="-1" eType="#//Transition">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="incoming"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getOutgoings" ordered="false" upperBound="-1" eType="#//Transition">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="outgoing"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="isContainedInState" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean">
       <eParameters name="s" ordered="false" lowerBound="1" eType="#//State"/>
     </eOperations>
@@ -2786,8 +2901,16 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="getProvideds" ordered="false" upperBound="-1" eType="#//Interface"/>
-    <eOperations name="getRequireds" ordered="false" upperBound="-1" eType="#//Interface"/>
+    <eOperations name="getProvideds" ordered="false" upperBound="-1" eType="#//Interface">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="provided"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getRequireds" ordered="false" upperBound="-1" eType="#//Interface">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="required"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="basicProvided" ordered="false" upperBound="-1" eType="#//Interface"/>
     <eOperations name="basicRequired" ordered="false" upperBound="-1" eType="#//Interface"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isBehavior" ordered="false"
@@ -3051,7 +3174,11 @@
       </contents>
     </eAnnotations>
     <eOperations name="getClassifiers" ordered="false" upperBound="-1" eType="#//Classifier"/>
-    <eOperations name="getClassifier" ordered="false" lowerBound="1" eType="#//Enumeration"/>
+    <eOperations name="getClassifier" ordered="false" lowerBound="1" eType="#//Enumeration">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="classifier"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="enumeration" ordered="false"
         lowerBound="1" eType="#//Enumeration" eOpposite="#//Enumeration/ownedLiteral">
       <eAnnotations source="subsets" references="#//NamedElement/namespace"/>
@@ -3204,7 +3331,11 @@
     <eOperations name="getStereotype" ordered="false" eType="#//Stereotype"/>
     <eOperations name="getStereotypeEnd" ordered="false" eType="#//Property"/>
     <eOperations name="isRequired" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
-    <eOperations name="getMetaclass" ordered="false" lowerBound="1" eType="#//Class"/>
+    <eOperations name="getMetaclass" ordered="false" lowerBound="1" eType="#//Class">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="metaclass"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="metaclassEnd" ordered="false" lowerBound="1" eType="#//Property"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRequired" ordered="false"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"
@@ -3352,7 +3483,11 @@
       <eParameters name="lower" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
       <eParameters name="upper" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//UnlimitedNatural"/>
     </eOperations>
-    <eOperations name="getParts" ordered="false" upperBound="-1" eType="#//Property"/>
+    <eOperations name="getParts" ordered="false" upperBound="-1" eType="#//Property">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="part"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="allRoles" ordered="false" upperBound="-1" eType="#//ConnectableElement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedAttribute" upperBound="-1"
         eType="#//Property" containment="true">
@@ -3390,7 +3525,11 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="getKind" ordered="false" lowerBound="1" eType="#//ConnectorKind"/>
+    <eOperations name="getKind" ordered="false" lowerBound="1" eType="#//ConnectorKind">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="kind"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contract" ordered="false"
         upperBound="-1" eType="#//Behavior"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="end" lowerBound="2" upperBound="-1"
@@ -3472,7 +3611,11 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="getInheritedParameters" ordered="false" upperBound="-1" eType="#//TemplateParameter"/>
+    <eOperations name="getInheritedParameters" ordered="false" upperBound="-1" eType="#//TemplateParameter">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="inheritedParameter"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extendedSignature" ordered="false"
         upperBound="-1" eType="#//RedefinableTemplateSignature">
       <eAnnotations source="subsets" references="#//RedefinableElement/redefinedElement"/>
@@ -3684,7 +3827,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EncapsulatedClassifier" abstract="true"
       eSuperTypes="#//StructuredClassifier">
-    <eOperations name="getOwnedPorts" upperBound="-1" eType="#//Port"/>
+    <eOperations name="getOwnedPorts" upperBound="-1" eType="#//Port">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="ownedPort"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPort" ordered="false"
         upperBound="-1" eType="#//Port" changeable="false" volatile="true" transient="true"
         derived="true">
@@ -3990,7 +4137,11 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Action" abstract="true" eSuperTypes="#//ExecutableNode">
-    <eOperations name="getContext" ordered="false" eType="#//Classifier"/>
+    <eOperations name="getContext" ordered="false" eType="#//Classifier">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="context"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="allActions" ordered="false" upperBound="-1" eType="#//Action"/>
     <eOperations name="allOwnedNodes" ordered="false" upperBound="-1" eType="#//ActivityNode"/>
     <eOperations name="containingBehavior" ordered="false" eType="#//Behavior"/>
@@ -6707,7 +6858,11 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="getMessageKind" ordered="false" lowerBound="1" eType="#//MessageKind"/>
+    <eOperations name="getMessageKind" ordered="false" lowerBound="1" eType="#//MessageKind">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="messageKind"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="argument" upperBound="-1"
         eType="#//ValueSpecification" containment="true">
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
@@ -7450,7 +7605,11 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="getReferreds" ordered="false" upperBound="-1" eType="#//Operation"/>
+    <eOperations name="getReferreds" ordered="false" upperBound="-1" eType="#//Operation">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="referred"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="postCondition" ordered="false"
         eType="#//Constraint">
       <eAnnotations source="subsets" references="#//Namespace/ownedRule"/>
@@ -7515,8 +7674,16 @@
     <eOperations name="createOwnedPrimitiveType" ordered="false" lowerBound="1" eType="#//PrimitiveType">
       <eParameters name="name" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
     </eOperations>
-    <eOperations name="getProvideds" ordered="false" upperBound="-1" eType="#//Interface"/>
-    <eOperations name="getRequireds" ordered="false" upperBound="-1" eType="#//Interface"/>
+    <eOperations name="getProvideds" ordered="false" upperBound="-1" eType="#//Interface">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="provided"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getRequireds" ordered="false" upperBound="-1" eType="#//Interface">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="required"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isIndirectlyInstantiated"
         ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"
         defaultValueLiteral="true"/>

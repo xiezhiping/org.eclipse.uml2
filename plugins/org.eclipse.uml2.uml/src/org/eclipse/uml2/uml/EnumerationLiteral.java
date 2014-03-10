@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 322715, 418466
+ *   Kenn Hussey (CEA) - 327039, 322715, 418466, 429994
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -80,6 +80,7 @@ public interface EnumerationLiteral
 	 * <p>From package UML::SimpleClassifiers.</p>
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" required="true" ordered="false"
+	 *        annotation="http://www.eclipse.org/uml2/2.0.0/UML originalName='classifier'"
 	 * @generated
 	 */
 	Enumeration getClassifier();

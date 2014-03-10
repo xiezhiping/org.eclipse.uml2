@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="uml" nsURI="http://www.eclipse.org/uml2/5.0.0/UML" nsPrefix="uml">
+  <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <details key="originalName" value="UML"/>
+  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="ActivityContent" abstract="true" interface="true">
     <eOperations name="containingActivity" ordered="false" eType="#//Activity"/>
   </eClassifiers>
@@ -200,6 +203,9 @@
         <details key="documentation" value="A Behavior that is directly owned as a nestedClassifier does not have a context. Otherwise, to determine the context of a Behavior, find the first BehavioredClassifier reached by following the chain of owner relationships from the Behavior, if any. If there is such a BehavioredClassifier, then it is the context, unless it is itself a Behavior with a non-empty context, in which case that is also the context for the original Behavior.&#xA;result = (if nestingClass &lt;> null then&#xD;&#xA;    null&#xD;&#xA;else&#xD;&#xA;    let b:BehavioredClassifier = self.behavioredClassifier(self.owner) in&#xD;&#xA;    if b.oclIsKindOf(Behavior) and b.oclAsType(Behavior)._'context' &lt;> null then &#xD;&#xA;        b.oclAsType(Behavior)._'context'&#xD;&#xA;    else &#xD;&#xA;        b &#xD;&#xA;    endif&#xD;&#xA;endif&#xD;&#xA;        )&#xA;&lt;p>From package UML::CommonBehavior.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="context"/>
+      </eAnnotations>
     </eOperations>
     <eOperations name="behavioredClassifier" ordered="false" eType="#//BehavioredClassifier">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -350,11 +356,17 @@
         <details key="documentation" value="Derivation for Class::/extension : Extension&#xA;result = (Extension.allInstances()->select(ext | &#xD;&#xA;  let endTypes : Sequence(Classifier) = ext.memberEnd->collect(type.oclAsType(Classifier)) in&#xD;&#xA;  endTypes->includes(self) or endTypes.allParents()->includes(self) ))&#xA;&lt;p>From package UML::StructuredClassifiers.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="extension"/>
+      </eAnnotations>
     </eOperations>
     <eOperations name="getSuperClasses" ordered="false" upperBound="-1" eType="#//Class">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Derivation for Class::/superClass : Class&#xA;result = (self.general()->select(oclIsKindOf(Class))->collect(oclAsType(Class))->asSet())&#xA;&lt;p>From package UML::StructuredClassifiers.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="superClass"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedOperation" upperBound="-1"
@@ -659,6 +671,9 @@
         <details key="documentation" value="The general Classifiers are the ones referenced by the Generalization relationships.&#xA;result = (parents())&#xA;&lt;p>From package UML::Classification.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="general"/>
+      </eAnnotations>
     </eOperations>
     <eOperations name="hasVisibilityOf" ordered="false" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -682,6 +697,9 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The inheritedMember association is derived by inheriting the inheritable members of the parents.&#xA;result = (inherit(parents()->collect(inheritableMembers(self))->asSet()))&#xA;&lt;p>From package UML::Classification.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="inheritedMember"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="maySpecializeType" ordered="false" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean">
@@ -934,6 +952,9 @@
       </eAnnotations>
     </eOperations>
     <eOperations name="getOwnedMembers" ordered="false" upperBound="-1" eType="#//NamedElement">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="ownedMember"/>
+      </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
@@ -960,6 +981,9 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The importedMember property is derived as the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.&#xA;result = (self.importMembers(elementImport.importedElement->asSet()->union(packageImport.importedPackage->collect(p | p.visibleMembers()))->asSet()))&#xA;&lt;p>From package UML::CommonStructure.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="importedMember"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="membersAreDistinguishable" ordered="false" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean">
@@ -1111,6 +1135,9 @@
       </eParameters>
     </eOperations>
     <eOperations name="getNamespace" ordered="false" eType="#//Namespace">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="namespace"/>
+      </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
@@ -1137,6 +1164,9 @@
         <details key="documentation" value="When a NamedElement has a name, and all of its containing Namespaces have a name, the qualifiedName is constructed from the name of the NamedElement and the names of the containing Namespaces.&#xA;result = (if self.name &lt;> null and self.allNamespaces()->select( ns | ns.name=null )->isEmpty()&#xA;then &#xA;    self.allNamespaces()->iterate( ns : Namespace; agg: String = self.name | ns.name.concat(self.separator()).concat(agg))&#xA;else&#xA;   null&#xA;endif)&#xA;&lt;p>From package UML::CommonStructure.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="qualifiedName"/>
+      </eAnnotations>
     </eOperations>
     <eOperations name="separator" ordered="false" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1147,6 +1177,9 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="result = (Dependency.allInstances()->select(d | d.client->includes(self)))&#xA;&lt;p>From package UML::CommonStructure.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="clientDependency"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="clientDependency" ordered="false"
@@ -1801,6 +1834,9 @@
         <details key="documentation" value="A stereotype must be contained, directly or indirectly, in a profile.&#xA;result = (self.containingProfile())&#xA;&lt;p>From package UML::Packages.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="profile"/>
+      </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="icon" ordered="false" upperBound="-1"
         eType="#//Image" containment="true">
@@ -2197,17 +2233,26 @@
         <details key="documentation" value="Derivation for Package::/nestedPackage&#xA;result = (packagedElement->select(oclIsKindOf(Package))->collect(oclAsType(Package))->asSet())&#xA;&lt;p>From package UML::Packages.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="nestedPackage"/>
+      </eAnnotations>
     </eOperations>
     <eOperations name="getOwnedStereotypes" ordered="false" upperBound="-1" eType="#//Stereotype">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Derivation for Package::/ownedStereotype&#xA;result = (packagedElement->select(oclIsKindOf(Stereotype))->collect(oclAsType(Stereotype))->asSet())&#xA;&lt;p>From package UML::Packages.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="ownedStereotype"/>
+      </eAnnotations>
     </eOperations>
     <eOperations name="getOwnedTypes" ordered="false" upperBound="-1" eType="#//Type">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Derivation for Package::/ownedType&#xA;result = (packagedElement->select(oclIsKindOf(Type))->collect(oclAsType(Type))->asSet())&#xA;&lt;p>From package UML::Packages.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="ownedType"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="visibleMembers" ordered="false" upperBound="-1" eType="#//PackageableElement">
@@ -2857,6 +2902,9 @@
         <details key="documentation" value="endType is derived from the types of the member ends.&#xA;result = (memberEnd->collect(type)->asSet())&#xA;&lt;p>From package UML::StructuredClassifiers.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="endType"/>
+      </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="endType" ordered="false"
         lowerBound="1" upperBound="-1" eType="#//Type" changeable="false" volatile="true"
@@ -3253,6 +3301,9 @@
         <details key="documentation" value="If this property is a memberEnd of a binary association, then opposite gives the other end.&#xA;result = (if association &lt;> null and association.memberEnd->size() = 2&#xA;then&#xA;    association.memberEnd->any(e | e &lt;> self)&#xA;else&#xA;    null&#xA;endif)&#xA;&lt;p>From package UML::Classification.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="opposite"/>
+      </eAnnotations>
     </eOperations>
     <eOperations name="subsettingContext" ordered="false" upperBound="-1" eType="#//Type">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -3400,6 +3451,9 @@
         <details key="documentation" value="Derivation for ConnectableElement::/end : ConnectorEnd&#xA;result = (ConnectorEnd.allInstances()->select(role = self))&#xA;&lt;p>From package UML::StructuredClassifiers.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="end"/>
+      </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="end" ordered="false" upperBound="-1"
         eType="#//ConnectorEnd" changeable="false" volatile="true" transient="true"
@@ -3503,6 +3557,9 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Derivation for ConnectorEnd::/definingEnd : Property&#xA;result = (if connector.type = null &#xD;&#xA;then&#xD;&#xA;  null &#xD;&#xA;else&#xD;&#xA;  let index : Integer = connector.end->indexOf(self) in&#xD;&#xA;    connector.type.memberEnd->at(index)&#xD;&#xA;endif)&#xA;&lt;p>From package UML::StructuredClassifiers.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="definingEnd"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="definingEnd" ordered="false"
@@ -3684,6 +3741,9 @@
         <details key="documentation" value="The derived lower attribute must equal the lowerBound.&#xA;result = (lowerBound())&#xA;&lt;p>From package UML::CommonStructure.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="lower"/>
+      </eAnnotations>
     </eOperations>
     <eOperations name="lowerBound" ordered="false" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Integer">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -3694,6 +3754,9 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The derived upper attribute must equal the upperBound.&#xA;result = (upperBound())&#xA;&lt;p>From package UML::CommonStructure.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="upper"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="upperBound" ordered="false" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//UnlimitedNatural">
@@ -3821,6 +3884,9 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Derivation for DeploymentTarget::/deployedElement&#xA;result = (deployment.deployedArtifact->select(oclIsKindOf(Artifact))->collect(oclAsType(Artifact).manifestation)->collect(utilizedElement)->asSet())&#xA;&lt;p>From package UML::Deployments.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="deployedElement"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="deployedElement" ordered="false"
@@ -4155,6 +4221,9 @@
         <details key="documentation" value="Derivation for OpaqueExpression::/result&#xA;result = (if behavior = null then&#xD;&#xA;&#x9;null&#xD;&#xA;else&#xD;&#xA;&#x9;behavior.ownedParameter->first()&#xD;&#xA;endif)&#xA;&lt;p>From package UML::Values.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="result"/>
+      </eAnnotations>
     </eOperations>
     <eOperations name="value" ordered="false" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Integer">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -4385,6 +4454,9 @@
         <details key="documentation" value="Derivation for Parameter::/default&#xA;result = (if self.type = String then defaultValue.stringValue() else null endif)&#xA;&lt;p>From package UML::Classification.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="default"/>
+      </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" ordered="false"
         eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"
@@ -4601,6 +4673,9 @@
         <details key="documentation" value="If this operation has a return parameter, lower equals the value of lower for that parameter. Otherwise lower has no value.&#xA;result = (if returnResult()->notEmpty() then returnResult()->any(true).lower else null endif)&#xA;&lt;p>From package UML::Classification.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="lower"/>
+      </eAnnotations>
     </eOperations>
     <eOperations name="returnResult" ordered="false" upperBound="-1" eType="#//Parameter">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -4612,11 +4687,17 @@
         <details key="documentation" value="If this operation has a return parameter, type equals the value of type for that parameter. Otherwise type has no value.&#xA;result = (if returnResult()->notEmpty() then returnResult()->any(true).type else null endif)&#xA;&lt;p>From package UML::Classification.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="type"/>
+      </eAnnotations>
     </eOperations>
     <eOperations name="getUpper" ordered="false" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//UnlimitedNatural">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If this operation has a return parameter, upper equals the value of upper for that parameter. Otherwise upper has no value.&#xA;result = (if returnResult()->notEmpty() then returnResult()->any(true).upper else null endif)&#xA;&lt;p>From package UML::Classification.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="upper"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" ordered="false"
@@ -5827,11 +5908,17 @@
         <details key="documentation" value="Derivation for Vertex::/incoming.&#xA;result = (Transition.allInstances()->select(target=self))&#xA;&lt;p>From package UML::StateMachines.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="incoming"/>
+      </eAnnotations>
     </eOperations>
     <eOperations name="getOutgoings" ordered="false" upperBound="-1" eType="#//Transition">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Derivation for Vertex::/outgoing&#xA;result = (Transition.allInstances()->select(source=self))&#xA;&lt;p>From package UML::StateMachines.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="outgoing"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="isContainedInState" ordered="false" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean">
@@ -6458,11 +6545,17 @@
         <details key="documentation" value="Derivation for Port::/provided&#xA;result = (if isConjugated then basicRequired() else basicProvided() endif)&#xA;&lt;p>From package UML::StructuredClassifiers.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="provided"/>
+      </eAnnotations>
     </eOperations>
     <eOperations name="getRequireds" ordered="false" upperBound="-1" eType="#//Interface">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Derivation for Port::/required&#xA;result = (if isConjugated then basicProvided() else basicRequired() endif)&#xA;&lt;p>From package UML::StructuredClassifiers.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="required"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="basicProvided" ordered="false" upperBound="-1" eType="#//Interface">
@@ -7065,6 +7158,9 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Derivation of Enumeration::/classifier&#xA;result = (enumeration)&#xA;&lt;p>From package UML::SimpleClassifiers.&lt;/p>"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="classifier"/>
+      </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="enumeration" ordered="false"
         lowerBound="1" eType="#//Enumeration" eOpposite="#//Enumeration/ownedLiteral">
@@ -7399,6 +7495,9 @@
         <details key="documentation" value="The query metaclass() returns the metaclass that is being extended (as opposed to the extending stereotype).&#xA;result = (metaclassEnd().type.oclAsType(Class))&#xA;&lt;p>From package UML::Packages.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="metaclass"/>
+      </eAnnotations>
     </eOperations>
     <eOperations name="metaclassEnd" ordered="false" lowerBound="1" eType="#//Property">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -7726,6 +7825,9 @@
         <details key="documentation" value="Derivation for StructuredClassifier::/part&#xA;result = (ownedAttribute->select(isComposite))&#xA;&lt;p>From package UML::StructuredClassifiers.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="part"/>
+      </eAnnotations>
     </eOperations>
     <eOperations name="allRoles" ordered="false" upperBound="-1" eType="#//ConnectableElement">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -7808,6 +7910,9 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Derivation for Connector::/kind : ConnectorKind&#xA;result = (if end->exists(&#xD;&#xA;&#x9;&#x9;role.oclIsKindOf(Port) &#xD;&#xA;&#x9;&#x9;and partWithPort->isEmpty()&#xD;&#xA;&#x9;&#x9;and not role.oclAsType(Port).isBehavior)&#xD;&#xA;then ConnectorKind::delegation &#xD;&#xA;else ConnectorKind::assembly &#xD;&#xA;endif)&#xA;&lt;p>From package UML::StructuredClassifiers.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="kind"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contract" ordered="false"
@@ -7996,6 +8101,9 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Derivation for RedefinableTemplateSignature::/inheritedParameter&#xA;result = (if extendedSignature->isEmpty() then Set{} else extendedSignature.parameter->asSet() endif)&#xA;&lt;p>From package UML::Classification.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="inheritedParameter"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extendedSignature" ordered="false"
@@ -8432,6 +8540,9 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Derivation for EncapsulatedClassifier::/ownedPort : Port&#xA;result = (ownedAttribute->select(oclIsKindOf(Port))->collect(oclAsType(Port))->asOrderedSet())&#xA;&lt;p>From package UML::StructuredClassifiers.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="ownedPort"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPort" ordered="false"
@@ -9033,6 +9144,9 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The derivation for the context property.&#xA;result = (let behavior: Behavior = self.containingBehavior() in&#xD;&#xA;if behavior=null then null&#xD;&#xA;else if behavior._'context' = null then behavior&#xD;&#xA;else behavior._'context'&#xD;&#xA;endif&#xD;&#xA;endif)&#xA;&lt;p>From package UML::Actions.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="context"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="allActions" ordered="false" upperBound="-1" eType="#//Action">
@@ -14902,6 +15016,9 @@
         <details key="documentation" value="This query returns the MessageKind value for this Message.&#xA;result = (messageKind)&#xA;&lt;p>From package UML::Interactions.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="messageKind"/>
+      </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="argument" upperBound="-1"
         eType="#//ValueSpecification" containment="true">
@@ -16579,6 +16696,9 @@
         <details key="documentation" value="Derivation for ProtocolTransition::/referred&#xA;result = (trigger->collect(event)->select(oclIsKindOf(CallEvent))->collect(oclAsType(CallEvent).operation)->asSet())&#xA;&lt;p>From package UML::StateMachines.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="referred"/>
+      </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="postCondition" ordered="false"
         eType="#//Constraint">
@@ -16737,11 +16857,17 @@
         <details key="documentation" value="Derivation for Component::/provided&#xA;result = (let &#x9;ris : Set(Interface) = allRealizedInterfaces(),&#xD;&#xA;        realizingClassifiers : Set(Classifier) =  self.realization.realizingClassifier->union(self.allParents()->collect(realization.realizingClassifier))->asSet(),&#xD;&#xA;        allRealizingClassifiers : Set(Classifier) = realizingClassifiers->union(realizingClassifiers.allParents())->asSet(),&#xD;&#xA;        realizingClassifierInterfaces : Set(Interface) = allRealizingClassifiers->iterate(c; rci : Set(Interface) = Set{} | rci->union(c.allRealizedInterfaces())),&#xD;&#xA;        ports : Set(Port) = self.ownedPort->union(allParents()->collect(ownedPort))->asSet(),&#xD;&#xA;        providedByPorts : Set(Interface) = ports.provided->asSet()&#xD;&#xA;in     ris->union(realizingClassifierInterfaces) ->union(providedByPorts)->asSet())&#xA;&lt;p>From package UML::StructuredClassifiers.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="provided"/>
+      </eAnnotations>
     </eOperations>
     <eOperations name="getRequireds" ordered="false" upperBound="-1" eType="#//Interface">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Derivation for Component::/required&#xA;result = (let &#x9;uis : Set(Interface) = allUsedInterfaces(),&#xD;&#xA;        realizingClassifiers : Set(Classifier) = self.realization.realizingClassifier->union(self.allParents()->collect(realization.realizingClassifier))->asSet(),&#xD;&#xA;        allRealizingClassifiers : Set(Classifier) = realizingClassifiers->union(realizingClassifiers.allParents())->asSet(),&#xD;&#xA;        realizingClassifierInterfaces : Set(Interface) = allRealizingClassifiers->iterate(c; rci : Set(Interface) = Set{} | rci->union(c.allUsedInterfaces())),&#xD;&#xA;        ports : Set(Port) = self.ownedPort->union(allParents()->collect(ownedPort))->asSet(),&#xD;&#xA;        usedByPorts : Set(Interface) = ports.required->asSet()&#xD;&#xA;in&#x9;    uis->union(realizingClassifierInterfaces)->union(usedByPorts)->asSet()&#xD;&#xA;)&#xA;&lt;p>From package UML::StructuredClassifiers.&lt;/p>"/>
         <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="required"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isIndirectlyInstantiated"
