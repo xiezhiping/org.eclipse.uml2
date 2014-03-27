@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_grfIMLW0EeOFI_NLJCo1Xw" name="Bug431342" metaclassReference="_qs6J0LW0EeOFI_NLJCo1Xw">
+  <eAnnotations xmi:id="_VUXpgLW1EeOFI_NLJCo1Xw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_VUXpgbW1EeOFI_NLJCo1Xw" name="Bug431342" nsURI="http:///schemas/Bug431342/_VUV0ULW1EeOFI_NLJCo1Xw/0" nsPrefix="Bug431342">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_VUXpgrW1EeOFI_NLJCo1Xw" name="Multiple">
+        <eAnnotations xmi:id="_VUXpg7W1EeOFI_NLJCo1Xw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_r7cZgLW0EeOFI_NLJCo1Xw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_VUXphLW1EeOFI_NLJCo1Xw" name="multiplicity" ordered="false" lowerBound="1" eType="_VUXpiLW1EeOFI_NLJCo1Xw" containment="true"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_VUXphrW1EeOFI_NLJCo1Xw" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_VUXpiLW1EeOFI_NLJCo1Xw" name="Multiplicity">
+        <eAnnotations xmi:id="_VUXpibW1EeOFI_NLJCo1Xw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_yeZwMLW0EeOFI_NLJCo1Xw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_VUXpirW1EeOFI_NLJCo1Xw" name="lower" ordered="false" lowerBound="1" defaultValueLiteral="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/4.0.0/Types#//Integer"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_VUXpjLW1EeOFI_NLJCo1Xw" name="upper" ordered="false" lowerBound="1" defaultValueLiteral="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/4.0.0/Types#//UnlimitedNatural"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:id="_qs6J0LW0EeOFI_NLJCo1Xw">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+  </elementImport>
+  <elementImport xmi:id="_3cvScLW0EeOFI_NLJCo1Xw">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <elementImport xmi:id="_5UF1oLW0EeOFI_NLJCo1Xw">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_r7cZgLW0EeOFI_NLJCo1Xw" name="Multiple">
+    <ownedAttribute xmi:id="_K-bJYLW1EeOFI_NLJCo1Xw" name="multiplicity" type="_yeZwMLW0EeOFI_NLJCo1Xw"/>
+    <ownedAttribute xmi:id="_TGv7YLW1EeOFI_NLJCo1Xw" name="base_Class" association="_TGvUULW1EeOFI_NLJCo1Xw">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:DataType" xmi:id="_yeZwMLW0EeOFI_NLJCo1Xw" name="Multiplicity">
+    <ownedAttribute xmi:id="_64BGgLW0EeOFI_NLJCo1Xw" name="lower">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_DQzWYLW1EeOFI_NLJCo1Xw" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_BaU88LW1EeOFI_NLJCo1Xw" name="upper">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+      <defaultValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HKkdQLW1EeOFI_NLJCo1Xw" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_TGvUULW1EeOFI_NLJCo1Xw" name="Class_Multiple" memberEnd="_TGvUUbW1EeOFI_NLJCo1Xw _TGv7YLW1EeOFI_NLJCo1Xw">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_TGvUUbW1EeOFI_NLJCo1Xw" name="extension_Multiple" type="_r7cZgLW0EeOFI_NLJCo1Xw" aggregation="composite" association="_TGvUULW1EeOFI_NLJCo1Xw"/>
+  </packagedElement>
+</uml:Profile>

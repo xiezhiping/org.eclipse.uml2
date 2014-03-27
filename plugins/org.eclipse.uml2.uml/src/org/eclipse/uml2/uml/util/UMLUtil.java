@@ -12,7 +12,7 @@
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
  *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833, 424568, 427167, 418466, 419324, 429994
  *   Yann Tanguy (CEA) - 350402
- *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833, 420338, 405065
+ *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833, 420338, 405065, 431342
  *   E.D.Willink - 420338
  *
  */
@@ -11457,14 +11457,14 @@ public class UMLUtil
 
 			return null;
 		} else if (definition instanceof EStructuralFeature) {
-			org.eclipse.uml2.uml.Class class_ = (org.eclipse.uml2.uml.Class) getNamedElement(
+			AttributeOwner classifier = (AttributeOwner) getNamedElement(
 				((EStructuralFeature) definition).getEContainingClass(),
 				context);
 
-			if (class_ != null) {
+			if (classifier != null) {
 				String name = definition.getName();
 
-				for (Property ownedAttribute : class_.getOwnedAttributes()) {
+				for (Property ownedAttribute : classifier.getOwnedAttributes()) {
 
 					if (safeEquals(getEcoreName(ownedAttribute), name)) {
 						return ownedAttribute;
