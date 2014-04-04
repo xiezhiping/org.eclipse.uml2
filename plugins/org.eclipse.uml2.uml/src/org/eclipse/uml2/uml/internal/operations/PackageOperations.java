@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 271470
  *   Kenn Hussey - 323181, 348433
  *   Kenn Hussey (CEA) - 327039, 369492, 313951, 163556, 418466
- *   Christian W. Damus (CEA) - 300957
+ *   Christian W. Damus (CEA) - 300957, 431998
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EFactory;
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -63,7 +64,7 @@ import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.VisibilityKind;
-
+import org.eclipse.uml2.uml.util.UMLUtil;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -130,14 +131,17 @@ public class PackageOperations
 
 		@Override
 		protected EClass getTarget(EClass eClass) {
-			NamedElement namedElement = getNamedElement(eClass, profile);
-			EClass definition = (EClass) profile.getDefinition(namedElement);
+			NamedElement namedElement = getNamedElement(eClass);
+			EClass definition = (EClass) getDefinition(namedElement);
 
 			if (definition != null) {
 				return definition;
 			} else {
+				String qualifiedName = (namedElement != null)
+					? getQualifiedName(namedElement)
+					: getQualifiedName(eClass, NamedElement.SEPARATOR);
 				throw new IllegalStateException("Definition for class '" //$NON-NLS-1$
-					+ getQualifiedName(namedElement)
+					+ qualifiedName
 					+ "' not found in profile '" + getQualifiedName(profile) //$NON-NLS-1$
 					+ "'"); //$NON-NLS-1$
 			}
@@ -146,19 +150,31 @@ public class PackageOperations
 		@Override
 		protected EStructuralFeature getTarget(
 				EStructuralFeature eStructuralFeature) {
-			NamedElement namedElement = getNamedElement(eStructuralFeature,
-				profile);
-			EStructuralFeature definition = (EStructuralFeature) profile
-				.getDefinition(namedElement);
+			NamedElement namedElement = getNamedElement(eStructuralFeature);
+			EStructuralFeature definition = (EStructuralFeature) getDefinition(namedElement);
 
 			if (definition != null) {
 				return definition;
 			} else {
+				String qualifiedName = (namedElement != null)
+					? getQualifiedName(namedElement)
+					: getQualifiedName(eStructuralFeature,
+						NamedElement.SEPARATOR);
 				throw new IllegalStateException("Definition for property '" //$NON-NLS-1$
-					+ getQualifiedName(namedElement)
+					+ qualifiedName
 					+ "' not found in profile '" + getQualifiedName(profile) //$NON-NLS-1$
 					+ "'"); //$NON-NLS-1$
 			}
+		}
+
+		protected NamedElement getNamedElement(ENamedElement element) {
+			return UMLUtil.getNamedElement(element, profile);
+		}
+
+		protected ENamedElement getDefinition(NamedElement element) {
+			return (element == null)
+				? null
+				: profile.getDefinition(element);
 		}
 
 		@Override
@@ -174,9 +190,13 @@ public class PackageOperations
 						copyEDataTypeAttribute(eAttribute, eObject, copyEObject);
 					}
 				} catch (Exception e) {
-					UMLPlugin.INSTANCE.log(e);
+					handleException(e);
 				}
 			}
+		}
+
+		protected void handleException(Exception exception) {
+			UMLPlugin.INSTANCE.log(exception);
 		}
 
 		protected void copyEDataTypeAttribute(EAttribute eAttribute,
@@ -324,7 +344,7 @@ public class PackageOperations
 						}
 					}
 				} catch (Exception e) {
-					UMLPlugin.INSTANCE.log(e);
+					handleException(e);
 				}
 			}
 		}
@@ -418,7 +438,7 @@ public class PackageOperations
 						}
 					}
 				} catch (Exception e) {
-					UMLPlugin.INSTANCE.log(e);
+					handleException(e);
 				}
 			}
 		}
