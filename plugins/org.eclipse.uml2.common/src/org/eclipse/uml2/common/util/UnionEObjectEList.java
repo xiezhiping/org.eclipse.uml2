@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 398462
  *   Christian W. Damus (CEA) - 398462
- *   Kenn Hussey (CEA) - 212765, 403365, 420938, 421756
+ *   Kenn Hussey (CEA) - 212765, 403365, 420938, 421756, 432921
  */
 package org.eclipse.uml2.common.util;
 
@@ -186,6 +186,11 @@ public class UnionEObjectEList<E>
 
 	@Override
 	public void move(int index, E object) {
+		// do nothing
+	}
+
+	@Override
+	public void addUnique(E object) {
 		// do nothing
 	}
 
