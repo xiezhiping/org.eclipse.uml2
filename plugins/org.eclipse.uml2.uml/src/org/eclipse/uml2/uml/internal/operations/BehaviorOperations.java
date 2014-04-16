@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 383550, 418466
+ *   Kenn Hussey (CEA) - 327039, 351774, 383550, 418466, 432898
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -268,7 +268,9 @@ public class BehaviorOperations
 		if (from instanceof BehavioredClassifier) {
 			return (BehavioredClassifier) from;
 		} else {
-			Element owner = from.getOwner();
+			Element owner = from == null
+				? null
+				: from.getOwner();
 
 			return owner == null
 				? null
