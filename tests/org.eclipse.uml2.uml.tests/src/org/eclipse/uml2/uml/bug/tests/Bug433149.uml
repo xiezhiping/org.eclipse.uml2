@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:profile433149="http:///schemas/profile433149/_Ot1HoMlvEeOEFuhWGw-HoA/0" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http:///schemas/profile433149/_Ot1HoMlvEeOEFuhWGw-HoA/0 Bug433149.profile.uml#_Ot2VwclvEeOEFuhWGw-HoA">
+  <uml:Model xmi:id="_JQmC4MlvEeOEFuhWGw-HoA" name="bug433149">
+    <packagedElement xmi:type="uml:Class" xmi:id="_QhjIAMlvEeOEFuhWGw-HoA" name="Foo"/>
+    <profileApplication xmi:id="_W3WMcMlvEeOEFuhWGw-HoA">
+      <eAnnotations xmi:id="_W3Z20MlvEeOEFuhWGw-HoA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="Bug433149.profile.uml#_Ot2VwclvEeOEFuhWGw-HoA"/>
+      </eAnnotations>
+      <appliedProfile href="Bug433149.profile.uml#_wxvuYMluEeOEFuhWGw-HoA"/>
+    </profileApplication>
+  </uml:Model>
+  <profile433149:Stereo xmi:id="_bDQMMMlvEeOEFuhWGw-HoA" base_Classifier="_QhjIAMlvEeOEFuhWGw-HoA"/>
+</xmi:XMI>

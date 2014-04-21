@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_wxvuYMluEeOEFuhWGw-HoA" name="profile433149" metamodelReference="_3kqzsMluEeOEFuhWGw-HoA">
+  <eAnnotations xmi:id="_Ot2VwMlvEeOEFuhWGw-HoA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_hx3j0MlwEeO6eOfNCkw-fQ" name="profile433149" nsURI="http:///schemas/profile433149/_hx2VsMlwEeO6eOfNCkw-fQ/1" nsPrefix="profile433149">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_hx3j0clwEeO6eOfNCkw-fQ" name="Stereo">
+        <eAnnotations xmi:id="_hx3j0slwEeO6eOfNCkw-fQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_5dKmYMluEeOEFuhWGw-HoA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_hx3j08lwEeO6eOfNCkw-fQ" name="base_Classifier" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Classifier"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_hx3j1clwEeO6eOfNCkw-fQ" name="addedInNewVersion" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/4.0.0/Types#//String"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_Ot2VwclvEeOEFuhWGw-HoA" name="profile433149" nsURI="http:///schemas/profile433149/_Ot1HoMlvEeOEFuhWGw-HoA/0" nsPrefix="profile433149">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_Ot2VwslvEeOEFuhWGw-HoA" name="Stereo">
+        <eAnnotations xmi:id="_Ot2Vw8lvEeOEFuhWGw-HoA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_5dKmYMluEeOEFuhWGw-HoA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Ot2VxMlvEeOEFuhWGw-HoA" name="base_Classifier" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Classifier"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <packageImport xmi:id="_3kqzsMluEeOEFuhWGw-HoA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_5dKmYMluEeOEFuhWGw-HoA" name="Stereo">
+    <ownedAttribute xmi:id="_-L-e4sluEeOEFuhWGw-HoA" name="base_Classifier" association="_-L-e4MluEeOEFuhWGw-HoA">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Classifier"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_c7nmkMlwEeO6eOfNCkw-fQ" name="addedInNewVersion">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_-L-e4MluEeOEFuhWGw-HoA" name="Classifier_Stereo" memberEnd="_-L-e4cluEeOEFuhWGw-HoA _-L-e4sluEeOEFuhWGw-HoA">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_-L-e4cluEeOEFuhWGw-HoA" name="extension_Stereo" type="_5dKmYMluEeOEFuhWGw-HoA" aggregation="composite" association="_-L-e4MluEeOEFuhWGw-HoA"/>
+  </packagedElement>
+</uml:Profile>

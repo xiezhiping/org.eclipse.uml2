@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
+ *   Christian W. Damus (CEA) - 433149
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -15,6 +16,7 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.impl.EPackageRegistryImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.XMLResource;
@@ -25,8 +27,10 @@ import org.eclipse.uml2.uml.resource.UMLResource;
 
 /**
  * Resource factory that converts .uml models.
- * OMG:  UML 2.4.x and UML 2.5
- * API:  UML2 4.x and UML2 5.0
+ * <ul>
+ * <li>OMG: UML 2.4.x and UML 2.5</li>
+ * <li>API: UML2 4.x and UML2 5.0</li>
+ * </ul>
  * 
  * @since 5.0
  */
@@ -52,8 +56,10 @@ public class UML402UMLResourceFactoryImpl
 		Map<Object, Object> defaultLoadOptions = resource
 			.getDefaultLoadOptions();
 
-		ExtendedMetaData extendedMetaData = new UML402UMLExtendedMetaData(
+		EPackage.Registry ePackageRegistry = new EPackageRegistryImpl(
 			EPackage.Registry.INSTANCE);
+		ExtendedMetaData extendedMetaData = new UML402UMLExtendedMetaData(
+			ePackageRegistry);
 
 		defaultLoadOptions.put(XMLResource.OPTION_EXTENDED_META_DATA,
 			extendedMetaData);
