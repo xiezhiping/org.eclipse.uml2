@@ -194,8 +194,8 @@
       </ownedOperation>
       <nestedClassifier xmi:type="uml:Class" xmi:id="EClassifier-Wildcard" name="Wildcard"/>
       <nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="EClassifier-EJavaClass_Wildcard" name="EJavaClass_Wildcard">
-        <templateBinding xmi:id="EClassifier-EJavaClass_Wildcard-_templateBinding.0" signature="EJavaClass-_ownedElement.0">
-          <parameterSubstitution xmi:id="EClassifier-EJavaClass_Wildcard-_templateBinding.0-_parameterSubstitution.0" actual="EClassifier-Wildcard" formal="EJavaClass-_ownedElement.0-_ownedParameter.0"/>
+        <templateBinding xmi:id="EClassifier-EJavaClass_Wildcard-_templateBinding.0" signature="EJavaClass-_ownedTemplateSignature">
+          <parameterSubstitution xmi:id="EClassifier-EJavaClass_Wildcard-_templateBinding.0-_parameterSubstitution.0" actual="EClassifier-Wildcard" formal="EJavaClass-_ownedTemplateSignature-_ownedParameter.0"/>
         </templateBinding>
       </nestedClassifier>
     </packagedElement>
@@ -428,13 +428,13 @@
         </ownedParameter>
       </ownedOperation>
       <nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="EObject-EEList_EObject" name="EEList_EObject">
-        <templateBinding xmi:id="EObject-EEList_EObject-_templateBinding.0" signature="EEList-_ownedElement.0">
-          <parameterSubstitution xmi:id="EObject-EEList_EObject-_templateBinding.0-_parameterSubstitution.0" actual="EObject" formal="EEList-_ownedElement.0-_ownedParameter.0"/>
+        <templateBinding xmi:id="EObject-EEList_EObject-_templateBinding.0" signature="EEList-_ownedTemplateSignature">
+          <parameterSubstitution xmi:id="EObject-EEList_EObject-_templateBinding.0-_parameterSubstitution.0" actual="EObject" formal="EEList-_ownedTemplateSignature-_ownedParameter.0"/>
         </templateBinding>
       </nestedClassifier>
       <nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="EObject-ETreeIterator_EObject" name="ETreeIterator_EObject">
-        <templateBinding xmi:id="EObject-ETreeIterator_EObject-_templateBinding.0" signature="ETreeIterator-_ownedElement.0">
-          <parameterSubstitution xmi:id="EObject-ETreeIterator_EObject-_templateBinding.0-_parameterSubstitution.0" actual="EObject" formal="ETreeIterator-_ownedElement.0-_ownedParameter.0"/>
+        <templateBinding xmi:id="EObject-ETreeIterator_EObject-_templateBinding.0" signature="ETreeIterator-_ownedTemplateSignature">
+          <parameterSubstitution xmi:id="EObject-ETreeIterator_EObject-_templateBinding.0-_parameterSubstitution.0" actual="EObject" formal="ETreeIterator-_ownedTemplateSignature-_ownedParameter.0"/>
         </templateBinding>
       </nestedClassifier>
     </packagedElement>
@@ -578,8 +578,8 @@
       </ownedOperation>
       <nestedClassifier xmi:type="uml:Class" xmi:id="EStructuralFeature-Wildcard" name="Wildcard"/>
       <nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="EStructuralFeature-EJavaClass_Wildcard" name="EJavaClass_Wildcard">
-        <templateBinding xmi:id="EStructuralFeature-EJavaClass_Wildcard-_templateBinding.0" signature="EJavaClass-_ownedElement.0">
-          <parameterSubstitution xmi:id="EStructuralFeature-EJavaClass_Wildcard-_templateBinding.0-_parameterSubstitution.0" actual="EStructuralFeature-Wildcard" formal="EJavaClass-_ownedElement.0-_ownedParameter.0"/>
+        <templateBinding xmi:id="EStructuralFeature-EJavaClass_Wildcard-_templateBinding.0" signature="EJavaClass-_ownedTemplateSignature">
+          <parameterSubstitution xmi:id="EStructuralFeature-EJavaClass_Wildcard-_templateBinding.0-_parameterSubstitution.0" actual="EStructuralFeature-Wildcard" formal="EJavaClass-_ownedTemplateSignature-_ownedParameter.0"/>
         </templateBinding>
       </nestedClassifier>
     </packagedElement>
@@ -794,9 +794,9 @@
       <generalization xmi:id="EDoubleObject-_generalization.0" general="EDouble"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EEList" name="EEList">
-      <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="EEList-_ownedElement.0" parameter="EEList-_ownedElement.0-_ownedParameter.0">
-        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="EEList-_ownedElement.0-_ownedParameter.0" parameteredElement="EEList-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement">
-          <ownedParameteredElement xmi:type="uml:Class" xmi:id="EEList-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement" name="E" templateParameter="EEList-_ownedElement.0-_ownedParameter.0"/>
+      <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="EEList-_ownedTemplateSignature" parameter="EEList-_ownedTemplateSignature-_ownedParameter.0">
+        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="EEList-_ownedTemplateSignature-_ownedParameter.0" parameteredElement="EEList-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement">
+          <ownedParameteredElement xmi:type="uml:Class" xmi:id="EEList-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement" name="E" templateParameter="EEList-_ownedTemplateSignature-_ownedParameter.0"/>
         </ownedParameter>
       </ownedTemplateSignature>
     </packagedElement>
@@ -828,9 +828,9 @@
       <generalization xmi:id="EIntegerObject-_generalization.0" general="EInt"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EJavaClass" name="EJavaClass">
-      <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="EJavaClass-_ownedElement.0" parameter="EJavaClass-_ownedElement.0-_ownedParameter.0">
-        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="EJavaClass-_ownedElement.0-_ownedParameter.0" parameteredElement="EJavaClass-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement">
-          <ownedParameteredElement xmi:type="uml:Class" xmi:id="EJavaClass-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement" name="T" templateParameter="EJavaClass-_ownedElement.0-_ownedParameter.0"/>
+      <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="EJavaClass-_ownedTemplateSignature" parameter="EJavaClass-_ownedTemplateSignature-_ownedParameter.0">
+        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="EJavaClass-_ownedTemplateSignature-_ownedParameter.0" parameteredElement="EJavaClass-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement">
+          <ownedParameteredElement xmi:type="uml:Class" xmi:id="EJavaClass-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement" name="T" templateParameter="EJavaClass-_ownedTemplateSignature-_ownedParameter.0"/>
         </ownedParameter>
       </ownedTemplateSignature>
     </packagedElement>
@@ -848,12 +848,12 @@
       <generalization xmi:id="ELongObject-_generalization.0" general="ELong"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EMap" name="EMap">
-      <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="EMap-_ownedElement.0" parameter="EMap-_ownedElement.0-_ownedParameter.0 EMap-_ownedElement.0-_ownedParameter.1">
-        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="EMap-_ownedElement.0-_ownedParameter.0" parameteredElement="EMap-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement">
-          <ownedParameteredElement xmi:type="uml:Class" xmi:id="EMap-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement" name="K" templateParameter="EMap-_ownedElement.0-_ownedParameter.0"/>
+      <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="EMap-_ownedTemplateSignature" parameter="EMap-_ownedTemplateSignature-_ownedParameter.0 EMap-_ownedTemplateSignature-_ownedParameter.1">
+        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="EMap-_ownedTemplateSignature-_ownedParameter.0" parameteredElement="EMap-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement">
+          <ownedParameteredElement xmi:type="uml:Class" xmi:id="EMap-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement" name="K" templateParameter="EMap-_ownedTemplateSignature-_ownedParameter.0"/>
         </ownedParameter>
-        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="EMap-_ownedElement.0-_ownedParameter.1" parameteredElement="EMap-_ownedElement.0-_ownedParameter.1-_ownedParameteredElement">
-          <ownedParameteredElement xmi:type="uml:Class" xmi:id="EMap-_ownedElement.0-_ownedParameter.1-_ownedParameteredElement" name="V" templateParameter="EMap-_ownedElement.0-_ownedParameter.1"/>
+        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="EMap-_ownedTemplateSignature-_ownedParameter.1" parameteredElement="EMap-_ownedTemplateSignature-_ownedParameter.1-_ownedParameteredElement">
+          <ownedParameteredElement xmi:type="uml:Class" xmi:id="EMap-_ownedTemplateSignature-_ownedParameter.1-_ownedParameteredElement" name="V" templateParameter="EMap-_ownedTemplateSignature-_ownedParameter.1"/>
         </ownedParameter>
       </ownedTemplateSignature>
     </packagedElement>
@@ -877,9 +877,9 @@
       </eAnnotations>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="ETreeIterator" name="ETreeIterator">
-      <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="ETreeIterator-_ownedElement.0" parameter="ETreeIterator-_ownedElement.0-_ownedParameter.0">
-        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="ETreeIterator-_ownedElement.0-_ownedParameter.0" parameteredElement="ETreeIterator-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement">
-          <ownedParameteredElement xmi:type="uml:Class" xmi:id="ETreeIterator-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement" name="E" templateParameter="ETreeIterator-_ownedElement.0-_ownedParameter.0"/>
+      <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="ETreeIterator-_ownedTemplateSignature" parameter="ETreeIterator-_ownedTemplateSignature-_ownedParameter.0">
+        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="ETreeIterator-_ownedTemplateSignature-_ownedParameter.0" parameteredElement="ETreeIterator-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement">
+          <ownedParameteredElement xmi:type="uml:Class" xmi:id="ETreeIterator-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement" name="E" templateParameter="ETreeIterator-_ownedTemplateSignature-_ownedParameter.0"/>
         </ownedParameter>
       </ownedTemplateSignature>
     </packagedElement>
@@ -1005,9 +1005,9 @@
   <standard:Metaclass xmi:id="_Qz2DoKtKEeGF4uwJob34Mw" base_Class="EStructuralFeature-Wildcard"/>
   <standard:Metaclass xmi:id="_Qz2qsKtKEeGF4uwJob34Mw" base_Class="ETypedElement"/>
   <standard:Metaclass xmi:id="_Qz340KtKEeGF4uwJob34Mw" base_Class="ETypeParameter"/>
-  <standard:Metaclass xmi:id="_Qz7jMKtKEeGF4uwJob34Mw" base_Class="EEList-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement"/>
-  <standard:Metaclass xmi:id="_Qz9_cKtKEeGF4uwJob34Mw" base_Class="EJavaClass-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement"/>
-  <standard:Metaclass xmi:id="_Qz_0oKtKEeGF4uwJob34Mw" base_Class="EMap-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement"/>
-  <standard:Metaclass xmi:id="_Q0AbsKtKEeGF4uwJob34Mw" base_Class="EMap-_ownedElement.0-_ownedParameter.1-_ownedParameteredElement"/>
-  <standard:Metaclass xmi:id="_Q0CQ4KtKEeGF4uwJob34Mw" base_Class="ETreeIterator-_ownedElement.0-_ownedParameter.0-_ownedParameteredElement"/>
+  <standard:Metaclass xmi:id="_Qz7jMKtKEeGF4uwJob34Mw" base_Class="EEList-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement"/>
+  <standard:Metaclass xmi:id="_Qz9_cKtKEeGF4uwJob34Mw" base_Class="EJavaClass-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement"/>
+  <standard:Metaclass xmi:id="_Qz_0oKtKEeGF4uwJob34Mw" base_Class="EMap-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement"/>
+  <standard:Metaclass xmi:id="_Q0AbsKtKEeGF4uwJob34Mw" base_Class="EMap-_ownedTemplateSignature-_ownedParameter.1-_ownedParameteredElement"/>
+  <standard:Metaclass xmi:id="_Q0CQ4KtKEeGF4uwJob34Mw" base_Class="ETreeIterator-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement"/>
 </xmi:XMI>
