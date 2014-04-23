@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2012 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
- *   Kenn Hussey (CEA) - 173843
+ *   Kenn Hussey (CEA) - 173843, 430118
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -66,7 +66,7 @@ public class UMLHandler
 
 						if (locationURI != null) {
 							Resource resource = new ResourceImpl();
-							resource.setURI(locationURI);
+							resource.setURI(locationURI.trimFragment());
 							resource.getContents().add(demandedPackage);
 						}
 					}
