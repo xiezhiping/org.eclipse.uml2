@@ -3322,7 +3322,7 @@ endif)</body>
           <ownedRule xmi:type="uml:Constraint" xmi:id="StructuredClassifier-part.1-spec" name="spec" constrainedElement="StructuredClassifier-part.1 StructuredClassifier-part" context="StructuredClassifier-part.1">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="StructuredClassifier-part.1-spec-_specification">
               <language>OCL</language>
-              <body>result = (ownedAttribute->select(isComposite))</body>
+              <body>result = (ownedAttribute->select(isComposite)->asSet())</body>
             </specification>
           </ownedRule>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="StructuredClassifier-part.1-result" name="result" type="Property" direction="return">
@@ -6777,7 +6777,7 @@ peerUses->forAll( peerUse : InteractionUse |&#xD;
   self.selector.oclAsType(LiteralInteger).value = l.selector.oclAsType(LiteralInteger).value )&#xD;
 )  &#xD;
 implies&#xD;
- usingInteraction.lifeline->select(represents = self.represents and&#xD;
+ usingInteraction.lifeline->exists(represents = self.represents and&#xD;
  ( self.selector.oclIsKindOf(LiteralString) implies&#xD;
   l.selector.oclIsKindOf(LiteralString) and &#xD;
   self.selector.oclAsType(LiteralString).value = l.selector.oclAsType(LiteralString).value )&#xD;
@@ -8544,17 +8544,17 @@ endif)</body>
           <ownedRule xmi:type="uml:Constraint" xmi:id="NamedElement-allNamespaces-spec" name="spec" constrainedElement="NamedElement-allNamespaces" context="NamedElement-allNamespaces">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="NamedElement-allNamespaces-spec-_specification">
               <language>OCL</language>
-              <body>result = (if owner.oclIsKindOf(TemplateParameter) and
-  owner.oclAsType(TemplateParameter).signature.template.oclIsKindOf(Namespace) then
-    let enclosingNamespace : Namespace =
-      owner.oclAsType(TemplateParameter).signature.template.oclAsType(Namespace) in
-        enclosingNamespace.allNamespaces()->prepend(enclosingNamespace)
+            <body>result = (
+if owner = null
+  then OrderedSet{}
 else
-  if namespace->isEmpty()
-    then OrderedSet{}
-  else
-    namespace.allNamespaces()->prepend(namespace)
-  endif
+  let enclosingNamespace : Namespace =
+    if owner.oclIsKindOf(TemplateParameter) and owner.oclAsType(TemplateParameter).signature.template.oclIsKindOf(Namespace)
+      then owner.oclAsType(TemplateParameter).signature.template.oclAsType(Namespace)
+    else
+      namespace
+    endif
+  in enclosingNamespace.allNamespaces()->prepend(enclosingNamespace)
 endif)</body>
             </specification>
           </ownedRule>
@@ -10847,7 +10847,7 @@ let op : Operation = redefiningElement.oclAsType(Operation) in&#xD;
           <ownedRule xmi:type="uml:Constraint" xmi:id="Operation-returnResult-spec" name="spec" constrainedElement="Operation-returnResult" context="Operation-returnResult">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="Operation-returnResult-spec-_specification">
               <language>OCL</language>
-              <body>result = (ownedParameter->select (direction = ParameterDirectionKind::return))</body>
+              <body>result = (ownedParameter->select (direction = ParameterDirectionKind::return)->asSet())</body>
             </specification>
           </ownedRule>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="Operation-returnResult-result" name="result" type="Parameter" direction="return">
@@ -11330,7 +11330,7 @@ implies (templateParameterSubstitution->forAll(ts |&#xD;
           <ownedRule xmi:type="uml:Constraint" xmi:id="Property-isCompatibleWith-spec" name="spec" constrainedElement="Property-isCompatibleWith" context="Property-isCompatibleWith">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="Property-isCompatibleWith-spec-_specification">
               <language>OCL</language>
-              <body>result = (self.oclIsKindOf(p.oclType()) and (p.oclIsKindOf(TypeElement) implies&#xD;
+              <body>result = (self.oclIsKindOf(p.oclType()) and (p.oclIsKindOf(TypedElement) implies&#xD;
 self.type.conformsTo(p.oclAsType(TypedElement).type)))</body>
             </specification>
           </ownedRule>

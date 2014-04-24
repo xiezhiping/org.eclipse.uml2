@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 374878, 418466
+ *   Kenn Hussey (CEA) - 327039, 351774, 374878, 418466, 433211
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -325,17 +325,17 @@ public class NamedElementOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query allNamespaces() gives the sequence of Namespaces in which the NamedElement is nested, working outwards.
-	 * result = (if owner.oclIsKindOf(TemplateParameter) and
-	 *   owner.oclAsType(TemplateParameter).signature.template.oclIsKindOf(Namespace) then
-	 *     let enclosingNamespace : Namespace =
-	 *       owner.oclAsType(TemplateParameter).signature.template.oclAsType(Namespace) in
-	 *         enclosingNamespace.allNamespaces()->prepend(enclosingNamespace)
+	 * result = (
+	 * if owner = null
+	 *   then OrderedSet{}
 	 * else
-	 *   if namespace->isEmpty()
-	 *     then OrderedSet{}
-	 *   else
-	 *     namespace.allNamespaces()->prepend(namespace)
-	 *   endif
+	 *   let enclosingNamespace : Namespace =
+	 *     if owner.oclIsKindOf(TemplateParameter) and owner.oclAsType(TemplateParameter).signature.template.oclIsKindOf(Namespace)
+	 *       then owner.oclAsType(TemplateParameter).signature.template.oclAsType(Namespace)
+	 *     else
+	 *       namespace
+	 *     endif
+	 *   in enclosingNamespace.allNamespaces()->prepend(enclosingNamespace)
 	 * endif)
 	 * <p>From package UML::CommonStructure.</p>
 	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.

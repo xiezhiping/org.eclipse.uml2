@@ -6228,7 +6228,7 @@ let op : Operation = redefiningElement.oclAsType(Operation) in&#xD;
         <ownedRule xmi:id="_MMOGlIkxEeOMQ5AKLd10lA" name="spec" constrainedElement="_MMOGkokxEeOMQ5AKLd10lA">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_MMOGlYkxEeOMQ5AKLd10lA">
             <language>OCL</language>
-            <body>result = (ownedParameter->select (direction = ParameterDirectionKind::return))</body>
+            <body>result = (ownedParameter->select (direction = ParameterDirectionKind::return)->asSet())</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:id="_MMOGlokxEeOMQ5AKLd10lA" name="result" type="_KyaPMGveEdq4DLWZOhbdEA" direction="return">
@@ -6902,7 +6902,7 @@ implies (templateParameterSubstitution->forAll(ts |&#xD;
         <ownedRule xmi:id="_MMa664kxEeOMQ5AKLd10lA" name="spec" constrainedElement="_MMa66YkxEeOMQ5AKLd10lA">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_MMa67IkxEeOMQ5AKLd10lA">
             <language>OCL</language>
-            <body>result = (self.oclIsKindOf(p.oclType()) and (p.oclIsKindOf(TypeElement) implies&#xD;
+            <body>result = (self.oclIsKindOf(p.oclType()) and (p.oclIsKindOf(TypedElement) implies&#xD;
 self.type.conformsTo(p.oclAsType(TypedElement).type)))</body>
           </specification>
         </ownedRule>
@@ -8943,17 +8943,17 @@ endif)</body>
         <ownedRule xmi:id="_MNMW9IkxEeOMQ5AKLd10lA" name="spec" constrainedElement="_MNMW8okxEeOMQ5AKLd10lA">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_MNMW9YkxEeOMQ5AKLd10lA">
             <language>OCL</language>
-            <body>result = (if owner.oclIsKindOf(TemplateParameter) and
-  owner.oclAsType(TemplateParameter).signature.template.oclIsKindOf(Namespace) then
-    let enclosingNamespace : Namespace =
-      owner.oclAsType(TemplateParameter).signature.template.oclAsType(Namespace) in
-        enclosingNamespace.allNamespaces()->prepend(enclosingNamespace)
+            <body>result = (
+if owner = null
+  then OrderedSet{}
 else
-  if namespace->isEmpty()
-    then OrderedSet{}
-  else
-    namespace.allNamespaces()->prepend(namespace)
-  endif
+  let enclosingNamespace : Namespace =
+    if owner.oclIsKindOf(TemplateParameter) and owner.oclAsType(TemplateParameter).signature.template.oclIsKindOf(Namespace)
+      then owner.oclAsType(TemplateParameter).signature.template.oclAsType(Namespace)
+    else
+      namespace
+    endif
+  in enclosingNamespace.allNamespaces()->prepend(enclosingNamespace)
 endif)</body>
           </specification>
         </ownedRule>
@@ -11346,7 +11346,7 @@ peerUses->forAll( peerUse : InteractionUse |&#xD;
   self.selector.oclAsType(LiteralInteger).value = l.selector.oclAsType(LiteralInteger).value )&#xD;
 )  &#xD;
 implies&#xD;
- usingInteraction.lifeline->select(represents = self.represents and&#xD;
+ usingInteraction.lifeline->exists(represents = self.represents and&#xD;
  ( self.selector.oclIsKindOf(LiteralString) implies&#xD;
   l.selector.oclIsKindOf(LiteralString) and &#xD;
   self.selector.oclAsType(LiteralString).value = l.selector.oclAsType(LiteralString).value )&#xD;
@@ -16254,7 +16254,7 @@ endif)</body>
         <ownedRule xmi:id="_MO61QIkxEeOMQ5AKLd10lA" name="spec" constrainedElement="_ATcCwLL8EeCBifIhhuFqZA _MO6OOYkxEeOMQ5AKLd10lA">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_MO61QYkxEeOMQ5AKLd10lA">
             <language>OCL</language>
-            <body>result = (ownedAttribute->select(isComposite))</body>
+            <body>result = (ownedAttribute->select(isComposite)->asSet())</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:id="_BPYtoLL8EeCBifIhhuFqZA" name="result" type="_Jp_1oGveEdq4DLWZOhbdEA" direction="return">

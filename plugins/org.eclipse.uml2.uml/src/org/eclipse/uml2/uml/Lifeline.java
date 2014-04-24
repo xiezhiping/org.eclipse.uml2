@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466
+ *   Kenn Hussey (CEA) - 327039, 418466, 433194
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -254,7 +254,7 @@ public interface Lifeline
 	 *   self.selector.oclAsType(LiteralInteger).value = l.selector.oclAsType(LiteralInteger).value )
 	 * )  
 	 * implies
-	 *  usingInteraction.lifeline->select(represents = self.represents and
+	 *  usingInteraction.lifeline->exists(represents = self.represents and
 	 *  ( self.selector.oclIsKindOf(LiteralString) implies
 	 *   l.selector.oclIsKindOf(LiteralString) and 
 	 *   self.selector.oclAsType(LiteralString).value = l.selector.oclAsType(LiteralString).value )

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 407028, 418466
+ *   Kenn Hussey (CEA) - 327039, 351774, 407028, 418466, 433195
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -1024,7 +1024,7 @@ public class PropertyOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isCompatibleWith() determines if this Property is compatible with the specified ParameterableElement. This Property is compatible with ParameterableElement p if the kind of this Property is thesame as or a subtype of the kind of p. Further, if p is a TypedElement, then the type of this Property must be conformant with the type of p.
-	 * result = (self.oclIsKindOf(p.oclType()) and (p.oclIsKindOf(TypeElement) implies
+	 * result = (self.oclIsKindOf(p.oclType()) and (p.oclIsKindOf(TypedElement) implies
 	 * self.type.conformsTo(p.oclAsType(TypedElement).type)))
 	 * <p>From package UML::Classification.</p>
 	 * @param property The receiving '<em><b>Property</b></em>' model object.

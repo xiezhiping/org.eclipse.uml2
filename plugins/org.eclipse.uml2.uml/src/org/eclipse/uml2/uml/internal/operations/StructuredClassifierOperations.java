@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466
+ *   Kenn Hussey (CEA) - 327039, 418466, 433204
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -75,7 +75,7 @@ public class StructuredClassifierOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Derivation for StructuredClassifier::/part
-	 * result = (ownedAttribute->select(isComposite))
+	 * result = (ownedAttribute->select(isComposite)->asSet())
 	 * @param structuredClassifier The receiving '<em><b>Structured Classifier</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT

@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 295864, 418466
+ *   Kenn Hussey (CEA) - 327039, 295864, 418466, 433204
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -205,7 +205,7 @@ public class OperationOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query returnResult() returns the set containing the return parameter of the Operation if one exists, otherwise, it returns an empty set
-	 * result = (ownedParameter->select (direction = ParameterDirectionKind::return))
+	 * result = (ownedParameter->select (direction = ParameterDirectionKind::return)->asSet())
 	 * <p>From package UML::Classification.</p>
 	 * @param operation The receiving '<em><b>Operation</b></em>' model object.
 	 * <!-- end-model-doc -->

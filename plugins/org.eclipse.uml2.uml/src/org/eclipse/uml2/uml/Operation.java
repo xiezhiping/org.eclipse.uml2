@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 433204
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -605,7 +605,7 @@ public interface Operation
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query returnResult() returns the set containing the return parameter of the Operation if one exists, otherwise, it returns an empty set
-	 * result = (ownedParameter->select (direction = ParameterDirectionKind::return))
+	 * result = (ownedParameter->select (direction = ParameterDirectionKind::return)->asSet())
 	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false"
