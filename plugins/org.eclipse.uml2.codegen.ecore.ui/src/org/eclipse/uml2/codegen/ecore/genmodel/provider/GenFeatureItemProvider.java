@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016
+ *   Kenn Hussey (CEA) - 414970
  *
- * $Id: GenFeatureItemProvider.java,v 1.9 2008/03/21 00:15:42 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -23,12 +23,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
@@ -47,9 +42,7 @@ import org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin;
  */
 public class GenFeatureItemProvider
 		extends
-		org.eclipse.emf.codegen.ecore.genmodel.provider.GenFeatureItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+		org.eclipse.emf.codegen.ecore.genmodel.provider.GenFeatureItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.

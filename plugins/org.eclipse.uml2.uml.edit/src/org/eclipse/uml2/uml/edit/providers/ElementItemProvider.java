@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,9 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 414970
  *
- * $Id: ElementItemProvider.java,v 1.21 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -83,9 +82,8 @@ import org.eclipse.uml2.uml.util.UMLUtil;
  */
 public class ElementItemProvider
 		extends EModelElementItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
-		IItemColorProvider, IItemFontProvider, IItemQualifiedTextProvider {
+		implements IItemColorProvider, IItemFontProvider,
+		IItemQualifiedTextProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.

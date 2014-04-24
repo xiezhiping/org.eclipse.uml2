@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 397324
+ *   Kenn Hussey (CEA) - 397324, 414970
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
@@ -21,12 +21,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.codegen.ecore.genmodel.GenClassifier;
@@ -42,9 +37,7 @@ import org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin;
  * @generated
  */
 public class GenClassifierItemProvider
-		extends GenBaseItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+		extends GenBaseItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.

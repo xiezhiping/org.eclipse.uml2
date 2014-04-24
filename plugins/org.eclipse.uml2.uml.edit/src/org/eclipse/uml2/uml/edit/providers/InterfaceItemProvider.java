@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 414970
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -27,8 +27,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemColorProvider;
-import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -50,10 +48,7 @@ import org.eclipse.uml2.uml.UMLPackage;
  * @generated
  */
 public class InterfaceItemProvider
-		extends ClassifierItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
-		IItemColorProvider, IItemFontProvider {
+		extends ClassifierItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.

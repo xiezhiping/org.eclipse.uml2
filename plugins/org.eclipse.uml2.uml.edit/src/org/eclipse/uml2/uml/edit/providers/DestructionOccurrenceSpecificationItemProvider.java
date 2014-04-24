@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 CEA and others.
+ * Copyright (c) 2011, 2014 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
+ *   Kenn Hussey (CEA) - 414970
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -18,14 +19,12 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemColorProvider;
-import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.eclipse.uml2.uml.DestructionOccurrenceSpecification;
 
 /**
@@ -35,10 +34,7 @@ import org.eclipse.uml2.uml.DestructionOccurrenceSpecification;
  * @generated
  */
 public class DestructionOccurrenceSpecificationItemProvider
-		extends MessageOccurrenceSpecificationItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
-		IItemColorProvider, IItemFontProvider {
+		extends MessageOccurrenceSpecificationItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.

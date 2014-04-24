@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
- *   Kenn Hussey (CEA) - 327039, 351774, 418466
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 414970
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -21,14 +21,12 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemColorProvider;
-import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -39,10 +37,7 @@ import org.eclipse.uml2.uml.UMLPackage;
  * @generated
  */
 public class ActivityNodeItemProvider
-		extends RedefinableElementItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
-		IItemColorProvider, IItemFontProvider {
+		extends RedefinableElementItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.

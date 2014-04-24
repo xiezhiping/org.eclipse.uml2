@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,8 +9,8 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 414970
  *
- * $Id: IntervalConstraintItemProvider.java,v 1.10 2010/09/28 21:00:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -21,15 +21,13 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemColorProvider;
-import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+
+//import org.eclipse.uml2.uml.IntervalConstraint;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
-//import org.eclipse.uml2.uml.IntervalConstraint;
 import org.eclipse.uml2.uml.UMLPackage;
 
 /**
@@ -39,10 +37,7 @@ import org.eclipse.uml2.uml.UMLPackage;
  * @generated
  */
 public class IntervalConstraintItemProvider
-		extends ConstraintItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
-		IItemColorProvider, IItemFontProvider {
+		extends ConstraintItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
