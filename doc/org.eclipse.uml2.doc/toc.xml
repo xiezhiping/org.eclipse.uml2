@@ -2,7 +2,7 @@
 <?NLS TYPE="org.eclipse.help.toc"?>
 
 <!--
- Copyright (c) 2006, 2013 IBM Corporation, CEA, and others.
+ Copyright (c) 2006, 2014 IBM Corporation, CEA, and others.
  All rights reserved.   This program and the accompanying materials
  are made available under the terms of the Eclipse Public License v1.0
  which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
 
  Contributors: 
    IBM - initial API and implementation
-   Kenn Hussey (CEA) - 351776, 205478, 409204
+   Kenn Hussey (CEA) - 351776, 205478, 409204, 418466
 
 -->
 
@@ -31,7 +31,7 @@
 		<topic label="Customizing UML: Which Technique is Right for You?" href="http://www.eclipse.org/modeling/mdt/uml2/docs/articles/Customizing_UML2_Which_Technique_is_Right_For_You/article.html" />
 	</topic>
 	<topic label="Online Docs">
-		<topic label="UML2 4.0 Migration Guide" href="http://wiki.eclipse.org/MDT/UML2/UML2_4.0_Migration_Guide" />
+		<topic label="UML2 5.0 Migration Guide" href="http://wiki.eclipse.org/MDT/UML2/UML2_5.0_Migration_Guide" />
 		<topic label="UML2 FAQ" href="http://wiki.eclipse.org/MDT/UML2/FAQ" />
 		<topic label="UML2 Javadoc" href="http://www.eclipse.org/modeling/mdt/javadoc/#uml2" />
 	</topic>

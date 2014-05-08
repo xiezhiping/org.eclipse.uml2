@@ -39,7 +39,7 @@
 			overview="${overview}"
 
 			windowtitle="${windowTitle}"
-			footer="Copyright 2003, 2013 IBM Corporation, CEA, and others.&lt;br&gt; All Rights Reserved."
+			footer="Copyright 2003, 2014 IBM Corporation, CEA, and others.&lt;br&gt; All Rights Reserved."
 
 			access="protected" 
 			additionalparam="-breakiterator -tag model:X -tag generated:X -tag ordered:X"
@@ -85,11 +85,12 @@
 				<group title="UML Edit Support"         packages="org.eclipse.uml2.uml.edit:org.eclipse.uml2.uml.edit.providers"/>
 				<group title="UML Editor"               packages="org.eclipse.uml2.uml.editor:org.eclipse.uml2.uml.editor.actions:org.eclipse.uml2.uml.editor.dialogs:org.eclipse.uml2.uml.editor.presentation"/>
 
-				<group title="UML Standard L2 Profile"  packages="org.eclipse.uml2.uml.profile.l2:org.eclipse.uml2.uml.profile.l2.util"/>
-				<group title="UML Standard L3 Profile"  packages="org.eclipse.uml2.uml.profile.l3:org.eclipse.uml2.uml.profile.l3.util"/>
+				<group title="UML Standard Profile"     packages="org.eclipse.uml2.uml.profile.standard:org.eclipse.uml2.uml.profile.standard.util"/>
 
 				<group title="UML Importer for EMF"     packages="org.eclipse.uml2.uml.ecore.importer:org.eclipse.uml2.uml.ecore.importer.ui"/>
 				<group title="UML Exporter for EMF"     packages="org.eclipse.uml2.uml.ecore.exporter:org.eclipse.uml2.uml.ecore.exporter.ui"/>
+
+				<group title="UML Validation"           packages="org.eclipse.uml2.uml.validation"/>
 
 				<!-- If you add a @ plugin @ above, don't forget to update the antjavadoc.sh file -->	
 
