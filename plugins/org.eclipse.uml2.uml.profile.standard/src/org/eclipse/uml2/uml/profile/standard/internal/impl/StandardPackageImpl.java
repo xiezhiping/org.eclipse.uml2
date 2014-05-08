@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
+ *   Kenn Hussey (CEA) - 429994
  *
  */
 package org.eclipse.uml2.uml.profile.standard.internal.impl;
@@ -1640,8 +1641,22 @@ public class StandardPackageImpl
 		createResource(eNS_URI);
 
 		// Create annotations
+		// http://www.eclipse.org/uml2/2.0.0/UML
+		createUMLAnnotations();
 		// duplicates
 		createDuplicatesAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/uml2/2.0.0/UML</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createUMLAnnotations() {
+		String source = "http://www.eclipse.org/uml2/2.0.0/UML"; //$NON-NLS-1$	
+		addAnnotation(this, source, new String[]{"originalName", "Standard" //$NON-NLS-1$ //$NON-NLS-2$
+		});
 	}
 
 	/**

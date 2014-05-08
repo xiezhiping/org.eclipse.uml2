@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
+ *   Kenn Hussey (CEA) - 429994
  *
  */
 package org.eclipse.uml2.uml.profile.standard;
@@ -30,6 +31,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see org.eclipse.uml2.uml.profile.standard.StandardFactory
  * @model kind="package"
+ *        annotation="http://www.eclipse.org/uml2/2.0.0/UML originalName='Standard'"
  * @generated
  */
 public interface StandardPackage
