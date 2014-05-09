@@ -92,6 +92,8 @@
 
 				<group title="UML Validation"           packages="org.eclipse.uml2.uml.validation"/>
 
+				<group title="Ant Tasks"                packages="org.eclipse.uml2.ant:org.eclipse.uml2.ant.app"/>
+
 				<!-- If you add a @ plugin @ above, don't forget to update the antjavadoc.sh file -->	
 
 				@packagesets@
