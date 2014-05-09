@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332, 247980
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658, 173565, 408612, 414970, 427833
+ *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658, 173565, 408612, 414970, 427833, 433216
  *   Christian W. Damus - 355218
  *   Christian W. Damus (CEA) - 286444
  *
@@ -221,6 +221,7 @@ import org.eclipse.uml2.uml.resource.UML22UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 import org.eclipse.uml2.uml.util.UMLUtil;
+import org.eclipse.uml2.uml.util.UMLUtil.StereotypeApplicationHelper;
 
 /**
  * This is an example of a UML model editor.
@@ -1537,7 +1538,7 @@ public class UMLEditor
 	 * This is for implementing {@link IEditorPart} and simply saves the model file.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void doSave(IProgressMonitor progressMonitor) {
@@ -1560,8 +1561,12 @@ public class UMLEditor
 				// Save the resources to the file system.
 				//
 				boolean first = true;
-				for (Resource resource : editingDomain.getResourceSet()
-					.getResources()) {
+				EList<Resource> resources = editingDomain.getResourceSet()
+					.getResources();
+
+				for (int i = 0; i < resources.size(); i++) {
+					Resource resource = resources.get(i);
+
 					if ((first || !resource.getContents().isEmpty() || isPersisted(resource))
 						&& !editingDomain.isReadOnly(resource)) {
 						try {
@@ -1645,12 +1650,59 @@ public class UMLEditor
 					: null));
 		EList<EObject> newContents = newResource.getContents();
 
+		EcoreUtil.resolveAll(resource);
+
+		Map<Element, List<EObject>> allExternalStereotypeApplications = new HashMap<Element, List<EObject>>();
+
+		for (TreeIterator<EObject> allProperContents = EcoreUtil
+			.getAllProperContents(resource, true); allProperContents.hasNext();) {
+
+			EObject properContent = allProperContents.next();
+
+			if (properContent instanceof Element) {
+				Element element = (Element) properContent;
+				EList<EObject> stereotypeApplications = element
+					.getStereotypeApplications();
+
+				if (stereotypeApplications.size() > 0) {
+					List<EObject> externalStereotypeApplications = new ArrayList<EObject>();
+
+					for (EObject stereotypeApplication : stereotypeApplications) {
+
+						if (stereotypeApplication.eResource() != resource
+							&& StereotypeApplicationHelper.INSTANCE
+								.removeFromContainmentList(element,
+									stereotypeApplication)) {
+
+							externalStereotypeApplications
+								.add(stereotypeApplication);
+						}
+					}
+
+					if (externalStereotypeApplications.size() > 0) {
+						allExternalStereotypeApplications.put(element,
+							externalStereotypeApplications);
+					}
+				}
+			}
+		}
+
 		for (Iterator<EObject> contents = resource.getContents().iterator(); contents
 			.hasNext();) {
 
 			EObject eObject = contents.next();
 			contents.remove();
 			newContents.add(eObject);
+		}
+
+		for (Element element : allExternalStereotypeApplications.keySet()) {
+
+			for (EObject stereotypeApplication : allExternalStereotypeApplications
+				.get(element)) {
+
+				StereotypeApplicationHelper.INSTANCE.addToContainmentList(
+					element, stereotypeApplication);
+			}
 		}
 
 		EList<Resource> resources = resourceSet.getResources();
@@ -1698,8 +1750,6 @@ public class UMLEditor
 							UMLEditorPlugin.INSTANCE
 								.getString(
 									"_UI_Save_All_Resources_As", new Object[]{fileExtension, newFileExtension}))) { //$NON-NLS-1$
-
-						EcoreUtil.resolveAll(resourceSet);
 
 						for (int i = 1; i < resources.size(); i++) {
 							resource = resources.get(i);
