@@ -80,7 +80,7 @@
 
 				<group title="Types"                    packages="org.eclipse.uml2.types"/>
 
-				<group title="UML Model"                packages="org.eclipse.uml2.uml:org.eclipse.uml2.uml.resource:org.eclipse.uml2.uml.util:org.eclipse.uml2.uml.validation"/>
+				<group title="UML Model"                packages="org.eclipse.uml2.uml:org.eclipse.uml2.uml.resource:org.eclipse.uml2.uml.util"/>
 				<group title="UML Resources"            packages="org.eclipse.uml2.uml.resources:org.eclipse.uml2.uml.resources.util"/>
 				<group title="UML Edit Support"         packages="org.eclipse.uml2.uml.edit:org.eclipse.uml2.uml.edit.providers"/>
 				<group title="UML Editor"               packages="org.eclipse.uml2.uml.editor:org.eclipse.uml2.uml.editor.actions:org.eclipse.uml2.uml.editor.dialogs:org.eclipse.uml2.uml.editor.presentation"/>
