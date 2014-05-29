@@ -198,7 +198,7 @@ public class IntroductionToUMLProfiles {
 		banner("Applying the profile to an example model.");
 
 		// Load a model to which to apply the profile
-		Model epo2Model = (Model) load(URI.createURI(args[0])
+		Model epo2Model = (Model) load(URI.createFileURI(args[0])
 			.appendSegment("ExtendedPO2")
 			.appendFileExtension(UMLResource.FILE_EXTENSION));
 
