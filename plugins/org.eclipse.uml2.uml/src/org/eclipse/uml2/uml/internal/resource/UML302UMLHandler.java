@@ -8,6 +8,7 @@
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
  *   Kenn Hussey (CEA) - 418466
+ *   Christian W. Damus (CEA) - 437977
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -33,7 +34,9 @@ public class UML302UMLHandler
 	@Override
 	protected void createObject(EObject peekObject, EStructuralFeature feature) {
 
-		if (!isNull()) {
+		if (isNull()) {
+			super.createObject(peekObject, feature);
+		} else {
 			String xsiType = getXSIType();
 
 			Map<String, Map<EClassifier, String>> featureToTypeMap = xsiType == null

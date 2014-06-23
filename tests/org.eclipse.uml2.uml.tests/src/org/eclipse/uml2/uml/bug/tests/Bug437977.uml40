@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmlns:bug437977="http://www.eclipse.org/uml2/tests/bug437977" xsi:schemaLocation="http://www.eclipse.org/uml2/tests/bug437977 Bug437977.ecore" xmi:id="_DqYSIPsQEeOeqqYKcCAm6A" name="Bug437977">
+  <eAnnotations xmi:id="_ExaysPsQEeOeqqYKcCAm6A" source="bug437977">
+    <contents xmi:type="bug437977:HasNillableRef" xmi:id="_P6icMPsQEeOeqqYKcCAm6A">
+       <nillableRef xsi:nil="true"/>
+    </contents>
+  </eAnnotations>
+  <packagedElement xmi:type="uml:Package" xmi:id="_WCRPcPsQEeOeqqYKcCAm6A" name="nested">
+    <packagedElement xmi:type="uml:Class" xmi:id="_YHa-EPsQEeOeqqYKcCAm6A" name="Foo"/>
+  </packagedElement>
+</uml:Model>

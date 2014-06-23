@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
- *   Christian W. Damus (CEA) - 409396, 403365, 300957, 405061, 401682, 176998, 180744, 403374, 420338, 405065, 332057, 431342, 433149
+ *   Christian W. Damus (CEA) - 409396, 403365, 300957, 405061, 401682, 176998, 180744, 403374, 420338, 405065, 332057, 431342, 433149, 437977
  *   Manuel Bork <bork@yatta.de> (Yatta Solutions GmbH) - 421756, 422000
  *   Kenn Hussey (CEA) - 424895
  *   
@@ -58,6 +58,7 @@ public class UMLBugTests
 		result.addTest(Bug424895Test.suite());
 		result.addTest(Bug431342Test.suite());
 		result.addTest(Bug433149Test.suite());
+		result.addTest(Bug437977Test.suite());
 
 		// keep this one at the end because it runs long
 		result.addTest(Bug332057Test.suite());

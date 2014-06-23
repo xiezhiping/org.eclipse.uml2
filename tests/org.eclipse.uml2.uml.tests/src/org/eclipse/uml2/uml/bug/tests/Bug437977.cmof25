@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:cmof="http://www.omg.org/spec/MOF/20131001/cmof.xmi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- Put the tag ahead of the main model content because it's the parsing of the main content that is disrupted by bug 437977-->
+  <cmof:Tag xmi:id="_ExaysPsQEeOeqqYKcCAm6A" name="org.eclipse.uml2.bug437977" value="nillable">
+    <element xsi:nil="true"/>
+  </cmof:Tag>
+  <cmof:Package xmi:id="_DqYSIPsQEeOeqqYKcCAm6A" name="Bug437977">
+    <nestedPackage xmi:type="cmof:Package" xmi:id="_WCRPcPsQEeOeqqYKcCAm6A" name="nested">
+      <ownedType xmi:type="cmof:Class" xmi:id="_YHa-EPsQEeOeqqYKcCAm6A" name="Foo"/>
+    </nestedPackage>
+  </cmof:Package>
+</xmi:XMI>
