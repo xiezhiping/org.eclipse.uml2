@@ -12,12 +12,6 @@
  */
 package org.eclipse.uml2.uml.bug.tests;
 
-import static org.hamcrest.CoreMatchers.anything;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.MatcherAssert.assertThat;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -44,7 +38,6 @@ import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 import org.eclipse.uml2.uml.tests.util.StandaloneSupport;
-import org.hamcrest.CoreMatchers;
 
 /**
  * Tests the handling of <tt>xsi:nil</tt> elements within annotations in models
@@ -236,20 +229,19 @@ public class Bug437977Test
 	}
 
 	void doTest() {
-		assertThat(fixtureResource.getErrors(),
-			not(CoreMatchers.<Resource.Diagnostic> hasItem(anything())));
+		assertTrue(fixtureResource.getErrors().isEmpty());
 
-		assertThat(fixtureResource.isLoaded(), is(true));
+		assertTrue(fixtureResource.isLoaded());
 
 		// Verify model contents
 		Package rootPackage = (Package) EcoreUtil.getObjectByType(
 			fixtureResource.getContents(), UMLPackage.Literals.PACKAGE);
-		assertThat(rootPackage, notNullValue());
+		assertNotNull(rootPackage);
 		Package nested = rootPackage.getNestedPackage("nested");
-		assertThat(nested, notNullValue());
+		assertNotNull(nested);
 		Type foo = nested.getOwnedType("Foo");
-		assertThat(foo, notNullValue());
-		assertThat(foo.eClass(), is(UMLPackage.Literals.CLASS));
+		assertNotNull(foo);
+		assertSame(foo.eClass(), UMLPackage.Literals.CLASS);
 	}
 
 	Resource loadTestResource() {
