@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 407028, 418466, 433195
+ *   Kenn Hussey (CEA) - 327039, 351774, 407028, 418466, 433195, 439915
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -676,15 +676,8 @@ public class PropertyOperations
 					int index = memberEnds.indexOf(property);
 
 					if (index != -1) {
-						Property otherEnd = ((InternalEList<Property>) memberEnds)
+						return ((InternalEList<Property>) memberEnds)
 							.basicGet(Math.abs(index - 1));
-
-						if (!association.getOwnedEnds().contains(otherEnd)
-							|| association.getNavigableOwnedEnds().contains(
-								otherEnd)) {
-
-							return otherEnd;
-						}
 					}
 				}
 			}
