@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332, 247980
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658, 173565, 408612, 414970, 427833, 433216
+ *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658, 173565, 408612, 414970, 427833, 433216, 443017
  *   Christian W. Damus - 355218
  *   Christian W. Damus (CEA) - 286444
  *
@@ -2148,6 +2148,13 @@ public class UMLEditor
 		public void setPropertyValue(Object propertyId, Object value) {
 			getItemPropertyDescriptor(propertyId).setPropertyValue(object,
 				value);
+		}
+
+		@Override
+		public boolean isPropertyResettable(Object propertyId) {
+			IItemPropertyDescriptor propertyDescriptor = getItemPropertyDescriptor(propertyId);
+			return propertyDescriptor.canSetProperty(object)
+				&& propertyDescriptor.isPropertySet(object);
 		}
 
 	}
