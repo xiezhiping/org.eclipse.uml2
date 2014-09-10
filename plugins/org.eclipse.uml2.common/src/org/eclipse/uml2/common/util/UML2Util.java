@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 247980
  *   Keith Campbell (IBM) - 343783
- *   Kenn Hussey (CEA) - 316165, 322715, 212765, 421756, 424568
+ *   Kenn Hussey (CEA) - 316165, 322715, 212765, 421756, 424568, 443662
  *   Christian W. Damus (CEA) - 405065
  *
  */
@@ -1293,7 +1293,7 @@ public class UML2Util {
 			String invocationDelegate) {
 		boolean result = false;
 
-		if (!isEmpty(invocationDelegate)) {
+		if (ePackage != null && !isEmpty(invocationDelegate)) {
 			List<String> invocationDelegates = EcoreUtil
 				.getInvocationDelegates(ePackage);
 
@@ -1325,10 +1325,9 @@ public class UML2Util {
 	 */
 	protected static boolean addSettingDelegate(EPackage ePackage,
 			String settingDelegate) {
-
 		boolean result = false;
 
-		if (!isEmpty(settingDelegate)) {
+		if (ePackage != null && !isEmpty(settingDelegate)) {
 			List<String> settingDelegates = EcoreUtil
 				.getSettingDelegates(ePackage);
 
@@ -1347,7 +1346,7 @@ public class UML2Util {
 			String validationDelegate) {
 		boolean result = false;
 
-		if (!isEmpty(validationDelegate)) {
+		if (ePackage != null && !isEmpty(validationDelegate)) {
 			List<String> validationDelegates = EcoreUtil
 				.getValidationDelegates(ePackage);
 
