@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 271470
  *   Kenn Hussey - 323181, 348433
- *   Kenn Hussey (CEA) - 327039, 369492, 313951, 163556, 418466
+ *   Kenn Hussey (CEA) - 327039, 369492, 313951, 163556, 418466, 447901
  *   Christian W. Damus (CEA) - 300957, 431998
  *
  */
@@ -720,21 +720,24 @@ public class PackageOperations
 			for (Setting setting : new ArrayList<EStructuralFeature.Setting>(
 				getNonNavigableInverseReferences(key))) {
 
-				EStructuralFeature eStructuralFeature = setting
-					.getEStructuralFeature();
+				EObject eObject = setting.getEObject();
 
-				if (eStructuralFeature != null
-					&& eStructuralFeature.isChangeable()) {
+				if (!copier.containsKey(eObject)) {
+					EStructuralFeature eStructuralFeature = setting
+						.getEStructuralFeature();
 
-					if (eStructuralFeature.isMany()) {
-						Object value = setting.getEObject().eGet(
-							eStructuralFeature);
+					if (eStructuralFeature != null
+						&& eStructuralFeature.isChangeable()) {
 
-						@SuppressWarnings("unchecked")
-						EList<EObject> list = ((EList<EObject>) value);
-						list.set(list.indexOf(key), copy);
-					} else {
-						setting.set(copy);
+						if (eStructuralFeature.isMany()) {
+							Object value = eObject.eGet(eStructuralFeature);
+
+							@SuppressWarnings("unchecked")
+							EList<EObject> list = ((EList<EObject>) value);
+							list.set(list.indexOf(key), copy);
+						} else {
+							setting.set(copy);
+						}
 					}
 				}
 			}
