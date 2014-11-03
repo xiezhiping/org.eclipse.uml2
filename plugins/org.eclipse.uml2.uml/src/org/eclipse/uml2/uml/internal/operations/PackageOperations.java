@@ -11,6 +11,7 @@
  *   Kenn Hussey - 323181, 348433
  *   Kenn Hussey (CEA) - 327039, 369492, 313951, 163556, 418466, 447901
  *   Christian W. Damus (CEA) - 300957, 431998
+ *   Christian W. Damus - 444588
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -930,9 +931,10 @@ public class PackageOperations
 
 		if (appliedProfile == null && recurse) {
 
-			for (Iterator<org.eclipse.uml2.uml.Package> otherApplyingPackages = ProfileApplicationHelper.INSTANCE
-				.getOtherApplyingPackages(package_).iterator(); otherApplyingPackages
-				.hasNext() && appliedProfile == null;) {
+			for (Iterator<org.eclipse.uml2.uml.Package> otherApplyingPackages = ProfileApplicationHelper
+				.getInstance(package_).getOtherApplyingPackages(package_)
+				.iterator(); otherApplyingPackages.hasNext()
+				&& appliedProfile == null;) {
 
 				appliedProfile = otherApplyingPackages.next()
 					.getAppliedProfile(qualifiedName);
@@ -956,8 +958,8 @@ public class PackageOperations
 		EList<ProfileApplication> allProfileApplications = new UniqueEList.FastCompare<ProfileApplication>(
 			package_.getProfileApplications());
 
-		for (org.eclipse.uml2.uml.Package applyingPackage : ProfileApplicationHelper.INSTANCE
-			.getOtherApplyingPackages(package_)) {
+		for (org.eclipse.uml2.uml.Package applyingPackage : ProfileApplicationHelper
+			.getInstance(package_).getOtherApplyingPackages(package_)) {
 
 			allProfileApplications.addAll(applyingPackage
 				.getProfileApplications());
@@ -1009,9 +1011,10 @@ public class PackageOperations
 
 		if (profileApplication == null && recurse) {
 
-			for (Iterator<org.eclipse.uml2.uml.Package> otherApplyingPackages = ProfileApplicationHelper.INSTANCE
-				.getOtherApplyingPackages(package_).iterator(); otherApplyingPackages
-				.hasNext() && profileApplication == null;) {
+			for (Iterator<org.eclipse.uml2.uml.Package> otherApplyingPackages = ProfileApplicationHelper
+				.getInstance(package_).getOtherApplyingPackages(package_)
+				.iterator(); otherApplyingPackages.hasNext()
+				&& profileApplication == null;) {
 
 				profileApplication = otherApplyingPackages.next()
 					.getProfileApplication(profile);
@@ -1065,8 +1068,8 @@ public class PackageOperations
 		EList<Profile> allAppliedProfiles = getAppliedProfiles(package_,
 			new UniqueEList.FastCompare<Profile>());
 
-		for (org.eclipse.uml2.uml.Package applyingPackage : ProfileApplicationHelper.INSTANCE
-			.getOtherApplyingPackages(package_)) {
+		for (org.eclipse.uml2.uml.Package applyingPackage : ProfileApplicationHelper
+			.getInstance(package_).getOtherApplyingPackages(package_)) {
 
 			getAppliedProfiles(applyingPackage, allAppliedProfiles);
 		}

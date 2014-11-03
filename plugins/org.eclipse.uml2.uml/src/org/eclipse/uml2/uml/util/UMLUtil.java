@@ -14,6 +14,7 @@
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833, 420338, 405065, 431342
  *   E.D.Willink - 420338
+ *   Christian W. Damus - 444588
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -32,6 +33,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.emf.common.CommonPlugin;
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -164,7 +168,85 @@ public class UMLUtil
 	 */
 	public static class ProfileApplicationHelper {
 
+		/**
+		 * @deprecated Since the 5.1 release, direct reliance on this shared
+		 *             helper instance is deprecated. Instead, use the
+		 *             {@link #getInstance(Notifier)} method to obtain a helper
+		 *             specific to the particular model context
+		 */
+		@Deprecated
 		public static final ProfileApplicationHelper INSTANCE = createProfileApplicationHelper();
+
+		/**
+		 * Obtains the most appropriate {@link ProfileApplicationHelper}
+		 * instance for managing profile applications in the given
+		 * {@code context}. This helper should always be preferred over using
+		 * the default {@code INSTANCE}.
+		 * 
+		 * @param context
+		 *            a {@link ResourceSet}, {@link Resource}, or
+		 *            {@link EObject} in the context of which the caller is
+		 *            working with profile applications
+		 * 
+		 * @return the specific helper associated with a {@code ResourceSet} if
+		 *         there is such reachable from the {@code context}, or else the
+		 *         default {@link #INSTANCE}. The result is never {@code null}
+		 * 
+		 * @since 5.1
+		 */
+		public static ProfileApplicationHelper getInstance(Notifier context) {
+			if (context == null) {
+				return INSTANCE;
+			} else if (context instanceof ResourceSet) {
+				return getInstance((ResourceSet) context);
+			} else if (context instanceof Resource) {
+				return getInstance(((Resource) context).getResourceSet());
+			} else if (context instanceof EObject) {
+				return getInstance(((EObject) context).eResource());
+			} else {
+				return INSTANCE;
+			}
+		}
+
+		/**
+		 * Assigns a particular helper {@code instance} for management of
+		 * profile applications in the scope of a resource set. This supersedes
+		 * the default {@link #INSTANCE} for all profile-application operations
+		 * on packages in the resource set.
+		 * 
+		 * @param resourceSet
+		 *            a resource set. Must not be {@code null}
+		 * @param instance
+		 *            a profile application helper to assign. Must not be
+		 *            {@code null}. May be the default {@link #INSTANCE}
+		 * 
+		 * @return the helper that was previously in effect for the resource
+		 *         set, which could be the default {@link #INSTANCE} if no
+		 *         specific helper was assigned
+		 * 
+		 * @since 5.1
+		 */
+		public static ProfileApplicationHelper setInstance(
+				ResourceSet resourceSet, ProfileApplicationHelper instance) {
+			ProfileApplicationHelper result = HelperLink.link(resourceSet,
+				ProfileApplicationHelper.class, instance);
+
+			// If no helper was associated, the shared instance was implied
+			return (result == null)
+				? INSTANCE
+				: result;
+		}
+
+		private static ProfileApplicationHelper getInstance(
+				ResourceSet resourceSet) {
+			HelperLink<ProfileApplicationHelper> link = (resourceSet == null)
+				? null
+				: HelperLink.getInstance(resourceSet,
+					ProfileApplicationHelper.class);
+			return (link != null)
+				? link.getHelper()
+				: INSTANCE;
+		}
 
 		private static ProfileApplicationHelper createProfileApplicationHelper() {
 			ProfileApplicationHelper profileApplicationHelper = UML2Util
@@ -194,8 +276,82 @@ public class UMLUtil
 	 */
 	public static class StereotypeApplicationHelper {
 
+		/**
+		 * @deprecated Since the 5.1 release, direct reliance on this shared
+		 *             helper instance is deprecated. Instead, use the
+		 *             {@link #getInstance(Notifier)} method to obtain a helper
+		 *             specific to the particular model context
+		 */
+		@Deprecated
 		public static final StereotypeApplicationHelper INSTANCE = createStereotypeApplicationHelper();
 
+		/**
+		 * Obtains the most appropriate {@link StereotypeApplicationHelper}
+		 * instance for managing stereotype applications in the given
+		 * {@code context}. This helper should always be preferred over using
+		 * the default {@code INSTANCE}.
+		 * 
+		 * @param context
+		 *            a {@link ResourceSet}, {@link Resource}, or
+		 *            {@link EObject} in the context of which the caller is
+		 *            working with stereotype applications
+		 * 
+		 * @return the specific helper associated with a {@code ResourceSet} if
+		 *         there is such reachable from the {@code context}, or else the
+		 *         default {@link #INSTANCE}. The result is never {@code null}
+		 * 
+		 * @since 5.1
+		 */
+		public static StereotypeApplicationHelper getInstance(Notifier context) {
+			if (context == null) {
+				return INSTANCE;
+			} else if (context instanceof ResourceSet) {
+				return getInstance((ResourceSet)context);
+			} else if (context instanceof Resource) {
+				return getInstance(((Resource)context).getResourceSet());
+			} else if (context instanceof EObject) {
+				return getInstance(((EObject)context).eResource());
+			} else {
+				return INSTANCE;
+			}
+		}
+
+		/**
+		 * Assigns a particular helper {@code instance} for management of
+		 * stereotype applications in the scope of a resource set. This
+		 * supersedes the default {@link #INSTANCE} for all stereotype
+		 * operations on model elements in the resource set.
+		 * 
+		 * @param resourceSet
+		 *            a resource set. Must not be {@code null}
+		 * @param instance
+		 *            a stereotype application helper to assign. Must not be
+		 *            {@code null}. May be the default {@link #INSTANCE}
+		 * 
+		 * @return the helper that was previously in effect for the resource
+		 *         set, which could be the default {@link #INSTANCE} if no
+		 *         specific helper was assigned
+		 * 
+		 * @since 5.1
+		 */
+		public static StereotypeApplicationHelper setInstance(ResourceSet resourceSet, StereotypeApplicationHelper instance) {
+			StereotypeApplicationHelper result = HelperLink.link(resourceSet,
+				StereotypeApplicationHelper.class, instance);
+
+			// If no helper was associated, the shared instance was implied
+			return (result == null)
+				? INSTANCE
+				: result;
+		}
+
+		private static StereotypeApplicationHelper getInstance(ResourceSet resourceSet) {
+			HelperLink<StereotypeApplicationHelper> link = (resourceSet == null)
+				? null
+				: HelperLink.getInstance(resourceSet,
+					StereotypeApplicationHelper.class);
+			return (link != null) ? link.getHelper() : INSTANCE;
+		}
+		
 		private static StereotypeApplicationHelper createStereotypeApplicationHelper() {
 			StereotypeApplicationHelper stereotypeApplicationHelper = UML2Util
 				.loadClassFromSystemProperty("org.eclipse.uml2.uml.util.UMLUtil$StereotypeApplicationHelper.INSTANCE"); //$NON-NLS-1$
@@ -255,6 +411,62 @@ public class UMLUtil
 			setBaseElement(stereotypeApplication, element);
 
 			return stereotypeApplication;
+		}
+	}
+
+	private static final class HelperLink<T>
+			extends AdapterImpl {
+
+		private final Class<T> helperType;
+
+		private final T helper;
+
+		private HelperLink(Class<T> helperType, T helper) {
+			this.helper = helper;
+			this.helperType = helperType;
+		}
+
+		static <T> HelperLink<T> getInstance(Notifier notifier,
+				Class<T> helperType) {
+			return getInstance(notifier.eAdapters(), helperType);
+		}
+
+		@SuppressWarnings("unchecked")
+		static <T> HelperLink<T> getInstance(List<Adapter> adapters,
+				Class<T> helperType) {
+			// Our isAdapterForType() implementation ensures that the generic
+			// signature matches
+			return (HelperLink<T>) EcoreUtil.getAdapter(adapters, helperType);
+		}
+
+		static <T> T link(Notifier notifier, Class<T> helperType, T helper) {
+			T result = helper;
+
+			EList<Adapter> adapters = notifier.eAdapters();
+			HelperLink<T> link = getInstance(adapters, helperType);
+
+			if (link == null) {
+				adapters.add(new HelperLink<T>(helperType, helper));
+			} else {
+				result = link.getHelper();
+				if (helper == null) {
+					adapters.remove(link);
+				} else if (result != helper) {
+					int index = adapters.indexOf(link);
+					adapters.set(index, new HelperLink<T>(helperType, helper));
+				}
+			}
+
+			return result;
+		}
+
+		@Override
+		public boolean isAdapterForType(Object type) {
+			return (type == helperType) || (type == helper);
+		}
+
+		T getHelper() {
+			return helper;
 		}
 	}
 
@@ -11651,8 +11863,7 @@ public class UMLUtil
 	}
 
 	protected static EObject applyStereotype(Element element, EClass definition) {
-		return StereotypeApplicationHelper.INSTANCE.applyStereotype(element,
-			definition);
+		return StereotypeApplicationHelper.getInstance(element).applyStereotype(element, definition);
 	}
 
 	/**
