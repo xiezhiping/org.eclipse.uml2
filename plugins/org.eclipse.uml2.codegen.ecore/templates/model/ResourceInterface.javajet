@@ -3,7 +3,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 454300
  *
  * </copyright>
  */
@@ -62,7 +63,7 @@ public interface <%=UML2GenModelUtil.getResourceInterfaceName(genPackage)%> exte
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String FILE_EXTENSION = "<%=genPackage.getPrefix().toLowerCase()%>";<%=genModel.getNonNLS()%>
+	public static final String FILE_EXTENSION = "<%=genPackage.getFileExtension()%>";<%=genModel.getNonNLS()%>
 
 <%if (UML2GenModelUtil.isXMLResource(genPackage)) {%>
 	/**

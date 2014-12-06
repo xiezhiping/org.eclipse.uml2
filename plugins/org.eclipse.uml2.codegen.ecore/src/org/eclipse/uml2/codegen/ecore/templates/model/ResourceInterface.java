@@ -47,7 +47,7 @@ public class ResourceInterface
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,6 +55,7 @@ public class ResourceInterface
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 454300
  *
  * </copyright>
  */
@@ -96,7 +97,7 @@ public class ResourceInterface
     stringBuffer.append(TEXT_17);
     stringBuffer.append(genPackage.getPackageName());
     stringBuffer.append(TEXT_18);
-    stringBuffer.append(genPackage.getPrefix().toLowerCase());
+    stringBuffer.append(genPackage.getFileExtension());
     stringBuffer.append(TEXT_19);
     stringBuffer.append(genModel.getNonNLS());
     stringBuffer.append(TEXT_20);
