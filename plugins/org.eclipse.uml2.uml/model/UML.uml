@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
   <uml:Model xmi:id="_o8I_sGvaEdq4DLWZOhbdEA" name="UML">
     <packageImport xmi:id="__as3cGvaEdq4DLWZOhbdEA">
       <importedPackage xmi:type="uml:Model" href="Ecore.uml#_SeWiQMX_EduPJbEsMYXjUQ"/>
@@ -1965,7 +1965,12 @@
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_SnNPIGwIEdq7X4sGURiZYA" name="PackageImport"/>
-    <packagedElement xmi:type="uml:Class" xmi:id="_jKxnwGwLEdq7X4sGURiZYA" name="PackageableElement" isAbstract="true"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_jKxnwGwLEdq7X4sGURiZYA" name="PackageableElement" isAbstract="true">
+      <ownedAttribute xmi:id="_nxsncH2aEeSVK_cyXH-KWw" name="visibility" type="_AyM_oGwMEdq7X4sGURiZYA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nxsncX2aEeSVK_cyXH-KWw"/>
+        <defaultValue xmi:type="uml:InstanceValue" xmi:id="_CjSaoH2bEeSVK_cyXH-KWw" instance="_6pIAcH2aEeSVK_cyXH-KWw"/>
+      </ownedAttribute>
+    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_KyaPMGveEdq4DLWZOhbdEA" name="Parameter">
       <ownedAttribute xmi:id="_ZSw9sLG1EeCDe8CO90iVKQ" name="default" isDerived="true">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -2760,7 +2765,9 @@
         </ownedComment>
       </ownedLiteral>
     </packagedElement>
-    <packagedElement xmi:type="uml:Enumeration" xmi:id="_AyM_oGwMEdq7X4sGURiZYA" name="VisibilityKind" visibility="private"/>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_AyM_oGwMEdq7X4sGURiZYA" name="VisibilityKind" visibility="private">
+      <ownedLiteral xmi:id="_6pIAcH2aEeSVK_cyXH-KWw" name="public"/>
+    </packagedElement>
     <profileApplication xmi:id="_0TBYYGvaEdq4DLWZOhbdEA">
       <eAnnotations xmi:id="_0TBYYWvaEdq4DLWZOhbdEA" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
@@ -2863,4 +2870,5 @@
   <Ecore:EOperation xmi:id="_64Y1cIPZEeOyLuI0bir0Bg" base_Operation="_f-9wMGXCEdqEJs8umHJc9g" visibility="None"/>
   <Ecore:EOperation xmi:id="_GwdPoIPaEeOyLuI0bir0Bg" base_Operation="_kGtosGXCEdqEJs8umHJc9g" visibility="None"/>
   <Ecore:EOperation xmi:id="_6p4ogIRfEeOrzvVsV3Q4sA" base_Operation="_uR4xEIRfEeOrzvVsV3Q4sA" operationName="getClientDependencies" visibility="None"/>
+  <Ecore:EAttribute xmi:id="_nyeDgH2aEeSVK_cyXH-KWw" isUnsettable="true" base_Property="_nxsncH2aEeSVK_cyXH-KWw"/>
 </xmi:XMI>

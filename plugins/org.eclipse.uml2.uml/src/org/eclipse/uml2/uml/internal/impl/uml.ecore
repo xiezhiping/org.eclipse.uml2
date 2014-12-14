@@ -991,7 +991,7 @@
       eSuperTypes="#//NamedElement #//ParameterableElement">
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EAttribute" name="visibility" ordered="false" eType="#//VisibilityKind"
-          defaultValueLiteral="public">
+          defaultValueLiteral="public" unsettable="true">
         <eAnnotations source="redefines" references="#//NamedElement/visibility"/>
       </contents>
     </eAnnotations>

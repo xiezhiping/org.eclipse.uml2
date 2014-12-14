@@ -2325,7 +2325,7 @@
     </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EAttribute" name="visibility" ordered="false" eType="#//VisibilityKind"
-          defaultValueLiteral="public">
+          defaultValueLiteral="public" unsettable="true">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="A PackageableElement must have a visibility specified if it is owned by a Namespace. The default visibility is public.&#xA;&lt;p>From package UML::CommonStructure.&lt;/p>"/>
         </eAnnotations>

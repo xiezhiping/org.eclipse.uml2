@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 454400
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -288,10 +288,12 @@ public abstract class PackageableElementImpl
 			newVisibility = VISIBILITY_EDEFAULT;
 		eFlags = eFlags & ~VISIBILITY_EFLAG
 			| newVisibility.ordinal() << VISIBILITY_EFLAG_OFFSET;
+		boolean oldVisibilityESet = (eFlags & VISIBILITY_ESETFLAG) != 0;
+		eFlags |= VISIBILITY_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY, oldVisibility,
-				newVisibility));
+				newVisibility, !oldVisibilityESet));
 	}
 
 	/**
@@ -299,8 +301,26 @@ public abstract class PackageableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public void unsetVisibility() {
+		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
+		boolean oldVisibilityESet = (eFlags & VISIBILITY_ESETFLAG) != 0;
+		eFlags = eFlags & ~VISIBILITY_EFLAG | VISIBILITY_EFLAG_DEFAULT;
+		eFlags &= ~VISIBILITY_ESETFLAG;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY, oldVisibility,
+				VISIBILITY_EDEFAULT, oldVisibilityESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public boolean isSetVisibility() {
-		return (eFlags & VISIBILITY_EFLAG) != VISIBILITY_EFLAG_DEFAULT;
+		return (eFlags & VISIBILITY_ESETFLAG) != 0;
 	}
 
 	/**

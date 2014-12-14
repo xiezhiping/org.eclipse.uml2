@@ -17780,6 +17780,7 @@ self.type.conformsTo(p.oclAsType(TypedElement).type)))</body>
   <Ecore:EOperation xmi:id="_64Y1cIPZEeOyLuI0bir0Bg" base_Operation="Property-isSetDefault" visibility="None"/>
   <Ecore:EOperation xmi:id="_GwdPoIPaEeOyLuI0bir0Bg" base_Operation="Property-unsetDefault" visibility="None"/>
   <Ecore:EOperation xmi:id="_6p4ogIRfEeOrzvVsV3Q4sA" base_Operation="NamedElement-clientDependency.1" operationName="getClientDependencies" visibility="None"/>
+  <Ecore:EAttribute xmi:id="_nyeDgH2aEeSVK_cyXH-KWw" isUnsettable="true" base_Property="PackageableElement-visibility"/>
   <standard:Metamodel xmi:id="_blzWQIx_EeOumeDJYV0ScA" base_Model="_0"/>
   <standard:Metaclass xmi:id="_bmO0EIx_EeOumeDJYV0ScA" base_Class="ValueSpecificationAction"/>
   <standard:Metaclass xmi:id="_bmO0EYx_EeOumeDJYV0ScA" base_Class="VariableAction"/>

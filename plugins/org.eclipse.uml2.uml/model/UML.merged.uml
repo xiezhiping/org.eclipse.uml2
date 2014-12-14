@@ -17774,4 +17774,5 @@ self.type.conformsTo(p.oclAsType(TypedElement).type)))</body>
   <Ecore:EOperation xmi:id="_64Y1cIPZEeOyLuI0bir0Bg" base_Operation="_f-9wMGXCEdqEJs8umHJc9g" visibility="None"/>
   <Ecore:EOperation xmi:id="_GwdPoIPaEeOyLuI0bir0Bg" base_Operation="_kGtosGXCEdqEJs8umHJc9g" visibility="None"/>
   <Ecore:EOperation xmi:id="_6p4ogIRfEeOrzvVsV3Q4sA" base_Operation="_uR4xEIRfEeOrzvVsV3Q4sA" operationName="getClientDependencies" visibility="None"/>
+  <Ecore:EAttribute xmi:id="_nyeDgH2aEeSVK_cyXH-KWw" isUnsettable="true" base_Property="_MNSdlokxEeOMQ5AKLd10lA"/>
 </xmi:XMI>
