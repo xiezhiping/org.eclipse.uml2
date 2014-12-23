@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
- *   Kenn Hussey (CEA) - 414970
+ *   Kenn Hussey (CEA) - 414970, 455868
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -90,14 +90,13 @@ public class DestructionOccurrenceSpecificationItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((DestructionOccurrenceSpecification) object).getName();
-		return label == null || label.length() == 0
-			? getString("_UI_DestructionOccurrenceSpecification_type") : //$NON-NLS-1$
-			getString("_UI_DestructionOccurrenceSpecification_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_DestructionOccurrenceSpecification_type"), object).toString(); //$NON-NLS-1$
 	}
 
 	/**
