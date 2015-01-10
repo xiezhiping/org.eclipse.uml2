@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 451350
  *
- * $Id: GenCacheAdapterScope.java,v 1.6 2006/12/20 19:54:15 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -126,6 +126,8 @@ public enum GenCacheAdapterScope
 	 * Returns the '<em><b>Gen Cache Adapter Scope</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static GenCacheAdapterScope get(String literal) {
@@ -142,6 +144,8 @@ public enum GenCacheAdapterScope
 	 * Returns the '<em><b>Gen Cache Adapter Scope</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static GenCacheAdapterScope getByName(String name) {
@@ -158,6 +162,8 @@ public enum GenCacheAdapterScope
 	 * Returns the '<em><b>Gen Cache Adapter Scope</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static GenCacheAdapterScope get(int value) {

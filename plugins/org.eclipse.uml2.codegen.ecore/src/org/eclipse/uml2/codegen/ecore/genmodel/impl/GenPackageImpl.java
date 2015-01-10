@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 247980
- *   Kenn Hussey (CEA) - 394623, 212765
+ *   Kenn Hussey (CEA) - 394623, 212765, 451350
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
@@ -38,11 +38,11 @@ import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenPackageImpl#isResourceInterfaces <em>Resource Interfaces</em>}</li>
  *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenPackageImpl#getOperationsPackage <em>Operations Package</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

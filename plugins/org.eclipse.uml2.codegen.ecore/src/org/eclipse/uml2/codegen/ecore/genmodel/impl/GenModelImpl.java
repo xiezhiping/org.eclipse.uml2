@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016, 247980
  *   Kenn Hussey - 284809
- *   Kenn Hussey (CEA) - 358792, 351777, 382637, 212765
+ *   Kenn Hussey (CEA) - 358792, 351777, 382637, 212765, 451350
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
@@ -44,6 +44,7 @@ import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelImpl#isFactoryMethods <em>Factory Methods</em>}</li>
  *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelImpl#isPluralizedGetters <em>Pluralized Getters</em>}</li>
@@ -51,7 +52,6 @@ import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
  *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelImpl#isSafeStrings <em>Safe Strings</em>}</li>
  *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelImpl#getInvariantPrefix <em>Invariant Prefix</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

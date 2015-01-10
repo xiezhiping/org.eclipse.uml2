@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016, 204200
  *   Kenn Hussey - 286329
- *   Kenn Hussey (CEA) - 322715, 418466
+ *   Kenn Hussey (CEA) - 322715, 418466, 451350
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
@@ -43,10 +43,10 @@ import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenOperationImpl#getCacheAdapterScope <em>Cache Adapter Scope</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -139,7 +139,7 @@ public class GenOperationImpl
 	public GenCacheAdapterScope getCacheAdapterScopeGen() {
 		return CACHE_ADAPTER_SCOPE_EFLAG_VALUES[(eFlags & CACHE_ADAPTER_SCOPE_EFLAG) >>> CACHE_ADAPTER_SCOPE_EFLAG_OFFSET];
 	}
-	
+
 	public GenCacheAdapterScope getCacheAdapterScope() {
 
 		if (isDuplicate()) {

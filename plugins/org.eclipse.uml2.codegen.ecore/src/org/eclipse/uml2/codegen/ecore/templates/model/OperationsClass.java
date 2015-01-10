@@ -22,13 +22,13 @@ public class OperationsClass
   protected final String TEXT_5 = ";" + NL;
   protected final String TEXT_6 = NL + NL + "/**" + NL + " * <!-- begin-user-doc -->" + NL + " * A static utility class that provides operations related to '<em><b>";
   protected final String TEXT_7 = "</b></em>' model objects." + NL + " * <!-- end-user-doc -->" + NL + " *";
-  protected final String TEXT_8 = NL + " * <p>" + NL + " * The following operations are supported:" + NL + " * <ul>";
+  protected final String TEXT_8 = NL + " * <p>" + NL + " * The following operations are supported:" + NL + " * </p>" + NL + " * <ul>";
   protected final String TEXT_9 = NL + " *   <li>{@link ";
   protected final String TEXT_10 = "#";
   protected final String TEXT_11 = "(";
   protected final String TEXT_12 = ") <em>";
   protected final String TEXT_13 = "</em>}</li>";
-  protected final String TEXT_14 = NL + " * </ul>" + NL + " * </p>";
+  protected final String TEXT_14 = NL + " * </ul>";
   protected final String TEXT_15 = NL + " *" + NL + " * @generated" + NL + " */" + NL + "public class ";
   protected final String TEXT_16 = NL + "{";
   protected final String TEXT_17 = NL + "\t/**" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic static final ";
@@ -162,7 +162,7 @@ public class OperationsClass
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -173,6 +173,7 @@ public class OperationsClass
  *   Kenn Hussey (Embarcadero Technologies) - 206636, 224693
  *	 Lutz Wrage - 242726
  *   Kenn Hussey - 344908, 284810, 345083
+ *   Kenn Hussey (CEA) - 451350
  *
  * </copyright>
  */

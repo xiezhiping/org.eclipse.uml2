@@ -1,21 +1,21 @@
 <%if (!UML2GenModelUtil.getSubsettedGenFeatures(genFeature).isEmpty()) {%>
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
     <%for (GenFeature subsettedGenFeature : UML2GenModelUtil.getSubsettedGenFeatures(genFeature)) {%>
 	 *   <li>'{@link <%=subsettedGenFeature.getGenClass().getQualifiedInterfaceName()%>#<%=subsettedGenFeature.getGetAccessor()%>() <em><%=subsettedGenFeature.getFormattedName()%></em>}'</li>
     <%}%>
 	 * </ul>
-	 * </p>
 <%}if (UML2GenModelUtil.isRedefinition(genFeature)) {%>
 	 * <p>
 	 * This feature redefines the following features:
+	 * </p>
 	 * <ul>
     <%for (GenFeature redefinedGenFeature : UML2GenModelUtil.getRedefinedGenFeatures(genFeature)) {%>
 	 *   <li>'{@link <%=redefinedGenFeature.getGenClass().getQualifiedInterfaceName()%>#<%=redefinedGenFeature.getGetAccessor()%>() <em><%=redefinedGenFeature.getFormattedName()%></em>}'</li>
     <%}%>
 	 * </ul>
-	 * </p>
 <%}if(genFeature.isDerived() && UML2GenModelUtil.isUnion(genFeature)){%>
 	 * This feature is a derived union.
 <%}%>

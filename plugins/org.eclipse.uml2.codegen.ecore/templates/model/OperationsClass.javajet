@@ -3,7 +3,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 206636, 224693
  *	 Lutz Wrage - 242726
  *   Kenn Hussey - 344908, 284810, 345083
+ *   Kenn Hussey (CEA) - 451350
  *
  * </copyright>
  */
@@ -34,13 +35,13 @@ package <%=UML2GenModelUtil.getOperationsPackageName(genPackage)%>;
     <%if (first) { first = false;%>
  * <p>
  * The following operations are supported:
+ * </p>
  * <ul>
     <%}%>
  *   <li>{@link <%=genOperation.getGenClass().getQualifiedInterfaceName()%>#<%=genOperation.getName()%>(<%=genOperation.getParameterTypes(", ")%>) <em><%=genOperation.getFormattedName()%></em>}</li>
   <%}%>
   <% if (!first) {%>
  * </ul>
- * </p>
   <%}%>
 <%}%>
  *

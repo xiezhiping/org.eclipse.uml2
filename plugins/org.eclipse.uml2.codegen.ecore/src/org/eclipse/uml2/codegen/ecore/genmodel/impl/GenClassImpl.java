@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 206636, 204200
  *   Lutz Wrage - 241411
  *   Kenn Hussey - 286329, 323181, 344908, 346183
- *   Kenn Hussey (CEA) - 351777, 394623, 322715, 212765
+ *   Kenn Hussey (CEA) - 351777, 394623, 322715, 212765, 451350
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
@@ -41,8 +41,6 @@ import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Gen Class</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

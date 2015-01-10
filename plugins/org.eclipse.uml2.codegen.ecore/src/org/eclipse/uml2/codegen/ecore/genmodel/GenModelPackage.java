@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 208016, 247980
  *   Kenn Hussey - 286329
- *   Kenn Hussey (CEA) - 351777, 397324, 414970
+ *   Kenn Hussey (CEA) - 351777, 397324, 414970, 451350
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
@@ -1365,6 +1365,24 @@ public interface GenModelPackage
 	int GEN_MODEL__STYLE_PROVIDERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__STYLE_PROVIDERS;
 
 	/**
+	 * The feature id for the '<em><b>Cleanup</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__CLEANUP = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__CLEANUP;
+
+	/**
+	 * The feature id for the '<em><b>OS Gi Compatible</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__OS_GI_COMPATIBLE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__OS_GI_COMPATIBLE;
+
+	/**
 	 * The feature id for the '<em><b>Factory Methods</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1770,6 +1788,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_PACKAGE__GEN_CLASSIFIERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__GEN_CLASSIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Publication Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PACKAGE__PUBLICATION_LOCATION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__PUBLICATION_LOCATION;
 
 	/**
 	 * The feature id for the '<em><b>Resource Interfaces</b></em>' attribute.
