@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 CEA and others.
+ * Copyright (c) 2014, 2015 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
+ *   Kenn Hussey (CEA) - 451350
  *
  */
 package org.eclipse.uml2.uml.profile.standard;
@@ -25,10 +26,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.profile.standard.ModelLibrary#getBase_Package <em>Base Package</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.uml2.uml.profile.standard.StandardPackage#getModelLibrary()
  * @model
