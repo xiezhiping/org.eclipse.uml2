@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2014 CEA and others.
+ * Copyright (c) 2011, 2015 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
- *   Kenn Hussey (CEA) - 351774, 405374, 418466
+ *   Kenn Hussey (CEA) - 351774, 405374, 418466, 458737
  *
  */
 package org.eclipse.uml2.uml.resource;
@@ -141,7 +141,13 @@ public class UML302UMLResourceHandler
 				value = getValue(extension.getMixed(), name, remove);
 
 				if (value instanceof EObject) {
-					return (EObject) value;
+					EObject eObject = (EObject) value;
+
+					if (eObject.eIsProxy() && resolveProxies) {
+						eObject = EcoreUtil.resolve(eObject, resource);
+					}
+
+					return eObject;
 				}
 			} else if (value instanceof String && resource != null) {
 				return resource.getEObject((String) value);
