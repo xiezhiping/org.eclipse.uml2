@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -67,12 +67,12 @@ import org.eclipse.uml2.uml.internal.operations.RemoveVariableValueActionOperati
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RemoveVariableValueActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RemoveVariableValueActionImpl#isRemoveDuplicates <em>Is Remove Duplicates</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RemoveVariableValueActionImpl#getRemoveAt <em>Remove At</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

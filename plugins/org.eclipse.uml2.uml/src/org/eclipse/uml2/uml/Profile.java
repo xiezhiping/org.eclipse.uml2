@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -35,11 +35,11 @@ import org.eclipse.emf.ecore.EPackage;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Profile#getMetaclassReferences <em>Metaclass Reference</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#getMetamodelReferences <em>Metamodel Reference</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getProfile()
  * @model
@@ -53,10 +53,10 @@ public interface Profile
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ElementImport}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getElementImports() <em>Element Import</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -110,10 +110,10 @@ public interface Profile
 	 * The list contents are of type {@link org.eclipse.uml2.uml.PackageImport}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getPackageImports() <em>Package Import</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

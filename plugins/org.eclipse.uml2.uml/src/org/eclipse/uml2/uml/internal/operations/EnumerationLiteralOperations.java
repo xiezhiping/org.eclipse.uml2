@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2014 CEA and others.
+ * Copyright (c) 2011, 2015 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
- *   Kenn Hussey (CEA) - 375553, 397140, 403365, 212765, 418466
+ *   Kenn Hussey (CEA) - 375553, 397140, 403365, 212765, 418466, 451350
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -29,11 +29,11 @@ import org.eclipse.uml2.uml.UMLPackage;
  *
  * <p>
  * The following operations are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.EnumerationLiteral#getClassifiers() <em>Get Classifiers</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.EnumerationLiteral#getClassifier() <em>Get Classifier</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -27,13 +27,13 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.InteractionFragment#getCovereds <em>Covered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionFragment#getEnclosingOperand <em>Enclosing Operand</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionFragment#getEnclosingInteraction <em>Enclosing Interaction</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionFragment#getGeneralOrderings <em>General Ordering</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getInteractionFragment()
  * @model abstract="true"
@@ -88,10 +88,10 @@ public interface InteractionFragment
 	 * The list contents are of type {@link org.eclipse.uml2.uml.GeneralOrdering}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -146,10 +146,10 @@ public interface InteractionFragment
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Interaction#getFragments <em>Fragment</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -180,10 +180,10 @@ public interface InteractionFragment
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.InteractionOperand#getFragments <em>Fragment</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

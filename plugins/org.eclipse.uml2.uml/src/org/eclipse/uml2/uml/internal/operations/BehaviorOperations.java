@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 383550, 418466, 432898
+ *   Kenn Hussey (CEA) - 327039, 351774, 383550, 418466, 432898, 451350
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -42,6 +42,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * <p>
  * The following operations are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#validateMostOneBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Most One Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#validateParametersMatch(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Parameters Match</em>}</li>
@@ -51,7 +52,6 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Behavior#inputParameters() <em>Input Parameters</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#outputParameters() <em>Output Parameters</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

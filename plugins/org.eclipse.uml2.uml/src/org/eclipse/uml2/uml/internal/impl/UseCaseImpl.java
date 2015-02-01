@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -74,6 +74,7 @@ import org.eclipse.uml2.uml.internal.operations.UseCaseOperations;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.UseCaseImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.UseCaseImpl#getExtends <em>Extend</em>}</li>
@@ -81,7 +82,6 @@ import org.eclipse.uml2.uml.internal.operations.UseCaseOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.UseCaseImpl#getIncludes <em>Include</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.UseCaseImpl#getSubjects <em>Subject</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -31,12 +31,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.CombinedFragment#getCfragmentGates <em>Cfragment Gate</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.CombinedFragment#getInteractionOperator <em>Interaction Operator</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.CombinedFragment#getOperands <em>Operand</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getCombinedFragment()
  * @model
@@ -80,10 +80,10 @@ public interface CombinedFragment
 	 * The list contents are of type {@link org.eclipse.uml2.uml.InteractionOperand}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -138,10 +138,10 @@ public interface CombinedFragment
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Gate}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

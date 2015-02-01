@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 418466
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -37,6 +37,7 @@ import org.eclipse.uml2.uml.Vertex;
  *
  * <p>
  * The following operations are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Vertex#containingStateMachine() <em>Containing State Machine</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Vertex#getIncomings() <em>Get Incomings</em>}</li>
@@ -44,7 +45,6 @@ import org.eclipse.uml2.uml.Vertex;
  *   <li>{@link org.eclipse.uml2.uml.Vertex#isContainedInState(org.eclipse.uml2.uml.State) <em>Is Contained In State</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Vertex#isContainedInRegion(org.eclipse.uml2.uml.Region) <em>Is Contained In Region</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

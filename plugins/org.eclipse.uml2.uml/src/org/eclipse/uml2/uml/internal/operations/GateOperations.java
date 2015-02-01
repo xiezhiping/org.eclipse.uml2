@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -41,6 +41,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * <p>
  * The following operations are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Gate#validateActualGateMatched(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Actual Gate Matched</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Gate#validateInsideCfMatched(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Inside Cf Matched</em>}</li>
@@ -58,7 +59,6 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Gate#getOperand() <em>Get Operand</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Gate#isDistinguishableFrom(org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.Namespace) <em>Is Distinguishable From</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

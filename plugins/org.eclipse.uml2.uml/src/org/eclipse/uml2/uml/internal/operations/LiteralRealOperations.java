@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2014 CEA and others.
+ * Copyright (c) 2011, 2015 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
- *   Kenn Hussey (CEA) - 418466
+ *   Kenn Hussey (CEA) - 418466, 451350
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -21,12 +21,12 @@ import org.eclipse.uml2.uml.LiteralReal;
  *
  * <p>
  * The following operations are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.LiteralReal#stringValue() <em>String Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LiteralReal#isComputable() <em>Is Computable</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LiteralReal#realValue() <em>Real Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

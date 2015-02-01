@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 451350
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -57,13 +57,13 @@ import org.eclipse.uml2.uml.internal.operations.ParameterableElementOperations;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConnectableElementImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConnectableElementImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConnectableElementImpl#getOwningTemplateParameter <em>Owning Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConnectableElementImpl#getEnds <em>End</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

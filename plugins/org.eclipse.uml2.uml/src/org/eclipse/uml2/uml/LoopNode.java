@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 397141, 418466
+ *   Kenn Hussey (CEA) - 327039, 397141, 418466, 451350
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.LoopNode#getBodyOutputs <em>Body Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LoopNode#getBodyParts <em>Body Part</em>}</li>
@@ -44,7 +45,6 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.uml.LoopNode#getSetupParts <em>Setup Part</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LoopNode#getTests <em>Test</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode()
  * @model
@@ -231,10 +231,10 @@ public interface LoopNode
 	 * The list contents are of type {@link org.eclipse.uml2.uml.OutputPin}.
 	 * <p>
 	 * This feature redefines the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.StructuredActivityNode#getStructuredNodeOutputs() <em>Structured Node Output</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -292,10 +292,10 @@ public interface LoopNode
 	 * The list contents are of type {@link org.eclipse.uml2.uml.OutputPin}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -407,10 +407,10 @@ public interface LoopNode
 	 * The list contents are of type {@link org.eclipse.uml2.uml.InputPin}.
 	 * <p>
 	 * This feature redefines the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.StructuredActivityNode#getStructuredNodeInputs() <em>Structured Node Input</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

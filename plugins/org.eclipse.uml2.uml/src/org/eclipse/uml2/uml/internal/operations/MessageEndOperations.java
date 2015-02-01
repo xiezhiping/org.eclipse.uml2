@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 CEA and others.
+ * Copyright (c) 2014, 2015 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
+ *   Kenn Hussey (CEA) - 451350
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -34,13 +35,13 @@ import org.eclipse.uml2.uml.UMLPackage;
  *
  * <p>
  * The following operations are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.MessageEnd#oppositeEnd() <em>Opposite End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MessageEnd#isSend() <em>Is Send</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MessageEnd#isReceive() <em>Is Receive</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MessageEnd#enclosingFragment() <em>Enclosing Fragment</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2014 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2015 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
- *   Kenn Hussey (CEA) - 418466
+ *   Kenn Hussey (CEA) - 418466, 451350
  *
  */
 package org.eclipse.uml2.uml;
@@ -104,6 +104,8 @@ public enum ConnectorKind
 	 * Returns the '<em><b>Connector Kind</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ConnectorKind get(String literal) {
@@ -120,6 +122,8 @@ public enum ConnectorKind
 	 * Returns the '<em><b>Connector Kind</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ConnectorKind getByName(String name) {
@@ -136,6 +140,8 @@ public enum ConnectorKind
 	 * Returns the '<em><b>Connector Kind</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ConnectorKind get(int value) {

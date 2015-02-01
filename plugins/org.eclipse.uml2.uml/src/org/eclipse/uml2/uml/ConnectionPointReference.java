@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
- *   Kenn Hussey (CEA) - 418466
+ *   Kenn Hussey (CEA) - 418466, 451350
  *
  */
 package org.eclipse.uml2.uml;
@@ -31,12 +31,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ConnectionPointReference#getEntries <em>Entry</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ConnectionPointReference#getExits <em>Exit</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ConnectionPointReference#getState <em>State</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getConnectionPointReference()
  * @model
@@ -128,10 +128,10 @@ public interface ConnectionPointReference
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.State#getConnections <em>Connection</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

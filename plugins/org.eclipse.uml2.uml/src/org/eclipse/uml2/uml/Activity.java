@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
  *   Christian W. Damus (CEA) - 392957, 251963
  *
  */
@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getOwnedGroups <em>Owned Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getEdges <em>Edge</em>}</li>
@@ -45,7 +46,6 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.uml.Activity#getPartitions <em>Partition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getStructuredNodes <em>Structured Node</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getActivity()
  * @model
@@ -59,10 +59,10 @@ public interface Activity
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityGroup}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Activity#getGroups() <em>Group</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Group</em>' containment reference list isn't clear,
@@ -148,10 +148,10 @@ public interface Activity
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityGroup#getInActivity <em>In Activity</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -197,10 +197,10 @@ public interface Activity
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityNode}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Activity#getNodes() <em>Node</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Node</em>' containment reference list isn't clear,
@@ -285,11 +285,11 @@ public interface Activity
 	 * The list contents are of type {@link org.eclipse.uml2.uml.StructuredActivityNode}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Activity#getGroups() <em>Group</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Activity#getNodes() <em>Node</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -411,10 +411,10 @@ public interface Activity
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Variable#getActivityScope <em>Activity Scope</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -474,10 +474,10 @@ public interface Activity
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityNode#getActivity <em>Activity</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -524,10 +524,10 @@ public interface Activity
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityEdge#getActivity <em>Activity</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -585,11 +585,11 @@ public interface Activity
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityPartition}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Activity#getGroups() <em>Group</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Activity#getOwnedGroups() <em>Owned Group</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

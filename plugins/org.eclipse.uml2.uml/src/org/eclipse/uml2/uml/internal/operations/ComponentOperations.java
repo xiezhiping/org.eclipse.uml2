@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -40,6 +40,7 @@ import org.eclipse.uml2.uml.UMLPackage;
  *
  * <p>
  * The following operations are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Component#validateNoNestedClassifiers(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Nested Classifiers</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Component#validateNoPackagedElements(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Packaged Elements</em>}</li>
@@ -50,7 +51,6 @@ import org.eclipse.uml2.uml.UMLPackage;
  *   <li>{@link org.eclipse.uml2.uml.Component#getProvideds() <em>Get Provideds</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Component#getRequireds() <em>Get Requireds</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
