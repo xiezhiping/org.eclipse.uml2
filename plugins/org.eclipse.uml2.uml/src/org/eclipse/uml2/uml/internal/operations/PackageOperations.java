@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 271470
  *   Kenn Hussey - 323181, 348433
- *   Kenn Hussey (CEA) - 327039, 369492, 313951, 163556, 418466, 447901, 451350
+ *   Kenn Hussey (CEA) - 327039, 369492, 313951, 163556, 418466, 447901, 451350, 458658
  *   Christian W. Damus (CEA) - 300957, 431998
  *   Christian W. Damus - 444588
  *
@@ -715,7 +715,9 @@ public class PackageOperations
 
 			if (eResource instanceof XMLResource) {
 				XMLResource xmlResource = (XMLResource) eResource;
-				xmlResource.setID(copy, xmlResource.getID(key));
+				String id = xmlResource.getID(key);
+				xmlResource.setID(key, null);
+				xmlResource.setID(copy, id);
 			}
 
 			for (Setting setting : new ArrayList<EStructuralFeature.Setting>(
