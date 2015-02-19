@@ -32,14 +32,19 @@
 	 */
 	protected int getLowerBound(<%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> eObject, <%=genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature")%> eStructuralFeature)
 	{
-		try
+		String redefinitionDetail = getRedefinitionDetail(eObject.eClass(), eStructuralFeature.getName(), "lowerBound");<%=genModel.getNonNLS()%>
+		if (redefinitionDetail != null && redefinitionDetail.length() > 0)
 		{
-			return Integer.parseInt(getRedefinitionDetail(eObject.eClass(), eStructuralFeature.getName(), "lowerBound"));<%=genModel.getNonNLS()%>
+			try
+			{
+				return Integer.parseInt(redefinitionDetail);
+			}
+			catch (Exception e)
+			{
+				// do nothing
+			}
 		}
-		catch (Exception e)
-		{
-			return eStructuralFeature.getLowerBound();		
-		}
+		return eStructuralFeature.getLowerBound();
 	}
 
 	/**
@@ -49,14 +54,19 @@
 	 */
 	protected int getUpperBound(<%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> eObject, <%=genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature")%> eStructuralFeature)
 	{
-		try
+		String redefinitionDetail = getRedefinitionDetail(eObject.eClass(), eStructuralFeature.getName(), "upperBound");<%=genModel.getNonNLS()%>
+		if (redefinitionDetail != null && redefinitionDetail.length() > 0)
 		{
-			return Integer.parseInt(getRedefinitionDetail(eObject.eClass(), eStructuralFeature.getName(), "upperBound"));<%=genModel.getNonNLS()%>
+			try
+			{
+				return Integer.parseInt(redefinitionDetail);
+			}
+			catch (Exception e)
+			{
+				// do nothing
+			}
 		}
-		catch (Exception e)
-		{
-			return eStructuralFeature.getUpperBound();		
-		}
+		return eStructuralFeature.getUpperBound();
 	}
 
 	/**

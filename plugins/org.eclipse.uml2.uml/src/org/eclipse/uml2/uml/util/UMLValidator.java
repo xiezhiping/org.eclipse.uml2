@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 204200
  *   Kenn Hussey - 286329, 320318, 323000, 323181, 354453
- *   Kenn Hussey (CEA) - 327039, 351774, 297216, 212765, 408610, 414970, 418466
+ *   Kenn Hussey (CEA) - 327039, 351774, 297216, 212765, 408610, 414970, 418466, 460314
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -26701,12 +26701,16 @@ public class UMLValidator
 	 */
 	protected int getLowerBoundGen(EObject eObject,
 			EStructuralFeature eStructuralFeature) {
-		try {
-			return Integer.parseInt(getRedefinitionDetail(eObject.eClass(),
-				eStructuralFeature.getName(), "lowerBound")); //$NON-NLS-1$
-		} catch (Exception e) {
-			return eStructuralFeature.getLowerBound();
+		String redefinitionDetail = getRedefinitionDetail(eObject.eClass(),
+			eStructuralFeature.getName(), "lowerBound"); //$NON-NLS-1$
+		if (redefinitionDetail != null && redefinitionDetail.length() > 0) {
+			try {
+				return Integer.parseInt(redefinitionDetail);
+			} catch (Exception e) {
+				// do nothing
+			}
 		}
+		return eStructuralFeature.getLowerBound();
 	}
 
 	protected int getLowerBound(EObject eObject,
@@ -26723,12 +26727,16 @@ public class UMLValidator
 	 */
 	protected int getUpperBound(EObject eObject,
 			EStructuralFeature eStructuralFeature) {
-		try {
-			return Integer.parseInt(getRedefinitionDetail(eObject.eClass(),
-				eStructuralFeature.getName(), "upperBound")); //$NON-NLS-1$
-		} catch (Exception e) {
-			return eStructuralFeature.getUpperBound();
+		String redefinitionDetail = getRedefinitionDetail(eObject.eClass(),
+			eStructuralFeature.getName(), "upperBound"); //$NON-NLS-1$
+		if (redefinitionDetail != null && redefinitionDetail.length() > 0) {
+			try {
+				return Integer.parseInt(redefinitionDetail);
+			} catch (Exception e) {
+				// do nothing
+			}
 		}
+		return eStructuralFeature.getUpperBound();
 	}
 
 	/**
