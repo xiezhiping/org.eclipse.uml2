@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 459651
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -91,10 +91,32 @@ public class NamespaceOperations
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 
-		if (!namespace.membersAreDistinguishable()) {
-			result = false;
+		if (diagnostics != null) {
+			EList<NamedElement> namespaceMembers = namespace.getMembers();
 
-			if (diagnostics != null) {
+			for (NamedElement member : namespaceMembers) {
+
+				for (NamedElement otherMember : namespaceMembers) {
+
+					if (member != otherMember
+						&& !member.isDistinguishableFrom(otherMember, namespace)) {
+
+						result = false;
+						
+						diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+							UMLValidator.DIAGNOSTIC_SOURCE,
+							UMLValidator.NAMESPACE__MEMBERS_DISTINGUISHABLE,
+							UMLPlugin.INSTANCE.getString(
+								"_UI_Namespace_MemberDistinguishable_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context, member, namespace)),
+							new Object[]{member}));
+						
+						break;
+					}
+				}
+			}
+
+			if (!result) {
 				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
 					UMLValidator.DIAGNOSTIC_SOURCE,
 					UMLValidator.NAMESPACE__MEMBERS_DISTINGUISHABLE,
@@ -103,6 +125,8 @@ public class NamespaceOperations
 						getMessageSubstitutions(context, namespace)),
 					new Object[]{namespace}));
 			}
+		} else {
+			result = namespace.membersAreDistinguishable();
 		}
 
 		return result;
