@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 414970, 370089
+ *   Kenn Hussey (CEA) - 414970, 370089, 459723
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -229,6 +229,15 @@ public class ManifestationItemProvider
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__SUPPLIER},
 				null, value);
+		}
+		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
+			return new SubsetSupersetSetCommand(
+				domain,
+				owner,
+				feature,
+				null,
+				new EStructuralFeature[]{UMLPackage.Literals.MANIFESTATION__UTILIZED_ELEMENT},
+				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

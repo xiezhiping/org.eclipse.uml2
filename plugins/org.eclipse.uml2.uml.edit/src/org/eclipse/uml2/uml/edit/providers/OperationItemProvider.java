@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 383028, 418466, 414970, 370089
+ *   Kenn Hussey (CEA) - 327039, 351774, 383028, 418466, 414970, 370089, 459723
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -810,6 +810,29 @@ public class OperationItemProvider
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
 				null, value);
+		}
+		if (feature == UMLPackage.Literals.OPERATION__POSTCONDITION) {
+			return new SubsetSupersetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				null, value);
+		}
+		if (feature == UMLPackage.Literals.OPERATION__PRECONDITION) {
+			return new SubsetSupersetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				null, value);
+		}
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
+			return new SubsetSupersetSetCommand(domain, owner, feature, null,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.OPERATION__BODY_CONDITION,
+					UMLPackage.Literals.OPERATION__POSTCONDITION,
+					UMLPackage.Literals.OPERATION__PRECONDITION}, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

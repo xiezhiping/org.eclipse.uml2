@@ -1,13 +1,12 @@
 /*
- * Copyright (c) 2006, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2015 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 459723
+ *   CEA - initial API and implementation
  *
  */
 package org.eclipse.uml2.common.util;
@@ -21,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.EObjectEList;
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 
 /**
  * A list that enforces subset/superset constraints. Specifically, when an
@@ -29,15 +28,15 @@ import org.eclipse.emf.ecore.util.EObjectEList;
  * if not already present; when an element is removed from a superset, it is
  * also removed from the associated subset(s), if present.
  * 
- * @since 1.2
+ * @since 2.1
  */
-public class SubsetSupersetEObjectEList<E>
-		extends EObjectEList<E> {
+public class SubsetSupersetEDataTypeEList<E>
+		extends EDataTypeEList<E> {
 
 	private static final long serialVersionUID = 1L;
 
 	public static class Unsettable<E>
-			extends SubsetSupersetEObjectEList<E> {
+			extends SubsetSupersetEDataTypeEList<E> {
 
 		private static final long serialVersionUID = 1L;
 
@@ -85,7 +84,7 @@ public class SubsetSupersetEObjectEList<E>
 	 */
 	protected final int[] subsetFeatureIDs;
 
-	public SubsetSupersetEObjectEList(Class<?> dataClass,
+	public SubsetSupersetEDataTypeEList(Class<?> dataClass,
 			InternalEObject owner, int featureID, int[] supersetFeatureIDs,
 			int[] subsetFeatureIDs) {
 		super(dataClass, owner, featureID);

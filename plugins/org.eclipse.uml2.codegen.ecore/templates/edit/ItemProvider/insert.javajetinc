@@ -60,7 +60,7 @@
 	}
 
 <%}%>
-<%if (!UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, false).isEmpty() || !UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, false).isEmpty()) {%>
+<%if (!UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass).isEmpty() || !UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass).isEmpty()) {%>
 	/**
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
 	 * <!-- begin-user-doc -->
@@ -71,7 +71,7 @@
 	@Override
   <%}%>
 	protected <%=genModel.getImportedName("org.eclipse.emf.common.command.Command")%> createSetCommand(<%=genModel.getImportedName("org.eclipse.emf.edit.domain.EditingDomain")%> domain, <%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> owner, <%=genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature")%> feature, Object value) {
-  <%{ List<GenFeature> subsetSupersetGenFeatures = new UniqueEList.FastCompare<GenFeature>(); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, false)); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, false));%>
+  <%{ List<GenFeature> subsetSupersetGenFeatures = new UniqueEList.FastCompare<GenFeature>(); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass)); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass));%>
     <%for (GenFeature genFeature : subsetSupersetGenFeatures) {%>
 		if (feature == <%=genFeature.getQualifiedFeatureAccessor()%>) {
 			return new <%=genModel.getImportedName("org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand")%>(domain, owner, feature, <%=UML2GenModelUtil.getSupersetFeatureAccessorArray(genClass, genFeature)%>, <%=UML2GenModelUtil.getSubsetFeatureAccessorArray(genClass, genFeature)%>, value);

@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 414970, 370089
+ *   Kenn Hussey (CEA) - 327039, 414970, 370089, 459723
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -292,6 +292,14 @@ public class ComponentRealizationItemProvider
 	@Override
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
+		if (feature == UMLPackage.Literals.COMPONENT_REALIZATION__REALIZING_CLASSIFIER) {
+			return new SubsetSupersetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__CLIENT},
+				null, value);
+		}
 		if (feature == UMLPackage.Literals.COMPONENT_REALIZATION__ABSTRACTION) {
 			return new SubsetSupersetSetCommand(
 				domain,
@@ -299,6 +307,24 @@ public class ComponentRealizationItemProvider
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__SUPPLIER},
 				null, value);
+		}
+		if (feature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
+			return new SubsetSupersetSetCommand(
+				domain,
+				owner,
+				feature,
+				null,
+				new EStructuralFeature[]{UMLPackage.Literals.COMPONENT_REALIZATION__REALIZING_CLASSIFIER},
+				value);
+		}
+		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
+			return new SubsetSupersetSetCommand(
+				domain,
+				owner,
+				feature,
+				null,
+				new EStructuralFeature[]{UMLPackage.Literals.COMPONENT_REALIZATION__ABSTRACTION},
+				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

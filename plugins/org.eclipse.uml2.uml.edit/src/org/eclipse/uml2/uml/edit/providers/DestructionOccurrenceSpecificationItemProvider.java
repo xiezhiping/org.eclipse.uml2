@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
- *   Kenn Hussey (CEA) - 414970, 455868, 370089
+ *   Kenn Hussey (CEA) - 414970, 455868, 370089, 459723
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+
 //import org.eclipse.uml2.uml.DestructionOccurrenceSpecification;
 
 /**

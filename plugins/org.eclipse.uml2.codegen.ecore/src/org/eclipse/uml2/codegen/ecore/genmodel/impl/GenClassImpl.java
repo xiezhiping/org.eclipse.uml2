@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 206636, 204200
  *   Lutz Wrage - 241411
  *   Kenn Hussey - 286329, 323181, 344908, 346183
- *   Kenn Hussey (CEA) - 351777, 394623, 322715, 212765, 451350
+ *   Kenn Hussey (CEA) - 351777, 394623, 322715, 212765, 451350, 459723
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
@@ -29,6 +29,7 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenRuntimeVersion;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -557,192 +558,273 @@ public class GenClassImpl
 		return getSubsetSupersetListConstructor(genFeature);
 	}
 
+	private void appendReifiedFeatureInverseOverride(StringBuffer sb,
+			GenFeature genFeature) {
+		org.eclipse.emf.codegen.ecore.genmodel.GenClass sourceGenClass = genFeature
+			.getGenClass();
+		EGenericType eGenericType = genFeature.getEcoreFeature()
+			.getEGenericType();
+
+		if (isReifiedType(sourceGenClass, eGenericType)) {
+			sb.append(" { private static final long serialVersionUID = 1L; @Override public ");
+			sb.append(getGenModel().getImportedName("java.lang.Class"));
+			sb.append("<?> getInverseFeatureClass() { return ");
+			sb.append(getTypeArgument(sourceGenClass, eGenericType, true, true));
+			sb.append(".class; } }");
+		}
+	}
+
 	protected String getSubsetSupersetListConstructor(GenFeature genFeature) {
 		StringBuffer sb = new StringBuffer();
 
 		String unsettable = genFeature.isUnsettable()
 			? ".Unsettable" //$NON-NLS-1$
 			: ""; //$NON-NLS-1$
+		String offsetCorrectionField = hasOffsetCorrection()
+			? " + " + getOffsetCorrectionField(null) //$NON-NLS-1$
+			: ""; //$NON-NLS-1$
+
+		boolean isJava5 = getEffectiveComplianceLevel().getValue() >= GenJDKLevel.JDK50;
 
 		if (genFeature.isMapType()) {
 			return super.getListConstructor(genFeature);
 		} else if (genFeature.isFeatureMapType()) {
 			return super.getListConstructor(genFeature);
-		} else if (getGenModel().isSuppressNotification()) {
-			sb.append(getGenModel().getImportedName(
-				"org.eclipse.emf.ecore.util.BasicInternalEList")); //$NON-NLS-1$
-			if (getEffectiveComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
-				sb.append('<');
-				sb.append(UML2GenModelUtil.getRedefinedListItemType(this,
-					genFeature));
-				sb.append('>');
+		} else {
+			EGenericType eGenericType = genFeature.getEcoreFeature()
+				.getEGenericType();
+
+			if (getGenModel().isSuppressNotification()) {
+				sb.append(getGenModel().getImportedName(
+					"org.eclipse.emf.ecore.util.BasicInternalEList")); //$NON-NLS-1$
+				if (getGenModel().getRuntimeVersion().getValue() >= GenRuntimeVersion.EMF28_VALUE) {
+					sb.append(unsettable);
+				}
+				if (isJava5) {
+					sb.append('<');
+					sb.append(UML2GenModelUtil.getRedefinedListItemType(this,
+						genFeature));
+					sb.append('>');
+				}
+				sb.append("("); //$NON-NLS-1$
+				sb.append(getTypeArgument(this, eGenericType, true, true));
+				sb.append(".class)"); //$NON-NLS-1$
+			} else if (genFeature.isEffectiveContains()) {
+				if (genFeature.isBidirectional()) {
+					GenFeature reverseFeature = genFeature.getReverse();
+					sb.append(getGenModel()
+						.getImportedName(
+							"org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList")); //$NON-NLS-1$
+					sb.append(unsettable);
+					if (genFeature.isResolveProxies()) {
+						sb.append(".Resolving"); //$NON-NLS-1$
+					}
+					if (isJava5) {
+						sb.append('<');
+						sb.append(UML2GenModelUtil.getRedefinedListItemType(
+							this, genFeature));
+						sb.append('>');
+					}
+					sb.append("("); //$NON-NLS-1$
+					sb.append(getTypeArgument(this, eGenericType, true, true));
+					sb.append(".class, this, "); //$NON-NLS-1$
+					sb.append(getQualifiedFeatureID(genFeature));
+					sb.append(offsetCorrectionField);
+					sb.append(", "); //$NON-NLS-1$
+					if (UML2GenModelUtil.getSupersetGenFeatures(this,
+						genFeature, false).isEmpty()) {
+						sb.append("null"); //$NON-NLS-1$
+					} else {
+						sb.append(genFeature.getUpperName());
+						sb.append("_ESUPERSETS"); //$NON-NLS-1$
+					}
+					sb.append(", "); //$NON-NLS-1$
+					if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature,
+						false).isEmpty()) {
+						sb.append("null"); //$NON-NLS-1$
+					} else {
+						sb.append(genFeature.getUpperName());
+						sb.append("_ESUBSETS"); //$NON-NLS-1$
+					}
+					sb.append(", "); //$NON-NLS-1$
+					sb.append(reverseFeature.getGenClass()
+						.getQualifiedFeatureID(reverseFeature));
+					if (reverseFeature.getGenClass().hasOffsetCorrection()) {
+						sb.append(" + ");
+						sb.append(getOffsetCorrectionField(genFeature));
+					}
+					sb.append(")"); //$NON-NLS-1$
+					appendReifiedFeatureInverseOverride(sb, genFeature);
+				} else {
+					sb.append(getGenModel()
+						.getImportedName(
+							"org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList")); //$NON-NLS-1$
+					sb.append(unsettable);
+					if (genFeature.isResolveProxies()) {
+						sb.append(".Resolving"); //$NON-NLS-1$
+					}
+					if (isJava5) {
+						sb.append('<');
+						sb.append(UML2GenModelUtil.getRedefinedListItemType(
+							this, genFeature));
+						sb.append('>');
+					}
+					sb.append("("); //$NON-NLS-1$
+					sb.append(getTypeArgument(this, eGenericType, true, true));
+					sb.append(".class, this, "); //$NON-NLS-1$
+					sb.append(getQualifiedFeatureID(genFeature));
+					sb.append(offsetCorrectionField);
+					sb.append(", "); //$NON-NLS-1$
+					if (UML2GenModelUtil.getSupersetGenFeatures(this,
+						genFeature, false).isEmpty()) {
+						sb.append("null"); //$NON-NLS-1$
+					} else {
+						sb.append(genFeature.getUpperName());
+						sb.append("_ESUPERSETS"); //$NON-NLS-1$
+					}
+					sb.append(", "); //$NON-NLS-1$
+					if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature,
+						false).isEmpty()) {
+						sb.append("null"); //$NON-NLS-1$
+					} else {
+						sb.append(genFeature.getUpperName());
+						sb.append("_ESUBSETS"); //$NON-NLS-1$
+					}
+					sb.append(")"); //$NON-NLS-1$
+				}
+			} else if (genFeature.isReferenceType()) {
+				if (genFeature.isBidirectional()) {
+					GenFeature reverseFeature = genFeature.getReverse();
+					if (genFeature.isResolveProxies()) {
+						sb.append(getGenModel()
+							.getImportedName(
+								"org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList")); //$NON-NLS-1$
+					} else {
+						sb.append(getGenModel()
+							.getImportedName(
+								"org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseEList")); //$NON-NLS-1$
+					}
+					sb.append(unsettable);
+					if (reverseFeature.isListType()) {
+						sb.append(".ManyInverse"); //$NON-NLS-1$
+					}
+					if (isJava5) {
+						sb.append('<');
+						sb.append(UML2GenModelUtil.getRedefinedListItemType(
+							this, genFeature));
+						sb.append('>');
+					}
+					sb.append("("); //$NON-NLS-1$
+					sb.append(getTypeArgument(this, eGenericType, true, true));
+					sb.append(".class, this, "); //$NON-NLS-1$
+					sb.append(getQualifiedFeatureID(genFeature));
+					sb.append(offsetCorrectionField);
+					sb.append(", "); //$NON-NLS-1$
+					if (UML2GenModelUtil.getSupersetGenFeatures(this,
+						genFeature, false).isEmpty()) {
+						sb.append("null"); //$NON-NLS-1$
+					} else {
+						sb.append(genFeature.getUpperName());
+						sb.append("_ESUPERSETS"); //$NON-NLS-1$
+					}
+					sb.append(", "); //$NON-NLS-1$
+					if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature,
+						false).isEmpty()) {
+						sb.append("null"); //$NON-NLS-1$
+					} else {
+						sb.append(genFeature.getUpperName());
+						sb.append("_ESUBSETS"); //$NON-NLS-1$
+					}
+					sb.append(", "); //$NON-NLS-1$
+					sb.append(reverseFeature.getGenClass()
+						.getQualifiedFeatureID(reverseFeature));
+					if (reverseFeature.getGenClass().hasOffsetCorrection()) {
+						sb.append(" + ");
+						sb.append(getOffsetCorrectionField(genFeature));
+					}
+					sb.append(")"); //$NON-NLS-1$
+					appendReifiedFeatureInverseOverride(sb, genFeature);
+				} else {
+					if (genFeature.isResolveProxies()) {
+						sb.append(getGenModel()
+							.getImportedName(
+								"org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList")); //$NON-NLS-1$
+					} else {
+						sb.append(getGenModel()
+							.getImportedName(
+								"org.eclipse.uml2.common.util.SubsetSupersetEObjectEList")); //$NON-NLS-1$
+					}
+					sb.append(unsettable);
+					if (isJava5) {
+						sb.append('<');
+						sb.append(UML2GenModelUtil.getRedefinedListItemType(
+							this, genFeature));
+						sb.append('>');
+					}
+					sb.append("("); //$NON-NLS-1$
+					sb.append(getTypeArgument(this, eGenericType, true, true));
+					sb.append(".class, this, "); //$NON-NLS-1$
+					sb.append(getQualifiedFeatureID(genFeature));
+					sb.append(offsetCorrectionField);
+					sb.append(", "); //$NON-NLS-1$
+					if (UML2GenModelUtil.getSupersetGenFeatures(this,
+						genFeature, false).isEmpty()) {
+						sb.append("null"); //$NON-NLS-1$
+					} else {
+						sb.append(genFeature.getUpperName());
+						sb.append("_ESUPERSETS"); //$NON-NLS-1$
+					}
+					sb.append(", "); //$NON-NLS-1$
+					if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature,
+						false).isEmpty()) {
+						sb.append("null"); //$NON-NLS-1$
+					} else {
+						sb.append(genFeature.getUpperName());
+						sb.append("_ESUBSETS"); //$NON-NLS-1$
+					}
+					sb.append(")"); //$NON-NLS-1$
+				}
+			} else { // datatype
+				if (genFeature.isUnique()) {
+					sb.append(getGenModel()
+						.getImportedName(
+							"org.eclipse.uml2.common.util.SubsetSupersetEDataTypeUniqueEList"));
+				} else {
+					sb.append(getGenModel()
+						.getImportedName(
+							"org.eclipse.uml2.common.util.SubsetSupersetEDataTypeEList"));
+				}
+				sb.append(unsettable);
+				if (isJava5) {
+					sb.append('<');
+					sb.append(genFeature.getListItemType(this));
+					sb.append('>');
+				}
+				sb.append("(");
+				sb.append(isPrimitiveType(eGenericType.getERawType())
+					? genFeature.getRawListItemType()
+					: getTypeArgument(this, eGenericType, true, true));
+				sb.append(".class, this, ");
+				sb.append(getQualifiedFeatureID(genFeature));
+				sb.append(offsetCorrectionField);
+				sb.append(", "); //$NON-NLS-1$
+				if (UML2GenModelUtil.getSupersetGenFeatures(this, genFeature,
+					false).isEmpty()) {
+					sb.append("null"); //$NON-NLS-1$
+				} else {
+					sb.append(genFeature.getUpperName());
+					sb.append("_ESUPERSETS"); //$NON-NLS-1$
+				}
+				sb.append(", "); //$NON-NLS-1$
+				if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature,
+					false).isEmpty()) {
+					sb.append("null"); //$NON-NLS-1$
+				} else {
+					sb.append(genFeature.getUpperName());
+					sb.append("_ESUBSETS"); //$NON-NLS-1$
+				}
+				sb.append(")");
 			}
-			sb.append("("); //$NON-NLS-1$
-			sb.append(genFeature.getRawListItemType());
-			sb.append(".class)"); //$NON-NLS-1$
-		} else if (genFeature.isEffectiveContains()) {
-			if (genFeature.isBidirectional()) {
-				GenFeature reverseFeature = genFeature.getReverse();
-				sb.append(getGenModel()
-					.getImportedName(
-						"org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList")); //$NON-NLS-1$
-				sb.append(unsettable);
-				if (genFeature.isResolveProxies()) {
-					sb.append(".Resolving"); //$NON-NLS-1$
-				}
-				if (getEffectiveComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
-					sb.append('<');
-					sb.append(UML2GenModelUtil.getRedefinedListItemType(this,
-						genFeature));
-					sb.append('>');
-				}
-				sb.append("("); //$NON-NLS-1$
-				sb.append(genFeature.getRawListItemType());
-				sb.append(".class, this, "); //$NON-NLS-1$
-				sb.append(getQualifiedFeatureID(genFeature));
-				sb.append(", "); //$NON-NLS-1$
-				if (UML2GenModelUtil.getSupersetGenFeatures(this, genFeature,
-					false).isEmpty()) {
-					sb.append("null"); //$NON-NLS-1$
-				} else {
-					sb.append(genFeature.getUpperName());
-					sb.append("_ESUPERSETS"); //$NON-NLS-1$
-				}
-				sb.append(", "); //$NON-NLS-1$
-				if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature,
-					false).isEmpty()) {
-					sb.append("null"); //$NON-NLS-1$
-				} else {
-					sb.append(genFeature.getUpperName());
-					sb.append("_ESUBSETS"); //$NON-NLS-1$
-				}
-				sb.append(", "); //$NON-NLS-1$
-				sb.append(reverseFeature.getGenClass().getQualifiedFeatureID(
-					reverseFeature));
-				sb.append(")"); //$NON-NLS-1$
-			} else {
-				sb.append(getGenModel()
-					.getImportedName(
-						"org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList")); //$NON-NLS-1$
-				sb.append(unsettable);
-				if (genFeature.isResolveProxies()) {
-					sb.append(".Resolving"); //$NON-NLS-1$
-				}
-				if (getEffectiveComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
-					sb.append('<');
-					sb.append(UML2GenModelUtil.getRedefinedListItemType(this,
-						genFeature));
-					sb.append('>');
-				}
-				sb.append("("); //$NON-NLS-1$
-				sb.append(genFeature.getRawListItemType());
-				sb.append(".class, this, "); //$NON-NLS-1$
-				sb.append(getQualifiedFeatureID(genFeature));
-				sb.append(", "); //$NON-NLS-1$
-				if (UML2GenModelUtil.getSupersetGenFeatures(this, genFeature,
-					false).isEmpty()) {
-					sb.append("null"); //$NON-NLS-1$
-				} else {
-					sb.append(genFeature.getUpperName());
-					sb.append("_ESUPERSETS"); //$NON-NLS-1$
-				}
-				sb.append(", "); //$NON-NLS-1$
-				if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature,
-					false).isEmpty()) {
-					sb.append("null"); //$NON-NLS-1$
-				} else {
-					sb.append(genFeature.getUpperName());
-					sb.append("_ESUBSETS"); //$NON-NLS-1$
-				}
-				sb.append(")"); //$NON-NLS-1$
-			}
-		} else if (genFeature.isReferenceType()) {
-			if (genFeature.isBidirectional()) {
-				GenFeature reverseFeature = genFeature.getReverse();
-				if (genFeature.isResolveProxies()) {
-					sb.append(getGenModel()
-						.getImportedName(
-							"org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList")); //$NON-NLS-1$
-				} else {
-					sb.append(getGenModel()
-						.getImportedName(
-							"org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseEList")); //$NON-NLS-1$
-				}
-				sb.append(unsettable);
-				if (reverseFeature.isListType()) {
-					sb.append(".ManyInverse"); //$NON-NLS-1$
-				}
-				if (getEffectiveComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
-					sb.append('<');
-					sb.append(UML2GenModelUtil.getRedefinedListItemType(this,
-						genFeature));
-					sb.append('>');
-				}
-				sb.append("("); //$NON-NLS-1$
-				sb.append(genFeature.getRawListItemType());
-				sb.append(".class, this, "); //$NON-NLS-1$
-				sb.append(getQualifiedFeatureID(genFeature));
-				sb.append(", "); //$NON-NLS-1$
-				if (UML2GenModelUtil.getSupersetGenFeatures(this, genFeature,
-					false).isEmpty()) {
-					sb.append("null"); //$NON-NLS-1$
-				} else {
-					sb.append(genFeature.getUpperName());
-					sb.append("_ESUPERSETS"); //$NON-NLS-1$
-				}
-				sb.append(", "); //$NON-NLS-1$
-				if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature,
-					false).isEmpty()) {
-					sb.append("null"); //$NON-NLS-1$
-				} else {
-					sb.append(genFeature.getUpperName());
-					sb.append("_ESUBSETS"); //$NON-NLS-1$
-				}
-				sb.append(", "); //$NON-NLS-1$
-				sb.append(reverseFeature.getGenClass().getQualifiedFeatureID(
-					reverseFeature));
-				sb.append(")"); //$NON-NLS-1$
-			} else {
-				if (genFeature.isResolveProxies()) {
-					sb.append(getGenModel()
-						.getImportedName(
-							"org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList")); //$NON-NLS-1$
-				} else {
-					sb.append(getGenModel()
-						.getImportedName(
-							"org.eclipse.uml2.common.util.SubsetSupersetEObjectEList")); //$NON-NLS-1$
-				}
-				sb.append(unsettable);
-				if (getEffectiveComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
-					sb.append('<');
-					sb.append(UML2GenModelUtil.getRedefinedListItemType(this,
-						genFeature));
-					sb.append('>');
-				}
-				sb.append("("); //$NON-NLS-1$
-				sb.append(genFeature.getRawListItemType());
-				sb.append(".class, this, "); //$NON-NLS-1$
-				sb.append(getQualifiedFeatureID(genFeature));
-				sb.append(", "); //$NON-NLS-1$
-				if (UML2GenModelUtil.getSupersetGenFeatures(this, genFeature,
-					false).isEmpty()) {
-					sb.append("null"); //$NON-NLS-1$
-				} else {
-					sb.append(genFeature.getUpperName());
-					sb.append("_ESUPERSETS"); //$NON-NLS-1$
-				}
-				sb.append(", "); //$NON-NLS-1$
-				if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature,
-					false).isEmpty()) {
-					sb.append("null"); //$NON-NLS-1$
-				} else {
-					sb.append(genFeature.getUpperName());
-					sb.append("_ESUBSETS"); //$NON-NLS-1$
-				}
-				sb.append(")"); //$NON-NLS-1$
-			}
-		} else { // datatype
-			return super.getListConstructor(genFeature);
 		}
 		return sb.toString();
 	}
