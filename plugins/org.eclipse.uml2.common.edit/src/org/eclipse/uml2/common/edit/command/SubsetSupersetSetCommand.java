@@ -107,6 +107,8 @@ public class SubsetSupersetSetCommand
 			}
 
 			super.execute();
+			
+			resultIndex = getCommandList().size() - 1;
 
 			for (Command subsetAddCommand : subsetAddCommands) {
 				appendAndExecute(subsetAddCommand);
