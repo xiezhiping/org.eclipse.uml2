@@ -12,9 +12,12 @@
  */
 package org.eclipse.uml2.common.edit.command;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.AddCommand;
@@ -40,31 +43,79 @@ public class SubsetSupersetSetCommand
 	@Override
 	public void execute() {
 
-		if (supersetFeatures != null) {
+		if (feature.isMany()) {
+			Collection<?> collection = (Collection<?>) value;
 
-			if (value != null) {
+			if (supersetFeatures != null) {
 
-				if (feature.isMany()) {
-					Collection<?> collection = (Collection<?>) value;
+				for (Object element : collection) {
 
-					for (Object element : collection) {
+					for (int i = 0; i < supersetFeatures.length; i++) {
 
-						for (int i = 0; i < supersetFeatures.length; i++) {
+						if (supersetFeatures[i].isMany()) {
+							Collection<?> values = (Collection<?>) owner
+								.eGet(supersetFeatures[i]);
 
-							if (supersetFeatures[i].isMany()) {
-								Collection<?> values = (Collection<?>) owner
-									.eGet(supersetFeatures[i]);
-
-								if (!values.contains(element)) {
-									appendAndExecute(AddCommand.create(domain,
-										owner, supersetFeatures[i],
-										Collections.singleton(element),
-										CommandParameter.NO_INDEX));
-								}
+							if (!values.contains(element)) {
+								appendAndExecute(AddCommand.create(domain,
+									owner, supersetFeatures[i],
+									Collections.singleton(element),
+									CommandParameter.NO_INDEX));
 							}
 						}
 					}
-				} else {
+				}
+			}
+
+			List<Command> subsetAddCommands = new ArrayList<Command>();
+
+			if (subsetFeatures != null) {
+
+				for (int i = 0; i < subsetFeatures.length; i++) {
+
+					if (subsetFeatures[i].isMany()) {
+						Collection<?> values = (Collection<?>) owner
+							.eGet(subsetFeatures[i]);
+
+						for (Object element : values) {
+
+							if (collection.contains(element)) {
+								subsetAddCommands.add(AddCommand.create(domain,
+									owner, subsetFeatures[i],
+									Collections.singleton(element),
+									CommandParameter.NO_INDEX));
+							}
+						}
+
+						appendAndExecute(RemoveCommand.create(domain, owner,
+							subsetFeatures[i], values));
+					} else {
+						Object object = owner.eGet(subsetFeatures[i]);
+
+						if (object != null && !collection.contains(object)) {
+							EStructuralFeature.Internal subsetFeature = (EStructuralFeature.Internal) subsetFeatures[i];
+
+							appendAndExecute(subsetFeature.isContainer()
+								&& !subsetFeature.getEOpposite().isMany()
+								? new SetCommand(domain, owner,
+									subsetFeatures[i], null)
+								: SetCommand.create(domain, owner,
+									subsetFeatures[i], null));
+						}
+					}
+				}
+			}
+
+			super.execute();
+
+			for (Command subsetAddCommand : subsetAddCommands) {
+				appendAndExecute(subsetAddCommand);
+			}
+		} else {
+
+			if (supersetFeatures != null) {
+
+				if (value != null) {
 
 					for (int i = 0; i < supersetFeatures.length; i++) {
 
@@ -88,43 +139,8 @@ public class SubsetSupersetSetCommand
 					}
 				}
 			}
-		}
 
-		if (subsetFeatures != null) {
-
-			if (feature.isMany()) {
-				Collection<?> collection = (Collection<?>) value;
-
-				for (int i = 0; i < subsetFeatures.length; i++) {
-
-					if (subsetFeatures[i].isMany()) {
-						Collection<?> values = (Collection<?>) owner
-							.eGet(subsetFeatures[i]);
-
-						for (Object element : values) {
-
-							if (!collection.contains(element)) {
-								appendAndExecute(RemoveCommand.create(domain,
-									owner, subsetFeatures[i],
-									Collections.singleton(element)));
-							}
-						}
-					} else {
-						Object object = owner.eGet(subsetFeatures[i]);
-
-						if (object != null && !collection.contains(object)) {
-							EStructuralFeature.Internal subsetFeature = (EStructuralFeature.Internal) subsetFeatures[i];
-
-							appendAndExecute(subsetFeature.isContainer()
-								&& !subsetFeature.getEOpposite().isMany()
-								? new SetCommand(domain, owner,
-									subsetFeatures[i], null)
-								: SetCommand.create(domain, owner,
-									subsetFeatures[i], null));
-						}
-					}
-				}
-			} else {
+			if (subsetFeatures != null) {
 
 				for (int i = 0; i < subsetFeatures.length; i++) {
 					Object object = owner.eGet(subsetFeatures[i]);
@@ -141,9 +157,9 @@ public class SubsetSupersetSetCommand
 					}
 				}
 			}
-		}
 
-		super.execute();
+			super.execute();
+		}
 	}
 
 }
