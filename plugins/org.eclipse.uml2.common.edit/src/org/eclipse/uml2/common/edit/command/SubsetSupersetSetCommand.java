@@ -67,7 +67,7 @@ public class SubsetSupersetSetCommand
 				}
 			}
 
-			List<Command> subsetAddCommands = new ArrayList<Command>();
+			List<Command> subsetCommands = new ArrayList<Command>();
 
 			if (subsetFeatures != null) {
 
@@ -80,7 +80,7 @@ public class SubsetSupersetSetCommand
 						for (Object element : values) {
 
 							if (collection.contains(element)) {
-								subsetAddCommands.add(AddCommand.create(domain,
+								subsetCommands.add(AddCommand.create(domain,
 									owner, subsetFeatures[i],
 									Collections.singleton(element),
 									CommandParameter.NO_INDEX));
@@ -92,8 +92,17 @@ public class SubsetSupersetSetCommand
 					} else {
 						Object object = owner.eGet(subsetFeatures[i]);
 
-						if (object != null && !collection.contains(object)) {
+						if (object != null) {
 							EStructuralFeature.Internal subsetFeature = (EStructuralFeature.Internal) subsetFeatures[i];
+
+							if (collection.contains(object)) {
+								subsetCommands.add(subsetFeature.isContainer()
+									&& !subsetFeature.getEOpposite().isMany()
+									? new SetCommand(domain, owner,
+										subsetFeatures[i], object)
+									: SetCommand.create(domain, owner,
+										subsetFeatures[i], object));
+							}
 
 							appendAndExecute(subsetFeature.isContainer()
 								&& !subsetFeature.getEOpposite().isMany()
@@ -107,10 +116,10 @@ public class SubsetSupersetSetCommand
 			}
 
 			super.execute();
-			
+
 			resultIndex = getCommandList().size() - 1;
 
-			for (Command subsetAddCommand : subsetAddCommands) {
+			for (Command subsetAddCommand : subsetCommands) {
 				appendAndExecute(subsetAddCommand);
 			}
 		} else {
