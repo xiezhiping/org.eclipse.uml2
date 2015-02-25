@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2006, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204202
- *   Kenn Hussey (CEA) - 327039, 351774, 418466
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 457892
  * 
  */
 package org.eclipse.uml2.uml.resource;
@@ -92,6 +92,18 @@ public class XMI2UMLExtendedMetaData
 
 	@Override
 	public EPackage getPackage(String namespace) {
+
+		if (XMI2UMLResource.XMI_NS_URI.equals(namespace)
+			|| XMI2UMLResource.XMI_2_4_1_NS_URI.equals(namespace)
+			|| XMI2UMLResource.XMI_2_4_NS_URI.equals(namespace)
+			|| XMI2UMLResource.XMI_2_1_NS_URI.equals(namespace)
+			|| XMI2UMLResource.MOF_NS_URI.equals(namespace)
+			|| XMI2UMLResource.MOF_2_4_1_NS_URI.equals(namespace)
+			|| XMI2UMLResource.MOF_2_4_NS_URI.equals(namespace)
+			|| XMI2UMLResource.MOF_2_0_NS_URI.equals(namespace)) {
+
+			return demandPackage(namespace);
+		}
 
 		return XMI2UMLResource.UML_METAMODEL_NS_URI.equals(namespace)
 			|| XMI2UMLResource.UML_METAMODEL_2_4_1_NS_URI.equals(namespace)

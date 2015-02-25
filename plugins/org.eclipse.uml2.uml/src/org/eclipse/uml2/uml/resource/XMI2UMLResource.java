@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2006, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204202, 156879, 226397
- *   Kenn Hussey (CEA) - 327039, 351774, 418466
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 457892
  * 
  */
 package org.eclipse.uml2.uml.resource;
@@ -149,5 +149,15 @@ public interface XMI2UMLResource
 	String XMI_2_5_NS_URI = XMI_2_4_NAMESPACE_PREFIX + "20131001"; //$NON-NLS-1$
 
 	String XMI_NS_URI = XMI_2_5_NS_URI;
+
+	String MOF_2_0_NS_URI = "http://schema.omg.org/spec/MOF/2.0"; //$NON-NLS-1$
+
+	String MOF_2_4_NS_URI = "http://www.omg.org/spec/MOF/20100901"; //$NON-NLS-1$
+
+	String MOF_2_4_1_NS_URI = "http://www.omg.org/spec/MOF/20110701"; //$NON-NLS-1$
+
+	String MOF_2_5_NS_URI = "http://www.omg.org/spec/MOF/20131001"; //$NON-NLS-1$
+
+	String MOF_NS_URI = MOF_2_5_NS_URI;
 
 }
