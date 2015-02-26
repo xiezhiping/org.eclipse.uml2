@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 CEA and others.
+ * Copyright (c) 2014, 2015 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
+ *   Kenn Hussey (CEA) - 458656
  *
  */
 package org.eclipse.uml2.uml.resource;
@@ -33,13 +34,19 @@ public class UML402UMLExtendedMetaData
 	public static Map<URI, URI> getURIMap() {
 
 		if (uriMap == null) {
-			uriMap = new HashMap<URI, URI>();
 
-			// StandardL2.profile.uml -> Standard.profile.uml
-			uriMap.put(URI.createURI(UML402UMLResource.STANDARD_L2_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+			synchronized (UML402UMLExtendedMetaData.class) {
 
-			// StandardL3.profile.uml -> Standard.profile.uml
-			uriMap.put(URI.createURI(UML402UMLResource.STANDARD_L3_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+				if (uriMap == null) {
+					uriMap = new HashMap<URI, URI>();
+
+					// StandardL2.profile.uml -> Standard.profile.uml
+					uriMap.put(URI.createURI(UML402UMLResource.STANDARD_L2_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+
+					// StandardL3.profile.uml -> Standard.profile.uml
+					uriMap.put(URI.createURI(UML402UMLResource.STANDARD_L3_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+				}				
+			}
 		}
 
 		return uriMap;

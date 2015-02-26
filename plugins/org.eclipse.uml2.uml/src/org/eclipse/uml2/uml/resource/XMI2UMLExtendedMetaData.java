@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204202
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 457892
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 457892, 458656
  * 
  */
 package org.eclipse.uml2.uml.resource;
@@ -29,45 +29,51 @@ public class XMI2UMLExtendedMetaData
 	public static Map<URI, URI> getURIMap() {
 
 		if (uriMap == null) {
-			uriMap = new HashMap<URI, URI>();
 
-			uriMap.put(URI.createURI(XMI2UMLResource.STANDARD_PROFILE_URI),
-				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+			synchronized (XMI2UMLExtendedMetaData.class) {
 
-			uriMap.put(
-				URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_2_4_1_URI),
-				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
-			uriMap.put(
-				URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_2_4_1_URI),
-				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+				if (uriMap == null) {
+					uriMap = new HashMap<URI, URI>();
 
-			uriMap.put(
-				URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_2_4_URI),
-				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
-			uriMap.put(
-				URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_2_4_URI),
-				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+					uriMap.put(URI.createURI(XMI2UMLResource.STANDARD_PROFILE_URI),
+						URI.createURI(UMLResource.STANDARD_PROFILE_URI));
 
-			uriMap.put(
-				URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_2_2_URI),
-				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
-			uriMap.put(
-				URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_2_2_URI),
-				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+					uriMap.put(
+						URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_2_4_1_URI),
+						URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+					uriMap.put(
+						URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_2_4_1_URI),
+						URI.createURI(UMLResource.STANDARD_PROFILE_URI));
 
-			uriMap.put(
-				URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_2_1_1_URI),
-				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
-			uriMap.put(
-				URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_2_1_1_URI),
-				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+					uriMap.put(
+						URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_2_4_URI),
+						URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+					uriMap.put(
+						URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_2_4_URI),
+						URI.createURI(UMLResource.STANDARD_PROFILE_URI));
 
-			uriMap.put(
-				URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_2_1_URI),
-				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
-			uriMap.put(
-				URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_2_1_URI),
-				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+					uriMap.put(
+						URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_2_2_URI),
+						URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+					uriMap.put(
+						URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_2_2_URI),
+						URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+
+					uriMap.put(
+						URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_2_1_1_URI),
+						URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+					uriMap.put(
+						URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_2_1_1_URI),
+						URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+
+					uriMap.put(
+						URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_2_1_URI),
+						URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+					uriMap.put(
+						URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_2_1_URI),
+						URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+				}
+			}
 		}
 
 		return uriMap;

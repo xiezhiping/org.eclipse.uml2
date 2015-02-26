@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008, 2014 IBM Corporation, CEA, and others.
+ * Copyright (c) 2008, 2015 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466
+ *   Kenn Hussey (CEA) - 327039, 418466, 458656
  *
  */
 package org.eclipse.uml2.uml.resource;
@@ -37,11 +37,17 @@ public class UML212UMLExtendedMetaData
 	public static Map<URI, URI> getURIMap() {
 
 		if (uriMap == null) {
-			uriMap = new HashMap<URI, URI>();
-		}
 
-		// Standard.profile.uml -> Standard.profile.uml
-		uriMap.put(URI.createURI(UML212UMLResource.STANDARD_PROFILE_URI).appendFragment("_yzU58YinEdqtvbnfB2L_5w"), URI.createURI(UMLResource.STANDARD_PROFILE_NS_URI).appendFragment("/"));
+			synchronized(UML212UMLExtendedMetaData.class) {
+
+				if (uriMap == null) {
+					uriMap = new HashMap<URI, URI>();
+
+					// Standard.profile.uml -> Standard.profile.uml
+					uriMap.put(URI.createURI(UML212UMLResource.STANDARD_PROFILE_URI).appendFragment("_yzU58YinEdqtvbnfB2L_5w"), URI.createURI(UMLResource.STANDARD_PROFILE_NS_URI).appendFragment("/"));
+				}
+			}
+		}
 
 		return uriMap;
 	}
@@ -51,22 +57,28 @@ public class UML212UMLExtendedMetaData
 	public static Map<String, Map<EClassifier, String>> getFeatureToTypeMap() {
 
 		if (featureToTypeMap == null) {
-			featureToTypeMap = new HashMap<String, Map<EClassifier, String>>();
 
-			Map<EClassifier, String> typeMap = null;
+			synchronized(UML212UMLExtendedMetaData.class) {
 
-			typeMap = new HashMap<EClassifier, String>();
-			typeMap.put(UMLPackage.Literals.PROPERTY, "uml:TemplateSignature"); //$NON-NLS-1$
-			featureToTypeMap.put("ownedTemplateSignature", typeMap); //$NON-NLS-1$
+				if (featureToTypeMap == null) {
+					featureToTypeMap = new HashMap<String, Map<EClassifier, String>>();
 
-			typeMap = new HashMap<EClassifier, String>();
-			typeMap.put(UMLPackage.Literals.PROPERTY, "uml:TemplateBinding"); //$NON-NLS-1$
-			featureToTypeMap.put("templateBinding", typeMap); //$NON-NLS-1$
+					Map<EClassifier, String> typeMap = null;
 
-			typeMap = new HashMap<EClassifier, String>();
-			typeMap.put(UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER,
-				"uml:Classifier"); //$NON-NLS-1$
-			featureToTypeMap.put("defaultClassifier", typeMap); //$NON-NLS-1$
+					typeMap = new HashMap<EClassifier, String>();
+					typeMap.put(UMLPackage.Literals.PROPERTY, "uml:TemplateSignature"); //$NON-NLS-1$
+					featureToTypeMap.put("ownedTemplateSignature", typeMap); //$NON-NLS-1$
+
+					typeMap = new HashMap<EClassifier, String>();
+					typeMap.put(UMLPackage.Literals.PROPERTY, "uml:TemplateBinding"); //$NON-NLS-1$
+					featureToTypeMap.put("templateBinding", typeMap); //$NON-NLS-1$
+
+					typeMap = new HashMap<EClassifier, String>();
+					typeMap.put(UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER,
+						"uml:Classifier"); //$NON-NLS-1$
+					featureToTypeMap.put("defaultClassifier", typeMap); //$NON-NLS-1$
+				}
+			}
 		}
 
 		return featureToTypeMap;

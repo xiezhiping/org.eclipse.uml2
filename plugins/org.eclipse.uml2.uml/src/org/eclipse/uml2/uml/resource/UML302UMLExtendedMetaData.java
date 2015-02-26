@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2014 CEA and others.
+ * Copyright (c) 2011, 2015 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
- *   Kenn Hussey (CEA) - 418466
+ *   Kenn Hussey (CEA) - 418466, 458656
  *
  */
 package org.eclipse.uml2.uml.resource;
@@ -31,10 +31,16 @@ public class UML302UMLExtendedMetaData
 	public static Map<URI, URI> getURIMap() {
 
 		if (uriMap == null) {
-			uriMap = new HashMap<URI, URI>();
 
-			// Standard.profile.uml -> Standard.profile.uml
-			uriMap.put(URI.createURI(UML302UMLResource.STANDARD_PROFILE_URI).appendFragment("_yzU58YinEdqtvbnfB2L_5w"), URI.createURI(UMLResource.STANDARD_PROFILE_NS_URI).appendFragment("/"));
+			synchronized (UML302UMLExtendedMetaData.class) {
+
+				if (uriMap == null) {
+					uriMap = new HashMap<URI, URI>();
+
+					// Standard.profile.uml -> Standard.profile.uml
+					uriMap.put(URI.createURI(UML302UMLResource.STANDARD_PROFILE_URI).appendFragment("_yzU58YinEdqtvbnfB2L_5w"), URI.createURI(UMLResource.STANDARD_PROFILE_NS_URI).appendFragment("/"));
+				}
+			}
 		}
 
 		return uriMap;
@@ -45,9 +51,15 @@ public class UML302UMLExtendedMetaData
 	public static Map<String, String> getFragmentMap() {
 
 		if (fragmentMap == null) {
-			fragmentMap = new HashMap<String, String>();
+
+			synchronized (UML302UMLExtendedMetaData.class) {
+
+				if (fragmentMap == null) {
+					fragmentMap = new HashMap<String, String>();
+				}
+			}
 		}
-		
+
 		return fragmentMap;
 	}
 
@@ -59,15 +71,21 @@ public class UML302UMLExtendedMetaData
 	protected static Map<String, Map<EClassifier, String>> featureToTypeMap = null;
 
 	public static Map<String, Map<EClassifier, String>> getFeatureToTypeMap() {
-		
-		if (featureToTypeMap == null) {
-			featureToTypeMap = new HashMap<String, Map<EClassifier, String>>();
 
-			Map<EClassifier, String> typeMap = null;
-						
-			typeMap = new HashMap<EClassifier, String>();
-			typeMap.put(UMLPackage.Literals.BEHAVIORED_CLASSIFIER, "uml:Trigger"); //$NON-NLS-1$
-			featureToTypeMap.put("ownedTrigger", typeMap); //$NON-NLS-1$
+		if (featureToTypeMap == null) {
+
+			synchronized (UML302UMLExtendedMetaData.class) {
+
+				if (featureToTypeMap == null) {
+					featureToTypeMap = new HashMap<String, Map<EClassifier, String>>();
+
+					Map<EClassifier, String> typeMap = null;
+
+					typeMap = new HashMap<EClassifier, String>();
+					typeMap.put(UMLPackage.Literals.BEHAVIORED_CLASSIFIER, "uml:Trigger"); //$NON-NLS-1$
+					featureToTypeMap.put("ownedTrigger", typeMap); //$NON-NLS-1$
+				}
+			}
 		}
 
 		return featureToTypeMap;		
