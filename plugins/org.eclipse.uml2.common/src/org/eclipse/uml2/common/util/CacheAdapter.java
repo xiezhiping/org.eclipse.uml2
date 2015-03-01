@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2004, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 220065
  *   Kenn Hussey - 335125
  *   Christian W. Damus (CEA) - 389632, 332057
- *   Kenn Hussey (CEA) - 418466
+ *   Kenn Hussey (CEA) - 418466, 455572
  *
  */
 package org.eclipse.uml2.common.util;
@@ -114,6 +114,12 @@ public class CacheAdapter
 		}
 
 		protected Map<URI, List<EObject>> getProxyMap() {
+
+			if (proxyMap == null) {
+				Map<URI, List<EObject>> emptyMap = Collections.emptyMap();
+				return Collections.unmodifiableMap(emptyMap);
+			}
+
 			return Collections.unmodifiableMap(proxyMap);
 		}
 	}
