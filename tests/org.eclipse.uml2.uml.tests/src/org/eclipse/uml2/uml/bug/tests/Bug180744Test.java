@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 CEA and others.
+ * Copyright (c) 2013, 2015 CEA and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -8,6 +8,7 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
+ *   Kenn Hussey (CEA) - 458906
  *
  */
 package org.eclipse.uml2.uml.bug.tests;
@@ -461,14 +462,14 @@ public class Bug180744Test
 	}
 
 	void assertCapabilityTrace(Element receivingElement,
-			NamedElement capability,
-			Element capabilityElement) {
+			NamedElement capability, Element capabilityElement) {
 
 		EAnnotation annotation = receivingElement
 			.getEAnnotation(UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI);
 		assertNotNull(annotation);
 
-		annotation = annotation.getEAnnotation(capability.getQualifiedName());
+		annotation = annotation.getEAnnotation(capability.getQualifiedName()
+			.replace(NamedElement.SEPARATOR, "/")); //$NON-NLS-1$
 		assertNotNull(annotation);
 
 		if (capabilityElement == null) {
