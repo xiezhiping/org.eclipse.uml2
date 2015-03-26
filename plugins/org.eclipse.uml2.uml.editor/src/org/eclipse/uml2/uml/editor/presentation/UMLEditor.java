@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332, 247980
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658, 173565, 408612, 414970, 427833, 433216, 443017
+ *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658, 173565, 408612, 414970, 427833, 433216, 443017, 434958
  *   Christian W. Damus - 355218
  *   Christian W. Damus (CEA) - 286444
  *
@@ -1178,10 +1178,11 @@ public class UMLEditor
 	 */
 	public Diagnostic analyzeResourceProblems(Resource resource,
 			Exception exception) {
-		if (!resource.getErrors().isEmpty()
-			|| !resource.getWarnings().isEmpty()) {
-			BasicDiagnostic basicDiagnostic = new BasicDiagnostic(
-				Diagnostic.ERROR,
+		boolean hasErrors = !resource.getErrors().isEmpty();
+		if (hasErrors || !resource.getWarnings().isEmpty()) {
+			BasicDiagnostic basicDiagnostic = new BasicDiagnostic(hasErrors
+				? Diagnostic.ERROR
+				: Diagnostic.WARNING,
 				"org.eclipse.uml2.uml.editor", //$NON-NLS-1$
 				0,
 				getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
@@ -1670,7 +1671,7 @@ public class UMLEditor
 					for (EObject stereotypeApplication : stereotypeApplications) {
 
 						if (stereotypeApplication.eResource() != resource
-							&& StereotypeApplicationHelper.INSTANCE
+							&& StereotypeApplicationHelper.getInstance(null)
 								.removeFromContainmentList(element,
 									stereotypeApplication)) {
 
@@ -1700,8 +1701,8 @@ public class UMLEditor
 			for (EObject stereotypeApplication : allExternalStereotypeApplications
 				.get(element)) {
 
-				StereotypeApplicationHelper.INSTANCE.addToContainmentList(
-					element, stereotypeApplication);
+				StereotypeApplicationHelper.getInstance(null)
+					.addToContainmentList(element, stereotypeApplication);
 			}
 		}
 
@@ -2296,10 +2297,12 @@ public class UMLEditor
 								public void run() {
 
 									for (EObject stereotypeApplication : allStereotypeApplications) {
-										UMLUtil.StereotypeApplicationHelper.INSTANCE.removeFromContainmentList(
-											UMLUtil
-												.getBaseElement(stereotypeApplication),
-											stereotypeApplication);
+										UMLUtil.StereotypeApplicationHelper
+											.getInstance(null)
+											.removeFromContainmentList(
+												UMLUtil
+													.getBaseElement(stereotypeApplication),
+												stereotypeApplication);
 									}
 								}
 							}));
@@ -2455,12 +2458,14 @@ public class UMLEditor
 										public void run() {
 
 											for (EObject stereotypeApplication : stereotypeApplicationsToAdd) {
-												UMLUtil.StereotypeApplicationHelper.INSTANCE.addToContainmentList(
-													PrivateUMLUtil
-														.getBaseElement(
-															stereotypeApplication,
-															owner),
-													stereotypeApplication);
+												UMLUtil.StereotypeApplicationHelper
+													.getInstance(null)
+													.addToContainmentList(
+														PrivateUMLUtil
+															.getBaseElement(
+																stereotypeApplication,
+																owner),
+														stereotypeApplication);
 											}
 										}
 									});
