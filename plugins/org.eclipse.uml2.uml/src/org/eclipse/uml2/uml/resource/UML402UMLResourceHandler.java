@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 CEA and others.
+ * Copyright (c) 2014, 2015 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
+ *   Kenn Hussey (CEA) - 463551
  *
  */
 package org.eclipse.uml2.uml.resource;
@@ -22,10 +23,13 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.BasicResourceHandler;
+import org.eclipse.emf.ecore.xml.type.AnyType;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.util.UMLSwitch;
@@ -43,6 +47,30 @@ public class UML402UMLResourceHandler
 	protected boolean resolveProxies = true;
 
 	protected String xmiVersion = null;
+
+	protected AnyType getExtension(XMLResource resource, EObject eObject) {
+		return resource.getEObjectToExtensionMap().get(eObject);
+	}
+
+	protected Object getValue(FeatureMap featureMap, String name, boolean remove) {
+
+		for (Iterator<FeatureMap.Entry> entries = featureMap.iterator(); entries
+			.hasNext();) {
+
+			FeatureMap.Entry entry = entries.next();
+
+			if (name.equals(entry.getEStructuralFeature().getName())) {
+
+				if (remove) {
+					entries.remove();
+				}
+
+				return entry.getValue();
+			}
+		}
+
+		return null;
+	}
 
 	@Override
 	public void preLoad(XMLResource resource, InputStream inputStream,
@@ -74,6 +102,22 @@ public class UML402UMLResourceHandler
 		final List<ProfileApplication> profileApplicationsToRemove = new ArrayList<ProfileApplication>();
 
 		UMLSwitch<Object> umlSwitch = new UMLSwitch<Object>() {
+
+			@Override
+			public Object caseComment(Comment comment) {
+				AnyType extension = getExtension(resource, comment);
+
+				if (extension != null) {
+					Object value = getValue(extension.getAnyAttribute(),
+						"body", true); //$NON-NLS-1$
+
+					if (value instanceof String) {
+						comment.setBody((String) value);
+					}
+				}
+
+				return super.caseComment(comment);
+			}
 
 			@Override
 			public Object caseProfileApplication(
