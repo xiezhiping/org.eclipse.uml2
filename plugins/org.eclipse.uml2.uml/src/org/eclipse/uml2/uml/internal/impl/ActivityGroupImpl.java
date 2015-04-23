@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 465214
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -321,6 +321,18 @@ public abstract class ActivityGroupImpl
 				.getGroups()).basicRemove(this, msgs);
 		}
 		return super.eBasicRemoveFromContainer(msgs);
+	}
+
+	@Override
+	public NotificationChain eBasicSetContainer(InternalEObject newContainer,
+			int newContainerFeatureID, NotificationChain msgs) {
+		InternalEObject eInternalContainer = eInternalContainer();
+		if (eInternalContainer instanceof Activity) {
+			msgs = ((InternalEList<ActivityGroup>) ((Activity) eInternalContainer)
+				.getGroups()).basicRemove(this, msgs);
+		}
+		return super.eBasicSetContainer(newContainer, newContainerFeatureID,
+			msgs);
 	}
 
 	/**
