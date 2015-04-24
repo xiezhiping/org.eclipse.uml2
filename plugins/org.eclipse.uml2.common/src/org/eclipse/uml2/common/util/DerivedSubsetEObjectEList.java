@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2015 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 465283
  *
- * $Id: DerivedSubsetEObjectEList.java,v 1.10 2007/05/24 02:46:26 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -102,7 +102,7 @@ public class DerivedSubsetEObjectEList<E>
 						sourceFeatureIDs[featureIndex], resolve(), true))
 						.basicList();
 
-				valuesList.listIterator(valuesList.size()).add(element);
+				valuesList.listIterator().add(element);
 			} else {
 
 				switch (prepared) {
