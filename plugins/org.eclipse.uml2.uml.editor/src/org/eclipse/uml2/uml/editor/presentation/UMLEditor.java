@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332, 247980
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658, 173565, 408612, 414970, 427833, 433216, 443017, 434958
+ *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658, 173565, 408612, 414970, 427833, 433216, 443017, 434958, 433768
  *   Christian W. Damus - 355218
  *   Christian W. Damus (CEA) - 286444
  *
@@ -509,7 +509,8 @@ public class UMLEditor
 												.update(resource, markerHelper
 													.getMarkerDiagnostics(
 														resource, (IFile) delta
-															.getResource()));
+															.getResource(),
+														false));
 										}
 										if ((delta.getFlags() & IResourceDelta.CONTENT) != 0) {
 											if (!savedResources
@@ -1094,7 +1095,8 @@ public class UMLEditor
 	 * @generated
 	 */
 	public void createModelGen() {
-		URI resourceURI = EditUIUtil.getURI(getEditorInput());
+		URI resourceURI = EditUIUtil.getURI(getEditorInput(), editingDomain
+			.getResourceSet().getURIConverter());
 		Exception exception = null;
 		Resource resource = null;
 		try {
