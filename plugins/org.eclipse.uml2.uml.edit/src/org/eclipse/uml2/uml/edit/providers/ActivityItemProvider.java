@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 416121, 418466, 414970, 370089, 459723
+ *   Kenn Hussey (CEA) - 327039, 351774, 416121, 418466, 414970, 370089, 459723, 465214
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -24,6 +24,8 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
+import org.eclipse.emf.edit.command.AddCommand;
 
 import org.eclipse.emf.edit.domain.EditingDomain;
 
@@ -693,6 +695,24 @@ public class ActivityItemProvider
 	@Override
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection<?> collection, int index) {
+		if (feature == UMLPackage.Literals.ACTIVITY__GROUP) {
+			return new AddCommand(domain, owner, feature, collection, index) {
+
+				@Override
+				public void doUndo() {
+					// do nothing
+				}
+			};
+		}
+		if (feature == UMLPackage.Literals.ACTIVITY__NODE) {
+			return new AddCommand(domain, owner, feature, collection, index) {
+
+				@Override
+				public void doUndo() {
+					// do nothing
+				}
+			};
+		}
 		if (feature == UMLPackage.Literals.ACTIVITY__OWNED_GROUP) {
 			return new SubsetAddCommand(domain, owner, feature,
 				new EStructuralFeature[]{UMLPackage.Literals.ACTIVITY__GROUP},
