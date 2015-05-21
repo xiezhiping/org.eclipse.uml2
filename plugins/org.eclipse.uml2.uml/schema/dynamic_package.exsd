@@ -3,7 +3,7 @@
 <schema targetNamespace="org.eclipse.uml2.uml">
 <annotation>
       <appInfo>
-         <meta.schema plugin="org.eclipse.uml2.uml" id="generated_package" name="UML Dynamic Package Registry"/>
+         <meta.schema plugin="org.eclipse.uml2.uml" id="dynamic_package" name="UML Dynamic Package Registry"/>
       </appInfo>
       <documentation>
          This extension point is used to register the location of a UML package against the namespace URI (Uniform Resource Identifier) of its dynamic Ecore representation.
@@ -80,7 +80,7 @@
          Following is an example of how a (dynamically defined) profile location can be registered: 
 &lt;pre&gt;
   &lt;extension point=&quot;org.eclipse.uml2.uml.dynamic_package&quot;&gt;
-     &lt;profile uri=&quot;http://www.eclipse.org/uml2/schemas/Ecore/4&quot; location=&quot;pathmap://UML_PROFILES/Ecore.profile.uml#_0&quot;/&gt; 
+     &lt;profile uri=&quot;http://www.eclipse.org/uml2/schemas/Ecore/5&quot; location=&quot;pathmap://UML_PROFILES/Ecore.profile.uml#_0&quot;/&gt; 
   &lt;/extension&gt;
 &lt;/pre&gt;
       </documentation>
@@ -93,7 +93,7 @@
       <documentation>
          A profile location can also be registered from source code with &lt;samp&gt;UMLPlugin#getEPackageNsURIToProfileLocationMap()&lt;/samp&gt; as follows:
 &lt;pre&gt;
-  UMLPlugin.getEPackageNsURIToProfileLocationMap().put(&quot;http://www.eclipse.org/uml2/schemas/Ecore/4&quot;, URI.createURI(&quot;pathmap://UML_PROFILES/Ecore.profile.uml#_0&quot;)); 
+  UMLPlugin.getEPackageNsURIToProfileLocationMap().put(&quot;http://www.eclipse.org/uml2/schemas/Ecore/5&quot;, URI.createURI(&quot;pathmap://UML_PROFILES/Ecore.profile.uml#_0&quot;)); 
 &lt;/pre&gt;
       </documentation>
    </annotation>
@@ -112,7 +112,7 @@
          <meta.section type="copyright"/>
       </appInfo>
       <documentation>
-         Copyright (c) 2008 IBM Corporation, Embarcacero Technologies, and others.&lt;br&gt;
+         Copyright (c) 2008, 2015 IBM Corporation, Embarcacero Technologies, CEA, and others.&lt;br&gt;
 All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at &lt;a 
 href=&quot;http://www.eclipse.org/legal/epl-v10.html&quot;&gt;http://www.eclipse.org/legal/epl-v10.html&lt;/a&gt;
       </documentation>
