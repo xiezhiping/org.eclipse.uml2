@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833, 424568, 427167, 418466, 419324, 429994, 433157, 439915, 446388, 454864, 458906, 461374, 463066
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833, 424568, 427167, 418466, 419324, 429994, 433157, 439915, 446388, 454864, 458906, 461374, 463066, 468230
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833, 420338, 405065, 431342
  *   E.D.Willink - 420338
@@ -3107,7 +3107,7 @@ public class UMLUtil
 		 * derivative.
 		 * 
 		 * @return whether I am a package merge operation ({@code true}) or
-		 *         something else ({@false})
+		 *         something else ({@code false})
 		 * 
 		 * @since 5.0
 		 */
@@ -3139,12 +3139,14 @@ public class UMLUtil
 		}
 
 		/**
-		 * Merges the contents of (all of) the elements merged by the specified
-		 * package using the specified options, reporting problems to the
+		 * Merges the contents of (all of) the specified elements into the
+		 * given element using the specified options, reporting problems to the
 		 * specified diagnostics, within the specified context.
 		 * 
-		 * @param package_
-		 *            The receiving package.
+		 * @param receivingElement
+		 *            The receiving templateable element.
+		 * @param mergedElements
+		 *            The elements to merge.
 		 * @param options
 		 *            The options to use.
 		 * @param diagnostics
@@ -3546,7 +3548,7 @@ public class UMLUtil
 		 * the given object. A template is one that has a signature bound by a
 		 * template binding that we are expanding.
 		 * 
-		 * @param eObject
+		 * @param mergedEObject
 		 *            an object
 		 * 
 		 * @return its nearest containing template, which may be itself
@@ -3581,7 +3583,7 @@ public class UMLUtil
 		 * (recursively) the given object. A bound template is one that has a
 		 * template binding that we are expanding.
 		 * 
-		 * @param eObject
+		 * @param resultingEObject
 		 *            an object
 		 * 
 		 * @return its nearest containing bound template, which may be itself
@@ -4222,7 +4224,7 @@ public class UMLUtil
 		 * <p>
 		 * As of the 4.2 API version, if the Ecore name differs for any reason
 		 * from the original UML name, it is recorded for
-		 * {@linkplain UMLUtil#getOriginalName(ENamedElement) later retrieval}.
+		 * {@linkplain UMLUtil.UML2EcoreConverter#getOriginalName(ENamedElement) later retrieval}.
 		 * </p>
 		 * 
 		 * @param eNamedElement
@@ -4233,7 +4235,7 @@ public class UMLUtil
 		 *            whether to ensure that the name is a valid Java
 		 *            identifier, munging it if necessary
 		 * 
-		 * @see UMLUtil#getOriginalName(ENamedElement)
+		 * @see UMLUtil.UML2EcoreConverter#getOriginalName(ENamedElement)
 		 * @see UML2Util#getValidJavaIdentifier(String)
 		 */
 		protected void setName(ENamedElement eNamedElement, final String name,

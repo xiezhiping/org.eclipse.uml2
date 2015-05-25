@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016
- *   Kenn Hussey (CEA) - 394623, 212765, 451350
+ *   Kenn Hussey (CEA) - 394623, 212765, 451350, 468230
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
@@ -163,7 +163,7 @@ public interface GenFeature
 	 * type parameter references. By default, this will just do
 	 * <code>getKeyFeatureParameter(getGenClass(), index, formal)</code>.
 	 * 
-	 * @see #getKeyFeatureParameter(GenClass, boolean)
+	 * @see #getKeyFeatureParameter(GenClass, int, boolean)
 	 */
 	@Deprecated
 	String getKeyFeatureParameter(int index, boolean formal);

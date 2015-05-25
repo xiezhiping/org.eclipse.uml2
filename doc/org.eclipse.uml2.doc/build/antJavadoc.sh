@@ -19,7 +19,7 @@ javadocExclusions="<exclude name=\"**/impl/**\"/> <exclude name=\"**/internal/**
 debug=1; if [ $debug -gt 0 ]; then echo "[antJd] debug: "$debug; fi
 
 if [ "x"$ANT_HOME = "x" ]; then export ANT_HOME=/opt/apache-ant-1.6; fi
-if [ "x"$JAVA_HOME = "x" ]; then export JAVA_HOME=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home; fi
+if [ "x"$JAVA_HOME = "x" ]; then export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home; fi
 export PATH=${PATH}:${ANT_HOME}/bin
 
 # current directory - all but the name of this script, no trailing slash

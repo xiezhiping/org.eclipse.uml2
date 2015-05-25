@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, 2014 CEA and others.
+ * Copyright (c) 2013, 2015 CEA and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -8,6 +8,7 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
+ *   Kenn Hussey (CEA) - 468230
  *
  */
 package org.eclipse.uml2.uml;
@@ -82,13 +83,13 @@ public interface OperationOwner {
 	 * {@code name}, {@code parameterNames}, and {@code parameterTypes}.
 	 * 
 	 * @param name
-	 *            the operation name to match, or {@null} to match any
+	 *            the operation name to match, or {@code null} to match any
 	 *            operation name
 	 * @param parameterNames
-	 *            the parameter names to match, or {@null} to match any
+	 *            the parameter names to match, or {@code null} to match any
 	 *            parameter names
 	 * @param parameterTypes
-	 *            the parameter types to match, or {@null} to match any
+	 *            the parameter types to match, or {@code null} to match any
 	 *            signature
 	 * 
 	 * @return any matching operation, or {@code null} if not found
@@ -104,13 +105,13 @@ public interface OperationOwner {
 	 * (optionally case-insensitive), and {@code parameterTypes}.
 	 * 
 	 * @param name
-	 *            the operation name to match, or {@null} to match any
+	 *            the operation name to match, or {@code null} to match any
 	 *            operation name
 	 * @param parameterNames
-	 *            the parameter names to match, or {@null} to match any
+	 *            the parameter names to match, or {@code null} to match any
 	 *            parameter names
 	 * @param parameterTypes
-	 *            the parameter types to match, or {@null} to match any
+	 *            the parameter types to match, or {@code null} to match any
 	 *            signature
 	 * @param ignoreCase
 	 *            whether matching of operation and parameter names is

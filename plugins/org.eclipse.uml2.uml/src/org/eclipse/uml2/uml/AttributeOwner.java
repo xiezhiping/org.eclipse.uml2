@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, 2014 CEA and others.
+ * Copyright (c) 2013, 2015 CEA and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -8,6 +8,7 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
+ *   Kenn Hussey (CEA) - 468230
  *
  */
 package org.eclipse.uml2.uml;
@@ -67,10 +68,10 @@ public interface AttributeOwner {
 	 * and/or {@code type}.
 	 * 
 	 * @param name
-	 *            the attribute name to match, or {@null} to match any
+	 *            the attribute name to match, or {@code null} to match any
 	 *            attribute name
 	 * @param type
-	 *            the attribute type to match, or {@null} to match any
+	 *            the attribute type to match, or {@code null} to match any
 	 *            attribute type
 	 * 
 	 * @return any matching attribute, or {@code null} if not found
@@ -84,10 +85,10 @@ public interface AttributeOwner {
 	 * (optionally irrespective of case) and/or {@code type}.
 	 * 
 	 * @param name
-	 *            the attribute name to match, or {@null} to match any
+	 *            the attribute name to match, or {@code null} to match any
 	 *            attribute name
 	 * @param type
-	 *            the attribute type to match, or {@null} to match any
+	 *            the attribute type to match, or {@code null} to match any
 	 *            attribute type
 	 * @param ignoreCase
 	 *            whether to match names case-insensitively
