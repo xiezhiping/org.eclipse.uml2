@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 414970, 370089
+ *   Kenn Hussey (CEA) - 327039, 414970, 370089, 468342
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -145,14 +145,13 @@ public class StartObjectBehaviorActionItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((StartObjectBehaviorAction) object).getName();
-		return label == null || label.length() == 0
-			? getString("_UI_StartObjectBehaviorAction_type") : //$NON-NLS-1$
-			getString("_UI_StartObjectBehaviorAction_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_StartObjectBehaviorAction_type"), object).toString(); //$NON-NLS-1$
 	}
 
 	/**
