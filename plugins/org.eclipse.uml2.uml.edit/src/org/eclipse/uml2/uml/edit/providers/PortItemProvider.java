@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 414970, 370089, 459723
+ *   Kenn Hussey (CEA) - 327039, 414970, 370089, 459723, 476614
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -273,7 +273,8 @@ public class PortItemProvider
 			String typeLabel = type.getLabel(shouldTranslate());
 
 			if (!UMLUtil.isEmpty(typeLabel)) {
-				appendString(text, ": " + typeLabel); //$NON-NLS-1$
+				appendString(text, (port.isConjugated()
+					? ": ~" : ": ") + typeLabel); //$NON-NLS-1$ //$NON-NLS-2$
 			}
 		}
 
