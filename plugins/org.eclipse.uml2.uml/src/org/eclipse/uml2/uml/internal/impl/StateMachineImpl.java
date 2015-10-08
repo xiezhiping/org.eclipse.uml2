@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 479276
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -1744,16 +1744,10 @@ public class StateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isRedefinitionContextValidGen(
+	public boolean isRedefinitionContextValid(
 			RedefinableElement redefinedElement) {
 		return StateMachineOperations.isRedefinitionContextValid(this,
 			redefinedElement);
-	}
-
-	@Override
-	public boolean isRedefinitionContextValid(RedefinableElement redefined) {
-		return redefined instanceof StateMachine
-			&& isRedefinitionContextValid((StateMachine) redefined);
 	}
 
 } //StateMachineImpl
