@@ -14,7 +14,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 206636, 224693
  *	 Lutz Wrage - 242726
  *   Kenn Hussey - 344908, 284810, 345083
- *   Kenn Hussey (CEA) - 451350
+ *   Kenn Hussey (CEA) - 451350, 480509
  *
  * </copyright>
  */
@@ -139,7 +139,7 @@ public class <%=UML2GenModelUtil.getOperationsClassName(genClass)%><%=UML2GenMod
   <%}%>
 	 * @generated
 	 */
-	public static <%=genClass.getTypeParameters().length() > 0 && genOperation.getTypeParameters(genClass).length() > 0 ? genClass.getTypeParameters().substring(0, genClass.getTypeParameters().length() - 2) + ", " + genOperation.getTypeParameters(genClass).trim().substring(1) : genClass.getTypeParameters().trim() + genOperation.getTypeParameters(genClass).trim()%> <%=genOperation.getImportedType(genClass)%> <%=genOperation.getName()%>(<%=genClass.getImportedInterfaceName()%><%=genClass.getTypeParameters().trim()%> <%=genClass.safeName(genClass.getUncapName())%><%if (!genOperation.getGenParameters().isEmpty()) {%>, <%}%><%=genOperation.getParameters(genClass)%>)<%=genOperation.getThrows(genClass)%>
+	public static <%=genClass.getTypeParameters().length() > 0 && genOperation.getTypeParameters(genClass).length() > 0 ? genClass.getTypeParameters().substring(0, genClass.getTypeParameters().length() - 2) + ", " + genOperation.getTypeParameters(genClass).trim().substring(1) : genClass.getTypeParameters().trim() + genOperation.getTypeParameters(genClass).trim()%> <%=genOperation.getImportedType(genClass)%> <%=genOperation.getName()%>(<%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceTypeArguments().trim()%> <%=genClass.safeName(genClass.getUncapName())%><%if (!genOperation.getGenParameters().isEmpty()) {%>, <%}%><%=genOperation.getParameters(genClass)%>)<%=genOperation.getThrows(genClass)%>
 	{
   <%if (genOperation.isInvariant()) {GenClass opClass = genOperation.getGenClass(); String diagnostics = genOperation.getGenParameters().get(0).getName(); String context = genOperation.getGenParameters().get(1).getName();%>
       <%if (UML2GenModelUtil.hasOCLBody(genOperation)) { String oclInv = UML2GenModelUtil.getUpperName(genOperation.getName()) + (genOperation.getGenParameters().size() == 0 ? "" : "__" + UML2GenModelUtil.getUpperName(genOperation.getParameterTypes("_", false))) + "__EOCL_INV";%>

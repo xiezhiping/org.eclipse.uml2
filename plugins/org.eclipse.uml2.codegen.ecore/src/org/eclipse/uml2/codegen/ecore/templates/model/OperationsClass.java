@@ -359,7 +359,7 @@ public class OperationsClass
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_74);
     stringBuffer.append(genClass.getImportedInterfaceName());
-    stringBuffer.append(genClass.getTypeParameters().trim());
+    stringBuffer.append(genClass.getInterfaceTypeArguments().trim());
     stringBuffer.append(TEXT_75);
     stringBuffer.append(genClass.safeName(genClass.getUncapName()));
     if (!genOperation.getGenParameters().isEmpty()) {
