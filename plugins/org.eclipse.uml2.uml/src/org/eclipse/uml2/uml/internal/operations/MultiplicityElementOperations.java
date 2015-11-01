@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 480914
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -123,23 +123,45 @@ public class MultiplicityElementOperations
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 
-		int upperBound = multiplicityElement.upperBound();
+		int upperBound = 1;
+		ValueSpecification upperValue = multiplicityElement.getUpperValue();
 
-		if (upperBound != LiteralUnlimitedNatural.UNLIMITED
-			&& upperBound < multiplicityElement.lowerBound()) {
+		if (upperValue != null) {
 
-			result = false;
+			try {
+				upperBound = upperValue.unlimitedValue();
+			} catch (UnsupportedOperationException uoe) {
+				return result;
+			}
+		}
 
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(Diagnostic.WARNING,
+		if (upperBound != LiteralUnlimitedNatural.UNLIMITED) {
+			int lowerBound = 1;
+			ValueSpecification lowerValue = multiplicityElement.getLowerValue();
+
+			if (lowerValue != null) {
+
+				try {
+					lowerBound = lowerValue.integerValue();
+				} catch (UnsupportedOperationException uoe) {
+					return result;
+				}
+			}
+
+			if (upperBound < lowerBound) {
+				result = false;
+
+				if (diagnostics != null) {
+					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
 						UMLValidator.DIAGNOSTIC_SOURCE,
 						UMLValidator.MULTIPLICITY_ELEMENT__UPPER_GE_LOWER,
 						UMLPlugin.INSTANCE.getString(
 							"_UI_MultiplicityElement_UpperGELower_diagnostic", //$NON-NLS-1$
 							getMessageSubstitutions(context,
-								multiplicityElement)), new Object[]{
-							multiplicityElement, new Integer(upperBound)}));
+								multiplicityElement)),
+						new Object[]{multiplicityElement,
+							new Integer(upperBound)}));
+				}
 			}
 		}
 
