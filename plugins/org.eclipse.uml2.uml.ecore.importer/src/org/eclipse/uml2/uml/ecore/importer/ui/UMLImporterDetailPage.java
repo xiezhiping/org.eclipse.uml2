@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2006, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 213218
- *   Kenn Hussey (CEA) - 322715
+ *   Kenn Hussey (CEA) - 322715, 482214
  *   Christian W. Damus (CEA) - 409396, 403374, 420338, 405065
  *
  */
@@ -17,6 +17,7 @@ package org.eclipse.uml2.uml.ecore.importer.ui;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.importer.ModelImporter;
 import org.eclipse.emf.importer.ui.contribution.base.ModelImporterDetailPage;
 import org.eclipse.swt.SWT;
@@ -36,6 +37,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.ecore.importer.UMLImporter;
 import org.eclipse.uml2.uml.ecore.importer.UMLImporterPlugin;
 import org.eclipse.uml2.uml.util.UMLUtil;
@@ -52,6 +54,8 @@ public class UMLImporterDetailPage
 	protected final String processChoiceLabel;
 
 	protected final String reportChoiceLabel;
+
+	protected Map<String, String> loadedOptions = new HashMap<String, String>();
 
 	public UMLImporterDetailPage(ModelImporter modelImporter, String pageName) {
 		super(modelImporter, pageName);
@@ -86,6 +90,7 @@ public class UMLImporterDetailPage
 			public void modifyText(ModifyEvent me) {
 				getUMLImporter().getOptions().put(option,
 					choiceLabels.get(combo.getText()));
+				getContainer().updateButtons();
 			}
 		});
 
@@ -312,6 +317,33 @@ public class UMLImporterDetailPage
 
 	protected UMLImporter getUMLImporter() {
 		return (UMLImporter) getModelImporter();
+	}
+
+	@Override
+	public boolean isPageComplete() {
+		Map<String, String> options = getUMLImporter().getOptions();
+
+		for (Map.Entry<String, String> entry : options.entrySet()) {
+
+			if (!UML2Util.safeEquals(entry.getValue(),
+				loadedOptions.get(entry.getKey()))) {
+
+				return false;
+			}
+		}
+
+		return super.isPageComplete();
+	}
+
+	@Override
+	protected void refreshModel(Monitor monitor)
+			throws Exception {
+		super.refreshModel(monitor);
+
+		if (super.isPageComplete()) {
+			loadedOptions = new HashMap<String, String>(
+				getUMLImporter().getOptions());
+		}
 	}
 
 }
