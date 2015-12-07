@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
- *   Kenn Hussey (CEA) - 418466, 451350
+ *   Kenn Hussey (CEA) - 418466, 451350, 483781
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -65,7 +65,8 @@ public class TypeOperations
 		super();
 	}
 
-	protected static void validateTypeAndBounds(Type type, int lower, int upper) {
+	protected static void validateTypeAndBounds(Type type, int lower,
+			int upper) {
 
 		if (type == null) {
 			throw new IllegalArgumentException(String.valueOf(type));
@@ -75,9 +76,7 @@ public class TypeOperations
 			throw new IllegalArgumentException(String.valueOf(lower));
 		}
 
-		if (upper != LiteralUnlimitedNatural.UNLIMITED
-			&& (upper == 0 || upper < lower)) {
-
+		if (upper != LiteralUnlimitedNatural.UNLIMITED && upper < lower) {
 			throw new IllegalArgumentException(String.valueOf(upper));
 		}
 	}
