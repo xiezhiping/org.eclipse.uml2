@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -194,13 +194,13 @@ public class BehaviorExecutionSpecificationImpl
 		switch (featureID) {
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME :
 				setName((String) newValue);
@@ -223,8 +223,8 @@ public class BehaviorExecutionSpecificationImpl
 				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
+				getGeneralOrderings()
+					.addAll((Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__FINISH :
 				setFinish((OccurrenceSpecification) newValue);

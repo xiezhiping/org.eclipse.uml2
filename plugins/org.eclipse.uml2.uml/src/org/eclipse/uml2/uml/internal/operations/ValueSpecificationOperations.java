@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -214,8 +214,8 @@ public class ValueSpecificationOperations
 				Type type = instanceValue.getType();
 
 				if (type instanceof Enumeration) {
-					instanceValue.setInstance(((Enumeration) type)
-						.getOwnedLiteral(newValue));
+					instanceValue.setInstance(
+						((Enumeration) type).getOwnedLiteral(newValue));
 				} else {
 					InstanceSpecification instance = instanceValue
 						.getInstance();
@@ -237,8 +237,8 @@ public class ValueSpecificationOperations
 
 			@Override
 			public Object caseLiteralBoolean(LiteralBoolean literalBoolean) {
-				literalBoolean.setValue(Boolean.valueOf(newValue)
-					.booleanValue());
+				literalBoolean
+					.setValue(Boolean.valueOf(newValue).booleanValue());
 				return literalBoolean;
 			}
 
@@ -268,7 +268,8 @@ public class ValueSpecificationOperations
 			}
 
 			@Override
-			public Object caseOpaqueExpression(OpaqueExpression opaqueExpression) {
+			public Object caseOpaqueExpression(
+					OpaqueExpression opaqueExpression) {
 				EList<String> bodies = opaqueExpression.getBodies();
 
 				if (bodies.isEmpty()) {

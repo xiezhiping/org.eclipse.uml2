@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 454400, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 454400, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -168,7 +168,8 @@ public class InstanceSpecificationImpl
 	public TemplateParameter getTemplateParameter() {
 		if (templateParameter != null && templateParameter.eIsProxy()) {
 			InternalEObject oldTemplateParameter = (InternalEObject) templateParameter;
-			templateParameter = (TemplateParameter) eResolveProxy(oldTemplateParameter);
+			templateParameter = (TemplateParameter) eResolveProxy(
+				oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -271,7 +272,8 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public NotificationChain basicSetOwningTemplateParameter(
-			TemplateParameter newOwningTemplateParameter, NotificationChain msgs) {
+			TemplateParameter newOwningTemplateParameter,
+			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newOwningTemplateParameter,
 			UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER, msgs);
 		Resource.Internal eInternalResource = eInternalResource();
@@ -293,7 +295,8 @@ public class InstanceSpecificationImpl
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
 		if (newOwningTemplateParameter != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
+			|| (eContainerFeatureID() != UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER
+				&& newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -302,8 +305,7 @@ public class InstanceSpecificationImpl
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningTemplateParameter != null)
 				msgs = ((InternalEObject) newOwningTemplateParameter)
-					.eInverseAdd(
-						this,
+					.eInverseAdd(this,
 						UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 						TemplateParameter.class, msgs);
 			msgs = basicSetOwningTemplateParameter(newOwningTemplateParameter,
@@ -323,7 +325,8 @@ public class InstanceSpecificationImpl
 	 */
 	@Override
 	public VisibilityKind getVisibility() {
-		return VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
+		return VISIBILITY_EFLAG_VALUES[(eFlags
+			& VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
 	}
 
 	/**
@@ -333,7 +336,8 @@ public class InstanceSpecificationImpl
 	 */
 	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
-		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
+		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags
+			& VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
 		if (newVisibility == null)
 			newVisibility = VISIBILITY_EDEFAULT;
 		eFlags = eFlags & ~VISIBILITY_EFLAG
@@ -353,7 +357,8 @@ public class InstanceSpecificationImpl
 	 */
 	@Override
 	public void unsetVisibility() {
-		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
+		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags
+			& VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
 		boolean oldVisibilityESet = (eFlags & VISIBILITY_ESETFLAG) != 0;
 		eFlags = eFlags & ~VISIBILITY_EFLAG | VISIBILITY_EFLAG_DEFAULT;
 		eFlags &= ~VISIBILITY_ESETFLAG;
@@ -384,8 +389,8 @@ public class InstanceSpecificationImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -451,7 +456,8 @@ public class InstanceSpecificationImpl
 	public ValueSpecification getSpecification() {
 		if (specification != null && specification.eIsProxy()) {
 			InternalEObject oldSpecification = (InternalEObject) specification;
-			specification = (ValueSpecification) eResolveProxy(oldSpecification);
+			specification = (ValueSpecification) eResolveProxy(
+				oldSpecification);
 			if (specification != oldSpecification) {
 				InternalEObject newSpecification = (InternalEObject) specification;
 				NotificationChain msgs = oldSpecification.eInverseRemove(this,
@@ -540,7 +546,8 @@ public class InstanceSpecificationImpl
 	 */
 	public ValueSpecification createSpecification(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newSpecification = (ValueSpecification) create(eClass);
+		ValueSpecification newSpecification = (ValueSpecification) create(
+			eClass);
 		setSpecification(newSpecification);
 		if (name != null)
 			newSpecification.setName(name);
@@ -597,10 +604,10 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNamespaceNeedsVisibility(
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return PackageableElementOperations.validateNamespaceNeedsVisibility(
-			this, diagnostics, context);
+	public boolean validateNamespaceNeedsVisibility(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return PackageableElementOperations
+			.validateNamespaceNeedsVisibility(this, diagnostics, context);
 	}
 
 	/**
@@ -670,10 +677,10 @@ public class InstanceSpecificationImpl
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
 				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
+					msgs = ((InternalEObject) templateParameter).eInverseRemove(
+						this,
+						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+						TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__SLOT :
@@ -693,16 +700,16 @@ public class InstanceSpecificationImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.INSTANCE_SPECIFICATION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__DEPLOYMENT :
-				return ((InternalEList<?>) getDeployments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getDeployments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
@@ -802,13 +809,13 @@ public class InstanceSpecificationImpl
 		switch (featureID) {
 			case UMLPackage.INSTANCE_SPECIFICATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__NAME :
 				setName((String) newValue);
@@ -821,8 +828,8 @@ public class InstanceSpecificationImpl
 				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__DEPLOYMENT :
 				getDeployments().clear();
-				getDeployments().addAll(
-					(Collection<? extends Deployment>) newValue);
+				getDeployments()
+					.addAll((Collection<? extends Deployment>) newValue);
 				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -832,8 +839,8 @@ public class InstanceSpecificationImpl
 				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER :
 				getClassifiers().clear();
-				getClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getClassifiers()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__SLOT :
 				getSlots().clear();
@@ -945,7 +952,8 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	public int eBaseStructuralFeatureID(int derivedFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == ParameterableElement.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
@@ -977,7 +985,8 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	public int eDerivedStructuralFeatureID(int baseFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == ParameterableElement.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
@@ -1094,7 +1103,8 @@ public class InstanceSpecificationImpl
 			case UMLPackage.INSTANCE_SPECIFICATION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.INSTANCE_SPECIFICATION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.INSTANCE_SPECIFICATION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.INSTANCE_SPECIFICATION___GET_STEREOTYPE_APPLICATIONS :
@@ -1102,7 +1112,8 @@ public class InstanceSpecificationImpl
 			case UMLPackage.INSTANCE_SPECIFICATION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.INSTANCE_SPECIFICATION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.INSTANCE_SPECIFICATION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1167,7 +1178,8 @@ public class InstanceSpecificationImpl
 			case UMLPackage.INSTANCE_SPECIFICATION___GET_DEPLOYED_ELEMENTS :
 				return getDeployedElements();
 			case UMLPackage.INSTANCE_SPECIFICATION___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.INSTANCE_SPECIFICATION___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.INSTANCE_SPECIFICATION___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
@@ -1215,8 +1227,8 @@ public class InstanceSpecificationImpl
 	 */
 	@Override
 	public boolean isSetOwner() {
-		return super.isSetOwner()
-			|| eIsSet(UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER);
+		return super.isSetOwner() || eIsSet(
+			UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER);
 	}
 
 	/**

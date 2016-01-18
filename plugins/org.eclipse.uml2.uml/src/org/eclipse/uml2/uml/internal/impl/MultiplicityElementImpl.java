@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -181,8 +181,8 @@ public abstract class MultiplicityElementImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -299,8 +299,8 @@ public abstract class MultiplicityElementImpl
 				InternalEObject newUpperValue = (InternalEObject) upperValue;
 				NotificationChain msgs = oldUpperValue.eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE, null,
-					null);
+						- UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+					null, null);
 				if (newUpperValue.eInternalContainer() == null) {
 					msgs = newUpperValue.eInverseAdd(this,
 						EOPPOSITE_FEATURE_BASE
@@ -359,13 +359,13 @@ public abstract class MultiplicityElementImpl
 			if (upperValue != null)
 				msgs = ((InternalEObject) upperValue).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE, null,
-					msgs);
+						- UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+					null, msgs);
 			if (newUpperValue != null)
 				msgs = ((InternalEObject) newUpperValue).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE, null,
-					msgs);
+						- UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+					null, msgs);
 			msgs = basicSetUpperValue(newUpperValue, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -404,8 +404,8 @@ public abstract class MultiplicityElementImpl
 				InternalEObject newLowerValue = (InternalEObject) lowerValue;
 				NotificationChain msgs = oldLowerValue.eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE, null,
-					null);
+						- UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+					null, null);
 				if (newLowerValue.eInternalContainer() == null) {
 					msgs = newLowerValue.eInverseAdd(this,
 						EOPPOSITE_FEATURE_BASE
@@ -464,13 +464,13 @@ public abstract class MultiplicityElementImpl
 			if (lowerValue != null)
 				msgs = ((InternalEObject) lowerValue).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE, null,
-					msgs);
+						- UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+					null, msgs);
 			if (newLowerValue != null)
 				msgs = ((InternalEObject) newLowerValue).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE, null,
-					msgs);
+						- UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+					null, msgs);
 			msgs = basicSetLowerValue(newLowerValue, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -503,8 +503,8 @@ public abstract class MultiplicityElementImpl
 	 */
 	public boolean validateLowerGe0(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return MultiplicityElementOperations.validateLowerGe0(this,
-			diagnostics, context);
+		return MultiplicityElementOperations.validateLowerGe0(this, diagnostics,
+			context);
 	}
 
 	/**
@@ -526,7 +526,8 @@ public abstract class MultiplicityElementImpl
 	public boolean validateValueSpecificationNoSideEffects(
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return MultiplicityElementOperations
-			.validateValueSpecificationNoSideEffects(this, diagnostics, context);
+			.validateValueSpecificationNoSideEffects(this, diagnostics,
+				context);
 	}
 
 	/**
@@ -558,8 +559,8 @@ public abstract class MultiplicityElementImpl
 	 */
 	public boolean validateUpperIsUnlimitedNatural(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return MultiplicityElementOperations.validateUpperIsUnlimitedNatural(
-			this, diagnostics, context);
+		return MultiplicityElementOperations
+			.validateUpperIsUnlimitedNatural(this, diagnostics, context);
 	}
 
 	/**
@@ -626,11 +627,11 @@ public abstract class MultiplicityElementImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.MULTIPLICITY_ELEMENT__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.MULTIPLICITY_ELEMENT__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE :
 				return basicSetLowerValue(null, msgs);
 			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
@@ -688,13 +689,13 @@ public abstract class MultiplicityElementImpl
 		switch (featureID) {
 			case UMLPackage.MULTIPLICITY_ELEMENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.MULTIPLICITY_ELEMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.MULTIPLICITY_ELEMENT__IS_ORDERED :
 				setIsOrdered((Boolean) newValue);
@@ -771,7 +772,8 @@ public abstract class MultiplicityElementImpl
 			case UMLPackage.MULTIPLICITY_ELEMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.MULTIPLICITY_ELEMENT__IS_ORDERED :
-				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
+				return ((eFlags
+					& IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.MULTIPLICITY_ELEMENT__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UMLPackage.MULTIPLICITY_ELEMENT__LOWER :
@@ -843,7 +845,8 @@ public abstract class MultiplicityElementImpl
 			case UMLPackage.MULTIPLICITY_ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.MULTIPLICITY_ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.MULTIPLICITY_ELEMENT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.MULTIPLICITY_ELEMENT___GET_STEREOTYPE_APPLICATIONS :
@@ -851,7 +854,8 @@ public abstract class MultiplicityElementImpl
 			case UMLPackage.MULTIPLICITY_ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.MULTIPLICITY_ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.MULTIPLICITY_ELEMENT___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -909,8 +913,8 @@ public abstract class MultiplicityElementImpl
 			case UMLPackage.MULTIPLICITY_ELEMENT___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
 				return compatibleWith((MultiplicityElement) arguments.get(0));
 			case UMLPackage.MULTIPLICITY_ELEMENT___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
-				return includesMultiplicity((MultiplicityElement) arguments
-					.get(0));
+				return includesMultiplicity(
+					(MultiplicityElement) arguments.get(0));
 			case UMLPackage.MULTIPLICITY_ELEMENT___IS__INT_INT :
 				return is((Integer) arguments.get(0),
 					(Integer) arguments.get(1));

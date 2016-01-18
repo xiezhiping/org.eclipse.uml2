@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 351777, 382718, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 351777, 382718, 418466, 451350, 485756
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -313,7 +313,8 @@ public interface Component
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.types.String" nameRequired="true" nameOrdered="false" isAbstractDataType="org.eclipse.uml2.types.Boolean" isAbstractRequired="true" isAbstractOrdered="false"
 	 * @generated
 	 */
-	org.eclipse.uml2.uml.Class createOwnedClass(String name, boolean isAbstract);
+	org.eclipse.uml2.uml.Class createOwnedClass(String name,
+			boolean isAbstract);
 
 	/**
 	 * <!-- begin-user-doc -->

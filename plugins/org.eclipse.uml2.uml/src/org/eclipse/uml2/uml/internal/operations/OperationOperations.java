@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 295864, 418466, 433204, 451350
+ *   Kenn Hussey (CEA) - 327039, 295864, 418466, 433204, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -91,7 +91,8 @@ public class OperationOperations
 
 		for (Parameter ownedParameter : operation.getOwnedParameters()) {
 
-			if (ownedParameter.getDirection() == ParameterDirectionKind.RETURN_LITERAL) {
+			if (ownedParameter
+				.getDirection() == ParameterDirectionKind.RETURN_LITERAL) {
 				count++;
 			}
 		}
@@ -216,7 +217,8 @@ public class OperationOperations
 
 		for (Parameter ownedParameter : operation.getOwnedParameters()) {
 
-			if (ownedParameter.getDirection() == ParameterDirectionKind.RETURN_LITERAL) {
+			if (ownedParameter
+				.getDirection() == ParameterDirectionKind.RETURN_LITERAL) {
 				returnResult.add(ownedParameter);
 			}
 		}
@@ -325,7 +327,8 @@ public class OperationOperations
 
 		for (Parameter ownedParameter : operation.getOwnedParameters()) {
 
-			if (ownedParameter.getDirection() == ParameterDirectionKind.RETURN_LITERAL) {
+			if (ownedParameter
+				.getDirection() == ParameterDirectionKind.RETURN_LITERAL) {
 				return ownedParameter;
 			}
 		}
@@ -405,11 +408,13 @@ public class OperationOperations
 					Parameter redefiningParam = opOwnedParameters.get(i);
 					Parameter redefinedParam = ownedParameters.get(i);
 
-					if (redefiningParam.isUnique() != redefinedParam.isUnique()) {
+					if (redefiningParam.isUnique() != redefinedParam
+						.isUnique()) {
 						return false;
 					}
 
-					if (redefiningParam.isUnique() == redefinedParam.isUnique()) {
+					if (redefiningParam.isUnique() == redefinedParam
+						.isUnique()) {
 						return false;
 					}
 

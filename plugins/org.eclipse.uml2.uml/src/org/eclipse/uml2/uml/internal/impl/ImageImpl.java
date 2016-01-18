@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 451350
+ *   Kenn Hussey (CEA) - 327039, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -171,7 +171,8 @@ public class ImageImpl
 		eFlags |= CONTENT_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.IMAGE__CONTENT, oldContent, content, !oldContentESet));
+				UMLPackage.IMAGE__CONTENT, oldContent, content,
+				!oldContentESet));
 	}
 
 	/**
@@ -337,13 +338,13 @@ public class ImageImpl
 		switch (featureID) {
 			case UMLPackage.IMAGE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.IMAGE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.IMAGE__CONTENT :
 				setContent((String) newValue);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 451350
+ *   Kenn Hussey (CEA) - 327039, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -72,8 +72,8 @@ public abstract class DirectedRelationshipImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> sources = (EList<Element>) cache.get(eResource,
-				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			EList<Element> sources = (EList<Element>) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
 			if (sources == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
@@ -126,8 +126,8 @@ public abstract class DirectedRelationshipImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> targets = (EList<Element>) cache.get(eResource,
-				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			EList<Element> targets = (EList<Element>) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
 			if (targets == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,

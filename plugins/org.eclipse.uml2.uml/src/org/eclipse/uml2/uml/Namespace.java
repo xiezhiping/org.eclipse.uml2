@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -155,7 +155,8 @@ public interface Namespace
 	 * @see #getPackageImports()
 	 * @generated
 	 */
-	PackageImport getPackageImport(org.eclipse.uml2.uml.Package importedPackage);
+	PackageImport getPackageImport(
+			org.eclipse.uml2.uml.Package importedPackage);
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>' from the '<em><b>Package Import</b></em>' containment reference list.
@@ -167,8 +168,8 @@ public interface Namespace
 	 * @see #getPackageImports()
 	 * @generated
 	 */
-	PackageImport getPackageImport(
-			org.eclipse.uml2.uml.Package importedPackage, boolean createOnDemand);
+	PackageImport getPackageImport(org.eclipse.uml2.uml.Package importedPackage,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Owned Rule</b></em>' containment reference list.

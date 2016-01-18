@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -237,8 +237,8 @@ public class MessageImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -267,7 +267,8 @@ public class MessageImpl
 	 * @generated
 	 */
 	public MessageSort getMessageSort() {
-		return MESSAGE_SORT_EFLAG_VALUES[(eFlags & MESSAGE_SORT_EFLAG) >>> MESSAGE_SORT_EFLAG_OFFSET];
+		return MESSAGE_SORT_EFLAG_VALUES[(eFlags
+			& MESSAGE_SORT_EFLAG) >>> MESSAGE_SORT_EFLAG_OFFSET];
 	}
 
 	/**
@@ -276,7 +277,8 @@ public class MessageImpl
 	 * @generated
 	 */
 	public void setMessageSort(MessageSort newMessageSort) {
-		MessageSort oldMessageSort = MESSAGE_SORT_EFLAG_VALUES[(eFlags & MESSAGE_SORT_EFLAG) >>> MESSAGE_SORT_EFLAG_OFFSET];
+		MessageSort oldMessageSort = MESSAGE_SORT_EFLAG_VALUES[(eFlags
+			& MESSAGE_SORT_EFLAG) >>> MESSAGE_SORT_EFLAG_OFFSET];
 		if (newMessageSort == null)
 			newMessageSort = MESSAGE_SORT_EDEFAULT;
 		eFlags = eFlags & ~MESSAGE_SORT_EFLAG
@@ -341,7 +343,8 @@ public class MessageImpl
 			if (sendEvent != oldSendEvent) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						UMLPackage.MESSAGE__SEND_EVENT, oldSendEvent, sendEvent));
+						UMLPackage.MESSAGE__SEND_EVENT, oldSendEvent,
+						sendEvent));
 			}
 		}
 		return sendEvent;
@@ -381,7 +384,8 @@ public class MessageImpl
 			if (connector != oldConnector) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						UMLPackage.MESSAGE__CONNECTOR, oldConnector, connector));
+						UMLPackage.MESSAGE__CONNECTOR, oldConnector,
+						connector));
 			}
 		}
 		return connector;
@@ -450,7 +454,8 @@ public class MessageImpl
 	 */
 	public void setInteraction(Interaction newInteraction) {
 		if (newInteraction != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.MESSAGE__INTERACTION && newInteraction != null)) {
+			|| (eContainerFeatureID() != UMLPackage.MESSAGE__INTERACTION
+				&& newInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, newInteraction))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -465,7 +470,8 @@ public class MessageImpl
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.MESSAGE__INTERACTION, newInteraction, newInteraction));
+				UMLPackage.MESSAGE__INTERACTION, newInteraction,
+				newInteraction));
 	}
 
 	/**
@@ -541,7 +547,8 @@ public class MessageImpl
 			if (signature != oldSignature) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						UMLPackage.MESSAGE__SIGNATURE, oldSignature, signature));
+						UMLPackage.MESSAGE__SIGNATURE, oldSignature,
+						signature));
 			}
 		}
 		return signature;
@@ -660,8 +667,8 @@ public class MessageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateOccurrenceSpecifications(
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateOccurrenceSpecifications(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return MessageOperations.validateOccurrenceSpecifications(this,
 			diagnostics, context);
 	}
@@ -697,16 +704,16 @@ public class MessageImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.MESSAGE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.MESSAGE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.MESSAGE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.MESSAGE__ARGUMENT :
-				return ((InternalEList<?>) getArguments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getArguments()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.MESSAGE__INTERACTION :
 				return basicSetInteraction(null, msgs);
 		}
@@ -804,13 +811,13 @@ public class MessageImpl
 		switch (featureID) {
 			case UMLPackage.MESSAGE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.MESSAGE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.MESSAGE__NAME :
 				setName((String) newValue);
@@ -935,7 +942,8 @@ public class MessageImpl
 			case UMLPackage.MESSAGE__MESSAGE_KIND :
 				return getMessageKind() != MESSAGE_KIND_EDEFAULT;
 			case UMLPackage.MESSAGE__MESSAGE_SORT :
-				return (eFlags & MESSAGE_SORT_EFLAG) != MESSAGE_SORT_EFLAG_DEFAULT;
+				return (eFlags
+					& MESSAGE_SORT_EFLAG) != MESSAGE_SORT_EFLAG_DEFAULT;
 			case UMLPackage.MESSAGE__RECEIVE_EVENT :
 				return receiveEvent != null;
 			case UMLPackage.MESSAGE__SEND_EVENT :
@@ -1003,7 +1011,8 @@ public class MessageImpl
 			case UMLPackage.MESSAGE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.MESSAGE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.MESSAGE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.MESSAGE___GET_STEREOTYPE_APPLICATIONS :
@@ -1011,7 +1020,8 @@ public class MessageImpl
 			case UMLPackage.MESSAGE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.MESSAGE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.MESSAGE___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1122,8 +1132,8 @@ public class MessageImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (messageSort: "); //$NON-NLS-1$
-		result
-			.append(MESSAGE_SORT_EFLAG_VALUES[(eFlags & MESSAGE_SORT_EFLAG) >>> MESSAGE_SORT_EFLAG_OFFSET]);
+		result.append(MESSAGE_SORT_EFLAG_VALUES[(eFlags
+			& MESSAGE_SORT_EFLAG) >>> MESSAGE_SORT_EFLAG_OFFSET]);
 		result.append(')');
 		return result.toString();
 	}

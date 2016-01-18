@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -163,14 +163,13 @@ public class LifelineImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
 					ownedElements = new DerivedUnionEObjectEList<Element>(
-						Element.class, this,
-						UMLPackage.LIFELINE__OWNED_ELEMENT,
+						Element.class, this, UMLPackage.LIFELINE__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
@@ -261,7 +260,8 @@ public class LifelineImpl
 	 */
 	public void setInteraction(Interaction newInteraction) {
 		if (newInteraction != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.LIFELINE__INTERACTION && newInteraction != null)) {
+			|| (eContainerFeatureID() != UMLPackage.LIFELINE__INTERACTION
+				&& newInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, newInteraction))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -295,8 +295,9 @@ public class LifelineImpl
 					EOPPOSITE_FEATURE_BASE - UMLPackage.LIFELINE__SELECTOR,
 					null, null);
 				if (newSelector.eInternalContainer() == null) {
-					msgs = newSelector.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.LIFELINE__SELECTOR, null, msgs);
+					msgs = newSelector.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - UMLPackage.LIFELINE__SELECTOR,
+						null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -503,8 +504,8 @@ public class LifelineImpl
 	 */
 	public boolean validateSelectorIntOrString(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return LifelineOperations.validateSelectorIntOrString(this,
-			diagnostics, context);
+		return LifelineOperations.validateSelectorIntOrString(this, diagnostics,
+			context);
 	}
 
 	/**
@@ -541,11 +542,11 @@ public class LifelineImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.LIFELINE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.LIFELINE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.LIFELINE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.LIFELINE__INTERACTION :
@@ -553,8 +554,8 @@ public class LifelineImpl
 			case UMLPackage.LIFELINE__SELECTOR :
 				return basicSetSelector(null, msgs);
 			case UMLPackage.LIFELINE__COVERED_BY :
-				return ((InternalEList<?>) getCoveredBys()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getCoveredBys())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -642,13 +643,13 @@ public class LifelineImpl
 		switch (featureID) {
 			case UMLPackage.LIFELINE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.LIFELINE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.LIFELINE__NAME :
 				setName((String) newValue);
@@ -823,7 +824,8 @@ public class LifelineImpl
 			case UMLPackage.LIFELINE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.LIFELINE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.LIFELINE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.LIFELINE___GET_STEREOTYPE_APPLICATIONS :
@@ -831,7 +833,8 @@ public class LifelineImpl
 			case UMLPackage.LIFELINE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.LIFELINE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.LIFELINE___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));

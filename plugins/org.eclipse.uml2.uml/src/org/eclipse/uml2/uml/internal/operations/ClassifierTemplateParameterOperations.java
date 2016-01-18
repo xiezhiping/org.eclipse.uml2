@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 418466, 451350
+ *   Kenn Hussey (CEA) - 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -74,15 +74,16 @@ public class ClassifierTemplateParameterOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CLASSIFIER_TEMPLATE_PARAMETER__HAS_CONSTRAINING_CLASSIFIER,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateHasConstrainingClassifier", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(classifierTemplateParameter, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{classifierTemplateParameter}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CLASSIFIER_TEMPLATE_PARAMETER__HAS_CONSTRAINING_CLASSIFIER,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateHasConstrainingClassifier", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(classifierTemplateParameter,
+									context)}),
+					new Object[]{classifierTemplateParameter}));
 			}
 			return false;
 		}
@@ -110,15 +111,16 @@ public class ClassifierTemplateParameterOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT_NO_FEATURES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateParameteredElementNoFeatures", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(classifierTemplateParameter, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{classifierTemplateParameter}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT_NO_FEATURES,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateParameteredElementNoFeatures", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(classifierTemplateParameter,
+									context)}),
+					new Object[]{classifierTemplateParameter}));
 			}
 			return false;
 		}
@@ -146,15 +148,16 @@ public class ClassifierTemplateParameterOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CLASSIFIER_TEMPLATE_PARAMETER__MATCHING_ABSTRACT,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMatchingAbstract", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(classifierTemplateParameter, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{classifierTemplateParameter}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CLASSIFIER_TEMPLATE_PARAMETER__MATCHING_ABSTRACT,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateMatchingAbstract", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(classifierTemplateParameter,
+									context)}),
+					new Object[]{classifierTemplateParameter}));
 			}
 			return false;
 		}
@@ -182,15 +185,16 @@ public class ClassifierTemplateParameterOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CLASSIFIER_TEMPLATE_PARAMETER__ACTUAL_IS_CLASSIFIER,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateActualIsClassifier", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(classifierTemplateParameter, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{classifierTemplateParameter}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CLASSIFIER_TEMPLATE_PARAMETER__ACTUAL_IS_CLASSIFIER,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateActualIsClassifier", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(classifierTemplateParameter,
+									context)}),
+					new Object[]{classifierTemplateParameter}));
 			}
 			return false;
 		}
@@ -224,15 +228,17 @@ public class ClassifierTemplateParameterOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIERS_CONSTRAIN_ARGS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateConstrainingClassifiersConstrainArgs", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(classifierTemplateParameter, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{classifierTemplateParameter}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIERS_CONSTRAIN_ARGS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{
+							"validateConstrainingClassifiersConstrainArgs", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(classifierTemplateParameter,
+									context)}),
+					new Object[]{classifierTemplateParameter}));
 			}
 			return false;
 		}
@@ -262,15 +268,17 @@ public class ClassifierTemplateParameterOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIERS_CONSTRAIN_PARAMETERED_ELEMENT,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateConstrainingClassifiersConstrainParameteredElement", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(classifierTemplateParameter, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{classifierTemplateParameter}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIERS_CONSTRAIN_PARAMETERED_ELEMENT,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{
+							"validateConstrainingClassifiersConstrainParameteredElement", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(classifierTemplateParameter,
+									context)}),
+					new Object[]{classifierTemplateParameter}));
 			}
 			return false;
 		}

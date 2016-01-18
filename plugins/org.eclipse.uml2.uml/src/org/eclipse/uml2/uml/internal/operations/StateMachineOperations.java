@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -83,15 +83,15 @@ public class StateMachineOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STATE_MACHINE__CLASSIFIER_CONTEXT,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateClassifierContext", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(stateMachine, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{stateMachine}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.STATE_MACHINE__CLASSIFIER_CONTEXT,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateClassifierContext", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(stateMachine, context)}),
+					new Object[]{stateMachine}));
 			}
 			return false;
 		}
@@ -118,15 +118,15 @@ public class StateMachineOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STATE_MACHINE__CONTEXT_CLASSIFIER,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateContextClassifier", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(stateMachine, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{stateMachine}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.STATE_MACHINE__CONTEXT_CLASSIFIER,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateContextClassifier", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(stateMachine, context)}),
+					new Object[]{stateMachine}));
 			}
 			return false;
 		}
@@ -247,7 +247,8 @@ public class StateMachineOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static State LCAState(StateMachine stateMachine, Vertex v1, Vertex v2) {
+	public static State LCAState(StateMachine stateMachine, Vertex v1,
+			Vertex v2) {
 
 		if (v2 instanceof State && ancestor(stateMachine, v1, v2)) {
 			return (State) v2;
@@ -290,15 +291,15 @@ public class StateMachineOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STATE_MACHINE__CONNECTION_POINTS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateConnectionPoints", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(stateMachine, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{stateMachine}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.STATE_MACHINE__CONNECTION_POINTS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateConnectionPoints", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(stateMachine, context)}),
+					new Object[]{stateMachine}));
 			}
 			return false;
 		}
@@ -325,15 +326,15 @@ public class StateMachineOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STATE_MACHINE__METHOD,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMethod", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(stateMachine, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{stateMachine}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.STATE_MACHINE__METHOD,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateMethod", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(stateMachine, context)}),
+					new Object[]{stateMachine}));
 			}
 			return false;
 		}
@@ -362,7 +363,8 @@ public class StateMachineOperations
 			StateMachine redefiningStateMachine = (StateMachine) redefiningElement;
 			EList<Region> allRegions = getAllRegions(stateMachine);
 
-			for (Region redefiningRegion : redefiningStateMachine.getRegions()) {
+			for (Region redefiningRegion : redefiningStateMachine
+				.getRegions()) {
 				Region extendedRegion = redefiningRegion.getExtendedRegion();
 
 				if (allRegions.contains(extendedRegion)
@@ -401,9 +403,8 @@ public class StateMachineOperations
 		if (redefinedElement instanceof StateMachine) {
 			BehavioredClassifier context = stateMachine.getContext();
 
-			return context != null
-				&& context.getRedefinedClassifiers().contains(
-					((StateMachine) redefinedElement).getContext());
+			return context != null && context.getRedefinedClassifiers()
+				.contains(((StateMachine) redefinedElement).getContext());
 		}
 
 		return false;
@@ -435,7 +436,8 @@ public class StateMachineOperations
 		EList<Region> allRegions = new UniqueEList.FastCompare<Region>(
 			stateMachine.getRegions());
 
-		for (StateMachine extendedStateMachine : getAllExtendedStateMachines(stateMachine)) {
+		for (StateMachine extendedStateMachine : getAllExtendedStateMachines(
+			stateMachine)) {
 			allRegions.addAll(extendedStateMachine.getRegions());
 		}
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -190,8 +190,8 @@ public class AddStructuralFeatureValueActionImpl
 	 */
 	public boolean validateRequiredValue(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return AddStructuralFeatureValueActionOperations.validateRequiredValue(
-			this, diagnostics, context);
+		return AddStructuralFeatureValueActionOperations
+			.validateRequiredValue(this, diagnostics, context);
 	}
 
 	/**
@@ -201,8 +201,8 @@ public class AddStructuralFeatureValueActionImpl
 	 */
 	public boolean validateInsertAtPin(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return AddStructuralFeatureValueActionOperations.validateInsertAtPin(
-			this, diagnostics, context);
+		return AddStructuralFeatureValueActionOperations
+			.validateInsertAtPin(this, diagnostics, context);
 	}
 
 	/**
@@ -216,26 +216,20 @@ public class AddStructuralFeatureValueActionImpl
 			insertAt = (InputPin) eResolveProxy(oldInsertAt);
 			if (insertAt != oldInsertAt) {
 				InternalEObject newInsertAt = (InternalEObject) insertAt;
-				NotificationChain msgs = oldInsertAt
-					.eInverseRemove(
-						this,
+				NotificationChain msgs = oldInsertAt.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT,
+					null, null);
+				if (newInsertAt.eInternalContainer() == null) {
+					msgs = newInsertAt.eInverseAdd(this,
 						EOPPOSITE_FEATURE_BASE
 							- UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT,
-						null, null);
-				if (newInsertAt.eInternalContainer() == null) {
-					msgs = newInsertAt
-						.eInverseAdd(
-							this,
-							EOPPOSITE_FEATURE_BASE
-								- UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT,
-							null, msgs);
+						null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-						this,
-						Notification.RESOLVE,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT,
 						oldInsertAt, insertAt));
 			}
@@ -283,19 +277,15 @@ public class AddStructuralFeatureValueActionImpl
 		if (newInsertAt != insertAt) {
 			NotificationChain msgs = null;
 			if (insertAt != null)
-				msgs = ((InternalEObject) insertAt)
-					.eInverseRemove(
-						this,
-						EOPPOSITE_FEATURE_BASE
-							- UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT,
-						null, msgs);
+				msgs = ((InternalEObject) insertAt).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT,
+					null, msgs);
 			if (newInsertAt != null)
-				msgs = ((InternalEObject) newInsertAt)
-					.eInverseAdd(
-						this,
-						EOPPOSITE_FEATURE_BASE
-							- UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT,
-						null, msgs);
+				msgs = ((InternalEObject) newInsertAt).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT,
+					null, msgs);
 			msgs = basicSetInsertAt(newInsertAt, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -339,11 +329,11 @@ public class AddStructuralFeatureValueActionImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IN_INTERRUPTIBLE_REGION :
@@ -352,14 +342,14 @@ public class AddStructuralFeatureValueActionImpl
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IN_STRUCTURED_NODE :
 				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__OUTGOING :
-				return ((InternalEList<?>) getOutgoings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getInPartitions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__HANDLER :
 				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
@@ -494,13 +484,13 @@ public class AddStructuralFeatureValueActionImpl
 		switch (featureID) {
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__NAME :
 				setName((String) newValue);
@@ -519,50 +509,49 @@ public class AddStructuralFeatureValueActionImpl
 				return;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions()
-					.addAll(
-						(Collection<? extends InterruptibleActivityRegion>) newValue);
+				getInInterruptibleRegions().addAll(
+					(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getIncomings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getOutgoings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll(
-					(Collection<? extends ActivityNode>) newValue);
+				getRedefinedNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
+				getInPartitions()
+					.addAll((Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll(
-					(Collection<? extends ExceptionHandler>) newValue);
+				getHandlers()
+					.addAll((Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IS_LOCALLY_REENTRANT :
 				setIsLocallyReentrant((Boolean) newValue);
 				return;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPostconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPreconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__OBJECT :
 				setObject((InputPin) newValue);
@@ -727,7 +716,8 @@ public class AddStructuralFeatureValueActionImpl
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INPUT :
 				return isSetInputs();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IS_LOCALLY_REENTRANT :
-				return ((eFlags & IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
+				return ((eFlags
+					& IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__LOCAL_POSTCONDITION :
 				return localPostconditions != null
 					&& !localPostconditions.isEmpty();
@@ -747,7 +737,8 @@ public class AddStructuralFeatureValueActionImpl
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT :
 				return insertAt != null;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REPLACE_ALL :
-				return ((eFlags & IS_REPLACE_ALL_EFLAG) != 0) != IS_REPLACE_ALL_EDEFAULT;
+				return ((eFlags
+					& IS_REPLACE_ALL_EFLAG) != 0) != IS_REPLACE_ALL_EDEFAULT;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -809,7 +800,8 @@ public class AddStructuralFeatureValueActionImpl
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___GET_STEREOTYPE_APPLICATIONS :
@@ -817,7 +809,8 @@ public class AddStructuralFeatureValueActionImpl
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -894,8 +887,8 @@ public class AddStructuralFeatureValueActionImpl
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___CONTAINING_ACTIVITY :
 				return containingActivity();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___GET_CONTEXT :
@@ -937,8 +930,7 @@ public class AddStructuralFeatureValueActionImpl
 				return validateTypeOfResult((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___VALIDATE_REQUIRED_VALUE__DIAGNOSTICCHAIN_MAP :
-				return validateRequiredValue(
-					(DiagnosticChain) arguments.get(0),
+				return validateRequiredValue((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION___VALIDATE_INSERT_AT_PIN__DIAGNOSTICCHAIN_MAP :
 				return validateInsertAtPin((DiagnosticChain) arguments.get(0),
@@ -984,8 +976,8 @@ public class AddStructuralFeatureValueActionImpl
 	 */
 	@Override
 	public boolean isSetInputs() {
-		return super.isSetInputs()
-			|| eIsSet(UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT);
+		return super.isSetInputs() || eIsSet(
+			UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT);
 	}
 
 } //AddStructuralFeatureValueActionImpl

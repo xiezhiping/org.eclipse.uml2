@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, 2014 CEA and others.
+ * Copyright (c) 2013, 2016 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
- *   Kenn Hussey (CEA) - 418466
+ *   Kenn Hussey (CEA) - 418466, 485756
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -301,7 +301,8 @@ public class UMLDerivedUnionAdapter
 				notifyTemplateBindingChanged(notification, eClass);
 				break;
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION :
-				notifyTemplateParameterSubstitutionChanged(notification, eClass);
+				notifyTemplateParameterSubstitutionChanged(notification,
+					eClass);
 				break;
 			case UMLPackage.ASSOCIATION :
 				notifyAssociationChanged(notification, eClass);
@@ -638,7 +639,8 @@ public class UMLDerivedUnionAdapter
 				notifySequenceNodeChanged(notification, eClass);
 				break;
 			case UMLPackage.START_CLASSIFIER_BEHAVIOR_ACTION :
-				notifyStartClassifierBehaviorActionChanged(notification, eClass);
+				notifyStartClassifierBehaviorActionChanged(notification,
+					eClass);
 				break;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION :
 				notifyStartObjectBehaviorActionChanged(notification, eClass);
@@ -986,7 +988,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyCommentChanged(Notification notification, EClass eClass) {
+	protected void notifyCommentChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(Comment.class)) {
 			case UMLPackage.COMMENT__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -1209,7 +1212,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyClassChanged(Notification notification, EClass eClass) {
+	protected void notifyClassChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(org.eclipse.uml2.uml.Class.class)) {
 			case UMLPackage.CLASS__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -1494,7 +1498,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyPackageChanged(Notification notification, EClass eClass) {
+	protected void notifyPackageChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(org.eclipse.uml2.uml.Package.class)) {
 			case UMLPackage.PACKAGE__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -1705,7 +1710,8 @@ public class UMLDerivedUnionAdapter
 	 */
 	protected void notifyTemplateParameterSubstitutionChanged(
 			Notification notification, EClass eClass) {
-		switch (notification.getFeatureID(TemplateParameterSubstitution.class)) {
+		switch (notification
+			.getFeatureID(TemplateParameterSubstitution.class)) {
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
@@ -1809,7 +1815,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyProfileChanged(Notification notification, EClass eClass) {
+	protected void notifyProfileChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(Profile.class)) {
 			case UMLPackage.PROFILE__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -2324,9 +2331,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.PROPERTY__INTERFACE :
@@ -2336,9 +2341,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.PROPERTY__ASSOCIATION_END :
@@ -2356,9 +2359,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.PROPERTY__DEFAULT_VALUE :
@@ -2372,9 +2373,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.NAMED_ELEMENT__NAMESPACE);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNER);
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.PROPERTY__REDEFINED_PROPERTY :
@@ -2957,9 +2956,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.NAMED_ELEMENT__NAMESPACE);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNER);
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.OPERATION__DATATYPE :
@@ -2969,9 +2966,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.NAMED_ELEMENT__NAMESPACE);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNER);
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.OPERATION__INTERFACE :
@@ -2981,9 +2976,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.NAMED_ELEMENT__NAMESPACE);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNER);
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.OPERATION__POSTCONDITION :
@@ -3371,7 +3364,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifySignalChanged(Notification notification, EClass eClass) {
+	protected void notifySignalChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(Signal.class)) {
 			case UMLPackage.SIGNAL__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -3686,9 +3680,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONTEXT :
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER :
@@ -3950,9 +3942,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.STATE_MACHINE__CONTEXT :
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER :
@@ -4062,7 +4052,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyRegionChanged(Notification notification, EClass eClass) {
+	protected void notifyRegionChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(Region.class)) {
 			case UMLPackage.REGION__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -4145,7 +4136,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyStateChanged(Notification notification, EClass eClass) {
+	protected void notifyStateChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(State.class)) {
 			case UMLPackage.STATE__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -4292,7 +4284,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyTriggerChanged(Notification notification, EClass eClass) {
+	protected void notifyTriggerChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(Trigger.class)) {
 			case UMLPackage.TRIGGER__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -4354,9 +4347,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.PORT__INTERFACE :
@@ -4366,9 +4357,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.PORT__ASSOCIATION_END :
@@ -4386,9 +4375,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.PORT__DEFAULT_VALUE :
@@ -4402,9 +4389,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.NAMED_ELEMENT__NAMESPACE);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNER);
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.PORT__REDEFINED_PROPERTY :
@@ -4864,9 +4849,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.EXTENSION_END__INTERFACE :
@@ -4876,9 +4859,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.EXTENSION_END__ASSOCIATION_END :
@@ -4896,9 +4877,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.EXTENSION_END__DEFAULT_VALUE :
@@ -4912,9 +4891,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.NAMED_ELEMENT__NAMESPACE);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNER);
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.EXTENSION_END__REDEFINED_PROPERTY :
@@ -4932,7 +4909,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyModelChanged(Notification notification, EClass eClass) {
+	protected void notifyModelChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(Model.class)) {
 			case UMLPackage.MODEL__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -5231,8 +5209,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyInstanceSpecificationChanged(
-			Notification notification, EClass eClass) {
+	protected void notifyInstanceSpecificationChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(InstanceSpecification.class)) {
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -5432,7 +5410,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyUsageChanged(Notification notification, EClass eClass) {
+	protected void notifyUsageChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(Usage.class)) {
 			case UMLPackage.USAGE__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -5775,9 +5754,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 				break;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER :
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 		}
@@ -5791,7 +5768,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyUseCaseChanged(Notification notification, EClass eClass) {
+	protected void notifyUseCaseChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(UseCase.class)) {
 			case UMLPackage.USE_CASE__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -5946,7 +5924,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyExtendChanged(Notification notification, EClass eClass) {
+	protected void notifyExtendChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(Extend.class)) {
 			case UMLPackage.EXTEND__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -6031,7 +6010,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyIncludeChanged(Notification notification, EClass eClass) {
+	protected void notifyIncludeChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(Include.class)) {
 			case UMLPackage.INCLUDE__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -6212,7 +6192,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyImageChanged(Notification notification, EClass eClass) {
+	protected void notifyImageChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(Image.class)) {
 			case UMLPackage.IMAGE__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -6613,9 +6594,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.ACTIVITY__CONTEXT :
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER :
@@ -7342,7 +7321,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyMessageChanged(Notification notification, EClass eClass) {
+	protected void notifyMessageChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(Message.class)) {
 			case UMLPackage.MESSAGE__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -7569,9 +7549,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.INTERACTION__CONTEXT :
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.INTERACTION__OWNED_PARAMETER :
@@ -7753,8 +7731,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyInteractionConstraintChanged(
-			Notification notification, EClass eClass) {
+	protected void notifyInteractionConstraintChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(InteractionConstraint.class)) {
 			case UMLPackage.INTERACTION_CONSTRAINT__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -7981,8 +7959,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyActivityParameterNodeChanged(
-			Notification notification, EClass eClass) {
+	protected void notifyActivityParameterNodeChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(ActivityParameterNode.class)) {
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -8033,7 +8011,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyActorChanged(Notification notification, EClass eClass) {
+	protected void notifyActorChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(Actor.class)) {
 			case UMLPackage.ACTOR__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -8599,7 +8578,8 @@ public class UMLDerivedUnionAdapter
 	 */
 	protected void notifyBehaviorExecutionSpecificationChanged(
 			Notification notification, EClass eClass) {
-		switch (notification.getFeatureID(BehaviorExecutionSpecification.class)) {
+		switch (notification
+			.getFeatureID(BehaviorExecutionSpecification.class)) {
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
@@ -8639,8 +8619,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyBroadcastSignalActionChanged(
-			Notification notification, EClass eClass) {
+	protected void notifyBroadcastSignalActionChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(BroadcastSignalAction.class)) {
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -8995,7 +8975,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyClauseChanged(Notification notification, EClass eClass) {
+	protected void notifyClauseChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(Clause.class)) {
 			case UMLPackage.CLAUSE__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -10675,7 +10656,8 @@ public class UMLDerivedUnionAdapter
 	 */
 	protected void notifyMessageOccurrenceSpecificationChanged(
 			Notification notification, EClass eClass) {
-		switch (notification.getFeatureID(MessageOccurrenceSpecification.class)) {
+		switch (notification
+			.getFeatureID(MessageOccurrenceSpecification.class)) {
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
@@ -10715,7 +10697,8 @@ public class UMLDerivedUnionAdapter
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyDeviceChanged(Notification notification, EClass eClass) {
+	protected void notifyDeviceChanged(Notification notification,
+			EClass eClass) {
 		switch (notification.getFeatureID(Device.class)) {
 			case UMLPackage.DEVICE__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
@@ -12190,9 +12173,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.FUNCTION_BEHAVIOR__CONTEXT :
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.FUNCTION_BEHAVIOR__OWNED_PARAMETER :
@@ -12434,9 +12415,7 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.OPAQUE_BEHAVIOR__CONTEXT :
-				notifyChanged(
-					notification,
-					eClass,
+				notifyChanged(notification, eClass,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 				break;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER :
@@ -14780,7 +14759,8 @@ public class UMLDerivedUnionAdapter
 	 */
 	protected void notifyStartClassifierBehaviorActionChanged(
 			Notification notification, EClass eClass) {
-		switch (notification.getFeatureID(StartClassifierBehaviorAction.class)) {
+		switch (notification
+			.getFeatureID(StartClassifierBehaviorAction.class)) {
 			case UMLPackage.START_CLASSIFIER_BEHAVIOR_ACTION__OWNED_COMMENT :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);

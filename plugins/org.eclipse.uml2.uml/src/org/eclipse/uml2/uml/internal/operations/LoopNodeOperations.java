@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -83,15 +83,15 @@ public class LoopNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.LOOP_NODE__INPUT_EDGES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateInputEdges", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(loopNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{loopNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.LOOP_NODE__INPUT_EDGES,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateInputEdges", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(loopNode, context)}),
+					new Object[]{loopNode}));
 			}
 			return false;
 		}
@@ -118,15 +118,15 @@ public class LoopNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.LOOP_NODE__EXECUTABLE_NODES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateExecutableNodes", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(loopNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{loopNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.LOOP_NODE__EXECUTABLE_NODES,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateExecutableNodes", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(loopNode, context)}),
+					new Object[]{loopNode}));
 			}
 			return false;
 		}
@@ -153,15 +153,15 @@ public class LoopNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.LOOP_NODE__BODY_OUTPUT_PINS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBodyOutputPins", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(loopNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{loopNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.LOOP_NODE__BODY_OUTPUT_PINS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateBodyOutputPins", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(loopNode, context)}),
+					new Object[]{loopNode}));
 			}
 			return false;
 		}
@@ -190,15 +190,15 @@ public class LoopNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.LOOP_NODE__SETUP_TEST_AND_BODY,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSetupTestAndBody", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(loopNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{loopNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.LOOP_NODE__SETUP_TEST_AND_BODY,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateSetupTestAndBody", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(loopNode, context)}),
+					new Object[]{loopNode}));
 			}
 			return false;
 		}
@@ -230,15 +230,15 @@ public class LoopNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.LOOP_NODE__MATCHING_OUTPUT_PINS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMatchingOutputPins", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(loopNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{loopNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.LOOP_NODE__MATCHING_OUTPUT_PINS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateMatchingOutputPins", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(loopNode, context)}),
+					new Object[]{loopNode}));
 			}
 			return false;
 		}
@@ -269,15 +269,15 @@ public class LoopNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.LOOP_NODE__MATCHING_LOOP_VARIABLES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMatchingLoopVariables", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(loopNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{loopNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.LOOP_NODE__MATCHING_LOOP_VARIABLES,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateMatchingLoopVariables", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(loopNode, context)}),
+					new Object[]{loopNode}));
 			}
 			return false;
 		}
@@ -308,15 +308,15 @@ public class LoopNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.LOOP_NODE__MATCHING_RESULT_PINS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMatchingResultPins", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(loopNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{loopNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.LOOP_NODE__MATCHING_RESULT_PINS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateMatchingResultPins", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(loopNode, context)}),
+					new Object[]{loopNode}));
 			}
 			return false;
 		}
@@ -343,15 +343,15 @@ public class LoopNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.LOOP_NODE__LOOP_VARIABLE_OUTGOING,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateLoopVariableOutgoing", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(loopNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{loopNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.LOOP_NODE__LOOP_VARIABLE_OUTGOING,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateLoopVariableOutgoing", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(loopNode, context)}),
+					new Object[]{loopNode}));
 			}
 			return false;
 		}
@@ -417,15 +417,15 @@ public class LoopNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.LOOP_NODE__RESULT_NO_INCOMING,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateResultNoIncoming", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(loopNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{loopNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.LOOP_NODE__RESULT_NO_INCOMING,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateResultNoIncoming", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(loopNode, context)}),
+					new Object[]{loopNode}));
 			}
 			return false;
 		}

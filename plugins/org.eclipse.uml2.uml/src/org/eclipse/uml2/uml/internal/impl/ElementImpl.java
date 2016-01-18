@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181, 335125
- *   Kenn Hussey (CEA) - 327039, 424895, 451350
+ *   Kenn Hussey (CEA) - 327039, 424895, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -110,8 +110,8 @@ public abstract class ElementImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -328,8 +328,7 @@ public abstract class ElementImpl
 			EList<Relationship> result = (EList<Relationship>) cache.get(this,
 				UMLPackage.Literals.ELEMENT___GET_RELATIONSHIPS);
 			if (result == null) {
-				cache.put(this,
-					UMLPackage.Literals.ELEMENT___GET_RELATIONSHIPS,
+				cache.put(this, UMLPackage.Literals.ELEMENT___GET_RELATIONSHIPS,
 					result = ElementOperations.getRelationships(this));
 			}
 			return result;
@@ -356,16 +355,13 @@ public abstract class ElementImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<DirectedRelationship> result = (EList<DirectedRelationship>) cache
-				.get(
-					this,
+				.get(this,
 					UMLPackage.Literals.ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS);
 			if (result == null) {
-				cache
-					.put(
-						this,
-						UMLPackage.Literals.ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS,
-						result = ElementOperations
-							.getSourceDirectedRelationships(this));
+				cache.put(this,
+					UMLPackage.Literals.ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS,
+					result = ElementOperations
+						.getSourceDirectedRelationships(this));
 			}
 			return result;
 		}
@@ -392,16 +388,13 @@ public abstract class ElementImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<DirectedRelationship> result = (EList<DirectedRelationship>) cache
-				.get(
-					this,
+				.get(this,
 					UMLPackage.Literals.ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS);
 			if (result == null) {
-				cache
-					.put(
-						this,
-						UMLPackage.Literals.ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS,
-						result = ElementOperations
-							.getTargetDirectedRelationships(this));
+				cache.put(this,
+					UMLPackage.Literals.ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS,
+					result = ElementOperations
+						.getTargetDirectedRelationships(this));
 			}
 			return result;
 		}
@@ -608,11 +601,11 @@ public abstract class ElementImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.ELEMENT__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ELEMENT__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -650,13 +643,13 @@ public abstract class ElementImpl
 		switch (featureID) {
 			case UMLPackage.ELEMENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.ELEMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -757,7 +750,8 @@ public abstract class ElementImpl
 			case UMLPackage.ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.ELEMENT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.ELEMENT___GET_STEREOTYPE_APPLICATIONS :
@@ -765,7 +759,8 @@ public abstract class ElementImpl
 			case UMLPackage.ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.ELEMENT___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -827,7 +822,8 @@ public abstract class ElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{UMLPackage.ELEMENT__OWNED_COMMENT};
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.ELEMENT__OWNED_COMMENT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -899,9 +895,9 @@ public abstract class ElementImpl
 	public NotificationChain eBasicSetContainer(InternalEObject newContainer,
 			int newContainerFeatureID, NotificationChain msgs) {
 
-		if (eDirectResource() != null
-			&& newContainer != null
-			&& eContainmentFeature(this, newContainer, newContainerFeatureID) == null) {
+		if (eDirectResource() != null && newContainer != null
+			&& eContainmentFeature(this, newContainer,
+				newContainerFeatureID) == null) {
 
 			InternalEObject oldContainer = eInternalContainer();
 			int oldContainerFeatureID = eContainerFeatureID();
@@ -913,9 +909,9 @@ public abstract class ElementImpl
 				if (oldContainer != null && oldContainerFeatureID >= 0
 					&& oldContainerFeatureID != newContainerFeatureID) {
 
-					ENotificationImpl notification = new ENotificationImpl(
-						this, Notification.SET, oldContainerFeatureID,
-						oldContainer, null);
+					ENotificationImpl notification = new ENotificationImpl(this,
+						Notification.SET, oldContainerFeatureID, oldContainer,
+						null);
 
 					if (msgs == null) {
 						msgs = notification;
@@ -924,11 +920,12 @@ public abstract class ElementImpl
 					}
 				}
 				if (newContainerFeatureID >= 0) {
-					ENotificationImpl notification = new ENotificationImpl(
-						this, Notification.SET, newContainerFeatureID,
+					ENotificationImpl notification = new ENotificationImpl(this,
+						Notification.SET, newContainerFeatureID,
 						oldContainerFeatureID == newContainerFeatureID
 							? oldContainer
-							: null, newContainer);
+							: null,
+						newContainer);
 
 					if (msgs == null) {
 						msgs = notification;
@@ -938,13 +935,12 @@ public abstract class ElementImpl
 				}
 			}
 		} else {
-			msgs = super.eBasicSetContainer(newContainer,
-				newContainerFeatureID, msgs);
+			msgs = super.eBasicSetContainer(newContainer, newContainerFeatureID,
+				msgs);
 		}
 
-		if (newContainer != null
-			&& (CHANGE_DESCRIPTION_CLASS == null || !(CHANGE_DESCRIPTION_CLASS
-				.isInstance(newContainer)))) {
+		if (newContainer != null && (CHANGE_DESCRIPTION_CLASS == null
+			|| !(CHANGE_DESCRIPTION_CLASS.isInstance(newContainer)))) {
 
 			Resource.Internal eInternalResource = eInternalResource();
 

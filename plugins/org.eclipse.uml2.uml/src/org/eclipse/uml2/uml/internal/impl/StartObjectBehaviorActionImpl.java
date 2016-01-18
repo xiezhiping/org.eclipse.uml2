@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2008, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -163,8 +163,9 @@ public class StartObjectBehaviorActionImpl
 						- UMLPackage.START_OBJECT_BEHAVIOR_ACTION__OBJECT,
 					null, null);
 				if (newObject.eInternalContainer() == null) {
-					msgs = newObject.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.START_OBJECT_BEHAVIOR_ACTION__OBJECT,
+					msgs = newObject.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.START_OBJECT_BEHAVIOR_ACTION__OBJECT,
 						null, msgs);
 				}
 				if (msgs != null)
@@ -304,8 +305,7 @@ public class StartObjectBehaviorActionImpl
 			EList<Parameter> result = (EList<Parameter>) cache.get(this,
 				UMLPackage.Literals.CALL_ACTION___OUTPUT_PARAMETERS);
 			if (result == null) {
-				cache.put(
-					this,
+				cache.put(this,
 					UMLPackage.Literals.CALL_ACTION___OUTPUT_PARAMETERS,
 					result = StartObjectBehaviorActionOperations
 						.outputParameters(this));
@@ -328,8 +328,7 @@ public class StartObjectBehaviorActionImpl
 			EList<Parameter> result = (EList<Parameter>) cache.get(this,
 				UMLPackage.Literals.CALL_ACTION___INPUT_PARAMETERS);
 			if (result == null) {
-				cache.put(
-					this,
+				cache.put(this,
 					UMLPackage.Literals.CALL_ACTION___INPUT_PARAMETERS,
 					result = StartObjectBehaviorActionOperations
 						.inputParameters(this));
@@ -360,11 +359,11 @@ public class StartObjectBehaviorActionImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IN_INTERRUPTIBLE_REGION :
@@ -373,14 +372,14 @@ public class StartObjectBehaviorActionImpl
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IN_STRUCTURED_NODE :
 				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__OUTGOING :
-				return ((InternalEList<?>) getOutgoings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getInPartitions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__HANDLER :
 				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
@@ -391,8 +390,8 @@ public class StartObjectBehaviorActionImpl
 				return ((InternalEList<?>) getLocalPreconditions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__ARGUMENT :
-				return ((InternalEList<?>) getArguments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getArguments()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__RESULT :
 				return ((InternalEList<?>) getResults()).basicRemove(otherEnd,
 					msgs);
@@ -507,13 +506,13 @@ public class StartObjectBehaviorActionImpl
 		switch (featureID) {
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__NAME :
 				setName((String) newValue);
@@ -532,50 +531,49 @@ public class StartObjectBehaviorActionImpl
 				return;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions()
-					.addAll(
-						(Collection<? extends InterruptibleActivityRegion>) newValue);
+				getInInterruptibleRegions().addAll(
+					(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getIncomings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getOutgoings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll(
-					(Collection<? extends ActivityNode>) newValue);
+				getRedefinedNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
+				getInPartitions()
+					.addAll((Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll(
-					(Collection<? extends ExceptionHandler>) newValue);
+				getHandlers()
+					.addAll((Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IS_LOCALLY_REENTRANT :
 				setIsLocallyReentrant((Boolean) newValue);
 				return;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPostconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPreconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__ARGUMENT :
 				getArguments().clear();
@@ -737,7 +735,8 @@ public class StartObjectBehaviorActionImpl
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__INPUT :
 				return isSetInputs();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IS_LOCALLY_REENTRANT :
-				return ((eFlags & IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
+				return ((eFlags
+					& IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__LOCAL_POSTCONDITION :
 				return localPostconditions != null
 					&& !localPostconditions.isEmpty();
@@ -751,7 +750,8 @@ public class StartObjectBehaviorActionImpl
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__ON_PORT :
 				return onPort != null;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IS_SYNCHRONOUS :
-				return ((eFlags & IS_SYNCHRONOUS_EFLAG) != 0) != IS_SYNCHRONOUS_EDEFAULT;
+				return ((eFlags
+					& IS_SYNCHRONOUS_EFLAG) != 0) != IS_SYNCHRONOUS_EDEFAULT;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__RESULT :
 				return results != null && !results.isEmpty();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__OBJECT :
@@ -817,7 +817,8 @@ public class StartObjectBehaviorActionImpl
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___GET_STEREOTYPE_APPLICATIONS :
@@ -825,7 +826,8 @@ public class StartObjectBehaviorActionImpl
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -902,8 +904,8 @@ public class StartObjectBehaviorActionImpl
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___CONTAINING_ACTIVITY :
 				return containingActivity();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___GET_CONTEXT :

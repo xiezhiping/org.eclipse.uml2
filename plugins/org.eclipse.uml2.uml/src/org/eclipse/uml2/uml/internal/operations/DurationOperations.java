@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -67,15 +67,15 @@ public class DurationOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.DURATION__NO_EXPR_REQUIRES_OBSERVATION,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoExprRequiresObservation", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(duration, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{duration}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.DURATION__NO_EXPR_REQUIRES_OBSERVATION,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateNoExprRequiresObservation", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(duration, context)}),
+					new Object[]{duration}));
 			}
 			return false;
 		}

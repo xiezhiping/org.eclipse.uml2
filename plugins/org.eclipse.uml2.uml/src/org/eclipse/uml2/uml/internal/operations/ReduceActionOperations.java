@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -70,15 +70,15 @@ public class ReduceActionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.REDUCE_ACTION__INPUT_TYPE_IS_COLLECTION,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateInputTypeIsCollection", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(reduceAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{reduceAction}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.REDUCE_ACTION__INPUT_TYPE_IS_COLLECTION,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateInputTypeIsCollection", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(reduceAction, context)}),
+					new Object[]{reduceAction}));
 			}
 			return false;
 		}
@@ -106,15 +106,15 @@ public class ReduceActionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.REDUCE_ACTION__OUTPUT_TYPES_ARE_COMPATIBLE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOutputTypesAreCompatible", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(reduceAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{reduceAction}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.REDUCE_ACTION__OUTPUT_TYPES_ARE_COMPATIBLE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateOutputTypesAreCompatible", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(reduceAction, context)}),
+					new Object[]{reduceAction}));
 			}
 			return false;
 		}
@@ -139,24 +139,23 @@ public class ReduceActionOperations
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateReducerInputsOutput(
-			ReduceAction reduceAction, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
+	public static boolean validateReducerInputsOutput(ReduceAction reduceAction,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.REDUCE_ACTION__REDUCER_INPUTS_OUTPUT,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateReducerInputsOutput", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(reduceAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{reduceAction}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.REDUCE_ACTION__REDUCER_INPUTS_OUTPUT,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateReducerInputsOutput", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(reduceAction, context)}),
+					new Object[]{reduceAction}));
 			}
 			return false;
 		}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -255,20 +255,15 @@ public abstract class BehaviorImpl
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
 			EList<Classifier> redefinitionContexts = (EList<Classifier>) cache
-				.get(
-					eResource,
-					this,
+				.get(eResource, this,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 			if (redefinitionContexts == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-						redefinitionContexts = new DerivedUnionEObjectEList<Classifier>(
-							Classifier.class, this,
-							UMLPackage.BEHAVIOR__REDEFINITION_CONTEXT,
-							REDEFINITION_CONTEXT_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+					redefinitionContexts = new DerivedUnionEObjectEList<Classifier>(
+						Classifier.class, this,
+						UMLPackage.BEHAVIOR__REDEFINITION_CONTEXT,
+						REDEFINITION_CONTEXT_ESUBSETS));
 			}
 			return redefinitionContexts;
 		}
@@ -366,7 +361,8 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public Parameter createOwnedParameter(String name, Type type) {
-		Parameter newOwnedParameter = (Parameter) create(UMLPackage.Literals.PARAMETER);
+		Parameter newOwnedParameter = (Parameter) create(
+			UMLPackage.Literals.PARAMETER);
 		getOwnedParameters().add(newOwnedParameter);
 		if (name != null)
 			newOwnedParameter.setName(name);
@@ -502,7 +498,8 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public ParameterSet createOwnedParameterSet(String name) {
-		ParameterSet newOwnedParameterSet = (ParameterSet) create(UMLPackage.Literals.PARAMETER_SET);
+		ParameterSet newOwnedParameterSet = (ParameterSet) create(
+			UMLPackage.Literals.PARAMETER_SET);
 		getOwnedParameterSets().add(newOwnedParameterSet);
 		if (name != null)
 			newOwnedParameterSet.setName(name);
@@ -654,8 +651,7 @@ public abstract class BehaviorImpl
 			EList<Parameter> result = (EList<Parameter>) cache.get(this,
 				UMLPackage.Literals.BEHAVIOR___INPUT_PARAMETERS);
 			if (result == null) {
-				cache.put(this,
-					UMLPackage.Literals.BEHAVIOR___INPUT_PARAMETERS,
+				cache.put(this, UMLPackage.Literals.BEHAVIOR___INPUT_PARAMETERS,
 					result = BehaviorOperations.inputParameters(this));
 			}
 			return result;
@@ -713,10 +709,10 @@ public abstract class BehaviorImpl
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER :
 				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
+					msgs = ((InternalEObject) templateParameter).eInverseRemove(
+						this,
+						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+						TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.BEHAVIOR__TEMPLATE_BINDING :
@@ -725,8 +721,9 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
-						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE,
+						.eInverseRemove(this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE,
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
@@ -753,7 +750,8 @@ public abstract class BehaviorImpl
 					msgs = ((InternalEObject) specification).eInverseRemove(
 						this, UMLPackage.BEHAVIORAL_FEATURE__METHOD,
 						BehavioralFeature.class, msgs);
-				return basicSetSpecification((BehavioralFeature) otherEnd, msgs);
+				return basicSetSpecification((BehavioralFeature) otherEnd,
+					msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -768,75 +766,75 @@ public abstract class BehaviorImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.BEHAVIOR__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedRules())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getElementImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPackageImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.BEHAVIOR__TEMPLATE_BINDING :
-				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getTemplateBindings())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.BEHAVIOR__COLLABORATION_USE :
-				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getCollaborationUses())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__GENERALIZATION :
-				return ((InternalEList<?>) getGeneralizations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getGeneralizations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__POWERTYPE_EXTENT :
-				return ((InternalEList<?>) getPowertypeExtents()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPowertypeExtents())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_USE_CASE :
-				return ((InternalEList<?>) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedUseCases())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__USE_CASE :
 				return ((InternalEList<?>) getUseCases()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.BEHAVIOR__SUBSTITUTION :
-				return ((InternalEList<?>) getSubstitutions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getSubstitutions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_ATTRIBUTE :
-				return ((InternalEList<?>) getOwnedAttributes()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedAttributes())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_CONNECTOR :
-				return ((InternalEList<?>) getOwnedConnectors()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedConnectors())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__INTERFACE_REALIZATION :
 				return ((InternalEList<?>) getInterfaceRealizations())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_BEHAVIOR :
-				return ((InternalEList<?>) getOwnedBehaviors()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedBehaviors())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_OPERATION :
-				return ((InternalEList<?>) getOwnedOperations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedOperations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__NESTED_CLASSIFIER :
-				return ((InternalEList<?>) getNestedClassifiers()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getNestedClassifiers())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_RECEPTION :
-				return ((InternalEList<?>) getOwnedReceptions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedReceptions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__SPECIFICATION :
 				return basicSetSpecification(null, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER :
-				return ((InternalEList<?>) getOwnedParameters()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedParameters())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				return ((InternalEList<?>) getOwnedParameterSets())
 					.basicRemove(otherEnd, msgs);
@@ -1009,13 +1007,13 @@ public abstract class BehaviorImpl
 		switch (featureID) {
 			case UMLPackage.BEHAVIOR__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__NAME :
 				setName((String) newValue);
@@ -1028,18 +1026,18 @@ public abstract class BehaviorImpl
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getOwnedRules()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll(
-					(Collection<? extends ElementImport>) newValue);
+				getElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll(
-					(Collection<? extends PackageImport>) newValue);
+				getPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -1055,31 +1053,31 @@ public abstract class BehaviorImpl
 				return;
 			case UMLPackage.BEHAVIOR__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll(
-					(Collection<? extends TemplateBinding>) newValue);
+				getTemplateBindings()
+					.addAll((Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__COLLABORATION_USE :
 				getCollaborationUses().clear();
-				getCollaborationUses().addAll(
-					(Collection<? extends CollaborationUse>) newValue);
+				getCollaborationUses()
+					.addAll((Collection<? extends CollaborationUse>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__GENERAL :
 				getGenerals().clear();
-				getGenerals().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getGenerals()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__GENERALIZATION :
 				getGeneralizations().clear();
-				getGeneralizations().addAll(
-					(Collection<? extends Generalization>) newValue);
+				getGeneralizations()
+					.addAll((Collection<? extends Generalization>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll(
-					(Collection<? extends GeneralizationSet>) newValue);
+				getPowertypeExtents()
+					.addAll((Collection<? extends GeneralizationSet>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__IS_ABSTRACT :
 				setIsAbstract((Boolean) newValue);
@@ -1089,8 +1087,8 @@ public abstract class BehaviorImpl
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_USE_CASE :
 				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll(
-					(Collection<? extends UseCase>) newValue);
+				getOwnedUseCases()
+					.addAll((Collection<? extends UseCase>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__USE_CASE :
 				getUseCases().clear();
@@ -1098,26 +1096,26 @@ public abstract class BehaviorImpl
 				return;
 			case UMLPackage.BEHAVIOR__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
-				getRedefinedClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getRedefinedClassifiers()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__REPRESENTATION :
 				setRepresentation((CollaborationUse) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__SUBSTITUTION :
 				getSubstitutions().clear();
-				getSubstitutions().addAll(
-					(Collection<? extends Substitution>) newValue);
+				getSubstitutions()
+					.addAll((Collection<? extends Substitution>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll(
-					(Collection<? extends Property>) newValue);
+				getOwnedAttributes()
+					.addAll((Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_CONNECTOR :
 				getOwnedConnectors().clear();
-				getOwnedConnectors().addAll(
-					(Collection<? extends Connector>) newValue);
+				getOwnedConnectors()
+					.addAll((Collection<? extends Connector>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__CLASSIFIER_BEHAVIOR :
 				setClassifierBehavior((Behavior) newValue);
@@ -1129,32 +1127,31 @@ public abstract class BehaviorImpl
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_BEHAVIOR :
 				getOwnedBehaviors().clear();
-				getOwnedBehaviors().addAll(
-					(Collection<? extends Behavior>) newValue);
+				getOwnedBehaviors()
+					.addAll((Collection<? extends Behavior>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_OPERATION :
 				getOwnedOperations().clear();
-				getOwnedOperations().addAll(
-					(Collection<? extends Operation>) newValue);
+				getOwnedOperations()
+					.addAll((Collection<? extends Operation>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__IS_ACTIVE :
 				setIsActive((Boolean) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
-				getNestedClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getNestedClassifiers()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
-				getOwnedReceptions().addAll(
-					(Collection<? extends Reception>) newValue);
+				getOwnedReceptions()
+					.addAll((Collection<? extends Reception>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__SUPER_CLASS :
 				getSuperClasses().clear();
-				getSuperClasses()
-					.addAll(
-						(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
+				getSuperClasses().addAll(
+					(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__SPECIFICATION :
 				setSpecification((BehavioralFeature) newValue);
@@ -1164,28 +1161,28 @@ public abstract class BehaviorImpl
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER :
 				getOwnedParameters().clear();
-				getOwnedParameters().addAll(
-					(Collection<? extends Parameter>) newValue);
+				getOwnedParameters()
+					.addAll((Collection<? extends Parameter>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
-				getOwnedParameterSets().addAll(
-					(Collection<? extends ParameterSet>) newValue);
+				getOwnedParameterSets()
+					.addAll((Collection<? extends ParameterSet>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__POSTCONDITION :
 				getPostconditions().clear();
-				getPostconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getPostconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__PRECONDITION :
 				getPreconditions().clear();
-				getPreconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getPreconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR :
 				getRedefinedBehaviors().clear();
-				getRedefinedBehaviors().addAll(
-					(Collection<? extends Behavior>) newValue);
+				getRedefinedBehaviors()
+					.addAll((Collection<? extends Behavior>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1405,7 +1402,8 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.BEHAVIOR__IS_FINAL_SPECIALIZATION :
-				return ((eFlags & IS_FINAL_SPECIALIZATION_EFLAG) != 0) != IS_FINAL_SPECIALIZATION_EDEFAULT;
+				return ((eFlags
+					& IS_FINAL_SPECIALIZATION_EFLAG) != 0) != IS_FINAL_SPECIALIZATION_EDEFAULT;
 			case UMLPackage.BEHAVIOR__OWNED_USE_CASE :
 				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UMLPackage.BEHAVIOR__USE_CASE :
@@ -1526,7 +1524,8 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.BEHAVIOR___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.BEHAVIOR___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.BEHAVIOR___GET_STEREOTYPE_APPLICATIONS :
@@ -1534,7 +1533,8 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.BEHAVIOR___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.BEHAVIOR___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1623,13 +1623,13 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR___GET_OWNED_MEMBERS :
 				return getOwnedMembers();
 			case UMLPackage.BEHAVIOR___EXCLUDE_COLLISIONS__ELIST :
-				return excludeCollisions((EList<PackageableElement>) arguments
-					.get(0));
+				return excludeCollisions(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.BEHAVIOR___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
 				return getNamesOfMember((NamedElement) arguments.get(0));
 			case UMLPackage.BEHAVIOR___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
+				return importMembers(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.BEHAVIOR___GET_IMPORTED_MEMBERS :
 				return getImportedMembers();
 			case UMLPackage.BEHAVIOR___MEMBERS_ARE_DISTINGUISHABLE :
@@ -1649,10 +1649,11 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.BEHAVIOR___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.BEHAVIOR___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.BEHAVIOR___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.BEHAVIOR___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
@@ -1753,8 +1754,7 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR___GET_OWNED_PORTS :
 				return getOwnedPorts();
 			case UMLPackage.BEHAVIOR___VALIDATE_CLASS_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
-				return validateClassBehavior(
-					(DiagnosticChain) arguments.get(0),
+				return validateClassBehavior((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.BEHAVIOR___GET_ALL_IMPLEMENTED_INTERFACES :
 				return getAllImplementedInterfaces();
@@ -1837,7 +1837,8 @@ public abstract class BehaviorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{UMLPackage.BEHAVIOR__CONTEXT};
+	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{
+		UMLPackage.BEHAVIOR__CONTEXT};
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
@@ -1909,7 +1910,8 @@ public abstract class BehaviorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] REDEFINED_CLASSIFIER_ESUBSETS = new int[]{UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR};
+	protected static final int[] REDEFINED_CLASSIFIER_ESUBSETS = new int[]{
+		UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR};
 
 	/**
 	 * The array of superset feature identifiers for the '{@link #getPostconditions() <em>Postcondition</em>}' reference list.
@@ -1919,7 +1921,8 @@ public abstract class BehaviorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] POSTCONDITION_ESUPERSETS = new int[]{UMLPackage.BEHAVIOR__OWNED_RULE};
+	protected static final int[] POSTCONDITION_ESUPERSETS = new int[]{
+		UMLPackage.BEHAVIOR__OWNED_RULE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1981,7 +1984,8 @@ public abstract class BehaviorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] PRECONDITION_ESUPERSETS = new int[]{UMLPackage.BEHAVIOR__OWNED_RULE};
+	protected static final int[] PRECONDITION_ESUPERSETS = new int[]{
+		UMLPackage.BEHAVIOR__OWNED_RULE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2043,7 +2047,8 @@ public abstract class BehaviorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] REDEFINED_BEHAVIOR_ESUPERSETS = new int[]{UMLPackage.BEHAVIOR__REDEFINED_CLASSIFIER};
+	protected static final int[] REDEFINED_BEHAVIOR_ESUPERSETS = new int[]{
+		UMLPackage.BEHAVIOR__REDEFINED_CLASSIFIER};
 
 	/**
 	 * <!-- begin-user-doc -->

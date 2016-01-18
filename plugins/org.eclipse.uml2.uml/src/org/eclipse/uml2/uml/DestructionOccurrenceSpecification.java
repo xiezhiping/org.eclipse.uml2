@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2014 CEA and others.
+ * Copyright (c) 2011, 2016 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
- *   Kenn Hussey (CEA) - 418466
+ *   Kenn Hussey (CEA) - 418466, 485756
  *
  */
 package org.eclipse.uml2.uml;
@@ -49,7 +49,7 @@ public interface DestructionOccurrenceSpecification
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoOccurrenceSpecificationsBelow(
-			DiagnosticChain diagnostics, Map<Object, Object> context);
+	boolean validateNoOccurrenceSpecificationsBelow(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // DestructionOccurrenceSpecification

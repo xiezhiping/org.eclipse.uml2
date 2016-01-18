@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -190,8 +190,8 @@ public class PortImpl
 	public EList<Property> getRedefinedProperties() {
 		if (redefinedProperties == null) {
 			redefinedProperties = new SubsetSupersetEObjectResolvingEList<Property>(
-				Property.class, this, UMLPackage.PORT__REDEFINED_PROPERTY,
-				null, REDEFINED_PROPERTY_ESUBSETS);
+				Property.class, this, UMLPackage.PORT__REDEFINED_PROPERTY, null,
+				REDEFINED_PROPERTY_ESUBSETS);
 		}
 		return redefinedProperties;
 	}
@@ -204,7 +204,8 @@ public class PortImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] REDEFINED_PROPERTY_ESUBSETS = new int[]{UMLPackage.PORT__REDEFINED_PORT};
+	protected static final int[] REDEFINED_PROPERTY_ESUBSETS = new int[]{
+		UMLPackage.PORT__REDEFINED_PORT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -349,7 +350,8 @@ public class PortImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] REDEFINED_PORT_ESUPERSETS = new int[]{UMLPackage.PORT__REDEFINED_PROPERTY};
+	protected static final int[] REDEFINED_PORT_ESUPERSETS = new int[]{
+		UMLPackage.PORT__REDEFINED_PROPERTY};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -696,13 +698,13 @@ public class PortImpl
 		switch (featureID) {
 			case UMLPackage.PORT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.PORT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.PORT__NAME :
 				setName((String) newValue);
@@ -751,8 +753,8 @@ public class PortImpl
 				return;
 			case UMLPackage.PORT__DEPLOYMENT :
 				getDeployments().clear();
-				getDeployments().addAll(
-					(Collection<? extends Deployment>) newValue);
+				getDeployments()
+					.addAll((Collection<? extends Deployment>) newValue);
 				return;
 			case UMLPackage.PORT__DATATYPE :
 				setDatatype((DataType) newValue);
@@ -771,8 +773,8 @@ public class PortImpl
 				return;
 			case UMLPackage.PORT__QUALIFIER :
 				getQualifiers().clear();
-				getQualifiers().addAll(
-					(Collection<? extends Property>) newValue);
+				getQualifiers()
+					.addAll((Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.PORT__DEFAULT_VALUE :
 				setDefaultValue((ValueSpecification) newValue);
@@ -797,13 +799,13 @@ public class PortImpl
 				return;
 			case UMLPackage.PORT__REDEFINED_PROPERTY :
 				getRedefinedProperties().clear();
-				getRedefinedProperties().addAll(
-					(Collection<? extends Property>) newValue);
+				getRedefinedProperties()
+					.addAll((Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.PORT__SUBSETTED_PROPERTY :
 				getSubsettedProperties().clear();
-				getSubsettedProperties().addAll(
-					(Collection<? extends Property>) newValue);
+				getSubsettedProperties()
+					.addAll((Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.PORT__ASSOCIATION :
 				setAssociation((Association) newValue);
@@ -822,8 +824,8 @@ public class PortImpl
 				return;
 			case UMLPackage.PORT__REDEFINED_PORT :
 				getRedefinedPorts().clear();
-				getRedefinedPorts().addAll(
-					(Collection<? extends Port>) newValue);
+				getRedefinedPorts()
+					.addAll((Collection<? extends Port>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1012,7 +1014,8 @@ public class PortImpl
 			case UMLPackage.PORT__TYPE :
 				return type != null;
 			case UMLPackage.PORT__IS_ORDERED :
-				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
+				return ((eFlags
+					& IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.PORT__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UMLPackage.PORT__LOWER :
@@ -1024,7 +1027,8 @@ public class PortImpl
 			case UMLPackage.PORT__UPPER_VALUE :
 				return upperValue != null;
 			case UMLPackage.PORT__IS_READ_ONLY :
-				return ((eFlags & IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
+				return ((eFlags
+					& IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
 			case UMLPackage.PORT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.PORT__TEMPLATE_PARAMETER :
@@ -1042,7 +1046,8 @@ public class PortImpl
 			case UMLPackage.PORT__DEFAULT :
 				return isSetDefault();
 			case UMLPackage.PORT__AGGREGATION :
-				return (eFlags & AGGREGATION_EFLAG) != AGGREGATION_EFLAG_DEFAULT;
+				return (eFlags
+					& AGGREGATION_EFLAG) != AGGREGATION_EFLAG_DEFAULT;
 			case UMLPackage.PORT__ASSOCIATION_END :
 				return basicGetAssociationEnd() != null;
 			case UMLPackage.PORT__QUALIFIER :
@@ -1054,9 +1059,11 @@ public class PortImpl
 			case UMLPackage.PORT__IS_COMPOSITE :
 				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UMLPackage.PORT__IS_DERIVED :
-				return ((eFlags & IS_DERIVED_EFLAG) != 0) != IS_DERIVED_EDEFAULT;
+				return ((eFlags
+					& IS_DERIVED_EFLAG) != 0) != IS_DERIVED_EDEFAULT;
 			case UMLPackage.PORT__IS_DERIVED_UNION :
-				return ((eFlags & IS_DERIVED_UNION_EFLAG) != 0) != IS_DERIVED_UNION_EDEFAULT;
+				return ((eFlags
+					& IS_DERIVED_UNION_EFLAG) != 0) != IS_DERIVED_UNION_EDEFAULT;
 			case UMLPackage.PORT__IS_ID :
 				return ((eFlags & IS_ID_EFLAG) != 0) != IS_ID_EDEFAULT;
 			case UMLPackage.PORT__OPPOSITE :
@@ -1072,11 +1079,14 @@ public class PortImpl
 			case UMLPackage.PORT__ASSOCIATION :
 				return association != null;
 			case UMLPackage.PORT__IS_BEHAVIOR :
-				return ((eFlags & IS_BEHAVIOR_EFLAG) != 0) != IS_BEHAVIOR_EDEFAULT;
+				return ((eFlags
+					& IS_BEHAVIOR_EFLAG) != 0) != IS_BEHAVIOR_EDEFAULT;
 			case UMLPackage.PORT__IS_CONJUGATED :
-				return ((eFlags & IS_CONJUGATED_EFLAG) != 0) != IS_CONJUGATED_EDEFAULT;
+				return ((eFlags
+					& IS_CONJUGATED_EFLAG) != 0) != IS_CONJUGATED_EDEFAULT;
 			case UMLPackage.PORT__IS_SERVICE :
-				return ((eFlags & IS_SERVICE_EFLAG) != 0) != IS_SERVICE_EDEFAULT;
+				return ((eFlags
+					& IS_SERVICE_EFLAG) != 0) != IS_SERVICE_EDEFAULT;
 			case UMLPackage.PORT__PROTOCOL :
 				return protocol != null;
 			case UMLPackage.PORT__PROVIDED :
@@ -1146,7 +1156,8 @@ public class PortImpl
 			case UMLPackage.PORT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.PORT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.PORT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.PORT___GET_STEREOTYPE_APPLICATIONS :
@@ -1154,7 +1165,8 @@ public class PortImpl
 			case UMLPackage.PORT___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.PORT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.PORT___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1231,8 +1243,8 @@ public class PortImpl
 			case UMLPackage.PORT___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.PORT___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.PORT___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
 				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
@@ -1264,8 +1276,8 @@ public class PortImpl
 			case UMLPackage.PORT___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
 				return compatibleWith((MultiplicityElement) arguments.get(0));
 			case UMLPackage.PORT___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
-				return includesMultiplicity((MultiplicityElement) arguments
-					.get(0));
+				return includesMultiplicity(
+					(MultiplicityElement) arguments.get(0));
 			case UMLPackage.PORT___IS__INT_INT :
 				return is((Integer) arguments.get(0),
 					(Integer) arguments.get(1));
@@ -1280,7 +1292,8 @@ public class PortImpl
 			case UMLPackage.PORT___UPPER_BOUND :
 				return upperBound();
 			case UMLPackage.PORT___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.PORT___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.PORT___GET_ENDS :

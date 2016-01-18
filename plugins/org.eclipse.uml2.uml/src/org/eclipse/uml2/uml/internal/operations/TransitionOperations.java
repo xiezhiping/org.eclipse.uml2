@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -87,15 +87,15 @@ public class TransitionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.TRANSITION__FORK_SEGMENT_GUARDS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateForkSegmentGuards", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(transition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{transition}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.TRANSITION__FORK_SEGMENT_GUARDS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateForkSegmentGuards", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(transition, context)}),
+					new Object[]{transition}));
 			}
 			return false;
 		}
@@ -122,15 +122,15 @@ public class TransitionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.TRANSITION__JOIN_SEGMENT_GUARDS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateJoinSegmentGuards", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(transition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{transition}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.TRANSITION__JOIN_SEGMENT_GUARDS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateJoinSegmentGuards", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(transition, context)}),
+					new Object[]{transition}));
 			}
 			return false;
 		}
@@ -158,15 +158,15 @@ public class TransitionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.TRANSITION__STATE_IS_INTERNAL,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateStateIsInternal", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(transition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{transition}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.TRANSITION__STATE_IS_INTERNAL,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateStateIsInternal", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(transition, context)}),
+					new Object[]{transition}));
 			}
 			return false;
 		}
@@ -193,15 +193,15 @@ public class TransitionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.TRANSITION__FORK_SEGMENT_STATE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateForkSegmentState", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(transition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{transition}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.TRANSITION__FORK_SEGMENT_STATE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateForkSegmentState", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(transition, context)}),
+					new Object[]{transition}));
 			}
 			return false;
 		}
@@ -228,15 +228,15 @@ public class TransitionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.TRANSITION__JOIN_SEGMENT_STATE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateJoinSegmentState", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(transition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{transition}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.TRANSITION__JOIN_SEGMENT_STATE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateJoinSegmentState", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(transition, context)}),
+					new Object[]{transition}));
 			}
 			return false;
 		}
@@ -263,15 +263,15 @@ public class TransitionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.TRANSITION__OUTGOING_PSEUDOSTATES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOutgoingPseudostates", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(transition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{transition}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.TRANSITION__OUTGOING_PSEUDOSTATES,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateOutgoingPseudostates", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(transition, context)}),
+					new Object[]{transition}));
 			}
 			return false;
 		}
@@ -299,15 +299,15 @@ public class TransitionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.TRANSITION__INITIAL_TRANSITION,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateInitialTransition", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(transition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{transition}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.TRANSITION__INITIAL_TRANSITION,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateInitialTransition", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(transition, context)}),
+					new Object[]{transition}));
 			}
 			return false;
 		}
@@ -336,15 +336,15 @@ public class TransitionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.TRANSITION__STATE_IS_LOCAL,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateStateIsLocal", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(transition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{transition}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.TRANSITION__STATE_IS_LOCAL,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateStateIsLocal", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(transition, context)}),
+					new Object[]{transition}));
 			}
 			return false;
 		}
@@ -433,10 +433,10 @@ public class TransitionOperations
 				sources.add(redefiningSource);
 			}
 
-			return RedefinableElementOperations.excludeRedefinedElements(
-				sources).size() < 2
-				&& transition.getTriggers().equals(
-					redefiningTransition.getTriggers());
+			return RedefinableElementOperations
+				.excludeRedefinedElements(sources).size() < 2
+				&& transition.getTriggers()
+					.equals(redefiningTransition.getTriggers());
 		}
 
 		return false;
@@ -463,15 +463,15 @@ public class TransitionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.TRANSITION__STATE_IS_EXTERNAL,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateStateIsExternal", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(transition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{transition}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.TRANSITION__STATE_IS_EXTERNAL,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateStateIsExternal", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(transition, context)}),
+					new Object[]{transition}));
 			}
 			return false;
 		}

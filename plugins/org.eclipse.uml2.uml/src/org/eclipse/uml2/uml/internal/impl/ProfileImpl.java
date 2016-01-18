@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -144,7 +144,8 @@ public class ProfileImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] ELEMENT_IMPORT_ESUBSETS = new int[]{UMLPackage.PROFILE__METACLASS_REFERENCE};
+	protected static final int[] ELEMENT_IMPORT_ESUBSETS = new int[]{
+		UMLPackage.PROFILE__METACLASS_REFERENCE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -170,7 +171,8 @@ public class ProfileImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] PACKAGE_IMPORT_ESUBSETS = new int[]{UMLPackage.PROFILE__METAMODEL_REFERENCE};
+	protected static final int[] PACKAGE_IMPORT_ESUBSETS = new int[]{
+		UMLPackage.PROFILE__METAMODEL_REFERENCE};
 
 	/**
 	 * The array of superset feature identifiers for the '{@link #getMetaclassReferences() <em>Metaclass Reference</em>}' reference list.
@@ -180,7 +182,8 @@ public class ProfileImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] METACLASS_REFERENCE_ESUPERSETS = new int[]{UMLPackage.PROFILE__ELEMENT_IMPORT};
+	protected static final int[] METACLASS_REFERENCE_ESUPERSETS = new int[]{
+		UMLPackage.PROFILE__ELEMENT_IMPORT};
 
 	/**
 	 * The array of superset feature identifiers for the '{@link #getMetamodelReferences() <em>Metamodel Reference</em>}' reference list.
@@ -190,7 +193,8 @@ public class ProfileImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] METAMODEL_REFERENCE_ESUPERSETS = new int[]{UMLPackage.PROFILE__PACKAGE_IMPORT};
+	protected static final int[] METAMODEL_REFERENCE_ESUPERSETS = new int[]{
+		UMLPackage.PROFILE__PACKAGE_IMPORT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -214,7 +218,8 @@ public class ProfileImpl
 	 */
 	public ElementImport createMetaclassReference(
 			PackageableElement importedElement) {
-		ElementImport newMetaclassReference = (ElementImport) create(UMLPackage.Literals.ELEMENT_IMPORT);
+		ElementImport newMetaclassReference = (ElementImport) create(
+			UMLPackage.Literals.ELEMENT_IMPORT);
 		getMetaclassReferences().add(newMetaclassReference);
 		if (importedElement != null)
 			newMetaclassReference.setImportedElement(importedElement);
@@ -239,9 +244,8 @@ public class ProfileImpl
 	public ElementImport getMetaclassReference(
 			PackageableElement importedElement, boolean createOnDemand) {
 		metaclassReferenceLoop : for (ElementImport metaclassReference : getMetaclassReferences()) {
-			if (importedElement != null
-				&& !importedElement.equals(metaclassReference
-					.getImportedElement()))
+			if (importedElement != null && !importedElement
+				.equals(metaclassReference.getImportedElement()))
 				continue metaclassReferenceLoop;
 			return metaclassReference;
 		}
@@ -272,7 +276,8 @@ public class ProfileImpl
 	 */
 	public PackageImport createMetamodelReference(
 			org.eclipse.uml2.uml.Package importedPackage) {
-		PackageImport newMetamodelReference = (PackageImport) create(UMLPackage.Literals.PACKAGE_IMPORT);
+		PackageImport newMetamodelReference = (PackageImport) create(
+			UMLPackage.Literals.PACKAGE_IMPORT);
 		getMetamodelReferences().add(newMetamodelReference);
 		if (importedPackage != null)
 			newMetamodelReference.setImportedPackage(importedPackage);
@@ -295,11 +300,11 @@ public class ProfileImpl
 	 * @generated
 	 */
 	public PackageImport getMetamodelReference(
-			org.eclipse.uml2.uml.Package importedPackage, boolean createOnDemand) {
+			org.eclipse.uml2.uml.Package importedPackage,
+			boolean createOnDemand) {
 		metamodelReferenceLoop : for (PackageImport metamodelReference : getMetamodelReferences()) {
-			if (importedPackage != null
-				&& !importedPackage.equals(metamodelReference
-					.getImportedPackage()))
+			if (importedPackage != null && !importedPackage
+				.equals(metamodelReference.getImportedPackage()))
 				continue metamodelReferenceLoop;
 			return metamodelReference;
 		}
@@ -467,10 +472,10 @@ public class ProfileImpl
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.PROFILE__TEMPLATE_PARAMETER :
 				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
+					msgs = ((InternalEObject) templateParameter).eInverseRemove(
+						this,
+						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+						TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.PROFILE__TEMPLATE_BINDING :
@@ -479,8 +484,9 @@ public class ProfileImpl
 			case UMLPackage.PROFILE__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
-						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.PROFILE__OWNED_TEMPLATE_SIGNATURE,
+						.eInverseRemove(this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.PROFILE__OWNED_TEMPLATE_SIGNATURE,
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
@@ -504,37 +510,37 @@ public class ProfileImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PROFILE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROFILE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROFILE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.PROFILE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedRules())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROFILE__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getElementImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROFILE__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPackageImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROFILE__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.PROFILE__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.PROFILE__TEMPLATE_BINDING :
-				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getTemplateBindings())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROFILE__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.PROFILE__PACKAGE_MERGE :
-				return ((InternalEList<?>) getPackageMerges()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPackageMerges())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROFILE__PACKAGED_ELEMENT :
-				return ((InternalEList<?>) getPackagedElements()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPackagedElements())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROFILE__PROFILE_APPLICATION :
 				return ((InternalEList<?>) getProfileApplications())
 					.basicRemove(otherEnd, msgs);
@@ -639,13 +645,13 @@ public class ProfileImpl
 		switch (featureID) {
 			case UMLPackage.PROFILE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.PROFILE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.PROFILE__NAME :
 				setName((String) newValue);
@@ -658,18 +664,18 @@ public class ProfileImpl
 				return;
 			case UMLPackage.PROFILE__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getOwnedRules()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.PROFILE__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll(
-					(Collection<? extends ElementImport>) newValue);
+				getElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.PROFILE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll(
-					(Collection<? extends PackageImport>) newValue);
+				getPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.PROFILE__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -679,8 +685,8 @@ public class ProfileImpl
 				return;
 			case UMLPackage.PROFILE__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll(
-					(Collection<? extends TemplateBinding>) newValue);
+				getTemplateBindings()
+					.addAll((Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.PROFILE__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
@@ -690,9 +696,8 @@ public class ProfileImpl
 				return;
 			case UMLPackage.PROFILE__NESTED_PACKAGE :
 				getNestedPackages().clear();
-				getNestedPackages()
-					.addAll(
-						(Collection<? extends org.eclipse.uml2.uml.Package>) newValue);
+				getNestedPackages().addAll(
+					(Collection<? extends org.eclipse.uml2.uml.Package>) newValue);
 				return;
 			case UMLPackage.PROFILE__NESTING_PACKAGE :
 				setNestingPackage((org.eclipse.uml2.uml.Package) newValue);
@@ -703,8 +708,8 @@ public class ProfileImpl
 				return;
 			case UMLPackage.PROFILE__PACKAGE_MERGE :
 				getPackageMerges().clear();
-				getPackageMerges().addAll(
-					(Collection<? extends PackageMerge>) newValue);
+				getPackageMerges()
+					.addAll((Collection<? extends PackageMerge>) newValue);
 				return;
 			case UMLPackage.PROFILE__PACKAGED_ELEMENT :
 				getPackagedElements().clear();
@@ -718,13 +723,13 @@ public class ProfileImpl
 				return;
 			case UMLPackage.PROFILE__METACLASS_REFERENCE :
 				getMetaclassReferences().clear();
-				getMetaclassReferences().addAll(
-					(Collection<? extends ElementImport>) newValue);
+				getMetaclassReferences()
+					.addAll((Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.PROFILE__METAMODEL_REFERENCE :
 				getMetamodelReferences().clear();
-				getMetamodelReferences().addAll(
-					(Collection<? extends PackageImport>) newValue);
+				getMetamodelReferences()
+					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -941,7 +946,8 @@ public class ProfileImpl
 			case UMLPackage.PROFILE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.PROFILE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.PROFILE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.PROFILE___GET_STEREOTYPE_APPLICATIONS :
@@ -949,7 +955,8 @@ public class ProfileImpl
 			case UMLPackage.PROFILE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.PROFILE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.PROFILE___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1038,19 +1045,20 @@ public class ProfileImpl
 			case UMLPackage.PROFILE___GET_OWNED_MEMBERS :
 				return getOwnedMembers();
 			case UMLPackage.PROFILE___EXCLUDE_COLLISIONS__ELIST :
-				return excludeCollisions((EList<PackageableElement>) arguments
-					.get(0));
+				return excludeCollisions(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.PROFILE___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
 				return getNamesOfMember((NamedElement) arguments.get(0));
 			case UMLPackage.PROFILE___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
+				return importMembers(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.PROFILE___GET_IMPORTED_MEMBERS :
 				return getImportedMembers();
 			case UMLPackage.PROFILE___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
 			case UMLPackage.PROFILE___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.PROFILE___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.PROFILE___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
@@ -1101,6 +1109,8 @@ public class ProfileImpl
 				return isProfileApplied((Profile) arguments.get(0));
 			case UMLPackage.PROFILE___UNAPPLY_PROFILE__PROFILE :
 				return unapplyProfile((Profile) arguments.get(0));
+			case UMLPackage.PROFILE___APPLY_PROFILES__ELIST :
+				return applyProfiles((EList<Profile>) arguments.get(0));
 			case UMLPackage.PROFILE___ALL_APPLICABLE_STEREOTYPES :
 				return allApplicableStereotypes();
 			case UMLPackage.PROFILE___CONTAINING_PROFILE :

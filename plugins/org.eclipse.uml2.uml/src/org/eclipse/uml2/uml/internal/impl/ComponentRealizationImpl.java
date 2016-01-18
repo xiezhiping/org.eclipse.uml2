@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -116,7 +116,8 @@ public class ComponentRealizationImpl
 		if (clients == null) {
 			clients = new SubsetSupersetEObjectResolvingEList<NamedElement>(
 				NamedElement.class, this,
-				UMLPackage.COMPONENT_REALIZATION__CLIENT, null, CLIENT_ESUBSETS);
+				UMLPackage.COMPONENT_REALIZATION__CLIENT, null,
+				CLIENT_ESUBSETS);
 		}
 		return clients;
 	}
@@ -129,7 +130,8 @@ public class ComponentRealizationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] CLIENT_ESUBSETS = new int[]{UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER};
+	protected static final int[] CLIENT_ESUBSETS = new int[]{
+		UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -155,7 +157,8 @@ public class ComponentRealizationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] SUPPLIER_ESUBSETS = new int[]{UMLPackage.COMPONENT_REALIZATION__ABSTRACTION};
+	protected static final int[] SUPPLIER_ESUBSETS = new int[]{
+		UMLPackage.COMPONENT_REALIZATION__ABSTRACTION};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -207,7 +210,8 @@ public class ComponentRealizationImpl
 	 */
 	public void setAbstraction(Component newAbstraction) {
 		if (newAbstraction != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.COMPONENT_REALIZATION__ABSTRACTION && newAbstraction != null)) {
+			|| (eContainerFeatureID() != UMLPackage.COMPONENT_REALIZATION__ABSTRACTION
+				&& newAbstraction != null)) {
 			if (EcoreUtil.isAncestor(this, newAbstraction))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -249,7 +253,8 @@ public class ComponentRealizationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] REALIZING_CLASSIFIER_ESUPERSETS = new int[]{UMLPackage.COMPONENT_REALIZATION__CLIENT};
+	protected static final int[] REALIZING_CLASSIFIER_ESUPERSETS = new int[]{
+		UMLPackage.COMPONENT_REALIZATION__CLIENT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -299,10 +304,10 @@ public class ComponentRealizationImpl
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER :
 				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
+					msgs = ((InternalEObject) templateParameter).eInverseRemove(
+						this,
+						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+						TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
@@ -323,11 +328,11 @@ public class ComponentRealizationImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
@@ -439,13 +444,13 @@ public class ComponentRealizationImpl
 		switch (featureID) {
 			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__NAME :
 				setName((String) newValue);
@@ -464,21 +469,21 @@ public class ComponentRealizationImpl
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__CLIENT :
 				getClients().clear();
-				getClients().addAll(
-					(Collection<? extends NamedElement>) newValue);
+				getClients()
+					.addAll((Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__SUPPLIER :
 				getSuppliers().clear();
-				getSuppliers().addAll(
-					(Collection<? extends NamedElement>) newValue);
+				getSuppliers()
+					.addAll((Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__MAPPING :
 				setMapping((OpaqueExpression) newValue);
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER :
 				getRealizingClassifiers().clear();
-				getRealizingClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getRealizingClassifiers()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
 				setAbstraction((Component) newValue);

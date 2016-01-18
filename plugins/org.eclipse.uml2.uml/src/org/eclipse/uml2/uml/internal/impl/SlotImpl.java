@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 451350
+ *   Kenn Hussey (CEA) - 327039, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -113,8 +113,8 @@ public class SlotImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -169,7 +169,8 @@ public class SlotImpl
 	 */
 	public void setOwningInstance(InstanceSpecification newOwningInstance) {
 		if (newOwningInstance != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.SLOT__OWNING_INSTANCE && newOwningInstance != null)) {
+			|| (eContainerFeatureID() != UMLPackage.SLOT__OWNING_INSTANCE
+				&& newOwningInstance != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningInstance))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -197,7 +198,8 @@ public class SlotImpl
 	public StructuralFeature getDefiningFeature() {
 		if (definingFeature != null && definingFeature.eIsProxy()) {
 			InternalEObject oldDefiningFeature = (InternalEObject) definingFeature;
-			definingFeature = (StructuralFeature) eResolveProxy(oldDefiningFeature);
+			definingFeature = (StructuralFeature) eResolveProxy(
+				oldDefiningFeature);
 			if (definingFeature != oldDefiningFeature) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -249,7 +251,8 @@ public class SlotImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createValue(String name, Type type, EClass eClass) {
+	public ValueSpecification createValue(String name, Type type,
+			EClass eClass) {
 		ValueSpecification newValue = (ValueSpecification) create(eClass);
 		getValues().add(newValue);
 		if (name != null)
@@ -323,11 +326,11 @@ public class SlotImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.SLOT__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SLOT__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SLOT__VALUE :
 				return ((InternalEList<?>) getValues()).basicRemove(otherEnd,
 					msgs);
@@ -397,13 +400,13 @@ public class SlotImpl
 		switch (featureID) {
 			case UMLPackage.SLOT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.SLOT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.SLOT__DEFINING_FEATURE :
 				setDefiningFeature((StructuralFeature) newValue);

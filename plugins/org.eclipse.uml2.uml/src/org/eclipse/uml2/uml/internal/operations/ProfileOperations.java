@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181, 354452
- *   Kenn Hussey (CEA) - 327039, 392833, 163556, 451350
+ *   Kenn Hussey (CEA) - 327039, 392833, 163556, 451350, 485756
  *   Christian W. Damus (CEA) - 405065
  *
  */
@@ -248,8 +248,8 @@ public class ProfileOperations
 			OPTION__PROCESS);
 		options.put(UML2EcoreConverter.OPTION__INVARIANT_CONSTRAINTS,
 			OPTION__IGNORE);
-		options
-			.put(UML2EcoreConverter.OPTION__OPERATION_BODIES, OPTION__IGNORE);
+		options.put(UML2EcoreConverter.OPTION__OPERATION_BODIES,
+			OPTION__IGNORE);
 		options.put(UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS,
 			OPTION__IGNORE);
 		options.put(UML2EcoreConverter.OPTION__COMMENTS, OPTION__IGNORE);
@@ -330,9 +330,8 @@ public class ProfileOperations
 						EAnnotation eAnnotation = eClassifier
 							.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
 
-						if (eAnnotation != null
-							&& eAnnotation.getReferences().contains(
-								namedElement)) {
+						if (eAnnotation != null && eAnnotation.getReferences()
+							.contains(namedElement)) {
 
 							return eClassifier;
 						}
@@ -383,7 +382,8 @@ public class ProfileOperations
 		} else if (namedElement instanceof org.eclipse.uml2.uml.Package) {
 			ENamedElement packageDefinition = getDefinition(profile,
 				((org.eclipse.uml2.uml.Package) namedElement)
-					.getNestingPackage(), profileDefinition);
+					.getNestingPackage(),
+				profileDefinition);
 
 			if (packageDefinition instanceof EPackage) {
 
@@ -395,9 +395,8 @@ public class ProfileOperations
 						EAnnotation eAnnotation = eSubpackage
 							.getEAnnotation(UML2_UML_PACKAGE_4_0_NS_URI);
 
-						if (eAnnotation != null
-							&& eAnnotation.getReferences().contains(
-								namedElement)) {
+						if (eAnnotation != null && eAnnotation.getReferences()
+							.contains(namedElement)) {
 
 							return eSubpackage;
 						}
@@ -417,7 +416,8 @@ public class ProfileOperations
 
 			return getDefinition(profile,
 				((org.eclipse.uml2.uml.Package) namedElement)
-					.containingProfile(), profileDefinition);
+					.containingProfile(),
+				profileDefinition);
 		} else {
 			return null;
 		}

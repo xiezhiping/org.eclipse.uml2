@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 297216, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 297216, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -293,11 +293,11 @@ public class OccurrenceSpecificationImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.OCCURRENCE_SPECIFICATION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__COVERED :
@@ -308,14 +308,14 @@ public class OccurrenceSpecificationImpl
 			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
 				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
-				return ((InternalEList<?>) getGeneralOrderings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getGeneralOrderings())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER :
 				return ((InternalEList<?>) getToAfters()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE :
-				return ((InternalEList<?>) getToBefores()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getToBefores()).basicRemove(otherEnd,
+					msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -385,13 +385,13 @@ public class OccurrenceSpecificationImpl
 		switch (featureID) {
 			case UMLPackage.OCCURRENCE_SPECIFICATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__NAME :
 				setName((String) newValue);
@@ -414,18 +414,18 @@ public class OccurrenceSpecificationImpl
 				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
+				getGeneralOrderings()
+					.addAll((Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER :
 				getToAfters().clear();
-				getToAfters().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
+				getToAfters()
+					.addAll((Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE :
 				getToBefores().clear();
-				getToBefores().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
+				getToBefores()
+					.addAll((Collection<? extends GeneralOrdering>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -579,7 +579,8 @@ public class OccurrenceSpecificationImpl
 			case UMLPackage.OCCURRENCE_SPECIFICATION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.OCCURRENCE_SPECIFICATION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.OCCURRENCE_SPECIFICATION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.OCCURRENCE_SPECIFICATION___GET_STEREOTYPE_APPLICATIONS :
@@ -587,7 +588,8 @@ public class OccurrenceSpecificationImpl
 			case UMLPackage.OCCURRENCE_SPECIFICATION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.OCCURRENCE_SPECIFICATION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.OCCURRENCE_SPECIFICATION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));

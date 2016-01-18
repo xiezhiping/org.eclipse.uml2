@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -140,8 +140,8 @@ public class ActionExecutionSpecificationImpl
 	 */
 	public boolean validateActionReferenced(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return ActionExecutionSpecificationOperations.validateActionReferenced(
-			this, diagnostics, context);
+		return ActionExecutionSpecificationOperations
+			.validateActionReferenced(this, diagnostics, context);
 	}
 
 	/**
@@ -217,13 +217,13 @@ public class ActionExecutionSpecificationImpl
 		switch (featureID) {
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__NAME :
 				setName((String) newValue);
@@ -246,8 +246,8 @@ public class ActionExecutionSpecificationImpl
 				return;
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
+				getGeneralOrderings()
+					.addAll((Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__FINISH :
 				setFinish((OccurrenceSpecification) newValue);
@@ -415,7 +415,8 @@ public class ActionExecutionSpecificationImpl
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION___GET_STEREOTYPE_APPLICATIONS :
@@ -423,7 +424,8 @@ public class ActionExecutionSpecificationImpl
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -70,15 +70,15 @@ public class ActionInputPinOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACTION_INPUT_PIN__ONE_OUTPUT_PIN,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOneOutputPin", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(actionInputPin, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{actionInputPin}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.ACTION_INPUT_PIN__ONE_OUTPUT_PIN,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateOneOutputPin", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(actionInputPin, context)}),
+					new Object[]{actionInputPin}));
 			}
 			return false;
 		}
@@ -108,15 +108,15 @@ public class ActionInputPinOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACTION_INPUT_PIN__NO_CONTROL_OR_OBJECT_FLOW,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoControlOrObjectFlow", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(actionInputPin, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{actionInputPin}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.ACTION_INPUT_PIN__NO_CONTROL_OR_OBJECT_FLOW,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateNoControlOrObjectFlow", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(actionInputPin, context)}),
+					new Object[]{actionInputPin}));
 			}
 			return false;
 		}
@@ -143,15 +143,15 @@ public class ActionInputPinOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACTION_INPUT_PIN__INPUT_PIN,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateInputPin", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(actionInputPin, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{actionInputPin}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.ACTION_INPUT_PIN__INPUT_PIN,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateInputPin", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(actionInputPin, context)}),
+					new Object[]{actionInputPin}));
 			}
 			return false;
 		}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -80,17 +80,14 @@ public class CombinedFragmentOperations
 				if (combinedFragment.getOperands().size() != 1) {
 
 					if (diagnostics != null) {
-						diagnostics
-							.add(new BasicDiagnostic(
-								Diagnostic.WARNING,
-								UMLValidator.DIAGNOSTIC_SOURCE,
-								UMLValidator.COMBINED_FRAGMENT__OPT_LOOP_BREAK_NEG,
-								UMLPlugin.INSTANCE
-									.getString(
-										"_UI_CombinedFragment_OptLoopBreakNeg_diagnostic", //$NON-NLS-1$
-										getMessageSubstitutions(context,
-											combinedFragment)),
-								new Object[]{combinedFragment}));
+						diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+							UMLValidator.DIAGNOSTIC_SOURCE,
+							UMLValidator.COMBINED_FRAGMENT__OPT_LOOP_BREAK_NEG,
+							UMLPlugin.INSTANCE.getString(
+								"_UI_CombinedFragment_OptLoopBreakNeg_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context,
+									combinedFragment)),
+							new Object[]{combinedFragment}));
 					}
 
 					return false;
@@ -122,15 +119,15 @@ public class CombinedFragmentOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.COMBINED_FRAGMENT__BREAK,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBreak", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(combinedFragment, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{combinedFragment}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.COMBINED_FRAGMENT__BREAK,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateBreak", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(combinedFragment, context)}),
+					new Object[]{combinedFragment}));
 			}
 			return false;
 		}
@@ -158,15 +155,15 @@ public class CombinedFragmentOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.COMBINED_FRAGMENT__CONSIDER_AND_IGNORE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateConsiderAndIgnore", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(combinedFragment, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{combinedFragment}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.COMBINED_FRAGMENT__CONSIDER_AND_IGNORE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateConsiderAndIgnore", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(combinedFragment, context)}),
+					new Object[]{combinedFragment}));
 			}
 			return false;
 		}

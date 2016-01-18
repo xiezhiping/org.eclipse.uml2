@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -267,13 +267,13 @@ public class ModelImpl
 		switch (featureID) {
 			case UMLPackage.MODEL__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.MODEL__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.MODEL__NAME :
 				setName((String) newValue);
@@ -286,18 +286,18 @@ public class ModelImpl
 				return;
 			case UMLPackage.MODEL__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getOwnedRules()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.MODEL__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll(
-					(Collection<? extends ElementImport>) newValue);
+				getElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.MODEL__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll(
-					(Collection<? extends PackageImport>) newValue);
+				getPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.MODEL__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -307,8 +307,8 @@ public class ModelImpl
 				return;
 			case UMLPackage.MODEL__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll(
-					(Collection<? extends TemplateBinding>) newValue);
+				getTemplateBindings()
+					.addAll((Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.MODEL__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
@@ -318,9 +318,8 @@ public class ModelImpl
 				return;
 			case UMLPackage.MODEL__NESTED_PACKAGE :
 				getNestedPackages().clear();
-				getNestedPackages()
-					.addAll(
-						(Collection<? extends org.eclipse.uml2.uml.Package>) newValue);
+				getNestedPackages().addAll(
+					(Collection<? extends org.eclipse.uml2.uml.Package>) newValue);
 				return;
 			case UMLPackage.MODEL__NESTING_PACKAGE :
 				setNestingPackage((org.eclipse.uml2.uml.Package) newValue);
@@ -331,8 +330,8 @@ public class ModelImpl
 				return;
 			case UMLPackage.MODEL__PACKAGE_MERGE :
 				getPackageMerges().clear();
-				getPackageMerges().addAll(
-					(Collection<? extends PackageMerge>) newValue);
+				getPackageMerges()
+					.addAll((Collection<? extends PackageMerge>) newValue);
 				return;
 			case UMLPackage.MODEL__PACKAGED_ELEMENT :
 				getPackagedElements().clear();
@@ -555,7 +554,8 @@ public class ModelImpl
 			case UMLPackage.MODEL___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.MODEL___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.MODEL___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.MODEL___GET_STEREOTYPE_APPLICATIONS :
@@ -563,7 +563,8 @@ public class ModelImpl
 			case UMLPackage.MODEL___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.MODEL___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.MODEL___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -652,19 +653,20 @@ public class ModelImpl
 			case UMLPackage.MODEL___GET_OWNED_MEMBERS :
 				return getOwnedMembers();
 			case UMLPackage.MODEL___EXCLUDE_COLLISIONS__ELIST :
-				return excludeCollisions((EList<PackageableElement>) arguments
-					.get(0));
+				return excludeCollisions(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.MODEL___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
 				return getNamesOfMember((NamedElement) arguments.get(0));
 			case UMLPackage.MODEL___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
+				return importMembers(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.MODEL___GET_IMPORTED_MEMBERS :
 				return getImportedMembers();
 			case UMLPackage.MODEL___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
 			case UMLPackage.MODEL___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.MODEL___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.MODEL___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
@@ -715,6 +717,8 @@ public class ModelImpl
 				return isProfileApplied((Profile) arguments.get(0));
 			case UMLPackage.MODEL___UNAPPLY_PROFILE__PROFILE :
 				return unapplyProfile((Profile) arguments.get(0));
+			case UMLPackage.MODEL___APPLY_PROFILES__ELIST :
+				return applyProfiles((EList<Profile>) arguments.get(0));
 			case UMLPackage.MODEL___ALL_APPLICABLE_STEREOTYPES :
 				return allApplicableStereotypes();
 			case UMLPackage.MODEL___CONTAINING_PROFILE :

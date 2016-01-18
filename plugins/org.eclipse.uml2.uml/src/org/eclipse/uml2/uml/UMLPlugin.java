@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215488
- *   Kenn Hussey (CEA) - 279044
+ *   Kenn Hussey (CEA) - 279044, 485756
  *   Christian W. Damus (CEA) - 401804
  *
  */
@@ -67,7 +67,8 @@ public final class UMLPlugin
 		}
 
 		@Override
-		protected boolean readElement(IConfigurationElement element, boolean add) {
+		protected boolean readElement(IConfigurationElement element,
+				boolean add) {
 
 			if (element.getName().equals(TAG_PROFILE)) {
 				String uri = element.getAttribute(ATT_URI);
@@ -85,8 +86,9 @@ public final class UMLPlugin
 							if (profileLocation.isRelative()) {
 								profileLocation = URI.createPlatformPluginURI(
 									element.getDeclaringExtension()
-										.getContributor().getName()
-										+ '/' + location, false);
+										.getContributor().getName() + '/'
+										+ location,
+									false);
 							}
 
 							ePackageNsURIToProfileLocationMap.put(uri,
@@ -109,14 +111,14 @@ public final class UMLPlugin
 			extends PackageRegistryReader {
 
 		protected GeneratedPackageRegistryReader() {
-			super(Platform.getExtensionRegistry(), UMLPlugin.INSTANCE
-				.getSymbolicName(), GENERATED_PACKAGE_PPID);
+			super(Platform.getExtensionRegistry(),
+				UMLPlugin.INSTANCE.getSymbolicName(), GENERATED_PACKAGE_PPID);
 		}
 
 		protected GeneratedPackageRegistryReader(
 				Map<String, URI> ePackageNsURIToProfileLocationMap) {
-			super(Platform.getExtensionRegistry(), UMLPlugin.INSTANCE
-				.getSymbolicName(), GENERATED_PACKAGE_PPID,
+			super(Platform.getExtensionRegistry(),
+				UMLPlugin.INSTANCE.getSymbolicName(), GENERATED_PACKAGE_PPID,
 				ePackageNsURIToProfileLocationMap);
 		}
 	}
@@ -125,14 +127,14 @@ public final class UMLPlugin
 			extends PackageRegistryReader {
 
 		protected DynamicPackageRegistryReader() {
-			super(Platform.getExtensionRegistry(), UMLPlugin.INSTANCE
-				.getSymbolicName(), DYNAMIC_PACKAGE_PPID);
+			super(Platform.getExtensionRegistry(),
+				UMLPlugin.INSTANCE.getSymbolicName(), DYNAMIC_PACKAGE_PPID);
 		}
 
 		protected DynamicPackageRegistryReader(
 				Map<String, URI> ePackageNsURIToProfileLocationMap) {
-			super(Platform.getExtensionRegistry(), UMLPlugin.INSTANCE
-				.getSymbolicName(), DYNAMIC_PACKAGE_PPID,
+			super(Platform.getExtensionRegistry(),
+				UMLPlugin.INSTANCE.getSymbolicName(), DYNAMIC_PACKAGE_PPID,
 				ePackageNsURIToProfileLocationMap);
 		}
 	}
@@ -288,8 +290,8 @@ public final class UMLPlugin
 			// URI. Let's force the issue by asking EMF to map some
 			// representative URI that maps to the resources plug-in
 			Set<URI> umlResourceURIs = new HashSet<URI>();
-			umlResourceURIs.add(URIConverter.INSTANCE.normalize(URI
-				.createURI(UMLResource.LIBRARIES_PATHMAP)));
+			umlResourceURIs.add(URIConverter.INSTANCE
+				.normalize(URI.createURI(UMLResource.LIBRARIES_PATHMAP)));
 
 			URIConverter.URI_MAP.putAll(EcorePlugin
 				.computePlatformResourceToPlatformPluginMap(umlResourceURIs));

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 212765, 407028, 418466
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765, 407028, 418466, 485756
  *
  */
 package org.eclipse.uml2.uml.tests;
@@ -529,8 +529,8 @@ public class PropertyTest
 	public void testSetUnlimitedNaturalDefaultValue__int() {
 		assertNull(getFixture().getDefaultValue());
 
-		getFixture().setUnlimitedNaturalDefaultValue(
-			LiteralUnlimitedNatural.UNLIMITED);
+		getFixture()
+			.setUnlimitedNaturalDefaultValue(LiteralUnlimitedNatural.UNLIMITED);
 
 		ValueSpecification defaultValue = getFixture().getDefaultValue();
 

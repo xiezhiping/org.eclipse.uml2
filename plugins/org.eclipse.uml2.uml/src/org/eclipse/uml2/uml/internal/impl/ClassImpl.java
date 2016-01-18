@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -253,8 +253,8 @@ public class ClassImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -290,7 +290,8 @@ public class ClassImpl
 	public Behavior getClassifierBehavior() {
 		if (classifierBehavior != null && classifierBehavior.eIsProxy()) {
 			InternalEObject oldClassifierBehavior = (InternalEObject) classifierBehavior;
-			classifierBehavior = (Behavior) eResolveProxy(oldClassifierBehavior);
+			classifierBehavior = (Behavior) eResolveProxy(
+				oldClassifierBehavior);
 			if (classifierBehavior != oldClassifierBehavior) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -433,8 +434,10 @@ public class ClassImpl
 	 * @generated
 	 */
 	public Operation createOwnedOperation(String name,
-			EList<String> ownedParameterNames, EList<Type> ownedParameterTypes) {
-		Operation newOwnedOperation = (Operation) create(UMLPackage.Literals.OPERATION);
+			EList<String> ownedParameterNames,
+			EList<Type> ownedParameterTypes) {
+		Operation newOwnedOperation = (Operation) create(
+			UMLPackage.Literals.OPERATION);
 		getOwnedOperations().add(newOwnedOperation);
 		if (name != null)
 			newOwnedOperation.setName(name);
@@ -452,9 +455,10 @@ public class ClassImpl
 		for (int i = 0; i < ownedParameterListSize; i++) {
 			newOwnedOperation.createOwnedParameter(i < ownedParameterNamesSize
 				? (String) ownedParameterNames.get(i)
-				: null, i < ownedParameterTypesSize
-				? (Type) ownedParameterTypes.get(i)
-				: null);
+				: null,
+				i < ownedParameterTypesSize
+					? (Type) ownedParameterTypes.get(i)
+					: null);
 		}
 		return newOwnedOperation;
 	}
@@ -465,9 +469,10 @@ public class ClassImpl
 	 * @generated
 	 */
 	public Operation getOwnedOperation(String name,
-			EList<String> ownedParameterNames, EList<Type> ownedParameterTypes) {
-		return getOwnedOperation(name, ownedParameterNames,
-			ownedParameterTypes, false, false);
+			EList<String> ownedParameterNames,
+			EList<Type> ownedParameterTypes) {
+		return getOwnedOperation(name, ownedParameterNames, ownedParameterTypes,
+			false, false);
 	}
 
 	/**
@@ -488,20 +493,19 @@ public class ClassImpl
 			int ownedParameterListSize = ownedParameterList.size();
 			if (ownedParameterNames != null
 				&& ownedParameterNames.size() != ownedParameterListSize
-				|| (ownedParameterTypes != null && ownedParameterTypes.size() != ownedParameterListSize))
+				|| (ownedParameterTypes != null
+					&& ownedParameterTypes.size() != ownedParameterListSize))
 				continue ownedOperationLoop;
 			for (int j = 0; j < ownedParameterListSize; j++) {
 				Parameter ownedParameter = ownedParameterList.get(j);
-				if (ownedParameterNames != null
-					&& !(ignoreCase
-						? (ownedParameterNames.get(j))
-							.equalsIgnoreCase(ownedParameter.getName())
-						: ownedParameterNames.get(j).equals(
-							ownedParameter.getName())))
+				if (ownedParameterNames != null && !(ignoreCase
+					? (ownedParameterNames.get(j))
+						.equalsIgnoreCase(ownedParameter.getName())
+					: ownedParameterNames.get(j)
+						.equals(ownedParameter.getName())))
 					continue ownedOperationLoop;
-				if (ownedParameterTypes != null
-					&& !ownedParameterTypes.get(j).equals(
-						ownedParameter.getType()))
+				if (ownedParameterTypes != null && !ownedParameterTypes.get(j)
+					.equals(ownedParameter.getType()))
 					continue ownedOperationLoop;
 			}
 			return ownedOperation;
@@ -602,8 +606,8 @@ public class ClassImpl
 		protected Generalization validate(int index, Object object) {
 			Generalization generalization = UMLFactory.eINSTANCE
 				.createGeneralization();
-			generalization.setGeneral((Classifier) super
-				.validate(index, object));
+			generalization
+				.setGeneral((Classifier) super.validate(index, object));
 			return generalization;
 		}
 
@@ -613,7 +617,8 @@ public class ClassImpl
 	 * The array of superset feature identifiers for the '{@link #getSuperClasses() <em>Super Class</em>}' reference list.
 	 * @see #getSuperClasses()
 	 */
-	protected static final int[] SUPER_CLASS_ESUPERSETS = new int[]{UMLPackage.CLASS__GENERALIZATION};
+	protected static final int[] SUPER_CLASS_ESUPERSETS = new int[]{
+		UMLPackage.CLASS__GENERALIZATION};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -628,15 +633,12 @@ public class ClassImpl
 			EList<org.eclipse.uml2.uml.Class> superClasses = (EList<org.eclipse.uml2.uml.Class>) cache
 				.get(eResource, this, UMLPackage.Literals.CLASS__SUPER_CLASS);
 			if (superClasses == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.CLASS__SUPER_CLASS,
-						superClasses = (EList<org.eclipse.uml2.uml.Class>) ((EList<?>) new SuperClassEList(
-							org.eclipse.uml2.uml.Class.class, this,
-							UMLPackage.CLASS__SUPER_CLASS,
-							SUPER_CLASS_ESUPERSETS)));
+				cache.put(eResource, this,
+					UMLPackage.Literals.CLASS__SUPER_CLASS,
+					superClasses = (EList<org.eclipse.uml2.uml.Class>) ((EList<?>) new SuperClassEList(
+						org.eclipse.uml2.uml.Class.class, this,
+						UMLPackage.CLASS__SUPER_CLASS,
+						SUPER_CLASS_ESUPERSETS)));
 			}
 			return superClasses;
 		}
@@ -726,8 +728,10 @@ public class ClassImpl
 	 * @generated
 	 */
 	public Reception createOwnedReception(String name,
-			EList<String> ownedParameterNames, EList<Type> ownedParameterTypes) {
-		Reception newOwnedReception = (Reception) create(UMLPackage.Literals.RECEPTION);
+			EList<String> ownedParameterNames,
+			EList<Type> ownedParameterTypes) {
+		Reception newOwnedReception = (Reception) create(
+			UMLPackage.Literals.RECEPTION);
 		getOwnedReceptions().add(newOwnedReception);
 		if (name != null)
 			newOwnedReception.setName(name);
@@ -745,9 +749,10 @@ public class ClassImpl
 		for (int i = 0; i < ownedParameterListSize; i++) {
 			newOwnedReception.createOwnedParameter(i < ownedParameterNamesSize
 				? (String) ownedParameterNames.get(i)
-				: null, i < ownedParameterTypesSize
-				? (Type) ownedParameterTypes.get(i)
-				: null);
+				: null,
+				i < ownedParameterTypesSize
+					? (Type) ownedParameterTypes.get(i)
+					: null);
 		}
 		return newOwnedReception;
 	}
@@ -758,9 +763,10 @@ public class ClassImpl
 	 * @generated
 	 */
 	public Reception getOwnedReception(String name,
-			EList<String> ownedParameterNames, EList<Type> ownedParameterTypes) {
-		return getOwnedReception(name, ownedParameterNames,
-			ownedParameterTypes, false, false);
+			EList<String> ownedParameterNames,
+			EList<Type> ownedParameterTypes) {
+		return getOwnedReception(name, ownedParameterNames, ownedParameterTypes,
+			false, false);
 	}
 
 	/**
@@ -781,20 +787,19 @@ public class ClassImpl
 			int ownedParameterListSize = ownedParameterList.size();
 			if (ownedParameterNames != null
 				&& ownedParameterNames.size() != ownedParameterListSize
-				|| (ownedParameterTypes != null && ownedParameterTypes.size() != ownedParameterListSize))
+				|| (ownedParameterTypes != null
+					&& ownedParameterTypes.size() != ownedParameterListSize))
 				continue ownedReceptionLoop;
 			for (int j = 0; j < ownedParameterListSize; j++) {
 				Parameter ownedParameter = ownedParameterList.get(j);
-				if (ownedParameterNames != null
-					&& !(ignoreCase
-						? (ownedParameterNames.get(j))
-							.equalsIgnoreCase(ownedParameter.getName())
-						: ownedParameterNames.get(j).equals(
-							ownedParameter.getName())))
+				if (ownedParameterNames != null && !(ignoreCase
+					? (ownedParameterNames.get(j))
+						.equalsIgnoreCase(ownedParameter.getName())
+					: ownedParameterNames.get(j)
+						.equals(ownedParameter.getName())))
 					continue ownedReceptionLoop;
-				if (ownedParameterTypes != null
-					&& !ownedParameterTypes.get(j).equals(
-						ownedParameter.getType()))
+				if (ownedParameterTypes != null && !ownedParameterTypes.get(j)
+					.equals(ownedParameter.getType()))
 					continue ownedReceptionLoop;
 			}
 			return ownedReception;
@@ -869,7 +874,8 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property createOwnedAttribute(String name, Type type, EClass eClass) {
+	public Property createOwnedAttribute(String name, Type type,
+			EClass eClass) {
 		Property newOwnedAttribute = (Property) create(eClass);
 		getOwnedAttributes().add(newOwnedAttribute);
 		if (name != null)
@@ -985,17 +991,13 @@ public class ClassImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
-			EList<Interface> result = (EList<Interface>) cache
-				.get(
-					this,
-					UMLPackage.Literals.BEHAVIORED_CLASSIFIER___GET_IMPLEMENTED_INTERFACES);
+			EList<Interface> result = (EList<Interface>) cache.get(this,
+				UMLPackage.Literals.BEHAVIORED_CLASSIFIER___GET_IMPLEMENTED_INTERFACES);
 			if (result == null) {
-				cache
-					.put(
-						this,
-						UMLPackage.Literals.BEHAVIORED_CLASSIFIER___GET_IMPLEMENTED_INTERFACES,
-						result = BehavioredClassifierOperations
-							.getImplementedInterfaces(this));
+				cache.put(this,
+					UMLPackage.Literals.BEHAVIORED_CLASSIFIER___GET_IMPLEMENTED_INTERFACES,
+					result = BehavioredClassifierOperations
+						.getImplementedInterfaces(this));
 			}
 			return result;
 		}
@@ -1011,17 +1013,13 @@ public class ClassImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
-			EList<Interface> result = (EList<Interface>) cache
-				.get(
-					this,
-					UMLPackage.Literals.BEHAVIORED_CLASSIFIER___GET_ALL_IMPLEMENTED_INTERFACES);
+			EList<Interface> result = (EList<Interface>) cache.get(this,
+				UMLPackage.Literals.BEHAVIORED_CLASSIFIER___GET_ALL_IMPLEMENTED_INTERFACES);
 			if (result == null) {
-				cache
-					.put(
-						this,
-						UMLPackage.Literals.BEHAVIORED_CLASSIFIER___GET_ALL_IMPLEMENTED_INTERFACES,
-						result = BehavioredClassifierOperations
-							.getAllImplementedInterfaces(this));
+				cache.put(this,
+					UMLPackage.Literals.BEHAVIORED_CLASSIFIER___GET_ALL_IMPLEMENTED_INTERFACES,
+					result = BehavioredClassifierOperations
+						.getAllImplementedInterfaces(this));
 			}
 			return result;
 		}
@@ -1088,10 +1086,10 @@ public class ClassImpl
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.CLASS__TEMPLATE_PARAMETER :
 				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
+					msgs = ((InternalEObject) templateParameter).eInverseRemove(
+						this,
+						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+						TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.CLASS__TEMPLATE_BINDING :
@@ -1100,9 +1098,10 @@ public class ClassImpl
 			case UMLPackage.CLASS__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
-						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.CLASS__OWNED_TEMPLATE_SIGNATURE, null,
-							msgs);
+						.eInverseRemove(this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.CLASS__OWNED_TEMPLATE_SIGNATURE,
+							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
 			case UMLPackage.CLASS__GENERALIZATION :
@@ -1137,70 +1136,70 @@ public class ClassImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.CLASS__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASS__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASS__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.CLASS__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedRules())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASS__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getElementImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASS__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPackageImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASS__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.CLASS__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.CLASS__TEMPLATE_BINDING :
-				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getTemplateBindings())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASS__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.CLASS__COLLABORATION_USE :
-				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getCollaborationUses())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASS__GENERALIZATION :
-				return ((InternalEList<?>) getGeneralizations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getGeneralizations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASS__POWERTYPE_EXTENT :
-				return ((InternalEList<?>) getPowertypeExtents()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPowertypeExtents())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASS__OWNED_USE_CASE :
-				return ((InternalEList<?>) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedUseCases())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASS__USE_CASE :
 				return ((InternalEList<?>) getUseCases()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.CLASS__SUBSTITUTION :
-				return ((InternalEList<?>) getSubstitutions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getSubstitutions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASS__OWNED_ATTRIBUTE :
-				return ((InternalEList<?>) getOwnedAttributes()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedAttributes())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASS__OWNED_CONNECTOR :
-				return ((InternalEList<?>) getOwnedConnectors()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedConnectors())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASS__INTERFACE_REALIZATION :
 				return ((InternalEList<?>) getInterfaceRealizations())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASS__OWNED_BEHAVIOR :
-				return ((InternalEList<?>) getOwnedBehaviors()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedBehaviors())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASS__OWNED_OPERATION :
-				return ((InternalEList<?>) getOwnedOperations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedOperations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASS__NESTED_CLASSIFIER :
-				return ((InternalEList<?>) getNestedClassifiers()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getNestedClassifiers())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASS__OWNED_RECEPTION :
-				return ((InternalEList<?>) getOwnedReceptions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedReceptions())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1350,13 +1349,13 @@ public class ClassImpl
 		switch (featureID) {
 			case UMLPackage.CLASS__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.CLASS__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.CLASS__NAME :
 				setName((String) newValue);
@@ -1369,18 +1368,18 @@ public class ClassImpl
 				return;
 			case UMLPackage.CLASS__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getOwnedRules()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.CLASS__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll(
-					(Collection<? extends ElementImport>) newValue);
+				getElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.CLASS__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll(
-					(Collection<? extends PackageImport>) newValue);
+				getPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.CLASS__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -1396,31 +1395,31 @@ public class ClassImpl
 				return;
 			case UMLPackage.CLASS__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll(
-					(Collection<? extends TemplateBinding>) newValue);
+				getTemplateBindings()
+					.addAll((Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.CLASS__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.CLASS__COLLABORATION_USE :
 				getCollaborationUses().clear();
-				getCollaborationUses().addAll(
-					(Collection<? extends CollaborationUse>) newValue);
+				getCollaborationUses()
+					.addAll((Collection<? extends CollaborationUse>) newValue);
 				return;
 			case UMLPackage.CLASS__GENERAL :
 				getGenerals().clear();
-				getGenerals().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getGenerals()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.CLASS__GENERALIZATION :
 				getGeneralizations().clear();
-				getGeneralizations().addAll(
-					(Collection<? extends Generalization>) newValue);
+				getGeneralizations()
+					.addAll((Collection<? extends Generalization>) newValue);
 				return;
 			case UMLPackage.CLASS__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll(
-					(Collection<? extends GeneralizationSet>) newValue);
+				getPowertypeExtents()
+					.addAll((Collection<? extends GeneralizationSet>) newValue);
 				return;
 			case UMLPackage.CLASS__IS_ABSTRACT :
 				setIsAbstract((Boolean) newValue);
@@ -1430,8 +1429,8 @@ public class ClassImpl
 				return;
 			case UMLPackage.CLASS__OWNED_USE_CASE :
 				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll(
-					(Collection<? extends UseCase>) newValue);
+				getOwnedUseCases()
+					.addAll((Collection<? extends UseCase>) newValue);
 				return;
 			case UMLPackage.CLASS__USE_CASE :
 				getUseCases().clear();
@@ -1439,26 +1438,26 @@ public class ClassImpl
 				return;
 			case UMLPackage.CLASS__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
-				getRedefinedClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getRedefinedClassifiers()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.CLASS__REPRESENTATION :
 				setRepresentation((CollaborationUse) newValue);
 				return;
 			case UMLPackage.CLASS__SUBSTITUTION :
 				getSubstitutions().clear();
-				getSubstitutions().addAll(
-					(Collection<? extends Substitution>) newValue);
+				getSubstitutions()
+					.addAll((Collection<? extends Substitution>) newValue);
 				return;
 			case UMLPackage.CLASS__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll(
-					(Collection<? extends Property>) newValue);
+				getOwnedAttributes()
+					.addAll((Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.CLASS__OWNED_CONNECTOR :
 				getOwnedConnectors().clear();
-				getOwnedConnectors().addAll(
-					(Collection<? extends Connector>) newValue);
+				getOwnedConnectors()
+					.addAll((Collection<? extends Connector>) newValue);
 				return;
 			case UMLPackage.CLASS__CLASSIFIER_BEHAVIOR :
 				setClassifierBehavior((Behavior) newValue);
@@ -1470,32 +1469,31 @@ public class ClassImpl
 				return;
 			case UMLPackage.CLASS__OWNED_BEHAVIOR :
 				getOwnedBehaviors().clear();
-				getOwnedBehaviors().addAll(
-					(Collection<? extends Behavior>) newValue);
+				getOwnedBehaviors()
+					.addAll((Collection<? extends Behavior>) newValue);
 				return;
 			case UMLPackage.CLASS__OWNED_OPERATION :
 				getOwnedOperations().clear();
-				getOwnedOperations().addAll(
-					(Collection<? extends Operation>) newValue);
+				getOwnedOperations()
+					.addAll((Collection<? extends Operation>) newValue);
 				return;
 			case UMLPackage.CLASS__IS_ACTIVE :
 				setIsActive((Boolean) newValue);
 				return;
 			case UMLPackage.CLASS__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
-				getNestedClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getNestedClassifiers()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.CLASS__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
-				getOwnedReceptions().addAll(
-					(Collection<? extends Reception>) newValue);
+				getOwnedReceptions()
+					.addAll((Collection<? extends Reception>) newValue);
 				return;
 			case UMLPackage.CLASS__SUPER_CLASS :
 				getSuperClasses().clear();
-				getSuperClasses()
-					.addAll(
-						(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
+				getSuperClasses().addAll(
+					(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1694,7 +1692,8 @@ public class ClassImpl
 			case UMLPackage.CLASS__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.CLASS__IS_FINAL_SPECIALIZATION :
-				return ((eFlags & IS_FINAL_SPECIALIZATION_EFLAG) != 0) != IS_FINAL_SPECIALIZATION_EDEFAULT;
+				return ((eFlags
+					& IS_FINAL_SPECIALIZATION_EFLAG) != 0) != IS_FINAL_SPECIALIZATION_EDEFAULT;
 			case UMLPackage.CLASS__OWNED_USE_CASE :
 				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UMLPackage.CLASS__USE_CASE :
@@ -1746,7 +1745,8 @@ public class ClassImpl
 	 * @generated
 	 */
 	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	public int eBaseStructuralFeatureID(int derivedFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == BehavioredClassifier.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.CLASS__CLASSIFIER_BEHAVIOR :
@@ -1768,7 +1768,8 @@ public class ClassImpl
 	 * @generated
 	 */
 	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	public int eDerivedStructuralFeatureID(int baseFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == BehavioredClassifier.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR :
@@ -1863,7 +1864,8 @@ public class ClassImpl
 			case UMLPackage.CLASS___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.CLASS___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CLASS___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.CLASS___GET_STEREOTYPE_APPLICATIONS :
@@ -1871,7 +1873,8 @@ public class ClassImpl
 			case UMLPackage.CLASS___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.CLASS___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CLASS___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1960,13 +1963,13 @@ public class ClassImpl
 			case UMLPackage.CLASS___GET_OWNED_MEMBERS :
 				return getOwnedMembers();
 			case UMLPackage.CLASS___EXCLUDE_COLLISIONS__ELIST :
-				return excludeCollisions((EList<PackageableElement>) arguments
-					.get(0));
+				return excludeCollisions(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.CLASS___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
 				return getNamesOfMember((NamedElement) arguments.get(0));
 			case UMLPackage.CLASS___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
+				return importMembers(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.CLASS___GET_IMPORTED_MEMBERS :
 				return getImportedMembers();
 			case UMLPackage.CLASS___MEMBERS_ARE_DISTINGUISHABLE :
@@ -1986,10 +1989,11 @@ public class ClassImpl
 			case UMLPackage.CLASS___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.CLASS___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.CLASS___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.CLASS___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.CLASS___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
@@ -2090,8 +2094,7 @@ public class ClassImpl
 			case UMLPackage.CLASS___GET_OWNED_PORTS :
 				return getOwnedPorts();
 			case UMLPackage.CLASS___VALIDATE_CLASS_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
-				return validateClassBehavior(
-					(DiagnosticChain) arguments.get(0),
+				return validateClassBehavior((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CLASS___GET_ALL_IMPLEMENTED_INTERFACES :
 				return getAllImplementedInterfaces();
@@ -2159,7 +2162,8 @@ public class ClassImpl
 		UMLPackage.CLASS__OWNED_MEMBER, UMLPackage.CLASS__TEMPLATE_BINDING,
 		UMLPackage.CLASS__OWNED_TEMPLATE_SIGNATURE,
 		UMLPackage.CLASS__COLLABORATION_USE, UMLPackage.CLASS__GENERALIZATION,
-		UMLPackage.CLASS__SUBSTITUTION, UMLPackage.CLASS__INTERFACE_REALIZATION};
+		UMLPackage.CLASS__SUBSTITUTION,
+		UMLPackage.CLASS__INTERFACE_REALIZATION};
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
@@ -2183,7 +2187,8 @@ public class ClassImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] OWNED_BEHAVIOR_ESUBSETS = new int[]{UMLPackage.CLASS__CLASSIFIER_BEHAVIOR};
+	protected static final int[] OWNED_BEHAVIOR_ESUBSETS = new int[]{
+		UMLPackage.CLASS__CLASSIFIER_BEHAVIOR};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2235,7 +2240,8 @@ public class ClassImpl
 	 */
 	public InterfaceRealization createInterfaceRealization(String name,
 			Interface contract) {
-		InterfaceRealization newInterfaceRealization = (InterfaceRealization) create(UMLPackage.Literals.INTERFACE_REALIZATION);
+		InterfaceRealization newInterfaceRealization = (InterfaceRealization) create(
+			UMLPackage.Literals.INTERFACE_REALIZATION);
 		getInterfaceRealizations().add(newInterfaceRealization);
 		if (name != null)
 			newInterfaceRealization.setName(name);
@@ -2319,7 +2325,8 @@ public class ClassImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] ATTRIBUTE_ESUBSETS = new int[]{UMLPackage.CLASS__OWNED_ATTRIBUTE};
+	protected static final int[] ATTRIBUTE_ESUBSETS = new int[]{
+		UMLPackage.CLASS__OWNED_ATTRIBUTE};
 
 	/**
 	 * <!-- begin-user-doc -->

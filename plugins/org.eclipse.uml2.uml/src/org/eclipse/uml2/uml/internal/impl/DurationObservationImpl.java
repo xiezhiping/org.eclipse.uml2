@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 397324, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 397324, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -103,9 +103,8 @@ public class DurationObservationImpl
 	 */
 	public EList<NamedElement> getEvents() {
 		if (events == null) {
-			events = new EObjectResolvingEList<NamedElement>(
-				NamedElement.class, this,
-				UMLPackage.DURATION_OBSERVATION__EVENT);
+			events = new EObjectResolvingEList<NamedElement>(NamedElement.class,
+				this, UMLPackage.DURATION_OBSERVATION__EVENT);
 		}
 		return events;
 	}
@@ -124,7 +123,8 @@ public class DurationObservationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NamedElement getEvent(String name, boolean ignoreCase, EClass eClass) {
+	public NamedElement getEvent(String name, boolean ignoreCase,
+			EClass eClass) {
 		eventLoop : for (NamedElement event : getEvents()) {
 			if (eClass != null && !eClass.isInstance(event))
 				continue eventLoop;
@@ -144,8 +144,8 @@ public class DurationObservationImpl
 	 */
 	public EList<Boolean> getFirstEvents() {
 		if (firstEvents == null) {
-			firstEvents = new EDataTypeUniqueEList<Boolean>(Boolean.class,
-				this, UMLPackage.DURATION_OBSERVATION__FIRST_EVENT);
+			firstEvents = new EDataTypeUniqueEList<Boolean>(Boolean.class, this,
+				UMLPackage.DURATION_OBSERVATION__FIRST_EVENT);
 		}
 		return firstEvents;
 	}
@@ -157,8 +157,8 @@ public class DurationObservationImpl
 	 */
 	public boolean validateFirstEventMultiplicity(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return DurationObservationOperations.validateFirstEventMultiplicity(
-			this, diagnostics, context);
+		return DurationObservationOperations
+			.validateFirstEventMultiplicity(this, diagnostics, context);
 	}
 
 	/**
@@ -222,13 +222,13 @@ public class DurationObservationImpl
 		switch (featureID) {
 			case UMLPackage.DURATION_OBSERVATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.DURATION_OBSERVATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.DURATION_OBSERVATION__NAME :
 				setName((String) newValue);
@@ -247,13 +247,13 @@ public class DurationObservationImpl
 				return;
 			case UMLPackage.DURATION_OBSERVATION__EVENT :
 				getEvents().clear();
-				getEvents().addAll(
-					(Collection<? extends NamedElement>) newValue);
+				getEvents()
+					.addAll((Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.DURATION_OBSERVATION__FIRST_EVENT :
 				getFirstEvents().clear();
-				getFirstEvents().addAll(
-					(Collection<? extends Boolean>) newValue);
+				getFirstEvents()
+					.addAll((Collection<? extends Boolean>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -397,7 +397,8 @@ public class DurationObservationImpl
 			case UMLPackage.DURATION_OBSERVATION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.DURATION_OBSERVATION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.DURATION_OBSERVATION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.DURATION_OBSERVATION___GET_STEREOTYPE_APPLICATIONS :
@@ -405,7 +406,8 @@ public class DurationObservationImpl
 			case UMLPackage.DURATION_OBSERVATION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.DURATION_OBSERVATION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.DURATION_OBSERVATION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -468,7 +470,8 @@ public class DurationObservationImpl
 			case UMLPackage.DURATION_OBSERVATION___GET_CLIENT_DEPENDENCIES :
 				return getClientDependencies();
 			case UMLPackage.DURATION_OBSERVATION___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.DURATION_OBSERVATION___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.DURATION_OBSERVATION___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :

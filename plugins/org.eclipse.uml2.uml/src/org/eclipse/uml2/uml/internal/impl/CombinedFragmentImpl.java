@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -176,8 +176,8 @@ public class CombinedFragmentImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -189,7 +189,8 @@ public class CombinedFragmentImpl
 			return ownedElements;
 		}
 		return new DerivedUnionEObjectEList<Element>(Element.class, this,
-			UMLPackage.COMBINED_FRAGMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
+			UMLPackage.COMBINED_FRAGMENT__OWNED_ELEMENT,
+			OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -198,7 +199,8 @@ public class CombinedFragmentImpl
 	 * @generated
 	 */
 	public InteractionOperatorKind getInteractionOperator() {
-		return INTERACTION_OPERATOR_EFLAG_VALUES[(eFlags & INTERACTION_OPERATOR_EFLAG) >>> INTERACTION_OPERATOR_EFLAG_OFFSET];
+		return INTERACTION_OPERATOR_EFLAG_VALUES[(eFlags
+			& INTERACTION_OPERATOR_EFLAG) >>> INTERACTION_OPERATOR_EFLAG_OFFSET];
 	}
 
 	/**
@@ -208,12 +210,12 @@ public class CombinedFragmentImpl
 	 */
 	public void setInteractionOperator(
 			InteractionOperatorKind newInteractionOperator) {
-		InteractionOperatorKind oldInteractionOperator = INTERACTION_OPERATOR_EFLAG_VALUES[(eFlags & INTERACTION_OPERATOR_EFLAG) >>> INTERACTION_OPERATOR_EFLAG_OFFSET];
+		InteractionOperatorKind oldInteractionOperator = INTERACTION_OPERATOR_EFLAG_VALUES[(eFlags
+			& INTERACTION_OPERATOR_EFLAG) >>> INTERACTION_OPERATOR_EFLAG_OFFSET];
 		if (newInteractionOperator == null)
 			newInteractionOperator = INTERACTION_OPERATOR_EDEFAULT;
-		eFlags = eFlags
-			& ~INTERACTION_OPERATOR_EFLAG
-			| newInteractionOperator.ordinal() << INTERACTION_OPERATOR_EFLAG_OFFSET;
+		eFlags = eFlags & ~INTERACTION_OPERATOR_EFLAG | newInteractionOperator
+			.ordinal() << INTERACTION_OPERATOR_EFLAG_OFFSET;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR,
@@ -240,7 +242,8 @@ public class CombinedFragmentImpl
 	 * @generated
 	 */
 	public InteractionOperand createOperand(String name) {
-		InteractionOperand newOperand = (InteractionOperand) create(UMLPackage.Literals.INTERACTION_OPERAND);
+		InteractionOperand newOperand = (InteractionOperand) create(
+			UMLPackage.Literals.INTERACTION_OPERAND);
 		getOperands().add(newOperand);
 		if (name != null)
 			newOperand.setName(name);
@@ -372,11 +375,11 @@ public class CombinedFragmentImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.COMBINED_FRAGMENT__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.COMBINED_FRAGMENT__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.COMBINED_FRAGMENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.COMBINED_FRAGMENT__COVERED :
@@ -387,11 +390,11 @@ public class CombinedFragmentImpl
 			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION :
 				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.COMBINED_FRAGMENT__GENERAL_ORDERING :
-				return ((InternalEList<?>) getGeneralOrderings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getGeneralOrderings())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE :
-				return ((InternalEList<?>) getCfragmentGates()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getCfragmentGates())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.COMBINED_FRAGMENT__OPERAND :
 				return ((InternalEList<?>) getOperands()).basicRemove(otherEnd,
 					msgs);
@@ -466,13 +469,13 @@ public class CombinedFragmentImpl
 		switch (featureID) {
 			case UMLPackage.COMBINED_FRAGMENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.COMBINED_FRAGMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.COMBINED_FRAGMENT__NAME :
 				setName((String) newValue);
@@ -495,13 +498,13 @@ public class CombinedFragmentImpl
 				return;
 			case UMLPackage.COMBINED_FRAGMENT__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
+				getGeneralOrderings()
+					.addAll((Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE :
 				getCfragmentGates().clear();
-				getCfragmentGates().addAll(
-					(Collection<? extends Gate>) newValue);
+				getCfragmentGates()
+					.addAll((Collection<? extends Gate>) newValue);
 				return;
 			case UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR :
 				setInteractionOperator((InteractionOperatorKind) newValue);
@@ -604,7 +607,8 @@ public class CombinedFragmentImpl
 			case UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE :
 				return cfragmentGates != null && !cfragmentGates.isEmpty();
 			case UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR :
-				return (eFlags & INTERACTION_OPERATOR_EFLAG) != INTERACTION_OPERATOR_EFLAG_DEFAULT;
+				return (eFlags
+					& INTERACTION_OPERATOR_EFLAG) != INTERACTION_OPERATOR_EFLAG_DEFAULT;
 			case UMLPackage.COMBINED_FRAGMENT__OPERAND :
 				return operands != null && !operands.isEmpty();
 		}
@@ -668,7 +672,8 @@ public class CombinedFragmentImpl
 			case UMLPackage.COMBINED_FRAGMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.COMBINED_FRAGMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.COMBINED_FRAGMENT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.COMBINED_FRAGMENT___GET_STEREOTYPE_APPLICATIONS :
@@ -676,7 +681,8 @@ public class CombinedFragmentImpl
 			case UMLPackage.COMBINED_FRAGMENT___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.COMBINED_FRAGMENT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.COMBINED_FRAGMENT___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -765,8 +771,8 @@ public class CombinedFragmentImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (interactionOperator: "); //$NON-NLS-1$
-		result
-			.append(INTERACTION_OPERATOR_EFLAG_VALUES[(eFlags & INTERACTION_OPERATOR_EFLAG) >>> INTERACTION_OPERATOR_EFLAG_OFFSET]);
+		result.append(INTERACTION_OPERATOR_EFLAG_VALUES[(eFlags
+			& INTERACTION_OPERATOR_EFLAG) >>> INTERACTION_OPERATOR_EFLAG_OFFSET]);
 		result.append(')');
 		return result.toString();
 	}

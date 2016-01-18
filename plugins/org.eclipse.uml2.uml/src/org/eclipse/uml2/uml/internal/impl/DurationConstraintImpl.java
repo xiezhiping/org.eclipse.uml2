@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 397324, 212765, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 397324, 212765, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -104,8 +104,8 @@ public class DurationConstraintImpl
 	 */
 	public EList<Boolean> getFirstEvents() {
 		if (firstEvents == null) {
-			firstEvents = new EDataTypeUniqueEList<Boolean>(Boolean.class,
-				this, UMLPackage.DURATION_CONSTRAINT__FIRST_EVENT);
+			firstEvents = new EDataTypeUniqueEList<Boolean>(Boolean.class, this,
+				UMLPackage.DURATION_CONSTRAINT__FIRST_EVENT);
 		}
 		return firstEvents;
 	}
@@ -119,13 +119,14 @@ public class DurationConstraintImpl
 	public ValueSpecification getSpecification() {
 		if (specification != null && specification.eIsProxy()) {
 			InternalEObject oldSpecification = (InternalEObject) specification;
-			specification = (ValueSpecification) eResolveProxy(oldSpecification);
+			specification = (ValueSpecification) eResolveProxy(
+				oldSpecification);
 			if (specification != oldSpecification) {
 				InternalEObject newSpecification = (InternalEObject) specification;
 				NotificationChain msgs = oldSpecification.eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.DURATION_CONSTRAINT__SPECIFICATION, null,
-					null);
+						- UMLPackage.DURATION_CONSTRAINT__SPECIFICATION,
+					null, null);
 				if (newSpecification.eInternalContainer() == null) {
 					msgs = newSpecification.eInverseAdd(this,
 						EOPPOSITE_FEATURE_BASE
@@ -170,8 +171,7 @@ public class DurationConstraintImpl
 		specification = newSpecification;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET,
-				UMLPackage.DURATION_CONSTRAINT__SPECIFICATION,
+				Notification.SET, UMLPackage.DURATION_CONSTRAINT__SPECIFICATION,
 				oldSpecification, newSpecification);
 			if (msgs == null)
 				msgs = notification;
@@ -198,20 +198,20 @@ public class DurationConstraintImpl
 			if (specification != null)
 				msgs = ((InternalEObject) specification).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.DURATION_CONSTRAINT__SPECIFICATION, null,
-					msgs);
+						- UMLPackage.DURATION_CONSTRAINT__SPECIFICATION,
+					null, msgs);
 			if (newSpecification != null)
 				msgs = ((InternalEObject) newSpecification).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.DURATION_CONSTRAINT__SPECIFICATION, null,
-					msgs);
+						- UMLPackage.DURATION_CONSTRAINT__SPECIFICATION,
+					null, msgs);
 			msgs = basicSetSpecification(newSpecification, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.DURATION_CONSTRAINT__SPECIFICATION,
-				newSpecification, newSpecification));
+				UMLPackage.DURATION_CONSTRAINT__SPECIFICATION, newSpecification,
+				newSpecification));
 	}
 
 	/**
@@ -221,7 +221,8 @@ public class DurationConstraintImpl
 	 */
 	public ValueSpecification createSpecification(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newSpecification = (ValueSpecification) create(eClass);
+		ValueSpecification newSpecification = (ValueSpecification) create(
+			eClass);
 		setSpecification(newSpecification);
 		if (name != null)
 			newSpecification.setName(name);
@@ -247,8 +248,8 @@ public class DurationConstraintImpl
 	 */
 	public boolean validateFirstEventMultiplicity(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return DurationConstraintOperations.validateFirstEventMultiplicity(
-			this, diagnostics, context);
+		return DurationConstraintOperations.validateFirstEventMultiplicity(this,
+			diagnostics, context);
 	}
 
 	/**
@@ -272,11 +273,11 @@ public class DurationConstraintImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.DURATION_CONSTRAINT__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DURATION_CONSTRAINT__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DURATION_CONSTRAINT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.DURATION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
@@ -360,13 +361,13 @@ public class DurationConstraintImpl
 		switch (featureID) {
 			case UMLPackage.DURATION_CONSTRAINT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.DURATION_CONSTRAINT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.DURATION_CONSTRAINT__NAME :
 				setName((String) newValue);
@@ -385,8 +386,8 @@ public class DurationConstraintImpl
 				return;
 			case UMLPackage.DURATION_CONSTRAINT__CONSTRAINED_ELEMENT :
 				getConstrainedElements().clear();
-				getConstrainedElements().addAll(
-					(Collection<? extends Element>) newValue);
+				getConstrainedElements()
+					.addAll((Collection<? extends Element>) newValue);
 				return;
 			case UMLPackage.DURATION_CONSTRAINT__CONTEXT :
 				setContext((Namespace) newValue);
@@ -396,8 +397,8 @@ public class DurationConstraintImpl
 				return;
 			case UMLPackage.DURATION_CONSTRAINT__FIRST_EVENT :
 				getFirstEvents().clear();
-				getFirstEvents().addAll(
-					(Collection<? extends Boolean>) newValue);
+				getFirstEvents()
+					.addAll((Collection<? extends Boolean>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -552,7 +553,8 @@ public class DurationConstraintImpl
 			case UMLPackage.DURATION_CONSTRAINT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.DURATION_CONSTRAINT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.DURATION_CONSTRAINT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.DURATION_CONSTRAINT___GET_STEREOTYPE_APPLICATIONS :
@@ -560,7 +562,8 @@ public class DurationConstraintImpl
 			case UMLPackage.DURATION_CONSTRAINT___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.DURATION_CONSTRAINT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.DURATION_CONSTRAINT___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -623,7 +626,8 @@ public class DurationConstraintImpl
 			case UMLPackage.DURATION_CONSTRAINT___GET_CLIENT_DEPENDENCIES :
 				return getClientDependencies();
 			case UMLPackage.DURATION_CONSTRAINT___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.DURATION_CONSTRAINT___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
@@ -634,8 +638,7 @@ public class DurationConstraintImpl
 				return validateBooleanValue((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
-				return validateNoSideEffects(
-					(DiagnosticChain) arguments.get(0),
+				return validateNoSideEffects((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.DURATION_CONSTRAINT___VALIDATE_NOT_APPLY_TO_SELF__DIAGNOSTICCHAIN_MAP :
 				return validateNotApplyToSelf(

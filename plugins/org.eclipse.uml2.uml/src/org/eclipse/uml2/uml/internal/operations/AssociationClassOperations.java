@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -82,15 +82,13 @@ public class AssociationClassOperations
 		}
 
 		if (!result && diagnostics != null) {
-			diagnostics
-				.add(new BasicDiagnostic(
-					Diagnostic.WARNING,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.ASSOCIATION_CLASS__CANNOT_BE_DEFINED,
-					UMLPlugin.INSTANCE
-						.getString(
-							"_UI_AssociationClass_CannotBeDefined_diagnostic", getMessageSubstitutions(context, associationClass)), //$NON-NLS-1$
-					new Object[]{associationClass}));
+			diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+				UMLValidator.DIAGNOSTIC_SOURCE,
+				UMLValidator.ASSOCIATION_CLASS__CANNOT_BE_DEFINED,
+				UMLPlugin.INSTANCE.getString(
+					"_UI_AssociationClass_CannotBeDefined_diagnostic", //$NON-NLS-1$
+					getMessageSubstitutions(context, associationClass)),
+				new Object[]{associationClass}));
 		}
 
 		return result;
@@ -116,15 +114,13 @@ public class AssociationClassOperations
 			associationClass.getOwnedEnds());
 
 		if (!result && diagnostics != null) {
-			diagnostics
-				.add(new BasicDiagnostic(
-					Diagnostic.WARNING,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.ASSOCIATION_CLASS__DISJOINT_ATTRIBUTES_ENDS,
-					UMLPlugin.INSTANCE
-						.getString(
-							"_UI_AssociationClass_DisjointAttributesEnds_diagnostic", getMessageSubstitutions(context, associationClass)), //$NON-NLS-1$
-					new Object[]{associationClass}));
+			diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+				UMLValidator.DIAGNOSTIC_SOURCE,
+				UMLValidator.ASSOCIATION_CLASS__DISJOINT_ATTRIBUTES_ENDS,
+				UMLPlugin.INSTANCE.getString(
+					"_UI_AssociationClass_DisjointAttributesEnds_diagnostic", //$NON-NLS-1$
+					getMessageSubstitutions(context, associationClass)),
+				new Object[]{associationClass}));
 		}
 
 		return result;

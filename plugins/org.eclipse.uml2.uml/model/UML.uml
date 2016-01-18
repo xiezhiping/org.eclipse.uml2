@@ -1963,6 +1963,22 @@
           </ownedComment>
         </ownedParameter>
       </ownedOperation>
+      <ownedOperation xmi:id="_WTAl8L4QEeWYh4Gu_uAtYw" name="applyProfiles">
+        <ownedComment xmi:id="_WTAl8b4QEeWYh4Gu_uAtYw" annotatedElement="_WTAl8L4QEeWYh4Gu_uAtYw">
+          <body>Applies the current definitions of the specified profiles to this package and automatically applies required stereotypes in the profiles to elements within this package's namespace hieararchy. If different definitions are already applied, automatically migrates any associated stereotype values on a &quot;best effort&quot; basis (matching classifiers and structural features by name).</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_WTAl8r4QEeWYh4Gu_uAtYw" direction="return">
+          <type xmi:type="uml:Class" href="Ecore.uml#_SeWijsX_EduPJbEsMYXjUQ"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WTAl874QEeWYh4Gu_uAtYw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WTAl9L4QEeWYh4Gu_uAtYw" value="*"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_WTAl9b4QEeWYh4Gu_uAtYw" name="profiles" type="__pew8GvzEdq7X4sGURiZYA" effect="read">
+          <ownedComment xmi:id="_WTAl9r4QEeWYh4Gu_uAtYw" annotatedElement="_WTAl9b4QEeWYh4Gu_uAtYw">
+            <body>The profiles to apply.</body>
+          </ownedComment>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lb-wML4QEeWYh4Gu_uAtYw" value="*"/>
+        </ownedParameter>
+      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_SnNPIGwIEdq7X4sGURiZYA" name="PackageImport"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_jKxnwGwLEdq7X4sGURiZYA" name="PackageableElement" isAbstract="true">

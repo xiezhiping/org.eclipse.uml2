@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -82,15 +82,15 @@ public class OpaqueExpressionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.OPAQUE_EXPRESSION__LANGUAGE_BODY_SIZE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateLanguageBodySize", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(opaqueExpression, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{opaqueExpression}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.OPAQUE_EXPRESSION__LANGUAGE_BODY_SIZE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateLanguageBodySize", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(opaqueExpression, context)}),
+					new Object[]{opaqueExpression}));
 			}
 			return false;
 		}
@@ -118,15 +118,15 @@ public class OpaqueExpressionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.OPAQUE_EXPRESSION__ONLY_RETURN_RESULT_PARAMETERS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOnlyReturnResultParameters", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(opaqueExpression, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{opaqueExpression}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.OPAQUE_EXPRESSION__ONLY_RETURN_RESULT_PARAMETERS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateOnlyReturnResultParameters", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(opaqueExpression, context)}),
+					new Object[]{opaqueExpression}));
 			}
 			return false;
 		}
@@ -155,15 +155,15 @@ public class OpaqueExpressionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.OPAQUE_EXPRESSION__ONE_RETURN_RESULT_PARAMETER,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOneReturnResultParameter", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(opaqueExpression, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{opaqueExpression}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.OPAQUE_EXPRESSION__ONE_RETURN_RESULT_PARAMETER,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateOneReturnResultParameter", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(opaqueExpression, context)}),
+					new Object[]{opaqueExpression}));
 			}
 			return false;
 		}
@@ -296,7 +296,8 @@ public class OpaqueExpressionOperations
 
 			for (Parameter ownedParameter : behavior.getOwnedParameters()) {
 
-				if (ownedParameter.getDirection() == ParameterDirectionKind.RETURN_LITERAL) {
+				if (ownedParameter
+					.getDirection() == ParameterDirectionKind.RETURN_LITERAL) {
 					return ownedParameter;
 				}
 			}

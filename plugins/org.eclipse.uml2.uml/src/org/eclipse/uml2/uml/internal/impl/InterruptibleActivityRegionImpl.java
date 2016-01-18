@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -122,16 +122,12 @@ public class InterruptibleActivityRegionImpl
 				.get(eResource, this,
 					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE);
 			if (containedNodes == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE,
-						containedNodes = new DerivedUnionEObjectEList<ActivityNode>(
-							ActivityNode.class,
-							this,
-							UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE,
-							CONTAINED_NODE_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE,
+					containedNodes = new DerivedUnionEObjectEList<ActivityNode>(
+						ActivityNode.class, this,
+						UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE,
+						CONTAINED_NODE_ESUBSETS));
 			}
 			return containedNodes;
 		}
@@ -169,7 +165,8 @@ public class InterruptibleActivityRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActivityNode getNode(String name, boolean ignoreCase, EClass eClass) {
+	public ActivityNode getNode(String name, boolean ignoreCase,
+			EClass eClass) {
 		nodeLoop : for (ActivityNode node : getNodes()) {
 			if (eClass != null && !eClass.isInstance(node))
 				continue nodeLoop;
@@ -232,8 +229,8 @@ public class InterruptibleActivityRegionImpl
 	 */
 	public boolean validateInterruptingEdges(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return InterruptibleActivityRegionOperations.validateInterruptingEdges(
-			this, diagnostics, context);
+		return InterruptibleActivityRegionOperations
+			.validateInterruptingEdges(this, diagnostics, context);
 	}
 
 	/**
@@ -269,16 +266,16 @@ public class InterruptibleActivityRegionImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
-				return ((InternalEList<?>) getInterruptingEdges()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getInterruptingEdges())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
 				return ((InternalEList<?>) getNodes()).basicRemove(otherEnd,
 					msgs);
@@ -353,13 +350,13 @@ public class InterruptibleActivityRegionImpl
 		switch (featureID) {
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NAME :
 				setName((String) newValue);
@@ -375,8 +372,8 @@ public class InterruptibleActivityRegionImpl
 				return;
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
 				getInterruptingEdges().clear();
-				getInterruptingEdges().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getInterruptingEdges()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
 				getNodes().clear();
@@ -529,7 +526,8 @@ public class InterruptibleActivityRegionImpl
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___GET_STEREOTYPE_APPLICATIONS :
@@ -537,7 +535,8 @@ public class InterruptibleActivityRegionImpl
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -602,8 +601,7 @@ public class InterruptibleActivityRegionImpl
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___CONTAINING_ACTIVITY :
 				return containingActivity();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateNodesAndEdges(
-					(DiagnosticChain) arguments.get(0),
+				return validateNodesAndEdges((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
 				return validateNotContained((DiagnosticChain) arguments.get(0),
@@ -624,7 +622,8 @@ public class InterruptibleActivityRegionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] CONTAINED_NODE_ESUBSETS = new int[]{UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE};
+	protected static final int[] CONTAINED_NODE_ESUBSETS = new int[]{
+		UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE};
 
 	/**
 	 * <!-- begin-user-doc -->

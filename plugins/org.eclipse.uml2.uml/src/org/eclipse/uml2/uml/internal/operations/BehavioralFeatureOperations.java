@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 418466, 451350
+ *   Kenn Hussey (CEA) - 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -80,15 +80,15 @@ public class BehavioralFeatureOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.BEHAVIORAL_FEATURE__ABSTRACT_NO_METHOD,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateAbstractNoMethod", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(behavioralFeature, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{behavioralFeature}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.BEHAVIORAL_FEATURE__ABSTRACT_NO_METHOD,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateAbstractNoMethod", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(behavioralFeature, context)}),
+					new Object[]{behavioralFeature}));
 			}
 			return false;
 		}
@@ -129,7 +129,8 @@ public class BehavioralFeatureOperations
 			BehavioralFeature behavioralFeature) {
 		EList<Parameter> inputParameters = new UniqueEList.FastCompare<Parameter>();
 
-		for (Parameter ownedParameter : behavioralFeature.getOwnedParameters()) {
+		for (Parameter ownedParameter : behavioralFeature
+			.getOwnedParameters()) {
 			ParameterDirectionKind direction = ownedParameter.getDirection();
 
 			if (direction == ParameterDirectionKind.IN_LITERAL
@@ -157,7 +158,8 @@ public class BehavioralFeatureOperations
 			BehavioralFeature behavioralFeature) {
 		EList<Parameter> outputParameters = new UniqueEList.FastCompare<Parameter>();
 
-		for (Parameter ownedParameter : behavioralFeature.getOwnedParameters()) {
+		for (Parameter ownedParameter : behavioralFeature
+			.getOwnedParameters()) {
 			ParameterDirectionKind direction = ownedParameter.getDirection();
 
 			if (direction == ParameterDirectionKind.OUT_LITERAL
@@ -192,7 +194,8 @@ public class BehavioralFeatureOperations
 		if (n instanceof BehavioralFeature) {
 			EList<String> namesOfMemberN = ns.getNamesOfMember(n);
 
-			for (String nameOfMemberBF : ns.getNamesOfMember(behavioralFeature)) {
+			for (String nameOfMemberBF : ns
+				.getNamesOfMember(behavioralFeature)) {
 
 				if (namesOfMemberN.contains(nameOfMemberBF)) {
 					Iterator<Parameter> bfParameters = behavioralFeature

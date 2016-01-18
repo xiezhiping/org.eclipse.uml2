@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -99,8 +99,8 @@ public class ProtocolConformanceImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> targets = (EList<Element>) cache.get(eResource,
-				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			EList<Element> targets = (EList<Element>) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
 			if (targets == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
@@ -126,8 +126,8 @@ public class ProtocolConformanceImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> sources = (EList<Element>) cache.get(eResource,
-				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			EList<Element> sources = (EList<Element>) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
 			if (sources == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
@@ -150,7 +150,8 @@ public class ProtocolConformanceImpl
 	public ProtocolStateMachine getGeneralMachine() {
 		if (generalMachine != null && generalMachine.eIsProxy()) {
 			InternalEObject oldGeneralMachine = (InternalEObject) generalMachine;
-			generalMachine = (ProtocolStateMachine) eResolveProxy(oldGeneralMachine);
+			generalMachine = (ProtocolStateMachine) eResolveProxy(
+				oldGeneralMachine);
 			if (generalMachine != oldGeneralMachine) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -225,7 +226,8 @@ public class ProtocolConformanceImpl
 	 */
 	public void setSpecificMachine(ProtocolStateMachine newSpecificMachine) {
 		if (newSpecificMachine != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE && newSpecificMachine != null)) {
+			|| (eContainerFeatureID() != UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE
+				&& newSpecificMachine != null)) {
 			if (EcoreUtil.isAncestor(this, newSpecificMachine))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -277,11 +279,11 @@ public class ProtocolConformanceImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PROTOCOL_CONFORMANCE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_CONFORMANCE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE :
 				return basicSetSpecificMachine(null, msgs);
 		}
@@ -352,13 +354,13 @@ public class ProtocolConformanceImpl
 		switch (featureID) {
 			case UMLPackage.PROTOCOL_CONFORMANCE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_CONFORMANCE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_CONFORMANCE__GENERAL_MACHINE :
 				setGeneralMachine((ProtocolStateMachine) newValue);
@@ -432,7 +434,8 @@ public class ProtocolConformanceImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] TARGET_ESUBSETS = new int[]{UMLPackage.PROTOCOL_CONFORMANCE__GENERAL_MACHINE};
+	protected static final int[] TARGET_ESUBSETS = new int[]{
+		UMLPackage.PROTOCOL_CONFORMANCE__GENERAL_MACHINE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -453,7 +456,8 @@ public class ProtocolConformanceImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] SOURCE_ESUBSETS = new int[]{UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE};
+	protected static final int[] SOURCE_ESUBSETS = new int[]{
+		UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE};
 
 	/**
 	 * <!-- begin-user-doc -->

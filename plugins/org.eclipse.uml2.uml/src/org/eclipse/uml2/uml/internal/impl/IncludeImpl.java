@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -131,8 +131,8 @@ public class IncludeImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> sources = (EList<Element>) cache.get(eResource,
-				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			EList<Element> sources = (EList<Element>) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
 			if (sources == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
@@ -156,8 +156,8 @@ public class IncludeImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> targets = (EList<Element>) cache.get(eResource,
-				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			EList<Element> targets = (EList<Element>) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
 			if (targets == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
@@ -252,7 +252,8 @@ public class IncludeImpl
 	 */
 	public void setIncludingCase(UseCase newIncludingCase) {
 		if (newIncludingCase != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.INCLUDE__INCLUDING_CASE && newIncludingCase != null)) {
+			|| (eContainerFeatureID() != UMLPackage.INCLUDE__INCLUDING_CASE
+				&& newIncludingCase != null)) {
 			if (EcoreUtil.isAncestor(this, newIncludingCase))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -302,11 +303,11 @@ public class IncludeImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.INCLUDE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INCLUDE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INCLUDE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INCLUDE__INCLUDING_CASE :
@@ -394,13 +395,13 @@ public class IncludeImpl
 		switch (featureID) {
 			case UMLPackage.INCLUDE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.INCLUDE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.INCLUDE__NAME :
 				setName((String) newValue);
@@ -504,7 +505,8 @@ public class IncludeImpl
 	 * @generated
 	 */
 	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	public int eBaseStructuralFeatureID(int derivedFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == Relationship.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.INCLUDE__RELATED_ELEMENT :
@@ -532,7 +534,8 @@ public class IncludeImpl
 	 * @generated
 	 */
 	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	public int eDerivedStructuralFeatureID(int baseFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == Relationship.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.RELATIONSHIP__RELATED_ELEMENT :
@@ -582,7 +585,8 @@ public class IncludeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] SOURCE_ESUBSETS = new int[]{UMLPackage.INCLUDE__INCLUDING_CASE};
+	protected static final int[] SOURCE_ESUBSETS = new int[]{
+		UMLPackage.INCLUDE__INCLUDING_CASE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -601,7 +605,8 @@ public class IncludeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] TARGET_ESUBSETS = new int[]{UMLPackage.INCLUDE__ADDITION};
+	protected static final int[] TARGET_ESUBSETS = new int[]{
+		UMLPackage.INCLUDE__ADDITION};
 
 	/**
 	 * <!-- begin-user-doc -->

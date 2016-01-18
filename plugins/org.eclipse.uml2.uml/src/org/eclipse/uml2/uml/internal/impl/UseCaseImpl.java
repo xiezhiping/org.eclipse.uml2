@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -218,8 +218,8 @@ public class UseCaseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Include getInclude(String name, UseCase addition,
-			boolean ignoreCase, boolean createOnDemand) {
+	public Include getInclude(String name, UseCase addition, boolean ignoreCase,
+			boolean createOnDemand) {
 		includeLoop : for (Include include : getIncludes()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(include.getName())
@@ -315,7 +315,8 @@ public class UseCaseImpl
 	 * @generated
 	 */
 	public ExtensionPoint createExtensionPoint(String name) {
-		ExtensionPoint newExtensionPoint = (ExtensionPoint) create(UMLPackage.Literals.EXTENSION_POINT);
+		ExtensionPoint newExtensionPoint = (ExtensionPoint) create(
+			UMLPackage.Literals.EXTENSION_POINT);
 		getExtensionPoints().add(newExtensionPoint);
 		if (name != null)
 			newExtensionPoint.setName(name);
@@ -378,7 +379,8 @@ public class UseCaseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Classifier getSubject(String name, boolean ignoreCase, EClass eClass) {
+	public Classifier getSubject(String name, boolean ignoreCase,
+			EClass eClass) {
 		subjectLoop : for (Classifier subject : getSubjects()) {
 			if (eClass != null && !eClass.isInstance(subject))
 				continue subjectLoop;
@@ -485,10 +487,10 @@ public class UseCaseImpl
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.USE_CASE__TEMPLATE_PARAMETER :
 				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
+					msgs = ((InternalEObject) templateParameter).eInverseRemove(
+						this,
+						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+						TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.USE_CASE__TEMPLATE_BINDING :
@@ -497,8 +499,9 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
-						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.USE_CASE__OWNED_TEMPLATE_SIGNATURE,
+						.eInverseRemove(this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.USE_CASE__OWNED_TEMPLATE_SIGNATURE,
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
@@ -543,61 +546,61 @@ public class UseCaseImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.USE_CASE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.USE_CASE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.USE_CASE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.USE_CASE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedRules())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.USE_CASE__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getElementImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.USE_CASE__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPackageImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.USE_CASE__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.USE_CASE__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.USE_CASE__TEMPLATE_BINDING :
-				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getTemplateBindings())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.USE_CASE__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.USE_CASE__COLLABORATION_USE :
-				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getCollaborationUses())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.USE_CASE__GENERALIZATION :
-				return ((InternalEList<?>) getGeneralizations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getGeneralizations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.USE_CASE__POWERTYPE_EXTENT :
-				return ((InternalEList<?>) getPowertypeExtents()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPowertypeExtents())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.USE_CASE__OWNED_USE_CASE :
-				return ((InternalEList<?>) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedUseCases())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.USE_CASE__USE_CASE :
 				return ((InternalEList<?>) getUseCases()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.USE_CASE__SUBSTITUTION :
-				return ((InternalEList<?>) getSubstitutions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getSubstitutions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.USE_CASE__INTERFACE_REALIZATION :
 				return ((InternalEList<?>) getInterfaceRealizations())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.USE_CASE__OWNED_BEHAVIOR :
-				return ((InternalEList<?>) getOwnedBehaviors()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedBehaviors())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.USE_CASE__EXTEND :
 				return ((InternalEList<?>) getExtends()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.USE_CASE__EXTENSION_POINT :
-				return ((InternalEList<?>) getExtensionPoints()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getExtensionPoints())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.USE_CASE__INCLUDE :
 				return ((InternalEList<?>) getIncludes()).basicRemove(otherEnd,
 					msgs);
@@ -739,13 +742,13 @@ public class UseCaseImpl
 		switch (featureID) {
 			case UMLPackage.USE_CASE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.USE_CASE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.USE_CASE__NAME :
 				setName((String) newValue);
@@ -758,18 +761,18 @@ public class UseCaseImpl
 				return;
 			case UMLPackage.USE_CASE__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getOwnedRules()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.USE_CASE__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll(
-					(Collection<? extends ElementImport>) newValue);
+				getElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.USE_CASE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll(
-					(Collection<? extends PackageImport>) newValue);
+				getPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.USE_CASE__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -785,31 +788,31 @@ public class UseCaseImpl
 				return;
 			case UMLPackage.USE_CASE__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll(
-					(Collection<? extends TemplateBinding>) newValue);
+				getTemplateBindings()
+					.addAll((Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.USE_CASE__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.USE_CASE__COLLABORATION_USE :
 				getCollaborationUses().clear();
-				getCollaborationUses().addAll(
-					(Collection<? extends CollaborationUse>) newValue);
+				getCollaborationUses()
+					.addAll((Collection<? extends CollaborationUse>) newValue);
 				return;
 			case UMLPackage.USE_CASE__GENERAL :
 				getGenerals().clear();
-				getGenerals().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getGenerals()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.USE_CASE__GENERALIZATION :
 				getGeneralizations().clear();
-				getGeneralizations().addAll(
-					(Collection<? extends Generalization>) newValue);
+				getGeneralizations()
+					.addAll((Collection<? extends Generalization>) newValue);
 				return;
 			case UMLPackage.USE_CASE__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll(
-					(Collection<? extends GeneralizationSet>) newValue);
+				getPowertypeExtents()
+					.addAll((Collection<? extends GeneralizationSet>) newValue);
 				return;
 			case UMLPackage.USE_CASE__IS_ABSTRACT :
 				setIsAbstract((Boolean) newValue);
@@ -819,8 +822,8 @@ public class UseCaseImpl
 				return;
 			case UMLPackage.USE_CASE__OWNED_USE_CASE :
 				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll(
-					(Collection<? extends UseCase>) newValue);
+				getOwnedUseCases()
+					.addAll((Collection<? extends UseCase>) newValue);
 				return;
 			case UMLPackage.USE_CASE__USE_CASE :
 				getUseCases().clear();
@@ -828,16 +831,16 @@ public class UseCaseImpl
 				return;
 			case UMLPackage.USE_CASE__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
-				getRedefinedClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getRedefinedClassifiers()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.USE_CASE__REPRESENTATION :
 				setRepresentation((CollaborationUse) newValue);
 				return;
 			case UMLPackage.USE_CASE__SUBSTITUTION :
 				getSubstitutions().clear();
-				getSubstitutions().addAll(
-					(Collection<? extends Substitution>) newValue);
+				getSubstitutions()
+					.addAll((Collection<? extends Substitution>) newValue);
 				return;
 			case UMLPackage.USE_CASE__CLASSIFIER_BEHAVIOR :
 				setClassifierBehavior((Behavior) newValue);
@@ -849,8 +852,8 @@ public class UseCaseImpl
 				return;
 			case UMLPackage.USE_CASE__OWNED_BEHAVIOR :
 				getOwnedBehaviors().clear();
-				getOwnedBehaviors().addAll(
-					(Collection<? extends Behavior>) newValue);
+				getOwnedBehaviors()
+					.addAll((Collection<? extends Behavior>) newValue);
 				return;
 			case UMLPackage.USE_CASE__EXTEND :
 				getExtends().clear();
@@ -858,8 +861,8 @@ public class UseCaseImpl
 				return;
 			case UMLPackage.USE_CASE__EXTENSION_POINT :
 				getExtensionPoints().clear();
-				getExtensionPoints().addAll(
-					(Collection<? extends ExtensionPoint>) newValue);
+				getExtensionPoints()
+					.addAll((Collection<? extends ExtensionPoint>) newValue);
 				return;
 			case UMLPackage.USE_CASE__INCLUDE :
 				getIncludes().clear();
@@ -867,8 +870,8 @@ public class UseCaseImpl
 				return;
 			case UMLPackage.USE_CASE__SUBJECT :
 				getSubjects().clear();
-				getSubjects().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getSubjects()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1056,9 +1059,11 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.USE_CASE__IS_ABSTRACT :
-				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
+				return ((eFlags
+					& IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.USE_CASE__IS_FINAL_SPECIALIZATION :
-				return ((eFlags & IS_FINAL_SPECIALIZATION_EFLAG) != 0) != IS_FINAL_SPECIALIZATION_EDEFAULT;
+				return ((eFlags
+					& IS_FINAL_SPECIALIZATION_EFLAG) != 0) != IS_FINAL_SPECIALIZATION_EDEFAULT;
 			case UMLPackage.USE_CASE__OWNED_USE_CASE :
 				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UMLPackage.USE_CASE__USE_CASE :
@@ -1146,7 +1151,8 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.USE_CASE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.USE_CASE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.USE_CASE___GET_STEREOTYPE_APPLICATIONS :
@@ -1154,7 +1160,8 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.USE_CASE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.USE_CASE___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1243,13 +1250,13 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE___GET_OWNED_MEMBERS :
 				return getOwnedMembers();
 			case UMLPackage.USE_CASE___EXCLUDE_COLLISIONS__ELIST :
-				return excludeCollisions((EList<PackageableElement>) arguments
-					.get(0));
+				return excludeCollisions(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.USE_CASE___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
 				return getNamesOfMember((NamedElement) arguments.get(0));
 			case UMLPackage.USE_CASE___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
+				return importMembers(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.USE_CASE___GET_IMPORTED_MEMBERS :
 				return getImportedMembers();
 			case UMLPackage.USE_CASE___MEMBERS_ARE_DISTINGUISHABLE :
@@ -1269,10 +1276,11 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.USE_CASE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.USE_CASE___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.USE_CASE___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.USE_CASE___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
@@ -1363,8 +1371,7 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE___ALL_SLOTTABLE_FEATURES :
 				return allSlottableFeatures();
 			case UMLPackage.USE_CASE___VALIDATE_CLASS_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
-				return validateClassBehavior(
-					(DiagnosticChain) arguments.get(0),
+				return validateClassBehavior((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.USE_CASE___GET_ALL_IMPLEMENTED_INTERFACES :
 				return getAllImplementedInterfaces();

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -130,8 +130,8 @@ public class StereotypeImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -267,8 +267,8 @@ public class StereotypeImpl
 	 */
 	public Extension createExtension(org.eclipse.uml2.uml.Class metaclass,
 			boolean isRequired) {
-		return StereotypeOperations
-			.createExtension(this, metaclass, isRequired);
+		return StereotypeOperations.createExtension(this, metaclass,
+			isRequired);
 	}
 
 	/**
@@ -362,16 +362,13 @@ public class StereotypeImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<org.eclipse.uml2.uml.Class> result = (EList<org.eclipse.uml2.uml.Class>) cache
-				.get(
-					this,
+				.get(this,
 					UMLPackage.Literals.STEREOTYPE___GET_ALL_EXTENDED_METACLASSES);
 			if (result == null) {
-				cache
-					.put(
-						this,
-						UMLPackage.Literals.STEREOTYPE___GET_ALL_EXTENDED_METACLASSES,
-						result = StereotypeOperations
-							.getAllExtendedMetaclasses(this));
+				cache.put(this,
+					UMLPackage.Literals.STEREOTYPE___GET_ALL_EXTENDED_METACLASSES,
+					result = StereotypeOperations
+						.getAllExtendedMetaclasses(this));
 			}
 			return result;
 		}
@@ -415,70 +412,70 @@ public class StereotypeImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.STEREOTYPE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STEREOTYPE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STEREOTYPE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.STEREOTYPE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedRules())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STEREOTYPE__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getElementImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STEREOTYPE__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPackageImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STEREOTYPE__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.STEREOTYPE__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.STEREOTYPE__TEMPLATE_BINDING :
-				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getTemplateBindings())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STEREOTYPE__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.STEREOTYPE__COLLABORATION_USE :
-				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getCollaborationUses())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STEREOTYPE__GENERALIZATION :
-				return ((InternalEList<?>) getGeneralizations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getGeneralizations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STEREOTYPE__POWERTYPE_EXTENT :
-				return ((InternalEList<?>) getPowertypeExtents()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPowertypeExtents())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STEREOTYPE__OWNED_USE_CASE :
-				return ((InternalEList<?>) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedUseCases())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STEREOTYPE__USE_CASE :
 				return ((InternalEList<?>) getUseCases()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.STEREOTYPE__SUBSTITUTION :
-				return ((InternalEList<?>) getSubstitutions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getSubstitutions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STEREOTYPE__OWNED_ATTRIBUTE :
-				return ((InternalEList<?>) getOwnedAttributes()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedAttributes())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STEREOTYPE__OWNED_CONNECTOR :
-				return ((InternalEList<?>) getOwnedConnectors()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedConnectors())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STEREOTYPE__INTERFACE_REALIZATION :
 				return ((InternalEList<?>) getInterfaceRealizations())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STEREOTYPE__OWNED_BEHAVIOR :
-				return ((InternalEList<?>) getOwnedBehaviors()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedBehaviors())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STEREOTYPE__OWNED_OPERATION :
-				return ((InternalEList<?>) getOwnedOperations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedOperations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STEREOTYPE__NESTED_CLASSIFIER :
-				return ((InternalEList<?>) getNestedClassifiers()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getNestedClassifiers())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STEREOTYPE__OWNED_RECEPTION :
-				return ((InternalEList<?>) getOwnedReceptions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedReceptions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STEREOTYPE__ICON :
 				return ((InternalEList<?>) getIcons()).basicRemove(otherEnd,
 					msgs);
@@ -637,13 +634,13 @@ public class StereotypeImpl
 		switch (featureID) {
 			case UMLPackage.STEREOTYPE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__NAME :
 				setName((String) newValue);
@@ -656,18 +653,18 @@ public class StereotypeImpl
 				return;
 			case UMLPackage.STEREOTYPE__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getOwnedRules()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll(
-					(Collection<? extends ElementImport>) newValue);
+				getElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll(
-					(Collection<? extends PackageImport>) newValue);
+				getPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -683,31 +680,31 @@ public class StereotypeImpl
 				return;
 			case UMLPackage.STEREOTYPE__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll(
-					(Collection<? extends TemplateBinding>) newValue);
+				getTemplateBindings()
+					.addAll((Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__COLLABORATION_USE :
 				getCollaborationUses().clear();
-				getCollaborationUses().addAll(
-					(Collection<? extends CollaborationUse>) newValue);
+				getCollaborationUses()
+					.addAll((Collection<? extends CollaborationUse>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__GENERAL :
 				getGenerals().clear();
-				getGenerals().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getGenerals()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__GENERALIZATION :
 				getGeneralizations().clear();
-				getGeneralizations().addAll(
-					(Collection<? extends Generalization>) newValue);
+				getGeneralizations()
+					.addAll((Collection<? extends Generalization>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll(
-					(Collection<? extends GeneralizationSet>) newValue);
+				getPowertypeExtents()
+					.addAll((Collection<? extends GeneralizationSet>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__IS_ABSTRACT :
 				setIsAbstract((Boolean) newValue);
@@ -717,8 +714,8 @@ public class StereotypeImpl
 				return;
 			case UMLPackage.STEREOTYPE__OWNED_USE_CASE :
 				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll(
-					(Collection<? extends UseCase>) newValue);
+				getOwnedUseCases()
+					.addAll((Collection<? extends UseCase>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__USE_CASE :
 				getUseCases().clear();
@@ -726,26 +723,26 @@ public class StereotypeImpl
 				return;
 			case UMLPackage.STEREOTYPE__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
-				getRedefinedClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getRedefinedClassifiers()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__REPRESENTATION :
 				setRepresentation((CollaborationUse) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__SUBSTITUTION :
 				getSubstitutions().clear();
-				getSubstitutions().addAll(
-					(Collection<? extends Substitution>) newValue);
+				getSubstitutions()
+					.addAll((Collection<? extends Substitution>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll(
-					(Collection<? extends Property>) newValue);
+				getOwnedAttributes()
+					.addAll((Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__OWNED_CONNECTOR :
 				getOwnedConnectors().clear();
-				getOwnedConnectors().addAll(
-					(Collection<? extends Connector>) newValue);
+				getOwnedConnectors()
+					.addAll((Collection<? extends Connector>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__CLASSIFIER_BEHAVIOR :
 				setClassifierBehavior((Behavior) newValue);
@@ -757,32 +754,31 @@ public class StereotypeImpl
 				return;
 			case UMLPackage.STEREOTYPE__OWNED_BEHAVIOR :
 				getOwnedBehaviors().clear();
-				getOwnedBehaviors().addAll(
-					(Collection<? extends Behavior>) newValue);
+				getOwnedBehaviors()
+					.addAll((Collection<? extends Behavior>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__OWNED_OPERATION :
 				getOwnedOperations().clear();
-				getOwnedOperations().addAll(
-					(Collection<? extends Operation>) newValue);
+				getOwnedOperations()
+					.addAll((Collection<? extends Operation>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__IS_ACTIVE :
 				setIsActive((Boolean) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
-				getNestedClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getNestedClassifiers()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
-				getOwnedReceptions().addAll(
-					(Collection<? extends Reception>) newValue);
+				getOwnedReceptions()
+					.addAll((Collection<? extends Reception>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__SUPER_CLASS :
 				getSuperClasses().clear();
-				getSuperClasses()
-					.addAll(
-						(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
+				getSuperClasses().addAll(
+					(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__ICON :
 				getIcons().clear();
@@ -988,7 +984,8 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.STEREOTYPE__IS_FINAL_SPECIALIZATION :
-				return ((eFlags & IS_FINAL_SPECIALIZATION_EFLAG) != 0) != IS_FINAL_SPECIALIZATION_EDEFAULT;
+				return ((eFlags
+					& IS_FINAL_SPECIALIZATION_EFLAG) != 0) != IS_FINAL_SPECIALIZATION_EDEFAULT;
 			case UMLPackage.STEREOTYPE__OWNED_USE_CASE :
 				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UMLPackage.STEREOTYPE__USE_CASE :
@@ -1095,7 +1092,8 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.STEREOTYPE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.STEREOTYPE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.STEREOTYPE___GET_STEREOTYPE_APPLICATIONS :
@@ -1103,7 +1101,8 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.STEREOTYPE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.STEREOTYPE___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1192,13 +1191,13 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE___GET_OWNED_MEMBERS :
 				return getOwnedMembers();
 			case UMLPackage.STEREOTYPE___EXCLUDE_COLLISIONS__ELIST :
-				return excludeCollisions((EList<PackageableElement>) arguments
-					.get(0));
+				return excludeCollisions(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.STEREOTYPE___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
 				return getNamesOfMember((NamedElement) arguments.get(0));
 			case UMLPackage.STEREOTYPE___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
+				return importMembers(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.STEREOTYPE___GET_IMPORTED_MEMBERS :
 				return getImportedMembers();
 			case UMLPackage.STEREOTYPE___MEMBERS_ARE_DISTINGUISHABLE :
@@ -1218,10 +1217,11 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.STEREOTYPE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.STEREOTYPE___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.STEREOTYPE___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.STEREOTYPE___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
@@ -1322,8 +1322,7 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE___GET_OWNED_PORTS :
 				return getOwnedPorts();
 			case UMLPackage.STEREOTYPE___VALIDATE_CLASS_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
-				return validateClassBehavior(
-					(DiagnosticChain) arguments.get(0),
+				return validateClassBehavior((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STEREOTYPE___GET_ALL_IMPLEMENTED_INTERFACES :
 				return getAllImplementedInterfaces();

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -72,15 +72,16 @@ public class ReadIsClassifiedObjectActionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.READ_IS_CLASSIFIED_OBJECT_ACTION__MULTIPLICITY_OF_INPUT,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMultiplicityOfInput", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(readIsClassifiedObjectAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{readIsClassifiedObjectAction}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.READ_IS_CLASSIFIED_OBJECT_ACTION__MULTIPLICITY_OF_INPUT,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateMultiplicityOfInput", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(readIsClassifiedObjectAction,
+									context)}),
+					new Object[]{readIsClassifiedObjectAction}));
 			}
 			return false;
 		}
@@ -108,15 +109,16 @@ public class ReadIsClassifiedObjectActionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.READ_IS_CLASSIFIED_OBJECT_ACTION__NO_TYPE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoType", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(readIsClassifiedObjectAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{readIsClassifiedObjectAction}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.READ_IS_CLASSIFIED_OBJECT_ACTION__NO_TYPE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateNoType", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(readIsClassifiedObjectAction,
+									context)}),
+					new Object[]{readIsClassifiedObjectAction}));
 			}
 			return false;
 		}
@@ -144,15 +146,16 @@ public class ReadIsClassifiedObjectActionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.READ_IS_CLASSIFIED_OBJECT_ACTION__MULTIPLICITY_OF_OUTPUT,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMultiplicityOfOutput", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(readIsClassifiedObjectAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{readIsClassifiedObjectAction}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.READ_IS_CLASSIFIED_OBJECT_ACTION__MULTIPLICITY_OF_OUTPUT,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateMultiplicityOfOutput", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(readIsClassifiedObjectAction,
+									context)}),
+					new Object[]{readIsClassifiedObjectAction}));
 			}
 			return false;
 		}
@@ -180,15 +183,16 @@ public class ReadIsClassifiedObjectActionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.READ_IS_CLASSIFIED_OBJECT_ACTION__BOOLEAN_RESULT,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBooleanResult", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(readIsClassifiedObjectAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{readIsClassifiedObjectAction}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.READ_IS_CLASSIFIED_OBJECT_ACTION__BOOLEAN_RESULT,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateBooleanResult", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(readIsClassifiedObjectAction,
+									context)}),
+					new Object[]{readIsClassifiedObjectAction}));
 			}
 			return false;
 		}

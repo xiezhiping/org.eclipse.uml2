@@ -12614,6 +12614,22 @@ A package is used to group elements, and provides a namespace for the grouped el
           </ownedComment>
         </ownedParameter>
       </ownedOperation>
+      <ownedOperation xmi:id="_WTAl8L4QEeWYh4Gu_uAtYw" name="applyProfiles">
+        <ownedComment xmi:id="_WTAl8b4QEeWYh4Gu_uAtYw" annotatedElement="_WTAl8L4QEeWYh4Gu_uAtYw">
+          <body>Applies the current definitions of the specified profiles to this package and automatically applies required stereotypes in the profiles to elements within this package's namespace hieararchy. If different definitions are already applied, automatically migrates any associated stereotype values on a &quot;best effort&quot; basis (matching classifiers and structural features by name).</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_WTAl8r4QEeWYh4Gu_uAtYw" direction="return">
+          <type xmi:type="uml:Class" href="Ecore.uml#_SeWijsX_EduPJbEsMYXjUQ"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WTAl874QEeWYh4Gu_uAtYw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WTAl9L4QEeWYh4Gu_uAtYw" value="*"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_WTAl9b4QEeWYh4Gu_uAtYw" name="profiles" type="__pew8GvzEdq7X4sGURiZYA" effect="read">
+          <ownedComment xmi:id="_WTAl9r4QEeWYh4Gu_uAtYw" annotatedElement="_WTAl9b4QEeWYh4Gu_uAtYw">
+            <body>The profiles to apply.</body>
+          </ownedComment>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lb-wML4QEeWYh4Gu_uAtYw" value="*"/>
+        </ownedParameter>
+      </ownedOperation>
       <ownedOperation xmi:id="_MOILEIkxEeOMQ5AKLd10lA" name="allApplicableStereotypes" bodyCondition="_MOILEokxEeOMQ5AKLd10lA" isQuery="true">
         <ownedComment xmi:id="_MOILEYkxEeOMQ5AKLd10lA" annotatedElement="_MOILEIkxEeOMQ5AKLd10lA">
           <body>The query allApplicableStereotypes() returns all the directly or indirectly owned stereotypes, including stereotypes contained in sub-profiles.</body>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 351777, 382718, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 351777, 382718, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -99,15 +99,15 @@ public class StereotypeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STEREOTYPE__BINARY_ASSOCIATIONS_ONLY,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBinaryAssociationsOnly", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(stereotype, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{stereotype}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.STEREOTYPE__BINARY_ASSOCIATIONS_ONLY,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateBinaryAssociationsOnly", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(stereotype, context)}),
+					new Object[]{stereotype}));
 			}
 			return false;
 		}
@@ -133,15 +133,15 @@ public class StereotypeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STEREOTYPE__NAME_NOT_CLASH,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNameNotClash", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(stereotype, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{stereotype}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.STEREOTYPE__NAME_NOT_CLASH,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateNameNotClash", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(stereotype, context)}),
+					new Object[]{stereotype}));
 			}
 			return false;
 		}
@@ -162,24 +162,23 @@ public class StereotypeOperations
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateAssociationEndOwnership(
-			Stereotype stereotype, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
+	public static boolean validateAssociationEndOwnership(Stereotype stereotype,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STEREOTYPE__ASSOCIATION_END_OWNERSHIP,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateAssociationEndOwnership", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(stereotype, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{stereotype}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.STEREOTYPE__ASSOCIATION_END_OWNERSHIP,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateAssociationEndOwnership", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(stereotype, context)}),
+					new Object[]{stereotype}));
 			}
 			return false;
 		}
@@ -205,15 +204,15 @@ public class StereotypeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STEREOTYPE__BASE_PROPERTY_UPPER_BOUND,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBasePropertyUpperBound", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(stereotype, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{stereotype}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.STEREOTYPE__BASE_PROPERTY_UPPER_BOUND,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateBasePropertyUpperBound", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(stereotype, context)}),
+					new Object[]{stereotype}));
 			}
 			return false;
 		}
@@ -240,15 +239,16 @@ public class StereotypeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STEREOTYPE__BASE_PROPERTY_MULTIPLICITY_SINGLE_EXTENSION,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBasePropertyMultiplicitySingleExtension", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(stereotype, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{stereotype}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.STEREOTYPE__BASE_PROPERTY_MULTIPLICITY_SINGLE_EXTENSION,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{
+							"validateBasePropertyMultiplicitySingleExtension", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(stereotype, context)}),
+					new Object[]{stereotype}));
 			}
 			return false;
 		}
@@ -275,15 +275,16 @@ public class StereotypeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STEREOTYPE__BASE_PROPERTY_MULTIPLICITY_MULTIPLE_EXTENSION,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBasePropertyMultiplicityMultipleExtension", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(stereotype, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{stereotype}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.STEREOTYPE__BASE_PROPERTY_MULTIPLICITY_MULTIPLE_EXTENSION,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{
+							"validateBasePropertyMultiplicityMultipleExtension", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(stereotype, context)}),
+					new Object[]{stereotype}));
 			}
 			return false;
 		}
@@ -311,15 +312,15 @@ public class StereotypeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STEREOTYPE__GENERALIZE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateGeneralize", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(stereotype, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{stereotype}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.STEREOTYPE__GENERALIZE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateGeneralize", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(stereotype, context)}),
+					new Object[]{stereotype}));
 			}
 			return false;
 		}
@@ -357,9 +358,8 @@ public class StereotypeOperations
 			throw new IllegalArgumentException(String.valueOf(metaclass));
 		}
 
-		if (!profile.getReferencedMetaclasses().contains(metaclass)
-			&& !profile.getReferencedMetamodels()
-				.contains(metaclass.getModel())) {
+		if (!profile.getReferencedMetaclasses().contains(metaclass) && !profile
+			.getReferencedMetamodels().contains(metaclass.getModel())) {
 
 			throw new IllegalArgumentException(String.valueOf(metaclass));
 		}
@@ -428,7 +428,8 @@ public class StereotypeOperations
 		String keyword = getString(stereotype,
 			getValidJavaIdentifier(isEmpty(qualifiedName)
 				? EMPTY_STRING
-				: qualifiedName.replace(':', '_')), EMPTY_STRING, localize);
+				: qualifiedName.replace(':', '_')),
+			EMPTY_STRING, localize);
 
 		if (isEmpty(keyword)) {
 			keyword = getValidJavaIdentifier(stereotype.getName());
@@ -482,8 +483,7 @@ public class StereotypeOperations
 	 */
 	public static EList<org.eclipse.uml2.uml.Class> getExtendedMetaclasses(
 			Stereotype stereotype) {
-		return ECollections.unmodifiableEList(getExtendedMetaclasses(
-			stereotype,
+		return ECollections.unmodifiableEList(getExtendedMetaclasses(stereotype,
 			new UniqueEList.FastCompare<org.eclipse.uml2.uml.Class>()));
 	}
 

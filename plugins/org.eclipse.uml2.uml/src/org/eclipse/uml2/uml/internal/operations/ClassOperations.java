@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -84,16 +84,16 @@ public class ClassOperations
 			org.eclipse.uml2.uml.Class class_, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 
-		if (!class_.isActive()
-			&& !(class_.getOwnedReceptions().isEmpty() && class_
-				.getClassifierBehavior() == null)) {
+		if (!class_.isActive() && !(class_.getOwnedReceptions().isEmpty()
+			&& class_.getClassifierBehavior() == null)) {
 
 			if (diagnostics != null) {
 				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
 					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.CLASS__PASSIVE_CLASS, UMLPlugin.INSTANCE
-						.getString("_UI_Class_PassiveClass_diagnostic", //$NON-NLS-1$
-							getMessageSubstitutions(context, class_)),
+					UMLValidator.CLASS__PASSIVE_CLASS,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_Class_PassiveClass_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, class_)),
 					new Object[]{class_}));
 			}
 
@@ -139,9 +139,11 @@ public class ClassOperations
 
 		if (class_.isMetaclass()) {
 
-			for (EStructuralFeature.Setting nonNavigableInverseReference : getNonNavigableInverseReferences(class_)) {
+			for (EStructuralFeature.Setting nonNavigableInverseReference : getNonNavigableInverseReferences(
+				class_)) {
 
-				if (nonNavigableInverseReference.getEStructuralFeature() == UMLPackage.Literals.TYPED_ELEMENT__TYPE) {
+				if (nonNavigableInverseReference
+					.getEStructuralFeature() == UMLPackage.Literals.TYPED_ELEMENT__TYPE) {
 					EObject eObject = nonNavigableInverseReference.getEObject();
 
 					if (eObject instanceof Property) {
@@ -192,8 +194,8 @@ public class ClassOperations
 			org.eclipse.uml2.uml.Class class_, String name,
 			EList<String> parameterNames, EList<Type> parameterTypes,
 			Type returnType) {
-		return TypeOperations.createOwnedOperation(class_, name,
-			parameterNames, parameterTypes, returnType);
+		return TypeOperations.createOwnedOperation(class_, name, parameterNames,
+			parameterTypes, returnType);
 	}
 
 	/**

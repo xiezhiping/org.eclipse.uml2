@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -208,7 +208,8 @@ public class DeploymentSpecificationImpl
 	public void setDeploymentLocation(String newDeploymentLocation) {
 		String oldDeploymentLocation = deploymentLocation;
 		deploymentLocation = newDeploymentLocation;
-		boolean oldDeploymentLocationESet = (eFlags & DEPLOYMENT_LOCATION_ESETFLAG) != 0;
+		boolean oldDeploymentLocationESet = (eFlags
+			& DEPLOYMENT_LOCATION_ESETFLAG) != 0;
 		eFlags |= DEPLOYMENT_LOCATION_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
@@ -224,7 +225,8 @@ public class DeploymentSpecificationImpl
 	 */
 	public void unsetDeploymentLocation() {
 		String oldDeploymentLocation = deploymentLocation;
-		boolean oldDeploymentLocationESet = (eFlags & DEPLOYMENT_LOCATION_ESETFLAG) != 0;
+		boolean oldDeploymentLocationESet = (eFlags
+			& DEPLOYMENT_LOCATION_ESETFLAG) != 0;
 		deploymentLocation = DEPLOYMENT_LOCATION_EDEFAULT;
 		eFlags &= ~DEPLOYMENT_LOCATION_ESETFLAG;
 		if (eNotificationRequired())
@@ -260,7 +262,8 @@ public class DeploymentSpecificationImpl
 	public void setExecutionLocation(String newExecutionLocation) {
 		String oldExecutionLocation = executionLocation;
 		executionLocation = newExecutionLocation;
-		boolean oldExecutionLocationESet = (eFlags & EXECUTION_LOCATION_ESETFLAG) != 0;
+		boolean oldExecutionLocationESet = (eFlags
+			& EXECUTION_LOCATION_ESETFLAG) != 0;
 		eFlags |= EXECUTION_LOCATION_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
@@ -276,7 +279,8 @@ public class DeploymentSpecificationImpl
 	 */
 	public void unsetExecutionLocation() {
 		String oldExecutionLocation = executionLocation;
-		boolean oldExecutionLocationESet = (eFlags & EXECUTION_LOCATION_ESETFLAG) != 0;
+		boolean oldExecutionLocationESet = (eFlags
+			& EXECUTION_LOCATION_ESETFLAG) != 0;
 		executionLocation = EXECUTION_LOCATION_EDEFAULT;
 		eFlags &= ~EXECUTION_LOCATION_ESETFLAG;
 		if (eNotificationRequired())
@@ -336,7 +340,8 @@ public class DeploymentSpecificationImpl
 	 */
 	public void setDeployment(Deployment newDeployment) {
 		if (newDeployment != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT && newDeployment != null)) {
+			|| (eContainerFeatureID() != UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT
+				&& newDeployment != null)) {
 			if (EcoreUtil.isAncestor(this, newDeployment))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -407,10 +412,10 @@ public class DeploymentSpecificationImpl
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
 				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
+					msgs = ((InternalEObject) templateParameter).eInverseRemove(
+						this,
+						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+						TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING :
@@ -419,8 +424,7 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
-						.eInverseRemove(
-							this,
+						.eInverseRemove(this,
 							EOPPOSITE_FEATURE_BASE
 								- UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE,
 							null, msgs);
@@ -456,61 +460,61 @@ public class DeploymentSpecificationImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedRules())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getElementImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPackageImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING :
-				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getTemplateBindings())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__COLLABORATION_USE :
-				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getCollaborationUses())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__GENERALIZATION :
-				return ((InternalEList<?>) getGeneralizations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getGeneralizations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__POWERTYPE_EXTENT :
-				return ((InternalEList<?>) getPowertypeExtents()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPowertypeExtents())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE :
-				return ((InternalEList<?>) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedUseCases())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
 				return ((InternalEList<?>) getUseCases()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__SUBSTITUTION :
-				return ((InternalEList<?>) getSubstitutions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getSubstitutions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__MANIFESTATION :
-				return ((InternalEList<?>) getManifestations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getManifestations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NESTED_ARTIFACT :
-				return ((InternalEList<?>) getNestedArtifacts()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getNestedArtifacts())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_ATTRIBUTE :
-				return ((InternalEList<?>) getOwnedAttributes()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedAttributes())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_OPERATION :
-				return ((InternalEList<?>) getOwnedOperations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedOperations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT :
 				return basicSetDeployment(null, msgs);
 		}
@@ -671,13 +675,13 @@ public class DeploymentSpecificationImpl
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NAME :
 				setName((String) newValue);
@@ -690,18 +694,18 @@ public class DeploymentSpecificationImpl
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getOwnedRules()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll(
-					(Collection<? extends ElementImport>) newValue);
+				getElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll(
-					(Collection<? extends PackageImport>) newValue);
+				getPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -717,31 +721,31 @@ public class DeploymentSpecificationImpl
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll(
-					(Collection<? extends TemplateBinding>) newValue);
+				getTemplateBindings()
+					.addAll((Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__COLLABORATION_USE :
 				getCollaborationUses().clear();
-				getCollaborationUses().addAll(
-					(Collection<? extends CollaborationUse>) newValue);
+				getCollaborationUses()
+					.addAll((Collection<? extends CollaborationUse>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__GENERAL :
 				getGenerals().clear();
-				getGenerals().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getGenerals()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__GENERALIZATION :
 				getGeneralizations().clear();
-				getGeneralizations().addAll(
-					(Collection<? extends Generalization>) newValue);
+				getGeneralizations()
+					.addAll((Collection<? extends Generalization>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll(
-					(Collection<? extends GeneralizationSet>) newValue);
+				getPowertypeExtents()
+					.addAll((Collection<? extends GeneralizationSet>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__IS_ABSTRACT :
 				setIsAbstract((Boolean) newValue);
@@ -751,8 +755,8 @@ public class DeploymentSpecificationImpl
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE :
 				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll(
-					(Collection<? extends UseCase>) newValue);
+				getOwnedUseCases()
+					.addAll((Collection<? extends UseCase>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
 				getUseCases().clear();
@@ -760,39 +764,39 @@ public class DeploymentSpecificationImpl
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
-				getRedefinedClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getRedefinedClassifiers()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__REPRESENTATION :
 				setRepresentation((CollaborationUse) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__SUBSTITUTION :
 				getSubstitutions().clear();
-				getSubstitutions().addAll(
-					(Collection<? extends Substitution>) newValue);
+				getSubstitutions()
+					.addAll((Collection<? extends Substitution>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__FILE_NAME :
 				setFileName((String) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__MANIFESTATION :
 				getManifestations().clear();
-				getManifestations().addAll(
-					(Collection<? extends Manifestation>) newValue);
+				getManifestations()
+					.addAll((Collection<? extends Manifestation>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NESTED_ARTIFACT :
 				getNestedArtifacts().clear();
-				getNestedArtifacts().addAll(
-					(Collection<? extends Artifact>) newValue);
+				getNestedArtifacts()
+					.addAll((Collection<? extends Artifact>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll(
-					(Collection<? extends Property>) newValue);
+				getOwnedAttributes()
+					.addAll((Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_OPERATION :
 				getOwnedOperations().clear();
-				getOwnedOperations().addAll(
-					(Collection<? extends Operation>) newValue);
+				getOwnedOperations()
+					.addAll((Collection<? extends Operation>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION :
 				setDeploymentLocation((String) newValue);
@@ -992,9 +996,11 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__IS_ABSTRACT :
-				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
+				return ((eFlags
+					& IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__IS_FINAL_SPECIALIZATION :
-				return ((eFlags & IS_FINAL_SPECIALIZATION_EFLAG) != 0) != IS_FINAL_SPECIALIZATION_EDEFAULT;
+				return ((eFlags
+					& IS_FINAL_SPECIALIZATION_EFLAG) != 0) != IS_FINAL_SPECIALIZATION_EDEFAULT;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE :
 				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
@@ -1083,7 +1089,8 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___GET_STEREOTYPE_APPLICATIONS :
@@ -1091,7 +1098,8 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1180,13 +1188,13 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___GET_OWNED_MEMBERS :
 				return getOwnedMembers();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___EXCLUDE_COLLISIONS__ELIST :
-				return excludeCollisions((EList<PackageableElement>) arguments
-					.get(0));
+				return excludeCollisions(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
 				return getNamesOfMember((NamedElement) arguments.get(0));
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
+				return importMembers(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___GET_IMPORTED_MEMBERS :
 				return getImportedMembers();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___MEMBERS_ARE_DISTINGUISHABLE :
@@ -1206,10 +1214,11 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :

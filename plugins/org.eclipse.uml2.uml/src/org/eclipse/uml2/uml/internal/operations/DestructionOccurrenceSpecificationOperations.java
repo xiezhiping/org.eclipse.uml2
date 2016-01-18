@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2015 CEA and others.
+ * Copyright (c) 2011, 2016 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
- *   Kenn Hussey (CEA) - 297216, 418466, 451350
+ *   Kenn Hussey (CEA) - 297216, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -71,15 +71,17 @@ public class DestructionOccurrenceSpecificationOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.DESTRUCTION_OCCURRENCE_SPECIFICATION__NO_OCCURRENCE_SPECIFICATIONS_BELOW,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoOccurrenceSpecificationsBelow", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(destructionOccurrenceSpecification, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{destructionOccurrenceSpecification}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.DESTRUCTION_OCCURRENCE_SPECIFICATION__NO_OCCURRENCE_SPECIFICATIONS_BELOW,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateNoOccurrenceSpecificationsBelow", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(
+									destructionOccurrenceSpecification,
+									context)}),
+					new Object[]{destructionOccurrenceSpecification}));
 			}
 			return false;
 		}

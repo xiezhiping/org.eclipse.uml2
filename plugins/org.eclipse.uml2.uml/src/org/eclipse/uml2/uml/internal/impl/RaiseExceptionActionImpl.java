@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -133,8 +133,8 @@ public class RaiseExceptionActionImpl
 				InternalEObject newException = (InternalEObject) exception;
 				NotificationChain msgs = oldException.eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION, null,
-					null);
+						- UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION,
+					null, null);
 				if (newException.eInternalContainer() == null) {
 					msgs = newException.eInverseAdd(this,
 						EOPPOSITE_FEATURE_BASE
@@ -193,13 +193,13 @@ public class RaiseExceptionActionImpl
 			if (exception != null)
 				msgs = ((InternalEObject) exception).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION, null,
-					msgs);
+						- UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION,
+					null, msgs);
 			if (newException != null)
 				msgs = ((InternalEObject) newException).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION, null,
-					msgs);
+						- UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION,
+					null, msgs);
 			msgs = basicSetException(newException, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -243,11 +243,11 @@ public class RaiseExceptionActionImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.RAISE_EXCEPTION_ACTION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_INTERRUPTIBLE_REGION :
@@ -256,14 +256,14 @@ public class RaiseExceptionActionImpl
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_STRUCTURED_NODE :
 				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.RAISE_EXCEPTION_ACTION__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OUTGOING :
-				return ((InternalEList<?>) getOutgoings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getInPartitions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.RAISE_EXCEPTION_ACTION__HANDLER :
 				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
@@ -374,13 +374,13 @@ public class RaiseExceptionActionImpl
 		switch (featureID) {
 			case UMLPackage.RAISE_EXCEPTION_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME :
 				setName((String) newValue);
@@ -399,50 +399,49 @@ public class RaiseExceptionActionImpl
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions()
-					.addAll(
-						(Collection<? extends InterruptibleActivityRegion>) newValue);
+				getInInterruptibleRegions().addAll(
+					(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getIncomings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getOutgoings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll(
-					(Collection<? extends ActivityNode>) newValue);
+				getRedefinedNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
+				getInPartitions()
+					.addAll((Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll(
-					(Collection<? extends ExceptionHandler>) newValue);
+				getHandlers()
+					.addAll((Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IS_LOCALLY_REENTRANT :
 				setIsLocallyReentrant((Boolean) newValue);
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPostconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPreconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION :
 				setException((InputPin) newValue);
@@ -577,7 +576,8 @@ public class RaiseExceptionActionImpl
 			case UMLPackage.RAISE_EXCEPTION_ACTION__INPUT :
 				return isSetInputs();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IS_LOCALLY_REENTRANT :
-				return ((eFlags & IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
+				return ((eFlags
+					& IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_POSTCONDITION :
 				return localPostconditions != null
 					&& !localPostconditions.isEmpty();
@@ -600,7 +600,8 @@ public class RaiseExceptionActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] INPUT_ESUBSETS = new int[]{UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION};
+	protected static final int[] INPUT_ESUBSETS = new int[]{
+		UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION};
 
 	/**
 	 * <!-- begin-user-doc -->

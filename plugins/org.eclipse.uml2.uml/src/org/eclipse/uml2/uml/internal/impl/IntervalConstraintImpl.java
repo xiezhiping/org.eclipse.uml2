@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 212765, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 212765, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -80,13 +80,14 @@ public class IntervalConstraintImpl
 	public ValueSpecification getSpecification() {
 		if (specification != null && specification.eIsProxy()) {
 			InternalEObject oldSpecification = (InternalEObject) specification;
-			specification = (ValueSpecification) eResolveProxy(oldSpecification);
+			specification = (ValueSpecification) eResolveProxy(
+				oldSpecification);
 			if (specification != oldSpecification) {
 				InternalEObject newSpecification = (InternalEObject) specification;
 				NotificationChain msgs = oldSpecification.eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION, null,
-					null);
+						- UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION,
+					null, null);
 				if (newSpecification.eInternalContainer() == null) {
 					msgs = newSpecification.eInverseAdd(this,
 						EOPPOSITE_FEATURE_BASE
@@ -122,7 +123,8 @@ public class IntervalConstraintImpl
 	@Override
 	public NotificationChain basicSetSpecification(
 			ValueSpecification newSpecification, NotificationChain msgs) {
-		if (newSpecification != null && !(newSpecification instanceof Interval)) {
+		if (newSpecification != null
+			&& !(newSpecification instanceof Interval)) {
 			throw new IllegalArgumentException(
 				"newSpecification must be an instance of Interval"); //$NON-NLS-1$
 		}
@@ -130,8 +132,7 @@ public class IntervalConstraintImpl
 		specification = newSpecification;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET,
-				UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION,
+				Notification.SET, UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION,
 				oldSpecification, newSpecification);
 			if (msgs == null)
 				msgs = notification;
@@ -148,7 +149,8 @@ public class IntervalConstraintImpl
 	 */
 	@Override
 	public void setSpecification(ValueSpecification newSpecification) {
-		if (newSpecification != null && !(newSpecification instanceof Interval)) {
+		if (newSpecification != null
+			&& !(newSpecification instanceof Interval)) {
 			throw new IllegalArgumentException(
 				"newSpecification must be an instance of Interval"); //$NON-NLS-1$
 		}
@@ -157,20 +159,20 @@ public class IntervalConstraintImpl
 			if (specification != null)
 				msgs = ((InternalEObject) specification).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION, null,
-					msgs);
+						- UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION,
+					null, msgs);
 			if (newSpecification != null)
 				msgs = ((InternalEObject) newSpecification).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION, null,
-					msgs);
+						- UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION,
+					null, msgs);
 			msgs = basicSetSpecification(newSpecification, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION,
-				newSpecification, newSpecification));
+				UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION, newSpecification,
+				newSpecification));
 	}
 
 	/**
@@ -180,7 +182,8 @@ public class IntervalConstraintImpl
 	 */
 	public ValueSpecification createSpecification(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newSpecification = (ValueSpecification) create(eClass);
+		ValueSpecification newSpecification = (ValueSpecification) create(
+			eClass);
 		setSpecification(newSpecification);
 		if (name != null)
 			newSpecification.setName(name);
@@ -208,11 +211,11 @@ public class IntervalConstraintImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.INTERVAL_CONSTRAINT__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERVAL_CONSTRAINT__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERVAL_CONSTRAINT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INTERVAL_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
@@ -294,13 +297,13 @@ public class IntervalConstraintImpl
 		switch (featureID) {
 			case UMLPackage.INTERVAL_CONSTRAINT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.INTERVAL_CONSTRAINT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.INTERVAL_CONSTRAINT__NAME :
 				setName((String) newValue);
@@ -319,8 +322,8 @@ public class IntervalConstraintImpl
 				return;
 			case UMLPackage.INTERVAL_CONSTRAINT__CONSTRAINED_ELEMENT :
 				getConstrainedElements().clear();
-				getConstrainedElements().addAll(
-					(Collection<? extends Element>) newValue);
+				getConstrainedElements()
+					.addAll((Collection<? extends Element>) newValue);
 				return;
 			case UMLPackage.INTERVAL_CONSTRAINT__CONTEXT :
 				setContext((Namespace) newValue);

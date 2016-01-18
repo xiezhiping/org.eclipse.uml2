@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -142,7 +142,8 @@ public class SubstitutionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] SUPPLIER_ESUBSETS = new int[]{UMLPackage.SUBSTITUTION__CONTRACT};
+	protected static final int[] SUPPLIER_ESUBSETS = new int[]{
+		UMLPackage.SUBSTITUTION__CONTRACT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -153,8 +154,8 @@ public class SubstitutionImpl
 	public EList<NamedElement> getClients() {
 		if (clients == null) {
 			clients = new SubsetSupersetEObjectResolvingEList<NamedElement>(
-				NamedElement.class, this, UMLPackage.SUBSTITUTION__CLIENT,
-				null, CLIENT_ESUBSETS);
+				NamedElement.class, this, UMLPackage.SUBSTITUTION__CLIENT, null,
+				CLIENT_ESUBSETS);
 		}
 		return clients;
 	}
@@ -167,7 +168,8 @@ public class SubstitutionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] CLIENT_ESUBSETS = new int[]{UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER};
+	protected static final int[] CLIENT_ESUBSETS = new int[]{
+		UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -267,9 +269,11 @@ public class SubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSubstitutingClassifier(Classifier newSubstitutingClassifier) {
+	public void setSubstitutingClassifier(
+			Classifier newSubstitutingClassifier) {
 		if (newSubstitutingClassifier != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER && newSubstitutingClassifier != null)) {
+			|| (eContainerFeatureID() != UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER
+				&& newSubstitutingClassifier != null)) {
 			if (EcoreUtil.isAncestor(this, newSubstitutingClassifier))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -310,10 +314,10 @@ public class SubstitutionImpl
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
 				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
+					msgs = ((InternalEObject) templateParameter).eInverseRemove(
+						this,
+						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+						TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER :
@@ -335,11 +339,11 @@ public class SubstitutionImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.SUBSTITUTION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SUBSTITUTION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SUBSTITUTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
@@ -368,9 +372,9 @@ public class SubstitutionImpl
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 					TemplateParameter.class, msgs);
 			case UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER :
-				return eInternalContainer()
-					.eInverseRemove(this, UMLPackage.CLASSIFIER__SUBSTITUTION,
-						Classifier.class, msgs);
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.CLASSIFIER__SUBSTITUTION, Classifier.class,
+					msgs);
 		}
 		return eDynamicBasicRemoveFromContainer(msgs);
 	}
@@ -454,13 +458,13 @@ public class SubstitutionImpl
 		switch (featureID) {
 			case UMLPackage.SUBSTITUTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.SUBSTITUTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.SUBSTITUTION__NAME :
 				setName((String) newValue);
@@ -479,13 +483,13 @@ public class SubstitutionImpl
 				return;
 			case UMLPackage.SUBSTITUTION__CLIENT :
 				getClients().clear();
-				getClients().addAll(
-					(Collection<? extends NamedElement>) newValue);
+				getClients()
+					.addAll((Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.SUBSTITUTION__SUPPLIER :
 				getSuppliers().clear();
-				getSuppliers().addAll(
-					(Collection<? extends NamedElement>) newValue);
+				getSuppliers()
+					.addAll((Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.SUBSTITUTION__MAPPING :
 				setMapping((OpaqueExpression) newValue);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -222,13 +222,13 @@ public class ConsiderIgnoreFragmentImpl
 		switch (featureID) {
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME :
 				setName((String) newValue);
@@ -251,13 +251,13 @@ public class ConsiderIgnoreFragmentImpl
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
+				getGeneralOrderings()
+					.addAll((Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__CFRAGMENT_GATE :
 				getCfragmentGates().clear();
-				getCfragmentGates().addAll(
-					(Collection<? extends Gate>) newValue);
+				getCfragmentGates()
+					.addAll((Collection<? extends Gate>) newValue);
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__INTERACTION_OPERATOR :
 				setInteractionOperator((InteractionOperatorKind) newValue);
@@ -269,8 +269,8 @@ public class ConsiderIgnoreFragmentImpl
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__MESSAGE :
 				getMessages().clear();
-				getMessages().addAll(
-					(Collection<? extends NamedElement>) newValue);
+				getMessages()
+					.addAll((Collection<? extends NamedElement>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -368,7 +368,8 @@ public class ConsiderIgnoreFragmentImpl
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__CFRAGMENT_GATE :
 				return cfragmentGates != null && !cfragmentGates.isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__INTERACTION_OPERATOR :
-				return (eFlags & INTERACTION_OPERATOR_EFLAG) != INTERACTION_OPERATOR_EFLAG_DEFAULT;
+				return (eFlags
+					& INTERACTION_OPERATOR_EFLAG) != INTERACTION_OPERATOR_EFLAG_DEFAULT;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OPERAND :
 				return operands != null && !operands.isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__MESSAGE :
@@ -434,7 +435,8 @@ public class ConsiderIgnoreFragmentImpl
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___GET_STEREOTYPE_APPLICATIONS :
@@ -442,7 +444,8 @@ public class ConsiderIgnoreFragmentImpl
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));

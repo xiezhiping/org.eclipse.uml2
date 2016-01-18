@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -91,21 +91,21 @@ public class ActorOperations
 					: actorEnd.getType();
 
 				result &= actorEndType instanceof UseCase
-					|| (actorEndType instanceof org.eclipse.uml2.uml.Class && !(actorEndType instanceof Behavior));
+					|| (actorEndType instanceof org.eclipse.uml2.uml.Class
+						&& !(actorEndType instanceof Behavior));
 			}
 
 			if (!result) {
 
 				if (diagnostics != null) {
-					diagnostics
-						.add(new BasicDiagnostic(
-							Diagnostic.WARNING,
-							UMLValidator.DIAGNOSTIC_SOURCE,
-							UMLValidator.ACTOR__ASSOCIATIONS,
-							UMLPlugin.INSTANCE
-								.getString(
-									"_UI_Actor_Associations_diagnostic", getMessageSubstitutions(context, actor, association)), //$NON-NLS-1$
-							new Object[]{actor, association}));
+					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.ACTOR__ASSOCIATIONS,
+						UMLPlugin.INSTANCE.getString(
+							"_UI_Actor_Associations_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, actor,
+								association)),
+						new Object[]{actor, association}));
 				}
 
 				break;
@@ -132,15 +132,13 @@ public class ActorOperations
 		boolean result = !isEmpty(actor.getName());
 
 		if (!result && diagnostics != null) {
-			diagnostics
-				.add(new BasicDiagnostic(
-					Diagnostic.WARNING,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.ACTOR__MUST_HAVE_NAME,
-					UMLPlugin.INSTANCE
-						.getString(
-							"_UI_Actor_MustHaveName_diagnostic", getMessageSubstitutions(context, actor)), //$NON-NLS-1$
-					new Object[]{actor}));
+			diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+				UMLValidator.DIAGNOSTIC_SOURCE,
+				UMLValidator.ACTOR__MUST_HAVE_NAME,
+				UMLPlugin.INSTANCE.getString(
+					"_UI_Actor_MustHaveName_diagnostic", //$NON-NLS-1$
+					getMessageSubstitutions(context, actor)),
+				new Object[]{actor}));
 		}
 
 		return result;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -133,8 +133,8 @@ public class TimeEventImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -190,8 +190,9 @@ public class TimeEventImpl
 					EOPPOSITE_FEATURE_BASE - UMLPackage.TIME_EVENT__WHEN, null,
 					null);
 				if (newWhen.eInternalContainer() == null) {
-					msgs = newWhen.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.TIME_EVENT__WHEN, null, msgs);
+					msgs = newWhen.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - UMLPackage.TIME_EVENT__WHEN,
+						null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -223,7 +224,8 @@ public class TimeEventImpl
 		when = newWhen;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, UMLPackage.TIME_EVENT__WHEN, oldWhen, newWhen);
+				Notification.SET, UMLPackage.TIME_EVENT__WHEN, oldWhen,
+				newWhen);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -262,7 +264,8 @@ public class TimeEventImpl
 	 * @generated
 	 */
 	public TimeExpression createWhen(String name, Type type) {
-		TimeExpression newWhen = (TimeExpression) create(UMLPackage.Literals.TIME_EXPRESSION);
+		TimeExpression newWhen = (TimeExpression) create(
+			UMLPackage.Literals.TIME_EXPRESSION);
 		setWhen(newWhen);
 		if (name != null)
 			newWhen.setName(name);
@@ -292,11 +295,11 @@ public class TimeEventImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.TIME_EVENT__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TIME_EVENT__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TIME_EVENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.TIME_EVENT__OWNING_TEMPLATE_PARAMETER :
@@ -372,13 +375,13 @@ public class TimeEventImpl
 		switch (featureID) {
 			case UMLPackage.TIME_EVENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.TIME_EVENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.TIME_EVENT__NAME :
 				setName((String) newValue);
@@ -479,7 +482,8 @@ public class TimeEventImpl
 			case UMLPackage.TIME_EVENT__TEMPLATE_PARAMETER :
 				return templateParameter != null;
 			case UMLPackage.TIME_EVENT__IS_RELATIVE :
-				return ((eFlags & IS_RELATIVE_EFLAG) != 0) != IS_RELATIVE_EDEFAULT;
+				return ((eFlags
+					& IS_RELATIVE_EFLAG) != 0) != IS_RELATIVE_EDEFAULT;
 			case UMLPackage.TIME_EVENT__WHEN :
 				return when != null;
 		}
@@ -543,7 +547,8 @@ public class TimeEventImpl
 			case UMLPackage.TIME_EVENT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.TIME_EVENT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.TIME_EVENT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.TIME_EVENT___GET_STEREOTYPE_APPLICATIONS :
@@ -551,7 +556,8 @@ public class TimeEventImpl
 			case UMLPackage.TIME_EVENT___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.TIME_EVENT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.TIME_EVENT___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -614,7 +620,8 @@ public class TimeEventImpl
 			case UMLPackage.TIME_EVENT___GET_CLIENT_DEPENDENCIES :
 				return getClientDependencies();
 			case UMLPackage.TIME_EVENT___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.TIME_EVENT___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.TIME_EVENT___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :

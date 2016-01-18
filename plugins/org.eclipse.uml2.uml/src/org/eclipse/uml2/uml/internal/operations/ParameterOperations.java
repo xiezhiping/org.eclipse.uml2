@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 313298, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 313298, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -92,15 +92,15 @@ public class ParameterOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PARAMETER__CONNECTOR_END,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateConnectorEnd", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(parameter, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{parameter}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PARAMETER__CONNECTOR_END,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateConnectorEnd", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(parameter, context)}),
+					new Object[]{parameter}));
 			}
 			return false;
 		}
@@ -127,15 +127,15 @@ public class ParameterOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PARAMETER__STREAM_AND_EXCEPTION,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateStreamAndException", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(parameter, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{parameter}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PARAMETER__STREAM_AND_EXCEPTION,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateStreamAndException", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(parameter, context)}),
+					new Object[]{parameter}));
 			}
 			return false;
 		}
@@ -162,15 +162,15 @@ public class ParameterOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PARAMETER__OBJECT_EFFECT,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateObjectEffect", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(parameter, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{parameter}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PARAMETER__OBJECT_EFFECT,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateObjectEffect", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(parameter, context)}),
+					new Object[]{parameter}));
 			}
 			return false;
 		}
@@ -197,15 +197,15 @@ public class ParameterOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PARAMETER__NOT_EXCEPTION,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNotException", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(parameter, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{parameter}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PARAMETER__NOT_EXCEPTION,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateNotException", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(parameter, context)}),
+					new Object[]{parameter}));
 			}
 			return false;
 		}
@@ -232,15 +232,15 @@ public class ParameterOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PARAMETER__REENTRANT_BEHAVIORS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateReentrantBehaviors", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(parameter, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{parameter}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PARAMETER__REENTRANT_BEHAVIORS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateReentrantBehaviors", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(parameter, context)}),
+					new Object[]{parameter}));
 			}
 			return false;
 		}
@@ -269,15 +269,15 @@ public class ParameterOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PARAMETER__IN_AND_OUT,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateInAndOut", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(parameter, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{parameter}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PARAMETER__IN_AND_OUT,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateInAndOut", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(parameter, context)}),
+					new Object[]{parameter}));
 			}
 			return false;
 		}
@@ -348,7 +348,8 @@ public class ParameterOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static void setBooleanDefaultValue(Parameter parameter, boolean value) {
+	public static void setBooleanDefaultValue(Parameter parameter,
+			boolean value) {
 		ValueSpecification defaultValue = parameter.getDefaultValue();
 
 		((LiteralBoolean) (defaultValue instanceof LiteralBoolean
@@ -386,7 +387,8 @@ public class ParameterOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static void setStringDefaultValue(Parameter parameter, String value) {
+	public static void setStringDefaultValue(Parameter parameter,
+			String value) {
 		ValueSpecification defaultValue = parameter.getDefaultValue();
 
 		((LiteralString) (defaultValue instanceof LiteralString
@@ -413,7 +415,7 @@ public class ParameterOperations
 			? defaultValue
 			: parameter.createDefaultValue(null, null,
 				UMLPackage.Literals.LITERAL_UNLIMITED_NATURAL)))
-			.setValue(value);
+					.setValue(value);
 	}
 
 	/**

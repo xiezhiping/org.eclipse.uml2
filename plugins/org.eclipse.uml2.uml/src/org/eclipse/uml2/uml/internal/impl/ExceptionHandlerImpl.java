@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -295,7 +295,8 @@ public class ExceptionHandlerImpl
 	 */
 	public void setProtectedNode(ExecutableNode newProtectedNode) {
 		if (newProtectedNode != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE && newProtectedNode != null)) {
+			|| (eContainerFeatureID() != UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE
+				&& newProtectedNode != null)) {
 			if (EcoreUtil.isAncestor(this, newProtectedNode))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -412,11 +413,11 @@ public class ExceptionHandlerImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.EXCEPTION_HANDLER__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXCEPTION_HANDLER__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE :
 				return basicSetProtectedNode(null, msgs);
 		}
@@ -487,21 +488,21 @@ public class ExceptionHandlerImpl
 		switch (featureID) {
 			case UMLPackage.EXCEPTION_HANDLER__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.EXCEPTION_HANDLER__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.EXCEPTION_HANDLER__EXCEPTION_INPUT :
 				setExceptionInput((ObjectNode) newValue);
 				return;
 			case UMLPackage.EXCEPTION_HANDLER__EXCEPTION_TYPE :
 				getExceptionTypes().clear();
-				getExceptionTypes().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getExceptionTypes()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY :
 				setHandlerBody((ExecutableNode) newValue);
@@ -628,7 +629,8 @@ public class ExceptionHandlerImpl
 			case UMLPackage.EXCEPTION_HANDLER___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.EXCEPTION_HANDLER___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.EXCEPTION_HANDLER___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.EXCEPTION_HANDLER___GET_STEREOTYPE_APPLICATIONS :
@@ -636,7 +638,8 @@ public class ExceptionHandlerImpl
 			case UMLPackage.EXCEPTION_HANDLER___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.EXCEPTION_HANDLER___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.EXCEPTION_HANDLER___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));

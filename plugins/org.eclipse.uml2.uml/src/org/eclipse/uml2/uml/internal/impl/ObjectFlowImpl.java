@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -333,8 +333,8 @@ public class ObjectFlowImpl
 	 */
 	public boolean validateNoExecutableNodes(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return ObjectFlowOperations.validateNoExecutableNodes(this,
-			diagnostics, context);
+		return ObjectFlowOperations.validateNoExecutableNodes(this, diagnostics,
+			context);
 	}
 
 	/**
@@ -355,8 +355,8 @@ public class ObjectFlowImpl
 	 */
 	public boolean validateSelectionBehavior(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return ObjectFlowOperations.validateSelectionBehavior(this,
-			diagnostics, context);
+		return ObjectFlowOperations.validateSelectionBehavior(this, diagnostics,
+			context);
 	}
 
 	/**
@@ -471,13 +471,13 @@ public class ObjectFlowImpl
 		switch (featureID) {
 			case UMLPackage.OBJECT_FLOW__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.OBJECT_FLOW__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.OBJECT_FLOW__NAME :
 				setName((String) newValue);
@@ -499,8 +499,8 @@ public class ObjectFlowImpl
 				return;
 			case UMLPackage.OBJECT_FLOW__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
+				getInPartitions()
+					.addAll((Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.OBJECT_FLOW__INTERRUPTS :
 				setInterrupts((InterruptibleActivityRegion) newValue);
@@ -516,8 +516,8 @@ public class ObjectFlowImpl
 				return;
 			case UMLPackage.OBJECT_FLOW__REDEFINED_EDGE :
 				getRedefinedEdges().clear();
-				getRedefinedEdges().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getRedefinedEdges()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.OBJECT_FLOW__WEIGHT :
 				setWeight((ValueSpecification) newValue);
@@ -664,9 +664,11 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.OBJECT_FLOW__IS_MULTICAST :
-				return ((eFlags & IS_MULTICAST_EFLAG) != 0) != IS_MULTICAST_EDEFAULT;
+				return ((eFlags
+					& IS_MULTICAST_EFLAG) != 0) != IS_MULTICAST_EDEFAULT;
 			case UMLPackage.OBJECT_FLOW__IS_MULTIRECEIVE :
-				return ((eFlags & IS_MULTIRECEIVE_EFLAG) != 0) != IS_MULTIRECEIVE_EDEFAULT;
+				return ((eFlags
+					& IS_MULTIRECEIVE_EFLAG) != 0) != IS_MULTIRECEIVE_EDEFAULT;
 			case UMLPackage.OBJECT_FLOW__SELECTION :
 				return selection != null;
 			case UMLPackage.OBJECT_FLOW__TRANSFORMATION :
@@ -732,7 +734,8 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.OBJECT_FLOW___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.OBJECT_FLOW___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.OBJECT_FLOW___GET_STEREOTYPE_APPLICATIONS :
@@ -740,7 +743,8 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.OBJECT_FLOW___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.OBJECT_FLOW___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -817,8 +821,8 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.OBJECT_FLOW___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_SOURCE_AND_TARGET__DIAGNOSTICCHAIN_MAP :
 				return validateSourceAndTarget(
 					(DiagnosticChain) arguments.get(0),

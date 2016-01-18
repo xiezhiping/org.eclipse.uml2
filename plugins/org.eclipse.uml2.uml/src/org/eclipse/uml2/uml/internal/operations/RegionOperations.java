@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 80307, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 80307, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -88,8 +88,8 @@ public class RegionOperations
 
 		for (Vertex subvertex : region.getSubvertices()) {
 
-			if (subvertex instanceof Pseudostate
-				&& ((Pseudostate) subvertex).getKind() == PseudostateKind.INITIAL_LITERAL) {
+			if (subvertex instanceof Pseudostate && ((Pseudostate) subvertex)
+				.getKind() == PseudostateKind.INITIAL_LITERAL) {
 
 				initialVertexCount++;
 			}
@@ -98,15 +98,13 @@ public class RegionOperations
 		if (initialVertexCount > 1) {
 
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.WARNING,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.REGION__INITIAL_VERTEX,
-						UMLPlugin.INSTANCE
-							.getString(
-								"_UI_Region_InitialVertex_diagnostic", getMessageSubstitutions(context, region)), //$NON-NLS-1$
-						new Object[]{region}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.REGION__INITIAL_VERTEX,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_Region_InitialVertex_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, region)),
+					new Object[]{region}));
 			}
 
 			return false;
@@ -134,8 +132,8 @@ public class RegionOperations
 
 		for (Vertex subvertex : region.getSubvertices()) {
 
-			if (subvertex instanceof Pseudostate
-				&& ((Pseudostate) subvertex).getKind() == PseudostateKind.DEEP_HISTORY_LITERAL) {
+			if (subvertex instanceof Pseudostate && ((Pseudostate) subvertex)
+				.getKind() == PseudostateKind.DEEP_HISTORY_LITERAL) {
 
 				deepHistoryVertexCount++;
 			}
@@ -144,15 +142,13 @@ public class RegionOperations
 		if (deepHistoryVertexCount > 1) {
 
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.WARNING,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.REGION__DEEP_HISTORY_VERTEX,
-						UMLPlugin.INSTANCE
-							.getString(
-								"_UI_Region_DeepHistoryVertex_diagnostic", getMessageSubstitutions(context, region)), //$NON-NLS-1$
-						new Object[]{region}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.REGION__DEEP_HISTORY_VERTEX,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_Region_DeepHistoryVertex_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, region)),
+					new Object[]{region}));
 			}
 
 			return false;
@@ -180,8 +176,8 @@ public class RegionOperations
 
 		for (Vertex subvertex : region.getSubvertices()) {
 
-			if (subvertex instanceof Pseudostate
-				&& ((Pseudostate) subvertex).getKind() == PseudostateKind.SHALLOW_HISTORY_LITERAL) {
+			if (subvertex instanceof Pseudostate && ((Pseudostate) subvertex)
+				.getKind() == PseudostateKind.SHALLOW_HISTORY_LITERAL) {
 
 				shallowHistoryVertexCount++;
 			}
@@ -190,15 +186,13 @@ public class RegionOperations
 		if (shallowHistoryVertexCount > 1) {
 
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.WARNING,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.REGION__SHALLOW_HISTORY_VERTEX,
-						UMLPlugin.INSTANCE
-							.getString(
-								"_UI_Region_ShallowHistoryVertex_diagnostic", getMessageSubstitutions(context, region)), //$NON-NLS-1$
-						new Object[]{region}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.REGION__SHALLOW_HISTORY_VERTEX,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_Region_ShallowHistoryVertex_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, region)),
+					new Object[]{region}));
 			}
 
 			return false;
@@ -225,15 +219,11 @@ public class RegionOperations
 		if (region.getStateMachine() != null && region.getState() != null) {
 
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.WARNING,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.REGION__OWNED,
-						UMLPlugin.INSTANCE
-							.getString(
-								"_UI_Region_Owned_diagnostic", getMessageSubstitutions(context, region)), //$NON-NLS-1$
-						new Object[]{region}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE, UMLValidator.REGION__OWNED,
+					UMLPlugin.INSTANCE.getString("_UI_Region_Owned_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, region)),
+					new Object[]{region}));
 			}
 
 			return false;
@@ -355,7 +345,8 @@ public class RegionOperations
 			Region redefiningRegion = (Region) redefiningElement;
 			EList<Vertex> allSubvertices = getAllSubvertices(region);
 
-			for (Vertex redefiningSubvertex : redefiningRegion.getSubvertices()) {
+			for (Vertex redefiningSubvertex : redefiningRegion
+				.getSubvertices()) {
 
 				if (redefiningSubvertex instanceof State) {
 					State redefinedState = ((State) redefiningSubvertex)
@@ -432,8 +423,8 @@ public class RegionOperations
 				for (StateMachine extendedStateMachine : stateMachine
 					.getExtendedStateMachines()) {
 
-					if (extendedStateMachine.getRegions().contains(
-						redefinedElement)) {
+					if (extendedStateMachine.getRegions()
+						.contains(redefinedElement)) {
 
 						return true;
 					}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -473,7 +473,8 @@ public interface Package
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.types.String" nameRequired="true" nameOrdered="false" isAbstractDataType="org.eclipse.uml2.types.Boolean" isAbstractRequired="true" isAbstractOrdered="false"
 	 * @generated
 	 */
-	org.eclipse.uml2.uml.Class createOwnedClass(String name, boolean isAbstract);
+	org.eclipse.uml2.uml.Class createOwnedClass(String name,
+			boolean isAbstract);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -547,6 +548,18 @@ public interface Package
 	 * @generated
 	 */
 	EList<EObject> unapplyProfile(Profile profile);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Applies the current definitions of the specified profiles to this package and automatically applies required stereotypes in the profiles to elements within this package's namespace hieararchy. If different definitions are already applied, automatically migrates any associated stereotype values on a "best effort" basis (matching classifiers and structural features by name).
+	 * @param profiles The profiles to apply.
+	 * <!-- end-model-doc -->
+	 * @model ordered="false" profilesRequired="true" profilesMany="true" profilesOrdered="false"
+	 * @generated
+	 */
+	EList<EObject> applyProfiles(EList<Profile> profiles);
 
 	/**
 	 * <!-- begin-user-doc -->

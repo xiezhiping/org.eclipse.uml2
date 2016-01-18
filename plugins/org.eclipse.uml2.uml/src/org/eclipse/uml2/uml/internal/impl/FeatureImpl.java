@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -105,14 +105,11 @@ public abstract class FeatureImpl
 				.get(eResource, this,
 					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
 			if (featuringClassifiers == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER,
-						featuringClassifiers = new DerivedUnionEObjectEList<Classifier>(
-							Classifier.class, this,
-							UMLPackage.FEATURE__FEATURING_CLASSIFIER, null));
+				cache.put(eResource, this,
+					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER,
+					featuringClassifiers = new DerivedUnionEObjectEList<Classifier>(
+						Classifier.class, this,
+						UMLPackage.FEATURE__FEATURING_CLASSIFIER, null));
 			}
 			return featuringClassifiers;
 		}
@@ -124,7 +121,8 @@ public abstract class FeatureImpl
 	 * The array of subset feature identifiers for the '{@link #getFeaturingClassifiers() <em>Featuring Classifier</em>}' reference list.
 	 * @see #getFeaturingClassifiers()
 	 */
-	protected static final int[] FEATURING_CLASSIFIER_ESUBSETS = new int[]{UMLPackage.FEATURE__NAMESPACE};
+	protected static final int[] FEATURING_CLASSIFIER_ESUBSETS = new int[]{
+		UMLPackage.FEATURE__NAMESPACE};
 
 	public EList<Classifier> getFeaturingClassifiers() {
 		CacheAdapter cache = getCacheAdapter();
@@ -135,15 +133,12 @@ public abstract class FeatureImpl
 				.get(eResource, this,
 					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
 			if (featuringClassifiers == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER,
-						featuringClassifiers = new DerivedUnionEObjectEList<Classifier>(
-							Classifier.class, this,
-							UMLPackage.FEATURE__FEATURING_CLASSIFIER,
-							FEATURING_CLASSIFIER_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER,
+					featuringClassifiers = new DerivedUnionEObjectEList<Classifier>(
+						Classifier.class, this,
+						UMLPackage.FEATURE__FEATURING_CLASSIFIER,
+						FEATURING_CLASSIFIER_ESUBSETS));
 			}
 			return featuringClassifiers;
 		}
@@ -264,13 +259,13 @@ public abstract class FeatureImpl
 		switch (featureID) {
 			case UMLPackage.FEATURE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.FEATURE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.FEATURE__NAME :
 				setName((String) newValue);

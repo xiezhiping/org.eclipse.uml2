@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -133,8 +133,8 @@ public abstract class NamespaceImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -185,8 +185,8 @@ public abstract class NamespaceImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<NamedElement> members = (EList<NamedElement>) cache.get(
-				eResource, this, UMLPackage.Literals.NAMESPACE__MEMBER);
+			EList<NamedElement> members = (EList<NamedElement>) cache
+				.get(eResource, this, UMLPackage.Literals.NAMESPACE__MEMBER);
 			if (members == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.NAMESPACE__MEMBER,
@@ -208,8 +208,7 @@ public abstract class NamespaceImpl
 	public EList<ElementImport> getElementImports() {
 		if (elementImports == null) {
 			elementImports = new EObjectContainmentWithInverseEList.Resolving<ElementImport>(
-				ElementImport.class, this,
-				UMLPackage.NAMESPACE__ELEMENT_IMPORT,
+				ElementImport.class, this, UMLPackage.NAMESPACE__ELEMENT_IMPORT,
 				UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
 		}
 		return elementImports;
@@ -220,8 +219,10 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ElementImport createElementImport(PackageableElement importedElement) {
-		ElementImport newElementImport = (ElementImport) create(UMLPackage.Literals.ELEMENT_IMPORT);
+	public ElementImport createElementImport(
+			PackageableElement importedElement) {
+		ElementImport newElementImport = (ElementImport) create(
+			UMLPackage.Literals.ELEMENT_IMPORT);
 		getElementImports().add(newElementImport);
 		if (importedElement != null)
 			newElementImport.setImportedElement(importedElement);
@@ -263,8 +264,7 @@ public abstract class NamespaceImpl
 	public EList<PackageImport> getPackageImports() {
 		if (packageImports == null) {
 			packageImports = new EObjectContainmentWithInverseEList.Resolving<PackageImport>(
-				PackageImport.class, this,
-				UMLPackage.NAMESPACE__PACKAGE_IMPORT,
+				PackageImport.class, this, UMLPackage.NAMESPACE__PACKAGE_IMPORT,
 				UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE);
 		}
 		return packageImports;
@@ -277,7 +277,8 @@ public abstract class NamespaceImpl
 	 */
 	public PackageImport createPackageImport(
 			org.eclipse.uml2.uml.Package importedPackage) {
-		PackageImport newPackageImport = (PackageImport) create(UMLPackage.Literals.PACKAGE_IMPORT);
+		PackageImport newPackageImport = (PackageImport) create(
+			UMLPackage.Literals.PACKAGE_IMPORT);
 		getPackageImports().add(newPackageImport);
 		if (importedPackage != null)
 			newPackageImport.setImportedPackage(importedPackage);
@@ -300,7 +301,8 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public PackageImport getPackageImport(
-			org.eclipse.uml2.uml.Package importedPackage, boolean createOnDemand) {
+			org.eclipse.uml2.uml.Package importedPackage,
+			boolean createOnDemand) {
 		packageImportLoop : for (PackageImport packageImport : getPackageImports()) {
 			if (importedPackage != null
 				&& !importedPackage.equals(packageImport.getImportedPackage()))
@@ -412,8 +414,8 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PackageableElement getImportedMember(String name,
-			boolean ignoreCase, EClass eClass) {
+	public PackageableElement getImportedMember(String name, boolean ignoreCase,
+			EClass eClass) {
 		importedMemberLoop : for (PackageableElement importedMember : getImportedMembers()) {
 			if (eClass != null && !eClass.isInstance(importedMember))
 				continue importedMemberLoop;
@@ -453,8 +455,8 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateCannotImportOwnedMembers(
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateCannotImportOwnedMembers(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return NamespaceOperations.validateCannotImportOwnedMembers(this,
 			diagnostics, context);
 	}
@@ -599,22 +601,22 @@ public abstract class NamespaceImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.NAMESPACE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.NAMESPACE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.NAMESPACE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.NAMESPACE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedRules())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.NAMESPACE__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getElementImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.NAMESPACE__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPackageImports())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -680,13 +682,13 @@ public abstract class NamespaceImpl
 		switch (featureID) {
 			case UMLPackage.NAMESPACE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.NAMESPACE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.NAMESPACE__NAME :
 				setName((String) newValue);
@@ -699,18 +701,18 @@ public abstract class NamespaceImpl
 				return;
 			case UMLPackage.NAMESPACE__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getOwnedRules()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.NAMESPACE__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll(
-					(Collection<? extends ElementImport>) newValue);
+				getElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.NAMESPACE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll(
-					(Collection<? extends PackageImport>) newValue);
+				getPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -855,7 +857,8 @@ public abstract class NamespaceImpl
 			case UMLPackage.NAMESPACE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.NAMESPACE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.NAMESPACE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.NAMESPACE___GET_STEREOTYPE_APPLICATIONS :
@@ -863,7 +866,8 @@ public abstract class NamespaceImpl
 			case UMLPackage.NAMESPACE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.NAMESPACE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.NAMESPACE___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -952,13 +956,13 @@ public abstract class NamespaceImpl
 			case UMLPackage.NAMESPACE___GET_OWNED_MEMBERS :
 				return getOwnedMembers();
 			case UMLPackage.NAMESPACE___EXCLUDE_COLLISIONS__ELIST :
-				return excludeCollisions((EList<PackageableElement>) arguments
-					.get(0));
+				return excludeCollisions(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.NAMESPACE___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
 				return getNamesOfMember((NamedElement) arguments.get(0));
 			case UMLPackage.NAMESPACE___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
+				return importMembers(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.NAMESPACE___GET_IMPORTED_MEMBERS :
 				return getImportedMembers();
 			case UMLPackage.NAMESPACE___MEMBERS_ARE_DISTINGUISHABLE :
@@ -988,7 +992,8 @@ public abstract class NamespaceImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[]{UMLPackage.NAMESPACE__OWNED_RULE};
+	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[]{
+		UMLPackage.NAMESPACE__OWNED_RULE};
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
@@ -1059,7 +1064,8 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NamedElement getMember(String name, boolean ignoreCase, EClass eClass) {
+	public NamedElement getMember(String name, boolean ignoreCase,
+			EClass eClass) {
 		memberLoop : for (NamedElement member : getMembers()) {
 			if (eClass != null && !eClass.isInstance(member))
 				continue memberLoop;

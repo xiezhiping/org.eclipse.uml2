@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -305,21 +305,18 @@ public class StateImpl
 				.get(eResource, this,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 			if (redefinedElements == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-						redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
-							RedefinableElement.class, this,
-							UMLPackage.STATE__REDEFINED_ELEMENT,
-							REDEFINED_ELEMENT_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+					redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
+						RedefinableElement.class, this,
+						UMLPackage.STATE__REDEFINED_ELEMENT,
+						REDEFINED_ELEMENT_ESUBSETS));
 			}
 			return redefinedElements;
 		}
 		return new DerivedUnionEObjectEList<RedefinableElement>(
-			RedefinableElement.class, this,
-			UMLPackage.STATE__REDEFINED_ELEMENT, REDEFINED_ELEMENT_ESUBSETS);
+			RedefinableElement.class, this, UMLPackage.STATE__REDEFINED_ELEMENT,
+			REDEFINED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -340,15 +337,12 @@ public class StateImpl
 				List<Classifier> redefinitionContexts = redefinitionContext == null
 					? Collections.<Classifier> emptyList()
 					: Collections.singletonList(redefinitionContext);
-				cache
-					.put(
-						this,
+				cache.put(this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+					result = new EcoreEList.UnmodifiableEList<Classifier>(this,
 						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-						result = new EcoreEList.UnmodifiableEList<Classifier>(
-							this,
-							UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-							redefinitionContexts.size(), redefinitionContexts
-								.toArray()));
+						redefinitionContexts.size(),
+						redefinitionContexts.toArray()));
 			}
 
 			return result;
@@ -461,7 +455,8 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Transition getOutgoing(String name, boolean ignoreCase, EClass eClass) {
+	public Transition getOutgoing(String name, boolean ignoreCase,
+			EClass eClass) {
 		outgoingLoop : for (Transition outgoing : getOutgoings()) {
 			if (eClass != null && !eClass.isInstance(outgoing))
 				continue outgoingLoop;
@@ -497,7 +492,8 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Transition getIncoming(String name, boolean ignoreCase, EClass eClass) {
+	public Transition getIncoming(String name, boolean ignoreCase,
+			EClass eClass) {
 		incomingLoop : for (Transition incoming : getIncomings()) {
 			if (eClass != null && !eClass.isInstance(incoming))
 				continue incomingLoop;
@@ -551,7 +547,8 @@ public class StateImpl
 	 */
 	public void setContainer(Region newContainer) {
 		if (newContainer != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.STATE__CONTAINER && newContainer != null)) {
+			|| (eContainerFeatureID() != UMLPackage.STATE__CONTAINER
+				&& newContainer != null)) {
 			if (EcoreUtil.isAncestor(this, newContainer))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -606,8 +603,8 @@ public class StateImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -669,7 +666,8 @@ public class StateImpl
 			if (submachine != oldSubmachine) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						UMLPackage.STATE__SUBMACHINE, oldSubmachine, submachine));
+						UMLPackage.STATE__SUBMACHINE, oldSubmachine,
+						submachine));
 			}
 		}
 		return submachine;
@@ -750,7 +748,8 @@ public class StateImpl
 	 * @generated
 	 */
 	public ConnectionPointReference createConnection(String name) {
-		ConnectionPointReference newConnection = (ConnectionPointReference) create(UMLPackage.Literals.CONNECTION_POINT_REFERENCE);
+		ConnectionPointReference newConnection = (ConnectionPointReference) create(
+			UMLPackage.Literals.CONNECTION_POINT_REFERENCE);
 		getConnections().add(newConnection);
 		if (name != null)
 			newConnection.setName(name);
@@ -805,7 +804,8 @@ public class StateImpl
 	 * @generated
 	 */
 	public Pseudostate createConnectionPoint(String name) {
-		Pseudostate newConnectionPoint = (Pseudostate) create(UMLPackage.Literals.PSEUDOSTATE);
+		Pseudostate newConnectionPoint = (Pseudostate) create(
+			UMLPackage.Literals.PSEUDOSTATE);
 		getConnectionPoints().add(newConnectionPoint);
 		if (name != null)
 			newConnectionPoint.setName(name);
@@ -970,8 +970,9 @@ public class StateImpl
 					EOPPOSITE_FEATURE_BASE - UMLPackage.STATE__ENTRY, null,
 					null);
 				if (newEntry.eInternalContainer() == null) {
-					msgs = newEntry.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.STATE__ENTRY, null, msgs);
+					msgs = newEntry.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - UMLPackage.STATE__ENTRY, null,
+						msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -1060,12 +1061,13 @@ public class StateImpl
 			exit = (Behavior) eResolveProxy(oldExit);
 			if (exit != oldExit) {
 				InternalEObject newExit = (InternalEObject) exit;
-				NotificationChain msgs = oldExit
-					.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.STATE__EXIT, null, null);
+				NotificationChain msgs = oldExit.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.STATE__EXIT, null,
+					null);
 				if (newExit.eInternalContainer() == null) {
-					msgs = newExit.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.STATE__EXIT, null, msgs);
+					msgs = newExit.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - UMLPackage.STATE__EXIT, null,
+						msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -1115,13 +1117,13 @@ public class StateImpl
 		if (newExit != exit) {
 			NotificationChain msgs = null;
 			if (exit != null)
-				msgs = ((InternalEObject) exit)
-					.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.STATE__EXIT, null, msgs);
+				msgs = ((InternalEObject) exit).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.STATE__EXIT, null,
+					msgs);
 			if (newExit != null)
-				msgs = ((InternalEObject) newExit)
-					.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.STATE__EXIT, null, msgs);
+				msgs = ((InternalEObject) newExit).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.STATE__EXIT, null,
+					msgs);
 			msgs = basicSetExit(newExit, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -1259,7 +1261,8 @@ public class StateImpl
 	 * @generated
 	 */
 	public Trigger createDeferrableTrigger(String name) {
-		Trigger newDeferrableTrigger = (Trigger) create(UMLPackage.Literals.TRIGGER);
+		Trigger newDeferrableTrigger = (Trigger) create(
+			UMLPackage.Literals.TRIGGER);
 		getDeferrableTriggers().add(newDeferrableTrigger);
 		if (name != null)
 			newDeferrableTrigger.setName(name);
@@ -1354,10 +1357,10 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateRedefinitionContextValid(
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return RedefinableElementOperations.validateRedefinitionContextValid(
-			this, diagnostics, context);
+	public boolean validateRedefinitionContextValid(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return RedefinableElementOperations
+			.validateRedefinitionContextValid(this, diagnostics, context);
 	}
 
 	/**
@@ -1367,8 +1370,8 @@ public class StateImpl
 	 */
 	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return RedefinableElementOperations.validateRedefinitionConsistent(
-			this, diagnostics, context);
+		return RedefinableElementOperations.validateRedefinitionConsistent(this,
+			diagnostics, context);
 	}
 
 	/**
@@ -1547,30 +1550,30 @@ public class StateImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.STATE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STATE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STATE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.STATE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedRules())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STATE__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getElementImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STATE__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPackageImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STATE__CONTAINER :
 				return basicSetContainer(null, msgs);
 			case UMLPackage.STATE__CONNECTION :
-				return ((InternalEList<?>) getConnections()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getConnections())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STATE__CONNECTION_POINT :
-				return ((InternalEList<?>) getConnectionPoints()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getConnectionPoints())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STATE__DEFERRABLE_TRIGGER :
 				return ((InternalEList<?>) getDeferrableTriggers())
 					.basicRemove(otherEnd, msgs);
@@ -1720,13 +1723,13 @@ public class StateImpl
 		switch (featureID) {
 			case UMLPackage.STATE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.STATE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.STATE__NAME :
 				setName((String) newValue);
@@ -1739,18 +1742,18 @@ public class StateImpl
 				return;
 			case UMLPackage.STATE__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getOwnedRules()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.STATE__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll(
-					(Collection<? extends ElementImport>) newValue);
+				getElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.STATE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll(
-					(Collection<? extends PackageImport>) newValue);
+				getPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.STATE__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -1765,13 +1768,13 @@ public class StateImpl
 				return;
 			case UMLPackage.STATE__CONNECTION_POINT :
 				getConnectionPoints().clear();
-				getConnectionPoints().addAll(
-					(Collection<? extends Pseudostate>) newValue);
+				getConnectionPoints()
+					.addAll((Collection<? extends Pseudostate>) newValue);
 				return;
 			case UMLPackage.STATE__DEFERRABLE_TRIGGER :
 				getDeferrableTriggers().clear();
-				getDeferrableTriggers().addAll(
-					(Collection<? extends Trigger>) newValue);
+				getDeferrableTriggers()
+					.addAll((Collection<? extends Trigger>) newValue);
 				return;
 			case UMLPackage.STATE__DO_ACTIVITY :
 				setDoActivity((Behavior) newValue);
@@ -1964,7 +1967,8 @@ public class StateImpl
 	 * @generated
 	 */
 	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	public int eBaseStructuralFeatureID(int derivedFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == RedefinableElement.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.STATE__IS_LEAF :
@@ -1998,7 +2002,8 @@ public class StateImpl
 	 * @generated
 	 */
 	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	public int eDerivedStructuralFeatureID(int baseFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == RedefinableElement.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.REDEFINABLE_ELEMENT__IS_LEAF :
@@ -2125,7 +2130,8 @@ public class StateImpl
 			case UMLPackage.STATE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.STATE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.STATE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.STATE___GET_STEREOTYPE_APPLICATIONS :
@@ -2133,7 +2139,8 @@ public class StateImpl
 			case UMLPackage.STATE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.STATE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.STATE___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -2222,13 +2229,13 @@ public class StateImpl
 			case UMLPackage.STATE___GET_OWNED_MEMBERS :
 				return getOwnedMembers();
 			case UMLPackage.STATE___EXCLUDE_COLLISIONS__ELIST :
-				return excludeCollisions((EList<PackageableElement>) arguments
-					.get(0));
+				return excludeCollisions(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.STATE___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
 				return getNamesOfMember((NamedElement) arguments.get(0));
 			case UMLPackage.STATE___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
+				return importMembers(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.STATE___GET_IMPORTED_MEMBERS :
 				return getImportedMembers();
 			case UMLPackage.STATE___MEMBERS_ARE_DISTINGUISHABLE :
@@ -2248,8 +2255,8 @@ public class StateImpl
 			case UMLPackage.STATE___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.STATE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.STATE___CONTAINING_STATE_MACHINE :
 				return containingStateMachine();
 			case UMLPackage.STATE___GET_INCOMINGS :
@@ -2318,7 +2325,8 @@ public class StateImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{UMLPackage.STATE__REDEFINED_STATE};
+	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.STATE__REDEFINED_STATE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2400,8 +2408,7 @@ public class StateImpl
 	 */
 	@Override
 	public boolean isSetOwnedMembers() {
-		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.STATE__CONNECTION)
+		return super.isSetOwnedMembers() || eIsSet(UMLPackage.STATE__CONNECTION)
 			|| eIsSet(UMLPackage.STATE__CONNECTION_POINT)
 			|| eIsSet(UMLPackage.STATE__REGION);
 	}
@@ -2444,7 +2451,8 @@ public class StateImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] OWNED_RULE_ESUBSETS = new int[]{UMLPackage.STATE__STATE_INVARIANT};
+	protected static final int[] OWNED_RULE_ESUBSETS = new int[]{
+		UMLPackage.STATE__STATE_INVARIANT};
 
 	/**
 	 * <!-- begin-user-doc -->

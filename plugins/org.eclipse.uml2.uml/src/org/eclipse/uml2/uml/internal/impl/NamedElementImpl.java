@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Sergey Boyko (Borland) - 282440
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -218,8 +218,8 @@ public abstract class NamedElementImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -289,7 +289,8 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
-		return VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
+		return VISIBILITY_EFLAG_VALUES[(eFlags
+			& VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
 	}
 
 	/**
@@ -298,7 +299,8 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public void setVisibility(VisibilityKind newVisibility) {
-		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
+		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags
+			& VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
 		if (newVisibility == null)
 			newVisibility = VISIBILITY_EDEFAULT;
 		eFlags = eFlags & ~VISIBILITY_EFLAG
@@ -317,7 +319,8 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public void unsetVisibility() {
-		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
+		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags
+			& VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
 		boolean oldVisibilityESet = (eFlags & VISIBILITY_ESETFLAG) != 0;
 		eFlags = eFlags & ~VISIBILITY_EFLAG | VISIBILITY_EFLAG_DEFAULT;
 		eFlags &= ~VISIBILITY_ESETFLAG;
@@ -357,12 +360,10 @@ public abstract class NamedElementImpl
 			EList<Dependency> result = (EList<Dependency>) cache.get(this,
 				UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY);
 			if (result == null) {
-				cache
-					.put(
-						this,
-						UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY,
-						result = NamedElementOperations
-							.getClientDependencies(this));
+				cache.put(this,
+					UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY,
+					result = NamedElementOperations
+						.getClientDependencies(this));
 			}
 			return result;
 		}
@@ -405,17 +406,19 @@ public abstract class NamedElementImpl
 	public StringExpression getNameExpression() {
 		if (nameExpression != null && nameExpression.eIsProxy()) {
 			InternalEObject oldNameExpression = (InternalEObject) nameExpression;
-			nameExpression = (StringExpression) eResolveProxy(oldNameExpression);
+			nameExpression = (StringExpression) eResolveProxy(
+				oldNameExpression);
 			if (nameExpression != oldNameExpression) {
 				InternalEObject newNameExpression = (InternalEObject) nameExpression;
-				NotificationChain msgs = oldNameExpression
-					.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION, null, null);
+				NotificationChain msgs = oldNameExpression.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION,
+					null, null);
 				if (newNameExpression.eInternalContainer() == null) {
 					msgs = newNameExpression.eInverseAdd(this,
 						EOPPOSITE_FEATURE_BASE
-							- UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION, null,
-						msgs);
+							- UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION,
+						null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -467,13 +470,15 @@ public abstract class NamedElementImpl
 		if (newNameExpression != nameExpression) {
 			NotificationChain msgs = null;
 			if (nameExpression != null)
-				msgs = ((InternalEObject) nameExpression)
-					.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION, null, msgs);
+				msgs = ((InternalEObject) nameExpression).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION,
+					null, msgs);
 			if (newNameExpression != null)
-				msgs = ((InternalEObject) newNameExpression)
-					.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION, null, msgs);
+				msgs = ((InternalEObject) newNameExpression).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION,
+					null, msgs);
 			msgs = basicSetNameExpression(newNameExpression, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -489,7 +494,8 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public StringExpression createNameExpression(String name, Type type) {
-		StringExpression newNameExpression = (StringExpression) create(UMLPackage.Literals.STRING_EXPRESSION);
+		StringExpression newNameExpression = (StringExpression) create(
+			UMLPackage.Literals.STRING_EXPRESSION);
 		setNameExpression(newNameExpression);
 		if (name != null)
 			newNameExpression.setName(name);
@@ -525,8 +531,8 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateVisibilityNeedsOwnership(
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateVisibilityNeedsOwnership(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return NamedElementOperations.validateVisibilityNeedsOwnership(this,
 			diagnostics, context);
 	}
@@ -639,11 +645,11 @@ public abstract class NamedElementImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.NAMED_ELEMENT__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.NAMED_ELEMENT__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 		}
@@ -699,13 +705,13 @@ public abstract class NamedElementImpl
 		switch (featureID) {
 			case UMLPackage.NAMED_ELEMENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.NAMED_ELEMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.NAMED_ELEMENT__NAME :
 				setName((String) newValue);
@@ -838,7 +844,8 @@ public abstract class NamedElementImpl
 			case UMLPackage.NAMED_ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.NAMED_ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.NAMED_ELEMENT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.NAMED_ELEMENT___GET_STEREOTYPE_APPLICATIONS :
@@ -846,7 +853,8 @@ public abstract class NamedElementImpl
 			case UMLPackage.NAMED_ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.NAMED_ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.NAMED_ELEMENT___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -930,8 +938,8 @@ public abstract class NamedElementImpl
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(", visibility: "); //$NON-NLS-1$
 		if ((eFlags & VISIBILITY_ESETFLAG) != 0)
-			result
-				.append(VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET]);
+			result.append(VISIBILITY_EFLAG_VALUES[(eFlags
+				& VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET]);
 		else
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
@@ -1085,8 +1093,8 @@ public abstract class NamedElementImpl
 
 				if (index != -1) {
 					try {
-						count = Integer.parseInt(uriFragmentSegment
-							.substring(index + 1));
+						count = Integer
+							.parseInt(uriFragmentSegment.substring(index + 1));
 					} catch (NumberFormatException exception) {
 						// Interpret it as part of the name.
 						//
@@ -1103,7 +1111,8 @@ public abstract class NamedElementImpl
 					if (eObject instanceof NamedElement) {
 						NamedElement namedElement = (NamedElement) eObject;
 
-						if (name.equals(namedElement.getName()) && count-- == 0) {
+						if (name.equals(namedElement.getName())
+							&& count-- == 0) {
 							return namedElement;
 						}
 					}

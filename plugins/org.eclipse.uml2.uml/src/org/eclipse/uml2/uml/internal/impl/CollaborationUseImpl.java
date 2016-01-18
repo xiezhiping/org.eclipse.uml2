@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -121,8 +121,8 @@ public class CollaborationUseImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -134,7 +134,8 @@ public class CollaborationUseImpl
 			return ownedElements;
 		}
 		return new DerivedUnionEObjectEList<Element>(Element.class, this,
-			UMLPackage.COLLABORATION_USE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
+			UMLPackage.COLLABORATION_USE__OWNED_ELEMENT,
+			OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -286,16 +287,16 @@ public class CollaborationUseImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.COLLABORATION_USE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.COLLABORATION_USE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.COLLABORATION_USE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.COLLABORATION_USE__ROLE_BINDING :
-				return ((InternalEList<?>) getRoleBindings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getRoleBindings())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -355,13 +356,13 @@ public class CollaborationUseImpl
 		switch (featureID) {
 			case UMLPackage.COLLABORATION_USE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.COLLABORATION_USE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.COLLABORATION_USE__NAME :
 				setName((String) newValue);
@@ -374,8 +375,8 @@ public class CollaborationUseImpl
 				return;
 			case UMLPackage.COLLABORATION_USE__ROLE_BINDING :
 				getRoleBindings().clear();
-				getRoleBindings().addAll(
-					(Collection<? extends Dependency>) newValue);
+				getRoleBindings()
+					.addAll((Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.COLLABORATION_USE__TYPE :
 				setType((Collaboration) newValue);
@@ -512,7 +513,8 @@ public class CollaborationUseImpl
 			case UMLPackage.COLLABORATION_USE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.COLLABORATION_USE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.COLLABORATION_USE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.COLLABORATION_USE___GET_STEREOTYPE_APPLICATIONS :
@@ -520,7 +522,8 @@ public class CollaborationUseImpl
 			case UMLPackage.COLLABORATION_USE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.COLLABORATION_USE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.COLLABORATION_USE___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
- *   Kenn Hussey (CEA) - 327039, 212765, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 212765, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -139,17 +139,19 @@ public class TimeConstraintImpl
 	public ValueSpecification getSpecification() {
 		if (specification != null && specification.eIsProxy()) {
 			InternalEObject oldSpecification = (InternalEObject) specification;
-			specification = (ValueSpecification) eResolveProxy(oldSpecification);
+			specification = (ValueSpecification) eResolveProxy(
+				oldSpecification);
 			if (specification != oldSpecification) {
 				InternalEObject newSpecification = (InternalEObject) specification;
-				NotificationChain msgs = oldSpecification
-					.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.TIME_CONSTRAINT__SPECIFICATION, null, null);
+				NotificationChain msgs = oldSpecification.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.TIME_CONSTRAINT__SPECIFICATION,
+					null, null);
 				if (newSpecification.eInternalContainer() == null) {
 					msgs = newSpecification.eInverseAdd(this,
 						EOPPOSITE_FEATURE_BASE
-							- UMLPackage.TIME_CONSTRAINT__SPECIFICATION, null,
-						msgs);
+							- UMLPackage.TIME_CONSTRAINT__SPECIFICATION,
+						null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -214,13 +216,15 @@ public class TimeConstraintImpl
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)
-				msgs = ((InternalEObject) specification)
-					.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.TIME_CONSTRAINT__SPECIFICATION, null, msgs);
+				msgs = ((InternalEObject) specification).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.TIME_CONSTRAINT__SPECIFICATION,
+					null, msgs);
 			if (newSpecification != null)
-				msgs = ((InternalEObject) newSpecification)
-					.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.TIME_CONSTRAINT__SPECIFICATION, null, msgs);
+				msgs = ((InternalEObject) newSpecification).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.TIME_CONSTRAINT__SPECIFICATION,
+					null, msgs);
 			msgs = basicSetSpecification(newSpecification, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -237,7 +241,8 @@ public class TimeConstraintImpl
 	 */
 	public ValueSpecification createSpecification(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newSpecification = (ValueSpecification) create(eClass);
+		ValueSpecification newSpecification = (ValueSpecification) create(
+			eClass);
 		setSpecification(newSpecification);
 		if (name != null)
 			newSpecification.setName(name);
@@ -261,8 +266,8 @@ public class TimeConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateHasOneConstrainedElement(
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateHasOneConstrainedElement(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return TimeConstraintOperations.validateHasOneConstrainedElement(this,
 			diagnostics, context);
 	}
@@ -277,11 +282,11 @@ public class TimeConstraintImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.TIME_CONSTRAINT__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TIME_CONSTRAINT__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TIME_CONSTRAINT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.TIME_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
@@ -365,13 +370,13 @@ public class TimeConstraintImpl
 		switch (featureID) {
 			case UMLPackage.TIME_CONSTRAINT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.TIME_CONSTRAINT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.TIME_CONSTRAINT__NAME :
 				setName((String) newValue);
@@ -390,8 +395,8 @@ public class TimeConstraintImpl
 				return;
 			case UMLPackage.TIME_CONSTRAINT__CONSTRAINED_ELEMENT :
 				getConstrainedElements().clear();
-				getConstrainedElements().addAll(
-					(Collection<? extends Element>) newValue);
+				getConstrainedElements()
+					.addAll((Collection<? extends Element>) newValue);
 				return;
 			case UMLPackage.TIME_CONSTRAINT__CONTEXT :
 				setContext((Namespace) newValue);
@@ -493,7 +498,8 @@ public class TimeConstraintImpl
 			case UMLPackage.TIME_CONSTRAINT__SPECIFICATION :
 				return isSetSpecification();
 			case UMLPackage.TIME_CONSTRAINT__FIRST_EVENT :
-				return ((eFlags & FIRST_EVENT_EFLAG) != 0) != FIRST_EVENT_EDEFAULT;
+				return ((eFlags
+					& FIRST_EVENT_EFLAG) != 0) != FIRST_EVENT_EDEFAULT;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -555,7 +561,8 @@ public class TimeConstraintImpl
 			case UMLPackage.TIME_CONSTRAINT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.TIME_CONSTRAINT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.TIME_CONSTRAINT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.TIME_CONSTRAINT___GET_STEREOTYPE_APPLICATIONS :
@@ -563,7 +570,8 @@ public class TimeConstraintImpl
 			case UMLPackage.TIME_CONSTRAINT___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.TIME_CONSTRAINT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.TIME_CONSTRAINT___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -626,7 +634,8 @@ public class TimeConstraintImpl
 			case UMLPackage.TIME_CONSTRAINT___GET_CLIENT_DEPENDENCIES :
 				return getClientDependencies();
 			case UMLPackage.TIME_CONSTRAINT___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.TIME_CONSTRAINT___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.TIME_CONSTRAINT___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
@@ -637,8 +646,7 @@ public class TimeConstraintImpl
 				return validateBooleanValue((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TIME_CONSTRAINT___VALIDATE_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
-				return validateNoSideEffects(
-					(DiagnosticChain) arguments.get(0),
+				return validateNoSideEffects((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TIME_CONSTRAINT___VALIDATE_NOT_APPLY_TO_SELF__DIAGNOSTICCHAIN_MAP :
 				return validateNotApplyToSelf(

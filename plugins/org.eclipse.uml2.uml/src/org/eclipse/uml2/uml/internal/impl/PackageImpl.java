@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 454400, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 454400, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -225,7 +225,8 @@ public class PackageImpl
 	public TemplateParameter getTemplateParameter() {
 		if (templateParameter != null && templateParameter.eIsProxy()) {
 			InternalEObject oldTemplateParameter = (InternalEObject) templateParameter;
-			templateParameter = (TemplateParameter) eResolveProxy(oldTemplateParameter);
+			templateParameter = (TemplateParameter) eResolveProxy(
+				oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -327,7 +328,8 @@ public class PackageImpl
 	 * @generated
 	 */
 	public NotificationChain basicSetOwningTemplateParameter(
-			TemplateParameter newOwningTemplateParameter, NotificationChain msgs) {
+			TemplateParameter newOwningTemplateParameter,
+			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newOwningTemplateParameter,
 			UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER, msgs);
 		Resource.Internal eInternalResource = eInternalResource();
@@ -349,7 +351,8 @@ public class PackageImpl
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
 		if (newOwningTemplateParameter != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
+			|| (eContainerFeatureID() != UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER
+				&& newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -358,8 +361,7 @@ public class PackageImpl
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningTemplateParameter != null)
 				msgs = ((InternalEObject) newOwningTemplateParameter)
-					.eInverseAdd(
-						this,
+					.eInverseAdd(this,
 						UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 						TemplateParameter.class, msgs);
 			msgs = basicSetOwningTemplateParameter(newOwningTemplateParameter,
@@ -379,7 +381,8 @@ public class PackageImpl
 	 */
 	@Override
 	public VisibilityKind getVisibility() {
-		return VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
+		return VISIBILITY_EFLAG_VALUES[(eFlags
+			& VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
 	}
 
 	/**
@@ -389,7 +392,8 @@ public class PackageImpl
 	 */
 	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
-		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
+		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags
+			& VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
 		if (newVisibility == null)
 			newVisibility = VISIBILITY_EDEFAULT;
 		eFlags = eFlags & ~VISIBILITY_EFLAG
@@ -409,7 +413,8 @@ public class PackageImpl
 	 */
 	@Override
 	public void unsetVisibility() {
-		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
+		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags
+			& VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
 		boolean oldVisibilityESet = (eFlags & VISIBILITY_ESETFLAG) != 0;
 		eFlags = eFlags & ~VISIBILITY_EFLAG | VISIBILITY_EFLAG_DEFAULT;
 		eFlags &= ~VISIBILITY_ESETFLAG;
@@ -440,8 +445,8 @@ public class PackageImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -476,7 +481,8 @@ public class PackageImpl
 	 * @generated
 	 */
 	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
-		TemplateBinding newTemplateBinding = (TemplateBinding) create(UMLPackage.Literals.TEMPLATE_BINDING);
+		TemplateBinding newTemplateBinding = (TemplateBinding) create(
+			UMLPackage.Literals.TEMPLATE_BINDING);
 		getTemplateBindings().add(newTemplateBinding);
 		if (signature != null)
 			newTemplateBinding.setSignature(signature);
@@ -543,9 +549,11 @@ public class PackageImpl
 	 * @generated
 	 */
 	public TemplateSignature getOwnedTemplateSignature() {
-		if (ownedTemplateSignature != null && ownedTemplateSignature.eIsProxy()) {
+		if (ownedTemplateSignature != null
+			&& ownedTemplateSignature.eIsProxy()) {
 			InternalEObject oldOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
-			ownedTemplateSignature = (TemplateSignature) eResolveProxy(oldOwnedTemplateSignature);
+			ownedTemplateSignature = (TemplateSignature) eResolveProxy(
+				oldOwnedTemplateSignature);
 			if (ownedTemplateSignature != oldOwnedTemplateSignature) {
 				InternalEObject newOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
 				NotificationChain msgs = oldOwnedTemplateSignature
@@ -583,7 +591,8 @@ public class PackageImpl
 	 * @generated
 	 */
 	public NotificationChain basicSetOwnedTemplateSignature(
-			TemplateSignature newOwnedTemplateSignature, NotificationChain msgs) {
+			TemplateSignature newOwnedTemplateSignature,
+			NotificationChain msgs) {
 		TemplateSignature oldOwnedTemplateSignature = ownedTemplateSignature;
 		ownedTemplateSignature = newOwnedTemplateSignature;
 		if (eNotificationRequired()) {
@@ -632,7 +641,8 @@ public class PackageImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature(EClass eClass) {
-		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) create(eClass);
+		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) create(
+			eClass);
 		setOwnedTemplateSignature(newOwnedTemplateSignature);
 		return newOwnedTemplateSignature;
 	}
@@ -643,7 +653,8 @@ public class PackageImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature() {
-		return createOwnedTemplateSignature(UMLPackage.Literals.TEMPLATE_SIGNATURE);
+		return createOwnedTemplateSignature(
+			UMLPackage.Literals.TEMPLATE_SIGNATURE);
 	}
 
 	/**
@@ -660,15 +671,12 @@ public class PackageImpl
 			EList<NamedElement> ownedMembers = (EList<NamedElement>) cache.get(
 				eResource, this, UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 			if (ownedMembers == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.NAMESPACE__OWNED_MEMBER,
-						ownedMembers = new DerivedUnionEObjectEList<NamedElement>(
-							NamedElement.class, this,
-							UMLPackage.PACKAGE__OWNED_MEMBER,
-							OWNED_MEMBER_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER,
+					ownedMembers = new DerivedUnionEObjectEList<NamedElement>(
+						NamedElement.class, this,
+						UMLPackage.PACKAGE__OWNED_MEMBER,
+						OWNED_MEMBER_ESUBSETS));
 			}
 			return ownedMembers;
 		}
@@ -695,8 +703,10 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PackageableElement createPackagedElement(String name, EClass eClass) {
-		PackageableElement newPackagedElement = (PackageableElement) create(eClass);
+	public PackageableElement createPackagedElement(String name,
+			EClass eClass) {
+		PackageableElement newPackagedElement = (PackageableElement) create(
+			eClass);
 		getPackagedElements().add(newPackagedElement);
 		if (name != null)
 			newPackagedElement.setName(name);
@@ -776,7 +786,8 @@ public class PackageImpl
 	 */
 	public PackageMerge createPackageMerge(
 			org.eclipse.uml2.uml.Package mergedPackage) {
-		PackageMerge newPackageMerge = (PackageMerge) create(UMLPackage.Literals.PACKAGE_MERGE);
+		PackageMerge newPackageMerge = (PackageMerge) create(
+			UMLPackage.Literals.PACKAGE_MERGE);
 		getPackageMerges().add(newPackageMerge);
 		if (mergedPackage != null)
 			newPackageMerge.setMergedPackage(mergedPackage);
@@ -799,7 +810,8 @@ public class PackageImpl
 	 * @generated
 	 */
 	public PackageMerge getPackageMerge(
-			org.eclipse.uml2.uml.Package mergedPackage, boolean createOnDemand) {
+			org.eclipse.uml2.uml.Package mergedPackage,
+			boolean createOnDemand) {
 		packageMergeLoop : for (PackageMerge packageMerge : getPackageMerges()) {
 			if (mergedPackage != null
 				&& !mergedPackage.equals(packageMerge.getMergedPackage()))
@@ -826,8 +838,8 @@ public class PackageImpl
 			if (ownedTypes == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.PACKAGE__OWNED_TYPE,
-					ownedTypes = new DerivedSubsetEObjectEList<Type>(
-						Type.class, this, UMLPackage.PACKAGE__OWNED_TYPE,
+					ownedTypes = new DerivedSubsetEObjectEList<Type>(Type.class,
+						this, UMLPackage.PACKAGE__OWNED_TYPE,
 						OWNED_TYPE_ESUPERSETS));
 			}
 			return ownedTypes;
@@ -850,15 +862,12 @@ public class PackageImpl
 				.get(eResource, this,
 					UMLPackage.Literals.PACKAGE__NESTED_PACKAGE);
 			if (nestedPackages == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.PACKAGE__NESTED_PACKAGE,
-						nestedPackages = new DerivedSubsetEObjectEList<org.eclipse.uml2.uml.Package>(
-							org.eclipse.uml2.uml.Package.class, this,
-							UMLPackage.PACKAGE__NESTED_PACKAGE,
-							NESTED_PACKAGE_ESUPERSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.PACKAGE__NESTED_PACKAGE,
+					nestedPackages = new DerivedSubsetEObjectEList<org.eclipse.uml2.uml.Package>(
+						org.eclipse.uml2.uml.Package.class, this,
+						UMLPackage.PACKAGE__NESTED_PACKAGE,
+						NESTED_PACKAGE_ESUPERSETS));
 			}
 			return nestedPackages;
 		}
@@ -875,7 +884,8 @@ public class PackageImpl
 	public org.eclipse.uml2.uml.Package getNestingPackage() {
 		org.eclipse.uml2.uml.Package nestingPackage = basicGetNestingPackage();
 		return nestingPackage != null && nestingPackage.eIsProxy()
-			? (org.eclipse.uml2.uml.Package) eResolveProxy((InternalEObject) nestingPackage)
+			? (org.eclipse.uml2.uml.Package) eResolveProxy(
+				(InternalEObject) nestingPackage)
 			: nestingPackage;
 	}
 
@@ -896,7 +906,8 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public void setNestingPackage(org.eclipse.uml2.uml.Package newNestingPackage) {
+	public void setNestingPackage(
+			org.eclipse.uml2.uml.Package newNestingPackage) {
 		if (newNestingPackage != eInternalContainer()) {
 			if (EcoreUtil.isAncestor(this, newNestingPackage))
 				throw new IllegalArgumentException(
@@ -909,7 +920,8 @@ public class PackageImpl
 					.getNestedPackages()).basicAdd(this, msgs);
 			msgs = eBasicSetContainer((InternalEObject) newNestingPackage,
 				InternalEObject.EOPPOSITE_FEATURE_BASE
-					- UMLPackage.PACKAGE__PACKAGED_ELEMENT, msgs);
+					- UMLPackage.PACKAGE__PACKAGED_ELEMENT,
+				msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -931,21 +943,17 @@ public class PackageImpl
 			EList<Stereotype> ownedStereotypes = (EList<Stereotype>) cache.get(
 				eResource, this, UMLPackage.Literals.PACKAGE__OWNED_STEREOTYPE);
 			if (ownedStereotypes == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.PACKAGE__OWNED_STEREOTYPE,
-						ownedStereotypes = new DerivedSubsetEObjectEList<Stereotype>(
-							Stereotype.class, this,
-							UMLPackage.PACKAGE__OWNED_STEREOTYPE,
-							OWNED_STEREOTYPE_ESUPERSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.PACKAGE__OWNED_STEREOTYPE,
+					ownedStereotypes = new DerivedSubsetEObjectEList<Stereotype>(
+						Stereotype.class, this,
+						UMLPackage.PACKAGE__OWNED_STEREOTYPE,
+						OWNED_STEREOTYPE_ESUPERSETS));
 			}
 			return ownedStereotypes;
 		}
-		return new DerivedSubsetEObjectEList<Stereotype>(Stereotype.class,
-			this, UMLPackage.PACKAGE__OWNED_STEREOTYPE,
-			OWNED_STEREOTYPE_ESUPERSETS);
+		return new DerivedSubsetEObjectEList<Stereotype>(Stereotype.class, this,
+			UMLPackage.PACKAGE__OWNED_STEREOTYPE, OWNED_STEREOTYPE_ESUPERSETS);
 	}
 
 	/**
@@ -969,7 +977,8 @@ public class PackageImpl
 	 * @generated
 	 */
 	public ProfileApplication createProfileApplication() {
-		ProfileApplication newProfileApplication = (ProfileApplication) create(UMLPackage.Literals.PROFILE_APPLICATION);
+		ProfileApplication newProfileApplication = (ProfileApplication) create(
+			UMLPackage.Literals.PROFILE_APPLICATION);
 		getProfileApplications().add(newProfileApplication);
 		return newProfileApplication;
 	}
@@ -997,10 +1006,10 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNamespaceNeedsVisibility(
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return PackageableElementOperations.validateNamespaceNeedsVisibility(
-			this, diagnostics, context);
+	public boolean validateNamespaceNeedsVisibility(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return PackageableElementOperations
+			.validateNamespaceNeedsVisibility(this, diagnostics, context);
 	}
 
 	/**
@@ -1013,16 +1022,13 @@ public class PackageImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<ParameterableElement> result = (EList<ParameterableElement>) cache
-				.get(
-					this,
+				.get(this,
 					UMLPackage.Literals.TEMPLATEABLE_ELEMENT___PARAMETERABLE_ELEMENTS);
 			if (result == null) {
-				cache
-					.put(
-						this,
-						UMLPackage.Literals.TEMPLATEABLE_ELEMENT___PARAMETERABLE_ELEMENTS,
-						result = TemplateableElementOperations
-							.parameterableElements(this));
+				cache.put(this,
+					UMLPackage.Literals.TEMPLATEABLE_ELEMENT___PARAMETERABLE_ELEMENTS,
+					result = TemplateableElementOperations
+						.parameterableElements(this));
 			}
 			return result;
 		}
@@ -1118,6 +1124,15 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<EObject> applyProfiles(EList<Profile> profiles) {
+		return PackageOperations.applyProfiles(this, profiles);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<Stereotype> allApplicableStereotypes() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
@@ -1179,8 +1194,8 @@ public class PackageImpl
 	 * @generated
 	 */
 	public Profile getAppliedProfile(String qualifiedName, boolean recurse) {
-		return PackageOperations
-			.getAppliedProfile(this, qualifiedName, recurse);
+		return PackageOperations.getAppliedProfile(this, qualifiedName,
+			recurse);
 	}
 
 	/**
@@ -1331,10 +1346,10 @@ public class PackageImpl
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.PACKAGE__TEMPLATE_PARAMETER :
 				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
+					msgs = ((InternalEObject) templateParameter).eInverseRemove(
+						this,
+						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+						TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.PACKAGE__TEMPLATE_BINDING :
@@ -1343,8 +1358,9 @@ public class PackageImpl
 			case UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
-						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE,
+						.eInverseRemove(this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE,
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
@@ -1368,37 +1384,37 @@ public class PackageImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PACKAGE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PACKAGE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PACKAGE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.PACKAGE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedRules())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PACKAGE__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getElementImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PACKAGE__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPackageImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.PACKAGE__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.PACKAGE__TEMPLATE_BINDING :
-				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getTemplateBindings())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.PACKAGE__PACKAGE_MERGE :
-				return ((InternalEList<?>) getPackageMerges()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPackageMerges())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PACKAGE__PACKAGED_ELEMENT :
-				return ((InternalEList<?>) getPackagedElements()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPackagedElements())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PACKAGE__PROFILE_APPLICATION :
 				return ((InternalEList<?>) getProfileApplications())
 					.basicRemove(otherEnd, msgs);
@@ -1516,13 +1532,13 @@ public class PackageImpl
 		switch (featureID) {
 			case UMLPackage.PACKAGE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.PACKAGE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.PACKAGE__NAME :
 				setName((String) newValue);
@@ -1535,18 +1551,18 @@ public class PackageImpl
 				return;
 			case UMLPackage.PACKAGE__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getOwnedRules()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.PACKAGE__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll(
-					(Collection<? extends ElementImport>) newValue);
+				getElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.PACKAGE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll(
-					(Collection<? extends PackageImport>) newValue);
+				getPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -1556,8 +1572,8 @@ public class PackageImpl
 				return;
 			case UMLPackage.PACKAGE__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll(
-					(Collection<? extends TemplateBinding>) newValue);
+				getTemplateBindings()
+					.addAll((Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
@@ -1567,9 +1583,8 @@ public class PackageImpl
 				return;
 			case UMLPackage.PACKAGE__NESTED_PACKAGE :
 				getNestedPackages().clear();
-				getNestedPackages()
-					.addAll(
-						(Collection<? extends org.eclipse.uml2.uml.Package>) newValue);
+				getNestedPackages().addAll(
+					(Collection<? extends org.eclipse.uml2.uml.Package>) newValue);
 				return;
 			case UMLPackage.PACKAGE__NESTING_PACKAGE :
 				setNestingPackage((org.eclipse.uml2.uml.Package) newValue);
@@ -1580,8 +1595,8 @@ public class PackageImpl
 				return;
 			case UMLPackage.PACKAGE__PACKAGE_MERGE :
 				getPackageMerges().clear();
-				getPackageMerges().addAll(
-					(Collection<? extends PackageMerge>) newValue);
+				getPackageMerges()
+					.addAll((Collection<? extends PackageMerge>) newValue);
 				return;
 			case UMLPackage.PACKAGE__PACKAGED_ELEMENT :
 				getPackagedElements().clear();
@@ -1745,7 +1760,8 @@ public class PackageImpl
 	 * @generated
 	 */
 	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	public int eBaseStructuralFeatureID(int derivedFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == ParameterableElement.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER :
@@ -1781,7 +1797,8 @@ public class PackageImpl
 	 * @generated
 	 */
 	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	public int eDerivedStructuralFeatureID(int baseFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == ParameterableElement.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
@@ -1906,7 +1923,8 @@ public class PackageImpl
 			case UMLPackage.PACKAGE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.PACKAGE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.PACKAGE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.PACKAGE___GET_STEREOTYPE_APPLICATIONS :
@@ -1914,7 +1932,8 @@ public class PackageImpl
 			case UMLPackage.PACKAGE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.PACKAGE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.PACKAGE___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -2003,19 +2022,20 @@ public class PackageImpl
 			case UMLPackage.PACKAGE___GET_OWNED_MEMBERS :
 				return getOwnedMembers();
 			case UMLPackage.PACKAGE___EXCLUDE_COLLISIONS__ELIST :
-				return excludeCollisions((EList<PackageableElement>) arguments
-					.get(0));
+				return excludeCollisions(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.PACKAGE___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
 				return getNamesOfMember((NamedElement) arguments.get(0));
 			case UMLPackage.PACKAGE___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
+				return importMembers(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.PACKAGE___GET_IMPORTED_MEMBERS :
 				return getImportedMembers();
 			case UMLPackage.PACKAGE___MEMBERS_ARE_DISTINGUISHABLE :
 				return membersAreDistinguishable();
 			case UMLPackage.PACKAGE___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.PACKAGE___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.PACKAGE___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
@@ -2066,6 +2086,8 @@ public class PackageImpl
 				return isProfileApplied((Profile) arguments.get(0));
 			case UMLPackage.PACKAGE___UNAPPLY_PROFILE__PROFILE :
 				return unapplyProfile((Profile) arguments.get(0));
+			case UMLPackage.PACKAGE___APPLY_PROFILES__ELIST :
+				return applyProfiles((EList<Profile>) arguments.get(0));
 			case UMLPackage.PACKAGE___ALL_APPLICABLE_STEREOTYPES :
 				return allApplicableStereotypes();
 			case UMLPackage.PACKAGE___CONTAINING_PROFILE :
@@ -2186,7 +2208,8 @@ public class PackageImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] NESTED_PACKAGE_ESUPERSETS = new int[]{UMLPackage.PACKAGE__PACKAGED_ELEMENT};
+	protected static final int[] NESTED_PACKAGE_ESUPERSETS = new int[]{
+		UMLPackage.PACKAGE__PACKAGED_ELEMENT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2195,7 +2218,8 @@ public class PackageImpl
 	 */
 	public org.eclipse.uml2.uml.Package createNestedPackage(String name,
 			EClass eClass) {
-		org.eclipse.uml2.uml.Package newNestedPackage = (org.eclipse.uml2.uml.Package) create(eClass);
+		org.eclipse.uml2.uml.Package newNestedPackage = (org.eclipse.uml2.uml.Package) create(
+			eClass);
 		getNestedPackages().add(newNestedPackage);
 		if (name != null)
 			newNestedPackage.setName(name);
@@ -2249,7 +2273,8 @@ public class PackageImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] OWNED_STEREOTYPE_ESUPERSETS = new int[]{UMLPackage.PACKAGE__PACKAGED_ELEMENT};
+	protected static final int[] OWNED_STEREOTYPE_ESUPERSETS = new int[]{
+		UMLPackage.PACKAGE__PACKAGED_ELEMENT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2284,7 +2309,8 @@ public class PackageImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] OWNED_TYPE_ESUPERSETS = new int[]{UMLPackage.PACKAGE__PACKAGED_ELEMENT};
+	protected static final int[] OWNED_TYPE_ESUPERSETS = new int[]{
+		UMLPackage.PACKAGE__PACKAGED_ELEMENT};
 
 	/**
 	 * <!-- begin-user-doc -->

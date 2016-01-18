@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
- *   Kenn Hussey (CEA) - 418466, 451350, 483781
+ *   Kenn Hussey (CEA) - 418466, 451350, 483781, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -98,8 +98,8 @@ public class TypeOperations
 			@Override
 			public Property caseAssociationClass(
 					AssociationClass associationClass) {
-				return associationClass
-					.createOwnedAttribute(name, propertyType);
+				return associationClass.createOwnedAttribute(name,
+					propertyType);
 			}
 
 			@Override
@@ -152,10 +152,11 @@ public class TypeOperations
 			AggregationKind aggregation, String name, int lower, int upper,
 			Type endType) {
 		EList<Property> ownedAttributes = getOwnedAttributes(type);
-		Property associationEnd = createOwnedProperty(ownedAttributes == null
-			|| !isNavigable
-			? association
-			: type, name, endType, lower, upper);
+		Property associationEnd = createOwnedProperty(
+			ownedAttributes == null || !isNavigable
+				? association
+				: type,
+			name, endType, lower, upper);
 
 		associationEnd.setAggregation(aggregation);
 
@@ -249,9 +250,11 @@ public class TypeOperations
 	public static EList<Association> getAssociations(Type type) {
 		EList<Association> associations = new UniqueEList.FastCompare<Association>();
 
-		for (EStructuralFeature.Setting nonNavigableInverseReference : getNonNavigableInverseReferences(type)) {
+		for (EStructuralFeature.Setting nonNavigableInverseReference : getNonNavigableInverseReferences(
+			type)) {
 
-			if (nonNavigableInverseReference.getEStructuralFeature() == UMLPackage.Literals.TYPED_ELEMENT__TYPE) {
+			if (nonNavigableInverseReference
+				.getEStructuralFeature() == UMLPackage.Literals.TYPED_ELEMENT__TYPE) {
 				EObject eObject = nonNavigableInverseReference.getEObject();
 
 				if (eObject instanceof Property) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 451350
+ *   Kenn Hussey (CEA) - 327039, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -110,7 +110,8 @@ public abstract class ParameterableElementImpl
 	public TemplateParameter getTemplateParameter() {
 		if (templateParameter != null && templateParameter.eIsProxy()) {
 			InternalEObject oldTemplateParameter = (InternalEObject) templateParameter;
-			templateParameter = (TemplateParameter) eResolveProxy(oldTemplateParameter);
+			templateParameter = (TemplateParameter) eResolveProxy(
+				oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -213,7 +214,8 @@ public abstract class ParameterableElementImpl
 	 * @generated
 	 */
 	public NotificationChain basicSetOwningTemplateParameter(
-			TemplateParameter newOwningTemplateParameter, NotificationChain msgs) {
+			TemplateParameter newOwningTemplateParameter,
+			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newOwningTemplateParameter,
 			UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER, msgs);
 		Resource.Internal eInternalResource = eInternalResource();
@@ -235,7 +237,8 @@ public abstract class ParameterableElementImpl
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
 		if (newOwningTemplateParameter != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
+			|| (eContainerFeatureID() != UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER
+				&& newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -244,8 +247,7 @@ public abstract class ParameterableElementImpl
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningTemplateParameter != null)
 				msgs = ((InternalEObject) newOwningTemplateParameter)
-					.eInverseAdd(
-						this,
+					.eInverseAdd(this,
 						UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 						TemplateParameter.class, msgs);
 			msgs = basicSetOwningTemplateParameter(newOwningTemplateParameter,
@@ -296,10 +298,10 @@ public abstract class ParameterableElementImpl
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
 				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
+					msgs = ((InternalEObject) templateParameter).eInverseRemove(
+						this,
+						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+						TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 		}
@@ -316,11 +318,11 @@ public abstract class ParameterableElementImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PARAMETERABLE_ELEMENT__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
@@ -387,13 +389,13 @@ public abstract class ParameterableElementImpl
 		switch (featureID) {
 			case UMLPackage.PARAMETERABLE_ELEMENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -510,7 +512,8 @@ public abstract class ParameterableElementImpl
 			case UMLPackage.PARAMETERABLE_ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.PARAMETERABLE_ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.PARAMETERABLE_ELEMENT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.PARAMETERABLE_ELEMENT___GET_STEREOTYPE_APPLICATIONS :
@@ -518,7 +521,8 @@ public abstract class ParameterableElementImpl
 			case UMLPackage.PARAMETERABLE_ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.PARAMETERABLE_ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.PARAMETERABLE_ELEMENT___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -546,7 +550,8 @@ public abstract class ParameterableElementImpl
 			case UMLPackage.PARAMETERABLE_ELEMENT___MUST_BE_OWNED :
 				return mustBeOwned();
 			case UMLPackage.PARAMETERABLE_ELEMENT___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.PARAMETERABLE_ELEMENT___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 		}
@@ -574,8 +579,8 @@ public abstract class ParameterableElementImpl
 	 */
 	@Override
 	public boolean isSetOwner() {
-		return super.isSetOwner()
-			|| eIsSet(UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER);
+		return super.isSetOwner() || eIsSet(
+			UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER);
 	}
 
 } //ParameterableElementImpl

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 394623, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 394623, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -194,7 +194,8 @@ public class ClassifierOperations
 							UMLPlugin.INSTANCE.getString(
 								"_UI_Classifier_SpecializeType_diagnostic", //$NON-NLS-1$
 								getMessageSubstitutions(context, classifier,
-									parent)), new Object[]{classifier, parent}));
+									parent)),
+						new Object[]{classifier, parent}));
 				}
 			}
 		}
@@ -217,24 +218,23 @@ public class ClassifierOperations
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateMapsToGeneralizationSet(
-			Classifier classifier, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
+	public static boolean validateMapsToGeneralizationSet(Classifier classifier,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CLASSIFIER__MAPS_TO_GENERALIZATION_SET,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMapsToGeneralizationSet", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(classifier, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{classifier}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CLASSIFIER__MAPS_TO_GENERALIZATION_SET,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateMapsToGeneralizationSet", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(classifier, context)}),
+					new Object[]{classifier}));
 			}
 			return false;
 		}
@@ -261,15 +261,15 @@ public class ClassifierOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CLASSIFIER__NON_FINAL_PARENTS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNonFinalParents", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(classifier, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{classifier}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CLASSIFIER__NON_FINAL_PARENTS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateNonFinalParents", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(classifier, context)}),
+					new Object[]{classifier}));
 			}
 			return false;
 		}
@@ -390,19 +390,18 @@ public class ClassifierOperations
 
 			if (parameterNames != null
 				&& parameterNames.size() != ownedParameterListSize
-				|| (parameterTypes != null && parameterTypes.size() != ownedParameterListSize))
+				|| (parameterTypes != null
+					&& parameterTypes.size() != ownedParameterListSize))
 
 				continue operationLoop;
 
 			for (int j = 0; j < ownedParameterListSize; j++) {
 				Parameter ownedParameter = ownedParameterList.get(j);
 
-				if (parameterNames != null
-					&& !(ignoreCase
-						? parameterNames.get(j).equalsIgnoreCase(
-							ownedParameter.getName())
-						: parameterNames.get(j)
-							.equals(ownedParameter.getName())))
+				if (parameterNames != null && !(ignoreCase
+					? parameterNames.get(j)
+						.equalsIgnoreCase(ownedParameter.getName())
+					: parameterNames.get(j).equals(ownedParameter.getName())))
 
 					continue operationLoop;
 
@@ -455,7 +454,8 @@ public class ClassifierOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static boolean maySpecializeType(Classifier classifier, Classifier c) {
+	public static boolean maySpecializeType(Classifier classifier,
+			Classifier c) {
 		return c.eClass().isSuperTypeOf(classifier.eClass());
 	}
 
@@ -493,14 +493,15 @@ public class ClassifierOperations
 		protected Object validate(int index, Object object) {
 			Generalization generalization = UMLFactory.eINSTANCE
 				.createGeneralization();
-			generalization.setGeneral((Classifier) super
-				.validate(index, object));
+			generalization
+				.setGeneral((Classifier) super.validate(index, object));
 			return generalization;
 		}
 
 	}
 
-	protected static final int[] GENERAL_ESUPERSETS = new int[]{UMLPackage.CLASSIFIER__GENERALIZATION};
+	protected static final int[] GENERAL_ESUPERSETS = new int[]{
+		UMLPackage.CLASSIFIER__GENERALIZATION};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -531,7 +532,8 @@ public class ClassifierOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList<NamedElement> getInheritedMembers(Classifier classifier) {
+	public static EList<NamedElement> getInheritedMembers(
+			Classifier classifier) {
 		EList<NamedElement> inheritedMembers = new UniqueEList.FastCompare<NamedElement>();
 
 		for (Classifier parent : classifier.parents()) {
@@ -540,8 +542,7 @@ public class ClassifierOperations
 
 		EList<NamedElement> inherit = classifier.inherit(inheritedMembers);
 
-		return new UnionEObjectEList<NamedElement>(
-			(InternalEObject) classifier,
+		return new UnionEObjectEList<NamedElement>((InternalEObject) classifier,
 			UMLPackage.Literals.CLASSIFIER__INHERITED_MEMBER, inherit.size(),
 			inherit.toArray());
 	}
@@ -610,8 +611,8 @@ public class ClassifierOperations
 	 */
 	public static EList<Interface> directlyRealizedInterfaces(
 			Classifier classifier) {
-		return ECollections.unmodifiableEList(directlyRealizedInterfaces(
-			classifier, true));
+		return ECollections
+			.unmodifiableEList(directlyRealizedInterfaces(classifier, true));
 	}
 
 	protected static EList<Interface> directlyRealizedInterfaces(
@@ -658,9 +659,10 @@ public class ClassifierOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList<Interface> directlyUsedInterfaces(Classifier classifier) {
-		return ECollections.unmodifiableEList(directlyUsedInterfaces(
-			classifier, true));
+	public static EList<Interface> directlyUsedInterfaces(
+			Classifier classifier) {
+		return ECollections
+			.unmodifiableEList(directlyUsedInterfaces(classifier, true));
 	}
 
 	protected static EList<Interface> directlyUsedInterfaces(
@@ -705,7 +707,8 @@ public class ClassifierOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList<Interface> allRealizedInterfaces(Classifier classifier) {
+	public static EList<Interface> allRealizedInterfaces(
+			Classifier classifier) {
 		return allRealizedInterfaces(classifier, true,
 			new UniqueEList.FastCompare<Interface>());
 	}
@@ -793,8 +796,8 @@ public class ClassifierOperations
 
 		EList<NamedElement> members = classifier.getMembers();
 
-		for (ListIterator<Property> attribute = allAttributes.listIterator(); attribute
-			.hasNext();) {
+		for (ListIterator<Property> attribute = allAttributes
+			.listIterator(); attribute.hasNext();) {
 
 			if (!members.contains(attribute.next())) {
 				attribute.remove();
@@ -836,9 +839,9 @@ public class ClassifierOperations
 			parentAttributes.addAll(parent.getAttributes());
 		}
 
-		allSlottableFeatures
-			.addAll((Collection<? extends StructuralFeature>) inherit(
-				classifier, parentAttributes));
+		allSlottableFeatures.addAll(
+			(Collection<? extends StructuralFeature>) inherit(classifier,
+				parentAttributes));
 
 		return ECollections.unmodifiableEList(allSlottableFeatures);
 	}
@@ -887,7 +890,8 @@ public class ClassifierOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static boolean hasVisibilityOf(Classifier classifier, NamedElement n) {
+	public static boolean hasVisibilityOf(Classifier classifier,
+			NamedElement n) {
 
 		for (Classifier parent : classifier.allParents()) {
 
@@ -925,8 +929,8 @@ public class ClassifierOperations
 		for (NamedElement ownedMember : classifier.getOwnedMembers()) {
 
 			if (ownedMember instanceof RedefinableElement) {
-				redefinedElements.addAll(((RedefinableElement) ownedMember)
-					.getRedefinedElements());
+				redefinedElements.addAll(
+					((RedefinableElement) ownedMember).getRedefinedElements());
 			}
 		}
 
@@ -965,8 +969,8 @@ public class ClassifierOperations
 	 * @generated NOT
 	 */
 	public static EList<Classifier> allParents(Classifier classifier) {
-		return ECollections.unmodifiableEList(allParents(classifier,
-			new UniqueEList.FastCompare<Classifier>()));
+		return ECollections.unmodifiableEList(
+			allParents(classifier, new UniqueEList.FastCompare<Classifier>()));
 	}
 
 	/**

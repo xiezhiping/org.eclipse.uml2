@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 465214
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 465214, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -195,15 +195,12 @@ public abstract class ActivityNodeImpl
 				.get(eResource, this,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 			if (redefinedElements == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-						redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
-							RedefinableElement.class, this,
-							UMLPackage.ACTIVITY_NODE__REDEFINED_ELEMENT,
-							REDEFINED_ELEMENT_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+					redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
+						RedefinableElement.class, this,
+						UMLPackage.ACTIVITY_NODE__REDEFINED_ELEMENT,
+						REDEFINED_ELEMENT_ESUBSETS));
 			}
 			return redefinedElements;
 		}
@@ -342,7 +339,8 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public NotificationChain basicSetInStructuredNode(
-			StructuredActivityNode newInStructuredNode, NotificationChain msgs) {
+			StructuredActivityNode newInStructuredNode,
+			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newInStructuredNode,
 			UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE, msgs);
 		return msgs;
@@ -353,9 +351,11 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInStructuredNode(StructuredActivityNode newInStructuredNode) {
+	public void setInStructuredNode(
+			StructuredActivityNode newInStructuredNode) {
 		if (newInStructuredNode != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE && newInStructuredNode != null)) {
+			|| (eContainerFeatureID() != UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE
+				&& newInStructuredNode != null)) {
 			if (EcoreUtil.isAncestor(this, newInStructuredNode))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -363,8 +363,8 @@ public abstract class ActivityNodeImpl
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newInStructuredNode != null)
-				msgs = ((InternalEObject) newInStructuredNode).eInverseAdd(
-					this, UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE,
+				msgs = ((InternalEObject) newInStructuredNode).eInverseAdd(this,
+					UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE,
 					StructuredActivityNode.class, msgs);
 			msgs = basicSetInStructuredNode(newInStructuredNode, msgs);
 			if (msgs != null)
@@ -438,7 +438,8 @@ public abstract class ActivityNodeImpl
 					.getOwnedNodes()).basicAdd(this, msgs);
 			msgs = eBasicSetContainer((InternalEObject) newActivity,
 				InternalEObject.EOPPOSITE_FEATURE_BASE
-					- UMLPackage.ACTIVITY__OWNED_NODE, msgs);
+					- UMLPackage.ACTIVITY__OWNED_NODE,
+				msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -615,11 +616,11 @@ public abstract class ActivityNodeImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_NODE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
@@ -628,14 +629,14 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
 				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.ACTIVITY_NODE__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.ACTIVITY_NODE__OUTGOING :
-				return ((InternalEList<?>) getOutgoings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getInPartitions())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -732,13 +733,13 @@ public abstract class ActivityNodeImpl
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_NODE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_NODE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_NODE__NAME :
 				setName((String) newValue);
@@ -757,32 +758,31 @@ public abstract class ActivityNodeImpl
 				return;
 			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions()
-					.addAll(
-						(Collection<? extends InterruptibleActivityRegion>) newValue);
+				getInInterruptibleRegions().addAll(
+					(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.ACTIVITY_NODE__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getIncomings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_NODE__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getOutgoings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll(
-					(Collection<? extends ActivityNode>) newValue);
+				getRedefinedNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
+				getInPartitions()
+					.addAll((Collection<? extends ActivityPartition>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -971,7 +971,8 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.ACTIVITY_NODE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.ACTIVITY_NODE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.ACTIVITY_NODE___GET_STEREOTYPE_APPLICATIONS :
@@ -979,7 +980,8 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.ACTIVITY_NODE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.ACTIVITY_NODE___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1056,8 +1058,8 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.ACTIVITY_NODE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.ACTIVITY_NODE___CONTAINING_ACTIVITY :
 				return containingActivity();
 		}
@@ -1166,7 +1168,8 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{UMLPackage.ACTIVITY_NODE__REDEFINED_NODE};
+	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.ACTIVITY_NODE__REDEFINED_NODE};
 
 	/**
 	 * <!-- begin-user-doc -->

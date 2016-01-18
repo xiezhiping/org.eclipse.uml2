@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 386760, 212765, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 386760, 212765, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -145,19 +145,15 @@ public class RedefinableTemplateSignatureImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-						ownedElements = new DerivedUnionEObjectEList<Element>(
-							Element.class,
-							this,
-							UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_ELEMENT,
-							OWNED_ELEMENT_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
@@ -235,7 +231,8 @@ public class RedefinableTemplateSignatureImpl
 		}
 
 		if (newTemplate != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE && newTemplate != null)) {
+			|| (eContainerFeatureID() != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE
+				&& newTemplate != null)) {
 			if (EcoreUtil.isAncestor(this, newTemplate))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -286,7 +283,8 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	public TemplateParameter createOwnedParameter(EClass eClass) {
-		TemplateParameter newOwnedParameter = (TemplateParameter) create(eClass);
+		TemplateParameter newOwnedParameter = (TemplateParameter) create(
+			eClass);
 		getOwnedParameters().add(newOwnedParameter);
 		return newOwnedParameter;
 	}
@@ -315,16 +313,12 @@ public class RedefinableTemplateSignatureImpl
 				.get(eResource, this,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 			if (redefinedElements == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-						redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
-							RedefinableElement.class,
-							this,
-							UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__REDEFINED_ELEMENT,
-							REDEFINED_ELEMENT_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+					redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
+						RedefinableElement.class, this,
+						UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__REDEFINED_ELEMENT,
+						REDEFINED_ELEMENT_ESUBSETS));
 			}
 			return redefinedElements;
 		}
@@ -346,21 +340,15 @@ public class RedefinableTemplateSignatureImpl
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
 			EList<Classifier> redefinitionContexts = (EList<Classifier>) cache
-				.get(
-					eResource,
-					this,
+				.get(eResource, this,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 			if (redefinitionContexts == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-						redefinitionContexts = new DerivedUnionEObjectEList<Classifier>(
-							Classifier.class,
-							this,
-							UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__REDEFINITION_CONTEXT,
-							REDEFINITION_CONTEXT_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+					redefinitionContexts = new DerivedUnionEObjectEList<Classifier>(
+						Classifier.class, this,
+						UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__REDEFINITION_CONTEXT,
+						REDEFINITION_CONTEXT_ESUBSETS));
 			}
 			return redefinitionContexts;
 		}
@@ -419,16 +407,13 @@ public class RedefinableTemplateSignatureImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<TemplateParameter> result = (EList<TemplateParameter>) cache
-				.get(
-					this,
+				.get(this,
 					UMLPackage.Literals.REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETER);
 			if (result == null) {
-				cache
-					.put(
-						this,
-						UMLPackage.Literals.REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETER,
-						result = RedefinableTemplateSignatureOperations
-							.getInheritedParameters(this));
+				cache.put(this,
+					UMLPackage.Literals.REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETER,
+					result = RedefinableTemplateSignatureOperations
+						.getInheritedParameters(this));
 			}
 			return result;
 		}
@@ -497,8 +482,8 @@ public class RedefinableTemplateSignatureImpl
 	 */
 	public boolean validateRedefinesParents(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return RedefinableTemplateSignatureOperations.validateRedefinesParents(
-			this, diagnostics, context);
+		return RedefinableTemplateSignatureOperations
+			.validateRedefinesParents(this, diagnostics, context);
 	}
 
 	/**
@@ -546,18 +531,18 @@ public class RedefinableTemplateSignatureImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
 				return basicSetTemplate(null, msgs);
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
-				return ((InternalEList<?>) getOwnedParameters()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedParameters())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -644,13 +629,13 @@ public class RedefinableTemplateSignatureImpl
 		switch (featureID) {
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__NAME :
 				setName((String) newValue);
@@ -666,22 +651,21 @@ public class RedefinableTemplateSignatureImpl
 				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER :
 				getParameters().clear();
-				getParameters().addAll(
-					(Collection<? extends TemplateParameter>) newValue);
+				getParameters()
+					.addAll((Collection<? extends TemplateParameter>) newValue);
 				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
 				setTemplate((TemplateableElement) newValue);
 				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
 				getOwnedParameters().clear();
-				getOwnedParameters().addAll(
-					(Collection<? extends TemplateParameter>) newValue);
+				getOwnedParameters()
+					.addAll((Collection<? extends TemplateParameter>) newValue);
 				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE :
 				getExtendedSignatures().clear();
-				getExtendedSignatures()
-					.addAll(
-						(Collection<? extends RedefinableTemplateSignature>) newValue);
+				getExtendedSignatures().addAll(
+					(Collection<? extends RedefinableTemplateSignature>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -799,7 +783,8 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	public int eBaseStructuralFeatureID(int derivedFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == TemplateSignature.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER :
@@ -821,7 +806,8 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	public int eDerivedStructuralFeatureID(int baseFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == TemplateSignature.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.TEMPLATE_SIGNATURE__PARAMETER :
@@ -914,7 +900,8 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___GET_STEREOTYPE_APPLICATIONS :
@@ -922,7 +909,8 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -999,8 +987,8 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE___VALIDATE_OWN_ELEMENTS__DIAGNOSTICCHAIN_MAP :
 				return validateOwnElements((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
@@ -1039,7 +1027,8 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] PARAMETER_ESUBSETS = new int[]{UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER};
+	protected static final int[] PARAMETER_ESUBSETS = new int[]{
+		UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER};
 
 	/**
 	 * The array of superset feature identifiers for the '{@link #getOwnedParameters() <em>Owned Parameter</em>}' containment reference list.
@@ -1049,7 +1038,8 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] OWNED_PARAMETER_ESUPERSETS = new int[]{UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER};
+	protected static final int[] OWNED_PARAMETER_ESUPERSETS = new int[]{
+		UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1095,7 +1085,8 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE};
+	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1104,8 +1095,8 @@ public class RedefinableTemplateSignatureImpl
 	 */
 	@Override
 	public boolean isSetOwnedElements() {
-		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER);
+		return super.isSetOwnedElements() || eIsSet(
+			UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER);
 	}
 
 	/**
@@ -1115,8 +1106,8 @@ public class RedefinableTemplateSignatureImpl
 	 */
 	@Override
 	public boolean isSetRedefinedElements() {
-		return super.isSetRedefinedElements()
-			|| eIsSet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE);
+		return super.isSetRedefinedElements() || eIsSet(
+			UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE);
 	}
 
 	/**
@@ -1127,7 +1118,8 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER};
+	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{
+		UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER};
 
 	/**
 	 * The array of superset feature identifiers for the '{@link #getInheritedParameters() <em>Inherited Parameter</em>}' reference list.
@@ -1137,7 +1129,8 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] INHERITED_PARAMETER_ESUPERSETS = new int[]{UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER};
+	protected static final int[] INHERITED_PARAMETER_ESUPERSETS = new int[]{
+		UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER};
 
 	/**
 	 * <!-- begin-user-doc -->

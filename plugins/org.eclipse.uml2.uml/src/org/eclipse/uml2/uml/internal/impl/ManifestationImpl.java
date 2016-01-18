@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -107,7 +107,8 @@ public class ManifestationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] SUPPLIER_ESUBSETS = new int[]{UMLPackage.MANIFESTATION__UTILIZED_ELEMENT};
+	protected static final int[] SUPPLIER_ESUBSETS = new int[]{
+		UMLPackage.MANIFESTATION__UTILIZED_ELEMENT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -117,7 +118,8 @@ public class ManifestationImpl
 	public PackageableElement getUtilizedElement() {
 		if (utilizedElement != null && utilizedElement.eIsProxy()) {
 			InternalEObject oldUtilizedElement = (InternalEObject) utilizedElement;
-			utilizedElement = (PackageableElement) eResolveProxy(oldUtilizedElement);
+			utilizedElement = (PackageableElement) eResolveProxy(
+				oldUtilizedElement);
 			if (utilizedElement != oldUtilizedElement) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -235,13 +237,13 @@ public class ManifestationImpl
 		switch (featureID) {
 			case UMLPackage.MANIFESTATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.MANIFESTATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.MANIFESTATION__NAME :
 				setName((String) newValue);
@@ -260,13 +262,13 @@ public class ManifestationImpl
 				return;
 			case UMLPackage.MANIFESTATION__CLIENT :
 				getClients().clear();
-				getClients().addAll(
-					(Collection<? extends NamedElement>) newValue);
+				getClients()
+					.addAll((Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.MANIFESTATION__SUPPLIER :
 				getSuppliers().clear();
-				getSuppliers().addAll(
-					(Collection<? extends NamedElement>) newValue);
+				getSuppliers()
+					.addAll((Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.MANIFESTATION__MAPPING :
 				setMapping((OpaqueExpression) newValue);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -126,7 +126,8 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public void setAllowSubstitutable(boolean newAllowSubstitutable) {
-		boolean oldAllowSubstitutable = (eFlags & ALLOW_SUBSTITUTABLE_EFLAG) != 0;
+		boolean oldAllowSubstitutable = (eFlags
+			& ALLOW_SUBSTITUTABLE_EFLAG) != 0;
 		if (newAllowSubstitutable)
 			eFlags |= ALLOW_SUBSTITUTABLE_EFLAG;
 		else
@@ -145,8 +146,7 @@ public class ClassifierTemplateParameterImpl
 	public EList<Classifier> getConstrainingClassifiers() {
 		if (constrainingClassifiers == null) {
 			constrainingClassifiers = new EObjectResolvingEList<Classifier>(
-				Classifier.class,
-				this,
+				Classifier.class, this,
 				UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER);
 		}
 		return constrainingClassifiers;
@@ -166,8 +166,8 @@ public class ClassifierTemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Classifier getConstrainingClassifier(String name,
-			boolean ignoreCase, EClass eClass) {
+	public Classifier getConstrainingClassifier(String name, boolean ignoreCase,
+			EClass eClass) {
 		constrainingClassifierLoop : for (Classifier constrainingClassifier : getConstrainingClassifiers()) {
 			if (eClass != null && !eClass.isInstance(constrainingClassifier))
 				continue constrainingClassifierLoop;
@@ -189,12 +189,11 @@ public class ClassifierTemplateParameterImpl
 	public ParameterableElement getParameteredElement() {
 		if (parameteredElement != null && parameteredElement.eIsProxy()) {
 			InternalEObject oldParameteredElement = (InternalEObject) parameteredElement;
-			parameteredElement = (ParameterableElement) eResolveProxy(oldParameteredElement);
+			parameteredElement = (ParameterableElement) eResolveProxy(
+				oldParameteredElement);
 			if (parameteredElement != oldParameteredElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-						this,
-						Notification.RESOLVE,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
 						oldParameteredElement, parameteredElement));
 			}
@@ -218,7 +217,8 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public NotificationChain basicSetParameteredElementGen(
-			ParameterableElement newParameteredElement, NotificationChain msgs) {
+			ParameterableElement newParameteredElement,
+			NotificationChain msgs) {
 		if (newParameteredElement != null
 			&& !(newParameteredElement instanceof Classifier)) {
 			throw new IllegalArgumentException(
@@ -241,7 +241,8 @@ public class ClassifierTemplateParameterImpl
 
 	@Override
 	public NotificationChain basicSetParameteredElement(
-			ParameterableElement newParameteredElement, NotificationChain msgs) {
+			ParameterableElement newParameteredElement,
+			NotificationChain msgs) {
 		msgs = basicSetParameteredElementGen(newParameteredElement, msgs);
 
 		Resource.Internal eInternalResource = eInternalResource();
@@ -264,7 +265,8 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	@Override
-	public void setParameteredElement(ParameterableElement newParameteredElement) {
+	public void setParameteredElement(
+			ParameterableElement newParameteredElement) {
 		if (newParameteredElement != null
 			&& !(newParameteredElement instanceof Classifier)) {
 			throw new IllegalArgumentException(
@@ -327,8 +329,8 @@ public class ClassifierTemplateParameterImpl
 	 */
 	public boolean validateMatchingAbstract(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return ClassifierTemplateParameterOperations.validateMatchingAbstract(
-			this, diagnostics, context);
+		return ClassifierTemplateParameterOperations
+			.validateMatchingAbstract(this, diagnostics, context);
 	}
 
 	/**
@@ -382,8 +384,7 @@ public class ClassifierTemplateParameterImpl
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				if (parameteredElement != null)
 					msgs = ((InternalEObject) parameteredElement)
-						.eInverseRemove(
-							this,
+						.eInverseRemove(this,
 							UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
 							ParameterableElement.class, msgs);
 				return basicSetParameteredElement(
@@ -395,8 +396,7 @@ public class ClassifierTemplateParameterImpl
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				if (ownedParameteredElement != null)
 					msgs = ((InternalEObject) ownedParameteredElement)
-						.eInverseRemove(
-							this,
+						.eInverseRemove(this,
 							EOPPOSITE_FEATURE_BASE
 								- UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 							null, msgs);
@@ -416,11 +416,11 @@ public class ClassifierTemplateParameterImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				return basicSetOwnedDefault(null, msgs);
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
@@ -490,13 +490,13 @@ public class ClassifierTemplateParameterImpl
 		switch (featureID) {
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT :
 				setDefault((ParameterableElement) newValue);
@@ -518,8 +518,8 @@ public class ClassifierTemplateParameterImpl
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER :
 				getConstrainingClassifiers().clear();
-				getConstrainingClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getConstrainingClassifiers()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -591,7 +591,8 @@ public class ClassifierTemplateParameterImpl
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				return ownedParameteredElement != null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :
-				return ((eFlags & ALLOW_SUBSTITUTABLE_EFLAG) != 0) != ALLOW_SUBSTITUTABLE_EDEFAULT;
+				return ((eFlags
+					& ALLOW_SUBSTITUTABLE_EFLAG) != 0) != ALLOW_SUBSTITUTABLE_EDEFAULT;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER :
 				return constrainingClassifiers != null
 					&& !constrainingClassifiers.isEmpty();
@@ -656,7 +657,8 @@ public class ClassifierTemplateParameterImpl
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_STEREOTYPE_APPLICATIONS :
@@ -664,7 +666,8 @@ public class ClassifierTemplateParameterImpl
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));

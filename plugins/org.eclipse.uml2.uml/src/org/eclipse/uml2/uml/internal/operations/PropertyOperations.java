@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 407028, 418466, 433195, 439915, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 407028, 418466, 433195, 439915, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -188,8 +188,8 @@ public class PropertyOperations
 					UMLPlugin.INSTANCE.getString(
 						"_UI_Property_SubsettingContextConforms_diagnostic", //$NON-NLS-1$
 						getMessageSubstitutions(context, property,
-							subsettedProperty)), new Object[]{property,
-						subsettedProperty}));
+							subsettedProperty)),
+					new Object[]{property, subsettedProperty}));
 			}
 		}
 
@@ -220,15 +220,15 @@ public class PropertyOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PROPERTY__REDEFINED_PROPERTY_INHERITED,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateRedefinedPropertyInherited", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(property, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{property}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PROPERTY__REDEFINED_PROPERTY_INHERITED,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateRedefinedPropertyInherited", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(property, context)}),
+					new Object[]{property}));
 			}
 			return false;
 		}
@@ -264,7 +264,9 @@ public class PropertyOperations
 			if (!(type == null
 				? subsettedType == null
 				: type.conformsTo(subsettedProperty.getType()))
-				|| (subsettedUpperBound != LiteralUnlimitedNatural.UNLIMITED && (upperBound == LiteralUnlimitedNatural.UNLIMITED || upperBound > subsettedUpperBound))) {
+				|| (subsettedUpperBound != LiteralUnlimitedNatural.UNLIMITED
+					&& (upperBound == LiteralUnlimitedNatural.UNLIMITED
+						|| upperBound > subsettedUpperBound))) {
 
 				result = false;
 
@@ -277,8 +279,8 @@ public class PropertyOperations
 						UMLPlugin.INSTANCE.getString(
 							"_UI_Property_SubsettingRules_diagnostic", //$NON-NLS-1$
 							getMessageSubstitutions(context, property,
-								subsettedProperty)), new Object[]{property,
-							subsettedProperty}));
+								subsettedProperty)),
+						new Object[]{property, subsettedProperty}));
 				}
 			}
 		}
@@ -384,8 +386,8 @@ public class PropertyOperations
 						UMLPlugin.INSTANCE.getString(
 							"_UI_Property_SubsettingPropertyNames_diagnostic", //$NON-NLS-1$
 							getMessageSubstitutions(context, property,
-								subsettedProperty)), new Object[]{property,
-							subsettedProperty}));
+								subsettedProperty)),
+						new Object[]{property, subsettedProperty}));
 				}
 			}
 		}
@@ -413,15 +415,15 @@ public class PropertyOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PROPERTY__TYPE_OF_OPPOSITE_END,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateTypeOfOppositeEnd", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(property, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{property}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PROPERTY__TYPE_OF_OPPOSITE_END,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateTypeOfOppositeEnd", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(property, context)}),
+					new Object[]{property}));
 			}
 			return false;
 		}
@@ -448,15 +450,15 @@ public class PropertyOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PROPERTY__QUALIFIED_IS_ASSOCIATION_END,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateQualifiedIsAssociationEnd", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(property, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{property}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PROPERTY__QUALIFIED_IS_ASSOCIATION_END,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateQualifiedIsAssociationEnd", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(property, context)}),
+					new Object[]{property}));
 			}
 			return false;
 		}
@@ -481,8 +483,7 @@ public class PropertyOperations
 
 		if (!property.getDeployments().isEmpty()) {
 
-			if (!property.isComposite()
-				|| !(property.getType() instanceof Node)
+			if (!property.isComposite() || !(property.getType() instanceof Node)
 				|| !(property.getOwner() instanceof Node)) {
 
 				result = false;
@@ -526,15 +527,15 @@ public class PropertyOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PROPERTY__BINDING_TO_ATTRIBUTE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBindingToAttribute", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(property, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{property}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PROPERTY__BINDING_TO_ATTRIBUTE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateBindingToAttribute", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(property, context)}),
+					new Object[]{property}));
 			}
 			return false;
 		}
@@ -551,7 +552,8 @@ public class PropertyOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static void setBooleanDefaultValue(Property property, boolean value) {
+	public static void setBooleanDefaultValue(Property property,
+			boolean value) {
 		ValueSpecification defaultValue = property.getDefaultValue();
 
 		((LiteralBoolean) (defaultValue instanceof LiteralBoolean
@@ -616,7 +618,7 @@ public class PropertyOperations
 			? defaultValue
 			: property.createDefaultValue(null, null,
 				UMLPackage.Literals.LITERAL_UNLIMITED_NATURAL)))
-			.setValue(value);
+					.setValue(value);
 	}
 
 	/**
@@ -761,7 +763,8 @@ public class PropertyOperations
 	public static boolean isNavigable(Property property) {
 		Association owningAssociation = property.getOwningAssociation();
 		return owningAssociation == null
-			? property.eGet(UMLPackage.Literals.ELEMENT__OWNER, false) instanceof Classifier
+			? property.eGet(UMLPackage.Literals.ELEMENT__OWNER,
+				false) instanceof Classifier
 			: owningAssociation.getNavigableOwnedEnds().contains(property);
 	}
 
@@ -798,7 +801,8 @@ public class PropertyOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static void setIsComposite(Property property, boolean newIsComposite) {
+	public static void setIsComposite(Property property,
+			boolean newIsComposite) {
 		property.setAggregation(newIsComposite
 			? AggregationKind.COMPOSITE_LITERAL
 			: AggregationKind.NONE_LITERAL);
@@ -888,7 +892,8 @@ public class PropertyOperations
 	 */
 	public static boolean isAttribute(Property property) {
 
-		for (EStructuralFeature.Setting inverseReference : getInverseReferences(property)) {
+		for (EStructuralFeature.Setting inverseReference : getInverseReferences(
+			property)) {
 			EObject eObject = inverseReference.getEObject();
 
 			if (eObject instanceof Classifier
@@ -1003,7 +1008,9 @@ public class PropertyOperations
 				? type == null
 				: propType.conformsTo(type))
 				&& prop.lowerBound() >= property.lowerBound()
-				&& (upperBound == LiteralUnlimitedNatural.UNLIMITED || (propUpperBound != LiteralUnlimitedNatural.UNLIMITED && propUpperBound <= upperBound))
+				&& (upperBound == LiteralUnlimitedNatural.UNLIMITED
+					|| (propUpperBound != LiteralUnlimitedNatural.UNLIMITED
+						&& propUpperBound <= upperBound))
 				&& (property.isComposite()
 					? prop.isComposite()
 					: true);

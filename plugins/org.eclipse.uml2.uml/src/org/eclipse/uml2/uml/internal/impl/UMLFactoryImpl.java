@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
- *   Kenn Hussey (CEA) - 327039, 351774, 397324, 418466
+ *   Kenn Hussey (CEA) - 327039, 351774, 397324, 418466, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -663,8 +663,8 @@ public class UMLFactoryImpl
 			case UMLPackage.TIME_OBSERVATION :
 				return createTimeObservation();
 			default :
-				throw new IllegalArgumentException(
-					"The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The class '" //$NON-NLS-1$
+					+ eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$
 		}
 	}
 
@@ -708,8 +708,8 @@ public class UMLFactoryImpl
 				return createInteractionOperatorKindFromString(eDataType,
 					initialValue);
 			default :
-				throw new IllegalArgumentException(
-					"The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The datatype '" //$NON-NLS-1$
+					+ eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$
 		}
 	}
 
@@ -753,8 +753,8 @@ public class UMLFactoryImpl
 				return convertInteractionOperatorKindToString(eDataType,
 					instanceValue);
 			default :
-				throw new IllegalArgumentException(
-					"The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The datatype '" //$NON-NLS-1$
+					+ eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$
 		}
 	}
 
@@ -2697,8 +2697,9 @@ public class UMLFactoryImpl
 			String initialValue) {
 		VisibilityKind result = VisibilityKind.get(initialValue);
 		if (result == null)
-			throw new IllegalArgumentException(
-				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			throw new IllegalArgumentException("The value '" + initialValue //$NON-NLS-1$
+				+ "' is not a valid enumerator of '" + eDataType.getName() //$NON-NLS-1$
+				+ "'"); //$NON-NLS-1$
 		return result;
 	}
 
@@ -2723,8 +2724,9 @@ public class UMLFactoryImpl
 			EDataType eDataType, String initialValue) {
 		CallConcurrencyKind result = CallConcurrencyKind.get(initialValue);
 		if (result == null)
-			throw new IllegalArgumentException(
-				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			throw new IllegalArgumentException("The value '" + initialValue //$NON-NLS-1$
+				+ "' is not a valid enumerator of '" + eDataType.getName() //$NON-NLS-1$
+				+ "'"); //$NON-NLS-1$
 		return result;
 	}
 
@@ -2749,8 +2751,9 @@ public class UMLFactoryImpl
 			String initialValue) {
 		TransitionKind result = TransitionKind.get(initialValue);
 		if (result == null)
-			throw new IllegalArgumentException(
-				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			throw new IllegalArgumentException("The value '" + initialValue //$NON-NLS-1$
+				+ "' is not a valid enumerator of '" + eDataType.getName() //$NON-NLS-1$
+				+ "'"); //$NON-NLS-1$
 		return result;
 	}
 
@@ -2775,8 +2778,9 @@ public class UMLFactoryImpl
 			String initialValue) {
 		PseudostateKind result = PseudostateKind.get(initialValue);
 		if (result == null)
-			throw new IllegalArgumentException(
-				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			throw new IllegalArgumentException("The value '" + initialValue //$NON-NLS-1$
+				+ "' is not a valid enumerator of '" + eDataType.getName() //$NON-NLS-1$
+				+ "'"); //$NON-NLS-1$
 		return result;
 	}
 
@@ -2801,8 +2805,9 @@ public class UMLFactoryImpl
 			String initialValue) {
 		AggregationKind result = AggregationKind.get(initialValue);
 		if (result == null)
-			throw new IllegalArgumentException(
-				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			throw new IllegalArgumentException("The value '" + initialValue //$NON-NLS-1$
+				+ "' is not a valid enumerator of '" + eDataType.getName() //$NON-NLS-1$
+				+ "'"); //$NON-NLS-1$
 		return result;
 	}
 
@@ -2828,8 +2833,9 @@ public class UMLFactoryImpl
 		ParameterDirectionKind result = ParameterDirectionKind
 			.get(initialValue);
 		if (result == null)
-			throw new IllegalArgumentException(
-				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			throw new IllegalArgumentException("The value '" + initialValue //$NON-NLS-1$
+				+ "' is not a valid enumerator of '" + eDataType.getName() //$NON-NLS-1$
+				+ "'"); //$NON-NLS-1$
 		return result;
 	}
 
@@ -2854,8 +2860,9 @@ public class UMLFactoryImpl
 			EDataType eDataType, String initialValue) {
 		ParameterEffectKind result = ParameterEffectKind.get(initialValue);
 		if (result == null)
-			throw new IllegalArgumentException(
-				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			throw new IllegalArgumentException("The value '" + initialValue //$NON-NLS-1$
+				+ "' is not a valid enumerator of '" + eDataType.getName() //$NON-NLS-1$
+				+ "'"); //$NON-NLS-1$
 		return result;
 	}
 
@@ -2880,8 +2887,9 @@ public class UMLFactoryImpl
 			String initialValue) {
 		ConnectorKind result = ConnectorKind.get(initialValue);
 		if (result == null)
-			throw new IllegalArgumentException(
-				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			throw new IllegalArgumentException("The value '" + initialValue //$NON-NLS-1$
+				+ "' is not a valid enumerator of '" + eDataType.getName() //$NON-NLS-1$
+				+ "'"); //$NON-NLS-1$
 		return result;
 	}
 
@@ -2906,8 +2914,9 @@ public class UMLFactoryImpl
 			String initialValue) {
 		MessageKind result = MessageKind.get(initialValue);
 		if (result == null)
-			throw new IllegalArgumentException(
-				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			throw new IllegalArgumentException("The value '" + initialValue //$NON-NLS-1$
+				+ "' is not a valid enumerator of '" + eDataType.getName() //$NON-NLS-1$
+				+ "'"); //$NON-NLS-1$
 		return result;
 	}
 
@@ -2932,8 +2941,9 @@ public class UMLFactoryImpl
 			String initialValue) {
 		MessageSort result = MessageSort.get(initialValue);
 		if (result == null)
-			throw new IllegalArgumentException(
-				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			throw new IllegalArgumentException("The value '" + initialValue //$NON-NLS-1$
+				+ "' is not a valid enumerator of '" + eDataType.getName() //$NON-NLS-1$
+				+ "'"); //$NON-NLS-1$
 		return result;
 	}
 
@@ -2959,8 +2969,9 @@ public class UMLFactoryImpl
 		ObjectNodeOrderingKind result = ObjectNodeOrderingKind
 			.get(initialValue);
 		if (result == null)
-			throw new IllegalArgumentException(
-				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			throw new IllegalArgumentException("The value '" + initialValue //$NON-NLS-1$
+				+ "' is not a valid enumerator of '" + eDataType.getName() //$NON-NLS-1$
+				+ "'"); //$NON-NLS-1$
 		return result;
 	}
 
@@ -2986,8 +2997,9 @@ public class UMLFactoryImpl
 		InteractionOperatorKind result = InteractionOperatorKind
 			.get(initialValue);
 		if (result == null)
-			throw new IllegalArgumentException(
-				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			throw new IllegalArgumentException("The value '" + initialValue //$NON-NLS-1$
+				+ "' is not a valid enumerator of '" + eDataType.getName() //$NON-NLS-1$
+				+ "'"); //$NON-NLS-1$
 		return result;
 	}
 
@@ -3012,8 +3024,9 @@ public class UMLFactoryImpl
 			String initialValue) {
 		ExpansionKind result = ExpansionKind.get(initialValue);
 		if (result == null)
-			throw new IllegalArgumentException(
-				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			throw new IllegalArgumentException("The value '" + initialValue //$NON-NLS-1$
+				+ "' is not a valid enumerator of '" + eDataType.getName() //$NON-NLS-1$
+				+ "'"); //$NON-NLS-1$
 		return result;
 	}
 

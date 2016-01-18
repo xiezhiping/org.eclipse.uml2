@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -120,14 +120,13 @@ public class DurationImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
 					ownedElements = new DerivedUnionEObjectEList<Element>(
-						Element.class, this,
-						UMLPackage.DURATION__OWNED_ELEMENT,
+						Element.class, this, UMLPackage.DURATION__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
@@ -163,8 +162,9 @@ public class DurationImpl
 					EOPPOSITE_FEATURE_BASE - UMLPackage.DURATION__EXPR, null,
 					null);
 				if (newExpr.eInternalContainer() == null) {
-					msgs = newExpr.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.DURATION__EXPR, null, msgs);
+					msgs = newExpr.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - UMLPackage.DURATION__EXPR,
+						null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -234,7 +234,8 @@ public class DurationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createExpr(String name, Type type, EClass eClass) {
+	public ValueSpecification createExpr(String name, Type type,
+			EClass eClass) {
 		ValueSpecification newExpr = (ValueSpecification) create(eClass);
 		setExpr(newExpr);
 		if (name != null)
@@ -316,11 +317,11 @@ public class DurationImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.DURATION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DURATION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DURATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.DURATION__OWNING_TEMPLATE_PARAMETER :
@@ -400,13 +401,13 @@ public class DurationImpl
 		switch (featureID) {
 			case UMLPackage.DURATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.DURATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.DURATION__NAME :
 				setName((String) newValue);
@@ -431,8 +432,8 @@ public class DurationImpl
 				return;
 			case UMLPackage.DURATION__OBSERVATION :
 				getObservations().clear();
-				getObservations().addAll(
-					(Collection<? extends Observation>) newValue);
+				getObservations()
+					.addAll((Collection<? extends Observation>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -581,7 +582,8 @@ public class DurationImpl
 			case UMLPackage.DURATION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.DURATION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.DURATION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.DURATION___GET_STEREOTYPE_APPLICATIONS :
@@ -589,7 +591,8 @@ public class DurationImpl
 			case UMLPackage.DURATION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.DURATION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.DURATION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -652,7 +655,8 @@ public class DurationImpl
 			case UMLPackage.DURATION___GET_CLIENT_DEPENDENCIES :
 				return getClientDependencies();
 			case UMLPackage.DURATION___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.DURATION___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.DURATION___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :

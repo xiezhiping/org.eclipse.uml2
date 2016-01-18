@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -275,15 +275,12 @@ public abstract class BehavioralFeatureImpl
 				.get(eResource, this,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 			if (redefinedElements == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-						redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
-							RedefinableElement.class, this,
-							UMLPackage.BEHAVIORAL_FEATURE__REDEFINED_ELEMENT,
-							null));
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+					redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
+						RedefinableElement.class, this,
+						UMLPackage.BEHAVIORAL_FEATURE__REDEFINED_ELEMENT,
+						null));
 			}
 			return redefinedElements;
 		}
@@ -331,21 +328,15 @@ public abstract class BehavioralFeatureImpl
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
 			EList<Classifier> redefinitionContexts = (EList<Classifier>) cache
-				.get(
-					eResource,
-					this,
+				.get(eResource, this,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 			if (redefinitionContexts == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-						redefinitionContexts = new DerivedUnionEObjectEList<Classifier>(
-							Classifier.class,
-							this,
-							UMLPackage.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT,
-							null));
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+					redefinitionContexts = new DerivedUnionEObjectEList<Classifier>(
+						Classifier.class, this,
+						UMLPackage.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT,
+						null));
 			}
 			return redefinitionContexts;
 		}
@@ -357,7 +348,8 @@ public abstract class BehavioralFeatureImpl
 	 * The array of subset feature identifiers for the '{@link #getRedefinitionContexts() <em>Redefinition Context</em>}' reference list.
 	 * @see #getRedefinitionContexts()
 	 */
-	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{UMLPackage.BEHAVIORAL_FEATURE__NAMESPACE};
+	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{
+		UMLPackage.BEHAVIORAL_FEATURE__NAMESPACE};
 
 	public EList<Classifier> getRedefinitionContexts() {
 		CacheAdapter cache = getCacheAdapter();
@@ -365,21 +357,15 @@ public abstract class BehavioralFeatureImpl
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
 			EList<Classifier> redefinitionContext = (EList<Classifier>) cache
-				.get(
-					eResource,
-					this,
+				.get(eResource, this,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 			if (redefinitionContext == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-						redefinitionContext = new DerivedUnionEObjectEList<Classifier>(
-							Classifier.class,
-							this,
-							UMLPackage.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT,
-							REDEFINITION_CONTEXT_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+					redefinitionContext = new DerivedUnionEObjectEList<Classifier>(
+						Classifier.class, this,
+						UMLPackage.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT,
+						REDEFINITION_CONTEXT_ESUBSETS));
 			}
 			return redefinitionContext;
 		}
@@ -455,16 +441,12 @@ public abstract class BehavioralFeatureImpl
 				.get(eResource, this,
 					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
 			if (featuringClassifiers == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER,
-						featuringClassifiers = new DerivedUnionEObjectEList<Classifier>(
-							Classifier.class,
-							this,
-							UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER,
-							null));
+				cache.put(eResource, this,
+					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER,
+					featuringClassifiers = new DerivedUnionEObjectEList<Classifier>(
+						Classifier.class, this,
+						UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER,
+						null));
 			}
 			return featuringClassifiers;
 		}
@@ -476,7 +458,8 @@ public abstract class BehavioralFeatureImpl
 	 * The array of subset feature identifiers for the '{@link #getFeaturingClassifiers() <em>Featuring Classifier</em>}' reference list.
 	 * @see #getFeaturingClassifiers()
 	 */
-	protected static final int[] FEATURING_CLASSIFIER_ESUBSETS = new int[]{UMLPackage.BEHAVIORAL_FEATURE__NAMESPACE};
+	protected static final int[] FEATURING_CLASSIFIER_ESUBSETS = new int[]{
+		UMLPackage.BEHAVIORAL_FEATURE__NAMESPACE};
 
 	public EList<Classifier> getFeaturingClassifiers() {
 		CacheAdapter cache = getCacheAdapter();
@@ -487,16 +470,12 @@ public abstract class BehavioralFeatureImpl
 				.get(eResource, this,
 					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
 			if (featuringClassifiers == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER,
-						featuringClassifiers = new DerivedUnionEObjectEList<Classifier>(
-							Classifier.class,
-							this,
-							UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER,
-							FEATURING_CLASSIFIER_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER,
+					featuringClassifiers = new DerivedUnionEObjectEList<Classifier>(
+						Classifier.class, this,
+						UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER,
+						FEATURING_CLASSIFIER_ESUBSETS));
 			}
 			return featuringClassifiers;
 		}
@@ -620,7 +599,8 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public Parameter createOwnedParameter(String name, Type type) {
-		Parameter newOwnedParameter = (Parameter) create(UMLPackage.Literals.PARAMETER);
+		Parameter newOwnedParameter = (Parameter) create(
+			UMLPackage.Literals.PARAMETER);
 		getOwnedParameters().add(newOwnedParameter);
 		if (name != null)
 			newOwnedParameter.setName(name);
@@ -732,7 +712,8 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public CallConcurrencyKind getConcurrency() {
-		return CONCURRENCY_EFLAG_VALUES[(eFlags & CONCURRENCY_EFLAG) >>> CONCURRENCY_EFLAG_OFFSET];
+		return CONCURRENCY_EFLAG_VALUES[(eFlags
+			& CONCURRENCY_EFLAG) >>> CONCURRENCY_EFLAG_OFFSET];
 	}
 
 	/**
@@ -741,7 +722,8 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public void setConcurrency(CallConcurrencyKind newConcurrency) {
-		CallConcurrencyKind oldConcurrency = CONCURRENCY_EFLAG_VALUES[(eFlags & CONCURRENCY_EFLAG) >>> CONCURRENCY_EFLAG_OFFSET];
+		CallConcurrencyKind oldConcurrency = CONCURRENCY_EFLAG_VALUES[(eFlags
+			& CONCURRENCY_EFLAG) >>> CONCURRENCY_EFLAG_OFFSET];
 		if (newConcurrency == null)
 			newConcurrency = CONCURRENCY_EDEFAULT;
 		eFlags = eFlags & ~CONCURRENCY_EFLAG
@@ -759,8 +741,8 @@ public abstract class BehavioralFeatureImpl
 	 */
 	public EList<Type> getRaisedExceptions() {
 		if (raisedExceptions == null) {
-			raisedExceptions = new EObjectResolvingEList<Type>(Type.class,
-				this, UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION);
+			raisedExceptions = new EObjectResolvingEList<Type>(Type.class, this,
+				UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION);
 		}
 		return raisedExceptions;
 	}
@@ -813,7 +795,8 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public ParameterSet createOwnedParameterSet(String name) {
-		ParameterSet newOwnedParameterSet = (ParameterSet) create(UMLPackage.Literals.PARAMETER_SET);
+		ParameterSet newOwnedParameterSet = (ParameterSet) create(
+			UMLPackage.Literals.PARAMETER_SET);
 		getOwnedParameterSets().add(newOwnedParameterSet);
 		if (name != null)
 			newOwnedParameterSet.setName(name);
@@ -853,10 +836,10 @@ public abstract class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateRedefinitionContextValid(
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return RedefinableElementOperations.validateRedefinitionContextValid(
-			this, diagnostics, context);
+	public boolean validateRedefinitionContextValid(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return RedefinableElementOperations
+			.validateRedefinitionContextValid(this, diagnostics, context);
 	}
 
 	/**
@@ -866,8 +849,8 @@ public abstract class BehavioralFeatureImpl
 	 */
 	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return RedefinableElementOperations.validateRedefinitionConsistent(
-			this, diagnostics, context);
+		return RedefinableElementOperations.validateRedefinitionConsistent(this,
+			diagnostics, context);
 	}
 
 	/**
@@ -945,12 +928,10 @@ public abstract class BehavioralFeatureImpl
 			EList<Parameter> result = (EList<Parameter>) cache.get(this,
 				UMLPackage.Literals.BEHAVIORAL_FEATURE___OUTPUT_PARAMETERS);
 			if (result == null) {
-				cache
-					.put(
-						this,
-						UMLPackage.Literals.BEHAVIORAL_FEATURE___OUTPUT_PARAMETERS,
-						result = BehavioralFeatureOperations
-							.outputParameters(this));
+				cache.put(this,
+					UMLPackage.Literals.BEHAVIORAL_FEATURE___OUTPUT_PARAMETERS,
+					result = BehavioralFeatureOperations
+						.outputParameters(this));
 			}
 			return result;
 		}
@@ -1016,28 +997,28 @@ public abstract class BehavioralFeatureImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.BEHAVIORAL_FEATURE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIORAL_FEATURE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedRules())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIORAL_FEATURE__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getElementImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIORAL_FEATURE__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPackageImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIORAL_FEATURE__METHOD :
 				return ((InternalEList<?>) getMethods()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER :
-				return ((InternalEList<?>) getOwnedParameters()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedParameters())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET :
 				return ((InternalEList<?>) getOwnedParameterSets())
 					.basicRemove(otherEnd, msgs);
@@ -1128,13 +1109,13 @@ public abstract class BehavioralFeatureImpl
 		switch (featureID) {
 			case UMLPackage.BEHAVIORAL_FEATURE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__NAME :
 				setName((String) newValue);
@@ -1147,18 +1128,18 @@ public abstract class BehavioralFeatureImpl
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getOwnedRules()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll(
-					(Collection<? extends ElementImport>) newValue);
+				getElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll(
-					(Collection<? extends PackageImport>) newValue);
+				getPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -1178,18 +1159,18 @@ public abstract class BehavioralFeatureImpl
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER :
 				getOwnedParameters().clear();
-				getOwnedParameters().addAll(
-					(Collection<? extends Parameter>) newValue);
+				getOwnedParameters()
+					.addAll((Collection<? extends Parameter>) newValue);
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
-				getOwnedParameterSets().addAll(
-					(Collection<? extends ParameterSet>) newValue);
+				getOwnedParameterSets()
+					.addAll((Collection<? extends ParameterSet>) newValue);
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION :
 				getRaisedExceptions().clear();
-				getRaisedExceptions().addAll(
-					(Collection<? extends Type>) newValue);
+				getRaisedExceptions()
+					.addAll((Collection<? extends Type>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1308,9 +1289,11 @@ public abstract class BehavioralFeatureImpl
 			case UMLPackage.BEHAVIORAL_FEATURE__IS_STATIC :
 				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY :
-				return (eFlags & CONCURRENCY_EFLAG) != CONCURRENCY_EFLAG_DEFAULT;
+				return (eFlags
+					& CONCURRENCY_EFLAG) != CONCURRENCY_EFLAG_DEFAULT;
 			case UMLPackage.BEHAVIORAL_FEATURE__IS_ABSTRACT :
-				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
+				return ((eFlags
+					& IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.BEHAVIORAL_FEATURE__METHOD :
 				return methods != null && !methods.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER :
@@ -1330,7 +1313,8 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	public int eBaseStructuralFeatureID(int derivedFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == RedefinableElement.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.BEHAVIORAL_FEATURE__IS_LEAF :
@@ -1362,7 +1346,8 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	public int eDerivedStructuralFeatureID(int baseFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == RedefinableElement.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.REDEFINABLE_ELEMENT__IS_LEAF :
@@ -1477,7 +1462,8 @@ public abstract class BehavioralFeatureImpl
 			case UMLPackage.BEHAVIORAL_FEATURE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.BEHAVIORAL_FEATURE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.BEHAVIORAL_FEATURE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.BEHAVIORAL_FEATURE___GET_STEREOTYPE_APPLICATIONS :
@@ -1485,7 +1471,8 @@ public abstract class BehavioralFeatureImpl
 			case UMLPackage.BEHAVIORAL_FEATURE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.BEHAVIORAL_FEATURE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.BEHAVIORAL_FEATURE___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1574,13 +1561,13 @@ public abstract class BehavioralFeatureImpl
 			case UMLPackage.BEHAVIORAL_FEATURE___GET_OWNED_MEMBERS :
 				return getOwnedMembers();
 			case UMLPackage.BEHAVIORAL_FEATURE___EXCLUDE_COLLISIONS__ELIST :
-				return excludeCollisions((EList<PackageableElement>) arguments
-					.get(0));
+				return excludeCollisions(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.BEHAVIORAL_FEATURE___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
 				return getNamesOfMember((NamedElement) arguments.get(0));
 			case UMLPackage.BEHAVIORAL_FEATURE___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
+				return importMembers(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.BEHAVIORAL_FEATURE___GET_IMPORTED_MEMBERS :
 				return getImportedMembers();
 			case UMLPackage.BEHAVIORAL_FEATURE___MEMBERS_ARE_DISTINGUISHABLE :
@@ -1600,8 +1587,8 @@ public abstract class BehavioralFeatureImpl
 			case UMLPackage.BEHAVIORAL_FEATURE___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.BEHAVIORAL_FEATURE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.BEHAVIORAL_FEATURE___VALIDATE_ABSTRACT_NO_METHOD__DIAGNOSTICCHAIN_MAP :
 				return validateAbstractNoMethod(
 					(DiagnosticChain) arguments.get(0),
@@ -1633,8 +1620,8 @@ public abstract class BehavioralFeatureImpl
 		result.append(", isStatic: "); //$NON-NLS-1$
 		result.append((eFlags & IS_STATIC_EFLAG) != 0);
 		result.append(", concurrency: "); //$NON-NLS-1$
-		result
-			.append(CONCURRENCY_EFLAG_VALUES[(eFlags & CONCURRENCY_EFLAG) >>> CONCURRENCY_EFLAG_OFFSET]);
+		result.append(CONCURRENCY_EFLAG_VALUES[(eFlags
+			& CONCURRENCY_EFLAG) >>> CONCURRENCY_EFLAG_OFFSET]);
 		result.append(", isAbstract: "); //$NON-NLS-1$
 		result.append((eFlags & IS_ABSTRACT_EFLAG) != 0);
 		result.append(')');

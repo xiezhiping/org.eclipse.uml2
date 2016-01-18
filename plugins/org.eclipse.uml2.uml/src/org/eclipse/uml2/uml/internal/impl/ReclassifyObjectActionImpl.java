@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -301,12 +301,13 @@ public class ReclassifyObjectActionImpl
 				InternalEObject newObject = (InternalEObject) object;
 				NotificationChain msgs = oldObject.eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT, null,
-					null);
+						- UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT,
+					null, null);
 				if (newObject.eInternalContainer() == null) {
-					msgs = newObject.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT, null,
-						msgs);
+					msgs = newObject.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT,
+						null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -360,13 +361,13 @@ public class ReclassifyObjectActionImpl
 			if (object != null)
 				msgs = ((InternalEObject) object).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT, null,
-					msgs);
+						- UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT,
+					null, msgs);
 			if (newObject != null)
 				msgs = ((InternalEObject) newObject).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT, null,
-					msgs);
+						- UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT,
+					null, msgs);
 			msgs = basicSetObject(newObject, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -407,8 +408,8 @@ public class ReclassifyObjectActionImpl
 	 */
 	public boolean validateClassifierNotAbstract(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return ReclassifyObjectActionOperations.validateClassifierNotAbstract(
-			this, diagnostics, context);
+		return ReclassifyObjectActionOperations
+			.validateClassifierNotAbstract(this, diagnostics, context);
 	}
 
 	/**
@@ -443,11 +444,11 @@ public class ReclassifyObjectActionImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION :
@@ -456,14 +457,14 @@ public class ReclassifyObjectActionImpl
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_STRUCTURED_NODE :
 				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OUTGOING :
-				return ((InternalEList<?>) getOutgoings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getInPartitions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__HANDLER :
 				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
@@ -580,13 +581,13 @@ public class ReclassifyObjectActionImpl
 		switch (featureID) {
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__NAME :
 				setName((String) newValue);
@@ -605,66 +606,65 @@ public class ReclassifyObjectActionImpl
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions()
-					.addAll(
-						(Collection<? extends InterruptibleActivityRegion>) newValue);
+				getInInterruptibleRegions().addAll(
+					(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getIncomings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getOutgoings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll(
-					(Collection<? extends ActivityNode>) newValue);
+				getRedefinedNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
+				getInPartitions()
+					.addAll((Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll(
-					(Collection<? extends ExceptionHandler>) newValue);
+				getHandlers()
+					.addAll((Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IS_LOCALLY_REENTRANT :
 				setIsLocallyReentrant((Boolean) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPostconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPreconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IS_REPLACE_ALL :
 				setIsReplaceAll((Boolean) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__NEW_CLASSIFIER :
 				getNewClassifiers().clear();
-				getNewClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getNewClassifiers()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT :
 				setObject((InputPin) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OLD_CLASSIFIER :
 				getOldClassifiers().clear();
-				getOldClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getOldClassifiers()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -805,7 +805,8 @@ public class ReclassifyObjectActionImpl
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__INPUT :
 				return isSetInputs();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IS_LOCALLY_REENTRANT :
-				return ((eFlags & IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
+				return ((eFlags
+					& IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__LOCAL_POSTCONDITION :
 				return localPostconditions != null
 					&& !localPostconditions.isEmpty();
@@ -815,7 +816,8 @@ public class ReclassifyObjectActionImpl
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IS_REPLACE_ALL :
-				return ((eFlags & IS_REPLACE_ALL_EFLAG) != 0) != IS_REPLACE_ALL_EDEFAULT;
+				return ((eFlags
+					& IS_REPLACE_ALL_EFLAG) != 0) != IS_REPLACE_ALL_EDEFAULT;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__NEW_CLASSIFIER :
 				return newClassifiers != null && !newClassifiers.isEmpty();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT :
@@ -883,7 +885,8 @@ public class ReclassifyObjectActionImpl
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION___GET_STEREOTYPE_APPLICATIONS :
@@ -891,7 +894,8 @@ public class ReclassifyObjectActionImpl
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -968,8 +972,8 @@ public class ReclassifyObjectActionImpl
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION___CONTAINING_ACTIVITY :
 				return containingActivity();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION___GET_CONTEXT :
@@ -1019,7 +1023,8 @@ public class ReclassifyObjectActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] INPUT_ESUBSETS = new int[]{UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT};
+	protected static final int[] INPUT_ESUBSETS = new int[]{
+		UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT};
 
 	/**
 	 * <!-- begin-user-doc -->

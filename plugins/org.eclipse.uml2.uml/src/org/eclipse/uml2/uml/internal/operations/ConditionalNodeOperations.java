@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -79,15 +79,15 @@ public class ConditionalNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CONDITIONAL_NODE__RESULT_NO_INCOMING,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateResultNoIncoming", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(conditionalNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{conditionalNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CONDITIONAL_NODE__RESULT_NO_INCOMING,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateResultNoIncoming", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(conditionalNode, context)}),
+					new Object[]{conditionalNode}));
 			}
 			return false;
 		}
@@ -114,15 +114,15 @@ public class ConditionalNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CONDITIONAL_NODE__NO_INPUT_PINS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoInputPins", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(conditionalNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{conditionalNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CONDITIONAL_NODE__NO_INPUT_PINS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateNoInputPins", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(conditionalNode, context)}),
+					new Object[]{conditionalNode}));
 			}
 			return false;
 		}
@@ -151,15 +151,15 @@ public class ConditionalNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CONDITIONAL_NODE__ONE_CLAUSE_WITH_EXECUTABLE_NODE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOneClauseWithExecutableNode", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(conditionalNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{conditionalNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CONDITIONAL_NODE__ONE_CLAUSE_WITH_EXECUTABLE_NODE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateOneClauseWithExecutableNode", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(conditionalNode, context)}),
+					new Object[]{conditionalNode}));
 			}
 			return false;
 		}
@@ -193,15 +193,15 @@ public class ConditionalNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CONDITIONAL_NODE__MATCHING_OUTPUT_PINS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMatchingOutputPins", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(conditionalNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{conditionalNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CONDITIONAL_NODE__MATCHING_OUTPUT_PINS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateMatchingOutputPins", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(conditionalNode, context)}),
+					new Object[]{conditionalNode}));
 			}
 			return false;
 		}
@@ -229,15 +229,15 @@ public class ConditionalNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CONDITIONAL_NODE__EXECUTABLE_NODES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateExecutableNodes", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(conditionalNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{conditionalNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CONDITIONAL_NODE__EXECUTABLE_NODES,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateExecutableNodes", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(conditionalNode, context)}),
+					new Object[]{conditionalNode}));
 			}
 			return false;
 		}
@@ -265,15 +265,15 @@ public class ConditionalNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CONDITIONAL_NODE__CLAUSE_NO_PREDECESSOR,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateClauseNoPredecessor", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(conditionalNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{conditionalNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CONDITIONAL_NODE__CLAUSE_NO_PREDECESSOR,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateClauseNoPredecessor", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(conditionalNode, context)}),
+					new Object[]{conditionalNode}));
 			}
 			return false;
 		}

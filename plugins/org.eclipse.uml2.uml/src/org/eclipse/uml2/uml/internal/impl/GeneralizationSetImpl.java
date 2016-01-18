@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -321,8 +321,8 @@ public class GeneralizationSetImpl
 	 */
 	public boolean validateMapsToGeneralizationSet(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return GeneralizationSetOperations.validateMapsToGeneralizationSet(
-			this, diagnostics, context);
+		return GeneralizationSetOperations.validateMapsToGeneralizationSet(this,
+			diagnostics, context);
 	}
 
 	/**
@@ -345,10 +345,10 @@ public class GeneralizationSetImpl
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER :
 				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
+					msgs = ((InternalEObject) templateParameter).eInverseRemove(
+						this,
+						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+						TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.GENERALIZATION_SET__POWERTYPE :
@@ -374,11 +374,11 @@ public class GeneralizationSetImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.GENERALIZATION_SET__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.GENERALIZATION_SET__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.GENERALIZATION_SET__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
@@ -388,8 +388,8 @@ public class GeneralizationSetImpl
 			case UMLPackage.GENERALIZATION_SET__POWERTYPE :
 				return basicSetPowertype(null, msgs);
 			case UMLPackage.GENERALIZATION_SET__GENERALIZATION :
-				return ((InternalEList<?>) getGeneralizations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getGeneralizations())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -461,13 +461,13 @@ public class GeneralizationSetImpl
 		switch (featureID) {
 			case UMLPackage.GENERALIZATION_SET__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.GENERALIZATION_SET__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.GENERALIZATION_SET__NAME :
 				setName((String) newValue);
@@ -495,8 +495,8 @@ public class GeneralizationSetImpl
 				return;
 			case UMLPackage.GENERALIZATION_SET__GENERALIZATION :
 				getGeneralizations().clear();
-				getGeneralizations().addAll(
-					(Collection<? extends Generalization>) newValue);
+				getGeneralizations()
+					.addAll((Collection<? extends Generalization>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -582,9 +582,11 @@ public class GeneralizationSetImpl
 			case UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER :
 				return templateParameter != null;
 			case UMLPackage.GENERALIZATION_SET__IS_COVERING :
-				return ((eFlags & IS_COVERING_EFLAG) != 0) != IS_COVERING_EDEFAULT;
+				return ((eFlags
+					& IS_COVERING_EFLAG) != 0) != IS_COVERING_EDEFAULT;
 			case UMLPackage.GENERALIZATION_SET__IS_DISJOINT :
-				return ((eFlags & IS_DISJOINT_EFLAG) != 0) != IS_DISJOINT_EDEFAULT;
+				return ((eFlags
+					& IS_DISJOINT_EFLAG) != 0) != IS_DISJOINT_EDEFAULT;
 			case UMLPackage.GENERALIZATION_SET__POWERTYPE :
 				return powertype != null;
 			case UMLPackage.GENERALIZATION_SET__GENERALIZATION :
@@ -650,7 +652,8 @@ public class GeneralizationSetImpl
 			case UMLPackage.GENERALIZATION_SET___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.GENERALIZATION_SET___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.GENERALIZATION_SET___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.GENERALIZATION_SET___GET_STEREOTYPE_APPLICATIONS :
@@ -658,7 +661,8 @@ public class GeneralizationSetImpl
 			case UMLPackage.GENERALIZATION_SET___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.GENERALIZATION_SET___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.GENERALIZATION_SET___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -721,7 +725,8 @@ public class GeneralizationSetImpl
 			case UMLPackage.GENERALIZATION_SET___GET_CLIENT_DEPENDENCIES :
 				return getClientDependencies();
 			case UMLPackage.GENERALIZATION_SET___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.GENERALIZATION_SET___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.GENERALIZATION_SET___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :

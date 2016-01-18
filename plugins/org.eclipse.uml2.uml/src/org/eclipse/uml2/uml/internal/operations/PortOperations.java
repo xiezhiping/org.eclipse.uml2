@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -88,9 +88,10 @@ public class PortOperations
 			if (diagnostics != null) {
 				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
 					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.PORT__PORT_AGGREGATION, UMLPlugin.INSTANCE
-						.getString("_UI_Port_PortAggregation_diagnostic", //$NON-NLS-1$
-							getMessageSubstitutions(context, port)),
+					UMLValidator.PORT__PORT_AGGREGATION,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_Port_PortAggregation_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, port)),
 					new Object[]{port}));
 			}
 
@@ -121,9 +122,10 @@ public class PortOperations
 			if (diagnostics != null) {
 				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
 					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.PORT__DEFAULT_VALUE, UMLPlugin.INSTANCE
-						.getString("_UI_Port_DefaultValue_diagnostic", //$NON-NLS-1$
-							getMessageSubstitutions(context, port)),
+					UMLValidator.PORT__DEFAULT_VALUE,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_Port_DefaultValue_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, port)),
 					new Object[]{port}));
 			}
 
@@ -153,15 +155,15 @@ public class PortOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PORT__ENCAPSULATED_OWNER,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateEncapsulatedOwner", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(port, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{port}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PORT__ENCAPSULATED_OWNER,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateEncapsulatedOwner", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(port, context)}),
+					new Object[]{port}));
 			}
 			return false;
 		}
@@ -228,7 +230,8 @@ public class PortOperations
 		return ECollections.unmodifiableEList(basicProvided(port, true));
 	}
 
-	protected static EList<Interface> basicProvided(Port port, boolean resolve) {
+	protected static EList<Interface> basicProvided(Port port,
+			boolean resolve) {
 		return basicProvided(port, resolve,
 			new UniqueEList.FastCompare<Interface>());
 	}
@@ -264,7 +267,8 @@ public class PortOperations
 		return ECollections.unmodifiableEList(basicRequired(port, true));
 	}
 
-	protected static EList<Interface> basicRequired(Port port, boolean resolve) {
+	protected static EList<Interface> basicRequired(Port port,
+			boolean resolve) {
 		return basicRequired(port, resolve,
 			new UniqueEList.FastCompare<Interface>());
 	}

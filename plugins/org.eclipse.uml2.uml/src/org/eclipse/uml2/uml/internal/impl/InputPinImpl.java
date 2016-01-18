@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -129,7 +129,8 @@ public class InputPinImpl
 			case UMLPackage.INPUT_PIN___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.INPUT_PIN___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.INPUT_PIN___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.INPUT_PIN___GET_STEREOTYPE_APPLICATIONS :
@@ -137,7 +138,8 @@ public class InputPinImpl
 			case UMLPackage.INPUT_PIN___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.INPUT_PIN___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.INPUT_PIN___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -214,8 +216,8 @@ public class InputPinImpl
 			case UMLPackage.INPUT_PIN___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.INPUT_PIN___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.INPUT_PIN___CONTAINING_ACTIVITY :
 				return containingActivity();
 			case UMLPackage.INPUT_PIN___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
@@ -261,8 +263,8 @@ public class InputPinImpl
 			case UMLPackage.INPUT_PIN___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
 				return compatibleWith((MultiplicityElement) arguments.get(0));
 			case UMLPackage.INPUT_PIN___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
-				return includesMultiplicity((MultiplicityElement) arguments
-					.get(0));
+				return includesMultiplicity(
+					(MultiplicityElement) arguments.get(0));
 			case UMLPackage.INPUT_PIN___IS__INT_INT :
 				return is((Integer) arguments.get(0),
 					(Integer) arguments.get(1));

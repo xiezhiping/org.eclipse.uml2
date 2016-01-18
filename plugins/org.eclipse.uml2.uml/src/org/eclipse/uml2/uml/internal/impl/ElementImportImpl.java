@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -191,8 +191,8 @@ public class ElementImportImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> targets = (EList<Element>) cache.get(eResource,
-				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			EList<Element> targets = (EList<Element>) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
 			if (targets == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
@@ -217,8 +217,8 @@ public class ElementImportImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> sources = (EList<Element>) cache.get(eResource,
-				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			EList<Element> sources = (EList<Element>) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
 			if (sources == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
@@ -238,7 +238,8 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
-		return VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
+		return VISIBILITY_EFLAG_VALUES[(eFlags
+			& VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
 	}
 
 	/**
@@ -247,7 +248,8 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public void setVisibility(VisibilityKind newVisibility) {
-		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
+		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags
+			& VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
 		if (newVisibility == null)
 			newVisibility = VISIBILITY_EDEFAULT;
 		eFlags = eFlags & ~VISIBILITY_EFLAG
@@ -316,7 +318,8 @@ public class ElementImportImpl
 	public PackageableElement getImportedElement() {
 		if (importedElement != null && importedElement.eIsProxy()) {
 			InternalEObject oldImportedElement = (InternalEObject) importedElement;
-			importedElement = (PackageableElement) eResolveProxy(oldImportedElement);
+			importedElement = (PackageableElement) eResolveProxy(
+				oldImportedElement);
 			if (importedElement != oldImportedElement) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -346,8 +349,8 @@ public class ElementImportImpl
 		importedElement = newImportedElement;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT,
-				oldImportedElement, importedElement));
+				UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT, oldImportedElement,
+				importedElement));
 	}
 
 	/**
@@ -391,7 +394,8 @@ public class ElementImportImpl
 	 */
 	public void setImportingNamespace(Namespace newImportingNamespace) {
 		if (newImportingNamespace != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE && newImportingNamespace != null)) {
+			|| (eContainerFeatureID() != UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE
+				&& newImportingNamespace != null)) {
 			if (EcoreUtil.isAncestor(this, newImportingNamespace))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -400,8 +404,8 @@ public class ElementImportImpl
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newImportingNamespace != null)
 				msgs = ((InternalEObject) newImportingNamespace).eInverseAdd(
-					this, UMLPackage.NAMESPACE__ELEMENT_IMPORT,
-					Namespace.class, msgs);
+					this, UMLPackage.NAMESPACE__ELEMENT_IMPORT, Namespace.class,
+					msgs);
 			msgs = basicSetImportingNamespace(newImportingNamespace, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -473,11 +477,11 @@ public class ElementImportImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.ELEMENT_IMPORT__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ELEMENT_IMPORT__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE :
 				return basicSetImportingNamespace(null, msgs);
 		}
@@ -494,9 +498,9 @@ public class ElementImportImpl
 			NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 			case UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE :
-				return eInternalContainer()
-					.eInverseRemove(this, UMLPackage.NAMESPACE__ELEMENT_IMPORT,
-						Namespace.class, msgs);
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.NAMESPACE__ELEMENT_IMPORT, Namespace.class,
+					msgs);
 		}
 		return eDynamicBasicRemoveFromContainer(msgs);
 	}
@@ -552,13 +556,13 @@ public class ElementImportImpl
 		switch (featureID) {
 			case UMLPackage.ELEMENT_IMPORT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.ELEMENT_IMPORT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.ELEMENT_IMPORT__ALIAS :
 				setAlias((String) newValue);
@@ -697,7 +701,8 @@ public class ElementImportImpl
 			case UMLPackage.ELEMENT_IMPORT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.ELEMENT_IMPORT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.ELEMENT_IMPORT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.ELEMENT_IMPORT___GET_STEREOTYPE_APPLICATIONS :
@@ -705,7 +710,8 @@ public class ElementImportImpl
 			case UMLPackage.ELEMENT_IMPORT___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.ELEMENT_IMPORT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.ELEMENT_IMPORT___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -763,8 +769,8 @@ public class ElementImportImpl
 		else
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(", visibility: "); //$NON-NLS-1$
-		result
-			.append(VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET]);
+		result.append(VISIBILITY_EFLAG_VALUES[(eFlags
+			& VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET]);
 		result.append(')');
 		return result.toString();
 	}
@@ -777,7 +783,8 @@ public class ElementImportImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] TARGET_ESUBSETS = new int[]{UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT};
+	protected static final int[] TARGET_ESUBSETS = new int[]{
+		UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -798,7 +805,8 @@ public class ElementImportImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] SOURCE_ESUBSETS = new int[]{UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE};
+	protected static final int[] SOURCE_ESUBSETS = new int[]{
+		UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE};
 
 	/**
 	 * <!-- begin-user-doc -->

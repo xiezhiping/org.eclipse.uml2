@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -120,8 +120,8 @@ public class TimeExpressionImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -236,7 +236,8 @@ public class TimeExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createExpr(String name, Type type, EClass eClass) {
+	public ValueSpecification createExpr(String name, Type type,
+			EClass eClass) {
 		ValueSpecification newExpr = (ValueSpecification) create(eClass);
 		setExpr(newExpr);
 		if (name != null)
@@ -319,11 +320,11 @@ public class TimeExpressionImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.TIME_EXPRESSION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TIME_EXPRESSION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TIME_EXPRESSION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.TIME_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
@@ -403,13 +404,13 @@ public class TimeExpressionImpl
 		switch (featureID) {
 			case UMLPackage.TIME_EXPRESSION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.TIME_EXPRESSION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.TIME_EXPRESSION__NAME :
 				setName((String) newValue);
@@ -434,8 +435,8 @@ public class TimeExpressionImpl
 				return;
 			case UMLPackage.TIME_EXPRESSION__OBSERVATION :
 				getObservations().clear();
-				getObservations().addAll(
-					(Collection<? extends Observation>) newValue);
+				getObservations()
+					.addAll((Collection<? extends Observation>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -584,7 +585,8 @@ public class TimeExpressionImpl
 			case UMLPackage.TIME_EXPRESSION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.TIME_EXPRESSION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.TIME_EXPRESSION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.TIME_EXPRESSION___GET_STEREOTYPE_APPLICATIONS :
@@ -592,7 +594,8 @@ public class TimeExpressionImpl
 			case UMLPackage.TIME_EXPRESSION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.TIME_EXPRESSION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.TIME_EXPRESSION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -655,7 +658,8 @@ public class TimeExpressionImpl
 			case UMLPackage.TIME_EXPRESSION___GET_CLIENT_DEPENDENCIES :
 				return getClientDependencies();
 			case UMLPackage.TIME_EXPRESSION___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.TIME_EXPRESSION___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.TIME_EXPRESSION___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :

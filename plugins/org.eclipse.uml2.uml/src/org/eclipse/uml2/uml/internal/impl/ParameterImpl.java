@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -269,7 +269,8 @@ public class ParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int EFFECT_EFLAG_DEFAULT = EFFECT_EDEFAULT.ordinal() << EFFECT_EFLAG_OFFSET;
+	protected static final int EFFECT_EFLAG_DEFAULT = EFFECT_EDEFAULT
+		.ordinal() << EFFECT_EFLAG_OFFSET;
 
 	/**
 	 * The array of enumeration values for '{@link ParameterEffectKind Parameter Effect Kind}'
@@ -381,8 +382,8 @@ public class ParameterImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -498,9 +499,11 @@ public class ParameterImpl
 					EOPPOSITE_FEATURE_BASE - UMLPackage.PARAMETER__UPPER_VALUE,
 					null, null);
 				if (newUpperValue.eInternalContainer() == null) {
-					msgs = newUpperValue.eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-							- UMLPackage.PARAMETER__UPPER_VALUE, null, msgs);
+					msgs = newUpperValue
+						.eInverseAdd(this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.PARAMETER__UPPER_VALUE,
+							null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -564,7 +567,8 @@ public class ParameterImpl
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PARAMETER__UPPER_VALUE, newUpperValue, newUpperValue));
+				UMLPackage.PARAMETER__UPPER_VALUE, newUpperValue,
+				newUpperValue));
 	}
 
 	/**
@@ -625,9 +629,11 @@ public class ParameterImpl
 					EOPPOSITE_FEATURE_BASE - UMLPackage.PARAMETER__LOWER_VALUE,
 					null, null);
 				if (newLowerValue.eInternalContainer() == null) {
-					msgs = newLowerValue.eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-							- UMLPackage.PARAMETER__LOWER_VALUE, null, msgs);
+					msgs = newLowerValue
+						.eInverseAdd(this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.PARAMETER__LOWER_VALUE,
+							null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -691,7 +697,8 @@ public class ParameterImpl
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PARAMETER__LOWER_VALUE, newLowerValue, newLowerValue));
+				UMLPackage.PARAMETER__LOWER_VALUE, newLowerValue,
+				newLowerValue));
 	}
 
 	/**
@@ -791,7 +798,8 @@ public class ParameterImpl
 					.getOwnedParameters()).basicAdd(this, msgs);
 			msgs = eBasicSetContainer((InternalEObject) newOperation,
 				InternalEObject.EOPPOSITE_FEATURE_BASE
-					- UMLPackage.OPERATION__OWNED_PARAMETER, msgs);
+					- UMLPackage.OPERATION__OWNED_PARAMETER,
+				msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -805,7 +813,8 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ParameterDirectionKind getDirection() {
-		return DIRECTION_EFLAG_VALUES[(eFlags & DIRECTION_EFLAG) >>> DIRECTION_EFLAG_OFFSET];
+		return DIRECTION_EFLAG_VALUES[(eFlags
+			& DIRECTION_EFLAG) >>> DIRECTION_EFLAG_OFFSET];
 	}
 
 	/**
@@ -814,7 +823,8 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setDirection(ParameterDirectionKind newDirection) {
-		ParameterDirectionKind oldDirection = DIRECTION_EFLAG_VALUES[(eFlags & DIRECTION_EFLAG) >>> DIRECTION_EFLAG_OFFSET];
+		ParameterDirectionKind oldDirection = DIRECTION_EFLAG_VALUES[(eFlags
+			& DIRECTION_EFLAG) >>> DIRECTION_EFLAG_OFFSET];
 		if (newDirection == null)
 			newDirection = DIRECTION_EDEFAULT;
 		eFlags = eFlags & ~DIRECTION_EFLAG
@@ -873,11 +883,14 @@ public class ParameterImpl
 				InternalEObject newDefaultValue = (InternalEObject) defaultValue;
 				NotificationChain msgs = oldDefaultValue.eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.PARAMETER__DEFAULT_VALUE, null, null);
+						- UMLPackage.PARAMETER__DEFAULT_VALUE,
+					null, null);
 				if (newDefaultValue.eInternalContainer() == null) {
-					msgs = newDefaultValue.eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-							- UMLPackage.PARAMETER__DEFAULT_VALUE, null, msgs);
+					msgs = newDefaultValue
+						.eInverseAdd(this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.PARAMETER__DEFAULT_VALUE,
+							null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -931,11 +944,13 @@ public class ParameterImpl
 			if (defaultValue != null)
 				msgs = ((InternalEObject) defaultValue).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.PARAMETER__DEFAULT_VALUE, null, msgs);
+						- UMLPackage.PARAMETER__DEFAULT_VALUE,
+					null, msgs);
 			if (newDefaultValue != null)
 				msgs = ((InternalEObject) newDefaultValue).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.PARAMETER__DEFAULT_VALUE, null, msgs);
+						- UMLPackage.PARAMETER__DEFAULT_VALUE,
+					null, msgs);
 			msgs = basicSetDefaultValue(newDefaultValue, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -952,7 +967,8 @@ public class ParameterImpl
 	 */
 	public ValueSpecification createDefaultValue(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newDefaultValue = (ValueSpecification) create(eClass);
+		ValueSpecification newDefaultValue = (ValueSpecification) create(
+			eClass);
 		setDefaultValue(newDefaultValue);
 		if (name != null)
 			newDefaultValue.setName(name);
@@ -1018,7 +1034,8 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ParameterEffectKind getEffect() {
-		return EFFECT_EFLAG_VALUES[(eFlags & EFFECT_EFLAG) >>> EFFECT_EFLAG_OFFSET];
+		return EFFECT_EFLAG_VALUES[(eFlags
+			& EFFECT_EFLAG) >>> EFFECT_EFLAG_OFFSET];
 	}
 
 	/**
@@ -1027,7 +1044,8 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setEffect(ParameterEffectKind newEffect) {
-		ParameterEffectKind oldEffect = EFFECT_EFLAG_VALUES[(eFlags & EFFECT_EFLAG) >>> EFFECT_EFLAG_OFFSET];
+		ParameterEffectKind oldEffect = EFFECT_EFLAG_VALUES[(eFlags
+			& EFFECT_EFLAG) >>> EFFECT_EFLAG_OFFSET];
 		if (newEffect == null)
 			newEffect = EFFECT_EDEFAULT;
 		eFlags = eFlags & ~EFFECT_EFLAG
@@ -1046,7 +1064,8 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void unsetEffect() {
-		ParameterEffectKind oldEffect = EFFECT_EFLAG_VALUES[(eFlags & EFFECT_EFLAG) >>> EFFECT_EFLAG_OFFSET];
+		ParameterEffectKind oldEffect = EFFECT_EFLAG_VALUES[(eFlags
+			& EFFECT_EFLAG) >>> EFFECT_EFLAG_OFFSET];
 		boolean oldEffectESet = (eFlags & EFFECT_ESETFLAG) != 0;
 		eFlags = eFlags & ~EFFECT_EFLAG | EFFECT_EFLAG_DEFAULT;
 		eFlags &= ~EFFECT_ESETFLAG;
@@ -1072,8 +1091,8 @@ public class ParameterImpl
 	 */
 	public boolean validateLowerGe0(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return MultiplicityElementOperations.validateLowerGe0(this,
-			diagnostics, context);
+		return MultiplicityElementOperations.validateLowerGe0(this, diagnostics,
+			context);
 	}
 
 	/**
@@ -1095,7 +1114,8 @@ public class ParameterImpl
 	public boolean validateValueSpecificationNoSideEffects(
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return MultiplicityElementOperations
-			.validateValueSpecificationNoSideEffects(this, diagnostics, context);
+			.validateValueSpecificationNoSideEffects(this, diagnostics,
+				context);
 	}
 
 	/**
@@ -1127,8 +1147,8 @@ public class ParameterImpl
 	 */
 	public boolean validateUpperIsUnlimitedNatural(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return MultiplicityElementOperations.validateUpperIsUnlimitedNatural(
-			this, diagnostics, context);
+		return MultiplicityElementOperations
+			.validateUpperIsUnlimitedNatural(this, diagnostics, context);
 	}
 
 	/**
@@ -1203,8 +1223,8 @@ public class ParameterImpl
 	 */
 	public boolean validateStreamAndException(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return ParameterOperations.validateStreamAndException(this,
-			diagnostics, context);
+		return ParameterOperations.validateStreamAndException(this, diagnostics,
+			context);
 	}
 
 	/**
@@ -1236,8 +1256,8 @@ public class ParameterImpl
 	 */
 	public boolean validateReentrantBehaviors(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return ParameterOperations.validateReentrantBehaviors(this,
-			diagnostics, context);
+		return ParameterOperations.validateReentrantBehaviors(this, diagnostics,
+			context);
 	}
 
 	/**
@@ -1324,10 +1344,10 @@ public class ParameterImpl
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.PARAMETER__TEMPLATE_PARAMETER :
 				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
+					msgs = ((InternalEObject) templateParameter).eInverseRemove(
+						this,
+						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+						TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.PARAMETER__PARAMETER_SET :
@@ -1347,11 +1367,11 @@ public class ParameterImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PARAMETER__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PARAMETER__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PARAMETER__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.PARAMETER__OWNING_TEMPLATE_PARAMETER :
@@ -1365,8 +1385,8 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__DEFAULT_VALUE :
 				return basicSetDefaultValue(null, msgs);
 			case UMLPackage.PARAMETER__PARAMETER_SET :
-				return ((InternalEList<?>) getParameterSets()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getParameterSets())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1470,13 +1490,13 @@ public class ParameterImpl
 		switch (featureID) {
 			case UMLPackage.PARAMETER__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.PARAMETER__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.PARAMETER__NAME :
 				setName((String) newValue);
@@ -1534,8 +1554,8 @@ public class ParameterImpl
 				return;
 			case UMLPackage.PARAMETER__PARAMETER_SET :
 				getParameterSets().clear();
-				getParameterSets().addAll(
-					(Collection<? extends ParameterSet>) newValue);
+				getParameterSets()
+					.addAll((Collection<? extends ParameterSet>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1666,7 +1686,8 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__END :
 				return !getEnds().isEmpty();
 			case UMLPackage.PARAMETER__IS_ORDERED :
-				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
+				return ((eFlags
+					& IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.PARAMETER__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UMLPackage.PARAMETER__LOWER :
@@ -1686,7 +1707,8 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__EFFECT :
 				return isSetEffect();
 			case UMLPackage.PARAMETER__IS_EXCEPTION :
-				return ((eFlags & IS_EXCEPTION_EFLAG) != 0) != IS_EXCEPTION_EDEFAULT;
+				return ((eFlags
+					& IS_EXCEPTION_EFLAG) != 0) != IS_EXCEPTION_EDEFAULT;
 			case UMLPackage.PARAMETER__IS_STREAM :
 				return ((eFlags & IS_STREAM_EFLAG) != 0) != IS_STREAM_EDEFAULT;
 			case UMLPackage.PARAMETER__OPERATION :
@@ -1703,7 +1725,8 @@ public class ParameterImpl
 	 * @generated
 	 */
 	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	public int eBaseStructuralFeatureID(int derivedFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == MultiplicityElement.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.PARAMETER__IS_ORDERED :
@@ -1731,7 +1754,8 @@ public class ParameterImpl
 	 * @generated
 	 */
 	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	public int eDerivedStructuralFeatureID(int baseFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == MultiplicityElement.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.MULTIPLICITY_ELEMENT__IS_ORDERED :
@@ -1858,7 +1882,8 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.PARAMETER___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.PARAMETER___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.PARAMETER___GET_STEREOTYPE_APPLICATIONS :
@@ -1866,7 +1891,8 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.PARAMETER___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.PARAMETER___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1929,7 +1955,8 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER___GET_CLIENT_DEPENDENCIES :
 				return getClientDependencies();
 			case UMLPackage.PARAMETER___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.PARAMETER___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.PARAMETER___GET_ENDS :
@@ -1965,8 +1992,8 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
 				return compatibleWith((MultiplicityElement) arguments.get(0));
 			case UMLPackage.PARAMETER___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
-				return includesMultiplicity((MultiplicityElement) arguments
-					.get(0));
+				return includesMultiplicity(
+					(MultiplicityElement) arguments.get(0));
 			case UMLPackage.PARAMETER___IS__INT_INT :
 				return is((Integer) arguments.get(0),
 					(Integer) arguments.get(1));
@@ -2048,12 +2075,12 @@ public class ParameterImpl
 		result.append(", isUnique: "); //$NON-NLS-1$
 		result.append((eFlags & IS_UNIQUE_EFLAG) != 0);
 		result.append(", direction: "); //$NON-NLS-1$
-		result
-			.append(DIRECTION_EFLAG_VALUES[(eFlags & DIRECTION_EFLAG) >>> DIRECTION_EFLAG_OFFSET]);
+		result.append(DIRECTION_EFLAG_VALUES[(eFlags
+			& DIRECTION_EFLAG) >>> DIRECTION_EFLAG_OFFSET]);
 		result.append(", effect: "); //$NON-NLS-1$
 		if ((eFlags & EFFECT_ESETFLAG) != 0)
-			result
-				.append(EFFECT_EFLAG_VALUES[(eFlags & EFFECT_EFLAG) >>> EFFECT_EFLAG_OFFSET]);
+			result.append(EFFECT_EFLAG_VALUES[(eFlags
+				& EFFECT_EFLAG) >>> EFFECT_EFLAG_OFFSET]);
 		else
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(", isException: "); //$NON-NLS-1$

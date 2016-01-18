@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -72,15 +72,15 @@ public class ActivityPartitionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACTIVITY_PARTITION__DIMENSION_NOT_CONTAINED,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateDimensionNotContained", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(activityPartition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{activityPartition}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.ACTIVITY_PARTITION__DIMENSION_NOT_CONTAINED,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateDimensionNotContained", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(activityPartition, context)}),
+					new Object[]{activityPartition}));
 			}
 			return false;
 		}
@@ -120,15 +120,15 @@ public class ActivityPartitionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACTIVITY_PARTITION__REPRESENTS_CLASSIFIER,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateRepresentsClassifier", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(activityPartition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{activityPartition}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.ACTIVITY_PARTITION__REPRESENTS_CLASSIFIER,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateRepresentsClassifier", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(activityPartition, context)}),
+					new Object[]{activityPartition}));
 			}
 			return false;
 		}
@@ -160,15 +160,15 @@ public class ActivityPartitionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACTIVITY_PARTITION__REPRESENTS_PROPERTY_AND_IS_CONTAINED,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateRepresentsPropertyAndIsContained", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(activityPartition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{activityPartition}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.ACTIVITY_PARTITION__REPRESENTS_PROPERTY_AND_IS_CONTAINED,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateRepresentsPropertyAndIsContained", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(activityPartition, context)}),
+					new Object[]{activityPartition}));
 			}
 			return false;
 		}
@@ -202,15 +202,15 @@ public class ActivityPartitionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACTIVITY_PARTITION__REPRESENTS_PROPERTY,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateRepresentsProperty", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(activityPartition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{activityPartition}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.ACTIVITY_PARTITION__REPRESENTS_PROPERTY,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateRepresentsProperty", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(activityPartition, context)}),
+					new Object[]{activityPartition}));
 			}
 			return false;
 		}

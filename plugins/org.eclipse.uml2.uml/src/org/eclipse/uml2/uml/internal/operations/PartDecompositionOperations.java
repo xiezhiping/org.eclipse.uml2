@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -70,15 +70,15 @@ public class PartDecompositionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PART_DECOMPOSITION__PARTS_OF_INTERNAL_STRUCTURES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validatePartsOfInternalStructures", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(partDecomposition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{partDecomposition}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PART_DECOMPOSITION__PARTS_OF_INTERNAL_STRUCTURES,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validatePartsOfInternalStructures", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(partDecomposition, context)}),
+					new Object[]{partDecomposition}));
 			}
 			return false;
 		}
@@ -104,15 +104,15 @@ public class PartDecompositionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PART_DECOMPOSITION__ASSUME,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateAssume", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(partDecomposition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{partDecomposition}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PART_DECOMPOSITION__ASSUME,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateAssume", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(partDecomposition, context)}),
+					new Object[]{partDecomposition}));
 			}
 			return false;
 		}
@@ -139,15 +139,15 @@ public class PartDecompositionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PART_DECOMPOSITION__COMMUTATIVITY_OF_DECOMPOSITION,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateCommutativityOfDecomposition", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(partDecomposition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{partDecomposition}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PART_DECOMPOSITION__COMMUTATIVITY_OF_DECOMPOSITION,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateCommutativityOfDecomposition", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(partDecomposition, context)}),
+					new Object[]{partDecomposition}));
 			}
 			return false;
 		}

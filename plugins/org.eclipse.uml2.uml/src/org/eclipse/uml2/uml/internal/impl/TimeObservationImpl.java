@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -228,13 +228,13 @@ public class TimeObservationImpl
 		switch (featureID) {
 			case UMLPackage.TIME_OBSERVATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.TIME_OBSERVATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.TIME_OBSERVATION__NAME :
 				setName((String) newValue);
@@ -337,7 +337,8 @@ public class TimeObservationImpl
 			case UMLPackage.TIME_OBSERVATION__EVENT :
 				return event != null;
 			case UMLPackage.TIME_OBSERVATION__FIRST_EVENT :
-				return ((eFlags & FIRST_EVENT_EFLAG) != 0) != FIRST_EVENT_EDEFAULT;
+				return ((eFlags
+					& FIRST_EVENT_EFLAG) != 0) != FIRST_EVENT_EDEFAULT;
 		}
 		return eDynamicIsSet(featureID);
 	}

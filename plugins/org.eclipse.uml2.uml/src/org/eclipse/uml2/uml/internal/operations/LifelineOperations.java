@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 433194, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 433194, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -109,15 +109,15 @@ public class LifelineOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.LIFELINE__INTERACTION_USES_SHARE_LIFELINE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateInteractionUsesShareLifeline", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(lifeline, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{lifeline}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.LIFELINE__INTERACTION_USES_SHARE_LIFELINE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateInteractionUsesShareLifeline", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(lifeline, context)}),
+					new Object[]{lifeline}));
 			}
 			return false;
 		}
@@ -144,15 +144,15 @@ public class LifelineOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.LIFELINE__SELECTOR_SPECIFIED,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSelectorSpecified", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(lifeline, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{lifeline}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.LIFELINE__SELECTOR_SPECIFIED,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateSelectorSpecified", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(lifeline, context)}),
+					new Object[]{lifeline}));
 			}
 			return false;
 		}
@@ -179,15 +179,15 @@ public class LifelineOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.LIFELINE__SAME_CLASSIFIER,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSameClassifier", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(lifeline, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{lifeline}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.LIFELINE__SAME_CLASSIFIER,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateSameClassifier", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(lifeline, context)}),
+					new Object[]{lifeline}));
 			}
 			return false;
 		}
@@ -216,15 +216,15 @@ public class LifelineOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.LIFELINE__SELECTOR_INT_OR_STRING,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSelectorIntOrString", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(lifeline, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{lifeline}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.LIFELINE__SELECTOR_INT_OR_STRING,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateSelectorIntOrString", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(lifeline, context)}),
+					new Object[]{lifeline}));
 			}
 			return false;
 		}

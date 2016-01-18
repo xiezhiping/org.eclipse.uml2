@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -73,15 +73,16 @@ public class StructuralFeatureActionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STRUCTURAL_FEATURE_ACTION__NOT_STATIC,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNotStatic", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(structuralFeatureAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{structuralFeatureAction}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.STRUCTURAL_FEATURE_ACTION__NOT_STATIC,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateNotStatic", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(structuralFeatureAction,
+									context)}),
+					new Object[]{structuralFeatureAction}));
 			}
 			return false;
 		}
@@ -109,15 +110,16 @@ public class StructuralFeatureActionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STRUCTURAL_FEATURE_ACTION__MULTIPLICITY,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMultiplicity", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(structuralFeatureAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{structuralFeatureAction}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.STRUCTURAL_FEATURE_ACTION__MULTIPLICITY,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateMultiplicity", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(structuralFeatureAction,
+									context)}),
+					new Object[]{structuralFeatureAction}));
 			}
 			return false;
 		}
@@ -146,15 +148,16 @@ public class StructuralFeatureActionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STRUCTURAL_FEATURE_ACTION__OBJECT_TYPE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateObjectType", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(structuralFeatureAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{structuralFeatureAction}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.STRUCTURAL_FEATURE_ACTION__OBJECT_TYPE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateObjectType", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(structuralFeatureAction,
+									context)}),
+					new Object[]{structuralFeatureAction}));
 			}
 			return false;
 		}
@@ -185,15 +188,16 @@ public class StructuralFeatureActionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STRUCTURAL_FEATURE_ACTION__VISIBILITY,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateVisibility", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(structuralFeatureAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{structuralFeatureAction}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.STRUCTURAL_FEATURE_ACTION__VISIBILITY,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateVisibility", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(structuralFeatureAction,
+									context)}),
+					new Object[]{structuralFeatureAction}));
 			}
 			return false;
 		}
@@ -221,15 +225,16 @@ public class StructuralFeatureActionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STRUCTURAL_FEATURE_ACTION__ONE_FEATURING_CLASSIFIER,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOneFeaturingClassifier", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(structuralFeatureAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{structuralFeatureAction}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.STRUCTURAL_FEATURE_ACTION__ONE_FEATURING_CLASSIFIER,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateOneFeaturingClassifier", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(structuralFeatureAction,
+									context)}),
+					new Object[]{structuralFeatureAction}));
 			}
 			return false;
 		}

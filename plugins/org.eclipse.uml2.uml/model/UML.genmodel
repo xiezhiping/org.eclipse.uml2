@@ -803,6 +803,9 @@
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/unapplyProfile">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/unapplyProfile/profile"/>
       </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/applyProfiles">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/applyProfiles/profiles"/>
+      </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/allApplicableStereotypes"
           cacheAdapterScope="Global"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/containingProfile"/>

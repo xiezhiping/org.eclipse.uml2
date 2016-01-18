@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -197,12 +197,16 @@ public class CreateObjectActionImpl
 			result = (OutputPin) eResolveProxy(oldResult);
 			if (result != oldResult) {
 				InternalEObject newResult = (InternalEObject) result;
-				NotificationChain msgs = oldResult.eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.CREATE_OBJECT_ACTION__RESULT, null, null);
+				NotificationChain msgs = oldResult
+					.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.CREATE_OBJECT_ACTION__RESULT,
+						null, null);
 				if (newResult.eInternalContainer() == null) {
-					msgs = newResult.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.CREATE_OBJECT_ACTION__RESULT, null, msgs);
+					msgs = newResult.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.CREATE_OBJECT_ACTION__RESULT,
+						null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -254,13 +258,17 @@ public class CreateObjectActionImpl
 		if (newResult != result) {
 			NotificationChain msgs = null;
 			if (result != null)
-				msgs = ((InternalEObject) result).eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.CREATE_OBJECT_ACTION__RESULT, null, msgs);
+				msgs = ((InternalEObject) result)
+					.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.CREATE_OBJECT_ACTION__RESULT,
+						null, msgs);
 			if (newResult != null)
-				msgs = ((InternalEObject) newResult).eInverseAdd(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.CREATE_OBJECT_ACTION__RESULT, null, msgs);
+				msgs = ((InternalEObject) newResult)
+					.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.CREATE_OBJECT_ACTION__RESULT,
+						null, msgs);
 			msgs = basicSetResult(newResult, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -275,7 +283,8 @@ public class CreateObjectActionImpl
 	 * @generated
 	 */
 	public OutputPin createResult(String name, Type type) {
-		OutputPin newResult = (OutputPin) create(UMLPackage.Literals.OUTPUT_PIN);
+		OutputPin newResult = (OutputPin) create(
+			UMLPackage.Literals.OUTPUT_PIN);
 		setResult(newResult);
 		if (name != null)
 			newResult.setName(name);
@@ -338,11 +347,11 @@ public class CreateObjectActionImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.CREATE_OBJECT_ACTION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CREATE_OBJECT_ACTION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CREATE_OBJECT_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.CREATE_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION :
@@ -351,14 +360,14 @@ public class CreateObjectActionImpl
 			case UMLPackage.CREATE_OBJECT_ACTION__IN_STRUCTURED_NODE :
 				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.CREATE_OBJECT_ACTION__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.CREATE_OBJECT_ACTION__OUTGOING :
-				return ((InternalEList<?>) getOutgoings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.CREATE_OBJECT_ACTION__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getInPartitions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CREATE_OBJECT_ACTION__HANDLER :
 				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
@@ -473,13 +482,13 @@ public class CreateObjectActionImpl
 		switch (featureID) {
 			case UMLPackage.CREATE_OBJECT_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.CREATE_OBJECT_ACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.CREATE_OBJECT_ACTION__NAME :
 				setName((String) newValue);
@@ -498,50 +507,49 @@ public class CreateObjectActionImpl
 				return;
 			case UMLPackage.CREATE_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions()
-					.addAll(
-						(Collection<? extends InterruptibleActivityRegion>) newValue);
+				getInInterruptibleRegions().addAll(
+					(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.CREATE_OBJECT_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.CREATE_OBJECT_ACTION__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getIncomings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.CREATE_OBJECT_ACTION__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getOutgoings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.CREATE_OBJECT_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll(
-					(Collection<? extends ActivityNode>) newValue);
+				getRedefinedNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.CREATE_OBJECT_ACTION__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
+				getInPartitions()
+					.addAll((Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.CREATE_OBJECT_ACTION__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll(
-					(Collection<? extends ExceptionHandler>) newValue);
+				getHandlers()
+					.addAll((Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.CREATE_OBJECT_ACTION__IS_LOCALLY_REENTRANT :
 				setIsLocallyReentrant((Boolean) newValue);
 				return;
 			case UMLPackage.CREATE_OBJECT_ACTION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPostconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.CREATE_OBJECT_ACTION__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPreconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.CREATE_OBJECT_ACTION__CLASSIFIER :
 				setClassifier((Classifier) newValue);
@@ -682,7 +690,8 @@ public class CreateObjectActionImpl
 			case UMLPackage.CREATE_OBJECT_ACTION__INPUT :
 				return isSetInputs();
 			case UMLPackage.CREATE_OBJECT_ACTION__IS_LOCALLY_REENTRANT :
-				return ((eFlags & IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
+				return ((eFlags
+					& IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
 			case UMLPackage.CREATE_OBJECT_ACTION__LOCAL_POSTCONDITION :
 				return localPostconditions != null
 					&& !localPostconditions.isEmpty();
@@ -756,7 +765,8 @@ public class CreateObjectActionImpl
 			case UMLPackage.CREATE_OBJECT_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.CREATE_OBJECT_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CREATE_OBJECT_ACTION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.CREATE_OBJECT_ACTION___GET_STEREOTYPE_APPLICATIONS :
@@ -764,7 +774,8 @@ public class CreateObjectActionImpl
 			case UMLPackage.CREATE_OBJECT_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.CREATE_OBJECT_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CREATE_OBJECT_ACTION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -841,8 +852,8 @@ public class CreateObjectActionImpl
 			case UMLPackage.CREATE_OBJECT_ACTION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.CREATE_OBJECT_ACTION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.CREATE_OBJECT_ACTION___CONTAINING_ACTIVITY :
 				return containingActivity();
 			case UMLPackage.CREATE_OBJECT_ACTION___GET_CONTEXT :
@@ -879,7 +890,8 @@ public class CreateObjectActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] OUTPUT_ESUBSETS = new int[]{UMLPackage.CREATE_OBJECT_ACTION__RESULT};
+	protected static final int[] OUTPUT_ESUBSETS = new int[]{
+		UMLPackage.CREATE_OBJECT_ACTION__RESULT};
 
 	/**
 	 * <!-- begin-user-doc -->

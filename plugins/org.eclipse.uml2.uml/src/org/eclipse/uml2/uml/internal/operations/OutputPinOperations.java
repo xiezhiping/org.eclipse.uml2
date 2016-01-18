@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 418466, 451350
+ *   Kenn Hussey (CEA) - 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -72,15 +72,15 @@ public class OutputPinOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.OUTPUT_PIN__INCOMING_EDGES_STRUCTURED_ONLY,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateIncomingEdgesStructuredOnly", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(outputPin, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{outputPin}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.OUTPUT_PIN__INCOMING_EDGES_STRUCTURED_ONLY,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateIncomingEdgesStructuredOnly", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(outputPin, context)}),
+					new Object[]{outputPin}));
 			}
 			return false;
 		}

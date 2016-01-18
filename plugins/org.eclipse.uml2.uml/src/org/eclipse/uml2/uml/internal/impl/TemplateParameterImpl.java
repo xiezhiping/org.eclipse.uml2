@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -154,8 +154,8 @@ public class TemplateParameterImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -179,7 +179,8 @@ public class TemplateParameterImpl
 	public ParameterableElement getParameteredElement() {
 		if (parameteredElement != null && parameteredElement.eIsProxy()) {
 			InternalEObject oldParameteredElement = (InternalEObject) parameteredElement;
-			parameteredElement = (ParameterableElement) eResolveProxy(oldParameteredElement);
+			parameteredElement = (ParameterableElement) eResolveProxy(
+				oldParameteredElement);
 			if (parameteredElement != oldParameteredElement) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -205,7 +206,8 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public NotificationChain basicSetParameteredElement(
-			ParameterableElement newParameteredElement, NotificationChain msgs) {
+			ParameterableElement newParameteredElement,
+			NotificationChain msgs) {
 		ParameterableElement oldParameteredElement = parameteredElement;
 		parameteredElement = newParameteredElement;
 		if (eNotificationRequired()) {
@@ -233,7 +235,8 @@ public class TemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParameteredElement(ParameterableElement newParameteredElement) {
+	public void setParameteredElement(
+			ParameterableElement newParameteredElement) {
 		if (newParameteredElement != parameteredElement) {
 			NotificationChain msgs = null;
 			if (parameteredElement != null)
@@ -341,7 +344,8 @@ public class TemplateParameterImpl
 	 */
 	public void setSignature(TemplateSignature newSignature) {
 		if (newSignature != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.TEMPLATE_PARAMETER__SIGNATURE && newSignature != null)) {
+			|| (eContainerFeatureID() != UMLPackage.TEMPLATE_PARAMETER__SIGNATURE
+				&& newSignature != null)) {
 			if (EcoreUtil.isAncestor(this, newSignature))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -370,27 +374,23 @@ public class TemplateParameterImpl
 		if (ownedParameteredElement != null
 			&& ownedParameteredElement.eIsProxy()) {
 			InternalEObject oldOwnedParameteredElement = (InternalEObject) ownedParameteredElement;
-			ownedParameteredElement = (ParameterableElement) eResolveProxy(oldOwnedParameteredElement);
+			ownedParameteredElement = (ParameterableElement) eResolveProxy(
+				oldOwnedParameteredElement);
 			if (ownedParameteredElement != oldOwnedParameteredElement) {
 				InternalEObject newOwnedParameteredElement = (InternalEObject) ownedParameteredElement;
 				NotificationChain msgs = oldOwnedParameteredElement
-					.eInverseRemove(
-						this,
+					.eInverseRemove(this,
 						UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
 						ParameterableElement.class, null);
 				if (newOwnedParameteredElement.eInternalContainer() == null) {
-					msgs = newOwnedParameteredElement
-						.eInverseAdd(
-							this,
-							UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
-							ParameterableElement.class, msgs);
+					msgs = newOwnedParameteredElement.eInverseAdd(this,
+						UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
+						ParameterableElement.class, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-						this,
-						Notification.RESOLVE,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 						oldOwnedParameteredElement, ownedParameteredElement));
 			}
@@ -449,14 +449,12 @@ public class TemplateParameterImpl
 			NotificationChain msgs = null;
 			if (ownedParameteredElement != null)
 				msgs = ((InternalEObject) ownedParameteredElement)
-					.eInverseRemove(
-						this,
+					.eInverseRemove(this,
 						UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
 						ParameterableElement.class, msgs);
 			if (newOwnedParameteredElement != null)
 				msgs = ((InternalEObject) newOwnedParameteredElement)
-					.eInverseAdd(
-						this,
+					.eInverseAdd(this,
 						UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
 						ParameterableElement.class, msgs);
 			msgs = basicSetOwnedParameteredElement(newOwnedParameteredElement,
@@ -475,7 +473,8 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public ParameterableElement createOwnedParameteredElement(EClass eClass) {
-		ParameterableElement newOwnedParameteredElement = (ParameterableElement) create(eClass);
+		ParameterableElement newOwnedParameteredElement = (ParameterableElement) create(
+			eClass);
 		setOwnedParameteredElement(newOwnedParameteredElement);
 		return newOwnedParameteredElement;
 	}
@@ -488,13 +487,14 @@ public class TemplateParameterImpl
 	public ParameterableElement getOwnedDefault() {
 		if (ownedDefault != null && ownedDefault.eIsProxy()) {
 			InternalEObject oldOwnedDefault = (InternalEObject) ownedDefault;
-			ownedDefault = (ParameterableElement) eResolveProxy(oldOwnedDefault);
+			ownedDefault = (ParameterableElement) eResolveProxy(
+				oldOwnedDefault);
 			if (ownedDefault != oldOwnedDefault) {
 				InternalEObject newOwnedDefault = (InternalEObject) ownedDefault;
 				NotificationChain msgs = oldOwnedDefault.eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT, null,
-					null);
+						- UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+					null, null);
 				if (newOwnedDefault.eInternalContainer() == null) {
 					msgs = newOwnedDefault.eInverseAdd(this,
 						EOPPOSITE_FEATURE_BASE
@@ -561,13 +561,13 @@ public class TemplateParameterImpl
 			if (ownedDefault != null)
 				msgs = ((InternalEObject) ownedDefault).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT, null,
-					msgs);
+						- UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+					null, msgs);
 			if (newOwnedDefault != null)
 				msgs = ((InternalEObject) newOwnedDefault).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT, null,
-					msgs);
+						- UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+					null, msgs);
 			msgs = basicSetOwnedDefault(newOwnedDefault, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -583,7 +583,8 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public ParameterableElement createOwnedDefault(EClass eClass) {
-		ParameterableElement newOwnedDefault = (ParameterableElement) create(eClass);
+		ParameterableElement newOwnedDefault = (ParameterableElement) create(
+			eClass);
 		setOwnedDefault(newOwnedDefault);
 		return newOwnedDefault;
 	}
@@ -615,8 +616,7 @@ public class TemplateParameterImpl
 			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				if (parameteredElement != null)
 					msgs = ((InternalEObject) parameteredElement)
-						.eInverseRemove(
-							this,
+						.eInverseRemove(this,
 							UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
 							ParameterableElement.class, msgs);
 				return basicSetParameteredElement(
@@ -628,8 +628,7 @@ public class TemplateParameterImpl
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				if (ownedParameteredElement != null)
 					msgs = ((InternalEObject) ownedParameteredElement)
-						.eInverseRemove(
-							this,
+						.eInverseRemove(this,
 							EOPPOSITE_FEATURE_BASE
 								- UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 							null, msgs);
@@ -649,11 +648,11 @@ public class TemplateParameterImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.TEMPLATE_PARAMETER__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				return basicSetOwnedDefault(null, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
@@ -736,13 +735,13 @@ public class TemplateParameterImpl
 		switch (featureID) {
 			case UMLPackage.TEMPLATE_PARAMETER__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.TEMPLATE_PARAMETER__DEFAULT :
 				setDefault((ParameterableElement) newValue);
@@ -883,7 +882,8 @@ public class TemplateParameterImpl
 			case UMLPackage.TEMPLATE_PARAMETER___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.TEMPLATE_PARAMETER___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.TEMPLATE_PARAMETER___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.TEMPLATE_PARAMETER___GET_STEREOTYPE_APPLICATIONS :
@@ -891,7 +891,8 @@ public class TemplateParameterImpl
 			case UMLPackage.TEMPLATE_PARAMETER___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.TEMPLATE_PARAMETER___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.TEMPLATE_PARAMETER___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));

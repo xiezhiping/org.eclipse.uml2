@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -80,15 +80,15 @@ public class ExtensionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.EXTENSION__NON_OWNED_END,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNonOwnedEnd", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(extension, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{extension}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.EXTENSION__NON_OWNED_END,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateNonOwnedEnd", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(extension, context)}),
+					new Object[]{extension}));
 			}
 			return false;
 		}
@@ -115,15 +115,15 @@ public class ExtensionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.EXTENSION__IS_BINARY,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateIsBinary", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(extension, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{extension}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.EXTENSION__IS_BINARY,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateIsBinary", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(extension, context)}),
+					new Object[]{extension}));
 			}
 			return false;
 		}
@@ -208,8 +208,8 @@ public class ExtensionOperations
 		Property metaclassEnd = extension.metaclassEnd();
 
 		if (metaclassEnd != null) {
-			Object type = metaclassEnd.eGet(
-				UMLPackage.Literals.TYPED_ELEMENT__TYPE, false);
+			Object type = metaclassEnd
+				.eGet(UMLPackage.Literals.TYPED_ELEMENT__TYPE, false);
 
 			if (type instanceof org.eclipse.uml2.uml.Class) {
 				return (org.eclipse.uml2.uml.Class) type;

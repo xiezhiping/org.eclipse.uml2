@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 451350
+ *   Kenn Hussey (CEA) - 327039, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -131,19 +131,15 @@ public class TemplateParameterSubstitutionImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-						ownedElements = new DerivedUnionEObjectEList<Element>(
-							Element.class,
-							this,
-							UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT,
-							OWNED_ELEMENT_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
@@ -205,26 +201,20 @@ public class TemplateParameterSubstitutionImpl
 			ownedActual = (ParameterableElement) eResolveProxy(oldOwnedActual);
 			if (ownedActual != oldOwnedActual) {
 				InternalEObject newOwnedActual = (InternalEObject) ownedActual;
-				NotificationChain msgs = oldOwnedActual
-					.eInverseRemove(
-						this,
+				NotificationChain msgs = oldOwnedActual.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+					null, null);
+				if (newOwnedActual.eInternalContainer() == null) {
+					msgs = newOwnedActual.eInverseAdd(this,
 						EOPPOSITE_FEATURE_BASE
 							- UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-						null, null);
-				if (newOwnedActual.eInternalContainer() == null) {
-					msgs = newOwnedActual
-						.eInverseAdd(
-							this,
-							EOPPOSITE_FEATURE_BASE
-								- UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-							null, msgs);
+						null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-						this,
-						Notification.RESOLVE,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 						oldOwnedActual, ownedActual));
 			}
@@ -280,19 +270,15 @@ public class TemplateParameterSubstitutionImpl
 		if (newOwnedActual != ownedActual) {
 			NotificationChain msgs = null;
 			if (ownedActual != null)
-				msgs = ((InternalEObject) ownedActual)
-					.eInverseRemove(
-						this,
-						EOPPOSITE_FEATURE_BASE
-							- UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-						null, msgs);
+				msgs = ((InternalEObject) ownedActual).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+					null, msgs);
 			if (newOwnedActual != null)
-				msgs = ((InternalEObject) newOwnedActual)
-					.eInverseAdd(
-						this,
-						EOPPOSITE_FEATURE_BASE
-							- UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-						null, msgs);
+				msgs = ((InternalEObject) newOwnedActual).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+					null, msgs);
 			msgs = basicSetOwnedActual(newOwnedActual, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -308,7 +294,8 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 */
 	public ParameterableElement createOwnedActual(EClass eClass) {
-		ParameterableElement newOwnedActual = (ParameterableElement) create(eClass);
+		ParameterableElement newOwnedActual = (ParameterableElement) create(
+			eClass);
 		setOwnedActual(newOwnedActual);
 		return newOwnedActual;
 	}
@@ -354,7 +341,8 @@ public class TemplateParameterSubstitutionImpl
 	 */
 	public void setTemplateBinding(TemplateBinding newTemplateBinding) {
 		if (newTemplateBinding != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING && newTemplateBinding != null)) {
+			|| (eContainerFeatureID() != UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING
+				&& newTemplateBinding != null)) {
 			if (EcoreUtil.isAncestor(this, newTemplateBinding))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -401,7 +389,8 @@ public class TemplateParameterSubstitutionImpl
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetTemplateBinding((TemplateBinding) otherEnd, msgs);
+				return basicSetTemplateBinding((TemplateBinding) otherEnd,
+					msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -416,11 +405,11 @@ public class TemplateParameterSubstitutionImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL :
 				return basicSetOwnedActual(null, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
@@ -495,13 +484,13 @@ public class TemplateParameterSubstitutionImpl
 		switch (featureID) {
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL :
 				setActual((ParameterableElement) newValue);
@@ -634,7 +623,8 @@ public class TemplateParameterSubstitutionImpl
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION___GET_STEREOTYPE_APPLICATIONS :
@@ -642,7 +632,8 @@ public class TemplateParameterSubstitutionImpl
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -782,8 +773,8 @@ public class TemplateParameterSubstitutionImpl
 	 */
 	@Override
 	public boolean isSetOwner() {
-		return super.isSetOwner()
-			|| eIsSet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING);
+		return super.isSetOwner() || eIsSet(
+			UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING);
 	}
 
 } //TemplateParameterSubstitutionImpl

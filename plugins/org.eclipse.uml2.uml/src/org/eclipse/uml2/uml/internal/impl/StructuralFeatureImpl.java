@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -261,8 +261,8 @@ public abstract class StructuralFeatureImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -379,13 +379,13 @@ public abstract class StructuralFeatureImpl
 				InternalEObject newUpperValue = (InternalEObject) upperValue;
 				NotificationChain msgs = oldUpperValue.eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE, null,
-					null);
+						- UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE,
+					null, null);
 				if (newUpperValue.eInternalContainer() == null) {
 					msgs = newUpperValue.eInverseAdd(this,
 						EOPPOSITE_FEATURE_BASE
-							- UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE, null,
-						msgs);
+							- UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE,
+						null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -439,13 +439,13 @@ public abstract class StructuralFeatureImpl
 			if (upperValue != null)
 				msgs = ((InternalEObject) upperValue).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE, null,
-					msgs);
+						- UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE,
+					null, msgs);
 			if (newUpperValue != null)
 				msgs = ((InternalEObject) newUpperValue).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE, null,
-					msgs);
+						- UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE,
+					null, msgs);
 			msgs = basicSetUpperValue(newUpperValue, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -484,13 +484,13 @@ public abstract class StructuralFeatureImpl
 				InternalEObject newLowerValue = (InternalEObject) lowerValue;
 				NotificationChain msgs = oldLowerValue.eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE, null,
-					null);
+						- UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE,
+					null, null);
 				if (newLowerValue.eInternalContainer() == null) {
 					msgs = newLowerValue.eInverseAdd(this,
 						EOPPOSITE_FEATURE_BASE
-							- UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE, null,
-						msgs);
+							- UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE,
+						null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -544,13 +544,13 @@ public abstract class StructuralFeatureImpl
 			if (lowerValue != null)
 				msgs = ((InternalEObject) lowerValue).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE, null,
-					msgs);
+						- UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE,
+					null, msgs);
 			if (newLowerValue != null)
 				msgs = ((InternalEObject) newLowerValue).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE, null,
-					msgs);
+						- UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE,
+					null, msgs);
 			msgs = basicSetLowerValue(newLowerValue, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -609,8 +609,8 @@ public abstract class StructuralFeatureImpl
 	 */
 	public boolean validateLowerGe0(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return MultiplicityElementOperations.validateLowerGe0(this,
-			diagnostics, context);
+		return MultiplicityElementOperations.validateLowerGe0(this, diagnostics,
+			context);
 	}
 
 	/**
@@ -632,7 +632,8 @@ public abstract class StructuralFeatureImpl
 	public boolean validateValueSpecificationNoSideEffects(
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return MultiplicityElementOperations
-			.validateValueSpecificationNoSideEffects(this, diagnostics, context);
+			.validateValueSpecificationNoSideEffects(this, diagnostics,
+				context);
 	}
 
 	/**
@@ -664,8 +665,8 @@ public abstract class StructuralFeatureImpl
 	 */
 	public boolean validateUpperIsUnlimitedNatural(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return MultiplicityElementOperations.validateUpperIsUnlimitedNatural(
-			this, diagnostics, context);
+		return MultiplicityElementOperations
+			.validateUpperIsUnlimitedNatural(this, diagnostics, context);
 	}
 
 	/**
@@ -732,11 +733,11 @@ public abstract class StructuralFeatureImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.STRUCTURAL_FEATURE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STRUCTURAL_FEATURE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STRUCTURAL_FEATURE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE :
@@ -828,13 +829,13 @@ public abstract class StructuralFeatureImpl
 		switch (featureID) {
 			case UMLPackage.STRUCTURAL_FEATURE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__NAME :
 				setName((String) newValue);
@@ -979,7 +980,8 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE__TYPE :
 				return type != null;
 			case UMLPackage.STRUCTURAL_FEATURE__IS_ORDERED :
-				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
+				return ((eFlags
+					& IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.STRUCTURAL_FEATURE__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UMLPackage.STRUCTURAL_FEATURE__LOWER :
@@ -991,7 +993,8 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE :
 				return upperValue != null;
 			case UMLPackage.STRUCTURAL_FEATURE__IS_READ_ONLY :
-				return ((eFlags & IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
+				return ((eFlags
+					& IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1002,7 +1005,8 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	public int eBaseStructuralFeatureID(int derivedFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == TypedElement.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.STRUCTURAL_FEATURE__TYPE :
@@ -1038,7 +1042,8 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	public int eDerivedStructuralFeatureID(int baseFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == TypedElement.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.TYPED_ELEMENT__TYPE :
@@ -1179,7 +1184,8 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.STRUCTURAL_FEATURE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.STRUCTURAL_FEATURE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.STRUCTURAL_FEATURE___GET_STEREOTYPE_APPLICATIONS :
@@ -1187,7 +1193,8 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.STRUCTURAL_FEATURE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.STRUCTURAL_FEATURE___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1264,8 +1271,8 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.STRUCTURAL_FEATURE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
 				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
@@ -1297,8 +1304,8 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
 				return compatibleWith((MultiplicityElement) arguments.get(0));
 			case UMLPackage.STRUCTURAL_FEATURE___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
-				return includesMultiplicity((MultiplicityElement) arguments
-					.get(0));
+				return includesMultiplicity(
+					(MultiplicityElement) arguments.get(0));
 			case UMLPackage.STRUCTURAL_FEATURE___IS__INT_INT :
 				return is((Integer) arguments.get(0),
 					(Integer) arguments.get(1));

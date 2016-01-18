@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -152,12 +152,16 @@ public class SendObjectActionImpl
 			target = (InputPin) eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				InternalEObject newTarget = (InternalEObject) target;
-				NotificationChain msgs = oldTarget.eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.SEND_OBJECT_ACTION__TARGET, null, null);
+				NotificationChain msgs = oldTarget
+					.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.SEND_OBJECT_ACTION__TARGET,
+						null, null);
 				if (newTarget.eInternalContainer() == null) {
-					msgs = newTarget.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.SEND_OBJECT_ACTION__TARGET, null, msgs);
+					msgs = newTarget.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.SEND_OBJECT_ACTION__TARGET,
+						null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -209,13 +213,17 @@ public class SendObjectActionImpl
 		if (newTarget != target) {
 			NotificationChain msgs = null;
 			if (target != null)
-				msgs = ((InternalEObject) target).eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.SEND_OBJECT_ACTION__TARGET, null, msgs);
+				msgs = ((InternalEObject) target)
+					.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.SEND_OBJECT_ACTION__TARGET,
+						null, msgs);
 			if (newTarget != null)
-				msgs = ((InternalEObject) newTarget).eInverseAdd(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.SEND_OBJECT_ACTION__TARGET, null, msgs);
+				msgs = ((InternalEObject) newTarget)
+					.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.SEND_OBJECT_ACTION__TARGET,
+						null, msgs);
 			msgs = basicSetTarget(newTarget, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -270,12 +278,16 @@ public class SendObjectActionImpl
 			request = (InputPin) eResolveProxy(oldRequest);
 			if (request != oldRequest) {
 				InternalEObject newRequest = (InternalEObject) request;
-				NotificationChain msgs = oldRequest.eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.SEND_OBJECT_ACTION__REQUEST, null, null);
+				NotificationChain msgs = oldRequest
+					.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.SEND_OBJECT_ACTION__REQUEST,
+						null, null);
 				if (newRequest.eInternalContainer() == null) {
-					msgs = newRequest.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.SEND_OBJECT_ACTION__REQUEST, null, msgs);
+					msgs = newRequest.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.SEND_OBJECT_ACTION__REQUEST,
+						null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -327,19 +339,24 @@ public class SendObjectActionImpl
 		if (newRequest != request) {
 			NotificationChain msgs = null;
 			if (request != null)
-				msgs = ((InternalEObject) request).eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.SEND_OBJECT_ACTION__REQUEST, null, msgs);
+				msgs = ((InternalEObject) request)
+					.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.SEND_OBJECT_ACTION__REQUEST,
+						null, msgs);
 			if (newRequest != null)
-				msgs = ((InternalEObject) newRequest).eInverseAdd(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.SEND_OBJECT_ACTION__REQUEST, null, msgs);
+				msgs = ((InternalEObject) newRequest)
+					.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.SEND_OBJECT_ACTION__REQUEST,
+						null, msgs);
 			msgs = basicSetRequest(newRequest, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.SEND_OBJECT_ACTION__REQUEST, newRequest, newRequest));
+				UMLPackage.SEND_OBJECT_ACTION__REQUEST, newRequest,
+				newRequest));
 	}
 
 	/**
@@ -385,11 +402,11 @@ public class SendObjectActionImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.SEND_OBJECT_ACTION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SEND_OBJECT_ACTION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SEND_OBJECT_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.SEND_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION :
@@ -398,14 +415,14 @@ public class SendObjectActionImpl
 			case UMLPackage.SEND_OBJECT_ACTION__IN_STRUCTURED_NODE :
 				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.SEND_OBJECT_ACTION__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.SEND_OBJECT_ACTION__OUTGOING :
-				return ((InternalEList<?>) getOutgoings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.SEND_OBJECT_ACTION__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getInPartitions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SEND_OBJECT_ACTION__HANDLER :
 				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
@@ -416,8 +433,8 @@ public class SendObjectActionImpl
 				return ((InternalEList<?>) getLocalPreconditions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SEND_OBJECT_ACTION__ARGUMENT :
-				return ((InternalEList<?>) getArguments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getArguments()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.SEND_OBJECT_ACTION__REQUEST :
 				return basicSetRequest(null, msgs);
 			case UMLPackage.SEND_OBJECT_ACTION__TARGET :
@@ -531,13 +548,13 @@ public class SendObjectActionImpl
 		switch (featureID) {
 			case UMLPackage.SEND_OBJECT_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.SEND_OBJECT_ACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.SEND_OBJECT_ACTION__NAME :
 				setName((String) newValue);
@@ -556,50 +573,49 @@ public class SendObjectActionImpl
 				return;
 			case UMLPackage.SEND_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions()
-					.addAll(
-						(Collection<? extends InterruptibleActivityRegion>) newValue);
+				getInInterruptibleRegions().addAll(
+					(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.SEND_OBJECT_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.SEND_OBJECT_ACTION__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getIncomings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.SEND_OBJECT_ACTION__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getOutgoings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.SEND_OBJECT_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll(
-					(Collection<? extends ActivityNode>) newValue);
+				getRedefinedNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.SEND_OBJECT_ACTION__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
+				getInPartitions()
+					.addAll((Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.SEND_OBJECT_ACTION__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll(
-					(Collection<? extends ExceptionHandler>) newValue);
+				getHandlers()
+					.addAll((Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.SEND_OBJECT_ACTION__IS_LOCALLY_REENTRANT :
 				setIsLocallyReentrant((Boolean) newValue);
 				return;
 			case UMLPackage.SEND_OBJECT_ACTION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPostconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.SEND_OBJECT_ACTION__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPreconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.SEND_OBJECT_ACTION__ARGUMENT :
 				getArguments().clear();
@@ -754,7 +770,8 @@ public class SendObjectActionImpl
 			case UMLPackage.SEND_OBJECT_ACTION__INPUT :
 				return isSetInputs();
 			case UMLPackage.SEND_OBJECT_ACTION__IS_LOCALLY_REENTRANT :
-				return ((eFlags & IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
+				return ((eFlags
+					& IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
 			case UMLPackage.SEND_OBJECT_ACTION__LOCAL_POSTCONDITION :
 				return localPostconditions != null
 					&& !localPostconditions.isEmpty();
@@ -832,7 +849,8 @@ public class SendObjectActionImpl
 			case UMLPackage.SEND_OBJECT_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.SEND_OBJECT_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.SEND_OBJECT_ACTION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.SEND_OBJECT_ACTION___GET_STEREOTYPE_APPLICATIONS :
@@ -840,7 +858,8 @@ public class SendObjectActionImpl
 			case UMLPackage.SEND_OBJECT_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.SEND_OBJECT_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.SEND_OBJECT_ACTION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -917,8 +936,8 @@ public class SendObjectActionImpl
 			case UMLPackage.SEND_OBJECT_ACTION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.SEND_OBJECT_ACTION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.SEND_OBJECT_ACTION___CONTAINING_ACTIVITY :
 				return containingActivity();
 			case UMLPackage.SEND_OBJECT_ACTION___GET_CONTEXT :
@@ -930,8 +949,7 @@ public class SendObjectActionImpl
 			case UMLPackage.SEND_OBJECT_ACTION___CONTAINING_BEHAVIOR :
 				return containingBehavior();
 			case UMLPackage.SEND_OBJECT_ACTION___VALIDATE_TYPE_TARGET_PIN__DIAGNOSTICCHAIN_MAP :
-				return validateTypeTargetPin(
-					(DiagnosticChain) arguments.get(0),
+				return validateTypeTargetPin((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

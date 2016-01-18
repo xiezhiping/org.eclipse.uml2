@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -164,21 +164,19 @@ public class ConnectorImpl
 				.get(eResource, this,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 			if (redefinedElements == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-						redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
-							RedefinableElement.class, this,
-							UMLPackage.CONNECTOR__REDEFINED_ELEMENT,
-							REDEFINED_ELEMENT_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+					redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
+						RedefinableElement.class, this,
+						UMLPackage.CONNECTOR__REDEFINED_ELEMENT,
+						REDEFINED_ELEMENT_ESUBSETS));
 			}
 			return redefinedElements;
 		}
 		return new DerivedUnionEObjectEList<RedefinableElement>(
 			RedefinableElement.class, this,
-			UMLPackage.CONNECTOR__REDEFINED_ELEMENT, REDEFINED_ELEMENT_ESUBSETS);
+			UMLPackage.CONNECTOR__REDEFINED_ELEMENT,
+			REDEFINED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -192,8 +190,8 @@ public class ConnectorImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -306,7 +304,8 @@ public class ConnectorImpl
 	 * @generated
 	 */
 	public ConnectorEnd createEnd() {
-		ConnectorEnd newEnd = (ConnectorEnd) create(UMLPackage.Literals.CONNECTOR_END);
+		ConnectorEnd newEnd = (ConnectorEnd) create(
+			UMLPackage.Literals.CONNECTOR_END);
 		getEnds().add(newEnd);
 		return newEnd;
 	}
@@ -347,7 +346,8 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Behavior getContract(String name, boolean ignoreCase, EClass eClass) {
+	public Behavior getContract(String name, boolean ignoreCase,
+			EClass eClass) {
 		contractLoop : for (Behavior contract : getContracts()) {
 			if (eClass != null && !eClass.isInstance(contract))
 				continue contractLoop;
@@ -390,11 +390,11 @@ public class ConnectorImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.CONNECTOR__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CONNECTOR__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CONNECTOR__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.CONNECTOR__END :
@@ -475,13 +475,13 @@ public class ConnectorImpl
 		switch (featureID) {
 			case UMLPackage.CONNECTOR__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.CONNECTOR__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.CONNECTOR__NAME :
 				setName((String) newValue);
@@ -509,8 +509,8 @@ public class ConnectorImpl
 				return;
 			case UMLPackage.CONNECTOR__REDEFINED_CONNECTOR :
 				getRedefinedConnectors().clear();
-				getRedefinedConnectors().addAll(
-					(Collection<? extends Connector>) newValue);
+				getRedefinedConnectors()
+					.addAll((Collection<? extends Connector>) newValue);
 				return;
 			case UMLPackage.CONNECTOR__TYPE :
 				setType((Association) newValue);
@@ -676,7 +676,8 @@ public class ConnectorImpl
 			case UMLPackage.CONNECTOR___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.CONNECTOR___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CONNECTOR___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.CONNECTOR___GET_STEREOTYPE_APPLICATIONS :
@@ -684,7 +685,8 @@ public class ConnectorImpl
 			case UMLPackage.CONNECTOR___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.CONNECTOR___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CONNECTOR___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -761,8 +763,8 @@ public class ConnectorImpl
 			case UMLPackage.CONNECTOR___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.CONNECTOR___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.CONNECTOR___VALIDATE_TYPES__DIAGNOSTICCHAIN_MAP :
 				return validateTypes((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
@@ -806,7 +808,8 @@ public class ConnectorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{UMLPackage.CONNECTOR__REDEFINED_CONNECTOR};
+	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.CONNECTOR__REDEFINED_CONNECTOR};
 
 	/**
 	 * <!-- begin-user-doc -->

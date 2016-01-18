@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologie) - 247980
  *   Kenn Hussey - 323181, 418466
  *   Christian W. Damus (CEA) - 300957
+ *   Kenn Hussey (CEA) - 485756
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -149,9 +150,10 @@ public class ElementOperations
 			if (diagnostics != null) {
 				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
 					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.ELEMENT__NOT_OWN_SELF, UMLPlugin.INSTANCE
-						.getString("_UI_Element_NotOwnSelf_diagnostic", //$NON-NLS-1$
-							getMessageSubstitutions(context, element)),
+					UMLValidator.ELEMENT__NOT_OWN_SELF,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_Element_NotOwnSelf_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, element)),
 					new Object[]{element}));
 			}
 		}
@@ -181,9 +183,10 @@ public class ElementOperations
 			if (diagnostics != null) {
 				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
 					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.ELEMENT__HAS_OWNER, UMLPlugin.INSTANCE
-						.getString("_UI_Element_HasOwner_diagnostic", //$NON-NLS-1$
-							getMessageSubstitutions(context, element)),
+					UMLValidator.ELEMENT__HAS_OWNER,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_Element_HasOwner_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, element)),
 					new Object[]{element}));
 			}
 		}
@@ -203,7 +206,8 @@ public class ElementOperations
 	public static EList<EObject> getStereotypeApplications(Element element) {
 		EList<EObject> stereotypeApplications = new UniqueEList.FastCompare<EObject>();
 
-		for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(element)) {
+		for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(
+			element)) {
 
 			if (setting.getEStructuralFeature().getName()
 				.startsWith(Extension.METACLASS_ROLE_PREFIX)) {
@@ -306,7 +310,8 @@ public class ElementOperations
 
 		for (Stereotype requiredStereotype : element.getRequiredStereotypes()) {
 
-			if (safeEquals(requiredStereotype.getQualifiedName(), qualifiedName)) {
+			if (safeEquals(requiredStereotype.getQualifiedName(),
+				qualifiedName)) {
 				return requiredStereotype;
 			}
 		}
@@ -326,7 +331,8 @@ public class ElementOperations
 	public static EList<Stereotype> getAppliedStereotypes(Element element) {
 		EList<Stereotype> appliedStereotypes = new UniqueEList.FastCompare<Stereotype>();
 
-		for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(element)) {
+		for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(
+			element)) {
 
 			if (setting.getEStructuralFeature().getName()
 				.startsWith(Extension.METACLASS_ROLE_PREFIX)) {
@@ -357,7 +363,8 @@ public class ElementOperations
 
 		for (Stereotype appliedStereotype : element.getAppliedStereotypes()) {
 
-			if (safeEquals(appliedStereotype.getQualifiedName(), qualifiedName)) {
+			if (safeEquals(appliedStereotype.getQualifiedName(),
+				qualifiedName)) {
 				return appliedStereotype;
 			}
 		}
@@ -445,8 +452,8 @@ public class ElementOperations
 						.getEStructuralFeature(getValidJavaIdentifier(segment));
 				} else {
 					eStructuralFeature = eClass
-						.getEStructuralFeature(getValidJavaIdentifier(segment
-							.substring(0, segment.indexOf('['))));
+						.getEStructuralFeature(getValidJavaIdentifier(
+							segment.substring(0, segment.indexOf('['))));
 
 					try {
 						index = Integer.parseInt(segment.substring(
@@ -549,8 +556,8 @@ public class ElementOperations
 					.getEStructuralFeature(getValidJavaIdentifier(segment));
 			} else {
 				eStructuralFeature = eClass
-					.getEStructuralFeature(getValidJavaIdentifier(segment
-						.substring(0, segment.indexOf('['))));
+					.getEStructuralFeature(getValidJavaIdentifier(
+						segment.substring(0, segment.indexOf('['))));
 
 				try {
 					index = Integer.parseInt(segment.substring(
@@ -562,7 +569,8 @@ public class ElementOperations
 			}
 
 			if (eStructuralFeature == null) {
-				throw new IllegalArgumentException(String.valueOf(propertyName));
+				throw new IllegalArgumentException(
+					String.valueOf(propertyName));
 			}
 
 			EClassifier eType = eStructuralFeature.getEType();
@@ -615,8 +623,8 @@ public class ElementOperations
 
 							if (reference instanceof Enumeration) {
 								value = ((Enumeration) reference)
-									.getOwnedLiteral(((EEnumLiteral) value)
-										.getName());
+									.getOwnedLiteral(
+										((EEnumLiteral) value).getName());
 							}
 						}
 					}
@@ -671,8 +679,8 @@ public class ElementOperations
 					.getEStructuralFeature(getValidJavaIdentifier(segment));
 			} else {
 				eStructuralFeature = eClass
-					.getEStructuralFeature(getValidJavaIdentifier(segment
-						.substring(0, segment.indexOf('['))));
+					.getEStructuralFeature(getValidJavaIdentifier(
+						segment.substring(0, segment.indexOf('['))));
 
 				try {
 					index = Integer.parseInt(segment.substring(
@@ -684,7 +692,8 @@ public class ElementOperations
 			}
 
 			if (eStructuralFeature == null) {
-				throw new IllegalArgumentException(String.valueOf(propertyName));
+				throw new IllegalArgumentException(
+					String.valueOf(propertyName));
 			}
 
 			EClassifier eType = eStructuralFeature.getEType();
@@ -706,7 +715,8 @@ public class ElementOperations
 
 					if (size <= index) {
 
-						if (!((EReference) eStructuralFeature).isContainment()) {
+						if (!((EReference) eStructuralFeature)
+							.isContainment()) {
 							throw new IllegalArgumentException(
 								String.valueOf(propertyName));
 						}
@@ -722,7 +732,8 @@ public class ElementOperations
 
 					if (value == null) {
 
-						if (!((EReference) eStructuralFeature).isContainment()) {
+						if (!((EReference) eStructuralFeature)
+							.isContainment()) {
 							throw new IllegalArgumentException(
 								String.valueOf(propertyName));
 						}
@@ -775,9 +786,12 @@ public class ElementOperations
 									Object item = li.next();
 
 									if (item instanceof EnumerationLiteral) {
-										li.set(eEnum.getEEnumLiteral(
-											((EnumerationLiteral) item)
-												.getName()).getInstance());
+										li.set(
+											eEnum
+												.getEEnumLiteral(
+													((EnumerationLiteral) item)
+														.getName())
+												.getInstance());
 									}
 								}
 							}
@@ -790,9 +804,9 @@ public class ElementOperations
 								if (item instanceof String) {
 
 									try {
-										li.set(eFactoryInstance
-											.createFromString(eDataType,
-												(String) item));
+										li.set(
+											eFactoryInstance.createFromString(
+												eDataType, (String) item));
 									} catch (Exception e) {
 										// ignore
 									}
@@ -808,7 +822,8 @@ public class ElementOperations
 								if (newValue instanceof EnumerationLiteral) {
 									newValue = eEnum.getEEnumLiteral(
 										((EnumerationLiteral) newValue)
-											.getName()).getInstance();
+											.getName())
+										.getInstance();
 								}
 							}
 
@@ -873,7 +888,8 @@ public class ElementOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EAnnotation createEAnnotation(Element element, String source) {
+	public static EAnnotation createEAnnotation(Element element,
+			String source) {
 		return createEAnnotation((EModelElement) element, source);
 	}
 
@@ -904,7 +920,8 @@ public class ElementOperations
 			EClass eClass) {
 		EList<Relationship> relationships = new UniqueEList.FastCompare<Relationship>();
 
-		for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(element)) {
+		for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(
+			element)) {
 
 			EObject eObject = setting.getEObject();
 
@@ -932,8 +949,8 @@ public class ElementOperations
 							.eGet(eReference);
 						relationships.addAll(values);
 					} else {
-						relationships.add((Relationship) element
-							.eGet(eReference));
+						relationships
+							.add((Relationship) element.eGet(eReference));
 					}
 				} else if (eReferenceType.isSuperTypeOf(eClass)) {
 					Object value = element.eGet(eReference);
@@ -1064,8 +1081,8 @@ public class ElementOperations
 			if (!details.isEmpty()) {
 				EList<String> keywords = new UniqueEList<String>();
 
-				for (Iterator<Map.Entry<String, String>> d = details.iterator(); d
-					.hasNext();) {
+				for (Iterator<Map.Entry<String, String>> d = details
+					.iterator(); d.hasNext();) {
 
 					keywords.add(d.next().getKey());
 				}
@@ -1134,7 +1151,8 @@ public class ElementOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static org.eclipse.uml2.uml.Package getNearestPackage(Element element) {
+	public static org.eclipse.uml2.uml.Package getNearestPackage(
+			Element element) {
 		return (org.eclipse.uml2.uml.Package) (element instanceof org.eclipse.uml2.uml.Package
 			? element
 			: getOwningElement(element, UMLPackage.Literals.PACKAGE, true));
@@ -1170,7 +1188,8 @@ public class ElementOperations
 					Type type = attribute.getType();
 
 					if (type instanceof org.eclipse.uml2.uml.Class) {
-						EClassifier eClassifier = getEClassifier((org.eclipse.uml2.uml.Class) type);
+						EClassifier eClassifier = getEClassifier(
+							(org.eclipse.uml2.uml.Class) type);
 
 						if (eClassifier != null
 							&& eClassifier.isInstance(element)) {
@@ -1185,7 +1204,8 @@ public class ElementOperations
 		return null;
 	}
 
-	protected static EClass getDefinition(Element element, Stereotype stereotype) {
+	protected static EClass getDefinition(Element element,
+			Stereotype stereotype) {
 		return getDefinition(element, stereotype, false);
 	}
 
@@ -1222,9 +1242,9 @@ public class ElementOperations
 
 			if (profile == null) {
 				if (required) {
-					throw new IllegalArgumentException(String.format(
-						"stereotype \"%s\" is not in a profile", //$NON-NLS-1$
-						stereotype.getQualifiedName()));
+					throw new IllegalArgumentException(
+						String.format("stereotype \"%s\" is not in a profile", //$NON-NLS-1$
+							stereotype.getQualifiedName()));
 				}
 			} else {
 				org.eclipse.uml2.uml.Package package_ = element
@@ -1232,9 +1252,9 @@ public class ElementOperations
 
 				if (package_ == null) {
 					if (required) {
-						throw new IllegalArgumentException(String.format(
-							"element \"%s\" is not in a package", //$NON-NLS-1$
-							getQualifiedText(element)));
+						throw new IllegalArgumentException(
+							String.format("element \"%s\" is not in a package", //$NON-NLS-1$
+								getQualifiedText(element)));
 					}
 				} else {
 					ProfileApplication profileApplication = package_
@@ -1242,9 +1262,9 @@ public class ElementOperations
 
 					if (profileApplication == null) {
 						if (required) {
-							throw new IllegalArgumentException(String.format(
-								"profile \"%s\" is not applied", //$NON-NLS-1$
-								profile.getQualifiedName()));
+							throw new IllegalArgumentException(
+								String.format("profile \"%s\" is not applied", //$NON-NLS-1$
+									profile.getQualifiedName()));
 						}
 					} else {
 						ENamedElement appliedDefinition = profileApplication
@@ -1253,18 +1273,16 @@ public class ElementOperations
 						if (appliedDefinition == null) {
 							if (required) {
 								throw new IllegalArgumentException(
-									String
-										.format(
-											"stereotype \"%s\" has no Ecore definition", //$NON-NLS-1$
-											stereotype.getQualifiedName()));
+									String.format(
+										"stereotype \"%s\" has no Ecore definition", //$NON-NLS-1$
+										stereotype.getQualifiedName()));
 							}
 						} else if (!(appliedDefinition instanceof EClass)) {
 							if (required) {
 								throw new IllegalArgumentException(
-									String
-										.format(
-											"stereotype \"%s\" definition is not an EClass", //$NON-NLS-1$
-											stereotype.getQualifiedName()));
+									String.format(
+										"stereotype \"%s\" definition is not an EClass", //$NON-NLS-1$
+										stereotype.getQualifiedName()));
 							}
 						} else {
 							EClass eClass = (EClass) appliedDefinition;
@@ -1272,10 +1290,9 @@ public class ElementOperations
 							if (eClass.isAbstract()) {
 								if (required) {
 									throw new IllegalArgumentException(
-										String
-											.format(
-												"stereotype \"%s\" Ecore definition is abstract", //$NON-NLS-1$
-												stereotype.getQualifiedName()));
+										String.format(
+											"stereotype \"%s\" Ecore definition is abstract", //$NON-NLS-1$
+											stereotype.getQualifiedName()));
 								}
 							} else {
 								return eClass;
@@ -1356,8 +1373,8 @@ public class ElementOperations
 					for (Map.Entry<Stereotype, EClass> definitionEntry : stereotypeEntry
 						.getValue().entrySet()) {
 
-						if (!element.isStereotypeApplied(definitionEntry
-							.getKey())) {
+						if (!element
+							.isStereotypeApplied(definitionEntry.getKey())) {
 
 							stereotypeApplications.add(applyStereotype(element,
 								definitionEntry.getValue()));
@@ -1379,8 +1396,8 @@ public class ElementOperations
 
 		if (!element.eContents().isEmpty()) {
 
-			for (TreeIterator<EObject> allContents = EcoreUtil.getAllContents(
-				element, resolve); allContents.hasNext();) {
+			for (TreeIterator<EObject> allContents = EcoreUtil
+				.getAllContents(element, resolve); allContents.hasNext();) {
 
 				EObject eObject = allContents.next();
 
@@ -1437,10 +1454,8 @@ public class ElementOperations
 											.get(eClassifier);
 
 										if (stereotypes == null) {
-											definitions
-												.put(
-													eClassifier,
-													stereotypes = new HashMap<Stereotype, EClass>());
+											definitions.put(eClassifier,
+												stereotypes = new HashMap<Stereotype, EClass>());
 										}
 
 										if (!stereotypes
@@ -1475,19 +1490,20 @@ public class ElementOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EObject applyStereotype(Element element, Stereotype stereotype) {
+	public static EObject applyStereotype(Element element,
+			Stereotype stereotype) {
 		EClass definition = getDefinition(element, stereotype, true);
 
 		if (getExtension(element, stereotype) == null) {
-			throw new IllegalArgumentException(String.format(
-				"stereotype \"%s\" is not applicable to %s", //$NON-NLS-1$
-				stereotype.getQualifiedName(), element.eClass().getName()));
+			throw new IllegalArgumentException(
+				String.format("stereotype \"%s\" is not applicable to %s", //$NON-NLS-1$
+					stereotype.getQualifiedName(), element.eClass().getName()));
 		}
 
 		if (element.getStereotypeApplication(stereotype) != null) {
-			throw new IllegalArgumentException(String.format(
-				"stereotype \"%s\" is already applied", //$NON-NLS-1$
-				stereotype.getQualifiedName()));
+			throw new IllegalArgumentException(
+				String.format("stereotype \"%s\" is already applied", //$NON-NLS-1$
+					stereotype.getQualifiedName()));
 		}
 
 		return applyStereotype(element, definition);
@@ -1501,8 +1517,8 @@ public class ElementOperations
 			for (EObject stereotypeApplication : element
 				.getStereotypeApplications()) {
 
-				if (!element
-					.isStereotypeApplicable(getStereotype(stereotypeApplication))) {
+				if (!element.isStereotypeApplicable(
+					getStereotype(stereotypeApplication))) {
 
 					nonApplicableStereotypes.add(stereotypeApplication);
 
@@ -1527,8 +1543,8 @@ public class ElementOperations
 
 		if (!element.eContents().isEmpty()) {
 
-			for (TreeIterator<EObject> allContents = EcoreUtil.getAllContents(
-				element, resolve); allContents.hasNext();) {
+			for (TreeIterator<EObject> allContents = EcoreUtil
+				.getAllContents(element, resolve); allContents.hasNext();) {
 
 				EObject eObject = allContents.next();
 
@@ -1560,18 +1576,18 @@ public class ElementOperations
 		}
 
 		if (element.isStereotypeRequired(stereotype)) {
-			throw new IllegalArgumentException(String.format(
-				"stereotype \"%s\" is a required extension of %s", //$NON-NLS-1$
-				stereotype.getQualifiedName(), element.eClass().getName()));
+			throw new IllegalArgumentException(
+				String.format("stereotype \"%s\" is a required extension of %s", //$NON-NLS-1$
+					stereotype.getQualifiedName(), element.eClass().getName()));
 		}
 
 		EObject stereotypeApplication = element
 			.getStereotypeApplication(stereotype);
 
 		if (stereotypeApplication == null) {
-			throw new IllegalArgumentException(String.format(
-				"stereotype \"%s\" is not applied", //$NON-NLS-1$
-				stereotype.getQualifiedName()));
+			throw new IllegalArgumentException(
+				String.format("stereotype \"%s\" is not applied", //$NON-NLS-1$
+					stereotype.getQualifiedName()));
 		}
 
 		destroy(stereotypeApplication);
@@ -1685,8 +1701,8 @@ public class ElementOperations
 		if (ancestorEObject.eContents().isEmpty()) {
 
 			if (ancestorEObject instanceof Element) {
-				destroyAll(((Element) ancestorEObject)
-					.getStereotypeApplications());
+				destroyAll(
+					((Element) ancestorEObject).getStereotypeApplications());
 				removeReferences(ancestorEObject, ancestorEObject);
 				ancestorEObject.eAdapters().clear();
 			} else {
@@ -1762,8 +1778,8 @@ public class ElementOperations
 	 * @generated NOT
 	 */
 	public static EList<Element> allOwnedElements(Element element) {
-		return ECollections.unmodifiableEList(allOwnedElements(element,
-			new UniqueEList.FastCompare<Element>()));
+		return ECollections.unmodifiableEList(
+			allOwnedElements(element, new UniqueEList.FastCompare<Element>()));
 	}
 
 	/**

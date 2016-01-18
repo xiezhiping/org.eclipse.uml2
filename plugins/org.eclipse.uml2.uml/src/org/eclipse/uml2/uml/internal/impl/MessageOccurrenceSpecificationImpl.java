@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -179,7 +179,8 @@ public class MessageOccurrenceSpecificationImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<InteractionFragment> result = (EList<InteractionFragment>) cache
-				.get(this, UMLPackage.Literals.MESSAGE_END___ENCLOSING_FRAGMENT);
+				.get(this,
+					UMLPackage.Literals.MESSAGE_END___ENCLOSING_FRAGMENT);
 			if (result == null) {
 				cache.put(this,
 					UMLPackage.Literals.MESSAGE_END___ENCLOSING_FRAGMENT,
@@ -259,13 +260,13 @@ public class MessageOccurrenceSpecificationImpl
 		switch (featureID) {
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__NAME :
 				setName((String) newValue);
@@ -288,18 +289,18 @@ public class MessageOccurrenceSpecificationImpl
 				return;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
+				getGeneralOrderings()
+					.addAll((Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__TO_AFTER :
 				getToAfters().clear();
-				getToAfters().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
+				getToAfters()
+					.addAll((Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__TO_BEFORE :
 				getToBefores().clear();
-				getToBefores().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
+				getToBefores()
+					.addAll((Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE :
 				setMessage((Message) newValue);
@@ -410,7 +411,8 @@ public class MessageOccurrenceSpecificationImpl
 	 * @generated
 	 */
 	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	public int eBaseStructuralFeatureID(int derivedFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == MessageEnd.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE :
@@ -428,7 +430,8 @@ public class MessageOccurrenceSpecificationImpl
 	 * @generated
 	 */
 	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	public int eDerivedStructuralFeatureID(int baseFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == MessageEnd.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.MESSAGE_END__MESSAGE :
@@ -521,7 +524,8 @@ public class MessageOccurrenceSpecificationImpl
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION___GET_STEREOTYPE_APPLICATIONS :
@@ -529,7 +533,8 @@ public class MessageOccurrenceSpecificationImpl
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));

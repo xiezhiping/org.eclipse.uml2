@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -97,7 +97,8 @@ public class ExpansionRegionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int MODE_EFLAG_DEFAULT = MODE_EDEFAULT.ordinal() << MODE_EFLAG_OFFSET;
+	protected static final int MODE_EFLAG_DEFAULT = MODE_EDEFAULT
+		.ordinal() << MODE_EFLAG_OFFSET;
 
 	/**
 	 * The array of enumeration values for '{@link ExpansionKind Expansion Kind}'
@@ -174,7 +175,8 @@ public class ExpansionRegionImpl
 	 * @generated
 	 */
 	public void setMode(ExpansionKind newMode) {
-		ExpansionKind oldMode = MODE_EFLAG_VALUES[(eFlags & MODE_EFLAG) >>> MODE_EFLAG_OFFSET];
+		ExpansionKind oldMode = MODE_EFLAG_VALUES[(eFlags
+			& MODE_EFLAG) >>> MODE_EFLAG_OFFSET];
 		if (newMode == null)
 			newMode = MODE_EDEFAULT;
 		eFlags = eFlags & ~MODE_EFLAG | newMode.ordinal() << MODE_EFLAG_OFFSET;
@@ -340,11 +342,11 @@ public class ExpansionRegionImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.EXPANSION_REGION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION :
@@ -353,14 +355,14 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE :
 				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.EXPANSION_REGION__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.EXPANSION_REGION__OUTGOING :
-				return ((InternalEList<?>) getOutgoings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getInPartitions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__HANDLER :
 				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
@@ -371,14 +373,14 @@ public class ExpansionRegionImpl
 				return ((InternalEList<?>) getLocalPreconditions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedRules())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getElementImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPackageImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__EDGE :
 				return ((InternalEList<?>) getEdges()).basicRemove(otherEnd,
 					msgs);
@@ -389,17 +391,17 @@ public class ExpansionRegionImpl
 				return ((InternalEList<?>) getStructuredNodeOutputs())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__VARIABLE :
-				return ((InternalEList<?>) getVariables()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getVariables()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.EXPANSION_REGION__NODE :
 				return ((InternalEList<?>) getNodes()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.EXPANSION_REGION__OUTPUT_ELEMENT :
-				return ((InternalEList<?>) getOutputElements()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOutputElements())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__INPUT_ELEMENT :
-				return ((InternalEList<?>) getInputElements()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getInputElements())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -539,13 +541,13 @@ public class ExpansionRegionImpl
 		switch (featureID) {
 			case UMLPackage.EXPANSION_REGION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__NAME :
 				setName((String) newValue);
@@ -564,65 +566,64 @@ public class ExpansionRegionImpl
 				return;
 			case UMLPackage.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions()
-					.addAll(
-						(Collection<? extends InterruptibleActivityRegion>) newValue);
+				getInInterruptibleRegions().addAll(
+					(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getIncomings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getOutgoings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll(
-					(Collection<? extends ActivityNode>) newValue);
+				getRedefinedNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
+				getInPartitions()
+					.addAll((Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll(
-					(Collection<? extends ExceptionHandler>) newValue);
+				getHandlers()
+					.addAll((Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__IS_LOCALLY_REENTRANT :
 				setIsLocallyReentrant((Boolean) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPostconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPreconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getOwnedRules()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll(
-					(Collection<? extends ElementImport>) newValue);
+				getElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll(
-					(Collection<? extends PackageImport>) newValue);
+				getPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__IN_ACTIVITY :
 				setInActivity((Activity) newValue);
@@ -637,13 +638,13 @@ public class ExpansionRegionImpl
 				return;
 			case UMLPackage.EXPANSION_REGION__STRUCTURED_NODE_INPUT :
 				getStructuredNodeInputs().clear();
-				getStructuredNodeInputs().addAll(
-					(Collection<? extends InputPin>) newValue);
+				getStructuredNodeInputs()
+					.addAll((Collection<? extends InputPin>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__STRUCTURED_NODE_OUTPUT :
 				getStructuredNodeOutputs().clear();
-				getStructuredNodeOutputs().addAll(
-					(Collection<? extends OutputPin>) newValue);
+				getStructuredNodeOutputs()
+					.addAll((Collection<? extends OutputPin>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__VARIABLE :
 				getVariables().clear();
@@ -660,13 +661,13 @@ public class ExpansionRegionImpl
 				return;
 			case UMLPackage.EXPANSION_REGION__OUTPUT_ELEMENT :
 				getOutputElements().clear();
-				getOutputElements().addAll(
-					(Collection<? extends ExpansionNode>) newValue);
+				getOutputElements()
+					.addAll((Collection<? extends ExpansionNode>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__INPUT_ELEMENT :
 				getInputElements().clear();
-				getInputElements().addAll(
-					(Collection<? extends ExpansionNode>) newValue);
+				getInputElements()
+					.addAll((Collection<? extends ExpansionNode>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -834,7 +835,8 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__INPUT :
 				return isSetInputs();
 			case UMLPackage.EXPANSION_REGION__IS_LOCALLY_REENTRANT :
-				return ((eFlags & IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
+				return ((eFlags
+					& IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
 			case UMLPackage.EXPANSION_REGION__LOCAL_POSTCONDITION :
 				return localPostconditions != null
 					&& !localPostconditions.isEmpty();
@@ -868,7 +870,8 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__EDGE :
 				return edges != null && !edges.isEmpty();
 			case UMLPackage.EXPANSION_REGION__MUST_ISOLATE :
-				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
+				return ((eFlags
+					& MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UMLPackage.EXPANSION_REGION__STRUCTURED_NODE_INPUT :
 				return structuredNodeInputs != null
 					&& !structuredNodeInputs.isEmpty();
@@ -901,8 +904,8 @@ public class ExpansionRegionImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (mode: "); //$NON-NLS-1$
-		result
-			.append(MODE_EFLAG_VALUES[(eFlags & MODE_EFLAG) >>> MODE_EFLAG_OFFSET]);
+		result.append(
+			MODE_EFLAG_VALUES[(eFlags & MODE_EFLAG) >>> MODE_EFLAG_OFFSET]);
 		result.append(')');
 		return result.toString();
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -144,7 +144,8 @@ public class InterfaceRealizationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] SUPPLIER_ESUBSETS = new int[]{UMLPackage.INTERFACE_REALIZATION__CONTRACT};
+	protected static final int[] SUPPLIER_ESUBSETS = new int[]{
+		UMLPackage.INTERFACE_REALIZATION__CONTRACT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -156,7 +157,8 @@ public class InterfaceRealizationImpl
 		if (clients == null) {
 			clients = new SubsetSupersetEObjectResolvingEList<NamedElement>(
 				NamedElement.class, this,
-				UMLPackage.INTERFACE_REALIZATION__CLIENT, null, CLIENT_ESUBSETS);
+				UMLPackage.INTERFACE_REALIZATION__CLIENT, null,
+				CLIENT_ESUBSETS);
 		}
 		return clients;
 	}
@@ -169,7 +171,8 @@ public class InterfaceRealizationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] CLIENT_ESUBSETS = new int[]{UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER};
+	protected static final int[] CLIENT_ESUBSETS = new int[]{
+		UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -183,8 +186,8 @@ public class InterfaceRealizationImpl
 			if (contract != oldContract) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						UMLPackage.INTERFACE_REALIZATION__CONTRACT,
-						oldContract, contract));
+						UMLPackage.INTERFACE_REALIZATION__CONTRACT, oldContract,
+						contract));
 			}
 		}
 		return contract;
@@ -274,7 +277,8 @@ public class InterfaceRealizationImpl
 	public void setImplementingClassifier(
 			BehavioredClassifier newImplementingClassifier) {
 		if (newImplementingClassifier != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER && newImplementingClassifier != null)) {
+			|| (eContainerFeatureID() != UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER
+				&& newImplementingClassifier != null)) {
 			if (EcoreUtil.isAncestor(this, newImplementingClassifier))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -283,8 +287,7 @@ public class InterfaceRealizationImpl
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newImplementingClassifier != null)
 				msgs = ((InternalEObject) newImplementingClassifier)
-					.eInverseAdd(
-						this,
+					.eInverseAdd(this,
 						UMLPackage.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION,
 						BehavioredClassifier.class, msgs);
 			msgs = basicSetImplementingClassifier(newImplementingClassifier,
@@ -317,10 +320,10 @@ public class InterfaceRealizationImpl
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
 				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
+					msgs = ((InternalEObject) templateParameter).eInverseRemove(
+						this,
+						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+						TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER :
@@ -342,11 +345,11 @@ public class InterfaceRealizationImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.INTERFACE_REALIZATION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERFACE_REALIZATION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERFACE_REALIZATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
@@ -461,13 +464,13 @@ public class InterfaceRealizationImpl
 		switch (featureID) {
 			case UMLPackage.INTERFACE_REALIZATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.INTERFACE_REALIZATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.INTERFACE_REALIZATION__NAME :
 				setName((String) newValue);
@@ -486,13 +489,13 @@ public class InterfaceRealizationImpl
 				return;
 			case UMLPackage.INTERFACE_REALIZATION__CLIENT :
 				getClients().clear();
-				getClients().addAll(
-					(Collection<? extends NamedElement>) newValue);
+				getClients()
+					.addAll((Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.INTERFACE_REALIZATION__SUPPLIER :
 				getSuppliers().clear();
-				getSuppliers().addAll(
-					(Collection<? extends NamedElement>) newValue);
+				getSuppliers()
+					.addAll((Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.INTERFACE_REALIZATION__MAPPING :
 				setMapping((OpaqueExpression) newValue);
@@ -616,8 +619,8 @@ public class InterfaceRealizationImpl
 	 */
 	@Override
 	public boolean isSetOwner() {
-		return super.isSetOwner()
-			|| eIsSet(UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER);
+		return super.isSetOwner() || eIsSet(
+			UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER);
 	}
 
 } //InterfaceRealizationImpl

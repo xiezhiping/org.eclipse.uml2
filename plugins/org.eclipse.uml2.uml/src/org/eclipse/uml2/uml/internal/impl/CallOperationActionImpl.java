@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -135,12 +135,11 @@ public class CallOperationActionImpl
 			EList<InputPin> inputs = (EList<InputPin>) cache.get(eResource,
 				this, UMLPackage.Literals.ACTION__INPUT);
 			if (inputs == null) {
-				cache
-					.put(eResource, this, UMLPackage.Literals.ACTION__INPUT,
-						inputs = new DerivedUnionEObjectEList<InputPin>(
-							InputPin.class, this,
-							UMLPackage.CALL_OPERATION_ACTION__INPUT,
-							INPUT_ESUBSETS));
+				cache.put(eResource, this, UMLPackage.Literals.ACTION__INPUT,
+					inputs = new DerivedUnionEObjectEList<InputPin>(
+						InputPin.class, this,
+						UMLPackage.CALL_OPERATION_ACTION__INPUT,
+						INPUT_ESUBSETS));
 			}
 			return inputs;
 		}
@@ -201,12 +200,16 @@ public class CallOperationActionImpl
 			target = (InputPin) eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				InternalEObject newTarget = (InternalEObject) target;
-				NotificationChain msgs = oldTarget.eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.CALL_OPERATION_ACTION__TARGET, null, null);
+				NotificationChain msgs = oldTarget
+					.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.CALL_OPERATION_ACTION__TARGET,
+						null, null);
 				if (newTarget.eInternalContainer() == null) {
-					msgs = newTarget.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.CALL_OPERATION_ACTION__TARGET, null, msgs);
+					msgs = newTarget.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.CALL_OPERATION_ACTION__TARGET,
+						null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -258,19 +261,24 @@ public class CallOperationActionImpl
 		if (newTarget != target) {
 			NotificationChain msgs = null;
 			if (target != null)
-				msgs = ((InternalEObject) target).eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.CALL_OPERATION_ACTION__TARGET, null, msgs);
+				msgs = ((InternalEObject) target)
+					.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.CALL_OPERATION_ACTION__TARGET,
+						null, msgs);
 			if (newTarget != null)
-				msgs = ((InternalEObject) newTarget).eInverseAdd(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.CALL_OPERATION_ACTION__TARGET, null, msgs);
+				msgs = ((InternalEObject) newTarget)
+					.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.CALL_OPERATION_ACTION__TARGET,
+						null, msgs);
 			msgs = basicSetTarget(newTarget, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.CALL_OPERATION_ACTION__TARGET, newTarget, newTarget));
+				UMLPackage.CALL_OPERATION_ACTION__TARGET, newTarget,
+				newTarget));
 	}
 
 	/**
@@ -321,8 +329,7 @@ public class CallOperationActionImpl
 			EList<Parameter> result = (EList<Parameter>) cache.get(this,
 				UMLPackage.Literals.CALL_ACTION___OUTPUT_PARAMETERS);
 			if (result == null) {
-				cache.put(
-					this,
+				cache.put(this,
 					UMLPackage.Literals.CALL_ACTION___OUTPUT_PARAMETERS,
 					result = CallOperationActionOperations
 						.outputParameters(this));
@@ -345,8 +352,7 @@ public class CallOperationActionImpl
 			EList<Parameter> result = (EList<Parameter>) cache.get(this,
 				UMLPackage.Literals.CALL_ACTION___INPUT_PARAMETERS);
 			if (result == null) {
-				cache.put(
-					this,
+				cache.put(this,
 					UMLPackage.Literals.CALL_ACTION___INPUT_PARAMETERS,
 					result = CallOperationActionOperations
 						.inputParameters(this));
@@ -366,11 +372,11 @@ public class CallOperationActionImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.CALL_OPERATION_ACTION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CALL_OPERATION_ACTION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CALL_OPERATION_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.CALL_OPERATION_ACTION__IN_INTERRUPTIBLE_REGION :
@@ -379,14 +385,14 @@ public class CallOperationActionImpl
 			case UMLPackage.CALL_OPERATION_ACTION__IN_STRUCTURED_NODE :
 				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.CALL_OPERATION_ACTION__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.CALL_OPERATION_ACTION__OUTGOING :
-				return ((InternalEList<?>) getOutgoings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.CALL_OPERATION_ACTION__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getInPartitions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CALL_OPERATION_ACTION__HANDLER :
 				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
@@ -397,8 +403,8 @@ public class CallOperationActionImpl
 				return ((InternalEList<?>) getLocalPreconditions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CALL_OPERATION_ACTION__ARGUMENT :
-				return ((InternalEList<?>) getArguments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getArguments()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.CALL_OPERATION_ACTION__RESULT :
 				return ((InternalEList<?>) getResults()).basicRemove(otherEnd,
 					msgs);
@@ -517,13 +523,13 @@ public class CallOperationActionImpl
 		switch (featureID) {
 			case UMLPackage.CALL_OPERATION_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.CALL_OPERATION_ACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.CALL_OPERATION_ACTION__NAME :
 				setName((String) newValue);
@@ -542,50 +548,49 @@ public class CallOperationActionImpl
 				return;
 			case UMLPackage.CALL_OPERATION_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions()
-					.addAll(
-						(Collection<? extends InterruptibleActivityRegion>) newValue);
+				getInInterruptibleRegions().addAll(
+					(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.CALL_OPERATION_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.CALL_OPERATION_ACTION__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getIncomings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.CALL_OPERATION_ACTION__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getOutgoings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.CALL_OPERATION_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll(
-					(Collection<? extends ActivityNode>) newValue);
+				getRedefinedNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.CALL_OPERATION_ACTION__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
+				getInPartitions()
+					.addAll((Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.CALL_OPERATION_ACTION__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll(
-					(Collection<? extends ExceptionHandler>) newValue);
+				getHandlers()
+					.addAll((Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.CALL_OPERATION_ACTION__IS_LOCALLY_REENTRANT :
 				setIsLocallyReentrant((Boolean) newValue);
 				return;
 			case UMLPackage.CALL_OPERATION_ACTION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPostconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.CALL_OPERATION_ACTION__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPreconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.CALL_OPERATION_ACTION__ARGUMENT :
 				getArguments().clear();
@@ -753,7 +758,8 @@ public class CallOperationActionImpl
 			case UMLPackage.CALL_OPERATION_ACTION__INPUT :
 				return isSetInputs();
 			case UMLPackage.CALL_OPERATION_ACTION__IS_LOCALLY_REENTRANT :
-				return ((eFlags & IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
+				return ((eFlags
+					& IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
 			case UMLPackage.CALL_OPERATION_ACTION__LOCAL_POSTCONDITION :
 				return localPostconditions != null
 					&& !localPostconditions.isEmpty();
@@ -767,7 +773,8 @@ public class CallOperationActionImpl
 			case UMLPackage.CALL_OPERATION_ACTION__ON_PORT :
 				return onPort != null;
 			case UMLPackage.CALL_OPERATION_ACTION__IS_SYNCHRONOUS :
-				return ((eFlags & IS_SYNCHRONOUS_EFLAG) != 0) != IS_SYNCHRONOUS_EDEFAULT;
+				return ((eFlags
+					& IS_SYNCHRONOUS_EFLAG) != 0) != IS_SYNCHRONOUS_EDEFAULT;
 			case UMLPackage.CALL_OPERATION_ACTION__RESULT :
 				return results != null && !results.isEmpty();
 			case UMLPackage.CALL_OPERATION_ACTION__OPERATION :
@@ -835,7 +842,8 @@ public class CallOperationActionImpl
 			case UMLPackage.CALL_OPERATION_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.CALL_OPERATION_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CALL_OPERATION_ACTION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.CALL_OPERATION_ACTION___GET_STEREOTYPE_APPLICATIONS :
@@ -843,7 +851,8 @@ public class CallOperationActionImpl
 			case UMLPackage.CALL_OPERATION_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.CALL_OPERATION_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CALL_OPERATION_ACTION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -920,8 +929,8 @@ public class CallOperationActionImpl
 			case UMLPackage.CALL_OPERATION_ACTION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.CALL_OPERATION_ACTION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.CALL_OPERATION_ACTION___CONTAINING_ACTIVITY :
 				return containingActivity();
 			case UMLPackage.CALL_OPERATION_ACTION___GET_CONTEXT :
@@ -947,8 +956,7 @@ public class CallOperationActionImpl
 			case UMLPackage.CALL_OPERATION_ACTION___OUTPUT_PARAMETERS :
 				return outputParameters();
 			case UMLPackage.CALL_OPERATION_ACTION___VALIDATE_TYPE_TARGET_PIN__DIAGNOSTICCHAIN_MAP :
-				return validateTypeTargetPin(
-					(DiagnosticChain) arguments.get(0),
+				return validateTypeTargetPin((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);

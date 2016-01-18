@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -168,8 +168,8 @@ public class ReduceActionImpl
 			if (outputs == null) {
 				cache.put(eResource, this, UMLPackage.Literals.ACTION__OUTPUT,
 					outputs = new DerivedUnionEObjectEList<OutputPin>(
-						OutputPin.class, this,
-						UMLPackage.REDUCE_ACTION__OUTPUT, OUTPUT_ESUBSETS));
+						OutputPin.class, this, UMLPackage.REDUCE_ACTION__OUTPUT,
+						OUTPUT_ESUBSETS));
 			}
 			return outputs;
 		}
@@ -214,7 +214,8 @@ public class ReduceActionImpl
 			if (reducer != oldReducer) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						UMLPackage.REDUCE_ACTION__REDUCER, oldReducer, reducer));
+						UMLPackage.REDUCE_ACTION__REDUCER, oldReducer,
+						reducer));
 			}
 		}
 		return reducer;
@@ -330,7 +331,8 @@ public class ReduceActionImpl
 	 * @generated
 	 */
 	public OutputPin createResult(String name, Type type) {
-		OutputPin newResult = (OutputPin) create(UMLPackage.Literals.OUTPUT_PIN);
+		OutputPin newResult = (OutputPin) create(
+			UMLPackage.Literals.OUTPUT_PIN);
 		setResult(newResult);
 		if (name != null)
 			newResult.setName(name);
@@ -352,11 +354,14 @@ public class ReduceActionImpl
 				InternalEObject newCollection = (InternalEObject) collection;
 				NotificationChain msgs = oldCollection.eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.REDUCE_ACTION__COLLECTION, null, null);
+						- UMLPackage.REDUCE_ACTION__COLLECTION,
+					null, null);
 				if (newCollection.eInternalContainer() == null) {
-					msgs = newCollection.eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-							- UMLPackage.REDUCE_ACTION__COLLECTION, null, msgs);
+					msgs = newCollection
+						.eInverseAdd(this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.REDUCE_ACTION__COLLECTION,
+							null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -410,11 +415,13 @@ public class ReduceActionImpl
 			if (collection != null)
 				msgs = ((InternalEObject) collection).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.REDUCE_ACTION__COLLECTION, null, msgs);
+						- UMLPackage.REDUCE_ACTION__COLLECTION,
+					null, msgs);
 			if (newCollection != null)
 				msgs = ((InternalEObject) newCollection).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.REDUCE_ACTION__COLLECTION, null, msgs);
+						- UMLPackage.REDUCE_ACTION__COLLECTION,
+					null, msgs);
 			msgs = basicSetCollection(newCollection, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -490,8 +497,8 @@ public class ReduceActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateOutputTypesAreCompatible(
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateOutputTypesAreCompatible(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ReduceActionOperations.validateOutputTypesAreCompatible(this,
 			diagnostics, context);
 	}
@@ -517,11 +524,11 @@ public class ReduceActionImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.REDUCE_ACTION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.REDUCE_ACTION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.REDUCE_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.REDUCE_ACTION__IN_INTERRUPTIBLE_REGION :
@@ -530,14 +537,14 @@ public class ReduceActionImpl
 			case UMLPackage.REDUCE_ACTION__IN_STRUCTURED_NODE :
 				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.REDUCE_ACTION__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.REDUCE_ACTION__OUTGOING :
-				return ((InternalEList<?>) getOutgoings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.REDUCE_ACTION__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getInPartitions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.REDUCE_ACTION__HANDLER :
 				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
@@ -660,13 +667,13 @@ public class ReduceActionImpl
 		switch (featureID) {
 			case UMLPackage.REDUCE_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.REDUCE_ACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.REDUCE_ACTION__NAME :
 				setName((String) newValue);
@@ -685,50 +692,49 @@ public class ReduceActionImpl
 				return;
 			case UMLPackage.REDUCE_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions()
-					.addAll(
-						(Collection<? extends InterruptibleActivityRegion>) newValue);
+				getInInterruptibleRegions().addAll(
+					(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.REDUCE_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.REDUCE_ACTION__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getIncomings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.REDUCE_ACTION__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getOutgoings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.REDUCE_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll(
-					(Collection<? extends ActivityNode>) newValue);
+				getRedefinedNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.REDUCE_ACTION__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
+				getInPartitions()
+					.addAll((Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.REDUCE_ACTION__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll(
-					(Collection<? extends ExceptionHandler>) newValue);
+				getHandlers()
+					.addAll((Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.REDUCE_ACTION__IS_LOCALLY_REENTRANT :
 				setIsLocallyReentrant((Boolean) newValue);
 				return;
 			case UMLPackage.REDUCE_ACTION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPostconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.REDUCE_ACTION__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPreconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.REDUCE_ACTION__COLLECTION :
 				setCollection((InputPin) newValue);
@@ -881,7 +887,8 @@ public class ReduceActionImpl
 			case UMLPackage.REDUCE_ACTION__INPUT :
 				return isSetInputs();
 			case UMLPackage.REDUCE_ACTION__IS_LOCALLY_REENTRANT :
-				return ((eFlags & IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
+				return ((eFlags
+					& IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
 			case UMLPackage.REDUCE_ACTION__LOCAL_POSTCONDITION :
 				return localPostconditions != null
 					&& !localPostconditions.isEmpty();
@@ -893,7 +900,8 @@ public class ReduceActionImpl
 			case UMLPackage.REDUCE_ACTION__COLLECTION :
 				return collection != null;
 			case UMLPackage.REDUCE_ACTION__IS_ORDERED :
-				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
+				return ((eFlags
+					& IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.REDUCE_ACTION__REDUCER :
 				return reducer != null;
 			case UMLPackage.REDUCE_ACTION__RESULT :
@@ -959,7 +967,8 @@ public class ReduceActionImpl
 			case UMLPackage.REDUCE_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.REDUCE_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.REDUCE_ACTION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.REDUCE_ACTION___GET_STEREOTYPE_APPLICATIONS :
@@ -967,7 +976,8 @@ public class ReduceActionImpl
 			case UMLPackage.REDUCE_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.REDUCE_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.REDUCE_ACTION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1044,8 +1054,8 @@ public class ReduceActionImpl
 			case UMLPackage.REDUCE_ACTION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.REDUCE_ACTION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.REDUCE_ACTION___CONTAINING_ACTIVITY :
 				return containingActivity();
 			case UMLPackage.REDUCE_ACTION___GET_CONTEXT :
@@ -1107,7 +1117,8 @@ public class ReduceActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] INPUT_ESUBSETS = new int[]{UMLPackage.REDUCE_ACTION__COLLECTION};
+	protected static final int[] INPUT_ESUBSETS = new int[]{
+		UMLPackage.REDUCE_ACTION__COLLECTION};
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOutputs() <em>Output</em>}' reference list.
@@ -1117,7 +1128,8 @@ public class ReduceActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] OUTPUT_ESUBSETS = new int[]{UMLPackage.REDUCE_ACTION__RESULT};
+	protected static final int[] OUTPUT_ESUBSETS = new int[]{
+		UMLPackage.REDUCE_ACTION__RESULT};
 
 	/**
 	 * <!-- begin-user-doc -->

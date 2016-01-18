@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -108,7 +108,8 @@ public class GeneralOrderingImpl
 			if (before != oldBefore) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						UMLPackage.GENERAL_ORDERING__BEFORE, oldBefore, before));
+						UMLPackage.GENERAL_ORDERING__BEFORE, oldBefore,
+						before));
 			}
 		}
 		return before;
@@ -175,8 +176,8 @@ public class GeneralOrderingImpl
 	 */
 	public boolean validateIrreflexiveTransitiveClosure(
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return GeneralOrderingOperations.validateIrreflexiveTransitiveClosure(
-			this, diagnostics, context);
+		return GeneralOrderingOperations
+			.validateIrreflexiveTransitiveClosure(this, diagnostics, context);
 	}
 
 	/**
@@ -290,11 +291,11 @@ public class GeneralOrderingImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.GENERAL_ORDERING__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.GENERAL_ORDERING__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.GENERAL_ORDERING__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.GENERAL_ORDERING__AFTER :
@@ -362,13 +363,13 @@ public class GeneralOrderingImpl
 		switch (featureID) {
 			case UMLPackage.GENERAL_ORDERING__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.GENERAL_ORDERING__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.GENERAL_ORDERING__NAME :
 				setName((String) newValue);
@@ -517,7 +518,8 @@ public class GeneralOrderingImpl
 			case UMLPackage.GENERAL_ORDERING___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.GENERAL_ORDERING___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.GENERAL_ORDERING___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.GENERAL_ORDERING___GET_STEREOTYPE_APPLICATIONS :
@@ -525,7 +527,8 @@ public class GeneralOrderingImpl
 			case UMLPackage.GENERAL_ORDERING___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.GENERAL_ORDERING___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.GENERAL_ORDERING___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));

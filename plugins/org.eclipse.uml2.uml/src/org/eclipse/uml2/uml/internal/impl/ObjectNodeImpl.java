@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -267,8 +267,8 @@ public abstract class ObjectNodeImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -289,7 +289,8 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public ObjectNodeOrderingKind getOrdering() {
-		return ORDERING_EFLAG_VALUES[(eFlags & ORDERING_EFLAG) >>> ORDERING_EFLAG_OFFSET];
+		return ORDERING_EFLAG_VALUES[(eFlags
+			& ORDERING_EFLAG) >>> ORDERING_EFLAG_OFFSET];
 	}
 
 	/**
@@ -298,7 +299,8 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public void setOrdering(ObjectNodeOrderingKind newOrdering) {
-		ObjectNodeOrderingKind oldOrdering = ORDERING_EFLAG_VALUES[(eFlags & ORDERING_EFLAG) >>> ORDERING_EFLAG_OFFSET];
+		ObjectNodeOrderingKind oldOrdering = ORDERING_EFLAG_VALUES[(eFlags
+			& ORDERING_EFLAG) >>> ORDERING_EFLAG_OFFSET];
 		if (newOrdering == null)
 			newOrdering = ORDERING_EDEFAULT;
 		eFlags = eFlags & ~ORDERING_EFLAG
@@ -347,11 +349,14 @@ public abstract class ObjectNodeImpl
 				InternalEObject newUpperBound = (InternalEObject) upperBound;
 				NotificationChain msgs = oldUpperBound.eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.OBJECT_NODE__UPPER_BOUND, null, null);
+						- UMLPackage.OBJECT_NODE__UPPER_BOUND,
+					null, null);
 				if (newUpperBound.eInternalContainer() == null) {
-					msgs = newUpperBound.eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-							- UMLPackage.OBJECT_NODE__UPPER_BOUND, null, msgs);
+					msgs = newUpperBound
+						.eInverseAdd(this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.OBJECT_NODE__UPPER_BOUND,
+							null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -405,11 +410,13 @@ public abstract class ObjectNodeImpl
 			if (upperBound != null)
 				msgs = ((InternalEObject) upperBound).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.OBJECT_NODE__UPPER_BOUND, null, msgs);
+						- UMLPackage.OBJECT_NODE__UPPER_BOUND,
+					null, msgs);
 			if (newUpperBound != null)
 				msgs = ((InternalEObject) newUpperBound).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.OBJECT_NODE__UPPER_BOUND, null, msgs);
+						- UMLPackage.OBJECT_NODE__UPPER_BOUND,
+					null, msgs);
 			msgs = basicSetUpperBound(newUpperBound, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -534,8 +541,8 @@ public abstract class ObjectNodeImpl
 	 */
 	public boolean validateSelectionBehavior(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return ObjectNodeOperations.validateSelectionBehavior(this,
-			diagnostics, context);
+		return ObjectNodeOperations.validateSelectionBehavior(this, diagnostics,
+			context);
 	}
 
 	/**
@@ -559,11 +566,11 @@ public abstract class ObjectNodeImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.OBJECT_NODE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
@@ -572,14 +579,14 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
 				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.OBJECT_NODE__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.OBJECT_NODE__OUTGOING :
-				return ((InternalEList<?>) getOutgoings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.OBJECT_NODE__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getInPartitions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__UPPER_BOUND :
 				return basicSetUpperBound(null, msgs);
 		}
@@ -679,13 +686,13 @@ public abstract class ObjectNodeImpl
 		switch (featureID) {
 			case UMLPackage.OBJECT_NODE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__NAME :
 				setName((String) newValue);
@@ -704,32 +711,31 @@ public abstract class ObjectNodeImpl
 				return;
 			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions()
-					.addAll(
-						(Collection<? extends InterruptibleActivityRegion>) newValue);
+				getInInterruptibleRegions().addAll(
+					(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getIncomings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getOutgoings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll(
-					(Collection<? extends ActivityNode>) newValue);
+				getRedefinedNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
+				getInPartitions()
+					.addAll((Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__TYPE :
 				setType((Type) newValue);
@@ -881,7 +887,8 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE__IN_STATE :
 				return inStates != null && !inStates.isEmpty();
 			case UMLPackage.OBJECT_NODE__IS_CONTROL_TYPE :
-				return ((eFlags & IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
+				return ((eFlags
+					& IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
 			case UMLPackage.OBJECT_NODE__ORDERING :
 				return (eFlags & ORDERING_EFLAG) != ORDERING_EFLAG_DEFAULT;
 			case UMLPackage.OBJECT_NODE__SELECTION :
@@ -898,7 +905,8 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	public int eBaseStructuralFeatureID(int derivedFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == TypedElement.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.OBJECT_NODE__TYPE :
@@ -916,7 +924,8 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	public int eDerivedStructuralFeatureID(int baseFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == TypedElement.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.TYPED_ELEMENT__TYPE :
@@ -985,7 +994,8 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.OBJECT_NODE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.OBJECT_NODE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.OBJECT_NODE___GET_STEREOTYPE_APPLICATIONS :
@@ -993,7 +1003,8 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.OBJECT_NODE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.OBJECT_NODE___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1070,8 +1081,8 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.OBJECT_NODE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.OBJECT_NODE___CONTAINING_ACTIVITY :
 				return containingActivity();
 			case UMLPackage.OBJECT_NODE___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
@@ -1104,8 +1115,8 @@ public abstract class ObjectNodeImpl
 		result.append(" (isControlType: "); //$NON-NLS-1$
 		result.append((eFlags & IS_CONTROL_TYPE_EFLAG) != 0);
 		result.append(", ordering: "); //$NON-NLS-1$
-		result
-			.append(ORDERING_EFLAG_VALUES[(eFlags & ORDERING_EFLAG) >>> ORDERING_EFLAG_OFFSET]);
+		result.append(ORDERING_EFLAG_VALUES[(eFlags
+			& ORDERING_EFLAG) >>> ORDERING_EFLAG_OFFSET]);
 		result.append(')');
 		return result.toString();
 	}

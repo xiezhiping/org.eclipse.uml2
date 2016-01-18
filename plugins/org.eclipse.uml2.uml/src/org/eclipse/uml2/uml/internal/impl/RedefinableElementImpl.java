@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -118,15 +118,12 @@ public abstract class RedefinableElementImpl
 				.get(eResource, this,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 			if (redefinedElements == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-						redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
-							RedefinableElement.class, this,
-							UMLPackage.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-							null));
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+					redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
+						RedefinableElement.class, this,
+						UMLPackage.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+						null));
 			}
 			return redefinedElements;
 		}
@@ -174,21 +171,15 @@ public abstract class RedefinableElementImpl
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
 			EList<Classifier> redefinitionContexts = (EList<Classifier>) cache
-				.get(
-					eResource,
-					this,
+				.get(eResource, this,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 			if (redefinitionContexts == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-						redefinitionContexts = new DerivedUnionEObjectEList<Classifier>(
-							Classifier.class,
-							this,
-							UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-							null));
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+					redefinitionContexts = new DerivedUnionEObjectEList<Classifier>(
+						Classifier.class, this,
+						UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+						null));
 			}
 			return redefinitionContexts;
 		}
@@ -200,7 +191,8 @@ public abstract class RedefinableElementImpl
 	 * The array of subset feature identifiers for the '{@link #getRedefinitionContexts() <em>Redefinition Context</em>}' reference list.
 	 * @see #getRedefinitionContexts()
 	 */
-	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{UMLPackage.REDEFINABLE_ELEMENT__OWNER};
+	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{
+		UMLPackage.REDEFINABLE_ELEMENT__OWNER};
 
 	public EList<Classifier> getRedefinitionContexts() {
 		CacheAdapter cache = getCacheAdapter();
@@ -208,21 +200,15 @@ public abstract class RedefinableElementImpl
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
 			EList<Classifier> redefinitionContexts = (EList<Classifier>) cache
-				.get(
-					eResource,
-					this,
+				.get(eResource, this,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 			if (redefinitionContexts == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-						redefinitionContexts = new DerivedEObjectEList<Classifier>(
-							Classifier.class,
-							this,
-							UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-							REDEFINITION_CONTEXT_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+					redefinitionContexts = new DerivedEObjectEList<Classifier>(
+						Classifier.class, this,
+						UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+						REDEFINITION_CONTEXT_ESUBSETS));
 			}
 			return redefinitionContexts;
 		}
@@ -289,10 +275,10 @@ public abstract class RedefinableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateRedefinitionContextValid(
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return RedefinableElementOperations.validateRedefinitionContextValid(
-			this, diagnostics, context);
+	public boolean validateRedefinitionContextValid(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return RedefinableElementOperations
+			.validateRedefinitionContextValid(this, diagnostics, context);
 	}
 
 	/**
@@ -302,8 +288,8 @@ public abstract class RedefinableElementImpl
 	 */
 	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return RedefinableElementOperations.validateRedefinitionConsistent(
-			this, diagnostics, context);
+		return RedefinableElementOperations.validateRedefinitionConsistent(this,
+			diagnostics, context);
 	}
 
 	/**
@@ -383,13 +369,13 @@ public abstract class RedefinableElementImpl
 		switch (featureID) {
 			case UMLPackage.REDEFINABLE_ELEMENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.REDEFINABLE_ELEMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.REDEFINABLE_ELEMENT__NAME :
 				setName((String) newValue);
@@ -534,7 +520,8 @@ public abstract class RedefinableElementImpl
 			case UMLPackage.REDEFINABLE_ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.REDEFINABLE_ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.REDEFINABLE_ELEMENT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.REDEFINABLE_ELEMENT___GET_STEREOTYPE_APPLICATIONS :
@@ -542,7 +529,8 @@ public abstract class RedefinableElementImpl
 			case UMLPackage.REDEFINABLE_ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.REDEFINABLE_ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.REDEFINABLE_ELEMENT___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -619,8 +607,8 @@ public abstract class RedefinableElementImpl
 			case UMLPackage.REDEFINABLE_ELEMENT___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.REDEFINABLE_ELEMENT___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}

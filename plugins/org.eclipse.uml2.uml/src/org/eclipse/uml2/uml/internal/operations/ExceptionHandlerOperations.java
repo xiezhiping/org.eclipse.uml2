@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -74,15 +74,15 @@ public class ExceptionHandlerOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.EXCEPTION_HANDLER__HANDLER_BODY_EDGES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateHandlerBodyEdges", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(exceptionHandler, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{exceptionHandler}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.EXCEPTION_HANDLER__HANDLER_BODY_EDGES,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateHandlerBodyEdges", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(exceptionHandler, context)}),
+					new Object[]{exceptionHandler}));
 			}
 			return false;
 		}
@@ -119,15 +119,15 @@ public class ExceptionHandlerOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.EXCEPTION_HANDLER__OUTPUT_PINS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOutputPins", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(exceptionHandler, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{exceptionHandler}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.EXCEPTION_HANDLER__OUTPUT_PINS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateOutputPins", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(exceptionHandler, context)}),
+					new Object[]{exceptionHandler}));
 			}
 			return false;
 		}
@@ -156,15 +156,15 @@ public class ExceptionHandlerOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.EXCEPTION_HANDLER__ONE_INPUT,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOneInput", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(exceptionHandler, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{exceptionHandler}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.EXCEPTION_HANDLER__ONE_INPUT,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateOneInput", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(exceptionHandler, context)}),
+					new Object[]{exceptionHandler}));
 			}
 			return false;
 		}
@@ -194,15 +194,15 @@ public class ExceptionHandlerOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.EXCEPTION_HANDLER__EDGE_SOURCE_TARGET,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateEdgeSourceTarget", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(exceptionHandler, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{exceptionHandler}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.EXCEPTION_HANDLER__EDGE_SOURCE_TARGET,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateEdgeSourceTarget", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(exceptionHandler, context)}),
+					new Object[]{exceptionHandler}));
 			}
 			return false;
 		}
@@ -230,15 +230,15 @@ public class ExceptionHandlerOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.EXCEPTION_HANDLER__HANDLER_BODY_OWNER,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateHandlerBodyOwner", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(exceptionHandler, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{exceptionHandler}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.EXCEPTION_HANDLER__HANDLER_BODY_OWNER,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateHandlerBodyOwner", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(exceptionHandler, context)}),
+					new Object[]{exceptionHandler}));
 			}
 			return false;
 		}
@@ -267,15 +267,15 @@ public class ExceptionHandlerOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.EXCEPTION_HANDLER__EXCEPTION_INPUT_TYPE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateExceptionInputType", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(exceptionHandler, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{exceptionHandler}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.EXCEPTION_HANDLER__EXCEPTION_INPUT_TYPE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateExceptionInputType", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(exceptionHandler, context)}),
+					new Object[]{exceptionHandler}));
 			}
 			return false;
 		}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -131,16 +131,15 @@ public class ProfileApplicationImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> targets = (EList<Element>) cache.get(eResource,
-				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			EList<Element> targets = (EList<Element>) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
 			if (targets == null) {
-				cache
-					.put(eResource, this,
-						UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
-						targets = new DerivedUnionEObjectEList<Element>(
-							Element.class, this,
-							UMLPackage.PROFILE_APPLICATION__TARGET,
-							TARGET_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
+					targets = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.PROFILE_APPLICATION__TARGET,
+						TARGET_ESUBSETS));
 			}
 			return targets;
 		}
@@ -159,16 +158,15 @@ public class ProfileApplicationImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> sources = (EList<Element>) cache.get(eResource,
-				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			EList<Element> sources = (EList<Element>) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
 			if (sources == null) {
-				cache
-					.put(eResource, this,
-						UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
-						sources = new DerivedUnionEObjectEList<Element>(
-							Element.class, this,
-							UMLPackage.PROFILE_APPLICATION__SOURCE,
-							SOURCE_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
+					sources = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.PROFILE_APPLICATION__SOURCE,
+						SOURCE_ESUBSETS));
 			}
 			return sources;
 		}
@@ -287,7 +285,8 @@ public class ProfileApplicationImpl
 	public void setApplyingPackage(
 			org.eclipse.uml2.uml.Package newApplyingPackage) {
 		if (newApplyingPackage != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE && newApplyingPackage != null)) {
+			|| (eContainerFeatureID() != UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE
+				&& newApplyingPackage != null)) {
 			if (EcoreUtil.isAncestor(this, newApplyingPackage))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -358,11 +357,11 @@ public class ProfileApplicationImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PROFILE_APPLICATION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROFILE_APPLICATION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE :
 				return basicSetApplyingPackage(null, msgs);
 		}
@@ -435,13 +434,13 @@ public class ProfileApplicationImpl
 		switch (featureID) {
 			case UMLPackage.PROFILE_APPLICATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.PROFILE_APPLICATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE :
 				setAppliedProfile((Profile) newValue);
@@ -572,7 +571,8 @@ public class ProfileApplicationImpl
 			case UMLPackage.PROFILE_APPLICATION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.PROFILE_APPLICATION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.PROFILE_APPLICATION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.PROFILE_APPLICATION___GET_STEREOTYPE_APPLICATIONS :
@@ -580,7 +580,8 @@ public class ProfileApplicationImpl
 			case UMLPackage.PROFILE_APPLICATION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.PROFILE_APPLICATION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.PROFILE_APPLICATION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -640,7 +641,8 @@ public class ProfileApplicationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] TARGET_ESUBSETS = new int[]{UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE};
+	protected static final int[] TARGET_ESUBSETS = new int[]{
+		UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -661,7 +663,8 @@ public class ProfileApplicationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] SOURCE_ESUBSETS = new int[]{UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE};
+	protected static final int[] SOURCE_ESUBSETS = new int[]{
+		UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE};
 
 	/**
 	 * <!-- begin-user-doc -->

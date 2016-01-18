@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -73,15 +73,16 @@ public class ActivityParameterNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACTIVITY_PARAMETER_NODE__HAS_PARAMETERS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateHasParameters", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(activityParameterNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{activityParameterNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.ACTIVITY_PARAMETER_NODE__HAS_PARAMETERS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateHasParameters", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(activityParameterNode,
+									context)}),
+					new Object[]{activityParameterNode}));
 			}
 			return false;
 		}
@@ -109,15 +110,16 @@ public class ActivityParameterNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACTIVITY_PARAMETER_NODE__SAME_TYPE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSameType", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(activityParameterNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{activityParameterNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.ACTIVITY_PARAMETER_NODE__SAME_TYPE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateSameType", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(activityParameterNode,
+									context)}),
+					new Object[]{activityParameterNode}));
 			}
 			return false;
 		}
@@ -145,15 +147,16 @@ public class ActivityParameterNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACTIVITY_PARAMETER_NODE__NO_EDGES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoEdges", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(activityParameterNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{activityParameterNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.ACTIVITY_PARAMETER_NODE__NO_EDGES,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateNoEdges", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(activityParameterNode,
+									context)}),
+					new Object[]{activityParameterNode}));
 			}
 			return false;
 		}
@@ -183,15 +186,16 @@ public class ActivityParameterNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACTIVITY_PARAMETER_NODE__NO_INCOMING_EDGES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoIncomingEdges", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(activityParameterNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{activityParameterNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.ACTIVITY_PARAMETER_NODE__NO_INCOMING_EDGES,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateNoIncomingEdges", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(activityParameterNode,
+									context)}),
+					new Object[]{activityParameterNode}));
 			}
 			return false;
 		}
@@ -222,15 +226,16 @@ public class ActivityParameterNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ACTIVITY_PARAMETER_NODE__NO_OUTGOING_EDGES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoOutgoingEdges", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(activityParameterNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{activityParameterNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.ACTIVITY_PARAMETER_NODE__NO_OUTGOING_EDGES,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateNoOutgoingEdges", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(activityParameterNode,
+									context)}),
+					new Object[]{activityParameterNode}));
 			}
 			return false;
 		}

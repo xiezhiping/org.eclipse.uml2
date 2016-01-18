@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -142,8 +142,8 @@ public class ContinuationImpl
 	 */
 	public boolean validateGlobal(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return ContinuationOperations
-			.validateGlobal(this, diagnostics, context);
+		return ContinuationOperations.validateGlobal(this, diagnostics,
+			context);
 	}
 
 	/**
@@ -153,8 +153,8 @@ public class ContinuationImpl
 	 */
 	public boolean validateFirstOrLastInteractionFragment(
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return ContinuationOperations.validateFirstOrLastInteractionFragment(
-			this, diagnostics, context);
+		return ContinuationOperations
+			.validateFirstOrLastInteractionFragment(this, diagnostics, context);
 	}
 
 	/**
@@ -220,13 +220,13 @@ public class ContinuationImpl
 		switch (featureID) {
 			case UMLPackage.CONTINUATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.CONTINUATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.CONTINUATION__NAME :
 				setName((String) newValue);
@@ -249,8 +249,8 @@ public class ContinuationImpl
 				return;
 			case UMLPackage.CONTINUATION__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
+				getGeneralOrderings()
+					.addAll((Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.CONTINUATION__SETTING :
 				setSetting((Boolean) newValue);
@@ -402,7 +402,8 @@ public class ContinuationImpl
 			case UMLPackage.CONTINUATION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.CONTINUATION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CONTINUATION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.CONTINUATION___GET_STEREOTYPE_APPLICATIONS :
@@ -410,7 +411,8 @@ public class ContinuationImpl
 			case UMLPackage.CONTINUATION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.CONTINUATION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CONTINUATION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));

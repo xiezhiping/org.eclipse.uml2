@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 418466, 451350, 459651, 433768
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 459651, 433768, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -98,23 +98,19 @@ public class NamespaceOperations
 
 				for (NamedElement otherMember : namespaceMembers) {
 
-					if (member != otherMember
-						&& !member
-							.isDistinguishableFrom(otherMember, namespace)) {
+					if (member != otherMember && !member
+						.isDistinguishableFrom(otherMember, namespace)) {
 
 						result = false;
 
-						diagnostics
-							.add(new BasicDiagnostic(
-								Diagnostic.WARNING,
-								UMLValidator.DIAGNOSTIC_SOURCE,
-								UMLValidator.NAMESPACE__MEMBERS_DISTINGUISHABLE,
-								UMLPlugin.INSTANCE
-									.getString(
-										"_UI_Namespace_MemberDistinguishable_diagnostic", //$NON-NLS-1$
-										getMessageSubstitutions(context,
-											member, namespace)),
-								new Object[]{member}));
+						diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+							UMLValidator.DIAGNOSTIC_SOURCE,
+							UMLValidator.NAMESPACE__MEMBERS_DISTINGUISHABLE,
+							UMLPlugin.INSTANCE.getString(
+								"_UI_Namespace_MemberDistinguishable_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context, member,
+									namespace)),
+							new Object[]{member}));
 
 						break;
 					}
@@ -157,15 +153,15 @@ public class NamespaceOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.NAMESPACE__CANNOT_IMPORT_SELF,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateCannotImportSelf", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(namespace, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{namespace}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.NAMESPACE__CANNOT_IMPORT_SELF,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateCannotImportSelf", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(namespace, context)}),
+					new Object[]{namespace}));
 			}
 			return false;
 		}
@@ -192,15 +188,15 @@ public class NamespaceOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.NAMESPACE__CANNOT_IMPORT_OWNED_MEMBERS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateCannotImportOwnedMembers", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(namespace, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{namespace}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.NAMESPACE__CANNOT_IMPORT_OWNED_MEMBERS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateCannotImportOwnedMembers", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(namespace, context)}),
+					new Object[]{namespace}));
 			}
 			return false;
 		}
@@ -394,9 +390,8 @@ public class NamespaceOperations
 						org.eclipse.uml2.uml.Package importedPackage = packageImport
 							.getImportedPackage();
 
-						if (importedPackage != null
-							&& importedPackage.visibleMembers().contains(
-								element)) {
+						if (importedPackage != null && importedPackage
+							.visibleMembers().contains(element)) {
 
 							getNamesOfMember(importedPackage, element,
 								namespaces, namesOfMember);

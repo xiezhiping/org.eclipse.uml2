@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 465214
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 465214, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -160,8 +160,8 @@ public abstract class ActivityGroupImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -190,14 +190,11 @@ public abstract class ActivityGroupImpl
 				.get(eResource, this,
 					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE);
 			if (containedNodes == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE,
-						containedNodes = new DerivedUnionEObjectEList<ActivityNode>(
-							ActivityNode.class, this,
-							UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE, null));
+				cache.put(eResource, this,
+					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE,
+					containedNodes = new DerivedUnionEObjectEList<ActivityNode>(
+						ActivityNode.class, this,
+						UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE, null));
 			}
 			return containedNodes;
 		}
@@ -247,14 +244,11 @@ public abstract class ActivityGroupImpl
 				.get(eResource, this,
 					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE);
 			if (containedEdges == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE,
-						containedEdges = new DerivedUnionEObjectEList<ActivityEdge>(
-							ActivityEdge.class, this,
-							UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE, null));
+				cache.put(eResource, this,
+					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE,
+					containedEdges = new DerivedUnionEObjectEList<ActivityEdge>(
+						ActivityEdge.class, this,
+						UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE, null));
 			}
 			return containedEdges;
 		}
@@ -353,7 +347,8 @@ public abstract class ActivityGroupImpl
 					.getOwnedGroups()).basicAdd(this, msgs);
 			msgs = eBasicSetContainer((InternalEObject) newInActivity,
 				InternalEObject.EOPPOSITE_FEATURE_BASE
-					- UMLPackage.ACTIVITY__OWNED_GROUP, msgs);
+					- UMLPackage.ACTIVITY__OWNED_GROUP,
+				msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -456,13 +451,13 @@ public abstract class ActivityGroupImpl
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_GROUP__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_GROUP__NAME :
 				setName((String) newValue);
@@ -629,7 +624,8 @@ public abstract class ActivityGroupImpl
 			case UMLPackage.ACTIVITY_GROUP___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.ACTIVITY_GROUP___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.ACTIVITY_GROUP___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.ACTIVITY_GROUP___GET_STEREOTYPE_APPLICATIONS :
@@ -637,7 +633,8 @@ public abstract class ActivityGroupImpl
 			case UMLPackage.ACTIVITY_GROUP___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.ACTIVITY_GROUP___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.ACTIVITY_GROUP___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -702,8 +699,7 @@ public abstract class ActivityGroupImpl
 			case UMLPackage.ACTIVITY_GROUP___CONTAINING_ACTIVITY :
 				return containingActivity();
 			case UMLPackage.ACTIVITY_GROUP___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateNodesAndEdges(
-					(DiagnosticChain) arguments.get(0),
+				return validateNodesAndEdges((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_GROUP___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
 				return validateNotContained((DiagnosticChain) arguments.get(0),

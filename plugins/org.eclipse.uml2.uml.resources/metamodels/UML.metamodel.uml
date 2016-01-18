@@ -12614,6 +12614,22 @@ A package is used to group elements, and provides a namespace for the grouped el
           </ownedComment>
         </ownedParameter>
       </ownedOperation>
+      <ownedOperation xmi:id="Package-applyProfiles" name="applyProfiles">
+        <ownedComment xmi:id="Package-applyProfiles-_ownedComment.0" annotatedElement="Package-applyProfiles">
+          <body>Applies the current definitions of the specified profiles to this package and automatically applies required stereotypes in the profiles to elements within this package's namespace hieararchy. If different definitions are already applied, automatically migrates any associated stereotype values on a &quot;best effort&quot; basis (matching classifiers and structural features by name).</body>
+        </ownedComment>
+        <ownedParameter xmi:id="Package-applyProfiles-_ownedParameter.0" direction="return">
+          <type xmi:type="uml:Class" href="Ecore.metamodel.uml#EObject"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Package-applyProfiles-_ownedParameter.0-_lowerValue"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Package-applyProfiles-_ownedParameter.0-_upperValue" value="*"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="Package-applyProfiles-profiles" name="profiles" type="Profile" effect="read">
+          <ownedComment xmi:id="Package-applyProfiles-profiles-_ownedComment.0" annotatedElement="Package-applyProfiles-profiles">
+            <body>The profiles to apply.</body>
+          </ownedComment>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Package-applyProfiles-profiles-_upperValue" value="*"/>
+        </ownedParameter>
+      </ownedOperation>
       <ownedOperation xmi:id="Package-allApplicableStereotypes" name="allApplicableStereotypes" bodyCondition="Package-allApplicableStereotypes-spec" isQuery="true">
         <ownedComment xmi:id="Package-allApplicableStereotypes-_ownedComment.0" annotatedElement="Package-allApplicableStereotypes">
           <body>The query allApplicableStereotypes() returns all the directly or indirectly owned stereotypes, including stereotypes contained in sub-profiles.</body>

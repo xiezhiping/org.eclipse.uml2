@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208353, 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -356,7 +356,8 @@ public class PropertyImpl
 	public TemplateParameter getTemplateParameter() {
 		if (templateParameter != null && templateParameter.eIsProxy()) {
 			InternalEObject oldTemplateParameter = (InternalEObject) templateParameter;
-			templateParameter = (TemplateParameter) eResolveProxy(oldTemplateParameter);
+			templateParameter = (TemplateParameter) eResolveProxy(
+				oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -488,7 +489,8 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public NotificationChain basicSetOwningTemplateParameter(
-			TemplateParameter newOwningTemplateParameter, NotificationChain msgs) {
+			TemplateParameter newOwningTemplateParameter,
+			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newOwningTemplateParameter,
 			UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER, msgs);
 		Resource.Internal eInternalResource = eInternalResource();
@@ -510,7 +512,8 @@ public class PropertyImpl
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
 		if (newOwningTemplateParameter != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
+			|| (eContainerFeatureID() != UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER
+				&& newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -519,8 +522,7 @@ public class PropertyImpl
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningTemplateParameter != null)
 				msgs = ((InternalEObject) newOwningTemplateParameter)
-					.eInverseAdd(
-						this,
+					.eInverseAdd(this,
 						UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 						TemplateParameter.class, msgs);
 			msgs = basicSetOwningTemplateParameter(newOwningTemplateParameter,
@@ -553,14 +555,13 @@ public class PropertyImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
 					ownedElements = new DerivedUnionEObjectEList<Element>(
-						Element.class, this,
-						UMLPackage.PROPERTY__OWNED_ELEMENT,
+						Element.class, this, UMLPackage.PROPERTY__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
@@ -596,8 +597,7 @@ public class PropertyImpl
 				.get(this,
 					UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT);
 			if (result == null) {
-				cache.put(
-					this,
+				cache.put(this,
 					UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
 					result = DeploymentTargetOperations
 						.getDeployedElements(this));
@@ -663,15 +663,12 @@ public class PropertyImpl
 				.get(eResource, this,
 					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
 			if (featuringClassifiers == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER,
-						featuringClassifiers = new DerivedUnionEObjectEList<Classifier>(
-							Classifier.class, this,
-							UMLPackage.PROPERTY__FEATURING_CLASSIFIER,
-							FEATURING_CLASSIFIER_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER,
+					featuringClassifiers = new DerivedUnionEObjectEList<Classifier>(
+						Classifier.class, this,
+						UMLPackage.PROPERTY__FEATURING_CLASSIFIER,
+						FEATURING_CLASSIFIER_ESUBSETS));
 			}
 			return featuringClassifiers;
 		}
@@ -695,15 +692,12 @@ public class PropertyImpl
 				.get(eResource, this,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 			if (redefinedElements == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-						redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
-							RedefinableElement.class, this,
-							UMLPackage.PROPERTY__REDEFINED_ELEMENT,
-							REDEFINED_ELEMENT_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+					redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
+						RedefinableElement.class, this,
+						UMLPackage.PROPERTY__REDEFINED_ELEMENT,
+						REDEFINED_ELEMENT_ESUBSETS));
 			}
 			return redefinedElements;
 		}
@@ -778,13 +772,13 @@ public class PropertyImpl
 		if (newAssociation != association) {
 			NotificationChain msgs = null;
 			if (association != null)
-				msgs = ((InternalEObject) association)
-					.eInverseRemove(this, UMLPackage.ASSOCIATION__MEMBER_END,
-						Association.class, msgs);
+				msgs = ((InternalEObject) association).eInverseRemove(this,
+					UMLPackage.ASSOCIATION__MEMBER_END, Association.class,
+					msgs);
 			if (newAssociation != null)
-				msgs = ((InternalEObject) newAssociation)
-					.eInverseAdd(this, UMLPackage.ASSOCIATION__MEMBER_END,
-						Association.class, msgs);
+				msgs = ((InternalEObject) newAssociation).eInverseAdd(this,
+					UMLPackage.ASSOCIATION__MEMBER_END, Association.class,
+					msgs);
 			msgs = basicSetAssociation(newAssociation, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -835,7 +829,8 @@ public class PropertyImpl
 	 */
 	public void setDatatype(DataType newDatatype) {
 		if (newDatatype != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.PROPERTY__DATATYPE && newDatatype != null)) {
+			|| (eContainerFeatureID() != UMLPackage.PROPERTY__DATATYPE
+				&& newDatatype != null)) {
 			if (EcoreUtil.isAncestor(this, newDatatype))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -843,9 +838,9 @@ public class PropertyImpl
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newDatatype != null)
-				msgs = ((InternalEObject) newDatatype)
-					.eInverseAdd(this, UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE,
-						DataType.class, msgs);
+				msgs = ((InternalEObject) newDatatype).eInverseAdd(this,
+					UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE, DataType.class,
+					msgs);
 			msgs = basicSetDatatype(newDatatype, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -895,7 +890,8 @@ public class PropertyImpl
 	 */
 	public void setInterface(Interface newInterface) {
 		if (newInterface != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.PROPERTY__INTERFACE && newInterface != null)) {
+			|| (eContainerFeatureID() != UMLPackage.PROPERTY__INTERFACE
+				&& newInterface != null)) {
 			if (EcoreUtil.isAncestor(this, newInterface))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -1014,7 +1010,8 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public AggregationKind getAggregation() {
-		return AGGREGATION_EFLAG_VALUES[(eFlags & AGGREGATION_EFLAG) >>> AGGREGATION_EFLAG_OFFSET];
+		return AGGREGATION_EFLAG_VALUES[(eFlags
+			& AGGREGATION_EFLAG) >>> AGGREGATION_EFLAG_OFFSET];
 	}
 
 	/**
@@ -1023,7 +1020,8 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setAggregation(AggregationKind newAggregation) {
-		AggregationKind oldAggregation = AGGREGATION_EFLAG_VALUES[(eFlags & AGGREGATION_EFLAG) >>> AGGREGATION_EFLAG_OFFSET];
+		AggregationKind oldAggregation = AGGREGATION_EFLAG_VALUES[(eFlags
+			& AGGREGATION_EFLAG) >>> AGGREGATION_EFLAG_OFFSET];
 		if (newAggregation == null)
 			newAggregation = AGGREGATION_EDEFAULT;
 		eFlags = eFlags & ~AGGREGATION_EFLAG
@@ -1060,7 +1058,8 @@ public class PropertyImpl
 	public org.eclipse.uml2.uml.Class getClass_() {
 		org.eclipse.uml2.uml.Class class_ = basicGetClass_();
 		return class_ != null && class_.eIsProxy()
-			? (org.eclipse.uml2.uml.Class) eResolveProxy((InternalEObject) class_)
+			? (org.eclipse.uml2.uml.Class) eResolveProxy(
+				(InternalEObject) class_)
 			: class_;
 	}
 
@@ -1094,7 +1093,8 @@ public class PropertyImpl
 					.basicAdd(this, msgs);
 			msgs = eBasicSetContainer((InternalEObject) newClass,
 				InternalEObject.EOPPOSITE_FEATURE_BASE
-					- UMLPackage.CLASS__OWNED_ATTRIBUTE, msgs);
+					- UMLPackage.CLASS__OWNED_ATTRIBUTE,
+				msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -1194,7 +1194,8 @@ public class PropertyImpl
 	 */
 	public void setOwningAssociation(Association newOwningAssociation) {
 		if (newOwningAssociation != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.PROPERTY__OWNING_ASSOCIATION && newOwningAssociation != null)) {
+			|| (eContainerFeatureID() != UMLPackage.PROPERTY__OWNING_ASSOCIATION
+				&& newOwningAssociation != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningAssociation))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -1225,13 +1226,15 @@ public class PropertyImpl
 			defaultValue = (ValueSpecification) eResolveProxy(oldDefaultValue);
 			if (defaultValue != oldDefaultValue) {
 				InternalEObject newDefaultValue = (InternalEObject) defaultValue;
-				NotificationChain msgs = oldDefaultValue
-					.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.PROPERTY__DEFAULT_VALUE, null, null);
+				NotificationChain msgs = oldDefaultValue.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.PROPERTY__DEFAULT_VALUE,
+					null, null);
 				if (newDefaultValue.eInternalContainer() == null) {
-					msgs = newDefaultValue.eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-							- UMLPackage.PROPERTY__DEFAULT_VALUE, null, msgs);
+					msgs = newDefaultValue
+						.eInverseAdd(this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.PROPERTY__DEFAULT_VALUE,
+							null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -1283,13 +1286,13 @@ public class PropertyImpl
 		if (newDefaultValue != defaultValue) {
 			NotificationChain msgs = null;
 			if (defaultValue != null)
-				msgs = ((InternalEObject) defaultValue)
-					.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.PROPERTY__DEFAULT_VALUE, null, msgs);
+				msgs = ((InternalEObject) defaultValue).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.PROPERTY__DEFAULT_VALUE,
+					null, msgs);
 			if (newDefaultValue != null)
-				msgs = ((InternalEObject) newDefaultValue)
-					.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.PROPERTY__DEFAULT_VALUE, null, msgs);
+				msgs = ((InternalEObject) newDefaultValue).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.PROPERTY__DEFAULT_VALUE,
+					null, msgs);
 			msgs = basicSetDefaultValue(newDefaultValue, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -1306,7 +1309,8 @@ public class PropertyImpl
 	 */
 	public ValueSpecification createDefaultValue(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newDefaultValue = (ValueSpecification) create(eClass);
+		ValueSpecification newDefaultValue = (ValueSpecification) create(
+			eClass);
 		setDefaultValue(newDefaultValue);
 		if (name != null)
 			newDefaultValue.setName(name);
@@ -1499,7 +1503,8 @@ public class PropertyImpl
 	 */
 	public void setAssociationEnd(Property newAssociationEnd) {
 		if (newAssociationEnd != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.PROPERTY__ASSOCIATION_END && newAssociationEnd != null)) {
+			|| (eContainerFeatureID() != UMLPackage.PROPERTY__ASSOCIATION_END
+				&& newAssociationEnd != null)) {
 			if (EcoreUtil.isAncestor(this, newAssociationEnd))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -1816,10 +1821,10 @@ public class PropertyImpl
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
 				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
+					msgs = ((InternalEObject) templateParameter).eInverseRemove(
+						this,
+						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+						TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.PROPERTY__DEPLOYMENT :
@@ -1864,11 +1869,11 @@ public class PropertyImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PROPERTY__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROPERTY__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROPERTY__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.PROPERTY__LOWER_VALUE :
@@ -1880,8 +1885,8 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.PROPERTY__DEPLOYMENT :
-				return ((InternalEList<?>) getDeployments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getDeployments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROPERTY__DATATYPE :
 				return basicSetDatatype(null, msgs);
 			case UMLPackage.PROPERTY__INTERFACE :
@@ -1889,8 +1894,8 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__ASSOCIATION_END :
 				return basicSetAssociationEnd(null, msgs);
 			case UMLPackage.PROPERTY__QUALIFIER :
-				return ((InternalEList<?>) getQualifiers()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getQualifiers())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROPERTY__DEFAULT_VALUE :
 				return basicSetDefaultValue(null, msgs);
 			case UMLPackage.PROPERTY__OWNING_ASSOCIATION :
@@ -1915,10 +1920,9 @@ public class PropertyImpl
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 					TemplateParameter.class, msgs);
 			case UMLPackage.PROPERTY__DATATYPE :
-				return eInternalContainer()
-					.eInverseRemove(this,
-						UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE, DataType.class,
-						msgs);
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE, DataType.class,
+					msgs);
 			case UMLPackage.PROPERTY__INTERFACE :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.INTERFACE__OWNED_ATTRIBUTE, Interface.class,
@@ -2078,13 +2082,13 @@ public class PropertyImpl
 		switch (featureID) {
 			case UMLPackage.PROPERTY__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.PROPERTY__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.PROPERTY__NAME :
 				setName((String) newValue);
@@ -2133,8 +2137,8 @@ public class PropertyImpl
 				return;
 			case UMLPackage.PROPERTY__DEPLOYMENT :
 				getDeployments().clear();
-				getDeployments().addAll(
-					(Collection<? extends Deployment>) newValue);
+				getDeployments()
+					.addAll((Collection<? extends Deployment>) newValue);
 				return;
 			case UMLPackage.PROPERTY__DATATYPE :
 				setDatatype((DataType) newValue);
@@ -2153,8 +2157,8 @@ public class PropertyImpl
 				return;
 			case UMLPackage.PROPERTY__QUALIFIER :
 				getQualifiers().clear();
-				getQualifiers().addAll(
-					(Collection<? extends Property>) newValue);
+				getQualifiers()
+					.addAll((Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.PROPERTY__DEFAULT_VALUE :
 				setDefaultValue((ValueSpecification) newValue);
@@ -2179,13 +2183,13 @@ public class PropertyImpl
 				return;
 			case UMLPackage.PROPERTY__REDEFINED_PROPERTY :
 				getRedefinedProperties().clear();
-				getRedefinedProperties().addAll(
-					(Collection<? extends Property>) newValue);
+				getRedefinedProperties()
+					.addAll((Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.PROPERTY__SUBSETTED_PROPERTY :
 				getSubsettedProperties().clear();
-				getSubsettedProperties().addAll(
-					(Collection<? extends Property>) newValue);
+				getSubsettedProperties()
+					.addAll((Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.PROPERTY__ASSOCIATION :
 				setAssociation((Association) newValue);
@@ -2362,7 +2366,8 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__TYPE :
 				return type != null;
 			case UMLPackage.PROPERTY__IS_ORDERED :
-				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
+				return ((eFlags
+					& IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.PROPERTY__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UMLPackage.PROPERTY__LOWER :
@@ -2374,7 +2379,8 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__UPPER_VALUE :
 				return upperValue != null;
 			case UMLPackage.PROPERTY__IS_READ_ONLY :
-				return ((eFlags & IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
+				return ((eFlags
+					& IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
 			case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
@@ -2392,7 +2398,8 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__DEFAULT :
 				return isSetDefault();
 			case UMLPackage.PROPERTY__AGGREGATION :
-				return (eFlags & AGGREGATION_EFLAG) != AGGREGATION_EFLAG_DEFAULT;
+				return (eFlags
+					& AGGREGATION_EFLAG) != AGGREGATION_EFLAG_DEFAULT;
 			case UMLPackage.PROPERTY__ASSOCIATION_END :
 				return basicGetAssociationEnd() != null;
 			case UMLPackage.PROPERTY__QUALIFIER :
@@ -2404,9 +2411,11 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__IS_COMPOSITE :
 				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UMLPackage.PROPERTY__IS_DERIVED :
-				return ((eFlags & IS_DERIVED_EFLAG) != 0) != IS_DERIVED_EDEFAULT;
+				return ((eFlags
+					& IS_DERIVED_EFLAG) != 0) != IS_DERIVED_EDEFAULT;
 			case UMLPackage.PROPERTY__IS_DERIVED_UNION :
-				return ((eFlags & IS_DERIVED_UNION_EFLAG) != 0) != IS_DERIVED_UNION_EDEFAULT;
+				return ((eFlags
+					& IS_DERIVED_UNION_EFLAG) != 0) != IS_DERIVED_UNION_EDEFAULT;
 			case UMLPackage.PROPERTY__IS_ID :
 				return ((eFlags & IS_ID_EFLAG) != 0) != IS_ID_EDEFAULT;
 			case UMLPackage.PROPERTY__OPPOSITE :
@@ -2431,7 +2440,8 @@ public class PropertyImpl
 	 * @generated
 	 */
 	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	public int eBaseStructuralFeatureID(int derivedFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == ParameterableElement.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
@@ -2469,7 +2479,8 @@ public class PropertyImpl
 	 * @generated
 	 */
 	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	public int eDerivedStructuralFeatureID(int baseFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == ParameterableElement.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
@@ -2594,7 +2605,8 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.PROPERTY___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.PROPERTY___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.PROPERTY___GET_STEREOTYPE_APPLICATIONS :
@@ -2602,7 +2614,8 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.PROPERTY___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.PROPERTY___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -2679,8 +2692,8 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.PROPERTY___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.PROPERTY___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
 				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
@@ -2712,8 +2725,8 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
 				return compatibleWith((MultiplicityElement) arguments.get(0));
 			case UMLPackage.PROPERTY___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
-				return includesMultiplicity((MultiplicityElement) arguments
-					.get(0));
+				return includesMultiplicity(
+					(MultiplicityElement) arguments.get(0));
 			case UMLPackage.PROPERTY___IS__INT_INT :
 				return is((Integer) arguments.get(0),
 					(Integer) arguments.get(1));
@@ -2728,7 +2741,8 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY___UPPER_BOUND :
 				return upperBound();
 			case UMLPackage.PROPERTY___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.PROPERTY___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.PROPERTY___GET_ENDS :
@@ -2844,8 +2858,8 @@ public class PropertyImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (aggregation: "); //$NON-NLS-1$
-		result
-			.append(AGGREGATION_EFLAG_VALUES[(eFlags & AGGREGATION_EFLAG) >>> AGGREGATION_EFLAG_OFFSET]);
+		result.append(AGGREGATION_EFLAG_VALUES[(eFlags
+			& AGGREGATION_EFLAG) >>> AGGREGATION_EFLAG_OFFSET]);
 		result.append(", isDerived: "); //$NON-NLS-1$
 		result.append((eFlags & IS_DERIVED_EFLAG) != 0);
 		result.append(", isDerivedUnion: "); //$NON-NLS-1$
@@ -2906,7 +2920,8 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public Deployment createDeployment(String name) {
-		Deployment newDeployment = (Deployment) create(UMLPackage.Literals.DEPLOYMENT);
+		Deployment newDeployment = (Deployment) create(
+			UMLPackage.Literals.DEPLOYMENT);
 		getDeployments().add(newDeployment);
 		if (name != null)
 			newDeployment.setName(name);
@@ -3017,20 +3032,15 @@ public class PropertyImpl
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
 			EList<Classifier> redefinitionContexts = (EList<Classifier>) cache
-				.get(
-					eResource,
-					this,
+				.get(eResource, this,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 			if (redefinitionContexts == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-						redefinitionContexts = new DerivedUnionEObjectEList<Classifier>(
-							Classifier.class, this,
-							UMLPackage.PROPERTY__REDEFINITION_CONTEXT,
-							REDEFINITION_CONTEXT_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+					redefinitionContexts = new DerivedUnionEObjectEList<Classifier>(
+						Classifier.class, this,
+						UMLPackage.PROPERTY__REDEFINITION_CONTEXT,
+						REDEFINITION_CONTEXT_ESUBSETS));
 			}
 			return redefinitionContexts;
 		}
@@ -3087,7 +3097,8 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{UMLPackage.PROPERTY__REDEFINED_PROPERTY};
+	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.PROPERTY__REDEFINED_PROPERTY};
 
 	/**
 	 * <!-- begin-user-doc -->

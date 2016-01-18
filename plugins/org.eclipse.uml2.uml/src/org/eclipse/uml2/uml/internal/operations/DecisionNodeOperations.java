@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -76,15 +76,15 @@ public class DecisionNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.DECISION_NODE__INCOMING_OUTGOING_EDGES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateIncomingOutgoingEdges", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(decisionNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{decisionNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.DECISION_NODE__INCOMING_OUTGOING_EDGES,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateIncomingOutgoingEdges", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(decisionNode, context)}),
+					new Object[]{decisionNode}));
 			}
 			return false;
 		}
@@ -114,15 +114,15 @@ public class DecisionNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.DECISION_NODE__EDGES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateEdges", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(decisionNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{decisionNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.DECISION_NODE__EDGES,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateEdges", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(decisionNode, context)}),
+					new Object[]{decisionNode}));
 			}
 			return false;
 		}
@@ -150,15 +150,15 @@ public class DecisionNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.DECISION_NODE__DECISION_INPUT_FLOW_INCOMING,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateDecisionInputFlowIncoming", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(decisionNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{decisionNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.DECISION_NODE__DECISION_INPUT_FLOW_INCOMING,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateDecisionInputFlowIncoming", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(decisionNode, context)}),
+					new Object[]{decisionNode}));
 			}
 			return false;
 		}
@@ -190,15 +190,15 @@ public class DecisionNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.DECISION_NODE__PARAMETERS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateParameters", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(decisionNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{decisionNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.DECISION_NODE__PARAMETERS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateParameters", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(decisionNode, context)}),
+					new Object[]{decisionNode}));
 			}
 			return false;
 		}
@@ -218,24 +218,23 @@ public class DecisionNodeOperations
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateZeroInputParameters(
-			DecisionNode decisionNode, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
+	public static boolean validateZeroInputParameters(DecisionNode decisionNode,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.DECISION_NODE__ZERO_INPUT_PARAMETERS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateZeroInputParameters", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(decisionNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{decisionNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.DECISION_NODE__ZERO_INPUT_PARAMETERS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateZeroInputParameters", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(decisionNode, context)}),
+					new Object[]{decisionNode}));
 			}
 			return false;
 		}
@@ -264,15 +263,15 @@ public class DecisionNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.DECISION_NODE__INCOMING_OBJECT_ONE_INPUT_PARAMETER,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateIncomingObjectOneInputParameter", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(decisionNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{decisionNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.DECISION_NODE__INCOMING_OBJECT_ONE_INPUT_PARAMETER,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateIncomingObjectOneInputParameter", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(decisionNode, context)}),
+					new Object[]{decisionNode}));
 			}
 			return false;
 		}
@@ -301,15 +300,15 @@ public class DecisionNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.DECISION_NODE__INCOMING_CONTROL_ONE_INPUT_PARAMETER,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateIncomingControlOneInputParameter", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(decisionNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{decisionNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.DECISION_NODE__INCOMING_CONTROL_ONE_INPUT_PARAMETER,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateIncomingControlOneInputParameter", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(decisionNode, context)}),
+					new Object[]{decisionNode}));
 			}
 			return false;
 		}
@@ -337,15 +336,15 @@ public class DecisionNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.DECISION_NODE__TWO_INPUT_PARAMETERS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateTwoInputParameters", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(decisionNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{decisionNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.DECISION_NODE__TWO_INPUT_PARAMETERS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateTwoInputParameters", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(decisionNode, context)}),
+					new Object[]{decisionNode}));
 			}
 			return false;
 		}

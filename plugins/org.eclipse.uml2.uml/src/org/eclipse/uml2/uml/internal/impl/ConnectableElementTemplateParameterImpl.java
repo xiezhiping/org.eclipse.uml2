@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 212765, 418466, 451350
+ *   Kenn Hussey (CEA) - 212765, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -76,12 +76,11 @@ public class ConnectableElementTemplateParameterImpl
 	public ParameterableElement getParameteredElement() {
 		if (parameteredElement != null && parameteredElement.eIsProxy()) {
 			InternalEObject oldParameteredElement = (InternalEObject) parameteredElement;
-			parameteredElement = (ParameterableElement) eResolveProxy(oldParameteredElement);
+			parameteredElement = (ParameterableElement) eResolveProxy(
+				oldParameteredElement);
 			if (parameteredElement != oldParameteredElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-						this,
-						Notification.RESOLVE,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
 						oldParameteredElement, parameteredElement));
 			}
@@ -105,7 +104,8 @@ public class ConnectableElementTemplateParameterImpl
 	 * @generated
 	 */
 	public NotificationChain basicSetParameteredElementGen(
-			ParameterableElement newParameteredElement, NotificationChain msgs) {
+			ParameterableElement newParameteredElement,
+			NotificationChain msgs) {
 		if (newParameteredElement != null
 			&& !(newParameteredElement instanceof ConnectableElement)) {
 			throw new IllegalArgumentException(
@@ -114,8 +114,7 @@ public class ConnectableElementTemplateParameterImpl
 		ParameterableElement oldParameteredElement = parameteredElement;
 		parameteredElement = newParameteredElement;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(
-				this,
+			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET,
 				UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
 				oldParameteredElement, newParameteredElement);
@@ -129,7 +128,8 @@ public class ConnectableElementTemplateParameterImpl
 
 	@Override
 	public NotificationChain basicSetParameteredElement(
-			ParameterableElement newParameteredElement, NotificationChain msgs) {
+			ParameterableElement newParameteredElement,
+			NotificationChain msgs) {
 		msgs = basicSetParameteredElementGen(newParameteredElement, msgs);
 
 		Resource.Internal eInternalResource = eInternalResource();
@@ -152,7 +152,8 @@ public class ConnectableElementTemplateParameterImpl
 	 * @generated
 	 */
 	@Override
-	public void setParameteredElement(ParameterableElement newParameteredElement) {
+	public void setParameteredElement(
+			ParameterableElement newParameteredElement) {
 		if (newParameteredElement != null
 			&& !(newParameteredElement instanceof ConnectableElement)) {
 			throw new IllegalArgumentException(
@@ -172,9 +173,7 @@ public class ConnectableElementTemplateParameterImpl
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-				this,
-				Notification.SET,
+			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
 				newParameteredElement, newParameteredElement));
 	}
@@ -204,8 +203,7 @@ public class ConnectableElementTemplateParameterImpl
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				if (parameteredElement != null)
 					msgs = ((InternalEObject) parameteredElement)
-						.eInverseRemove(
-							this,
+						.eInverseRemove(this,
 							UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
 							ParameterableElement.class, msgs);
 				return basicSetParameteredElement(
@@ -217,8 +215,7 @@ public class ConnectableElementTemplateParameterImpl
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				if (ownedParameteredElement != null)
 					msgs = ((InternalEObject) ownedParameteredElement)
-						.eInverseRemove(
-							this,
+						.eInverseRemove(this,
 							EOPPOSITE_FEATURE_BASE
 								- UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 							null, msgs);
@@ -238,11 +235,11 @@ public class ConnectableElementTemplateParameterImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				return basicSetOwnedDefault(null, msgs);
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
@@ -308,13 +305,13 @@ public class ConnectableElementTemplateParameterImpl
 		switch (featureID) {
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__DEFAULT :
 				setDefault((ParameterableElement) newValue);

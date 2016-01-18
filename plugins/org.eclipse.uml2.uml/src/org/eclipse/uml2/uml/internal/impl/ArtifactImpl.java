@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -222,14 +222,13 @@ public class ArtifactImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
 					ownedElements = new DerivedUnionEObjectEList<Element>(
-						Element.class, this,
-						UMLPackage.ARTIFACT__OWNED_ELEMENT,
+						Element.class, this, UMLPackage.ARTIFACT__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
@@ -327,8 +326,8 @@ public class ArtifactImpl
 		eFlags &= ~FILE_NAME_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.ARTIFACT__FILE_NAME, oldFileName,
-				FILE_NAME_EDEFAULT, oldFileNameESet));
+				UMLPackage.ARTIFACT__FILE_NAME, oldFileName, FILE_NAME_EDEFAULT,
+				oldFileNameESet));
 	}
 
 	/**
@@ -437,8 +436,10 @@ public class ArtifactImpl
 	 * @generated
 	 */
 	public Operation createOwnedOperation(String name,
-			EList<String> ownedParameterNames, EList<Type> ownedParameterTypes) {
-		Operation newOwnedOperation = (Operation) create(UMLPackage.Literals.OPERATION);
+			EList<String> ownedParameterNames,
+			EList<Type> ownedParameterTypes) {
+		Operation newOwnedOperation = (Operation) create(
+			UMLPackage.Literals.OPERATION);
 		getOwnedOperations().add(newOwnedOperation);
 		if (name != null)
 			newOwnedOperation.setName(name);
@@ -456,9 +457,10 @@ public class ArtifactImpl
 		for (int i = 0; i < ownedParameterListSize; i++) {
 			newOwnedOperation.createOwnedParameter(i < ownedParameterNamesSize
 				? (String) ownedParameterNames.get(i)
-				: null, i < ownedParameterTypesSize
-				? (Type) ownedParameterTypes.get(i)
-				: null);
+				: null,
+				i < ownedParameterTypesSize
+					? (Type) ownedParameterTypes.get(i)
+					: null);
 		}
 		return newOwnedOperation;
 	}
@@ -469,9 +471,10 @@ public class ArtifactImpl
 	 * @generated
 	 */
 	public Operation getOwnedOperation(String name,
-			EList<String> ownedParameterNames, EList<Type> ownedParameterTypes) {
-		return getOwnedOperation(name, ownedParameterNames,
-			ownedParameterTypes, false, false);
+			EList<String> ownedParameterNames,
+			EList<Type> ownedParameterTypes) {
+		return getOwnedOperation(name, ownedParameterNames, ownedParameterTypes,
+			false, false);
 	}
 
 	/**
@@ -492,20 +495,19 @@ public class ArtifactImpl
 			int ownedParameterListSize = ownedParameterList.size();
 			if (ownedParameterNames != null
 				&& ownedParameterNames.size() != ownedParameterListSize
-				|| (ownedParameterTypes != null && ownedParameterTypes.size() != ownedParameterListSize))
+				|| (ownedParameterTypes != null
+					&& ownedParameterTypes.size() != ownedParameterListSize))
 				continue ownedOperationLoop;
 			for (int j = 0; j < ownedParameterListSize; j++) {
 				Parameter ownedParameter = ownedParameterList.get(j);
-				if (ownedParameterNames != null
-					&& !(ignoreCase
-						? (ownedParameterNames.get(j))
-							.equalsIgnoreCase(ownedParameter.getName())
-						: ownedParameterNames.get(j).equals(
-							ownedParameter.getName())))
+				if (ownedParameterNames != null && !(ignoreCase
+					? (ownedParameterNames.get(j))
+						.equalsIgnoreCase(ownedParameter.getName())
+					: ownedParameterNames.get(j)
+						.equals(ownedParameter.getName())))
 					continue ownedOperationLoop;
-				if (ownedParameterTypes != null
-					&& !ownedParameterTypes.get(j).equals(
-						ownedParameter.getType()))
+				if (ownedParameterTypes != null && !ownedParameterTypes.get(j)
+					.equals(ownedParameter.getType()))
 					continue ownedOperationLoop;
 			}
 			return ownedOperation;
@@ -534,7 +536,8 @@ public class ArtifactImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property createOwnedAttribute(String name, Type type, EClass eClass) {
+	public Property createOwnedAttribute(String name, Type type,
+			EClass eClass) {
 		Property newOwnedAttribute = (Property) create(eClass);
 		getOwnedAttributes().add(newOwnedAttribute);
 		if (name != null)
@@ -618,61 +621,61 @@ public class ArtifactImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.ARTIFACT__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ARTIFACT__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ARTIFACT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.ARTIFACT__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedRules())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ARTIFACT__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getElementImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ARTIFACT__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPackageImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ARTIFACT__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.ARTIFACT__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.ARTIFACT__TEMPLATE_BINDING :
-				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getTemplateBindings())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ARTIFACT__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.ARTIFACT__COLLABORATION_USE :
-				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getCollaborationUses())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ARTIFACT__GENERALIZATION :
-				return ((InternalEList<?>) getGeneralizations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getGeneralizations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ARTIFACT__POWERTYPE_EXTENT :
-				return ((InternalEList<?>) getPowertypeExtents()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPowertypeExtents())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ARTIFACT__OWNED_USE_CASE :
-				return ((InternalEList<?>) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedUseCases())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ARTIFACT__USE_CASE :
 				return ((InternalEList<?>) getUseCases()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.ARTIFACT__SUBSTITUTION :
-				return ((InternalEList<?>) getSubstitutions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getSubstitutions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ARTIFACT__MANIFESTATION :
-				return ((InternalEList<?>) getManifestations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getManifestations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ARTIFACT__NESTED_ARTIFACT :
-				return ((InternalEList<?>) getNestedArtifacts()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getNestedArtifacts())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ARTIFACT__OWNED_ATTRIBUTE :
-				return ((InternalEList<?>) getOwnedAttributes()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedAttributes())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ARTIFACT__OWNED_OPERATION :
-				return ((InternalEList<?>) getOwnedOperations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedOperations())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -802,13 +805,13 @@ public class ArtifactImpl
 		switch (featureID) {
 			case UMLPackage.ARTIFACT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.ARTIFACT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.ARTIFACT__NAME :
 				setName((String) newValue);
@@ -821,18 +824,18 @@ public class ArtifactImpl
 				return;
 			case UMLPackage.ARTIFACT__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getOwnedRules()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.ARTIFACT__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll(
-					(Collection<? extends ElementImport>) newValue);
+				getElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.ARTIFACT__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll(
-					(Collection<? extends PackageImport>) newValue);
+				getPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.ARTIFACT__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -848,31 +851,31 @@ public class ArtifactImpl
 				return;
 			case UMLPackage.ARTIFACT__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll(
-					(Collection<? extends TemplateBinding>) newValue);
+				getTemplateBindings()
+					.addAll((Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.ARTIFACT__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.ARTIFACT__COLLABORATION_USE :
 				getCollaborationUses().clear();
-				getCollaborationUses().addAll(
-					(Collection<? extends CollaborationUse>) newValue);
+				getCollaborationUses()
+					.addAll((Collection<? extends CollaborationUse>) newValue);
 				return;
 			case UMLPackage.ARTIFACT__GENERAL :
 				getGenerals().clear();
-				getGenerals().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getGenerals()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.ARTIFACT__GENERALIZATION :
 				getGeneralizations().clear();
-				getGeneralizations().addAll(
-					(Collection<? extends Generalization>) newValue);
+				getGeneralizations()
+					.addAll((Collection<? extends Generalization>) newValue);
 				return;
 			case UMLPackage.ARTIFACT__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll(
-					(Collection<? extends GeneralizationSet>) newValue);
+				getPowertypeExtents()
+					.addAll((Collection<? extends GeneralizationSet>) newValue);
 				return;
 			case UMLPackage.ARTIFACT__IS_ABSTRACT :
 				setIsAbstract((Boolean) newValue);
@@ -882,8 +885,8 @@ public class ArtifactImpl
 				return;
 			case UMLPackage.ARTIFACT__OWNED_USE_CASE :
 				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll(
-					(Collection<? extends UseCase>) newValue);
+				getOwnedUseCases()
+					.addAll((Collection<? extends UseCase>) newValue);
 				return;
 			case UMLPackage.ARTIFACT__USE_CASE :
 				getUseCases().clear();
@@ -891,39 +894,39 @@ public class ArtifactImpl
 				return;
 			case UMLPackage.ARTIFACT__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
-				getRedefinedClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getRedefinedClassifiers()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.ARTIFACT__REPRESENTATION :
 				setRepresentation((CollaborationUse) newValue);
 				return;
 			case UMLPackage.ARTIFACT__SUBSTITUTION :
 				getSubstitutions().clear();
-				getSubstitutions().addAll(
-					(Collection<? extends Substitution>) newValue);
+				getSubstitutions()
+					.addAll((Collection<? extends Substitution>) newValue);
 				return;
 			case UMLPackage.ARTIFACT__FILE_NAME :
 				setFileName((String) newValue);
 				return;
 			case UMLPackage.ARTIFACT__MANIFESTATION :
 				getManifestations().clear();
-				getManifestations().addAll(
-					(Collection<? extends Manifestation>) newValue);
+				getManifestations()
+					.addAll((Collection<? extends Manifestation>) newValue);
 				return;
 			case UMLPackage.ARTIFACT__NESTED_ARTIFACT :
 				getNestedArtifacts().clear();
-				getNestedArtifacts().addAll(
-					(Collection<? extends Artifact>) newValue);
+				getNestedArtifacts()
+					.addAll((Collection<? extends Artifact>) newValue);
 				return;
 			case UMLPackage.ARTIFACT__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll(
-					(Collection<? extends Property>) newValue);
+				getOwnedAttributes()
+					.addAll((Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.ARTIFACT__OWNED_OPERATION :
 				getOwnedOperations().clear();
-				getOwnedOperations().addAll(
-					(Collection<? extends Operation>) newValue);
+				getOwnedOperations()
+					.addAll((Collection<? extends Operation>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1105,9 +1108,11 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.ARTIFACT__IS_ABSTRACT :
-				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
+				return ((eFlags
+					& IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.ARTIFACT__IS_FINAL_SPECIALIZATION :
-				return ((eFlags & IS_FINAL_SPECIALIZATION_EFLAG) != 0) != IS_FINAL_SPECIALIZATION_EDEFAULT;
+				return ((eFlags
+					& IS_FINAL_SPECIALIZATION_EFLAG) != 0) != IS_FINAL_SPECIALIZATION_EDEFAULT;
 			case UMLPackage.ARTIFACT__OWNED_USE_CASE :
 				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UMLPackage.ARTIFACT__USE_CASE :
@@ -1190,7 +1195,8 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.ARTIFACT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.ARTIFACT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.ARTIFACT___GET_STEREOTYPE_APPLICATIONS :
@@ -1198,7 +1204,8 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.ARTIFACT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.ARTIFACT___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1287,13 +1294,13 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT___GET_OWNED_MEMBERS :
 				return getOwnedMembers();
 			case UMLPackage.ARTIFACT___EXCLUDE_COLLISIONS__ELIST :
-				return excludeCollisions((EList<PackageableElement>) arguments
-					.get(0));
+				return excludeCollisions(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.ARTIFACT___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
 				return getNamesOfMember((NamedElement) arguments.get(0));
 			case UMLPackage.ARTIFACT___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
+				return importMembers(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.ARTIFACT___GET_IMPORTED_MEMBERS :
 				return getImportedMembers();
 			case UMLPackage.ARTIFACT___MEMBERS_ARE_DISTINGUISHABLE :
@@ -1313,10 +1320,11 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.ARTIFACT___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.ARTIFACT___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.ARTIFACT___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.ARTIFACT___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
@@ -1514,7 +1522,8 @@ public class ArtifactImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] ATTRIBUTE_ESUBSETS = new int[]{UMLPackage.ARTIFACT__OWNED_ATTRIBUTE};
+	protected static final int[] ATTRIBUTE_ESUBSETS = new int[]{
+		UMLPackage.ARTIFACT__OWNED_ATTRIBUTE};
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getFeatures() <em>Feature</em>}' reference list.
@@ -1534,7 +1543,8 @@ public class ArtifactImpl
 	 */
 	public Manifestation createManifestation(String name,
 			PackageableElement utilizedElement) {
-		Manifestation newManifestation = (Manifestation) create(UMLPackage.Literals.MANIFESTATION);
+		Manifestation newManifestation = (Manifestation) create(
+			UMLPackage.Literals.MANIFESTATION);
 		getManifestations().add(newManifestation);
 		if (name != null)
 			newManifestation.setName(name);

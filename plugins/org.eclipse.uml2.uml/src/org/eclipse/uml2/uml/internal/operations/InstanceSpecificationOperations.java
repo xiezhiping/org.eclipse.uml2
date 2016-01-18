@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -72,15 +72,16 @@ public class InstanceSpecificationOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.INSTANCE_SPECIFICATION__DEFINING_FEATURE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateDefiningFeature", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(instanceSpecification, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{instanceSpecification}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.INSTANCE_SPECIFICATION__DEFINING_FEATURE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateDefiningFeature", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(instanceSpecification,
+									context)}),
+					new Object[]{instanceSpecification}));
 			}
 			return false;
 		}
@@ -108,15 +109,16 @@ public class InstanceSpecificationOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.INSTANCE_SPECIFICATION__STRUCTURAL_FEATURE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateStructuralFeature", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(instanceSpecification, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{instanceSpecification}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.INSTANCE_SPECIFICATION__STRUCTURAL_FEATURE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateStructuralFeature", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(instanceSpecification,
+									context)}),
+					new Object[]{instanceSpecification}));
 			}
 			return false;
 		}
@@ -144,15 +146,16 @@ public class InstanceSpecificationOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.INSTANCE_SPECIFICATION__DEPLOYMENT_TARGET,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateDeploymentTarget", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(instanceSpecification, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{instanceSpecification}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.INSTANCE_SPECIFICATION__DEPLOYMENT_TARGET,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateDeploymentTarget", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(instanceSpecification,
+									context)}),
+					new Object[]{instanceSpecification}));
 			}
 			return false;
 		}
@@ -180,15 +183,16 @@ public class InstanceSpecificationOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.INSTANCE_SPECIFICATION__DEPLOYMENT_ARTIFACT,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateDeploymentArtifact", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(instanceSpecification, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{instanceSpecification}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.INSTANCE_SPECIFICATION__DEPLOYMENT_ARTIFACT,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateDeploymentArtifact", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(instanceSpecification,
+									context)}),
+					new Object[]{instanceSpecification}));
 			}
 			return false;
 		}

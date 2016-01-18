@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -160,8 +160,8 @@ public class InteractionUseImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -228,14 +228,16 @@ public class InteractionUseImpl
 			returnValue = (ValueSpecification) eResolveProxy(oldReturnValue);
 			if (returnValue != oldReturnValue) {
 				InternalEObject newReturnValue = (InternalEObject) returnValue;
-				NotificationChain msgs = oldReturnValue.eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.INTERACTION_USE__RETURN_VALUE, null, null);
+				NotificationChain msgs = oldReturnValue
+					.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.INTERACTION_USE__RETURN_VALUE,
+						null, null);
 				if (newReturnValue.eInternalContainer() == null) {
 					msgs = newReturnValue.eInverseAdd(this,
 						EOPPOSITE_FEATURE_BASE
-							- UMLPackage.INTERACTION_USE__RETURN_VALUE, null,
-						msgs);
+							- UMLPackage.INTERACTION_USE__RETURN_VALUE,
+						null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -287,13 +289,17 @@ public class InteractionUseImpl
 		if (newReturnValue != returnValue) {
 			NotificationChain msgs = null;
 			if (returnValue != null)
-				msgs = ((InternalEObject) returnValue).eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.INTERACTION_USE__RETURN_VALUE, null, msgs);
+				msgs = ((InternalEObject) returnValue)
+					.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.INTERACTION_USE__RETURN_VALUE,
+						null, msgs);
 			if (newReturnValue != null)
-				msgs = ((InternalEObject) newReturnValue).eInverseAdd(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.INTERACTION_USE__RETURN_VALUE, null, msgs);
+				msgs = ((InternalEObject) newReturnValue)
+					.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.INTERACTION_USE__RETURN_VALUE,
+						null, msgs);
 			msgs = basicSetReturnValue(newReturnValue, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -327,7 +333,8 @@ public class InteractionUseImpl
 	public Property getReturnValueRecipient() {
 		if (returnValueRecipient != null && returnValueRecipient.eIsProxy()) {
 			InternalEObject oldReturnValueRecipient = (InternalEObject) returnValueRecipient;
-			returnValueRecipient = (Property) eResolveProxy(oldReturnValueRecipient);
+			returnValueRecipient = (Property) eResolveProxy(
+				oldReturnValueRecipient);
 			if (returnValueRecipient != oldReturnValueRecipient) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -506,8 +513,8 @@ public class InteractionUseImpl
 	 */
 	public boolean validateArgumentsCorrespondToParameters(
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return InteractionUseOperations
-			.validateArgumentsCorrespondToParameters(this, diagnostics, context);
+		return InteractionUseOperations.validateArgumentsCorrespondToParameters(
+			this, diagnostics, context);
 	}
 
 	/**
@@ -540,8 +547,8 @@ public class InteractionUseImpl
 	 */
 	public boolean validateReturnValueRecipientCoverage(
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return InteractionUseOperations.validateReturnValueRecipientCoverage(
-			this, diagnostics, context);
+		return InteractionUseOperations
+			.validateReturnValueRecipientCoverage(this, diagnostics, context);
 	}
 
 	/**
@@ -554,11 +561,11 @@ public class InteractionUseImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.INTERACTION_USE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION_USE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION_USE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INTERACTION_USE__COVERED :
@@ -569,14 +576,14 @@ public class InteractionUseImpl
 			case UMLPackage.INTERACTION_USE__ENCLOSING_INTERACTION :
 				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.INTERACTION_USE__GENERAL_ORDERING :
-				return ((InternalEList<?>) getGeneralOrderings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getGeneralOrderings())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION_USE__ACTUAL_GATE :
-				return ((InternalEList<?>) getActualGates()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getActualGates())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION_USE__ARGUMENT :
-				return ((InternalEList<?>) getArguments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getArguments()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.INTERACTION_USE__RETURN_VALUE :
 				return basicSetReturnValue(null, msgs);
 		}
@@ -660,13 +667,13 @@ public class InteractionUseImpl
 		switch (featureID) {
 			case UMLPackage.INTERACTION_USE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.INTERACTION_USE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.INTERACTION_USE__NAME :
 				setName((String) newValue);
@@ -689,8 +696,8 @@ public class InteractionUseImpl
 				return;
 			case UMLPackage.INTERACTION_USE__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
+				getGeneralOrderings()
+					.addAll((Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.INTERACTION_USE__ACTUAL_GATE :
 				getActualGates().clear();
@@ -877,7 +884,8 @@ public class InteractionUseImpl
 			case UMLPackage.INTERACTION_USE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.INTERACTION_USE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.INTERACTION_USE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.INTERACTION_USE___GET_STEREOTYPE_APPLICATIONS :
@@ -885,7 +893,8 @@ public class InteractionUseImpl
 			case UMLPackage.INTERACTION_USE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.INTERACTION_USE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.INTERACTION_USE___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));

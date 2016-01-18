@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -78,15 +78,15 @@ public class ReadLinkActionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.READ_LINK_ACTION__ONE_OPEN_END,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOneOpenEnd", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(readLinkAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{readLinkAction}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.READ_LINK_ACTION__ONE_OPEN_END,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateOneOpenEnd", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(readLinkAction, context)}),
+					new Object[]{readLinkAction}));
 			}
 			return false;
 		}
@@ -105,24 +105,23 @@ public class ReadLinkActionOperations
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateTypeAndOrdering(
-			ReadLinkAction readLinkAction, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
+	public static boolean validateTypeAndOrdering(ReadLinkAction readLinkAction,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.READ_LINK_ACTION__TYPE_AND_ORDERING,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateTypeAndOrdering", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(readLinkAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{readLinkAction}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.READ_LINK_ACTION__TYPE_AND_ORDERING,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateTypeAndOrdering", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(readLinkAction, context)}),
+					new Object[]{readLinkAction}));
 			}
 			return false;
 		}
@@ -150,15 +149,15 @@ public class ReadLinkActionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.READ_LINK_ACTION__COMPATIBLE_MULTIPLICITY,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateCompatibleMultiplicity", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(readLinkAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{readLinkAction}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.READ_LINK_ACTION__COMPATIBLE_MULTIPLICITY,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateCompatibleMultiplicity", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(readLinkAction, context)}),
+					new Object[]{readLinkAction}));
 			}
 			return false;
 		}
@@ -186,15 +185,15 @@ public class ReadLinkActionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.READ_LINK_ACTION__NAVIGABLE_OPEN_END,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNavigableOpenEnd", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(readLinkAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{readLinkAction}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.READ_LINK_ACTION__NAVIGABLE_OPEN_END,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateNavigableOpenEnd", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(readLinkAction, context)}),
+					new Object[]{readLinkAction}));
 			}
 			return false;
 		}
@@ -255,15 +254,15 @@ public class ReadLinkActionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.READ_LINK_ACTION__VISIBILITY,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateVisibility", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(readLinkAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{readLinkAction}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.READ_LINK_ACTION__VISIBILITY,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateVisibility", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(readLinkAction, context)}),
+					new Object[]{readLinkAction}));
 			}
 			return false;
 		}

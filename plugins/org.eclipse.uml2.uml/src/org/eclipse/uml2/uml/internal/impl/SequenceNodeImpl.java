@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -221,11 +221,11 @@ public class SequenceNodeImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.SEQUENCE_NODE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.SEQUENCE_NODE__IN_INTERRUPTIBLE_REGION :
@@ -234,14 +234,14 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__IN_STRUCTURED_NODE :
 				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.SEQUENCE_NODE__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.SEQUENCE_NODE__OUTGOING :
-				return ((InternalEList<?>) getOutgoings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.SEQUENCE_NODE__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getInPartitions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__HANDLER :
 				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
@@ -252,14 +252,14 @@ public class SequenceNodeImpl
 				return ((InternalEList<?>) getLocalPreconditions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedRules())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getElementImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPackageImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__EDGE :
 				return ((InternalEList<?>) getEdges()).basicRemove(otherEnd,
 					msgs);
@@ -270,14 +270,14 @@ public class SequenceNodeImpl
 				return ((InternalEList<?>) getStructuredNodeOutputs())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__VARIABLE :
-				return ((InternalEList<?>) getVariables()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getVariables()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.SEQUENCE_NODE__NODE :
 				return ((InternalEList<?>) getNodes()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.SEQUENCE_NODE__EXECUTABLE_NODE :
-				return ((InternalEList<?>) getExecutableNodes()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getExecutableNodes())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -413,13 +413,13 @@ public class SequenceNodeImpl
 		switch (featureID) {
 			case UMLPackage.SEQUENCE_NODE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__NAME :
 				setName((String) newValue);
@@ -438,65 +438,64 @@ public class SequenceNodeImpl
 				return;
 			case UMLPackage.SEQUENCE_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions()
-					.addAll(
-						(Collection<? extends InterruptibleActivityRegion>) newValue);
+				getInInterruptibleRegions().addAll(
+					(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getIncomings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getOutgoings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll(
-					(Collection<? extends ActivityNode>) newValue);
+				getRedefinedNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
+				getInPartitions()
+					.addAll((Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll(
-					(Collection<? extends ExceptionHandler>) newValue);
+				getHandlers()
+					.addAll((Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__IS_LOCALLY_REENTRANT :
 				setIsLocallyReentrant((Boolean) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPostconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPreconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getOwnedRules()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll(
-					(Collection<? extends ElementImport>) newValue);
+				getElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll(
-					(Collection<? extends PackageImport>) newValue);
+				getPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__IN_ACTIVITY :
 				setInActivity((Activity) newValue);
@@ -511,13 +510,13 @@ public class SequenceNodeImpl
 				return;
 			case UMLPackage.SEQUENCE_NODE__STRUCTURED_NODE_INPUT :
 				getStructuredNodeInputs().clear();
-				getStructuredNodeInputs().addAll(
-					(Collection<? extends InputPin>) newValue);
+				getStructuredNodeInputs()
+					.addAll((Collection<? extends InputPin>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__STRUCTURED_NODE_OUTPUT :
 				getStructuredNodeOutputs().clear();
-				getStructuredNodeOutputs().addAll(
-					(Collection<? extends OutputPin>) newValue);
+				getStructuredNodeOutputs()
+					.addAll((Collection<? extends OutputPin>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__VARIABLE :
 				getVariables().clear();
@@ -531,8 +530,8 @@ public class SequenceNodeImpl
 				return;
 			case UMLPackage.SEQUENCE_NODE__EXECUTABLE_NODE :
 				getExecutableNodes().clear();
-				getExecutableNodes().addAll(
-					(Collection<? extends ExecutableNode>) newValue);
+				getExecutableNodes()
+					.addAll((Collection<? extends ExecutableNode>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -694,7 +693,8 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__INPUT :
 				return isSetInputs();
 			case UMLPackage.SEQUENCE_NODE__IS_LOCALLY_REENTRANT :
-				return ((eFlags & IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
+				return ((eFlags
+					& IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
 			case UMLPackage.SEQUENCE_NODE__LOCAL_POSTCONDITION :
 				return localPostconditions != null
 					&& !localPostconditions.isEmpty();
@@ -728,7 +728,8 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__EDGE :
 				return edges != null && !edges.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__MUST_ISOLATE :
-				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
+				return ((eFlags
+					& MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UMLPackage.SEQUENCE_NODE__STRUCTURED_NODE_INPUT :
 				return structuredNodeInputs != null
 					&& !structuredNodeInputs.isEmpty();

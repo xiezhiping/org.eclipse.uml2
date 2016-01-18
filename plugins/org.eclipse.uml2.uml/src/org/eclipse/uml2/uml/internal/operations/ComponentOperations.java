@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -86,15 +86,15 @@ public class ComponentOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.COMPONENT__NO_NESTED_CLASSIFIERS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoNestedClassifiers", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(component, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{component}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.COMPONENT__NO_NESTED_CLASSIFIERS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateNoNestedClassifiers", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(component, context)}),
+					new Object[]{component}));
 			}
 			return false;
 		}
@@ -121,15 +121,15 @@ public class ComponentOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.COMPONENT__NO_PACKAGED_ELEMENTS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoPackagedElements", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(component, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{component}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.COMPONENT__NO_PACKAGED_ELEMENTS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateNoPackagedElements", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(component, context)}),
+					new Object[]{component}));
 			}
 			return false;
 		}
@@ -243,7 +243,8 @@ public class ComponentOperations
 					.getRealizingClassifiers()) {
 
 					if (realizingClassifier != null) {
-						allUsedInterfaces(realizingClassifier, false, requireds);
+						allUsedInterfaces(realizingClassifier, false,
+							requireds);
 					}
 				}
 			}
@@ -262,8 +263,9 @@ public class ComponentOperations
 		for (EncapsulatedClassifier c : classifiers) {
 
 			for (Port ownedPort : c.getOwnedPorts()) {
-				requireds.addAll(((InternalEList<Interface>) ownedPort
-					.getRequireds()).basicList());
+				requireds.addAll(
+					((InternalEList<Interface>) ownedPort.getRequireds())
+						.basicList());
 			}
 		}
 
@@ -331,8 +333,9 @@ public class ComponentOperations
 		for (EncapsulatedClassifier c : classifiers) {
 
 			for (Port ownedPort : c.getOwnedPorts()) {
-				provideds.addAll(((InternalEList<Interface>) ownedPort
-					.getProvideds()).basicList());
+				provideds.addAll(
+					((InternalEList<Interface>) ownedPort.getProvideds())
+						.basicList());
 			}
 		}
 

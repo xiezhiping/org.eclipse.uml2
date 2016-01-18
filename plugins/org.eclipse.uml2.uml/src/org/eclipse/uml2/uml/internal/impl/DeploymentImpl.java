@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -119,8 +119,8 @@ public class DeploymentImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -144,8 +144,8 @@ public class DeploymentImpl
 	public EList<NamedElement> getSuppliers() {
 		if (suppliers == null) {
 			suppliers = new SubsetSupersetEObjectResolvingEList<NamedElement>(
-				NamedElement.class, this, UMLPackage.DEPLOYMENT__SUPPLIER,
-				null, SUPPLIER_ESUBSETS);
+				NamedElement.class, this, UMLPackage.DEPLOYMENT__SUPPLIER, null,
+				SUPPLIER_ESUBSETS);
 		}
 		return suppliers;
 	}
@@ -201,7 +201,8 @@ public class DeploymentImpl
 	 * @generated
 	 */
 	public DeploymentSpecification createConfiguration(String name) {
-		DeploymentSpecification newConfiguration = (DeploymentSpecification) create(UMLPackage.Literals.DEPLOYMENT_SPECIFICATION);
+		DeploymentSpecification newConfiguration = (DeploymentSpecification) create(
+			UMLPackage.Literals.DEPLOYMENT_SPECIFICATION);
 		getConfigurations().add(newConfiguration);
 		if (name != null)
 			newConfiguration.setName(name);
@@ -286,7 +287,8 @@ public class DeploymentImpl
 	 */
 	public void setLocation(DeploymentTarget newLocation) {
 		if (newLocation != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.DEPLOYMENT__LOCATION && newLocation != null)) {
+			|| (eContainerFeatureID() != UMLPackage.DEPLOYMENT__LOCATION
+				&& newLocation != null)) {
 			if (EcoreUtil.isAncestor(this, newLocation))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -325,10 +327,10 @@ public class DeploymentImpl
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
 				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
+					msgs = ((InternalEObject) templateParameter).eInverseRemove(
+						this,
+						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+						TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.DEPLOYMENT__CONFIGURATION :
@@ -352,11 +354,11 @@ public class DeploymentImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
@@ -364,8 +366,8 @@ public class DeploymentImpl
 			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.DEPLOYMENT__CONFIGURATION :
-				return ((InternalEList<?>) getConfigurations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getConfigurations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT__LOCATION :
 				return basicSetLocation(null, msgs);
 		}
@@ -468,13 +470,13 @@ public class DeploymentImpl
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT__NAME :
 				setName((String) newValue);
@@ -493,13 +495,13 @@ public class DeploymentImpl
 				return;
 			case UMLPackage.DEPLOYMENT__CLIENT :
 				getClients().clear();
-				getClients().addAll(
-					(Collection<? extends NamedElement>) newValue);
+				getClients()
+					.addAll((Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT__SUPPLIER :
 				getSuppliers().clear();
-				getSuppliers().addAll(
-					(Collection<? extends NamedElement>) newValue);
+				getSuppliers()
+					.addAll((Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT__CONFIGURATION :
 				getConfigurations().clear();
@@ -508,8 +510,8 @@ public class DeploymentImpl
 				return;
 			case UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT :
 				getDeployedArtifacts().clear();
-				getDeployedArtifacts().addAll(
-					(Collection<? extends DeployedArtifact>) newValue);
+				getDeployedArtifacts()
+					.addAll((Collection<? extends DeployedArtifact>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT__LOCATION :
 				setLocation((DeploymentTarget) newValue);
@@ -669,7 +671,8 @@ public class DeploymentImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] SUPPLIER_ESUBSETS = new int[]{UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT};
+	protected static final int[] SUPPLIER_ESUBSETS = new int[]{
+		UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT};
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getClients() <em>Client</em>}' reference list.
@@ -679,7 +682,8 @@ public class DeploymentImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] CLIENT_ESUBSETS = new int[]{UMLPackage.DEPLOYMENT__LOCATION};
+	protected static final int[] CLIENT_ESUBSETS = new int[]{
+		UMLPackage.DEPLOYMENT__LOCATION};
 
 	/**
 	 * The array of superset feature identifiers for the '{@link #getDeployedArtifacts() <em>Deployed Artifact</em>}' reference list.
@@ -689,7 +693,8 @@ public class DeploymentImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] DEPLOYED_ARTIFACT_ESUPERSETS = new int[]{UMLPackage.DEPLOYMENT__SUPPLIER};
+	protected static final int[] DEPLOYED_ARTIFACT_ESUPERSETS = new int[]{
+		UMLPackage.DEPLOYMENT__SUPPLIER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -705,8 +710,8 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DeployedArtifact getDeployedArtifact(String name,
-			boolean ignoreCase, EClass eClass) {
+	public DeployedArtifact getDeployedArtifact(String name, boolean ignoreCase,
+			EClass eClass) {
 		deployedArtifactLoop : for (DeployedArtifact deployedArtifact : getDeployedArtifacts()) {
 			if (eClass != null && !eClass.isInstance(deployedArtifact))
 				continue deployedArtifactLoop;

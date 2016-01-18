@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -171,7 +171,8 @@ public class ProtocolTransitionImpl
 			if (guard != oldGuard) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						UMLPackage.PROTOCOL_TRANSITION__GUARD, oldGuard, guard));
+						UMLPackage.PROTOCOL_TRANSITION__GUARD, oldGuard,
+						guard));
 			}
 		}
 		return guard;
@@ -325,7 +326,8 @@ public class ProtocolTransitionImpl
 	 * The array of superset feature identifiers for the '{@link #getReferreds() <em>Referred</em>}' reference list.
 	 * @see #getReferreds()
 	 */
-	protected static final int[] REFERRED_ESUPERSETS = new int[]{UMLPackage.PROTOCOL_TRANSITION__TRIGGER};
+	protected static final int[] REFERRED_ESUPERSETS = new int[]{
+		UMLPackage.PROTOCOL_TRANSITION__TRIGGER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -337,9 +339,8 @@ public class ProtocolTransitionImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Operation> referreds = (EList<Operation>) cache.get(
-				eResource, this,
-				UMLPackage.Literals.PROTOCOL_TRANSITION__REFERRED);
+			EList<Operation> referreds = (EList<Operation>) cache.get(eResource,
+				this, UMLPackage.Literals.PROTOCOL_TRANSITION__REFERRED);
 			if (referreds == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.PROTOCOL_TRANSITION__REFERRED,
@@ -358,8 +359,8 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operation getReferred(String name,
-			EList<String> ownedParameterNames, EList<Type> ownedParameterTypes) {
+	public Operation getReferred(String name, EList<String> ownedParameterNames,
+			EList<Type> ownedParameterTypes) {
 		return getReferred(name, ownedParameterNames, ownedParameterTypes,
 			false);
 	}
@@ -369,9 +370,8 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operation getReferred(String name,
-			EList<String> ownedParameterNames, EList<Type> ownedParameterTypes,
-			boolean ignoreCase) {
+	public Operation getReferred(String name, EList<String> ownedParameterNames,
+			EList<Type> ownedParameterTypes, boolean ignoreCase) {
 		referredLoop : for (Operation referred : getReferreds()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(referred.getName())
@@ -381,20 +381,19 @@ public class ProtocolTransitionImpl
 			int ownedParameterListSize = ownedParameterList.size();
 			if (ownedParameterNames != null
 				&& ownedParameterNames.size() != ownedParameterListSize
-				|| (ownedParameterTypes != null && ownedParameterTypes.size() != ownedParameterListSize))
+				|| (ownedParameterTypes != null
+					&& ownedParameterTypes.size() != ownedParameterListSize))
 				continue referredLoop;
 			for (int j = 0; j < ownedParameterListSize; j++) {
 				Parameter ownedParameter = ownedParameterList.get(j);
-				if (ownedParameterNames != null
-					&& !(ignoreCase
-						? (ownedParameterNames.get(j))
-							.equalsIgnoreCase(ownedParameter.getName())
-						: ownedParameterNames.get(j).equals(
-							ownedParameter.getName())))
+				if (ownedParameterNames != null && !(ignoreCase
+					? (ownedParameterNames.get(j))
+						.equalsIgnoreCase(ownedParameter.getName())
+					: ownedParameterNames.get(j)
+						.equals(ownedParameter.getName())))
 					continue referredLoop;
-				if (ownedParameterTypes != null
-					&& !ownedParameterTypes.get(j).equals(
-						ownedParameter.getType()))
+				if (ownedParameterTypes != null && !ownedParameterTypes.get(j)
+					.equals(ownedParameter.getType()))
 					continue referredLoop;
 			}
 			return referred;
@@ -525,22 +524,22 @@ public class ProtocolTransitionImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PROTOCOL_TRANSITION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedRules())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getElementImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPackageImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__EFFECT :
 				return basicSetEffect(null, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
@@ -657,13 +656,13 @@ public class ProtocolTransitionImpl
 		switch (featureID) {
 			case UMLPackage.PROTOCOL_TRANSITION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__NAME :
 				setName((String) newValue);
@@ -676,18 +675,18 @@ public class ProtocolTransitionImpl
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getOwnedRules()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll(
-					(Collection<? extends ElementImport>) newValue);
+				getElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll(
-					(Collection<? extends PackageImport>) newValue);
+				getPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -927,7 +926,8 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.PROTOCOL_TRANSITION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.PROTOCOL_TRANSITION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.PROTOCOL_TRANSITION___GET_STEREOTYPE_APPLICATIONS :
@@ -935,7 +935,8 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.PROTOCOL_TRANSITION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.PROTOCOL_TRANSITION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1024,13 +1025,13 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION___GET_OWNED_MEMBERS :
 				return getOwnedMembers();
 			case UMLPackage.PROTOCOL_TRANSITION___EXCLUDE_COLLISIONS__ELIST :
-				return excludeCollisions((EList<PackageableElement>) arguments
-					.get(0));
+				return excludeCollisions(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.PROTOCOL_TRANSITION___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
 				return getNamesOfMember((NamedElement) arguments.get(0));
 			case UMLPackage.PROTOCOL_TRANSITION___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
+				return importMembers(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.PROTOCOL_TRANSITION___GET_IMPORTED_MEMBERS :
 				return getImportedMembers();
 			case UMLPackage.PROTOCOL_TRANSITION___MEMBERS_ARE_DISTINGUISHABLE :
@@ -1050,8 +1051,8 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.PROTOCOL_TRANSITION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_STATE_IS_EXTERNAL__DIAGNOSTICCHAIN_MAP :
 				return validateStateIsExternal(
 					(DiagnosticChain) arguments.get(0),

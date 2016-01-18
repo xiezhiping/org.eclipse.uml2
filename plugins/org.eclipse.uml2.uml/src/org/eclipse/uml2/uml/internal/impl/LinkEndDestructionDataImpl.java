@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -121,7 +121,8 @@ public class LinkEndDestructionDataImpl
 	 * @generated
 	 */
 	public void setIsDestroyDuplicates(boolean newIsDestroyDuplicates) {
-		boolean oldIsDestroyDuplicates = (eFlags & IS_DESTROY_DUPLICATES_EFLAG) != 0;
+		boolean oldIsDestroyDuplicates = (eFlags
+			& IS_DESTROY_DUPLICATES_EFLAG) != 0;
 		if (newIsDestroyDuplicates)
 			eFlags |= IS_DESTROY_DUPLICATES_EFLAG;
 		else
@@ -255,21 +256,21 @@ public class LinkEndDestructionDataImpl
 		switch (featureID) {
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__END :
 				setEnd((Property) newValue);
 				return;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__QUALIFIER :
 				getQualifiers().clear();
-				getQualifiers().addAll(
-					(Collection<? extends QualifierValue>) newValue);
+				getQualifiers()
+					.addAll((Collection<? extends QualifierValue>) newValue);
 				return;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__VALUE :
 				setValue((InputPin) newValue);
@@ -342,7 +343,8 @@ public class LinkEndDestructionDataImpl
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__DESTROY_AT :
 				return destroyAt != null;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__IS_DESTROY_DUPLICATES :
-				return ((eFlags & IS_DESTROY_DUPLICATES_EFLAG) != 0) != IS_DESTROY_DUPLICATES_EDEFAULT;
+				return ((eFlags
+					& IS_DESTROY_DUPLICATES_EFLAG) != 0) != IS_DESTROY_DUPLICATES_EDEFAULT;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -404,7 +406,8 @@ public class LinkEndDestructionDataImpl
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_STEREOTYPE_APPLICATIONS :
@@ -412,7 +415,8 @@ public class LinkEndDestructionDataImpl
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));

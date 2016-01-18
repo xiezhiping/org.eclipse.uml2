@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -162,7 +162,8 @@ public interface Profile
 	 * @generated
 	 */
 	PackageImport getMetamodelReference(
-			org.eclipse.uml2.uml.Package importedPackage, boolean createOnDemand);
+			org.eclipse.uml2.uml.Package importedPackage,
+			boolean createOnDemand);
 
 	/**
 	 * <!-- begin-user-doc -->

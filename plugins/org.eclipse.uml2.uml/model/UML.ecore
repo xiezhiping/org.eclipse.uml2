@@ -2212,6 +2212,17 @@
         </eAnnotations>
       </eParameters>
     </eOperations>
+    <eOperations name="applyProfiles" ordered="false" upperBound="-1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Applies the current definitions of the specified profiles to this package and automatically applies required stereotypes in the profiles to elements within this package's namespace hieararchy. If different definitions are already applied, automatically migrates any associated stereotype values on a &quot;best effort&quot; basis (matching classifiers and structural features by name)."/>
+      </eAnnotations>
+      <eParameters name="profiles" ordered="false" lowerBound="1" upperBound="-1"
+          eType="#//Profile">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The profiles to apply."/>
+        </eAnnotations>
+      </eParameters>
+    </eOperations>
     <eOperations name="allApplicableStereotypes" ordered="false" upperBound="-1" eType="#//Stereotype">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query allApplicableStereotypes() returns all the directly or indirectly owned stereotypes, including stereotypes contained in sub-profiles.&#xA;result = (let ownedPackages : Bag(Package) = ownedMember->select(oclIsKindOf(Package))->collect(oclAsType(Package)) in&#xD;&#xA; ownedStereotype->union(ownedPackages.allApplicableStereotypes())->flatten()->asSet()&#xD;&#xA;)&#xA;&lt;p>From package UML::Packages.&lt;/p>"/>

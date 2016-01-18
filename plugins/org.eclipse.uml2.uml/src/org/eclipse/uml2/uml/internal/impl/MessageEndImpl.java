@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -172,7 +172,8 @@ public abstract class MessageEndImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<InteractionFragment> result = (EList<InteractionFragment>) cache
-				.get(this, UMLPackage.Literals.MESSAGE_END___ENCLOSING_FRAGMENT);
+				.get(this,
+					UMLPackage.Literals.MESSAGE_END___ENCLOSING_FRAGMENT);
 			if (result == null) {
 				cache.put(this,
 					UMLPackage.Literals.MESSAGE_END___ENCLOSING_FRAGMENT,
@@ -236,13 +237,13 @@ public abstract class MessageEndImpl
 		switch (featureID) {
 			case UMLPackage.MESSAGE_END__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.MESSAGE_END__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.MESSAGE_END__NAME :
 				setName((String) newValue);
@@ -383,7 +384,8 @@ public abstract class MessageEndImpl
 			case UMLPackage.MESSAGE_END___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.MESSAGE_END___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.MESSAGE_END___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.MESSAGE_END___GET_STEREOTYPE_APPLICATIONS :
@@ -391,7 +393,8 @@ public abstract class MessageEndImpl
 			case UMLPackage.MESSAGE_END___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.MESSAGE_END___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.MESSAGE_END___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));

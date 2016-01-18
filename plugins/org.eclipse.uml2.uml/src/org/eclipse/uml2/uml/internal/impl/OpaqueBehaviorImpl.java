@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -339,13 +339,13 @@ public class OpaqueBehaviorImpl
 		switch (featureID) {
 			case UMLPackage.OPAQUE_BEHAVIOR__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__NAME :
 				setName((String) newValue);
@@ -358,18 +358,18 @@ public class OpaqueBehaviorImpl
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getOwnedRules()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll(
-					(Collection<? extends ElementImport>) newValue);
+				getElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll(
-					(Collection<? extends PackageImport>) newValue);
+				getPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -385,31 +385,31 @@ public class OpaqueBehaviorImpl
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll(
-					(Collection<? extends TemplateBinding>) newValue);
+				getTemplateBindings()
+					.addAll((Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__COLLABORATION_USE :
 				getCollaborationUses().clear();
-				getCollaborationUses().addAll(
-					(Collection<? extends CollaborationUse>) newValue);
+				getCollaborationUses()
+					.addAll((Collection<? extends CollaborationUse>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__GENERAL :
 				getGenerals().clear();
-				getGenerals().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getGenerals()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__GENERALIZATION :
 				getGeneralizations().clear();
-				getGeneralizations().addAll(
-					(Collection<? extends Generalization>) newValue);
+				getGeneralizations()
+					.addAll((Collection<? extends Generalization>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll(
-					(Collection<? extends GeneralizationSet>) newValue);
+				getPowertypeExtents()
+					.addAll((Collection<? extends GeneralizationSet>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_ABSTRACT :
 				setIsAbstract((Boolean) newValue);
@@ -419,8 +419,8 @@ public class OpaqueBehaviorImpl
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_USE_CASE :
 				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll(
-					(Collection<? extends UseCase>) newValue);
+				getOwnedUseCases()
+					.addAll((Collection<? extends UseCase>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__USE_CASE :
 				getUseCases().clear();
@@ -428,26 +428,26 @@ public class OpaqueBehaviorImpl
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
-				getRedefinedClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getRedefinedClassifiers()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__REPRESENTATION :
 				setRepresentation((CollaborationUse) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__SUBSTITUTION :
 				getSubstitutions().clear();
-				getSubstitutions().addAll(
-					(Collection<? extends Substitution>) newValue);
+				getSubstitutions()
+					.addAll((Collection<? extends Substitution>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll(
-					(Collection<? extends Property>) newValue);
+				getOwnedAttributes()
+					.addAll((Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_CONNECTOR :
 				getOwnedConnectors().clear();
-				getOwnedConnectors().addAll(
-					(Collection<? extends Connector>) newValue);
+				getOwnedConnectors()
+					.addAll((Collection<? extends Connector>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__CLASSIFIER_BEHAVIOR :
 				setClassifierBehavior((Behavior) newValue);
@@ -459,32 +459,31 @@ public class OpaqueBehaviorImpl
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_BEHAVIOR :
 				getOwnedBehaviors().clear();
-				getOwnedBehaviors().addAll(
-					(Collection<? extends Behavior>) newValue);
+				getOwnedBehaviors()
+					.addAll((Collection<? extends Behavior>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_OPERATION :
 				getOwnedOperations().clear();
-				getOwnedOperations().addAll(
-					(Collection<? extends Operation>) newValue);
+				getOwnedOperations()
+					.addAll((Collection<? extends Operation>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_ACTIVE :
 				setIsActive((Boolean) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
-				getNestedClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getNestedClassifiers()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
-				getOwnedReceptions().addAll(
-					(Collection<? extends Reception>) newValue);
+				getOwnedReceptions()
+					.addAll((Collection<? extends Reception>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__SUPER_CLASS :
 				getSuperClasses().clear();
-				getSuperClasses()
-					.addAll(
-						(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
+				getSuperClasses().addAll(
+					(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
 				setSpecification((BehavioralFeature) newValue);
@@ -494,28 +493,28 @@ public class OpaqueBehaviorImpl
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER :
 				getOwnedParameters().clear();
-				getOwnedParameters().addAll(
-					(Collection<? extends Parameter>) newValue);
+				getOwnedParameters()
+					.addAll((Collection<? extends Parameter>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
-				getOwnedParameterSets().addAll(
-					(Collection<? extends ParameterSet>) newValue);
+				getOwnedParameterSets()
+					.addAll((Collection<? extends ParameterSet>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__POSTCONDITION :
 				getPostconditions().clear();
-				getPostconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getPostconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__PRECONDITION :
 				getPreconditions().clear();
-				getPreconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getPreconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_BEHAVIOR :
 				getRedefinedBehaviors().clear();
-				getRedefinedBehaviors().addAll(
-					(Collection<? extends Behavior>) newValue);
+				getRedefinedBehaviors()
+					.addAll((Collection<? extends Behavior>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__BODY :
 				getBodies().clear();
@@ -749,7 +748,8 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_FINAL_SPECIALIZATION :
-				return ((eFlags & IS_FINAL_SPECIALIZATION_EFLAG) != 0) != IS_FINAL_SPECIALIZATION_EDEFAULT;
+				return ((eFlags
+					& IS_FINAL_SPECIALIZATION_EFLAG) != 0) != IS_FINAL_SPECIALIZATION_EDEFAULT;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_USE_CASE :
 				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__USE_CASE :

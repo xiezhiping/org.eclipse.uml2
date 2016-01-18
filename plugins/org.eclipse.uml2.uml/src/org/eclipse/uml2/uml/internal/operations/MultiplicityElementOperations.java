@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 480914
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 480914, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -98,8 +98,9 @@ public class MultiplicityElementOperations
 						UMLPlugin.INSTANCE.getString(
 							"_UI_MultiplicityElement_LowerGE0_diagnostic", //$NON-NLS-1$
 							getMessageSubstitutions(context,
-								multiplicityElement)), new Object[]{
-							multiplicityElement, new Integer(lowerBound)}));
+								multiplicityElement)),
+					new Object[]{multiplicityElement,
+						new Integer(lowerBound)}));
 			}
 		}
 
@@ -188,15 +189,15 @@ public class MultiplicityElementOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.MULTIPLICITY_ELEMENT__VALUE_SPECIFICATION_NO_SIDE_EFFECTS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateValueSpecificationNoSideEffects", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(multiplicityElement, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{multiplicityElement}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.MULTIPLICITY_ELEMENT__VALUE_SPECIFICATION_NO_SIDE_EFFECTS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateValueSpecificationNoSideEffects", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(multiplicityElement, context)}),
+					new Object[]{multiplicityElement}));
 			}
 			return false;
 		}
@@ -223,15 +224,15 @@ public class MultiplicityElementOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.MULTIPLICITY_ELEMENT__VALUE_SPECIFICATION_CONSTANT,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateValueSpecificationConstant", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(multiplicityElement, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{multiplicityElement}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.MULTIPLICITY_ELEMENT__VALUE_SPECIFICATION_CONSTANT,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateValueSpecificationConstant", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(multiplicityElement, context)}),
+					new Object[]{multiplicityElement}));
 			}
 			return false;
 		}
@@ -259,15 +260,15 @@ public class MultiplicityElementOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.MULTIPLICITY_ELEMENT__LOWER_IS_INTEGER,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateLowerIsInteger", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(multiplicityElement, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{multiplicityElement}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.MULTIPLICITY_ELEMENT__LOWER_IS_INTEGER,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateLowerIsInteger", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(multiplicityElement, context)}),
+					new Object[]{multiplicityElement}));
 			}
 			return false;
 		}
@@ -295,15 +296,15 @@ public class MultiplicityElementOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.MULTIPLICITY_ELEMENT__UPPER_IS_UNLIMITED_NATURAL,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateUpperIsUnlimitedNatural", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(multiplicityElement, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{multiplicityElement}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.MULTIPLICITY_ELEMENT__UPPER_IS_UNLIMITED_NATURAL,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateUpperIsUnlimitedNatural", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(multiplicityElement, context)}),
+					new Object[]{multiplicityElement}));
 			}
 			return false;
 		}
@@ -352,7 +353,8 @@ public class MultiplicityElementOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static boolean isMultivalued(MultiplicityElement multiplicityElement) {
+	public static boolean isMultivalued(
+			MultiplicityElement multiplicityElement) {
 		int upperBound = multiplicityElement.upperBound();
 		return upperBound == LiteralUnlimitedNatural.UNLIMITED
 			|| upperBound > 1;
@@ -453,7 +455,8 @@ public class MultiplicityElementOperations
 	 * @generated NOT
 	 */
 	public static boolean compatibleWith(
-			MultiplicityElement multiplicityElement, MultiplicityElement other) {
+			MultiplicityElement multiplicityElement,
+			MultiplicityElement other) {
 		return other != null && other.includesMultiplicity(multiplicityElement);
 	}
 
@@ -502,7 +505,7 @@ public class MultiplicityElementOperations
 			? upperValue
 			: multiplicityElement.createUpperValue(null, null,
 				UMLPackage.Literals.LITERAL_UNLIMITED_NATURAL)))
-			.setValue(newUpper);
+					.setValue(newUpper);
 	}
 
 } // MultiplicityElementOperations

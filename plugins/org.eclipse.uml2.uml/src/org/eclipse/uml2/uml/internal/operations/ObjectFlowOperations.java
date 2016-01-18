@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -74,15 +74,15 @@ public class ObjectFlowOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.OBJECT_FLOW__COMPATIBLE_TYPES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateCompatibleTypes", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(objectFlow, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{objectFlow}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.OBJECT_FLOW__COMPATIBLE_TYPES,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateCompatibleTypes", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(objectFlow, context)}),
+					new Object[]{objectFlow}));
 			}
 			return false;
 		}
@@ -108,15 +108,15 @@ public class ObjectFlowOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.OBJECT_FLOW__SAME_UPPER_BOUNDS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSameUpperBounds", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(objectFlow, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{objectFlow}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.OBJECT_FLOW__SAME_UPPER_BOUNDS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateSameUpperBounds", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(objectFlow, context)}),
+					new Object[]{objectFlow}));
 			}
 			return false;
 		}
@@ -142,15 +142,15 @@ public class ObjectFlowOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.OBJECT_FLOW__TARGET,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateTarget", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(objectFlow, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{objectFlow}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.OBJECT_FLOW__TARGET,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateTarget", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(objectFlow, context)}),
+					new Object[]{objectFlow}));
 			}
 			return false;
 		}
@@ -172,24 +172,23 @@ public class ObjectFlowOperations
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateInputAndOutputParameter(
-			ObjectFlow objectFlow, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
+	public static boolean validateInputAndOutputParameter(ObjectFlow objectFlow,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.OBJECT_FLOW__INPUT_AND_OUTPUT_PARAMETER,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateInputAndOutputParameter", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(objectFlow, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{objectFlow}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.OBJECT_FLOW__INPUT_AND_OUTPUT_PARAMETER,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateInputAndOutputParameter", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(objectFlow, context)}),
+					new Object[]{objectFlow}));
 			}
 			return false;
 		}
@@ -216,15 +215,15 @@ public class ObjectFlowOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.OBJECT_FLOW__NO_EXECUTABLE_NODES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoExecutableNodes", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(objectFlow, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{objectFlow}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.OBJECT_FLOW__NO_EXECUTABLE_NODES,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateNoExecutableNodes", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(objectFlow, context)}),
+					new Object[]{objectFlow}));
 			}
 			return false;
 		}
@@ -253,15 +252,15 @@ public class ObjectFlowOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.OBJECT_FLOW__TRANSFORMATION_BEHAVIOR,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateTransformationBehavior", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(objectFlow, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{objectFlow}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.OBJECT_FLOW__TRANSFORMATION_BEHAVIOR,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateTransformationBehavior", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(objectFlow, context)}),
+					new Object[]{objectFlow}));
 			}
 			return false;
 		}
@@ -288,15 +287,15 @@ public class ObjectFlowOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.OBJECT_FLOW__SELECTION_BEHAVIOR,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSelectionBehavior", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(objectFlow, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{objectFlow}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.OBJECT_FLOW__SELECTION_BEHAVIOR,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateSelectionBehavior", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(objectFlow, context)}),
+					new Object[]{objectFlow}));
 			}
 			return false;
 		}
@@ -324,15 +323,15 @@ public class ObjectFlowOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.OBJECT_FLOW__IS_MULTICAST_OR_IS_MULTIRECEIVE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateIsMulticastOrIsMultireceive", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(objectFlow, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{objectFlow}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.OBJECT_FLOW__IS_MULTICAST_OR_IS_MULTIRECEIVE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateIsMulticastOrIsMultireceive", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(objectFlow, context)}),
+					new Object[]{objectFlow}));
 			}
 			return false;
 		}

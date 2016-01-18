@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -118,8 +118,8 @@ public abstract class InteractionFragmentImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -194,7 +194,8 @@ public abstract class InteractionFragmentImpl
 	 * @generated
 	 */
 	public GeneralOrdering createGeneralOrdering(String name) {
-		GeneralOrdering newGeneralOrdering = (GeneralOrdering) create(UMLPackage.Literals.GENERAL_ORDERING);
+		GeneralOrdering newGeneralOrdering = (GeneralOrdering) create(
+			UMLPackage.Literals.GENERAL_ORDERING);
 		getGeneralOrderings().add(newGeneralOrdering);
 		if (name != null)
 			newGeneralOrdering.setName(name);
@@ -270,7 +271,8 @@ public abstract class InteractionFragmentImpl
 	 */
 	public void setEnclosingInteraction(Interaction newEnclosingInteraction) {
 		if (newEnclosingInteraction != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION && newEnclosingInteraction != null)) {
+			|| (eContainerFeatureID() != UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION
+				&& newEnclosingInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, newEnclosingInteraction))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -331,7 +333,8 @@ public abstract class InteractionFragmentImpl
 	 */
 	public void setEnclosingOperand(InteractionOperand newEnclosingOperand) {
 		if (newEnclosingOperand != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND && newEnclosingOperand != null)) {
+			|| (eContainerFeatureID() != UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND
+				&& newEnclosingOperand != null)) {
 			if (EcoreUtil.isAncestor(this, newEnclosingOperand))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -339,8 +342,8 @@ public abstract class InteractionFragmentImpl
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newEnclosingOperand != null)
-				msgs = ((InternalEObject) newEnclosingOperand).eInverseAdd(
-					this, UMLPackage.INTERACTION_OPERAND__FRAGMENT,
+				msgs = ((InternalEObject) newEnclosingOperand).eInverseAdd(this,
+					UMLPackage.INTERACTION_OPERAND__FRAGMENT,
 					InteractionOperand.class, msgs);
 			msgs = basicSetEnclosingOperand(newEnclosingOperand, msgs);
 			if (msgs != null)
@@ -391,11 +394,11 @@ public abstract class InteractionFragmentImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.INTERACTION_FRAGMENT__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION_FRAGMENT__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION_FRAGMENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INTERACTION_FRAGMENT__COVERED :
@@ -406,8 +409,8 @@ public abstract class InteractionFragmentImpl
 			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
 				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING :
-				return ((InternalEList<?>) getGeneralOrderings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getGeneralOrderings())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -493,13 +496,13 @@ public abstract class InteractionFragmentImpl
 		switch (featureID) {
 			case UMLPackage.INTERACTION_FRAGMENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.INTERACTION_FRAGMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.INTERACTION_FRAGMENT__NAME :
 				setName((String) newValue);
@@ -522,8 +525,8 @@ public abstract class InteractionFragmentImpl
 				return;
 			case UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
+				getGeneralOrderings()
+					.addAll((Collection<? extends GeneralOrdering>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);

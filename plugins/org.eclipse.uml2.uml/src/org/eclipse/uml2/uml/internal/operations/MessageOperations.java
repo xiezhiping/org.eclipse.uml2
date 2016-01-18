@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -95,15 +95,15 @@ public class MessageOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.MESSAGE__SENDING_RECEIVING_MESSAGE_EVENT,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSendingReceivingMessageEvent", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(message, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{message}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.MESSAGE__SENDING_RECEIVING_MESSAGE_EVENT,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateSendingReceivingMessageEvent", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(message, context)}),
+					new Object[]{message}));
 			}
 			return false;
 		}
@@ -134,15 +134,15 @@ public class MessageOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.MESSAGE__SIGNATURE_REFER_TO,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSignatureReferTo", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(message, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{message}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.MESSAGE__SIGNATURE_REFER_TO,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateSignatureReferTo", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(message, context)}),
+					new Object[]{message}));
 			}
 			return false;
 		}
@@ -177,15 +177,15 @@ public class MessageOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.MESSAGE__SIGNATURE_IS_OPERATION_REQUEST,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSignatureIsOperationRequest", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(message, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{message}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.MESSAGE__SIGNATURE_IS_OPERATION_REQUEST,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateSignatureIsOperationRequest", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(message, context)}),
+					new Object[]{message}));
 			}
 			return false;
 		}
@@ -220,15 +220,15 @@ public class MessageOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.MESSAGE__SIGNATURE_IS_OPERATION_REPLY,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSignatureIsOperationReply", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(message, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{message}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.MESSAGE__SIGNATURE_IS_OPERATION_REPLY,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateSignatureIsOperationReply", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(message, context)}),
+					new Object[]{message}));
 			}
 			return false;
 		}
@@ -283,12 +283,12 @@ public class MessageOperations
 						for (ValueSpecification o : arguments) {
 
 							if (!(o instanceof Expression
-								&& isEmpty(((Expression) o).getSymbol()) && ((Expression) o)
-								.getOperands().isEmpty())) {
+								&& isEmpty(((Expression) o).getSymbol())
+								&& ((Expression) o).getOperands().isEmpty())) {
 
 								Type oType = o.getType();
-								Type pType = signalAttributes.get(
-									arguments.indexOf(o)).getType();
+								Type pType = signalAttributes
+									.get(arguments.indexOf(o)).getType();
 
 								if (oType == null
 									? pType != null
@@ -307,9 +307,10 @@ public class MessageOperations
 		if (!result && diagnostics != null) {
 			diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
 				UMLValidator.DIAGNOSTIC_SOURCE,
-				UMLValidator.MESSAGE__SIGNATURE_IS_SIGNAL, UMLPlugin.INSTANCE
-					.getString("_UI_Message_SignatureIsSignal_diagnostic", //$NON-NLS-1$
-						getMessageSubstitutions(context, message)),
+				UMLValidator.MESSAGE__SIGNATURE_IS_SIGNAL,
+				UMLPlugin.INSTANCE.getString(
+					"_UI_Message_SignatureIsSignal_diagnostic", //$NON-NLS-1$
+					getMessageSubstitutions(context, message)),
 				new Object[]{message}));
 		}
 
@@ -335,15 +336,15 @@ public class MessageOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.MESSAGE__ARGUMENTS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateArguments", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(message, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{message}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.MESSAGE__ARGUMENTS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateArguments", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(message, context)}),
+					new Object[]{message}));
 			}
 			return false;
 		}
@@ -376,15 +377,15 @@ public class MessageOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.MESSAGE__CANNOT_CROSS_BOUNDARIES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateCannotCrossBoundaries", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(message, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{message}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.MESSAGE__CANNOT_CROSS_BOUNDARIES,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateCannotCrossBoundaries", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(message, context)}),
+					new Object[]{message}));
 			}
 			return false;
 		}
@@ -410,15 +411,15 @@ public class MessageOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.MESSAGE__OCCURRENCE_SPECIFICATIONS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOccurrenceSpecifications", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(message, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{message}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.MESSAGE__OCCURRENCE_SPECIFICATIONS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateOccurrenceSpecifications", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(message, context)}),
+					new Object[]{message}));
 			}
 			return false;
 		}
@@ -437,13 +438,16 @@ public class MessageOperations
 	 * @generated NOT
 	 */
 	public static MessageKind getMessageKind(Message message) {
-		return message.eGet(UMLPackage.Literals.MESSAGE__SEND_EVENT, false) == null
-			? (message.eGet(UMLPackage.Literals.MESSAGE__RECEIVE_EVENT, false) == null
-				? MessageKind.UNKNOWN_LITERAL
-				: MessageKind.FOUND_LITERAL)
-			: (message.eGet(UMLPackage.Literals.MESSAGE__RECEIVE_EVENT, false) == null
-				? MessageKind.LOST_LITERAL
-				: MessageKind.COMPLETE_LITERAL);
+		return message.eGet(UMLPackage.Literals.MESSAGE__SEND_EVENT,
+			false) == null
+				? (message.eGet(UMLPackage.Literals.MESSAGE__RECEIVE_EVENT,
+					false) == null
+						? MessageKind.UNKNOWN_LITERAL
+						: MessageKind.FOUND_LITERAL)
+				: (message.eGet(UMLPackage.Literals.MESSAGE__RECEIVE_EVENT,
+					false) == null
+						? MessageKind.LOST_LITERAL
+						: MessageKind.COMPLETE_LITERAL);
 	}
 
 	/**
@@ -457,8 +461,8 @@ public class MessageOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static boolean isDistinguishableFrom(Message message,
-			NamedElement n, Namespace ns) {
+	public static boolean isDistinguishableFrom(Message message, NamedElement n,
+			Namespace ns) {
 		return true;
 	}
 

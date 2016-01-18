@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2014 IBM Corporation and others.
+ * Copyright (c) 2006, 2016 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 323181, 418466
+ *   Kenn Hussey - 323181, 418466, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -123,9 +123,11 @@ public class ConnectableElementOperations
 			ConnectableElement connectableElement) {
 		EList<ConnectorEnd> ends = new UniqueEList.FastCompare<ConnectorEnd>();
 
-		for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(connectableElement)) {
+		for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(
+			connectableElement)) {
 
-			if (setting.getEStructuralFeature() == UMLPackage.Literals.CONNECTOR_END__ROLE) {
+			if (setting
+				.getEStructuralFeature() == UMLPackage.Literals.CONNECTOR_END__ROLE) {
 				ends.add((ConnectorEnd) setting.getEObject());
 			}
 		}

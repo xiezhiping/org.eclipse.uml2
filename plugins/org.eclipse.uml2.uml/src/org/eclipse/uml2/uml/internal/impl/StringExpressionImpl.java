@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -140,8 +140,8 @@ public class StringExpressionImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -153,7 +153,8 @@ public class StringExpressionImpl
 			return ownedElements;
 		}
 		return new DerivedUnionEObjectEList<Element>(Element.class, this,
-			UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
+			UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT,
+			OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -177,7 +178,8 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
-		TemplateBinding newTemplateBinding = (TemplateBinding) create(UMLPackage.Literals.TEMPLATE_BINDING);
+		TemplateBinding newTemplateBinding = (TemplateBinding) create(
+			UMLPackage.Literals.TEMPLATE_BINDING);
 		getTemplateBindings().add(newTemplateBinding);
 		if (signature != null)
 			newTemplateBinding.setSignature(signature);
@@ -217,9 +219,11 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public TemplateSignature getOwnedTemplateSignature() {
-		if (ownedTemplateSignature != null && ownedTemplateSignature.eIsProxy()) {
+		if (ownedTemplateSignature != null
+			&& ownedTemplateSignature.eIsProxy()) {
 			InternalEObject oldOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
-			ownedTemplateSignature = (TemplateSignature) eResolveProxy(oldOwnedTemplateSignature);
+			ownedTemplateSignature = (TemplateSignature) eResolveProxy(
+				oldOwnedTemplateSignature);
 			if (ownedTemplateSignature != oldOwnedTemplateSignature) {
 				InternalEObject newOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
 				NotificationChain msgs = oldOwnedTemplateSignature
@@ -257,7 +261,8 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public NotificationChain basicSetOwnedTemplateSignature(
-			TemplateSignature newOwnedTemplateSignature, NotificationChain msgs) {
+			TemplateSignature newOwnedTemplateSignature,
+			NotificationChain msgs) {
 		TemplateSignature oldOwnedTemplateSignature = ownedTemplateSignature;
 		ownedTemplateSignature = newOwnedTemplateSignature;
 		if (eNotificationRequired()) {
@@ -307,7 +312,8 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature(EClass eClass) {
-		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) create(eClass);
+		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) create(
+			eClass);
 		setOwnedTemplateSignature(newOwnedTemplateSignature);
 		return newOwnedTemplateSignature;
 	}
@@ -318,7 +324,8 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature() {
-		return createOwnedTemplateSignature(UMLPackage.Literals.TEMPLATE_SIGNATURE);
+		return createOwnedTemplateSignature(
+			UMLPackage.Literals.TEMPLATE_SIGNATURE);
 	}
 
 	/**
@@ -355,7 +362,8 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public StringExpression createSubExpression(String name, Type type) {
-		StringExpression newSubExpression = (StringExpression) create(UMLPackage.Literals.STRING_EXPRESSION);
+		StringExpression newSubExpression = (StringExpression) create(
+			UMLPackage.Literals.STRING_EXPRESSION);
 		getSubExpressions().add(newSubExpression);
 		if (name != null)
 			newSubExpression.setName(name);
@@ -435,7 +443,8 @@ public class StringExpressionImpl
 	 */
 	public void setOwningExpression(StringExpression newOwningExpression) {
 		if (newOwningExpression != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION && newOwningExpression != null)) {
+			|| (eContainerFeatureID() != UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION
+				&& newOwningExpression != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningExpression))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -443,8 +452,8 @@ public class StringExpressionImpl
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningExpression != null)
-				msgs = ((InternalEObject) newOwningExpression).eInverseAdd(
-					this, UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION,
+				msgs = ((InternalEObject) newOwningExpression).eInverseAdd(this,
+					UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION,
 					StringExpression.class, msgs);
 			msgs = basicSetOwningExpression(newOwningExpression, msgs);
 			if (msgs != null)
@@ -465,16 +474,13 @@ public class StringExpressionImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<ParameterableElement> result = (EList<ParameterableElement>) cache
-				.get(
-					this,
+				.get(this,
 					UMLPackage.Literals.TEMPLATEABLE_ELEMENT___PARAMETERABLE_ELEMENTS);
 			if (result == null) {
-				cache
-					.put(
-						this,
-						UMLPackage.Literals.TEMPLATEABLE_ELEMENT___PARAMETERABLE_ELEMENTS,
-						result = TemplateableElementOperations
-							.parameterableElements(this));
+				cache.put(this,
+					UMLPackage.Literals.TEMPLATEABLE_ELEMENT___PARAMETERABLE_ELEMENTS,
+					result = TemplateableElementOperations
+						.parameterableElements(this));
 			}
 			return result;
 		}
@@ -542,10 +548,10 @@ public class StringExpressionImpl
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER :
 				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
+					msgs = ((InternalEObject) templateParameter).eInverseRemove(
+						this,
+						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+						TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
@@ -554,8 +560,7 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
-						.eInverseRemove(
-							this,
+						.eInverseRemove(this,
 							EOPPOSITE_FEATURE_BASE
 								- UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE,
 							null, msgs);
@@ -583,11 +588,11 @@ public class StringExpressionImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.STRING_EXPRESSION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
@@ -598,15 +603,15 @@ public class StringExpressionImpl
 				return ((InternalEList<?>) getOperands()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
-				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getTemplateBindings())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
 				return basicSetOwningExpression(null, msgs);
 			case UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION :
-				return ((InternalEList<?>) getSubExpressions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getSubExpressions())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -709,13 +714,13 @@ public class StringExpressionImpl
 		switch (featureID) {
 			case UMLPackage.STRING_EXPRESSION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.STRING_EXPRESSION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.STRING_EXPRESSION__NAME :
 				setName((String) newValue);
@@ -745,8 +750,8 @@ public class StringExpressionImpl
 				return;
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll(
-					(Collection<? extends TemplateBinding>) newValue);
+				getTemplateBindings()
+					.addAll((Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
@@ -756,8 +761,8 @@ public class StringExpressionImpl
 				return;
 			case UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION :
 				getSubExpressions().clear();
-				getSubExpressions().addAll(
-					(Collection<? extends StringExpression>) newValue);
+				getSubExpressions()
+					.addAll((Collection<? extends StringExpression>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -875,7 +880,8 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	public int eBaseStructuralFeatureID(int derivedFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == TemplateableElement.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
@@ -895,7 +901,8 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	public int eDerivedStructuralFeatureID(int baseFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == TemplateableElement.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :
@@ -986,7 +993,8 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.STRING_EXPRESSION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.STRING_EXPRESSION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.STRING_EXPRESSION___GET_STEREOTYPE_APPLICATIONS :
@@ -994,7 +1002,8 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.STRING_EXPRESSION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.STRING_EXPRESSION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1057,7 +1066,8 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION___GET_CLIENT_DEPENDENCIES :
 				return getClientDependencies();
 			case UMLPackage.STRING_EXPRESSION___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.STRING_EXPRESSION___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.STRING_EXPRESSION___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :

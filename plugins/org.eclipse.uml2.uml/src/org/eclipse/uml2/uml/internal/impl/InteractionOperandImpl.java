@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -157,8 +157,8 @@ public class InteractionOperandImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -233,7 +233,8 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public GeneralOrdering createGeneralOrdering(String name) {
-		GeneralOrdering newGeneralOrdering = (GeneralOrdering) create(UMLPackage.Literals.GENERAL_ORDERING);
+		GeneralOrdering newGeneralOrdering = (GeneralOrdering) create(
+			UMLPackage.Literals.GENERAL_ORDERING);
 		getGeneralOrderings().add(newGeneralOrdering);
 		if (name != null)
 			newGeneralOrdering.setName(name);
@@ -309,7 +310,8 @@ public class InteractionOperandImpl
 	 */
 	public void setEnclosingInteraction(Interaction newEnclosingInteraction) {
 		if (newEnclosingInteraction != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION && newEnclosingInteraction != null)) {
+			|| (eContainerFeatureID() != UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION
+				&& newEnclosingInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, newEnclosingInteraction))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -370,7 +372,8 @@ public class InteractionOperandImpl
 	 */
 	public void setEnclosingOperand(InteractionOperand newEnclosingOperand) {
 		if (newEnclosingOperand != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND && newEnclosingOperand != null)) {
+			|| (eContainerFeatureID() != UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND
+				&& newEnclosingOperand != null)) {
 			if (EcoreUtil.isAncestor(this, newEnclosingOperand))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -378,8 +381,8 @@ public class InteractionOperandImpl
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newEnclosingOperand != null)
-				msgs = ((InternalEObject) newEnclosingOperand).eInverseAdd(
-					this, UMLPackage.INTERACTION_OPERAND__FRAGMENT,
+				msgs = ((InternalEObject) newEnclosingOperand).eInverseAdd(this,
+					UMLPackage.INTERACTION_OPERAND__FRAGMENT,
 					InteractionOperand.class, msgs);
 			msgs = basicSetEnclosingOperand(newEnclosingOperand, msgs);
 			if (msgs != null)
@@ -429,18 +432,23 @@ public class InteractionOperandImpl
 			guard = (InteractionConstraint) eResolveProxy(oldGuard);
 			if (guard != oldGuard) {
 				InternalEObject newGuard = (InternalEObject) guard;
-				NotificationChain msgs = oldGuard.eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.INTERACTION_OPERAND__GUARD, null, null);
+				NotificationChain msgs = oldGuard
+					.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.INTERACTION_OPERAND__GUARD,
+						null, null);
 				if (newGuard.eInternalContainer() == null) {
-					msgs = newGuard.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.INTERACTION_OPERAND__GUARD, null, msgs);
+					msgs = newGuard.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.INTERACTION_OPERAND__GUARD,
+						null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						UMLPackage.INTERACTION_OPERAND__GUARD, oldGuard, guard));
+						UMLPackage.INTERACTION_OPERAND__GUARD, oldGuard,
+						guard));
 			}
 		}
 		return guard;
@@ -485,13 +493,17 @@ public class InteractionOperandImpl
 		if (newGuard != guard) {
 			NotificationChain msgs = null;
 			if (guard != null)
-				msgs = ((InternalEObject) guard).eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.INTERACTION_OPERAND__GUARD, null, msgs);
+				msgs = ((InternalEObject) guard)
+					.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.INTERACTION_OPERAND__GUARD,
+						null, msgs);
 			if (newGuard != null)
-				msgs = ((InternalEObject) newGuard).eInverseAdd(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.INTERACTION_OPERAND__GUARD, null, msgs);
+				msgs = ((InternalEObject) newGuard)
+					.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.INTERACTION_OPERAND__GUARD,
+						null, msgs);
 			msgs = basicSetGuard(newGuard, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -506,7 +518,8 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public InteractionConstraint createGuard(String name) {
-		InteractionConstraint newGuard = (InteractionConstraint) create(UMLPackage.Literals.INTERACTION_CONSTRAINT);
+		InteractionConstraint newGuard = (InteractionConstraint) create(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT);
 		setGuard(newGuard);
 		if (name != null)
 			newGuard.setName(name);
@@ -589,8 +602,8 @@ public class InteractionOperandImpl
 	 */
 	public boolean validateGuardContainReferences(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return InteractionOperandOperations.validateGuardContainReferences(
-			this, diagnostics, context);
+		return InteractionOperandOperations.validateGuardContainReferences(this,
+			diagnostics, context);
 	}
 
 	/**
@@ -645,22 +658,22 @@ public class InteractionOperandImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.INTERACTION_OPERAND__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION_OPERAND__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION_OPERAND__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INTERACTION_OPERAND__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedRules())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION_OPERAND__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getElementImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION_OPERAND__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPackageImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION_OPERAND__COVERED :
 				return ((InternalEList<?>) getCovereds()).basicRemove(otherEnd,
 					msgs);
@@ -669,11 +682,11 @@ public class InteractionOperandImpl
 			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION :
 				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING :
-				return ((InternalEList<?>) getGeneralOrderings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getGeneralOrderings())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION_OPERAND__FRAGMENT :
-				return ((InternalEList<?>) getFragments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getFragments()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.INTERACTION_OPERAND__GUARD :
 				return basicSetGuard(null, msgs);
 		}
@@ -779,13 +792,13 @@ public class InteractionOperandImpl
 		switch (featureID) {
 			case UMLPackage.INTERACTION_OPERAND__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.INTERACTION_OPERAND__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.INTERACTION_OPERAND__NAME :
 				setName((String) newValue);
@@ -798,18 +811,18 @@ public class InteractionOperandImpl
 				return;
 			case UMLPackage.INTERACTION_OPERAND__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getOwnedRules()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.INTERACTION_OPERAND__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll(
-					(Collection<? extends ElementImport>) newValue);
+				getElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.INTERACTION_OPERAND__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll(
-					(Collection<? extends PackageImport>) newValue);
+				getPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.INTERACTION_OPERAND__COVERED :
 				getCovereds().clear();
@@ -823,8 +836,8 @@ public class InteractionOperandImpl
 				return;
 			case UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
+				getGeneralOrderings()
+					.addAll((Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.INTERACTION_OPERAND__FRAGMENT :
 				getFragments().clear();
@@ -956,7 +969,8 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	public int eBaseStructuralFeatureID(int derivedFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == InteractionFragment.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.INTERACTION_OPERAND__COVERED :
@@ -980,7 +994,8 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	public int eDerivedStructuralFeatureID(int baseFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == InteractionFragment.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.INTERACTION_FRAGMENT__COVERED :
@@ -1055,7 +1070,8 @@ public class InteractionOperandImpl
 			case UMLPackage.INTERACTION_OPERAND___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.INTERACTION_OPERAND___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.INTERACTION_OPERAND___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.INTERACTION_OPERAND___GET_STEREOTYPE_APPLICATIONS :
@@ -1063,7 +1079,8 @@ public class InteractionOperandImpl
 			case UMLPackage.INTERACTION_OPERAND___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.INTERACTION_OPERAND___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.INTERACTION_OPERAND___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1152,13 +1169,13 @@ public class InteractionOperandImpl
 			case UMLPackage.INTERACTION_OPERAND___GET_OWNED_MEMBERS :
 				return getOwnedMembers();
 			case UMLPackage.INTERACTION_OPERAND___EXCLUDE_COLLISIONS__ELIST :
-				return excludeCollisions((EList<PackageableElement>) arguments
-					.get(0));
+				return excludeCollisions(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.INTERACTION_OPERAND___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
 				return getNamesOfMember((NamedElement) arguments.get(0));
 			case UMLPackage.INTERACTION_OPERAND___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
+				return importMembers(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.INTERACTION_OPERAND___GET_IMPORTED_MEMBERS :
 				return getImportedMembers();
 			case UMLPackage.INTERACTION_OPERAND___MEMBERS_ARE_DISTINGUISHABLE :

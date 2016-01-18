@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 374878, 418466, 433211, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 374878, 418466, 433211, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -98,15 +98,15 @@ public class NamedElementOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.NAMED_ELEMENT__HAS_NO_QUALIFIED_NAME,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateHasNoQualifiedName", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(namedElement, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{namedElement}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.NAMED_ELEMENT__HAS_NO_QUALIFIED_NAME,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateHasNoQualifiedName", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(namedElement, context)}),
+					new Object[]{namedElement}));
 			}
 			return false;
 		}
@@ -134,15 +134,15 @@ public class NamedElementOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.NAMED_ELEMENT__HAS_QUALIFIED_NAME,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateHasQualifiedName", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(namedElement, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{namedElement}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.NAMED_ELEMENT__HAS_QUALIFIED_NAME,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateHasQualifiedName", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(namedElement, context)}),
+					new Object[]{namedElement}));
 			}
 			return false;
 		}
@@ -166,9 +166,8 @@ public class NamedElementOperations
 			Map<Object, Object> context) {
 		boolean result = true;
 
-		if (namedElement.getNamespace() == null
-			&& namedElement
-				.eIsSet(UMLPackage.Literals.NAMED_ELEMENT__VISIBILITY)) {
+		if (namedElement.getNamespace() == null && namedElement
+			.eIsSet(UMLPackage.Literals.NAMED_ELEMENT__VISIBILITY)) {
 
 			result = false;
 
@@ -199,8 +198,8 @@ public class NamedElementOperations
 			throw new IllegalArgumentException(String.valueOf(supplier));
 		}
 
-		Dependency dependency = (Dependency) package_.createPackagedElement(
-			null, eClass);
+		Dependency dependency = (Dependency) package_
+			.createPackagedElement(null, eClass);
 
 		dependency.getClients().add(namedElement);
 		dependency.getSuppliers().add(supplier);
@@ -251,11 +250,11 @@ public class NamedElementOperations
 	 */
 	public static String getLabel(NamedElement namedElement, boolean localize) {
 		String qualifiedName = namedElement.getQualifiedName();
-		return getString(namedElement, LABEL_KEY_PREFIX
-			+ getValidJavaIdentifier(isEmpty(qualifiedName)
+		return getString(namedElement,
+			LABEL_KEY_PREFIX + getValidJavaIdentifier(isEmpty(qualifiedName)
 				? EMPTY_STRING
-				: qualifiedName.replace(':', '_')), namedElement.getName(),
-			localize);
+				: qualifiedName.replace(':', '_')),
+			namedElement.getName(), localize);
 	}
 
 	/**
@@ -368,7 +367,8 @@ public class NamedElementOperations
 		if (nEClass.isSuperTypeOf(eClass) || eClass.isSuperTypeOf(nEClass)) {
 			EList<String> namesOfN = ns.getNamesOfMember(n);
 
-			for (String nameOfNamedElement : ns.getNamesOfMember(namedElement)) {
+			for (String nameOfNamedElement : ns
+				.getNamesOfMember(namedElement)) {
 
 				if (namesOfN.contains(nameOfNamedElement)) {
 					return false;
@@ -428,16 +428,17 @@ public class NamedElementOperations
 			NamedElement namedElement) {
 		EList<Dependency> clientDependency = new UniqueEList.FastCompare<Dependency>();
 
-		for (EStructuralFeature.Setting nonNavigableInverseReference : getNonNavigableInverseReferences(namedElement)) {
+		for (EStructuralFeature.Setting nonNavigableInverseReference : getNonNavigableInverseReferences(
+			namedElement)) {
 
-			if (nonNavigableInverseReference.getEStructuralFeature() == UMLPackage.Literals.DEPENDENCY__CLIENT) {
-				clientDependency.add((Dependency) nonNavigableInverseReference
-					.getEObject());
+			if (nonNavigableInverseReference
+				.getEStructuralFeature() == UMLPackage.Literals.DEPENDENCY__CLIENT) {
+				clientDependency.add(
+					(Dependency) nonNavigableInverseReference.getEObject());
 			}
 		}
 
-		return new UnionEObjectEList<Dependency>(
-			(InternalEObject) namedElement,
+		return new UnionEObjectEList<Dependency>((InternalEObject) namedElement,
 			UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY,
 			clientDependency.size(), clientDependency.toArray());
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 454400, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 454400, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -336,15 +336,12 @@ public abstract class ClassifierImpl
 				.get(eResource, this,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 			if (redefinedElements == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-						redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
-							RedefinableElement.class, this,
-							UMLPackage.CLASSIFIER__REDEFINED_ELEMENT,
-							REDEFINED_ELEMENT_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+					redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
+						RedefinableElement.class, this,
+						UMLPackage.CLASSIFIER__REDEFINED_ELEMENT,
+						REDEFINED_ELEMENT_ESUBSETS));
 			}
 			return redefinedElements;
 		}
@@ -365,19 +362,14 @@ public abstract class ClassifierImpl
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
 			EList<Classifier> redefinitionContexts = (EList<Classifier>) cache
-				.get(
-					eResource,
-					this,
+				.get(eResource, this,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 			if (redefinitionContexts == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-						redefinitionContexts = new DerivedUnionEObjectEList<Classifier>(
-							Classifier.class, this,
-							UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT, null));
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+					redefinitionContexts = new DerivedUnionEObjectEList<Classifier>(
+						Classifier.class, this,
+						UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT, null));
 			}
 			return redefinitionContexts;
 		}
@@ -389,7 +381,8 @@ public abstract class ClassifierImpl
 	 * The array of subset feature identifiers for the '{@link #getRedefinitionContexts() <em>Redefinition Context</em>}' reference list.
 	 * @see #getRedefinitionContexts()
 	 */
-	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{UMLPackage.CLASSIFIER__NAMESPACE};
+	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{
+		UMLPackage.CLASSIFIER__NAMESPACE};
 
 	public EList<Classifier> getRedefinitionContexts() {
 		CacheAdapter cache = getCacheAdapter();
@@ -397,20 +390,15 @@ public abstract class ClassifierImpl
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
 			EList<Classifier> redefinitionContexts = (EList<Classifier>) cache
-				.get(
-					eResource,
-					this,
+				.get(eResource, this,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 			if (redefinitionContexts == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-						redefinitionContexts = new DerivedEObjectEList<Classifier>(
-							Classifier.class, this,
-							UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT,
-							REDEFINITION_CONTEXT_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+					redefinitionContexts = new DerivedEObjectEList<Classifier>(
+						Classifier.class, this,
+						UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT,
+						REDEFINITION_CONTEXT_ESUBSETS));
 			}
 			return redefinitionContexts;
 		}
@@ -493,7 +481,8 @@ public abstract class ClassifierImpl
 	public TemplateParameter getTemplateParameter() {
 		if (templateParameter != null && templateParameter.eIsProxy()) {
 			InternalEObject oldTemplateParameter = (InternalEObject) templateParameter;
-			templateParameter = (TemplateParameter) eResolveProxy(oldTemplateParameter);
+			templateParameter = (TemplateParameter) eResolveProxy(
+				oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -584,8 +573,8 @@ public abstract class ClassifierImpl
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.CLASSIFIER__TEMPLATE_PARAMETER,
-				newTemplateParameter, newTemplateParameter));
+				UMLPackage.CLASSIFIER__TEMPLATE_PARAMETER, newTemplateParameter,
+				newTemplateParameter));
 	}
 
 	/**
@@ -625,7 +614,8 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public NotificationChain basicSetOwningTemplateParameter(
-			TemplateParameter newOwningTemplateParameter, NotificationChain msgs) {
+			TemplateParameter newOwningTemplateParameter,
+			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newOwningTemplateParameter,
 			UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER, msgs);
 		Resource.Internal eInternalResource = eInternalResource();
@@ -647,7 +637,8 @@ public abstract class ClassifierImpl
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
 		if (newOwningTemplateParameter != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
+			|| (eContainerFeatureID() != UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER
+				&& newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -656,8 +647,7 @@ public abstract class ClassifierImpl
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningTemplateParameter != null)
 				msgs = ((InternalEObject) newOwningTemplateParameter)
-					.eInverseAdd(
-						this,
+					.eInverseAdd(this,
 						UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 						TemplateParameter.class, msgs);
 			msgs = basicSetOwningTemplateParameter(newOwningTemplateParameter,
@@ -677,7 +667,8 @@ public abstract class ClassifierImpl
 	 */
 	@Override
 	public VisibilityKind getVisibility() {
-		return VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
+		return VISIBILITY_EFLAG_VALUES[(eFlags
+			& VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
 	}
 
 	/**
@@ -687,7 +678,8 @@ public abstract class ClassifierImpl
 	 */
 	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
-		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
+		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags
+			& VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
 		if (newVisibility == null)
 			newVisibility = VISIBILITY_EDEFAULT;
 		eFlags = eFlags & ~VISIBILITY_EFLAG
@@ -696,8 +688,8 @@ public abstract class ClassifierImpl
 		eFlags |= VISIBILITY_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.CLASSIFIER__VISIBILITY, oldVisibility,
-				newVisibility, !oldVisibilityESet));
+				UMLPackage.CLASSIFIER__VISIBILITY, oldVisibility, newVisibility,
+				!oldVisibilityESet));
 	}
 
 	/**
@@ -707,7 +699,8 @@ public abstract class ClassifierImpl
 	 */
 	@Override
 	public void unsetVisibility() {
-		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
+		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags
+			& VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
 		boolean oldVisibilityESet = (eFlags & VISIBILITY_ESETFLAG) != 0;
 		eFlags = eFlags & ~VISIBILITY_EFLAG | VISIBILITY_EFLAG_DEFAULT;
 		eFlags &= ~VISIBILITY_ESETFLAG;
@@ -762,7 +755,8 @@ public abstract class ClassifierImpl
 	public org.eclipse.uml2.uml.Package getPackage() {
 		org.eclipse.uml2.uml.Package package_ = basicGetPackage();
 		return package_ != null && package_.eIsProxy()
-			? (org.eclipse.uml2.uml.Package) eResolveProxy((InternalEObject) package_)
+			? (org.eclipse.uml2.uml.Package) eResolveProxy(
+				(InternalEObject) package_)
 			: package_;
 	}
 
@@ -796,7 +790,8 @@ public abstract class ClassifierImpl
 					.basicAdd(this, msgs);
 			msgs = eBasicSetContainer((InternalEObject) newPackage,
 				InternalEObject.EOPPOSITE_FEATURE_BASE
-					- UMLPackage.PACKAGE__PACKAGED_ELEMENT, msgs);
+					- UMLPackage.PACKAGE__PACKAGED_ELEMENT,
+				msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -815,8 +810,8 @@ public abstract class ClassifierImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -852,7 +847,8 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
-		TemplateBinding newTemplateBinding = (TemplateBinding) create(UMLPackage.Literals.TEMPLATE_BINDING);
+		TemplateBinding newTemplateBinding = (TemplateBinding) create(
+			UMLPackage.Literals.TEMPLATE_BINDING);
 		getTemplateBindings().add(newTemplateBinding);
 		if (signature != null)
 			newTemplateBinding.setSignature(signature);
@@ -892,9 +888,11 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public TemplateSignature getOwnedTemplateSignature() {
-		if (ownedTemplateSignature != null && ownedTemplateSignature.eIsProxy()) {
+		if (ownedTemplateSignature != null
+			&& ownedTemplateSignature.eIsProxy()) {
 			InternalEObject oldOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
-			ownedTemplateSignature = (TemplateSignature) eResolveProxy(oldOwnedTemplateSignature);
+			ownedTemplateSignature = (TemplateSignature) eResolveProxy(
+				oldOwnedTemplateSignature);
 			if (ownedTemplateSignature != oldOwnedTemplateSignature) {
 				InternalEObject newOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
 				NotificationChain msgs = oldOwnedTemplateSignature
@@ -932,7 +930,8 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public NotificationChain basicSetOwnedTemplateSignature(
-			TemplateSignature newOwnedTemplateSignature, NotificationChain msgs) {
+			TemplateSignature newOwnedTemplateSignature,
+			NotificationChain msgs) {
 		if (newOwnedTemplateSignature != null
 			&& !(newOwnedTemplateSignature instanceof RedefinableTemplateSignature)) {
 			throw new IllegalArgumentException(
@@ -992,7 +991,8 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature(EClass eClass) {
-		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) create(eClass);
+		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) create(
+			eClass);
 		setOwnedTemplateSignature(newOwnedTemplateSignature);
 		return newOwnedTemplateSignature;
 	}
@@ -1054,14 +1054,14 @@ public abstract class ClassifierImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<NamedElement> members = (EList<NamedElement>) cache.get(
-				eResource, this, UMLPackage.Literals.NAMESPACE__MEMBER);
+			EList<NamedElement> members = (EList<NamedElement>) cache
+				.get(eResource, this, UMLPackage.Literals.NAMESPACE__MEMBER);
 			if (members == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.NAMESPACE__MEMBER,
 					members = new DerivedUnionEObjectEList<NamedElement>(
-						NamedElement.class, this,
-						UMLPackage.CLASSIFIER__MEMBER, MEMBER_ESUBSETS));
+						NamedElement.class, this, UMLPackage.CLASSIFIER__MEMBER,
+						MEMBER_ESUBSETS));
 			}
 			return members;
 		}
@@ -1207,7 +1207,8 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public void setIsFinalSpecialization(boolean newIsFinalSpecialization) {
-		boolean oldIsFinalSpecialization = (eFlags & IS_FINAL_SPECIALIZATION_EFLAG) != 0;
+		boolean oldIsFinalSpecialization = (eFlags
+			& IS_FINAL_SPECIALIZATION_EFLAG) != 0;
 		if (newIsFinalSpecialization)
 			eFlags |= IS_FINAL_SPECIALIZATION_EFLAG;
 		else
@@ -1262,7 +1263,8 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GeneralizationSet getPowertypeExtent(String name, boolean ignoreCase) {
+	public GeneralizationSet getPowertypeExtent(String name,
+			boolean ignoreCase) {
 		powertypeExtentLoop : for (GeneralizationSet powertypeExtent : getPowertypeExtents()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(powertypeExtent.getName())
@@ -1398,7 +1400,8 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Classifier getGeneral(String name, boolean ignoreCase, EClass eClass) {
+	public Classifier getGeneral(String name, boolean ignoreCase,
+			EClass eClass) {
 		generalLoop : for (Classifier general : getGenerals()) {
 			if (eClass != null && !eClass.isInstance(general))
 				continue generalLoop;
@@ -1430,7 +1433,8 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public UseCase createOwnedUseCase(String name) {
-		UseCase newOwnedUseCase = (UseCase) create(UMLPackage.Literals.USE_CASE);
+		UseCase newOwnedUseCase = (UseCase) create(
+			UMLPackage.Literals.USE_CASE);
 		getOwnedUseCases().add(newOwnedUseCase);
 		if (name != null)
 			newOwnedUseCase.setName(name);
@@ -1526,7 +1530,8 @@ public abstract class ClassifierImpl
 	public CollaborationUse getRepresentation() {
 		if (representation != null && representation.eIsProxy()) {
 			InternalEObject oldRepresentation = (InternalEObject) representation;
-			representation = (CollaborationUse) eResolveProxy(oldRepresentation);
+			representation = (CollaborationUse) eResolveProxy(
+				oldRepresentation);
 			if (representation != oldRepresentation) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -1575,7 +1580,8 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public CollaborationUse createRepresentation(String name) {
-		CollaborationUse newRepresentation = (CollaborationUse) create(UMLPackage.Literals.COLLABORATION_USE);
+		CollaborationUse newRepresentation = (CollaborationUse) create(
+			UMLPackage.Literals.COLLABORATION_USE);
 		setRepresentation(newRepresentation);
 		if (name != null)
 			newRepresentation.setName(name);
@@ -1587,10 +1593,10 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateRedefinitionContextValid(
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return RedefinableElementOperations.validateRedefinitionContextValid(
-			this, diagnostics, context);
+	public boolean validateRedefinitionContextValid(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return RedefinableElementOperations
+			.validateRedefinitionContextValid(this, diagnostics, context);
 	}
 
 	/**
@@ -1600,8 +1606,8 @@ public abstract class ClassifierImpl
 	 */
 	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return RedefinableElementOperations.validateRedefinitionConsistent(
-			this, diagnostics, context);
+		return RedefinableElementOperations.validateRedefinitionConsistent(this,
+			diagnostics, context);
 	}
 
 	/**
@@ -1659,10 +1665,10 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNamespaceNeedsVisibility(
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return PackageableElementOperations.validateNamespaceNeedsVisibility(
-			this, diagnostics, context);
+	public boolean validateNamespaceNeedsVisibility(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return PackageableElementOperations
+			.validateNamespaceNeedsVisibility(this, diagnostics, context);
 	}
 
 	/**
@@ -1710,16 +1716,13 @@ public abstract class ClassifierImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<ParameterableElement> result = (EList<ParameterableElement>) cache
-				.get(
-					this,
+				.get(this,
 					UMLPackage.Literals.TEMPLATEABLE_ELEMENT___PARAMETERABLE_ELEMENTS);
 			if (result == null) {
-				cache
-					.put(
-						this,
-						UMLPackage.Literals.TEMPLATEABLE_ELEMENT___PARAMETERABLE_ELEMENTS,
-						result = TemplateableElementOperations
-							.parameterableElements(this));
+				cache.put(this,
+					UMLPackage.Literals.TEMPLATEABLE_ELEMENT___PARAMETERABLE_ELEMENTS,
+					result = TemplateableElementOperations
+						.parameterableElements(this));
 			}
 			return result;
 		}
@@ -1740,8 +1743,8 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNoCyclesInGeneralization(
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateNoCyclesInGeneralization(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ClassifierOperations.validateNoCyclesInGeneralization(this,
 			diagnostics, context);
 	}
@@ -1785,7 +1788,8 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public Generalization createGeneralization(Classifier general) {
-		Generalization newGeneralization = (Generalization) create(UMLPackage.Literals.GENERALIZATION);
+		Generalization newGeneralization = (Generalization) create(
+			UMLPackage.Literals.GENERALIZATION);
 		getGeneralizations().add(newGeneralization);
 		if (general != null)
 			newGeneralization.setGeneral(general);
@@ -1851,8 +1855,7 @@ public abstract class ClassifierImpl
 			EList<Operation> result = (EList<Operation>) cache.get(this,
 				UMLPackage.Literals.CLASSIFIER___GET_OPERATIONS);
 			if (result == null) {
-				cache.put(this,
-					UMLPackage.Literals.CLASSIFIER___GET_OPERATIONS,
+				cache.put(this, UMLPackage.Literals.CLASSIFIER___GET_OPERATIONS,
 					result = ClassifierOperations.getOperations(this));
 			}
 			return result;
@@ -2006,12 +2009,10 @@ public abstract class ClassifierImpl
 			EList<Interface> result = (EList<Interface>) cache.get(this,
 				UMLPackage.Literals.CLASSIFIER___DIRECTLY_REALIZED_INTERFACES);
 			if (result == null) {
-				cache
-					.put(
-						this,
-						UMLPackage.Literals.CLASSIFIER___DIRECTLY_REALIZED_INTERFACES,
-						result = ClassifierOperations
-							.directlyRealizedInterfaces(this));
+				cache.put(this,
+					UMLPackage.Literals.CLASSIFIER___DIRECTLY_REALIZED_INTERFACES,
+					result = ClassifierOperations
+						.directlyRealizedInterfaces(this));
 			}
 			return result;
 		}
@@ -2102,8 +2103,7 @@ public abstract class ClassifierImpl
 			EList<Property> result = (EList<Property>) cache.get(this,
 				UMLPackage.Literals.CLASSIFIER___ALL_ATTRIBUTES);
 			if (result == null) {
-				cache.put(this,
-					UMLPackage.Literals.CLASSIFIER___ALL_ATTRIBUTES,
+				cache.put(this, UMLPackage.Literals.CLASSIFIER___ALL_ATTRIBUTES,
 					result = ClassifierOperations.allAttributes(this));
 			}
 			return result;
@@ -2209,10 +2209,10 @@ public abstract class ClassifierImpl
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.CLASSIFIER__TEMPLATE_PARAMETER :
 				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
+					msgs = ((InternalEObject) templateParameter).eInverseRemove(
+						this,
+						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+						TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.CLASSIFIER__TEMPLATE_BINDING :
@@ -2221,8 +2221,9 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
-						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.CLASSIFIER__OWNED_TEMPLATE_SIGNATURE,
+						.eInverseRemove(this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.CLASSIFIER__OWNED_TEMPLATE_SIGNATURE,
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
@@ -2252,49 +2253,49 @@ public abstract class ClassifierImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.CLASSIFIER__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASSIFIER__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASSIFIER__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.CLASSIFIER__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedRules())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASSIFIER__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getElementImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASSIFIER__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPackageImports())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.CLASSIFIER__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.CLASSIFIER__TEMPLATE_BINDING :
-				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getTemplateBindings())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.CLASSIFIER__COLLABORATION_USE :
-				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getCollaborationUses())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASSIFIER__GENERALIZATION :
-				return ((InternalEList<?>) getGeneralizations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getGeneralizations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASSIFIER__POWERTYPE_EXTENT :
-				return ((InternalEList<?>) getPowertypeExtents()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPowertypeExtents())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASSIFIER__OWNED_USE_CASE :
-				return ((InternalEList<?>) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedUseCases())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASSIFIER__USE_CASE :
 				return ((InternalEList<?>) getUseCases()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.CLASSIFIER__SUBSTITUTION :
-				return ((InternalEList<?>) getSubstitutions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getSubstitutions())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -2431,13 +2432,13 @@ public abstract class ClassifierImpl
 		switch (featureID) {
 			case UMLPackage.CLASSIFIER__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.CLASSIFIER__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.CLASSIFIER__NAME :
 				setName((String) newValue);
@@ -2450,18 +2451,18 @@ public abstract class ClassifierImpl
 				return;
 			case UMLPackage.CLASSIFIER__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getOwnedRules()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.CLASSIFIER__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll(
-					(Collection<? extends ElementImport>) newValue);
+				getElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.CLASSIFIER__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll(
-					(Collection<? extends PackageImport>) newValue);
+				getPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.CLASSIFIER__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -2477,31 +2478,31 @@ public abstract class ClassifierImpl
 				return;
 			case UMLPackage.CLASSIFIER__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll(
-					(Collection<? extends TemplateBinding>) newValue);
+				getTemplateBindings()
+					.addAll((Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.CLASSIFIER__COLLABORATION_USE :
 				getCollaborationUses().clear();
-				getCollaborationUses().addAll(
-					(Collection<? extends CollaborationUse>) newValue);
+				getCollaborationUses()
+					.addAll((Collection<? extends CollaborationUse>) newValue);
 				return;
 			case UMLPackage.CLASSIFIER__GENERAL :
 				getGenerals().clear();
-				getGenerals().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getGenerals()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.CLASSIFIER__GENERALIZATION :
 				getGeneralizations().clear();
-				getGeneralizations().addAll(
-					(Collection<? extends Generalization>) newValue);
+				getGeneralizations()
+					.addAll((Collection<? extends Generalization>) newValue);
 				return;
 			case UMLPackage.CLASSIFIER__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll(
-					(Collection<? extends GeneralizationSet>) newValue);
+				getPowertypeExtents()
+					.addAll((Collection<? extends GeneralizationSet>) newValue);
 				return;
 			case UMLPackage.CLASSIFIER__IS_ABSTRACT :
 				setIsAbstract((Boolean) newValue);
@@ -2511,8 +2512,8 @@ public abstract class ClassifierImpl
 				return;
 			case UMLPackage.CLASSIFIER__OWNED_USE_CASE :
 				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll(
-					(Collection<? extends UseCase>) newValue);
+				getOwnedUseCases()
+					.addAll((Collection<? extends UseCase>) newValue);
 				return;
 			case UMLPackage.CLASSIFIER__USE_CASE :
 				getUseCases().clear();
@@ -2520,16 +2521,16 @@ public abstract class ClassifierImpl
 				return;
 			case UMLPackage.CLASSIFIER__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
-				getRedefinedClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getRedefinedClassifiers()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.CLASSIFIER__REPRESENTATION :
 				setRepresentation((CollaborationUse) newValue);
 				return;
 			case UMLPackage.CLASSIFIER__SUBSTITUTION :
 				getSubstitutions().clear();
-				getSubstitutions().addAll(
-					(Collection<? extends Substitution>) newValue);
+				getSubstitutions()
+					.addAll((Collection<? extends Substitution>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -2696,9 +2697,11 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.CLASSIFIER__IS_ABSTRACT :
-				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
+				return ((eFlags
+					& IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.CLASSIFIER__IS_FINAL_SPECIALIZATION :
-				return ((eFlags & IS_FINAL_SPECIALIZATION_EFLAG) != 0) != IS_FINAL_SPECIALIZATION_EDEFAULT;
+				return ((eFlags
+					& IS_FINAL_SPECIALIZATION_EFLAG) != 0) != IS_FINAL_SPECIALIZATION_EDEFAULT;
 			case UMLPackage.CLASSIFIER__OWNED_USE_CASE :
 				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UMLPackage.CLASSIFIER__USE_CASE :
@@ -2720,7 +2723,8 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	public int eBaseStructuralFeatureID(int derivedFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == RedefinableElement.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.CLASSIFIER__IS_LEAF :
@@ -2776,7 +2780,8 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	public int eDerivedStructuralFeatureID(int baseFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == RedefinableElement.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.REDEFINABLE_ELEMENT__IS_LEAF :
@@ -2949,7 +2954,8 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.CLASSIFIER___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CLASSIFIER___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.CLASSIFIER___GET_STEREOTYPE_APPLICATIONS :
@@ -2957,7 +2963,8 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.CLASSIFIER___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CLASSIFIER___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -3046,13 +3053,13 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER___GET_OWNED_MEMBERS :
 				return getOwnedMembers();
 			case UMLPackage.CLASSIFIER___EXCLUDE_COLLISIONS__ELIST :
-				return excludeCollisions((EList<PackageableElement>) arguments
-					.get(0));
+				return excludeCollisions(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.CLASSIFIER___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
 				return getNamesOfMember((NamedElement) arguments.get(0));
 			case UMLPackage.CLASSIFIER___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
+				return importMembers(
+					(EList<PackageableElement>) arguments.get(0));
 			case UMLPackage.CLASSIFIER___GET_IMPORTED_MEMBERS :
 				return getImportedMembers();
 			case UMLPackage.CLASSIFIER___MEMBERS_ARE_DISTINGUISHABLE :
@@ -3072,10 +3079,11 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.CLASSIFIER___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.CLASSIFIER___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.CLASSIFIER___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.CLASSIFIER___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
@@ -3198,7 +3206,8 @@ public abstract class ClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{UMLPackage.CLASSIFIER__REDEFINED_CLASSIFIER};
+	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.CLASSIFIER__REDEFINED_CLASSIFIER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -3328,7 +3337,8 @@ public abstract class ClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] FEATURE_ESUBSETS = new int[]{UMLPackage.CLASSIFIER__ATTRIBUTE};
+	protected static final int[] FEATURE_ESUBSETS = new int[]{
+		UMLPackage.CLASSIFIER__ATTRIBUTE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -3390,7 +3400,8 @@ public abstract class ClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] COLLABORATION_USE_ESUBSETS = new int[]{UMLPackage.CLASSIFIER__REPRESENTATION};
+	protected static final int[] COLLABORATION_USE_ESUBSETS = new int[]{
+		UMLPackage.CLASSIFIER__REPRESENTATION};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -3398,7 +3409,8 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public CollaborationUse createCollaborationUse(String name) {
-		CollaborationUse newCollaborationUse = (CollaborationUse) create(UMLPackage.Literals.COLLABORATION_USE);
+		CollaborationUse newCollaborationUse = (CollaborationUse) create(
+			UMLPackage.Literals.COLLABORATION_USE);
 		getCollaborationUses().add(newCollaborationUse);
 		if (name != null)
 			newCollaborationUse.setName(name);
@@ -3419,8 +3431,8 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CollaborationUse getCollaborationUse(String name,
-			boolean ignoreCase, boolean createOnDemand) {
+	public CollaborationUse getCollaborationUse(String name, boolean ignoreCase,
+			boolean createOnDemand) {
 		collaborationUseLoop : for (CollaborationUse collaborationUse : getCollaborationUses()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(collaborationUse.getName())
@@ -3439,7 +3451,8 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public Substitution createSubstitution(String name, Classifier contract) {
-		Substitution newSubstitution = (Substitution) create(UMLPackage.Literals.SUBSTITUTION);
+		Substitution newSubstitution = (Substitution) create(
+			UMLPackage.Literals.SUBSTITUTION);
 		getSubstitutions().add(newSubstitution);
 		if (name != null)
 			newSubstitution.setName(name);

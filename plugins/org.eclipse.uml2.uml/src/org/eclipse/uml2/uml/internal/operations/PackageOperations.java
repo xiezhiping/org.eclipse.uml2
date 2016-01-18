@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 271470
  *   Kenn Hussey - 323181, 348433
- *   Kenn Hussey (CEA) - 327039, 369492, 313951, 163556, 418466, 447901, 451350, 458658
+ *   Kenn Hussey (CEA) - 327039, 369492, 313951, 163556, 418466, 447901, 451350, 458658, 485756
  *   Christian W. Damus (CEA) - 300957, 431998
  *   Christian W. Damus - 444588
  *
@@ -17,7 +17,9 @@
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -94,6 +96,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Package#isModelLibrary() <em>Is Model Library</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#isProfileApplied(org.eclipse.uml2.uml.Profile) <em>Is Profile Applied</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#unapplyProfile(org.eclipse.uml2.uml.Profile) <em>Unapply Profile</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#applyProfiles(org.eclipse.emf.common.util.EList) <em>Apply Profiles</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#allApplicableStereotypes() <em>All Applicable Stereotypes</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#containingProfile() <em>Containing Profile</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#makesVisible(org.eclipse.uml2.uml.NamedElement) <em>Makes Visible</em>}</li>
@@ -114,12 +117,24 @@ public class PackageOperations
 
 		private static final long serialVersionUID = 1L;
 
+		@Deprecated
 		protected final Profile profile;
 
+		protected final List<Profile> profiles;
+
 		protected StereotypeApplicationCopier(Profile profile) {
+			this(profile == null
+				? Collections.<Profile> emptyList()
+				: Collections.singletonList(profile));
+		}
+
+		protected StereotypeApplicationCopier(List<Profile> profiles) {
 			super();
 
-			this.profile = profile;
+			this.profiles = profiles;
+			this.profile = profiles.isEmpty()
+				? null
+				: profiles.get(0);
 		}
 
 		@Override
@@ -142,9 +157,7 @@ public class PackageOperations
 					? getQualifiedName(namedElement)
 					: getQualifiedName(eClass, NamedElement.SEPARATOR);
 				throw new IllegalStateException("Definition for class '" //$NON-NLS-1$
-					+ qualifiedName
-					+ "' not found in profile '" + getQualifiedName(profile) //$NON-NLS-1$
-					+ "'"); //$NON-NLS-1$
+					+ qualifiedName + "' not found."); //$NON-NLS-1$
 			}
 		}
 
@@ -152,7 +165,8 @@ public class PackageOperations
 		protected EStructuralFeature getTarget(
 				EStructuralFeature eStructuralFeature) {
 			NamedElement namedElement = getNamedElement(eStructuralFeature);
-			EStructuralFeature definition = (EStructuralFeature) getDefinition(namedElement);
+			EStructuralFeature definition = (EStructuralFeature) getDefinition(
+				namedElement);
 
 			if (definition != null) {
 				return definition;
@@ -162,20 +176,41 @@ public class PackageOperations
 					: getQualifiedName(eStructuralFeature,
 						NamedElement.SEPARATOR);
 				throw new IllegalStateException("Definition for property '" //$NON-NLS-1$
-					+ qualifiedName
-					+ "' not found in profile '" + getQualifiedName(profile) //$NON-NLS-1$
-					+ "'"); //$NON-NLS-1$
+					+ qualifiedName + "' not found."); //$NON-NLS-1$
 			}
 		}
 
 		protected NamedElement getNamedElement(ENamedElement element) {
-			return UMLUtil.getNamedElement(element, profile);
+
+			if (element != null) {
+
+				for (Profile profile : profiles) {
+					NamedElement namedElement = UMLUtil.getNamedElement(element,
+						profile);
+
+					if (namedElement != null) {
+						return namedElement;
+					}
+				}
+			}
+
+			return null;
 		}
 
 		protected ENamedElement getDefinition(NamedElement element) {
-			return (element == null)
-				? null
-				: profile.getDefinition(element);
+
+			if (element != null) {
+
+				for (Profile profile : profiles) {
+					ENamedElement definition = profile.getDefinition(element);
+
+					if (definition != null) {
+						return definition;
+					}
+				}
+			}
+
+			return null;
 		}
 
 		@Override
@@ -185,10 +220,12 @@ public class PackageOperations
 			if (!eAttribute.isUnsettable() || eObject.eIsSet(eAttribute)) {
 
 				try {
-					if (eAttribute.getEType().eClass().getClassifierID() == EcorePackage.EENUM) {
+					if (eAttribute.getEType().eClass()
+						.getClassifierID() == EcorePackage.EENUM) {
 						copyEEnumAttribute(eAttribute, eObject, copyEObject);
 					} else {
-						copyEDataTypeAttribute(eAttribute, eObject, copyEObject);
+						copyEDataTypeAttribute(eAttribute, eObject,
+							copyEObject);
 					}
 				} catch (Exception e) {
 					handleException(e);
@@ -222,23 +259,20 @@ public class PackageOperations
 						EList<?> values = (EList<?>) eObject.eGet(eAttribute);
 
 						for (int i = 0, size = values.size(); i < size; i++) {
-							copyValues.add(i, targetEFactory.createFromString(
-								targetEDataType,
-								eFactory.convertToString(eDataType,
-									values.get(i))));
+							copyValues.add(i,
+								targetEFactory.createFromString(targetEDataType,
+									eFactory.convertToString(eDataType,
+										values.get(i))));
 						}
 					} else {
 						copyValues.add(targetEFactory.createFromString(
-							targetEDataType,
-							eFactory.convertToString(eDataType,
+							targetEDataType, eFactory.convertToString(eDataType,
 								eObject.eGet(eAttribute))));
 					}
 				} else {
-					copyEObject.eSet(targetEAttribute, targetEFactory
-						.createFromString(
-							targetEDataType,
-							eFactory.convertToString(
-								eDataType,
+					copyEObject.eSet(targetEAttribute,
+						targetEFactory.createFromString(targetEDataType,
+							eFactory.convertToString(eDataType,
 								eAttribute.isMany()
 									? ((EList<?>) eObject.eGet(eAttribute))
 										.get(0)
@@ -314,7 +348,8 @@ public class PackageOperations
 				Object value = eObject.eGet(eReference);
 
 				try {
-					EReference targetEReference = (EReference) getTarget(eReference);
+					EReference targetEReference = (EReference) getTarget(
+						eReference);
 
 					if (targetEReference != null
 						&& targetEReference.isChangeable()) {
@@ -358,7 +393,8 @@ public class PackageOperations
 				Object value = eObject.eGet(eReference);
 
 				try {
-					EReference targetEReference = (EReference) getTarget(eReference);
+					EReference targetEReference = (EReference) getTarget(
+						eReference);
 
 					if (targetEReference != null
 						&& targetEReference.isChangeable()) {
@@ -411,7 +447,9 @@ public class PackageOperations
 
 								if (copyValue == null) {
 
-									if (targetEReference.getEOpposite() == null) {
+									if (targetEReference
+										.getEOpposite() == null) {
+
 										copyValues.addUnique((EObject) value);
 									}
 								} else {
@@ -486,17 +524,14 @@ public class PackageOperations
 					if (diagnostics == null) {
 						return result;
 					} else {
-						diagnostics
-							.add(new BasicDiagnostic(
-								Diagnostic.WARNING,
-								UMLValidator.DIAGNOSTIC_SOURCE,
-								UMLValidator.PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE,
-								UMLPlugin.INSTANCE
-									.getString(
-										"_UI_Package_ElementsPublicOrPrivate_diagnostic", //$NON-NLS-1$
-										getMessageSubstitutions(context,
-											ownedElement, package_)),
-								new Object[]{package_, ownedElement}));
+						diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+							UMLValidator.DIAGNOSTIC_SOURCE,
+							UMLValidator.PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE,
+							UMLPlugin.INSTANCE.getString(
+								"_UI_Package_ElementsPublicOrPrivate_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context, ownedElement,
+									package_)),
+							new Object[]{package_, ownedElement}));
 					}
 				}
 			}
@@ -571,8 +606,8 @@ public class PackageOperations
 	public static Stereotype createOwnedStereotype(
 			org.eclipse.uml2.uml.Package package_, String name,
 			boolean isAbstract) {
-		Stereotype ownedStereotype = (Stereotype) package_.createOwnedType(
-			name, UMLPackage.Literals.STEREOTYPE);
+		Stereotype ownedStereotype = (Stereotype) package_.createOwnedType(name,
+			UMLPackage.Literals.STEREOTYPE);
 		ownedStereotype.setIsAbstract(isAbstract);
 		return ownedStereotype;
 	}
@@ -620,26 +655,96 @@ public class PackageOperations
 	 */
 	public static EList<EObject> applyProfile(
 			org.eclipse.uml2.uml.Package package_, Profile profile) {
+		return applyProfiles(package_, profile == null
+			? ECollections.<Profile> emptyEList()
+			: ECollections.singletonEList(profile));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Unapplies the specified profile from this package and automatically unapplies stereotypes in the profile from elements within this package's namespace hieararchy.
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * @param profile The profile to unapply.
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static EList<EObject> unapplyProfile(
+			org.eclipse.uml2.uml.Package package_, Profile profile) {
 
 		if (profile == null) {
 			throw new IllegalArgumentException("null profile"); //$NON-NLS-1$
 		}
 
-		EPackage profileDefinition = profile.getDefinition();
-
-		if (profileDefinition == null) {
+		if (package_.getProfileApplication(profile) == null) {
 			throw new IllegalArgumentException(String.format(
-				"profile \"%s\" has no Ecore definition", //$NON-NLS-1$
-				profile.getQualifiedName()));
+				"profile \"%s\" is not applied", profile.getQualifiedName())); //$NON-NLS-1$
 		}
 
-		if (package_.getProfileApplication(profile) == null) {
-			package_.createProfileApplication().setAppliedProfile(profile);
+		EList<ProfileApplication> profileApplications = new UniqueEList.FastCompare<ProfileApplication>();
+
+		for (TreeIterator<EObject> allContents = getAllContents(package_, true,
+			false); allContents.hasNext();) {
+
+			EObject eObject = allContents.next();
+
+			if (eObject instanceof org.eclipse.uml2.uml.Package) {
+
+				for (ProfileApplication profileApplication : ((org.eclipse.uml2.uml.Package) eObject)
+					.getProfileApplications()) {
+
+					if (profileApplication.getAppliedProfile() == profile) {
+						profileApplications.add(profileApplication);
+					}
+				}
+			}
+		}
+
+		destroyAll(profileApplications);
+
+		return package_.getAllAppliedProfiles().contains(profile)
+			? ECollections.<EObject> emptyEList()
+			: unapplyAllNonApplicableStereotypes(package_);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Applies the current definitions of the specified profiles to this package and automatically applies required stereotypes in the profiles to elements within this package's namespace hieararchy. If different definitions are already applied, automatically migrates any associated stereotype values on a "best effort" basis (matching classifiers and structural features by name).
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * @param profiles The profiles to apply.
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static EList<EObject> applyProfiles(
+			org.eclipse.uml2.uml.Package package_, EList<Profile> profiles) {
+
+		if (profiles == null || profiles.isEmpty()) {
+			throw new IllegalArgumentException("No profile specified"); //$NON-NLS-1$
+		}
+
+		for (Profile profile : profiles) {
+			EPackage profileDefinition = profile.getDefinition();
+
+			if (profileDefinition == null) {
+				throw new IllegalArgumentException(
+					String.format("profile \"%s\" has no Ecore definition", //$NON-NLS-1$
+						profile.getQualifiedName()));
+			}
+		}
+
+		for (Profile profile : profiles) {
+
+			if (package_.getProfileApplication(profile) == null) {
+				package_.createProfileApplication().setAppliedProfile(profile);
+			}
 		}
 
 		EList<EObject> stereotypeApplications = new UniqueEList.FastCompare<EObject>();
 		StereotypeApplicationCopier copier = new StereotypeApplicationCopier(
-			profile);
+			profiles);
 
 		for (TreeIterator<EObject> allContents = getAllContents(package_, true,
 			false); allContents.hasNext();) {
@@ -654,16 +759,19 @@ public class PackageOperations
 					for (ProfileApplication profileApplication : ((org.eclipse.uml2.uml.Package) element)
 						.getProfileApplications()) {
 
-						if (profileApplication.getAppliedProfile() == profile) {
+						Profile appliedProfile = profileApplication
+							.getAppliedProfile();
+
+						if (profiles.contains(appliedProfile)) {
 							EList<EObject> references = getEAnnotation(
-								profileApplication,
-								UML2_UML_PACKAGE_2_0_NS_URI, true)
-								.getReferences();
+								profileApplication, UML2_UML_PACKAGE_2_0_NS_URI,
+								true).getReferences();
 
 							if (references.isEmpty()) {
-								references.add(profileDefinition);
+								references.add(appliedProfile.getDefinition());
 							} else {
-								references.set(0, profileDefinition);
+								references.set(0,
+									appliedProfile.getDefinition());
 							}
 						}
 					}
@@ -672,10 +780,11 @@ public class PackageOperations
 				for (EObject stereotypeApplication : element
 					.getStereotypeApplications()) {
 
-					Stereotype stereotype = getStereotype(stereotypeApplication);
+					Stereotype stereotype = getStereotype(
+						stereotypeApplication);
 
 					if (stereotype != null
-						&& stereotype.getProfile() == profile) {
+						&& profiles.contains(stereotype.getProfile())) {
 
 						if (element.isStereotypeApplicable(stereotype)) {
 							EObject copy = copier.copy(stereotypeApplication);
@@ -687,15 +796,13 @@ public class PackageOperations
 									.getContents();
 
 								if (eResource == copy.eResource()) {
-									contents
-										.move(contents
-											.indexOf(stereotypeApplication),
-											copy);
+									contents.move(
+										contents.indexOf(stereotypeApplication),
+										copy);
 								} else {
-									contents
-										.set(contents
-											.indexOf(stereotypeApplication),
-											copy);
+									contents.set(
+										contents.indexOf(stereotypeApplication),
+										copy);
 								}
 							}
 						}
@@ -748,57 +855,14 @@ public class PackageOperations
 
 		destroyAll(stereotypeApplications);
 
-		return profile.getOwnedExtensions(true).isEmpty()
-			? ECollections.<EObject> emptyEList()
-			: applyAllRequiredStereotypes(package_);
-	}
+		for (Profile profile : profiles) {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Unapplies the specified profile from this package and automatically unapplies stereotypes in the profile from elements within this package's namespace hieararchy.
-	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
-	 * @param profile The profile to unapply.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static EList<EObject> unapplyProfile(
-			org.eclipse.uml2.uml.Package package_, Profile profile) {
-
-		if (profile == null) {
-			throw new IllegalArgumentException("null profile"); //$NON-NLS-1$
-		}
-
-		if (package_.getProfileApplication(profile) == null) {
-			throw new IllegalArgumentException(String.format(
-				"profile \"%s\" is not applied", profile.getQualifiedName())); //$NON-NLS-1$
-		}
-
-		EList<ProfileApplication> profileApplications = new UniqueEList.FastCompare<ProfileApplication>();
-
-		for (TreeIterator<EObject> allContents = getAllContents(package_, true,
-			false); allContents.hasNext();) {
-
-			EObject eObject = allContents.next();
-
-			if (eObject instanceof org.eclipse.uml2.uml.Package) {
-
-				for (ProfileApplication profileApplication : ((org.eclipse.uml2.uml.Package) eObject)
-					.getProfileApplications()) {
-
-					if (profileApplication.getAppliedProfile() == profile) {
-						profileApplications.add(profileApplication);
-					}
-				}
+			if (profile.getOwnedExtensions(true).size() > 0) {
+				return applyAllRequiredStereotypes(package_);
 			}
 		}
 
-		destroyAll(profileApplications);
-
-		return package_.getAllAppliedProfiles().contains(profile)
-			? ECollections.<EObject> emptyEList()
-			: unapplyAllNonApplicableStereotypes(package_);
+		return ECollections.<EObject> emptyEList();
 	}
 
 	/**
@@ -905,8 +969,8 @@ public class PackageOperations
 
 			Profile appliedProfile = profileApplication.getAppliedProfile();
 
-			if (appliedProfile != null
-				&& safeEquals(appliedProfile.getQualifiedName(), qualifiedName)) {
+			if (appliedProfile != null && safeEquals(
+				appliedProfile.getQualifiedName(), qualifiedName)) {
 
 				return appliedProfile;
 			}
@@ -936,7 +1000,7 @@ public class PackageOperations
 			for (Iterator<org.eclipse.uml2.uml.Package> otherApplyingPackages = ProfileApplicationHelper
 				.getInstance(package_).getOtherApplyingPackages(package_)
 				.iterator(); otherApplyingPackages.hasNext()
-				&& appliedProfile == null;) {
+					&& appliedProfile == null;) {
 
 				appliedProfile = otherApplyingPackages.next()
 					.getAppliedProfile(qualifiedName);
@@ -963,8 +1027,8 @@ public class PackageOperations
 		for (org.eclipse.uml2.uml.Package applyingPackage : ProfileApplicationHelper
 			.getInstance(package_).getOtherApplyingPackages(package_)) {
 
-			allProfileApplications.addAll(applyingPackage
-				.getProfileApplications());
+			allProfileApplications
+				.addAll(applyingPackage.getProfileApplications());
 		}
 
 		return ECollections.unmodifiableEList(allProfileApplications);
@@ -1016,7 +1080,7 @@ public class PackageOperations
 			for (Iterator<org.eclipse.uml2.uml.Package> otherApplyingPackages = ProfileApplicationHelper
 				.getInstance(package_).getOtherApplyingPackages(package_)
 				.iterator(); otherApplyingPackages.hasNext()
-				&& profileApplication == null;) {
+					&& profileApplication == null;) {
 
 				profileApplication = otherApplyingPackages.next()
 					.getProfileApplication(profile);
@@ -1051,7 +1115,8 @@ public class PackageOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static boolean isModelLibrary(org.eclipse.uml2.uml.Package package_) {
+	public static boolean isModelLibrary(
+			org.eclipse.uml2.uml.Package package_) {
 		return package_.getAppliedStereotype("StandardProfile" //$NON-NLS-1$
 			+ NamedElement.SEPARATOR + "ModelLibrary") != null; //$NON-NLS-1$
 	}
@@ -1085,14 +1150,16 @@ public class PackageOperations
 
 		for (PackageImport packageImport : package_.getPackageImports()) {
 
-			if (packageImport.getVisibility() == VisibilityKind.PUBLIC_LITERAL) {
+			if (packageImport
+				.getVisibility() == VisibilityKind.PUBLIC_LITERAL) {
 				org.eclipse.uml2.uml.Package importedPackage = packageImport
 					.getImportedPackage();
 
 				if (importedPackage != null
 					&& allImportedPackages.add(importedPackage)) {
 
-					getAllImportedPackages(importedPackage, allImportedPackages);
+					getAllImportedPackages(importedPackage,
+						allImportedPackages);
 				}
 			}
 		}
@@ -1106,8 +1173,8 @@ public class PackageOperations
 
 		for (NamedElement ownedMember : package_.getOwnedMembers()) {
 
-			if (ownedMember instanceof PackageableElement
-				&& ownedMember.getVisibility() == VisibilityKind.PUBLIC_LITERAL) {
+			if (ownedMember instanceof PackageableElement && ownedMember
+				.getVisibility() == VisibilityKind.PUBLIC_LITERAL) {
 
 				visibleMembers.add((PackageableElement) ownedMember);
 			}
@@ -1115,7 +1182,8 @@ public class PackageOperations
 
 		for (ElementImport elementImport : package_.getElementImports()) {
 
-			if (elementImport.getVisibility() == VisibilityKind.PUBLIC_LITERAL) {
+			if (elementImport
+				.getVisibility() == VisibilityKind.PUBLIC_LITERAL) {
 				PackageableElement importedElement = elementImport
 					.getImportedElement();
 
@@ -1179,13 +1247,15 @@ public class PackageOperations
 		for (ElementImport elementImport : package_.getElementImports()) {
 
 			if (safeEquals(elementImport.getImportedElement(), el)) {
-				return elementImport.getVisibility() == VisibilityKind.PUBLIC_LITERAL;
+				return elementImport
+					.getVisibility() == VisibilityKind.PUBLIC_LITERAL;
 			}
 		}
 
 		for (PackageImport packageImport : package_.getPackageImports()) {
 
-			if (packageImport.getVisibility() == VisibilityKind.PUBLIC_LITERAL) {
+			if (packageImport
+				.getVisibility() == VisibilityKind.PUBLIC_LITERAL) {
 				org.eclipse.uml2.uml.Package importedPackage = packageImport
 					.getImportedPackage();
 

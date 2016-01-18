@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -121,7 +121,8 @@ public abstract class VertexImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Transition getOutgoing(String name, boolean ignoreCase, EClass eClass) {
+	public Transition getOutgoing(String name, boolean ignoreCase,
+			EClass eClass) {
 		outgoingLoop : for (Transition outgoing : getOutgoings()) {
 			if (eClass != null && !eClass.isInstance(outgoing))
 				continue outgoingLoop;
@@ -157,7 +158,8 @@ public abstract class VertexImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Transition getIncoming(String name, boolean ignoreCase, EClass eClass) {
+	public Transition getIncoming(String name, boolean ignoreCase,
+			EClass eClass) {
 		incomingLoop : for (Transition incoming : getIncomings()) {
 			if (eClass != null && !eClass.isInstance(incoming))
 				continue incomingLoop;
@@ -211,7 +213,8 @@ public abstract class VertexImpl
 	 */
 	public void setContainer(Region newContainer) {
 		if (newContainer != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.VERTEX__CONTAINER && newContainer != null)) {
+			|| (eContainerFeatureID() != UMLPackage.VERTEX__CONTAINER
+				&& newContainer != null)) {
 			if (EcoreUtil.isAncestor(this, newContainer))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -287,11 +290,11 @@ public abstract class VertexImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.VERTEX__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.VERTEX__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.VERTEX__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.VERTEX__CONTAINER :
@@ -373,13 +376,13 @@ public abstract class VertexImpl
 		switch (featureID) {
 			case UMLPackage.VERTEX__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.VERTEX__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.VERTEX__NAME :
 				setName((String) newValue);
@@ -524,7 +527,8 @@ public abstract class VertexImpl
 			case UMLPackage.VERTEX___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.VERTEX___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.VERTEX___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.VERTEX___GET_STEREOTYPE_APPLICATIONS :
@@ -532,7 +536,8 @@ public abstract class VertexImpl
 			case UMLPackage.VERTEX___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.VERTEX___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.VERTEX___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));

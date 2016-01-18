@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -172,7 +172,8 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutableNode getTest(String name, boolean ignoreCase, EClass eClass) {
+	public ExecutableNode getTest(String name, boolean ignoreCase,
+			EClass eClass) {
 		testLoop : for (ExecutableNode test : getTests()) {
 			if (eClass != null && !eClass.isInstance(test))
 				continue testLoop;
@@ -212,7 +213,8 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutableNode getBody(String name, boolean ignoreCase, EClass eClass) {
+	public ExecutableNode getBody(String name, boolean ignoreCase,
+			EClass eClass) {
 		bodyLoop : for (ExecutableNode body : getBodies()) {
 			if (eClass != null && !eClass.isInstance(body))
 				continue bodyLoop;
@@ -398,17 +400,17 @@ public class ClauseImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.CLAUSE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLAUSE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLAUSE__PREDECESSOR_CLAUSE :
 				return ((InternalEList<?>) getPredecessorClauses())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLAUSE__SUCCESSOR_CLAUSE :
-				return ((InternalEList<?>) getSuccessorClauses()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getSuccessorClauses())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -460,41 +462,41 @@ public class ClauseImpl
 		switch (featureID) {
 			case UMLPackage.CLAUSE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.CLAUSE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.CLAUSE__BODY :
 				getBodies().clear();
-				getBodies().addAll(
-					(Collection<? extends ExecutableNode>) newValue);
+				getBodies()
+					.addAll((Collection<? extends ExecutableNode>) newValue);
 				return;
 			case UMLPackage.CLAUSE__BODY_OUTPUT :
 				getBodyOutputs().clear();
-				getBodyOutputs().addAll(
-					(Collection<? extends OutputPin>) newValue);
+				getBodyOutputs()
+					.addAll((Collection<? extends OutputPin>) newValue);
 				return;
 			case UMLPackage.CLAUSE__DECIDER :
 				setDecider((OutputPin) newValue);
 				return;
 			case UMLPackage.CLAUSE__PREDECESSOR_CLAUSE :
 				getPredecessorClauses().clear();
-				getPredecessorClauses().addAll(
-					(Collection<? extends Clause>) newValue);
+				getPredecessorClauses()
+					.addAll((Collection<? extends Clause>) newValue);
 				return;
 			case UMLPackage.CLAUSE__SUCCESSOR_CLAUSE :
 				getSuccessorClauses().clear();
-				getSuccessorClauses().addAll(
-					(Collection<? extends Clause>) newValue);
+				getSuccessorClauses()
+					.addAll((Collection<? extends Clause>) newValue);
 				return;
 			case UMLPackage.CLAUSE__TEST :
 				getTests().clear();
-				getTests().addAll(
-					(Collection<? extends ExecutableNode>) newValue);
+				getTests()
+					.addAll((Collection<? extends ExecutableNode>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -626,7 +628,8 @@ public class ClauseImpl
 			case UMLPackage.CLAUSE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.CLAUSE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CLAUSE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.CLAUSE___GET_STEREOTYPE_APPLICATIONS :
@@ -634,7 +637,8 @@ public class ClauseImpl
 			case UMLPackage.CLAUSE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.CLAUSE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CLAUSE___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -666,8 +670,7 @@ public class ClauseImpl
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CLAUSE___VALIDATE_DECIDER_OUTPUT__DIAGNOSTICCHAIN_MAP :
-				return validateDeciderOutput(
-					(DiagnosticChain) arguments.get(0),
+				return validateDeciderOutput((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CLAUSE___VALIDATE_TEST_AND_BODY__DIAGNOSTICCHAIN_MAP :
 				return validateTestAndBody((DiagnosticChain) arguments.get(0),

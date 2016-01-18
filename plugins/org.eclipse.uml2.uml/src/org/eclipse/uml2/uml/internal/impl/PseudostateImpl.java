@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -94,7 +94,8 @@ public class PseudostateImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int KIND_EFLAG_DEFAULT = KIND_EDEFAULT.ordinal() << KIND_EFLAG_OFFSET;
+	protected static final int KIND_EFLAG_DEFAULT = KIND_EDEFAULT
+		.ordinal() << KIND_EFLAG_OFFSET;
 
 	/**
 	 * The array of enumeration values for '{@link PseudostateKind Pseudostate Kind}'
@@ -163,7 +164,8 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public void setKind(PseudostateKind newKind) {
-		PseudostateKind oldKind = KIND_EFLAG_VALUES[(eFlags & KIND_EFLAG) >>> KIND_EFLAG_OFFSET];
+		PseudostateKind oldKind = KIND_EFLAG_VALUES[(eFlags
+			& KIND_EFLAG) >>> KIND_EFLAG_OFFSET];
 		if (newKind == null)
 			newKind = KIND_EDEFAULT;
 		eFlags = eFlags & ~KIND_EFLAG | newKind.ordinal() << KIND_EFLAG_OFFSET;
@@ -213,7 +215,8 @@ public class PseudostateImpl
 	 */
 	public void setStateMachine(StateMachine newStateMachine) {
 		if (newStateMachine != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.PSEUDOSTATE__STATE_MACHINE && newStateMachine != null)) {
+			|| (eContainerFeatureID() != UMLPackage.PSEUDOSTATE__STATE_MACHINE
+				&& newStateMachine != null)) {
 			if (EcoreUtil.isAncestor(this, newStateMachine))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -274,7 +277,8 @@ public class PseudostateImpl
 	 */
 	public void setState(State newState) {
 		if (newState != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.PSEUDOSTATE__STATE && newState != null)) {
+			|| (eContainerFeatureID() != UMLPackage.PSEUDOSTATE__STATE
+				&& newState != null)) {
 			if (EcoreUtil.isAncestor(this, newState))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -430,11 +434,11 @@ public class PseudostateImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PSEUDOSTATE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PSEUDOSTATE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PSEUDOSTATE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
@@ -537,13 +541,13 @@ public class PseudostateImpl
 		switch (featureID) {
 			case UMLPackage.PSEUDOSTATE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.PSEUDOSTATE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.PSEUDOSTATE__NAME :
 				setName((String) newValue);
@@ -712,7 +716,8 @@ public class PseudostateImpl
 			case UMLPackage.PSEUDOSTATE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.PSEUDOSTATE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.PSEUDOSTATE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.PSEUDOSTATE___GET_STEREOTYPE_APPLICATIONS :
@@ -720,7 +725,8 @@ public class PseudostateImpl
 			case UMLPackage.PSEUDOSTATE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.PSEUDOSTATE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.PSEUDOSTATE___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -815,8 +821,7 @@ public class PseudostateImpl
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PSEUDOSTATE___VALIDATE_INITIAL_VERTEX__DIAGNOSTICCHAIN_MAP :
-				return validateInitialVertex(
-					(DiagnosticChain) arguments.get(0),
+				return validateInitialVertex((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PSEUDOSTATE___VALIDATE_FORK_VERTEX__DIAGNOSTICCHAIN_MAP :
 				return validateForkVertex((DiagnosticChain) arguments.get(0),
@@ -841,8 +846,8 @@ public class PseudostateImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (kind: "); //$NON-NLS-1$
-		result
-			.append(KIND_EFLAG_VALUES[(eFlags & KIND_EFLAG) >>> KIND_EFLAG_OFFSET]);
+		result.append(
+			KIND_EFLAG_VALUES[(eFlags & KIND_EFLAG) >>> KIND_EFLAG_OFFSET]);
 		result.append(')');
 		return result.toString();
 	}

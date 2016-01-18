@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -179,8 +179,8 @@ public class OpaqueActionImpl
 			if (outputs == null) {
 				cache.put(eResource, this, UMLPackage.Literals.ACTION__OUTPUT,
 					outputs = new DerivedUnionEObjectEList<OutputPin>(
-						OutputPin.class, this,
-						UMLPackage.OPAQUE_ACTION__OUTPUT, OUTPUT_ESUBSETS));
+						OutputPin.class, this, UMLPackage.OPAQUE_ACTION__OUTPUT,
+						OUTPUT_ESUBSETS));
 			}
 			return outputs;
 		}
@@ -351,7 +351,8 @@ public class OpaqueActionImpl
 	 * @generated
 	 */
 	public OutputPin createOutputValue(String name, Type type) {
-		OutputPin newOutputValue = (OutputPin) create(UMLPackage.Literals.OUTPUT_PIN);
+		OutputPin newOutputValue = (OutputPin) create(
+			UMLPackage.Literals.OUTPUT_PIN);
 		getOutputValues().add(newOutputValue);
 		if (name != null)
 			newOutputValue.setName(name);
@@ -406,7 +407,8 @@ public class OpaqueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public OutputPin getOutputValue(String name, Type type, boolean ignoreCase) {
+	public OutputPin getOutputValue(String name, Type type,
+			boolean ignoreCase) {
 		return getOutputValue(name, type, ignoreCase, false);
 	}
 
@@ -420,11 +422,11 @@ public class OpaqueActionImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.OPAQUE_ACTION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OPAQUE_ACTION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OPAQUE_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.OPAQUE_ACTION__IN_INTERRUPTIBLE_REGION :
@@ -433,14 +435,14 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION__IN_STRUCTURED_NODE :
 				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.OPAQUE_ACTION__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.OPAQUE_ACTION__OUTGOING :
-				return ((InternalEList<?>) getOutgoings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.OPAQUE_ACTION__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getInPartitions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OPAQUE_ACTION__HANDLER :
 				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
@@ -451,11 +453,11 @@ public class OpaqueActionImpl
 				return ((InternalEList<?>) getLocalPreconditions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OPAQUE_ACTION__INPUT_VALUE :
-				return ((InternalEList<?>) getInputValues()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getInputValues())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OPAQUE_ACTION__OUTPUT_VALUE :
-				return ((InternalEList<?>) getOutputValues()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOutputValues())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -559,13 +561,13 @@ public class OpaqueActionImpl
 		switch (featureID) {
 			case UMLPackage.OPAQUE_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.OPAQUE_ACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.OPAQUE_ACTION__NAME :
 				setName((String) newValue);
@@ -584,50 +586,49 @@ public class OpaqueActionImpl
 				return;
 			case UMLPackage.OPAQUE_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions()
-					.addAll(
-						(Collection<? extends InterruptibleActivityRegion>) newValue);
+				getInInterruptibleRegions().addAll(
+					(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.OPAQUE_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.OPAQUE_ACTION__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getIncomings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.OPAQUE_ACTION__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getOutgoings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.OPAQUE_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll(
-					(Collection<? extends ActivityNode>) newValue);
+				getRedefinedNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.OPAQUE_ACTION__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
+				getInPartitions()
+					.addAll((Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.OPAQUE_ACTION__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll(
-					(Collection<? extends ExceptionHandler>) newValue);
+				getHandlers()
+					.addAll((Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.OPAQUE_ACTION__IS_LOCALLY_REENTRANT :
 				setIsLocallyReentrant((Boolean) newValue);
 				return;
 			case UMLPackage.OPAQUE_ACTION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPostconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.OPAQUE_ACTION__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPreconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.OPAQUE_ACTION__BODY :
 				getBodies().clear();
@@ -635,8 +636,8 @@ public class OpaqueActionImpl
 				return;
 			case UMLPackage.OPAQUE_ACTION__INPUT_VALUE :
 				getInputValues().clear();
-				getInputValues().addAll(
-					(Collection<? extends InputPin>) newValue);
+				getInputValues()
+					.addAll((Collection<? extends InputPin>) newValue);
 				return;
 			case UMLPackage.OPAQUE_ACTION__LANGUAGE :
 				getLanguages().clear();
@@ -644,8 +645,8 @@ public class OpaqueActionImpl
 				return;
 			case UMLPackage.OPAQUE_ACTION__OUTPUT_VALUE :
 				getOutputValues().clear();
-				getOutputValues().addAll(
-					(Collection<? extends OutputPin>) newValue);
+				getOutputValues()
+					.addAll((Collection<? extends OutputPin>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -786,7 +787,8 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION__INPUT :
 				return isSetInputs();
 			case UMLPackage.OPAQUE_ACTION__IS_LOCALLY_REENTRANT :
-				return ((eFlags & IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
+				return ((eFlags
+					& IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
 			case UMLPackage.OPAQUE_ACTION__LOCAL_POSTCONDITION :
 				return localPostconditions != null
 					&& !localPostconditions.isEmpty();
@@ -864,7 +866,8 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.OPAQUE_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.OPAQUE_ACTION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.OPAQUE_ACTION___GET_STEREOTYPE_APPLICATIONS :
@@ -872,7 +875,8 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.OPAQUE_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.OPAQUE_ACTION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -949,8 +953,8 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.OPAQUE_ACTION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.OPAQUE_ACTION___CONTAINING_ACTIVITY :
 				return containingActivity();
 			case UMLPackage.OPAQUE_ACTION___GET_CONTEXT :
@@ -996,7 +1000,8 @@ public class OpaqueActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] INPUT_ESUBSETS = new int[]{UMLPackage.OPAQUE_ACTION__INPUT_VALUE};
+	protected static final int[] INPUT_ESUBSETS = new int[]{
+		UMLPackage.OPAQUE_ACTION__INPUT_VALUE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1017,7 +1022,8 @@ public class OpaqueActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] OUTPUT_ESUBSETS = new int[]{UMLPackage.OPAQUE_ACTION__OUTPUT_VALUE};
+	protected static final int[] OUTPUT_ESUBSETS = new int[]{
+		UMLPackage.OPAQUE_ACTION__OUTPUT_VALUE};
 
 	/**
 	 * <!-- begin-user-doc -->

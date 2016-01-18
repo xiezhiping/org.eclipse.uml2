@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -79,15 +79,15 @@ public class ConnectorEndOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CONNECTOR_END__MULTIPLICITY,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMultiplicity", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(connectorEnd, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{connectorEnd}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CONNECTOR_END__MULTIPLICITY,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateMultiplicity", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(connectorEnd, context)}),
+					new Object[]{connectorEnd}));
 			}
 			return false;
 		}
@@ -114,15 +114,15 @@ public class ConnectorEndOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CONNECTOR_END__PART_WITH_PORT_EMPTY,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validatePartWithPortEmpty", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(connectorEnd, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{connectorEnd}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CONNECTOR_END__PART_WITH_PORT_EMPTY,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validatePartWithPortEmpty", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(connectorEnd, context)}),
+					new Object[]{connectorEnd}));
 			}
 			return false;
 		}
@@ -142,24 +142,23 @@ public class ConnectorEndOperations
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateRoleAndPartWithPort(
-			ConnectorEnd connectorEnd, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
+	public static boolean validateRoleAndPartWithPort(ConnectorEnd connectorEnd,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CONNECTOR_END__ROLE_AND_PART_WITH_PORT,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateRoleAndPartWithPort", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(connectorEnd, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{connectorEnd}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CONNECTOR_END__ROLE_AND_PART_WITH_PORT,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateRoleAndPartWithPort", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(connectorEnd, context)}),
+					new Object[]{connectorEnd}));
 			}
 			return false;
 		}
@@ -186,15 +185,15 @@ public class ConnectorEndOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CONNECTOR_END__SELF_PART_WITH_PORT,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSelfPartWithPort", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(connectorEnd, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{connectorEnd}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CONNECTOR_END__SELF_PART_WITH_PORT,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateSelfPartWithPort", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(connectorEnd, context)}),
+					new Object[]{connectorEnd}));
 			}
 			return false;
 		}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -123,8 +123,8 @@ public class TemplateBindingImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> targets = (EList<Element>) cache.get(eResource,
-				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			EList<Element> targets = (EList<Element>) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
 			if (targets == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
@@ -149,8 +149,8 @@ public class TemplateBindingImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -176,8 +176,8 @@ public class TemplateBindingImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> sources = (EList<Element>) cache.get(eResource,
-				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			EList<Element> sources = (EList<Element>) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
 			if (sources == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
@@ -229,7 +229,8 @@ public class TemplateBindingImpl
 		signature = newSignature;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.TEMPLATE_BINDING__SIGNATURE, oldSignature, signature));
+				UMLPackage.TEMPLATE_BINDING__SIGNATURE, oldSignature,
+				signature));
 	}
 
 	/**
@@ -253,7 +254,8 @@ public class TemplateBindingImpl
 	 * @generated
 	 */
 	public TemplateParameterSubstitution createParameterSubstitution() {
-		TemplateParameterSubstitution newParameterSubstitution = (TemplateParameterSubstitution) create(UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION);
+		TemplateParameterSubstitution newParameterSubstitution = (TemplateParameterSubstitution) create(
+			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION);
 		getParameterSubstitutions().add(newParameterSubstitution);
 		return newParameterSubstitution;
 	}
@@ -299,7 +301,8 @@ public class TemplateBindingImpl
 	 */
 	public void setBoundElement(TemplateableElement newBoundElement) {
 		if (newBoundElement != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT && newBoundElement != null)) {
+			|| (eContainerFeatureID() != UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT
+				&& newBoundElement != null)) {
 			if (EcoreUtil.isAncestor(this, newBoundElement))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -326,8 +329,8 @@ public class TemplateBindingImpl
 	 */
 	public boolean validateParameterSubstitutionFormal(
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return TemplateBindingOperations.validateParameterSubstitutionFormal(
-			this, diagnostics, context);
+		return TemplateBindingOperations
+			.validateParameterSubstitutionFormal(this, diagnostics, context);
 	}
 
 	/**
@@ -335,8 +338,8 @@ public class TemplateBindingImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateOneParameterSubstitution(
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateOneParameterSubstitution(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return TemplateBindingOperations.validateOneParameterSubstitution(this,
 			diagnostics, context);
 	}
@@ -376,11 +379,11 @@ public class TemplateBindingImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.TEMPLATE_BINDING__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TEMPLATE_BINDING__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION :
 				return ((InternalEList<?>) getParameterSubstitutions())
 					.basicRemove(otherEnd, msgs);
@@ -456,19 +459,18 @@ public class TemplateBindingImpl
 		switch (featureID) {
 			case UMLPackage.TEMPLATE_BINDING__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.TEMPLATE_BINDING__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION :
 				getParameterSubstitutions().clear();
-				getParameterSubstitutions()
-					.addAll(
-						(Collection<? extends TemplateParameterSubstitution>) newValue);
+				getParameterSubstitutions().addAll(
+					(Collection<? extends TemplateParameterSubstitution>) newValue);
 				return;
 			case UMLPackage.TEMPLATE_BINDING__SIGNATURE :
 				setSignature((TemplateSignature) newValue);
@@ -597,7 +599,8 @@ public class TemplateBindingImpl
 			case UMLPackage.TEMPLATE_BINDING___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.TEMPLATE_BINDING___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.TEMPLATE_BINDING___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.TEMPLATE_BINDING___GET_STEREOTYPE_APPLICATIONS :
@@ -605,7 +608,8 @@ public class TemplateBindingImpl
 			case UMLPackage.TEMPLATE_BINDING___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.TEMPLATE_BINDING___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.TEMPLATE_BINDING___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -675,7 +679,8 @@ public class TemplateBindingImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] TARGET_ESUBSETS = new int[]{UMLPackage.TEMPLATE_BINDING__SIGNATURE};
+	protected static final int[] TARGET_ESUBSETS = new int[]{
+		UMLPackage.TEMPLATE_BINDING__SIGNATURE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -734,7 +739,8 @@ public class TemplateBindingImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] SOURCE_ESUBSETS = new int[]{UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT};
+	protected static final int[] SOURCE_ESUBSETS = new int[]{
+		UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT};
 
 	/**
 	 * <!-- begin-user-doc -->

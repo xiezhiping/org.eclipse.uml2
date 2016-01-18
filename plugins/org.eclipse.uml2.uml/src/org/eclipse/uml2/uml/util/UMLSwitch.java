@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -719,7 +719,8 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION : {
 				TemplateParameterSubstitution templateParameterSubstitution = (TemplateParameterSubstitution) theEObject;
-				T result = caseTemplateParameterSubstitution(templateParameterSubstitution);
+				T result = caseTemplateParameterSubstitution(
+					templateParameterSubstitution);
 				if (result == null)
 					result = caseElement(templateParameterSubstitution);
 				if (result == null)
@@ -878,13 +879,16 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER : {
 				ConnectableElementTemplateParameter connectableElementTemplateParameter = (ConnectableElementTemplateParameter) theEObject;
-				T result = caseConnectableElementTemplateParameter(connectableElementTemplateParameter);
+				T result = caseConnectableElementTemplateParameter(
+					connectableElementTemplateParameter);
 				if (result == null)
-					result = caseTemplateParameter(connectableElementTemplateParameter);
+					result = caseTemplateParameter(
+						connectableElementTemplateParameter);
 				if (result == null)
 					result = caseElement(connectableElementTemplateParameter);
 				if (result == null)
-					result = caseEModelElement(connectableElementTemplateParameter);
+					result = caseEModelElement(
+						connectableElementTemplateParameter);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -1455,7 +1459,8 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.CONNECTION_POINT_REFERENCE : {
 				ConnectionPointReference connectionPointReference = (ConnectionPointReference) theEObject;
-				T result = caseConnectionPointReference(connectionPointReference);
+				T result = caseConnectionPointReference(
+					connectionPointReference);
 				if (result == null)
 					result = caseVertex(connectionPointReference);
 				if (result == null)
@@ -1563,7 +1568,8 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER : {
 				OperationTemplateParameter operationTemplateParameter = (OperationTemplateParameter) theEObject;
-				T result = caseOperationTemplateParameter(operationTemplateParameter);
+				T result = caseOperationTemplateParameter(
+					operationTemplateParameter);
 				if (result == null)
 					result = caseTemplateParameter(operationTemplateParameter);
 				if (result == null)
@@ -2044,11 +2050,14 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE : {
 				RedefinableTemplateSignature redefinableTemplateSignature = (RedefinableTemplateSignature) theEObject;
-				T result = caseRedefinableTemplateSignature(redefinableTemplateSignature);
+				T result = caseRedefinableTemplateSignature(
+					redefinableTemplateSignature);
 				if (result == null)
-					result = caseRedefinableElement(redefinableTemplateSignature);
+					result = caseRedefinableElement(
+						redefinableTemplateSignature);
 				if (result == null)
-					result = caseTemplateSignature(redefinableTemplateSignature);
+					result = caseTemplateSignature(
+						redefinableTemplateSignature);
 				if (result == null)
 					result = caseNamedElement(redefinableTemplateSignature);
 				if (result == null)
@@ -2191,7 +2200,8 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER : {
 				ClassifierTemplateParameter classifierTemplateParameter = (ClassifierTemplateParameter) theEObject;
-				T result = caseClassifierTemplateParameter(classifierTemplateParameter);
+				T result = caseClassifierTemplateParameter(
+					classifierTemplateParameter);
 				if (result == null)
 					result = caseTemplateParameter(classifierTemplateParameter);
 				if (result == null)
@@ -2324,7 +2334,8 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION : {
 				InterruptibleActivityRegion interruptibleActivityRegion = (InterruptibleActivityRegion) theEObject;
-				T result = caseInterruptibleActivityRegion(interruptibleActivityRegion);
+				T result = caseInterruptibleActivityRegion(
+					interruptibleActivityRegion);
 				if (result == null)
 					result = caseActivityGroup(interruptibleActivityRegion);
 				if (result == null)
@@ -2540,7 +2551,8 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.VALUE_SPECIFICATION_ACTION : {
 				ValueSpecificationAction valueSpecificationAction = (ValueSpecificationAction) theEObject;
-				T result = caseValueSpecificationAction(valueSpecificationAction);
+				T result = caseValueSpecificationAction(
+					valueSpecificationAction);
 				if (result == null)
 					result = caseAction(valueSpecificationAction);
 				if (result == null)
@@ -2656,9 +2668,11 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION : {
 				WriteStructuralFeatureAction writeStructuralFeatureAction = (WriteStructuralFeatureAction) theEObject;
-				T result = caseWriteStructuralFeatureAction(writeStructuralFeatureAction);
+				T result = caseWriteStructuralFeatureAction(
+					writeStructuralFeatureAction);
 				if (result == null)
-					result = caseStructuralFeatureAction(writeStructuralFeatureAction);
+					result = caseStructuralFeatureAction(
+						writeStructuralFeatureAction);
 				if (result == null)
 					result = caseAction(writeStructuralFeatureAction);
 				if (result == null)
@@ -2666,7 +2680,8 @@ public class UMLSwitch<T>
 				if (result == null)
 					result = caseActivityNode(writeStructuralFeatureAction);
 				if (result == null)
-					result = caseRedefinableElement(writeStructuralFeatureAction);
+					result = caseRedefinableElement(
+						writeStructuralFeatureAction);
 				if (result == null)
 					result = caseActivityContent(writeStructuralFeatureAction);
 				if (result == null)
@@ -2806,21 +2821,27 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION : {
 				AddStructuralFeatureValueAction addStructuralFeatureValueAction = (AddStructuralFeatureValueAction) theEObject;
-				T result = caseAddStructuralFeatureValueAction(addStructuralFeatureValueAction);
+				T result = caseAddStructuralFeatureValueAction(
+					addStructuralFeatureValueAction);
 				if (result == null)
-					result = caseWriteStructuralFeatureAction(addStructuralFeatureValueAction);
+					result = caseWriteStructuralFeatureAction(
+						addStructuralFeatureValueAction);
 				if (result == null)
-					result = caseStructuralFeatureAction(addStructuralFeatureValueAction);
+					result = caseStructuralFeatureAction(
+						addStructuralFeatureValueAction);
 				if (result == null)
 					result = caseAction(addStructuralFeatureValueAction);
 				if (result == null)
-					result = caseExecutableNode(addStructuralFeatureValueAction);
+					result = caseExecutableNode(
+						addStructuralFeatureValueAction);
 				if (result == null)
 					result = caseActivityNode(addStructuralFeatureValueAction);
 				if (result == null)
-					result = caseRedefinableElement(addStructuralFeatureValueAction);
+					result = caseRedefinableElement(
+						addStructuralFeatureValueAction);
 				if (result == null)
-					result = caseActivityContent(addStructuralFeatureValueAction);
+					result = caseActivityContent(
+						addStructuralFeatureValueAction);
 				if (result == null)
 					result = caseNamedElement(addStructuralFeatureValueAction);
 				if (result == null)
@@ -3021,9 +3042,11 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.CLEAR_STRUCTURAL_FEATURE_ACTION : {
 				ClearStructuralFeatureAction clearStructuralFeatureAction = (ClearStructuralFeatureAction) theEObject;
-				T result = caseClearStructuralFeatureAction(clearStructuralFeatureAction);
+				T result = caseClearStructuralFeatureAction(
+					clearStructuralFeatureAction);
 				if (result == null)
-					result = caseStructuralFeatureAction(clearStructuralFeatureAction);
+					result = caseStructuralFeatureAction(
+						clearStructuralFeatureAction);
 				if (result == null)
 					result = caseAction(clearStructuralFeatureAction);
 				if (result == null)
@@ -3031,7 +3054,8 @@ public class UMLSwitch<T>
 				if (result == null)
 					result = caseActivityNode(clearStructuralFeatureAction);
 				if (result == null)
-					result = caseRedefinableElement(clearStructuralFeatureAction);
+					result = caseRedefinableElement(
+						clearStructuralFeatureAction);
 				if (result == null)
 					result = caseActivityContent(clearStructuralFeatureAction);
 				if (result == null)
@@ -3405,7 +3429,8 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION : {
 				ReadIsClassifiedObjectAction readIsClassifiedObjectAction = (ReadIsClassifiedObjectAction) theEObject;
-				T result = caseReadIsClassifiedObjectAction(readIsClassifiedObjectAction);
+				T result = caseReadIsClassifiedObjectAction(
+					readIsClassifiedObjectAction);
 				if (result == null)
 					result = caseAction(readIsClassifiedObjectAction);
 				if (result == null)
@@ -3413,7 +3438,8 @@ public class UMLSwitch<T>
 				if (result == null)
 					result = caseActivityNode(readIsClassifiedObjectAction);
 				if (result == null)
-					result = caseRedefinableElement(readIsClassifiedObjectAction);
+					result = caseRedefinableElement(
+						readIsClassifiedObjectAction);
 				if (result == null)
 					result = caseActivityContent(readIsClassifiedObjectAction);
 				if (result == null)
@@ -3476,23 +3502,28 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION : {
 				ReadLinkObjectEndQualifierAction readLinkObjectEndQualifierAction = (ReadLinkObjectEndQualifierAction) theEObject;
-				T result = caseReadLinkObjectEndQualifierAction(readLinkObjectEndQualifierAction);
+				T result = caseReadLinkObjectEndQualifierAction(
+					readLinkObjectEndQualifierAction);
 				if (result == null)
 					result = caseAction(readLinkObjectEndQualifierAction);
 				if (result == null)
-					result = caseExecutableNode(readLinkObjectEndQualifierAction);
+					result = caseExecutableNode(
+						readLinkObjectEndQualifierAction);
 				if (result == null)
 					result = caseActivityNode(readLinkObjectEndQualifierAction);
 				if (result == null)
-					result = caseRedefinableElement(readLinkObjectEndQualifierAction);
+					result = caseRedefinableElement(
+						readLinkObjectEndQualifierAction);
 				if (result == null)
-					result = caseActivityContent(readLinkObjectEndQualifierAction);
+					result = caseActivityContent(
+						readLinkObjectEndQualifierAction);
 				if (result == null)
 					result = caseNamedElement(readLinkObjectEndQualifierAction);
 				if (result == null)
 					result = caseElement(readLinkObjectEndQualifierAction);
 				if (result == null)
-					result = caseEModelElement(readLinkObjectEndQualifierAction);
+					result = caseEModelElement(
+						readLinkObjectEndQualifierAction);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -3522,9 +3553,11 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.READ_STRUCTURAL_FEATURE_ACTION : {
 				ReadStructuralFeatureAction readStructuralFeatureAction = (ReadStructuralFeatureAction) theEObject;
-				T result = caseReadStructuralFeatureAction(readStructuralFeatureAction);
+				T result = caseReadStructuralFeatureAction(
+					readStructuralFeatureAction);
 				if (result == null)
-					result = caseStructuralFeatureAction(readStructuralFeatureAction);
+					result = caseStructuralFeatureAction(
+						readStructuralFeatureAction);
 				if (result == null)
 					result = caseAction(readStructuralFeatureAction);
 				if (result == null)
@@ -3532,7 +3565,8 @@ public class UMLSwitch<T>
 				if (result == null)
 					result = caseActivityNode(readStructuralFeatureAction);
 				if (result == null)
-					result = caseRedefinableElement(readStructuralFeatureAction);
+					result = caseRedefinableElement(
+						readStructuralFeatureAction);
 				if (result == null)
 					result = caseActivityContent(readStructuralFeatureAction);
 				if (result == null)
@@ -3618,34 +3652,44 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION : {
 				RemoveStructuralFeatureValueAction removeStructuralFeatureValueAction = (RemoveStructuralFeatureValueAction) theEObject;
-				T result = caseRemoveStructuralFeatureValueAction(removeStructuralFeatureValueAction);
+				T result = caseRemoveStructuralFeatureValueAction(
+					removeStructuralFeatureValueAction);
 				if (result == null)
-					result = caseWriteStructuralFeatureAction(removeStructuralFeatureValueAction);
+					result = caseWriteStructuralFeatureAction(
+						removeStructuralFeatureValueAction);
 				if (result == null)
-					result = caseStructuralFeatureAction(removeStructuralFeatureValueAction);
+					result = caseStructuralFeatureAction(
+						removeStructuralFeatureValueAction);
 				if (result == null)
 					result = caseAction(removeStructuralFeatureValueAction);
 				if (result == null)
-					result = caseExecutableNode(removeStructuralFeatureValueAction);
+					result = caseExecutableNode(
+						removeStructuralFeatureValueAction);
 				if (result == null)
-					result = caseActivityNode(removeStructuralFeatureValueAction);
+					result = caseActivityNode(
+						removeStructuralFeatureValueAction);
 				if (result == null)
-					result = caseRedefinableElement(removeStructuralFeatureValueAction);
+					result = caseRedefinableElement(
+						removeStructuralFeatureValueAction);
 				if (result == null)
-					result = caseActivityContent(removeStructuralFeatureValueAction);
+					result = caseActivityContent(
+						removeStructuralFeatureValueAction);
 				if (result == null)
-					result = caseNamedElement(removeStructuralFeatureValueAction);
+					result = caseNamedElement(
+						removeStructuralFeatureValueAction);
 				if (result == null)
 					result = caseElement(removeStructuralFeatureValueAction);
 				if (result == null)
-					result = caseEModelElement(removeStructuralFeatureValueAction);
+					result = caseEModelElement(
+						removeStructuralFeatureValueAction);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
 			}
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION : {
 				RemoveVariableValueAction removeVariableValueAction = (RemoveVariableValueAction) theEObject;
-				T result = caseRemoveVariableValueAction(removeVariableValueAction);
+				T result = caseRemoveVariableValueAction(
+					removeVariableValueAction);
 				if (result == null)
 					result = caseWriteVariableAction(removeVariableValueAction);
 				if (result == null)
@@ -3774,7 +3818,8 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.START_CLASSIFIER_BEHAVIOR_ACTION : {
 				StartClassifierBehaviorAction startClassifierBehaviorAction = (StartClassifierBehaviorAction) theEObject;
-				T result = caseStartClassifierBehaviorAction(startClassifierBehaviorAction);
+				T result = caseStartClassifierBehaviorAction(
+					startClassifierBehaviorAction);
 				if (result == null)
 					result = caseAction(startClassifierBehaviorAction);
 				if (result == null)
@@ -3782,7 +3827,8 @@ public class UMLSwitch<T>
 				if (result == null)
 					result = caseActivityNode(startClassifierBehaviorAction);
 				if (result == null)
-					result = caseRedefinableElement(startClassifierBehaviorAction);
+					result = caseRedefinableElement(
+						startClassifierBehaviorAction);
 				if (result == null)
 					result = caseActivityContent(startClassifierBehaviorAction);
 				if (result == null)
@@ -3797,7 +3843,8 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION : {
 				StartObjectBehaviorAction startObjectBehaviorAction = (StartObjectBehaviorAction) theEObject;
-				T result = caseStartObjectBehaviorAction(startObjectBehaviorAction);
+				T result = caseStartObjectBehaviorAction(
+					startObjectBehaviorAction);
 				if (result == null)
 					result = caseCallAction(startObjectBehaviorAction);
 				if (result == null)
@@ -4846,11 +4893,14 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION : {
 				ActionExecutionSpecification actionExecutionSpecification = (ActionExecutionSpecification) theEObject;
-				T result = caseActionExecutionSpecification(actionExecutionSpecification);
+				T result = caseActionExecutionSpecification(
+					actionExecutionSpecification);
 				if (result == null)
-					result = caseExecutionSpecification(actionExecutionSpecification);
+					result = caseExecutionSpecification(
+						actionExecutionSpecification);
 				if (result == null)
-					result = caseInteractionFragment(actionExecutionSpecification);
+					result = caseInteractionFragment(
+						actionExecutionSpecification);
 				if (result == null)
 					result = caseNamedElement(actionExecutionSpecification);
 				if (result == null)
@@ -4878,11 +4928,14 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION : {
 				BehaviorExecutionSpecification behaviorExecutionSpecification = (BehaviorExecutionSpecification) theEObject;
-				T result = caseBehaviorExecutionSpecification(behaviorExecutionSpecification);
+				T result = caseBehaviorExecutionSpecification(
+					behaviorExecutionSpecification);
 				if (result == null)
-					result = caseExecutionSpecification(behaviorExecutionSpecification);
+					result = caseExecutionSpecification(
+						behaviorExecutionSpecification);
 				if (result == null)
-					result = caseInteractionFragment(behaviorExecutionSpecification);
+					result = caseInteractionFragment(
+						behaviorExecutionSpecification);
 				if (result == null)
 					result = caseNamedElement(behaviorExecutionSpecification);
 				if (result == null)
@@ -4942,34 +4995,43 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION : {
 				DestructionOccurrenceSpecification destructionOccurrenceSpecification = (DestructionOccurrenceSpecification) theEObject;
-				T result = caseDestructionOccurrenceSpecification(destructionOccurrenceSpecification);
+				T result = caseDestructionOccurrenceSpecification(
+					destructionOccurrenceSpecification);
 				if (result == null)
-					result = caseMessageOccurrenceSpecification(destructionOccurrenceSpecification);
+					result = caseMessageOccurrenceSpecification(
+						destructionOccurrenceSpecification);
 				if (result == null)
-					result = caseOccurrenceSpecification(destructionOccurrenceSpecification);
+					result = caseOccurrenceSpecification(
+						destructionOccurrenceSpecification);
 				if (result == null)
 					result = caseMessageEnd(destructionOccurrenceSpecification);
 				if (result == null)
-					result = caseInteractionFragment(destructionOccurrenceSpecification);
+					result = caseInteractionFragment(
+						destructionOccurrenceSpecification);
 				if (result == null)
-					result = caseNamedElement(destructionOccurrenceSpecification);
+					result = caseNamedElement(
+						destructionOccurrenceSpecification);
 				if (result == null)
 					result = caseElement(destructionOccurrenceSpecification);
 				if (result == null)
-					result = caseEModelElement(destructionOccurrenceSpecification);
+					result = caseEModelElement(
+						destructionOccurrenceSpecification);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
 			}
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION : {
 				MessageOccurrenceSpecification messageOccurrenceSpecification = (MessageOccurrenceSpecification) theEObject;
-				T result = caseMessageOccurrenceSpecification(messageOccurrenceSpecification);
+				T result = caseMessageOccurrenceSpecification(
+					messageOccurrenceSpecification);
 				if (result == null)
-					result = caseOccurrenceSpecification(messageOccurrenceSpecification);
+					result = caseOccurrenceSpecification(
+						messageOccurrenceSpecification);
 				if (result == null)
 					result = caseMessageEnd(messageOccurrenceSpecification);
 				if (result == null)
-					result = caseInteractionFragment(messageOccurrenceSpecification);
+					result = caseInteractionFragment(
+						messageOccurrenceSpecification);
 				if (result == null)
 					result = caseNamedElement(messageOccurrenceSpecification);
 				if (result == null)
@@ -4982,17 +5044,21 @@ public class UMLSwitch<T>
 			}
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION : {
 				ExecutionOccurrenceSpecification executionOccurrenceSpecification = (ExecutionOccurrenceSpecification) theEObject;
-				T result = caseExecutionOccurrenceSpecification(executionOccurrenceSpecification);
+				T result = caseExecutionOccurrenceSpecification(
+					executionOccurrenceSpecification);
 				if (result == null)
-					result = caseOccurrenceSpecification(executionOccurrenceSpecification);
+					result = caseOccurrenceSpecification(
+						executionOccurrenceSpecification);
 				if (result == null)
-					result = caseInteractionFragment(executionOccurrenceSpecification);
+					result = caseInteractionFragment(
+						executionOccurrenceSpecification);
 				if (result == null)
 					result = caseNamedElement(executionOccurrenceSpecification);
 				if (result == null)
 					result = caseElement(executionOccurrenceSpecification);
 				if (result == null)
-					result = caseEModelElement(executionOccurrenceSpecification);
+					result = caseEModelElement(
+						executionOccurrenceSpecification);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -6777,7 +6843,8 @@ public class UMLSwitch<T>
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseClassifierTemplateParameter(ClassifierTemplateParameter object) {
+	public T caseClassifierTemplateParameter(
+			ClassifierTemplateParameter object) {
 		return null;
 	}
 
@@ -7392,7 +7459,8 @@ public class UMLSwitch<T>
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseInterruptibleActivityRegion(InterruptibleActivityRegion object) {
+	public T caseInterruptibleActivityRegion(
+			InterruptibleActivityRegion object) {
 		return null;
 	}
 
@@ -7847,7 +7915,8 @@ public class UMLSwitch<T>
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseReadStructuralFeatureAction(ReadStructuralFeatureAction object) {
+	public T caseReadStructuralFeatureAction(
+			ReadStructuralFeatureAction object) {
 		return null;
 	}
 

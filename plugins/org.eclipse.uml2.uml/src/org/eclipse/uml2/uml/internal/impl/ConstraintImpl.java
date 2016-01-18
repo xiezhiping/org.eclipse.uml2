@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -126,8 +126,8 @@ public class ConstraintImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -150,7 +150,8 @@ public class ConstraintImpl
 	public EList<Element> getConstrainedElements() {
 		if (constrainedElements == null) {
 			constrainedElements = new EObjectResolvingEList<Element>(
-				Element.class, this, UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT);
+				Element.class, this,
+				UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT);
 		}
 		return constrainedElements;
 	}
@@ -163,16 +164,20 @@ public class ConstraintImpl
 	public ValueSpecification getSpecification() {
 		if (specification != null && specification.eIsProxy()) {
 			InternalEObject oldSpecification = (InternalEObject) specification;
-			specification = (ValueSpecification) eResolveProxy(oldSpecification);
+			specification = (ValueSpecification) eResolveProxy(
+				oldSpecification);
 			if (specification != oldSpecification) {
 				InternalEObject newSpecification = (InternalEObject) specification;
 				NotificationChain msgs = oldSpecification.eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.CONSTRAINT__SPECIFICATION, null, null);
+						- UMLPackage.CONSTRAINT__SPECIFICATION,
+					null, null);
 				if (newSpecification.eInternalContainer() == null) {
-					msgs = newSpecification.eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-							- UMLPackage.CONSTRAINT__SPECIFICATION, null, msgs);
+					msgs = newSpecification
+						.eInverseAdd(this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.CONSTRAINT__SPECIFICATION,
+							null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -226,11 +231,13 @@ public class ConstraintImpl
 			if (specification != null)
 				msgs = ((InternalEObject) specification).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.CONSTRAINT__SPECIFICATION, null, msgs);
+						- UMLPackage.CONSTRAINT__SPECIFICATION,
+					null, msgs);
 			if (newSpecification != null)
 				msgs = ((InternalEObject) newSpecification).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.CONSTRAINT__SPECIFICATION, null, msgs);
+						- UMLPackage.CONSTRAINT__SPECIFICATION,
+					null, msgs);
 			msgs = basicSetSpecification(newSpecification, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -247,7 +254,8 @@ public class ConstraintImpl
 	 */
 	public ValueSpecification createSpecification(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newSpecification = (ValueSpecification) create(eClass);
+		ValueSpecification newSpecification = (ValueSpecification) create(
+			eClass);
 		setSpecification(newSpecification);
 		if (name != null)
 			newSpecification.setName(name);
@@ -297,7 +305,8 @@ public class ConstraintImpl
 	 */
 	public void setContext(Namespace newContext) {
 		if (newContext != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.CONSTRAINT__CONTEXT && newContext != null)) {
+			|| (eContainerFeatureID() != UMLPackage.CONSTRAINT__CONTEXT
+				&& newContext != null)) {
 			if (EcoreUtil.isAncestor(this, newContext))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -368,10 +377,10 @@ public class ConstraintImpl
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
 				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
+					msgs = ((InternalEObject) templateParameter).eInverseRemove(
+						this,
+						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+						TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.CONSTRAINT__CONTEXT :
@@ -392,11 +401,11 @@ public class ConstraintImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.CONSTRAINT__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CONSTRAINT__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CONSTRAINT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
@@ -498,13 +507,13 @@ public class ConstraintImpl
 		switch (featureID) {
 			case UMLPackage.CONSTRAINT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.CONSTRAINT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.CONSTRAINT__NAME :
 				setName((String) newValue);
@@ -523,8 +532,8 @@ public class ConstraintImpl
 				return;
 			case UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT :
 				getConstrainedElements().clear();
-				getConstrainedElements().addAll(
-					(Collection<? extends Element>) newValue);
+				getConstrainedElements()
+					.addAll((Collection<? extends Element>) newValue);
 				return;
 			case UMLPackage.CONSTRAINT__CONTEXT :
 				setContext((Namespace) newValue);
@@ -680,7 +689,8 @@ public class ConstraintImpl
 			case UMLPackage.CONSTRAINT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.CONSTRAINT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CONSTRAINT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.CONSTRAINT___GET_STEREOTYPE_APPLICATIONS :
@@ -688,7 +698,8 @@ public class ConstraintImpl
 			case UMLPackage.CONSTRAINT___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.CONSTRAINT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CONSTRAINT___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -751,7 +762,8 @@ public class ConstraintImpl
 			case UMLPackage.CONSTRAINT___GET_CLIENT_DEPENDENCIES :
 				return getClientDependencies();
 			case UMLPackage.CONSTRAINT___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.CONSTRAINT___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.CONSTRAINT___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
@@ -762,8 +774,7 @@ public class ConstraintImpl
 				return validateBooleanValue((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSTRAINT___VALIDATE_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
-				return validateNoSideEffects(
-					(DiagnosticChain) arguments.get(0),
+				return validateNoSideEffects((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSTRAINT___VALIDATE_NOT_APPLY_TO_SELF__DIAGNOSTICCHAIN_MAP :
 				return validateNotApplyToSelf(

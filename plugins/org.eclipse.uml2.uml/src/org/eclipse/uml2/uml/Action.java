@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
- *   Kenn Hussey (CEA) - 327039, 351774, 418466
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 485756
  *   Christian W. Damus (CEA) - 251963, 451350
  *
  */
@@ -185,7 +185,8 @@ public interface Action
 	 * @see #getInputs()
 	 * @generated
 	 */
-	InputPin getInput(String name, Type type, boolean ignoreCase, EClass eClass);
+	InputPin getInput(String name, Type type, boolean ignoreCase,
+			EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Is Locally Reentrant</b></em>' attribute.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -225,15 +225,12 @@ public class ActivityPartitionImpl
 				.get(eResource, this,
 					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE);
 			if (containedNodes == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE,
-						containedNodes = new DerivedUnionEObjectEList<ActivityNode>(
-							ActivityNode.class, this,
-							UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE,
-							CONTAINED_NODE_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE,
+					containedNodes = new DerivedUnionEObjectEList<ActivityNode>(
+						ActivityNode.class, this,
+						UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE,
+						CONTAINED_NODE_ESUBSETS));
 			}
 			return containedNodes;
 		}
@@ -257,15 +254,12 @@ public class ActivityPartitionImpl
 				.get(eResource, this,
 					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE);
 			if (containedEdges == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE,
-						containedEdges = new DerivedUnionEObjectEList<ActivityEdge>(
-							ActivityEdge.class, this,
-							UMLPackage.ACTIVITY_PARTITION__CONTAINED_EDGE,
-							CONTAINED_EDGE_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE,
+					containedEdges = new DerivedUnionEObjectEList<ActivityEdge>(
+						ActivityEdge.class, this,
+						UMLPackage.ACTIVITY_PARTITION__CONTAINED_EDGE,
+						CONTAINED_EDGE_ESUBSETS));
 			}
 			return containedEdges;
 		}
@@ -354,7 +348,8 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActivityEdge getEdge(String name, boolean ignoreCase, EClass eClass) {
+	public ActivityEdge getEdge(String name, boolean ignoreCase,
+			EClass eClass) {
 		edgeLoop : for (ActivityEdge edge : getEdges()) {
 			if (eClass != null && !eClass.isInstance(edge))
 				continue edgeLoop;
@@ -395,7 +390,8 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActivityNode getNode(String name, boolean ignoreCase, EClass eClass) {
+	public ActivityNode getNode(String name, boolean ignoreCase,
+			EClass eClass) {
 		nodeLoop : for (ActivityNode node : getNodes()) {
 			if (eClass != null && !eClass.isInstance(node))
 				continue nodeLoop;
@@ -429,7 +425,8 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public ActivityPartition createSubpartition(String name) {
-		ActivityPartition newSubpartition = (ActivityPartition) create(UMLPackage.Literals.ACTIVITY_PARTITION);
+		ActivityPartition newSubpartition = (ActivityPartition) create(
+			UMLPackage.Literals.ACTIVITY_PARTITION);
 		getSubpartitions().add(newSubpartition);
 		if (name != null)
 			newSubpartition.setName(name);
@@ -505,7 +502,8 @@ public class ActivityPartitionImpl
 	 */
 	public void setSuperPartition(ActivityPartition newSuperPartition) {
 		if (newSuperPartition != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION && newSuperPartition != null)) {
+			|| (eContainerFeatureID() != UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION
+				&& newSuperPartition != null)) {
 			if (EcoreUtil.isAncestor(this, newSuperPartition))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -653,19 +651,19 @@ public class ActivityPartitionImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_PARTITION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_PARTITION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_PARTITION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.ACTIVITY_PARTITION__NODE :
 				return ((InternalEList<?>) getNodes()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.ACTIVITY_PARTITION__SUBPARTITION :
-				return ((InternalEList<?>) getSubpartitions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getSubpartitions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION :
 				return basicSetSuperPartition(null, msgs);
 			case UMLPackage.ACTIVITY_PARTITION__EDGE :
@@ -773,13 +771,13 @@ public class ActivityPartitionImpl
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_PARTITION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARTITION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARTITION__NAME :
 				setName((String) newValue);
@@ -809,8 +807,8 @@ public class ActivityPartitionImpl
 				return;
 			case UMLPackage.ACTIVITY_PARTITION__SUBPARTITION :
 				getSubpartitions().clear();
-				getSubpartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
+				getSubpartitions()
+					.addAll((Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION :
 				setSuperPartition((ActivityPartition) newValue);
@@ -916,9 +914,11 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_GROUP :
 				return isSetSuperGroup();
 			case UMLPackage.ACTIVITY_PARTITION__IS_DIMENSION :
-				return ((eFlags & IS_DIMENSION_EFLAG) != 0) != IS_DIMENSION_EDEFAULT;
+				return ((eFlags
+					& IS_DIMENSION_EFLAG) != 0) != IS_DIMENSION_EDEFAULT;
 			case UMLPackage.ACTIVITY_PARTITION__IS_EXTERNAL :
-				return ((eFlags & IS_EXTERNAL_EFLAG) != 0) != IS_EXTERNAL_EDEFAULT;
+				return ((eFlags
+					& IS_EXTERNAL_EFLAG) != 0) != IS_EXTERNAL_EDEFAULT;
 			case UMLPackage.ACTIVITY_PARTITION__NODE :
 				return nodes != null && !nodes.isEmpty();
 			case UMLPackage.ACTIVITY_PARTITION__REPRESENTS :
@@ -990,7 +990,8 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.ACTIVITY_PARTITION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.ACTIVITY_PARTITION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.ACTIVITY_PARTITION___GET_STEREOTYPE_APPLICATIONS :
@@ -998,7 +999,8 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.ACTIVITY_PARTITION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.ACTIVITY_PARTITION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1063,8 +1065,7 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION___CONTAINING_ACTIVITY :
 				return containingActivity();
 			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateNodesAndEdges(
-					(DiagnosticChain) arguments.get(0),
+				return validateNodesAndEdges((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
 				return validateNotContained((DiagnosticChain) arguments.get(0),
@@ -1165,7 +1166,8 @@ public class ActivityPartitionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] CONTAINED_NODE_ESUBSETS = new int[]{UMLPackage.ACTIVITY_PARTITION__NODE};
+	protected static final int[] CONTAINED_NODE_ESUBSETS = new int[]{
+		UMLPackage.ACTIVITY_PARTITION__NODE};
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getSubgroups() <em>Subgroup</em>}' reference list.
@@ -1175,7 +1177,8 @@ public class ActivityPartitionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] SUBGROUP_ESUBSETS = new int[]{UMLPackage.ACTIVITY_PARTITION__SUBPARTITION};
+	protected static final int[] SUBGROUP_ESUBSETS = new int[]{
+		UMLPackage.ACTIVITY_PARTITION__SUBPARTITION};
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getContainedEdges() <em>Contained Edge</em>}' reference list.
@@ -1185,7 +1188,8 @@ public class ActivityPartitionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] CONTAINED_EDGE_ESUBSETS = new int[]{UMLPackage.ACTIVITY_PARTITION__EDGE};
+	protected static final int[] CONTAINED_EDGE_ESUBSETS = new int[]{
+		UMLPackage.ACTIVITY_PARTITION__EDGE};
 
 	/**
 	 * <!-- begin-user-doc -->

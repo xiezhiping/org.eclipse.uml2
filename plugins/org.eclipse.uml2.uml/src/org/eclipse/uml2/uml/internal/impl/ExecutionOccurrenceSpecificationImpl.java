@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -89,9 +89,7 @@ public class ExecutionOccurrenceSpecificationImpl
 			execution = (ExecutionSpecification) eResolveProxy(oldExecution);
 			if (execution != oldExecution) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-						this,
-						Notification.RESOLVE,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EXECUTION,
 						oldExecution, execution));
 			}
@@ -191,13 +189,13 @@ public class ExecutionOccurrenceSpecificationImpl
 		switch (featureID) {
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME :
 				setName((String) newValue);
@@ -220,18 +218,18 @@ public class ExecutionOccurrenceSpecificationImpl
 				return;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
+				getGeneralOrderings()
+					.addAll((Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_AFTER :
 				getToAfters().clear();
-				getToAfters().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
+				getToAfters()
+					.addAll((Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_BEFORE :
 				getToBefores().clear();
-				getToBefores().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
+				getToBefores()
+					.addAll((Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EXECUTION :
 				setExecution((ExecutionSpecification) newValue);

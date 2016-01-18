@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -203,8 +203,8 @@ public class InformationFlowImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> sources = (EList<Element>) cache.get(eResource,
-				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			EList<Element> sources = (EList<Element>) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
 			if (sources == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
@@ -228,8 +228,8 @@ public class InformationFlowImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> targets = (EList<Element>) cache.get(eResource,
-				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			EList<Element> targets = (EList<Element>) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
 			if (targets == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
@@ -284,7 +284,8 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Classifier getConveyed(String name, boolean ignoreCase, EClass eClass) {
+	public Classifier getConveyed(String name, boolean ignoreCase,
+			EClass eClass) {
 		conveyedLoop : for (Classifier conveyed : getConveyeds()) {
 			if (eClass != null && !eClass.isInstance(conveyed))
 				continue conveyedLoop;
@@ -611,13 +612,13 @@ public class InformationFlowImpl
 		switch (featureID) {
 			case UMLPackage.INFORMATION_FLOW__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__NAME :
 				setName((String) newValue);
@@ -636,38 +637,38 @@ public class InformationFlowImpl
 				return;
 			case UMLPackage.INFORMATION_FLOW__CONVEYED :
 				getConveyeds().clear();
-				getConveyeds().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getConveyeds()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE :
 				getInformationSources().clear();
-				getInformationSources().addAll(
-					(Collection<? extends NamedElement>) newValue);
+				getInformationSources()
+					.addAll((Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET :
 				getInformationTargets().clear();
-				getInformationTargets().addAll(
-					(Collection<? extends NamedElement>) newValue);
+				getInformationTargets()
+					.addAll((Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__REALIZATION :
 				getRealizations().clear();
-				getRealizations().addAll(
-					(Collection<? extends Relationship>) newValue);
+				getRealizations()
+					.addAll((Collection<? extends Relationship>) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__REALIZING_ACTIVITY_EDGE :
 				getRealizingActivityEdges().clear();
-				getRealizingActivityEdges().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getRealizingActivityEdges()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__REALIZING_CONNECTOR :
 				getRealizingConnectors().clear();
-				getRealizingConnectors().addAll(
-					(Collection<? extends Connector>) newValue);
+				getRealizingConnectors()
+					.addAll((Collection<? extends Connector>) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__REALIZING_MESSAGE :
 				getRealizingMessages().clear();
-				getRealizingMessages().addAll(
-					(Collection<? extends Message>) newValue);
+				getRealizingMessages()
+					.addAll((Collection<? extends Message>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -796,7 +797,8 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	public int eBaseStructuralFeatureID(int derivedFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == Relationship.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.INFORMATION_FLOW__RELATED_ELEMENT :
@@ -824,7 +826,8 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	public int eDerivedStructuralFeatureID(int baseFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == Relationship.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.RELATIONSHIP__RELATED_ELEMENT :
@@ -903,7 +906,8 @@ public class InformationFlowImpl
 			case UMLPackage.INFORMATION_FLOW___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.INFORMATION_FLOW___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.INFORMATION_FLOW___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.INFORMATION_FLOW___GET_STEREOTYPE_APPLICATIONS :
@@ -911,7 +915,8 @@ public class InformationFlowImpl
 			case UMLPackage.INFORMATION_FLOW___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.INFORMATION_FLOW___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.INFORMATION_FLOW___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -974,7 +979,8 @@ public class InformationFlowImpl
 			case UMLPackage.INFORMATION_FLOW___GET_CLIENT_DEPENDENCIES :
 				return getClientDependencies();
 			case UMLPackage.INFORMATION_FLOW___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.INFORMATION_FLOW___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.INFORMATION_FLOW___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :
@@ -1025,7 +1031,8 @@ public class InformationFlowImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] SOURCE_ESUBSETS = new int[]{UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE};
+	protected static final int[] SOURCE_ESUBSETS = new int[]{
+		UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1044,7 +1051,8 @@ public class InformationFlowImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] TARGET_ESUBSETS = new int[]{UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET};
+	protected static final int[] TARGET_ESUBSETS = new int[]{
+		UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET};
 
 	/**
 	 * <!-- begin-user-doc -->

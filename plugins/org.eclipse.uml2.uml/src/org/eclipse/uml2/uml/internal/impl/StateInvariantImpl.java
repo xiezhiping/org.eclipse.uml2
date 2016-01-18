@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 212765, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 212765, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -103,8 +103,8 @@ public class StateInvariantImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -130,13 +130,16 @@ public class StateInvariantImpl
 			invariant = (Constraint) eResolveProxy(oldInvariant);
 			if (invariant != oldInvariant) {
 				InternalEObject newInvariant = (InternalEObject) invariant;
-				NotificationChain msgs = oldInvariant.eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.STATE_INVARIANT__INVARIANT, null, null);
+				NotificationChain msgs = oldInvariant
+					.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.STATE_INVARIANT__INVARIANT,
+						null, null);
 				if (newInvariant.eInternalContainer() == null) {
-					msgs = newInvariant
-						.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.STATE_INVARIANT__INVARIANT, null, msgs);
+					msgs = newInvariant.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.STATE_INVARIANT__INVARIANT,
+						null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -188,13 +191,17 @@ public class StateInvariantImpl
 		if (newInvariant != invariant) {
 			NotificationChain msgs = null;
 			if (invariant != null)
-				msgs = ((InternalEObject) invariant).eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.STATE_INVARIANT__INVARIANT, null, msgs);
+				msgs = ((InternalEObject) invariant)
+					.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.STATE_INVARIANT__INVARIANT,
+						null, msgs);
 			if (newInvariant != null)
-				msgs = ((InternalEObject) newInvariant).eInverseAdd(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.STATE_INVARIANT__INVARIANT, null, msgs);
+				msgs = ((InternalEObject) newInvariant)
+					.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.STATE_INVARIANT__INVARIANT,
+						null, msgs);
 			msgs = basicSetInvariant(newInvariant, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -315,11 +322,11 @@ public class StateInvariantImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.STATE_INVARIANT__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STATE_INVARIANT__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STATE_INVARIANT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.STATE_INVARIANT__COVERED :
@@ -330,8 +337,8 @@ public class StateInvariantImpl
 			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
 				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.STATE_INVARIANT__GENERAL_ORDERING :
-				return ((InternalEList<?>) getGeneralOrderings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getGeneralOrderings())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STATE_INVARIANT__INVARIANT :
 				return basicSetInvariant(null, msgs);
 		}
@@ -403,13 +410,13 @@ public class StateInvariantImpl
 		switch (featureID) {
 			case UMLPackage.STATE_INVARIANT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.STATE_INVARIANT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.STATE_INVARIANT__NAME :
 				setName((String) newValue);
@@ -432,8 +439,8 @@ public class StateInvariantImpl
 				return;
 			case UMLPackage.STATE_INVARIANT__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
+				getGeneralOrderings()
+					.addAll((Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.STATE_INVARIANT__INVARIANT :
 				setInvariant((Constraint) newValue);

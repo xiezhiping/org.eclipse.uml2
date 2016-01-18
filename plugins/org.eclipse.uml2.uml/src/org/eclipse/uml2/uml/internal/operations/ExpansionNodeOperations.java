@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2015 CEA and others.
+ * Copyright (c) 2011, 2016 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
- *   Kenn Hussey (CEA) - 418466, 451350
+ *   Kenn Hussey (CEA) - 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -69,15 +69,15 @@ public class ExpansionNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.EXPANSION_NODE__REGION_AS_INPUT_OR_OUTPUT,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateRegionAsInputOrOutput", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(expansionNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{expansionNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.EXPANSION_NODE__REGION_AS_INPUT_OR_OUTPUT,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateRegionAsInputOrOutput", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(expansionNode, context)}),
+					new Object[]{expansionNode}));
 			}
 			return false;
 		}

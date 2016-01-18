@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 399544
+ *   Kenn Hussey (CEA) - 327039, 399544, 485756
  *
  */
 package org.eclipse.uml2.uml.tests;
@@ -232,9 +232,11 @@ public abstract class ElementTest
 					.appendFileExtension(UMLResource.FILE_EXTENSION))
 			.getContents().add(comment2);
 
-		EList<EObject> contents = resourceSet.createResource(
-			URI.createFileURI(String.valueOf(new Date().getTime()))
-				.appendFileExtension(UMLResource.FILE_EXTENSION)).getContents();
+		EList<EObject> contents = resourceSet
+			.createResource(
+				URI.createFileURI(String.valueOf(new Date().getTime()))
+					.appendFileExtension(UMLResource.FILE_EXTENSION))
+			.getContents();
 
 		Model model = UMLFactory.eINSTANCE.createModel();
 		contents.add(model);
@@ -303,8 +305,8 @@ public abstract class ElementTest
 
 		UML2Util
 			.createEAnnotation(getFixture(),
-				UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI).getDetails()
-			.put(getName(), null);
+				UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI)
+			.getDetails().put(getName(), null);
 
 		assertTrue(getFixture().hasKeyword(getName()));
 	}
@@ -321,8 +323,8 @@ public abstract class ElementTest
 
 		UML2Util
 			.createEAnnotation(getFixture(),
-				UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI).getDetails()
-			.put(getName(), null);
+				UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI)
+			.getDetails().put(getName(), null);
 
 		assertTrue(getFixture().getKeywords().contains(getName()));
 	}
@@ -335,13 +337,13 @@ public abstract class ElementTest
 	 * @generated NOT
 	 */
 	public void testAddKeyword__String() {
-		assertNull(getFixture().getEAnnotation(
-			UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI));
+		assertNull(
+			getFixture().getEAnnotation(UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI));
 
 		assertTrue(getFixture().addKeyword(getName()));
 
-		EAnnotation eAnnotation = getFixture().getEAnnotation(
-			UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI);
+		EAnnotation eAnnotation = getFixture()
+			.getEAnnotation(UMLUtil.UML2_UML_PACKAGE_2_0_NS_URI);
 		assertNotNull(eAnnotation);
 		assertTrue(eAnnotation.getDetails().containsKey(getName()));
 
@@ -777,12 +779,12 @@ public abstract class ElementTest
 	public void testAllOwnedElements() {
 		EList<Element> allOwnedElements = getFixture().allOwnedElements();
 
-		assertTrue(allOwnedElements
-			.containsAll(getFixture().getOwnedElements()));
+		assertTrue(
+			allOwnedElements.containsAll(getFixture().getOwnedElements()));
 
 		for (Element ownedElement : allOwnedElements) {
-			assertTrue(allOwnedElements.containsAll(ownedElement
-				.allOwnedElements()));
+			assertTrue(
+				allOwnedElements.containsAll(ownedElement.allOwnedElements()));
 		}
 	}
 
@@ -805,7 +807,8 @@ public abstract class ElementTest
 			if (eClassifier instanceof EClass) {
 				EClass umlEClass = (EClass) eClassifier;
 
-				if (eClass.isSuperTypeOf(umlEClass) && !umlEClass.isAbstract()) {
+				if (eClass.isSuperTypeOf(umlEClass)
+					&& !umlEClass.isAbstract()) {
 					eAllSubClasses.add(umlEClass);
 				}
 			}

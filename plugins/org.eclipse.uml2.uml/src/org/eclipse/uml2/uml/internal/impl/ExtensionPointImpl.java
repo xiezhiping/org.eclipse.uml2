@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -150,7 +150,8 @@ public class ExtensionPointImpl
 	 */
 	public void setUseCase(UseCase newUseCase) {
 		if (newUseCase != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.EXTENSION_POINT__USE_CASE && newUseCase != null)) {
+			|| (eContainerFeatureID() != UMLPackage.EXTENSION_POINT__USE_CASE
+				&& newUseCase != null)) {
 			if (EcoreUtil.isAncestor(this, newUseCase))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -210,11 +211,11 @@ public class ExtensionPointImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.EXTENSION_POINT__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXTENSION_POINT__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXTENSION_POINT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.EXTENSION_POINT__USE_CASE :
@@ -298,13 +299,13 @@ public class ExtensionPointImpl
 		switch (featureID) {
 			case UMLPackage.EXTENSION_POINT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.EXTENSION_POINT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.EXTENSION_POINT__NAME :
 				setName((String) newValue);
@@ -457,7 +458,8 @@ public class ExtensionPointImpl
 			case UMLPackage.EXTENSION_POINT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.EXTENSION_POINT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.EXTENSION_POINT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.EXTENSION_POINT___GET_STEREOTYPE_APPLICATIONS :
@@ -465,7 +467,8 @@ public class ExtensionPointImpl
 			case UMLPackage.EXTENSION_POINT___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.EXTENSION_POINT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.EXTENSION_POINT___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -542,8 +545,8 @@ public class ExtensionPointImpl
 			case UMLPackage.EXTENSION_POINT___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.EXTENSION_POINT___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.EXTENSION_POINT___VALIDATE_MUST_HAVE_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateMustHaveName((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));

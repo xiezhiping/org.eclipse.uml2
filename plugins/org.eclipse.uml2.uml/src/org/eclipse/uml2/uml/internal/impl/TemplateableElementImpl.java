@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -116,8 +116,8 @@ public abstract class TemplateableElementImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -154,7 +154,8 @@ public abstract class TemplateableElementImpl
 	 * @generated
 	 */
 	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
-		TemplateBinding newTemplateBinding = (TemplateBinding) create(UMLPackage.Literals.TEMPLATE_BINDING);
+		TemplateBinding newTemplateBinding = (TemplateBinding) create(
+			UMLPackage.Literals.TEMPLATE_BINDING);
 		getTemplateBindings().add(newTemplateBinding);
 		if (signature != null)
 			newTemplateBinding.setSignature(signature);
@@ -194,9 +195,11 @@ public abstract class TemplateableElementImpl
 	 * @generated
 	 */
 	public TemplateSignature getOwnedTemplateSignature() {
-		if (ownedTemplateSignature != null && ownedTemplateSignature.eIsProxy()) {
+		if (ownedTemplateSignature != null
+			&& ownedTemplateSignature.eIsProxy()) {
 			InternalEObject oldOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
-			ownedTemplateSignature = (TemplateSignature) eResolveProxy(oldOwnedTemplateSignature);
+			ownedTemplateSignature = (TemplateSignature) eResolveProxy(
+				oldOwnedTemplateSignature);
 			if (ownedTemplateSignature != oldOwnedTemplateSignature) {
 				InternalEObject newOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
 				NotificationChain msgs = oldOwnedTemplateSignature
@@ -211,9 +214,7 @@ public abstract class TemplateableElementImpl
 				if (msgs != null)
 					msgs.dispatch();
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-						this,
-						Notification.RESOLVE,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 						oldOwnedTemplateSignature, ownedTemplateSignature));
 			}
@@ -236,7 +237,8 @@ public abstract class TemplateableElementImpl
 	 * @generated
 	 */
 	public NotificationChain basicSetOwnedTemplateSignature(
-			TemplateSignature newOwnedTemplateSignature, NotificationChain msgs) {
+			TemplateSignature newOwnedTemplateSignature,
+			NotificationChain msgs) {
 		TemplateSignature oldOwnedTemplateSignature = ownedTemplateSignature;
 		ownedTemplateSignature = newOwnedTemplateSignature;
 		if (eNotificationRequired()) {
@@ -286,7 +288,8 @@ public abstract class TemplateableElementImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature(EClass eClass) {
-		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) create(eClass);
+		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) create(
+			eClass);
 		setOwnedTemplateSignature(newOwnedTemplateSignature);
 		return newOwnedTemplateSignature;
 	}
@@ -297,7 +300,8 @@ public abstract class TemplateableElementImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature() {
-		return createOwnedTemplateSignature(UMLPackage.Literals.TEMPLATE_SIGNATURE);
+		return createOwnedTemplateSignature(
+			UMLPackage.Literals.TEMPLATE_SIGNATURE);
 	}
 
 	/**
@@ -310,16 +314,13 @@ public abstract class TemplateableElementImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<ParameterableElement> result = (EList<ParameterableElement>) cache
-				.get(
-					this,
+				.get(this,
 					UMLPackage.Literals.TEMPLATEABLE_ELEMENT___PARAMETERABLE_ELEMENTS);
 			if (result == null) {
-				cache
-					.put(
-						this,
-						UMLPackage.Literals.TEMPLATEABLE_ELEMENT___PARAMETERABLE_ELEMENTS,
-						result = TemplateableElementOperations
-							.parameterableElements(this));
+				cache.put(this,
+					UMLPackage.Literals.TEMPLATEABLE_ELEMENT___PARAMETERABLE_ELEMENTS,
+					result = TemplateableElementOperations
+						.parameterableElements(this));
 			}
 			return result;
 		}
@@ -354,8 +355,7 @@ public abstract class TemplateableElementImpl
 			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
-						.eInverseRemove(
-							this,
+						.eInverseRemove(this,
 							EOPPOSITE_FEATURE_BASE
 								- UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 							null, msgs);
@@ -375,14 +375,14 @@ public abstract class TemplateableElementImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.TEMPLATEABLE_ELEMENT__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :
-				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getTemplateBindings())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
 		}
@@ -428,18 +428,18 @@ public abstract class TemplateableElementImpl
 		switch (featureID) {
 			case UMLPackage.TEMPLATEABLE_ELEMENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll(
-					(Collection<? extends TemplateBinding>) newValue);
+				getTemplateBindings()
+					.addAll((Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
@@ -553,7 +553,8 @@ public abstract class TemplateableElementImpl
 			case UMLPackage.TEMPLATEABLE_ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.TEMPLATEABLE_ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.TEMPLATEABLE_ELEMENT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.TEMPLATEABLE_ELEMENT___GET_STEREOTYPE_APPLICATIONS :
@@ -561,7 +562,8 @@ public abstract class TemplateableElementImpl
 			case UMLPackage.TEMPLATEABLE_ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.TEMPLATEABLE_ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.TEMPLATEABLE_ELEMENT___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -618,7 +620,8 @@ public abstract class TemplateableElementImpl
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING)
-			|| eIsSet(UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
+			|| eIsSet(
+				UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
 	}
 
 } //TemplateableElementImpl

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -99,8 +99,8 @@ public class ChangeEventImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -123,18 +123,20 @@ public class ChangeEventImpl
 	public ValueSpecification getChangeExpression() {
 		if (changeExpression != null && changeExpression.eIsProxy()) {
 			InternalEObject oldChangeExpression = (InternalEObject) changeExpression;
-			changeExpression = (ValueSpecification) eResolveProxy(oldChangeExpression);
+			changeExpression = (ValueSpecification) eResolveProxy(
+				oldChangeExpression);
 			if (changeExpression != oldChangeExpression) {
 				InternalEObject newChangeExpression = (InternalEObject) changeExpression;
 				NotificationChain msgs = oldChangeExpression.eInverseRemove(
-					this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION, null,
-					null);
+					this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION,
+					null, null);
 				if (newChangeExpression.eInternalContainer() == null) {
 					msgs = newChangeExpression.eInverseAdd(this,
 						EOPPOSITE_FEATURE_BASE
-							- UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION, null,
-						msgs);
+							- UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION,
+						null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -186,22 +188,22 @@ public class ChangeEventImpl
 		if (newChangeExpression != changeExpression) {
 			NotificationChain msgs = null;
 			if (changeExpression != null)
-				msgs = ((InternalEObject) changeExpression).eInverseRemove(
-					this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION, null,
-					msgs);
+				msgs = ((InternalEObject) changeExpression).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION,
+					null, msgs);
 			if (newChangeExpression != null)
-				msgs = ((InternalEObject) newChangeExpression).eInverseAdd(
-					this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION, null,
-					msgs);
+				msgs = ((InternalEObject) newChangeExpression).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION,
+					null, msgs);
 			msgs = basicSetChangeExpression(newChangeExpression, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION,
-				newChangeExpression, newChangeExpression));
+				UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION, newChangeExpression,
+				newChangeExpression));
 	}
 
 	/**
@@ -211,7 +213,8 @@ public class ChangeEventImpl
 	 */
 	public ValueSpecification createChangeExpression(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newChangeExpression = (ValueSpecification) create(eClass);
+		ValueSpecification newChangeExpression = (ValueSpecification) create(
+			eClass);
 		setChangeExpression(newChangeExpression);
 		if (name != null)
 			newChangeExpression.setName(name);
@@ -230,11 +233,11 @@ public class ChangeEventImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.CHANGE_EVENT__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CHANGE_EVENT__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CHANGE_EVENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.CHANGE_EVENT__OWNING_TEMPLATE_PARAMETER :
@@ -308,13 +311,13 @@ public class ChangeEventImpl
 		switch (featureID) {
 			case UMLPackage.CHANGE_EVENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.CHANGE_EVENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.CHANGE_EVENT__NAME :
 				setName((String) newValue);

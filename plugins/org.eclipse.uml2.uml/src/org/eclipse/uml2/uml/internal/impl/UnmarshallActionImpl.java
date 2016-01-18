@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -201,7 +201,8 @@ public class UnmarshallActionImpl
 	 * @generated
 	 */
 	public OutputPin createResult(String name, Type type) {
-		OutputPin newResult = (OutputPin) create(UMLPackage.Literals.OUTPUT_PIN);
+		OutputPin newResult = (OutputPin) create(
+			UMLPackage.Literals.OUTPUT_PIN);
 		getResults().add(newResult);
 		if (name != null)
 			newResult.setName(name);
@@ -304,16 +305,21 @@ public class UnmarshallActionImpl
 				InternalEObject newObject = (InternalEObject) object;
 				NotificationChain msgs = oldObject.eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.UNMARSHALL_ACTION__OBJECT, null, null);
+						- UMLPackage.UNMARSHALL_ACTION__OBJECT,
+					null, null);
 				if (newObject.eInternalContainer() == null) {
-					msgs = newObject.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.UNMARSHALL_ACTION__OBJECT, null, msgs);
+					msgs = newObject
+						.eInverseAdd(this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.UNMARSHALL_ACTION__OBJECT,
+							null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						UMLPackage.UNMARSHALL_ACTION__OBJECT, oldObject, object));
+						UMLPackage.UNMARSHALL_ACTION__OBJECT, oldObject,
+						object));
 			}
 		}
 		return object;
@@ -360,11 +366,13 @@ public class UnmarshallActionImpl
 			if (object != null)
 				msgs = ((InternalEObject) object).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.UNMARSHALL_ACTION__OBJECT, null, msgs);
+						- UMLPackage.UNMARSHALL_ACTION__OBJECT,
+					null, msgs);
 			if (newObject != null)
 				msgs = ((InternalEObject) newObject).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.UNMARSHALL_ACTION__OBJECT, null, msgs);
+						- UMLPackage.UNMARSHALL_ACTION__OBJECT,
+					null, msgs);
 			msgs = basicSetObject(newObject, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -437,8 +445,8 @@ public class UnmarshallActionImpl
 	 */
 	public boolean validateTypeOrderingAndMultiplicity(
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return UnmarshallActionOperations.validateTypeOrderingAndMultiplicity(
-			this, diagnostics, context);
+		return UnmarshallActionOperations
+			.validateTypeOrderingAndMultiplicity(this, diagnostics, context);
 	}
 
 	/**
@@ -462,11 +470,11 @@ public class UnmarshallActionImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.UNMARSHALL_ACTION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.UNMARSHALL_ACTION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.UNMARSHALL_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.UNMARSHALL_ACTION__IN_INTERRUPTIBLE_REGION :
@@ -475,14 +483,14 @@ public class UnmarshallActionImpl
 			case UMLPackage.UNMARSHALL_ACTION__IN_STRUCTURED_NODE :
 				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.UNMARSHALL_ACTION__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.UNMARSHALL_ACTION__OUTGOING :
-				return ((InternalEList<?>) getOutgoings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.UNMARSHALL_ACTION__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getInPartitions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.UNMARSHALL_ACTION__HANDLER :
 				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
@@ -602,13 +610,13 @@ public class UnmarshallActionImpl
 		switch (featureID) {
 			case UMLPackage.UNMARSHALL_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.UNMARSHALL_ACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.UNMARSHALL_ACTION__NAME :
 				setName((String) newValue);
@@ -627,50 +635,49 @@ public class UnmarshallActionImpl
 				return;
 			case UMLPackage.UNMARSHALL_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions()
-					.addAll(
-						(Collection<? extends InterruptibleActivityRegion>) newValue);
+				getInInterruptibleRegions().addAll(
+					(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.UNMARSHALL_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.UNMARSHALL_ACTION__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getIncomings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.UNMARSHALL_ACTION__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getOutgoings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.UNMARSHALL_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll(
-					(Collection<? extends ActivityNode>) newValue);
+				getRedefinedNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.UNMARSHALL_ACTION__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
+				getInPartitions()
+					.addAll((Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.UNMARSHALL_ACTION__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll(
-					(Collection<? extends ExceptionHandler>) newValue);
+				getHandlers()
+					.addAll((Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.UNMARSHALL_ACTION__IS_LOCALLY_REENTRANT :
 				setIsLocallyReentrant((Boolean) newValue);
 				return;
 			case UMLPackage.UNMARSHALL_ACTION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPostconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.UNMARSHALL_ACTION__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+				getLocalPreconditions()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.UNMARSHALL_ACTION__OBJECT :
 				setObject((InputPin) newValue);
@@ -818,7 +825,8 @@ public class UnmarshallActionImpl
 			case UMLPackage.UNMARSHALL_ACTION__INPUT :
 				return isSetInputs();
 			case UMLPackage.UNMARSHALL_ACTION__IS_LOCALLY_REENTRANT :
-				return ((eFlags & IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
+				return ((eFlags
+					& IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
 			case UMLPackage.UNMARSHALL_ACTION__LOCAL_POSTCONDITION :
 				return localPostconditions != null
 					&& !localPostconditions.isEmpty();
@@ -894,7 +902,8 @@ public class UnmarshallActionImpl
 			case UMLPackage.UNMARSHALL_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.UNMARSHALL_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.UNMARSHALL_ACTION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.UNMARSHALL_ACTION___GET_STEREOTYPE_APPLICATIONS :
@@ -902,7 +911,8 @@ public class UnmarshallActionImpl
 			case UMLPackage.UNMARSHALL_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.UNMARSHALL_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.UNMARSHALL_ACTION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -979,8 +989,8 @@ public class UnmarshallActionImpl
 			case UMLPackage.UNMARSHALL_ACTION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.UNMARSHALL_ACTION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.UNMARSHALL_ACTION___CONTAINING_ACTIVITY :
 				return containingActivity();
 			case UMLPackage.UNMARSHALL_ACTION___GET_CONTEXT :
@@ -1033,7 +1043,8 @@ public class UnmarshallActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] INPUT_ESUBSETS = new int[]{UMLPackage.UNMARSHALL_ACTION__OBJECT};
+	protected static final int[] INPUT_ESUBSETS = new int[]{
+		UMLPackage.UNMARSHALL_ACTION__OBJECT};
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOutputs() <em>Output</em>}' reference list.
@@ -1043,7 +1054,8 @@ public class UnmarshallActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] OUTPUT_ESUBSETS = new int[]{UMLPackage.UNMARSHALL_ACTION__RESULT};
+	protected static final int[] OUTPUT_ESUBSETS = new int[]{
+		UMLPackage.UNMARSHALL_ACTION__RESULT};
 
 	/**
 	 * <!-- begin-user-doc -->

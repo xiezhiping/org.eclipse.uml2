@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -136,8 +136,8 @@ public class GeneralizationImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> targets = (EList<Element>) cache.get(eResource,
-				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			EList<Element> targets = (EList<Element>) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
 			if (targets == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
@@ -162,8 +162,8 @@ public class GeneralizationImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> sources = (EList<Element>) cache.get(eResource,
-				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			EList<Element> sources = (EList<Element>) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
 			if (sources == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
@@ -199,8 +199,8 @@ public class GeneralizationImpl
 			eFlags &= ~IS_SUBSTITUTABLE_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.GENERALIZATION__IS_SUBSTITUTABLE,
-				oldIsSubstitutable, newIsSubstitutable));
+				UMLPackage.GENERALIZATION__IS_SUBSTITUTABLE, oldIsSubstitutable,
+				newIsSubstitutable));
 	}
 
 	/**
@@ -215,7 +215,8 @@ public class GeneralizationImpl
 			if (general != oldGeneral) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						UMLPackage.GENERALIZATION__GENERAL, oldGeneral, general));
+						UMLPackage.GENERALIZATION__GENERAL, oldGeneral,
+						general));
 			}
 		}
 		return general;
@@ -325,7 +326,8 @@ public class GeneralizationImpl
 	 */
 	public void setSpecific(Classifier newSpecific) {
 		if (newSpecific != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.GENERALIZATION__SPECIFIC && newSpecific != null)) {
+			|| (eContainerFeatureID() != UMLPackage.GENERALIZATION__SPECIFIC
+				&& newSpecific != null)) {
 			if (EcoreUtil.isAncestor(this, newSpecific))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -378,11 +380,11 @@ public class GeneralizationImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.GENERALIZATION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.GENERALIZATION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.GENERALIZATION__GENERALIZATION_SET :
 				return ((InternalEList<?>) getGeneralizationSets())
 					.basicRemove(otherEnd, msgs);
@@ -460,21 +462,21 @@ public class GeneralizationImpl
 		switch (featureID) {
 			case UMLPackage.GENERALIZATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.GENERALIZATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.GENERALIZATION__GENERAL :
 				setGeneral((Classifier) newValue);
 				return;
 			case UMLPackage.GENERALIZATION__GENERALIZATION_SET :
 				getGeneralizationSets().clear();
-				getGeneralizationSets().addAll(
-					(Collection<? extends GeneralizationSet>) newValue);
+				getGeneralizationSets()
+					.addAll((Collection<? extends GeneralizationSet>) newValue);
 				return;
 			case UMLPackage.GENERALIZATION__IS_SUBSTITUTABLE :
 				setIsSubstitutable((Boolean) newValue);
@@ -544,7 +546,8 @@ public class GeneralizationImpl
 				return generalizationSets != null
 					&& !generalizationSets.isEmpty();
 			case UMLPackage.GENERALIZATION__IS_SUBSTITUTABLE :
-				return ((eFlags & IS_SUBSTITUTABLE_EFLAG) != 0) != IS_SUBSTITUTABLE_EDEFAULT;
+				return ((eFlags
+					& IS_SUBSTITUTABLE_EFLAG) != 0) != IS_SUBSTITUTABLE_EDEFAULT;
 			case UMLPackage.GENERALIZATION__SPECIFIC :
 				return basicGetSpecific() != null;
 		}
@@ -576,7 +579,8 @@ public class GeneralizationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] TARGET_ESUBSETS = new int[]{UMLPackage.GENERALIZATION__GENERAL};
+	protected static final int[] TARGET_ESUBSETS = new int[]{
+		UMLPackage.GENERALIZATION__GENERAL};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -597,7 +601,8 @@ public class GeneralizationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] SOURCE_ESUBSETS = new int[]{UMLPackage.GENERALIZATION__SPECIFIC};
+	protected static final int[] SOURCE_ESUBSETS = new int[]{
+		UMLPackage.GENERALIZATION__SPECIFIC};
 
 	/**
 	 * <!-- begin-user-doc -->

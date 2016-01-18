@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -219,15 +219,12 @@ public abstract class ActivityEdgeImpl
 				.get(eResource, this,
 					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 			if (redefinedElements == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-						redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
-							RedefinableElement.class, this,
-							UMLPackage.ACTIVITY_EDGE__REDEFINED_ELEMENT,
-							REDEFINED_ELEMENT_ESUBSETS));
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+					redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
+						RedefinableElement.class, this,
+						UMLPackage.ACTIVITY_EDGE__REDEFINED_ELEMENT,
+						REDEFINED_ELEMENT_ESUBSETS));
 			}
 			return redefinedElements;
 		}
@@ -248,8 +245,8 @@ public abstract class ActivityEdgeImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -305,7 +302,8 @@ public abstract class ActivityEdgeImpl
 	 */
 	public void setActivity(Activity newActivity) {
 		if (newActivity != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.ACTIVITY_EDGE__ACTIVITY && newActivity != null)) {
+			|| (eContainerFeatureID() != UMLPackage.ACTIVITY_EDGE__ACTIVITY
+				&& newActivity != null)) {
 			if (EcoreUtil.isAncestor(this, newActivity))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -391,7 +389,8 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public NotificationChain basicSetInStructuredNode(
-			StructuredActivityNode newInStructuredNode, NotificationChain msgs) {
+			StructuredActivityNode newInStructuredNode,
+			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newInStructuredNode,
 			UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE, msgs);
 		return msgs;
@@ -402,9 +401,11 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInStructuredNode(StructuredActivityNode newInStructuredNode) {
+	public void setInStructuredNode(
+			StructuredActivityNode newInStructuredNode) {
 		if (newInStructuredNode != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE && newInStructuredNode != null)) {
+			|| (eContainerFeatureID() != UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE
+				&& newInStructuredNode != null)) {
 			if (EcoreUtil.isAncestor(this, newInStructuredNode))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -412,8 +413,8 @@ public abstract class ActivityEdgeImpl
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newInStructuredNode != null)
-				msgs = ((InternalEObject) newInStructuredNode).eInverseAdd(
-					this, UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE,
+				msgs = ((InternalEObject) newInStructuredNode).eInverseAdd(this,
+					UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE,
 					StructuredActivityNode.class, msgs);
 			msgs = basicSetInStructuredNode(newInStructuredNode, msgs);
 			if (msgs != null)
@@ -625,7 +626,8 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createGuard(String name, Type type, EClass eClass) {
+	public ValueSpecification createGuard(String name, Type type,
+			EClass eClass) {
 		ValueSpecification newGuard = (ValueSpecification) create(eClass);
 		setGuard(newGuard);
 		if (name != null)
@@ -722,7 +724,8 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createWeight(String name, Type type, EClass eClass) {
+	public ValueSpecification createWeight(String name, Type type,
+			EClass eClass) {
 		ValueSpecification newWeight = (ValueSpecification) create(eClass);
 		setWeight(newWeight);
 		if (name != null)
@@ -740,7 +743,8 @@ public abstract class ActivityEdgeImpl
 	public InterruptibleActivityRegion getInterrupts() {
 		if (interrupts != null && interrupts.eIsProxy()) {
 			InternalEObject oldInterrupts = (InternalEObject) interrupts;
-			interrupts = (InterruptibleActivityRegion) eResolveProxy(oldInterrupts);
+			interrupts = (InterruptibleActivityRegion) eResolveProxy(
+				oldInterrupts);
 			if (interrupts != oldInterrupts) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -790,17 +794,13 @@ public abstract class ActivityEdgeImpl
 		if (newInterrupts != interrupts) {
 			NotificationChain msgs = null;
 			if (interrupts != null)
-				msgs = ((InternalEObject) interrupts)
-					.eInverseRemove(
-						this,
-						UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE,
-						InterruptibleActivityRegion.class, msgs);
+				msgs = ((InternalEObject) interrupts).eInverseRemove(this,
+					UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE,
+					InterruptibleActivityRegion.class, msgs);
 			if (newInterrupts != null)
-				msgs = ((InternalEObject) newInterrupts)
-					.eInverseAdd(
-						this,
-						UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE,
-						InterruptibleActivityRegion.class, msgs);
+				msgs = ((InternalEObject) newInterrupts).eInverseAdd(this,
+					UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE,
+					InterruptibleActivityRegion.class, msgs);
 			msgs = basicSetInterrupts(newInterrupts, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -889,8 +889,8 @@ public abstract class ActivityEdgeImpl
 	 */
 	public boolean validateSourceAndTarget(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return ActivityEdgeOperations.validateSourceAndTarget(this,
-			diagnostics, context);
+		return ActivityEdgeOperations.validateSourceAndTarget(this, diagnostics,
+			context);
 	}
 
 	/**
@@ -925,11 +925,9 @@ public abstract class ActivityEdgeImpl
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
 				if (interrupts != null)
-					msgs = ((InternalEObject) interrupts)
-						.eInverseRemove(
-							this,
-							UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE,
-							InterruptibleActivityRegion.class, msgs);
+					msgs = ((InternalEObject) interrupts).eInverseRemove(this,
+						UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE,
+						InterruptibleActivityRegion.class, msgs);
 				return basicSetInterrupts(
 					(InterruptibleActivityRegion) otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
@@ -963,11 +961,11 @@ public abstract class ActivityEdgeImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_EDGE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
@@ -975,8 +973,8 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__GUARD :
 				return basicSetGuard(null, msgs);
 			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getInPartitions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
 				return basicSetInterrupts(null, msgs);
 			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
@@ -1100,13 +1098,13 @@ public abstract class ActivityEdgeImpl
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_EDGE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__NAME :
 				setName((String) newValue);
@@ -1128,8 +1126,8 @@ public abstract class ActivityEdgeImpl
 				return;
 			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
+				getInPartitions()
+					.addAll((Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
 				setInterrupts((InterruptibleActivityRegion) newValue);
@@ -1145,8 +1143,8 @@ public abstract class ActivityEdgeImpl
 				return;
 			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
 				getRedefinedEdges().clear();
-				getRedefinedEdges().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getRedefinedEdges()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__WEIGHT :
 				setWeight((ValueSpecification) newValue);
@@ -1329,7 +1327,8 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.ACTIVITY_EDGE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.ACTIVITY_EDGE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.ACTIVITY_EDGE___GET_STEREOTYPE_APPLICATIONS :
@@ -1337,7 +1336,8 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.ACTIVITY_EDGE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.ACTIVITY_EDGE___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -1414,8 +1414,8 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.ACTIVITY_EDGE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.ACTIVITY_EDGE___VALIDATE_SOURCE_AND_TARGET__DIAGNOSTICCHAIN_MAP :
 				return validateSourceAndTarget(
 					(DiagnosticChain) arguments.get(0),
@@ -1535,7 +1535,8 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE};
+	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE};
 
 	/**
 	 * <!-- begin-user-doc -->

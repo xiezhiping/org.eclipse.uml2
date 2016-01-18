@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -78,9 +78,10 @@ public class UseCaseOperations
 			if (diagnostics != null) {
 				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
 					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.USE_CASE__MUST_HAVE_NAME, UMLPlugin.INSTANCE
-						.getString("_UI_UseCase_MustHaveName_diagnostic", //$NON-NLS-1$
-							getMessageSubstitutions(context, useCase)),
+					UMLValidator.USE_CASE__MUST_HAVE_NAME,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_UseCase_MustHaveName_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, useCase)),
 					new Object[]{useCase}));
 			}
 
@@ -164,17 +165,15 @@ public class UseCaseOperations
 					if (!subjects.isEmpty()) {
 
 						if (diagnostics != null) {
-							diagnostics
-								.add(new BasicDiagnostic(
-									Diagnostic.WARNING,
-									UMLValidator.DIAGNOSTIC_SOURCE,
-									UMLValidator.USE_CASE__NO_ASSOCIATION_TO_USE_CASE,
-									UMLPlugin.INSTANCE
-										.getString(
-											"_UI_UseCase_NoAssociationToUseCase_diagnostic", //$NON-NLS-1$
-											getMessageSubstitutions(context,
-												useCase1, useCase2)),
-									new Object[]{useCase1, useCase2}));
+							diagnostics.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								UMLValidator.USE_CASE__NO_ASSOCIATION_TO_USE_CASE,
+								UMLPlugin.INSTANCE.getString(
+									"_UI_UseCase_NoAssociationToUseCase_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context, useCase1,
+										useCase2)),
+								new Object[]{useCase1, useCase2}));
 						}
 
 						return false;

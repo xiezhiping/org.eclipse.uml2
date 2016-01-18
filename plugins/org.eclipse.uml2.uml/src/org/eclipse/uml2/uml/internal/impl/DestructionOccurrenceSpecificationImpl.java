@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2015 CEA and others.
+ * Copyright (c) 2011, 2016 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
- *   Kenn Hussey (CEA) - 351774, 297216, 418466, 451350
+ *   Kenn Hussey (CEA) - 351774, 297216, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -68,7 +68,8 @@ public class DestructionOccurrenceSpecificationImpl
 	public boolean validateNoOccurrenceSpecificationsBelow(
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return DestructionOccurrenceSpecificationOperations
-			.validateNoOccurrenceSpecificationsBelow(this, diagnostics, context);
+			.validateNoOccurrenceSpecificationsBelow(this, diagnostics,
+				context);
 	}
 
 	/**
@@ -128,7 +129,8 @@ public class DestructionOccurrenceSpecificationImpl
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___GET_STEREOTYPE_APPLICATIONS :
@@ -136,7 +138,8 @@ public class DestructionOccurrenceSpecificationImpl
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.DESTRUCTION_OCCURRENCE_SPECIFICATION___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));

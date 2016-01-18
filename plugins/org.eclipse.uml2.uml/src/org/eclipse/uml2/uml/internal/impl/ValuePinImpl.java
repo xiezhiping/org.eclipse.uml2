@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -118,8 +118,8 @@ public class ValuePinImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
@@ -163,8 +163,9 @@ public class ValuePinImpl
 					EOPPOSITE_FEATURE_BASE - UMLPackage.VALUE_PIN__VALUE, null,
 					null);
 				if (newValue.eInternalContainer() == null) {
-					msgs = newValue.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- UMLPackage.VALUE_PIN__VALUE, null, msgs);
+					msgs = newValue.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - UMLPackage.VALUE_PIN__VALUE,
+						null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -235,7 +236,8 @@ public class ValuePinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createValue(String name, Type type, EClass eClass) {
+	public ValueSpecification createValue(String name, Type type,
+			EClass eClass) {
 		ValueSpecification newValue = (ValueSpecification) create(eClass);
 		setValue(newValue);
 		if (name != null)
@@ -277,11 +279,11 @@ public class ValuePinImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.VALUE_PIN__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.VALUE_PIN__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.VALUE_PIN__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.VALUE_PIN__IN_INTERRUPTIBLE_REGION :
@@ -290,14 +292,14 @@ public class ValuePinImpl
 			case UMLPackage.VALUE_PIN__IN_STRUCTURED_NODE :
 				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.VALUE_PIN__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.VALUE_PIN__OUTGOING :
-				return ((InternalEList<?>) getOutgoings()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.VALUE_PIN__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getInPartitions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.VALUE_PIN__UPPER_BOUND :
 				return basicSetUpperBound(null, msgs);
 			case UMLPackage.VALUE_PIN__LOWER_VALUE :
@@ -425,13 +427,13 @@ public class ValuePinImpl
 		switch (featureID) {
 			case UMLPackage.VALUE_PIN__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__NAME :
 				setName((String) newValue);
@@ -450,32 +452,31 @@ public class ValuePinImpl
 				return;
 			case UMLPackage.VALUE_PIN__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions()
-					.addAll(
-						(Collection<? extends InterruptibleActivityRegion>) newValue);
+				getInInterruptibleRegions().addAll(
+					(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getIncomings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
+				getOutgoings()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll(
-					(Collection<? extends ActivityNode>) newValue);
+				getRedefinedNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
+				getInPartitions()
+					.addAll((Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__TYPE :
 				setType((Type) newValue);
@@ -675,7 +676,8 @@ public class ValuePinImpl
 			case UMLPackage.VALUE_PIN__IN_STATE :
 				return inStates != null && !inStates.isEmpty();
 			case UMLPackage.VALUE_PIN__IS_CONTROL_TYPE :
-				return ((eFlags & IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
+				return ((eFlags
+					& IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
 			case UMLPackage.VALUE_PIN__ORDERING :
 				return (eFlags & ORDERING_EFLAG) != ORDERING_EFLAG_DEFAULT;
 			case UMLPackage.VALUE_PIN__SELECTION :
@@ -683,7 +685,8 @@ public class ValuePinImpl
 			case UMLPackage.VALUE_PIN__UPPER_BOUND :
 				return upperBound != null;
 			case UMLPackage.VALUE_PIN__IS_ORDERED :
-				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
+				return ((eFlags
+					& IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.VALUE_PIN__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UMLPackage.VALUE_PIN__LOWER :
@@ -695,7 +698,8 @@ public class ValuePinImpl
 			case UMLPackage.VALUE_PIN__UPPER_VALUE :
 				return upperValue != null;
 			case UMLPackage.VALUE_PIN__IS_CONTROL :
-				return ((eFlags & IS_CONTROL_EFLAG) != 0) != IS_CONTROL_EDEFAULT;
+				return ((eFlags
+					& IS_CONTROL_EFLAG) != 0) != IS_CONTROL_EDEFAULT;
 			case UMLPackage.VALUE_PIN__VALUE :
 				return value != null;
 		}
@@ -759,7 +763,8 @@ public class ValuePinImpl
 			case UMLPackage.VALUE_PIN___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.VALUE_PIN___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.VALUE_PIN___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.VALUE_PIN___GET_STEREOTYPE_APPLICATIONS :
@@ -767,7 +772,8 @@ public class ValuePinImpl
 			case UMLPackage.VALUE_PIN___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.VALUE_PIN___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.VALUE_PIN___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -844,8 +850,8 @@ public class ValuePinImpl
 			case UMLPackage.VALUE_PIN___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 				return isConsistentWith((RedefinableElement) arguments.get(0));
 			case UMLPackage.VALUE_PIN___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid((RedefinableElement) arguments
-					.get(0));
+				return isRedefinitionContextValid(
+					(RedefinableElement) arguments.get(0));
 			case UMLPackage.VALUE_PIN___CONTAINING_ACTIVITY :
 				return containingActivity();
 			case UMLPackage.VALUE_PIN___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
@@ -891,8 +897,8 @@ public class ValuePinImpl
 			case UMLPackage.VALUE_PIN___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
 				return compatibleWith((MultiplicityElement) arguments.get(0));
 			case UMLPackage.VALUE_PIN___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
-				return includesMultiplicity((MultiplicityElement) arguments
-					.get(0));
+				return includesMultiplicity(
+					(MultiplicityElement) arguments.get(0));
 			case UMLPackage.VALUE_PIN___IS__INT_INT :
 				return is((Integer) arguments.get(0),
 					(Integer) arguments.get(1));

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -98,15 +98,16 @@ public class StructuredActivityNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STRUCTURED_ACTIVITY_NODE__OUTPUT_PIN_EDGES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOutputPinEdges", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(structuredActivityNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{structuredActivityNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.STRUCTURED_ACTIVITY_NODE__OUTPUT_PIN_EDGES,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateOutputPinEdges", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(structuredActivityNode,
+									context)}),
+					new Object[]{structuredActivityNode}));
 			}
 			return false;
 		}
@@ -135,15 +136,16 @@ public class StructuredActivityNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STRUCTURED_ACTIVITY_NODE__EDGES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateEdges", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(structuredActivityNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{structuredActivityNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.STRUCTURED_ACTIVITY_NODE__EDGES,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateEdges", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(structuredActivityNode,
+									context)}),
+					new Object[]{structuredActivityNode}));
 			}
 			return false;
 		}
@@ -171,15 +173,16 @@ public class StructuredActivityNodeOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.STRUCTURED_ACTIVITY_NODE__INPUT_PIN_EDGES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateInputPinEdges", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(structuredActivityNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{structuredActivityNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.STRUCTURED_ACTIVITY_NODE__INPUT_PIN_EDGES,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateInputPinEdges", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(structuredActivityNode,
+									context)}),
+					new Object[]{structuredActivityNode}));
 			}
 			return false;
 		}
@@ -286,8 +289,8 @@ public class StructuredActivityNodeOperations
 			StructuredActivityNode structuredActivityNode) {
 		EList<ActivityNode> allOwnedNodes = new UniqueEList.FastCompare<ActivityNode>();
 
-		allOwnedNodes.addAll(ActionOperations
-			.allOwnedNodes(structuredActivityNode));
+		allOwnedNodes
+			.addAll(ActionOperations.allOwnedNodes(structuredActivityNode));
 
 		for (ActivityNode node : structuredActivityNode.getNodes()) {
 			allOwnedNodes.add(node);

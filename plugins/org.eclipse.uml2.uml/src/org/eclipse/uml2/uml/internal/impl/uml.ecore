@@ -933,6 +933,10 @@
     <eOperations name="unapplyProfile" ordered="false" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
       <eParameters name="profile" ordered="false" lowerBound="1" eType="#//Profile"/>
     </eOperations>
+    <eOperations name="applyProfiles" ordered="false" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+      <eParameters name="profiles" ordered="false" lowerBound="1" upperBound="-1"
+          eType="#//Profile"/>
+    </eOperations>
     <eOperations name="allApplicableStereotypes" ordered="false" upperBound="-1" eType="#//Stereotype"/>
     <eOperations name="containingProfile" ordered="false" eType="#//Profile"/>
     <eOperations name="makesVisible" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean">

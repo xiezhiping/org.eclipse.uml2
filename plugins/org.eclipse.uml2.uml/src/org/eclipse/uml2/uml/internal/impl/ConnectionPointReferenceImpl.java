@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -237,7 +237,8 @@ public class ConnectionPointReferenceImpl
 	 */
 	public void setState(State newState) {
 		if (newState != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.CONNECTION_POINT_REFERENCE__STATE && newState != null)) {
+			|| (eContainerFeatureID() != UMLPackage.CONNECTION_POINT_REFERENCE__STATE
+				&& newState != null)) {
 			if (EcoreUtil.isAncestor(this, newState))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -263,8 +264,8 @@ public class ConnectionPointReferenceImpl
 	 */
 	public boolean validateEntryPseudostates(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return ConnectionPointReferenceOperations.validateEntryPseudostates(
-			this, diagnostics, context);
+		return ConnectionPointReferenceOperations
+			.validateEntryPseudostates(this, diagnostics, context);
 	}
 
 	/**
@@ -274,8 +275,8 @@ public class ConnectionPointReferenceImpl
 	 */
 	public boolean validateExitPseudostates(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return ConnectionPointReferenceOperations.validateExitPseudostates(
-			this, diagnostics, context);
+		return ConnectionPointReferenceOperations.validateExitPseudostates(this,
+			diagnostics, context);
 	}
 
 	/**
@@ -313,11 +314,11 @@ public class ConnectionPointReferenceImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.CONNECTION_POINT_REFERENCE__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
@@ -412,13 +413,13 @@ public class ConnectionPointReferenceImpl
 		switch (featureID) {
 			case UMLPackage.CONNECTION_POINT_REFERENCE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME :
 				setName((String) newValue);
@@ -434,8 +435,8 @@ public class ConnectionPointReferenceImpl
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY :
 				getEntries().clear();
-				getEntries().addAll(
-					(Collection<? extends Pseudostate>) newValue);
+				getEntries()
+					.addAll((Collection<? extends Pseudostate>) newValue);
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__EXIT :
 				getExits().clear();
@@ -590,7 +591,8 @@ public class ConnectionPointReferenceImpl
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_STEREOTYPE_APPLICATIONS :
@@ -598,7 +600,8 @@ public class ConnectionPointReferenceImpl
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));

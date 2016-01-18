@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -139,7 +139,8 @@ public class EnumerationLiteralImpl
 	 */
 	public void setEnumeration(Enumeration newEnumeration) {
 		if (newEnumeration != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.ENUMERATION_LITERAL__ENUMERATION && newEnumeration != null)) {
+			|| (eContainerFeatureID() != UMLPackage.ENUMERATION_LITERAL__ENUMERATION
+				&& newEnumeration != null)) {
 			if (EcoreUtil.isAncestor(this, newEnumeration))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -247,10 +248,10 @@ public class EnumerationLiteralImpl
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.ENUMERATION_LITERAL__TEMPLATE_PARAMETER :
 				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter)
-						.eInverseRemove(this,
-							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-							TemplateParameter.class, msgs);
+					msgs = ((InternalEObject) templateParameter).eInverseRemove(
+						this,
+						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+						TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.ENUMERATION_LITERAL__SLOT :
@@ -274,16 +275,16 @@ public class EnumerationLiteralImpl
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.ENUMERATION_LITERAL__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getEAnnotations())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ENUMERATION_LITERAL__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedComments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ENUMERATION_LITERAL__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.ENUMERATION_LITERAL__DEPLOYMENT :
-				return ((InternalEList<?>) getDeployments()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getDeployments())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ENUMERATION_LITERAL__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.ENUMERATION_LITERAL__TEMPLATE_PARAMETER :
@@ -393,13 +394,13 @@ public class EnumerationLiteralImpl
 		switch (featureID) {
 			case UMLPackage.ENUMERATION_LITERAL__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll(
-					(Collection<? extends EAnnotation>) newValue);
+				getEAnnotations()
+					.addAll((Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.ENUMERATION_LITERAL__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll(
-					(Collection<? extends Comment>) newValue);
+				getOwnedComments()
+					.addAll((Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.ENUMERATION_LITERAL__NAME :
 				setName((String) newValue);
@@ -412,8 +413,8 @@ public class EnumerationLiteralImpl
 				return;
 			case UMLPackage.ENUMERATION_LITERAL__DEPLOYMENT :
 				getDeployments().clear();
-				getDeployments().addAll(
-					(Collection<? extends Deployment>) newValue);
+				getDeployments()
+					.addAll((Collection<? extends Deployment>) newValue);
 				return;
 			case UMLPackage.ENUMERATION_LITERAL__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -423,8 +424,8 @@ public class EnumerationLiteralImpl
 				return;
 			case UMLPackage.ENUMERATION_LITERAL__CLASSIFIER :
 				getClassifiers().clear();
-				getClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+				getClassifiers()
+					.addAll((Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.ENUMERATION_LITERAL__SLOT :
 				getSlots().clear();
@@ -595,7 +596,8 @@ public class EnumerationLiteralImpl
 			case UMLPackage.ENUMERATION_LITERAL___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.ENUMERATION_LITERAL___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships((EClass) arguments.get(0));
+				return getSourceDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.ENUMERATION_LITERAL___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
 				return getStereotypeApplication((Stereotype) arguments.get(0));
 			case UMLPackage.ENUMERATION_LITERAL___GET_STEREOTYPE_APPLICATIONS :
@@ -603,7 +605,8 @@ public class EnumerationLiteralImpl
 			case UMLPackage.ENUMERATION_LITERAL___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.ENUMERATION_LITERAL___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships((EClass) arguments.get(0));
+				return getTargetDirectedRelationships(
+					(EClass) arguments.get(0));
 			case UMLPackage.ENUMERATION_LITERAL___GET_VALUE__STEREOTYPE_STRING :
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
@@ -668,7 +671,8 @@ public class EnumerationLiteralImpl
 			case UMLPackage.ENUMERATION_LITERAL___GET_DEPLOYED_ELEMENTS :
 				return getDeployedElements();
 			case UMLPackage.ENUMERATION_LITERAL___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
-				return isCompatibleWith((ParameterableElement) arguments.get(0));
+				return isCompatibleWith(
+					(ParameterableElement) arguments.get(0));
 			case UMLPackage.ENUMERATION_LITERAL___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.ENUMERATION_LITERAL___VALIDATE_NAMESPACE_NEEDS_VISIBILITY__DIAGNOSTICCHAIN_MAP :

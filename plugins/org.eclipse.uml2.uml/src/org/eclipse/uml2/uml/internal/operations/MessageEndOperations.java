@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, 2015 CEA and others.
+ * Copyright (c) 2014, 2016 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
- *   Kenn Hussey (CEA) - 451350
+ *   Kenn Hussey (CEA) - 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -76,9 +76,11 @@ public class MessageEndOperations
 
 		if (message != null) {
 
-			for (EStructuralFeature.Setting nonNavigableInverseReference : getNonNavigableInverseReferences(message)) {
+			for (EStructuralFeature.Setting nonNavigableInverseReference : getNonNavigableInverseReferences(
+				message)) {
 
-				if (nonNavigableInverseReference.getEStructuralFeature() == UMLPackage.Literals.MESSAGE_END__MESSAGE) {
+				if (nonNavigableInverseReference
+					.getEStructuralFeature() == UMLPackage.Literals.MESSAGE_END__MESSAGE) {
 					MessageEnd eObject = (MessageEnd) nonNavigableInverseReference
 						.getEObject();
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -94,15 +94,15 @@ public class GateOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.GATE__ACTUAL_GATE_MATCHED,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateActualGateMatched", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(gate, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{gate}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.GATE__ACTUAL_GATE_MATCHED,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateActualGateMatched", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(gate, context)}),
+					new Object[]{gate}));
 			}
 			return false;
 		}
@@ -129,15 +129,15 @@ public class GateOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.GATE__INSIDE_CF_MATCHED,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateInsideCfMatched", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(gate, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{gate}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.GATE__INSIDE_CF_MATCHED,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateInsideCfMatched", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(gate, context)}),
+					new Object[]{gate}));
 			}
 			return false;
 		}
@@ -170,15 +170,15 @@ public class GateOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.GATE__OUTSIDE_CF_MATCHED,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOutsideCfMatched", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(gate, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{gate}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.GATE__OUTSIDE_CF_MATCHED,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateOutsideCfMatched", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(gate, context)}),
+					new Object[]{gate}));
 			}
 			return false;
 		}
@@ -205,15 +205,15 @@ public class GateOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.GATE__FORMAL_GATE_DISTINGUISHABLE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateFormalGateDistinguishable", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(gate, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{gate}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.GATE__FORMAL_GATE_DISTINGUISHABLE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateFormalGateDistinguishable", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(gate, context)}),
+					new Object[]{gate}));
 			}
 			return false;
 		}
@@ -240,15 +240,15 @@ public class GateOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.GATE__ACTUAL_GATE_DISTINGUISHABLE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateActualGateDistinguishable", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(gate, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{gate}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.GATE__ACTUAL_GATE_DISTINGUISHABLE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateActualGateDistinguishable", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(gate, context)}),
+					new Object[]{gate}));
 			}
 			return false;
 		}
@@ -275,15 +275,15 @@ public class GateOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.GATE__OUTSIDE_CF_GATE_DISTINGUISHABLE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOutsideCfGateDistinguishable", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(gate, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{gate}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.GATE__OUTSIDE_CF_GATE_DISTINGUISHABLE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateOutsideCfGateDistinguishable", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(gate, context)}),
+					new Object[]{gate}));
 			}
 			return false;
 		}
@@ -312,15 +312,15 @@ public class GateOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.GATE__INSIDE_CF_GATE_DISTINGUISHABLE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateInsideCfGateDistinguishable", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(gate, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{gate}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.GATE__INSIDE_CF_GATE_DISTINGUISHABLE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateInsideCfGateDistinguishable", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(gate, context)}),
+					new Object[]{gate}));
 			}
 			return false;
 		}
@@ -484,7 +484,8 @@ public class GateOperations
 	 * @generated NOT
 	 */
 	public static boolean isActual(Gate gate) {
-		return gate.eContainingFeature() == UMLPackage.Literals.INTERACTION_USE__ACTUAL_GATE;
+		return gate
+			.eContainingFeature() == UMLPackage.Literals.INTERACTION_USE__ACTUAL_GATE;
 	}
 
 	/**
@@ -499,7 +500,8 @@ public class GateOperations
 	 * @generated NOT
 	 */
 	public static boolean isFormal(Gate gate) {
-		return gate.eContainingFeature() == UMLPackage.Literals.INTERACTION__FORMAL_GATE;
+		return gate
+			.eContainingFeature() == UMLPackage.Literals.INTERACTION__FORMAL_GATE;
 	}
 
 	/**

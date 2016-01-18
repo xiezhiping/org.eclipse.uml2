@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -68,15 +68,14 @@ public class AddStructuralFeatureValueActionOperations
 		boolean result = addStructuralFeatureValueAction.getValue() != null;
 
 		if (!result && diagnostics != null) {
-			diagnostics
-				.add(new BasicDiagnostic(
-					Diagnostic.WARNING,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__REQUIRED_VALUE,
-					UMLPlugin.INSTANCE
-						.getString(
-							"_UI_AddStructuralFeatureValueAction_RequiredValue_diagnostic", getMessageSubstitutions(context, addStructuralFeatureValueAction)), //$NON-NLS-1$
-					new Object[]{addStructuralFeatureValueAction}));
+			diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+				UMLValidator.DIAGNOSTIC_SOURCE,
+				UMLValidator.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__REQUIRED_VALUE,
+				UMLPlugin.INSTANCE.getString(
+					"_UI_AddStructuralFeatureValueAction_RequiredValue_diagnostic", //$NON-NLS-1$
+					getMessageSubstitutions(context,
+						addStructuralFeatureValueAction)),
+				new Object[]{addStructuralFeatureValueAction}));
 		}
 
 		return result;
@@ -108,15 +107,16 @@ public class AddStructuralFeatureValueActionOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT_PIN,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateInsertAtPin", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(addStructuralFeatureValueAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{addStructuralFeatureValueAction}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT_PIN,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateInsertAtPin", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(addStructuralFeatureValueAction,
+									context)}),
+					new Object[]{addStructuralFeatureValueAction}));
 			}
 			return false;
 		}

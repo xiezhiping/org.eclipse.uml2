@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 215488
  *   Kenn Hussey - 286329
  *   Christian W. Damus (CEA) - 326915
+ *   Kenn Hussey (CEA) - 485756
  *
  */
 package org.eclipse.uml2.uml.editor.actions;
@@ -159,10 +160,7 @@ public class ApplyProfileAction
 					new RefreshingChangeCommand(editingDomain, new Runnable() {
 
 						public void run() {
-
-							for (Profile result : dialog.getResult()) {
-								package_.applyProfile(result);
-							}
+							package_.applyProfiles(dialog.getResult());
 						}
 					}, label));
 			}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -75,15 +75,15 @@ public class InteractionUseOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.INTERACTION_USE__GATES_MATCH,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateGatesMatch", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(interactionUse, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{interactionUse}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.INTERACTION_USE__GATES_MATCH,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateGatesMatch", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(interactionUse, context)}),
+					new Object[]{interactionUse}));
 			}
 			return false;
 		}
@@ -124,15 +124,15 @@ public class InteractionUseOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.INTERACTION_USE__ALL_LIFELINES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateAllLifelines", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(interactionUse, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{interactionUse}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.INTERACTION_USE__ALL_LIFELINES,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateAllLifelines", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(interactionUse, context)}),
+					new Object[]{interactionUse}));
 			}
 			return false;
 		}
@@ -159,15 +159,15 @@ public class InteractionUseOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.INTERACTION_USE__ARGUMENTS_CORRESPOND_TO_PARAMETERS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateArgumentsCorrespondToParameters", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(interactionUse, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{interactionUse}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.INTERACTION_USE__ARGUMENTS_CORRESPOND_TO_PARAMETERS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateArgumentsCorrespondToParameters", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(interactionUse, context)}),
+					new Object[]{interactionUse}));
 			}
 			return false;
 		}
@@ -195,15 +195,16 @@ public class InteractionUseOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.INTERACTION_USE__RETURN_VALUE_TYPE_RECIPIENT_CORRESPONDENCE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateReturnValueTypeRecipientCorrespondence", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(interactionUse, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{interactionUse}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.INTERACTION_USE__RETURN_VALUE_TYPE_RECIPIENT_CORRESPONDENCE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{
+							"validateReturnValueTypeRecipientCorrespondence", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(interactionUse, context)}),
+					new Object[]{interactionUse}));
 			}
 			return false;
 		}
@@ -230,15 +231,15 @@ public class InteractionUseOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.INTERACTION_USE__ARGUMENTS_ARE_CONSTANTS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateArgumentsAreConstants", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(interactionUse, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{interactionUse}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.INTERACTION_USE__ARGUMENTS_ARE_CONSTANTS,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateArgumentsAreConstants", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(interactionUse, context)}),
+					new Object[]{interactionUse}));
 			}
 			return false;
 		}
@@ -270,15 +271,15 @@ public class InteractionUseOperations
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false) {
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.INTERACTION_USE__RETURN_VALUE_RECIPIENT_COVERAGE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateReturnValueRecipientCoverage", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(interactionUse, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{interactionUse}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.INTERACTION_USE__RETURN_VALUE_RECIPIENT_COVERAGE,
+					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
+						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+						new Object[]{"validateReturnValueRecipientCoverage", //$NON-NLS-1$
+							org.eclipse.emf.ecore.util.EObjectValidator
+								.getObjectLabel(interactionUse, context)}),
+					new Object[]{interactionUse}));
 			}
 			return false;
 		}

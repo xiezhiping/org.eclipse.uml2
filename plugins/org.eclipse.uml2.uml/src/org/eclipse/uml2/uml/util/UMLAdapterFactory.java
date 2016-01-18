@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
- *   Kenn Hussey (CEA) - 327039, 351774, 418466
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 485756
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -810,7 +810,8 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseEncapsulatedClassifier(EncapsulatedClassifier object) {
+		public Adapter caseEncapsulatedClassifier(
+				EncapsulatedClassifier object) {
 			return createEncapsulatedClassifierAdapter();
 		}
 
@@ -841,7 +842,8 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseStructuredActivityNode(StructuredActivityNode object) {
+		public Adapter caseStructuredActivityNode(
+				StructuredActivityNode object) {
 			return createStructuredActivityNodeAdapter();
 		}
 
@@ -955,7 +957,8 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseAddVariableValueAction(AddVariableValueAction object) {
+		public Adapter caseAddVariableValueAction(
+				AddVariableValueAction object) {
 			return createAddVariableValueActionAdapter();
 		}
 
@@ -990,7 +993,8 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseClearAssociationAction(ClearAssociationAction object) {
+		public Adapter caseClearAssociationAction(
+				ClearAssociationAction object) {
 			return createClearAssociationActionAdapter();
 		}
 
@@ -1021,7 +1025,8 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseCreateLinkObjectAction(CreateLinkObjectAction object) {
+		public Adapter caseCreateLinkObjectAction(
+				CreateLinkObjectAction object) {
 			return createCreateLinkObjectActionAdapter();
 		}
 
@@ -1036,7 +1041,8 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseLinkEndDestructionData(LinkEndDestructionData object) {
+		public Adapter caseLinkEndDestructionData(
+				LinkEndDestructionData object) {
 			return createLinkEndDestructionDataAdapter();
 		}
 
@@ -1115,7 +1121,8 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseReclassifyObjectAction(ReclassifyObjectAction object) {
+		public Adapter caseReclassifyObjectAction(
+				ReclassifyObjectAction object) {
 			return createReclassifyObjectActionAdapter();
 		}
 
@@ -1406,7 +1413,8 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseExecutionSpecification(ExecutionSpecification object) {
+		public Adapter caseExecutionSpecification(
+				ExecutionSpecification object) {
 			return createExecutionSpecificationAdapter();
 		}
 
@@ -1422,7 +1430,8 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseConsiderIgnoreFragment(ConsiderIgnoreFragment object) {
+		public Adapter caseConsiderIgnoreFragment(
+				ConsiderIgnoreFragment object) {
 			return createConsiderIgnoreFragmentAdapter();
 		}
 
