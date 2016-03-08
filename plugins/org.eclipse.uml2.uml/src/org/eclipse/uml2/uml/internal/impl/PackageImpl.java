@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 454400, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 454400, 451350, 485756, 489209
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -2315,14 +2315,10 @@ public class PackageImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Type createOwnedType(String name, EClass eClass) {
-		Type newOwnedType = (Type) create(eClass);
-		getOwnedTypes().add(newOwnedType);
-		if (name != null)
-			newOwnedType.setName(name);
-		return newOwnedType;
+		return (Type) createPackagedElement(name, eClass);
 	}
 
 	/**
