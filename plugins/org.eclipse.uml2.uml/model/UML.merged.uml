@@ -2886,7 +2886,7 @@ _'context'.conformsTo(structuralFeature.oclAsType(Property).opposite.type.oclAsT
       <generalization xmi:id="_MKrOdokxEeOMQ5AKLd10lA" general="_ZiwkoGwLEdq7X4sGURiZYA"/>
       <generalization xmi:id="_MKrOd4kxEeOMQ5AKLd10lA" general="_aZICgAs-EeGcpbeCPJfCmw"/>
       <generalization xmi:id="_MKr1gIkxEeOMQ5AKLd10lA" general="_6WKakLLQEeCsYvaJqFFivQ"/>
-      <ownedAttribute xmi:id="_gnnw0AtZEeGV4NAcunjVqQ" name="activity" visibility="protected" type="_eGtFwLLREeCsYvaJqFFivQ" isDerived="true" redefinedProperty="_5V2SAAtBEeGcpbeCPJfCmw _X0ZfIAtCEeGcpbeCPJfCmw" association="_w4820AtEEeGcpbeCPJfCmw">
+      <ownedAttribute xmi:id="_gnnw0AtZEeGV4NAcunjVqQ" name="activity" visibility="protected" type="_eGtFwLLREeCsYvaJqFFivQ" isDerived="true" redefinedProperty="_5V2SAAtBEeGcpbeCPJfCmw _X0ZfIAtCEeGcpbeCPJfCmw">
         <ownedComment xmi:id="_MKr1gYkxEeOMQ5AKLd10lA" annotatedElement="_gnnw0AtZEeGV4NAcunjVqQ">
           <body>The Activity immediately containing the StructuredActivityNode, if it is not contained in another StructuredActivityNode.</body>
         </ownedComment>
@@ -4969,7 +4969,7 @@ endif)</body>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ML1FAokxEeOMQ5AKLd10lA"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_w4820AtEEeGcpbeCPJfCmw" name="A_structuredNode_activity" memberEnd="_EOSYAAs-EeGcpbeCPJfCmw _gnnw0AtZEeGV4NAcunjVqQ _bQeSgAtEEeGcpbeCPJfCmw">
+    <packagedElement xmi:type="uml:Association" xmi:id="_w4820AtEEeGcpbeCPJfCmw" name="A_structuredNode_activity" memberEnd="_EOSYAAs-EeGcpbeCPJfCmw _bQeSgAtEEeGcpbeCPJfCmw">
       <ownedEnd xmi:id="_bQeSgAtEEeGcpbeCPJfCmw" name="activity" visibility="private" type="_eGtFwLLREeCsYvaJqFFivQ" association="_w4820AtEEeGcpbeCPJfCmw">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cva8wAtEEeGcpbeCPJfCmw"/>
       </ownedEnd>

@@ -2886,7 +2886,7 @@ _'context'.conformsTo(structuralFeature.oclAsType(Property).opposite.type.oclAsT
       <generalization xmi:id="StructuredActivityNode-_generalization.0" general="Namespace"/>
       <generalization xmi:id="StructuredActivityNode-_generalization.1" general="ActivityGroup"/>
       <generalization xmi:id="StructuredActivityNode-_generalization.2" general="Action"/>
-      <ownedAttribute xmi:id="StructuredActivityNode-activity" name="activity" visibility="protected" type="Activity" isDerived="true" redefinedProperty="ActivityGroup-inActivity ActivityNode-activity" association="A_structuredNode_activity">
+      <ownedAttribute xmi:id="StructuredActivityNode-activity" name="activity" visibility="protected" type="Activity" isDerived="true" redefinedProperty="ActivityGroup-inActivity ActivityNode-activity">
         <ownedComment xmi:id="StructuredActivityNode-activity-_ownedComment.0" annotatedElement="StructuredActivityNode-activity">
           <body>The Activity immediately containing the StructuredActivityNode, if it is not contained in another StructuredActivityNode.</body>
         </ownedComment>
@@ -4969,7 +4969,7 @@ endif)</body>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_guard_activityEdge-activityEdge-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_structuredNode_activity" name="A_structuredNode_activity" visibility="private" memberEnd="Activity-structuredNode StructuredActivityNode-activity A_structuredNode_activity-activity">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_structuredNode_activity" name="A_structuredNode_activity" visibility="private" memberEnd="Activity-structuredNode A_structuredNode_activity-activity">
       <ownedEnd xmi:id="A_structuredNode_activity-activity" name="activity" visibility="private" type="Activity" association="A_structuredNode_activity">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_structuredNode_activity-activity-_lowerValue"/>
       </ownedEnd>
