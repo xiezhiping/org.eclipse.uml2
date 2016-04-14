@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756, 491718
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -24,10 +24,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.uml2.common.util.UnionEObjectEList;
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
-
+import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -72,29 +73,35 @@ public class AssociationOperations
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateSpecializedEndNumber(Association association,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.ASSOCIATION__SPECIALIZED_END_NUMBER,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validateSpecializedEndNumber", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(association, context)}),
-					new Object[]{association}));
+		boolean result = true;
+
+		int memberEndsSize = association.getMemberEnds().size();
+
+		for (Classifier general : association.getGenerals()) {
+
+			if (general instanceof Association && ((Association) general)
+				.getMemberEnds().size() != memberEndsSize) {
+
+				result = false;
+
+				if (diagnostics != null) {
+					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.ASSOCIATION__SPECIALIZED_END_NUMBER,
+						UMLPlugin.INSTANCE.getString(
+							"_UI_Association_SpecializedEndNumber_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, association,
+								general)),
+						new Object[]{association}));
+				}
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**
@@ -109,29 +116,51 @@ public class AssociationOperations
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateSpecializedEndTypes(Association association,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.ASSOCIATION__SPECIALIZED_END_TYPES,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validateSpecializedEndTypes", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(association, context)}),
-					new Object[]{association}));
+		boolean result = true;
+
+		EList<Property> memberEnds = association.getMemberEnds();
+
+		for (Classifier general : association.getGenerals()) {
+
+			if (general instanceof Association) {
+				EList<Property> generalMemberEnds = ((Association) general)
+					.getMemberEnds();
+
+				for (int i = 0; i < memberEnds.size()
+					&& i < generalMemberEnds.size(); i++) {
+
+					Type memberEndType = memberEnds.get(i).getType();
+					Type generalMemberEndType = generalMemberEnds.get(i)
+						.getType();
+
+					if (memberEndType != null && generalMemberEndType != null
+						&& !memberEndType.conformsTo(generalMemberEndType)) {
+
+						result = false;
+
+						if (diagnostics != null) {
+							diagnostics.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								UMLValidator.ASSOCIATION__SPECIALIZED_END_TYPES,
+								UMLPlugin.INSTANCE.getString(
+									"_UI_Association_SpecializedEndTypes_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context,
+										association, general)),
+								new Object[]{association}));
+						}
+
+						break;
+					}
+				}
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**
