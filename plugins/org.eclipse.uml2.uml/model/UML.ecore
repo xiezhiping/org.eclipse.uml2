@@ -459,7 +459,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.&#xA;&lt;p>From package UML::SimpleClassifiers.&lt;/p>"/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//Element/ownedElement"/>
+      <eAnnotations source="subsets" references="#//Element/ownedElement #//NamedElement/clientDependency"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedBehavior" ordered="false"
         upperBound="-1" eType="#//Behavior" containment="true">
@@ -847,7 +847,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The Substitutions owned by this Classifier.&#xA;&lt;p>From package UML::Classification.&lt;/p>"/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//Element/ownedElement"/>
+      <eAnnotations source="subsets" references="#//Element/ownedElement #//NamedElement/clientDependency"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Namespace" abstract="true" eSuperTypes="#//NamedElement">
@@ -3912,7 +3912,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The set of Deployments for a DeploymentTarget.&#xA;&lt;p>From package UML::Deployments.&lt;/p>"/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//Element/ownedElement"/>
+      <eAnnotations source="subsets" references="#//Element/ownedElement #//NamedElement/clientDependency"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Deployment" eSuperTypes="#//Dependency">
@@ -4090,7 +4090,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The set of model elements that are manifested in the Artifact. That is, these model elements are utilized in the construction (or generation) of the artifact.&#xA;&lt;p>From package UML::Deployments.&lt;/p>"/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//Element/ownedElement"/>
+      <eAnnotations source="subsets" references="#//Element/ownedElement #//NamedElement/clientDependency"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nestedArtifact" ordered="false"
         upperBound="-1" eType="#//Artifact" containment="true">

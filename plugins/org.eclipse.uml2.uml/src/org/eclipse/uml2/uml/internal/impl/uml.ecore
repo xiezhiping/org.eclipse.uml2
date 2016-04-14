@@ -239,7 +239,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="interfaceRealization" ordered="false"
         upperBound="-1" eType="#//InterfaceRealization" containment="true" eOpposite="#//InterfaceRealization/implementingClassifier">
-      <eAnnotations source="subsets" references="#//Element/ownedElement"/>
+      <eAnnotations source="subsets" references="#//Element/ownedElement #//NamedElement/clientDependency"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedBehavior" ordered="false"
         upperBound="-1" eType="#//Behavior" containment="true">
@@ -409,7 +409,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="substitution" ordered="false"
         upperBound="-1" eType="#//Substitution" containment="true" eOpposite="#//Substitution/substitutingClassifier">
-      <eAnnotations source="subsets" references="#//Element/ownedElement"/>
+      <eAnnotations source="subsets" references="#//Element/ownedElement #//NamedElement/clientDependency"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Namespace" abstract="true" eSuperTypes="#//NamedElement">
@@ -1700,7 +1700,7 @@
         transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="deployment" ordered="false"
         upperBound="-1" eType="#//Deployment" containment="true" eOpposite="#//Deployment/location">
-      <eAnnotations source="subsets" references="#//Element/ownedElement"/>
+      <eAnnotations source="subsets" references="#//Element/ownedElement #//NamedElement/clientDependency"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Deployment" eSuperTypes="#//Dependency">
@@ -1772,7 +1772,7 @@
         eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String" unsettable="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="manifestation" ordered="false"
         upperBound="-1" eType="#//Manifestation" containment="true">
-      <eAnnotations source="subsets" references="#//Element/ownedElement"/>
+      <eAnnotations source="subsets" references="#//Element/ownedElement #//NamedElement/clientDependency"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nestedArtifact" ordered="false"
         upperBound="-1" eType="#//Artifact" containment="true">

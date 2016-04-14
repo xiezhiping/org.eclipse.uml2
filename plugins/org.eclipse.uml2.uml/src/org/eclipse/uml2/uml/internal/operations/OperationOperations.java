@@ -410,11 +410,13 @@ public class OperationOperations
 
 					if (redefiningParam.isUnique() != redefinedParam
 						.isUnique()) {
+
 						return false;
 					}
 
-					if (redefiningParam.isUnique() == redefinedParam
-						.isUnique()) {
+					if (redefiningParam.isOrdered() != redefinedParam
+						.isOrdered()) {
+
 						return false;
 					}
 
@@ -428,19 +430,17 @@ public class OperationOperations
 					if (redefiningDirection == ParameterDirectionKind.INOUT_LITERAL) {
 
 						if (!redefiningParam.compatibleWith(redefinedParam)
-							|| !redefinedParam.compatibleWith(redefinedParam)) {
+							|| !redefinedParam
+								.compatibleWith(redefiningParam)) {
+
 							return false;
 						}
-					} else
+					} else if (redefiningDirection == ParameterDirectionKind.IN_LITERAL) {
 
-					if (redefiningDirection == ParameterDirectionKind.IN_LITERAL) {
-
-						if (!redefinedParam.compatibleWith(redefinedParam)) {
+						if (!redefinedParam.compatibleWith(redefiningParam)) {
 							return false;
 						}
-					}
-
-					else {
+					} else {
 
 						if (!redefiningParam.compatibleWith(redefinedParam)) {
 							return false;

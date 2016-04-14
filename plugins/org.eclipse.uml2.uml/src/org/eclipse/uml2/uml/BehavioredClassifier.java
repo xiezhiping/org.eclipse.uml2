@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756, 491587
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -160,6 +160,7 @@ public interface BehavioredClassifier
 	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getClientDependencies() <em>Client Dependency</em>}'</li>
 	 * </ul>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

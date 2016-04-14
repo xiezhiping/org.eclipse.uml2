@@ -50,7 +50,7 @@
       <mergedPackage href="../../org.eclipse.uml2/model/UML.xmi#Values"/>
     </packageMerge>
     <packagedElement xmi:type="uml:Association" xmi:id="_epbu4EzPEeO2z-YY6ENIIA" name="A_clientDependency_client" memberEnd="_lGLv4EzPEeO2z-YY6ENIIA _sD4acEzSEeO2z-YY6ENIIA">
-      <ownedEnd xmi:id="_lGLv4EzPEeO2z-YY6ENIIA" visibility="private" type="_rEDGkGwKEdq7X4sGURiZYA" association="_epbu4EzPEeO2z-YY6ENIIA">
+      <ownedEnd xmi:id="_lGLv4EzPEeO2z-YY6ENIIA" name="clientDependency" visibility="private" type="_rEDGkGwKEdq7X4sGURiZYA" association="_epbu4EzPEeO2z-YY6ENIIA">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHS38EzVEeO2z-YY6ENIIA"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rQyQ8EzPEeO2z-YY6ENIIA" value="*"/>
       </ownedEnd>

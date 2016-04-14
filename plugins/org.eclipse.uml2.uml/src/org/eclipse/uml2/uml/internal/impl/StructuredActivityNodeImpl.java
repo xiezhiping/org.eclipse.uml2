@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 465214, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 465214, 485756, 491587
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -1235,6 +1235,7 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Activity containingActivity() {
 		return StructuredActivityNodeOperations.containingActivity(this);
 	}
