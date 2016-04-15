@@ -9,18 +9,18 @@
       <ownedAttribute xmi:id="EAnnotation-source" name="source" visibility="public" type="EString" isOrdered="true">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAnnotation-source-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EAnnotation-details" name="details" type="EStringToStringMapEntry" isOrdered="true" aggregation="composite" association="_packagedElement.52">
+      <ownedAttribute xmi:id="EAnnotation-details" name="details" type="EStringToStringMapEntry" isOrdered="true" aggregation="composite" association="A_details_eAnnotation">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAnnotation-details-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAnnotation-details-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EAnnotation-eModelElement" name="eModelElement" type="EModelElement" isOrdered="true" association="_packagedElement.53">
+      <ownedAttribute xmi:id="EAnnotation-eModelElement" name="eModelElement" type="EModelElement" isOrdered="true" association="A_eAnnotations_eModelElement">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAnnotation-eModelElement-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EAnnotation-contents" name="contents" type="EObject" isOrdered="true" aggregation="composite" association="_packagedElement.54">
+      <ownedAttribute xmi:id="EAnnotation-contents" name="contents" type="EObject" isOrdered="true" aggregation="composite" association="A_contents_eAnnotation">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAnnotation-contents-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAnnotation-contents-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EAnnotation-references" name="references" type="EObject" isOrdered="true" association="_packagedElement.55">
+      <ownedAttribute xmi:id="EAnnotation-references" name="references" type="EObject" isOrdered="true" association="A_references_eAnnotation">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAnnotation-references-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAnnotation-references-_upperValue" value="*"/>
       </ownedAttribute>
@@ -33,7 +33,7 @@
       <ownedAttribute xmi:id="EAttribute-id" name="id" visibility="public" type="EBoolean" isOrdered="true">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAttribute-id-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EAttribute-eAttributeType" name="eAttributeType" type="EDataType" isOrdered="true" isReadOnly="true" isDerived="true" association="_packagedElement.58"/>
+      <ownedAttribute xmi:id="EAttribute-eAttributeType" name="eAttributeType" type="EDataType" isOrdered="true" isReadOnly="true" isDerived="true" association="A_eAttributeType_eAttribute"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EClass" name="EClass">
       <eAnnotations xmi:id="EClass-_http2F2Fwww.eclipse.org2Femf2F20022FEcore" source="http://www.eclipse.org/emf/2002/Ecore">
@@ -46,7 +46,7 @@
       <ownedAttribute xmi:id="EClass-interface" name="interface" visibility="public" type="EBoolean" isOrdered="true">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-interface-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EClass-eSuperTypes" name="eSuperTypes" type="EClass" isOrdered="true" association="_packagedElement.31">
+      <ownedAttribute xmi:id="EClass-eSuperTypes" name="eSuperTypes" type="EClass" isOrdered="true" association="A_eSuperTypes_eClass">
         <eAnnotations xmi:id="EClass-eSuperTypes-_http2F2Fwww.eclipse.org2Femf2F20022FGenModel" source="http://www.eclipse.org/emf/2002/GenModel">
           <details xmi:id="EClass-eSuperTypes-_http2F2Fwww.eclipse.org2Femf2F20022FGenModel-_details.0" key="suppressedUnsetVisibility" value="true"/>
           <details xmi:id="EClass-eSuperTypes-_http2F2Fwww.eclipse.org2Femf2F20022FGenModel-_details.1" key="suppressedIsSetVisibility" value="true"/>
@@ -54,50 +54,50 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-eSuperTypes-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EClass-eSuperTypes-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EClass-eOperations" name="eOperations" type="EOperation" isOrdered="true" aggregation="composite" association="_packagedElement.32">
+      <ownedAttribute xmi:id="EClass-eOperations" name="eOperations" type="EOperation" isOrdered="true" aggregation="composite" association="A_eOperations_eContainingClass">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-eOperations-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EClass-eOperations-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EClass-eAllAttributes" name="eAllAttributes" type="EAttribute" isOrdered="true" isReadOnly="true" isDerived="true" association="_packagedElement.37">
+      <ownedAttribute xmi:id="EClass-eAllAttributes" name="eAllAttributes" type="EAttribute" isOrdered="true" isReadOnly="true" isDerived="true" association="A_eAllAttributes_eClass">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-eAllAttributes-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EClass-eAllAttributes-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EClass-eAllReferences" name="eAllReferences" type="EReference" isOrdered="true" isReadOnly="true" isDerived="true" association="_packagedElement.41">
+      <ownedAttribute xmi:id="EClass-eAllReferences" name="eAllReferences" type="EReference" isOrdered="true" isReadOnly="true" isDerived="true" association="A_eAllReferences_eClass">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-eAllReferences-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EClass-eAllReferences-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EClass-eReferences" name="eReferences" type="EReference" isOrdered="true" isReadOnly="true" isDerived="true" association="_packagedElement.42">
+      <ownedAttribute xmi:id="EClass-eReferences" name="eReferences" type="EReference" isOrdered="true" isReadOnly="true" isDerived="true" association="A_eReferences_eClass">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-eReferences-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EClass-eReferences-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EClass-eAttributes" name="eAttributes" type="EAttribute" isOrdered="true" isReadOnly="true" isDerived="true" association="_packagedElement.43">
+      <ownedAttribute xmi:id="EClass-eAttributes" name="eAttributes" type="EAttribute" isOrdered="true" isReadOnly="true" isDerived="true" association="A_eAttributes_eClass">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-eAttributes-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EClass-eAttributes-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EClass-eAllContainments" name="eAllContainments" type="EReference" isOrdered="true" isReadOnly="true" isDerived="true" association="_packagedElement.44">
+      <ownedAttribute xmi:id="EClass-eAllContainments" name="eAllContainments" type="EReference" isOrdered="true" isReadOnly="true" isDerived="true" association="A_eAllContainments_eClass">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-eAllContainments-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EClass-eAllContainments-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EClass-eAllOperations" name="eAllOperations" type="EOperation" isOrdered="true" isReadOnly="true" isDerived="true" association="_packagedElement.45">
+      <ownedAttribute xmi:id="EClass-eAllOperations" name="eAllOperations" type="EOperation" isOrdered="true" isReadOnly="true" isDerived="true" association="A_eAllOperations_eClass">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-eAllOperations-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EClass-eAllOperations-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EClass-eAllStructuralFeatures" name="eAllStructuralFeatures" type="EStructuralFeature" isOrdered="true" isReadOnly="true" isDerived="true" association="_packagedElement.46">
+      <ownedAttribute xmi:id="EClass-eAllStructuralFeatures" name="eAllStructuralFeatures" type="EStructuralFeature" isOrdered="true" isReadOnly="true" isDerived="true" association="A_eAllStructuralFeatures_eClass">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-eAllStructuralFeatures-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EClass-eAllStructuralFeatures-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EClass-eAllSuperTypes" name="eAllSuperTypes" type="EClass" isOrdered="true" isReadOnly="true" isDerived="true" association="_packagedElement.47">
+      <ownedAttribute xmi:id="EClass-eAllSuperTypes" name="eAllSuperTypes" type="EClass" isOrdered="true" isReadOnly="true" isDerived="true" association="A_eAllSuperTypes_eClass">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-eAllSuperTypes-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EClass-eAllSuperTypes-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EClass-eIDAttribute" name="eIDAttribute" type="EAttribute" isOrdered="true" isReadOnly="true" isDerived="true" association="_packagedElement.48">
+      <ownedAttribute xmi:id="EClass-eIDAttribute" name="eIDAttribute" type="EAttribute" isOrdered="true" isReadOnly="true" isDerived="true" association="A_eIDAttribute_eClass">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-eIDAttribute-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EClass-eStructuralFeatures" name="eStructuralFeatures" type="EStructuralFeature" isOrdered="true" aggregation="composite" association="_packagedElement.49">
+      <ownedAttribute xmi:id="EClass-eStructuralFeatures" name="eStructuralFeatures" type="EStructuralFeature" isOrdered="true" aggregation="composite" association="A_eStructuralFeatures_eContainingClass">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-eStructuralFeatures-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EClass-eStructuralFeatures-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EClass-eGenericSuperTypes" name="eGenericSuperTypes" type="EGenericType" isOrdered="true" aggregation="composite" association="_packagedElement.50">
+      <ownedAttribute xmi:id="EClass-eGenericSuperTypes" name="eGenericSuperTypes" type="EGenericType" isOrdered="true" aggregation="composite" association="A_eGenericSuperTypes_eClass">
         <eAnnotations xmi:id="EClass-eGenericSuperTypes-_http2F2Fwww.eclipse.org2Femf2F20022FGenModel" source="http://www.eclipse.org/emf/2002/GenModel">
           <details xmi:id="EClass-eGenericSuperTypes-_http2F2Fwww.eclipse.org2Femf2F20022FGenModel-_details.0" key="suppressedUnsetVisibility" value="true"/>
           <details xmi:id="EClass-eGenericSuperTypes-_http2F2Fwww.eclipse.org2Femf2F20022FGenModel-_details.1" key="suppressedIsSetVisibility" value="true"/>
@@ -105,7 +105,7 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-eGenericSuperTypes-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EClass-eGenericSuperTypes-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EClass-eAllGenericSuperTypes" name="eAllGenericSuperTypes" type="EGenericType" isOrdered="true" isReadOnly="true" isDerived="true" association="_packagedElement.51">
+      <ownedAttribute xmi:id="EClass-eAllGenericSuperTypes" name="eAllGenericSuperTypes" type="EGenericType" isOrdered="true" isReadOnly="true" isDerived="true" association="A_eAllGenericSuperTypes_eClass">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-eAllGenericSuperTypes-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EClass-eAllGenericSuperTypes-_upperValue" value="*"/>
       </ownedAttribute>
@@ -172,10 +172,10 @@
         </eAnnotations>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClassifier-instanceTypeName-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EClassifier-ePackage" name="ePackage" type="EPackage" isOrdered="true" isReadOnly="true" association="_packagedElement.21">
+      <ownedAttribute xmi:id="EClassifier-ePackage" name="ePackage" type="EPackage" isOrdered="true" isReadOnly="true" association="A_eClassifiers_ePackage">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClassifier-ePackage-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EClassifier-eTypeParameters" name="eTypeParameters" type="ETypeParameter" isOrdered="true" aggregation="composite" association="_packagedElement.30">
+      <ownedAttribute xmi:id="EClassifier-eTypeParameters" name="eTypeParameters" type="ETypeParameter" isOrdered="true" aggregation="composite" association="A_eTypeParameters_eClassifier">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClassifier-eTypeParameters-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EClassifier-eTypeParameters-_upperValue" value="*"/>
       </ownedAttribute>
@@ -210,7 +210,7 @@
         <details xmi:id="EEnum-_http2F2Fwww.eclipse.org2Femf2F20022FEcore-_details.0" key="constraints" value="UniqueEnumeratorNames UniqueEnumeratorLiterals"/>
       </eAnnotations>
       <generalization xmi:id="EEnum-_generalization.0" general="EDataType"/>
-      <ownedAttribute xmi:id="EEnum-eLiterals" name="eLiterals" type="EEnumLiteral" isOrdered="true" aggregation="composite" association="_packagedElement.59">
+      <ownedAttribute xmi:id="EEnum-eLiterals" name="eLiterals" type="EEnumLiteral" isOrdered="true" aggregation="composite" association="A_eLiterals_eEnum">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EEnum-eLiterals-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EEnum-eLiterals-_upperValue" value="*"/>
       </ownedAttribute>
@@ -250,13 +250,13 @@
       <ownedAttribute xmi:id="EEnumLiteral-literal" name="literal" visibility="public" type="EString" isOrdered="true">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EEnumLiteral-literal-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EEnumLiteral-eEnum" name="eEnum" type="EEnum" isOrdered="true" isReadOnly="true" association="_packagedElement.59">
+      <ownedAttribute xmi:id="EEnumLiteral-eEnum" name="eEnum" type="EEnum" isOrdered="true" isReadOnly="true" association="A_eLiterals_eEnum">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EEnumLiteral-eEnum-_lowerValue"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EFactory" name="EFactory">
       <generalization xmi:id="EFactory-_generalization.0" general="EModelElement"/>
-      <ownedAttribute xmi:id="EFactory-ePackage" name="ePackage" type="EPackage" isOrdered="true" association="_packagedElement.20"/>
+      <ownedAttribute xmi:id="EFactory-ePackage" name="ePackage" type="EPackage" isOrdered="true" association="A_ePackage_eFactoryInstance"/>
       <ownedOperation xmi:id="EFactory-create" name="create" visibility="public">
         <ownedParameter xmi:id="EFactory-create-_ownedParameter.0" type="EObject" isOrdered="true" direction="return">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EFactory-create-_ownedParameter.0-_lowerValue"/>
@@ -293,27 +293,27 @@
         <details xmi:id="EGenericType-_http2F2Fwww.eclipse.org2Femf2F20022FEcore-_details.0" key="constraints" value="ConsistentType ConsistentBounds ConsistentArguments"/>
       </eAnnotations>
       <generalization xmi:id="EGenericType-_generalization.0" general="EObject"/>
-      <ownedAttribute xmi:id="EGenericType-eUpperBound" name="eUpperBound" type="EGenericType" isOrdered="true" aggregation="composite" association="_packagedElement.23">
+      <ownedAttribute xmi:id="EGenericType-eUpperBound" name="eUpperBound" type="EGenericType" isOrdered="true" aggregation="composite" association="A_eUpperBound_eGenericType">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EGenericType-eUpperBound-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EGenericType-eTypeArguments" name="eTypeArguments" type="EGenericType" isOrdered="true" aggregation="composite" association="_packagedElement.24">
+      <ownedAttribute xmi:id="EGenericType-eTypeArguments" name="eTypeArguments" type="EGenericType" isOrdered="true" aggregation="composite" association="A_eTypeArguments_eGenericType">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EGenericType-eTypeArguments-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EGenericType-eTypeArguments-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EGenericType-eRawType" name="eRawType" type="EClassifier" isOrdered="true" isReadOnly="true" isDerived="true" association="_packagedElement.25"/>
-      <ownedAttribute xmi:id="EGenericType-eLowerBound" name="eLowerBound" type="EGenericType" isOrdered="true" aggregation="composite" association="_packagedElement.26">
+      <ownedAttribute xmi:id="EGenericType-eRawType" name="eRawType" type="EClassifier" isOrdered="true" isReadOnly="true" isDerived="true" association="A_eRawType_eGenericType"/>
+      <ownedAttribute xmi:id="EGenericType-eLowerBound" name="eLowerBound" type="EGenericType" isOrdered="true" aggregation="composite" association="A_eLowerBound_eGenericType">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EGenericType-eLowerBound-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EGenericType-eTypeParameter" name="eTypeParameter" type="ETypeParameter" isOrdered="true" association="_packagedElement.27">
+      <ownedAttribute xmi:id="EGenericType-eTypeParameter" name="eTypeParameter" type="ETypeParameter" isOrdered="true" association="A_eTypeParameter_eGenericType">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EGenericType-eTypeParameter-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EGenericType-eClassifier" name="eClassifier" type="EClassifier" isOrdered="true" association="_packagedElement.28">
+      <ownedAttribute xmi:id="EGenericType-eClassifier" name="eClassifier" type="EClassifier" isOrdered="true" association="A_eClassifier_eGenericType">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EGenericType-eClassifier-_lowerValue"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EModelElement" name="EModelElement" isAbstract="true">
       <generalization xmi:id="EModelElement-_generalization.0" general="EObject"/>
-      <ownedAttribute xmi:id="EModelElement-eAnnotations" name="eAnnotations" type="EAnnotation" isOrdered="true" aggregation="composite" association="_packagedElement.53">
+      <ownedAttribute xmi:id="EModelElement-eAnnotations" name="eAnnotations" type="EAnnotation" isOrdered="true" aggregation="composite" association="A_eAnnotations_eModelElement">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EModelElement-eAnnotations-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EModelElement-eAnnotations-_upperValue" value="*"/>
       </ownedAttribute>
@@ -443,18 +443,18 @@
         <details xmi:id="EOperation-_http2F2Fwww.eclipse.org2Femf2F20022FEcore-_details.0" key="constraints" value="UniqueParameterNames UniqueTypeParameterNames NoRepeatingVoid"/>
       </eAnnotations>
       <generalization xmi:id="EOperation-_generalization.0" general="ETypedElement"/>
-      <ownedAttribute xmi:id="EOperation-eContainingClass" name="eContainingClass" type="EClass" isOrdered="true" isReadOnly="true" association="_packagedElement.32">
+      <ownedAttribute xmi:id="EOperation-eContainingClass" name="eContainingClass" type="EClass" isOrdered="true" isReadOnly="true" association="A_eOperations_eContainingClass">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EOperation-eContainingClass-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EOperation-eTypeParameters" name="eTypeParameters" type="ETypeParameter" isOrdered="true" aggregation="composite" association="_packagedElement.33">
+      <ownedAttribute xmi:id="EOperation-eTypeParameters" name="eTypeParameters" type="ETypeParameter" isOrdered="true" aggregation="composite" association="A_eTypeParameters_eOperation">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EOperation-eTypeParameters-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EOperation-eTypeParameters-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EOperation-eParameters" name="eParameters" type="EParameter" isOrdered="true" aggregation="composite" association="_packagedElement.34">
+      <ownedAttribute xmi:id="EOperation-eParameters" name="eParameters" type="EParameter" isOrdered="true" aggregation="composite" association="A_eParameters_eOperation">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EOperation-eParameters-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EOperation-eParameters-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EOperation-eExceptions" name="eExceptions" type="EClassifier" isOrdered="true" association="_packagedElement.35">
+      <ownedAttribute xmi:id="EOperation-eExceptions" name="eExceptions" type="EClassifier" isOrdered="true" association="A_eExceptions_eOperation">
         <eAnnotations xmi:id="EOperation-eExceptions-_http2F2Fwww.eclipse.org2Femf2F20022FGenModel" source="http://www.eclipse.org/emf/2002/GenModel">
           <details xmi:id="EOperation-eExceptions-_http2F2Fwww.eclipse.org2Femf2F20022FGenModel-_details.0" key="suppressedUnsetVisibility" value="true"/>
           <details xmi:id="EOperation-eExceptions-_http2F2Fwww.eclipse.org2Femf2F20022FGenModel-_details.1" key="suppressedIsSetVisibility" value="true"/>
@@ -462,7 +462,7 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EOperation-eExceptions-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EOperation-eExceptions-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EOperation-eGenericExceptions" name="eGenericExceptions" type="EGenericType" isOrdered="true" aggregation="composite" association="_packagedElement.36">
+      <ownedAttribute xmi:id="EOperation-eGenericExceptions" name="eGenericExceptions" type="EGenericType" isOrdered="true" aggregation="composite" association="A_eGenericExceptions_eOperation">
         <eAnnotations xmi:id="EOperation-eGenericExceptions-_http2F2Fwww.eclipse.org2Femf2F20022FGenModel" source="http://www.eclipse.org/emf/2002/GenModel">
           <details xmi:id="EOperation-eGenericExceptions-_http2F2Fwww.eclipse.org2Femf2F20022FGenModel-_details.0" key="suppressedUnsetVisibility" value="true"/>
           <details xmi:id="EOperation-eGenericExceptions-_http2F2Fwww.eclipse.org2Femf2F20022FGenModel-_details.1" key="suppressedIsSetVisibility" value="true"/>
@@ -482,16 +482,16 @@
       <ownedAttribute xmi:id="EPackage-nsPrefix" name="nsPrefix" visibility="public" type="EString" isOrdered="true">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EPackage-nsPrefix-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EPackage-eFactoryInstance" name="eFactoryInstance" type="EFactory" isOrdered="true" association="_packagedElement.20"/>
-      <ownedAttribute xmi:id="EPackage-eClassifiers" name="eClassifiers" type="EClassifier" isOrdered="true" aggregation="composite" association="_packagedElement.21">
+      <ownedAttribute xmi:id="EPackage-eFactoryInstance" name="eFactoryInstance" type="EFactory" isOrdered="true" association="A_ePackage_eFactoryInstance"/>
+      <ownedAttribute xmi:id="EPackage-eClassifiers" name="eClassifiers" type="EClassifier" isOrdered="true" aggregation="composite" association="A_eClassifiers_ePackage">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EPackage-eClassifiers-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EPackage-eClassifiers-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EPackage-eSubpackages" name="eSubpackages" type="EPackage" isOrdered="true" aggregation="composite" association="_packagedElement.22">
+      <ownedAttribute xmi:id="EPackage-eSubpackages" name="eSubpackages" type="EPackage" isOrdered="true" aggregation="composite" association="A_eSubpackages_eSuperPackage">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EPackage-eSubpackages-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EPackage-eSubpackages-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EPackage-eSuperPackage" name="eSuperPackage" type="EPackage" isOrdered="true" isReadOnly="true" association="_packagedElement.22">
+      <ownedAttribute xmi:id="EPackage-eSuperPackage" name="eSuperPackage" type="EPackage" isOrdered="true" isReadOnly="true" association="A_eSubpackages_eSuperPackage">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EPackage-eSuperPackage-_lowerValue"/>
       </ownedAttribute>
       <ownedOperation xmi:id="EPackage-getEClassifier" name="getEClassifier" visibility="public">
@@ -505,7 +505,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EParameter" name="EParameter">
       <generalization xmi:id="EParameter-_generalization.0" general="ETypedElement"/>
-      <ownedAttribute xmi:id="EParameter-eOperation" name="eOperation" type="EOperation" isOrdered="true" isReadOnly="true" association="_packagedElement.34">
+      <ownedAttribute xmi:id="EParameter-eOperation" name="eOperation" type="EOperation" isOrdered="true" isReadOnly="true" association="A_eParameters_eOperation">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EParameter-eOperation-_lowerValue"/>
       </ownedAttribute>
     </packagedElement>
@@ -523,11 +523,11 @@
       <ownedAttribute xmi:id="EReference-resolveProxies" name="resolveProxies" visibility="public" type="EBoolean" isOrdered="true">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EReference-resolveProxies-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EReference-eOpposite" name="eOpposite" type="EReference" isOrdered="true" association="_packagedElement.38">
+      <ownedAttribute xmi:id="EReference-eOpposite" name="eOpposite" type="EReference" isOrdered="true" association="A_eOpposite_eReference">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EReference-eOpposite-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="EReference-eReferenceType" name="eReferenceType" type="EClass" isOrdered="true" isReadOnly="true" isDerived="true" association="_packagedElement.39"/>
-      <ownedAttribute xmi:id="EReference-eKeys" name="eKeys" type="EAttribute" isOrdered="true" association="_packagedElement.40">
+      <ownedAttribute xmi:id="EReference-eReferenceType" name="eReferenceType" type="EClass" isOrdered="true" isReadOnly="true" isDerived="true" association="A_eReferenceType_eReference"/>
+      <ownedAttribute xmi:id="EReference-eKeys" name="eKeys" type="EAttribute" isOrdered="true" association="A_eKeys_eReference">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EReference-eKeys-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EReference-eKeys-_upperValue" value="*"/>
       </ownedAttribute>
@@ -542,7 +542,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EStructuralFeature" name="EStructuralFeature" isAbstract="true">
       <generalization xmi:id="EStructuralFeature-_generalization.0" general="ETypedElement"/>
-      <ownedAttribute xmi:id="EStructuralFeature-eContainingClass" name="eContainingClass" type="EClass" isOrdered="true" isReadOnly="true" association="_packagedElement.49">
+      <ownedAttribute xmi:id="EStructuralFeature-eContainingClass" name="eContainingClass" type="EClass" isOrdered="true" isReadOnly="true" association="A_eStructuralFeatures_eContainingClass">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EStructuralFeature-eContainingClass-_lowerValue"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EStructuralFeature-changeable" name="changeable" visibility="public" type="EBoolean" isOrdered="true">
@@ -606,14 +606,14 @@
       <ownedAttribute xmi:id="ETypedElement-required" name="required" visibility="public" type="EBoolean" isOrdered="true" isReadOnly="true" isDerived="true">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ETypedElement-required-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="ETypedElement-eType" name="eType" type="EClassifier" isOrdered="true" association="_packagedElement.56">
+      <ownedAttribute xmi:id="ETypedElement-eType" name="eType" type="EClassifier" isOrdered="true" association="A_eType_eTypedElement">
         <eAnnotations xmi:id="ETypedElement-eType-_http2F2Fwww.eclipse.org2Femf2F20022FGenModel" source="http://www.eclipse.org/emf/2002/GenModel">
           <details xmi:id="ETypedElement-eType-_http2F2Fwww.eclipse.org2Femf2F20022FGenModel-_details.0" key="suppressedUnsetVisibility" value="true"/>
           <details xmi:id="ETypedElement-eType-_http2F2Fwww.eclipse.org2Femf2F20022FGenModel-_details.1" key="suppressedIsSetVisibility" value="true"/>
         </eAnnotations>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ETypedElement-eType-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="ETypedElement-eGenericType" name="eGenericType" type="EGenericType" isOrdered="true" aggregation="composite" association="_packagedElement.57">
+      <ownedAttribute xmi:id="ETypedElement-eGenericType" name="eGenericType" type="EGenericType" isOrdered="true" aggregation="composite" association="A_eGenericType_eTypedElement">
         <eAnnotations xmi:id="ETypedElement-eGenericType-_http2F2Fwww.eclipse.org2Femf2F20022FGenModel" source="http://www.eclipse.org/emf/2002/GenModel">
           <details xmi:id="ETypedElement-eGenericType-_http2F2Fwww.eclipse.org2Femf2F20022FGenModel-_details.0" key="suppressedUnsetVisibility" value="true"/>
           <details xmi:id="ETypedElement-eGenericType-_http2F2Fwww.eclipse.org2Femf2F20022FGenModel-_details.1" key="suppressedIsSetVisibility" value="true"/>
@@ -623,115 +623,115 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="ETypeParameter" name="ETypeParameter">
       <generalization xmi:id="ETypeParameter-_generalization.0" general="ENamedElement"/>
-      <ownedAttribute xmi:id="ETypeParameter-eBounds" name="eBounds" type="EGenericType" isOrdered="true" aggregation="composite" association="_packagedElement.29">
+      <ownedAttribute xmi:id="ETypeParameter-eBounds" name="eBounds" type="EGenericType" isOrdered="true" aggregation="composite" association="A_eBounds_eTypeParameter">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ETypeParameter-eBounds-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="ETypeParameter-eBounds-_upperValue" value="*"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.20" visibility="private" memberEnd="EFactory-ePackage EPackage-eFactoryInstance"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.21" visibility="private" memberEnd="EPackage-eClassifiers EClassifier-ePackage"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.22" visibility="private" memberEnd="EPackage-eSubpackages EPackage-eSuperPackage"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.23" visibility="private" memberEnd="EGenericType-eUpperBound _packagedElement.23-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.23-_ownedEnd.0" type="EGenericType" association="_packagedElement.23"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_ePackage_eFactoryInstance" name="A_ePackage_eFactoryInstance" visibility="private" memberEnd="EFactory-ePackage EPackage-eFactoryInstance"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eClassifiers_ePackage" name="A_eClassifiers_ePackage" visibility="private" memberEnd="EPackage-eClassifiers EClassifier-ePackage"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eSubpackages_eSuperPackage" name="A_eSubpackages_eSuperPackage" visibility="private" memberEnd="EPackage-eSubpackages EPackage-eSuperPackage"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eUpperBound_eGenericType" name="A_eUpperBound_eGenericType" visibility="private" memberEnd="EGenericType-eUpperBound A_eUpperBound_eGenericType-eGenericType">
+      <ownedEnd xmi:id="A_eUpperBound_eGenericType-eGenericType" name="eGenericType" type="EGenericType" association="A_eUpperBound_eGenericType"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.24" visibility="private" memberEnd="EGenericType-eTypeArguments _packagedElement.24-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.24-_ownedEnd.0" type="EGenericType" association="_packagedElement.24"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eTypeArguments_eGenericType" name="A_eTypeArguments_eGenericType" visibility="private" memberEnd="EGenericType-eTypeArguments A_eTypeArguments_eGenericType-eGenericType">
+      <ownedEnd xmi:id="A_eTypeArguments_eGenericType-eGenericType" name="eGenericType" type="EGenericType" association="A_eTypeArguments_eGenericType"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.25" visibility="private" memberEnd="EGenericType-eRawType _packagedElement.25-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.25-_ownedEnd.0" type="EGenericType" association="_packagedElement.25"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eRawType_eGenericType" name="A_eRawType_eGenericType" visibility="private" memberEnd="EGenericType-eRawType A_eRawType_eGenericType-eGenericType">
+      <ownedEnd xmi:id="A_eRawType_eGenericType-eGenericType" name="eGenericType" type="EGenericType" association="A_eRawType_eGenericType"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.26" visibility="private" memberEnd="EGenericType-eLowerBound _packagedElement.26-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.26-_ownedEnd.0" type="EGenericType" association="_packagedElement.26"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eLowerBound_eGenericType" name="A_eLowerBound_eGenericType" visibility="private" memberEnd="EGenericType-eLowerBound A_eLowerBound_eGenericType-eGenericType">
+      <ownedEnd xmi:id="A_eLowerBound_eGenericType-eGenericType" name="eGenericType" type="EGenericType" association="A_eLowerBound_eGenericType"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.27" visibility="private" memberEnd="EGenericType-eTypeParameter _packagedElement.27-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.27-_ownedEnd.0" type="EGenericType" association="_packagedElement.27"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eTypeParameter_eGenericType" name="A_eTypeParameter_eGenericType" visibility="private" memberEnd="EGenericType-eTypeParameter A_eTypeParameter_eGenericType-eGenericType">
+      <ownedEnd xmi:id="A_eTypeParameter_eGenericType-eGenericType" name="eGenericType" type="EGenericType" association="A_eTypeParameter_eGenericType"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.28" visibility="private" memberEnd="EGenericType-eClassifier _packagedElement.28-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.28-_ownedEnd.0" type="EGenericType" association="_packagedElement.28"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eClassifier_eGenericType" name="A_eClassifier_eGenericType" visibility="private" memberEnd="EGenericType-eClassifier A_eClassifier_eGenericType-eGenericType">
+      <ownedEnd xmi:id="A_eClassifier_eGenericType-eGenericType" name="eGenericType" type="EGenericType" association="A_eClassifier_eGenericType"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.29" visibility="private" memberEnd="ETypeParameter-eBounds _packagedElement.29-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.29-_ownedEnd.0" type="ETypeParameter" association="_packagedElement.29"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eBounds_eTypeParameter" name="A_eBounds_eTypeParameter" visibility="private" memberEnd="ETypeParameter-eBounds A_eBounds_eTypeParameter-eTypeParameter">
+      <ownedEnd xmi:id="A_eBounds_eTypeParameter-eTypeParameter" name="eTypeParameter" type="ETypeParameter" association="A_eBounds_eTypeParameter"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.30" visibility="private" memberEnd="EClassifier-eTypeParameters _packagedElement.30-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.30-_ownedEnd.0" type="EClassifier" association="_packagedElement.30"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eTypeParameters_eClassifier" name="A_eTypeParameters_eClassifier" visibility="private" memberEnd="EClassifier-eTypeParameters A_eTypeParameters_eClassifier-eClassifier">
+      <ownedEnd xmi:id="A_eTypeParameters_eClassifier-eClassifier" name="eClassifier" type="EClassifier" association="A_eTypeParameters_eClassifier"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.31" visibility="private" memberEnd="EClass-eSuperTypes _packagedElement.31-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.31-_ownedEnd.0" type="EClass" association="_packagedElement.31"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eSuperTypes_eClass" name="A_eSuperTypes_eClass" visibility="private" memberEnd="EClass-eSuperTypes A_eSuperTypes_eClass-eClass">
+      <ownedEnd xmi:id="A_eSuperTypes_eClass-eClass" name="eClass" type="EClass" association="A_eSuperTypes_eClass"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.32" visibility="private" memberEnd="EClass-eOperations EOperation-eContainingClass"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.33" visibility="private" memberEnd="EOperation-eTypeParameters _packagedElement.33-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.33-_ownedEnd.0" type="EOperation" association="_packagedElement.33"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eOperations_eContainingClass" name="A_eOperations_eContainingClass" visibility="private" memberEnd="EClass-eOperations EOperation-eContainingClass"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eTypeParameters_eOperation" name="A_eTypeParameters_eOperation" visibility="private" memberEnd="EOperation-eTypeParameters A_eTypeParameters_eOperation-eOperation">
+      <ownedEnd xmi:id="A_eTypeParameters_eOperation-eOperation" name="eOperation" type="EOperation" association="A_eTypeParameters_eOperation"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.34" visibility="private" memberEnd="EOperation-eParameters EParameter-eOperation"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.35" visibility="private" memberEnd="EOperation-eExceptions _packagedElement.35-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.35-_ownedEnd.0" type="EOperation" association="_packagedElement.35"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eParameters_eOperation" name="A_eParameters_eOperation" visibility="private" memberEnd="EOperation-eParameters EParameter-eOperation"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eExceptions_eOperation" name="A_eExceptions_eOperation" visibility="private" memberEnd="EOperation-eExceptions A_eExceptions_eOperation-eOperation">
+      <ownedEnd xmi:id="A_eExceptions_eOperation-eOperation" name="eOperation" type="EOperation" association="A_eExceptions_eOperation"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.36" visibility="private" memberEnd="EOperation-eGenericExceptions _packagedElement.36-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.36-_ownedEnd.0" type="EOperation" association="_packagedElement.36"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eGenericExceptions_eOperation" name="A_eGenericExceptions_eOperation" visibility="private" memberEnd="EOperation-eGenericExceptions A_eGenericExceptions_eOperation-eOperation">
+      <ownedEnd xmi:id="A_eGenericExceptions_eOperation-eOperation" name="eOperation" type="EOperation" association="A_eGenericExceptions_eOperation"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.37" visibility="private" memberEnd="EClass-eAllAttributes _packagedElement.37-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.37-_ownedEnd.0" type="EClass" association="_packagedElement.37"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eAllAttributes_eClass" name="A_eAllAttributes_eClass" visibility="private" memberEnd="EClass-eAllAttributes A_eAllAttributes_eClass-eClass">
+      <ownedEnd xmi:id="A_eAllAttributes_eClass-eClass" name="eClass" type="EClass" association="A_eAllAttributes_eClass"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.38" visibility="private" memberEnd="EReference-eOpposite _packagedElement.38-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.38-_ownedEnd.0" type="EReference" association="_packagedElement.38"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eOpposite_eReference" name="A_eOpposite_eReference" visibility="private" memberEnd="EReference-eOpposite A_eOpposite_eReference-eReference">
+      <ownedEnd xmi:id="A_eOpposite_eReference-eReference" name="eReference" type="EReference" association="A_eOpposite_eReference"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.39" visibility="private" memberEnd="EReference-eReferenceType _packagedElement.39-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.39-_ownedEnd.0" type="EReference" association="_packagedElement.39"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eReferenceType_eReference" name="A_eReferenceType_eReference" visibility="private" memberEnd="EReference-eReferenceType A_eReferenceType_eReference-eReference">
+      <ownedEnd xmi:id="A_eReferenceType_eReference-eReference" name="eReference" type="EReference" association="A_eReferenceType_eReference"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.40" visibility="private" memberEnd="EReference-eKeys _packagedElement.40-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.40-_ownedEnd.0" type="EReference" association="_packagedElement.40"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eKeys_eReference" name="A_eKeys_eReference" visibility="private" memberEnd="EReference-eKeys A_eKeys_eReference-eReference">
+      <ownedEnd xmi:id="A_eKeys_eReference-eReference" name="eReference" type="EReference" association="A_eKeys_eReference"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.41" visibility="private" memberEnd="EClass-eAllReferences _packagedElement.41-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.41-_ownedEnd.0" type="EClass" association="_packagedElement.41"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eAllReferences_eClass" name="A_eAllReferences_eClass" visibility="private" memberEnd="EClass-eAllReferences A_eAllReferences_eClass-eClass">
+      <ownedEnd xmi:id="A_eAllReferences_eClass-eClass" name="eClass" type="EClass" association="A_eAllReferences_eClass"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.42" visibility="private" memberEnd="EClass-eReferences _packagedElement.42-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.42-_ownedEnd.0" type="EClass" association="_packagedElement.42"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eReferences_eClass" name="A_eReferences_eClass" visibility="private" memberEnd="EClass-eReferences A_eReferences_eClass-eClass">
+      <ownedEnd xmi:id="A_eReferences_eClass-eClass" name="eClass" type="EClass" association="A_eReferences_eClass"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.43" visibility="private" memberEnd="EClass-eAttributes _packagedElement.43-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.43-_ownedEnd.0" type="EClass" association="_packagedElement.43"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eAttributes_eClass" name="A_eAttributes_eClass" visibility="private" memberEnd="EClass-eAttributes A_eAttributes_eClass-eClass">
+      <ownedEnd xmi:id="A_eAttributes_eClass-eClass" name="eClass" type="EClass" association="A_eAttributes_eClass"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.44" visibility="private" memberEnd="EClass-eAllContainments _packagedElement.44-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.44-_ownedEnd.0" type="EClass" association="_packagedElement.44"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eAllContainments_eClass" name="A_eAllContainments_eClass" visibility="private" memberEnd="EClass-eAllContainments A_eAllContainments_eClass-eClass">
+      <ownedEnd xmi:id="A_eAllContainments_eClass-eClass" name="eClass" type="EClass" association="A_eAllContainments_eClass"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.45" visibility="private" memberEnd="EClass-eAllOperations _packagedElement.45-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.45-_ownedEnd.0" type="EClass" association="_packagedElement.45"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eAllOperations_eClass" name="A_eAllOperations_eClass" visibility="private" memberEnd="EClass-eAllOperations A_eAllOperations_eClass-eClass">
+      <ownedEnd xmi:id="A_eAllOperations_eClass-eClass" name="eClass" type="EClass" association="A_eAllOperations_eClass"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.46" visibility="private" memberEnd="EClass-eAllStructuralFeatures _packagedElement.46-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.46-_ownedEnd.0" type="EClass" association="_packagedElement.46"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eAllStructuralFeatures_eClass" name="A_eAllStructuralFeatures_eClass" visibility="private" memberEnd="EClass-eAllStructuralFeatures A_eAllStructuralFeatures_eClass-eClass">
+      <ownedEnd xmi:id="A_eAllStructuralFeatures_eClass-eClass" name="eClass" type="EClass" association="A_eAllStructuralFeatures_eClass"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.47" visibility="private" memberEnd="EClass-eAllSuperTypes _packagedElement.47-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.47-_ownedEnd.0" type="EClass" association="_packagedElement.47"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eAllSuperTypes_eClass" name="A_eAllSuperTypes_eClass" visibility="private" memberEnd="EClass-eAllSuperTypes A_eAllSuperTypes_eClass-eClass">
+      <ownedEnd xmi:id="A_eAllSuperTypes_eClass-eClass" name="eClass" type="EClass" association="A_eAllSuperTypes_eClass"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.48" visibility="private" memberEnd="EClass-eIDAttribute _packagedElement.48-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.48-_ownedEnd.0" type="EClass" association="_packagedElement.48"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eIDAttribute_eClass" name="A_eIDAttribute_eClass" visibility="private" memberEnd="EClass-eIDAttribute A_eIDAttribute_eClass-eClass">
+      <ownedEnd xmi:id="A_eIDAttribute_eClass-eClass" name="eClass" type="EClass" association="A_eIDAttribute_eClass"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.49" visibility="private" memberEnd="EClass-eStructuralFeatures EStructuralFeature-eContainingClass"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.50" visibility="private" memberEnd="EClass-eGenericSuperTypes _packagedElement.50-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.50-_ownedEnd.0" type="EClass" association="_packagedElement.50"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eStructuralFeatures_eContainingClass" name="A_eStructuralFeatures_eContainingClass" visibility="private" memberEnd="EClass-eStructuralFeatures EStructuralFeature-eContainingClass"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eGenericSuperTypes_eClass" name="A_eGenericSuperTypes_eClass" visibility="private" memberEnd="EClass-eGenericSuperTypes A_eGenericSuperTypes_eClass-eClass">
+      <ownedEnd xmi:id="A_eGenericSuperTypes_eClass-eClass" name="eClass" type="EClass" association="A_eGenericSuperTypes_eClass"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.51" visibility="private" memberEnd="EClass-eAllGenericSuperTypes _packagedElement.51-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.51-_ownedEnd.0" type="EClass" association="_packagedElement.51"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eAllGenericSuperTypes_eClass" name="A_eAllGenericSuperTypes_eClass" visibility="private" memberEnd="EClass-eAllGenericSuperTypes A_eAllGenericSuperTypes_eClass-eClass">
+      <ownedEnd xmi:id="A_eAllGenericSuperTypes_eClass-eClass" name="eClass" type="EClass" association="A_eAllGenericSuperTypes_eClass"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.52" visibility="private" memberEnd="EAnnotation-details _packagedElement.52-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.52-_ownedEnd.0" type="EAnnotation" association="_packagedElement.52"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_details_eAnnotation" name="A_details_eAnnotation" visibility="private" memberEnd="EAnnotation-details A_details_eAnnotation-eAnnotation">
+      <ownedEnd xmi:id="A_details_eAnnotation-eAnnotation" name="eAnnotation" type="EAnnotation" association="A_details_eAnnotation"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.53" visibility="private" memberEnd="EModelElement-eAnnotations EAnnotation-eModelElement"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.54" visibility="private" memberEnd="EAnnotation-contents _packagedElement.54-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.54-_ownedEnd.0" type="EAnnotation" association="_packagedElement.54"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eAnnotations_eModelElement" name="A_eAnnotations_eModelElement" visibility="private" memberEnd="EModelElement-eAnnotations EAnnotation-eModelElement"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_contents_eAnnotation" name="A_contents_eAnnotation" visibility="private" memberEnd="EAnnotation-contents A_contents_eAnnotation-eAnnotation">
+      <ownedEnd xmi:id="A_contents_eAnnotation-eAnnotation" name="eAnnotation" type="EAnnotation" association="A_contents_eAnnotation"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.55" visibility="private" memberEnd="EAnnotation-references _packagedElement.55-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.55-_ownedEnd.0" type="EAnnotation" association="_packagedElement.55"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_references_eAnnotation" name="A_references_eAnnotation" visibility="private" memberEnd="EAnnotation-references A_references_eAnnotation-eAnnotation">
+      <ownedEnd xmi:id="A_references_eAnnotation-eAnnotation" name="eAnnotation" type="EAnnotation" association="A_references_eAnnotation"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.56" visibility="private" memberEnd="ETypedElement-eType _packagedElement.56-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.56-_ownedEnd.0" type="ETypedElement" association="_packagedElement.56"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eType_eTypedElement" name="A_eType_eTypedElement" visibility="private" memberEnd="ETypedElement-eType A_eType_eTypedElement-eTypedElement">
+      <ownedEnd xmi:id="A_eType_eTypedElement-eTypedElement" name="eTypedElement" type="ETypedElement" association="A_eType_eTypedElement"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.57" visibility="private" memberEnd="ETypedElement-eGenericType _packagedElement.57-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.57-_ownedEnd.0" type="ETypedElement" association="_packagedElement.57"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eGenericType_eTypedElement" name="A_eGenericType_eTypedElement" visibility="private" memberEnd="ETypedElement-eGenericType A_eGenericType_eTypedElement-eTypedElement">
+      <ownedEnd xmi:id="A_eGenericType_eTypedElement-eTypedElement" name="eTypedElement" type="ETypedElement" association="A_eGenericType_eTypedElement"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.58" visibility="private" memberEnd="EAttribute-eAttributeType _packagedElement.58-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.58-_ownedEnd.0" type="EAttribute" association="_packagedElement.58"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eAttributeType_eAttribute" name="A_eAttributeType_eAttribute" visibility="private" memberEnd="EAttribute-eAttributeType A_eAttributeType_eAttribute-eAttribute">
+      <ownedEnd xmi:id="A_eAttributeType_eAttribute-eAttribute" name="eAttribute" type="EAttribute" association="A_eAttributeType_eAttribute"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.59" visibility="private" memberEnd="EEnum-eLiterals EEnumLiteral-eEnum"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_eLiterals_eEnum" name="A_eLiterals_eEnum" visibility="private" memberEnd="EEnum-eLiterals EEnumLiteral-eEnum"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EBigDecimal" name="EBigDecimal">
       <eAnnotations xmi:id="EBigDecimal-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details xmi:id="EBigDecimal-_http2F2F2Forg2Feclipse2Femf2Fecore2Futil2FExtendedMetaData-_details.0" key="baseType" value="http://www.w3.org/2001/XMLSchema#decimal"/>
@@ -982,32 +982,32 @@
   <Ecore:EDataType xmi:id="_uvy4e8YcEduPJbEsMYXjUQ" instanceClassName="java.lang.String" base_PrimitiveType="EString"/>
   <Ecore:EDataType xmi:id="_uvy4fMYcEduPJbEsMYXjUQ" instanceClassName="org.eclipse.emf.common.util.TreeIterator" base_PrimitiveType="ETreeIterator"/>
   <Ecore:EDataType xmi:id="_usvVwN7TEd6R9YfsTdOlYA" instanceClassName="java.lang.reflect.InvocationTargetException" base_PrimitiveType="EInvocationTargetException"/>
-  <standard:Metamodel xmi:id="_QzhTgKtKEeGF4uwJob34Mw" base_Model="_0"/>
-  <standard:Metaclass xmi:id="_QzoBMKtKEeGF4uwJob34Mw" base_Class="EAnnotation"/>
-  <standard:Metaclass xmi:id="_QzooQKtKEeGF4uwJob34Mw" base_Class="EAttribute"/>
-  <standard:Metaclass xmi:id="_QzpPUKtKEeGF4uwJob34Mw" base_Class="EClass"/>
-  <standard:Metaclass xmi:id="_QzrrkKtKEeGF4uwJob34Mw" base_Class="EClassifier"/>
-  <standard:Metaclass xmi:id="_Qzs5sKtKEeGF4uwJob34Mw" base_Class="EClassifier-Wildcard"/>
-  <standard:Metaclass xmi:id="_QztgwKtKEeGF4uwJob34Mw" base_Class="EDataType"/>
-  <standard:Metaclass xmi:id="_QztgwatKEeGF4uwJob34Mw" base_Class="EEnum"/>
-  <standard:Metaclass xmi:id="_QzuH0KtKEeGF4uwJob34Mw" base_Class="EEnumLiteral"/>
-  <standard:Metaclass xmi:id="_Qzuu4KtKEeGF4uwJob34Mw" base_Class="EFactory"/>
-  <standard:Metaclass xmi:id="_QzvV8KtKEeGF4uwJob34Mw" base_Class="EGenericType"/>
-  <standard:Metaclass xmi:id="_Qzv9AKtKEeGF4uwJob34Mw" base_Class="EModelElement"/>
-  <standard:Metaclass xmi:id="_QzwkEKtKEeGF4uwJob34Mw" base_Class="ENamedElement"/>
-  <standard:Metaclass xmi:id="_QzwkEatKEeGF4uwJob34Mw" base_Class="EObject"/>
-  <standard:Metaclass xmi:id="_QzzAUKtKEeGF4uwJob34Mw" base_Class="EOperation"/>
-  <standard:Metaclass xmi:id="_QzznYKtKEeGF4uwJob34Mw" base_Class="EPackage"/>
-  <standard:Metaclass xmi:id="_Qz0OcKtKEeGF4uwJob34Mw" base_Class="EParameter"/>
-  <standard:Metaclass xmi:id="_Qz01gKtKEeGF4uwJob34Mw" base_Class="EReference"/>
-  <standard:Metaclass xmi:id="_Qz1ckKtKEeGF4uwJob34Mw" base_Class="EStringToStringMapEntry"/>
-  <standard:Metaclass xmi:id="_Qz1ckatKEeGF4uwJob34Mw" base_Class="EStructuralFeature"/>
-  <standard:Metaclass xmi:id="_Qz2DoKtKEeGF4uwJob34Mw" base_Class="EStructuralFeature-Wildcard"/>
-  <standard:Metaclass xmi:id="_Qz2qsKtKEeGF4uwJob34Mw" base_Class="ETypedElement"/>
-  <standard:Metaclass xmi:id="_Qz340KtKEeGF4uwJob34Mw" base_Class="ETypeParameter"/>
-  <standard:Metaclass xmi:id="_Qz7jMKtKEeGF4uwJob34Mw" base_Class="EEList-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement"/>
-  <standard:Metaclass xmi:id="_Qz9_cKtKEeGF4uwJob34Mw" base_Class="EJavaClass-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement"/>
-  <standard:Metaclass xmi:id="_Qz_0oKtKEeGF4uwJob34Mw" base_Class="EMap-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement"/>
-  <standard:Metaclass xmi:id="_Q0AbsKtKEeGF4uwJob34Mw" base_Class="EMap-_ownedTemplateSignature-_ownedParameter.1-_ownedParameteredElement"/>
-  <standard:Metaclass xmi:id="_Q0CQ4KtKEeGF4uwJob34Mw" base_Class="ETreeIterator-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement"/>
+  <standard:Metamodel xmi:id="_2YlIEAMYEeay-ocnA8EcrA" base_Model="_0"/>
+  <standard:Metaclass xmi:id="_2YlvIAMYEeay-ocnA8EcrA" base_Class="EAnnotation"/>
+  <standard:Metaclass xmi:id="_2YmWMAMYEeay-ocnA8EcrA" base_Class="EAttribute"/>
+  <standard:Metaclass xmi:id="_2YmWMQMYEeay-ocnA8EcrA" base_Class="EClass"/>
+  <standard:Metaclass xmi:id="_2Ym9QAMYEeay-ocnA8EcrA" base_Class="EClassifier"/>
+  <standard:Metaclass xmi:id="_2YnkUAMYEeay-ocnA8EcrA" base_Class="EClassifier-Wildcard"/>
+  <standard:Metaclass xmi:id="_2YnkUQMYEeay-ocnA8EcrA" base_Class="EDataType"/>
+  <standard:Metaclass xmi:id="_2YoLYAMYEeay-ocnA8EcrA" base_Class="EEnum"/>
+  <standard:Metaclass xmi:id="_2YoLYQMYEeay-ocnA8EcrA" base_Class="EEnumLiteral"/>
+  <standard:Metaclass xmi:id="_2YoycAMYEeay-ocnA8EcrA" base_Class="EFactory"/>
+  <standard:Metaclass xmi:id="_2YoycQMYEeay-ocnA8EcrA" base_Class="EGenericType"/>
+  <standard:Metaclass xmi:id="_2YpZgAMYEeay-ocnA8EcrA" base_Class="EModelElement"/>
+  <standard:Metaclass xmi:id="_2YpZgQMYEeay-ocnA8EcrA" base_Class="ENamedElement"/>
+  <standard:Metaclass xmi:id="_2YqAkAMYEeay-ocnA8EcrA" base_Class="EObject"/>
+  <standard:Metaclass xmi:id="_2YqAkQMYEeay-ocnA8EcrA" base_Class="EOperation"/>
+  <standard:Metaclass xmi:id="_2YqnoAMYEeay-ocnA8EcrA" base_Class="EPackage"/>
+  <standard:Metaclass xmi:id="_2YrOsAMYEeay-ocnA8EcrA" base_Class="EParameter"/>
+  <standard:Metaclass xmi:id="_2YrOsQMYEeay-ocnA8EcrA" base_Class="EReference"/>
+  <standard:Metaclass xmi:id="_2YrOsgMYEeay-ocnA8EcrA" base_Class="EStringToStringMapEntry"/>
+  <standard:Metaclass xmi:id="_2Yr1wAMYEeay-ocnA8EcrA" base_Class="EStructuralFeature"/>
+  <standard:Metaclass xmi:id="_2Yr1wQMYEeay-ocnA8EcrA" base_Class="EStructuralFeature-Wildcard"/>
+  <standard:Metaclass xmi:id="_2Ysc0AMYEeay-ocnA8EcrA" base_Class="ETypedElement"/>
+  <standard:Metaclass xmi:id="_2Ysc0QMYEeay-ocnA8EcrA" base_Class="ETypeParameter"/>
+  <standard:Metaclass xmi:id="_2YuSAAMYEeay-ocnA8EcrA" base_Class="EEList-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement"/>
+  <standard:Metaclass xmi:id="_2Yu5EAMYEeay-ocnA8EcrA" base_Class="EJavaClass-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement"/>
+  <standard:Metaclass xmi:id="_2Yu5EQMYEeay-ocnA8EcrA" base_Class="EMap-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement"/>
+  <standard:Metaclass xmi:id="_2Yu5EgMYEeay-ocnA8EcrA" base_Class="EMap-_ownedTemplateSignature-_ownedParameter.1-_ownedParameteredElement"/>
+  <standard:Metaclass xmi:id="_2YvgIAMYEeay-ocnA8EcrA" base_Class="ETreeIterator-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement"/>
 </xmi:XMI>
