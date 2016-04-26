@@ -49,27 +49,27 @@
     <packageMerge xmi:id="_IRZZYEaOEeODDe5wyJ95uA">
       <mergedPackage href="../../org.eclipse.uml2/model/UML.xmi#Values"/>
     </packageMerge>
-    <packagedElement xmi:type="uml:Association" xmi:id="_epbu4EzPEeO2z-YY6ENIIA" name="A_clientDependency_client" memberEnd="_lGLv4EzPEeO2z-YY6ENIIA _sD4acEzSEeO2z-YY6ENIIA">
+    <packagedElement xmi:type="uml:Association" xmi:id="_epbu4EzPEeO2z-YY6ENIIA" name="A_clientDependency_client" memberEnd="_lGLv4EzPEeO2z-YY6ENIIA _sD4acEzSEeO2z-YY6ENIIA" navigableOwnedEnd="_lGLv4EzPEeO2z-YY6ENIIA">
       <ownedEnd xmi:id="_lGLv4EzPEeO2z-YY6ENIIA" name="clientDependency" visibility="private" type="_rEDGkGwKEdq7X4sGURiZYA" association="_epbu4EzPEeO2z-YY6ENIIA">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHS38EzVEeO2z-YY6ENIIA"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rQyQ8EzPEeO2z-YY6ENIIA" value="*"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_81UZgPnhEdunWsS3se92JQ" name="A_end_role" memberEnd="_81UZgfnhEdunWsS3se92JQ _81UZhPnhEdunWsS3se92JQ">
+    <packagedElement xmi:type="uml:Association" xmi:id="_81UZgPnhEdunWsS3se92JQ" name="A_end_role" memberEnd="_81UZgfnhEdunWsS3se92JQ _81UZhPnhEdunWsS3se92JQ" navigableOwnedEnd="_81UZhPnhEdunWsS3se92JQ">
       <ownedEnd xmi:id="_81UZhPnhEdunWsS3se92JQ" name="end" visibility="private" type="_aOgw0GveEdq4DLWZOhbdEA" association="_81UZgPnhEdunWsS3se92JQ">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_81UZhfnhEdunWsS3se92JQ"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_81UZhvnhEdunWsS3se92JQ" value="*"/>
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_DwV68AtCEeGcpbeCPJfCmw" name="A_group_inActivity" memberEnd="_PCvjoAs_EeGcpbeCPJfCmw _5V2SAAtBEeGcpbeCPJfCmw"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_EhL8MPnmEdunWsS3se92JQ" name="A_incoming_target_vertex" memberEnd="_EhVtMPnmEdunWsS3se92JQ _EhVtM_nmEdunWsS3se92JQ">
+    <packagedElement xmi:type="uml:Association" xmi:id="_EhL8MPnmEdunWsS3se92JQ" name="A_incoming_target_vertex" memberEnd="_EhVtMPnmEdunWsS3se92JQ _EhVtM_nmEdunWsS3se92JQ" navigableOwnedEnd="_EhVtM_nmEdunWsS3se92JQ">
       <ownedEnd xmi:id="_EhVtM_nmEdunWsS3se92JQ" name="incoming" visibility="private" type="_ykKV8PnlEdunWsS3se92JQ" association="_EhL8MPnmEdunWsS3se92JQ">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EhVtNPnmEdunWsS3se92JQ"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EhVtNfnmEdunWsS3se92JQ" value="*"/>
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_RFCrMAtCEeGcpbeCPJfCmw" name="A_node_activity" memberEnd="_RoJfoAs_EeGcpbeCPJfCmw _X0ZfIAtCEeGcpbeCPJfCmw"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_JPYJoPnmEdunWsS3se92JQ" name="A_outgoing_source_vertex" memberEnd="_JPYJofnmEdunWsS3se92JQ _JPh6oPnmEdunWsS3se92JQ">
+    <packagedElement xmi:type="uml:Association" xmi:id="_JPYJoPnmEdunWsS3se92JQ" name="A_outgoing_source_vertex" memberEnd="_JPYJofnmEdunWsS3se92JQ _JPh6oPnmEdunWsS3se92JQ" navigableOwnedEnd="_JPh6oPnmEdunWsS3se92JQ">
       <ownedEnd xmi:id="_JPh6oPnmEdunWsS3se92JQ" name="outgoing" visibility="private" type="_ykKV8PnlEdunWsS3se92JQ" association="_JPYJoPnmEdunWsS3se92JQ">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JPh6ofnmEdunWsS3se92JQ"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JPh6ovnmEdunWsS3se92JQ" value="*"/>
@@ -81,7 +81,7 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_J7ZdEAtEEeGcpbeCPJfCmw"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_w4820AtEEeGcpbeCPJfCmw" name="A_structuredNode_activity" memberEnd="_EOSYAAs-EeGcpbeCPJfCmw _bQeSgAtEEeGcpbeCPJfCmw">
+    <packagedElement xmi:type="uml:Association" xmi:id="_w4820AtEEeGcpbeCPJfCmw" name="A_structuredNode_activity" memberEnd="_EOSYAAs-EeGcpbeCPJfCmw _bQeSgAtEEeGcpbeCPJfCmw" navigableOwnedEnd="_bQeSgAtEEeGcpbeCPJfCmw">
       <ownedEnd xmi:id="_bQeSgAtEEeGcpbeCPJfCmw" name="activity" visibility="private" type="_eGtFwLLREeCsYvaJqFFivQ" association="_w4820AtEEeGcpbeCPJfCmw">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cva8wAtEEeGcpbeCPJfCmw"/>
       </ownedEnd>

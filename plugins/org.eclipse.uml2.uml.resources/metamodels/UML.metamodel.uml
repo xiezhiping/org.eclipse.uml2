@@ -4969,7 +4969,7 @@ endif)</body>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_guard_activityEdge-activityEdge-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_structuredNode_activity" name="A_structuredNode_activity" visibility="private" memberEnd="Activity-structuredNode A_structuredNode_activity-activity">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_structuredNode_activity" name="A_structuredNode_activity" visibility="private" memberEnd="Activity-structuredNode A_structuredNode_activity-activity" navigableOwnedEnd="A_structuredNode_activity-activity">
       <ownedEnd xmi:id="A_structuredNode_activity-activity" name="activity" visibility="private" type="Activity" association="A_structuredNode_activity">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_structuredNode_activity-activity-_lowerValue"/>
       </ownedEnd>
@@ -9839,7 +9839,7 @@ endif)</body>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_nameExpression_namedElement-namedElement-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_clientDependency_client" name="A_clientDependency_client" visibility="private" memberEnd="Dependency-client A_clientDependency_client-clientDependency">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_clientDependency_client" name="A_clientDependency_client" visibility="private" memberEnd="Dependency-client A_clientDependency_client-clientDependency" navigableOwnedEnd="A_clientDependency_client-clientDependency">
       <ownedEnd xmi:id="A_clientDependency_client-clientDependency" name="clientDependency" visibility="private" type="Dependency" association="A_clientDependency_client">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_clientDependency_client-clientDependency-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_clientDependency_client-clientDependency-_upperValue" value="*"/>
@@ -15149,13 +15149,13 @@ endif)</body>
         </ownedComment>
       </ownedLiteral>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_incoming_target_vertex" name="A_incoming_target_vertex" visibility="private" memberEnd="Transition-target A_incoming_target_vertex-incoming">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_incoming_target_vertex" name="A_incoming_target_vertex" visibility="private" memberEnd="Transition-target A_incoming_target_vertex-incoming" navigableOwnedEnd="A_incoming_target_vertex-incoming">
       <ownedEnd xmi:id="A_incoming_target_vertex-incoming" name="incoming" visibility="private" type="Transition" association="A_incoming_target_vertex">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_incoming_target_vertex-incoming-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_incoming_target_vertex-incoming-_upperValue" value="*"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_outgoing_source_vertex" name="A_outgoing_source_vertex" visibility="private" memberEnd="Transition-source A_outgoing_source_vertex-outgoing">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_outgoing_source_vertex" name="A_outgoing_source_vertex" visibility="private" memberEnd="Transition-source A_outgoing_source_vertex-outgoing" navigableOwnedEnd="A_outgoing_source_vertex-outgoing">
       <ownedEnd xmi:id="A_outgoing_source_vertex-outgoing" name="outgoing" visibility="private" type="Transition" association="A_outgoing_source_vertex">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_outgoing_source_vertex-outgoing-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_outgoing_source_vertex-outgoing-_upperValue" value="*"/>
@@ -16394,7 +16394,7 @@ endif)</body>
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="A_connectableElement_templateParameter_parameteredElement" name="A_connectableElement_templateParameter_parameteredElement" visibility="private" memberEnd="ConnectableElement-templateParameter ConnectableElementTemplateParameter-parameteredElement"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_end_role" name="A_end_role" visibility="private" memberEnd="ConnectorEnd-role A_end_role-end">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_end_role" name="A_end_role" visibility="private" memberEnd="ConnectorEnd-role A_end_role-end" navigableOwnedEnd="A_end_role-end">
       <ownedEnd xmi:id="A_end_role-end" name="end" visibility="private" type="ConnectorEnd" association="A_end_role">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_end_role-end-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_end_role-end-_upperValue" value="*"/>
