@@ -39,7 +39,7 @@
 			overview="${overview}"
 
 			windowtitle="${windowTitle}"
-			footer="Copyright 2003, 2015 IBM Corporation, CEA, and others.&lt;br&gt; All Rights Reserved."
+			footer="Copyright 2003, 2016 IBM Corporation, CEA, and others.&lt;br&gt; All Rights Reserved."
 
 			access="protected" 
 			additionalparam="-breakiterator -tag model:X -tag generated:X -tag ordered:X -Xdoclint:none"
