@@ -12,12 +12,14 @@
  *   Kenn Hussey (CEA) - 327039, 369492, 313951, 163556, 418466, 447901, 451350, 458658, 485756
  *   Christian W. Damus (CEA) - 300957, 431998
  *   Christian W. Damus - 444588
+ *   Alain Le Guennec (Esterel Technologies SAS) - 497153
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -122,6 +124,10 @@ public class PackageOperations
 
 		protected final List<Profile> profiles;
 
+		protected final Map<EClass, EClass> targetClasses = new HashMap<EClass, EClass>();
+
+		protected final Map<EStructuralFeature, EStructuralFeature> targetFeatures = new HashMap<EStructuralFeature, EStructuralFeature>();
+
 		protected StereotypeApplicationCopier(Profile profile) {
 			this(profile == null
 				? Collections.<Profile> emptyList()
@@ -147,8 +153,14 @@ public class PackageOperations
 
 		@Override
 		protected EClass getTarget(EClass eClass) {
+
+			if (targetClasses.containsKey(eClass)) {
+				return targetClasses.get(eClass);
+			}
+
 			NamedElement namedElement = getNamedElement(eClass);
 			EClass definition = (EClass) getDefinition(namedElement);
+			targetClasses.put(eClass, definition);
 
 			if (definition != null) {
 				return definition;
@@ -164,9 +176,15 @@ public class PackageOperations
 		@Override
 		protected EStructuralFeature getTarget(
 				EStructuralFeature eStructuralFeature) {
+
+			if (targetFeatures.containsKey(eStructuralFeature)) {
+				return targetFeatures.get(eStructuralFeature);
+			}
+
 			NamedElement namedElement = getNamedElement(eStructuralFeature);
 			EStructuralFeature definition = (EStructuralFeature) getDefinition(
 				namedElement);
+			targetFeatures.put(eStructuralFeature, definition);
 
 			if (definition != null) {
 				return definition;
