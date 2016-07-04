@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
- *   Kenn Hussey (CEA) - 173843, 430118
+ *   Kenn Hussey (CEA) - 173843, 430118, 497222
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -42,8 +42,9 @@ public class UMLHandler
 
 	@Override
 	public void endElement(String uri, String localName, String name) {
+		EObject peek = objects.peek();
 
-		if (objects.peek() instanceof Profile) {
+		if (peek instanceof Profile && !peek.eIsProxy()) {
 			handleForwardReferences();
 		}
 
