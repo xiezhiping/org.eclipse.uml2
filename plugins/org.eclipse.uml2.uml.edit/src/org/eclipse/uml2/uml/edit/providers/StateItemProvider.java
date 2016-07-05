@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089, 459723
+ *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089, 459723, 464702
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -519,7 +519,6 @@ public class StateItemProvider
 			childrenFeatures.add(UMLPackage.Literals.STATE__DO_ACTIVITY);
 			childrenFeatures.add(UMLPackage.Literals.STATE__ENTRY);
 			childrenFeatures.add(UMLPackage.Literals.STATE__EXIT);
-			childrenFeatures.add(UMLPackage.Literals.STATE__STATE_INVARIANT);
 			childrenFeatures.add(UMLPackage.Literals.STATE__REGION);
 		}
 		return childrenFeatures;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2006, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 204202
- *   Kenn Hussey (CEA) - 327039, 359964, 351774, 299527, 418466
+ *   Kenn Hussey (CEA) - 327039, 359964, 351774, 299527, 418466, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -152,6 +152,30 @@ public class XMI2UMLHandler
 			&& object instanceof EnumerationLiteral) {
 
 			return;
+		}
+
+		if (feature == UMLPackage.Literals.BEHAVIOR__POSTCONDITION
+			|| feature == UMLPackage.Literals.BEHAVIOR__PRECONDITION
+			|| feature == UMLPackage.Literals.OPERATION__BODY_CONDITION
+			|| feature == UMLPackage.Literals.OPERATION__POSTCONDITION
+			|| feature == UMLPackage.Literals.OPERATION__PRECONDITION
+			|| feature == UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION
+			|| feature == UMLPackage.Literals.PROTOCOL_TRANSITION__PRE_CONDITION
+			|| feature == UMLPackage.Literals.STATE__STATE_INVARIANT
+			|| feature == UMLPackage.Literals.TRANSITION__GUARD) {
+
+			super.setFeatureValue(object,
+				UMLPackage.Literals.NAMESPACE__OWNED_RULE, value, position);
+		}
+
+		if (feature == UMLPackage.Literals.PROFILE__METACLASS_REFERENCE) {
+			super.setFeatureValue(object,
+				UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT, value, position);
+		}
+
+		if (feature == UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE) {
+			super.setFeatureValue(object,
+				UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT, value, position);
 		}
 
 		super.setFeatureValue(object, feature, value, position);

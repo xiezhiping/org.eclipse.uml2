@@ -1893,8 +1893,8 @@
       </genFeatures>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//State/redefinedState"/>
-      <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//State/stateInvariant">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference UML.ecore#//State/stateInvariant">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
