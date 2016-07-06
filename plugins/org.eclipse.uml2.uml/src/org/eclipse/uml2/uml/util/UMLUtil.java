@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, Christian W. Damus, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,7 @@
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833, 420338, 405065, 431342
  *   E.D.Willink - 420338
- *   Christian W. Damus - 444588
+ *   Christian W. Damus - 444588, 497359
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -11683,6 +11683,12 @@ public class UMLUtil
 
 	protected static NamedElement getNamedElement(ENamedElement definition,
 			EObject context) {
+		
+		return OperationContext.get().getNamedElement(definition, context);
+	}
+	
+	static NamedElement basicGetNamedElement(ENamedElement definition,
+			EObject context) {
 
 		if (definition instanceof EClassifier) {
 			EAnnotation eAnnotation = definition
@@ -11819,6 +11825,185 @@ public class UMLUtil
 		}
 
 		return null;
+	}
+	
+	/**
+	 * <p>
+	 * Executes an {@code operation} on some set of models in a context in which
+	 * various APIs cache their results for performance. These include
+	 * </p>
+	 * <ul>
+	 * <li>correspondences between Ecore definitions and their UML elements, as
+	 * in profile and stereotype definitions</li>
+	 * </ul>
+	 * <p>
+	 * This context is maintained per thread. It is important, because of the
+	 * nature of the results that are cached, that the {@code operation} not
+	 * make any changes in the model that would invalidate these results. It is
+	 * the client's responsibility to ensure this; the {@code UMLUtil} API does
+	 * no consistency checking on the cache in this context.
+	 * </p>
+	 * <p>
+	 * A re-entrant invocation of this method on the current thread results in a
+	 * nested operation context that inherits caches from the parent context.
+	 * Any new information cached by the nested context is discarded when the
+	 * nested operation completes.
+	 * </p>
+	 * 
+	 * @param operation
+	 *            an operation on any number of UML models
+	 */
+	public static void executeOperation(Runnable operation) {
+		OperationContext.push();
+
+		try {
+			operation.run();
+		} finally {
+			OperationContext.pop();
+		}
+	}
+
+	/**
+	 * A nestable context for caching of computed results of {@code UMLUtil}
+	 * static methods in situations where the {@link CacheAdapter} is not
+	 * sufficient because the model is being modified, or for some other
+	 * reason the adapter's cache is too short-lived, or because the results
+	 * are not cacheable in the adapter in the first place.
+	 */
+	private static class OperationContext {
+
+		/**
+		 * The null context is the root and is always present, providing the
+		 * default behaviour of just always calculating the results required
+		 * by the client.
+		 */
+		private static final OperationContext NULL = new OperationContext() {
+			@Override
+			NamedElement getTarget(ENamedElement definition) {
+				return null;
+			}
+
+			@Override
+			NamedElement getNamedElement(ENamedElement definition, EObject context) {
+				return UMLUtil.basicGetNamedElement(definition, context);
+			}
+
+			@Override
+			void cacheNamedElement(ENamedElement definition, NamedElement target) {
+				// Pass
+			}
+		};
+
+		/** The current thread's active context (always at least the NULL). */
+		private static final ThreadLocal<OperationContext> context = new ThreadLocal<OperationContext>() {
+			@Override
+			protected OperationContext initialValue() {
+				return NULL;
+			}
+		};
+
+		/** Cache of Ecore definitions for UML profile elements. */
+		private final Map<ENamedElement, NamedElement> targetMap = new HashMap<ENamedElement, NamedElement>();
+
+		/** The parent context (the NULL context is its own parent). */
+		private final OperationContext parent;
+
+		private OperationContext() {
+			super();
+
+			// Special case: the NULL is the only instance
+			// created before the final variable 'context' is set
+			parent = (context == null) ? this : context.get();
+		}
+
+		/**
+		 * Pushes a new operation context for the current thread.
+		 * 
+		 * @return the current thread's previous context, which has been
+		 *         superseded, or {@code null} if there was no previous context
+		 */
+		static OperationContext push() {
+			// The context automatically captures its parent
+			OperationContext newContext = new OperationContext();
+			context.set(newContext);
+			return newContext.parent;
+		}
+
+		/**
+		 * Pops the current thread's operation context.
+		 * 
+		 * @return the popped context
+		 */
+		static OperationContext pop() {
+			return context.get().basicPop();
+		}
+
+		/**
+		 * Obtains the current thread's operation context.
+		 * 
+		 * @return the current context, or {@code null} if none
+		 */
+		static OperationContext get() {
+			return context.get();
+		}
+
+		private OperationContext basicPop() {
+			// The NULL context is its own parent, so we will
+			// always have at least that
+			context.set(parent);
+			return this;
+		}
+
+		/**
+		 * Get the cached UML correspondent of an Ecore {@code definition} from
+		 * myself or, if I don't have it, my parent.
+		 * 
+		 * @param definition
+		 *            an Ecore definition
+		 * @return the cached UML correspondent, or {@code null} if none
+		 */
+		NamedElement getTarget(ENamedElement definition) {
+			NamedElement result = targetMap.get(definition);
+			if (result == null) {
+				result = parent.getTarget(definition);
+			}
+			return result;
+		}
+
+		/**
+		 * Caches the UML correspondent of an Ecore {@code definition}.
+		 * 
+		 * @param definition
+		 *            an Ecore definition
+		 * @param target
+		 *            the UML correspondent to cache
+		 */
+		void cacheNamedElement(ENamedElement definition, NamedElement target) {
+			targetMap.put(definition, target);
+		}
+
+		/**
+		 * Get the cached UML correspondent of an Ecore {@code definition} or
+		 * computes it and caches it.
+		 * 
+		 * @param definition
+		 *            an Ecore definition
+		 * @param context
+		 *            the contextual object from which to calculate the UML
+		 *            correspondent, if necessary
+		 * 
+		 * @return the cached UML correspondent, or {@code null} if none
+		 */
+		NamedElement getNamedElement(ENamedElement definition, EObject context) {
+			NamedElement result = getTarget(definition);
+
+			if (result == null) {
+				result = UMLUtil.basicGetNamedElement(definition, context);
+				cacheNamedElement(definition, result);
+			}
+
+			return result;
+		}
 	}
 
 	/**
