@@ -7,11 +7,12 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 374878, 418466, 433211, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 374878, 418466, 433211, 451350, 485756, 495564
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -379,6 +380,9 @@ public class NamedElementOperations
 		return true;
 	}
 
+	protected static final List<EStructuralFeature> NAMESPACE__MEMBER__ALL_SUBSETS = getAllSubsetFeatures(
+		UMLPackage.Literals.NAMESPACE__MEMBER);
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -388,15 +392,11 @@ public class NamedElementOperations
 		InternalEObject eInternalContainer = ((InternalEObject) namedElement)
 			.eInternalContainer();
 
-		if (eInternalContainer instanceof Namespace) {
-			Namespace namespace = (Namespace) eInternalContainer;
-
-			if (namespace.getMembers().contains(namedElement)) {
-				return namespace;
-			}
-		}
-
-		return null;
+		return eInternalContainer instanceof Namespace
+			&& NAMESPACE__MEMBER__ALL_SUBSETS
+				.contains(namedElement.eContainingFeature())
+					? (Namespace) eInternalContainer
+					: null;
 	}
 
 	/**
