@@ -14,7 +14,7 @@
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833, 420338, 405065, 431342
  *   E.D.Willink - 420338
- *   Christian W. Damus - 444588, 497359
+ *   Christian W. Damus - 444588, 497359, 501740
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -11873,32 +11873,41 @@ public class UMLUtil
 	private static class OperationContext {
 
 		/**
-		 * The null context is the root and is always present, providing the
-		 * default behaviour of just always calculating the results required
-		 * by the client.
+		 * The default context is the root and is always present, providing the
+		 * default behaviour of calculating results and cacheing them in the
+		 * {@link CacheAdapter}.  Thus, the cache may be purged more agressively
+		 * than is needed, but not often when simply inspecting a model.
 		 */
-		private static final OperationContext NULL = new OperationContext() {
+		private static final OperationContext DEFAULT = new OperationContext() {
 			@Override
 			NamedElement getTarget(ENamedElement definition) {
-				return null;
-			}
-
-			@Override
-			NamedElement getNamedElement(ENamedElement definition, EObject context) {
-				return UMLUtil.basicGetNamedElement(definition, context);
+				NamedElement result = null;
+				@SuppressWarnings("unchecked")
+				Map<ENamedElement, NamedElement> cache = (Map<ENamedElement, NamedElement>)CacheAdapter.getInstance().get(null, this);
+				if (cache != null) {
+					result = cache.get(definition);
+				}
+				return result;
 			}
 
 			@Override
 			void cacheNamedElement(ENamedElement definition, NamedElement target) {
-				// Pass
+				CacheAdapter adapter = CacheAdapter.getInstance();
+				@SuppressWarnings("unchecked")
+				Map<ENamedElement, NamedElement> cache = (Map<ENamedElement, NamedElement>)adapter.get(null, this);
+				if (cache == null) {
+					cache = new HashMap<ENamedElement, NamedElement>();
+					adapter.put(null, this, cache);
+				}
+				cache.put(definition, target);
 			}
 		};
 
-		/** The current thread's active context (always at least the NULL). */
+		/** The current thread's active context (always at least the {@link #DEFAULT}). */
 		private static final ThreadLocal<OperationContext> context = new ThreadLocal<OperationContext>() {
 			@Override
 			protected OperationContext initialValue() {
-				return NULL;
+				return DEFAULT;
 			}
 		};
 

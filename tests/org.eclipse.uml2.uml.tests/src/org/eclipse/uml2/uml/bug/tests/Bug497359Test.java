@@ -79,19 +79,6 @@ public class Bug497359Test extends TestCase {
 		});
 	}
 
-	/**
-	 * Verify that even just accessing stereotype applications is improved
-	 * within in a profile operation context.
-	 */
-	public void testGetStereotypeApplications() {
-		runProfileOperationExperiment("get stereotypes", 9, new Runnable() {
-			
-			public void run() {
-				walkAllStereotypeApplications(fixture);
-			}
-		});
-	}
-
 	//
 	// Test framework
 	//
