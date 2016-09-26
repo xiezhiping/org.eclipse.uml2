@@ -9,12 +9,17 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
  *   Kenn Hussey (CEA) - 327039, 418466, 451350, 459651, 433768, 485756, 464427
+ *   Patrick Konemann (itemis) - 501890
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -93,27 +98,52 @@ public class NamespaceOperations
 		boolean result = true;
 
 		if (diagnostics != null) {
-			EList<NamedElement> namespaceMembers = namespace.getMembers();
 
-			for (NamedElement member : namespaceMembers) {
+			// get all name conflicts first in O(n log(n))
+			final Set<String> nameClashes = new HashSet<String>();
+			final Map<String, List<NamedElement>> elementsByName = new HashMap<String, List<NamedElement>>();
 
-				for (NamedElement otherMember : namespaceMembers) {
+			for (NamedElement member : namespace.getMembers()) {
 
-					if (member != otherMember && !member
-						.isDistinguishableFrom(otherMember, namespace)) {
+				for (String name : namespace.getNamesOfMember(member)) {
+					List<NamedElement> elements = elementsByName.get(name);
 
-						result = false;
+					if (elements == null) {
+						elements = new ArrayList<NamedElement>();
+						elementsByName.put(name, elements);
+					} else {
+						nameClashes.add(name); // name was already added!
+					}
 
-						diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
-							UMLValidator.DIAGNOSTIC_SOURCE,
-							UMLValidator.NAMESPACE__MEMBERS_DISTINGUISHABLE,
-							UMLPlugin.INSTANCE.getString(
-								"_UI_Namespace_MemberDistinguishable_diagnostic", //$NON-NLS-1$
-								getMessageSubstitutions(context, member,
-									namespace)),
-							new Object[]{member}));
+					elements.add(member);
+				}
+			}
 
-						break;
+			// now we can also check for type compatibility
+			for (String name : nameClashes) {
+				final List<NamedElement> elements = elementsByName.get(name);
+
+				for (NamedElement member : elements) {
+
+					for (NamedElement otherMember : elements) {
+
+						if (member != otherMember && !member
+							.isDistinguishableFrom(otherMember, namespace)) {
+
+							result = false;
+
+							diagnostics.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								UMLValidator.NAMESPACE__MEMBERS_DISTINGUISHABLE,
+								UMLPlugin.INSTANCE.getString(
+									"_UI_Namespace_MemberDistinguishable_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context, member,
+										namespace)),
+								new Object[]{member}));
+
+							break;
+						}
 					}
 				}
 			}
