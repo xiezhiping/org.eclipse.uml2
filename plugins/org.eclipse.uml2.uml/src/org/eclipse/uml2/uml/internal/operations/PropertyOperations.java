@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 407028, 418466, 433195, 439915, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 407028, 418466, 433195, 439915, 451350, 485756, 505724
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -667,20 +667,17 @@ public class PropertyOperations
 	 * @generated NOT
 	 */
 	public static Property getOpposite(Property property) {
+		Association association = property.getAssociation();
 
-		if (property.isNavigable()) {
-			Association association = property.getAssociation();
+		if (association != null) {
+			EList<Property> memberEnds = association.getMemberEnds();
 
-			if (association != null) {
-				EList<Property> memberEnds = association.getMemberEnds();
+			if (memberEnds.size() == 2) {
+				int index = memberEnds.indexOf(property);
 
-				if (memberEnds.size() == 2) {
-					int index = memberEnds.indexOf(property);
-
-					if (index != -1) {
-						return ((InternalEList<Property>) memberEnds)
-							.basicGet(Math.abs(index - 1));
-					}
+				if (index != -1) {
+					return ((InternalEList<Property>) memberEnds)
+						.basicGet(1 - index);
 				}
 			}
 		}
