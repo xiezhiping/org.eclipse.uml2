@@ -11874,8 +11874,8 @@ public class UMLUtil
 
 		/**
 		 * The default context is the root and is always present, providing the
-		 * default behaviour of calculating results and cacheing them in the
-		 * {@link CacheAdapter}.  Thus, the cache may be purged more agressively
+		 * default behaviour of calculating results and caching them in the
+		 * {@link CacheAdapter}.  Thus, the cache may be purged more aggressively
 		 * than is needed, but not often when simply inspecting a model.
 		 */
 		private static final OperationContext DEFAULT = new OperationContext() {
