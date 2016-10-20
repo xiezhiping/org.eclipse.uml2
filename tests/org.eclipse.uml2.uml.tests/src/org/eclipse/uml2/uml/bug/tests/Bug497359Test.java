@@ -71,7 +71,7 @@ public class Bug497359Test extends TestCase {
 		// There is only the one
 		final Profile profile = fixture.getAppliedProfiles().get(0);
 		
-		runProfileOperationExperiment("reapply profile", 10, new Runnable() {
+		runProfileOperationExperiment("reapply profile", 8, new Runnable() {
 			
 			public void run() {
 				fixture.applyProfile(profile);
