@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012 CEA and others.
+ * Copyright (c) 2012, 2016 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
+ *   Kenn Hussey (CEA) - 509329
  */
 package org.eclipse.uml2.uml.validation;
 
@@ -147,7 +148,7 @@ class DelegatingModelConstraint
 		}
 
 		return ConstraintStatus.createStatus(ctx, target, resultLocus,
-			diagnostic.getSeverity(), diagnostic.getCode(),
+			diagnostic.getSeverity(), diagnostic.getCode(), "{0}", //$NON-NLS-1$
 			diagnostic.getMessage());
 	}
 
