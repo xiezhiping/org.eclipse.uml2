@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 414970, 370089
+ *   Kenn Hussey (CEA) - 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -71,18 +71,17 @@ public class ExecutableNodeItemProvider
 	 * @generated
 	 */
 	protected void addHandlerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ExecutableNode_handler_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ExecutableNode_handler_feature", "_UI_ExecutableNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.EXECUTABLE_NODE__HANDLER, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ExecutableNode_handler_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ExecutableNode_handler_feature", //$NON-NLS-1$
+				"_UI_ExecutableNode_type"), //$NON-NLS-1$
+			UMLPackage.Literals.EXECUTABLE_NODE__HANDLER, true, false, true,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -136,7 +135,8 @@ public class ExecutableNodeItemProvider
 	public String getText(Object object) {
 		String label = ((ExecutableNode) object).getName();
 		return label == null || label.length() == 0
-			? getString("_UI_ExecutableNode_type") : //$NON-NLS-1$
+			? getString("_UI_ExecutableNode_type") //$NON-NLS-1$
+			:
 			getString("_UI_ExecutableNode_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -172,9 +172,9 @@ public class ExecutableNodeItemProvider
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.EXECUTABLE_NODE__HANDLER,
-			UMLFactory.eINSTANCE.createExceptionHandler()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.EXECUTABLE_NODE__HANDLER,
+				UMLFactory.eINSTANCE.createExceptionHandler()));
 	}
 
 }

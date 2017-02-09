@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089
+ *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -79,17 +79,15 @@ public class MessageItemProvider
 	 * @generated
 	 */
 	protected void addArgumentPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Message_argument_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Message_argument_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MESSAGE__ARGUMENT, true, false, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Message_argument_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Message_argument_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.MESSAGE__ARGUMENT, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -99,18 +97,16 @@ public class MessageItemProvider
 	 * @generated
 	 */
 	protected void addMessageKindPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Message_messageKind_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Message_messageKind_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MESSAGE__MESSAGE_KIND, false, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Message_messageKind_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Message_messageKind_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.MESSAGE__MESSAGE_KIND, false, false, false,
+			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -120,16 +116,14 @@ public class MessageItemProvider
 	 * @generated
 	 */
 	protected void addMessageSortPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Message_messageSort_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Message_messageSort_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MESSAGE__MESSAGE_SORT, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Message_messageSort_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Message_messageSort_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.MESSAGE__MESSAGE_SORT, true, false, false,
+			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -139,16 +133,14 @@ public class MessageItemProvider
 	 * @generated
 	 */
 	protected void addReceiveEventPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Message_receiveEvent_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Message_receiveEvent_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MESSAGE__RECEIVE_EVENT, true, false, true,
-				null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Message_receiveEvent_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Message_receiveEvent_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.MESSAGE__RECEIVE_EVENT, true, false, true, null,
+			null, null));
 	}
 
 	/**
@@ -158,16 +150,14 @@ public class MessageItemProvider
 	 * @generated
 	 */
 	protected void addSendEventPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Message_sendEvent_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Message_sendEvent_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MESSAGE__SEND_EVENT, true, false, true,
-				null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Message_sendEvent_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Message_sendEvent_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.MESSAGE__SEND_EVENT, true, false, true, null,
+			null, null));
 	}
 
 	/**
@@ -177,16 +167,14 @@ public class MessageItemProvider
 	 * @generated
 	 */
 	protected void addConnectorPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Message_connector_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Message_connector_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MESSAGE__CONNECTOR, true, false, true,
-				null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Message_connector_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Message_connector_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.MESSAGE__CONNECTOR, true, false, true, null,
+			null, null));
 	}
 
 	/**
@@ -196,18 +184,15 @@ public class MessageItemProvider
 	 * @generated
 	 */
 	protected void addInteractionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Message_interaction_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Message_interaction_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MESSAGE__INTERACTION, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Message_interaction_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Message_interaction_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.MESSAGE__INTERACTION, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -217,16 +202,14 @@ public class MessageItemProvider
 	 * @generated
 	 */
 	protected void addSignaturePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Message_signature_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Message_signature_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MESSAGE__SIGNATURE, true, false, true,
-				null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Message_signature_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Message_signature_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.MESSAGE__SIGNATURE, true, false, true, null,
+			null, null));
 	}
 
 	/**
@@ -268,11 +251,9 @@ public class MessageItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(
-			object,
-			getResourceLocator()
-				.getImage(
-					"full/obj16/Message_" + ((Message) object).getMessageSort().getName())); //$NON-NLS-1$
+		return overlayImage(object,
+			getResourceLocator().getImage("full/obj16/Message_" //$NON-NLS-1$
+				+ ((Message) object).getMessageSort().getName()));
 	}
 
 	/**
@@ -295,7 +276,8 @@ public class MessageItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_Message_type"), object).toString(); //$NON-NLS-1$
+				"_UI_Message_type"), //$NON-NLS-1$
+			object).toString();
 	}
 
 	/**
@@ -335,65 +317,65 @@ public class MessageItemProvider
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.MESSAGE__ARGUMENT,
+				UMLFactory.eINSTANCE.createOpaqueExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT,
-			UMLFactory.eINSTANCE.createExpression()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.MESSAGE__ARGUMENT,
+				UMLFactory.eINSTANCE.createExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT,
-			UMLFactory.eINSTANCE.createStringExpression()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.MESSAGE__ARGUMENT,
+				UMLFactory.eINSTANCE.createStringExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT,
-			UMLFactory.eINSTANCE.createInstanceValue()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.MESSAGE__ARGUMENT,
+				UMLFactory.eINSTANCE.createInstanceValue()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT,
-			UMLFactory.eINSTANCE.createTimeExpression()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.MESSAGE__ARGUMENT,
+				UMLFactory.eINSTANCE.createTimeExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT,
-			UMLFactory.eINSTANCE.createDuration()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.MESSAGE__ARGUMENT,
+				UMLFactory.eINSTANCE.createDuration()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT,
-			UMLFactory.eINSTANCE.createInterval()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.MESSAGE__ARGUMENT,
+				UMLFactory.eINSTANCE.createInterval()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT,
-			UMLFactory.eINSTANCE.createDurationInterval()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.MESSAGE__ARGUMENT,
+				UMLFactory.eINSTANCE.createDurationInterval()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT,
-			UMLFactory.eINSTANCE.createLiteralBoolean()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.MESSAGE__ARGUMENT,
+				UMLFactory.eINSTANCE.createLiteralBoolean()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT,
-			UMLFactory.eINSTANCE.createLiteralInteger()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.MESSAGE__ARGUMENT,
+				UMLFactory.eINSTANCE.createLiteralInteger()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT,
-			UMLFactory.eINSTANCE.createLiteralNull()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.MESSAGE__ARGUMENT,
+				UMLFactory.eINSTANCE.createLiteralNull()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT,
-			UMLFactory.eINSTANCE.createLiteralReal()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.MESSAGE__ARGUMENT,
+				UMLFactory.eINSTANCE.createLiteralReal()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT,
-			UMLFactory.eINSTANCE.createLiteralString()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.MESSAGE__ARGUMENT,
+				UMLFactory.eINSTANCE.createLiteralString()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT,
-			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.MESSAGE__ARGUMENT,
+				UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT,
-			UMLFactory.eINSTANCE.createTimeInterval()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.MESSAGE__ARGUMENT,
+				UMLFactory.eINSTANCE.createTimeInterval()));
 	}
 
 	/**
@@ -403,8 +385,8 @@ public class MessageItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 

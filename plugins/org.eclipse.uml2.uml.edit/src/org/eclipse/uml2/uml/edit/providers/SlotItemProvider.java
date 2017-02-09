@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089
+ *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -75,18 +75,15 @@ public class SlotItemProvider
 	 * @generated
 	 */
 	protected void addOwningInstancePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Slot_owningInstance_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Slot_owningInstance_feature", "_UI_Slot_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.SLOT__OWNING_INSTANCE, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Slot_owningInstance_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Slot_owningInstance_feature", "_UI_Slot_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.SLOT__OWNING_INSTANCE, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -96,16 +93,14 @@ public class SlotItemProvider
 	 * @generated
 	 */
 	protected void addDefiningFeaturePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Slot_definingFeature_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Slot_definingFeature_feature", "_UI_Slot_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.SLOT__DEFINING_FEATURE, true, false, true,
-				null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Slot_definingFeature_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Slot_definingFeature_feature", "_UI_Slot_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.SLOT__DEFINING_FEATURE, true, false, true, null,
+			null, null));
 	}
 
 	/**
@@ -115,17 +110,15 @@ public class SlotItemProvider
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Slot_value_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Slot_value_feature", "_UI_Slot_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.SLOT__VALUE, true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Slot_value_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Slot_value_feature", "_UI_Slot_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.SLOT__VALUE, true, false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -189,9 +182,9 @@ public class SlotItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return appendLabel(
-			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_Slot_type"), ((Slot) object).getDefiningFeature()).toString(); //$NON-NLS-1$
+		return appendLabel(appendType(
+			appendKeywords(new StringBuffer(), object), "_UI_Slot_type"), //$NON-NLS-1$
+			((Slot) object).getDefiningFeature()).toString();
 	}
 
 	/**
@@ -230,65 +223,65 @@ public class SlotItemProvider
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.SLOT__VALUE,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.SLOT__VALUE,
+				UMLFactory.eINSTANCE.createOpaqueExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.SLOT__VALUE,
-			UMLFactory.eINSTANCE.createExpression()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.SLOT__VALUE,
+				UMLFactory.eINSTANCE.createExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.SLOT__VALUE,
-			UMLFactory.eINSTANCE.createStringExpression()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.SLOT__VALUE,
+				UMLFactory.eINSTANCE.createStringExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.SLOT__VALUE,
-			UMLFactory.eINSTANCE.createInstanceValue()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.SLOT__VALUE,
+				UMLFactory.eINSTANCE.createInstanceValue()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.SLOT__VALUE,
-			UMLFactory.eINSTANCE.createTimeExpression()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.SLOT__VALUE,
+				UMLFactory.eINSTANCE.createTimeExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.SLOT__VALUE,
-			UMLFactory.eINSTANCE.createDuration()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.SLOT__VALUE,
+				UMLFactory.eINSTANCE.createDuration()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.SLOT__VALUE,
-			UMLFactory.eINSTANCE.createInterval()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.SLOT__VALUE,
+				UMLFactory.eINSTANCE.createInterval()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.SLOT__VALUE,
-			UMLFactory.eINSTANCE.createDurationInterval()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.SLOT__VALUE,
+				UMLFactory.eINSTANCE.createDurationInterval()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.SLOT__VALUE,
-			UMLFactory.eINSTANCE.createLiteralBoolean()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.SLOT__VALUE,
+				UMLFactory.eINSTANCE.createLiteralBoolean()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.SLOT__VALUE,
-			UMLFactory.eINSTANCE.createLiteralInteger()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.SLOT__VALUE,
+				UMLFactory.eINSTANCE.createLiteralInteger()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.SLOT__VALUE,
-			UMLFactory.eINSTANCE.createLiteralNull()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.SLOT__VALUE,
+				UMLFactory.eINSTANCE.createLiteralNull()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.SLOT__VALUE,
-			UMLFactory.eINSTANCE.createLiteralReal()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.SLOT__VALUE,
+				UMLFactory.eINSTANCE.createLiteralReal()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.SLOT__VALUE,
-			UMLFactory.eINSTANCE.createLiteralString()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.SLOT__VALUE,
+				UMLFactory.eINSTANCE.createLiteralString()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.SLOT__VALUE,
-			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.SLOT__VALUE,
+				UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.SLOT__VALUE,
-			UMLFactory.eINSTANCE.createTimeInterval()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.SLOT__VALUE,
+				UMLFactory.eINSTANCE.createTimeInterval()));
 	}
 
 	@Override

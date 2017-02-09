@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 414970, 370089
+ *   Kenn Hussey (CEA) - 327039, 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -75,17 +75,17 @@ public class ReclassifyObjectActionItemProvider
 	 * @generated
 	 */
 	protected void addIsReplaceAllPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ReclassifyObjectAction_isReplaceAll_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ReclassifyObjectAction_isReplaceAll_feature", "_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION__IS_REPLACE_ALL,
-				true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ReclassifyObjectAction_isReplaceAll_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ReclassifyObjectAction_isReplaceAll_feature", //$NON-NLS-1$
+				"_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$
+			UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION__IS_REPLACE_ALL, true,
+			false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
+			null));
 	}
 
 	/**
@@ -95,16 +95,16 @@ public class ReclassifyObjectActionItemProvider
 	 * @generated
 	 */
 	protected void addOldClassifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ReclassifyObjectAction_oldClassifier_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ReclassifyObjectAction_oldClassifier_feature", "_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION__OLD_CLASSIFIER,
-				true, false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ReclassifyObjectAction_oldClassifier_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ReclassifyObjectAction_oldClassifier_feature", //$NON-NLS-1$
+				"_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$
+			UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION__OLD_CLASSIFIER, true,
+			false, true, null, null, null));
 	}
 
 	/**
@@ -114,16 +114,16 @@ public class ReclassifyObjectActionItemProvider
 	 * @generated
 	 */
 	protected void addNewClassifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ReclassifyObjectAction_newClassifier_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ReclassifyObjectAction_newClassifier_feature", "_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION__NEW_CLASSIFIER,
-				true, false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ReclassifyObjectAction_newClassifier_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ReclassifyObjectAction_newClassifier_feature", //$NON-NLS-1$
+				"_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$
+			UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION__NEW_CLASSIFIER, true,
+			false, true, null, null, null));
 	}
 
 	/**
@@ -133,18 +133,18 @@ public class ReclassifyObjectActionItemProvider
 	 * @generated
 	 */
 	protected void addObjectPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ReclassifyObjectAction_object_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ReclassifyObjectAction_object_feature", "_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION__OBJECT, true,
-				false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ReclassifyObjectAction_object_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ReclassifyObjectAction_object_feature", //$NON-NLS-1$
+				"_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$
+			UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION__OBJECT, true, false,
+			true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -211,7 +211,8 @@ public class ReclassifyObjectActionItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_ReclassifyObjectAction_type"), object).toString(); //$NON-NLS-1$
+				"_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$
+			object).toString();
 	}
 
 	/**
@@ -270,8 +271,8 @@ public class ReclassifyObjectActionItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 

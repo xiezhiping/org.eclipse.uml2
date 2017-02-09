@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 414970, 370089
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -85,18 +85,18 @@ public class TemplateParameterItemProvider
 	 * @generated
 	 */
 	protected void addSignaturePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_TemplateParameter_signature_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TemplateParameter_signature_feature", "_UI_TemplateParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TEMPLATE_PARAMETER__SIGNATURE, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_TemplateParameter_signature_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_TemplateParameter_signature_feature", //$NON-NLS-1$
+				"_UI_TemplateParameter_type"), //$NON-NLS-1$
+			UMLPackage.Literals.TEMPLATE_PARAMETER__SIGNATURE, true, false,
+			true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -106,18 +106,18 @@ public class TemplateParameterItemProvider
 	 * @generated
 	 */
 	protected void addOwnedParameteredElementPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_TemplateParameter_ownedParameteredElement_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TemplateParameter_ownedParameteredElement_feature", "_UI_TemplateParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-				true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_TemplateParameter_ownedParameteredElement_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_TemplateParameter_ownedParameteredElement_feature", //$NON-NLS-1$
+				"_UI_TemplateParameter_type"), //$NON-NLS-1$
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+			true, false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -127,16 +127,16 @@ public class TemplateParameterItemProvider
 	 * @generated
 	 */
 	protected void addDefaultPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_TemplateParameter_default_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TemplateParameter_default_feature", "_UI_TemplateParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TEMPLATE_PARAMETER__DEFAULT, true, false,
-				true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_TemplateParameter_default_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_TemplateParameter_default_feature", //$NON-NLS-1$
+				"_UI_TemplateParameter_type"), //$NON-NLS-1$
+			UMLPackage.Literals.TEMPLATE_PARAMETER__DEFAULT, true, false, true,
+			null, null, null));
 	}
 
 	/**
@@ -146,18 +146,18 @@ public class TemplateParameterItemProvider
 	 * @generated
 	 */
 	protected void addOwnedDefaultPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_TemplateParameter_ownedDefault_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TemplateParameter_ownedDefault_feature", "_UI_TemplateParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT, true,
-				false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_TemplateParameter_ownedDefault_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_TemplateParameter_ownedDefault_feature", //$NON-NLS-1$
+				"_UI_TemplateParameter_type"), //$NON-NLS-1$
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT, true, false,
+			true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -167,16 +167,16 @@ public class TemplateParameterItemProvider
 	 * @generated
 	 */
 	protected void addParameteredElementPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_TemplateParameter_parameteredElement_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TemplateParameter_parameteredElement_feature", "_UI_TemplateParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-				true, false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_TemplateParameter_parameteredElement_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_TemplateParameter_parameteredElement_feature", //$NON-NLS-1$
+				"_UI_TemplateParameter_type"), //$NON-NLS-1$
+			UMLPackage.Literals.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, true,
+			false, true, null, null, null));
 	}
 
 	/**
@@ -194,8 +194,8 @@ public class TemplateParameterItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures
 				.add(UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT);
-			childrenFeatures
-				.add(UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
+			childrenFeatures.add(
+				UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
 		}
 		return childrenFeatures;
 	}
@@ -245,7 +245,8 @@ public class TemplateParameterItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_TemplateParameter_type"), ((TemplateParameter) object).getParameteredElement()).toString(); //$NON-NLS-1$
+				"_UI_TemplateParameter_type"), //$NON-NLS-1$
+			((TemplateParameter) object).getParameteredElement()).toString();
 	}
 
 	/**
@@ -901,8 +902,8 @@ public class TemplateParameterItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 
@@ -927,37 +928,27 @@ public class TemplateParameterItemProvider
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
 		if (feature == UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.TEMPLATE_PARAMETER__DEFAULT},
+			return new SubsetSupersetSetCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.TEMPLATE_PARAMETER__DEFAULT},
 				null, value);
 		}
 		if (feature == UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT},
+			return new SubsetSupersetSetCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT},
 				null, value);
 		}
 		if (feature == UMLPackage.Literals.TEMPLATE_PARAMETER__DEFAULT) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				null,
-				new EStructuralFeature[]{UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT},
+			return new SubsetSupersetSetCommand(domain, owner, feature, null,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT},
 				value);
 		}
 		if (feature == UMLPackage.Literals.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				null,
-				new EStructuralFeature[]{UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT},
+			return new SubsetSupersetSetCommand(domain, owner, feature, null,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT},
 				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);

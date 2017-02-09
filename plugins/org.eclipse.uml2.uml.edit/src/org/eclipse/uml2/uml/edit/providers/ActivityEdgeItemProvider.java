@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 414970, 370089
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -81,18 +81,16 @@ public class ActivityEdgeItemProvider
 	 * @generated
 	 */
 	protected void addActivityPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ActivityEdge_activity_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ActivityEdge_activity_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_EDGE__ACTIVITY, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ActivityEdge_activity_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ActivityEdge_activity_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.ACTIVITY_EDGE__ACTIVITY, true, false, true,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -102,18 +100,15 @@ public class ActivityEdgeItemProvider
 	 * @generated
 	 */
 	protected void addInGroupPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ActivityEdge_inGroup_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ActivityEdge_inGroup_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_EDGE__IN_GROUP, false, false,
-				false, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_ActivityEdge_inGroup_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ActivityEdge_inGroup_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.ACTIVITY_EDGE__IN_GROUP, false, false, false,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -123,16 +118,16 @@ public class ActivityEdgeItemProvider
 	 * @generated
 	 */
 	protected void addInPartitionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ActivityEdge_inPartition_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ActivityEdge_inPartition_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_EDGE__IN_PARTITION, true, false,
-				true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ActivityEdge_inPartition_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ActivityEdge_inPartition_feature", //$NON-NLS-1$
+				"_UI_ActivityEdge_type"), //$NON-NLS-1$
+			UMLPackage.Literals.ACTIVITY_EDGE__IN_PARTITION, true, false, true,
+			null, null, null));
 	}
 
 	/**
@@ -142,18 +137,18 @@ public class ActivityEdgeItemProvider
 	 * @generated
 	 */
 	protected void addInStructuredNodePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ActivityEdge_inStructuredNode_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ActivityEdge_inStructuredNode_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_EDGE__IN_STRUCTURED_NODE, true,
-				false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ActivityEdge_inStructuredNode_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ActivityEdge_inStructuredNode_feature", //$NON-NLS-1$
+				"_UI_ActivityEdge_type"), //$NON-NLS-1$
+			UMLPackage.Literals.ACTIVITY_EDGE__IN_STRUCTURED_NODE, true, false,
+			true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -163,16 +158,14 @@ public class ActivityEdgeItemProvider
 	 * @generated
 	 */
 	protected void addTargetPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ActivityEdge_target_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ActivityEdge_target_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_EDGE__TARGET, true, false, true,
-				null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_ActivityEdge_target_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ActivityEdge_target_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.ACTIVITY_EDGE__TARGET, true, false, true, null,
+			null, null));
 	}
 
 	/**
@@ -182,16 +175,16 @@ public class ActivityEdgeItemProvider
 	 * @generated
 	 */
 	protected void addRedefinedEdgePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ActivityEdge_redefinedEdge_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ActivityEdge_redefinedEdge_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_EDGE__REDEFINED_EDGE, true, false,
-				true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ActivityEdge_redefinedEdge_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ActivityEdge_redefinedEdge_feature", //$NON-NLS-1$
+				"_UI_ActivityEdge_type"), //$NON-NLS-1$
+			UMLPackage.Literals.ACTIVITY_EDGE__REDEFINED_EDGE, true, false,
+			true, null, null, null));
 	}
 
 	/**
@@ -201,18 +194,15 @@ public class ActivityEdgeItemProvider
 	 * @generated
 	 */
 	protected void addGuardPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ActivityEdge_guard_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ActivityEdge_guard_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_EDGE__GUARD, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_ActivityEdge_guard_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ActivityEdge_guard_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.ACTIVITY_EDGE__GUARD, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -222,18 +212,15 @@ public class ActivityEdgeItemProvider
 	 * @generated
 	 */
 	protected void addWeightPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ActivityEdge_weight_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ActivityEdge_weight_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_ActivityEdge_weight_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ActivityEdge_weight_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -243,16 +230,15 @@ public class ActivityEdgeItemProvider
 	 * @generated
 	 */
 	protected void addInterruptsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ActivityEdge_interrupts_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ActivityEdge_interrupts_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_EDGE__INTERRUPTS, true, false,
-				true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ActivityEdge_interrupts_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ActivityEdge_interrupts_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.ACTIVITY_EDGE__INTERRUPTS, true, false, true,
+			null, null, null));
 	}
 
 	/**
@@ -262,16 +248,14 @@ public class ActivityEdgeItemProvider
 	 * @generated
 	 */
 	protected void addSourcePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ActivityEdge_source_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ActivityEdge_source_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_EDGE__SOURCE, true, false, true,
-				null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_ActivityEdge_source_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ActivityEdge_source_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.ACTIVITY_EDGE__SOURCE, true, false, true, null,
+			null, null));
 	}
 
 	/**
@@ -326,7 +310,8 @@ public class ActivityEdgeItemProvider
 	public String getText(Object object) {
 		String label = ((ActivityEdge) object).getName();
 		return label == null || label.length() == 0
-			? getString("_UI_ActivityEdge_type") : //$NON-NLS-1$
+			? getString("_UI_ActivityEdge_type") //$NON-NLS-1$
+			:
 			getString("_UI_ActivityEdge_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -363,125 +348,125 @@ public class ActivityEdgeItemProvider
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
+				UMLFactory.eINSTANCE.createOpaqueExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
-			UMLFactory.eINSTANCE.createExpression()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
+				UMLFactory.eINSTANCE.createExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
-			UMLFactory.eINSTANCE.createStringExpression()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
+				UMLFactory.eINSTANCE.createStringExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
-			UMLFactory.eINSTANCE.createInstanceValue()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
+				UMLFactory.eINSTANCE.createInstanceValue()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
-			UMLFactory.eINSTANCE.createTimeExpression()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
+				UMLFactory.eINSTANCE.createTimeExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
-			UMLFactory.eINSTANCE.createDuration()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
+				UMLFactory.eINSTANCE.createDuration()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
-			UMLFactory.eINSTANCE.createInterval()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
+				UMLFactory.eINSTANCE.createInterval()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
-			UMLFactory.eINSTANCE.createDurationInterval()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
+				UMLFactory.eINSTANCE.createDurationInterval()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
-			UMLFactory.eINSTANCE.createLiteralBoolean()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
+				UMLFactory.eINSTANCE.createLiteralBoolean()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
-			UMLFactory.eINSTANCE.createLiteralInteger()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
+				UMLFactory.eINSTANCE.createLiteralInteger()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
-			UMLFactory.eINSTANCE.createLiteralNull()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
+				UMLFactory.eINSTANCE.createLiteralNull()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
-			UMLFactory.eINSTANCE.createLiteralReal()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
+				UMLFactory.eINSTANCE.createLiteralReal()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
-			UMLFactory.eINSTANCE.createLiteralString()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
+				UMLFactory.eINSTANCE.createLiteralString()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
-			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
+				UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
-			UMLFactory.eINSTANCE.createTimeInterval()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__GUARD,
+				UMLFactory.eINSTANCE.createTimeInterval()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+				UMLFactory.eINSTANCE.createOpaqueExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-			UMLFactory.eINSTANCE.createExpression()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+				UMLFactory.eINSTANCE.createExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-			UMLFactory.eINSTANCE.createStringExpression()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+				UMLFactory.eINSTANCE.createStringExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-			UMLFactory.eINSTANCE.createInstanceValue()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+				UMLFactory.eINSTANCE.createInstanceValue()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-			UMLFactory.eINSTANCE.createTimeExpression()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+				UMLFactory.eINSTANCE.createTimeExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-			UMLFactory.eINSTANCE.createDuration()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+				UMLFactory.eINSTANCE.createDuration()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-			UMLFactory.eINSTANCE.createInterval()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+				UMLFactory.eINSTANCE.createInterval()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-			UMLFactory.eINSTANCE.createDurationInterval()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+				UMLFactory.eINSTANCE.createDurationInterval()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-			UMLFactory.eINSTANCE.createLiteralBoolean()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+				UMLFactory.eINSTANCE.createLiteralBoolean()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-			UMLFactory.eINSTANCE.createLiteralInteger()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+				UMLFactory.eINSTANCE.createLiteralInteger()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-			UMLFactory.eINSTANCE.createLiteralNull()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+				UMLFactory.eINSTANCE.createLiteralNull()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-			UMLFactory.eINSTANCE.createLiteralReal()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+				UMLFactory.eINSTANCE.createLiteralReal()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-			UMLFactory.eINSTANCE.createLiteralString()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+				UMLFactory.eINSTANCE.createLiteralString()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+				UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-			UMLFactory.eINSTANCE.createTimeInterval()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+				UMLFactory.eINSTANCE.createTimeInterval()));
 	}
 
 	/**
@@ -491,8 +476,8 @@ public class ActivityEdgeItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 

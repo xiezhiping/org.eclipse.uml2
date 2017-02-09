@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, 2016 CEA and others.
+ * Copyright (c) 2013, 2017 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
- *   Kenn Hussey (CEA) - 418466, 485756
+ *   Kenn Hussey (CEA) - 418466, 485756, 511674
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -3735,6 +3735,10 @@ public class UMLDerivedUnionAdapter
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
 				break;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__EXTENDED_STATE_MACHINE :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
+				break;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
@@ -3996,6 +4000,10 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 				break;
 		}
 	}

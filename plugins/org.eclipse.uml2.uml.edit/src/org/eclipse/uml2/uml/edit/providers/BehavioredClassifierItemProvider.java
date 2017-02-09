@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
- *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089, 459723
+ *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089, 459723, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -81,18 +81,18 @@ public class BehavioredClassifierItemProvider
 	 * @generated
 	 */
 	protected void addOwnedBehaviorPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_BehavioredClassifier_ownedBehavior_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_ownedBehavior_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
-				true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_BehavioredClassifier_ownedBehavior_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_BehavioredClassifier_ownedBehavior_feature", //$NON-NLS-1$
+				"_UI_BehavioredClassifier_type"), //$NON-NLS-1$
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR, true,
+			false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -102,16 +102,16 @@ public class BehavioredClassifierItemProvider
 	 * @generated
 	 */
 	protected void addClassifierBehaviorPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_BehavioredClassifier_classifierBehavior_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_classifierBehavior_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR,
-				true, false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_BehavioredClassifier_classifierBehavior_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_BehavioredClassifier_classifierBehavior_feature", //$NON-NLS-1$
+				"_UI_BehavioredClassifier_type"), //$NON-NLS-1$
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR,
+			true, false, true, null, null, null));
 	}
 
 	/**
@@ -121,18 +121,18 @@ public class BehavioredClassifierItemProvider
 	 * @generated
 	 */
 	protected void addInterfaceRealizationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_BehavioredClassifier_interfaceRealization_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_interfaceRealization_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION,
-				true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_BehavioredClassifier_interfaceRealization_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_BehavioredClassifier_interfaceRealization_feature", //$NON-NLS-1$
+				"_UI_BehavioredClassifier_type"), //$NON-NLS-1$
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION,
+			true, false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -148,8 +148,8 @@ public class BehavioredClassifierItemProvider
 			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-				.add(UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION);
+			childrenFeatures.add(
+				UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION);
 			childrenFeatures
 				.add(UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR);
 		}
@@ -189,7 +189,8 @@ public class BehavioredClassifierItemProvider
 	public String getText(Object object) {
 		String label = ((BehavioredClassifier) object).getName();
 		return label == null || label.length() == 0
-			? getString("_UI_BehavioredClassifier_type") : //$NON-NLS-1$
+			? getString("_UI_BehavioredClassifier_type") //$NON-NLS-1$
+			:
 			getString("_UI_BehavioredClassifier_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -290,8 +291,8 @@ public class BehavioredClassifierItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 
@@ -318,11 +319,9 @@ public class BehavioredClassifierItemProvider
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection<?> collection) {
 		if (feature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR) {
-			return new SupersetRemoveCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR},
+			return new SupersetRemoveCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR},
 				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
@@ -336,14 +335,13 @@ public class BehavioredClassifierItemProvider
 	 */
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Object value, Collection<?> collection) {
+			EStructuralFeature feature, Object value,
+			Collection<?> collection) {
 		if (feature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR) {
-			return new SubsetSupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
 				null,
-				new EStructuralFeature[]{UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR},
+				new EStructuralFeature[]{
+					UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR},
 				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
@@ -360,20 +358,15 @@ public class BehavioredClassifierItemProvider
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
 		if (feature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR},
+			return new SubsetSupersetSetCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR},
 				null, value);
 		}
 		if (feature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				null,
-				new EStructuralFeature[]{UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR},
+			return new SubsetSupersetSetCommand(domain, owner, feature, null,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR},
 				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);

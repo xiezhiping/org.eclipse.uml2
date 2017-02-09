@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 414970, 370089, 459723
+ *   Kenn Hussey (CEA) - 327039, 414970, 370089, 459723, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -94,18 +94,18 @@ public class AssociationItemProvider
 	 * @generated
 	 */
 	protected void addRelatedElementPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Relationship_relatedElement_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Relationship_relatedElement_feature", "_UI_Relationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT, false,
-				false, false, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_Relationship_relatedElement_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Relationship_relatedElement_feature", //$NON-NLS-1$
+				"_UI_Relationship_type"), //$NON-NLS-1$
+			UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT, false, false,
+			false, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -115,16 +115,15 @@ public class AssociationItemProvider
 	 * @generated
 	 */
 	protected void addIsDerivedPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Association_isDerived_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Association_isDerived_feature", "_UI_Association_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ASSOCIATION__IS_DERIVED, true, false,
-				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_Association_isDerived_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Association_isDerived_feature", "_UI_Association_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.ASSOCIATION__IS_DERIVED, true, false, false,
+			ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -134,18 +133,15 @@ public class AssociationItemProvider
 	 * @generated
 	 */
 	protected void addEndTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Association_endType_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Association_endType_feature", "_UI_Association_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ASSOCIATION__END_TYPE, false, false, false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Association_endType_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Association_endType_feature", "_UI_Association_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.ASSOCIATION__END_TYPE, false, false, false,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -155,16 +151,15 @@ public class AssociationItemProvider
 	 * @generated
 	 */
 	protected void addMemberEndPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Association_memberEnd_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Association_memberEnd_feature", "_UI_Association_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ASSOCIATION__MEMBER_END, true, false, true,
-				null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_Association_memberEnd_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Association_memberEnd_feature", "_UI_Association_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.ASSOCIATION__MEMBER_END, true, false, true,
+			null, null, null));
 	}
 
 	/**
@@ -174,18 +169,15 @@ public class AssociationItemProvider
 	 * @generated
 	 */
 	protected void addOwnedEndPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Association_ownedEnd_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Association_ownedEnd_feature", "_UI_Association_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ASSOCIATION__OWNED_END, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Association_ownedEnd_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Association_ownedEnd_feature", "_UI_Association_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.ASSOCIATION__OWNED_END, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -195,16 +187,16 @@ public class AssociationItemProvider
 	 * @generated
 	 */
 	protected void addNavigableOwnedEndPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Association_navigableOwnedEnd_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Association_navigableOwnedEnd_feature", "_UI_Association_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END, true,
-				false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_Association_navigableOwnedEnd_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Association_navigableOwnedEnd_feature", //$NON-NLS-1$
+				"_UI_Association_type"), //$NON-NLS-1$
+			UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END, true, false,
+			true, null, null, null));
 	}
 
 	/**
@@ -256,11 +248,9 @@ public class AssociationItemProvider
 			}
 		}
 
-		return overlayImage(
-			object,
-			getResourceLocator()
-				.getImage(
-					"full/obj16/Association_" + AggregationKind.get(aggregation).getName())); //$NON-NLS-1$
+		return overlayImage(object,
+			getResourceLocator().getImage("full/obj16/Association_" //$NON-NLS-1$
+				+ AggregationKind.get(aggregation).getName()));
 	}
 
 	/**
@@ -314,8 +304,8 @@ public class AssociationItemProvider
 							String typeName = type.getName();
 
 							if (!UML2Util.isEmpty(typeName)) {
-								memberEndName = Character.toLowerCase(typeName
-									.charAt(0)) + typeName.substring(1);
+								memberEndName = Character.toLowerCase(
+									typeName.charAt(0)) + typeName.substring(1);
 							}
 						}
 
@@ -371,17 +361,17 @@ public class AssociationItemProvider
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ASSOCIATION__OWNED_END,
-			UMLFactory.eINSTANCE.createProperty()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.ASSOCIATION__OWNED_END,
+				UMLFactory.eINSTANCE.createProperty()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ASSOCIATION__OWNED_END,
-			UMLFactory.eINSTANCE.createPort()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.ASSOCIATION__OWNED_END,
+				UMLFactory.eINSTANCE.createPort()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ASSOCIATION__OWNED_END,
-			UMLFactory.eINSTANCE.createExtensionEnd()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.ASSOCIATION__OWNED_END,
+				UMLFactory.eINSTANCE.createExtensionEnd()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END,
@@ -403,8 +393,8 @@ public class AssociationItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 
@@ -431,23 +421,19 @@ public class AssociationItemProvider
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection<?> collection, int index) {
 		if (feature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
-			return new SubsetAddCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__MEMBER_END},
+			return new SubsetAddCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.ASSOCIATION__MEMBER_END},
 				collection, index);
 		}
 		if (feature == UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END) {
-			return new SubsetAddCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__OWNED_END},
+			return new SubsetAddCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.ASSOCIATION__OWNED_END},
 				collection, index);
 		}
-		return super
-			.createAddCommand(domain, owner, feature, collection, index);
+		return super.createAddCommand(domain, owner, feature, collection,
+			index);
 	}
 
 	/**
@@ -460,19 +446,15 @@ public class AssociationItemProvider
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection<?> collection) {
 		if (feature == UMLPackage.Literals.ASSOCIATION__MEMBER_END) {
-			return new SupersetRemoveCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__OWNED_END},
+			return new SupersetRemoveCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.ASSOCIATION__OWNED_END},
 				collection);
 		}
 		if (feature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
-			return new SupersetRemoveCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END},
+			return new SupersetRemoveCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END},
 				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
@@ -486,31 +468,27 @@ public class AssociationItemProvider
 	 */
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Object value, Collection<?> collection) {
+			EStructuralFeature feature, Object value,
+			Collection<?> collection) {
 		if (feature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
-			return new SubsetSupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__MEMBER_END},
-				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END},
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.ASSOCIATION__MEMBER_END},
+				new EStructuralFeature[]{
+					UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END},
 				value, collection);
 		}
 		if (feature == UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END) {
-			return new SubsetSupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__OWNED_END},
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.ASSOCIATION__OWNED_END},
 				null, value, collection);
 		}
 		if (feature == UMLPackage.Literals.ASSOCIATION__MEMBER_END) {
-			return new SubsetSupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
 				null,
-				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__OWNED_END},
+				new EStructuralFeature[]{
+					UMLPackage.Literals.ASSOCIATION__OWNED_END},
 				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
@@ -527,29 +505,23 @@ public class AssociationItemProvider
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
 		if (feature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__MEMBER_END},
-				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END},
+			return new SubsetSupersetSetCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.ASSOCIATION__MEMBER_END},
+				new EStructuralFeature[]{
+					UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END},
 				value);
 		}
 		if (feature == UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__OWNED_END},
+			return new SubsetSupersetSetCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.ASSOCIATION__OWNED_END},
 				null, value);
 		}
 		if (feature == UMLPackage.Literals.ASSOCIATION__MEMBER_END) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				null,
-				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__OWNED_END},
+			return new SubsetSupersetSetCommand(domain, owner, feature, null,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.ASSOCIATION__OWNED_END},
 				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);

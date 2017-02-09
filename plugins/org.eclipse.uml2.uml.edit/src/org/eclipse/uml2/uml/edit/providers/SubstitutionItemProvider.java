@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 414970, 370089, 459723
+ *   Kenn Hussey (CEA) - 414970, 370089, 459723, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -85,16 +85,15 @@ public class SubstitutionItemProvider
 	 * @generated
 	 */
 	protected void addContractPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Substitution_contract_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Substitution_contract_feature", "_UI_Substitution_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.SUBSTITUTION__CONTRACT, true, false, true,
-				null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_Substitution_contract_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Substitution_contract_feature", "_UI_Substitution_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.SUBSTITUTION__CONTRACT, true, false, true, null,
+			null, null));
 	}
 
 	/**
@@ -104,18 +103,18 @@ public class SubstitutionItemProvider
 	 * @generated
 	 */
 	protected void addSubstitutingClassifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Substitution_substitutingClassifier_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Substitution_substitutingClassifier_feature", "_UI_Substitution_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.SUBSTITUTION__SUBSTITUTING_CLASSIFIER,
-				true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_Substitution_substitutingClassifier_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Substitution_substitutingClassifier_feature", //$NON-NLS-1$
+				"_UI_Substitution_type"), //$NON-NLS-1$
+			UMLPackage.Literals.SUBSTITUTION__SUBSTITUTING_CLASSIFIER, true,
+			false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -149,7 +148,8 @@ public class SubstitutionItemProvider
 	@Override
 	public String getText(Object object) {
 		StringBuffer text = appendType(
-			appendKeywords(new StringBuffer(), object), "_UI_Substitution_type"); //$NON-NLS-1$
+			appendKeywords(new StringBuffer(), object),
+			"_UI_Substitution_type"); //$NON-NLS-1$
 
 		Substitution substitution = (Substitution) object;
 		String label = substitution.getLabel(shouldTranslate());
@@ -202,19 +202,15 @@ public class SubstitutionItemProvider
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection<?> collection) {
 		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
-			return new SupersetRemoveCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.SUBSTITUTION__CONTRACT},
+			return new SupersetRemoveCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.SUBSTITUTION__CONTRACT},
 				collection);
 		}
 		if (feature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
-			return new SupersetRemoveCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.SUBSTITUTION__SUBSTITUTING_CLASSIFIER},
+			return new SupersetRemoveCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.SUBSTITUTION__SUBSTITUTING_CLASSIFIER},
 				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
@@ -228,23 +224,20 @@ public class SubstitutionItemProvider
 	 */
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Object value, Collection<?> collection) {
+			EStructuralFeature feature, Object value,
+			Collection<?> collection) {
 		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
-			return new SubsetSupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
 				null,
-				new EStructuralFeature[]{UMLPackage.Literals.SUBSTITUTION__CONTRACT},
+				new EStructuralFeature[]{
+					UMLPackage.Literals.SUBSTITUTION__CONTRACT},
 				value, collection);
 		}
 		if (feature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
-			return new SubsetSupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
 				null,
-				new EStructuralFeature[]{UMLPackage.Literals.SUBSTITUTION__SUBSTITUTING_CLASSIFIER},
+				new EStructuralFeature[]{
+					UMLPackage.Literals.SUBSTITUTION__SUBSTITUTING_CLASSIFIER},
 				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
@@ -261,37 +254,27 @@ public class SubstitutionItemProvider
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
 		if (feature == UMLPackage.Literals.SUBSTITUTION__CONTRACT) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__SUPPLIER},
+			return new SubsetSupersetSetCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.DEPENDENCY__SUPPLIER},
 				null, value);
 		}
 		if (feature == UMLPackage.Literals.SUBSTITUTION__SUBSTITUTING_CLASSIFIER) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__CLIENT},
+			return new SubsetSupersetSetCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.DEPENDENCY__CLIENT},
 				null, value);
 		}
 		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				null,
-				new EStructuralFeature[]{UMLPackage.Literals.SUBSTITUTION__CONTRACT},
+			return new SubsetSupersetSetCommand(domain, owner, feature, null,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.SUBSTITUTION__CONTRACT},
 				value);
 		}
 		if (feature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				null,
-				new EStructuralFeature[]{UMLPackage.Literals.SUBSTITUTION__SUBSTITUTING_CLASSIFIER},
+			return new SubsetSupersetSetCommand(domain, owner, feature, null,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.SUBSTITUTION__SUBSTITUTING_CLASSIFIER},
 				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);

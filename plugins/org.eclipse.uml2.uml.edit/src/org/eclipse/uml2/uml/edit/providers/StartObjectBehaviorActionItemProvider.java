@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2008, 2017 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 414970, 370089, 468342
+ *   Kenn Hussey (CEA) - 327039, 414970, 370089, 468342, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -44,7 +44,8 @@ public class StartObjectBehaviorActionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StartObjectBehaviorActionItemProvider(AdapterFactory adapterFactory) {
+	public StartObjectBehaviorActionItemProvider(
+			AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -71,18 +72,18 @@ public class StartObjectBehaviorActionItemProvider
 	 * @generated
 	 */
 	protected void addObjectPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_StartObjectBehaviorAction_object_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_StartObjectBehaviorAction_object_feature", "_UI_StartObjectBehaviorAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.START_OBJECT_BEHAVIOR_ACTION__OBJECT, true,
-				false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_StartObjectBehaviorAction_object_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_StartObjectBehaviorAction_object_feature", //$NON-NLS-1$
+				"_UI_StartObjectBehaviorAction_type"), //$NON-NLS-1$
+			UMLPackage.Literals.START_OBJECT_BEHAVIOR_ACTION__OBJECT, true,
+			false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -125,10 +126,8 @@ public class StartObjectBehaviorActionItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(
-			object,
-			getResourceLocator().getImage(
-				"full/obj16/StartObjectBehaviorAction")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator()
+			.getImage("full/obj16/StartObjectBehaviorAction")); //$NON-NLS-1$
 	}
 
 	/**
@@ -151,7 +150,8 @@ public class StartObjectBehaviorActionItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_StartObjectBehaviorAction_type"), object).toString(); //$NON-NLS-1$
+				"_UI_StartObjectBehaviorAction_type"), //$NON-NLS-1$
+			object).toString();
 	}
 
 	/**
@@ -206,8 +206,8 @@ public class StartObjectBehaviorActionItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 

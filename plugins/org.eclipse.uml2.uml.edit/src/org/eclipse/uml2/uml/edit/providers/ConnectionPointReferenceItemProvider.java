@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 414970, 370089
+ *   Kenn Hussey (CEA) - 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -70,16 +70,16 @@ public class ConnectionPointReferenceItemProvider
 	 * @generated
 	 */
 	protected void addEntryPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ConnectionPointReference_entry_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ConnectionPointReference_entry_feature", "_UI_ConnectionPointReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CONNECTION_POINT_REFERENCE__ENTRY, true,
-				false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ConnectionPointReference_entry_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ConnectionPointReference_entry_feature", //$NON-NLS-1$
+				"_UI_ConnectionPointReference_type"), //$NON-NLS-1$
+			UMLPackage.Literals.CONNECTION_POINT_REFERENCE__ENTRY, true, false,
+			true, null, null, null));
 	}
 
 	/**
@@ -89,16 +89,16 @@ public class ConnectionPointReferenceItemProvider
 	 * @generated
 	 */
 	protected void addExitPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ConnectionPointReference_exit_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ConnectionPointReference_exit_feature", "_UI_ConnectionPointReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CONNECTION_POINT_REFERENCE__EXIT, true,
-				false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ConnectionPointReference_exit_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ConnectionPointReference_exit_feature", //$NON-NLS-1$
+				"_UI_ConnectionPointReference_type"), //$NON-NLS-1$
+			UMLPackage.Literals.CONNECTION_POINT_REFERENCE__EXIT, true, false,
+			true, null, null, null));
 	}
 
 	/**
@@ -108,18 +108,18 @@ public class ConnectionPointReferenceItemProvider
 	 * @generated
 	 */
 	protected void addStatePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ConnectionPointReference_state_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ConnectionPointReference_state_feature", "_UI_ConnectionPointReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CONNECTION_POINT_REFERENCE__STATE, true,
-				false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ConnectionPointReference_state_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ConnectionPointReference_state_feature", //$NON-NLS-1$
+				"_UI_ConnectionPointReference_type"), //$NON-NLS-1$
+			UMLPackage.Literals.CONNECTION_POINT_REFERENCE__STATE, true, false,
+			true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -130,9 +130,8 @@ public class ConnectionPointReferenceItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-			getResourceLocator()
-				.getImage("full/obj16/ConnectionPointReference")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator()
+			.getImage("full/obj16/ConnectionPointReference")); //$NON-NLS-1$
 	}
 
 	/**
@@ -155,7 +154,8 @@ public class ConnectionPointReferenceItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_ConnectionPointReference_type"), object).toString(); //$NON-NLS-1$
+				"_UI_ConnectionPointReference_type"), //$NON-NLS-1$
+			object).toString();
 	}
 
 	/**

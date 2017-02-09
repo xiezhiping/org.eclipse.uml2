@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
- *   Kenn Hussey (CEA) - 327039, 414970, 370089
+ *   Kenn Hussey (CEA) - 327039, 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -72,18 +72,18 @@ public class WriteStructuralFeatureActionItemProvider
 	 * @generated
 	 */
 	protected void addResultPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_WriteStructuralFeatureAction_result_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_WriteStructuralFeatureAction_result_feature", "_UI_WriteStructuralFeatureAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT,
-				true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_WriteStructuralFeatureAction_result_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_WriteStructuralFeatureAction_result_feature", //$NON-NLS-1$
+				"_UI_WriteStructuralFeatureAction_type"), //$NON-NLS-1$
+			UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT, true,
+			false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -93,18 +93,18 @@ public class WriteStructuralFeatureActionItemProvider
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_WriteStructuralFeatureAction_value_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_WriteStructuralFeatureAction_value_feature", "_UI_WriteStructuralFeatureAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE,
-				true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_WriteStructuralFeatureAction_value_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_WriteStructuralFeatureAction_value_feature", //$NON-NLS-1$
+				"_UI_WriteStructuralFeatureAction_type"), //$NON-NLS-1$
+			UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE, true,
+			false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -120,10 +120,10 @@ public class WriteStructuralFeatureActionItemProvider
 			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-				.add(UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT);
-			childrenFeatures
-				.add(UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE);
+			childrenFeatures.add(
+				UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT);
+			childrenFeatures.add(
+				UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE);
 		}
 		return childrenFeatures;
 	}
@@ -161,7 +161,8 @@ public class WriteStructuralFeatureActionItemProvider
 	public String getText(Object object) {
 		String label = ((WriteStructuralFeatureAction) object).getName();
 		return label == null || label.length() == 0
-			? getString("_UI_WriteStructuralFeatureAction_type") : //$NON-NLS-1$
+			? getString("_UI_WriteStructuralFeatureAction_type") //$NON-NLS-1$
+			:
 			getString("_UI_WriteStructuralFeatureAction_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -222,8 +223,8 @@ public class WriteStructuralFeatureActionItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 479276, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 479276, 485756, 511674
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -30,13 +30,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioralFeature;
@@ -88,6 +88,7 @@ import org.eclipse.uml2.uml.internal.operations.StateMachineOperations;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getRedefinedClassifiers <em>Redefined Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getConnectionPoints <em>Connection Point</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getSubmachineStates <em>Submachine State</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getRegions <em>Region</em>}</li>
@@ -348,9 +349,10 @@ public class StateMachineImpl
 	 */
 	public EList<StateMachine> getExtendedStateMachines() {
 		if (extendedStateMachines == null) {
-			extendedStateMachines = new EObjectResolvingEList<StateMachine>(
+			extendedStateMachines = new SubsetSupersetEObjectResolvingEList<StateMachine>(
 				StateMachine.class, this,
-				UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE);
+				UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE,
+				EXTENDED_STATE_MACHINE_ESUPERSETS, null);
 		}
 		return extendedStateMachines;
 	}
@@ -1700,6 +1702,45 @@ public class StateMachineImpl
 		UMLPackage.STATE_MACHINE__OWNED_PARAMETER_SET,
 		UMLPackage.STATE_MACHINE__CONNECTION_POINT,
 		UMLPackage.STATE_MACHINE__REGION};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<Classifier> getRedefinedClassifiers() {
+		if (redefinedClassifiers == null) {
+			redefinedClassifiers = new SubsetSupersetEObjectResolvingEList<Classifier>(
+				Classifier.class, this,
+				UMLPackage.STATE_MACHINE__REDEFINED_CLASSIFIER, null,
+				REDEFINED_CLASSIFIER_ESUBSETS);
+		}
+		return redefinedClassifiers;
+	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRedefinedClassifiers() <em>Redefined Classifier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedClassifiers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] REDEFINED_CLASSIFIER_ESUBSETS = new int[]{
+		UMLPackage.STATE_MACHINE__REDEFINED_BEHAVIOR,
+		UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getExtendedStateMachines() <em>Extended State Machine</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExtendedStateMachines()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] EXTENDED_STATE_MACHINE_ESUPERSETS = new int[]{
+		UMLPackage.STATE_MACHINE__REDEFINED_CLASSIFIER};
 
 	/**
 	 * <!-- begin-user-doc -->

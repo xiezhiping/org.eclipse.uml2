@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089
+ *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -77,18 +77,16 @@ public class NamespaceItemProvider
 	 * @generated
 	 */
 	protected void addElementImportPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Namespace_elementImport_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Namespace_elementImport_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_Namespace_elementImport_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Namespace_elementImport_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT, true, false, true,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -98,18 +96,16 @@ public class NamespaceItemProvider
 	 * @generated
 	 */
 	protected void addPackageImportPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Namespace_packageImport_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Namespace_packageImport_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_Namespace_packageImport_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Namespace_packageImport_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT, true, false, true,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -119,18 +115,15 @@ public class NamespaceItemProvider
 	 * @generated
 	 */
 	protected void addOwnedRulePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Namespace_ownedRule_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Namespace_ownedRule_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.NAMESPACE__OWNED_RULE, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Namespace_ownedRule_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Namespace_ownedRule_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.NAMESPACE__OWNED_RULE, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -140,18 +133,15 @@ public class NamespaceItemProvider
 	 * @generated
 	 */
 	protected void addMemberPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Namespace_member_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Namespace_member_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.NAMESPACE__MEMBER, false, false, false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Namespace_member_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Namespace_member_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.NAMESPACE__MEMBER, false, false, false, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -161,18 +151,16 @@ public class NamespaceItemProvider
 	 * @generated
 	 */
 	protected void addImportedMemberPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Namespace_importedMember_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Namespace_importedMember_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.NAMESPACE__IMPORTED_MEMBER, false, false,
-				false, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_Namespace_importedMember_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Namespace_importedMember_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.NAMESPACE__IMPORTED_MEMBER, false, false, false,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -182,18 +170,16 @@ public class NamespaceItemProvider
 	 * @generated
 	 */
 	protected void addOwnedMemberPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Namespace_ownedMember_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Namespace_ownedMember_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.NAMESPACE__OWNED_MEMBER, false, false,
-				false, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_Namespace_ownedMember_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Namespace_ownedMember_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.NAMESPACE__OWNED_MEMBER, false, false, false,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -249,7 +235,8 @@ public class NamespaceItemProvider
 	public String getText(Object object) {
 		String label = ((Namespace) object).getName();
 		return label == null || label.length() == 0
-			? getString("_UI_Namespace_type") : //$NON-NLS-1$
+			? getString("_UI_Namespace_type") //$NON-NLS-1$
+			:
 			getString("_UI_Namespace_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -287,33 +274,33 @@ public class NamespaceItemProvider
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__OWNED_RULE,
-			UMLFactory.eINSTANCE.createConstraint()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.NAMESPACE__OWNED_RULE,
+				UMLFactory.eINSTANCE.createConstraint()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__OWNED_RULE,
-			UMLFactory.eINSTANCE.createInteractionConstraint()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.NAMESPACE__OWNED_RULE,
+				UMLFactory.eINSTANCE.createInteractionConstraint()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__OWNED_RULE,
-			UMLFactory.eINSTANCE.createIntervalConstraint()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.NAMESPACE__OWNED_RULE,
+				UMLFactory.eINSTANCE.createIntervalConstraint()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__OWNED_RULE,
-			UMLFactory.eINSTANCE.createDurationConstraint()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.NAMESPACE__OWNED_RULE,
+				UMLFactory.eINSTANCE.createDurationConstraint()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__OWNED_RULE,
-			UMLFactory.eINSTANCE.createTimeConstraint()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.NAMESPACE__OWNED_RULE,
+				UMLFactory.eINSTANCE.createTimeConstraint()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT,
-			UMLFactory.eINSTANCE.createElementImport()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT,
+				UMLFactory.eINSTANCE.createElementImport()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT,
-			UMLFactory.eINSTANCE.createPackageImport()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT,
+				UMLFactory.eINSTANCE.createPackageImport()));
 	}
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 414970, 370089, 459723
+ *   Kenn Hussey (CEA) - 414970, 370089, 459723, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -85,16 +85,16 @@ public class InterfaceRealizationItemProvider
 	 * @generated
 	 */
 	protected void addContractPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_InterfaceRealization_contract_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_InterfaceRealization_contract_feature", "_UI_InterfaceRealization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERFACE_REALIZATION__CONTRACT, true,
-				false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_InterfaceRealization_contract_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_InterfaceRealization_contract_feature", //$NON-NLS-1$
+				"_UI_InterfaceRealization_type"), //$NON-NLS-1$
+			UMLPackage.Literals.INTERFACE_REALIZATION__CONTRACT, true, false,
+			true, null, null, null));
 	}
 
 	/**
@@ -104,18 +104,19 @@ public class InterfaceRealizationItemProvider
 	 * @generated
 	 */
 	protected void addImplementingClassifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_InterfaceRealization_implementingClassifier_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_InterfaceRealization_implementingClassifier_feature", "_UI_InterfaceRealization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER,
-				true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString(
+				"_UI_InterfaceRealization_implementingClassifier_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_InterfaceRealization_implementingClassifier_feature", //$NON-NLS-1$
+				"_UI_InterfaceRealization_type"), //$NON-NLS-1$
+			UMLPackage.Literals.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER,
+			true, false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -203,19 +204,15 @@ public class InterfaceRealizationItemProvider
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection<?> collection) {
 		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
-			return new SupersetRemoveCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.INTERFACE_REALIZATION__CONTRACT},
+			return new SupersetRemoveCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.INTERFACE_REALIZATION__CONTRACT},
 				collection);
 		}
 		if (feature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
-			return new SupersetRemoveCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER},
+			return new SupersetRemoveCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER},
 				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
@@ -229,23 +226,20 @@ public class InterfaceRealizationItemProvider
 	 */
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Object value, Collection<?> collection) {
+			EStructuralFeature feature, Object value,
+			Collection<?> collection) {
 		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
-			return new SubsetSupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
 				null,
-				new EStructuralFeature[]{UMLPackage.Literals.INTERFACE_REALIZATION__CONTRACT},
+				new EStructuralFeature[]{
+					UMLPackage.Literals.INTERFACE_REALIZATION__CONTRACT},
 				value, collection);
 		}
 		if (feature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
-			return new SubsetSupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
 				null,
-				new EStructuralFeature[]{UMLPackage.Literals.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER},
+				new EStructuralFeature[]{
+					UMLPackage.Literals.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER},
 				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
@@ -262,37 +256,27 @@ public class InterfaceRealizationItemProvider
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
 		if (feature == UMLPackage.Literals.INTERFACE_REALIZATION__CONTRACT) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__SUPPLIER},
+			return new SubsetSupersetSetCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.DEPENDENCY__SUPPLIER},
 				null, value);
 		}
 		if (feature == UMLPackage.Literals.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__CLIENT},
+			return new SubsetSupersetSetCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.DEPENDENCY__CLIENT},
 				null, value);
 		}
 		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				null,
-				new EStructuralFeature[]{UMLPackage.Literals.INTERFACE_REALIZATION__CONTRACT},
+			return new SubsetSupersetSetCommand(domain, owner, feature, null,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.INTERFACE_REALIZATION__CONTRACT},
 				value);
 		}
 		if (feature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				null,
-				new EStructuralFeature[]{UMLPackage.Literals.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER},
+			return new SubsetSupersetSetCommand(domain, owner, feature, null,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER},
 				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);

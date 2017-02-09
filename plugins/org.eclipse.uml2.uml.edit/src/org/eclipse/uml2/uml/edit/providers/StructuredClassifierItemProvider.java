@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
- *   Kenn Hussey (CEA) - 327039, 414970, 370089
+ *   Kenn Hussey (CEA) - 327039, 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -74,18 +74,18 @@ public class StructuredClassifierItemProvider
 	 * @generated
 	 */
 	protected void addOwnedAttributePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_StructuredClassifier_ownedAttribute_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_ownedAttribute_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
-				true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_StructuredClassifier_ownedAttribute_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_StructuredClassifier_ownedAttribute_feature", //$NON-NLS-1$
+				"_UI_StructuredClassifier_type"), //$NON-NLS-1$
+			UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE, true,
+			false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -95,18 +95,18 @@ public class StructuredClassifierItemProvider
 	 * @generated
 	 */
 	protected void addOwnedConnectorPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_StructuredClassifier_ownedConnector_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_ownedConnector_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR,
-				true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_StructuredClassifier_ownedConnector_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_StructuredClassifier_ownedConnector_feature", //$NON-NLS-1$
+				"_UI_StructuredClassifier_type"), //$NON-NLS-1$
+			UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR, true,
+			false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -116,18 +116,18 @@ public class StructuredClassifierItemProvider
 	 * @generated
 	 */
 	protected void addPartPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_StructuredClassifier_part_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_part_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STRUCTURED_CLASSIFIER__PART, false, false,
-				false, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_StructuredClassifier_part_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_StructuredClassifier_part_feature", //$NON-NLS-1$
+				"_UI_StructuredClassifier_type"), //$NON-NLS-1$
+			UMLPackage.Literals.STRUCTURED_CLASSIFIER__PART, false, false,
+			false, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -137,18 +137,18 @@ public class StructuredClassifierItemProvider
 	 * @generated
 	 */
 	protected void addRolePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_StructuredClassifier_role_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_role_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STRUCTURED_CLASSIFIER__ROLE, false, false,
-				false, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_StructuredClassifier_role_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_StructuredClassifier_role_feature", //$NON-NLS-1$
+				"_UI_StructuredClassifier_type"), //$NON-NLS-1$
+			UMLPackage.Literals.STRUCTURED_CLASSIFIER__ROLE, false, false,
+			false, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -164,10 +164,10 @@ public class StructuredClassifierItemProvider
 			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-				.add(UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE);
-			childrenFeatures
-				.add(UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR);
+			childrenFeatures.add(
+				UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE);
+			childrenFeatures.add(
+				UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR);
 		}
 		return childrenFeatures;
 	}
@@ -205,7 +205,8 @@ public class StructuredClassifierItemProvider
 	public String getText(Object object) {
 		String label = ((StructuredClassifier) object).getName();
 		return label == null || label.length() == 0
-			? getString("_UI_StructuredClassifier_type") : //$NON-NLS-1$
+			? getString("_UI_StructuredClassifier_type") //$NON-NLS-1$
+			:
 			getString("_UI_StructuredClassifier_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -266,8 +267,8 @@ public class StructuredClassifierItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 

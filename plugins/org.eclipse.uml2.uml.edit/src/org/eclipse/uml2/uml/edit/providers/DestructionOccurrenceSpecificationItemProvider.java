@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2015 CEA and others.
+ * Copyright (c) 2011, 2017 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
- *   Kenn Hussey (CEA) - 414970, 455868, 370089, 459723
+ *   Kenn Hussey (CEA) - 414970, 455868, 370089, 459723, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -65,10 +65,8 @@ public class DestructionOccurrenceSpecificationItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(
-			object,
-			getResourceLocator().getImage(
-				"full/obj16/DestructionOccurrenceSpecification")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator()
+			.getImage("full/obj16/DestructionOccurrenceSpecification")); //$NON-NLS-1$
 	}
 
 	/**
@@ -91,7 +89,8 @@ public class DestructionOccurrenceSpecificationItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_DestructionOccurrenceSpecification_type"), object).toString(); //$NON-NLS-1$
+				"_UI_DestructionOccurrenceSpecification_type"), //$NON-NLS-1$
+			object).toString();
 	}
 
 	/**

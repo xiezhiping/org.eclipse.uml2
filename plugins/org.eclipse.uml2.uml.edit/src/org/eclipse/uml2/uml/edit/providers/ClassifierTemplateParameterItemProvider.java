@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 351774, 414970, 370089
+ *   Kenn Hussey (CEA) - 351774, 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -43,7 +43,8 @@ public class ClassifierTemplateParameterItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ClassifierTemplateParameterItemProvider(AdapterFactory adapterFactory) {
+	public ClassifierTemplateParameterItemProvider(
+			AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -71,17 +72,18 @@ public class ClassifierTemplateParameterItemProvider
 	 * @generated
 	 */
 	protected void addAllowSubstitutablePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ClassifierTemplateParameter_allowSubstitutable_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ClassifierTemplateParameter_allowSubstitutable_feature", "_UI_ClassifierTemplateParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE,
-				true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString(
+				"_UI_ClassifierTemplateParameter_allowSubstitutable_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ClassifierTemplateParameter_allowSubstitutable_feature", //$NON-NLS-1$
+				"_UI_ClassifierTemplateParameter_type"), //$NON-NLS-1$
+			UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE,
+			true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+			null, null));
 	}
 
 	/**
@@ -91,16 +93,17 @@ public class ClassifierTemplateParameterItemProvider
 	 * @generated
 	 */
 	protected void addConstrainingClassifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ClassifierTemplateParameter_constrainingClassifier_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ClassifierTemplateParameter_constrainingClassifier_feature", "_UI_ClassifierTemplateParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER,
-				true, false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString(
+				"_UI_ClassifierTemplateParameter_constrainingClassifier_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ClassifierTemplateParameter_constrainingClassifier_feature", //$NON-NLS-1$
+				"_UI_ClassifierTemplateParameter_type"), //$NON-NLS-1$
+			UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER,
+			true, false, true, null, null, null));
 	}
 
 	/**
@@ -111,10 +114,8 @@ public class ClassifierTemplateParameterItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(
-			object,
-			getResourceLocator().getImage(
-				"full/obj16/ClassifierTemplateParameter")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator()
+			.getImage("full/obj16/ClassifierTemplateParameter")); //$NON-NLS-1$
 	}
 
 	/**
@@ -137,7 +138,9 @@ public class ClassifierTemplateParameterItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_ClassifierTemplateParameter_type"), ((ClassifierTemplateParameter) object).getParameteredElement()).toString(); //$NON-NLS-1$
+				"_UI_ClassifierTemplateParameter_type"), //$NON-NLS-1$
+			((ClassifierTemplateParameter) object).getParameteredElement())
+				.toString();
 	}
 
 	/**
@@ -180,8 +183,8 @@ public class ClassifierTemplateParameterItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 

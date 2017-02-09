@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089
+ *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -77,16 +77,16 @@ public class InteractionOperandItemProvider
 	 * @generated
 	 */
 	protected void addCoveredPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_InteractionFragment_covered_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_InteractionFragment_covered_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION_FRAGMENT__COVERED, true, false,
-				true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_InteractionFragment_covered_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_InteractionFragment_covered_feature", //$NON-NLS-1$
+				"_UI_InteractionFragment_type"), //$NON-NLS-1$
+			UMLPackage.Literals.INTERACTION_FRAGMENT__COVERED, true, false,
+			true, null, null, null));
 	}
 
 	/**
@@ -96,18 +96,18 @@ public class InteractionOperandItemProvider
 	 * @generated
 	 */
 	protected void addGeneralOrderingPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_InteractionFragment_generalOrdering_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_InteractionFragment_generalOrdering_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING,
-				true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_InteractionFragment_generalOrdering_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_InteractionFragment_generalOrdering_feature", //$NON-NLS-1$
+				"_UI_InteractionFragment_type"), //$NON-NLS-1$
+			UMLPackage.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING, true,
+			false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -117,18 +117,18 @@ public class InteractionOperandItemProvider
 	 * @generated
 	 */
 	protected void addEnclosingInteractionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_InteractionFragment_enclosingInteraction_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_InteractionFragment_enclosingInteraction_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION,
-				true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_InteractionFragment_enclosingInteraction_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_InteractionFragment_enclosingInteraction_feature", //$NON-NLS-1$
+				"_UI_InteractionFragment_type"), //$NON-NLS-1$
+			UMLPackage.Literals.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION,
+			true, false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -138,18 +138,18 @@ public class InteractionOperandItemProvider
 	 * @generated
 	 */
 	protected void addEnclosingOperandPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_InteractionFragment_enclosingOperand_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_InteractionFragment_enclosingOperand_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION_FRAGMENT__ENCLOSING_OPERAND,
-				true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_InteractionFragment_enclosingOperand_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_InteractionFragment_enclosingOperand_feature", //$NON-NLS-1$
+				"_UI_InteractionFragment_type"), //$NON-NLS-1$
+			UMLPackage.Literals.INTERACTION_FRAGMENT__ENCLOSING_OPERAND, true,
+			false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -159,18 +159,17 @@ public class InteractionOperandItemProvider
 	 * @generated
 	 */
 	protected void addGuardPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_InteractionOperand_guard_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_InteractionOperand_guard_feature", "_UI_InteractionOperand_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION_OPERAND__GUARD, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_InteractionOperand_guard_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_InteractionOperand_guard_feature", //$NON-NLS-1$
+				"_UI_InteractionOperand_type"), //$NON-NLS-1$
+			UMLPackage.Literals.INTERACTION_OPERAND__GUARD, true, false, true,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -180,18 +179,18 @@ public class InteractionOperandItemProvider
 	 * @generated
 	 */
 	protected void addFragmentPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_InteractionOperand_fragment_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_InteractionOperand_fragment_feature", "_UI_InteractionOperand_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_InteractionOperand_fragment_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_InteractionOperand_fragment_feature", //$NON-NLS-1$
+				"_UI_InteractionOperand_type"), //$NON-NLS-1$
+			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT, true, false,
+			true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -207,8 +206,8 @@ public class InteractionOperandItemProvider
 			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-				.add(UMLPackage.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING);
+			childrenFeatures.add(
+				UMLPackage.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING);
 			childrenFeatures
 				.add(UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT);
 			childrenFeatures
@@ -262,7 +261,8 @@ public class InteractionOperandItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_InteractionOperand_type"), object).toString(); //$NON-NLS-1$
+				"_UI_InteractionOperand_type"), //$NON-NLS-1$
+			object).toString();
 	}
 
 	/**
@@ -359,9 +359,9 @@ public class InteractionOperandItemProvider
 			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
 			UMLFactory.eINSTANCE.createStateInvariant()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_OPERAND__GUARD,
-			UMLFactory.eINSTANCE.createInteractionConstraint()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.INTERACTION_OPERAND__GUARD,
+				UMLFactory.eINSTANCE.createInteractionConstraint()));
 	}
 
 	/**
@@ -371,8 +371,8 @@ public class InteractionOperandItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 

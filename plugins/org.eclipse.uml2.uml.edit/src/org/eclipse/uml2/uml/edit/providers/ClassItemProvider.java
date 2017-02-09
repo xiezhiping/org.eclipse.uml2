@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 414970, 370089, 459723
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 414970, 370089, 459723, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -88,18 +88,18 @@ public class ClassItemProvider
 	 * @generated
 	 */
 	protected void addOwnedBehaviorPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_BehavioredClassifier_ownedBehavior_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_ownedBehavior_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
-				true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_BehavioredClassifier_ownedBehavior_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_BehavioredClassifier_ownedBehavior_feature", //$NON-NLS-1$
+				"_UI_BehavioredClassifier_type"), //$NON-NLS-1$
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR, true,
+			false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -109,18 +109,15 @@ public class ClassItemProvider
 	 * @generated
 	 */
 	protected void addOwnedOperationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Class_ownedOperation_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Class_ownedOperation_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CLASS__OWNED_OPERATION, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Class_ownedOperation_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Class_ownedOperation_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.CLASS__OWNED_OPERATION, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -130,16 +127,16 @@ public class ClassItemProvider
 	 * @generated
 	 */
 	protected void addClassifierBehaviorPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_BehavioredClassifier_classifierBehavior_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_classifierBehavior_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR,
-				true, false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_BehavioredClassifier_classifierBehavior_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_BehavioredClassifier_classifierBehavior_feature", //$NON-NLS-1$
+				"_UI_BehavioredClassifier_type"), //$NON-NLS-1$
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR,
+			true, false, true, null, null, null));
 	}
 
 	/**
@@ -149,18 +146,18 @@ public class ClassItemProvider
 	 * @generated
 	 */
 	protected void addInterfaceRealizationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_BehavioredClassifier_interfaceRealization_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_BehavioredClassifier_interfaceRealization_feature", "_UI_BehavioredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION,
-				true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_BehavioredClassifier_interfaceRealization_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_BehavioredClassifier_interfaceRealization_feature", //$NON-NLS-1$
+				"_UI_BehavioredClassifier_type"), //$NON-NLS-1$
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION,
+			true, false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -170,18 +167,15 @@ public class ClassItemProvider
 	 * @generated
 	 */
 	protected void addSuperClassPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Class_superClass_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Class_superClass_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CLASS__SUPER_CLASS, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Class_superClass_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Class_superClass_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.CLASS__SUPER_CLASS, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -191,16 +185,14 @@ public class ClassItemProvider
 	 * @generated
 	 */
 	protected void addIsActivePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Class_isActive_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Class_isActive_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CLASS__IS_ACTIVE, true, false, false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Class_isActive_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Class_isActive_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.CLASS__IS_ACTIVE, true, false, false,
+			ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -210,18 +202,16 @@ public class ClassItemProvider
 	 * @generated
 	 */
 	protected void addNestedClassifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Class_nestedClassifier_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Class_nestedClassifier_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_Class_nestedClassifier_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Class_nestedClassifier_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, true, false, true,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -231,18 +221,15 @@ public class ClassItemProvider
 	 * @generated
 	 */
 	protected void addOwnedReceptionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Class_ownedReception_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Class_ownedReception_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CLASS__OWNED_RECEPTION, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Class_ownedReception_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Class_ownedReception_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.CLASS__OWNED_RECEPTION, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -252,16 +239,14 @@ public class ClassItemProvider
 	 * @generated
 	 */
 	protected void addExtensionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Class_extension_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Class_extension_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CLASS__EXTENSION, false, false, false,
-				null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Class_extension_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Class_extension_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.CLASS__EXTENSION, false, false, false, null,
+			null, null));
 	}
 
 	/**
@@ -277,8 +262,8 @@ public class ClassItemProvider
 			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-				.add(UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION);
+			childrenFeatures.add(
+				UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION);
 			childrenFeatures
 				.add(UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR);
 			childrenFeatures.add(UMLPackage.Literals.CLASS__OWNED_OPERATION);
@@ -333,7 +318,8 @@ public class ClassItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_Class_type"), object).toString(); //$NON-NLS-1$
+				"_UI_Class_type"), //$NON-NLS-1$
+			object).toString();
 	}
 
 	/**
@@ -429,121 +415,121 @@ public class ClassItemProvider
 			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
 			UMLFactory.eINSTANCE.createInteraction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__OWNED_OPERATION,
-			UMLFactory.eINSTANCE.createOperation()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__OWNED_OPERATION,
+				UMLFactory.eINSTANCE.createOperation()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createClass()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createClass()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createActivity()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createActivity()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createStereotype()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createStereotype()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createAssociation()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createAssociation()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createArtifact()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createArtifact()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createDeploymentSpecification()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createDeploymentSpecification()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createDataType()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createDataType()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createInterface()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createInterface()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createSignal()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createSignal()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createStateMachine()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createProtocolStateMachine()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createProtocolStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createEnumeration()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createEnumeration()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createPrimitiveType()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createPrimitiveType()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createExtension()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createExtension()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createCollaboration()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createCollaboration()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createUseCase()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createUseCase()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createOpaqueBehavior()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createOpaqueBehavior()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createFunctionBehavior()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createFunctionBehavior()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createCommunicationPath()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createCommunicationPath()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createNode()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createNode()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createDevice()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createDevice()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createExecutionEnvironment()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createExecutionEnvironment()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createInteraction()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createInteraction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createInformationItem()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createInformationItem()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createAssociationClass()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createAssociationClass()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createComponent()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createComponent()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createActor()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+				UMLFactory.eINSTANCE.createActor()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__OWNED_RECEPTION,
-			UMLFactory.eINSTANCE.createReception()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CLASS__OWNED_RECEPTION,
+				UMLFactory.eINSTANCE.createReception()));
 	}
 
 	/**
@@ -553,8 +539,8 @@ public class ClassItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 
@@ -585,11 +571,9 @@ public class ClassItemProvider
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection<?> collection) {
 		if (feature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR) {
-			return new SupersetRemoveCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR},
+			return new SupersetRemoveCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR},
 				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
@@ -603,14 +587,13 @@ public class ClassItemProvider
 	 */
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Object value, Collection<?> collection) {
+			EStructuralFeature feature, Object value,
+			Collection<?> collection) {
 		if (feature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR) {
-			return new SubsetSupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
 				null,
-				new EStructuralFeature[]{UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR},
+				new EStructuralFeature[]{
+					UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR},
 				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
@@ -627,20 +610,15 @@ public class ClassItemProvider
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
 		if (feature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR},
+			return new SubsetSupersetSetCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR},
 				null, value);
 		}
 		if (feature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				null,
-				new EStructuralFeature[]{UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR},
+			return new SubsetSupersetSetCommand(domain, owner, feature, null,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR},
 				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);

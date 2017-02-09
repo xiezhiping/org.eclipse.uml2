@@ -106,6 +106,18 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NJpgAAx4EeaNV8Kj5MGNBw" value="*"/>
       </ownedEnd>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_g2fwsO5qEearKK0ZImZXdA" name="A_redefinedClassifier_classifier" memberEnd="_VuNNoO5qEearKK0ZImZXdA _g2fwse5qEearKK0ZImZXdA">
+      <ownedEnd xmi:id="_g2fwse5qEearKK0ZImZXdA" name="classifier" type="_6UV2QGwJEdq7X4sGURiZYA" association="_g2fwsO5qEearKK0ZImZXdA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_g2fwsu5qEearKK0ZImZXdA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_g2fws-5qEearKK0ZImZXdA" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="__P4GwO5mEearKK0ZImZXdA" name="A_extendedStateMachine_stateMachine" memberEnd="_rW6YQO5mEearKK0ZImZXdA __P4t0O5mEearKK0ZImZXdA">
+      <ownedEnd xmi:id="__P4t0O5mEearKK0ZImZXdA" name="stateMachine" type="_cF0z0O5mEearKK0ZImZXdA" association="__P4GwO5mEearKK0ZImZXdA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__P4t0e5mEearKK0ZImZXdA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__P4t0u5mEearKK0ZImZXdA" value="*"/>
+      </ownedEnd>
+    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_6WKakLLQEeCsYvaJqFFivQ" name="Action" isAbstract="true">
       <ownedOperation xmi:id="_CroQsLLREeCsYvaJqFFivQ" name="context" visibility="protected">
         <ownedParameter xmi:id="_EGwx8LLREeCsYvaJqFFivQ" name="result" type="_6UV2QGwJEdq7X4sGURiZYA" direction="return">
@@ -364,6 +376,10 @@
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_6UV2QGwJEdq7X4sGURiZYA" name="Classifier" isAbstract="true">
+      <ownedAttribute xmi:id="_VuNNoO5qEearKK0ZImZXdA" name="redefinedClassifier" type="_6UV2QGwJEdq7X4sGURiZYA" association="_g2fwsO5qEearKK0ZImZXdA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VuNNou5qEearKK0ZImZXdA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VuNNo-5qEearKK0ZImZXdA" value="*"/>
+      </ownedAttribute>
       <ownedOperation xmi:id="_wKRjcLLSEeCsYvaJqFFivQ" name="general" visibility="protected">
         <ownedParameter xmi:id="_zGh5MLLSEeCsYvaJqFFivQ" name="result" type="_6UV2QGwJEdq7X4sGURiZYA" direction="return">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zGh5MbLSEeCsYvaJqFFivQ"/>
@@ -2481,6 +2497,12 @@
       <ownedAttribute xmi:id="_ECR5EIRREeOnobsWSpJONg" name="isSimple" isReadOnly="true" isDerived="true">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
         <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_Q8o2sIRREeOnobsWSpJONg" value="true"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_cF0z0O5mEearKK0ZImZXdA" name="StateMachine">
+      <ownedAttribute xmi:id="_rW6YQO5mEearKK0ZImZXdA" name="extendedStateMachine" type="_cF0z0O5mEearKK0ZImZXdA" subsettedProperty="_VuNNoO5qEearKK0ZImZXdA" association="__P4GwO5mEearKK0ZImZXdA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rW6YQu5mEearKK0ZImZXdA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rW6YQ-5mEearKK0ZImZXdA" value="*"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_A7vDAGv0Edq7X4sGURiZYA" name="Stereotype">

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 414970, 370089
+ *   Kenn Hussey (CEA) - 327039, 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -73,18 +73,15 @@ public class LinkActionItemProvider
 	 * @generated
 	 */
 	protected void addEndDataPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_LinkAction_endData_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_LinkAction_endData_feature", "_UI_LinkAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.LINK_ACTION__END_DATA, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_LinkAction_endData_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_LinkAction_endData_feature", "_UI_LinkAction_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.LINK_ACTION__END_DATA, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -94,18 +91,16 @@ public class LinkActionItemProvider
 	 * @generated
 	 */
 	protected void addInputValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_LinkAction_inputValue_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_LinkAction_inputValue_feature", "_UI_LinkAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.LINK_ACTION__INPUT_VALUE, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_LinkAction_inputValue_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_LinkAction_inputValue_feature", "_UI_LinkAction_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.LINK_ACTION__INPUT_VALUE, true, false, true,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -160,7 +155,8 @@ public class LinkActionItemProvider
 	public String getText(Object object) {
 		String label = ((LinkAction) object).getName();
 		return label == null || label.length() == 0
-			? getString("_UI_LinkAction_type") : //$NON-NLS-1$
+			? getString("_UI_LinkAction_type") //$NON-NLS-1$
+			:
 			getString("_UI_LinkAction_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -199,24 +195,24 @@ public class LinkActionItemProvider
 
 		collectNewEndDataChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LINK_ACTION__INPUT_VALUE,
-			UMLFactory.eINSTANCE.createInputPin()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.LINK_ACTION__INPUT_VALUE,
+				UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LINK_ACTION__INPUT_VALUE,
-			UMLFactory.eINSTANCE.createValuePin()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.LINK_ACTION__INPUT_VALUE,
+				UMLFactory.eINSTANCE.createValuePin()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LINK_ACTION__INPUT_VALUE,
-			UMLFactory.eINSTANCE.createActionInputPin()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.LINK_ACTION__INPUT_VALUE,
+				UMLFactory.eINSTANCE.createActionInputPin()));
 	}
 
 	protected void collectNewEndDataChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LINK_ACTION__END_DATA,
-			UMLFactory.eINSTANCE.createLinkEndData()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.LINK_ACTION__END_DATA,
+				UMLFactory.eINSTANCE.createLinkEndData()));
 	}
 
 	/**
@@ -226,8 +222,8 @@ public class LinkActionItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 

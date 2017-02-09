@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 414970, 370089
+ *   Kenn Hussey (CEA) - 327039, 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -74,17 +74,18 @@ public class RemoveStructuralFeatureValueActionItemProvider
 	 * @generated
 	 */
 	protected void addIsRemoveDuplicatesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_RemoveStructuralFeatureValueAction_isRemoveDuplicates_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_RemoveStructuralFeatureValueAction_isRemoveDuplicates_feature", "_UI_RemoveStructuralFeatureValueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REMOVE_DUPLICATES,
-				true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString(
+				"_UI_RemoveStructuralFeatureValueAction_isRemoveDuplicates_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_RemoveStructuralFeatureValueAction_isRemoveDuplicates_feature", //$NON-NLS-1$
+				"_UI_RemoveStructuralFeatureValueAction_type"), //$NON-NLS-1$
+			UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REMOVE_DUPLICATES,
+			true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+			null, null));
 	}
 
 	/**
@@ -94,18 +95,19 @@ public class RemoveStructuralFeatureValueActionItemProvider
 	 * @generated
 	 */
 	protected void addRemoveAtPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_RemoveStructuralFeatureValueAction_removeAt_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_RemoveStructuralFeatureValueAction_removeAt_feature", "_UI_RemoveStructuralFeatureValueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT,
-				true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString(
+				"_UI_RemoveStructuralFeatureValueAction_removeAt_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_RemoveStructuralFeatureValueAction_removeAt_feature", //$NON-NLS-1$
+				"_UI_RemoveStructuralFeatureValueAction_type"), //$NON-NLS-1$
+			UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT,
+			true, false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -121,8 +123,8 @@ public class RemoveStructuralFeatureValueActionItemProvider
 			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-				.add(UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT);
+			childrenFeatures.add(
+				UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT);
 		}
 		return childrenFeatures;
 	}
@@ -148,10 +150,8 @@ public class RemoveStructuralFeatureValueActionItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(
-			object,
-			getResourceLocator().getImage(
-				"full/obj16/RemoveStructuralFeatureValueAction")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator()
+			.getImage("full/obj16/RemoveStructuralFeatureValueAction")); //$NON-NLS-1$
 	}
 
 	/**
@@ -174,7 +174,8 @@ public class RemoveStructuralFeatureValueActionItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_RemoveStructuralFeatureValueAction_type"), object).toString(); //$NON-NLS-1$
+				"_UI_RemoveStructuralFeatureValueAction_type"), //$NON-NLS-1$
+			object).toString();
 	}
 
 	/**
@@ -214,20 +215,17 @@ public class RemoveStructuralFeatureValueActionItemProvider
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors
-			.add(createChildParameter(
-				UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT,
-				UMLFactory.eINSTANCE.createInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT,
+			UMLFactory.eINSTANCE.createInputPin()));
 
-		newChildDescriptors
-			.add(createChildParameter(
-				UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT,
-				UMLFactory.eINSTANCE.createActionInputPin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 
-		newChildDescriptors
-			.add(createChildParameter(
-				UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT,
-				UMLFactory.eINSTANCE.createValuePin()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT,
+			UMLFactory.eINSTANCE.createValuePin()));
 	}
 
 	/**
@@ -237,8 +235,8 @@ public class RemoveStructuralFeatureValueActionItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 

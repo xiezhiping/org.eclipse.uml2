@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089
+ *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -80,16 +80,16 @@ public class InteractionItemProvider
 	 * @generated
 	 */
 	protected void addCoveredPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_InteractionFragment_covered_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_InteractionFragment_covered_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION_FRAGMENT__COVERED, true, false,
-				true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_InteractionFragment_covered_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_InteractionFragment_covered_feature", //$NON-NLS-1$
+				"_UI_InteractionFragment_type"), //$NON-NLS-1$
+			UMLPackage.Literals.INTERACTION_FRAGMENT__COVERED, true, false,
+			true, null, null, null));
 	}
 
 	/**
@@ -99,18 +99,18 @@ public class InteractionItemProvider
 	 * @generated
 	 */
 	protected void addGeneralOrderingPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_InteractionFragment_generalOrdering_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_InteractionFragment_generalOrdering_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING,
-				true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_InteractionFragment_generalOrdering_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_InteractionFragment_generalOrdering_feature", //$NON-NLS-1$
+				"_UI_InteractionFragment_type"), //$NON-NLS-1$
+			UMLPackage.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING, true,
+			false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -120,18 +120,18 @@ public class InteractionItemProvider
 	 * @generated
 	 */
 	protected void addEnclosingInteractionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_InteractionFragment_enclosingInteraction_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_InteractionFragment_enclosingInteraction_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION,
-				true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_InteractionFragment_enclosingInteraction_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_InteractionFragment_enclosingInteraction_feature", //$NON-NLS-1$
+				"_UI_InteractionFragment_type"), //$NON-NLS-1$
+			UMLPackage.Literals.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION,
+			true, false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -141,18 +141,18 @@ public class InteractionItemProvider
 	 * @generated
 	 */
 	protected void addEnclosingOperandPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_InteractionFragment_enclosingOperand_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_InteractionFragment_enclosingOperand_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION_FRAGMENT__ENCLOSING_OPERAND,
-				true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_InteractionFragment_enclosingOperand_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_InteractionFragment_enclosingOperand_feature", //$NON-NLS-1$
+				"_UI_InteractionFragment_type"), //$NON-NLS-1$
+			UMLPackage.Literals.INTERACTION_FRAGMENT__ENCLOSING_OPERAND, true,
+			false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -162,18 +162,15 @@ public class InteractionItemProvider
 	 * @generated
 	 */
 	protected void addLifelinePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Interaction_lifeline_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Interaction_lifeline_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION__LIFELINE, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Interaction_lifeline_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Interaction_lifeline_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.INTERACTION__LIFELINE, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -183,18 +180,15 @@ public class InteractionItemProvider
 	 * @generated
 	 */
 	protected void addFragmentPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Interaction_fragment_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Interaction_fragment_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION__FRAGMENT, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Interaction_fragment_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Interaction_fragment_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.INTERACTION__FRAGMENT, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -204,18 +198,15 @@ public class InteractionItemProvider
 	 * @generated
 	 */
 	protected void addActionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Interaction_action_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Interaction_action_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION__ACTION, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Interaction_action_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Interaction_action_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.INTERACTION__ACTION, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -225,18 +216,16 @@ public class InteractionItemProvider
 	 * @generated
 	 */
 	protected void addFormalGatePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Interaction_formalGate_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Interaction_formalGate_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION__FORMAL_GATE, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_Interaction_formalGate_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Interaction_formalGate_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.INTERACTION__FORMAL_GATE, true, false, true,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -246,18 +235,15 @@ public class InteractionItemProvider
 	 * @generated
 	 */
 	protected void addMessagePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Interaction_message_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Interaction_message_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION__MESSAGE, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Interaction_message_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Interaction_message_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.INTERACTION__MESSAGE, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -273,8 +259,8 @@ public class InteractionItemProvider
 			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-				.add(UMLPackage.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING);
+			childrenFeatures.add(
+				UMLPackage.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING);
 			childrenFeatures.add(UMLPackage.Literals.INTERACTION__LIFELINE);
 			childrenFeatures.add(UMLPackage.Literals.INTERACTION__FRAGMENT);
 			childrenFeatures.add(UMLPackage.Literals.INTERACTION__ACTION);
@@ -329,7 +315,8 @@ public class InteractionItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_Interaction_type"), object).toString(); //$NON-NLS-1$
+				"_UI_Interaction_type"), //$NON-NLS-1$
+			object).toString();
 	}
 
 	/**
@@ -373,241 +360,241 @@ public class InteractionItemProvider
 			UMLPackage.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING,
 			UMLFactory.eINSTANCE.createGeneralOrdering()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__LIFELINE,
-			UMLFactory.eINSTANCE.createLifeline()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__LIFELINE,
+				UMLFactory.eINSTANCE.createLifeline()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createInteraction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__FRAGMENT,
+				UMLFactory.eINSTANCE.createInteraction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createInteractionUse()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__FRAGMENT,
+				UMLFactory.eINSTANCE.createInteractionUse()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createPartDecomposition()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__FRAGMENT,
+				UMLFactory.eINSTANCE.createPartDecomposition()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createInteractionOperand()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__FRAGMENT,
+				UMLFactory.eINSTANCE.createInteractionOperand()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createOccurrenceSpecification()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__FRAGMENT,
+				UMLFactory.eINSTANCE.createOccurrenceSpecification()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createActionExecutionSpecification()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__FRAGMENT,
+				UMLFactory.eINSTANCE.createActionExecutionSpecification()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createBehaviorExecutionSpecification()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__FRAGMENT,
+				UMLFactory.eINSTANCE.createBehaviorExecutionSpecification()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createCombinedFragment()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__FRAGMENT,
+				UMLFactory.eINSTANCE.createCombinedFragment()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createConsiderIgnoreFragment()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__FRAGMENT,
+				UMLFactory.eINSTANCE.createConsiderIgnoreFragment()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createContinuation()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__FRAGMENT,
+				UMLFactory.eINSTANCE.createContinuation()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createMessageOccurrenceSpecification()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__FRAGMENT,
+				UMLFactory.eINSTANCE.createMessageOccurrenceSpecification()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION__FRAGMENT,
 			UMLFactory.eINSTANCE.createDestructionOccurrenceSpecification()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createExecutionOccurrenceSpecification()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__FRAGMENT,
+				UMLFactory.eINSTANCE.createExecutionOccurrenceSpecification()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FRAGMENT,
-			UMLFactory.eINSTANCE.createStateInvariant()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__FRAGMENT,
+				UMLFactory.eINSTANCE.createStateInvariant()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createStructuredActivityNode()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createStructuredActivityNode()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createValueSpecificationAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createValueSpecificationAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createAcceptEventAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createAcceptEventAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createAcceptCallAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createAcceptCallAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createAddStructuralFeatureValueAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createAddStructuralFeatureValueAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createAddVariableValueAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createAddVariableValueAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createBroadcastSignalAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createBroadcastSignalAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createCallBehaviorAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createCallBehaviorAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createCallOperationAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createCallOperationAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createClearAssociationAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createClearAssociationAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createClearStructuralFeatureAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createClearStructuralFeatureAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createClearVariableAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createClearVariableAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createConditionalNode()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createConditionalNode()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createCreateLinkAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createCreateLinkAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createCreateLinkObjectAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createCreateLinkObjectAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createCreateObjectAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createCreateObjectAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createDestroyLinkAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createDestroyLinkAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createDestroyObjectAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createDestroyObjectAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createExpansionRegion()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createExpansionRegion()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createLoopNode()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createLoopNode()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createOpaqueAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createOpaqueAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createRaiseExceptionAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createRaiseExceptionAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createReadExtentAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createReadExtentAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createReadIsClassifiedObjectAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createReadIsClassifiedObjectAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createReadLinkAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createReadLinkAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createReadLinkObjectEndAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createReadLinkObjectEndAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createReadLinkObjectEndQualifierAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createReadLinkObjectEndQualifierAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createReadSelfAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createReadSelfAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createReadStructuralFeatureAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createReadStructuralFeatureAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createReadVariableAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createReadVariableAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createReclassifyObjectAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createReclassifyObjectAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createReduceAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createReduceAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION__ACTION,
 			UMLFactory.eINSTANCE.createRemoveStructuralFeatureValueAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createRemoveVariableValueAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createRemoveVariableValueAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createReplyAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createReplyAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createSendObjectAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createSendObjectAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createSendSignalAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createSendSignalAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createSequenceNode()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createSequenceNode()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createStartClassifierBehaviorAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createStartClassifierBehaviorAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createStartObjectBehaviorAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createStartObjectBehaviorAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createTestIdentityAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createTestIdentityAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION,
-			UMLFactory.eINSTANCE.createUnmarshallAction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__ACTION,
+				UMLFactory.eINSTANCE.createUnmarshallAction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__FORMAL_GATE,
-			UMLFactory.eINSTANCE.createGate()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.INTERACTION__FORMAL_GATE,
+				UMLFactory.eINSTANCE.createGate()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__MESSAGE,
-			UMLFactory.eINSTANCE.createMessage()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERACTION__MESSAGE,
+				UMLFactory.eINSTANCE.createMessage()));
 	}
 
 	/**
@@ -617,8 +604,8 @@ public class InteractionItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 

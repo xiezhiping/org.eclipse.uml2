@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 414970, 370089
+ *   Kenn Hussey (CEA) - 327039, 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -118,18 +118,15 @@ public class ElementItemProvider
 	 * @generated
 	 */
 	protected void addOwnedElementPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Element_ownedElement_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Element_ownedElement_feature", "_UI_Element_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT, false, false,
-				false, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Element_ownedElement_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Element_ownedElement_feature", "_UI_Element_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.ELEMENT__OWNED_ELEMENT, false, false, false,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -139,17 +136,15 @@ public class ElementItemProvider
 	 * @generated
 	 */
 	protected void addOwnerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Element_owner_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Element_owner_feature", "_UI_Element_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ELEMENT__OWNER, false, false, false, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Element_owner_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Element_owner_feature", "_UI_Element_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.ELEMENT__OWNER, false, false, false, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -159,18 +154,15 @@ public class ElementItemProvider
 	 * @generated
 	 */
 	protected void addOwnedCommentPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Element_ownedComment_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Element_ownedComment_feature", "_UI_Element_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ELEMENT__OWNED_COMMENT, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Element_ownedComment_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Element_ownedComment_feature", "_UI_Element_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.ELEMENT__OWNED_COMMENT, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -257,9 +249,9 @@ public class ElementItemProvider
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ELEMENT__OWNED_COMMENT,
-			UMLFactory.eINSTANCE.createComment()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.ELEMENT__OWNED_COMMENT,
+				UMLFactory.eINSTANCE.createComment()));
 	}
 
 	/**
@@ -331,7 +323,8 @@ public class ElementItemProvider
 
 	@Override
 	public Collection<?> getChildren(Object object) {
-		List<Object> children = new ArrayList<Object>(super.getChildren(object));
+		List<Object> children = new ArrayList<Object>(
+			super.getChildren(object));
 
 		for (EObject stereotypeApplication : ((Element) object)
 			.getStereotypeApplications()) {
@@ -340,8 +333,8 @@ public class ElementItemProvider
 				.adapt(stereotypeApplication, ITreeItemContentProvider.class);
 
 			if (treeItemContentProvider != null) {
-				children.addAll(treeItemContentProvider
-					.getChildren(stereotypeApplication));
+				children.addAll(
+					treeItemContentProvider.getChildren(stereotypeApplication));
 			}
 		}
 
@@ -407,7 +400,8 @@ public class ElementItemProvider
 	public IItemPropertyDescriptor getStereotypeApplicationPropertyDescriptor(
 			Object object, Object propertyId) {
 
-		for (IItemPropertyDescriptor itemPropertyDescriptor : getStereotypeApplicationPropertyDescriptors(object)) {
+		for (IItemPropertyDescriptor itemPropertyDescriptor : getStereotypeApplicationPropertyDescriptors(
+			object)) {
 
 			if (propertyId.equals(itemPropertyDescriptor.getId(object))) {
 				return itemPropertyDescriptor;
@@ -484,8 +478,8 @@ public class ElementItemProvider
 				text.append("<<"); //$NON-NLS-1$
 
 				while (appliedStereotypes.hasNext()) {
-					text.append(appliedStereotypes.next().getKeyword(
-						shouldTranslate()));
+					text.append(appliedStereotypes.next()
+						.getKeyword(shouldTranslate()));
 
 					if (appliedStereotypes.hasNext() || keywords.hasNext()) {
 						text.append(", "); //$NON-NLS-1$
@@ -555,7 +549,8 @@ public class ElementItemProvider
 		return text;
 	}
 
-	protected String getTypeText(ResourceLocator resourceLocator, EClass eClass) {
+	protected String getTypeText(ResourceLocator resourceLocator,
+			EClass eClass) {
 
 		if (resourceLocator != null) {
 			String typeKey = eClass.getName();
@@ -581,8 +576,8 @@ public class ElementItemProvider
 		}
 
 		try {
-			return getResourceLocator().getString(
-				"_UI_" + featureKey + "_feature"); //$NON-NLS-1$ //$NON-NLS-2$
+			return getResourceLocator()
+				.getString("_UI_" + featureKey + "_feature"); //$NON-NLS-1$ //$NON-NLS-2$
 		} catch (MissingResourceException mre) {
 			return featureKey;
 		}
@@ -613,7 +608,8 @@ public class ElementItemProvider
 		if (object instanceof Element) {
 			Element element = (Element) object;
 
-			for (Stereotype appliedStereotype : element.getAppliedStereotypes()) {
+			for (Stereotype appliedStereotype : element
+				.getAppliedStereotypes()) {
 				Resource eResource = appliedStereotype.eResource();
 
 				if (eResource != null) {
@@ -622,8 +618,8 @@ public class ElementItemProvider
 					if (resourceSet != null) {
 						URIConverter uriConverter = resourceSet
 							.getURIConverter();
-						URI normalizedURI = uriConverter.normalize(eResource
-							.getURI());
+						URI normalizedURI = uriConverter
+							.normalize(eResource.getURI());
 
 						for (Image icon : appliedStereotype.getIcons()) {
 							String location = icon.getLocation();
@@ -631,12 +627,12 @@ public class ElementItemProvider
 							if (!UML2Util.isEmpty(location)
 								&& location.indexOf("ovr16") != -1) { //$NON-NLS-1$
 
-								URI uri = URI.createURI(location).resolve(
-									normalizedURI);
+								URI uri = URI.createURI(location)
+									.resolve(normalizedURI);
 
 								try {
-									URL url = new URL(uriConverter.normalize(
-										uri).toString());
+									URL url = new URL(
+										uriConverter.normalize(uri).toString());
 									url.openStream().close();
 									images.add(url);
 								} catch (Exception e) {
@@ -650,8 +646,8 @@ public class ElementItemProvider
 		}
 
 		if (AdapterFactoryEditingDomain.isControlled(object)) {
-			images.add(getResourceLocator().getImage(
-				"full/ovr16/ControlledObject")); //$NON-NLS-1$
+			images.add(
+				getResourceLocator().getImage("full/ovr16/ControlledObject")); //$NON-NLS-1$
 		}
 
 		return composedImage;

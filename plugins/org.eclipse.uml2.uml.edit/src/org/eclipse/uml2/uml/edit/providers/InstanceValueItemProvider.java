@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
  *   Christian W. Damus (CEA) - 412912
- *   Kenn Hussey (CEA) - 418466, 414970, 370089
+ *   Kenn Hussey (CEA) - 418466, 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -70,16 +70,15 @@ public class InstanceValueItemProvider
 	 * @generated
 	 */
 	protected void addInstancePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_InstanceValue_instance_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_InstanceValue_instance_feature", "_UI_InstanceValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INSTANCE_VALUE__INSTANCE, true, false,
-				true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_InstanceValue_instance_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_InstanceValue_instance_feature", "_UI_InstanceValue_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.INSTANCE_VALUE__INSTANCE, true, false, true,
+			null, null, null));
 	}
 
 	/**

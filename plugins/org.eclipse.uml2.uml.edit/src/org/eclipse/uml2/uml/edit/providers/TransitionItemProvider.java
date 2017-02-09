@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089, 459723
+ *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089, 459723, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -91,16 +91,16 @@ public class TransitionItemProvider
 	 * @generated
 	 */
 	protected void addIsLeafPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_RedefinableElement_isLeaf_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_isLeaf_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.REDEFINABLE_ELEMENT__IS_LEAF, true, false,
-				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_RedefinableElement_isLeaf_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_RedefinableElement_isLeaf_feature", //$NON-NLS-1$
+				"_UI_RedefinableElement_type"), //$NON-NLS-1$
+			UMLPackage.Literals.REDEFINABLE_ELEMENT__IS_LEAF, true, false,
+			false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -110,18 +110,18 @@ public class TransitionItemProvider
 	 * @generated
 	 */
 	protected void addRedefinedElementPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_RedefinableElement_redefinedElement_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinedElement_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-				false, false, false, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_RedefinableElement_redefinedElement_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_RedefinableElement_redefinedElement_feature", //$NON-NLS-1$
+				"_UI_RedefinableElement_type"), //$NON-NLS-1$
+			UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT, false,
+			false, false, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -131,18 +131,18 @@ public class TransitionItemProvider
 	 * @generated
 	 */
 	protected void addRedefinitionContextPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_RedefinableElement_redefinitionContext_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinitionContext_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-				false, false, false, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_RedefinableElement_redefinitionContext_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_RedefinableElement_redefinitionContext_feature", //$NON-NLS-1$
+				"_UI_RedefinableElement_type"), //$NON-NLS-1$
+			UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+			false, false, false, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -152,16 +152,14 @@ public class TransitionItemProvider
 	 * @generated
 	 */
 	protected void addKindPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Transition_kind_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Transition_kind_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TRANSITION__KIND, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Transition_kind_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Transition_kind_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.TRANSITION__KIND, true, false, false,
+			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -171,18 +169,15 @@ public class TransitionItemProvider
 	 * @generated
 	 */
 	protected void addContainerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Transition_container_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Transition_container_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TRANSITION__CONTAINER, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Transition_container_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Transition_container_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.TRANSITION__CONTAINER, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -192,16 +187,14 @@ public class TransitionItemProvider
 	 * @generated
 	 */
 	protected void addTargetPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Transition_target_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Transition_target_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TRANSITION__TARGET, true, false, true,
-				null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Transition_target_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Transition_target_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.TRANSITION__TARGET, true, false, true, null,
+			null, null));
 	}
 
 	/**
@@ -211,16 +204,16 @@ public class TransitionItemProvider
 	 * @generated
 	 */
 	protected void addRedefinedTransitionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Transition_redefinedTransition_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Transition_redefinedTransition_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TRANSITION__REDEFINED_TRANSITION, true,
-				false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_Transition_redefinedTransition_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Transition_redefinedTransition_feature", //$NON-NLS-1$
+				"_UI_Transition_type"), //$NON-NLS-1$
+			UMLPackage.Literals.TRANSITION__REDEFINED_TRANSITION, true, false,
+			true, null, null, null));
 	}
 
 	/**
@@ -230,17 +223,15 @@ public class TransitionItemProvider
 	 * @generated
 	 */
 	protected void addGuardPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Transition_guard_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Transition_guard_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TRANSITION__GUARD, true, false, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Transition_guard_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Transition_guard_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.TRANSITION__GUARD, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -250,18 +241,15 @@ public class TransitionItemProvider
 	 * @generated
 	 */
 	protected void addEffectPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Transition_effect_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Transition_effect_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TRANSITION__EFFECT, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Transition_effect_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Transition_effect_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.TRANSITION__EFFECT, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -271,18 +259,15 @@ public class TransitionItemProvider
 	 * @generated
 	 */
 	protected void addTriggerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Transition_trigger_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Transition_trigger_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TRANSITION__TRIGGER, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Transition_trigger_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Transition_trigger_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.TRANSITION__TRIGGER, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -292,16 +277,14 @@ public class TransitionItemProvider
 	 * @generated
 	 */
 	protected void addSourcePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Transition_source_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Transition_source_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TRANSITION__SOURCE, true, false, true,
-				null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Transition_source_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Transition_source_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.TRANSITION__SOURCE, true, false, true, null,
+			null, null));
 	}
 
 	/**
@@ -344,11 +327,9 @@ public class TransitionItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(
-			object,
-			getResourceLocator()
-				.getImage(
-					"full/obj16/Transition_" + ((Transition) object).getKind().getName())); //$NON-NLS-1$
+		return overlayImage(object,
+			getResourceLocator().getImage("full/obj16/Transition_" //$NON-NLS-1$
+				+ ((Transition) object).getKind().getName()));
 	}
 
 	/**
@@ -371,7 +352,8 @@ public class TransitionItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_Transition_type"), object).toString(); //$NON-NLS-1$
+				"_UI_Transition_type"), //$NON-NLS-1$
+			object).toString();
 	}
 
 	/**
@@ -413,53 +395,53 @@ public class TransitionItemProvider
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__EFFECT,
-			UMLFactory.eINSTANCE.createActivity()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.TRANSITION__EFFECT,
+				UMLFactory.eINSTANCE.createActivity()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__EFFECT,
-			UMLFactory.eINSTANCE.createStateMachine()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.TRANSITION__EFFECT,
+				UMLFactory.eINSTANCE.createStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__EFFECT,
-			UMLFactory.eINSTANCE.createProtocolStateMachine()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.TRANSITION__EFFECT,
+				UMLFactory.eINSTANCE.createProtocolStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__EFFECT,
-			UMLFactory.eINSTANCE.createOpaqueBehavior()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.TRANSITION__EFFECT,
+				UMLFactory.eINSTANCE.createOpaqueBehavior()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__EFFECT,
-			UMLFactory.eINSTANCE.createFunctionBehavior()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.TRANSITION__EFFECT,
+				UMLFactory.eINSTANCE.createFunctionBehavior()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__EFFECT,
-			UMLFactory.eINSTANCE.createInteraction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.TRANSITION__EFFECT,
+				UMLFactory.eINSTANCE.createInteraction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__GUARD,
-			UMLFactory.eINSTANCE.createConstraint()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.TRANSITION__GUARD,
+				UMLFactory.eINSTANCE.createConstraint()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__GUARD,
-			UMLFactory.eINSTANCE.createInteractionConstraint()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.TRANSITION__GUARD,
+				UMLFactory.eINSTANCE.createInteractionConstraint()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__GUARD,
-			UMLFactory.eINSTANCE.createIntervalConstraint()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.TRANSITION__GUARD,
+				UMLFactory.eINSTANCE.createIntervalConstraint()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__GUARD,
-			UMLFactory.eINSTANCE.createDurationConstraint()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.TRANSITION__GUARD,
+				UMLFactory.eINSTANCE.createDurationConstraint()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__GUARD,
-			UMLFactory.eINSTANCE.createTimeConstraint()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.TRANSITION__GUARD,
+				UMLFactory.eINSTANCE.createTimeConstraint()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__TRIGGER,
-			UMLFactory.eINSTANCE.createTrigger()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.TRANSITION__TRIGGER,
+				UMLFactory.eINSTANCE.createTrigger()));
 	}
 
 	/**
@@ -469,8 +451,8 @@ public class TransitionItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 
@@ -495,10 +477,7 @@ public class TransitionItemProvider
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection<?> collection) {
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
-			return new SupersetRemoveCommand(
-				domain,
-				owner,
-				feature,
+			return new SupersetRemoveCommand(domain, owner, feature,
 				new EStructuralFeature[]{UMLPackage.Literals.TRANSITION__GUARD},
 				collection);
 		}
@@ -513,12 +492,10 @@ public class TransitionItemProvider
 	 */
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Object value, Collection<?> collection) {
+			EStructuralFeature feature, Object value,
+			Collection<?> collection) {
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
-			return new SubsetSupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
 				null,
 				new EStructuralFeature[]{UMLPackage.Literals.TRANSITION__GUARD},
 				value, collection);
@@ -537,19 +514,13 @@ public class TransitionItemProvider
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
 		if (feature == UMLPackage.Literals.TRANSITION__GUARD) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+			return new SubsetSupersetSetCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_RULE},
 				null, value);
 		}
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				null,
+			return new SubsetSupersetSetCommand(domain, owner, feature, null,
 				new EStructuralFeature[]{UMLPackage.Literals.TRANSITION__GUARD},
 				value);
 		}

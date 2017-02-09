@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089, 459723, 464702
+ *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089, 459723, 464702, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -98,16 +98,16 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addIsLeafPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_RedefinableElement_isLeaf_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_isLeaf_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.REDEFINABLE_ELEMENT__IS_LEAF, true, false,
-				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_RedefinableElement_isLeaf_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_RedefinableElement_isLeaf_feature", //$NON-NLS-1$
+				"_UI_RedefinableElement_type"), //$NON-NLS-1$
+			UMLPackage.Literals.REDEFINABLE_ELEMENT__IS_LEAF, true, false,
+			false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -117,18 +117,18 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addRedefinedElementPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_RedefinableElement_redefinedElement_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinedElement_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-				false, false, false, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_RedefinableElement_redefinedElement_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_RedefinableElement_redefinedElement_feature", //$NON-NLS-1$
+				"_UI_RedefinableElement_type"), //$NON-NLS-1$
+			UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT, false,
+			false, false, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -138,18 +138,18 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addRedefinitionContextPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_RedefinableElement_redefinitionContext_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinitionContext_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-				false, false, false, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_RedefinableElement_redefinitionContext_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_RedefinableElement_redefinitionContext_feature", //$NON-NLS-1$
+				"_UI_RedefinableElement_type"), //$NON-NLS-1$
+			UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+			false, false, false, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -159,17 +159,15 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addContainerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Vertex_container_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Vertex_container_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.VERTEX__CONTAINER, true, false, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Vertex_container_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Vertex_container_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.VERTEX__CONTAINER, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -179,18 +177,15 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addOutgoingPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Vertex_outgoing_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Vertex_outgoing_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.VERTEX__OUTGOING, false, false, false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Vertex_outgoing_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Vertex_outgoing_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.VERTEX__OUTGOING, false, false, false, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -200,18 +195,15 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addIncomingPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Vertex_incoming_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Vertex_incoming_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.VERTEX__INCOMING, false, false, false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Vertex_incoming_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Vertex_incoming_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.VERTEX__INCOMING, false, false, false, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -221,18 +213,16 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addIsCompositePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_State_isComposite_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_State_isComposite_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__IS_COMPOSITE, false, false, false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_State_isComposite_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_State_isComposite_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.STATE__IS_COMPOSITE, false, false, false,
+			ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -242,18 +232,16 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addIsOrthogonalPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_State_isOrthogonal_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_State_isOrthogonal_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__IS_ORTHOGONAL, false, false, false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_State_isOrthogonal_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_State_isOrthogonal_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.STATE__IS_ORTHOGONAL, false, false, false,
+			ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -263,18 +251,16 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addIsSimplePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_State_isSimple_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_State_isSimple_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__IS_SIMPLE, false, false, false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_State_isSimple_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_State_isSimple_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.STATE__IS_SIMPLE, false, false, false,
+			ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -284,18 +270,17 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addIsSubmachineStatePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_State_isSubmachineState_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_State_isSubmachineState_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__IS_SUBMACHINE_STATE, false, false,
-				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_State_isSubmachineState_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_State_isSubmachineState_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.STATE__IS_SUBMACHINE_STATE, false, false, false,
+			ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -305,16 +290,14 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addSubmachinePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_State_submachine_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_State_submachine_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__SUBMACHINE, true, false, true, null,
-				null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_State_submachine_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_State_submachine_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.STATE__SUBMACHINE, true, false, true, null,
+			null, null));
 	}
 
 	/**
@@ -324,17 +307,15 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addConnectionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_State_connection_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_State_connection_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__CONNECTION, true, false, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_State_connection_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_State_connection_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.STATE__CONNECTION, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -344,18 +325,16 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addConnectionPointPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_State_connectionPoint_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_State_connectionPoint_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__CONNECTION_POINT, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_State_connectionPoint_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_State_connectionPoint_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.STATE__CONNECTION_POINT, true, false, true,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -365,16 +344,14 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addRedefinedStatePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_State_redefinedState_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_State_redefinedState_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__REDEFINED_STATE, true, false, true,
-				null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_State_redefinedState_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_State_redefinedState_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.STATE__REDEFINED_STATE, true, false, true, null,
+			null, null));
 	}
 
 	/**
@@ -384,18 +361,15 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addStateInvariantPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_State_stateInvariant_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_State_stateInvariant_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__STATE_INVARIANT, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_State_stateInvariant_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_State_stateInvariant_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.STATE__STATE_INVARIANT, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -405,17 +379,15 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addEntryPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_State_entry_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_State_entry_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__ENTRY, true, false, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_State_entry_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_State_entry_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.STATE__ENTRY, true, false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -425,17 +397,15 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addExitPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_State_exit_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_State_exit_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__EXIT, true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_State_exit_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_State_exit_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.STATE__EXIT, true, false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -445,18 +415,15 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addDoActivityPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_State_doActivity_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_State_doActivity_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__DO_ACTIVITY, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_State_doActivity_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_State_doActivity_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.STATE__DO_ACTIVITY, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -466,18 +433,16 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addDeferrableTriggerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_State_deferrableTrigger_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_State_deferrableTrigger_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__DEFERRABLE_TRIGGER, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_State_deferrableTrigger_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_State_deferrableTrigger_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.STATE__DEFERRABLE_TRIGGER, true, false, true,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -487,17 +452,15 @@ public class StateItemProvider
 	 * @generated
 	 */
 	protected void addRegionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_State_region_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_State_region_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__REGION, true, false, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_State_region_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_State_region_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.STATE__REGION, true, false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -569,7 +532,8 @@ public class StateItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_State_type"), object).toString(); //$NON-NLS-1$
+				"_UI_State_type"), //$NON-NLS-1$
+			object).toString();
 	}
 
 	/**
@@ -589,6 +553,7 @@ public class StateItemProvider
 			case UMLPackage.STATE__IS_ORTHOGONAL :
 			case UMLPackage.STATE__IS_SIMPLE :
 			case UMLPackage.STATE__IS_SUBMACHINE_STATE :
+			case UMLPackage.STATE__STATE_INVARIANT :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
@@ -598,7 +563,6 @@ public class StateItemProvider
 			case UMLPackage.STATE__DO_ACTIVITY :
 			case UMLPackage.STATE__ENTRY :
 			case UMLPackage.STATE__EXIT :
-			case UMLPackage.STATE__STATE_INVARIANT :
 			case UMLPackage.STATE__REGION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
@@ -619,113 +583,113 @@ public class StateItemProvider
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__CONNECTION,
-			UMLFactory.eINSTANCE.createConnectionPointReference()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE__CONNECTION,
+				UMLFactory.eINSTANCE.createConnectionPointReference()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__CONNECTION_POINT,
-			UMLFactory.eINSTANCE.createPseudostate()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.STATE__CONNECTION_POINT,
+				UMLFactory.eINSTANCE.createPseudostate()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__DEFERRABLE_TRIGGER,
-			UMLFactory.eINSTANCE.createTrigger()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.STATE__DEFERRABLE_TRIGGER,
+				UMLFactory.eINSTANCE.createTrigger()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__DO_ACTIVITY,
-			UMLFactory.eINSTANCE.createActivity()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE__DO_ACTIVITY,
+				UMLFactory.eINSTANCE.createActivity()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__DO_ACTIVITY,
-			UMLFactory.eINSTANCE.createStateMachine()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE__DO_ACTIVITY,
+				UMLFactory.eINSTANCE.createStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__DO_ACTIVITY,
-			UMLFactory.eINSTANCE.createProtocolStateMachine()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE__DO_ACTIVITY,
+				UMLFactory.eINSTANCE.createProtocolStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__DO_ACTIVITY,
-			UMLFactory.eINSTANCE.createOpaqueBehavior()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE__DO_ACTIVITY,
+				UMLFactory.eINSTANCE.createOpaqueBehavior()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__DO_ACTIVITY,
-			UMLFactory.eINSTANCE.createFunctionBehavior()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE__DO_ACTIVITY,
+				UMLFactory.eINSTANCE.createFunctionBehavior()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__DO_ACTIVITY,
-			UMLFactory.eINSTANCE.createInteraction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE__DO_ACTIVITY,
+				UMLFactory.eINSTANCE.createInteraction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__ENTRY,
-			UMLFactory.eINSTANCE.createActivity()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE__ENTRY,
+				UMLFactory.eINSTANCE.createActivity()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__ENTRY,
-			UMLFactory.eINSTANCE.createStateMachine()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE__ENTRY,
+				UMLFactory.eINSTANCE.createStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__ENTRY,
-			UMLFactory.eINSTANCE.createProtocolStateMachine()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE__ENTRY,
+				UMLFactory.eINSTANCE.createProtocolStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__ENTRY,
-			UMLFactory.eINSTANCE.createOpaqueBehavior()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE__ENTRY,
+				UMLFactory.eINSTANCE.createOpaqueBehavior()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__ENTRY,
-			UMLFactory.eINSTANCE.createFunctionBehavior()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE__ENTRY,
+				UMLFactory.eINSTANCE.createFunctionBehavior()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__ENTRY,
-			UMLFactory.eINSTANCE.createInteraction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE__ENTRY,
+				UMLFactory.eINSTANCE.createInteraction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__EXIT,
-			UMLFactory.eINSTANCE.createActivity()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE__EXIT,
+				UMLFactory.eINSTANCE.createActivity()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__EXIT,
-			UMLFactory.eINSTANCE.createStateMachine()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE__EXIT,
+				UMLFactory.eINSTANCE.createStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__EXIT,
-			UMLFactory.eINSTANCE.createProtocolStateMachine()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE__EXIT,
+				UMLFactory.eINSTANCE.createProtocolStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__EXIT,
-			UMLFactory.eINSTANCE.createOpaqueBehavior()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE__EXIT,
+				UMLFactory.eINSTANCE.createOpaqueBehavior()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__EXIT,
-			UMLFactory.eINSTANCE.createFunctionBehavior()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE__EXIT,
+				UMLFactory.eINSTANCE.createFunctionBehavior()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__EXIT,
-			UMLFactory.eINSTANCE.createInteraction()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE__EXIT,
+				UMLFactory.eINSTANCE.createInteraction()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__STATE_INVARIANT,
-			UMLFactory.eINSTANCE.createConstraint()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.STATE__STATE_INVARIANT,
+				UMLFactory.eINSTANCE.createConstraint()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__STATE_INVARIANT,
-			UMLFactory.eINSTANCE.createInteractionConstraint()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.STATE__STATE_INVARIANT,
+				UMLFactory.eINSTANCE.createInteractionConstraint()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__STATE_INVARIANT,
-			UMLFactory.eINSTANCE.createIntervalConstraint()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.STATE__STATE_INVARIANT,
+				UMLFactory.eINSTANCE.createIntervalConstraint()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__STATE_INVARIANT,
-			UMLFactory.eINSTANCE.createDurationConstraint()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.STATE__STATE_INVARIANT,
+				UMLFactory.eINSTANCE.createDurationConstraint()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__STATE_INVARIANT,
-			UMLFactory.eINSTANCE.createTimeConstraint()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.STATE__STATE_INVARIANT,
+				UMLFactory.eINSTANCE.createTimeConstraint()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__REGION,
-			UMLFactory.eINSTANCE.createRegion()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE__REGION,
+				UMLFactory.eINSTANCE.createRegion()));
 	}
 
 	/**
@@ -735,8 +699,8 @@ public class StateItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 
@@ -764,11 +728,9 @@ public class StateItemProvider
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection<?> collection) {
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
-			return new SupersetRemoveCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.STATE__STATE_INVARIANT},
+			return new SupersetRemoveCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.STATE__STATE_INVARIANT},
 				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
@@ -782,14 +744,13 @@ public class StateItemProvider
 	 */
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Object value, Collection<?> collection) {
+			EStructuralFeature feature, Object value,
+			Collection<?> collection) {
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
-			return new SubsetSupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
 				null,
-				new EStructuralFeature[]{UMLPackage.Literals.STATE__STATE_INVARIANT},
+				new EStructuralFeature[]{
+					UMLPackage.Literals.STATE__STATE_INVARIANT},
 				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
@@ -806,20 +767,15 @@ public class StateItemProvider
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
 		if (feature == UMLPackage.Literals.STATE__STATE_INVARIANT) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+			return new SubsetSupersetSetCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_RULE},
 				null, value);
 		}
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				null,
-				new EStructuralFeature[]{UMLPackage.Literals.STATE__STATE_INVARIANT},
+			return new SubsetSupersetSetCommand(domain, owner, feature, null,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.STATE__STATE_INVARIANT},
 				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
- *   Kenn Hussey (CEA) - 418466, 451350
+ *   Kenn Hussey (CEA) - 418466, 451350, 511674
  *
  */
 package org.eclipse.uml2.uml;
@@ -70,8 +70,8 @@ public interface MessageEnd
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * This query returns a set including the MessageEnd (if exists) at the opposite end of the Message for this MessageEnd.
-	 * result = (message->asSet().messageEnd->asSet()->excluding(self))
 	 * message->notEmpty()
+	 * result = (message->asSet().messageEnd->asSet()->excluding(self))
 	 * <p>From package UML::Interactions.</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false"

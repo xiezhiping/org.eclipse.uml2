@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089
+ *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -73,17 +73,15 @@ public class DurationItemProvider
 	 * @generated
 	 */
 	protected void addExprPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Duration_expr_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Duration_expr_feature", "_UI_Duration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.DURATION__EXPR, true, false, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Duration_expr_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Duration_expr_feature", "_UI_Duration_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.DURATION__EXPR, true, false, true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -93,16 +91,14 @@ public class DurationItemProvider
 	 * @generated
 	 */
 	protected void addObservationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Duration_observation_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Duration_observation_feature", "_UI_Duration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.DURATION__OBSERVATION, true, false, true,
-				null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Duration_observation_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Duration_observation_feature", "_UI_Duration_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.DURATION__OBSERVATION, true, false, true, null,
+			null, null));
 	}
 
 	/**
@@ -211,65 +207,65 @@ public class DurationItemProvider
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.DURATION__EXPR,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.DURATION__EXPR,
+				UMLFactory.eINSTANCE.createOpaqueExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.DURATION__EXPR,
-			UMLFactory.eINSTANCE.createExpression()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.DURATION__EXPR,
+				UMLFactory.eINSTANCE.createExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.DURATION__EXPR,
-			UMLFactory.eINSTANCE.createStringExpression()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.DURATION__EXPR,
+				UMLFactory.eINSTANCE.createStringExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.DURATION__EXPR,
-			UMLFactory.eINSTANCE.createInstanceValue()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.DURATION__EXPR,
+				UMLFactory.eINSTANCE.createInstanceValue()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.DURATION__EXPR,
-			UMLFactory.eINSTANCE.createTimeExpression()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.DURATION__EXPR,
+				UMLFactory.eINSTANCE.createTimeExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.DURATION__EXPR,
-			UMLFactory.eINSTANCE.createDuration()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.DURATION__EXPR,
+				UMLFactory.eINSTANCE.createDuration()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.DURATION__EXPR,
-			UMLFactory.eINSTANCE.createInterval()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.DURATION__EXPR,
+				UMLFactory.eINSTANCE.createInterval()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.DURATION__EXPR,
-			UMLFactory.eINSTANCE.createDurationInterval()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.DURATION__EXPR,
+				UMLFactory.eINSTANCE.createDurationInterval()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.DURATION__EXPR,
-			UMLFactory.eINSTANCE.createLiteralBoolean()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.DURATION__EXPR,
+				UMLFactory.eINSTANCE.createLiteralBoolean()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.DURATION__EXPR,
-			UMLFactory.eINSTANCE.createLiteralInteger()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.DURATION__EXPR,
+				UMLFactory.eINSTANCE.createLiteralInteger()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.DURATION__EXPR,
-			UMLFactory.eINSTANCE.createLiteralNull()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.DURATION__EXPR,
+				UMLFactory.eINSTANCE.createLiteralNull()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.DURATION__EXPR,
-			UMLFactory.eINSTANCE.createLiteralReal()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.DURATION__EXPR,
+				UMLFactory.eINSTANCE.createLiteralReal()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.DURATION__EXPR,
-			UMLFactory.eINSTANCE.createLiteralString()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.DURATION__EXPR,
+				UMLFactory.eINSTANCE.createLiteralString()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.DURATION__EXPR,
-			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.DURATION__EXPR,
+				UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.DURATION__EXPR,
-			UMLFactory.eINSTANCE.createTimeInterval()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.DURATION__EXPR,
+				UMLFactory.eINSTANCE.createTimeInterval()));
 	}
 
 	/**
@@ -279,8 +275,8 @@ public class DurationItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 

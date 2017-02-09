@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 414970, 370089, 459723
+ *   Kenn Hussey (CEA) - 414970, 370089, 459723, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -84,16 +84,16 @@ public class ManifestationItemProvider
 	 * @generated
 	 */
 	protected void addUtilizedElementPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Manifestation_utilizedElement_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Manifestation_utilizedElement_feature", "_UI_Manifestation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MANIFESTATION__UTILIZED_ELEMENT, true,
-				false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_Manifestation_utilizedElement_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Manifestation_utilizedElement_feature", //$NON-NLS-1$
+				"_UI_Manifestation_type"), //$NON-NLS-1$
+			UMLPackage.Literals.MANIFESTATION__UTILIZED_ELEMENT, true, false,
+			true, null, null, null));
 	}
 
 	/**
@@ -181,11 +181,9 @@ public class ManifestationItemProvider
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection<?> collection) {
 		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
-			return new SupersetRemoveCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.MANIFESTATION__UTILIZED_ELEMENT},
+			return new SupersetRemoveCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.MANIFESTATION__UTILIZED_ELEMENT},
 				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
@@ -199,14 +197,13 @@ public class ManifestationItemProvider
 	 */
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Object value, Collection<?> collection) {
+			EStructuralFeature feature, Object value,
+			Collection<?> collection) {
 		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
-			return new SubsetSupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
 				null,
-				new EStructuralFeature[]{UMLPackage.Literals.MANIFESTATION__UTILIZED_ELEMENT},
+				new EStructuralFeature[]{
+					UMLPackage.Literals.MANIFESTATION__UTILIZED_ELEMENT},
 				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
@@ -223,20 +220,15 @@ public class ManifestationItemProvider
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
 		if (feature == UMLPackage.Literals.MANIFESTATION__UTILIZED_ELEMENT) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__SUPPLIER},
+			return new SubsetSupersetSetCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.DEPENDENCY__SUPPLIER},
 				null, value);
 		}
 		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				null,
-				new EStructuralFeature[]{UMLPackage.Literals.MANIFESTATION__UTILIZED_ELEMENT},
+			return new SubsetSupersetSetCommand(domain, owner, feature, null,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.MANIFESTATION__UTILIZED_ELEMENT},
 				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);

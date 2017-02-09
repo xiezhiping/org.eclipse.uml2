@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 414970, 370089, 459723
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 414970, 370089, 459723, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -84,18 +84,16 @@ public class InterfaceItemProvider
 	 * @generated
 	 */
 	protected void addOwnedAttributePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Interface_ownedAttribute_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Interface_ownedAttribute_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_Interface_ownedAttribute_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Interface_ownedAttribute_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE, true, false, true,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -105,18 +103,16 @@ public class InterfaceItemProvider
 	 * @generated
 	 */
 	protected void addNestedClassifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Interface_nestedClassifier_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Interface_nestedClassifier_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_Interface_nestedClassifier_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Interface_nestedClassifier_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER, true, false, true,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -126,16 +122,16 @@ public class InterfaceItemProvider
 	 * @generated
 	 */
 	protected void addRedefinedInterfacePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Interface_redefinedInterface_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Interface_redefinedInterface_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERFACE__REDEFINED_INTERFACE, true,
-				false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_Interface_redefinedInterface_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Interface_redefinedInterface_feature", //$NON-NLS-1$
+				"_UI_Interface_type"), //$NON-NLS-1$
+			UMLPackage.Literals.INTERFACE__REDEFINED_INTERFACE, true, false,
+			true, null, null, null));
 	}
 
 	/**
@@ -145,18 +141,16 @@ public class InterfaceItemProvider
 	 * @generated
 	 */
 	protected void addOwnedReceptionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Interface_ownedReception_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Interface_ownedReception_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERFACE__OWNED_RECEPTION, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_Interface_ownedReception_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Interface_ownedReception_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.INTERFACE__OWNED_RECEPTION, true, false, true,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -166,18 +160,15 @@ public class InterfaceItemProvider
 	 * @generated
 	 */
 	protected void addProtocolPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Interface_protocol_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Interface_protocol_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERFACE__PROTOCOL, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Interface_protocol_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Interface_protocol_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.INTERFACE__PROTOCOL, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -187,18 +178,16 @@ public class InterfaceItemProvider
 	 * @generated
 	 */
 	protected void addOwnedOperationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Interface_ownedOperation_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Interface_ownedOperation_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERFACE__OWNED_OPERATION, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_Interface_ownedOperation_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Interface_ownedOperation_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.INTERFACE__OWNED_OPERATION, true, false, true,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -272,7 +261,8 @@ public class InterfaceItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_Interface_type"), object).toString(); //$NON-NLS-1$
+				"_UI_Interface_type"), //$NON-NLS-1$
+			object).toString();
 	}
 
 	/**
@@ -419,29 +409,29 @@ public class InterfaceItemProvider
 			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
 			UMLFactory.eINSTANCE.createActor()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE,
-			UMLFactory.eINSTANCE.createProperty()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE,
+				UMLFactory.eINSTANCE.createProperty()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE,
-			UMLFactory.eINSTANCE.createPort()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE,
+				UMLFactory.eINSTANCE.createPort()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE,
-			UMLFactory.eINSTANCE.createExtensionEnd()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE,
+				UMLFactory.eINSTANCE.createExtensionEnd()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERFACE__OWNED_RECEPTION,
-			UMLFactory.eINSTANCE.createReception()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.INTERFACE__OWNED_RECEPTION,
+				UMLFactory.eINSTANCE.createReception()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERFACE__PROTOCOL,
-			UMLFactory.eINSTANCE.createProtocolStateMachine()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.INTERFACE__PROTOCOL,
+				UMLFactory.eINSTANCE.createProtocolStateMachine()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERFACE__OWNED_OPERATION,
-			UMLFactory.eINSTANCE.createOperation()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.INTERFACE__OWNED_OPERATION,
+				UMLFactory.eINSTANCE.createOperation()));
 	}
 
 	/**
@@ -451,8 +441,8 @@ public class InterfaceItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 
@@ -480,15 +470,13 @@ public class InterfaceItemProvider
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection<?> collection, int index) {
 		if (feature == UMLPackage.Literals.INTERFACE__REDEFINED_INTERFACE) {
-			return new SubsetAddCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER},
+			return new SubsetAddCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER},
 				collection, index);
 		}
-		return super
-			.createAddCommand(domain, owner, feature, collection, index);
+		return super.createAddCommand(domain, owner, feature, collection,
+			index);
 	}
 
 	/**
@@ -501,11 +489,9 @@ public class InterfaceItemProvider
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection<?> collection) {
 		if (feature == UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER) {
-			return new SupersetRemoveCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.INTERFACE__REDEFINED_INTERFACE},
+			return new SupersetRemoveCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.INTERFACE__REDEFINED_INTERFACE},
 				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
@@ -519,22 +505,19 @@ public class InterfaceItemProvider
 	 */
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Object value, Collection<?> collection) {
+			EStructuralFeature feature, Object value,
+			Collection<?> collection) {
 		if (feature == UMLPackage.Literals.INTERFACE__REDEFINED_INTERFACE) {
-			return new SubsetSupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER},
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER},
 				null, value, collection);
 		}
 		if (feature == UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER) {
-			return new SubsetSupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
 				null,
-				new EStructuralFeature[]{UMLPackage.Literals.INTERFACE__REDEFINED_INTERFACE},
+				new EStructuralFeature[]{
+					UMLPackage.Literals.INTERFACE__REDEFINED_INTERFACE},
 				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
@@ -551,20 +534,15 @@ public class InterfaceItemProvider
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
 		if (feature == UMLPackage.Literals.INTERFACE__REDEFINED_INTERFACE) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER},
+			return new SubsetSupersetSetCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER},
 				null, value);
 		}
 		if (feature == UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				null,
-				new EStructuralFeature[]{UMLPackage.Literals.INTERFACE__REDEFINED_INTERFACE},
+			return new SubsetSupersetSetCommand(domain, owner, feature, null,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.INTERFACE__REDEFINED_INTERFACE},
 				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);

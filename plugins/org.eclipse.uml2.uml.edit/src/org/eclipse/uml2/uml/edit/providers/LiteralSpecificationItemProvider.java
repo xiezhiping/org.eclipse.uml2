@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
- *   Kenn Hussey (CEA) - 414970, 370089
+ *   Kenn Hussey (CEA) - 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -77,7 +77,8 @@ public class LiteralSpecificationItemProvider
 	public String getText(Object object) {
 		String label = ((LiteralSpecification) object).getName();
 		return label == null || label.length() == 0
-			? getString("_UI_LiteralSpecification_type") : //$NON-NLS-1$
+			? getString("_UI_LiteralSpecification_type") //$NON-NLS-1$
+			:
 			getString("_UI_LiteralSpecification_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 

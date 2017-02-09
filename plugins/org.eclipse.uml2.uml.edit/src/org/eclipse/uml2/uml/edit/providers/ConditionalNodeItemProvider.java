@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 397139, 418466, 414970, 370089
+ *   Kenn Hussey (CEA) - 327039, 397139, 418466, 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -78,17 +78,16 @@ public class ConditionalNodeItemProvider
 	 * @generated
 	 */
 	protected void addIsDeterminatePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ConditionalNode_isDeterminate_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ConditionalNode_isDeterminate_feature", "_UI_ConditionalNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CONDITIONAL_NODE__IS_DETERMINATE, true,
-				false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ConditionalNode_isDeterminate_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ConditionalNode_isDeterminate_feature", //$NON-NLS-1$
+				"_UI_ConditionalNode_type"), //$NON-NLS-1$
+			UMLPackage.Literals.CONDITIONAL_NODE__IS_DETERMINATE, true, false,
+			false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -98,16 +97,16 @@ public class ConditionalNodeItemProvider
 	 * @generated
 	 */
 	protected void addIsAssuredPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ConditionalNode_isAssured_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ConditionalNode_isAssured_feature", "_UI_ConditionalNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CONDITIONAL_NODE__IS_ASSURED, true, false,
-				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ConditionalNode_isAssured_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ConditionalNode_isAssured_feature", //$NON-NLS-1$
+				"_UI_ConditionalNode_type"), //$NON-NLS-1$
+			UMLPackage.Literals.CONDITIONAL_NODE__IS_ASSURED, true, false,
+			false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -117,18 +116,17 @@ public class ConditionalNodeItemProvider
 	 * @generated
 	 */
 	protected void addClausePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ConditionalNode_clause_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ConditionalNode_clause_feature", "_UI_ConditionalNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CONDITIONAL_NODE__CLAUSE, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ConditionalNode_clause_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ConditionalNode_clause_feature", //$NON-NLS-1$
+				"_UI_ConditionalNode_type"), //$NON-NLS-1$
+			UMLPackage.Literals.CONDITIONAL_NODE__CLAUSE, true, false, true,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -138,18 +136,17 @@ public class ConditionalNodeItemProvider
 	 * @generated
 	 */
 	protected void addResultPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ConditionalNode_result_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ConditionalNode_result_feature", "_UI_ConditionalNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CONDITIONAL_NODE__RESULT, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ConditionalNode_result_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_ConditionalNode_result_feature", //$NON-NLS-1$
+				"_UI_ConditionalNode_type"), //$NON-NLS-1$
+			UMLPackage.Literals.CONDITIONAL_NODE__RESULT, true, false, true,
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -167,8 +164,8 @@ public class ConditionalNodeItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 
-			childrenFeatures
-				.remove(UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_OUTPUT);
+			childrenFeatures.remove(
+				UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_OUTPUT);
 
 			childrenFeatures.add(UMLPackage.Literals.CONDITIONAL_NODE__CLAUSE);
 			childrenFeatures.add(UMLPackage.Literals.CONDITIONAL_NODE__RESULT);
@@ -222,7 +219,8 @@ public class ConditionalNodeItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_ConditionalNode_type"), object).toString(); //$NON-NLS-1$
+				"_UI_ConditionalNode_type"), //$NON-NLS-1$
+			object).toString();
 	}
 
 	/**
@@ -269,21 +267,21 @@ public class ConditionalNodeItemProvider
 
 			if (commandParameter instanceof CommandParameter) {
 
-				if (((CommandParameter) commandParameter).feature
-					.equals(UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_OUTPUT)) {
+				if (((CommandParameter) commandParameter).feature.equals(
+					UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_OUTPUT)) {
 
 					childDescriptorIterator.remove();
 				}
 			}
 		}
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CONDITIONAL_NODE__CLAUSE,
-			UMLFactory.eINSTANCE.createClause()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CONDITIONAL_NODE__CLAUSE,
+				UMLFactory.eINSTANCE.createClause()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CONDITIONAL_NODE__RESULT,
-			UMLFactory.eINSTANCE.createOutputPin()));
+		newChildDescriptors.add(
+			createChildParameter(UMLPackage.Literals.CONDITIONAL_NODE__RESULT,
+				UMLFactory.eINSTANCE.createOutputPin()));
 	}
 
 	/**
@@ -293,8 +291,8 @@ public class ConditionalNodeItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 

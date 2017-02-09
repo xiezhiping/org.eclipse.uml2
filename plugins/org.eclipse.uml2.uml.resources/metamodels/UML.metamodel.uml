@@ -6162,6 +6162,12 @@ it has the same number of owned parameters, and for each parameter the following
 - The corresponding types are covariant, contravariant or invariant.&#xD;
 - The multiplicities are compatible, depending on the parameter direction.</body>
         </ownedComment>
+        <ownedRule xmi:id="Operation-isConsistentWith-pre" name="pre" constrainedElement="Operation-isConsistentWith">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="Operation-isConsistentWith-pre-_specification">
+            <language>OCL</language>
+            <body>redefiningElement.isRedefinitionContextValid(self)</body>
+          </specification>
+        </ownedRule>
         <ownedRule xmi:id="Operation-isConsistentWith-spec" name="spec" constrainedElement="Operation-isConsistentWith">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="Operation-isConsistentWith-spec-_specification">
             <language>OCL</language>
@@ -6186,12 +6192,6 @@ let op : Operation = redefiningElement.oclAsType(Operation) in&#xD;
                       redefiningParam.direction = ParameterDirectionKind::return) implies&#xD;
                          redefiningParam.compatibleWith(redefinedParam))&#xD;
 		))</body>
-          </specification>
-        </ownedRule>
-        <ownedRule xmi:id="Operation-isConsistentWith-pre" name="pre" constrainedElement="Operation-isConsistentWith">
-          <specification xmi:type="uml:OpaqueExpression" xmi:id="Operation-isConsistentWith-pre-_specification">
-            <language>OCL</language>
-            <body>redefiningElement.isRedefinitionContextValid(self)</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:id="Operation-isConsistentWith-result" name="result" direction="return">
@@ -7084,16 +7084,16 @@ endif)</body>
         <ownedComment xmi:id="RedefinableElement-isConsistentWith-_ownedComment.0" annotatedElement="RedefinableElement-isConsistentWith">
           <body>The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.</body>
         </ownedComment>
-        <ownedRule xmi:id="RedefinableElement-isConsistentWith-spec" name="spec" constrainedElement="RedefinableElement-isConsistentWith">
-          <specification xmi:type="uml:OpaqueExpression" xmi:id="RedefinableElement-isConsistentWith-spec-_specification">
-            <language>OCL</language>
-            <body>result = (false)</body>
-          </specification>
-        </ownedRule>
         <ownedRule xmi:id="RedefinableElement-isConsistentWith-pre" name="pre" constrainedElement="RedefinableElement-isConsistentWith">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="RedefinableElement-isConsistentWith-pre-_specification">
             <language>OCL</language>
             <body>redefiningElement.isRedefinitionContextValid(self)</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="RedefinableElement-isConsistentWith-spec" name="spec" constrainedElement="RedefinableElement-isConsistentWith">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="RedefinableElement-isConsistentWith-spec-_specification">
+            <language>OCL</language>
+            <body>result = (false)</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:id="RedefinableElement-isConsistentWith-result" name="result" direction="return">
@@ -7170,16 +7170,16 @@ endif)</body>
         <ownedComment xmi:id="RedefinableTemplateSignature-isConsistentWith-_ownedComment.0" annotatedElement="RedefinableTemplateSignature-isConsistentWith">
           <body>The query isConsistentWith() specifies, for any two RedefinableTemplateSignatures in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining template signature is always consistent with a redefined template signature, as redefinition only adds new formal parameters.</body>
         </ownedComment>
-        <ownedRule xmi:id="RedefinableTemplateSignature-isConsistentWith-spec" name="spec" constrainedElement="RedefinableTemplateSignature-isConsistentWith">
-          <specification xmi:type="uml:OpaqueExpression" xmi:id="RedefinableTemplateSignature-isConsistentWith-spec-spec" name="spec">
-            <language>OCL</language>
-            <body>result = (redefiningElement.oclIsKindOf(RedefinableTemplateSignature))</body>
-          </specification>
-        </ownedRule>
         <ownedRule xmi:id="RedefinableTemplateSignature-isConsistentWith-pre" name="pre" constrainedElement="RedefinableTemplateSignature-isConsistentWith">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="RedefinableTemplateSignature-isConsistentWith-pre-_specification">
             <language>OCL</language>
             <body>redefiningElement.isRedefinitionContextValid(self)</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="RedefinableTemplateSignature-isConsistentWith-spec" name="spec" constrainedElement="RedefinableTemplateSignature-isConsistentWith">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="RedefinableTemplateSignature-isConsistentWith-spec-spec" name="spec">
+            <language>OCL</language>
+            <body>result = (redefiningElement.oclIsKindOf(RedefinableTemplateSignature))</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:id="RedefinableTemplateSignature-isConsistentWith-result" name="result" direction="return">
@@ -11635,16 +11635,16 @@ e.operand->asSequence()->first().type.oclAsType(Classifier).conformsTo(p.type.oc
         <ownedComment xmi:id="MessageEnd-oppositeEnd-_ownedComment.0" annotatedElement="MessageEnd-oppositeEnd">
           <body>This query returns a set including the MessageEnd (if exists) at the opposite end of the Message for this MessageEnd.</body>
         </ownedComment>
-        <ownedRule xmi:id="MessageEnd-oppositeEnd-spec" name="spec" constrainedElement="MessageEnd-oppositeEnd">
-          <specification xmi:type="uml:OpaqueExpression" xmi:id="MessageEnd-oppositeEnd-spec-_specification">
-            <language>OCL</language>
-            <body>result = (message->asSet().messageEnd->asSet()->excluding(self))</body>
-          </specification>
-        </ownedRule>
         <ownedRule xmi:id="MessageEnd-oppositeEnd-pre" name="pre" constrainedElement="MessageEnd-oppositeEnd">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="MessageEnd-oppositeEnd-pre-_specification">
             <language>OCL</language>
             <body>message->notEmpty()</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="MessageEnd-oppositeEnd-spec" name="spec" constrainedElement="MessageEnd-oppositeEnd">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="MessageEnd-oppositeEnd-spec-_specification">
+            <language>OCL</language>
+            <body>result = (message->asSet().messageEnd->asSet()->excluding(self))</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:id="MessageEnd-oppositeEnd-result" name="result" type="MessageEnd" direction="return">
@@ -14249,17 +14249,17 @@ endif)</body>
         <ownedComment xmi:id="Region-isConsistentWith-_ownedComment.0" annotatedElement="Region-isConsistentWith">
           <body>The query isConsistentWith() specifies that a redefining Region is consistent with a redefined Region provided that the redefining Region is an extension of the Redefined region, i.e., its Vertices and Transitions conform to one of the following: (1) they are equal to corresponding elements of the redefined Region or, (2) they consistently redefine a State or Transition of the redefined region, or (3) they add new States or Transitions.</body>
         </ownedComment>
+        <ownedRule xmi:id="Region-isConsistentWith-pre" name="pre" constrainedElement="Region-isConsistentWith">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="Region-isConsistentWith-pre-_specification">
+            <language>OCL</language>
+            <body>redefiningElement.isRedefinitionContextValid(self)</body>
+          </specification>
+        </ownedRule>
         <ownedRule xmi:id="Region-isConsistentWith-spec" name="spec" constrainedElement="Region-isConsistentWith">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="Region-isConsistentWith-spec-_specification">
             <language>OCL</language>
             <body>result = (-- the following is merely a default body; it is expected that the specific form of this constraint will be specified by profiles&#xD;
 true)</body>
-          </specification>
-        </ownedRule>
-        <ownedRule xmi:id="Region-isConsistentWith-pre" name="pre" constrainedElement="Region-isConsistentWith">
-          <specification xmi:type="uml:OpaqueExpression" xmi:id="Region-isConsistentWith-pre-_specification">
-            <language>OCL</language>
-            <body>redefiningElement.isRedefinitionContextValid(self)</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:id="Region-isConsistentWith-result" name="result" direction="return">
@@ -14490,17 +14490,17 @@ endif)</body>
         <ownedComment xmi:id="State-isConsistentWith-_ownedComment.0" annotatedElement="State-isConsistentWith">
           <body>The query isConsistentWith() specifies that a redefining State is consistent with a redefined State provided that the redefining State is an extension of the redefined State A simple State can be redefined (extended) to become a composite State (by adding one or more Regions) and a composite State can be redefined (extended) by adding Regions and by adding Vertices, States, and Transitions to inherited Regions. All States may add or replace entry, exit, and 'doActivity' Behaviors.</body>
         </ownedComment>
+        <ownedRule xmi:id="State-isConsistentWith-pre" name="pre" constrainedElement="State-isConsistentWith">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="State-isConsistentWith-pre-_specification">
+            <language>OCL</language>
+            <body>redefiningElement.isRedefinitionContextValid(self)</body>
+          </specification>
+        </ownedRule>
         <ownedRule xmi:id="State-isConsistentWith-spec" name="spec" constrainedElement="State-isConsistentWith">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="State-isConsistentWith-spec-_specification">
             <language>OCL</language>
             <body>result = (-- the following is merely a default body; it is expected that the specific form of this constraint will be specified by profiles&#xD;
 true)</body>
-          </specification>
-        </ownedRule>
-        <ownedRule xmi:id="State-isConsistentWith-pre" name="pre" constrainedElement="State-isConsistentWith">
-          <specification xmi:type="uml:OpaqueExpression" xmi:id="State-isConsistentWith-pre-_specification">
-            <language>OCL</language>
-            <body>redefiningElement.isRedefinitionContextValid(self)</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:id="State-isConsistentWith-result" name="result" direction="return">
@@ -14637,7 +14637,7 @@ endif)</body>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="StateMachine-connectionPoint-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="StateMachine-connectionPoint-_upperValue" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="StateMachine-extendedStateMachine" name="extendedStateMachine" type="StateMachine" redefinedProperty="Behavior-redefinedBehavior" association="A_extendedStateMachine_stateMachine">
+      <ownedAttribute xmi:id="StateMachine-extendedStateMachine" name="extendedStateMachine" type="StateMachine" redefinedProperty="Behavior-redefinedBehavior" subsettedProperty="Classifier-redefinedClassifier" association="A_extendedStateMachine_stateMachine">
         <ownedComment xmi:id="StateMachine-extendedStateMachine-_ownedComment.0" annotatedElement="StateMachine-extendedStateMachine">
           <body>The StateMachines of which this is an extension.</body>
         </ownedComment>
@@ -14929,17 +14929,17 @@ endif endif endif)</body>
         <ownedComment xmi:id="Transition-isConsistentWith-_ownedComment.0" annotatedElement="Transition-isConsistentWith">
           <body>The query isConsistentWith() specifies that a redefining Transition is consistent with a redefined Transition provided that the redefining Transition has the following relation to the redefined Transition: A redefining Transition redefines all properties of the corresponding redefined Transition except the source State and the Trigger.</body>
         </ownedComment>
+        <ownedRule xmi:id="Transition-isConsistentWith-pre" name="pre" constrainedElement="Transition-isConsistentWith">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-isConsistentWith-pre-_specification">
+            <language>OCL</language>
+            <body>redefiningElement.isRedefinitionContextValid(self)</body>
+          </specification>
+        </ownedRule>
         <ownedRule xmi:id="Transition-isConsistentWith-spec" name="spec" constrainedElement="Transition-isConsistentWith">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-isConsistentWith-spec-_specification">
             <language>OCL</language>
             <body>result = (-- the following is merely a default body; it is expected that the specific form of this constraint will be specified by profiles&#xD;
 true)</body>
-          </specification>
-        </ownedRule>
-        <ownedRule xmi:id="Transition-isConsistentWith-pre" name="pre" constrainedElement="Transition-isConsistentWith">
-          <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-isConsistentWith-pre-_specification">
-            <language>OCL</language>
-            <body>redefiningElement.isRedefinitionContextValid(self)</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:id="Transition-isConsistentWith-result" name="result" direction="return">
@@ -17268,16 +17268,16 @@ endif</body>
         <ownedComment xmi:id="OpaqueExpression-isPositive-_ownedComment.0" annotatedElement="OpaqueExpression-isPositive">
           <body>The query isPositive() tells whether an integer expression has a positive value.</body>
         </ownedComment>
-        <ownedRule xmi:id="OpaqueExpression-isPositive-spec" name="spec" constrainedElement="OpaqueExpression-isPositive">
-          <specification xmi:type="uml:OpaqueExpression" xmi:id="OpaqueExpression-isPositive-spec-_specification">
-            <language>OCL</language>
-            <body>result = (false)</body>
-          </specification>
-        </ownedRule>
         <ownedRule xmi:id="OpaqueExpression-isPositive-pre" name="pre" constrainedElement="OpaqueExpression-isPositive">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="OpaqueExpression-isPositive-pre-_specification">
             <language>OCL</language>
             <body>self.isIntegral()</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="OpaqueExpression-isPositive-spec" name="spec" constrainedElement="OpaqueExpression-isPositive">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="OpaqueExpression-isPositive-spec-_specification">
+            <language>OCL</language>
+            <body>result = (false)</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:id="OpaqueExpression-isPositive-result" name="result" direction="return">
@@ -17817,247 +17817,247 @@ self.type.conformsTo(p.oclAsType(TypedElement).type)))</body>
   <Ecore:EOperation xmi:id="_GwdPoIPaEeOyLuI0bir0Bg" base_Operation="Property-unsetDefault" visibility="None"/>
   <Ecore:EOperation xmi:id="_6p4ogIRfEeOrzvVsV3Q4sA" base_Operation="NamedElement-clientDependency.1" operationName="getClientDependencies" visibility="None"/>
   <Ecore:EAttribute xmi:id="_nyeDgH2aEeSVK_cyXH-KWw" isUnsettable="true" base_Property="PackageableElement-visibility"/>
-  <standard:Metamodel xmi:id="_q8PP8AyBEeat1-DywZGp2A" base_Model="_0"/>
-  <standard:Metaclass xmi:id="_q8P3AAyBEeat1-DywZGp2A" base_Class="ValueSpecificationAction"/>
-  <standard:Metaclass xmi:id="_q8QeEAyBEeat1-DywZGp2A" base_Class="VariableAction"/>
-  <standard:Metaclass xmi:id="_q8QeEQyBEeat1-DywZGp2A" base_Class="WriteLinkAction"/>
-  <standard:Metaclass xmi:id="_q8RFIAyBEeat1-DywZGp2A" base_Class="WriteStructuralFeatureAction"/>
-  <standard:Metaclass xmi:id="_q8RFIQyBEeat1-DywZGp2A" base_Class="WriteVariableAction"/>
-  <standard:Metaclass xmi:id="_q8RsMAyBEeat1-DywZGp2A" base_Class="AcceptCallAction"/>
-  <standard:Metaclass xmi:id="_q8RsMQyBEeat1-DywZGp2A" base_Class="AcceptEventAction"/>
-  <standard:Metaclass xmi:id="_q8STQAyBEeat1-DywZGp2A" base_Class="Action"/>
-  <standard:Metaclass xmi:id="_q8S6UAyBEeat1-DywZGp2A" base_Class="ActionInputPin"/>
-  <standard:Metaclass xmi:id="_q8S6UQyBEeat1-DywZGp2A" base_Class="AddStructuralFeatureValueAction"/>
-  <standard:Metaclass xmi:id="_q8ThYAyBEeat1-DywZGp2A" base_Class="AddVariableValueAction"/>
-  <standard:Metaclass xmi:id="_q8ThYQyBEeat1-DywZGp2A" base_Class="BroadcastSignalAction"/>
-  <standard:Metaclass xmi:id="_q8UIcAyBEeat1-DywZGp2A" base_Class="CallAction"/>
-  <standard:Metaclass xmi:id="_q8UIcQyBEeat1-DywZGp2A" base_Class="CallBehaviorAction"/>
-  <standard:Metaclass xmi:id="_q8UvgAyBEeat1-DywZGp2A" base_Class="CallOperationAction"/>
-  <standard:Metaclass xmi:id="_q8UvgQyBEeat1-DywZGp2A" base_Class="Clause"/>
-  <standard:Metaclass xmi:id="_q8VWkAyBEeat1-DywZGp2A" base_Class="ClearAssociationAction"/>
-  <standard:Metaclass xmi:id="_q8V9oAyBEeat1-DywZGp2A" base_Class="ClearStructuralFeatureAction"/>
-  <standard:Metaclass xmi:id="_q8V9oQyBEeat1-DywZGp2A" base_Class="ClearVariableAction"/>
-  <standard:Metaclass xmi:id="_q8V9ogyBEeat1-DywZGp2A" base_Class="ConditionalNode"/>
-  <standard:Metaclass xmi:id="_q8WksAyBEeat1-DywZGp2A" base_Class="CreateLinkAction"/>
-  <standard:Metaclass xmi:id="_q8XLwAyBEeat1-DywZGp2A" base_Class="CreateLinkObjectAction"/>
-  <standard:Metaclass xmi:id="_q8XLwQyBEeat1-DywZGp2A" base_Class="CreateObjectAction"/>
-  <standard:Metaclass xmi:id="_q8Xy0AyBEeat1-DywZGp2A" base_Class="DestroyLinkAction"/>
-  <standard:Metaclass xmi:id="_q8Xy0QyBEeat1-DywZGp2A" base_Class="DestroyObjectAction"/>
-  <standard:Metaclass xmi:id="_q8YZ4AyBEeat1-DywZGp2A" base_Class="ExpansionNode"/>
-  <standard:Metaclass xmi:id="_q8YZ4QyBEeat1-DywZGp2A" base_Class="ExpansionRegion"/>
-  <standard:Metaclass xmi:id="_q8ZA8AyBEeat1-DywZGp2A" base_Class="InputPin"/>
-  <standard:Metaclass xmi:id="_q8ZA8QyBEeat1-DywZGp2A" base_Class="InvocationAction"/>
-  <standard:Metaclass xmi:id="_q8ZoAAyBEeat1-DywZGp2A" base_Class="LinkAction"/>
-  <standard:Metaclass xmi:id="_q8ZoAQyBEeat1-DywZGp2A" base_Class="LinkEndCreationData"/>
-  <standard:Metaclass xmi:id="_q8aPEAyBEeat1-DywZGp2A" base_Class="LinkEndData"/>
-  <standard:Metaclass xmi:id="_q8a2IAyBEeat1-DywZGp2A" base_Class="LinkEndDestructionData"/>
-  <standard:Metaclass xmi:id="_q8a2IQyBEeat1-DywZGp2A" base_Class="LoopNode"/>
-  <standard:Metaclass xmi:id="_q8bdMAyBEeat1-DywZGp2A" base_Class="OpaqueAction"/>
-  <standard:Metaclass xmi:id="_q8cEQAyBEeat1-DywZGp2A" base_Class="OutputPin"/>
-  <standard:Metaclass xmi:id="_q8cEQQyBEeat1-DywZGp2A" base_Class="Pin"/>
-  <standard:Metaclass xmi:id="_q8cEQgyBEeat1-DywZGp2A" base_Class="QualifierValue"/>
-  <standard:Metaclass xmi:id="_q8crUAyBEeat1-DywZGp2A" base_Class="RaiseExceptionAction"/>
-  <standard:Metaclass xmi:id="_q8crUQyBEeat1-DywZGp2A" base_Class="ReadExtentAction"/>
-  <standard:Metaclass xmi:id="_q8dSYAyBEeat1-DywZGp2A" base_Class="ReadIsClassifiedObjectAction"/>
-  <standard:Metaclass xmi:id="_q8dSYQyBEeat1-DywZGp2A" base_Class="ReadLinkAction"/>
-  <standard:Metaclass xmi:id="_q8d5cAyBEeat1-DywZGp2A" base_Class="ReadLinkObjectEndAction"/>
-  <standard:Metaclass xmi:id="_q8eggAyBEeat1-DywZGp2A" base_Class="ReadLinkObjectEndQualifierAction"/>
-  <standard:Metaclass xmi:id="_q8eggQyBEeat1-DywZGp2A" base_Class="ReadSelfAction"/>
-  <standard:Metaclass xmi:id="_q8fHkAyBEeat1-DywZGp2A" base_Class="ReadStructuralFeatureAction"/>
-  <standard:Metaclass xmi:id="_q8fHkQyBEeat1-DywZGp2A" base_Class="ReadVariableAction"/>
-  <standard:Metaclass xmi:id="_q8fuoAyBEeat1-DywZGp2A" base_Class="ReclassifyObjectAction"/>
-  <standard:Metaclass xmi:id="_q8gVsAyBEeat1-DywZGp2A" base_Class="ReduceAction"/>
-  <standard:Metaclass xmi:id="_q8gVsQyBEeat1-DywZGp2A" base_Class="RemoveStructuralFeatureValueAction"/>
-  <standard:Metaclass xmi:id="_q8g8wAyBEeat1-DywZGp2A" base_Class="RemoveVariableValueAction"/>
-  <standard:Metaclass xmi:id="_q8g8wQyBEeat1-DywZGp2A" base_Class="ReplyAction"/>
-  <standard:Metaclass xmi:id="_q8hj0AyBEeat1-DywZGp2A" base_Class="SendObjectAction"/>
-  <standard:Metaclass xmi:id="_q8hj0QyBEeat1-DywZGp2A" base_Class="SendSignalAction"/>
-  <standard:Metaclass xmi:id="_q8iK4AyBEeat1-DywZGp2A" base_Class="SequenceNode"/>
-  <standard:Metaclass xmi:id="_q8iK4QyBEeat1-DywZGp2A" base_Class="StartClassifierBehaviorAction"/>
-  <standard:Metaclass xmi:id="_q8ix8AyBEeat1-DywZGp2A" base_Class="StartObjectBehaviorAction"/>
-  <standard:Metaclass xmi:id="_q8jZAAyBEeat1-DywZGp2A" base_Class="StructuralFeatureAction"/>
-  <standard:Metaclass xmi:id="_q8jZAQyBEeat1-DywZGp2A" base_Class="StructuredActivityNode"/>
-  <standard:Metaclass xmi:id="_q8kAEAyBEeat1-DywZGp2A" base_Class="TestIdentityAction"/>
-  <standard:Metaclass xmi:id="_q8knIAyBEeat1-DywZGp2A" base_Class="UnmarshallAction"/>
-  <standard:Metaclass xmi:id="_q8lOMAyBEeat1-DywZGp2A" base_Class="ValuePin"/>
-  <standard:Metaclass xmi:id="_q8pfoAyBEeat1-DywZGp2A" base_Class="Activity"/>
-  <standard:Metaclass xmi:id="_q8qGsAyBEeat1-DywZGp2A" base_Class="ActivityEdge"/>
-  <standard:Metaclass xmi:id="_q8rU0AyBEeat1-DywZGp2A" base_Class="ActivityFinalNode"/>
-  <standard:Metaclass xmi:id="_q8rU0QyBEeat1-DywZGp2A" base_Class="ActivityGroup"/>
-  <standard:Metaclass xmi:id="_q8r74AyBEeat1-DywZGp2A" base_Class="ActivityNode"/>
-  <standard:Metaclass xmi:id="_q8tKAAyBEeat1-DywZGp2A" base_Class="ActivityParameterNode"/>
-  <standard:Metaclass xmi:id="_q8txEAyBEeat1-DywZGp2A" base_Class="ActivityPartition"/>
-  <standard:Metaclass xmi:id="_q8uYIAyBEeat1-DywZGp2A" base_Class="CentralBufferNode"/>
-  <standard:Metaclass xmi:id="_q8uYIQyBEeat1-DywZGp2A" base_Class="ControlFlow"/>
-  <standard:Metaclass xmi:id="_q8u_MAyBEeat1-DywZGp2A" base_Class="ControlNode"/>
-  <standard:Metaclass xmi:id="_q8u_MQyBEeat1-DywZGp2A" base_Class="DataStoreNode"/>
-  <standard:Metaclass xmi:id="_q8vmQAyBEeat1-DywZGp2A" base_Class="DecisionNode"/>
-  <standard:Metaclass xmi:id="_q8wNUAyBEeat1-DywZGp2A" base_Class="ExceptionHandler"/>
-  <standard:Metaclass xmi:id="_q8w0YAyBEeat1-DywZGp2A" base_Class="ExecutableNode"/>
-  <standard:Metaclass xmi:id="_q8w0YQyBEeat1-DywZGp2A" base_Class="FinalNode"/>
-  <standard:Metaclass xmi:id="_q8xbcAyBEeat1-DywZGp2A" base_Class="FlowFinalNode"/>
-  <standard:Metaclass xmi:id="_q8xbcQyBEeat1-DywZGp2A" base_Class="ForkNode"/>
-  <standard:Metaclass xmi:id="_q8yCgAyBEeat1-DywZGp2A" base_Class="InitialNode"/>
-  <standard:Metaclass xmi:id="_q8yCgQyBEeat1-DywZGp2A" base_Class="InterruptibleActivityRegion"/>
-  <standard:Metaclass xmi:id="_q8ypkAyBEeat1-DywZGp2A" base_Class="JoinNode"/>
-  <standard:Metaclass xmi:id="_q8zQoAyBEeat1-DywZGp2A" base_Class="MergeNode"/>
-  <standard:Metaclass xmi:id="_q8zQoQyBEeat1-DywZGp2A" base_Class="ObjectFlow"/>
-  <standard:Metaclass xmi:id="_q80ewAyBEeat1-DywZGp2A" base_Class="ObjectNode"/>
-  <standard:Metaclass xmi:id="_q81F0AyBEeat1-DywZGp2A" base_Class="Variable"/>
-  <standard:Metaclass xmi:id="_q827AAyBEeat1-DywZGp2A" base_Class="Substitution"/>
-  <standard:Metaclass xmi:id="_q83iEAyBEeat1-DywZGp2A" base_Class="BehavioralFeature"/>
-  <standard:Metaclass xmi:id="_q85XQAyBEeat1-DywZGp2A" base_Class="Classifier"/>
-  <standard:Metaclass xmi:id="_q9DIQAyBEeat1-DywZGp2A" base_Class="ClassifierTemplateParameter"/>
-  <standard:Metaclass xmi:id="_q9DvUAyBEeat1-DywZGp2A" base_Class="Feature"/>
-  <standard:Metaclass xmi:id="_q9EWYAyBEeat1-DywZGp2A" base_Class="Generalization"/>
-  <standard:Metaclass xmi:id="_q9E9cAyBEeat1-DywZGp2A" base_Class="GeneralizationSet"/>
-  <standard:Metaclass xmi:id="_q9FkgAyBEeat1-DywZGp2A" base_Class="InstanceSpecification"/>
-  <standard:Metaclass xmi:id="_q9GLkAyBEeat1-DywZGp2A" base_Class="InstanceValue"/>
-  <standard:Metaclass xmi:id="_q9GLkQyBEeat1-DywZGp2A" base_Class="Operation"/>
-  <standard:Metaclass xmi:id="_q9In0AyBEeat1-DywZGp2A" base_Class="OperationTemplateParameter"/>
-  <standard:Metaclass xmi:id="_q9JO4AyBEeat1-DywZGp2A" base_Class="Parameter"/>
-  <standard:Metaclass xmi:id="_q9LEEAyBEeat1-DywZGp2A" base_Class="ParameterSet"/>
-  <standard:Metaclass xmi:id="_q9LrIAyBEeat1-DywZGp2A" base_Class="Property"/>
-  <standard:Metaclass xmi:id="_q9PVgAyBEeat1-DywZGp2A" base_Class="RedefinableElement"/>
-  <standard:Metaclass xmi:id="_q9QjoAyBEeat1-DywZGp2A" base_Class="RedefinableTemplateSignature"/>
-  <standard:Metaclass xmi:id="_q9RKsAyBEeat1-DywZGp2A" base_Class="Slot"/>
-  <standard:Metaclass xmi:id="_q9RxwAyBEeat1-DywZGp2A" base_Class="StructuralFeature"/>
-  <standard:Metaclass xmi:id="_q9WDMAyBEeat1-DywZGp2A" base_Class="AnyReceiveEvent"/>
-  <standard:Metaclass xmi:id="_q9WDMQyBEeat1-DywZGp2A" base_Class="Behavior"/>
-  <standard:Metaclass xmi:id="_q9X4YAyBEeat1-DywZGp2A" base_Class="CallEvent"/>
-  <standard:Metaclass xmi:id="_q9YfcAyBEeat1-DywZGp2A" base_Class="ChangeEvent"/>
-  <standard:Metaclass xmi:id="_q9YfcQyBEeat1-DywZGp2A" base_Class="Event"/>
-  <standard:Metaclass xmi:id="_q9ZGgAyBEeat1-DywZGp2A" base_Class="FunctionBehavior"/>
-  <standard:Metaclass xmi:id="_q9ZtkAyBEeat1-DywZGp2A" base_Class="MessageEvent"/>
-  <standard:Metaclass xmi:id="_q9ZtkQyBEeat1-DywZGp2A" base_Class="OpaqueBehavior"/>
-  <standard:Metaclass xmi:id="_q9aUoAyBEeat1-DywZGp2A" base_Class="SignalEvent"/>
-  <standard:Metaclass xmi:id="_q9aUoQyBEeat1-DywZGp2A" base_Class="TimeEvent"/>
-  <standard:Metaclass xmi:id="_q9a7sAyBEeat1-DywZGp2A" base_Class="Trigger"/>
-  <standard:Metaclass xmi:id="_q9cw4AyBEeat1-DywZGp2A" base_Class="Abstraction"/>
-  <standard:Metaclass xmi:id="_q9cw4QyBEeat1-DywZGp2A" base_Class="Comment"/>
-  <standard:Metaclass xmi:id="_q9dX8AyBEeat1-DywZGp2A" base_Class="Constraint"/>
-  <standard:Metaclass xmi:id="_q9d_AAyBEeat1-DywZGp2A" base_Class="Dependency"/>
-  <standard:Metaclass xmi:id="_q9emEAyBEeat1-DywZGp2A" base_Class="DirectedRelationship"/>
-  <standard:Metaclass xmi:id="_q9emEQyBEeat1-DywZGp2A" base_Class="Element"/>
-  <standard:Metaclass xmi:id="_q9kssAyBEeat1-DywZGp2A" base_Class="ElementImport"/>
-  <standard:Metaclass xmi:id="_q9lTwAyBEeat1-DywZGp2A" base_Class="MultiplicityElement"/>
-  <standard:Metaclass xmi:id="_q9oXEAyBEeat1-DywZGp2A" base_Class="NamedElement"/>
-  <standard:Metaclass xmi:id="_q9qzUAyBEeat1-DywZGp2A" base_Class="Namespace"/>
-  <standard:Metaclass xmi:id="_q9tPkAyBEeat1-DywZGp2A" base_Class="PackageableElement"/>
-  <standard:Metaclass xmi:id="_q9t2oAyBEeat1-DywZGp2A" base_Class="PackageImport"/>
-  <standard:Metaclass xmi:id="_q9udsAyBEeat1-DywZGp2A" base_Class="ParameterableElement"/>
-  <standard:Metaclass xmi:id="_q9vEwAyBEeat1-DywZGp2A" base_Class="Realization"/>
-  <standard:Metaclass xmi:id="_q9vr0AyBEeat1-DywZGp2A" base_Class="Relationship"/>
-  <standard:Metaclass xmi:id="_q9vr0QyBEeat1-DywZGp2A" base_Class="TemplateableElement"/>
-  <standard:Metaclass xmi:id="_q9wS4AyBEeat1-DywZGp2A" base_Class="TemplateBinding"/>
-  <standard:Metaclass xmi:id="_q9w58AyBEeat1-DywZGp2A" base_Class="TemplateParameter"/>
-  <standard:Metaclass xmi:id="_q9xhAAyBEeat1-DywZGp2A" base_Class="TemplateParameterSubstitution"/>
-  <standard:Metaclass xmi:id="_q9yIEAyBEeat1-DywZGp2A" base_Class="TemplateSignature"/>
-  <standard:Metaclass xmi:id="_q9yvIAyBEeat1-DywZGp2A" base_Class="Type"/>
-  <standard:Metaclass xmi:id="_q9z9QAyBEeat1-DywZGp2A" base_Class="TypedElement"/>
-  <standard:Metaclass xmi:id="_q90kUAyBEeat1-DywZGp2A" base_Class="Usage"/>
-  <standard:Metaclass xmi:id="_q94OsAyBEeat1-DywZGp2A" base_Class="Artifact"/>
-  <standard:Metaclass xmi:id="_q96D4AyBEeat1-DywZGp2A" base_Class="CommunicationPath"/>
-  <standard:Metaclass xmi:id="_q96D4QyBEeat1-DywZGp2A" base_Class="DeployedArtifact"/>
-  <standard:Metaclass xmi:id="_q96D4gyBEeat1-DywZGp2A" base_Class="Deployment"/>
-  <standard:Metaclass xmi:id="_q96q8AyBEeat1-DywZGp2A" base_Class="DeploymentSpecification"/>
-  <standard:Metaclass xmi:id="_q975EAyBEeat1-DywZGp2A" base_Class="DeploymentTarget"/>
-  <standard:Metaclass xmi:id="_q98gIAyBEeat1-DywZGp2A" base_Class="Device"/>
-  <standard:Metaclass xmi:id="_q98gIQyBEeat1-DywZGp2A" base_Class="ExecutionEnvironment"/>
-  <standard:Metaclass xmi:id="_q99HMAyBEeat1-DywZGp2A" base_Class="Manifestation"/>
-  <standard:Metaclass xmi:id="_q99HMQyBEeat1-DywZGp2A" base_Class="Node"/>
-  <standard:Metaclass xmi:id="_q9_jcAyBEeat1-DywZGp2A" base_Class="InformationFlow"/>
-  <standard:Metaclass xmi:id="_q-AxkAyBEeat1-DywZGp2A" base_Class="InformationItem"/>
-  <standard:Metaclass xmi:id="_q-CmwAyBEeat1-DywZGp2A" base_Class="ActionExecutionSpecification"/>
-  <standard:Metaclass xmi:id="_q-DN0AyBEeat1-DywZGp2A" base_Class="BehaviorExecutionSpecification"/>
-  <standard:Metaclass xmi:id="_q-DN0QyBEeat1-DywZGp2A" base_Class="CombinedFragment"/>
-  <standard:Metaclass xmi:id="_q-Eb8AyBEeat1-DywZGp2A" base_Class="ConsiderIgnoreFragment"/>
-  <standard:Metaclass xmi:id="_q-Eb8QyBEeat1-DywZGp2A" base_Class="Continuation"/>
-  <standard:Metaclass xmi:id="_q-FDAAyBEeat1-DywZGp2A" base_Class="DestructionOccurrenceSpecification"/>
-  <standard:Metaclass xmi:id="_q-FqEAyBEeat1-DywZGp2A" base_Class="ExecutionOccurrenceSpecification"/>
-  <standard:Metaclass xmi:id="_q-GRIAyBEeat1-DywZGp2A" base_Class="ExecutionSpecification"/>
-  <standard:Metaclass xmi:id="_q-GRIQyBEeat1-DywZGp2A" base_Class="Gate"/>
-  <standard:Metaclass xmi:id="_q-ItYAyBEeat1-DywZGp2A" base_Class="GeneralOrdering"/>
-  <standard:Metaclass xmi:id="_q-JUcAyBEeat1-DywZGp2A" base_Class="Interaction"/>
-  <standard:Metaclass xmi:id="_q-KikAyBEeat1-DywZGp2A" base_Class="InteractionConstraint"/>
-  <standard:Metaclass xmi:id="_q-LJoAyBEeat1-DywZGp2A" base_Class="InteractionFragment"/>
-  <standard:Metaclass xmi:id="_q-MXwAyBEeat1-DywZGp2A" base_Class="InteractionOperand"/>
-  <standard:Metaclass xmi:id="_q-M-0AyBEeat1-DywZGp2A" base_Class="InteractionUse"/>
-  <standard:Metaclass xmi:id="_q-OM8AyBEeat1-DywZGp2A" base_Class="Lifeline"/>
-  <standard:Metaclass xmi:id="_q-PbEAyBEeat1-DywZGp2A" base_Class="Message"/>
-  <standard:Metaclass xmi:id="_q-R3UAyBEeat1-DywZGp2A" base_Class="MessageEnd"/>
-  <standard:Metaclass xmi:id="_q-TFcAyBEeat1-DywZGp2A" base_Class="MessageOccurrenceSpecification"/>
-  <standard:Metaclass xmi:id="_q-TsgAyBEeat1-DywZGp2A" base_Class="OccurrenceSpecification"/>
-  <standard:Metaclass xmi:id="_q-UTkAyBEeat1-DywZGp2A" base_Class="PartDecomposition"/>
-  <standard:Metaclass xmi:id="_q-U6oAyBEeat1-DywZGp2A" base_Class="StateInvariant"/>
-  <standard:Metaclass xmi:id="_q-bBQAyBEeat1-DywZGp2A" base_Class="Extension"/>
-  <standard:Metaclass xmi:id="_q-c2cAyBEeat1-DywZGp2A" base_Class="ExtensionEnd"/>
-  <standard:Metaclass xmi:id="_q-eEkAyBEeat1-DywZGp2A" base_Class="Image"/>
-  <standard:Metaclass xmi:id="_q-eroAyBEeat1-DywZGp2A" base_Class="Model"/>
-  <standard:Metaclass xmi:id="_q-eroQyBEeat1-DywZGp2A" base_Class="Package"/>
-  <standard:Metaclass xmi:id="_q-mncAyBEeat1-DywZGp2A" base_Class="PackageMerge"/>
-  <standard:Metaclass xmi:id="_q-mncQyBEeat1-DywZGp2A" base_Class="Profile"/>
-  <standard:Metaclass xmi:id="_q-pqwAyBEeat1-DywZGp2A" base_Class="ProfileApplication"/>
-  <standard:Metaclass xmi:id="_q-q44AyBEeat1-DywZGp2A" base_Class="Stereotype"/>
-  <standard:Metaclass xmi:id="_q-vKUAyBEeat1-DywZGp2A" base_Class="BehavioredClassifier"/>
-  <standard:Metaclass xmi:id="_q-w_gAyBEeat1-DywZGp2A" base_Class="DataType"/>
-  <standard:Metaclass xmi:id="_q-y0sAyBEeat1-DywZGp2A" base_Class="Enumeration"/>
-  <standard:Metaclass xmi:id="_q-zbwAyBEeat1-DywZGp2A" base_Class="EnumerationLiteral"/>
-  <standard:Metaclass xmi:id="_q-0C0AyBEeat1-DywZGp2A" base_Class="Interface"/>
-  <standard:Metaclass xmi:id="_q-2fEAyBEeat1-DywZGp2A" base_Class="InterfaceRealization"/>
-  <standard:Metaclass xmi:id="_q-3GIAyBEeat1-DywZGp2A" base_Class="PrimitiveType"/>
-  <standard:Metaclass xmi:id="_q-3GIQyBEeat1-DywZGp2A" base_Class="Reception"/>
-  <standard:Metaclass xmi:id="_q-3tMAyBEeat1-DywZGp2A" base_Class="Signal"/>
-  <standard:Metaclass xmi:id="_q-6wgAyBEeat1-DywZGp2A" base_Class="ConnectionPointReference"/>
-  <standard:Metaclass xmi:id="_q-7-oAyBEeat1-DywZGp2A" base_Class="FinalState"/>
-  <standard:Metaclass xmi:id="_q-8lsAyBEeat1-DywZGp2A" base_Class="ProtocolConformance"/>
-  <standard:Metaclass xmi:id="_q-9MwAyBEeat1-DywZGp2A" base_Class="ProtocolStateMachine"/>
-  <standard:Metaclass xmi:id="_q-9z0AyBEeat1-DywZGp2A" base_Class="ProtocolTransition"/>
-  <standard:Metaclass xmi:id="_q-_pAAyBEeat1-DywZGp2A" base_Class="Pseudostate"/>
-  <standard:Metaclass xmi:id="_q_BeMAyBEeat1-DywZGp2A" base_Class="Region"/>
-  <standard:Metaclass xmi:id="_q_D6cAyBEeat1-DywZGp2A" base_Class="State"/>
-  <standard:Metaclass xmi:id="_q_Iy8AyBEeat1-DywZGp2A" base_Class="StateMachine"/>
-  <standard:Metaclass xmi:id="_q_LPMAyBEeat1-DywZGp2A" base_Class="Transition"/>
-  <standard:Metaclass xmi:id="_q_OSgAyBEeat1-DywZGp2A" base_Class="Vertex"/>
-  <standard:Metaclass xmi:id="_q_VnQAyBEeat1-DywZGp2A" base_Class="Association"/>
-  <standard:Metaclass xmi:id="_q_YDgAyBEeat1-DywZGp2A" base_Class="AssociationClass"/>
-  <standard:Metaclass xmi:id="_q_YqkAyBEeat1-DywZGp2A" base_Class="Class"/>
-  <standard:Metaclass xmi:id="_q_bt4AyBEeat1-DywZGp2A" base_Class="Collaboration"/>
-  <standard:Metaclass xmi:id="_q_cU8AyBEeat1-DywZGp2A" base_Class="CollaborationUse"/>
-  <standard:Metaclass xmi:id="_q_djEAyBEeat1-DywZGp2A" base_Class="Component"/>
-  <standard:Metaclass xmi:id="_q_f_UAyBEeat1-DywZGp2A" base_Class="ComponentRealization"/>
-  <standard:Metaclass xmi:id="_q_gmYAyBEeat1-DywZGp2A" base_Class="ConnectableElement"/>
-  <standard:Metaclass xmi:id="_q_h0gAyBEeat1-DywZGp2A" base_Class="ConnectableElementTemplateParameter"/>
-  <standard:Metaclass xmi:id="_q_ibkAyBEeat1-DywZGp2A" base_Class="Connector"/>
-  <standard:Metaclass xmi:id="_q_jpsAyBEeat1-DywZGp2A" base_Class="ConnectorEnd"/>
-  <standard:Metaclass xmi:id="_q_le4AyBEeat1-DywZGp2A" base_Class="EncapsulatedClassifier"/>
-  <standard:Metaclass xmi:id="_q_mF8AyBEeat1-DywZGp2A" base_Class="Port"/>
-  <standard:Metaclass xmi:id="_q_pJQAyBEeat1-DywZGp2A" base_Class="StructuredClassifier"/>
-  <standard:Metaclass xmi:id="_q_weAAyBEeat1-DywZGp2A" base_Class="Actor"/>
-  <standard:Metaclass xmi:id="_q_xFEAyBEeat1-DywZGp2A" base_Class="Extend"/>
-  <standard:Metaclass xmi:id="_q_yTMAyBEeat1-DywZGp2A" base_Class="ExtensionPoint"/>
-  <standard:Metaclass xmi:id="_q_y6QAyBEeat1-DywZGp2A" base_Class="Include"/>
-  <standard:Metaclass xmi:id="_q_zhUAyBEeat1-DywZGp2A" base_Class="UseCase"/>
-  <standard:Metaclass xmi:id="_q_19kAyBEeat1-DywZGp2A" base_Class="Duration"/>
-  <standard:Metaclass xmi:id="_q_3LsAyBEeat1-DywZGp2A" base_Class="DurationConstraint"/>
-  <standard:Metaclass xmi:id="_q_4Z0AyBEeat1-DywZGp2A" base_Class="DurationInterval"/>
-  <standard:Metaclass xmi:id="_q_5A4AyBEeat1-DywZGp2A" base_Class="DurationObservation"/>
-  <standard:Metaclass xmi:id="_q_5n8AyBEeat1-DywZGp2A" base_Class="Expression"/>
-  <standard:Metaclass xmi:id="_q_6PAAyBEeat1-DywZGp2A" base_Class="Interval"/>
-  <standard:Metaclass xmi:id="_q_62EAyBEeat1-DywZGp2A" base_Class="IntervalConstraint"/>
-  <standard:Metaclass xmi:id="_q_7dIAyBEeat1-DywZGp2A" base_Class="LiteralBoolean"/>
-  <standard:Metaclass xmi:id="_q_8EMAyBEeat1-DywZGp2A" base_Class="LiteralInteger"/>
-  <standard:Metaclass xmi:id="_q_9SUAyBEeat1-DywZGp2A" base_Class="LiteralNull"/>
-  <standard:Metaclass xmi:id="_q_95YAyBEeat1-DywZGp2A" base_Class="LiteralReal"/>
-  <standard:Metaclass xmi:id="_q__HgAyBEeat1-DywZGp2A" base_Class="LiteralSpecification"/>
-  <standard:Metaclass xmi:id="_q__HgQyBEeat1-DywZGp2A" base_Class="LiteralString"/>
-  <standard:Metaclass xmi:id="_rAAVoAyBEeat1-DywZGp2A" base_Class="LiteralUnlimitedNatural"/>
-  <standard:Metaclass xmi:id="_rABjwAyBEeat1-DywZGp2A" base_Class="Observation"/>
-  <standard:Metaclass xmi:id="_rABjwQyBEeat1-DywZGp2A" base_Class="OpaqueExpression"/>
-  <standard:Metaclass xmi:id="_rAEnEAyBEeat1-DywZGp2A" base_Class="StringExpression"/>
-  <standard:Metaclass xmi:id="_rAF1MAyBEeat1-DywZGp2A" base_Class="TimeConstraint"/>
-  <standard:Metaclass xmi:id="_rAHDUAyBEeat1-DywZGp2A" base_Class="TimeExpression"/>
-  <standard:Metaclass xmi:id="_rAHqYAyBEeat1-DywZGp2A" base_Class="TimeInterval"/>
-  <standard:Metaclass xmi:id="_rAIRcAyBEeat1-DywZGp2A" base_Class="TimeObservation"/>
-  <standard:Metaclass xmi:id="_rAI4gAyBEeat1-DywZGp2A" base_Class="ValueSpecification"/>
+  <standard:Metamodel xmi:id="_BFf74O54EeaGaIUqXzzzKQ" base_Model="_0"/>
+  <standard:Metaclass xmi:id="_BFkNUO54EeaGaIUqXzzzKQ" base_Class="ValueSpecificationAction"/>
+  <standard:Metaclass xmi:id="_BFk0YO54EeaGaIUqXzzzKQ" base_Class="VariableAction"/>
+  <standard:Metaclass xmi:id="_BFmCgO54EeaGaIUqXzzzKQ" base_Class="WriteLinkAction"/>
+  <standard:Metaclass xmi:id="_BFmpkO54EeaGaIUqXzzzKQ" base_Class="WriteStructuralFeatureAction"/>
+  <standard:Metaclass xmi:id="_BFnQoO54EeaGaIUqXzzzKQ" base_Class="WriteVariableAction"/>
+  <standard:Metaclass xmi:id="_BFn3sO54EeaGaIUqXzzzKQ" base_Class="AcceptCallAction"/>
+  <standard:Metaclass xmi:id="_BFoewO54EeaGaIUqXzzzKQ" base_Class="AcceptEventAction"/>
+  <standard:Metaclass xmi:id="_BFps4O54EeaGaIUqXzzzKQ" base_Class="Action"/>
+  <standard:Metaclass xmi:id="_BFqT8O54EeaGaIUqXzzzKQ" base_Class="ActionInputPin"/>
+  <standard:Metaclass xmi:id="_BFq7AO54EeaGaIUqXzzzKQ" base_Class="AddStructuralFeatureValueAction"/>
+  <standard:Metaclass xmi:id="_BFriEO54EeaGaIUqXzzzKQ" base_Class="AddVariableValueAction"/>
+  <standard:Metaclass xmi:id="_BFsJIO54EeaGaIUqXzzzKQ" base_Class="BroadcastSignalAction"/>
+  <standard:Metaclass xmi:id="_BFswMO54EeaGaIUqXzzzKQ" base_Class="CallAction"/>
+  <standard:Metaclass xmi:id="_BFtXQO54EeaGaIUqXzzzKQ" base_Class="CallBehaviorAction"/>
+  <standard:Metaclass xmi:id="_BFt-UO54EeaGaIUqXzzzKQ" base_Class="CallOperationAction"/>
+  <standard:Metaclass xmi:id="_BFulYO54EeaGaIUqXzzzKQ" base_Class="Clause"/>
+  <standard:Metaclass xmi:id="_BFvMcO54EeaGaIUqXzzzKQ" base_Class="ClearAssociationAction"/>
+  <standard:Metaclass xmi:id="_BFvzgO54EeaGaIUqXzzzKQ" base_Class="ClearStructuralFeatureAction"/>
+  <standard:Metaclass xmi:id="_BFwakO54EeaGaIUqXzzzKQ" base_Class="ClearVariableAction"/>
+  <standard:Metaclass xmi:id="_BFxBoO54EeaGaIUqXzzzKQ" base_Class="ConditionalNode"/>
+  <standard:Metaclass xmi:id="_BFxosO54EeaGaIUqXzzzKQ" base_Class="CreateLinkAction"/>
+  <standard:Metaclass xmi:id="_BFyPwO54EeaGaIUqXzzzKQ" base_Class="CreateLinkObjectAction"/>
+  <standard:Metaclass xmi:id="_BFy20O54EeaGaIUqXzzzKQ" base_Class="CreateObjectAction"/>
+  <standard:Metaclass xmi:id="_BFzd4O54EeaGaIUqXzzzKQ" base_Class="DestroyLinkAction"/>
+  <standard:Metaclass xmi:id="_BFzd4e54EeaGaIUqXzzzKQ" base_Class="DestroyObjectAction"/>
+  <standard:Metaclass xmi:id="_BF0E8O54EeaGaIUqXzzzKQ" base_Class="ExpansionNode"/>
+  <standard:Metaclass xmi:id="_BF0sAO54EeaGaIUqXzzzKQ" base_Class="ExpansionRegion"/>
+  <standard:Metaclass xmi:id="_BF1TEO54EeaGaIUqXzzzKQ" base_Class="InputPin"/>
+  <standard:Metaclass xmi:id="_BF16IO54EeaGaIUqXzzzKQ" base_Class="InvocationAction"/>
+  <standard:Metaclass xmi:id="_BF2hMO54EeaGaIUqXzzzKQ" base_Class="LinkAction"/>
+  <standard:Metaclass xmi:id="_BF3IQO54EeaGaIUqXzzzKQ" base_Class="LinkEndCreationData"/>
+  <standard:Metaclass xmi:id="_BF3vUO54EeaGaIUqXzzzKQ" base_Class="LinkEndData"/>
+  <standard:Metaclass xmi:id="_BF4WYO54EeaGaIUqXzzzKQ" base_Class="LinkEndDestructionData"/>
+  <standard:Metaclass xmi:id="_BF49cO54EeaGaIUqXzzzKQ" base_Class="LoopNode"/>
+  <standard:Metaclass xmi:id="_BF6LkO54EeaGaIUqXzzzKQ" base_Class="OpaqueAction"/>
+  <standard:Metaclass xmi:id="_BF6yoO54EeaGaIUqXzzzKQ" base_Class="OutputPin"/>
+  <standard:Metaclass xmi:id="_BF6yoe54EeaGaIUqXzzzKQ" base_Class="Pin"/>
+  <standard:Metaclass xmi:id="_BF7ZsO54EeaGaIUqXzzzKQ" base_Class="QualifierValue"/>
+  <standard:Metaclass xmi:id="_BF8AwO54EeaGaIUqXzzzKQ" base_Class="RaiseExceptionAction"/>
+  <standard:Metaclass xmi:id="_BF8n0O54EeaGaIUqXzzzKQ" base_Class="ReadExtentAction"/>
+  <standard:Metaclass xmi:id="_BF9O4O54EeaGaIUqXzzzKQ" base_Class="ReadIsClassifiedObjectAction"/>
+  <standard:Metaclass xmi:id="_BF918O54EeaGaIUqXzzzKQ" base_Class="ReadLinkAction"/>
+  <standard:Metaclass xmi:id="_BF_EEO54EeaGaIUqXzzzKQ" base_Class="ReadLinkObjectEndAction"/>
+  <standard:Metaclass xmi:id="_BF_rIO54EeaGaIUqXzzzKQ" base_Class="ReadLinkObjectEndQualifierAction"/>
+  <standard:Metaclass xmi:id="_BGASMO54EeaGaIUqXzzzKQ" base_Class="ReadSelfAction"/>
+  <standard:Metaclass xmi:id="_BGA5QO54EeaGaIUqXzzzKQ" base_Class="ReadStructuralFeatureAction"/>
+  <standard:Metaclass xmi:id="_BGBgUO54EeaGaIUqXzzzKQ" base_Class="ReadVariableAction"/>
+  <standard:Metaclass xmi:id="_BGCHYO54EeaGaIUqXzzzKQ" base_Class="ReclassifyObjectAction"/>
+  <standard:Metaclass xmi:id="_BGCucO54EeaGaIUqXzzzKQ" base_Class="ReduceAction"/>
+  <standard:Metaclass xmi:id="_BGDVgO54EeaGaIUqXzzzKQ" base_Class="RemoveStructuralFeatureValueAction"/>
+  <standard:Metaclass xmi:id="_BGD8kO54EeaGaIUqXzzzKQ" base_Class="RemoveVariableValueAction"/>
+  <standard:Metaclass xmi:id="_BGEjoO54EeaGaIUqXzzzKQ" base_Class="ReplyAction"/>
+  <standard:Metaclass xmi:id="_BGFKsO54EeaGaIUqXzzzKQ" base_Class="SendObjectAction"/>
+  <standard:Metaclass xmi:id="_BGFxwO54EeaGaIUqXzzzKQ" base_Class="SendSignalAction"/>
+  <standard:Metaclass xmi:id="_BGGY0O54EeaGaIUqXzzzKQ" base_Class="SequenceNode"/>
+  <standard:Metaclass xmi:id="_BGG_4O54EeaGaIUqXzzzKQ" base_Class="StartClassifierBehaviorAction"/>
+  <standard:Metaclass xmi:id="_BGG_4e54EeaGaIUqXzzzKQ" base_Class="StartObjectBehaviorAction"/>
+  <standard:Metaclass xmi:id="_BGIOAO54EeaGaIUqXzzzKQ" base_Class="StructuralFeatureAction"/>
+  <standard:Metaclass xmi:id="_BGI1EO54EeaGaIUqXzzzKQ" base_Class="StructuredActivityNode"/>
+  <standard:Metaclass xmi:id="_BGKDMO54EeaGaIUqXzzzKQ" base_Class="TestIdentityAction"/>
+  <standard:Metaclass xmi:id="_BGKqQO54EeaGaIUqXzzzKQ" base_Class="UnmarshallAction"/>
+  <standard:Metaclass xmi:id="_BGLRUO54EeaGaIUqXzzzKQ" base_Class="ValuePin"/>
+  <standard:Metaclass xmi:id="_BGR_AO54EeaGaIUqXzzzKQ" base_Class="Activity"/>
+  <standard:Metaclass xmi:id="_BGTNIO54EeaGaIUqXzzzKQ" base_Class="ActivityEdge"/>
+  <standard:Metaclass xmi:id="_BGVCUO54EeaGaIUqXzzzKQ" base_Class="ActivityFinalNode"/>
+  <standard:Metaclass xmi:id="_BGVCUe54EeaGaIUqXzzzKQ" base_Class="ActivityGroup"/>
+  <standard:Metaclass xmi:id="_BGWQcO54EeaGaIUqXzzzKQ" base_Class="ActivityNode"/>
+  <standard:Metaclass xmi:id="_BGXekO54EeaGaIUqXzzzKQ" base_Class="ActivityParameterNode"/>
+  <standard:Metaclass xmi:id="_BGYFoO54EeaGaIUqXzzzKQ" base_Class="ActivityPartition"/>
+  <standard:Metaclass xmi:id="_BGZTwO54EeaGaIUqXzzzKQ" base_Class="CentralBufferNode"/>
+  <standard:Metaclass xmi:id="_BGZ60O54EeaGaIUqXzzzKQ" base_Class="ControlFlow"/>
+  <standard:Metaclass xmi:id="_BGah4O54EeaGaIUqXzzzKQ" base_Class="ControlNode"/>
+  <standard:Metaclass xmi:id="_BGbI8O54EeaGaIUqXzzzKQ" base_Class="DataStoreNode"/>
+  <standard:Metaclass xmi:id="_BGbwAO54EeaGaIUqXzzzKQ" base_Class="DecisionNode"/>
+  <standard:Metaclass xmi:id="_BGcXEO54EeaGaIUqXzzzKQ" base_Class="ExceptionHandler"/>
+  <standard:Metaclass xmi:id="_BGdlMO54EeaGaIUqXzzzKQ" base_Class="ExecutableNode"/>
+  <standard:Metaclass xmi:id="_BGeMQO54EeaGaIUqXzzzKQ" base_Class="FinalNode"/>
+  <standard:Metaclass xmi:id="_BGezUO54EeaGaIUqXzzzKQ" base_Class="FlowFinalNode"/>
+  <standard:Metaclass xmi:id="_BGezUe54EeaGaIUqXzzzKQ" base_Class="ForkNode"/>
+  <standard:Metaclass xmi:id="_BGfaYO54EeaGaIUqXzzzKQ" base_Class="InitialNode"/>
+  <standard:Metaclass xmi:id="_BGgBcO54EeaGaIUqXzzzKQ" base_Class="InterruptibleActivityRegion"/>
+  <standard:Metaclass xmi:id="_BGhPkO54EeaGaIUqXzzzKQ" base_Class="JoinNode"/>
+  <standard:Metaclass xmi:id="_BGh2oO54EeaGaIUqXzzzKQ" base_Class="MergeNode"/>
+  <standard:Metaclass xmi:id="_BGidsO54EeaGaIUqXzzzKQ" base_Class="ObjectFlow"/>
+  <standard:Metaclass xmi:id="_BGkS4O54EeaGaIUqXzzzKQ" base_Class="ObjectNode"/>
+  <standard:Metaclass xmi:id="_BGk58O54EeaGaIUqXzzzKQ" base_Class="Variable"/>
+  <standard:Metaclass xmi:id="_BGokUO54EeaGaIUqXzzzKQ" base_Class="Substitution"/>
+  <standard:Metaclass xmi:id="_BGpLYO54EeaGaIUqXzzzKQ" base_Class="BehavioralFeature"/>
+  <standard:Metaclass xmi:id="_BGrAkO54EeaGaIUqXzzzKQ" base_Class="Classifier"/>
+  <standard:Metaclass xmi:id="_BGxuQO54EeaGaIUqXzzzKQ" base_Class="ClassifierTemplateParameter"/>
+  <standard:Metaclass xmi:id="_BGy8YO54EeaGaIUqXzzzKQ" base_Class="Feature"/>
+  <standard:Metaclass xmi:id="_BGzjcO54EeaGaIUqXzzzKQ" base_Class="Generalization"/>
+  <standard:Metaclass xmi:id="_BG0KgO54EeaGaIUqXzzzKQ" base_Class="GeneralizationSet"/>
+  <standard:Metaclass xmi:id="_BG1YoO54EeaGaIUqXzzzKQ" base_Class="InstanceSpecification"/>
+  <standard:Metaclass xmi:id="_BG2mwO54EeaGaIUqXzzzKQ" base_Class="InstanceValue"/>
+  <standard:Metaclass xmi:id="_BG3N0O54EeaGaIUqXzzzKQ" base_Class="Operation"/>
+  <standard:Metaclass xmi:id="_BG6RIO54EeaGaIUqXzzzKQ" base_Class="OperationTemplateParameter"/>
+  <standard:Metaclass xmi:id="_BG64MO54EeaGaIUqXzzzKQ" base_Class="Parameter"/>
+  <standard:Metaclass xmi:id="_BG9UcO54EeaGaIUqXzzzKQ" base_Class="ParameterSet"/>
+  <standard:Metaclass xmi:id="_BG-ikO54EeaGaIUqXzzzKQ" base_Class="Property"/>
+  <standard:Metaclass xmi:id="_BHC0AO54EeaGaIUqXzzzKQ" base_Class="RedefinableElement"/>
+  <standard:Metaclass xmi:id="_BHEpMO54EeaGaIUqXzzzKQ" base_Class="RedefinableTemplateSignature"/>
+  <standard:Metaclass xmi:id="_BHF3UO54EeaGaIUqXzzzKQ" base_Class="Slot"/>
+  <standard:Metaclass xmi:id="_BHGeYO54EeaGaIUqXzzzKQ" base_Class="StructuralFeature"/>
+  <standard:Metaclass xmi:id="_BHL98O54EeaGaIUqXzzzKQ" base_Class="AnyReceiveEvent"/>
+  <standard:Metaclass xmi:id="_BHMlAO54EeaGaIUqXzzzKQ" base_Class="Behavior"/>
+  <standard:Metaclass xmi:id="_BHPBQO54EeaGaIUqXzzzKQ" base_Class="CallEvent"/>
+  <standard:Metaclass xmi:id="_BHPoUO54EeaGaIUqXzzzKQ" base_Class="ChangeEvent"/>
+  <standard:Metaclass xmi:id="_BHQPYO54EeaGaIUqXzzzKQ" base_Class="Event"/>
+  <standard:Metaclass xmi:id="_BHQ2cO54EeaGaIUqXzzzKQ" base_Class="FunctionBehavior"/>
+  <standard:Metaclass xmi:id="_BHRdgO54EeaGaIUqXzzzKQ" base_Class="MessageEvent"/>
+  <standard:Metaclass xmi:id="_BHSroO54EeaGaIUqXzzzKQ" base_Class="OpaqueBehavior"/>
+  <standard:Metaclass xmi:id="_BHTSsO54EeaGaIUqXzzzKQ" base_Class="SignalEvent"/>
+  <standard:Metaclass xmi:id="_BHT5wO54EeaGaIUqXzzzKQ" base_Class="TimeEvent"/>
+  <standard:Metaclass xmi:id="_BHUg0O54EeaGaIUqXzzzKQ" base_Class="Trigger"/>
+  <standard:Metaclass xmi:id="_BHW9EO54EeaGaIUqXzzzKQ" base_Class="Abstraction"/>
+  <standard:Metaclass xmi:id="_BHXkIO54EeaGaIUqXzzzKQ" base_Class="Comment"/>
+  <standard:Metaclass xmi:id="_BHYLMO54EeaGaIUqXzzzKQ" base_Class="Constraint"/>
+  <standard:Metaclass xmi:id="_BHZZUO54EeaGaIUqXzzzKQ" base_Class="Dependency"/>
+  <standard:Metaclass xmi:id="_BHaAYO54EeaGaIUqXzzzKQ" base_Class="DirectedRelationship"/>
+  <standard:Metaclass xmi:id="_BHancO54EeaGaIUqXzzzKQ" base_Class="Element"/>
+  <standard:Metaclass xmi:id="_BHh8MO54EeaGaIUqXzzzKQ" base_Class="ElementImport"/>
+  <standard:Metaclass xmi:id="_BHjKUO54EeaGaIUqXzzzKQ" base_Class="MultiplicityElement"/>
+  <standard:Metaclass xmi:id="_BHmNoO54EeaGaIUqXzzzKQ" base_Class="NamedElement"/>
+  <standard:Metaclass xmi:id="_BHpQ8O54EeaGaIUqXzzzKQ" base_Class="Namespace"/>
+  <standard:Metaclass xmi:id="_BHs7UO54EeaGaIUqXzzzKQ" base_Class="PackageableElement"/>
+  <standard:Metaclass xmi:id="_BHuJcO54EeaGaIUqXzzzKQ" base_Class="PackageImport"/>
+  <standard:Metaclass xmi:id="_BHuwgO54EeaGaIUqXzzzKQ" base_Class="ParameterableElement"/>
+  <standard:Metaclass xmi:id="_BHv-oO54EeaGaIUqXzzzKQ" base_Class="Realization"/>
+  <standard:Metaclass xmi:id="_BHv-oe54EeaGaIUqXzzzKQ" base_Class="Relationship"/>
+  <standard:Metaclass xmi:id="_BHwlsO54EeaGaIUqXzzzKQ" base_Class="TemplateableElement"/>
+  <standard:Metaclass xmi:id="_BHxz0O54EeaGaIUqXzzzKQ" base_Class="TemplateBinding"/>
+  <standard:Metaclass xmi:id="_BHzB8O54EeaGaIUqXzzzKQ" base_Class="TemplateParameter"/>
+  <standard:Metaclass xmi:id="_BHzpAO54EeaGaIUqXzzzKQ" base_Class="TemplateParameterSubstitution"/>
+  <standard:Metaclass xmi:id="_BH03IO54EeaGaIUqXzzzKQ" base_Class="TemplateSignature"/>
+  <standard:Metaclass xmi:id="_BH1eMO54EeaGaIUqXzzzKQ" base_Class="Type"/>
+  <standard:Metaclass xmi:id="_BH3TYO54EeaGaIUqXzzzKQ" base_Class="TypedElement"/>
+  <standard:Metaclass xmi:id="_BH36cO54EeaGaIUqXzzzKQ" base_Class="Usage"/>
+  <standard:Metaclass xmi:id="_BH8y8O54EeaGaIUqXzzzKQ" base_Class="Artifact"/>
+  <standard:Metaclass xmi:id="_BH-oIO54EeaGaIUqXzzzKQ" base_Class="CommunicationPath"/>
+  <standard:Metaclass xmi:id="_BH_2QO54EeaGaIUqXzzzKQ" base_Class="DeployedArtifact"/>
+  <standard:Metaclass xmi:id="_BIAdUO54EeaGaIUqXzzzKQ" base_Class="Deployment"/>
+  <standard:Metaclass xmi:id="_BIBEYO54EeaGaIUqXzzzKQ" base_Class="DeploymentSpecification"/>
+  <standard:Metaclass xmi:id="_BICSgO54EeaGaIUqXzzzKQ" base_Class="DeploymentTarget"/>
+  <standard:Metaclass xmi:id="_BIC5kO54EeaGaIUqXzzzKQ" base_Class="Device"/>
+  <standard:Metaclass xmi:id="_BIDgoO54EeaGaIUqXzzzKQ" base_Class="ExecutionEnvironment"/>
+  <standard:Metaclass xmi:id="_BIEHsO54EeaGaIUqXzzzKQ" base_Class="Manifestation"/>
+  <standard:Metaclass xmi:id="_BIEuwO54EeaGaIUqXzzzKQ" base_Class="Node"/>
+  <standard:Metaclass xmi:id="_BIHLAO54EeaGaIUqXzzzKQ" base_Class="InformationFlow"/>
+  <standard:Metaclass xmi:id="_BIJAMO54EeaGaIUqXzzzKQ" base_Class="InformationItem"/>
+  <standard:Metaclass xmi:id="_BIMqkO54EeaGaIUqXzzzKQ" base_Class="ActionExecutionSpecification"/>
+  <standard:Metaclass xmi:id="_BINRoO54EeaGaIUqXzzzKQ" base_Class="BehaviorExecutionSpecification"/>
+  <standard:Metaclass xmi:id="_BIN4sO54EeaGaIUqXzzzKQ" base_Class="CombinedFragment"/>
+  <standard:Metaclass xmi:id="_BIPG0O54EeaGaIUqXzzzKQ" base_Class="ConsiderIgnoreFragment"/>
+  <standard:Metaclass xmi:id="_BIQU8O54EeaGaIUqXzzzKQ" base_Class="Continuation"/>
+  <standard:Metaclass xmi:id="_BIRjEO54EeaGaIUqXzzzKQ" base_Class="DestructionOccurrenceSpecification"/>
+  <standard:Metaclass xmi:id="_BISKIO54EeaGaIUqXzzzKQ" base_Class="ExecutionOccurrenceSpecification"/>
+  <standard:Metaclass xmi:id="_BISxMO54EeaGaIUqXzzzKQ" base_Class="ExecutionSpecification"/>
+  <standard:Metaclass xmi:id="_BITYQO54EeaGaIUqXzzzKQ" base_Class="Gate"/>
+  <standard:Metaclass xmi:id="_BIWbkO54EeaGaIUqXzzzKQ" base_Class="GeneralOrdering"/>
+  <standard:Metaclass xmi:id="_BIXpsO54EeaGaIUqXzzzKQ" base_Class="Interaction"/>
+  <standard:Metaclass xmi:id="_BIY30O54EeaGaIUqXzzzKQ" base_Class="InteractionConstraint"/>
+  <standard:Metaclass xmi:id="_BIatAO54EeaGaIUqXzzzKQ" base_Class="InteractionFragment"/>
+  <standard:Metaclass xmi:id="_BIb7IO54EeaGaIUqXzzzKQ" base_Class="InteractionOperand"/>
+  <standard:Metaclass xmi:id="_BIdJQO54EeaGaIUqXzzzKQ" base_Class="InteractionUse"/>
+  <standard:Metaclass xmi:id="_BIflgO54EeaGaIUqXzzzKQ" base_Class="Lifeline"/>
+  <standard:Metaclass xmi:id="_BIgzoO54EeaGaIUqXzzzKQ" base_Class="Message"/>
+  <standard:Metaclass xmi:id="_BIj28O54EeaGaIUqXzzzKQ" base_Class="MessageEnd"/>
+  <standard:Metaclass xmi:id="_BIlsIO54EeaGaIUqXzzzKQ" base_Class="MessageOccurrenceSpecification"/>
+  <standard:Metaclass xmi:id="_BImTMO54EeaGaIUqXzzzKQ" base_Class="OccurrenceSpecification"/>
+  <standard:Metaclass xmi:id="_BIm6QO54EeaGaIUqXzzzKQ" base_Class="PartDecomposition"/>
+  <standard:Metaclass xmi:id="_BIoIYO54EeaGaIUqXzzzKQ" base_Class="StateInvariant"/>
+  <standard:Metaclass xmi:id="_BIu2EO54EeaGaIUqXzzzKQ" base_Class="Extension"/>
+  <standard:Metaclass xmi:id="_BIwrQO54EeaGaIUqXzzzKQ" base_Class="ExtensionEnd"/>
+  <standard:Metaclass xmi:id="_BIygcO54EeaGaIUqXzzzKQ" base_Class="Image"/>
+  <standard:Metaclass xmi:id="_BIzHgO54EeaGaIUqXzzzKQ" base_Class="Model"/>
+  <standard:Metaclass xmi:id="_BIzukO54EeaGaIUqXzzzKQ" base_Class="Package"/>
+  <standard:Metaclass xmi:id="_BI8RcO54EeaGaIUqXzzzKQ" base_Class="PackageMerge"/>
+  <standard:Metaclass xmi:id="_BI84gO54EeaGaIUqXzzzKQ" base_Class="Profile"/>
+  <standard:Metaclass xmi:id="_BJCYEO54EeaGaIUqXzzzKQ" base_Class="ProfileApplication"/>
+  <standard:Metaclass xmi:id="_BJENQO54EeaGaIUqXzzzKQ" base_Class="Stereotype"/>
+  <standard:Metaclass xmi:id="_BJNXMO54EeaGaIUqXzzzKQ" base_Class="BehavioredClassifier"/>
+  <standard:Metaclass xmi:id="_BJPzcO54EeaGaIUqXzzzKQ" base_Class="DataType"/>
+  <standard:Metaclass xmi:id="_BJS2wO54EeaGaIUqXzzzKQ" base_Class="Enumeration"/>
+  <standard:Metaclass xmi:id="_BJUE4O54EeaGaIUqXzzzKQ" base_Class="EnumerationLiteral"/>
+  <standard:Metaclass xmi:id="_BJVTAO54EeaGaIUqXzzzKQ" base_Class="Interface"/>
+  <standard:Metaclass xmi:id="_BJXvQO54EeaGaIUqXzzzKQ" base_Class="InterfaceRealization"/>
+  <standard:Metaclass xmi:id="_BJY9YO54EeaGaIUqXzzzKQ" base_Class="PrimitiveType"/>
+  <standard:Metaclass xmi:id="_BJY9Ye54EeaGaIUqXzzzKQ" base_Class="Reception"/>
+  <standard:Metaclass xmi:id="_BJaLgO54EeaGaIUqXzzzKQ" base_Class="Signal"/>
+  <standard:Metaclass xmi:id="_BJdO0O54EeaGaIUqXzzzKQ" base_Class="ConnectionPointReference"/>
+  <standard:Metaclass xmi:id="_BJec8O54EeaGaIUqXzzzKQ" base_Class="FinalState"/>
+  <standard:Metaclass xmi:id="_BJfrEO54EeaGaIUqXzzzKQ" base_Class="ProtocolConformance"/>
+  <standard:Metaclass xmi:id="_BJgSIO54EeaGaIUqXzzzKQ" base_Class="ProtocolStateMachine"/>
+  <standard:Metaclass xmi:id="_BJhgQO54EeaGaIUqXzzzKQ" base_Class="ProtocolTransition"/>
+  <standard:Metaclass xmi:id="_BJiuYO54EeaGaIUqXzzzKQ" base_Class="Pseudostate"/>
+  <standard:Metaclass xmi:id="_BJlKoO54EeaGaIUqXzzzKQ" base_Class="Region"/>
+  <standard:Metaclass xmi:id="_BJoN8O54EeaGaIUqXzzzKQ" base_Class="State"/>
+  <standard:Metaclass xmi:id="_BJtGcO54EeaGaIUqXzzzKQ" base_Class="StateMachine"/>
+  <standard:Metaclass xmi:id="_BJwJwO54EeaGaIUqXzzzKQ" base_Class="Transition"/>
+  <standard:Metaclass xmi:id="_BJzNEO54EeaGaIUqXzzzKQ" base_Class="Vertex"/>
+  <standard:Metaclass xmi:id="_BJ7I4O54EeaGaIUqXzzzKQ" base_Class="Association"/>
+  <standard:Metaclass xmi:id="_BJ9lIO54EeaGaIUqXzzzKQ" base_Class="AssociationClass"/>
+  <standard:Metaclass xmi:id="_BJ-MMO54EeaGaIUqXzzzKQ" base_Class="Class"/>
+  <standard:Metaclass xmi:id="_BKB2kO54EeaGaIUqXzzzKQ" base_Class="Collaboration"/>
+  <standard:Metaclass xmi:id="_BKCdoO54EeaGaIUqXzzzKQ" base_Class="CollaborationUse"/>
+  <standard:Metaclass xmi:id="_BKDrwO54EeaGaIUqXzzzKQ" base_Class="Component"/>
+  <standard:Metaclass xmi:id="_BKGvEO54EeaGaIUqXzzzKQ" base_Class="ComponentRealization"/>
+  <standard:Metaclass xmi:id="_BKH9MO54EeaGaIUqXzzzKQ" base_Class="ConnectableElement"/>
+  <standard:Metaclass xmi:id="_BKIkQO54EeaGaIUqXzzzKQ" base_Class="ConnectableElementTemplateParameter"/>
+  <standard:Metaclass xmi:id="_BKJLUO54EeaGaIUqXzzzKQ" base_Class="Connector"/>
+  <standard:Metaclass xmi:id="_BKLAgO54EeaGaIUqXzzzKQ" base_Class="ConnectorEnd"/>
+  <standard:Metaclass xmi:id="_BKM1sO54EeaGaIUqXzzzKQ" base_Class="EncapsulatedClassifier"/>
+  <standard:Metaclass xmi:id="_BKNcwO54EeaGaIUqXzzzKQ" base_Class="Port"/>
+  <standard:Metaclass xmi:id="_BKRHIO54EeaGaIUqXzzzKQ" base_Class="StructuredClassifier"/>
+  <standard:Metaclass xmi:id="_BKZC8O54EeaGaIUqXzzzKQ" base_Class="Actor"/>
+  <standard:Metaclass xmi:id="_BKZqAO54EeaGaIUqXzzzKQ" base_Class="Extend"/>
+  <standard:Metaclass xmi:id="_BKa4IO54EeaGaIUqXzzzKQ" base_Class="ExtensionPoint"/>
+  <standard:Metaclass xmi:id="_BKbfMO54EeaGaIUqXzzzKQ" base_Class="Include"/>
+  <standard:Metaclass xmi:id="_BKcGQO54EeaGaIUqXzzzKQ" base_Class="UseCase"/>
+  <standard:Metaclass xmi:id="_BKfJkO54EeaGaIUqXzzzKQ" base_Class="Duration"/>
+  <standard:Metaclass xmi:id="_BKgXsO54EeaGaIUqXzzzKQ" base_Class="DurationConstraint"/>
+  <standard:Metaclass xmi:id="_BKhl0O54EeaGaIUqXzzzKQ" base_Class="DurationInterval"/>
+  <standard:Metaclass xmi:id="_BKiM4O54EeaGaIUqXzzzKQ" base_Class="DurationObservation"/>
+  <standard:Metaclass xmi:id="_BKiz8O54EeaGaIUqXzzzKQ" base_Class="Expression"/>
+  <standard:Metaclass xmi:id="_BKjbAO54EeaGaIUqXzzzKQ" base_Class="Interval"/>
+  <standard:Metaclass xmi:id="_BKkCEO54EeaGaIUqXzzzKQ" base_Class="IntervalConstraint"/>
+  <standard:Metaclass xmi:id="_BKkpIO54EeaGaIUqXzzzKQ" base_Class="LiteralBoolean"/>
+  <standard:Metaclass xmi:id="_BKl3QO54EeaGaIUqXzzzKQ" base_Class="LiteralInteger"/>
+  <standard:Metaclass xmi:id="_BKnscO54EeaGaIUqXzzzKQ" base_Class="LiteralNull"/>
+  <standard:Metaclass xmi:id="_BKoTgO54EeaGaIUqXzzzKQ" base_Class="LiteralReal"/>
+  <standard:Metaclass xmi:id="_BKphoO54EeaGaIUqXzzzKQ" base_Class="LiteralSpecification"/>
+  <standard:Metaclass xmi:id="_BKqIsO54EeaGaIUqXzzzKQ" base_Class="LiteralString"/>
+  <standard:Metaclass xmi:id="_BKrW0O54EeaGaIUqXzzzKQ" base_Class="LiteralUnlimitedNatural"/>
+  <standard:Metaclass xmi:id="_BKsk8O54EeaGaIUqXzzzKQ" base_Class="Observation"/>
+  <standard:Metaclass xmi:id="_BKtMAO54EeaGaIUqXzzzKQ" base_Class="OpaqueExpression"/>
+  <standard:Metaclass xmi:id="_BKwPUO54EeaGaIUqXzzzKQ" base_Class="StringExpression"/>
+  <standard:Metaclass xmi:id="_BKyEgO54EeaGaIUqXzzzKQ" base_Class="TimeConstraint"/>
+  <standard:Metaclass xmi:id="_BKyrkO54EeaGaIUqXzzzKQ" base_Class="TimeExpression"/>
+  <standard:Metaclass xmi:id="_BKz5sO54EeaGaIUqXzzzKQ" base_Class="TimeInterval"/>
+  <standard:Metaclass xmi:id="_BK0gwO54EeaGaIUqXzzzKQ" base_Class="TimeObservation"/>
+  <standard:Metaclass xmi:id="_BK1H0O54EeaGaIUqXzzzKQ" base_Class="ValueSpecification"/>
 </xmi:XMI>

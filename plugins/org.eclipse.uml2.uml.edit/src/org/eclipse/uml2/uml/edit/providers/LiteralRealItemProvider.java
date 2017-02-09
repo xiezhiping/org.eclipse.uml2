@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2015 CEA and others.
+ * Copyright (c) 2011, 2017 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
  *   Christian W. Damus (CEA) - 412912, 414970
- *   Kenn Hussey (CEA) - 370089
+ *   Kenn Hussey (CEA) - 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -70,16 +70,14 @@ public class LiteralRealItemProvider
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_LiteralReal_value_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_LiteralReal_value_feature", "_UI_LiteralReal_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.LITERAL_REAL__VALUE, true, false, false,
-				ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_LiteralReal_value_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_LiteralReal_value_feature", "_UI_LiteralReal_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.LITERAL_REAL__VALUE, true, false, false,
+			ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
 	}
 
 	/**

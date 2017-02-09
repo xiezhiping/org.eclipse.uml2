@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 351774, 414970, 370089
+ *   Kenn Hussey (CEA) - 351774, 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -40,7 +40,8 @@ public class OperationTemplateParameterItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OperationTemplateParameterItemProvider(AdapterFactory adapterFactory) {
+	public OperationTemplateParameterItemProvider(
+			AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -67,10 +68,8 @@ public class OperationTemplateParameterItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(
-			object,
-			getResourceLocator().getImage(
-				"full/obj16/OperationTemplateParameter")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator()
+			.getImage("full/obj16/OperationTemplateParameter")); //$NON-NLS-1$
 	}
 
 	/**
@@ -93,7 +92,9 @@ public class OperationTemplateParameterItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_OperationTemplateParameter_type"), ((OperationTemplateParameter) object).getParameteredElement()).toString(); //$NON-NLS-1$
+				"_UI_OperationTemplateParameter_type"), //$NON-NLS-1$
+			((OperationTemplateParameter) object).getParameteredElement())
+				.toString();
 	}
 
 	/**
@@ -129,8 +130,8 @@ public class OperationTemplateParameterItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 

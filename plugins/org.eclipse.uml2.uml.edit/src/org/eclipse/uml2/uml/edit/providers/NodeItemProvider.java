@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089
+ *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089, 511674
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -74,18 +74,18 @@ public class NodeItemProvider
 	 * @generated
 	 */
 	protected void addDeployedElementPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_DeploymentTarget_deployedElement_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deployedElement_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT, false,
-				false, false, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_DeploymentTarget_deployedElement_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_DeploymentTarget_deployedElement_feature", //$NON-NLS-1$
+				"_UI_DeploymentTarget_type"), //$NON-NLS-1$
+			UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT, false,
+			false, false, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -95,18 +95,18 @@ public class NodeItemProvider
 	 * @generated
 	 */
 	protected void addDeploymentPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_DeploymentTarget_deployment_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deployment_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_DeploymentTarget_deployment_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_DeploymentTarget_deployment_feature", //$NON-NLS-1$
+				"_UI_DeploymentTarget_type"), //$NON-NLS-1$
+			UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT, true, false,
+			true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -116,17 +116,15 @@ public class NodeItemProvider
 	 * @generated
 	 */
 	protected void addNestedNodePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Node_nestedNode_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Node_nestedNode_feature", "_UI_Node_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.NODE__NESTED_NODE, true, false, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_Node_nestedNode_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_Node_nestedNode_feature", "_UI_Node_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.NODE__NESTED_NODE, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -194,7 +192,8 @@ public class NodeItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_Node_type"), object).toString(); //$NON-NLS-1$
+				"_UI_Node_type"), //$NON-NLS-1$
+			object).toString();
 	}
 
 	/**
@@ -234,17 +233,17 @@ public class NodeItemProvider
 			UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT,
 			UMLFactory.eINSTANCE.createDeployment()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NODE__NESTED_NODE,
-			UMLFactory.eINSTANCE.createNode()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.NODE__NESTED_NODE,
+				UMLFactory.eINSTANCE.createNode()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NODE__NESTED_NODE,
-			UMLFactory.eINSTANCE.createDevice()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.NODE__NESTED_NODE,
+				UMLFactory.eINSTANCE.createDevice()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NODE__NESTED_NODE,
-			UMLFactory.eINSTANCE.createExecutionEnvironment()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.NODE__NESTED_NODE,
+				UMLFactory.eINSTANCE.createExecutionEnvironment()));
 	}
 
 	/**
@@ -254,8 +253,8 @@ public class NodeItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 

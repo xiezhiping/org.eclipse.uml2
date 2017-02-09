@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 511674
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -212,6 +212,12 @@ public interface StateMachine
 	/**
 	 * Returns the value of the '<em><b>Extended State Machine</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.StateMachine}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * </p>
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getRedefinedClassifiers() <em>Redefined Classifier</em>}'</li>
+	 * </ul>
 	 * <p>
 	 * This feature redefines the following features:
 	 * </p>

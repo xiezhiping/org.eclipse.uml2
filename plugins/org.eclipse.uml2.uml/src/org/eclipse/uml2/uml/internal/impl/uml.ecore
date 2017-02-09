@@ -2499,6 +2499,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="extendedStateMachine" ordered="false"
         upperBound="-1" eType="#//StateMachine">
       <eAnnotations source="redefines" references="#//Behavior/redefinedBehavior"/>
+      <eAnnotations source="subsets" references="#//Classifier/redefinedClassifier"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Pseudostate" eSuperTypes="#//Vertex">
