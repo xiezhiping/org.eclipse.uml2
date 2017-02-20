@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, Christian W. Damus, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, Christian W. Damus, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833, 424568, 427167, 418466, 419324, 429994, 433157, 439915, 446388, 454864, 458906, 461374, 463066, 468230, 481712, 491587, 495564
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833, 424568, 427167, 418466, 419324, 429994, 433157, 439915, 446388, 454864, 458906, 461374, 463066, 468230, 481712, 491587, 495564, 512439
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833, 420338, 405065, 431342
  *   E.D.Willink - 420338
@@ -7533,6 +7533,10 @@ public class UMLUtil
 			}
 		}
 
+		protected String getOCLDelegateURI() {
+			return OCL_DELEGATE_URI;
+		}
+
 		protected void processOperationBody(EOperation eOperation,
 				EList<String> languages, EList<String> bodies,
 				Map<String, String> options, DiagnosticChain diagnostics,
@@ -7575,15 +7579,15 @@ public class UMLUtil
 					if (LANGUAGE__OCL.equals(language)) {
 						body = getOCLBody(body);
 
-						if (OPTION__PROCESS.equals(options
-							.get(OPTION__INVOCATION_DELEGATES))) {
+						if (OPTION__PROCESS.equals(
+							options.get(OPTION__INVOCATION_DELEGATES))) {
 
 							addInvocationDelegate(
 								(EPackage) getContainingEObject(eOperation,
 									EcorePackage.Literals.EPACKAGE, true),
-								OCL_DELEGATE_URI);
+								getOCLDelegateURI());
 
-							source = OCL_DELEGATE_URI;
+							source = getOCLDelegateURI();
 						}
 					} else if (LANGUAGE__JAVA.equals(language)) {
 						source = EMF_GEN_MODEL_PACKAGE_NS_URI;
@@ -7672,9 +7676,9 @@ public class UMLUtil
 					addValidationDelegate(
 						(EPackage) getContainingEObject(eOperation,
 							EcorePackage.Literals.EPACKAGE, true),
-						OCL_DELEGATE_URI);
+						getOCLDelegateURI());
 
-					EcoreUtil.setAnnotation(eOperation, OCL_DELEGATE_URI,
+					EcoreUtil.setAnnotation(eOperation, getOCLDelegateURI(),
 						ANNOTATION_DETAIL__BODY, bodies.get(i));
 				}
 			}
@@ -7701,9 +7705,9 @@ public class UMLUtil
 					addValidationDelegate(
 						(EPackage) getContainingEObject(eClassifier,
 							EcorePackage.Literals.EPACKAGE, true),
-						OCL_DELEGATE_URI);
+						getOCLDelegateURI());
 
-					EcoreUtil.setAnnotation(eClassifier, OCL_DELEGATE_URI,
+					EcoreUtil.setAnnotation(eClassifier, getOCLDelegateURI(),
 						name, bodies.get(i));
 				}
 			}
@@ -7931,9 +7935,9 @@ public class UMLUtil
 						addSettingDelegate(
 							(EPackage) getContainingEObject(eFeature,
 								EcorePackage.Literals.EPACKAGE, true),
-							OCL_DELEGATE_URI);
+							getOCLDelegateURI());
 
-						source = OCL_DELEGATE_URI;
+						source = getOCLDelegateURI();
 					}
 
 					if (eFeature.isChangeable() || !eFeature.isDerived()) {
