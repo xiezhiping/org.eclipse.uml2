@@ -13,7 +13,7 @@
  *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833, 424568, 427167, 418466, 419324, 429994, 433157, 439915, 446388, 454864, 458906, 461374, 463066, 468230, 481712, 491587, 495564, 512439
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833, 420338, 405065, 431342
- *   E.D.Willink - 420338
+ *   E.D.Willink - 420338, 512439
  *   Christian W. Damus - 444588, 497359, 501740
  *
  */
@@ -4067,6 +4067,25 @@ public class UMLUtil
 		public static final String OPTION__VALIDATION_DELEGATES = "VALIDATION_DELEGATES"; //$NON-NLS-1$
 
 		/**
+		 * The option for specifying an explicit OCL implementation.
+		 * The default is <code>http://www.eclipse.org/emf/2002/Ecore/OCL</code>
+		 * which uses the OCL implementation selected by the OCL default
+		 * delegate URI preference; alternate known values are
+		 * <code>http://www.eclipse.org/emf/2002/Ecore/OCL/LPG</code>, and
+		 * <code>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</code>, which
+		 * select the older Eclipse OCL with an LPG parser or the newer Pivot
+		 * OCL with an Xtext parser. Any value may be used, however subsequent
+		 * OCL execution will fail unless corresponding
+		 * <code>org.eclipse.emf.ecore.invocation_delegate</code>,
+		 * <code>org.eclipse.emf.ecore.setting_delegate</code>,
+		 * and <code>org.eclipse.emf.ecore.validation_delegate</code> extension
+		 * point handlers have been installed.
+		 * 
+		 * @since 5.3
+		 */
+		public static final String OPTION__OCL_DELEGATE_URI = "OCL_DELEGATE_URI"; //$NON-NLS-1$
+
+		/**
 		 * The option for generating invariant constraints in the non-API style
 		 * in EClasses, rather than as API operations. Supported choices are
 		 * <code>OPTION__IGNORE</code> and <code>OPTION__PROCESS</code>.
@@ -7533,8 +7552,14 @@ public class UMLUtil
 			}
 		}
 
-		protected String getOCLDelegateURI() {
-			return OCL_DELEGATE_URI;
+		protected String getOCLDelegateURI(Map<String, String> options) {
+			String oclDelegateURI = options.get(OPTION__OCL_DELEGATE_URI);
+
+			if (isEmpty(oclDelegateURI)) {
+				oclDelegateURI = OCL_DELEGATE_URI;
+			}
+
+			return oclDelegateURI;
 		}
 
 		protected void processOperationBody(EOperation eOperation,
@@ -7582,12 +7607,14 @@ public class UMLUtil
 						if (OPTION__PROCESS.equals(
 							options.get(OPTION__INVOCATION_DELEGATES))) {
 
+							String oclDelegateURI = getOCLDelegateURI(options);
+
 							addInvocationDelegate(
 								(EPackage) getContainingEObject(eOperation,
 									EcorePackage.Literals.EPACKAGE, true),
-								getOCLDelegateURI());
+								oclDelegateURI);
 
-							source = getOCLDelegateURI();
+							source = oclDelegateURI;
 						}
 					} else if (LANGUAGE__JAVA.equals(language)) {
 						source = EMF_GEN_MODEL_PACKAGE_NS_URI;
@@ -7673,12 +7700,14 @@ public class UMLUtil
 					: LANGUAGE__OCL;
 
 				if (LANGUAGE__OCL.equals(language)) {
+					String oclDelegateURI = getOCLDelegateURI(options);
+
 					addValidationDelegate(
 						(EPackage) getContainingEObject(eOperation,
 							EcorePackage.Literals.EPACKAGE, true),
-						getOCLDelegateURI());
+						oclDelegateURI);
 
-					EcoreUtil.setAnnotation(eOperation, getOCLDelegateURI(),
+					EcoreUtil.setAnnotation(eOperation, oclDelegateURI,
 						ANNOTATION_DETAIL__BODY, bodies.get(i));
 				}
 			}
@@ -7702,13 +7731,15 @@ public class UMLUtil
 					: LANGUAGE__OCL;
 
 				if (LANGUAGE__OCL.equals(language)) {
+					String oclDelegateURI = getOCLDelegateURI(options);
+
 					addValidationDelegate(
 						(EPackage) getContainingEObject(eClassifier,
 							EcorePackage.Literals.EPACKAGE, true),
-						getOCLDelegateURI());
+						oclDelegateURI);
 
-					EcoreUtil.setAnnotation(eClassifier, getOCLDelegateURI(),
-						name, bodies.get(i));
+					EcoreUtil.setAnnotation(eClassifier, oclDelegateURI, name,
+						bodies.get(i));
 				}
 			}
 		}
@@ -7932,12 +7963,14 @@ public class UMLUtil
 					String detailKey = ANNOTATION_DETAIL__DERIVATION;
 
 					if (LANGUAGE__OCL.equals(language)) {
+						String oclDelegateURI = getOCLDelegateURI(options);
+
 						addSettingDelegate(
 							(EPackage) getContainingEObject(eFeature,
 								EcorePackage.Literals.EPACKAGE, true),
-							getOCLDelegateURI());
+							oclDelegateURI);
 
-						source = getOCLDelegateURI();
+						source = oclDelegateURI;
 					}
 
 					if (eFeature.isChangeable() || !eFeature.isDerived()) {
