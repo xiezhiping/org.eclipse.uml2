@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833, 424568, 427167, 418466, 419324, 429994, 433157, 439915, 446388, 454864, 458906, 461374, 463066, 468230, 481712, 491587, 495564, 512439
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833, 424568, 427167, 418466, 419324, 429994, 433157, 439915, 446388, 454864, 458906, 461374, 463066, 468230, 481712, 491587, 495564, 512439, 512520
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833, 420338, 405065, 431342
  *   E.D.Willink - 420338, 512439
@@ -11912,36 +11912,51 @@ public class UMLUtil
 		/**
 		 * The default context is the root and is always present, providing the
 		 * default behaviour of calculating results and caching them in the
-		 * {@link CacheAdapter}.  Thus, the cache may be purged more aggressively
+		 * {@link CacheAdapter}. Thus, the cache may be purged more aggressively
 		 * than is needed, but not often when simply inspecting a model.
 		 */
 		private static final OperationContext DEFAULT = new OperationContext() {
+
 			@Override
-			NamedElement getTarget(ENamedElement definition) {
+			NamedElement getTarget(Resource resource,
+					ENamedElement definition) {
 				NamedElement result = null;
+
 				@SuppressWarnings("unchecked")
-				Map<ENamedElement, NamedElement> cache = (Map<ENamedElement, NamedElement>)CacheAdapter.getInstance().get(null, this);
+				Map<ENamedElement, NamedElement> cache = (Map<ENamedElement, NamedElement>) CacheAdapter
+					.getInstance().get(resource, null, this);
+
 				if (cache != null) {
 					result = cache.get(definition);
 				}
+
 				return result;
 			}
 
 			@Override
-			void cacheNamedElement(ENamedElement definition, NamedElement target) {
+			void cacheNamedElement(Resource resource, ENamedElement definition,
+					NamedElement target) {
 				CacheAdapter adapter = CacheAdapter.getInstance();
+
 				@SuppressWarnings("unchecked")
-				Map<ENamedElement, NamedElement> cache = (Map<ENamedElement, NamedElement>)adapter.get(null, this);
+				Map<ENamedElement, NamedElement> cache = (Map<ENamedElement, NamedElement>) adapter
+					.get(resource, null, this);
+
 				if (cache == null) {
 					cache = new HashMap<ENamedElement, NamedElement>();
-					adapter.put(null, this, cache);
+					adapter.put(resource, null, this, cache);
 				}
+
 				cache.put(definition, target);
 			}
 		};
 
-		/** The current thread's active context (always at least the {@link #DEFAULT}). */
+		/**
+		 * The current thread's active context (always at least the
+		 * {@link #DEFAULT}).
+		 */
 		private static final ThreadLocal<OperationContext> context = new ThreadLocal<OperationContext>() {
+
 			@Override
 			protected OperationContext initialValue() {
 				return DEFAULT;
@@ -11949,17 +11964,19 @@ public class UMLUtil
 		};
 
 		/** Cache of Ecore definitions for UML profile elements. */
-		private final Map<ENamedElement, NamedElement> targetMap = new HashMap<ENamedElement, NamedElement>();
+		private final Map<Resource, Map<ENamedElement, NamedElement>> targetMap = new HashMap<Resource, Map<ENamedElement, NamedElement>>();
 
-		/** The parent context (the NULL context is its own parent). */
+		/** The parent context (the DEFAULT context is its own parent). */
 		private final OperationContext parent;
 
 		private OperationContext() {
 			super();
 
-			// Special case: the NULL is the only instance
+			// Special case: the DEFAULT is the only instance
 			// created before the final variable 'context' is set
-			parent = (context == null) ? this : context.get();
+			parent = (context == null)
+				? this
+				: context.get();
 		}
 
 		/**
@@ -11994,7 +12011,7 @@ public class UMLUtil
 		}
 
 		private OperationContext basicPop() {
-			// The NULL context is its own parent, so we will
+			// The DEFAULT context is its own parent, so we will
 			// always have at least that
 			context.set(parent);
 			return this;
@@ -12004,28 +12021,49 @@ public class UMLUtil
 		 * Get the cached UML correspondent of an Ecore {@code definition} from
 		 * myself or, if I don't have it, my parent.
 		 * 
+		 * @param resource
+		 *            the resource context within which the correspondent is
+		 *            being computed, or {@code null} if none
 		 * @param definition
 		 *            an Ecore definition
+		 *
 		 * @return the cached UML correspondent, or {@code null} if none
 		 */
-		NamedElement getTarget(ENamedElement definition) {
-			NamedElement result = targetMap.get(definition);
-			if (result == null) {
-				result = parent.getTarget(definition);
+		NamedElement getTarget(Resource resource, ENamedElement definition) {
+			Map<ENamedElement, NamedElement> result = targetMap.get(resource);
+
+			if (result != null) {
+				NamedElement target = result.get(definition);
+
+				if (target != null) {
+					return target;
+				}
 			}
-			return result;
+
+			return parent.getTarget(resource, definition);
 		}
 
 		/**
 		 * Caches the UML correspondent of an Ecore {@code definition}.
 		 * 
+		 * @param resource
+		 *            the resource context within which the correspondent was
+		 *            computed, or {@code null} if none
 		 * @param definition
 		 *            an Ecore definition
 		 * @param target
 		 *            the UML correspondent to cache
 		 */
-		void cacheNamedElement(ENamedElement definition, NamedElement target) {
-			targetMap.put(definition, target);
+		void cacheNamedElement(Resource resource, ENamedElement definition,
+				NamedElement target) {
+			Map<ENamedElement, NamedElement> result = targetMap.get(resource);
+
+			if (result == null) {
+				targetMap.put(resource,
+					result = new HashMap<ENamedElement, NamedElement>());
+			}
+
+			result.put(definition, target);
 		}
 
 		/**
@@ -12040,12 +12078,16 @@ public class UMLUtil
 		 * 
 		 * @return the cached UML correspondent, or {@code null} if none
 		 */
-		NamedElement getNamedElement(ENamedElement definition, EObject context) {
-			NamedElement result = getTarget(definition);
+		NamedElement getNamedElement(ENamedElement definition,
+				EObject context) {
+			Resource resource = context == null
+				? null
+				: context.eResource();
+			NamedElement result = getTarget(resource, definition);
 
 			if (result == null) {
 				result = UMLUtil.basicGetNamedElement(definition, context);
-				cacheNamedElement(definition, result);
+				cacheNamedElement(resource, definition, result);
 			}
 
 			return result;
