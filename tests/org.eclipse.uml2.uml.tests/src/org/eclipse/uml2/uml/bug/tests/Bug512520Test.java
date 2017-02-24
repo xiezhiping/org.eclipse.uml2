@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 CEA and others.
+ * Copyright (c) 2017 CEA, Christian W. Damus, and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -8,19 +8,17 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - Initial API and implementation
+ *   Christian W. Damus - 512520
  *   
  */
 
 package org.eclipse.uml2.uml.bug.tests;
 
-import java.util.Collections;
-
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Stereotype;
@@ -36,6 +34,8 @@ public class Bug512520Test
 		extends TestCase {
 
 	private ResourceSet rset;
+
+	private ResourceSet rset2;
 
 	public Bug512520Test() {
 		super();
@@ -56,6 +56,14 @@ public class Bug512520Test
 	protected void tearDown()
 			throws Exception {
 
+		dispose(rset);
+
+		if (rset2 != null) {
+			dispose(rset2);
+		}
+	}
+
+	protected void dispose(ResourceSet rset) {
 		for (Resource next : rset.getResources()) {
 			next.unload();
 			next.eAdapters().clear();
@@ -73,11 +81,26 @@ public class Bug512520Test
 		final URI modelURI = URI
 			.createURI("pathmap://UML_TEST_MODELS/Bug401804.uml", true);
 
-		URIConverter.URI_MAP.putAll(
-			EcorePlugin.computePlatformResourceToPlatformPluginMap(Collections
-				.singleton(URIConverter.INSTANCE.normalize(modelURI))));
+		//
+		// Load the same model twice in different resource sets, first
+		//
 
 		Model model1 = UML2Util.load(rset, modelURI, UMLPackage.Literals.MODEL);
+		EcoreUtil.resolveAll(rset);
+		
+		rset2 = new ResourceSetImpl();
+
+		if (StandaloneSupport.isStandalone()) {
+			StandaloneSupport.init(rset2);
+		}
+
+		Model model2 = UML2Util.load(rset2, modelURI, UMLPackage.Literals.MODEL);
+		EcoreUtil.resolveAll(rset2);
+		
+		//
+		// Now, look into the models once everything is loaded and
+		// the CacheAdapter is stable
+		//
 
 		Type sessionManagerBean1 = model1.getOwnedType("SessionManager");
 
@@ -86,15 +109,6 @@ public class Bug512520Test
 
 		Stereotype specification1 = sessionManagerBean1
 			.getAppliedStereotype("StandardProfile::Specification");
-
-		ResourceSet rset2 = new ResourceSetImpl();
-
-		if (StandaloneSupport.isStandalone()) {
-			StandaloneSupport.init(rset2);
-		}
-
-		Model model2 = UML2Util.load(rset2, modelURI,
-			UMLPackage.Literals.MODEL);
 
 		Type sessionManagerBean2 = model2.getOwnedType("SessionManager");
 
@@ -126,13 +140,8 @@ public class Bug512520Test
 		specification2 = sessionManagerBean2
 			.getAppliedStereotype("StandardProfile::Specification");
 
-		for (Resource next : rset2.getResources()) {
-			next.unload();
-			next.eAdapters().clear();
-		}
-
-		rset2.getResources().clear();
-		rset2.eAdapters().clear();
+		dispose(rset2);
+		rset2 = null;
 
 		assertSame(bean1,
 			sessionManagerBean1.getAppliedStereotype("bug401804::Bean"));
