@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756, 513200
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -403,7 +403,7 @@ public class StateMachineOperations
 		if (redefinedElement instanceof StateMachine) {
 			BehavioredClassifier context = stateMachine.getContext();
 
-			return context != null && context.getRedefinedClassifiers()
+			return context != null && context.allParents()
 				.contains(((StateMachine) redefinedElement).getContext());
 		}
 
