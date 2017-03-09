@@ -402,9 +402,14 @@ public class StateMachineOperations
 
 		if (redefinedElement instanceof StateMachine) {
 			BehavioredClassifier context = stateMachine.getContext();
+			BehavioredClassifier parentContext = ((StateMachine) redefinedElement)
+				.getContext();
 
-			return context != null && context.allParents()
-				.contains(((StateMachine) redefinedElement).getContext());
+			return context == null
+				? parentContext == null
+					&& stateMachine.allParents().contains(redefinedElement)
+				: parentContext != null
+					&& context.allParents().contains(parentContext);
 		}
 
 		return false;
